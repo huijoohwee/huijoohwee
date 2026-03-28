@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hackamap — PMF Gap Canvas</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#04080f;--surface:#08111e;--border:#162030;
+  --text:#b0cce8;--dim:#3a5570;--accent:#00c8ff;
+  --team:#f59e0b;--validation:#9f7cff;--growth:#f43f5e;--capital:#c084fc;
+  --network:#06b6d4;--launch:#22c55e;--build:#2dd4bf;--funding:#3b82f6;
+}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;height:100vh;overflow:hidden}
+
+/* scanlines */
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,200,255,.012) 2px,rgba(0,200,255,.012) 4px);pointer-events:none;z-index:200}
+body::after{content:'';position:fixed;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,200,255,.35),transparent);animation:scan 10s linear infinite;pointer-events:none;z-index:201}
+@keyframes scan{0%{top:-2px}100%{top:100vh}}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;height:50px;background:rgba(4,8,15,.96);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:20px;z-index:50;backdrop-filter:blur(10px)}
+.logo{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--accent);letter-spacing:-.5px;flex-shrink:0}
+.logo span{color:var(--dim)}
+.sep{width:1px;height:18px;background:var(--border)}
+.tag{font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.hstats{display:flex;gap:18px;margin-left:auto;align-items:center}
+.hstat{font-size:10px;color:var(--dim)}
+.hstat strong{color:var(--accent);font-size:12px}
+.live{display:flex;align-items:center;gap:5px;font-size:10px;color:#22c55e}
+.dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* canvas */
+#cv{position:fixed;top:50px;left:0;right:0;bottom:0}
+svg{width:100%;height:100%}
+
+/* controls */
+.panel{position:fixed;background:rgba(8,17,30,.92);border:1px solid var(--border);border-radius:8px;padding:14px;backdrop-filter:blur(8px);z-index:30}
+#ctrl{top:66px;left:14px;width:196px}
+.ptitle{font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:12px}
+.cg{margin-bottom:13px}
+.clbl{font-size:10px;color:var(--dim);margin-bottom:5px;display:flex;justify-content:space-between}
+.clbl em{color:var(--accent);font-style:normal;font-weight:700}
+input[type=range]{width:100%;appearance:none;height:2px;background:var(--border);border-radius:1px;outline:none}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 6px var(--accent)}
+select{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 7px;border-radius:4px;outline:none;cursor:pointer}
+.btn{width:100%;background:transparent;border:1px solid var(--border);color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:10px;padding:6px 8px;border-radius:4px;cursor:pointer;text-align:left;margin-top:4px;transition:.2s all}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* tooltip */
+#tip{top:66px;right:14px;width:256px;opacity:0;transform:translateX(16px);transition:.22s all;pointer-events:none}
+#tip.on{opacity:1;transform:translateX(0)}
+.tt-type{font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.tt-lbl{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#fff;margin-bottom:11px;line-height:1.35}
+.tt-row{display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid var(--border);color:var(--dim)}
+.tt-row:last-of-type{border:none}
+.tt-row strong{color:var(--text);font-weight:500}
+.bar{margin-top:9px;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;transition:width .3s}
+
+/* D3 styles */
+.node{cursor:pointer}
+.node.dim circle,.node.dim text{opacity:.08}
+.link{fill:none;transition:opacity .2s}
+.link.dim{opacity:.03!important}
+.ch-group{cursor:pointer}
+.ch-group rect{transition:fill-opacity .2s}
+.ch-group:hover rect{fill-opacity:.22!important}
+
+/* pulse animations */
+@keyframes pfast{0%,100%{opacity:1;r:inherit}50%{opacity:.55}}
+@keyframes pmed{0%,100%{opacity:1}50%{opacity:.65}}
+.pfast circle{animation:pfast .85s ease-in-out infinite}
+.pmed circle{animation:pmed 1.6s ease-in-out infinite}
+
+/* alert */
+#alert{position:fixed;bottom:14px;right:14px;max-width:272px;background:rgba(192,132,252,.1);border:1px solid rgba(192,132,252,.35);border-radius:8px;padding:12px 14px;z-index:30;animation:ain .4s ease forwards}
+@keyframes ain{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.alt{color:#c084fc;font-size:11px;font-weight:700;margin-bottom:3px}
+.alb{color:var(--dim);font-size:10px;line-height:1.65}
+.alb strong{color:var(--text)}
+
+/* legend */
+#leg{position:fixed;bottom:14px;left:14px;display:flex;gap:14px;font-size:10px;color:var(--dim)}
+.li{display:flex;align-items:center;gap:5px}
+.lc{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Hacka<span>map</span></div>
+  <div class="sep"></div>
+  <div class="tag">PMF Gap Canvas</div>
+  <div class="hstats">
+    <div class="live"><div class="dot"></div>LIVE</div>
+    <div class="hstat">Problems <strong>12</strong></div>
+    <div class="hstat">Solutions <strong>11</strong></div>
+    <div class="hstat">Top PMF <strong id="top-pmf">6.75</strong></div>
+    <div class="hstat">Updated <strong>12:46:30Z</strong></div>
+  </div>
+</header>
+
+<div id="cv"></div>
+
+<div class="panel" id="ctrl">
+  <div class="ptitle">Filters</div>
+  <div class="cg">
+    <div class="clbl">Gap Score Min <em id="gv">0.0</em></div>
+    <input type="range" id="gs" min="0" max="5" step="0.1" value="0">
+  </div>
+  <div class="cg">
+    <div class="clbl">Cluster</div>
+    <select id="cf">
+      <option value="all">All clusters</option>
+      <option value="team">Team Building</option>
+      <option value="validation">Validation</option>
+      <option value="growth">Growth</option>
+      <option value="capital">Capital</option>
+      <option value="network">Network</option>
+      <option value="launch">Launch Platforms</option>
+      <option value="build">Build & Hire</option>
+      <option value="funding">Funding & Growth</option>
+    </select>
+  </div>
+  <div class="cg">
+    <div class="clbl">Actions</div>
+    <button class="btn" id="bhg">⚡ Highlight top gaps</button>
+    <button class="btn" id="breset">↺ Reset view</button>
+  </div>
+</div>
+
+<div class="panel" id="tip">
+  <div class="tt-type" id="t-type">—</div>
+  <div class="tt-lbl" id="t-lbl">—</div>
+  <div class="tt-row"><span>Cluster</span><strong id="t-cl">—</strong></div>
+  <div class="tt-row"><span>Gap Score</span><strong id="t-gs">—</strong></div>
+  <div class="tt-row"><span>PMF Score</span><strong id="t-pmf">—</strong></div>
+  <div class="tt-row"><span>Velocity</span><strong id="t-vel">—</strong></div>
+  <div class="tt-row"><span>Specificity</span><strong id="t-sp">—</strong></div>
+  <div class="tt-row"><span>Sources</span><strong id="t-src">—</strong></div>
+  <div class="bar"><div class="bar-fill" id="t-bar"></div></div>
+</div>
+
+<div id="leg">
+  <div class="li"><div class="lc" style="background:#9f7cff;box-shadow:0 0 5px #9f7cff"></div>High gap (problem)</div>
+  <div class="li"><div class="lc" style="background:#f43f5e"></div>Growth problem</div>
+  <div class="li"><div class="lc" style="background:#2dd4bf"></div>Solution</div>
+  <div class="li"><div class="lc" style="background:#3a5570;width:18px;height:2px;border-radius:1px"></div>Weak match</div>
+</div>
+
+<div id="alert">
+  <div class="alt">🚨 HIGH-GAP DETECTED</div>
+  <div class="alb">
+    <strong>Revenue-based financing</strong><br>
+    PMF: <strong style="color:#c084fc">6.75</strong> · Velocity: +0.95 · 0 solutions · Capital cluster
+  </div>
+</div>
+
+<script>
+const CC = {
+  team:'#f59e0b',validation:'#9f7cff',growth:'#f43f5e',capital:'#c084fc',
+  network:'#06b6d4',launch:'#22c55e',build:'#2dd4bf',funding:'#3b82f6'
+};
+const CN = {
+  team:'Team Building',validation:'Validation',growth:'Growth',capital:'Capital',
+  network:'Network',launch:'Launch Platforms',build:'Build & Hire',funding:'Funding & Growth'
+};
+const PROBS = ['team','validation','growth','capital'];
+const SOLS  = ['network','launch','build','funding'];
+const CGR   = {team:.31,validation:.72,growth:.55,capital:1.0};
+
+const nodes = [
+  {id:'p1', t:'problem', cl:'team',       lbl:'Finding co-founders remotely',      gs:1.8,  pmf:2.7,  gv:.30, sc:2, sp:'domain_specific'},
+  {id:'p2', t:'problem', cl:'team',       lbl:'Async team coordination',            gs:0.9,  pmf:1.1,  gv:.10, sc:1, sp:'domain_specific'},
+  {id:'p3', t:'problem', cl:'team',       lbl:'Equity splitting disputes',          gs:1.2,  pmf:1.8,  gv:.20, sc:2, sp:'domain_specific'},
+  {id:'p4', t:'problem', cl:'validation', lbl:'AI agent memory persistence',        gs:3.37, pmf:5.24, gv:.82, sc:1, sp:'named_tool'},
+  {id:'p5', t:'problem', cl:'validation', lbl:'No-code MVP testing pipeline',       gs:2.1,  pmf:3.2,  gv:.45, sc:2, sp:'domain_specific'},
+  {id:'p6', t:'problem', cl:'validation', lbl:'Getting first 10 users',             gs:1.5,  pmf:2.3,  gv:.25, sc:3, sp:'vague'},
+  {id:'p7', t:'problem', cl:'growth',     lbl:'Churn prediction for B2B SaaS',      gs:2.4,  pmf:3.6,  gv:.60, sc:2, sp:'named_tool'},
+  {id:'p8', t:'problem', cl:'growth',     lbl:'Viral loop design for dev tools',    gs:1.9,  pmf:2.9,  gv:.35, sc:1, sp:'domain_specific'},
+  {id:'p9', t:'problem', cl:'growth',     lbl:'SEO vs paid acquisition ROI',        gs:2.8,  pmf:3.4,  gv:.70, sc:3, sp:'domain_specific'},
+  {id:'p10',t:'problem', cl:'capital',    lbl:'Pre-seed without warm intro',        gs:4.1,  pmf:6.15, gv:.90, sc:4, sp:'domain_specific'},
+  {id:'p11',t:'problem', cl:'capital',    lbl:'SAFE vs priced round confusion',     gs:3.8,  pmf:5.7,  gv:.85, sc:3, sp:'named_tool'},
+  {id:'p12',t:'problem', cl:'capital',    lbl:'Revenue-based financing options',    gs:4.5,  pmf:6.75, gv:.95, sc:2, sp:'domain_specific'},
+  {id:'s1', t:'solution',cl:'network',    lbl:'YC Co-Founder Matching',             gs:0, pmf:0, gv:0, sc:5, sp:'named_tool'},
+  {id:'s2', t:'solution',cl:'network',    lbl:'Lunchclub AI',                       gs:0, pmf:0, gv:0, sc:3, sp:'named_tool'},
+  {id:'s3', t:'solution',cl:'network',    lbl:'On Deck Fellowship',                 gs:0, pmf:0, gv:0, sc:4, sp:'named_tool'},
+  {id:'s4', t:'solution',cl:'launch',     lbl:'Product Hunt',                       gs:0, pmf:0, gv:0, sc:8, sp:'named_tool'},
+  {id:'s5', t:'solution',cl:'launch',     lbl:'Betalist',                           gs:0, pmf:0, gv:0, sc:4, sp:'named_tool'},
+  {id:'s6', t:'solution',cl:'launch',     lbl:'Hacker News',                        gs:0, pmf:0, gv:0, sc:7, sp:'named_tool'},
+  {id:'s7', t:'solution',cl:'build',      lbl:'LangGraph by LangChain',             gs:0, pmf:0, gv:0, sc:3, sp:'named_tool'},
+  {id:'s8', t:'solution',cl:'build',      lbl:'Cursor IDE',                         gs:0, pmf:0, gv:0, sc:5, sp:'named_tool'},
+  {id:'s9', t:'solution',cl:'build',      lbl:'Replit',                             gs:0, pmf:0, gv:0, sc:4, sp:'named_tool'},
+  {id:'s10',t:'solution',cl:'funding',    lbl:'Carta SAFE Manager',                 gs:0, pmf:0, gv:0, sc:6, sp:'named_tool'},
+  {id:'s11',t:'solution',cl:'funding',    lbl:'AngelList',                          gs:0, pmf:0, gv:0, sc:5, sp:'named_tool'},
+];
+
+const linksRaw = [
+  {s:'p1',t:'s1',str:.85},{s:'p1',t:'s2',str:.70},{s:'p1',t:'s3',str:.60},
+  {s:'p2',t:'s8',str:.40},{s:'p3',t:'s10',str:.50},
+  {s:'p4',t:'s7',str:.40},
+  {s:'p5',t:'s4',str:.60},{s:'p5',t:'s5',str:.55},
+  {s:'p6',t:'s6',str:.65},{s:'p6',t:'s4',str:.50},
+  {s:'p7',t:'s7',str:.30},
+  {s:'p8',t:'s4',str:.40},{s:'p8',t:'s6',str:.50},
+  {s:'p10',t:'s11',str:.20},{s:'p11',t:'s10',str:.30},
+];
+const links = linksRaw.map(d=>({source:d.s,target:d.t,str:d.str}));
+
+// ---- LAYOUT ----
+const ctn = document.getElementById('cv');
+const W = ctn.clientWidth, H = ctn.clientHeight;
+const PX = W * .27, SX = W * .73;
+const clY = {};
+PROBS.forEach((c,i)=>{ clY[c] = H*(.15+i*.22); });
+SOLS.forEach((c,i)=>{ clY[c]  = H*(.15+i*.22); });
+
+const rScale = d3.scaleSqrt().domain([0,5]).range([7,20]);
+const getR   = d => d.t==='problem' ? Math.max(7,rScale(d.gs)) : 9;
+
+nodes.forEach(d=>{
+  const clNodes = nodes.filter(n=>n.cl===d.cl);
+  const idx = clNodes.indexOf(d);
+  d.x = (d.t==='problem'?PX:SX) + (Math.random()-.5)*50;
+  d.y = clY[d.cl] + (idx-(clNodes.length-1)/2)*40;
+});
+
+// ---- SVG ----
+const svg = d3.select('#cv').append('svg');
+
+// defs
+const defs = svg.append('defs');
+function makeGlow(id,std){
+  const f=defs.append('filter').attr('id',id).attr('x','-80%').attr('y','-80%').attr('width','260%').attr('height','260%');
+  f.append('feGaussianBlur').attr('stdDeviation',std).attr('result','cb');
+  const m=f.append('feMerge');
+  m.append('feMergeNode').attr('in','cb');
+  m.append('feMergeNode').attr('in','SourceGraphic');
+}
+makeGlow('g1',3); makeGlow('g2',7); makeGlow('g3',12);
+
+// dot grid background
+const dotPat = defs.append('pattern').attr('id','dotgrid').attr('width',28).attr('height',28).attr('patternUnits','userSpaceOnUse');
+dotPat.append('circle').attr('cx',14).attr('cy',14).attr('r',.8).attr('fill','#1a2840').attr('opacity',.6);
+svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#dotgrid)');
+
+// center divider
+const base = svg.append('g').attr('class','base');
+base.append('line').attr('x1',W/2).attr('y1',40).attr('x2',W/2).attr('y2',H)
+  .attr('stroke','#162030').attr('stroke-width',1).attr('stroke-dasharray','4,10');
+
+// column labels
+base.append('text').attr('x',PX).attr('y',38).attr('text-anchor','middle')
+  .attr('fill','#f59e0b').attr('fill-opacity',.55).attr('font-family','JetBrains Mono')
+  .attr('font-size',10).attr('letter-spacing',3).text('PROBLEMS');
+base.append('text').attr('x',SX).attr('y',38).attr('text-anchor','middle')
+  .attr('fill','#06b6d4').attr('fill-opacity',.55).attr('font-family','JetBrains Mono')
+  .attr('font-size',10).attr('letter-spacing',3).text('SOLUTIONS');
+
+// ---- CLUSTER HEADERS ----
+const collapsed = {};
+[...PROBS,...SOLS].forEach(c=>collapsed[c]=false);
+
+const clData = [...PROBS,...SOLS].map(c=>({
+  id:c, name:CN[c], color:CC[c],
+  x: PROBS.includes(c)?PX:SX,
+  y: clY[c]-32
+}));
+
+const chG = svg.append('g').attr('class','cluster-headers');
+const clHeaders = chG.selectAll('.ch-group').data(clData).join('g')
+  .attr('class','ch-group')
+  .attr('transform',d=>`translate(${d.x-92},${d.y})`);
+
+clHeaders.append('rect').attr('width',184).attr('height',20).attr('rx',3)
+  .attr('fill',d=>d.color).attr('fill-opacity',.1)
+  .attr('stroke',d=>d.color).attr('stroke-opacity',.35).attr('stroke-width',1);
+
+clHeaders.append('text').attr('x',8).attr('y',13)
+  .attr('fill',d=>d.color).attr('fill-opacity',.85)
+  .attr('font-family','JetBrains Mono').attr('font-size',10).attr('font-weight',700)
+  .text(d=>d.name.toUpperCase());
+
+// gap ratio badge (problems only)
+clHeaders.filter(d=>PROBS.includes(d.id)).append('text')
+  .attr('x',135).attr('y',13)
+  .attr('fill',d=>d.color).attr('fill-opacity',.7)
+  .attr('font-family','JetBrains Mono').attr('font-size',8)
+  .text(d=>CGR[d.id]!=null?`${Math.round(CGR[d.id]*100)}% gap`:'');
+
+// chevrons
+clHeaders.append('text').attr('class','chev').attr('x',170).attr('y',14)
+  .attr('fill',d=>d.color).attr('fill-opacity',.6)
+  .attr('font-family','JetBrains Mono').attr('font-size',9).text('▾');
+
+// ---- LINKS ----
+const linkG = svg.append('g').attr('class','links');
+const nodeG = svg.append('g').attr('class','nodes');
+
+const linkEls = linkG.selectAll('.link').data(links).join('path').attr('class','link')
+  .attr('stroke',d=>{
+    const src=nodes.find(n=>n.id===d.source); return src?CC[src.cl]:'#fff';
+  })
+  .attr('stroke-width',d=>0.5+d.str*2.2)
+  .attr('opacity',d=>0.12+d.str*0.38);
+
+// ---- NODES ----
+const nodeEls = nodeG.selectAll('.node').data(nodes).join('g')
+  .attr('class',d=>{
+    let c='node';
+    if(d.gv>.7)c+=' pfast'; else if(d.gv>.4)c+=' pmed';
+    return c;
+  })
+  .attr('transform',d=>`translate(${d.x},${d.y})`);
+
+// glow halo behind (problem only, high pmf)
+nodeEls.filter(d=>d.t==='problem'&&d.pmf>3).append('circle')
+  .attr('r',d=>getR(d)+8).attr('fill',d=>CC[d.cl]).attr('fill-opacity',.06).attr('stroke','none');
+
+nodeEls.append('circle').attr('r',d=>getR(d))
+  .attr('fill',d=>CC[d.cl])
+  .attr('fill-opacity',d=>d.t==='problem'?.82:.55)
+  .attr('stroke',d=>CC[d.cl]).attr('stroke-width',d=>d.sc>3?2:1.2).attr('stroke-opacity',.9)
+  .attr('filter',d=>d.pmf>5?'url(#g3)':d.pmf>3?'url(#g2)':d.pmf>1.5?'url(#g1)':null);
+
+// gap score label above problem nodes
+nodeEls.filter(d=>d.t==='problem'&&d.gs>=1).append('text')
+  .attr('dy',d=>-(getR(d)+5)).attr('text-anchor','middle')
+  .attr('fill',d=>CC[d.cl]).attr('fill-opacity',.95)
+  .attr('font-family','JetBrains Mono').attr('font-size',8).attr('font-weight',700)
+  .text(d=>d.gs.toFixed(1));
+
+// node label below
+nodeEls.append('text').attr('dy',d=>getR(d)+12).attr('text-anchor','middle')
+  .attr('fill',d=>CC[d.cl]).attr('fill-opacity',.75)
+  .attr('font-family','JetBrains Mono').attr('font-size',9)
+  .text(d=>d.lbl.length>22?d.lbl.slice(0,21)+'…':d.lbl);
+
+// ---- SIMULATION ----
+const sim = d3.forceSimulation(nodes)
+  .force('x', d3.forceX(d=>d.t==='problem'?PX:SX).strength(.65))
+  .force('y', d3.forceY(d=>clY[d.cl]).strength(.45))
+  .force('col', d3.forceCollide(d=>getR(d)+13))
+  .force('link', d3.forceLink(links).id(d=>d.id).strength(.015).distance(W*.46))
+  .alphaDecay(.028)
+  .on('tick', ()=>{
+    linkEls.attr('d', d=>{
+      const sx=d.source.x,sy=d.source.y,tx=d.target.x,ty=d.target.y,mx=(sx+tx)/2;
+      return `M${sx},${sy}C${mx},${sy} ${mx},${ty} ${tx},${ty}`;
+    });
+    nodeEls.attr('transform', d=>`translate(${d.x},${d.y})`);
+  });
+
+// ---- TOOLTIP ----
+const tip = document.getElementById('tip');
+function showTip(d){
+  document.getElementById('t-type').textContent=d.t.toUpperCase();
+  document.getElementById('t-type').style.color=CC[d.cl];
+  document.getElementById('t-lbl').textContent=d.lbl;
+  document.getElementById('t-cl').textContent=CN[d.cl];
+  document.getElementById('t-gs').textContent=d.gs.toFixed(2);
+  document.getElementById('t-pmf').textContent=d.pmf.toFixed(2);
+  document.getElementById('t-vel').textContent=d.gv>0?`+${d.gv.toFixed(2)} ↑`:'—';
+  document.getElementById('t-sp').textContent=d.sp.replace('_',' ');
+  document.getElementById('t-src').textContent=d.sc;
+  const b=document.getElementById('t-bar');
+  b.style.width=`${Math.min(100,d.gs/5*100)}%`;
+  b.style.background=CC[d.cl];
+  tip.classList.add('on');
+}
+function hideTip(){tip.classList.remove('on');}
+
+// ---- NODE HOVER ----
+nodeEls
+  .on('mouseenter',function(e,d){
+    showTip(d);
+    const conn=new Set([d.id]);
+    links.forEach(l=>{
+      const si=l.source.id||l.source, ti=l.target.id||l.target;
+      if(si===d.id)conn.add(ti);
+      if(ti===d.id)conn.add(si);
+    });
+    nodeEls.classed('dim',n=>!conn.has(n.id));
+    linkEls.classed('dim',l=>{
+      const si=l.source.id||l.source,ti=l.target.id||l.target;
+      return si!==d.id&&ti!==d.id;
+    });
+  })
+  .on('mouseleave',()=>{hideTip();nodeEls.classed('dim',false);linkEls.classed('dim',false);});
+
+// ---- CLUSTER HEADER HOVER + COLLAPSE ----
+clHeaders
+  .on('mouseenter',function(e,d){
+    const cids=new Set(nodes.filter(n=>n.cl===d.id).map(n=>n.id));
+    nodeEls.classed('dim',n=>!cids.has(n.id));
+    linkEls.classed('dim',l=>{
+      const si=l.source.id||l.source,ti=l.target.id||l.target;
+      return !cids.has(si)&&!cids.has(ti);
+    });
+  })
+  .on('mouseleave',()=>{nodeEls.classed('dim',false);linkEls.classed('dim',false);})
+  .on('click',function(e,d){
+    collapsed[d.id]=!collapsed[d.id];
+    const col=collapsed[d.id];
+    d3.select(this).select('.chev').text(col?'▸':'▾');
+    nodeEls.filter(n=>n.cl===d.id).style('display',col?'none':null);
+    nodes.filter(n=>n.cl===d.id).forEach(n=>{
+      n.fx=col?d.x:null; n.fy=col?d.y+10:null;
+    });
+    sim.alpha(.25).restart();
+  });
+
+// ---- DRAG ----
+nodeEls.call(
+  d3.drag()
+    .on('start',(e,d)=>{if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y;})
+    .on('drag', (e,d)=>{d.fx=e.x;d.fy=e.y;})
+    .on('end',  (e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;})
+);
+
+// ---- ZOOM ----
+svg.call(
+  d3.zoom().scaleExtent([.35,3.5]).on('zoom',ev=>{
+    [base,linkG,nodeG,chG].forEach(g=>g.attr('transform',ev.transform));
+  })
+);
+
+// ---- CONTROLS ----
+const gs=document.getElementById('gs'), gv=document.getElementById('gv');
+gs.addEventListener('input',function(){
+  const v=+this.value; gv.textContent=v.toFixed(1);
+  nodeEls.style('opacity',d=>d.t==='solution'?1:(d.gs>=v?1:.1));
+  linkEls.style('opacity',d=>{
+    const src=d.source; return src.gs>=v?(0.12+d.str*.38):.03;
+  });
+});
+
+document.getElementById('cf').addEventListener('change',function(){
+  const v=this.value;
+  if(v==='all'){nodeEls.style('display',null);linkEls.style('display',null);return;}
+  nodeEls.style('display',d=>d.cl===v?null:'none');
+  linkEls.style('display',l=>{
+    const si=l.source.id||l.source,ti=l.target.id||l.target;
+    const sn=nodes.find(n=>n.id===si),tn=nodes.find(n=>n.id===ti);
+    return(sn?.cl===v||tn?.cl===v)?null:'none';
+  });
+});
+
+document.getElementById('bhg').addEventListener('click',()=>{
+  gs.value=2.2; gv.textContent='2.2'; gs.dispatchEvent(new Event('input'));
+});
+
+document.getElementById('breset').addEventListener('click',()=>{
+  gs.value=0; gv.textContent='0.0'; gs.dispatchEvent(new Event('input'));
+  nodeEls.style('display',null);
+  document.getElementById('cf').value='all';
+  svg.transition().duration(700).call(
+    d3.zoom().scaleExtent([.35,3.5]).transform, d3.zoomIdentity
+  );
+});
+
+// Alert auto-dismiss
+setTimeout(()=>{
+  const a=document.getElementById('alert');
+  if(a){a.style.transition='opacity .5s';a.style.opacity='0';setTimeout(()=>a.remove(),500);}
+},7000);
+</script>
+</body>
+</html>

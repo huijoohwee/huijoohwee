@@ -1,0 +1,268 @@
+{
+  "schema_version": "1.0.0",
+  "product": "Hackamap",
+  "canvas": "PMF Bipartite Knowledge Graph",
+  "generated_at": "2026-03-28T00:00:00Z",
+  "source": "hackamap-d3-bipartite-knowledge-graph.html",
+
+  "meta": {
+    "total_nodes": 23,
+    "total_problems": 12,
+    "total_solutions": 11,
+    "total_edges": 15,
+    "top_pmf_node": "p12",
+    "top_pmf_score": 6.75,
+    "top_gap_node": "p12",
+    "top_gap_score": 4.5,
+    "last_updated": "2026-03-27T12:46:30Z",
+    "pipeline": ["Bright Data", "Agnes AI", "mem9", "TiDB Cloud", "ZenMux", "Telegram"],
+    "cluster_gap_ratios": {
+      "team":       { "ratio": 0.31, "label": "Team Building",   "color": "#f59e0b", "side": "problem" },
+      "validation": { "ratio": 0.72, "label": "Validation",      "color": "#9f7cff", "side": "problem" },
+      "growth":     { "ratio": 0.55, "label": "Growth",          "color": "#f43f5e", "side": "problem" },
+      "capital":    { "ratio": 1.00, "label": "Capital",         "color": "#c084fc", "side": "problem" },
+      "network":    { "ratio": null, "label": "Network",         "color": "#06b6d4", "side": "solution" },
+      "launch":     { "ratio": null, "label": "Launch Platforms","color": "#22c55e", "side": "solution" },
+      "build":      { "ratio": null, "label": "Build & Hire",    "color": "#2dd4bf", "side": "solution" },
+      "funding":    { "ratio": null, "label": "Funding & Growth","color": "#3b82f6", "side": "solution" }
+    },
+    "pmf_formula": "gap_score × urgency_weight × LOG(source_count + 1) × specificity_multiplier",
+    "gap_score_formula": "LOG(asks + 1) / (solution_count + 1)",
+    "specificity_multipliers": {
+      "named_tool":      1.5,
+      "domain_specific": 1.2,
+      "vague":           0.8
+    },
+    "urgency_weight_rule": "1.5 if scraped_at > NOW() - 7 days, else 1.0",
+    "alert_threshold_pmf": 3.0,
+    "canvas_encoding": {
+      "node_radius":       "gap_score (sqrt scale, 7–20px)",
+      "node_glow":         "pmf_score (3 tiers: >1.5 g1, >3 g2, >5 g3)",
+      "pulse_speed":       "gap_velocity (>0.7 fast, >0.4 medium)",
+      "border_thickness":  "source_count (>3 = 2px, else 1.2px)",
+      "edge_opacity":      "0.12 + strength × 0.38",
+      "cluster_badge":     "cluster_gap_ratio (problems only)"
+    }
+  },
+
+  "clusters": [
+    { "id": "team",       "name": "Team Building",    "side": "problem",   "color": "#f59e0b", "gap_ratio": 0.31, "node_count": 3, "edge_count": 4 },
+    { "id": "validation", "name": "Validation",       "side": "problem",   "color": "#9f7cff", "gap_ratio": 0.72, "node_count": 3, "edge_count": 4 },
+    { "id": "growth",     "name": "Growth",           "side": "problem",   "color": "#f43f5e", "gap_ratio": 0.55, "node_count": 3, "edge_count": 4 },
+    { "id": "capital",    "name": "Capital",          "side": "problem",   "color": "#c084fc", "gap_ratio": 1.00, "node_count": 3, "edge_count": 2 },
+    { "id": "network",    "name": "Network",          "side": "solution",  "color": "#06b6d4", "gap_ratio": null, "node_count": 3, "edge_count": 3 },
+    { "id": "launch",     "name": "Launch Platforms", "side": "solution",  "color": "#22c55e", "gap_ratio": null, "node_count": 3, "edge_count": 4 },
+    { "id": "build",      "name": "Build & Hire",     "side": "solution",  "color": "#2dd4bf", "gap_ratio": null, "node_count": 3, "edge_count": 3 },
+    { "id": "funding",    "name": "Funding & Growth", "side": "solution",  "color": "#3b82f6", "gap_ratio": null, "node_count": 2, "edge_count": 2 }
+  ],
+
+  "nodes": [
+    {
+      "id": "p1",  "type": "problem",  "cluster": "team",
+      "label": "Finding co-founders remotely",
+      "gap_score": 1.80, "pmf_score": 2.70, "gap_velocity": 0.30,
+      "source_count": 2, "specificity": "domain_specific",
+      "solution_count": 3, "alert": false,
+      "canvas": { "radius": 12, "glow_tier": "g1", "pulse": "none", "border_px": 1.2 }
+    },
+    {
+      "id": "p2",  "type": "problem",  "cluster": "team",
+      "label": "Async team coordination",
+      "gap_score": 0.90, "pmf_score": 1.10, "gap_velocity": 0.10,
+      "source_count": 1, "specificity": "domain_specific",
+      "solution_count": 1, "alert": false,
+      "canvas": { "radius": 9,  "glow_tier": null,  "pulse": "none", "border_px": 1.2 }
+    },
+    {
+      "id": "p3",  "type": "problem",  "cluster": "team",
+      "label": "Equity splitting disputes",
+      "gap_score": 1.20, "pmf_score": 1.80, "gap_velocity": 0.20,
+      "source_count": 2, "specificity": "domain_specific",
+      "solution_count": 1, "alert": false,
+      "canvas": { "radius": 10, "glow_tier": "g1", "pulse": "none", "border_px": 1.2 }
+    },
+    {
+      "id": "p4",  "type": "problem",  "cluster": "validation",
+      "label": "AI agent memory persistence",
+      "gap_score": 3.37, "pmf_score": 5.24, "gap_velocity": 0.82,
+      "source_count": 1, "specificity": "named_tool",
+      "solution_count": 1, "alert": true,
+      "canvas": { "radius": 17, "glow_tier": "g2", "pulse": "fast", "border_px": 1.2 }
+    },
+    {
+      "id": "p5",  "type": "problem",  "cluster": "validation",
+      "label": "No-code MVP testing pipeline",
+      "gap_score": 2.10, "pmf_score": 3.20, "gap_velocity": 0.45,
+      "source_count": 2, "specificity": "domain_specific",
+      "solution_count": 2, "alert": true,
+      "canvas": { "radius": 13, "glow_tier": "g2", "pulse": "medium", "border_px": 1.2 }
+    },
+    {
+      "id": "p6",  "type": "problem",  "cluster": "validation",
+      "label": "Getting first 10 users",
+      "gap_score": 1.50, "pmf_score": 2.30, "gap_velocity": 0.25,
+      "source_count": 3, "specificity": "vague",
+      "solution_count": 2, "alert": false,
+      "canvas": { "radius": 11, "glow_tier": "g1", "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "p7",  "type": "problem",  "cluster": "growth",
+      "label": "Churn prediction for B2B SaaS",
+      "gap_score": 2.40, "pmf_score": 3.60, "gap_velocity": 0.60,
+      "source_count": 2, "specificity": "named_tool",
+      "solution_count": 1, "alert": true,
+      "canvas": { "radius": 14, "glow_tier": "g2", "pulse": "medium", "border_px": 1.2 }
+    },
+    {
+      "id": "p8",  "type": "problem",  "cluster": "growth",
+      "label": "Viral loop design for dev tools",
+      "gap_score": 1.90, "pmf_score": 2.90, "gap_velocity": 0.35,
+      "source_count": 1, "specificity": "domain_specific",
+      "solution_count": 2, "alert": false,
+      "canvas": { "radius": 12, "glow_tier": "g1", "pulse": "none", "border_px": 1.2 }
+    },
+    {
+      "id": "p9",  "type": "problem",  "cluster": "growth",
+      "label": "SEO vs paid acquisition ROI",
+      "gap_score": 2.80, "pmf_score": 3.40, "gap_velocity": 0.70,
+      "source_count": 3, "specificity": "domain_specific",
+      "solution_count": 0, "alert": true,
+      "canvas": { "radius": 15, "glow_tier": "g2", "pulse": "fast", "border_px": 2.0 }
+    },
+    {
+      "id": "p10", "type": "problem",  "cluster": "capital",
+      "label": "Pre-seed without warm intro",
+      "gap_score": 4.10, "pmf_score": 6.15, "gap_velocity": 0.90,
+      "source_count": 4, "specificity": "domain_specific",
+      "solution_count": 1, "alert": true,
+      "canvas": { "radius": 19, "glow_tier": "g3", "pulse": "fast", "border_px": 2.0 }
+    },
+    {
+      "id": "p11", "type": "problem",  "cluster": "capital",
+      "label": "SAFE vs priced round confusion",
+      "gap_score": 3.80, "pmf_score": 5.70, "gap_velocity": 0.85,
+      "source_count": 3, "specificity": "named_tool",
+      "solution_count": 1, "alert": true,
+      "canvas": { "radius": 18, "glow_tier": "g3", "pulse": "fast", "border_px": 2.0 }
+    },
+    {
+      "id": "p12", "type": "problem",  "cluster": "capital",
+      "label": "Revenue-based financing options",
+      "gap_score": 4.50, "pmf_score": 6.75, "gap_velocity": 0.95,
+      "source_count": 2, "specificity": "domain_specific",
+      "solution_count": 0, "alert": true,
+      "canvas": { "radius": 20, "glow_tier": "g3", "pulse": "fast", "border_px": 1.2 }
+    },
+    {
+      "id": "s1",  "type": "solution", "cluster": "network",
+      "label": "YC Co-Founder Matching",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 5, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s2",  "type": "solution", "cluster": "network",
+      "label": "Lunchclub AI",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 3, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s3",  "type": "solution", "cluster": "network",
+      "label": "On Deck Fellowship",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 4, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s4",  "type": "solution", "cluster": "launch",
+      "label": "Product Hunt",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 8, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s5",  "type": "solution", "cluster": "launch",
+      "label": "Betalist",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 4, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s6",  "type": "solution", "cluster": "launch",
+      "label": "Hacker News",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 7, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s7",  "type": "solution", "cluster": "build",
+      "label": "LangGraph by LangChain",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 3, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s8",  "type": "solution", "cluster": "build",
+      "label": "Cursor IDE",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 5, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s9",  "type": "solution", "cluster": "build",
+      "label": "Replit",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 4, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s10", "type": "solution", "cluster": "funding",
+      "label": "Carta SAFE Manager",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 6, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    },
+    {
+      "id": "s11", "type": "solution", "cluster": "funding",
+      "label": "AngelList",
+      "gap_score": 0, "pmf_score": 0, "gap_velocity": 0,
+      "source_count": 5, "specificity": "named_tool",
+      "solution_count": null, "alert": false,
+      "canvas": { "radius": 9, "glow_tier": null, "pulse": "none", "border_px": 2.0 }
+    }
+  ],
+
+  "edges": [
+    { "id": "e01", "problem_id": "p1",  "solution_id": "s1",  "strength": 0.85, "type": "strong" },
+    { "id": "e02", "problem_id": "p1",  "solution_id": "s2",  "strength": 0.70, "type": "strong" },
+    { "id": "e03", "problem_id": "p1",  "solution_id": "s3",  "strength": 0.60, "type": "moderate" },
+    { "id": "e04", "problem_id": "p2",  "solution_id": "s8",  "strength": 0.40, "type": "weak" },
+    { "id": "e05", "problem_id": "p3",  "solution_id": "s10", "strength": 0.50, "type": "moderate" },
+    { "id": "e06", "problem_id": "p4",  "solution_id": "s7",  "strength": 0.40, "type": "weak" },
+    { "id": "e07", "problem_id": "p5",  "solution_id": "s4",  "strength": 0.60, "type": "moderate" },
+    { "id": "e08", "problem_id": "p5",  "solution_id": "s5",  "strength": 0.55, "type": "moderate" },
+    { "id": "e09", "problem_id": "p6",  "solution_id": "s6",  "strength": 0.65, "type": "moderate" },
+    { "id": "e10", "problem_id": "p6",  "solution_id": "s4",  "strength": 0.50, "type": "moderate" },
+    { "id": "e11", "problem_id": "p7",  "solution_id": "s7",  "strength": 0.30, "type": "weak" },
+    { "id": "e12", "problem_id": "p8",  "solution_id": "s4",  "strength": 0.40, "type": "weak" },
+    { "id": "e13", "problem_id": "p8",  "solution_id": "s6",  "strength": 0.50, "type": "moderate" },
+    { "id": "e14", "problem_id": "p10", "solution_id": "s11", "strength": 0.20, "type": "weak" },
+    { "id": "e15", "problem_id": "p11", "solution_id": "s10", "strength": 0.30, "type": "weak" }
+  ],
+
+  "whitespace": [
+    { "problem_id": "p9",  "label": "SEO vs paid acquisition ROI",    "cluster": "growth",   "gap_score": 2.80, "note": "0 solution edges — total whitespace" },
+    { "problem_id": "p12", "label": "Revenue-based financing options", "cluster": "capital",  "gap_score": 4.50, "note": "0 solution edges — top opportunity" }
+  ]
+}
