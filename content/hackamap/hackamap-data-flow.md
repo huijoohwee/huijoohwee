@@ -194,6 +194,8 @@ ON DUPLICATE KEY UPDATE
 ### DF-06 — API Exposure (`/api/graph`)
 **Full PMF-enriched D3 JSON** — every node carries all fields needed for canvas rendering and filter controls.
 
+> IMPLEMENT: hover on node -> show panel with URL -> click on the URL -> `source_url`
+
 ```json
 {
   "nodes": [

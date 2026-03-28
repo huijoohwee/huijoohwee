@@ -185,6 +185,8 @@ CREATE TABLE edges (
 
 ## PART 4 — CRITICAL PATH: 0 → 1 IN 3 HOURS (FREE TIER)
 
+> UPDATE: solo
+
 Parallel tracks — split between two team members. Hard convergence at H2:30.
 
 | Task | Track | Hour | Owner | Blocker | Status | Category |
