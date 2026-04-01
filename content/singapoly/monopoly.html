@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore Monopoly - InfiniTown Style</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap');
+
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            font-family: 'Nunito', sans-serif; 
+            background-color: #A9E1FF; 
+        }
+        
+        #info {
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+            z-index: 10;
+        }
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            margin: 0;
+            font-size: 42px;
+            color: #ffffff;
+            -webkit-text-stroke: 2px #2d3436;
+            text-shadow: 0px 4px 0px #2d3436;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        p.subtitle {
+            margin: 5px 0 0 0;
+            font-size: 18px;
+            font-weight: 900;
+            color: #2d3436;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #ffffff;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 2px solid #2d3436;
+            box-shadow: 0 4px 0 rgba(45,52,54,0.1);
+        }
+        
+        #hud {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: #ffffff;
+            padding: 15px 20px;
+            border-radius: 16px;
+            z-index: 10;
+            min-width: 180px;
+            border: 3px solid #2d3436;
+            box-shadow: 4px 6px 0px rgba(45,52,54,0.1);
+        }
+        #hud h3 { 
+            margin: 0 0 12px 0; 
+            border-bottom: 3px dashed #dfe6e9; 
+            padding-bottom: 8px; 
+            font-family: 'Fredoka One', cursive;
+            color: #2d3436;
+            font-size: 20px;
+        }
+        .player-stat {
+            font-size: 18px;
+            margin: 8px 0;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 10px;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #2d3436;
+            border: 2px solid transparent;
+        }
+        .color-box {
+            width: 20px; height: 20px; border-radius: 6px; margin-right: 12px; display: inline-block;
+            border: 2px solid #2d3436;
+        }
+        .active-turn {
+            background: #fff3cd;
+            border: 2px solid #2d3436;
+            transform: scale(1.05) translateX(5px);
+            box-shadow: 2px 4px 0 rgba(45,52,54,0.1);
+        }
+
+        #message-box {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: #2d3436;
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: 900;
+            display: none;
+            z-index: 15;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            animation: fadeInOut 3s forwards;
+            font-size: 16px;
+            border: 3px solid #1e272e;
+        }
+
+        #ui {
+            position: absolute;
+            bottom: 40px;
+            left: 30px;
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 20px;
+            display: none;
+            border: 3px solid #2d3436;
+            box-shadow: 4px 8px 0px rgba(45,52,54,0.1);
+            border-left: 12px solid #b2bec3;
+            min-width: 260px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+        #prop-name { 
+            margin: 0 0 12px 0; 
+            font-family: 'Fredoka One', cursive;
+            font-size: 26px; 
+            color: #2d3436; 
+            line-height: 1.1; 
+        }
+        .detail { margin: 6px 0; font-size: 16px; color: #636e72; font-weight: 800;}
+        .price { font-weight: 900; color: #00b894; font-size: 22px; font-family: 'Fredoka One', cursive;}
+        #prop-owner { font-weight: 900; color: #6c5ce7; }
+        
+        .btn {
+            padding: 12px 20px; border: 3px solid #2d3436; border-radius: 12px; cursor: pointer; font-weight: 900; margin-right: 8px; margin-top: 15px;
+            font-size: 16px;
+            transition: all 0.1s;
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 #2d3436;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #2d3436; filter: brightness(1.1); }
+        .btn:active { transform: translateY(4px); box-shadow: 0 0 0 #2d3436; }
+        .btn-buy { background: #00b894; color: white; }
+        .btn-pass { background: #ff7675; color: white; }
+        .btn-end { background: #0984e3; color: white; }
+
+        #loading {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Fredoka One', cursive;
+            font-size: 36px;
+            color: #ffffff;
+            -webkit-text-stroke: 2px #2d3436;
+            text-shadow: 0px 4px 0px #2d3436;
+            z-index: 50;
+            background: #A9E1FF;
+            padding: 20px 40px;
+            border-radius: 20px;
+            border: 4px solid #2d3436;
+        }
+
+        #dice-container {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            text-align: center;
+            z-index: 20;
+        }
+        #dice-btn {
+            background: #ff4757;
+            color: white;
+            border: 3px solid #2d3436;
+            padding: 20px 40px;
+            font-size: 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #2d3436;
+            font-weight: 900;
+            transition: all 0.1s;
+            font-family: 'Fredoka One', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #dice-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 8px 0 #2d3436; }
+        #dice-btn:active { transform: translateY(6px); box-shadow: 0 0 0 #2d3436; }
+        #dice-btn:disabled { background: #b2bec3 !important; cursor: not-allowed; transform: translateY(6px); box-shadow: 0 0 0 #2d3436; filter: none;}
+        
+        #dice-result {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: 900;
+            color: #2d3436;
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 3px solid #2d3436;
+            box-shadow: 4px 4px 0px rgba(45,52,54,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h1>Singapore Monopoly</h1>
+        <p class="subtitle">Geospatial Voxel World</p>
+    </div>
+    
+    <div id="loading">Generating Voxels...</div>
+    <div id="message-box">Message</div>
+
+    <div id="hud">
+        <h3>Players</h3>
+        <div id="player-0" class="player-stat"><div class="color-box" style="background:#ff4757"></div> Red: $<span id="cash-0">1500</span></div>
+        <div id="player-1" class="player-stat"><div class="color-box" style="background:#0984e3"></div> Blue: $<span id="cash-1">1500</span></div>
+        <div id="player-2" class="player-stat"><div class="color-box" style="background:#00b894"></div> Green: $<span id="cash-2">1500</span></div>
+    </div>
+
+    <div id="ui">
+        <h2 id="prop-name">Property Name</h2>
+        <p class="detail">Type: <span id="prop-type">Property</span></p>
+        <p class="detail price" id="prop-price">$0</p>
+        <p class="detail" id="prop-owner">Owner: None</p>
+        <p class="detail" id="prop-group">Group: </p>
+        <div id="actions"></div>
+    </div>
+
+    <div id="dice-container">
+        <button id="dice-btn">Roll Dice 🎲</button>
+        <div id="dice-result">Red's Turn</div>
+    </div>
+
+    <!-- Three.js, OrbitControls and Tween.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    
+    <script>
+        // --- Setup Scene ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#A9E1FF'); 
+        scene.fog = new THREE.FogExp2('#A9E1FF', 0.0018); 
+
+        const aspect = window.innerWidth / window.innerHeight;
+        const d = 180; 
+        const camera = new THREE.OrthographicCamera(-d * aspect, d * aspect, d, -d, 1, 2000);
+        
+        camera.position.set(200, 200, 200);
+        camera.lookAt(scene.position);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        document.body.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2.2; 
+        controls.minPolarAngle = Math.PI / 6;
+
+        // --- InfiniTown Lighting ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
+        dirLight.position.set(-200, 300, 100); 
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 4096; 
+        dirLight.shadow.mapSize.height = 4096;
+        dirLight.shadow.camera.left = -300;
+        dirLight.shadow.camera.right = 300;
+        dirLight.shadow.camera.top = 300;
+        dirLight.shadow.camera.bottom = -300;
+        dirLight.shadow.bias = -0.001;
+        scene.add(dirLight);
+
+        // --- Environment Base ---
+        const groundGroup = new THREE.Group();
+        scene.add(groundGroup);
+
+        // Water Base
+        const waterGeo = new THREE.BoxGeometry(800, 4, 600);
+        const waterMat = new THREE.MeshLambertMaterial({ color: '#56B7DF' }); 
+        const water = new THREE.Mesh(waterGeo, waterMat);
+        water.position.y = -7;
+        water.receiveShadow = true;
+        groundGroup.add(water);
+
+        // Geofencing for Procedural Voxel Island (Singapore Approximation)
+        function pointInPolygon(point, vs) {
+            let x = point[0], y = point[1];
+            let inside = false;
+            for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+                let xi = vs[i][0], yi = vs[i][1];
+                let xj = vs[j][0], yj = vs[j][1];
+                let intersect = ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+                if (intersect) inside = !inside;
+            }
+            return inside;
+        }
+
+        const sgOutline = [
+            [103.63, 1.33], [103.61, 1.29], [103.63, 1.26], [103.65, 1.27], 
+            [103.70, 1.30], [103.74, 1.28], [103.78, 1.27], [103.82, 1.26], 
+            [103.85, 1.27], [103.88, 1.29], [103.94, 1.31], [103.99, 1.34], 
+            [104.02, 1.35], [104.03, 1.38], [104.00, 1.40], [103.96, 1.39], 
+            [103.91, 1.42], [103.88, 1.41], [103.84, 1.45], [103.80, 1.47], 
+            [103.76, 1.45], [103.73, 1.44], [103.70, 1.42], [103.67, 1.40], 
+            [103.65, 1.36]
+        ];
+        const jurongIslandOutline = [[103.67, 1.28], [103.69, 1.25], [103.72, 1.25], [103.73, 1.27], [103.71, 1.29]];
+        const sentosaOutline = [[103.81, 1.25], [103.83, 1.25], [103.84, 1.24], [103.82, 1.24]];
+        const ubinOutline = [[103.95, 1.41], [103.98, 1.42], [103.99, 1.40], [103.95, 1.40]];
+        const tekongOutline = [[104.02, 1.42], [104.06, 1.42], [104.06, 1.39], [104.02, 1.40]];
+
+        // True Singapore coordinate bounds
+        const minLon = 103.6, maxLon = 104.05;
+        const minLat = 1.20, maxLat = 1.48;
+        const lonRange = maxLon - minLon;
+        const latRange = maxLat - minLat;
+
+        // Voxel Grid configuration - Finer Granularity
+        const gridWidth = 450; 
+        const gridHeight = 280;
+        const voxelSize = 2.5;
+
+        // --- Voxel Island Generation using InstancedMesh ---
+        const cols = Math.floor(gridWidth / voxelSize);
+        const rows = Math.floor(gridHeight / voxelSize);
+        const maxInstances = cols * rows;
+
+        const voxelGeo = new THREE.BoxGeometry(voxelSize, voxelSize * 4, voxelSize);
+        const voxelMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+        const groundIMesh = new THREE.InstancedMesh(voxelGeo, voxelMat, maxInstances);
+        groundIMesh.receiveShadow = true;
+        groundIMesh.castShadow = true;
+
+        const dummy = new THREE.Object3D();
+        const color = new THREE.Color();
+        let voxelCount = 0;
+
+        for(let i=0; i<cols; i++) {
+            for(let j=0; j<rows; j++) {
+                const x = (i * voxelSize) - gridWidth/2;
+                const z = (j * voxelSize) - gridHeight/2;
+                
+                const lon = minLon + (x + gridWidth/2)/gridWidth * lonRange;
+                const lat = minLat + (-z + gridHeight/2)/gridHeight * latRange;
+                
+                const isSG = pointInPolygon([lon, lat], sgOutline);
+                const isIslands = pointInPolygon([lon, lat], sentosaOutline) || 
+                                  pointInPolygon([lon, lat], ubinOutline) || 
+                                  pointInPolygon([lon, lat], tekongOutline) ||
+                                  pointInPolygon([lon, lat], jurongIslandOutline);
+                
+                if(isSG || isIslands) {
+                    const hOffset = Math.random() * 0.8;
+                    dummy.position.set(x, -4.5 + hOffset, z);
+                    dummy.updateMatrix();
+                    groundIMesh.setMatrixAt(voxelCount, dummy.matrix);
+                    
+                    const rC = Math.random();
+                    if(rC > 0.8) color.setHex(0xbadc58); // light green
+                    else if(rC > 0.3) color.setHex(0x88D05C); // main green
+                    else color.setHex(0x6ab04c); // dark green
+                    
+                    // Add some sand beaches near the edges (simple random proxy)
+                    if(rC > 0.95) color.setHex(0xf6e58d);
+
+                    groundIMesh.setColorAt(voxelCount, color);
+                    voxelCount++;
+                }
+            }
+        }
+        groundIMesh.count = voxelCount;
+        groundGroup.add(groundIMesh);
+
+
+        // --- Multiplayer State ---
+        const players = [
+            { id: 0, name: "Red", colorHex: '#ff4757', css: "#ff4757", cash: 1500, pos: 0, mesh: null },
+            { id: 1, name: "Blue", colorHex: '#0984e3', css: "#0984e3", cash: 1500, pos: 0, mesh: null },
+            { id: 2, name: "Green", colorHex: '#00b894', css: "#00b894", cash: 1500, pos: 0, mesh: null }
+        ];
+        let currentPlayerIndex = 0;
+        let isMoving = false;
+
+        const groupColors = {
+            "Brown": '#e1b12c', "Light Blue": '#74b9ff', "Pink": '#fd79a8',
+            "Orange": '#e17055', "Red": '#d63031', "Yellow": '#fbc531',
+            "Green": '#00b894', "Dark Blue": '#0984e3', "Station": '#636e72',
+            "Vehicle": '#b2bec3' 
+        };
+
+        const buildings = [];
+        let boardSpaces = [];
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        const clouds = [];
+        const cars = [];
+        const pedestrians = [];
+        const customAnimations = [];
+
+        // Outlines helper
+        function addEdgeOutline(mesh, geo, scale=1.0) {
+            const edges = new THREE.EdgesGeometry(geo);
+            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 2, transparent: true, opacity: 0.1 }));
+            line.scale.set(scale, scale, scale);
+            mesh.add(line);
+        }
+
+        // --- Voxel Entities Generators ---
+        function createBuilding(w, h, d, colorHex) {
+            const group = new THREE.Group();
+            const matBase = new THREE.MeshLambertMaterial({ color: 0xffffff });
+            const matRoof = new THREE.MeshLambertMaterial({ color: colorHex });
+            
+            const baseGeo = new THREE.BoxGeometry(w, h * 0.8, d);
+            const baseMesh = new THREE.Mesh(baseGeo, matBase);
+            baseMesh.position.y = (h * 0.8) / 2;
+            baseMesh.castShadow = true; baseMesh.receiveShadow = true;
+            addEdgeOutline(baseMesh, baseGeo);
+            group.add(baseMesh);
+
+            const roofGeo = new THREE.BoxGeometry(w + 1.5, h * 0.2, d + 1.5);
+            const roofMesh = new THREE.Mesh(roofGeo, matRoof);
+            roofMesh.position.y = h * 0.8 + (h * 0.2) / 2;
+            roofMesh.castShadow = true; roofMesh.receiveShadow = true;
+            addEdgeOutline(roofMesh, roofGeo);
+            group.add(roofMesh);
+
+            const winMat = new THREE.MeshLambertMaterial({ color: '#2d3436' }); 
+            const winSize = 1.2;
+            const colsX = Math.floor(w / 3);
+            const colsZ = Math.floor(d / 3);
+            const rows = Math.floor((h * 0.8) / 3);
+            const winGeo = new THREE.BoxGeometry(winSize, winSize, 0.4);
+            
+            for(let r=0; r<rows; r++) {
+                const yPos = (r - rows/2 + 0.5) * 3 + (h*0.8)/2;
+                for(let c=0; c<colsX; c++) {
+                    const xPos = (c - colsX/2 + 0.5) * 3;
+                    const wf = new THREE.Mesh(winGeo, winMat); wf.position.set(xPos, yPos, d/2); group.add(wf);
+                    const wb = new THREE.Mesh(winGeo, winMat); wb.position.set(xPos, yPos, -d/2); group.add(wb);
+                }
+                for(let c=0; c<colsZ; c++) {
+                    const zPos = (c - colsZ/2 + 0.5) * 3;
+                    const wl = new THREE.Mesh(winGeo, winMat); wl.rotation.y = Math.PI/2; wl.position.set(w/2, yPos, zPos); group.add(wl);
+                    const wr = new THREE.Mesh(winGeo, winMat); wr.rotation.y = Math.PI/2; wr.position.set(-w/2, yPos, zPos); group.add(wr);
+                }
+            }
+            return group;
+        }
+
+        function createCar(colorHex) {
+            const group = new THREE.Group();
+            const matBody = new THREE.MeshLambertMaterial({ color: colorHex });
+            const matWindow = new THREE.MeshLambertMaterial({ color: '#ffffff' }); 
+            const matWheel = new THREE.MeshLambertMaterial({ color: '#2d3436' });
+
+            const lowerGeo = new THREE.BoxGeometry(3.5, 1.2, 6);
+            const lower = new THREE.Mesh(lowerGeo, matBody);
+            lower.position.y = 1.2; lower.castShadow = true; lower.receiveShadow = true;
+            addEdgeOutline(lower, lowerGeo); group.add(lower);
+
+            const upperGeo = new THREE.BoxGeometry(3, 1.5, 3.5);
+            const upper = new THREE.Mesh(upperGeo, matWindow);
+            upper.position.set(0, 2.55, -0.5); upper.castShadow = true; upper.receiveShadow = true;
+            group.add(upper);
+            
+            const roofGeo = new THREE.BoxGeometry(3.1, 0.3, 3.6);
+            const roof = new THREE.Mesh(roofGeo, matBody);
+            roof.position.set(0, 3.45, -0.5); roof.castShadow = true; roof.receiveShadow = true;
+            group.add(roof);
+
+            const wGeo = new THREE.BoxGeometry(0.8, 1.4, 1.4);
+            const wPositions = [ [1.9, 0.6, 1.8], [-1.9, 0.6, 1.8], [1.9, 0.6, -1.8], [-1.9, 0.6, -1.8] ];
+            wPositions.forEach(pos => {
+                const w = new THREE.Mesh(wGeo, matWheel); w.position.set(...pos); w.castShadow = true; group.add(w);
+            });
+            return group;
+        }
+
+        function createPedestrian(colorHex) {
+            const group = new THREE.Group();
+            const matBody = new THREE.MeshLambertMaterial({color: colorHex});
+            const matHead = new THREE.MeshLambertMaterial({color: '#ffeaa7'}); // Voxel skin tone
+            const matLimb = new THREE.MeshLambertMaterial({color: colorHex});
+            
+            const bodyGeo = new THREE.BoxGeometry(1.0, 1.2, 0.8);
+            const body = new THREE.Mesh(bodyGeo, matBody);
+            body.position.y = 1.4;
+            
+            const headGeo = new THREE.BoxGeometry(1.0, 1.0, 1.0);
+            const head = new THREE.Mesh(headGeo, matHead);
+            head.position.y = 2.6;
+            
+            const legGeo = new THREE.BoxGeometry(0.4, 0.8, 0.4);
+            const legL = new THREE.Mesh(legGeo, matLimb); legL.position.set(-0.25, 0.4, 0);
+            const legR = new THREE.Mesh(legGeo, matLimb); legR.position.set(0.25, 0.4, 0);
+            
+            const armGeo = new THREE.BoxGeometry(0.3, 1.0, 0.3);
+            const armL = new THREE.Mesh(armGeo, matLimb); armL.position.set(-0.7, 1.3, 0);
+            const armR = new THREE.Mesh(armGeo, matLimb); armR.position.set(0.7, 1.3, 0);
+
+            group.add(body, head, legL, legR, armL, armR);
+            group.traverse(c => {if(c.isMesh) { c.castShadow=true; c.receiveShadow=true; addEdgeOutline(c, c.geometry); }});
+            
+            group.userData = { legL, legR, armL, armR };
+            return group;
+        }
+
+        function createElephant() {
+            const g = new THREE.Group();
+            const mat = new THREE.MeshLambertMaterial({color: '#b2bec3'});
+            const body = new THREE.Mesh(new THREE.BoxGeometry(4, 3, 5), mat); body.position.y = 2.5;
+            const head = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), mat); head.position.set(0, 3.5, 3.5);
+            const trunk = new THREE.Mesh(new THREE.BoxGeometry(1, 3, 1), mat); trunk.position.set(0, 1.5, 4.5);
+            const earL = new THREE.Mesh(new THREE.BoxGeometry(2, 3, 0.5), mat); earL.position.set(-2, 3.5, 3);
+            const earR = new THREE.Mesh(new THREE.BoxGeometry(2, 3, 0.5), mat); earR.position.set(2, 3.5, 3);
+            g.add(body, head, trunk, earL, earR);
+            g.traverse(c=>{if(c.isMesh){c.castShadow=true; addEdgeOutline(c, c.geometry);}});
+            g.scale.set(0.6, 0.6, 0.6);
+            return g;
+        }
+
+        function createTiger() {
+            const g = new THREE.Group();
+            const mat = new THREE.MeshLambertMaterial({color: '#e17055'});
+            const matS = new THREE.MeshLambertMaterial({color: '#2d3436'});
+            const body = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 4), mat); body.position.y = 1.5;
+            const head = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.8, 1.8), mat); head.position.set(0, 2.5, 2.5);
+            const stripe1 = new THREE.Mesh(new THREE.BoxGeometry(2.2, 2.2, 0.5), matS); stripe1.position.set(0, 1.5, 0.5);
+            const stripe2 = new THREE.Mesh(new THREE.BoxGeometry(2.2, 2.2, 0.5), matS); stripe2.position.set(0, 1.5, -0.5);
+            g.add(body, head, stripe1, stripe2);
+            g.traverse(c=>{if(c.isMesh){c.castShadow=true; addEdgeOutline(c, c.geometry);}});
+            g.scale.set(0.7, 0.7, 0.7);
+            return g;
+        }
+
+        function createPolarBear() {
+            const g = new THREE.Group();
+            const mat = new THREE.MeshLambertMaterial({color: '#ffffff'});
+            const body = new THREE.Mesh(new THREE.BoxGeometry(2.5, 2.5, 4.5), mat); body.position.y = 1.75;
+            const head = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), mat); head.position.set(0, 2.5, 3);
+            g.add(body, head);
+            g.traverse(c=>{if(c.isMesh){c.castShadow=true; addEdgeOutline(c, c.geometry);}});
+            g.scale.set(0.7, 0.7, 0.7);
+            return g;
+        }
+
+        function createOtter() {
+            const g = new THREE.Group();
+            const mat = new THREE.MeshLambertMaterial({color: '#d35400'});
+            const body = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1, 3), mat); body.position.y = 0.5;
+            const head = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.2, 1.2), mat); head.position.set(0, 1, 1.8);
+            g.add(body, head);
+            g.traverse(c=>{if(c.isMesh){c.castShadow=true; addEdgeOutline(c, c.geometry);}});
+            g.scale.set(0.6, 0.6, 0.6);
+            return g;
+        }
+
+        function createWhale() {
+            const g = new THREE.Group();
+            const mat = new THREE.MeshLambertMaterial({color: '#0984e3'});
+            const matW = new THREE.MeshLambertMaterial({color: '#ffffff'});
+            const body = new THREE.Mesh(new THREE.BoxGeometry(4, 3, 8), mat);
+            const belly = new THREE.Mesh(new THREE.BoxGeometry(3.8, 1, 7.8), matW); belly.position.y = -1;
+            const tail = new THREE.Mesh(new THREE.BoxGeometry(3, 0.5, 2), mat); tail.position.set(0, 0, -4.5);
+            const finL = new THREE.Mesh(new THREE.BoxGeometry(2, 0.5, 1.5), mat); finL.position.set(-2.5, -0.5, 1);
+            const finR = new THREE.Mesh(new THREE.BoxGeometry(2, 0.5, 1.5), mat); finR.position.set(2.5, -0.5, 1);
+            g.add(body, belly, tail, finL, finR);
+            g.traverse(c=>{if(c.isMesh){c.castShadow=true; addEdgeOutline(c, c.geometry);}});
+            return g;
+        }
+
+        function createControlTower() {
+            const g = new THREE.Group();
+            const matBase = new THREE.MeshLambertMaterial({color: '#b2bec3'});
+            const matTop = new THREE.MeshLambertMaterial({color: '#74b9ff'});
+            const base = new THREE.Mesh(new THREE.BoxGeometry(3, 15, 3), matBase); base.position.y = 7.5;
+            const top = new THREE.Mesh(new THREE.BoxGeometry(6, 4, 6), matTop); top.position.y = 17;
+            const antenna = new THREE.Mesh(new THREE.BoxGeometry(0.5, 4, 0.5), matBase); antenna.position.set(0, 2, 0);
+            const antennaGroup = new THREE.Group();
+            antennaGroup.position.y = 19;
+            antennaGroup.add(antenna);
+            g.add(base, top, antennaGroup);
+            g.traverse(c=>{if(c.isMesh){c.castShadow=true; addEdgeOutline(c, c.geometry);}});
+            g.userData.antenna = antennaGroup;
+            return g;
+        }
+
+        function createContainerPort() {
+            const g = new THREE.Group();
+            const matCrane = new THREE.MeshLambertMaterial({color: '#fbc531'}); // yellow crane
+            const matDark = new THREE.MeshLambertMaterial({color: '#2d3436'}); // dark details
+            const colors = ['#e17055', '#0984e3', '#00b894', '#d63031']; // container colors
+
+            // Crane Base/Legs
+            const legGeo = new THREE.BoxGeometry(1, 10, 1);
+            const leg1 = new THREE.Mesh(legGeo, matCrane); leg1.position.set(-3, 5, -2);
+            const leg2 = new THREE.Mesh(legGeo, matCrane); leg2.position.set(-3, 5, 2);
+            const leg3 = new THREE.Mesh(legGeo, matCrane); leg3.position.set(3, 5, -2);
+            const leg4 = new THREE.Mesh(legGeo, matCrane); leg4.position.set(3, 5, 2);
+
+            // Crane Top Boom
+            const boomGeo = new THREE.BoxGeometry(16, 1.5, 2);
+            const boom = new THREE.Mesh(boomGeo, matCrane); boom.position.set(2, 10.75, 0);
+
+            // Operator Cabin
+            const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.5, 1.5), matDark);
+            cabin.position.set(0, 9, 1.5);
+
+            // Hoist / Spreader (Moving part)
+            const spreaderGroup = new THREE.Group();
+            spreaderGroup.position.set(4, 10, 0); 
+            
+            const cable = new THREE.Mesh(new THREE.BoxGeometry(0.1, 5, 0.1), matDark);
+            cable.position.y = -2.5;
+            const spreader = new THREE.Mesh(new THREE.BoxGeometry(3, 0.5, 1.5), matDark);
+            spreader.position.y = -5;
+            
+            const activeContainerMat = new THREE.MeshLambertMaterial({color: colors[0]});
+            const activeContainer = new THREE.Mesh(new THREE.BoxGeometry(2.8, 1.2, 1.3), activeContainerMat);
+            activeContainer.position.y = -5.85;
+
+            spreaderGroup.add(cable, spreader, activeContainer);
+
+            // Static Containers (Stacked)
+            const stacks = new THREE.Group();
+            for(let i=0; i<3; i++) {
+                for(let j=0; j<2; j++) {
+                    if (Math.random() > 0.3) {
+                        const cMat = new THREE.MeshLambertMaterial({color: colors[Math.floor(Math.random()*colors.length)]});
+                        const c = new THREE.Mesh(new THREE.BoxGeometry(2.8, 1.2, 1.3), cMat);
+                        c.position.set(-2, 0.6 + j*1.2, (i-1)*1.5);
+                        stacks.add(c);
+                    }
+                }
+            }
+
+            g.add(leg1, leg2, leg3, leg4, boom, cabin, spreaderGroup, stacks);
+            g.traverse(c=>{if(c.isMesh){c.castShadow=true; addEdgeOutline(c, c.geometry);}});
+            g.userData.spreader = spreaderGroup;
+            g.scale.set(0.8, 0.8, 0.8);
+            return g;
+        }
+
+        // Global Flying Vehicles
+        const plane = new THREE.Group();
+        const matPWhite = new THREE.MeshLambertMaterial({color: 0xffffff});
+        const matPRed = new THREE.MeshLambertMaterial({color: 0xff4757});
+        const matPWin = new THREE.MeshLambertMaterial({color: 0x2d3436});
+        
+        const pBodyGeo = new THREE.BoxGeometry(4, 4, 16);
+        const pBody = new THREE.Mesh(pBodyGeo, matPWhite);
+        const pWingsGeo = new THREE.BoxGeometry(22, 1, 4);
+        const pWings = new THREE.Mesh(pWingsGeo, matPWhite); pWings.position.set(0, -0.5, 1);
+        const pTailGeo = new THREE.BoxGeometry(8, 0.8, 2);
+        const pTail = new THREE.Mesh(pTailGeo, matPWhite); pTail.position.set(0, 0, -6);
+        const pFinGeo = new THREE.BoxGeometry(1, 4, 3);
+        const pFin = new THREE.Mesh(pFinGeo, matPRed); pFin.position.set(0, 2.5, -6);
+        const pCockpit = new THREE.Mesh(new THREE.BoxGeometry(3, 1.5, 2), matPWin); pCockpit.position.set(0, 2, 5);
+        
+        plane.add(pBody, pWings, pTail, pFin, pCockpit);
+        plane.traverse(c => {if(c.isMesh) { c.castShadow=true; addEdgeOutline(c, c.geometry); }});
+        plane.position.set(-300, 100, -100);
+        scene.add(plane);
+
+        const heli = new THREE.Group();
+        const matHBody = new THREE.MeshLambertMaterial({color: '#fbc531'});
+        const hBodyGeo = new THREE.BoxGeometry(4, 4, 6);
+        const hBody = new THREE.Mesh(hBodyGeo, matHBody);
+        const hTailGeo = new THREE.BoxGeometry(1.5, 1.5, 5);
+        const hTail = new THREE.Mesh(hTailGeo, matHBody); hTail.position.set(0, 0, -5);
+        const rotorTop = new THREE.Mesh(new THREE.BoxGeometry(16, 0.2, 1), matPWin);
+        const rotorTop2 = new THREE.Mesh(new THREE.BoxGeometry(1, 0.2, 16), matPWin);
+        const rotorGroup = new THREE.Group(); rotorGroup.add(rotorTop, rotorTop2);
+        rotorGroup.position.set(0, 2.5, 0);
+        
+        heli.add(hBody, hTail, rotorGroup);
+        heli.traverse(c => {if(c.isMesh) { c.castShadow=true; addEdgeOutline(c, c.geometry); }});
+        heli.userData = { rotor: rotorGroup };
+        heli.position.set(0, 60, 0);
+        scene.add(heli);
+
+        // Load the GeoJSON
+        fetch('monopoly.json')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+                data.features.sort((a, b) => a.properties.index - b.properties.index);
+
+                data.features.forEach(feature => {
+                    const coords = feature.geometry.coordinates;
+                    const props = feature.properties;
+                    
+                    // Normalize to 0-1
+                    const nx = (coords[0] - minLon) / lonRange;
+                    const nz = (coords[1] - minLat) / latRange;
+                    
+                    // Map to 3D bounds
+                    const x = (nx * gridWidth) - (gridWidth / 2);
+                    const z = -((nz * gridHeight) - (gridHeight / 2));
+
+                    const baseHeight = props.price ? props.price / 10 : 12;
+                    let bWidth = 10, bDepth = 10;
+                    if (props.type === 'station') { bWidth = 14; bDepth = 14; }
+                    if (props.type === 'vehicle') { bWidth = 8; bDepth = 8; } 
+
+                    const colorHex = groupColors[props.group] || '#dddddd';
+                    const bldgGroup = createBuilding(bWidth, baseHeight, bDepth, colorHex);
+                    bldgGroup.position.set(x, 0, z);
+                    groundGroup.add(bldgGroup);
+
+                    // Concrete Plot underneath
+                    const plotGeo = new THREE.BoxGeometry(bWidth + 6, 0.6, bDepth + 6);
+                    const plotMat = new THREE.MeshLambertMaterial({ color: '#f1f2f6' });
+                    const plot = new THREE.Mesh(plotGeo, plotMat);
+                    plot.position.set(x, 0.3, z);
+                    plot.receiveShadow = true;
+                    groundGroup.add(plot);
+
+                    // Hidden hitbox
+                    const hitGeo = new THREE.BoxGeometry(bWidth + 6, baseHeight + 4, bDepth + 6);
+                    const hitMat = new THREE.MeshBasicMaterial({ visible: false });
+                    const hitMesh = new THREE.Mesh(hitGeo, hitMat);
+                    hitMesh.position.set(0, baseHeight / 2, 0);
+                    hitMesh.userData = { 
+                        props: props, baseY: 0, targetY: 0, colorHex: colorHex, parentGroup: bldgGroup 
+                    };
+                    bldgGroup.add(hitMesh);
+                    buildings.push(hitMesh);
+
+                    // --- Custom Landmarks Additions ---
+                    if (props.id === 'zoo') {
+                        const animals = new THREE.Group();
+                        const elephant = createElephant(); elephant.position.set(-6, 0, -6);
+                        const tiger = createTiger(); tiger.position.set(6, 0, -6);
+                        const polarBear = createPolarBear(); polarBear.position.set(-6, 0, 6);
+                        const otter = createOtter(); otter.position.set(6, 0, 6);
+                        animals.add(elephant, tiger, polarBear, otter);
+                        animals.userData = { type: 'zoo', children: [elephant, tiger, polarBear, otter] };
+                        bldgGroup.add(animals);
+                        customAnimations.push(animals);
+                    }
+                    if (props.id === 'oceanarium') {
+                        const whale = createWhale();
+                        whale.position.set(0, 14, 0);
+                        whale.userData = { type: 'whale' };
+                        bldgGroup.add(whale);
+                        customAnimations.push(whale);
+                    }
+                    if (props.id === 'changi') {
+                        const tower = createControlTower();
+                        tower.position.set(-8, 0, -8);
+                        tower.userData = { type: 'tower', antenna: tower.userData.antenna };
+                        bldgGroup.add(tower);
+                        customAnimations.push(tower);
+                    }
+                    if (props.id === 'port') {
+                        const port = createContainerPort();
+                        port.position.set(0, 0, 0);
+                        port.userData = { type: 'port', spreader: port.userData.spreader };
+                        bldgGroup.add(port);
+                        customAnimations.push(port);
+                    }
+
+                    boardSpaces.push({
+                        mesh: hitMesh,
+                        props: props,
+                        owner: undefined,
+                        position: new THREE.Vector3(x, baseHeight, z)
+                    });
+                });
+
+                // Generate Thick Voxel Roads
+                const roadMat = new THREE.MeshLambertMaterial({ color: '#636e72' }); 
+                const dashMat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
+                
+                for(let i=0; i<boardSpaces.length; i++) {
+                    const p1 = boardSpaces[i].position;
+                    const p2 = boardSpaces[(i+1)%boardSpaces.length].position;
+                    const dist = p1.distanceTo(p2);
+                    
+                    const roadGeo = new THREE.BoxGeometry(8, 0.4, dist);
+                    const road = new THREE.Mesh(roadGeo, roadMat);
+                    road.position.set((p1.x+p2.x)/2, 0.2, (p1.z+p2.z)/2);
+                    road.lookAt(p2.x, 0.2, p2.z);
+                    road.receiveShadow = true;
+                    groundGroup.add(road);
+
+                    const numDashes = Math.floor(dist / 6);
+                    for(let d=1; d<numDashes; d++) {
+                        const dash = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.5, 3), dashMat);
+                        const lerpFactor = d / numDashes;
+                        dash.position.lerpVectors(p1, p2, lerpFactor);
+                        dash.position.y = 0.25;
+                        dash.lookAt(p2.x, 0.25, p2.z);
+                        dash.receiveShadow = true;
+                        groundGroup.add(dash);
+                    }
+                }
+
+                // Generate Scenery: Cube Trees
+                const treeMat = new THREE.MeshLambertMaterial({ color: '#2ecc71' }); 
+                const trunkMat = new THREE.MeshLambertMaterial({ color: '#d35400' }); 
+                for(let i=0; i<80; i++) {
+                    const tx = (Math.random() - 0.5) * gridWidth;
+                    const tz = (Math.random() - 0.5) * gridHeight;
+                    
+                    // Only place trees on land
+                    const lon = minLon + (tx + gridWidth/2)/gridWidth * lonRange;
+                    const lat = minLat + (-tz + gridHeight/2)/gridHeight * latRange;
+                    if (!pointInPolygon([lon, lat], sgOutline)) continue;
+
+                    const tree = new THREE.Group();
+                    const trunk = new THREE.Mesh(new THREE.BoxGeometry(1.5, 3, 1.5), trunkMat);
+                    trunk.position.y = 1.5;
+                    trunk.castShadow = true; trunk.receiveShadow = true;
+                    
+                    const leavesGeo = new THREE.BoxGeometry(5, 5, 5);
+                    const leaves = new THREE.Mesh(leavesGeo, treeMat);
+                    leaves.position.y = 5.5;
+                    leaves.castShadow = true; leaves.receiveShadow = true;
+                    addEdgeOutline(leaves, leavesGeo);
+                    
+                    tree.add(trunk); tree.add(leaves);
+                    
+                    const s = 0.7 + Math.random() * 0.5;
+                    tree.scale.set(s, s, s);
+                    tree.position.set(tx, 0, tz);
+                    groundGroup.add(tree);
+                }
+
+                // Generate Scenery: Voxel Clouds
+                const cloudMat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
+                for(let i=0; i<20; i++) {
+                    const cloud = new THREE.Group();
+                    for(let j=0; j<4; j++) {
+                        const sGeo = new THREE.BoxGeometry(10+Math.random()*10, 6+Math.random()*4, 10+Math.random()*10);
+                        const s = new THREE.Mesh(sGeo, cloudMat);
+                        s.position.set((Math.random()-0.5)*10, (Math.random()-0.5)*4, (Math.random()-0.5)*10);
+                        s.castShadow = true;
+                        addEdgeOutline(s, sGeo);
+                        cloud.add(s);
+                    }
+                    cloud.position.set((Math.random() - 0.5) * 400, 60 + Math.random() * 40, (Math.random() - 0.5) * 400);
+                    cloud.userData.speed = 0.05 + Math.random() * 0.05;
+                    scene.add(cloud);
+                    clouds.push(cloud);
+                }
+
+                // Generate InfiniTown Cars 
+                const carColors = ['#ff7675', '#fdcb6e', '#74b9ff', '#55efc4', '#a29bfe', '#ffeaa7', '#ff9ff3'];
+                for(let i=0; i<15; i++) {
+                    const carGroup = createCar(carColors[i%carColors.length]);
+                    carGroup.userData = {
+                        currentNode: (i * 2) % boardSpaces.length,
+                        progress: Math.random(),
+                        speed: 0.002 + Math.random() * 0.002, 
+                        bounceOffset: Math.random() * Math.PI * 2
+                    };
+                    groundGroup.add(carGroup);
+                    cars.push(carGroup);
+                }
+
+                // Generate Walking Pedestrians
+                const pedColors = ['#81ecec', '#fab1a0', '#74b9ff', '#a29bfe', '#ffeaa7'];
+                for(let i=0; i<30; i++) {
+                    const pedGroup = createPedestrian(pedColors[i%pedColors.length]);
+                    Object.assign(pedGroup.userData, {
+                        currentNode: Math.floor(Math.random() * boardSpaces.length),
+                        progress: Math.random(),
+                        speed: 0.001 + Math.random() * 0.001, // slower than cars
+                        bounceOffset: Math.random() * Math.PI * 2,
+                        sideOffset: (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 2) // walk on sidewalk
+                    });
+                    groundGroup.add(pedGroup);
+                    pedestrians.push(pedGroup);
+                }
+
+                // Initialize Player Tokens
+                players.forEach((p) => {
+                    const tokenGroup = new THREE.Group();
+                    const mat = new THREE.MeshLambertMaterial({ color: p.colorHex });
+                    
+                    const pBase = new THREE.Mesh(new THREE.BoxGeometry(4, 1.5, 4), mat);
+                    pBase.position.y = 0.75;
+                    const pBody = new THREE.Mesh(new THREE.BoxGeometry(2.5, 4, 2.5), mat);
+                    pBody.position.y = 3.5;
+                    const pHead = new THREE.Mesh(new THREE.BoxGeometry(3.5, 3.5, 3.5), mat);
+                    pHead.position.y = 7.25;
+                    
+                    tokenGroup.add(pBase); tokenGroup.add(pBody); tokenGroup.add(pHead);
+                    tokenGroup.traverse(child => { if(child.isMesh) { child.castShadow = true; child.receiveShadow = true; addEdgeOutline(child, child.geometry); }});
+                    
+                    p.mesh = tokenGroup;
+                    groundGroup.add(tokenGroup);
+                });
+
+                updateTokenPositions();
+                updateHUD();
+                
+                const diceBtn = document.getElementById('dice-btn');
+                diceBtn.style.backgroundColor = players[currentPlayerIndex].css;
+            })
+            .catch(err => {
+                console.error("Failed to load JSON:", err);
+                document.getElementById('loading').innerText = "Error loading data";
+            });
+
+        // --- Game Logic ---
+        const diceBtn = document.getElementById('dice-btn');
+        const diceResult = document.getElementById('dice-result');
+
+        function showMessage(msg) {
+            const box = document.getElementById('message-box');
+            box.innerText = msg;
+            box.style.display = 'block';
+            box.style.animation = 'none';
+            void box.offsetWidth; 
+            box.style.animation = 'fadeInOut 3s forwards';
+            setTimeout(() => { box.style.display = 'none'; }, 3000);
+        }
+
+        function updateHUD() {
+            players.forEach((p, i) => {
+                document.getElementById(`cash-${i}`).innerText = p.cash;
+                const pDiv = document.getElementById(`player-${i}`);
+                if (i === currentPlayerIndex) pDiv.classList.add('active-turn');
+                else pDiv.classList.remove('active-turn');
+            });
+        }
+
+        function updateTokenPositions() {
+            boardSpaces.forEach((space, spaceIdx) => {
+                const occupants = players.filter(p => p.pos === spaceIdx);
+                occupants.forEach((p, i) => {
+                    const offsetAngle = (i / occupants.length) * Math.PI * 2;
+                    const radius = occupants.length > 1 ? 5 : 0;
+                    const offsetX = Math.cos(offsetAngle) * radius;
+                    const offsetZ = Math.sin(offsetAngle) * radius;
+                    
+                    p.mesh.position.set(
+                        space.position.x + offsetX, 
+                        space.position.y, 
+                        space.position.z + offsetZ
+                    );
+                });
+            });
+        }
+
+        diceBtn.addEventListener('click', () => {
+            if (isMoving || boardSpaces.length === 0) return;
+            
+            const roll1 = Math.floor(Math.random() * 6) + 1;
+            const roll2 = Math.floor(Math.random() * 6) + 1;
+            const totalRoll = roll1 + roll2;
+            
+            const player = players[currentPlayerIndex];
+            diceResult.innerText = `${player.name} rolled: ${totalRoll} 🎲`;
+            diceBtn.disabled = true;
+            
+            let stepsTaken = 0;
+            isMoving = true;
+            document.getElementById('ui').style.display = 'none';
+
+            const oldPos = player.pos;
+            const newPos = (oldPos + totalRoll) % boardSpaces.length;
+
+            if (oldPos + totalRoll >= boardSpaces.length) {
+                player.cash += 200;
+                showMessage(`${player.name} passed GO! Collected $200.`);
+                updateHUD();
+            }
+
+            function moveNext() {
+                if (stepsTaken >= totalRoll) {
+                    isMoving = false;
+                    player.pos = newPos;
+                    updateTokenPositions();
+                    handleLanded(boardSpaces[newPos]);
+                    return;
+                }
+
+                stepsTaken++;
+                const tempPos = (oldPos + stepsTaken) % boardSpaces.length;
+                const targetPos = boardSpaces[tempPos].position;
+
+                const jumpHeight = 22;
+                const jumpDuration = 200;
+                
+                new TWEEN.Tween(player.mesh.position)
+                    .to({ x: targetPos.x, z: targetPos.z }, jumpDuration * 2)
+                    .easing(TWEEN.Easing.Linear.None)
+                    .start();
+
+                new TWEEN.Tween(player.mesh.position)
+                    .to({ y: targetPos.y + jumpHeight }, jumpDuration)
+                    .easing(TWEEN.Easing.Quadratic.Out)
+                    .onComplete(() => {
+                        new TWEEN.Tween(player.mesh.position)
+                            .to({ y: targetPos.y }, jumpDuration)
+                            .easing(TWEEN.Easing.Quadratic.In)
+                            .onComplete(moveNext)
+                            .start();
+                    })
+                    .start();
+            }
+
+            moveNext();
+        });
+
+        function handleLanded(space) {
+            const player = players[currentPlayerIndex];
+            const props = space.props;
+            
+            const ui = document.getElementById('ui');
+            document.getElementById('prop-name').innerText = props.name;
+            document.getElementById('prop-type').innerText = props.type.toUpperCase();
+            document.getElementById('prop-price').innerText = `Price: $${props.price}`;
+            document.getElementById('prop-group').innerText = `Group: ${props.group}`;
+            
+            const ownerEl = document.getElementById('prop-owner');
+            const actionsEl = document.getElementById('actions');
+            actionsEl.innerHTML = '';
+
+            ui.style.borderLeftColor = space.mesh.userData.colorHex;
+            ui.style.display = 'block';
+            space.mesh.userData.parentGroup.position.y += 4; 
+
+            if (space.owner === undefined) {
+                ownerEl.innerText = "Owner: None";
+                ownerEl.style.color = "#636e72";
+                
+                if (player.cash >= props.price) {
+                    const buyBtn = document.createElement('button');
+                    buyBtn.className = 'btn btn-buy';
+                    buyBtn.innerText = `Buy for $${props.price}`;
+                    buyBtn.onclick = () => {
+                        player.cash -= props.price;
+                        space.owner = currentPlayerIndex;
+                        showMessage(`${player.name} bought ${props.name}!`);
+                        updateHUD();
+                        endTurn();
+                    };
+                    actionsEl.appendChild(buyBtn);
+                }
+                
+                const passBtn = document.createElement('button');
+                passBtn.className = 'btn btn-pass';
+                passBtn.innerText = 'Pass';
+                passBtn.onclick = endTurn;
+                actionsEl.appendChild(passBtn);
+
+            } else if (space.owner === currentPlayerIndex) {
+                ownerEl.innerText = `Owner: You`;
+                ownerEl.style.color = player.css;
+                
+                const endBtn = document.createElement('button');
+                endBtn.className = 'btn btn-end';
+                endBtn.innerText = 'End Turn';
+                endBtn.onclick = endTurn;
+                actionsEl.appendChild(endBtn);
+            } else {
+                const owner = players[space.owner];
+                ownerEl.innerText = `Owner: ${owner.name}`;
+                ownerEl.style.color = owner.css;
+                
+                const rent = Math.floor(props.price * 0.2);
+                player.cash -= rent;
+                owner.cash += rent;
+                
+                showMessage(`${player.name} paid $${rent} rent to ${owner.name}.`);
+                updateHUD();
+                
+                const endBtn = document.createElement('button');
+                endBtn.className = 'btn btn-end';
+                endBtn.innerText = 'End Turn';
+                endBtn.onclick = endTurn;
+                actionsEl.appendChild(endBtn);
+            }
+        }
+
+        function endTurn() {
+            document.getElementById('ui').style.display = 'none';
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+            updateHUD();
+            
+            diceBtn.disabled = false;
+            diceBtn.style.backgroundColor = players[currentPlayerIndex].css;
+            diceResult.innerText = `${players[currentPlayerIndex].name}'s Turn`;
+        }
+
+        // --- View Interaction ---
+        let hoveredBuilding = null;
+        
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(buildings);
+
+            if (intersects.length > 0) {
+                document.body.style.cursor = 'pointer';
+                const hit = intersects[0].object;
+                
+                if (hoveredBuilding !== hit) {
+                    if (hoveredBuilding) hoveredBuilding.userData.targetY = hoveredBuilding.userData.baseY;
+                    hoveredBuilding = hit;
+                    hoveredBuilding.userData.targetY = hoveredBuilding.userData.baseY + 5;
+                }
+            } else {
+                document.body.style.cursor = 'default';
+                if (hoveredBuilding) {
+                    hoveredBuilding.userData.targetY = hoveredBuilding.userData.baseY;
+                    hoveredBuilding = null;
+                }
+            }
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') return;
+
+            if (hoveredBuilding && !isMoving && document.getElementById('actions').innerHTML === '') {
+                const props = hoveredBuilding.userData.props;
+                const space = boardSpaces.find(s => s.props.id === props.id);
+                if (space) {
+                    const ui = document.getElementById('ui');
+                    document.getElementById('prop-name').innerText = props.name;
+                    document.getElementById('prop-type').innerText = props.type.toUpperCase();
+                    document.getElementById('prop-price').innerText = `Price: $${props.price}`;
+                    document.getElementById('prop-group').innerText = `Group: ${props.group}`;
+                    
+                    const ownerEl = document.getElementById('prop-owner');
+                    if (space.owner === undefined) {
+                        ownerEl.innerText = "Owner: None";
+                        ownerEl.style.color = "#636e72";
+                    } else {
+                        ownerEl.innerText = `Owner: ${players[space.owner].name}`;
+                        ownerEl.style.color = players[space.owner].css;
+                    }
+                    
+                    ui.style.borderLeftColor = space.mesh.userData.colorHex;
+                    ui.style.display = 'block';
+                    space.mesh.userData.parentGroup.position.y += 5;
+                }
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            const aspect = window.innerWidth / window.innerHeight;
+            camera.left = -d * aspect; camera.right = d * aspect;
+            camera.top = d; camera.bottom = -d;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- Animation Loop ---
+        const clock = new THREE.Clock();
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateY(-10px); }
+                10% { opacity: 1; transform: translateY(0); }
+                90% { opacity: 1; transform: translateY(0); }
+                100% { opacity: 0; transform: translateY(-10px); display: none; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+            const elapsedTime = clock.getElapsedTime();
+
+            // Buildings Hover Bounce
+            buildings.forEach(hit => {
+                const grp = hit.userData.parentGroup;
+                grp.position.y += (hit.userData.targetY - grp.position.y) * 0.2;
+            });
+
+            // Gentle Board Float
+            groundGroup.position.y = Math.sin(elapsedTime * 0.5) * 1.5 - 2;
+
+            // Clouds drift
+            clouds.forEach(cloud => {
+                cloud.position.x += cloud.userData.speed;
+                if(cloud.position.x > 400) cloud.position.x = -400;
+            });
+
+            // Airplane Fly (Circular Path with Banking)
+            plane.userData.angle = (plane.userData.angle || 0) + 0.004;
+            const pRadius = 220;
+            plane.position.x = Math.cos(plane.userData.angle) * pRadius;
+            plane.position.z = Math.sin(plane.userData.angle) * pRadius;
+            plane.position.y = 120 + Math.sin(elapsedTime) * 10;
+            // Point tangent to the circle and bank inwards
+            plane.rotation.y = -plane.userData.angle + Math.PI; 
+            plane.rotation.z = Math.PI / 8;
+
+            // Helicopter hover & patrol
+            heli.userData.rotor.rotation.y += 0.5;
+            if (!heli.userData.targetPos) {
+                heli.userData.targetPos = new THREE.Vector3((Math.random() - 0.5) * 300, 60 + Math.random() * 30, (Math.random() - 0.5) * 200);
+            }
+            const hDir = new THREE.Vector3().subVectors(heli.userData.targetPos, heli.position);
+            if (hDir.length() < 5) {
+                heli.userData.targetPos = new THREE.Vector3((Math.random() - 0.5) * 300, 60 + Math.random() * 30, (Math.random() - 0.5) * 200);
+            } else {
+                hDir.normalize();
+                heli.position.addScaledVector(hDir, 0.5);
+                const targetRot = Math.atan2(hDir.x, hDir.z);
+                let rotDiff = targetRot - heli.rotation.y;
+                while (rotDiff > Math.PI) rotDiff -= Math.PI * 2;
+                while (rotDiff < -Math.PI) rotDiff += Math.PI * 2;
+                heli.rotation.y += rotDiff * 0.05;
+                heli.rotation.x = -0.1; // tilt slightly forward
+            }
+            heli.position.y += Math.sin(elapsedTime * 3) * 0.2; // bob slightly
+
+            // Custom Landmark Animations
+            customAnimations.forEach(anim => {
+                if (anim.userData.type === 'zoo') {
+                    anim.userData.children.forEach((child, i) => {
+                        child.position.y = Math.abs(Math.sin(elapsedTime * 4 + i * 1.5)) * 2;
+                        child.rotation.y += 0.03;
+                    });
+                }
+                if (anim.userData.type === 'whale') {
+                    anim.rotation.y -= 0.02;
+                    anim.position.y = 14 + Math.sin(elapsedTime * 2) * 2;
+                }
+                if (anim.userData.type === 'tower') {
+                    anim.userData.antenna.rotation.y += 0.05;
+                }
+                if (anim.userData.type === 'port') {
+                    anim.userData.spreader.position.x = 2 + Math.sin(elapsedTime * 1.5) * 4;
+                    anim.userData.spreader.position.y = 10 + Math.cos(elapsedTime * 3) * 1.5;
+                }
+            });
+
+            // Cars Driving with InfiniTown bounce
+            if(boardSpaces.length > 0) {
+                cars.forEach(car => {
+                    const p1 = boardSpaces[car.userData.currentNode].position;
+                    const nextNode = (car.userData.currentNode + 1) % boardSpaces.length;
+                    const p2 = boardSpaces[nextNode].position;
+                    
+                    car.userData.progress += car.userData.speed;
+                    if(car.userData.progress >= 1) {
+                        car.userData.progress -= 1;
+                        car.userData.currentNode = nextNode;
+                    }
+                    
+                    car.position.lerpVectors(p1, p2, car.userData.progress);
+                    const bounce = Math.abs(Math.sin((elapsedTime * 18) + car.userData.bounceOffset)) * 0.8;
+                    car.position.y = 0.5 + bounce; 
+                    
+                    const lookTarget = p2.clone();
+                    lookTarget.y = car.position.y;
+                    car.lookAt(lookTarget);
+                });
+
+                // Pedestrians walking (bouncier, slower, with swinging limbs)
+                pedestrians.forEach(ped => {
+                    const p1 = boardSpaces[ped.userData.currentNode].position;
+                    const nextNode = (ped.userData.currentNode + 1) % boardSpaces.length;
+                    const p2 = boardSpaces[nextNode].position;
+                    
+                    ped.userData.progress += ped.userData.speed;
+                    if(ped.userData.progress >= 1) {
+                        ped.userData.progress -= 1;
+                        ped.userData.currentNode = nextNode;
+                    }
+                    
+                    // Lerp and offset to sidewalk
+                    ped.position.lerpVectors(p1, p2, ped.userData.progress);
+                    
+                    // Sidewalk offset calculation (perpendicular to road direction)
+                    const dir = new THREE.Vector3().subVectors(p2, p1).normalize();
+                    const perp = new THREE.Vector3(-dir.z, 0, dir.x).multiplyScalar(ped.userData.sideOffset);
+                    ped.position.add(perp);
+
+                    const bounce = Math.abs(Math.sin((elapsedTime * 25) + ped.userData.bounceOffset)) * 0.4;
+                    ped.position.y = 0.5 + bounce; 
+                    
+                    const swing = Math.sin((elapsedTime * 25) + ped.userData.bounceOffset);
+                    ped.userData.legL.position.z = swing * 0.4;
+                    ped.userData.legR.position.z = -swing * 0.4;
+                    ped.userData.armL.position.z = -swing * 0.4;
+                    ped.userData.armR.position.z = swing * 0.4;
+                    
+                    const lookTarget = p2.clone().add(perp);
+                    lookTarget.y = ped.position.y;
+                    ped.lookAt(lookTarget);
+                });
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
