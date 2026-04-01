@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Singapore Monopoly - InfiniTown Style</title>
+    <title>Singapore Monopoly</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap');
 
@@ -92,7 +92,7 @@
 
         #message-box {
             position: absolute;
-            top: 30px;
+            top: 70px;
             right: 30px;
             background: #2d3436;
             color: #ffffff;
@@ -199,6 +199,25 @@
             border: 3px solid #2d3436;
             box-shadow: 4px 4px 0px rgba(45,52,54,0.1);
         }
+
+        #watermark {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            font-weight: 900;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            z-index: 100;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
+        }
     </style>
 </head>
 <body>
@@ -206,6 +225,8 @@
         <h1>Singapore Monopoly</h1>
         <p class="subtitle">Geospatial Voxel World</p>
     </div>
+    
+    <div id="watermark">☀️ airvio - joohwee</div>
     
     <div id="loading">Generating Voxels...</div>
     <div id="message-box">Message</div>
@@ -262,7 +283,7 @@
         controls.maxPolarAngle = Math.PI / 2.2; 
         controls.minPolarAngle = Math.PI / 6;
 
-        // --- InfiniTown Lighting ---
+        // --- Bouncy Lighting ---
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
         scene.add(ambientLight);
 
@@ -856,7 +877,7 @@
                     clouds.push(cloud);
                 }
 
-                // Generate InfiniTown Cars 
+                // Generate Cars 
                 const carColors = ['#ff7675', '#fdcb6e', '#74b9ff', '#55efc4', '#a29bfe', '#ffeaa7', '#ff9ff3'];
                 for(let i=0; i<15; i++) {
                     const carGroup = createCar(carColors[i%carColors.length]);
@@ -1247,7 +1268,7 @@
                 }
             });
 
-            // Cars Driving with InfiniTown bounce
+            // Cars Driving with bounce
             if(boardSpaces.length > 0) {
                 cars.forEach(car => {
                     const p1 = boardSpaces[car.userData.currentNode].position;
