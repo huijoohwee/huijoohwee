@@ -306,12 +306,20 @@
         <p class="subtitle" id="game-subtitle">Loading...</p>
     </div>
     
-    <div id="watermark-container" style="position: absolute; top: 20px; right: 20px; z-index: 100;">
-        <div id="watermark" style="cursor: pointer; font-size: 14px; font-weight: 900; color: #ffffff; background: rgba(0, 0, 0, 0.2); padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); backdrop-filter: blur(4px);" onclick="const d = document.getElementById('watermark-dropdown'); d.style.display = d.style.display === 'none' ? 'block' : 'none';">☀️ airvio - joohwee</div>
-        <div id="watermark-dropdown" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: white; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden; box-shadow: 4px 4px 0px rgba(0,0,0,0.1);">
-            <button id="nav-settings-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('settings-modal').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">Settings</button>
-            <button id="nav-login-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('login-screen').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">WhatsApp Login</button>
-            <button id="nav-logout-btn" style="display: none; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #d63031; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="localStorage.removeItem('singapoly_user'); window.location.reload();">Logout</button>
+    <div id="watermark-container" style="position: absolute; top: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; align-items: flex-end; gap: 15px;">
+        <div style="position: relative; display: flex; flex-direction: column; align-items: flex-end; z-index: 102;">
+            <div id="watermark" style="cursor: pointer; font-size: 14px; font-weight: 900; color: #ffffff; background: rgba(0, 0, 0, 0.2); padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); backdrop-filter: blur(4px);" onclick="const d = document.getElementById('watermark-dropdown'); d.style.display = d.style.display === 'none' ? 'block' : 'none';">☀️ airvio - joohwee</div>
+            <div id="watermark-dropdown" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: white; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden; box-shadow: 4px 4px 0px rgba(0,0,0,0.1); min-width: 160px; z-index: 103;">
+                <button id="nav-login-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('login-screen').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">WhatsApp Login</button>
+                <button id="nav-settings-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('settings-modal').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">Settings</button>
+                <button id="nav-logout-btn" style="display: none; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #d63031; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="localStorage.removeItem('singapoly_user'); window.location.reload();">Logout</button>
+            </div>
+        </div>
+        
+        <div style="position: relative; z-index: 100;">
+            <div id="quick-play-mode-btn" style="cursor: pointer; font-size: 14px; font-weight: 900; color: #ffffff; background: rgba(0, 0, 0, 0.2); padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); backdrop-filter: blur(4px); width: 100%; box-sizing: border-box;" onclick="if(window.togglePlayMode) window.togglePlayMode();">
+                Play with AI 🤖
+            </div>
         </div>
     </div>
     
@@ -319,6 +327,15 @@
         <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: left; width: 90%; max-width: 350px; position: relative; box-sizing: border-box;">
             <button onclick="document.getElementById('settings-modal').style.display='none';" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72;">✖</button>
             <h3 style="margin-top: 0; color: #2d3436; font-size: 24px; text-align: center;">Settings</h3>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Play Mode:</label>
+                <select id="play-mode-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
+                    <option value="ai">Play with AI 🤖 (DeerFlow 🦌)</option>
+                    <option value="human">Play with Human 👫🏻</option>
+                </select>
+                <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Switching play mode will reload the game.</p>
+            </div>
 
             <div style="margin-bottom: 15px;">
                 <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Board / Map:</label>
@@ -381,12 +398,12 @@
         <div id="superagent-container" style="display: none; margin-bottom: 15px; position: relative;">
             <div id="superagent-panel" style="display: none; position: absolute; bottom: 100%; right: 0; margin-bottom: 10px; width: 300px; background: white; border: 4px solid #2d3436; border-radius: 16px; box-shadow: 8px 8px 0 rgba(0,0,0,0.1); flex-direction: column; overflow: hidden; font-family: 'Nunito', sans-serif;">
                 <div style="background: #a29bfe; color: white; padding: 10px 15px; font-family: 'Fredoka One', cursive; border-bottom: 3px solid #2d3436; display: flex; justify-content: space-between; align-items: center; text-transform: none;">
-                    <span>Super 🐯</span>
+                    <span>DeerFlow 🦌</span>
                     <button onclick="document.getElementById('superagent-panel').style.display='none'" style="background:none; border:none; color:white; cursor:pointer; font-size:16px;">✖</button>
                 </div>
                 <div id="superagent-chat" style="height: 250px; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 10px; background: #f1f2f6; text-align: left; text-transform: none;">
                     <div style="background: white; border: 2px solid #2d3436; padding: 8px 12px; border-radius: 12px; align-self: flex-start; max-width: 85%; font-size: 14px; font-weight: bold; color: #2d3436;">
-                        Roar! I'm your Super 🐯. Tell me what to do!
+                        Hi! I'm your DeerFlow 🦌 agent. Tell me what to do!
                     </div>
                 </div>
                 <div style="display: flex; border-top: 3px solid #2d3436; background: white;">
@@ -394,7 +411,7 @@
                     <button id="superagent-send" style="background: #a29bfe; color: white; border: none; border-left: 3px solid #2d3436; padding: 0 15px; cursor: pointer; font-weight: bold; font-family: 'Nunito', sans-serif; text-transform: none;">Send</button>
                 </div>
             </div>
-            <button id="superagent-btn" style="background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 15px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; font-weight: 900; box-shadow: 0 6px 0 #2d3436; font-family: 'Fredoka One', cursive; transition: all 0.1s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">Super 🐯</button>
+            <button id="superagent-btn" style="background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 15px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; font-weight: 900; box-shadow: 0 6px 0 #2d3436; font-family: 'Fredoka One', cursive; transition: all 0.1s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">DeerFlow 🦌</button>
         </div>
         <button id="dice-btn">Roll Dice 🎲</button>
         <div id="dice-result">Red's Turn</div>
@@ -412,13 +429,25 @@
         // --- Setup Yjs ---
         const urlParams = new URLSearchParams(window.location.search);
         let boardFile = urlParams.get('board') || 'singapoly.json';
+        const currentPlayMode = urlParams.get('mode') || 'ai';
         
         // Handle cross-origin/absolute URLs by prefixing with boards directory if it's a simple filename
-        if (!boardFile.startsWith('http') && !boardFile.startsWith('/') && !boardFile.startsWith('./')) {
-            boardFile = `./boards/${boardFile}`;
+        if (!boardFile.startsWith('http') && !boardFile.startsWith('/') && !boardFile.startsWith('./') && !boardFile.startsWith('../') && !boardFile.startsWith('boards/')) {
+            boardFile = `boards/${boardFile}`;
         }
         
-        const roomName = `singapoly-room-${boardFile.split('/').pop().replace('.json', '')}-v4`;
+        let roomSuffix = 'v4';
+        if (currentPlayMode === 'ai') {
+            const saved = localStorage.getItem('singapoly_user');
+            let phone = 'local';
+            if (saved) {
+                try {
+                    phone = JSON.parse(saved).phone || 'local';
+                } catch(e) {}
+            }
+            roomSuffix = `ai-${phone}`;
+        }
+        const roomName = `singapoly-room-${boardFile.split('/').pop().replace('.json', '')}-${roomSuffix}`;
 
         const ydoc = new Y.Doc();
         const provider = new WebsocketProvider('wss://demos.yjs.dev/ws', roomName, ydoc);
@@ -565,25 +594,55 @@
                 document.getElementById('login-status').style.display = "block";
             });
 
-            // Make WhatsApp login optional
+        // Toggle Play Mode Script (attached to quick button)
+        window.togglePlayMode = function() {
+            const url = new URL(window.location.href);
+            const currentMode = url.searchParams.get('mode') || 'ai';
+            const newMode = currentMode === 'ai' ? 'human' : 'ai';
+            url.searchParams.set('mode', newMode);
+            window.location.href = url.toString();
+        };
+
+        // Make WhatsApp login optional
+        function updateUIAuth() {
+            document.getElementById('watermark').innerText = `☀️ airvio - joohwee`;
+            
+            // ALWAYS SHOW WhatsApp login regardless of AI or Human mode unless user is actively logged in
             if (currentUser) {
-                document.getElementById('watermark').innerText = `${currentUser.name} ☀️`;
-                document.getElementById('nav-login-btn').style.display = 'none';
                 document.getElementById('nav-logout-btn').style.display = 'block';
-                document.getElementById('superagent-container').style.display = 'block'; // Show SuperAgent
-                
-                // Force sync if already loaded
-                if (yGameState.get('players')) {
-                    syncStateFromYjs();
-                }
+                document.getElementById('nav-login-btn').style.display = 'none';
             } else {
-                // Not logged in, but we still allow playing
-                myPlayerIndex = 0; // Default fallback to first player if not logged in
-                document.getElementById('nav-login-btn').style.display = 'block';
                 document.getElementById('nav-logout-btn').style.display = 'none';
+                document.getElementById('nav-login-btn').style.display = 'block';
+                myPlayerIndex = 0; // Default fallback to first player if not logged in
+            }
+            
+            // Toggle SuperAgent container based purely on mode
+            if (currentPlayMode === 'ai') {
+                document.getElementById('superagent-container').style.display = 'block'; // Show SuperAgent
+            } else {
+                document.getElementById('superagent-container').style.display = 'none';
+            }
+            
+            // Force sync if already loaded
+            if (typeof yGameState !== 'undefined' && yGameState && typeof yGameState.get === 'function' && yGameState.get('players')) {
+                syncStateFromYjs();
             }
         }
-        initAuth();
+        
+        // Execute SSOT logic
+        updateUIAuth();
+    }
+        
+    // Immediately set the default watermark text before initAuth completes
+    document.getElementById('watermark').innerText = `☀️ airvio - joohwee`;
+    initAuth();
+    
+    // Set the correct text on the quick toggle button globally
+    const quickBtn = document.getElementById('quick-play-mode-btn');
+    if (quickBtn) {
+        quickBtn.innerText = currentPlayMode === 'ai' ? 'Play with AI 🤖' : 'Play with Human 👫🏻';
+    }
 
         // Close dropdown when clicking outside
         window.addEventListener('click', (e) => {
@@ -948,9 +1007,10 @@
         scene.add(ship);
 
         // Load the JSON File (Driven by URL param defined above)
-        fetch(boardFile)
+        const boardUrl = new URL(boardFile, window.location.href).href;
+        fetch(boardUrl)
         .then(res => {
-            if (!res.ok) throw new Error("Failed to load board file: " + boardFile);
+            if (!res.ok) throw new Error("Failed to load board file: " + boardUrl);
             return res.json();
         })
         .then(data => {
@@ -1260,6 +1320,8 @@
         let lastHandledRollTimestamp = 0;
 
         function pushStateToYjs() {
+            if (myPlayerIndex === -1) return; // Observers shouldn't push state
+            
             const pData = players.map(p => ({ phone: p.phone, name: p.name, cash: p.cash, pos: p.pos }));
             yGameState.set('players', pData);
             
@@ -1274,41 +1336,129 @@
         }
 
         function registerPlayerIfNeeded(yPlayers) {
-            if (!currentUser) return false;
-            let existingIdx = yPlayers.findIndex(p => p.phone === currentUser.phone);
-            if (existingIdx !== -1) {
-                myPlayerIndex = existingIdx;
-                // If name changed from previous session, update it
-                if (yPlayers[existingIdx].name !== currentUser.name) {
-                    const updatedPlayers = JSON.parse(JSON.stringify(yPlayers));
-                    updatedPlayers[existingIdx].name = currentUser.name;
-                    if (players[existingIdx]) players[existingIdx].name = currentUser.name; // Optimistically update local array too
+            let changed = false;
+            let updatedPlayers = JSON.parse(JSON.stringify(yPlayers));
+
+            if (currentPlayMode === 'ai') {
+                // Ensure AI players exist in slots 1 and 2
+                for (let i = 0; i < 3; i++) {
+                    if (i !== myPlayerIndex && (!updatedPlayers[i].phone || !updatedPlayers[i].name.includes('DeerFlow'))) {
+                        // Skip if this slot is already claimed by the user
+                        if (currentUser && updatedPlayers[i].phone === currentUser.phone) continue;
+                        
+                        updatedPlayers[i].phone = `ai-${i}`;
+                        updatedPlayers[i].name = `DeerFlow 🦌 ${i}`;
+                        if (players[i]) {
+                            players[i].phone = `ai-${i}`;
+                            players[i].name = `DeerFlow 🦌 ${i}`;
+                        }
+                        changed = true;
+                    }
+                }
+            }
+
+            if (!currentUser) {
+                // If AI mode, we still need a Local Player placeholder so the human can play
+                let localChanged = false;
+                let emptyIdx = updatedPlayers.findIndex(p => !p.phone || p.phone === 'local');
+                
+                // Also check if slot 0 is an AI, we need to overwrite it with local human player
+                if (emptyIdx === -1 && currentPlayMode === 'ai') {
+                    emptyIdx = 0; // force slot 0 to be human
+                }
+                
+                if (emptyIdx !== -1) {
+                    updatedPlayers[emptyIdx].phone = 'local';
+                    updatedPlayers[emptyIdx].name = '☀️ airvio - joohwee';
+                    if (players[emptyIdx]) {
+                        players[emptyIdx].phone = 'local';
+                        players[emptyIdx].name = '☀️ airvio - joohwee';
+                    }
+                    myPlayerIndex = emptyIdx;
+                    localChanged = true;
+                } else {
+                    // Check if 'local' is already in the array, if so, claim it
+                    let localIdx = updatedPlayers.findIndex(p => p.phone === 'local');
+                    if (localIdx !== -1) {
+                        myPlayerIndex = localIdx;
+                    }
+                }
+                
+                if (changed || localChanged) {
                     yGameState.set('players', updatedPlayers);
                     return true;
                 }
                 return false;
+            }
+
+            let existingIdx = updatedPlayers.findIndex(p => p.phone === currentUser.phone);
+            if (existingIdx !== -1) {
+                myPlayerIndex = existingIdx;
+                // If name changed from previous session, update it
+                if (updatedPlayers[existingIdx].name !== currentUser.name) {
+                    updatedPlayers[existingIdx].name = currentUser.name;
+                    if (players[existingIdx]) players[existingIdx].name = currentUser.name;
+                    yGameState.set('players', updatedPlayers);
+                    return true;
+                }
+                if (changed) yGameState.set('players', updatedPlayers);
+                return changed;
             } else {
-                let emptyIdx = yPlayers.findIndex(p => !p.phone);
+                let emptyIdx = updatedPlayers.findIndex(p => !p.phone || (currentPlayMode === 'ai' && p.phone.startsWith('ai-') && !p.name.includes('DeerFlow')));
                 if (emptyIdx !== -1) {
-                    const updatedPlayers = JSON.parse(JSON.stringify(yPlayers)); // Clone the array
                     updatedPlayers[emptyIdx].phone = currentUser.phone;
                     updatedPlayers[emptyIdx].name = currentUser.name;
                     if (players[emptyIdx]) {
-                        players[emptyIdx].phone = currentUser.phone; // Optimistically update local array too
+                        players[emptyIdx].phone = currentUser.phone;
                         players[emptyIdx].name = currentUser.name;
                     }
                     yGameState.set('players', updatedPlayers);
                     myPlayerIndex = emptyIdx;
                     return true;
                 } else {
-                    // if all 3 slots are taken, fallback to just observing
                     myPlayerIndex = -1;
-                    return false;
+                    if (changed) yGameState.set('players', updatedPlayers);
+                    return changed;
                 }
             }
         }
 
         let lastKnownPositions = [];
+
+        function triggerAITurn() {
+            if (currentPlayMode !== 'ai' || myPlayerIndex === currentPlayerIndex || isMoving) return;
+            if (myPlayerIndex === -1) return; // Not in game
+            
+            // Allow Human Player 1 (myPlayerIndex) to act as the "server" that drives the AI rolls
+            // We only trigger AI rolls if WE are the primary human in the room (usually slot 0)
+            // or if the current player is an AI and it's their turn
+            const isAITurn = players[currentPlayerIndex].phone && players[currentPlayerIndex].phone.startsWith('ai-');
+            
+            if (isAITurn) {
+                // Wait a short time before rolling
+                setTimeout(() => {
+                    // Only process roll if it's STILL the AI's turn, we're not currently moving, 
+                    // and we haven't already registered a roll for them in the last few ms
+                    const currentRoll = yGameState.get('lastRoll');
+                    const timeSinceLastRoll = currentRoll ? Date.now() - currentRoll.timestamp : 9999;
+                    
+                    if (currentPlayerIndex === myPlayerIndex || isMoving || timeSinceLastRoll < 2000) return;
+                    
+                    const roll1 = Math.floor(Math.random() * 6) + 1;
+                    const roll2 = Math.floor(Math.random() * 6) + 1;
+                    
+                    const rollData = {
+                        playerIndex: currentPlayerIndex,
+                        roll1, roll2,
+                        oldPos: players[currentPlayerIndex].pos,
+                        timestamp: Date.now(),
+                        clientId: myClientId // We initiate the roll on behalf of the AI
+                    };
+                    
+                    yGameState.set('lastRoll', rollData);
+                }, 1500);
+            }
+        }
 
         function syncStateFromYjs() {
             let positionsChanged = false;
@@ -1354,6 +1504,12 @@
                 if (turnChanged) {
                     document.getElementById('ui').style.display = 'none';
                     if (!isMoving) diceBtn.disabled = (myPlayerIndex !== currentPlayerIndex);
+                    if (currentPlayMode === 'ai' && currentPlayerIndex !== myPlayerIndex) {
+                        triggerAITurn();
+                    }
+                } else if (currentPlayMode === 'ai' && currentPlayerIndex !== myPlayerIndex && !isMoving && !document.getElementById('ui').style.display.includes('block')) {
+                    // Safety catch: if state re-syncs but it's still AI's turn and they haven't moved
+                    triggerAITurn();
                 }
                 
                 diceBtn.style.backgroundColor = players[currentPlayerIndex].css;
@@ -1439,9 +1595,14 @@
                 
                 const nameEl = hudCache.name[i];
                 if (nameEl) {
-                    nameEl.innerText = p.name;
+                    if (p.name && p.name.includes('DeerFlow')) {
+                        nameEl.innerHTML = `<a href="https://github.com/bytedance/deer-flow.git" target="_blank" style="color: inherit; text-decoration: underline;">${p.name}</a>`;
+                    } else {
+                        nameEl.innerText = p.name;
+                    }
+                    
                     if (currentUser && p.phone === currentUser.phone) {
-                        nameEl.innerText += " (You)";
+                        nameEl.innerHTML += " (You)";
                     }
                 }
                 
@@ -1604,6 +1765,25 @@
                     passBtn.innerText = 'Pass';
                     passBtn.onclick = endTurn;
                     actionsEl.appendChild(passBtn);
+                } else if (currentPlayMode === 'ai') {
+                    const waitMsg = document.createElement('p');
+                    waitMsg.style.fontWeight = 'bold';
+                    waitMsg.style.color = '#636e72';
+                    waitMsg.innerText = "DeerFlow 🦌 is thinking...";
+                    actionsEl.appendChild(waitMsg);
+
+                    setTimeout(() => {
+                        // AI buys if cash > price + 200
+                        if (player.cash >= props.price + 200) {
+                            player.cash -= props.price;
+                            space.owner = currentPlayerIndex;
+                            showMessage(`${player.name} bought ${props.name}!`);
+                        } else {
+                            showMessage(`${player.name} passed on ${props.name}.`);
+                        }
+                        pushStateToYjs();
+                        endTurn();
+                    }, 1500);
                 } else {
                     const waitMsg = document.createElement('p');
                     waitMsg.style.fontWeight = 'bold';
@@ -1622,6 +1802,10 @@
                     endBtn.innerText = 'End Turn';
                     endBtn.onclick = endTurn;
                     actionsEl.appendChild(endBtn);
+                } else if (currentPlayMode === 'ai') {
+                    setTimeout(() => {
+                        endTurn();
+                    }, 1000);
                 }
             } else {
                 const owner = players[space.owner];
@@ -1641,6 +1825,15 @@
                     endBtn.innerText = 'End Turn';
                     endBtn.onclick = endTurn;
                     actionsEl.appendChild(endBtn);
+                } else if (currentPlayMode === 'ai') {
+                    const rent = Math.floor(props.price * 0.2);
+                    setTimeout(() => {
+                        player.cash -= rent;
+                        owner.cash += rent;
+                        showMessage(`${player.name} paid $${rent} rent to ${owner.name}.`);
+                        pushStateToYjs();
+                        endTurn();
+                    }, 1500);
                 }
             }
         }
@@ -1650,6 +1843,10 @@
             currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
             diceBtn.disabled = (myPlayerIndex !== currentPlayerIndex);
             pushStateToYjs();
+            
+            if (currentPlayMode === 'ai' && currentPlayerIndex !== myPlayerIndex) {
+                triggerAITurn();
+            }
         }
 
         // --- View Interaction ---
@@ -1689,7 +1886,7 @@
             raycaster.setFromCamera(mouse, camera);
             const intersects = raycaster.intersectObjects(buildings);
             
-            let clickedBuilding = hoveredBuilding;
+            let clickedBuilding = null;
             if (intersects.length > 0) {
                 clickedBuilding = intersects[0].object;
             }
@@ -1716,6 +1913,12 @@
                     ui.style.borderLeftColor = space.mesh.userData.colorHex;
                     ui.style.display = 'block';
                     space.mesh.userData.parentGroup.position.y += 5;
+                }
+            } else if (!clickedBuilding && !event.target.closest('#ui') && document.getElementById('actions').innerHTML === '') {
+                document.getElementById('ui').style.display = 'none';
+                if (hoveredBuilding) {
+                    hoveredBuilding.userData.targetY = hoveredBuilding.userData.baseY;
+                    hoveredBuilding = null;
                 }
             }
         });
@@ -1759,6 +1962,12 @@
                             ui.style.borderLeftColor = space.mesh.userData.colorHex;
                             ui.style.display = 'block';
                         }
+                    }
+                } else if (!event.target.closest('#ui') && document.getElementById('actions').innerHTML === '') {
+                    document.getElementById('ui').style.display = 'none';
+                    if (hoveredBuilding) {
+                        hoveredBuilding.userData.targetY = hoveredBuilding.userData.baseY;
+                        hoveredBuilding = null;
                     }
                 }
             }
@@ -1875,10 +2084,11 @@
             }
         });
 
-        // --- Theme & Weather Logic ---
+        // --- Theme & Weather & Play Mode Logic ---
         const themeSelect = document.getElementById('theme-select');
         const weatherSelect = document.getElementById('weather-select');
         const boardSelect = document.getElementById('board-select');
+        const playModeSelect = document.getElementById('play-mode-select');
         const tmpColor = new THREE.Color();
         
         // Init board select value based on URL
@@ -1894,6 +2104,17 @@
             url.searchParams.set('board', boardSelect.value);
             window.location.href = url.toString();
         });
+
+        // Init play mode select value based on URL
+        const playModeFromUrl = new URLSearchParams(window.location.search).get('mode') || 'ai';
+        if (playModeSelect) {
+            playModeSelect.value = playModeFromUrl;
+            playModeSelect.addEventListener('change', () => {
+                const url = new URL(window.location.href);
+                url.searchParams.set('mode', playModeSelect.value);
+                window.location.href = url.toString();
+            });
+        }
         
         function applyTheme() {
             if (!groundIMesh) return;
