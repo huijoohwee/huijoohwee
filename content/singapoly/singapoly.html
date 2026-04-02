@@ -302,8 +302,8 @@
     </div>
 
     <div id="info">
-        <h1>Singapore Monopoly</h1>
-        <p class="subtitle">Geospatial Voxel World</p>
+        <h1 id="game-title">Loading...</h1>
+        <p class="subtitle" id="game-subtitle">Loading...</p>
     </div>
     
     <div id="watermark-container" style="position: absolute; top: 20px; right: 20px; z-index: 100;">
@@ -319,6 +319,15 @@
         <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: left; width: 90%; max-width: 350px; position: relative; box-sizing: border-box;">
             <button onclick="document.getElementById('settings-modal').style.display='none';" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72;">✖</button>
             <h3 style="margin-top: 0; color: #2d3436; font-size: 24px; text-align: center;">Settings</h3>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Board / Map:</label>
+                <select id="board-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
+                    <option value="singapoly.json">Singapore Monopoly</option>
+                    <option value="tokyopoly.json">Tokyo Monopoly</option>
+                </select>
+                <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Switching boards will reload the game.</p>
+            </div>
 
             <div style="margin-bottom: 15px;">
                 <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Theme:</label>
@@ -401,8 +410,18 @@
         import { WebrtcProvider } from 'https://esm.sh/y-webrtc';
 
         // --- Setup Yjs ---
+        const urlParams = new URLSearchParams(window.location.search);
+        let boardFile = urlParams.get('board') || 'singapoly.json';
+        
+        // Handle cross-origin/absolute URLs by prefixing with boards directory if it's a simple filename
+        if (!boardFile.startsWith('http') && !boardFile.startsWith('/') && !boardFile.startsWith('./')) {
+            boardFile = `./boards/${boardFile}`;
+        }
+        
+        const roomName = `singapoly-room-${boardFile.split('/').pop().replace('.json', '')}-v4`;
+
         const ydoc = new Y.Doc();
-        const provider = new WebrtcProvider('singapoly-room-v3', ydoc);
+        const provider = new WebrtcProvider(roomName, ydoc);
         const yGameState = ydoc.getMap('gameState');
         const myClientId = Math.random().toString(36).substring(2);
 
@@ -472,7 +491,8 @@
             return inside;
         }
 
-        let sgOutline, jurongIslandOutline, sentosaOutline, ubinOutline, tekongOutline;
+        let scenePolygons = [];
+        let mainPolygonIndex = 0;
         let minLon, maxLon, minLat, maxLat, lonRange, latRange;
         let gridWidth, gridHeight, voxelSize;
 
@@ -927,18 +947,22 @@
         ship.position.set(-200, -2, 150);
         scene.add(ship);
 
-        // Load the GeoJSON
-        // Load Scene Configuration and GeoJSON
-        Promise.all([
-            fetch('scene.json').then(res => res.json()),
-            fetch('singapoly.json').then(res => res.json())
-        ]).then(([sceneData, data]) => {
+        // Load the JSON File (Driven by URL param defined above)
+        fetch(boardFile)
+        .then(res => {
+            if (!res.ok) throw new Error("Failed to load board file: " + boardFile);
+            return res.json();
+        })
+        .then(data => {
+            const sceneData = data.scene;
+            
+            document.getElementById('game-title').innerText = data.name || "Monopoly";
+            document.getElementById('game-subtitle').innerText = data.subtitle || "Geospatial Voxel World";
+            document.title = data.name || "Monopoly";
+
             // Apply Scene Data
-            sgOutline = sceneData.polygons.sgOutline;
-            jurongIslandOutline = sceneData.polygons.jurongIslandOutline;
-            sentosaOutline = sceneData.polygons.sentosaOutline;
-            ubinOutline = sceneData.polygons.ubinOutline;
-            tekongOutline = sceneData.polygons.tekongOutline;
+            scenePolygons = sceneData.polygons || [];
+            mainPolygonIndex = sceneData.mainPolygonIndex || 0;
             
             minLon = sceneData.bounds.minLon; maxLon = sceneData.bounds.maxLon;
             minLat = sceneData.bounds.minLat; maxLat = sceneData.bounds.maxLat;
@@ -976,13 +1000,15 @@
                     const lon = minLon + (x + gridWidth/2)/gridWidth * lonRange;
                     const lat = minLat + (-z + gridHeight/2)/gridHeight * latRange;
                     
-                    const isSG = pointInPolygon([lon, lat], sgOutline);
-                    const isIslands = pointInPolygon([lon, lat], sentosaOutline) || 
-                                      pointInPolygon([lon, lat], ubinOutline) || 
-                                      pointInPolygon([lon, lat], tekongOutline) ||
-                                      pointInPolygon([lon, lat], jurongIslandOutline);
+                    let isOnLand = false;
+                    for(let p=0; p<scenePolygons.length; p++) {
+                        if(pointInPolygon([lon, lat], scenePolygons[p])) {
+                            isOnLand = true;
+                            break;
+                        }
+                    }
                     
-                    if(isSG || isIslands) {
+                    if(isOnLand) {
                         const hOffset = Math.random() * 0.8;
                         dummy.position.set(x, -4.5 + hOffset, z);
                         dummy.updateMatrix();
@@ -1120,7 +1146,12 @@
                 const tz = (Math.random() - 0.5) * gridHeight;
                 const lon = minLon + (tx + gridWidth/2)/gridWidth * lonRange;
                 const lat = minLat + (-tz + gridHeight/2)/gridHeight * latRange;
-                if (!pointInPolygon([lon, lat], sgOutline)) continue;
+                
+                let validLand = false;
+                if (scenePolygons.length > 0 && pointInPolygon([lon, lat], scenePolygons[mainPolygonIndex])) {
+                    validLand = true;
+                }
+                if (!validLand) continue;
 
                 const tree = new THREE.Group();
                 const trunk = new THREE.Mesh(new THREE.BoxGeometry(1.5, 3, 1.5), trunkMat);
@@ -1836,7 +1867,22 @@
         // --- Theme & Weather Logic ---
         const themeSelect = document.getElementById('theme-select');
         const weatherSelect = document.getElementById('weather-select');
+        const boardSelect = document.getElementById('board-select');
         const tmpColor = new THREE.Color();
+        
+        // Init board select value based on URL
+        const currentBoardUrl = new URLSearchParams(window.location.search).get('board') || 'singapoly.json';
+        Array.from(boardSelect.options).forEach(opt => {
+            if (currentBoardUrl.includes(opt.value)) {
+                boardSelect.value = opt.value;
+            }
+        });
+        
+        boardSelect.addEventListener('change', () => {
+            const url = new URL(window.location.href);
+            url.searchParams.set('board', boardSelect.value);
+            window.location.href = url.toString();
+        });
         
         function applyTheme() {
             if (!groundIMesh) return;

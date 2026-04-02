@@ -1,0 +1,44 @@
+{
+  "name": "Tokyo Monopoly",
+  "subtitle": "Neon Voxel City",
+  "scene": {
+    "bounds": {
+      "minLon": 139.60, "maxLon": 139.90, "minLat": 35.50, "maxLat": 35.80
+    },
+    "grid": { "width": 450, "height": 280, "voxelSize": 1.5 },
+    "polygons": [
+      [[139.60, 35.80], [139.85, 35.80], [139.88, 35.65], [139.78, 35.55], [139.75, 35.50], [139.60, 35.50]],
+      [[139.78, 35.62], [139.82, 35.62], [139.82, 35.58], [139.78, 35.58]]
+    ],
+    "mainPolygonIndex": 0,
+    "colors": {
+      "groups": { "Brown": "#e1b12c", "Light Blue": "#74b9ff", "Pink": "#fd79a8", "Orange": "#e17055", "Red": "#d63031", "Yellow": "#fbc531", "Green": "#00b894", "Dark Blue": "#0984e3", "Station": "#636e72", "Vehicle": "#b2bec3" },
+      "cars": ["#ffffff", "#000000", "#e84118", "#fbc531", "#00a8ff"],
+      "pedestrians": ["#2d3436", "#636e72", "#b2bec3", "#dfe6e9"]
+    },
+    "players": [
+      { "id": 0, "phone": null, "name": "Player 1", "colorHex": "#ff4757", "css": "#ff4757", "cash": 1500, "pos": 0, "mesh": null },
+      { "id": 1, "phone": null, "name": "Player 2", "colorHex": "#0984e3", "css": "#0984e3", "cash": 1500, "pos": 0, "mesh": null },
+      { "id": 2, "phone": null, "name": "Player 3", "colorHex": "#00b894", "css": "#00b894", "cash": 1500, "pos": 0, "mesh": null }
+    ]
+  },
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.70, 35.69] }, "properties": { "id": "shinjuku", "name": "Shinjuku", "price": 320, "group": "Green", "type": "property", "index": 0 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.70, 35.66] }, "properties": { "id": "shibuya", "name": "Shibuya", "price": 300, "group": "Green", "type": "property", "index": 1 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.77, 35.70] }, "properties": { "id": "akihabara", "name": "Akihabara", "price": 260, "group": "Yellow", "type": "property", "index": 2 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.79, 35.71] }, "properties": { "id": "asakusa", "name": "Asakusa", "price": 200, "group": "Orange", "type": "property", "index": 3 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.76, 35.67] }, "properties": { "id": "ginza", "name": "Ginza", "price": 400, "group": "Dark Blue", "type": "property", "index": 4 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.73, 35.66] }, "properties": { "id": "roppongi", "name": "Roppongi", "price": 350, "group": "Dark Blue", "type": "property", "index": 5 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.74, 35.65] }, "properties": { "id": "tokyotower", "name": "Tokyo Tower", "price": 280, "group": "Red", "type": "property", "index": 6 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.81, 35.71] }, "properties": { "id": "skytree", "name": "Tokyo Skytree", "price": 350, "group": "Red", "type": "property", "index": 7 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.77, 35.62] }, "properties": { "id": "odaiba", "name": "Odaiba", "price": 120, "group": "Light Blue", "type": "property", "index": 8 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.76, 35.68] }, "properties": { "id": "tokyostation", "name": "Tokyo Station", "price": 200, "group": "Station", "type": "station", "index": 9 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.77, 35.71] }, "properties": { "id": "uenostation", "name": "Ueno Station", "price": 200, "group": "Station", "type": "station", "index": 10 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.78, 35.55] }, "properties": { "id": "haneda", "name": "Haneda Airport", "price": 450, "group": "Vehicle", "type": "vehicle", "index": 11 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.77, 35.72] }, "properties": { "id": "zoo", "name": "Ueno Zoo", "price": 300, "group": "Yellow", "type": "property", "index": 12 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.86, 35.63] }, "properties": { "id": "oceanarium", "name": "Tokyo Sea Life Park", "price": 250, "group": "Light Blue", "type": "property", "index": 13 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.76, 35.60] }, "properties": { "id": "port", "name": "Tokyo Port", "price": 200, "group": "Station", "type": "station", "index": 14 } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [139.88, 35.75] }, "properties": { "id": "changi", "name": "Narita Control Tower", "price": 350, "group": "Vehicle", "type": "vehicle", "index": 15 } }
+  ]
+}
