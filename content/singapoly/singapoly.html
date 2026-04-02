@@ -407,7 +407,7 @@
     
     <script type="module">
         import * as Y from 'https://esm.sh/yjs';
-        import { WebrtcProvider } from 'https://esm.sh/y-webrtc';
+        import { WebsocketProvider } from 'https://esm.sh/y-websocket';
 
         // --- Setup Yjs ---
         const urlParams = new URLSearchParams(window.location.search);
@@ -421,7 +421,7 @@
         const roomName = `singapoly-room-${boardFile.split('/').pop().replace('.json', '')}-v4`;
 
         const ydoc = new Y.Doc();
-        const provider = new WebrtcProvider(roomName, ydoc);
+        const provider = new WebsocketProvider('wss://demos.yjs.dev/ws', roomName, ydoc);
         const yGameState = ydoc.getMap('gameState');
         const myClientId = Math.random().toString(36).substring(2);
 
@@ -1390,7 +1390,7 @@
             }
         });
 
-        provider.on('synced', isSynced => {
+        provider.on('sync', isSynced => {
             const synced = typeof isSynced === 'object' ? isSynced.synced : isSynced;
             if (synced) {
                 if (!yGameState.get('players')) {
@@ -1400,6 +1400,17 @@
                     scheduleSyncState();
                     // Double check if scheduleSyncState successfully registered us. 
                     // If it did, it would have updated the Yjs array, so we should sync again to ensure DOM is perfect
+                    setTimeout(() => scheduleSyncState(), 100); 
+                }
+            }
+        });
+        provider.on('synced', isSynced => {
+            const synced = typeof isSynced === 'object' ? isSynced.synced : isSynced;
+            if (synced) {
+                if (!yGameState.get('players')) {
+                    pushStateToYjs();
+                } else {
+                    scheduleSyncState();
                     setTimeout(() => scheduleSyncState(), 100); 
                 }
             }

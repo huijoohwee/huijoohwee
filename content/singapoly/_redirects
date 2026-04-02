@@ -1,0 +1,4 @@
+/ /singapoly.html 200
+/singapoly /singapoly.html 200
+/singapoly/ /singapoly.html 200
+/singapoly/boards/* /boards/:splat 200
