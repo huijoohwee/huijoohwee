@@ -12,6 +12,7 @@
             overflow: hidden; 
             font-family: 'Nunito', sans-serif; 
             background-color: #A9E1FF; 
+            touch-action: none;
         }
         
         #info {
@@ -200,42 +201,162 @@
             box-shadow: 4px 4px 0px rgba(45,52,54,0.1);
         }
 
-        #watermark {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 14px;
-            font-weight: 900;
-            color: #ffffff;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 6px 12px;
-            border-radius: 20px;
-            z-index: 100;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            backdrop-filter: blur(4px);
+        #watermark-dropdown button:hover {
+            background: #f1f2f6 !important;
+        }
+        #watermark-container {
+            user-select: none;
+        }
+
+        @media (max-width: 768px) {
+            #info { top: 10px; }
+            h1 { font-size: 28px; letter-spacing: 1px; }
+            p.subtitle { font-size: 14px; padding: 2px 8px; }
+
+            #hud { 
+                top: 80px; 
+                left: 10px; 
+                padding: 10px; 
+                min-width: 140px; 
+                border-width: 2px;
+            }
+            #hud h3 { font-size: 16px; margin: 0 0 8px 0; }
+            .player-stat { font-size: 14px; padding: 4px 8px; margin: 4px 0; }
+            .color-box { width: 16px; height: 16px; margin-right: 8px; }
+
+            #watermark-container { top: 10px; right: 10px; }
+            #watermark { font-size: 12px; padding: 4px 8px; }
+
+            #message-box { 
+                top: 60px; 
+                right: 10px; 
+                left: 10px; 
+                text-align: center; 
+                font-size: 14px; 
+                padding: 10px; 
+            }
+
+            #ui { 
+                bottom: auto; 
+                top: 50%;
+                left: 50%; 
+                transform: translate(-50%, -50%); 
+                width: 90%; 
+                max-width: 320px; 
+                padding: 15px; 
+                box-sizing: border-box; 
+                z-index: 100;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            #prop-name { font-size: 20px; }
+            .detail { font-size: 14px; }
+            .price { font-size: 18px; }
+            .btn { padding: 10px 15px; font-size: 14px; width: 100%; margin-right: 0; margin-bottom: 8px; box-sizing: border-box; }
+
+            #dice-container { 
+                bottom: 20px; 
+                left: 50%; 
+                transform: translateX(-50%); 
+                right: auto; 
+                width: 90%; 
+                max-width: 320px; 
+            }
+            #dice-btn { 
+                width: 100%; 
+                padding: 15px 20px; 
+                font-size: 20px; 
+            }
+            #dice-result { 
+                font-size: 16px; 
+                padding: 8px 15px; 
+            }
+            #superagent-panel {
+                width: 100%;
+                bottom: 100%;
+                right: 0;
+            }
+            
+            #loading {
+                font-size: 24px;
+                padding: 15px 25px;
+                width: 80%;
+                text-align: center;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="login-screen" style="position: absolute; top:0; left:0; width:100%; height:100%; background: #A9E1FF; z-index: 1000; display: none; flex-direction: column; justify-content: center; align-items: center; font-family: 'Fredoka One', cursive;">
+        <h1 style="color: #2d3436; font-size: 48px; text-shadow: 2px 2px 0px #fff; margin-bottom: 10px;">Singapoly</h1>
+        <p style="color: #2d3436; font-size: 20px; margin-top: 0; margin-bottom: 30px;">Multiplayer Geospatial Board Game</p>
+        
+        <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 300px; position: relative; box-sizing: border-box;">
+            <button onclick="document.getElementById('login-screen').style.display='none';" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72;">✖</button>
+            <h3 style="margin-top: 0; color: #2d3436; font-size: 24px;">Login to Play</h3>
+            <input type="text" id="login-name" placeholder="Your Name" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; font-size: 16px; box-sizing: border-box; font-family: 'Fredoka One', cursive; outline: none;">
+            <input type="text" id="login-phone" placeholder="WhatsApp No (e.g. 6591234567)" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 3px solid #2d3436; border-radius: 12px; font-size: 16px; box-sizing: border-box; font-family: 'Fredoka One', cursive; outline: none;">
+            <button id="login-btn" style="background: #25D366; color: white; border: 3px solid #2d3436; padding: 14px 20px; font-size: 18px; border-radius: 12px; cursor: pointer; font-family: 'Fredoka One', cursive; width: 100%; box-shadow: 0 4px 0 #128C7E; transition: all 0.1s;">Get Magic Link 📲</button>
+            <p id="login-status" style="font-size: 14px; margin-top: 15px; color: #636e72; display: none; font-family: sans-serif; font-weight: bold;">Check your WhatsApp to login!</p>
+        </div>
+    </div>
+
     <div id="info">
         <h1>Singapore Monopoly</h1>
         <p class="subtitle">Geospatial Voxel World</p>
     </div>
     
-    <div id="watermark">☀️ airvio - joohwee</div>
+    <div id="watermark-container" style="position: absolute; top: 20px; right: 20px; z-index: 100;">
+        <div id="watermark" style="cursor: pointer; font-size: 14px; font-weight: 900; color: #ffffff; background: rgba(0, 0, 0, 0.2); padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); backdrop-filter: blur(4px);" onclick="const d = document.getElementById('watermark-dropdown'); d.style.display = d.style.display === 'none' ? 'block' : 'none';">☀️ airvio - joohwee</div>
+        <div id="watermark-dropdown" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: white; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden; box-shadow: 4px 4px 0px rgba(0,0,0,0.1);">
+            <button id="nav-settings-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('settings-modal').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">Settings</button>
+            <button id="nav-login-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('login-screen').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">WhatsApp Login</button>
+            <button id="nav-logout-btn" style="display: none; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #d63031; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="localStorage.removeItem('singapoly_user'); window.location.reload();">Logout</button>
+        </div>
+    </div>
+    
+    <div id="settings-modal" style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(169, 225, 255, 0.8); z-index: 1000; display: none; flex-direction: column; justify-content: center; align-items: center; font-family: 'Fredoka One', cursive;">
+        <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: left; width: 90%; max-width: 350px; position: relative; box-sizing: border-box;">
+            <button onclick="document.getElementById('settings-modal').style.display='none';" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72;">✖</button>
+            <h3 style="margin-top: 0; color: #2d3436; font-size: 24px; text-align: center;">Settings</h3>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Theme:</label>
+                <select id="theme-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
+                    <option value="default">Default</option>
+                    <option value="cny">Chinese New Year</option>
+                    <option value="hari_raya">Hari Raya</option>
+                    <option value="mid_autumn">Mid-Autumn</option>
+                    <option value="deepavali">Deepavali</option>
+                    <option value="christmas">Christmas</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Weather:</label>
+                <select id="weather-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
+                    <option value="sunshine">Sunshine ☀️</option>
+                    <option value="cloudy">Cloudy ☁️</option>
+                    <option value="stormy">Stormy ⛈️</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Auto-Change Interval (s):</label>
+                <input type="number" id="auto-change-interval" value="10" min="0" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box;">
+                <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Set to 0 to disable auto-change.</p>
+            </div>
+        </div>
+    </div>
     
     <div id="loading">Generating Voxels...</div>
     <div id="message-box">Message</div>
 
     <div id="hud">
         <h3>Players</h3>
-        <div id="player-0" class="player-stat"><div class="color-box" style="background:#ff4757"></div> Red: $<span id="cash-0">1500</span></div>
-        <div id="player-1" class="player-stat"><div class="color-box" style="background:#0984e3"></div> Blue: $<span id="cash-1">1500</span></div>
-        <div id="player-2" class="player-stat"><div class="color-box" style="background:#00b894"></div> Green: $<span id="cash-2">1500</span></div>
+        <div id="player-0" class="player-stat"><div class="color-box" style="background:#ff4757"></div> <span id="name-0">Player 1</span>: $<span id="cash-0">1500</span></div>
+        <div id="player-1" class="player-stat"><div class="color-box" style="background:#0984e3"></div> <span id="name-1">Player 2</span>: $<span id="cash-1">1500</span></div>
+        <div id="player-2" class="player-stat"><div class="color-box" style="background:#00b894"></div> <span id="name-2">Player 3</span>: $<span id="cash-2">1500</span></div>
     </div>
 
     <div id="ui">
@@ -248,6 +369,24 @@
     </div>
 
     <div id="dice-container">
+        <div id="superagent-container" style="display: none; margin-bottom: 15px; position: relative;">
+            <div id="superagent-panel" style="display: none; position: absolute; bottom: 100%; right: 0; margin-bottom: 10px; width: 300px; background: white; border: 4px solid #2d3436; border-radius: 16px; box-shadow: 8px 8px 0 rgba(0,0,0,0.1); flex-direction: column; overflow: hidden; font-family: 'Nunito', sans-serif;">
+                <div style="background: #a29bfe; color: white; padding: 10px 15px; font-family: 'Fredoka One', cursive; border-bottom: 3px solid #2d3436; display: flex; justify-content: space-between; align-items: center; text-transform: none;">
+                    <span>Super 🐯</span>
+                    <button onclick="document.getElementById('superagent-panel').style.display='none'" style="background:none; border:none; color:white; cursor:pointer; font-size:16px;">✖</button>
+                </div>
+                <div id="superagent-chat" style="height: 250px; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 10px; background: #f1f2f6; text-align: left; text-transform: none;">
+                    <div style="background: white; border: 2px solid #2d3436; padding: 8px 12px; border-radius: 12px; align-self: flex-start; max-width: 85%; font-size: 14px; font-weight: bold; color: #2d3436;">
+                        Roar! I'm your Super 🐯. Tell me what to do!
+                    </div>
+                </div>
+                <div style="display: flex; border-top: 3px solid #2d3436; background: white;">
+                    <input type="text" id="superagent-input" placeholder="Instruct agent..." style="flex: 1; padding: 10px; border: none; outline: none; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; text-transform: none;">
+                    <button id="superagent-send" style="background: #a29bfe; color: white; border: none; border-left: 3px solid #2d3436; padding: 0 15px; cursor: pointer; font-weight: bold; font-family: 'Nunito', sans-serif; text-transform: none;">Send</button>
+                </div>
+            </div>
+            <button id="superagent-btn" style="background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 15px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; font-weight: 900; box-shadow: 0 6px 0 #2d3436; font-family: 'Fredoka One', cursive; transition: all 0.1s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">Super 🐯</button>
+        </div>
         <button id="dice-btn">Roll Dice 🎲</button>
         <div id="dice-result">Red's Turn</div>
     </div>
@@ -257,7 +396,16 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
     
-    <script>
+    <script type="module">
+        import * as Y from 'https://esm.sh/yjs';
+        import { WebrtcProvider } from 'https://esm.sh/y-webrtc';
+
+        // --- Setup Yjs ---
+        const ydoc = new Y.Doc();
+        const provider = new WebrtcProvider('singapoly-room-v3', ydoc);
+        const yGameState = ydoc.getMap('gameState');
+        const myClientId = Math.random().toString(36).substring(2);
+
         // --- Setup Scene ---
         const scene = new THREE.Scene();
         scene.background = new THREE.Color('#A9E1FF'); 
@@ -324,93 +472,108 @@
             return inside;
         }
 
-        const sgOutline = [
-            [103.63, 1.33], [103.61, 1.29], [103.63, 1.26], [103.65, 1.27], 
-            [103.70, 1.30], [103.74, 1.28], [103.78, 1.27], [103.82, 1.26], 
-            [103.85, 1.27], [103.88, 1.29], [103.94, 1.31], [103.99, 1.34], 
-            [104.02, 1.35], [104.03, 1.38], [104.00, 1.40], [103.96, 1.39], 
-            [103.91, 1.42], [103.88, 1.41], [103.84, 1.45], [103.80, 1.47], 
-            [103.76, 1.45], [103.73, 1.44], [103.70, 1.42], [103.67, 1.40], 
-            [103.65, 1.36]
-        ];
-        const jurongIslandOutline = [[103.67, 1.28], [103.69, 1.25], [103.72, 1.25], [103.73, 1.27], [103.71, 1.29]];
-        const sentosaOutline = [[103.81, 1.25], [103.83, 1.25], [103.84, 1.24], [103.82, 1.24]];
-        const ubinOutline = [[103.95, 1.41], [103.98, 1.42], [103.99, 1.40], [103.95, 1.40]];
-        const tekongOutline = [[104.02, 1.42], [104.06, 1.42], [104.06, 1.39], [104.02, 1.40]];
-
-        // True Singapore coordinate bounds
-        const minLon = 103.6, maxLon = 104.05;
-        const minLat = 1.20, maxLat = 1.48;
-        const lonRange = maxLon - minLon;
-        const latRange = maxLat - minLat;
-
-        // Voxel Grid configuration - Finer Granularity
-        const gridWidth = 450; 
-        const gridHeight = 280;
-        const voxelSize = 2.5;
+        let sgOutline, jurongIslandOutline, sentosaOutline, ubinOutline, tekongOutline;
+        let minLon, maxLon, minLat, maxLat, lonRange, latRange;
+        let gridWidth, gridHeight, voxelSize;
 
         // --- Voxel Island Generation using InstancedMesh ---
-        const cols = Math.floor(gridWidth / voxelSize);
-        const rows = Math.floor(gridHeight / voxelSize);
-        const maxInstances = cols * rows;
-
-        const voxelGeo = new THREE.BoxGeometry(voxelSize, voxelSize * 4, voxelSize);
-        const voxelMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
-        const groundIMesh = new THREE.InstancedMesh(voxelGeo, voxelMat, maxInstances);
-        groundIMesh.receiveShadow = true;
-        groundIMesh.castShadow = true;
-
-        const dummy = new THREE.Object3D();
-        const color = new THREE.Color();
+        let cols, rows, maxInstances, groundIMesh;
         let voxelCount = 0;
+        let voxelOriginalColors = [];
 
-        for(let i=0; i<cols; i++) {
-            for(let j=0; j<rows; j++) {
-                const x = (i * voxelSize) - gridWidth/2;
-                const z = (j * voxelSize) - gridHeight/2;
-                
-                const lon = minLon + (x + gridWidth/2)/gridWidth * lonRange;
-                const lat = minLat + (-z + gridHeight/2)/gridHeight * latRange;
-                
-                const isSG = pointInPolygon([lon, lat], sgOutline);
-                const isIslands = pointInPolygon([lon, lat], sentosaOutline) || 
-                                  pointInPolygon([lon, lat], ubinOutline) || 
-                                  pointInPolygon([lon, lat], tekongOutline) ||
-                                  pointInPolygon([lon, lat], jurongIslandOutline);
-                
-                if(isSG || isIslands) {
-                    const hOffset = Math.random() * 0.8;
-                    dummy.position.set(x, -4.5 + hOffset, z);
-                    dummy.updateMatrix();
-                    groundIMesh.setMatrixAt(voxelCount, dummy.matrix);
-                    
-                    const rC = Math.random();
-                    if(rC > 0.8) color.setHex(0xbadc58); // light green
-                    else if(rC > 0.3) color.setHex(0x88D05C); // main green
-                    else color.setHex(0x6ab04c); // dark green
-                    
-                    // Add some sand beaches near the edges (simple random proxy)
-                    if(rC > 0.95) color.setHex(0xf6e58d);
-
-                    groundIMesh.setColorAt(voxelCount, color);
-                    voxelCount++;
-                }
-            }
-        }
-        groundIMesh.count = voxelCount;
-        groundGroup.add(groundIMesh);
+        
 
 
         // --- Multiplayer State ---
-        const players = [
-            { id: 0, name: "Red", colorHex: '#ff4757', css: "#ff4757", cash: 1500, pos: 0, mesh: null },
-            { id: 1, name: "Blue", colorHex: '#0984e3', css: "#0984e3", cash: 1500, pos: 0, mesh: null },
-            { id: 2, name: "Green", colorHex: '#00b894', css: "#00b894", cash: 1500, pos: 0, mesh: null }
+        let players = [
+            { id: 0, phone: null, name: "Player 1", colorHex: '#ff4757', css: "#ff4757", cash: 1500, pos: 0, mesh: null },
+            { id: 1, phone: null, name: "Player 2", colorHex: '#0984e3', css: "#0984e3", cash: 1500, pos: 0, mesh: null },
+            { id: 2, phone: null, name: "Player 3", colorHex: '#00b894', css: "#00b894", cash: 1500, pos: 0, mesh: null }
         ];
         let currentPlayerIndex = 0;
         let isMoving = false;
+        let myPlayerIndex = null;
+        let currentUser = null;
 
-        const groupColors = {
+        // --- WhatsApp Mock Login Flow ---
+        function initAuth() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userParam = urlParams.get('user');
+            const nameParam = urlParams.get('name');
+
+            if (userParam && nameParam) {
+                currentUser = { phone: userParam, name: nameParam };
+                localStorage.setItem('singapoly_user', JSON.stringify(currentUser));
+                // Do not replace state so the URL remains intact for the user
+            } else if (userParam) {
+                // Also support just user param, default name
+                const saved = localStorage.getItem('singapoly_user');
+                let prevName = saved ? JSON.parse(saved).name : null;
+                currentUser = { phone: userParam, name: prevName || `Player_${userParam.slice(-4)}` };
+                localStorage.setItem('singapoly_user', JSON.stringify(currentUser));
+            } else {
+                const saved = localStorage.getItem('singapoly_user');
+                if (saved) {
+                    try { currentUser = JSON.parse(saved); } catch(e) {}
+                }
+            }
+
+            // Always hide login screen by default
+            document.getElementById('login-screen').style.display = 'none';
+
+            document.getElementById('login-btn').addEventListener('click', () => {
+                const name = document.getElementById('login-name').value.trim();
+                const phone = document.getElementById('login-phone').value.replace(/\D/g, '');
+                if (!name || !phone) {
+                    alert("Please enter both Name and WhatsApp Number!");
+                    return;
+                }
+                
+                const magicUrl = new URL(window.location.href);
+                magicUrl.searchParams.set('user', phone);
+                magicUrl.searchParams.set('name', name);
+                
+                const waText = `Welcome to Singapoly! 🎲\n\nHere is your magic login link. Click it to start playing:\n${magicUrl.toString()}`;
+                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
+                
+                window.open(waUrl, '_blank');
+                
+                const btn = document.getElementById('login-btn');
+                btn.innerText = "Sent!";
+                btn.style.backgroundColor = "#b2bec3";
+                btn.disabled = true;
+                document.getElementById('login-status').style.display = "block";
+            });
+
+            // Make WhatsApp login optional
+            if (currentUser) {
+                document.getElementById('watermark').innerText = `${currentUser.name} ☀️`;
+                document.getElementById('nav-login-btn').style.display = 'none';
+                document.getElementById('nav-logout-btn').style.display = 'block';
+                document.getElementById('superagent-container').style.display = 'block'; // Show SuperAgent
+                
+                // Force sync if already loaded
+                if (yGameState.get('players')) {
+                    syncStateFromYjs();
+                }
+            } else {
+                // Not logged in, but we still allow playing
+                myPlayerIndex = 0; // Default fallback to first player if not logged in
+                document.getElementById('nav-login-btn').style.display = 'block';
+                document.getElementById('nav-logout-btn').style.display = 'none';
+            }
+        }
+        initAuth();
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!e.target.closest('#watermark-container')) {
+                const d = document.getElementById('watermark-dropdown');
+                if (d) d.style.display = 'none';
+            }
+        });
+
+        let groupColors = {
             "Brown": '#e1b12c', "Light Blue": '#74b9ff', "Pink": '#fd79a8',
             "Orange": '#e17055', "Red": '#d63031', "Yellow": '#fbc531',
             "Green": '#00b894', "Dark Blue": '#0984e3', "Station": '#636e72',
@@ -710,235 +873,506 @@
         heli.position.set(0, 60, 0);
         scene.add(heli);
 
+        // Global MRT Train
+        const mrt = new THREE.Group();
+        const matMrtBody = new THREE.MeshLambertMaterial({color: '#dfe6e9'});
+        const matMrtStripe = new THREE.MeshLambertMaterial({color: '#d63031'}); // red stripe
+        const matMrtWin = new THREE.MeshLambertMaterial({color: '#2d3436'});
+        
+        for (let i = 0; i < 3; i++) {
+            const car = new THREE.Group();
+            const body = new THREE.Mesh(new THREE.BoxGeometry(4, 4, 12), matMrtBody);
+            body.position.y = 2;
+            const stripe = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.5, 12.1), matMrtStripe);
+            stripe.position.y = 1.5;
+            const win = new THREE.Mesh(new THREE.BoxGeometry(4.1, 1.5, 10), matMrtWin);
+            win.position.y = 2.5;
+            car.add(body, stripe, win);
+            car.traverse(c => {if(c.isMesh) { c.castShadow=true; c.receiveShadow=true; addEdgeOutline(c, c.geometry); }});
+            car.position.z = i * -13; // spacing between cars
+            mrt.add(car);
+        }
+        mrt.position.set(0, 0.5, 0);
+        scene.add(mrt);
+
+        // Global Container Ship
+        const ship = new THREE.Group();
+        const matShipHull = new THREE.MeshLambertMaterial({color: '#2d3436'});
+        const matShipDeck = new THREE.MeshLambertMaterial({color: '#b2bec3'});
+        const matShipBridge = new THREE.MeshLambertMaterial({color: '#ffffff'});
+        
+        const hull = new THREE.Mesh(new THREE.BoxGeometry(16, 6, 40), matShipHull);
+        hull.position.y = -3;
+        const deck = new THREE.Mesh(new THREE.BoxGeometry(15, 1, 38), matShipDeck);
+        deck.position.y = 0.5;
+        const bridge = new THREE.Mesh(new THREE.BoxGeometry(12, 8, 8), matShipBridge);
+        bridge.position.set(0, 5, -12);
+        ship.add(hull, deck, bridge);
+        
+        // Add some containers on ship
+        const sColors = ['#e17055', '#0984e3', '#00b894', '#d63031', '#fbc531'];
+        for(let i=0; i<4; i++) {
+            for(let j=0; j<3; j++) {
+                for(let k=0; k<2; k++) {
+                    if (Math.random() > 0.2) {
+                        const cMat = new THREE.MeshLambertMaterial({color: sColors[Math.floor(Math.random()*sColors.length)]});
+                        const c = new THREE.Mesh(new THREE.BoxGeometry(3.5, 2.5, 6), cMat);
+                        c.position.set(-4 + i*2.6, 2.2 + k*2.5, 10 - j*6.5);
+                        ship.add(c);
+                    }
+                }
+            }
+        }
+        ship.traverse(c => {if(c.isMesh) { c.castShadow=true; addEdgeOutline(c, c.geometry); }});
+        ship.position.set(-200, -2, 150);
+        scene.add(ship);
+
         // Load the GeoJSON
-        fetch('monopoly.json')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('loading').style.display = 'none';
-                data.features.sort((a, b) => a.properties.index - b.properties.index);
+        // Load Scene Configuration and GeoJSON
+        Promise.all([
+            fetch('scene.json').then(res => res.json()),
+            fetch('singapoly.json').then(res => res.json())
+        ]).then(([sceneData, data]) => {
+            // Apply Scene Data
+            sgOutline = sceneData.polygons.sgOutline;
+            jurongIslandOutline = sceneData.polygons.jurongIslandOutline;
+            sentosaOutline = sceneData.polygons.sentosaOutline;
+            ubinOutline = sceneData.polygons.ubinOutline;
+            tekongOutline = sceneData.polygons.tekongOutline;
+            
+            minLon = sceneData.bounds.minLon; maxLon = sceneData.bounds.maxLon;
+            minLat = sceneData.bounds.minLat; maxLat = sceneData.bounds.maxLat;
+            lonRange = maxLon - minLon;
+            latRange = maxLat - minLat;
+            
+            gridWidth = sceneData.grid.width;
+            gridHeight = sceneData.grid.height;
+            voxelSize = sceneData.grid.voxelSize;
+            
+            if (sceneData.colors && sceneData.colors.groups) groupColors = sceneData.colors.groups;
+            if (sceneData.players) players = sceneData.players;
+            
+            // Generate Ground
+            cols = Math.floor(gridWidth / voxelSize);
+            rows = Math.floor(gridHeight / voxelSize);
+            maxInstances = cols * rows;
 
-                data.features.forEach(feature => {
-                    const coords = feature.geometry.coordinates;
-                    const props = feature.properties;
+            const voxelGeo = new THREE.BoxGeometry(voxelSize, voxelSize * 4, voxelSize);
+            const voxelMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+            groundIMesh = new THREE.InstancedMesh(voxelGeo, voxelMat, maxInstances);
+            groundIMesh.receiveShadow = true;
+            groundIMesh.castShadow = true;
+
+            const dummy = new THREE.Object3D();
+            const color = new THREE.Color();
+            voxelCount = 0;
+            voxelOriginalColors.length = 0;
+
+            for(let i=0; i<cols; i++) {
+                for(let j=0; j<rows; j++) {
+                    const x = (i * voxelSize) - gridWidth/2;
+                    const z = (j * voxelSize) - gridHeight/2;
                     
-                    // Normalize to 0-1
-                    const nx = (coords[0] - minLon) / lonRange;
-                    const nz = (coords[1] - minLat) / latRange;
+                    const lon = minLon + (x + gridWidth/2)/gridWidth * lonRange;
+                    const lat = minLat + (-z + gridHeight/2)/gridHeight * latRange;
                     
-                    // Map to 3D bounds
-                    const x = (nx * gridWidth) - (gridWidth / 2);
-                    const z = -((nz * gridHeight) - (gridHeight / 2));
+                    const isSG = pointInPolygon([lon, lat], sgOutline);
+                    const isIslands = pointInPolygon([lon, lat], sentosaOutline) || 
+                                      pointInPolygon([lon, lat], ubinOutline) || 
+                                      pointInPolygon([lon, lat], tekongOutline) ||
+                                      pointInPolygon([lon, lat], jurongIslandOutline);
+                    
+                    if(isSG || isIslands) {
+                        const hOffset = Math.random() * 0.8;
+                        dummy.position.set(x, -4.5 + hOffset, z);
+                        dummy.updateMatrix();
+                        groundIMesh.setMatrixAt(voxelCount, dummy.matrix);
+                        
+                        const rC = Math.random();
+                        if(rC > 0.8) color.setHex(0xbadc58); // light green
+                        else if(rC > 0.3) color.setHex(0x88D05C); // main green
+                        else color.setHex(0x6ab04c); // dark green
+                        
+                        // Add some sand beaches near the edges (simple random proxy)
+                        if(rC > 0.95) color.setHex(0xf6e58d);
 
-                    const baseHeight = props.price ? props.price / 10 : 12;
-                    let bWidth = 10, bDepth = 10;
-                    if (props.type === 'station') { bWidth = 14; bDepth = 14; }
-                    if (props.type === 'vehicle') { bWidth = 8; bDepth = 8; } 
-
-                    const colorHex = groupColors[props.group] || '#dddddd';
-                    const bldgGroup = createBuilding(bWidth, baseHeight, bDepth, colorHex);
-                    bldgGroup.position.set(x, 0, z);
-                    groundGroup.add(bldgGroup);
-
-                    // Concrete Plot underneath
-                    const plotGeo = new THREE.BoxGeometry(bWidth + 6, 0.6, bDepth + 6);
-                    const plotMat = new THREE.MeshLambertMaterial({ color: '#f1f2f6' });
-                    const plot = new THREE.Mesh(plotGeo, plotMat);
-                    plot.position.set(x, 0.3, z);
-                    plot.receiveShadow = true;
-                    groundGroup.add(plot);
-
-                    // Hidden hitbox
-                    const hitGeo = new THREE.BoxGeometry(bWidth + 6, baseHeight + 4, bDepth + 6);
-                    const hitMat = new THREE.MeshBasicMaterial({ visible: false });
-                    const hitMesh = new THREE.Mesh(hitGeo, hitMat);
-                    hitMesh.position.set(0, baseHeight / 2, 0);
-                    hitMesh.userData = { 
-                        props: props, baseY: 0, targetY: 0, colorHex: colorHex, parentGroup: bldgGroup 
-                    };
-                    bldgGroup.add(hitMesh);
-                    buildings.push(hitMesh);
-
-                    // --- Custom Landmarks Additions ---
-                    if (props.id === 'zoo') {
-                        const animals = new THREE.Group();
-                        const elephant = createElephant(); elephant.position.set(-6, 0, -6);
-                        const tiger = createTiger(); tiger.position.set(6, 0, -6);
-                        const polarBear = createPolarBear(); polarBear.position.set(-6, 0, 6);
-                        const otter = createOtter(); otter.position.set(6, 0, 6);
-                        animals.add(elephant, tiger, polarBear, otter);
-                        animals.userData = { type: 'zoo', children: [elephant, tiger, polarBear, otter] };
-                        bldgGroup.add(animals);
-                        customAnimations.push(animals);
+                        voxelOriginalColors.push(color.getHex());
+                        groundIMesh.setColorAt(voxelCount, color);
+                        voxelCount++;
                     }
-                    if (props.id === 'oceanarium') {
-                        const whale = createWhale();
-                        whale.position.set(0, 14, 0);
-                        whale.userData = { type: 'whale' };
-                        bldgGroup.add(whale);
-                        customAnimations.push(whale);
-                    }
-                    if (props.id === 'changi') {
-                        const tower = createControlTower();
-                        tower.position.set(-8, 0, -8);
-                        tower.userData = { type: 'tower', antenna: tower.userData.antenna };
-                        bldgGroup.add(tower);
-                        customAnimations.push(tower);
-                    }
-                    if (props.id === 'port') {
-                        const port = createContainerPort();
-                        port.position.set(0, 0, 0);
-                        port.userData = { type: 'port', spreader: port.userData.spreader };
-                        bldgGroup.add(port);
-                        customAnimations.push(port);
-                    }
+                }
+            }
+            groundIMesh.count = voxelCount;
+            groundGroup.add(groundIMesh);
 
-                    boardSpaces.push({
-                        mesh: hitMesh,
-                        props: props,
-                        owner: undefined,
-                        position: new THREE.Vector3(x, baseHeight, z)
-                    });
-                });
+            document.getElementById('loading').style.display = 'none';
+            data.features.sort((a, b) => a.properties.index - b.properties.index);
 
-                // Generate Thick Voxel Roads
-                const roadMat = new THREE.MeshLambertMaterial({ color: '#636e72' }); 
-                const dashMat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
+            data.features.forEach(feature => {
+                const coords = feature.geometry.coordinates;
+                const props = feature.properties;
                 
-                for(let i=0; i<boardSpaces.length; i++) {
-                    const p1 = boardSpaces[i].position;
-                    const p2 = boardSpaces[(i+1)%boardSpaces.length].position;
-                    const dist = p1.distanceTo(p2);
-                    
-                    const roadGeo = new THREE.BoxGeometry(8, 0.4, dist);
-                    const road = new THREE.Mesh(roadGeo, roadMat);
-                    road.position.set((p1.x+p2.x)/2, 0.2, (p1.z+p2.z)/2);
-                    road.lookAt(p2.x, 0.2, p2.z);
-                    road.receiveShadow = true;
-                    groundGroup.add(road);
-
-                    const numDashes = Math.floor(dist / 6);
-                    for(let d=1; d<numDashes; d++) {
-                        const dash = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.5, 3), dashMat);
-                        const lerpFactor = d / numDashes;
-                        dash.position.lerpVectors(p1, p2, lerpFactor);
-                        dash.position.y = 0.25;
-                        dash.lookAt(p2.x, 0.25, p2.z);
-                        dash.receiveShadow = true;
-                        groundGroup.add(dash);
-                    }
-                }
-
-                // Generate Scenery: Cube Trees
-                const treeMat = new THREE.MeshLambertMaterial({ color: '#2ecc71' }); 
-                const trunkMat = new THREE.MeshLambertMaterial({ color: '#d35400' }); 
-                for(let i=0; i<80; i++) {
-                    const tx = (Math.random() - 0.5) * gridWidth;
-                    const tz = (Math.random() - 0.5) * gridHeight;
-                    
-                    // Only place trees on land
-                    const lon = minLon + (tx + gridWidth/2)/gridWidth * lonRange;
-                    const lat = minLat + (-tz + gridHeight/2)/gridHeight * latRange;
-                    if (!pointInPolygon([lon, lat], sgOutline)) continue;
-
-                    const tree = new THREE.Group();
-                    const trunk = new THREE.Mesh(new THREE.BoxGeometry(1.5, 3, 1.5), trunkMat);
-                    trunk.position.y = 1.5;
-                    trunk.castShadow = true; trunk.receiveShadow = true;
-                    
-                    const leavesGeo = new THREE.BoxGeometry(5, 5, 5);
-                    const leaves = new THREE.Mesh(leavesGeo, treeMat);
-                    leaves.position.y = 5.5;
-                    leaves.castShadow = true; leaves.receiveShadow = true;
-                    addEdgeOutline(leaves, leavesGeo);
-                    
-                    tree.add(trunk); tree.add(leaves);
-                    
-                    const s = 0.7 + Math.random() * 0.5;
-                    tree.scale.set(s, s, s);
-                    tree.position.set(tx, 0, tz);
-                    groundGroup.add(tree);
-                }
-
-                // Generate Scenery: Voxel Clouds
-                const cloudMat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
-                for(let i=0; i<20; i++) {
-                    const cloud = new THREE.Group();
-                    for(let j=0; j<4; j++) {
-                        const sGeo = new THREE.BoxGeometry(10+Math.random()*10, 6+Math.random()*4, 10+Math.random()*10);
-                        const s = new THREE.Mesh(sGeo, cloudMat);
-                        s.position.set((Math.random()-0.5)*10, (Math.random()-0.5)*4, (Math.random()-0.5)*10);
-                        s.castShadow = true;
-                        addEdgeOutline(s, sGeo);
-                        cloud.add(s);
-                    }
-                    cloud.position.set((Math.random() - 0.5) * 400, 60 + Math.random() * 40, (Math.random() - 0.5) * 400);
-                    cloud.userData.speed = 0.05 + Math.random() * 0.05;
-                    scene.add(cloud);
-                    clouds.push(cloud);
-                }
-
-                // Generate Cars 
-                const carColors = ['#ff7675', '#fdcb6e', '#74b9ff', '#55efc4', '#a29bfe', '#ffeaa7', '#ff9ff3'];
-                for(let i=0; i<15; i++) {
-                    const carGroup = createCar(carColors[i%carColors.length]);
-                    carGroup.userData = {
-                        currentNode: (i * 2) % boardSpaces.length,
-                        progress: Math.random(),
-                        speed: 0.002 + Math.random() * 0.002, 
-                        bounceOffset: Math.random() * Math.PI * 2
-                    };
-                    groundGroup.add(carGroup);
-                    cars.push(carGroup);
-                }
-
-                // Generate Walking Pedestrians
-                const pedColors = ['#81ecec', '#fab1a0', '#74b9ff', '#a29bfe', '#ffeaa7'];
-                for(let i=0; i<30; i++) {
-                    const pedGroup = createPedestrian(pedColors[i%pedColors.length]);
-                    Object.assign(pedGroup.userData, {
-                        currentNode: Math.floor(Math.random() * boardSpaces.length),
-                        progress: Math.random(),
-                        speed: 0.001 + Math.random() * 0.001, // slower than cars
-                        bounceOffset: Math.random() * Math.PI * 2,
-                        sideOffset: (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 2) // walk on sidewalk
-                    });
-                    groundGroup.add(pedGroup);
-                    pedestrians.push(pedGroup);
-                }
-
-                // Initialize Player Tokens
-                players.forEach((p) => {
-                    const tokenGroup = new THREE.Group();
-                    const mat = new THREE.MeshLambertMaterial({ color: p.colorHex });
-                    
-                    const pBase = new THREE.Mesh(new THREE.BoxGeometry(4, 1.5, 4), mat);
-                    pBase.position.y = 0.75;
-                    const pBody = new THREE.Mesh(new THREE.BoxGeometry(2.5, 4, 2.5), mat);
-                    pBody.position.y = 3.5;
-                    const pHead = new THREE.Mesh(new THREE.BoxGeometry(3.5, 3.5, 3.5), mat);
-                    pHead.position.y = 7.25;
-                    
-                    tokenGroup.add(pBase); tokenGroup.add(pBody); tokenGroup.add(pHead);
-                    tokenGroup.traverse(child => { if(child.isMesh) { child.castShadow = true; child.receiveShadow = true; addEdgeOutline(child, child.geometry); }});
-                    
-                    p.mesh = tokenGroup;
-                    groundGroup.add(tokenGroup);
-                });
-
-                updateTokenPositions();
-                updateHUD();
+                const nx = (coords[0] - minLon) / lonRange;
+                const nz = (coords[1] - minLat) / latRange;
                 
-                const diceBtn = document.getElementById('dice-btn');
-                diceBtn.style.backgroundColor = players[currentPlayerIndex].css;
-            })
-            .catch(err => {
-                console.error("Failed to load JSON:", err);
-                document.getElementById('loading').innerText = "Error loading data";
+                const x = (nx * gridWidth) - (gridWidth / 2);
+                const z = -((nz * gridHeight) - (gridHeight / 2));
+
+                const baseHeight = props.price ? props.price / 10 : 12;
+                let bWidth = 10, bDepth = 10;
+                if (props.type === 'station') { bWidth = 14; bDepth = 14; }
+                if (props.type === 'vehicle') { bWidth = 8; bDepth = 8; } 
+
+                const colorHex = groupColors[props.group] || '#dddddd';
+                const bldgGroup = createBuilding(bWidth, baseHeight, bDepth, colorHex);
+                bldgGroup.position.set(x, 0, z);
+                groundGroup.add(bldgGroup);
+
+                const plotGeo = new THREE.BoxGeometry(bWidth + 6, 0.6, bDepth + 6);
+                const plotMat = new THREE.MeshLambertMaterial({ color: '#f1f2f6' });
+                const plot = new THREE.Mesh(plotGeo, plotMat);
+                plot.position.set(x, 0.3, z);
+                plot.receiveShadow = true;
+                groundGroup.add(plot);
+
+                const hitGeo = new THREE.BoxGeometry(bWidth + 6, baseHeight + 4, bDepth + 6);
+                const hitMat = new THREE.MeshBasicMaterial({ visible: false });
+                const hitMesh = new THREE.Mesh(hitGeo, hitMat);
+                hitMesh.position.set(0, baseHeight / 2, 0);
+                hitMesh.userData = { 
+                    props: props, baseY: 0, targetY: 0, colorHex: colorHex, parentGroup: bldgGroup 
+                };
+                bldgGroup.add(hitMesh);
+                buildings.push(hitMesh);
+
+                if (props.id === 'zoo') {
+                    const animals = new THREE.Group();
+                    const elephant = createElephant(); elephant.position.set(-6, 0, -6);
+                    const tiger = createTiger(); tiger.position.set(6, 0, -6);
+                    const polarBear = createPolarBear(); polarBear.position.set(-6, 0, 6);
+                    const otter = createOtter(); otter.position.set(6, 0, 6);
+                    animals.add(elephant, tiger, polarBear, otter);
+                    animals.userData = { type: 'zoo', children: [elephant, tiger, polarBear, otter] };
+                    bldgGroup.add(animals);
+                    customAnimations.push(animals);
+                }
+                if (props.id === 'oceanarium') {
+                    const whale = createWhale();
+                    whale.position.set(0, 14, 0);
+                    whale.userData = { type: 'whale' };
+                    bldgGroup.add(whale);
+                    customAnimations.push(whale);
+                }
+                if (props.id === 'changi') {
+                    const tower = createControlTower();
+                    tower.position.set(-8, 0, -8);
+                    tower.userData = { type: 'tower', antenna: tower.userData.antenna };
+                    bldgGroup.add(tower);
+                    customAnimations.push(tower);
+                }
+                if (props.id === 'port') {
+                    const port = createContainerPort();
+                    port.position.set(0, 0, 0);
+                    port.userData = { type: 'port', spreader: port.userData.spreader };
+                    bldgGroup.add(port);
+                    customAnimations.push(port);
+                }
+
+                boardSpaces.push({
+                    mesh: hitMesh,
+                    props: props,
+                    owner: undefined,
+                    position: new THREE.Vector3(x, baseHeight, z)
+                });
             });
+
+            const roadMat = new THREE.MeshLambertMaterial({ color: '#636e72' }); 
+            const dashMat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
+            
+            for(let i=0; i<boardSpaces.length; i++) {
+                const p1 = boardSpaces[i].position;
+                const p2 = boardSpaces[(i+1)%boardSpaces.length].position;
+                const dist = p1.distanceTo(p2);
+                
+                const roadGeo = new THREE.BoxGeometry(8, 0.4, dist);
+                const road = new THREE.Mesh(roadGeo, roadMat);
+                road.position.set((p1.x+p2.x)/2, 0.2, (p1.z+p2.z)/2);
+                road.lookAt(p2.x, 0.2, p2.z);
+                road.receiveShadow = true;
+                groundGroup.add(road);
+
+                const numDashes = Math.floor(dist / 6);
+                for(let d=1; d<numDashes; d++) {
+                    const dash = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.5, 3), dashMat);
+                    const lerpFactor = d / numDashes;
+                    dash.position.lerpVectors(p1, p2, lerpFactor);
+                    dash.position.y = 0.25;
+                    dash.lookAt(p2.x, 0.25, p2.z);
+                    dash.receiveShadow = true;
+                    groundGroup.add(dash);
+                }
+            }
+
+            const treeMat = new THREE.MeshLambertMaterial({ color: '#2ecc71' }); 
+            const trunkMat = new THREE.MeshLambertMaterial({ color: '#d35400' }); 
+            for(let i=0; i<80; i++) {
+                const tx = (Math.random() - 0.5) * gridWidth;
+                const tz = (Math.random() - 0.5) * gridHeight;
+                const lon = minLon + (tx + gridWidth/2)/gridWidth * lonRange;
+                const lat = minLat + (-tz + gridHeight/2)/gridHeight * latRange;
+                if (!pointInPolygon([lon, lat], sgOutline)) continue;
+
+                const tree = new THREE.Group();
+                const trunk = new THREE.Mesh(new THREE.BoxGeometry(1.5, 3, 1.5), trunkMat);
+                trunk.position.y = 1.5;
+                trunk.castShadow = true; trunk.receiveShadow = true;
+                
+                const leavesGeo = new THREE.BoxGeometry(5, 5, 5);
+                const leaves = new THREE.Mesh(leavesGeo, treeMat);
+                leaves.position.y = 5.5;
+                leaves.castShadow = true; leaves.receiveShadow = true;
+                addEdgeOutline(leaves, leavesGeo);
+                
+                tree.add(trunk); tree.add(leaves);
+                
+                const s = 0.7 + Math.random() * 0.5;
+                tree.scale.set(s, s, s);
+                tree.position.set(tx, 0, tz);
+                groundGroup.add(tree);
+            }
+
+            const cloudMat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
+            for(let i=0; i<20; i++) {
+                const cloud = new THREE.Group();
+                for(let j=0; j<4; j++) {
+                    const sGeo = new THREE.BoxGeometry(10+Math.random()*10, 6+Math.random()*4, 10+Math.random()*10);
+                    const s = new THREE.Mesh(sGeo, cloudMat);
+                    s.position.set((Math.random()-0.5)*10, (Math.random()-0.5)*4, (Math.random()-0.5)*10);
+                    s.castShadow = true;
+                    addEdgeOutline(s, sGeo);
+                    cloud.add(s);
+                }
+                cloud.position.set((Math.random() - 0.5) * 400, 60 + Math.random() * 40, (Math.random() - 0.5) * 400);
+                cloud.userData.speed = 0.05 + Math.random() * 0.05;
+                scene.add(cloud);
+                clouds.push(cloud);
+            }
+
+            const carColors = sceneData.colors.cars || ['#ff7675', '#fdcb6e', '#74b9ff', '#55efc4', '#a29bfe', '#ffeaa7', '#ff9ff3'];
+            for(let i=0; i<15; i++) {
+                const carGroup = createCar(carColors[i%carColors.length]);
+                carGroup.userData = {
+                    currentNode: (i * 2) % boardSpaces.length,
+                    progress: Math.random(),
+                    speed: 0.002 + Math.random() * 0.002, 
+                    bounceOffset: Math.random() * Math.PI * 2
+                };
+                groundGroup.add(carGroup);
+                cars.push(carGroup);
+            }
+
+            mrt.userData = {
+                currentNode: 0,
+                progress: 0,
+                speed: 0.008
+            };
+
+            const pedColors = sceneData.colors.pedestrians || ['#81ecec', '#fab1a0', '#74b9ff', '#a29bfe', '#ffeaa7'];
+            for(let i=0; i<30; i++) {
+                const pedGroup = createPedestrian(pedColors[i%pedColors.length]);
+                Object.assign(pedGroup.userData, {
+                    currentNode: Math.floor(Math.random() * boardSpaces.length),
+                    progress: Math.random(),
+                    speed: 0.001 + Math.random() * 0.001,
+                    bounceOffset: Math.random() * Math.PI * 2,
+                    sideOffset: (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 2)
+                });
+                groundGroup.add(pedGroup);
+                pedestrians.push(pedGroup);
+            }
+
+            players.forEach((p) => {
+                const tokenGroup = new THREE.Group();
+                const mat = new THREE.MeshLambertMaterial({ color: p.colorHex });
+                
+                const pBase = new THREE.Mesh(new THREE.BoxGeometry(4, 1.5, 4), mat);
+                pBase.position.y = 0.75;
+                const pBody = new THREE.Mesh(new THREE.BoxGeometry(2.5, 4, 2.5), mat);
+                pBody.position.y = 3.5;
+                const pHead = new THREE.Mesh(new THREE.BoxGeometry(3.5, 3.5, 3.5), mat);
+                pHead.position.y = 7.25;
+                
+                tokenGroup.add(pBase); tokenGroup.add(pBody); tokenGroup.add(pHead);
+                tokenGroup.traverse(child => { if(child.isMesh) { child.castShadow = true; child.receiveShadow = true; addEdgeOutline(child, child.geometry); }});
+                
+                p.mesh = tokenGroup;
+                groundGroup.add(tokenGroup);
+            });
+
+            if (!yGameState.get('players')) {
+                pushStateToYjs();
+            }
+            syncStateFromYjs();
+            
+            const diceBtn = document.getElementById('dice-btn');
+            diceBtn.style.backgroundColor = players[currentPlayerIndex].css;
+            diceBtn.disabled = (myPlayerIndex !== currentPlayerIndex);
+        })
+        .catch(err => {
+            console.error("Failed to load JSON:", err);
+            document.getElementById('loading').innerText = "Error loading data";
+        });
 
         // --- Game Logic ---
         const diceBtn = document.getElementById('dice-btn');
         const diceResult = document.getElementById('dice-result');
+        let lastHandledRollTimestamp = 0;
+
+        function pushStateToYjs() {
+            const pData = players.map(p => ({ phone: p.phone, name: p.name, cash: p.cash, pos: p.pos }));
+            yGameState.set('players', pData);
+            
+            const oData = {};
+            boardSpaces.forEach((space, idx) => {
+                if (space.owner !== undefined) {
+                    oData[idx] = space.owner;
+                }
+            });
+            yGameState.set('owners', oData);
+            yGameState.set('currentPlayerIndex', currentPlayerIndex);
+        }
+
+        function registerPlayerIfNeeded(yPlayers) {
+            if (!currentUser) return false;
+            let existingIdx = yPlayers.findIndex(p => p.phone === currentUser.phone);
+            if (existingIdx !== -1) {
+                myPlayerIndex = existingIdx;
+                // If name changed from previous session, update it
+                if (yPlayers[existingIdx].name !== currentUser.name) {
+                    const updatedPlayers = JSON.parse(JSON.stringify(yPlayers));
+                    updatedPlayers[existingIdx].name = currentUser.name;
+                    if (players[existingIdx]) players[existingIdx].name = currentUser.name; // Optimistically update local array too
+                    yGameState.set('players', updatedPlayers);
+                    return true;
+                }
+                return false;
+            } else {
+                let emptyIdx = yPlayers.findIndex(p => !p.phone);
+                if (emptyIdx !== -1) {
+                    const updatedPlayers = JSON.parse(JSON.stringify(yPlayers)); // Clone the array
+                    updatedPlayers[emptyIdx].phone = currentUser.phone;
+                    updatedPlayers[emptyIdx].name = currentUser.name;
+                    if (players[emptyIdx]) {
+                        players[emptyIdx].phone = currentUser.phone; // Optimistically update local array too
+                        players[emptyIdx].name = currentUser.name;
+                    }
+                    yGameState.set('players', updatedPlayers);
+                    myPlayerIndex = emptyIdx;
+                    return true;
+                } else {
+                    // if all 3 slots are taken, fallback to just observing
+                    myPlayerIndex = -1;
+                    return false;
+                }
+            }
+        }
+
+        let lastKnownPositions = [];
+
+        function syncStateFromYjs() {
+            let positionsChanged = false;
+            let yPlayers = yGameState.get('players');
+            if (yPlayers) {
+                const changed = registerPlayerIfNeeded(yPlayers);
+                if (changed) {
+                    yPlayers = yGameState.get('players'); // Re-fetch the cloned array
+                }
+                
+                yPlayers.forEach((p, i) => {
+                    if (players[i]) {
+                        players[i].phone = p.phone;
+                        players[i].name = p.name || `Player ${i+1}`;
+                        players[i].cash = p.cash;
+                        if (players[i].pos !== p.pos) {
+                            players[i].pos = p.pos;
+                            positionsChanged = true;
+                        }
+                    }
+                });
+                
+                // If it changed, push back to Yjs to broadcast name update
+                // BUT do NOT call pushStateToYjs() here, because pushStateToYjs overrides 
+                // the entire state (including owners/turn). We just let the yGameState.set('players', updatedPlayers)
+                // in registerPlayerIfNeeded handle the broadcast!
+            }
+            
+            const yOwners = yGameState.get('owners');
+            if (yOwners) {
+                Object.keys(yOwners).forEach(spaceIdx => {
+                    if (boardSpaces[spaceIdx]) {
+                        boardSpaces[spaceIdx].owner = yOwners[spaceIdx];
+                    }
+                });
+            }
+
+            const yTurn = yGameState.get('currentPlayerIndex');
+            if (yTurn !== undefined) {
+                const turnChanged = (yTurn !== currentPlayerIndex);
+                currentPlayerIndex = yTurn;
+                
+                if (turnChanged) {
+                    document.getElementById('ui').style.display = 'none';
+                    if (!isMoving) diceBtn.disabled = (myPlayerIndex !== currentPlayerIndex);
+                }
+                
+                diceBtn.style.backgroundColor = players[currentPlayerIndex].css;
+                diceResult.innerText = `${players[currentPlayerIndex].name}'s Turn`;
+            }
+            
+            updateHUD();
+            if (!isMoving && positionsChanged) {
+                updateTokenPositions();
+            }
+        }
+
+        let syncSchedulerKey = null;
+        function scheduleSyncState() {
+            if (syncSchedulerKey) cancelAnimationFrame(syncSchedulerKey);
+            syncSchedulerKey = requestAnimationFrame(() => {
+                syncStateFromYjs();
+                syncSchedulerKey = null;
+            });
+        }
+
+        yGameState.observe(event => {
+            // Only sync state if something other than lastRoll changed, or if players/owners/currentPlayerIndex changed
+            if (event.keysChanged.has('players') || event.keysChanged.has('owners') || event.keysChanged.has('currentPlayerIndex')) {
+                scheduleSyncState();
+            }
+            
+            if (event.keysChanged.has('lastRoll')) {
+                const roll = yGameState.get('lastRoll');
+                if (roll && roll.timestamp > lastHandledRollTimestamp) {
+                    lastHandledRollTimestamp = roll.timestamp;
+                    triggerRollAnimation(roll);
+                }
+            }
+        });
+
+        provider.on('synced', isSynced => {
+            const synced = typeof isSynced === 'object' ? isSynced.synced : isSynced;
+            if (synced) {
+                if (!yGameState.get('players')) {
+                    pushStateToYjs();
+                } else {
+                    // Force the observer to recognize we need to map Yjs data to local data
+                    scheduleSyncState();
+                    // Double check if scheduleSyncState successfully registered us. 
+                    // If it did, it would have updated the Yjs array, so we should sync again to ensure DOM is perfect
+                    setTimeout(() => scheduleSyncState(), 100); 
+                }
+            }
+        });
 
         function showMessage(msg) {
             const box = document.getElementById('message-box');
@@ -950,18 +1384,44 @@
             setTimeout(() => { box.style.display = 'none'; }, 3000);
         }
 
+        const hudCache = { cash: [], name: [], pDiv: [] };
+        
         function updateHUD() {
             players.forEach((p, i) => {
-                document.getElementById(`cash-${i}`).innerText = p.cash;
-                const pDiv = document.getElementById(`player-${i}`);
-                if (i === currentPlayerIndex) pDiv.classList.add('active-turn');
-                else pDiv.classList.remove('active-turn');
+                if (!hudCache.cash[i]) hudCache.cash[i] = document.getElementById(`cash-${i}`);
+                if (!hudCache.name[i]) hudCache.name[i] = document.getElementById(`name-${i}`);
+                if (!hudCache.pDiv[i]) hudCache.pDiv[i] = document.getElementById(`player-${i}`);
+                
+                const cashEl = hudCache.cash[i];
+                if (cashEl) cashEl.innerText = p.cash;
+                
+                const nameEl = hudCache.name[i];
+                if (nameEl) {
+                    nameEl.innerText = p.name;
+                    if (currentUser && p.phone === currentUser.phone) {
+                        nameEl.innerText += " (You)";
+                    }
+                }
+                
+                const pDiv = hudCache.pDiv[i];
+                if (pDiv) {
+                    if (i === currentPlayerIndex) pDiv.classList.add('active-turn');
+                    else pDiv.classList.remove('active-turn');
+                }
             });
         }
 
         function updateTokenPositions() {
-            boardSpaces.forEach((space, spaceIdx) => {
-                const occupants = players.filter(p => p.pos === spaceIdx);
+            const spacesMap = new Map();
+            players.forEach(p => {
+                if (!p.mesh) return;
+                if (!spacesMap.has(p.pos)) spacesMap.set(p.pos, []);
+                spacesMap.get(p.pos).push(p);
+            });
+            
+            spacesMap.forEach((occupants, spaceIdx) => {
+                const space = boardSpaces[spaceIdx];
+                if (!space) return;
                 occupants.forEach((p, i) => {
                     const offsetAngle = (i / occupants.length) * Math.PI * 2;
                     const radius = occupants.length > 1 ? 5 : 0;
@@ -978,13 +1438,28 @@
         }
 
         diceBtn.addEventListener('click', () => {
-            if (isMoving || boardSpaces.length === 0) return;
+            if (isMoving || boardSpaces.length === 0 || myPlayerIndex !== currentPlayerIndex) return;
             
             const roll1 = Math.floor(Math.random() * 6) + 1;
             const roll2 = Math.floor(Math.random() * 6) + 1;
-            const totalRoll = roll1 + roll2;
             
-            const player = players[currentPlayerIndex];
+            const rollData = {
+                playerIndex: currentPlayerIndex,
+                roll1, roll2,
+                oldPos: players[currentPlayerIndex].pos,
+                timestamp: Date.now(),
+                clientId: myClientId
+            };
+            
+            yGameState.set('lastRoll', rollData);
+        });
+
+        function triggerRollAnimation(roll) {
+            if (boardSpaces.length === 0) return;
+            const { playerIndex, roll1, roll2, oldPos, clientId } = roll;
+            const totalRoll = roll1 + roll2;
+            const player = players[playerIndex];
+            
             diceResult.innerText = `${player.name} rolled: ${totalRoll} 🎲`;
             diceBtn.disabled = true;
             
@@ -992,11 +1467,14 @@
             isMoving = true;
             document.getElementById('ui').style.display = 'none';
 
-            const oldPos = player.pos;
             const newPos = (oldPos + totalRoll) % boardSpaces.length;
+            const isInitiator = (clientId === myClientId);
 
             if (oldPos + totalRoll >= boardSpaces.length) {
-                player.cash += 200;
+                if (isInitiator) {
+                    player.cash += 200;
+                    pushStateToYjs();
+                }
                 showMessage(`${player.name} passed GO! Collected $200.`);
                 updateHUD();
             }
@@ -1006,7 +1484,11 @@
                     isMoving = false;
                     player.pos = newPos;
                     updateTokenPositions();
-                    handleLanded(boardSpaces[newPos]);
+                    
+                    if (isInitiator) {
+                        pushStateToYjs();
+                        handleLanded(boardSpaces[newPos]);
+                    }
                     return;
                 }
 
@@ -1036,7 +1518,7 @@
             }
 
             moveNext();
-        });
+        }
 
         function handleLanded(space) {
             const player = players[currentPlayerIndex];
@@ -1060,63 +1542,72 @@
                 ownerEl.innerText = "Owner: None";
                 ownerEl.style.color = "#636e72";
                 
-                if (player.cash >= props.price) {
-                    const buyBtn = document.createElement('button');
-                    buyBtn.className = 'btn btn-buy';
-                    buyBtn.innerText = `Buy for $${props.price}`;
-                    buyBtn.onclick = () => {
-                        player.cash -= props.price;
-                        space.owner = currentPlayerIndex;
-                        showMessage(`${player.name} bought ${props.name}!`);
-                        updateHUD();
-                        endTurn();
-                    };
-                    actionsEl.appendChild(buyBtn);
+                if (myPlayerIndex === currentPlayerIndex) {
+                    if (player.cash >= props.price) {
+                        const buyBtn = document.createElement('button');
+                        buyBtn.className = 'btn btn-buy';
+                        buyBtn.innerText = `Buy for $${props.price}`;
+                        buyBtn.onclick = () => {
+                            player.cash -= props.price;
+                            space.owner = currentPlayerIndex;
+                            showMessage(`${player.name} bought ${props.name}!`);
+                            pushStateToYjs();
+                            endTurn();
+                        };
+                        actionsEl.appendChild(buyBtn);
+                    }
+                    
+                    const passBtn = document.createElement('button');
+                    passBtn.className = 'btn btn-pass';
+                    passBtn.innerText = 'Pass';
+                    passBtn.onclick = endTurn;
+                    actionsEl.appendChild(passBtn);
+                } else {
+                    const waitMsg = document.createElement('p');
+                    waitMsg.style.fontWeight = 'bold';
+                    waitMsg.style.color = '#636e72';
+                    waitMsg.innerText = "Waiting for player to decide...";
+                    actionsEl.appendChild(waitMsg);
                 }
-                
-                const passBtn = document.createElement('button');
-                passBtn.className = 'btn btn-pass';
-                passBtn.innerText = 'Pass';
-                passBtn.onclick = endTurn;
-                actionsEl.appendChild(passBtn);
 
             } else if (space.owner === currentPlayerIndex) {
-                ownerEl.innerText = `Owner: You`;
+                ownerEl.innerText = `Owner: ${players[space.owner].name}`;
                 ownerEl.style.color = player.css;
                 
-                const endBtn = document.createElement('button');
-                endBtn.className = 'btn btn-end';
-                endBtn.innerText = 'End Turn';
-                endBtn.onclick = endTurn;
-                actionsEl.appendChild(endBtn);
+                if (myPlayerIndex === currentPlayerIndex) {
+                    const endBtn = document.createElement('button');
+                    endBtn.className = 'btn btn-end';
+                    endBtn.innerText = 'End Turn';
+                    endBtn.onclick = endTurn;
+                    actionsEl.appendChild(endBtn);
+                }
             } else {
                 const owner = players[space.owner];
                 ownerEl.innerText = `Owner: ${owner.name}`;
                 ownerEl.style.color = owner.css;
                 
-                const rent = Math.floor(props.price * 0.2);
-                player.cash -= rent;
-                owner.cash += rent;
-                
-                showMessage(`${player.name} paid $${rent} rent to ${owner.name}.`);
-                updateHUD();
-                
-                const endBtn = document.createElement('button');
-                endBtn.className = 'btn btn-end';
-                endBtn.innerText = 'End Turn';
-                endBtn.onclick = endTurn;
-                actionsEl.appendChild(endBtn);
+                if (myPlayerIndex === currentPlayerIndex) {
+                    const rent = Math.floor(props.price * 0.2);
+                    player.cash -= rent;
+                    owner.cash += rent;
+                    
+                    showMessage(`${player.name} paid $${rent} rent to ${owner.name}.`);
+                    pushStateToYjs();
+                    
+                    const endBtn = document.createElement('button');
+                    endBtn.className = 'btn btn-end';
+                    endBtn.innerText = 'End Turn';
+                    endBtn.onclick = endTurn;
+                    actionsEl.appendChild(endBtn);
+                }
             }
         }
 
         function endTurn() {
             document.getElementById('ui').style.display = 'none';
             currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
-            updateHUD();
-            
-            diceBtn.disabled = false;
-            diceBtn.style.backgroundColor = players[currentPlayerIndex].css;
-            diceResult.innerText = `${players[currentPlayerIndex].name}'s Turn`;
+            diceBtn.disabled = (myPlayerIndex !== currentPlayerIndex);
+            pushStateToYjs();
         }
 
         // --- View Interaction ---
@@ -1150,8 +1641,19 @@
         window.addEventListener('click', (event) => {
             if (event.target.tagName === 'BUTTON') return;
 
-            if (hoveredBuilding && !isMoving && document.getElementById('actions').innerHTML === '') {
-                const props = hoveredBuilding.userData.props;
+            // Also perform raycast on click to support touch devices where mousemove might not fire
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(buildings);
+            
+            let clickedBuilding = hoveredBuilding;
+            if (intersects.length > 0) {
+                clickedBuilding = intersects[0].object;
+            }
+
+            if (clickedBuilding && !isMoving && document.getElementById('actions').innerHTML === '') {
+                const props = clickedBuilding.userData.props;
                 const space = boardSpaces.find(s => s.props.id === props.id);
                 if (space) {
                     const ui = document.getElementById('ui');
@@ -1176,6 +1678,50 @@
             }
         });
 
+        // Add touch support for UI opening
+        window.addEventListener('touchstart', (event) => {
+            if (event.target.tagName === 'BUTTON' || event.target.tagName === 'INPUT') return;
+            if (event.touches.length > 0) {
+                mouse.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(buildings);
+                if (intersects.length > 0) {
+                    const hit = intersects[0].object;
+                    if (hoveredBuilding !== hit) {
+                        if (hoveredBuilding) hoveredBuilding.userData.targetY = hoveredBuilding.userData.baseY;
+                        hoveredBuilding = hit;
+                        hoveredBuilding.userData.targetY = hoveredBuilding.userData.baseY + 5;
+                    }
+                    
+                    // Simulate click logic for touch
+                    if (!isMoving && document.getElementById('actions').innerHTML === '') {
+                        const props = hit.userData.props;
+                        const space = boardSpaces.find(s => s.props.id === props.id);
+                        if (space) {
+                            const ui = document.getElementById('ui');
+                            document.getElementById('prop-name').innerText = props.name;
+                            document.getElementById('prop-type').innerText = props.type.toUpperCase();
+                            document.getElementById('prop-price').innerText = `Price: $${props.price}`;
+                            document.getElementById('prop-group').innerText = `Group: ${props.group}`;
+                            
+                            const ownerEl = document.getElementById('prop-owner');
+                            if (space.owner === undefined) {
+                                ownerEl.innerText = "Owner: None";
+                                ownerEl.style.color = "#636e72";
+                            } else {
+                                ownerEl.innerText = `Owner: ${players[space.owner].name}`;
+                                ownerEl.style.color = players[space.owner].css;
+                            }
+                            
+                            ui.style.borderLeftColor = space.mesh.userData.colorHex;
+                            ui.style.display = 'block';
+                        }
+                    }
+                }
+            }
+        }, { passive: true });
+
         window.addEventListener('resize', () => {
             const aspect = window.innerWidth / window.innerHeight;
             camera.left = -d * aspect; camera.right = d * aspect;
@@ -1183,6 +1729,194 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
+
+        // --- SuperAgent Logic ---
+        const saBtn = document.getElementById('superagent-btn');
+        const saPanel = document.getElementById('superagent-panel');
+        const saInput = document.getElementById('superagent-input');
+        const saSend = document.getElementById('superagent-send');
+        const saChat = document.getElementById('superagent-chat');
+
+        saBtn.addEventListener('click', () => {
+            saPanel.style.display = saPanel.style.display === 'none' ? 'flex' : 'none';
+        });
+
+        function addChatMessage(text, isUser) {
+            const msg = document.createElement('div');
+            msg.style.padding = '8px 12px';
+            msg.style.borderRadius = '12px';
+            msg.style.border = '2px solid #2d3436';
+            msg.style.maxWidth = '85%';
+            msg.style.fontSize = '14px';
+            msg.style.fontWeight = 'bold';
+            msg.style.color = '#2d3436';
+            msg.style.marginTop = '4px';
+            
+            if (isUser) {
+                msg.style.background = '#e1b12c'; // Yellow-ish for user
+                msg.style.alignSelf = 'flex-end';
+            } else {
+                msg.style.background = 'white';
+                msg.style.alignSelf = 'flex-start';
+            }
+            
+            msg.innerText = text;
+            saChat.appendChild(msg);
+            saChat.scrollTop = saChat.scrollHeight;
+        }
+
+        async function handleSuperAgentCommand(cmd) {
+            addChatMessage(cmd, true);
+            const lowerCmd = cmd.toLowerCase();
+            
+            // Basic Natural Language processing simulation for "deer-flow" SuperAgent
+            // In a full integration, this would call DeerFlow's /api/chat endpoint
+            
+            setTimeout(() => {
+                if (lowerCmd.includes('roll') || lowerCmd.includes('dice')) {
+                    if (myPlayerIndex !== currentPlayerIndex) {
+                        addChatMessage("It's not your turn right now!", false);
+                    } else if (isMoving) {
+                        addChatMessage("Wait for the animation to finish.", false);
+                    } else {
+                        addChatMessage("Rolling the dice for you! 🎲", false);
+                        diceBtn.click();
+                    }
+                } else if (lowerCmd.includes('buy') || lowerCmd.includes('purchase')) {
+                    const buyBtn = document.querySelector('.btn-buy');
+                    if (buyBtn && document.getElementById('ui').style.display !== 'none') {
+                        addChatMessage("Buying the property for you! 💰", false);
+                        buyBtn.click();
+                    } else {
+                        addChatMessage("There is no property to buy right now.", false);
+                    }
+                } else if (lowerCmd.includes('pass') || lowerCmd.includes('skip')) {
+                    const passBtn = document.querySelector('.btn-pass');
+                    if (passBtn && document.getElementById('ui').style.display !== 'none') {
+                        addChatMessage("Passing on this property. ⏭️", false);
+                        passBtn.click();
+                    } else {
+                        addChatMessage("Nothing to pass right now.", false);
+                    }
+                } else if (lowerCmd.includes('end') || lowerCmd.includes('finish')) {
+                    const endBtn = document.querySelector('.btn-end');
+                    if (endBtn && document.getElementById('ui').style.display !== 'none') {
+                        addChatMessage("Ending your turn. 🛑", false);
+                        endBtn.click();
+                    } else {
+                        addChatMessage("You can't end your turn right now.", false);
+                    }
+                } else if (lowerCmd.includes('status') || lowerCmd.includes('cash') || lowerCmd.includes('money')) {
+                    const p = players[myPlayerIndex];
+                    if (p) {
+                        addChatMessage(`You have $${p.cash} left. You are on space ${p.pos}.`, false);
+                    } else {
+                        addChatMessage("I can't find your player data.", false);
+                    }
+                } else {
+                    addChatMessage("I'm a SuperAgent! Try asking me to 'roll dice', 'buy property', 'pass', 'end turn', or check 'status'.", false);
+                }
+            }, 600);
+        }
+
+        saSend.addEventListener('click', () => {
+            if (saInput.value.trim()) {
+                handleSuperAgentCommand(saInput.value.trim());
+                saInput.value = '';
+            }
+        });
+
+        saInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && saInput.value.trim()) {
+                handleSuperAgentCommand(saInput.value.trim());
+                saInput.value = '';
+            }
+        });
+
+        // --- Theme & Weather Logic ---
+        const themeSelect = document.getElementById('theme-select');
+        const weatherSelect = document.getElementById('weather-select');
+        const tmpColor = new THREE.Color();
+        
+        function applyTheme() {
+            if (!groundIMesh) return;
+            const t = themeSelect.value;
+            for(let i=0; i<voxelCount; i++) {
+                tmpColor.setHex(voxelOriginalColors[i]);
+                
+                if(t === 'cny') {
+                    tmpColor.lerp(new THREE.Color('#ff4757'), 0.4);
+                } else if(t === 'hari_raya') {
+                    tmpColor.lerp(new THREE.Color('#2ecc71'), 0.4);
+                } else if(t === 'mid_autumn') {
+                    tmpColor.lerp(new THREE.Color('#f39c12'), 0.4);
+                } else if(t === 'deepavali') {
+                    tmpColor.lerp(new THREE.Color('#9b59b6'), 0.4);
+                } else if(t === 'christmas') {
+                    // Snow top layer approximation
+                    if(Math.random() > 0.5) tmpColor.setHex(0xffffff);
+                    else tmpColor.lerp(new THREE.Color('#ffffff'), 0.6);
+                }
+                
+                groundIMesh.setColorAt(i, tmpColor);
+            }
+            groundIMesh.instanceColor.needsUpdate = true;
+        }
+
+        function applyWeather() {
+            const w = weatherSelect.value;
+            if(w === 'sunshine') {
+                scene.background.set('#A9E1FF');
+                scene.fog.color.set('#A9E1FF');
+                scene.fog.density = 0.0018;
+                dirLight.intensity = 0.4;
+                ambientLight.intensity = 0.7;
+            } else if(w === 'cloudy') {
+                scene.background.set('#8E9CA3');
+                scene.fog.color.set('#8E9CA3');
+                scene.fog.density = 0.0025;
+                dirLight.intensity = 0.15;
+                ambientLight.intensity = 0.5;
+            } else if(w === 'stormy') {
+                scene.background.set('#2d3436');
+                scene.fog.color.set('#2d3436');
+                scene.fog.density = 0.0035;
+                dirLight.intensity = 0.05;
+                ambientLight.intensity = 0.3;
+            }
+        }
+
+        // Auto-change Theme and Weather every X seconds
+        const themesList = ['default', 'cny', 'hari_raya', 'mid_autumn', 'deepavali', 'christmas'];
+        const weatherList = ['sunshine', 'cloudy', 'stormy'];
+        let currentThemeIdx = 0;
+        let currentWeatherIdx = 0;
+        let autoChangeTimer = null;
+        
+        const intervalInput = document.getElementById('auto-change-interval');
+
+        function startAutoChange() {
+            if (autoChangeTimer) clearInterval(autoChangeTimer);
+            const intervalSecs = parseInt(intervalInput.value, 10);
+            if (intervalSecs > 0) {
+                autoChangeTimer = setInterval(() => {
+                    currentThemeIdx = (currentThemeIdx + 1) % themesList.length;
+                    currentWeatherIdx = (currentWeatherIdx + 1) % weatherList.length;
+                    
+                    themeSelect.value = themesList[currentThemeIdx];
+                    weatherSelect.value = weatherList[currentWeatherIdx];
+                    
+                    applyTheme();
+                    applyWeather();
+                }, intervalSecs * 1000);
+            }
+        }
+
+        intervalInput.addEventListener('change', startAutoChange);
+        themeSelect.addEventListener('change', () => { applyTheme(); startAutoChange(); });
+        weatherSelect.addEventListener('change', () => { applyWeather(); startAutoChange(); });
+
+        startAutoChange(); // Init on load
 
         // --- Animation Loop ---
         const clock = new THREE.Clock();
@@ -1247,6 +1981,14 @@
             }
             heli.position.y += Math.sin(elapsedTime * 3) * 0.2; // bob slightly
 
+            // Container Ship patrol
+            ship.userData.angle = (ship.userData.angle || 0) + 0.002;
+            const sRadius = 300;
+            ship.position.x = Math.cos(ship.userData.angle) * sRadius;
+            ship.position.z = Math.sin(ship.userData.angle) * sRadius;
+            ship.rotation.y = -ship.userData.angle + Math.PI; // Look tangent
+            ship.position.y = -3 + Math.sin(elapsedTime * 2) * 0.5; // bob on water
+
             // Custom Landmark Animations
             customAnimations.forEach(anim => {
                 if (anim.userData.type === 'zoo') {
@@ -1270,6 +2012,21 @@
 
             // Cars Driving with bounce
             if(boardSpaces.length > 0) {
+                // MRT Driving (Fast, elevated)
+                const m1 = boardSpaces[mrt.userData.currentNode].position;
+                const nextMrtNode = (mrt.userData.currentNode + 1) % boardSpaces.length;
+                const m2 = boardSpaces[nextMrtNode].position;
+                mrt.userData.progress += mrt.userData.speed;
+                if(mrt.userData.progress >= 1) {
+                    mrt.userData.progress -= 1;
+                    mrt.userData.currentNode = nextMrtNode;
+                }
+                mrt.position.lerpVectors(m1, m2, mrt.userData.progress);
+                mrt.position.y = 8 + groundGroup.position.y; // elevated
+                const lookMrtTarget = m2.clone();
+                lookMrtTarget.y = mrt.position.y;
+                mrt.lookAt(lookMrtTarget);
+
                 cars.forEach(car => {
                     const p1 = boardSpaces[car.userData.currentNode].position;
                     const nextNode = (car.userData.currentNode + 1) % boardSpaces.length;

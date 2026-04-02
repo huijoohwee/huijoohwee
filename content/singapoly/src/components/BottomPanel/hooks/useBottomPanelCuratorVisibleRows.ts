@@ -175,6 +175,11 @@ export function useBottomPanelCuratorVisibleRows({
     return [...nodeRows, ...edgeRows]
   }, [edges, lastTraversalSummary, nodes])
 
+  const activeSelectedNodeId = graphDataTableViewMode === 'selectionNeighborhood' ? selectedNodeId : null
+  const activeSelectedEdgeId = graphDataTableViewMode === 'selectionNeighborhood' ? selectedEdgeId : null
+  const activeSelectedNodeIds = graphDataTableViewMode === 'selectionNeighborhood' ? selectedNodeIds : null
+  const activeSelectedEdgeIds = graphDataTableViewMode === 'selectionNeighborhood' ? selectedEdgeIds : null
+
   const visibleRows = React.useMemo(() => {
     const queryFilteredRows = filterRows(rows, query, graphDataTableScope)
     const filteredRows = applyGraphDataTableFilters(
@@ -188,10 +193,10 @@ export function useBottomPanelCuratorVisibleRows({
       graphDataTableViewMode,
       nodes,
       edges,
-      selectedNodeId,
-      selectedEdgeId,
-      selectedNodeIds,
-      selectedEdgeIds,
+      activeSelectedNodeId,
+      activeSelectedEdgeId,
+      activeSelectedNodeIds || [],
+      activeSelectedEdgeIds || [],
     )
 
     baseRows = applyTraversalSequenceFilter(
@@ -230,10 +235,10 @@ export function useBottomPanelCuratorVisibleRows({
     nodes,
     query,
     rows,
-    selectedEdgeId,
-    selectedNodeId,
-    selectedEdgeIds,
-    selectedNodeIds,
+    activeSelectedNodeId,
+    activeSelectedEdgeId,
+    activeSelectedNodeIds,
+    activeSelectedEdgeIds,
   ])
 
   return visibleRows

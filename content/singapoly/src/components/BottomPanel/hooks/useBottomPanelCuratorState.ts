@@ -173,8 +173,23 @@ export function useBottomPanelCuratorState(
     [setGraphDataTableAggregateKeys, graphDataTableAggregateKeys],
   )
 
-  const nodeById = React.useMemo(() => new Map(nodes.map(n => [n.id, n])), [nodes])
-  const edgeById = React.useMemo(() => new Map(edges.map(e => [e.id, e])), [edges])
+  const nodeById = React.useMemo(() => {
+    const map = new Map<string, GraphNode>()
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i]
+      map.set(n.id, n)
+    }
+    return map
+  }, [nodes])
+
+  const edgeById = React.useMemo(() => {
+    const map = new Map<string, GraphEdge>()
+    for (let i = 0; i < edges.length; i++) {
+      const e = edges[i]
+      map.set(e.id, e)
+    }
+    return map
+  }, [edges])
 
   const appendGraphDataTableFilterCondition = React.useCallback(
     (key: GraphDataTableColumnKey) => {

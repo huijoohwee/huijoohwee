@@ -589,7 +589,7 @@ export function BottomPanelMarkdownSection(props: BottomPanelMarkdownSectionProp
   }, [hasMarkdown, isLoading, loadError, markdownDocumentName])
 
   const markdownPreviewText = React.useMemo(() => {
-    const raw = deferredMarkdownText || markdownText || ''
+    const raw = deferredMarkdownText || ''
     const previewMaxChars = 180000
     if (raw.length <= previewMaxChars) return raw
     const slice = raw.slice(0, previewMaxChars)
@@ -598,15 +598,15 @@ export function BottomPanelMarkdownSection(props: BottomPanelMarkdownSectionProp
       return slice.slice(0, lastNewline)
     }
     return slice
-  }, [deferredMarkdownText, markdownText])
+  }, [deferredMarkdownText])
 
   const isMarkdownPreviewTruncated = React.useMemo(() => {
-    const raw = deferredMarkdownText || markdownText || ''
+    const raw = deferredMarkdownText || ''
     const previewMaxChars = 180000
     if (!raw) return false
     if (raw.length <= previewMaxChars) return false
     return markdownPreviewText.length < raw.length
-  }, [deferredMarkdownText, markdownPreviewText, markdownText])
+  }, [deferredMarkdownText, markdownPreviewText])
 
   return (
     <BottomPanelMarkdownSectionView

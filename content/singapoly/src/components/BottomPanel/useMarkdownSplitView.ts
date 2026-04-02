@@ -44,7 +44,16 @@ export function useBottomPanelMarkdownSplitView(args: {
   const editorLineCount = React.useMemo(() => {
     const text = markdownText || ''
     if (!text) return 1
-    return text.split('\n').length || 1
+    
+    let count = 1
+    let pos = text.indexOf('\n')
+    
+    while (pos !== -1) {
+      count++
+      pos = text.indexOf('\n', pos + 1)
+    }
+    
+    return count
   }, [markdownText])
 
   const highlightedLineRange = React.useMemo(

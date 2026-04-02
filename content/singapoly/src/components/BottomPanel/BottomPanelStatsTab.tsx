@@ -132,19 +132,28 @@ export default function BottomPanelStatsTab() {
     const graph = effectiveGraph
     if (!graph || !Array.isArray(graph.nodes)) return []
     const maxListItems = effectiveLod === 'low' ? 10 : effectiveLod === 'medium' ? 20 : 50
-    const out = graph.nodes
-      .map(n => {
-        const props = (n.properties || {}) as Record<string, unknown>
-        const kind = String(props['keyword:kind'] || '')
-        if (kind && kind !== 'entity') return null
-        const rawCount = props.count
-        const count = typeof rawCount === 'number' && Number.isFinite(rawCount) ? rawCount : 0
-        const vf = typeof props['visual:fill'] === 'string' ? props['visual:fill'].trim() : ''
-        const f = typeof props['fill'] === 'string' ? props['fill'].trim() : ''
-        const color = vf || f || ''
-        return { id: String(n.id), label: String(n.label || n.id), count, color }
-      })
-      .filter((x): x is { id: string; label: string; count: number; color: string } => !!x && !!x.id)
+    
+    const out: { id: string; label: string; count: number; color: string }[] = []
+    
+    for (let i = 0; i < graph.nodes.length; i++) {
+      const n = graph.nodes[i]
+      const props = (n.properties || {}) as Record<string, unknown>
+      const kind = String(props['keyword:kind'] || '')
+      if (kind && kind !== 'entity') continue
+      
+      const rawCount = props.count
+      const count = typeof rawCount === 'number' && Number.isFinite(rawCount) ? rawCount : 0
+      
+      const vf = typeof props['visual:fill'] === 'string' ? props['visual:fill'].trim() : ''
+      const f = typeof props['fill'] === 'string' ? props['fill'].trim() : ''
+      const color = vf || f || ''
+      
+      const id = String(n.id)
+      if (id) {
+        out.push({ id, label: String(n.label || n.id), count, color })
+      }
+    }
+    
     out.sort((a, b) => {
       const diff = b.count - a.count
       if (diff !== 0) return diff

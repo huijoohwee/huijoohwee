@@ -70,20 +70,25 @@ export function useBottomPanelCuratorFieldAggregates({
   selectedEdgeIds,
   setGraphDataTableAggregateKeysState,
 }: UseBottomPanelCuratorFieldAggregatesParams): BottomPanelCuratorFieldAggregatesResult {
+  const activeSelectedNodeId = graphDataTableViewMode === 'selectionNeighborhood' ? selectedNodeId : null
+  const activeSelectedEdgeId = graphDataTableViewMode === 'selectionNeighborhood' ? selectedEdgeId : null
+  const activeSelectedNodeIds = graphDataTableViewMode === 'selectionNeighborhood' ? selectedNodeIds : null
+  const activeSelectedEdgeIds = graphDataTableViewMode === 'selectionNeighborhood' ? selectedEdgeIds : null
+
   const { sampleNodes, sampleEdges } = React.useMemo(() => {
     if (
       graphDataTableViewMode === 'selectionNeighborhood' &&
-      (selectedNodeId ||
-        selectedEdgeId ||
-        (selectedNodeIds && selectedNodeIds.length > 0) ||
-        (selectedEdgeIds && selectedEdgeIds.length > 0))
+      (activeSelectedNodeId ||
+        activeSelectedEdgeId ||
+        (activeSelectedNodeIds && activeSelectedNodeIds.length > 0) ||
+        (activeSelectedEdgeIds && activeSelectedEdgeIds.length > 0))
     ) {
       const data: GraphData = { type: 'Graph', nodes, edges }
       const selectionAnchorIds: SelectionAnchorIds = normalizeSelectionIds({
-        selectedNodeId,
-        selectedEdgeId,
-        selectedNodeIds,
-        selectedEdgeIds,
+        selectedNodeId: activeSelectedNodeId,
+        selectedEdgeId: activeSelectedEdgeId,
+        selectedNodeIds: activeSelectedNodeIds || [],
+        selectedEdgeIds: activeSelectedEdgeIds || [],
       })
       const selectionSubgraph = buildSelectionSubgraphForAnchorIds(data, selectionAnchorIds)
       if (selectionSubgraph) {
@@ -97,7 +102,7 @@ export function useBottomPanelCuratorFieldAggregates({
       sampleNodes: nodes,
       sampleEdges: edges,
     }
-  }, [edges, graphDataTableViewMode, nodes, selectedEdgeId, selectedEdgeIds, selectedNodeId, selectedNodeIds])
+  }, [edges, nodes, activeSelectedNodeId, activeSelectedEdgeId, activeSelectedNodeIds, activeSelectedEdgeIds, graphDataTableViewMode])
 
   const derivedGraphFields = React.useMemo(() => {
     void graphDataRevision
