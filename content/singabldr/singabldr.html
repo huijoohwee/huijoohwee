@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Singapore Monopoly</title>
+    <title>Singabldr</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap');
 
@@ -20,8 +20,8 @@
             top: 30px;
             width: 100%;
             text-align: center;
-            pointer-events: none;
             z-index: 10;
+            pointer-events: none;
         }
         h1 {
             font-family: 'Fredoka One', cursive;
@@ -59,6 +59,7 @@
             min-width: 180px;
             border: 3px solid #2d3436;
             box-shadow: 4px 6px 0px rgba(45,52,54,0.1);
+            pointer-events: auto;
         }
         #hud h3 { 
             margin: 0 0 12px 0; 
@@ -106,6 +107,7 @@
             animation: fadeInOut 3s forwards;
             font-size: 16px;
             border: 3px solid #1e272e;
+            pointer-events: none;
         }
 
         #ui {
@@ -122,6 +124,7 @@
             min-width: 260px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 10;
+            pointer-events: auto;
         }
         #prop-name { 
             margin: 0 0 12px 0; 
@@ -161,6 +164,7 @@
             padding: 20px 40px;
             border-radius: 20px;
             border: 4px solid #2d3436;
+            pointer-events: none;
         }
 
         #dice-container {
@@ -169,6 +173,7 @@
             right: 40px;
             text-align: center;
             z-index: 20;
+            pointer-events: auto;
         }
         #dice-btn {
             background: #ff4757;
@@ -239,6 +244,7 @@
                 text-align: center; 
                 font-size: 13px; 
                 padding: 8px; 
+                pointer-events: none;
             }
 
             #ui { 
@@ -267,6 +273,7 @@
                 right: auto; 
                 width: 92%; 
                 max-width: 340px; 
+                pointer-events: auto;
             }
             #dice-btn { 
                 width: 100%; 
@@ -308,7 +315,7 @@
 </head>
 <body>
     <div id="login-screen" style="position: absolute; top:0; left:0; width:100%; height:100%; background: #A9E1FF; z-index: 1000; display: none; flex-direction: column; justify-content: center; align-items: center; font-family: 'Fredoka One', cursive;">
-        <h1 style="color: #2d3436; font-size: 48px; text-shadow: 2px 2px 0px #fff; margin-bottom: 10px;">Singapoly</h1>
+        <h1 style="color: #2d3436; font-size: 48px; text-shadow: 2px 2px 0px #fff; margin-bottom: 10px;">Singabldr</h1>
         <p style="color: #2d3436; font-size: 20px; margin-top: 0; margin-bottom: 30px;">Multiplayer Geospatial Board Game</p>
         
         <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 300px; position: relative; box-sizing: border-box;">
@@ -321,9 +328,9 @@
         </div>
     </div>
 
-    <div id="info">
-        <h1 id="game-title">Loading...</h1>
-        <p class="subtitle" id="game-subtitle">Loading...</p>
+    <div id="info" style="pointer-events: none;">
+        <h1 id="game-title" style="pointer-events: auto;">Loading...</h1>
+        <p class="subtitle" id="game-subtitle" style="pointer-events: auto;">Loading...</p>
     </div>
     
     <div id="watermark-container" style="position: absolute; top: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; pointer-events: none;">
@@ -332,7 +339,7 @@
             <div id="watermark-dropdown" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: white; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden; box-shadow: 4px 4px 0px rgba(0,0,0,0.1); min-width: 160px; z-index: 103;">
                 <button id="nav-login-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('login-screen').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">WhatsApp Login</button>
                 <button id="nav-settings-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('settings-modal').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">Settings</button>
-                <button id="nav-logout-btn" style="display: none; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #d63031; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="localStorage.removeItem('singapoly_user'); window.location.reload();">Logout</button>
+                <button id="nav-logout-btn" style="display: none; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #d63031; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="localStorage.removeItem('singabldr_user'); window.location.reload();">Logout</button>
             </div>
         </div>
         
@@ -360,7 +367,7 @@
             <div style="margin-bottom: 15px;">
                 <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Board / Map:</label>
                 <select id="board-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                    <option value="singapoly.json">Singapore Monopoly</option>
+                    <option value="singabldr.json">Singabldr</option>
                     <option value="tokyopoly.json">Tokyo Monopoly</option>
                 </select>
                 <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Switching boards will reload the game.</p>
@@ -415,7 +422,7 @@
     </div>
 
     <div id="dice-container">
-        <div id="superagent-container" style="display: none; margin-bottom: 15px; position: relative;">
+        <div id="superagent-container" style="display: none; margin-bottom: 15px; position: relative; pointer-events: auto;">
             <div id="superagent-panel" style="display: none; position: absolute; bottom: 100%; right: 0; margin-bottom: 10px; width: 300px; background: white; border: 4px solid #2d3436; border-radius: 16px; box-shadow: 8px 8px 0 rgba(0,0,0,0.1); flex-direction: column; overflow: hidden; font-family: 'Nunito', sans-serif;">
                 <div style="background: #a29bfe; color: white; padding: 10px 15px; font-family: 'Fredoka One', cursive; border-bottom: 3px solid #2d3436; display: flex; justify-content: space-between; align-items: center; text-transform: none;">
                     <span>DeerFlow 🦌</span>
@@ -434,7 +441,7 @@
             <button id="superagent-btn" style="background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 15px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; font-weight: 900; box-shadow: 0 6px 0 #2d3436; font-family: 'Fredoka One', cursive; transition: all 0.1s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">DeerFlow 🦌</button>
         </div>
         <button id="dice-btn">Roll Dice 🎲</button>
-        <div id="dice-result">Red's Turn</div>
+        <div id="dice-result" style="pointer-events: none;">Red's Turn</div>
     </div>
 
     <!-- Three.js, OrbitControls and Tween.js -->
@@ -448,7 +455,7 @@
 
         // --- Setup Yjs ---
         const urlParams = new URLSearchParams(window.location.search);
-        let boardFile = urlParams.get('board') || 'singapoly.json';
+        let boardFile = urlParams.get('board') || 'singabldr.json';
         const currentPlayMode = urlParams.get('mode') || 'ai';
         
         // Handle cross-origin/absolute URLs by prefixing with boards directory if it's a simple filename
@@ -458,7 +465,7 @@
         
         let roomSuffix = 'v4';
         if (currentPlayMode === 'ai') {
-            const saved = localStorage.getItem('singapoly_user');
+            const saved = localStorage.getItem('singabldr_user');
             let phone = 'local';
             if (saved) {
                 try {
@@ -467,7 +474,7 @@
             }
             roomSuffix = `ai-${phone}`;
         }
-        const roomName = `singapoly-room-${boardFile.split('/').pop().replace('.json', '')}-${roomSuffix}`;
+        const roomName = `singabldr-room-${boardFile.split('/').pop().replace('.json', '')}-${roomSuffix}`;
 
         const ydoc = new Y.Doc();
         const provider = new WebsocketProvider('wss://demos.yjs.dev/ws', roomName, ydoc);
@@ -572,16 +579,16 @@
 
             if (userParam && nameParam) {
                 currentUser = { phone: userParam, name: nameParam };
-                localStorage.setItem('singapoly_user', JSON.stringify(currentUser));
+                localStorage.setItem('singabldr_user', JSON.stringify(currentUser));
                 // Do not replace state so the URL remains intact for the user
             } else if (userParam) {
                 // Also support just user param, default name
-                const saved = localStorage.getItem('singapoly_user');
+                const saved = localStorage.getItem('singabldr_user');
                 let prevName = saved ? JSON.parse(saved).name : null;
                 currentUser = { phone: userParam, name: prevName || `Player_${userParam.slice(-4)}` };
-                localStorage.setItem('singapoly_user', JSON.stringify(currentUser));
+                localStorage.setItem('singabldr_user', JSON.stringify(currentUser));
             } else {
-                const saved = localStorage.getItem('singapoly_user');
+                const saved = localStorage.getItem('singabldr_user');
                 if (saved) {
                     try { currentUser = JSON.parse(saved); } catch(e) {}
                 }
@@ -602,7 +609,7 @@
                 magicUrl.searchParams.set('user', phone);
                 magicUrl.searchParams.set('name', name);
                 
-                const waText = `Welcome to Singapoly! 🎲\n\nHere is your magic login link. Click it to start playing:\n${magicUrl.toString()}`;
+                const waText = `Welcome to Singabldr! 🎲\n\nHere is your magic login link. Click it to start playing:\n${magicUrl.toString()}`;
                 const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
                 
                 window.open(waUrl, '_blank');
@@ -1549,12 +1556,22 @@
         }
 
         let syncSchedulerKey = null;
+        let syncTimeoutKey = null;
+
         function scheduleSyncState() {
             if (syncSchedulerKey) cancelAnimationFrame(syncSchedulerKey);
             syncSchedulerKey = requestAnimationFrame(() => {
                 syncStateFromYjs();
                 syncSchedulerKey = null;
             });
+        }
+
+        function scheduleSyncStateDeferred() {
+            if (syncTimeoutKey) clearTimeout(syncTimeoutKey);
+            syncTimeoutKey = setTimeout(() => {
+                scheduleSyncState();
+                syncTimeoutKey = null;
+            }, 100);
         }
 
         yGameState.observe(event => {
@@ -1582,7 +1599,7 @@
                     scheduleSyncState();
                     // Double check if scheduleSyncState successfully registered us. 
                     // If it did, it would have updated the Yjs array, so we should sync again to ensure DOM is perfect
-                    setTimeout(() => scheduleSyncState(), 100); 
+                    scheduleSyncStateDeferred();
                 }
             }
         });
@@ -1593,7 +1610,7 @@
                     pushStateToYjs();
                 } else {
                     scheduleSyncState();
-                    setTimeout(() => scheduleSyncState(), 100); 
+                    scheduleSyncStateDeferred();
                 }
             }
         });
@@ -2118,7 +2135,7 @@
         const tmpColor = new THREE.Color();
         
         // Init board select value based on URL
-        const currentBoardUrl = new URLSearchParams(window.location.search).get('board') || 'singapoly.json';
+        const currentBoardUrl = new URLSearchParams(window.location.search).get('board') || 'singabldr.json';
         Array.from(boardSelect.options).forEach(opt => {
             if (currentBoardUrl.includes(opt.value)) {
                 boardSelect.value = opt.value;
