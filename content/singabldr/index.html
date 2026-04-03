@@ -198,6 +198,37 @@
         }
         #dice-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 8px 0 #2d3436; }
         #dice-btn:active { transform: translateY(6px); box-shadow: 0 0 0 #2d3436; }
+        
+        .citizen-bubble {
+            position: absolute;
+            background: white;
+            border: 2px solid #2d3436;
+            border-radius: 12px;
+            padding: 6px 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            color: #2d3436;
+            pointer-events: none;
+            transform: translate(-50%, -100%);
+            z-index: 5;
+            box-shadow: 0 4px 0 rgba(45,52,54,0.1);
+            max-width: 150px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .citizen-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px 6px 0;
+            border-style: solid;
+            border-color: #2d3436 transparent transparent transparent;
+        }
+        
         #dice-btn:disabled { background: #b2bec3 !important; cursor: not-allowed; transform: translateY(6px); box-shadow: 0 0 0 #2d3436; filter: none;}
         
         #dice-result {
@@ -317,6 +348,7 @@
     </style>
 </head>
 <body>
+    <div id="chat-bubbles-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 5;"></div>
     <div id="login-screen" style="position: absolute; top:0; left:0; width:100%; height:100%; background: #A9E1FF; z-index: 1000; display: none; flex-direction: column; justify-content: center; align-items: center; font-family: 'Fredoka One', cursive;">
         <h1 style="color: #2d3436; font-size: 48px; text-shadow: 2px 2px 0px #fff; margin-bottom: 10px;">Singabldr</h1>
         <p style="color: #2d3436; font-size: 20px; margin-top: 0; margin-bottom: 30px;">Multiplayer Geospatial Board Game</p>
@@ -359,9 +391,29 @@
             <h3 style="margin-top: 0; color: #2d3436; font-size: 24px; text-align: center;">Settings</h3>
 
             <div style="margin-bottom: 15px;">
+                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Script:</label>
+                <select id="script-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
+                    <option value="auto">Auto (Default)</option>
+                    <option value="manual">Manual</option>
+                    <option value="local">Local file</option>
+                    <option value="url">URL</option>
+                </select>
+                
+                <input type="file" id="script-file-input" style="display: none;" accept=".json">
+                <button id="script-local-btn" style="display: none; width: 100%; background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive; margin-bottom: 8px;">Upload Local Script</button>
+                
+                <div id="script-url-container" style="display: none; flex-direction: row; gap: 5px; margin-bottom: 8px;">
+                    <input type="text" id="script-url-input" placeholder="https://..." style="flex: 1; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 14px; outline: none; min-width: 0;">
+                    <button id="script-url-btn" style="background: #00b894; color: white; border: 3px solid #2d3436; padding: 8px 12px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive;">Load</button>
+                </div>
+                
+                <p id="script-status" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Default AI behavior is active.</p>
+            </div>
+
+            <div style="margin-bottom: 15px;">
                 <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Play Mode:</label>
                 <select id="play-mode-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                    <option value="ai">Play with AI 🤖 (DeerFlow 🦌)</option>
+                    <option value="ai">Play with AI 🤖 (FlowinFish 🐟)</option>
                     <option value="human">Play with Human 👫🏻</option>
                 </select>
                 <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Switching play mode will reload the game.</p>
@@ -379,21 +431,12 @@
             <div style="margin-bottom: 15px;">
                 <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Theme:</label>
                 <select id="theme-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                    <option value="default">Default</option>
-                    <option value="cny">Chinese New Year</option>
-                    <option value="hari_raya">Hari Raya</option>
-                    <option value="mid_autumn">Mid-Autumn</option>
-                    <option value="deepavali">Deepavali</option>
-                    <option value="christmas">Christmas</option>
                 </select>
             </div>
 
             <div style="margin-bottom: 15px;">
                 <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Weather:</label>
                 <select id="weather-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                    <option value="sunshine">Sunshine ☀️</option>
-                    <option value="cloudy">Cloudy ☁️</option>
-                    <option value="stormy">Stormy ⛈️</option>
                 </select>
             </div>
 
@@ -410,9 +453,7 @@
 
     <div id="hud">
         <h3>Players</h3>
-        <div id="player-0" class="player-stat"><div class="color-box" style="background:#ff4757"></div> <span id="name-0">Player 1</span>: $<span id="cash-0">1500</span></div>
-        <div id="player-1" class="player-stat"><div class="color-box" style="background:#0984e3"></div> <span id="name-1">Player 2</span>: $<span id="cash-1">1500</span></div>
-        <div id="player-2" class="player-stat"><div class="color-box" style="background:#00b894"></div> <span id="name-2">Player 3</span>: $<span id="cash-2">1500</span></div>
+        <div id="players-list"></div>
     </div>
 
     <div id="ui">
@@ -428,20 +469,22 @@
         <div id="superagent-container" style="display: none; position: relative; pointer-events: auto; width: 100%;">
             <div id="superagent-panel" style="display: none; position: absolute; bottom: 100%; right: 0; margin-bottom: 10px; width: 300px; background: white; border: 4px solid #2d3436; border-radius: 16px; box-shadow: 8px 8px 0 rgba(0,0,0,0.1); flex-direction: column; overflow: hidden; font-family: 'Nunito', sans-serif;">
                 <div style="background: #a29bfe; color: white; padding: 10px 15px; font-family: 'Fredoka One', cursive; border-bottom: 3px solid #2d3436; display: flex; justify-content: space-between; align-items: center; text-transform: none;">
-                    <span>DeerFlow 🦌</span>
+                    <span>FlowinFish 🐟</span>
                     <button onclick="document.getElementById('superagent-panel').style.display='none'" style="background:none; border:none; color:white; cursor:pointer; font-size:16px;">✖</button>
                 </div>
                 <div id="superagent-chat" style="height: 250px; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 10px; background: #f1f2f6; text-align: left; text-transform: none;">
                     <div style="background: white; border: 2px solid #2d3436; padding: 8px 12px; border-radius: 12px; align-self: flex-start; max-width: 85%; font-size: 14px; font-weight: bold; color: #2d3436;">
-                        Hi! I'm your DeerFlow 🦌 agent. Tell me what to do!
+                        Hi! I'm your FlowinFish 🐟 Swarm Intelligence Engine agent. Tell me what to do!
                     </div>
                 </div>
                 <div style="display: flex; border-top: 3px solid #2d3436; background: white;">
-                    <input type="text" id="superagent-input" placeholder="Instruct agent..." style="flex: 1; padding: 10px; border: none; outline: none; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; text-transform: none;">
+                    <input type="file" id="superagent-file" style="display: none;" accept="text/plain, text/markdown, .csv, .json, .txt, .md, .html">
+                    <button id="superagent-upload-btn" style="background: #f1f2f6; color: #2d3436; border: none; border-right: 3px solid #2d3436; padding: 0 10px; cursor: pointer; font-size: 18px;" title="Upload context file">📎</button>
+                    <input type="text" id="superagent-input" placeholder="Instruct agent or paste URL..." style="flex: 1; padding: 10px; border: none; outline: none; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; text-transform: none;">
                     <button id="superagent-send" style="background: #a29bfe; color: white; border: none; border-left: 3px solid #2d3436; padding: 0 15px; cursor: pointer; font-weight: bold; font-family: 'Nunito', sans-serif; text-transform: none;">Send</button>
                 </div>
             </div>
-            <button id="superagent-btn" style="background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 15px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; font-weight: 900; box-shadow: 0 6px 0 #2d3436; font-family: 'Fredoka One', cursive; transition: all 0.1s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">DeerFlow 🦌</button>
+            <button id="superagent-btn" style="background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 15px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; font-weight: 900; box-shadow: 0 6px 0 #2d3436; font-family: 'Fredoka One', cursive; transition: all 0.1s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">FlowinFish 🐟</button>
         </div>
         <button id="dice-btn">Roll Dice 🎲</button>
         <div id="dice-result" style="pointer-events: none;">Red's Turn</div>
@@ -528,6 +571,9 @@
         // --- Environment Base ---
         const groundGroup = new THREE.Group();
         scene.add(groundGroup);
+        
+        let sceneData = null;
+        let globalVehicles = {}; // To store plane, heli, mrt, ship
 
         // Water Base
         const waterGeo = new THREE.BoxGeometry(800, 4, 600);
@@ -702,7 +748,7 @@
 
         const clouds = [];
         const cars = [];
-        const pedestrians = [];
+        const citizens = [];
         const customAnimations = [];
 
         // Outlines helper
@@ -785,7 +831,7 @@
             return group;
         }
 
-        function createPedestrian(colorHex) {
+        function createCitizen(colorHex) {
             const group = new THREE.Group();
             const matBody = new THREE.MeshLambertMaterial({color: colorHex});
             const matHead = new THREE.MeshLambertMaterial({color: '#ffeaa7'}); // Voxel skin tone
@@ -951,11 +997,16 @@
         }
 
         // Global Flying Vehicles
-        const plane = new THREE.Group();
+        let plane, heli, mrt, ship;
+        function initGlobalVehicles() {
+            if (!sceneData || !sceneData.vehicles) return;
+            const vData = Object.fromEntries(sceneData.vehicles.map(v => [v.type, v]));
+
         const matPWhite = new THREE.MeshLambertMaterial({color: 0xffffff});
         const matPRed = new THREE.MeshLambertMaterial({color: 0xff4757});
         const matPWin = new THREE.MeshLambertMaterial({color: 0x2d3436});
         
+        plane = new THREE.Group();
         const pBodyGeo = new THREE.BoxGeometry(4, 4, 16);
         const pBody = new THREE.Mesh(pBodyGeo, matPWhite);
         const pWingsGeo = new THREE.BoxGeometry(22, 1, 4);
@@ -969,9 +1020,10 @@
         plane.add(pBody, pWings, pTail, pFin, pCockpit);
         plane.traverse(c => {if(c.isMesh) { c.castShadow=true; addEdgeOutline(c, c.geometry); }});
         plane.position.set(-300, 100, -100);
+        plane.userData.speed = vData['plane']?.speed || 0.004;
         scene.add(plane);
 
-        const heli = new THREE.Group();
+        heli = new THREE.Group();
         const matHBody = new THREE.MeshLambertMaterial({color: '#fbc531'});
         const hBodyGeo = new THREE.BoxGeometry(4, 4, 6);
         const hBody = new THREE.Mesh(hBodyGeo, matHBody);
@@ -984,12 +1036,12 @@
         
         heli.add(hBody, hTail, rotorGroup);
         heli.traverse(c => {if(c.isMesh) { c.castShadow=true; addEdgeOutline(c, c.geometry); }});
-        heli.userData = { rotor: rotorGroup };
+        heli.userData = { rotor: rotorGroup, speed: vData['heli']?.speed || 0.05 };
         heli.position.set(0, 60, 0);
         scene.add(heli);
 
         // Global MRT Train
-        const mrt = new THREE.Group();
+        mrt = new THREE.Group();
         const matMrtBody = new THREE.MeshLambertMaterial({color: '#dfe6e9'});
         const matMrtStripe = new THREE.MeshLambertMaterial({color: '#d63031'}); // red stripe
         const matMrtWin = new THREE.MeshLambertMaterial({color: '#2d3436'});
@@ -1007,11 +1059,12 @@
             car.position.z = i * -13; // spacing between cars
             mrt.add(car);
         }
+        mrt.userData.speed = vData['mrt']?.speed || 0.008;
         mrt.position.set(0, 0.5, 0);
         scene.add(mrt);
 
         // Global Container Ship
-        const ship = new THREE.Group();
+        ship = new THREE.Group();
         const matShipHull = new THREE.MeshLambertMaterial({color: '#2d3436'});
         const matShipDeck = new THREE.MeshLambertMaterial({color: '#b2bec3'});
         const matShipBridge = new THREE.MeshLambertMaterial({color: '#ffffff'});
@@ -1040,7 +1093,14 @@
         }
         ship.traverse(c => {if(c.isMesh) { c.castShadow=true; addEdgeOutline(c, c.geometry); }});
         ship.position.set(-200, -2, 150);
+        ship.userData.speed = vData['ship']?.speed || 0.002;
         scene.add(ship);
+        
+        globalVehicles.plane = plane;
+        globalVehicles.heli = heli;
+        globalVehicles.mrt = mrt;
+        globalVehicles.ship = ship;
+        }
 
         // Load the JSON File (Driven by URL param defined above)
         const boardUrl = new URL(boardFile, window.location.href).href;
@@ -1050,7 +1110,8 @@
             return res.json();
         })
         .then(data => {
-            const sceneData = data.scene;
+            sceneData = data.scene;
+            initGlobalVehicles();
             
             document.getElementById('game-title').innerText = data.name || "Monopoly";
             document.getElementById('game-subtitle').innerText = data.subtitle || "Geospatial Voxel World";
@@ -1070,8 +1131,40 @@
             voxelSize = sceneData.grid.voxelSize;
             
             if (sceneData.colors && sceneData.colors.groups) groupColors = sceneData.colors.groups;
-            if (sceneData.players) players = sceneData.players;
+            if (sceneData.players) {
+                players = sceneData.players;
+                const playersList = document.getElementById('players-list');
+                playersList.innerHTML = '';
+                players.forEach((p, idx) => {
+                    const pDiv = document.createElement('div');
+                    pDiv.id = `player-${idx}`;
+                    pDiv.className = 'player-stat';
+                    pDiv.innerHTML = `<div class="color-box" style="background:${p.css}"></div> <span id="name-${idx}">${p.name}</span>: $<span id="cash-${idx}">${p.cash}</span>`;
+                    playersList.appendChild(pDiv);
+                });
+            }
             
+            if (sceneData.themes) {
+                const themeSelect = document.getElementById('theme-select');
+                themeSelect.innerHTML = '';
+                Object.keys(sceneData.themes).forEach(t => {
+                    const opt = document.createElement('option');
+                    opt.value = t;
+                    opt.textContent = t.charAt(0).toUpperCase() + t.slice(1).replace('_', ' ');
+                    themeSelect.appendChild(opt);
+                });
+            }
+            if (sceneData.weathers) {
+                const weatherSelect = document.getElementById('weather-select');
+                weatherSelect.innerHTML = '';
+                Object.keys(sceneData.weathers).forEach(w => {
+                    const opt = document.createElement('option');
+                    opt.value = w;
+                    opt.textContent = w.charAt(0).toUpperCase() + w.slice(1);
+                    weatherSelect.appendChild(opt);
+                });
+            }
+
             // Generate Ground
             cols = Math.floor(gridWidth / voxelSize);
             rows = Math.floor(gridHeight / voxelSize);
@@ -1237,7 +1330,8 @@
 
             const treeMat = new THREE.MeshLambertMaterial({ color: '#2ecc71' }); 
             const trunkMat = new THREE.MeshLambertMaterial({ color: '#d35400' }); 
-            for(let i=0; i<80; i++) {
+            const treeCount = (sceneData.nature && sceneData.nature.trees) ? sceneData.nature.trees.count : 80;
+            for(let i=0; i<treeCount; i++) {
                 const tx = (Math.random() - 0.5) * gridWidth;
                 const tz = (Math.random() - 0.5) * gridHeight;
                 const lon = minLon + (tx + gridWidth/2)/gridWidth * lonRange;
@@ -1269,7 +1363,8 @@
             }
 
             const cloudMat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
-            for(let i=0; i<20; i++) {
+            const cloudCount = (sceneData.nature && sceneData.nature.clouds) ? sceneData.nature.clouds.count : 20;
+            for(let i=0; i<cloudCount; i++) {
                 const cloud = new THREE.Group();
                 for(let j=0; j<4; j++) {
                     const sGeo = new THREE.BoxGeometry(10+Math.random()*10, 6+Math.random()*4, 10+Math.random()*10);
@@ -1304,18 +1399,23 @@
                 speed: 0.008
             };
 
-            const pedColors = sceneData.colors.pedestrians || ['#81ecec', '#fab1a0', '#74b9ff', '#a29bfe', '#ffeaa7'];
-            for(let i=0; i<30; i++) {
-                const pedGroup = createPedestrian(pedColors[i%pedColors.length]);
-                Object.assign(pedGroup.userData, {
+            const citizenColors = sceneData.colors.citizens || ['#81ecec', '#fab1a0', '#74b9ff', '#a29bfe', '#ffeaa7'];
+            const citizenCount = sceneData.nature?.citizens?.count || 30;
+            const citizenSpeedBase = sceneData.nature?.citizens?.speed || 0.001;
+            
+            for(let i=0; i<citizenCount; i++) {
+                const citizenGroup = createCitizen(citizenColors[i%citizenColors.length]);
+                Object.assign(citizenGroup.userData, {
                     currentNode: Math.floor(Math.random() * boardSpaces.length),
                     progress: Math.random(),
-                    speed: 0.001 + Math.random() * 0.001,
+                    speed: citizenSpeedBase + Math.random() * 0.001,
+                    baseSpeed: citizenSpeedBase + Math.random() * 0.001,
                     bounceOffset: Math.random() * Math.PI * 2,
-                    sideOffset: (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 2)
+                    sideOffset: (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 2),
+                    sentiment: 'neutral'
                 });
-                groundGroup.add(pedGroup);
-                pedestrians.push(pedGroup);
+                groundGroup.add(citizenGroup);
+                citizens.push(citizenGroup);
             }
 
             players.forEach((p) => {
@@ -1373,7 +1473,7 @@
 
         function registerPlayerIfNeeded(yPlayers) {
             let changed = false;
-            let updatedPlayers = JSON.parse(JSON.stringify(yPlayers));
+            let updatedPlayers = yPlayers.map(p => ({ ...p }));
 
             // Step 1: Claim user's slot first
             if (!currentUser) {
@@ -1426,10 +1526,10 @@
                 for (let i = 0; i < 3; i++) {
                     if (i !== myPlayerIndex && (!updatedPlayers[i].phone || !updatedPlayers[i].phone.startsWith('ai-'))) {
                         updatedPlayers[i].phone = `ai-${i}`;
-                        updatedPlayers[i].name = `DeerFlow 🦌 ${i}`;
+                        updatedPlayers[i].name = `FlowinFish 🐟 ${i}`;
                         if (players[i]) {
                             players[i].phone = `ai-${i}`;
-                            players[i].name = `DeerFlow 🦌 ${i}`;
+                            players[i].name = `FlowinFish 🐟 ${i}`;
                         }
                         changed = true;
                     }
@@ -1548,11 +1648,15 @@
             sharedSyncSchedulerKey = setTimeout(() => {
                 syncStateFromYjs();
                 sharedSyncSchedulerKey = null;
-            }, 50); // Coalesced debounce across runtime & persistence subscriptions
+            }, 50);
         }
 
         function scheduleSyncStateDeferred() {
-            scheduleSyncState();
+            if (sharedSyncSchedulerKey) clearTimeout(sharedSyncSchedulerKey);
+            sharedSyncSchedulerKey = setTimeout(() => {
+                syncStateFromYjs();
+                sharedSyncSchedulerKey = null;
+            }, 50);
         }
 
         yGameState.observe(event => {
@@ -1621,7 +1725,7 @@
                 const nameEl = hudCache.name[i];
                 if (nameEl) {
                     let expectedHtml = p.name;
-                    if (p.name && p.name.includes('DeerFlow')) {
+                    if (p.name && p.name.includes('FlowinFish')) {
                         expectedHtml = `<a href="https://github.com/bytedance/deer-flow.git" target="_blank" style="color: inherit; text-decoration: underline;">${p.name}</a>`;
                     }
                     if (currentUser && p.phone === currentUser.phone) {
@@ -1800,7 +1904,7 @@
                     const waitMsg = document.createElement('p');
                     waitMsg.style.fontWeight = 'bold';
                     waitMsg.style.color = '#636e72';
-                    waitMsg.innerText = "DeerFlow 🦌 is thinking...";
+                    waitMsg.innerText = "FlowinFish 🐟 is thinking...";
                     actionsEl.appendChild(waitMsg);
 
                     setTimeout(() => {
@@ -2018,10 +2122,117 @@
         const saInput = document.getElementById('superagent-input');
         const saSend = document.getElementById('superagent-send');
         const saChat = document.getElementById('superagent-chat');
+        const saUploadBtn = document.getElementById('superagent-upload-btn');
+        const saFileInput = document.getElementById('superagent-file');
+        const bubblesContainer = document.getElementById('chat-bubbles-container');
 
         saBtn.addEventListener('click', () => {
             saPanel.style.display = saPanel.style.display === 'none' ? 'flex' : 'none';
         });
+
+        function showCitizenBubble(cit, text, duration = 5000) {
+            if (!bubblesContainer || !cit) return;
+            if (cit.userData.bubbleEl) {
+                cit.userData.bubbleEl.remove();
+            }
+            const el = document.createElement('div');
+            el.className = 'citizen-bubble';
+            el.innerText = text;
+            bubblesContainer.appendChild(el);
+            cit.userData.bubbleEl = el;
+            cit.userData.bubbleExpiry = Date.now() + duration;
+            setTimeout(() => el.style.opacity = 1, 10);
+        }
+
+        function triggerCitizenReactions(contentSnippet) {
+            if (!citizens || citizens.length === 0) return;
+            const snippet = contentSnippet.length > 25 ? contentSnippet.substring(0, 25).trim() + "..." : contentSnippet;
+            const activeCitizens = [...citizens].sort(() => 0.5 - Math.random()).slice(0, 3);
+            activeCitizens.forEach(cit => showCitizenBubble(cit, `Did you hear about "${snippet}"?`));
+        }
+
+        async function streamSimulationScript(scriptData) {
+            let lastTimestamp = 0;
+            
+            for (const step of scriptData) {
+                const delayMs = (step.timestamp - lastTimestamp) * 1000;
+                
+                await new Promise(resolve => setTimeout(resolve, delayMs));
+                
+                if (step.action === 'log') {
+                    console.log(`[FlowinFish Script] ${step.message}`);
+                } else if (step.action === 'chat') {
+                    addChatMessage(step.message, true);
+                } else if (step.action === 'sentiment') {
+                    if (step.message) addChatMessage(step.message, false);
+                    if (step.value === 'happy') {
+                        handleSuperAgentCommand("make citizens happy", true);
+                    } else if (step.value === 'neutral') {
+                        handleSuperAgentCommand("make citizens normal", true);
+                    }
+                } else if (step.action === 'bubble') {
+                    if (citizens && citizens.length > 0) {
+                        const activeCit = citizens[Math.floor(Math.random() * citizens.length)];
+                        showCitizenBubble(activeCit, step.message);
+                    }
+                } else if (step.action === 'command') {
+                    handleSuperAgentCommand(step.value, true);
+                }
+                
+                lastTimestamp = step.timestamp;
+            }
+        }
+
+        if (saUploadBtn && saFileInput) {
+            saUploadBtn.addEventListener('click', () => {
+                saFileInput.click();
+            });
+
+            saFileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    const content = e.target.result;
+                    
+                    if (file.name.endsWith('.json')) {
+                        try {
+                            const scriptData = JSON.parse(content);
+                            if (Array.isArray(scriptData)) {
+                                addChatMessage(`📎 Uploaded script: ${file.name}. Starting simulation...`, true);
+                                await streamSimulationScript(scriptData);
+                                return;
+                            }
+                        } catch (err) {
+                            console.error("JSON parsing error:", err);
+                        }
+                    }
+                    
+                    addChatMessage(`📎 Uploaded: ${file.name}`, true);
+                    
+                    // Simple regex heuristic mock for FlowinFish reading a file
+                    setTimeout(() => {
+                        const lowerContent = content.toLowerCase();
+                        triggerCitizenReactions(content);
+                        if (lowerContent.includes('storm') || lowerContent.includes('rain') || lowerContent.includes('typhoon')) {
+                            handleSuperAgentCommand("change weather to stormy", true);
+                            addChatMessage(`The document "${file.name}" mentioned bad weather. I've updated the city!`, false);
+                        } else if (lowerContent.includes('happy') || lowerContent.includes('celebrate') || lowerContent.includes('party') || lowerContent.includes('success')) {
+                            handleSuperAgentCommand("make citizens happy", true);
+                            addChatMessage(`The news in "${file.name}" is very positive! The citizens are celebrating! 🎉`, false);
+                        } else if (lowerContent.includes('stop') || lowerContent.includes('halt') || lowerContent.includes('breakdown')) {
+                            handleSuperAgentCommand("stop train", true);
+                            addChatMessage(`The report "${file.name}" mentioned a breakdown. I've halted the MRT.`, false);
+                        } else {
+                            addChatMessage(`I've read "${file.name}". The contents seem neutral. The city will continue as normal.`, false);
+                        }
+                    }, 800);
+                };
+                reader.readAsText(file);
+                saFileInput.value = ''; // Reset input
+            });
+        }
 
         function addChatMessage(text, isUser) {
             const msg = document.createElement('div');
@@ -2047,15 +2258,45 @@
             saChat.scrollTop = saChat.scrollHeight;
         }
 
-        async function handleSuperAgentCommand(cmd) {
-            addChatMessage(cmd, true);
+        async function handleSuperAgentCommand(cmd, isAutoTrigger = false) {
+            if (!isAutoTrigger) addChatMessage(cmd, true);
             const lowerCmd = cmd.toLowerCase();
             
-            // Basic Natural Language processing simulation for "deer-flow" SuperAgent
-            // In a full integration, this would call DeerFlow's /api/chat endpoint
+            if (lowerCmd.includes('run script') || lowerCmd.includes('start simulation')) {
+                try {
+                    const resp = await fetch('script-0000.json');
+                    if (resp.ok) {
+                        const scriptData = await resp.json();
+                        addChatMessage("Starting AI Agent Boom Simulation...", false);
+                        streamSimulationScript(scriptData);
+                    } else {
+                        addChatMessage("Sorry, I couldn't find the simulation script.", false);
+                    }
+                } catch(e) {
+                    addChatMessage("Error loading simulation script.", false);
+                }
+                return;
+            }
+            
+            const urlMatch = lowerCmd.match(/https?:\/\/[^\s]+/);
+            if (urlMatch && !isAutoTrigger) {
+                const url = urlMatch[0];
+                setTimeout(() => {
+                    const domain = url.split('//')[1].split('/')[0];
+                    const snippet = `I read an article from ${domain}`;
+                    triggerCitizenReactions(snippet);
+                    addChatMessage(`I've analyzed the contents of the URL. The citizens are talking about it!`, false);
+                }, 1000);
+                return;
+            }
+            
+            // Basic Natural Language processing simulation for "FlowinFish" SuperAgent
+            // In a full integration, this would call FlowinFish's /api/chat endpoint
             
             setTimeout(() => {
-                if (lowerCmd.includes('roll') || lowerCmd.includes('dice')) {
+                const checkCommand = (type) => sceneData?.commands?.[type]?.some(kw => lowerCmd.includes(kw));
+
+                if (checkCommand('roll')) {
                     if (myPlayerIndex !== currentPlayerIndex) {
                         addChatMessage("It's not your turn right now!", false);
                     } else if (isMoving) {
@@ -2064,7 +2305,7 @@
                         addChatMessage("Rolling the dice for you! 🎲", false);
                         diceBtn.click();
                     }
-                } else if (lowerCmd.includes('buy') || lowerCmd.includes('purchase')) {
+                } else if (checkCommand('buy')) {
                     const buyBtn = document.querySelector('.btn-buy');
                     if (buyBtn && document.getElementById('ui').style.display !== 'none') {
                         addChatMessage("Buying the property for you! 💰", false);
@@ -2072,7 +2313,7 @@
                     } else {
                         addChatMessage("There is no property to buy right now.", false);
                     }
-                } else if (lowerCmd.includes('pass') || lowerCmd.includes('skip')) {
+                } else if (checkCommand('pass')) {
                     const passBtn = document.querySelector('.btn-pass');
                     if (passBtn && document.getElementById('ui').style.display !== 'none') {
                         addChatMessage("Passing on this property. ⏭️", false);
@@ -2080,7 +2321,7 @@
                     } else {
                         addChatMessage("Nothing to pass right now.", false);
                     }
-                } else if (lowerCmd.includes('end') || lowerCmd.includes('finish')) {
+                } else if (checkCommand('end')) {
                     const endBtn = document.querySelector('.btn-end');
                     if (endBtn && document.getElementById('ui').style.display !== 'none') {
                         addChatMessage("Ending your turn. 🛑", false);
@@ -2088,15 +2329,71 @@
                     } else {
                         addChatMessage("You can't end your turn right now.", false);
                     }
-                } else if (lowerCmd.includes('status') || lowerCmd.includes('cash') || lowerCmd.includes('money')) {
+                } else if (checkCommand('status')) {
                     const p = players[myPlayerIndex];
                     if (p) {
                         addChatMessage(`You have $${p.cash} left. You are on space ${p.pos}.`, false);
                     } else {
                         addChatMessage("I can't find your player data.", false);
                     }
+                } else if (checkCommand('stop') && checkCommand('train')) {
+                    if (mrt) { mrt.userData.speed = 0; addChatMessage("Stopping the MRT train! 🛑🚂", false); }
+                } else if (checkCommand('start') && checkCommand('train')) {
+                    if (mrt) { mrt.userData.speed = sceneData?.vehicles?.find(v => v.type === 'mrt')?.speed || 0.008; addChatMessage("Starting the MRT train! 🟢🚂", false); }
+                } else if (checkCommand('faster') && checkCommand('train')) {
+                    if (mrt) { mrt.userData.speed *= 2; addChatMessage("Speeding up the MRT train! 🚄💨", false); }
+                } else if (checkCommand('faster') && checkCommand('plane')) {
+                    if (plane) { plane.userData.speed *= 2; addChatMessage("Speeding up the airplane! ✈️💨", false); }
+                } else if (checkCommand('attack')) {
+                    citizens.forEach(cit => { cit.userData.sentiment = 'happy'; cit.userData.speed = cit.userData.baseSpeed * 4; });
+                    addChatMessage("AI Bots are attacking! Citizens are running! 🤖", false);
+                } else if (checkCommand('build')) {
+                    addChatMessage("Building more high-rise structures! 🏗️", false);
+                } else if (checkCommand('rocket')) {
+                    addChatMessage("Launching rocket! 🚀", false);
+                } else if (checkCommand('stop') && checkCommand('plane')) {
+                    if (plane) { plane.userData.speed = 0; addChatMessage("Stopping the airplane! 🛑✈️", false); }
+                } else if (checkCommand('start') && checkCommand('plane')) {
+                    if (plane) { plane.userData.speed = sceneData?.vehicles?.find(v => v.type === 'plane')?.speed || 0.004; addChatMessage("Starting the airplane! 🟢✈️", false); }
+                } else if (checkCommand('stop') && checkCommand('heli')) {
+                    if (heli) { heli.userData.speed = 0; addChatMessage("Stopping the helicopter! 🛑🚁", false); }
+                } else if (checkCommand('start') && checkCommand('heli')) {
+                    if (heli) { heli.userData.speed = sceneData?.vehicles?.find(v => v.type === 'heli')?.speed || 0.05; addChatMessage("Starting the helicopter! 🟢🚁", false); }
+                } else if (checkCommand('stop') && checkCommand('ship')) {
+                    if (ship) { ship.userData.speed = 0; addChatMessage("Stopping the ship! 🛑🚢", false); }
+                } else if (checkCommand('start') && checkCommand('ship')) {
+                    if (ship) { ship.userData.speed = sceneData?.vehicles?.find(v => v.type === 'ship')?.speed || 0.002; addChatMessage("Starting the ship! 🟢🚢", false); }
+                } else if (checkCommand('weather')) {
+                    let handled = false;
+                    if (sceneData?.weathers) {
+                        for (let w of Object.keys(sceneData.weathers)) {
+                            if (lowerCmd.includes(w)) {
+                                document.getElementById('weather-select').value = w;
+                                applyWeather();
+                                addChatMessage(`Changing weather to ${w}! 🌤️`, false);
+                                handled = true; break;
+                            }
+                        }
+                    }
+                    if (!handled && sceneData?.themes) {
+                        for (let t of Object.keys(sceneData.themes)) {
+                            if (lowerCmd.includes(t.replace('_', ' '))) {
+                                document.getElementById('theme-select').value = t;
+                                applyTheme();
+                                addChatMessage(`Changing theme to ${t.replace('_', ' ')}! 🎨`, false);
+                                handled = true; break;
+                            }
+                        }
+                    }
+                    if (!handled) addChatMessage("I couldn't find that specific weather or theme. Try 'change weather to stormy' or 'change theme to christmas'.", false);
+                } else if (checkCommand('happy')) {
+                    citizens.forEach(cit => { cit.userData.sentiment = 'happy'; cit.userData.speed = cit.userData.baseSpeed * (sceneData?.animations?.happy?.speedMultiplier || 2); });
+                    addChatMessage(sceneData?.animations?.happy?.message || "The citizens are now happy and celebrating! 🎉🥳", false);
+                } else if (checkCommand('neutral')) {
+                    citizens.forEach(cit => { cit.userData.sentiment = 'neutral'; cit.userData.speed = cit.userData.baseSpeed * (sceneData?.animations?.neutral?.speedMultiplier || 1); });
+                    addChatMessage(sceneData?.animations?.neutral?.message || "The citizens have calmed down. 🚶🏻‍♂️", false);
                 } else {
-                    addChatMessage("I'm a SuperAgent! Try asking me to 'roll dice', 'buy property', 'pass', 'end turn', or check 'status'.", false);
+                    addChatMessage("I'm a SuperAgent! Try asking me to 'roll dice', 'buy property', 'stop train', 'start plane', 'change weather to stormy', 'make citizens happy', or check 'status'.", false);
                 }
             }, 600);
         }
@@ -2147,24 +2444,160 @@
             });
         }
         
+        // --- Script Execution Logic ---
+        const scriptSelect = document.getElementById('script-select');
+        const scriptFileInput = document.getElementById('script-file-input');
+        const scriptLocalBtn = document.getElementById('script-local-btn');
+        const scriptUrlContainer = document.getElementById('script-url-container');
+        const scriptUrlInput = document.getElementById('script-url-input');
+        const scriptUrlBtn = document.getElementById('script-url-btn');
+        const scriptStatus = document.getElementById('script-status');
+        
+        let customScriptMode = 'auto'; // auto, manual, local, url
+        let customScriptInterval = null;
+
+        if (scriptSelect) {
+            scriptSelect.addEventListener('change', (e) => {
+                customScriptMode = e.target.value;
+                scriptLocalBtn.style.display = customScriptMode === 'local' ? 'block' : 'none';
+                scriptUrlContainer.style.display = customScriptMode === 'url' ? 'flex' : 'none';
+                
+                if (customScriptMode === 'auto') {
+                    scriptStatus.innerText = "Default AI behavior is active.";
+                    scriptStatus.style.color = "#00b894";
+                    clearInterval(customScriptInterval);
+                    
+                    const runAutoScript = async () => {
+                        try {
+                            const resp = await fetch('script-singabuildr-0000.json');
+                            if (resp.ok && customScriptMode === 'auto') {
+                                const scriptData = await resp.json();
+                                if (Array.isArray(scriptData)) {
+                                    addChatMessage("Running auto simulation script...", false);
+                                    
+                                    // Make sure panel opens so user can see it!
+                                    if (saPanel.style.display === 'none') {
+                                        saPanel.style.display = 'flex';
+                                    }
+                                    
+                                    await streamSimulationScript(scriptData);
+                                    
+                                    // If still in auto mode after the script finishes, wait 5 seconds and loop again
+                                    if (customScriptMode === 'auto') {
+                                        setTimeout(() => {
+                                            if (customScriptMode === 'auto') runAutoScript();
+                                        }, 5000);
+                                    }
+                                }
+                            }
+                        } catch(e) {
+                            console.error("Auto script loop failed", e);
+                        }
+                    };
+                    
+                    // Start auto loop
+                    runAutoScript();
+                } else if (customScriptMode === 'manual') {
+                    scriptStatus.innerText = "Manual mode: Waiting for chat input.";
+                    scriptStatus.style.color = "#636e72";
+                    clearInterval(customScriptInterval);
+                } else if (customScriptMode === 'local') {
+                    scriptStatus.innerText = "Select a local JSON script to execute.";
+                    scriptStatus.style.color = "#636e72";
+                    clearInterval(customScriptInterval);
+                } else if (customScriptMode === 'url') {
+                    scriptStatus.innerText = "Enter a URL to a JSON script.";
+                    scriptStatus.style.color = "#636e72";
+                    clearInterval(customScriptInterval);
+                }
+            });
+            
+            // Trigger auto on load
+            scriptSelect.dispatchEvent(new Event('change'));
+        }
+
+        if (scriptLocalBtn && scriptFileInput) {
+            scriptLocalBtn.addEventListener('click', () => {
+                scriptFileInput.click();
+            });
+            
+            scriptFileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    try {
+                        const scriptData = JSON.parse(e.target.result);
+                        if (Array.isArray(scriptData)) {
+                            scriptStatus.innerText = `Running local script: ${file.name}`;
+                            scriptStatus.style.color = "#0984e3";
+                            document.getElementById('settings-modal').style.display = 'none';
+                            addChatMessage(`Running script: ${file.name}...`, false);
+                            await streamSimulationScript(scriptData);
+                            scriptStatus.innerText = `Finished running ${file.name}`;
+                        } else {
+                            scriptStatus.innerText = "Invalid JSON array.";
+                            scriptStatus.style.color = "#d63031";
+                        }
+                    } catch (err) {
+                        scriptStatus.innerText = "Error parsing JSON.";
+                        scriptStatus.style.color = "#d63031";
+                    }
+                };
+                reader.readAsText(file);
+                scriptFileInput.value = '';
+            });
+        }
+        
+        if (scriptUrlBtn && scriptUrlInput) {
+            scriptUrlBtn.addEventListener('click', async () => {
+                const url = scriptUrlInput.value.trim();
+                if (!url) return;
+                
+                scriptStatus.innerText = "Fetching script...";
+                scriptStatus.style.color = "#636e72";
+                
+                try {
+                    const resp = await fetch(url);
+                    if (resp.ok) {
+                        const scriptData = await resp.json();
+                        if (Array.isArray(scriptData)) {
+                            scriptStatus.innerText = `Running remote script.`;
+                            scriptStatus.style.color = "#0984e3";
+                            document.getElementById('settings-modal').style.display = 'none';
+                            addChatMessage(`Running script from URL...`, false);
+                            await streamSimulationScript(scriptData);
+                            scriptStatus.innerText = `Finished running remote script.`;
+                        } else {
+                            scriptStatus.innerText = "Invalid JSON array.";
+                            scriptStatus.style.color = "#d63031";
+                        }
+                    } else {
+                        scriptStatus.innerText = "Failed to fetch URL.";
+                        scriptStatus.style.color = "#d63031";
+                    }
+                } catch (e) {
+                    scriptStatus.innerText = "Network error or CORS issue.";
+                    scriptStatus.style.color = "#d63031";
+                }
+            });
+        }
+        
         function applyTheme() {
-            if (!groundIMesh) return;
+            if (!groundIMesh || !sceneData || !sceneData.themes) return;
             const t = themeSelect.value;
+            const themeConfig = sceneData.themes[t];
+            if (!themeConfig) return;
+
             for(let i=0; i<voxelCount; i++) {
                 tmpColor.setHex(voxelOriginalColors[i]);
                 
-                if(t === 'cny') {
-                    tmpColor.lerp(new THREE.Color('#ff4757'), 0.4);
-                } else if(t === 'hari_raya') {
-                    tmpColor.lerp(new THREE.Color('#2ecc71'), 0.4);
-                } else if(t === 'mid_autumn') {
-                    tmpColor.lerp(new THREE.Color('#f39c12'), 0.4);
-                } else if(t === 'deepavali') {
-                    tmpColor.lerp(new THREE.Color('#9b59b6'), 0.4);
-                } else if(t === 'christmas') {
-                    // Snow top layer approximation
+                if (themeConfig.snow) {
                     if(Math.random() > 0.5) tmpColor.setHex(0xffffff);
-                    else tmpColor.lerp(new THREE.Color('#ffffff'), 0.6);
+                    else tmpColor.lerp(new THREE.Color(themeConfig.color), themeConfig.mix);
+                } else if (themeConfig.mix > 0) {
+                    tmpColor.lerp(new THREE.Color(themeConfig.color), themeConfig.mix);
                 }
                 
                 groundIMesh.setColorAt(i, tmpColor);
@@ -2173,31 +2606,19 @@
         }
 
         function applyWeather() {
+            if (!sceneData || !sceneData.weathers) return;
             const w = weatherSelect.value;
-            if(w === 'sunshine') {
-                scene.background.set('#A9E1FF');
-                scene.fog.color.set('#A9E1FF');
-                scene.fog.density = 0.0018;
-                dirLight.intensity = 0.4;
-                ambientLight.intensity = 0.7;
-            } else if(w === 'cloudy') {
-                scene.background.set('#8E9CA3');
-                scene.fog.color.set('#8E9CA3');
-                scene.fog.density = 0.0025;
-                dirLight.intensity = 0.15;
-                ambientLight.intensity = 0.5;
-            } else if(w === 'stormy') {
-                scene.background.set('#2d3436');
-                scene.fog.color.set('#2d3436');
-                scene.fog.density = 0.0035;
-                dirLight.intensity = 0.05;
-                ambientLight.intensity = 0.3;
-            }
+            const wConfig = sceneData.weathers[w];
+            if (!wConfig) return;
+            
+            scene.background.set(wConfig.bg);
+            scene.fog.color.set(wConfig.bg);
+            scene.fog.density = wConfig.fogDensity;
+            dirLight.intensity = wConfig.dirLight;
+            ambientLight.intensity = wConfig.ambient;
         }
 
         // Auto-change Theme and Weather every X seconds
-        const themesList = ['default', 'cny', 'hari_raya', 'mid_autumn', 'deepavali', 'christmas'];
-        const weatherList = ['sunshine', 'cloudy', 'stormy'];
         let currentThemeIdx = 0;
         let currentWeatherIdx = 0;
         let autoChangeTimer = null;
@@ -2207,7 +2628,10 @@
         function startAutoChange() {
             if (autoChangeTimer) clearInterval(autoChangeTimer);
             const intervalSecs = parseInt(intervalInput.value, 10);
-            if (intervalSecs > 0) {
+            if (intervalSecs > 0 && sceneData && sceneData.themes && sceneData.weathers) {
+                const themesList = Object.keys(sceneData.themes);
+                const weatherList = Object.keys(sceneData.weathers);
+                
                 autoChangeTimer = setInterval(() => {
                     currentThemeIdx = (currentThemeIdx + 1) % themesList.length;
                     currentWeatherIdx = (currentWeatherIdx + 1) % weatherList.length;
@@ -2261,42 +2685,48 @@
             });
 
             // Airplane Fly (Circular Path with Banking)
-            plane.userData.angle = (plane.userData.angle || 0) + 0.004;
-            const pRadius = 220;
-            plane.position.x = Math.cos(plane.userData.angle) * pRadius;
-            plane.position.z = Math.sin(plane.userData.angle) * pRadius;
-            plane.position.y = 120 + Math.sin(elapsedTime) * 10;
-            // Point tangent to the circle and bank inwards
-            plane.rotation.y = -plane.userData.angle + Math.PI; 
-            plane.rotation.z = Math.PI / 8;
+            if (plane) {
+                plane.userData.angle = (plane.userData.angle || 0) + (plane.userData.speed || 0);
+                const pRadius = 220;
+                plane.position.x = Math.cos(plane.userData.angle) * pRadius;
+                plane.position.z = Math.sin(plane.userData.angle) * pRadius;
+                plane.position.y = 120 + Math.sin(elapsedTime) * 10;
+                // Point tangent to the circle and bank inwards
+                plane.rotation.y = -plane.userData.angle + Math.PI; 
+                plane.rotation.z = Math.PI / 8;
+            }
 
             // Helicopter hover & patrol
-            heli.userData.rotor.rotation.y += 0.5;
-            if (!heli.userData.targetPos) {
-                heli.userData.targetPos = new THREE.Vector3((Math.random() - 0.5) * 300, 60 + Math.random() * 30, (Math.random() - 0.5) * 200);
+            if (heli) {
+                heli.userData.rotor.rotation.y += (heli.userData.speed || 0) * 10;
+                if (!heli.userData.targetPos) {
+                    heli.userData.targetPos = new THREE.Vector3((Math.random() - 0.5) * 300, 60 + Math.random() * 30, (Math.random() - 0.5) * 200);
+                }
+                const hDir = new THREE.Vector3().subVectors(heli.userData.targetPos, heli.position);
+                if (hDir.length() < 5) {
+                    heli.userData.targetPos = new THREE.Vector3((Math.random() - 0.5) * 300, 60 + Math.random() * 30, (Math.random() - 0.5) * 200);
+                } else {
+                    hDir.normalize();
+                    heli.position.addScaledVector(hDir, heli.userData.speed || 0);
+                    const targetRot = Math.atan2(hDir.x, hDir.z);
+                    let rotDiff = targetRot - heli.rotation.y;
+                    while (rotDiff > Math.PI) rotDiff -= Math.PI * 2;
+                    while (rotDiff < -Math.PI) rotDiff += Math.PI * 2;
+                    heli.rotation.y += rotDiff * 0.05;
+                    heli.rotation.x = -0.1; // tilt slightly forward
+                }
+                heli.position.y += Math.sin(elapsedTime * 3) * 0.2; // bob slightly
             }
-            const hDir = new THREE.Vector3().subVectors(heli.userData.targetPos, heli.position);
-            if (hDir.length() < 5) {
-                heli.userData.targetPos = new THREE.Vector3((Math.random() - 0.5) * 300, 60 + Math.random() * 30, (Math.random() - 0.5) * 200);
-            } else {
-                hDir.normalize();
-                heli.position.addScaledVector(hDir, 0.5);
-                const targetRot = Math.atan2(hDir.x, hDir.z);
-                let rotDiff = targetRot - heli.rotation.y;
-                while (rotDiff > Math.PI) rotDiff -= Math.PI * 2;
-                while (rotDiff < -Math.PI) rotDiff += Math.PI * 2;
-                heli.rotation.y += rotDiff * 0.05;
-                heli.rotation.x = -0.1; // tilt slightly forward
-            }
-            heli.position.y += Math.sin(elapsedTime * 3) * 0.2; // bob slightly
 
             // Container Ship patrol
-            ship.userData.angle = (ship.userData.angle || 0) + 0.002;
-            const sRadius = 300;
-            ship.position.x = Math.cos(ship.userData.angle) * sRadius;
-            ship.position.z = Math.sin(ship.userData.angle) * sRadius;
-            ship.rotation.y = -ship.userData.angle + Math.PI; // Look tangent
-            ship.position.y = -3 + Math.sin(elapsedTime * 2) * 0.5; // bob on water
+            if (ship) {
+                ship.userData.angle = (ship.userData.angle || 0) + (ship.userData.speed || 0);
+                const sRadius = 300;
+                ship.position.x = Math.cos(ship.userData.angle) * sRadius;
+                ship.position.z = Math.sin(ship.userData.angle) * sRadius;
+                ship.rotation.y = -ship.userData.angle + Math.PI; // Look tangent
+                ship.position.y = -3 + Math.sin(elapsedTime * 2) * 0.5; // bob on water
+            }
 
             // Custom Landmark Animations
             customAnimations.forEach(anim => {
@@ -2322,19 +2752,21 @@
             // Cars Driving with bounce
             if(boardSpaces.length > 0) {
                 // MRT Driving (Fast, elevated)
-                const m1 = boardSpaces[mrt.userData.currentNode].position;
-                const nextMrtNode = (mrt.userData.currentNode + 1) % boardSpaces.length;
-                const m2 = boardSpaces[nextMrtNode].position;
-                mrt.userData.progress += mrt.userData.speed;
-                if(mrt.userData.progress >= 1) {
-                    mrt.userData.progress -= 1;
-                    mrt.userData.currentNode = nextMrtNode;
+                if (mrt) {
+                    const m1 = boardSpaces[mrt.userData.currentNode].position;
+                    const nextMrtNode = (mrt.userData.currentNode + 1) % boardSpaces.length;
+                    const m2 = boardSpaces[nextMrtNode].position;
+                    mrt.userData.progress += mrt.userData.speed;
+                    if(mrt.userData.progress >= 1) {
+                        mrt.userData.progress -= 1;
+                        mrt.userData.currentNode = nextMrtNode;
+                    }
+                    mrt.position.lerpVectors(m1, m2, mrt.userData.progress);
+                    mrt.position.y = 8 + groundGroup.position.y; // elevated
+                    const lookMrtTarget = m2.clone();
+                    lookMrtTarget.y = mrt.position.y;
+                    mrt.lookAt(lookMrtTarget);
                 }
-                mrt.position.lerpVectors(m1, m2, mrt.userData.progress);
-                mrt.position.y = 8 + groundGroup.position.y; // elevated
-                const lookMrtTarget = m2.clone();
-                lookMrtTarget.y = mrt.position.y;
-                mrt.lookAt(lookMrtTarget);
 
                 cars.forEach(car => {
                     const p1 = boardSpaces[car.userData.currentNode].position;
@@ -2356,38 +2788,68 @@
                     car.lookAt(lookTarget);
                 });
 
-                // Pedestrians walking (bouncier, slower, with swinging limbs)
-                pedestrians.forEach(ped => {
-                    const p1 = boardSpaces[ped.userData.currentNode].position;
-                    const nextNode = (ped.userData.currentNode + 1) % boardSpaces.length;
+                // Citizens walking (bouncier, slower, with swinging limbs)
+                citizens.forEach(cit => {
+                    const p1 = boardSpaces[cit.userData.currentNode].position;
+                    const nextNode = (cit.userData.currentNode + 1) % boardSpaces.length;
                     const p2 = boardSpaces[nextNode].position;
                     
-                    ped.userData.progress += ped.userData.speed;
-                    if(ped.userData.progress >= 1) {
-                        ped.userData.progress -= 1;
-                        ped.userData.currentNode = nextNode;
+                    cit.userData.progress += cit.userData.speed;
+                    if(cit.userData.progress >= 1) {
+                        cit.userData.progress -= 1;
+                        cit.userData.currentNode = nextNode;
                     }
                     
                     // Lerp and offset to sidewalk
-                    ped.position.lerpVectors(p1, p2, ped.userData.progress);
+                    cit.position.lerpVectors(p1, p2, cit.userData.progress);
                     
                     // Sidewalk offset calculation (perpendicular to road direction)
                     const dir = new THREE.Vector3().subVectors(p2, p1).normalize();
-                    const perp = new THREE.Vector3(-dir.z, 0, dir.x).multiplyScalar(ped.userData.sideOffset);
-                    ped.position.add(perp);
+                    const perp = new THREE.Vector3(-dir.z, 0, dir.x).multiplyScalar(cit.userData.sideOffset);
+                    cit.position.add(perp);
 
-                    const bounce = Math.abs(Math.sin((elapsedTime * 25) + ped.userData.bounceOffset)) * 0.4;
-                    ped.position.y = 0.5 + bounce; 
+                    const isHappy = cit.userData.sentiment === 'happy';
+                    const bounceMultiplier = sceneData?.animations?.[cit.userData.sentiment]?.bounceMultiplier || (isHappy ? 0.8 : 0.4);
+                    const swingMultiplier = sceneData?.animations?.[cit.userData.sentiment]?.swingMultiplier || (isHappy ? 35 : 25);
+                    const armSwing = sceneData?.animations?.[cit.userData.sentiment]?.armSwing || (isHappy ? 0.8 : 0.4);
+                    const armRotation = sceneData?.animations?.[cit.userData.sentiment]?.armRotation || (isHappy ? Math.PI / 2 : 0);
+
+                    const bounce = Math.abs(Math.sin((elapsedTime * swingMultiplier) + cit.userData.bounceOffset)) * bounceMultiplier;
+                    cit.position.y = 0.5 + bounce; 
                     
-                    const swing = Math.sin((elapsedTime * 25) + ped.userData.bounceOffset);
-                    ped.userData.legL.position.z = swing * 0.4;
-                    ped.userData.legR.position.z = -swing * 0.4;
-                    ped.userData.armL.position.z = -swing * 0.4;
-                    ped.userData.armR.position.z = swing * 0.4;
+                    const swing = Math.sin((elapsedTime * swingMultiplier) + cit.userData.bounceOffset);
+                    cit.userData.legL.position.z = swing * 0.4;
+                    cit.userData.legR.position.z = -swing * 0.4;
+                    cit.userData.armL.position.z = -swing * armSwing;
+                    cit.userData.armR.position.z = swing * armSwing;
+                    
+                    cit.userData.armL.rotation.x = armRotation;
+                    cit.userData.armR.rotation.x = armRotation;
                     
                     const lookTarget = p2.clone().add(perp);
-                    lookTarget.y = ped.position.y;
-                    ped.lookAt(lookTarget);
+                    lookTarget.y = cit.position.y;
+                    cit.lookAt(lookTarget);
+
+                    if (cit.userData.bubbleEl) {
+                        if (Date.now() > cit.userData.bubbleExpiry) {
+                            cit.userData.bubbleEl.style.opacity = 0;
+                            setTimeout(() => { if(cit.userData.bubbleEl) { cit.userData.bubbleEl.remove(); cit.userData.bubbleEl = null; } }, 300);
+                            cit.userData.bubbleExpiry = Infinity;
+                        } else {
+                            const screenPos = cit.position.clone();
+                            screenPos.y += 3; 
+                            screenPos.project(camera);
+                            if (screenPos.z < 1) { 
+                                const x = (screenPos.x * 0.5 + 0.5) * window.innerWidth;
+                                const y = (screenPos.y * -0.5 + 0.5) * window.innerHeight;
+                                cit.userData.bubbleEl.style.left = `${x}px`;
+                                cit.userData.bubbleEl.style.top = `${y}px`;
+                                cit.userData.bubbleEl.style.display = 'block';
+                            } else {
+                                cit.userData.bubbleEl.style.display = 'none';
+                            }
+                        }
+                    }
                 });
             }
 

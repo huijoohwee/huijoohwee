@@ -1,0 +1,111 @@
+[
+  {
+    "timestamp": 0,
+    "action": "log",
+    "message": "Starting the Singapore AI Agent Boom Simulation..."
+  },
+  {
+    "timestamp": 5,
+    "action": "chat",
+    "message": "Hey FlowinFish, what's happening in Singapore right now?"
+  },
+  {
+    "timestamp": 12,
+    "action": "sentiment",
+    "value": "neutral",
+    "message": "AI agents are starting to appear everywhere in Singapore."
+  },
+  {
+    "timestamp": 15,
+    "action": "bubble",
+    "message": "I heard GovTech launched a new AI assistant today!"
+  },
+  {
+    "timestamp": 20,
+    "action": "bubble",
+    "message": "My company is testing Swarm Intelligence next week."
+  },
+  {
+    "timestamp": 30,
+    "action": "chat",
+    "message": "Are the people happy about the AI boom?"
+  },
+  {
+    "timestamp": 35,
+    "action": "sentiment",
+    "value": "happy",
+    "message": "The tech sector is booming and everyone is excited about the future!"
+  },
+  {
+    "timestamp": 38,
+    "action": "bubble",
+    "message": "I just got a promotion because of my AI skills! 🎉"
+  },
+  {
+    "timestamp": 42,
+    "action": "bubble",
+    "message": "FlowinFish is making my daily work so much easier!"
+  },
+  {
+    "timestamp": 55,
+    "action": "chat",
+    "message": "Change the weather to stormy, I think some people are worried."
+  },
+  {
+    "timestamp": 60,
+    "action": "command",
+    "value": "change weather to stormy"
+  },
+  {
+    "timestamp": 65,
+    "action": "sentiment",
+    "value": "neutral",
+    "message": "Some citizens are expressing concerns about job displacement."
+  },
+  {
+    "timestamp": 70,
+    "action": "bubble",
+    "message": "Is this Swarm AI going to take over my accounting job?"
+  },
+  {
+    "timestamp": 75,
+    "action": "bubble",
+    "message": "I need to learn prompt engineering fast..."
+  },
+  {
+    "timestamp": 85,
+    "action": "chat",
+    "message": "But the government is providing heavy subsidies for upskilling!"
+  },
+  {
+    "timestamp": 90,
+    "action": "command",
+    "value": "change weather to sunshine"
+  },
+  {
+    "timestamp": 95,
+    "action": "sentiment",
+    "value": "happy",
+    "message": "The SkillsFuture credits are helping everyone adapt!"
+  },
+  {
+    "timestamp": 100,
+    "action": "bubble",
+    "message": "Just signed up for a free AI course! 🥳"
+  },
+  {
+    "timestamp": 105,
+    "action": "bubble",
+    "message": "Singapore is going to be the top AI hub in Asia!"
+  },
+  {
+    "timestamp": 115,
+    "action": "chat",
+    "message": "FlowinFish, the future looks bright!"
+  },
+  {
+    "timestamp": 120,
+    "action": "log",
+    "message": "Ending simulation."
+  }
+]
