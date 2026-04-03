@@ -1,10 +1,10 @@
-/ /singabldr 301
 /singapoly /singabldr 301
 /singapoly/ /singabldr 301
 /content/singabldr/singabldr.html /singabldr 301
 /content/singabldr/singabldr /singabldr 301
 /content/singabldr /singabldr 301
 /content/singabldr/ /singabldr 301
+/ /content/singabldr/singabldr.html 200
 /singabldr /content/singabldr/singabldr.html 200
 /singabldr/ /content/singabldr/singabldr.html 200
 /singabldr.html /content/singabldr/singabldr.html 200
