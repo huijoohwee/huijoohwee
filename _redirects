@@ -1,6 +1,8 @@
 /content/singabldr/singabldr.html /singabldr 301
 /content/singabldr/singabldr /singabldr 301
-/ /content/singabldr/singabldr.html 200
+/ /singabldr 301
+/singapoly /singabldr 301
+/singapoly/ /singabldr 301
 /singabldr /content/singabldr/singabldr.html 200
 /singabldr/ /content/singabldr/singabldr.html 200
 /singabldr.json /content/singabldr/boards/singabldr.json 200
