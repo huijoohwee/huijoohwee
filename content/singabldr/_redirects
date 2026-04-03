@@ -1,7 +1,7 @@
 /singabldr.html /singabldr 301
-/ /singabldr 200
-/singabldr /singabldr 200
-/singabldr/ /singabldr 200
+/ /singabldr.html 200
+/singabldr /singabldr.html 200
+/singabldr/ /singabldr.html 200
 /singabldr.json /boards/singabldr.json 200
 /singabldr/singabldr.json /boards/singabldr.json 200
 /tokyopoly.json /boards/tokyopoly.json 200
