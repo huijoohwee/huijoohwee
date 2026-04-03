@@ -499,6 +499,131 @@
         import * as Y from 'https://esm.sh/yjs';
         import { WebsocketProvider } from 'https://esm.sh/y-websocket';
 
+        // -----------------------------
+        // Shared utilities (SSOT)
+        // -----------------------------
+        const LS_KEY_SINGABLDR_USER = 'singabldr_user';
+
+        function safeJsonParse(text) {
+            if (typeof text !== 'string' || !text) return null;
+            try { return JSON.parse(text); } catch { return null; }
+        }
+
+        function readUserFromStorage() {
+            const saved = localStorage.getItem(LS_KEY_SINGABLDR_USER);
+            const parsed = safeJsonParse(saved);
+            if (!parsed || typeof parsed !== 'object') return null;
+            const phone = typeof parsed.phone === 'string' ? parsed.phone : null;
+            const name = typeof parsed.name === 'string' ? parsed.name : null;
+            if (!phone && !name) return null;
+            return { phone, name };
+        }
+
+        function writeUserToStorage(user) {
+            if (!user || typeof user !== 'object') return;
+            const phone = typeof user.phone === 'string' ? user.phone : '';
+            const name = typeof user.name === 'string' ? user.name : '';
+            localStorage.setItem(LS_KEY_SINGABLDR_USER, JSON.stringify({ phone, name }));
+        }
+
+        function createCoalescedScheduler() {
+            const timeoutsByKey = new Map();
+            return {
+                schedule(key, fn, delayMs = 0) {
+                    if (timeoutsByKey.has(key)) clearTimeout(timeoutsByKey.get(key));
+                    const timeoutId = setTimeout(() => {
+                        timeoutsByKey.delete(key);
+                        fn();
+                    }, delayMs);
+                    timeoutsByKey.set(key, timeoutId);
+                },
+                cancel(key) {
+                    const timeoutId = timeoutsByKey.get(key);
+                    if (timeoutId) clearTimeout(timeoutId);
+                    timeoutsByKey.delete(key);
+                }
+            };
+        }
+
+        const scheduler = createCoalescedScheduler();
+
+        const fetchJsonCache = new Map();
+        async function fetchJsonCached(url, { ttlMs = 30_000 } = {}) {
+            const now = Date.now();
+            const cached = fetchJsonCache.get(url);
+            if (cached && (now - cached.timestampMs) < ttlMs) return cached.promise;
+            const promise = fetch(url).then((resp) => {
+                if (!resp.ok) throw new Error(`Failed to fetch JSON: ${url}`);
+                return resp.json();
+            });
+            fetchJsonCache.set(url, { timestampMs: now, promise });
+            return promise;
+        }
+
+        function normalizeSimulationScript(raw) {
+            if (Array.isArray(raw)) return { version: 0, scenePatch: null, steps: raw };
+            if (!raw || typeof raw !== 'object') return { version: 0, scenePatch: null, steps: [] };
+
+            const steps = Array.isArray(raw.steps)
+                ? raw.steps
+                : Array.isArray(raw.script)
+                    ? raw.script
+                    : Array.isArray(raw.timeline)
+                        ? raw.timeline
+                        : [];
+
+            return {
+                version: raw.version ?? 1,
+                meta: raw.meta ?? null,
+                assets: raw.assets ?? null,
+                elements: raw.elements ?? null,
+                animation: raw.animation ?? null,
+                scenePatch: raw.scenePatch ?? null,
+                steps
+            };
+        }
+
+        function applyScenePatch(scenePatch) {
+            if (!scenePatch || typeof scenePatch !== 'object' || !sceneData) return;
+
+            const merge = (target, src) => {
+                for (const [key, value] of Object.entries(src)) {
+                    if (value && typeof value === 'object' && !Array.isArray(value)) {
+                        if (!target[key] || typeof target[key] !== 'object' || Array.isArray(target[key])) target[key] = {};
+                        merge(target[key], value);
+                    } else {
+                        target[key] = value;
+                    }
+                }
+            };
+
+            merge(sceneData, scenePatch);
+
+            // Keep UI in sync if the patch adds new options
+            if (scenePatch.themes && document.getElementById('theme-select')) {
+                const themeSelect = document.getElementById('theme-select');
+                const existing = new Set(Array.from(themeSelect.options).map(o => o.value));
+                Object.keys(sceneData.themes || {}).forEach((t) => {
+                    if (existing.has(t)) return;
+                    const opt = document.createElement('option');
+                    opt.value = t;
+                    opt.textContent = t.charAt(0).toUpperCase() + t.slice(1).replace('_', ' ');
+                    themeSelect.appendChild(opt);
+                });
+            }
+            if (scenePatch.weathers && document.getElementById('weather-select')) {
+                const weatherSelect = document.getElementById('weather-select');
+                const existing = new Set(Array.from(weatherSelect.options).map(o => o.value));
+                Object.keys(sceneData.weathers || {}).forEach((w) => {
+                    if (existing.has(w)) return;
+                    const opt = document.createElement('option');
+                    opt.value = w;
+                    opt.textContent = w.charAt(0).toUpperCase() + w.slice(1);
+                    weatherSelect.appendChild(opt);
+                });
+            }
+        }
+
         // --- Setup Yjs ---
         const urlParams = new URLSearchParams(window.location.search);
         let boardFile = urlParams.get('board') || 'singabldr.json';
@@ -511,13 +636,8 @@
         
         let roomSuffix = 'v4';
         if (currentPlayMode === 'ai') {
-            const saved = localStorage.getItem('singabldr_user');
-            let phone = 'local';
-            if (saved) {
-                try {
-                    phone = JSON.parse(saved).phone || 'local';
-                } catch(e) {}
-            }
+            const storedUser = readUserFromStorage();
+            const phone = storedUser?.phone || 'local';
             roomSuffix = `ai-${phone}`;
         }
         const roomName = `singabldr-room-${boardFile.split('/').pop().replace('.json', '')}-${roomSuffix}`;
@@ -619,6 +739,8 @@
         let isMoving = false;
         let myPlayerIndex = null;
         let currentUser = null;
+        // Used to cancel long-running / looping scripts when user switches modes quickly.
+        let activeScriptRunId = 0;
 
         // --- WhatsApp Mock Login Flow ---
         function initAuth() {
@@ -628,19 +750,15 @@
 
             if (userParam && nameParam) {
                 currentUser = { phone: userParam, name: nameParam };
-                localStorage.setItem('singabldr_user', JSON.stringify(currentUser));
+                writeUserToStorage(currentUser);
                 // Do not replace state so the URL remains intact for the user
             } else if (userParam) {
                 // Also support just user param, default name
-                const saved = localStorage.getItem('singabldr_user');
-                let prevName = saved ? JSON.parse(saved).name : null;
+                const prevName = readUserFromStorage()?.name || null;
                 currentUser = { phone: userParam, name: prevName || `Player_${userParam.slice(-4)}` };
-                localStorage.setItem('singabldr_user', JSON.stringify(currentUser));
+                writeUserToStorage(currentUser);
             } else {
-                const saved = localStorage.getItem('singabldr_user');
-                if (saved) {
-                    try { currentUser = JSON.parse(saved); } catch(e) {}
-                }
+                currentUser = readUserFromStorage();
             }
 
             // Always hide login screen by default
@@ -1641,22 +1759,15 @@
             }
         }
 
-        let sharedSyncSchedulerKey = null;
-
+        // Coalesced state-sync to reduce render churn under rapid switching / rapid Yjs updates.
+        // NOTE: previously scheduleSyncStateDeferred shared the same timer id as scheduleSyncState,
+        // causing the "deferred" sync to cancel the "immediate" sync.
         function scheduleSyncState() {
-            if (sharedSyncSchedulerKey) clearTimeout(sharedSyncSchedulerKey);
-            sharedSyncSchedulerKey = setTimeout(() => {
-                syncStateFromYjs();
-                sharedSyncSchedulerKey = null;
-            }, 50);
+            scheduler.schedule('yjs:sync', syncStateFromYjs, 50);
         }
 
         function scheduleSyncStateDeferred() {
-            if (sharedSyncSchedulerKey) clearTimeout(sharedSyncSchedulerKey);
-            sharedSyncSchedulerKey = setTimeout(() => {
-                syncStateFromYjs();
-                sharedSyncSchedulerKey = null;
-            }, 50);
+            scheduler.schedule('yjs:sync:deferred', syncStateFromYjs, 120);
         }
 
         yGameState.observe(event => {
@@ -2151,35 +2262,83 @@
             activeCitizens.forEach(cit => showCitizenBubble(cit, `Did you hear about "${snippet}"?`));
         }
 
-        async function streamSimulationScript(scriptData) {
+        async function streamSimulationScript(scriptDoc, { runId } = {}) {
+            const normalized = normalizeSimulationScript(scriptDoc);
+            applyScenePatch(normalized.scenePatch);
+
+            const steps = normalized.steps || [];
+            const myRunId = typeof runId === 'number' ? runId : null;
+            const isCancelled = () => myRunId !== null && myRunId !== activeScriptRunId;
+
             let lastTimestamp = 0;
-            
-            for (const step of scriptData) {
-                const delayMs = (step.timestamp - lastTimestamp) * 1000;
-                
-                await new Promise(resolve => setTimeout(resolve, delayMs));
-                
-                if (step.action === 'log') {
+
+            for (const step of steps) {
+                if (!step || typeof step !== 'object') continue;
+                if (isCancelled()) return;
+
+                const delayMs = (Number(step.timestamp) - lastTimestamp) * 1000;
+                if (Number.isFinite(delayMs) && delayMs > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delayMs));
+                }
+                if (isCancelled()) return;
+
+                const action = step.action;
+                if (action === 'log') {
                     console.log(`[FlowinFish Script] ${step.message}`);
-                } else if (step.action === 'chat') {
+                } else if (action === 'chat') {
                     addChatMessage(step.message, true);
-                } else if (step.action === 'sentiment') {
+                } else if (action === 'sentiment') {
                     if (step.message) addChatMessage(step.message, false);
                     if (step.value === 'happy') {
                         handleSuperAgentCommand("make citizens happy", true);
                     } else if (step.value === 'neutral') {
                         handleSuperAgentCommand("make citizens normal", true);
                     }
-                } else if (step.action === 'bubble') {
+                } else if (action === 'bubble') {
                     if (citizens && citizens.length > 0) {
                         const activeCit = citizens[Math.floor(Math.random() * citizens.length)];
-                        showCitizenBubble(activeCit, step.message);
+                        showCitizenBubble(activeCit, step.message, step.durationMs || 5000);
                     }
-                } else if (step.action === 'command') {
+                } else if (action === 'react') {
+                    if (step.message) triggerCitizenReactions(step.message);
+                } else if (action === 'setTheme') {
+                    const t = step.value || step.theme;
+                    if (t && document.getElementById('theme-select')) {
+                        document.getElementById('theme-select').value = t;
+                        applyTheme();
+                    }
+                } else if (action === 'setWeather') {
+                    const w = step.value || step.weather;
+                    if (w && document.getElementById('weather-select')) {
+                        document.getElementById('weather-select').value = w;
+                        applyWeather();
+                    }
+                } else if (action === 'vehicle') {
+                    const id = (step.id || step.vehicle || '').toLowerCase();
+                    const op = (step.op || step.value || '').toLowerCase();
+                    if (id === 'train' || id === 'mrt') {
+                        if (op === 'stop' && mrt) mrt.userData.speed = 0;
+                        if (op === 'start' && mrt) mrt.userData.speed = sceneData?.vehicles?.find(v => v.type === 'mrt')?.speed || 0.008;
+                        if (op === 'faster' && mrt) mrt.userData.speed *= 2;
+                    }
+                    if (id === 'plane') {
+                        if (op === 'stop' && plane) plane.userData.speed = 0;
+                        if (op === 'start' && plane) plane.userData.speed = sceneData?.vehicles?.find(v => v.type === 'plane')?.speed || 0.004;
+                        if (op === 'faster' && plane) plane.userData.speed *= 2;
+                    }
+                    if (id === 'heli') {
+                        if (op === 'stop' && heli) heli.userData.speed = 0;
+                        if (op === 'start' && heli) heli.userData.speed = sceneData?.vehicles?.find(v => v.type === 'heli')?.speed || 0.05;
+                    }
+                    if (id === 'ship') {
+                        if (op === 'stop' && ship) ship.userData.speed = 0;
+                        if (op === 'start' && ship) ship.userData.speed = sceneData?.vehicles?.find(v => v.type === 'ship')?.speed || 0.002;
+                    }
+                } else if (action === 'command') {
                     handleSuperAgentCommand(step.value, true);
                 }
-                
-                lastTimestamp = step.timestamp;
+
+                lastTimestamp = Number(step.timestamp) || lastTimestamp;
             }
         }
 
@@ -2198,10 +2357,13 @@
                     
                     if (file.name.endsWith('.json')) {
                         try {
-                            const scriptData = JSON.parse(content);
-                            if (Array.isArray(scriptData)) {
+                            const scriptData = safeJsonParse(content);
+                            const normalized = normalizeSimulationScript(scriptData);
+                            if (Array.isArray(normalized.steps) && normalized.steps.length > 0) {
                                 addChatMessage(`📎 Uploaded script: ${file.name}. Starting simulation...`, true);
-                                await streamSimulationScript(scriptData);
+                                activeScriptRunId += 1;
+                                const runId = activeScriptRunId;
+                                await streamSimulationScript(scriptData, { runId });
                                 return;
                             }
                         } catch (err) {
@@ -2264,14 +2426,11 @@
             
             if (lowerCmd.includes('run script') || lowerCmd.includes('start simulation')) {
                 try {
-                    const resp = await fetch('script-0000.json');
-                    if (resp.ok) {
-                        const scriptData = await resp.json();
-                        addChatMessage("Starting AI Agent Boom Simulation...", false);
-                        streamSimulationScript(scriptData);
-                    } else {
-                        addChatMessage("Sorry, I couldn't find the simulation script.", false);
-                    }
+                    const scriptData = await fetchJsonCached('script-0000.json', { ttlMs: 10_000 });
+                    activeScriptRunId += 1;
+                    const runId = activeScriptRunId;
+                    addChatMessage("Starting AI Agent Boom Simulation...", false);
+                    await streamSimulationScript(scriptData, { runId });
                 } catch(e) {
                     addChatMessage("Error loading simulation script.", false);
                 }

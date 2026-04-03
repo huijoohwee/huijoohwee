@@ -25,8 +25,32 @@
       { "id": 2, "phone": null, "name": "Player 3", "colorHex": "#00b894", "css": "#00b894", "cash": 1500, "pos": 0, "mesh": null }
     ],
     "nature": {
-      "trees": { "count": 80, "scaleMin": 0.7, "scaleMax": 1.2 },
-      "clouds": { "count": 20, "yMin": 60, "yMax": 100 }
+      "trees": { "count": 80, "scaleMin": 0.7, "scaleMax": 1.2, "types": ["pine", "palm", "oak"], "colors": ["#00b894", "#55efc4", "#00cec9"] },
+      "clouds": { "count": 20, "yMin": 60, "yMax": 100, "speed": 0.02, "opacity": 0.6 },
+      "citizens": { "count": 30, "speed": 0.001, "bounciness": 0.4 }
+    },
+    "geography": {
+      "terrain": { "type": "grid", "width": 450, "height": 280, "baseColor": "#b8e994", "heightMap": "perlin", "maxElevation": 15 },
+      "water": { "enabled": true, "level": -2, "color": "#0984e3", "opacity": 0.8, "waveSpeed": 0.5 }
+    },
+    "scenes": {
+      "day": { "ambientLight": 0.7, "directionalLight": 0.4, "fogColor": "#A9E1FF", "fogDensity": 0.0018 },
+      "night": { "ambientLight": 0.2, "directionalLight": 0.1, "fogColor": "#0a0a0a", "fogDensity": 0.0025, "neonGlow": true },
+      "twilight": { "ambientLight": 0.4, "directionalLight": 0.2, "fogColor": "#ff7979", "fogDensity": 0.002 }
+    },
+    "point_of_interests": {
+      "scaleMin": 1.0,
+      "scaleMax": 2.5,
+      "models": ["skyscraper", "park", "monument", "mall"],
+      "highlightColor": "#ff9ff3"
+    },
+    "transportation": {
+      "plane": { "speed": 0.004, "altitude": 120, "capacity": 200, "mesh": "jet" },
+      "heli": { "speed": 0.05, "altitude": 60, "capacity": 6, "mesh": "chopper" },
+      "mrt": { "speed": 0.008, "capacity": 300, "cars": 5, "mesh": "train" },
+      "ship": { "speed": 0.002, "waterLevel": -3, "capacity": 5000, "mesh": "cargo" },
+      "rocket": { "speed": 0.1, "acceleration": 1.05, "altitude": 0, "maxAltitude": 2000, "mesh": "rocket" },
+      "car": { "speed": 0.01, "capacity": 4, "mesh": "sedan" }
     },
     "vehicles": [
       { "type": "plane", "count": 1, "path": "circular", "radius": 220, "y": 120, "speed": 0.004 },
