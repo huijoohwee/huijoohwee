@@ -1,212 +1,69 @@
-[
-  {
-    "timestamp": 0,
-    "action": "log",
-    "message": "Starting Auto (Default) Swarm Intelligence Loop..."
+{
+  "version": "singabldr-script@1",
+  "meta": {
+    "name": "Swarm Intelligence Loop",
+    "durationSeconds": 120,
+    "loop": true
   },
-  {
-    "timestamp": 3,
-    "action": "command",
-    "value": "make citizens happy"
+  "assets": {
+    "geography": ["terrain", "water"],
+    "scenes": ["day", "twilight", "night"],
+    "pointOfInterests": ["Sentosa Island", "Marina Bay Sands", "Merlion Park", "Gardens by the Bay"],
+    "transportation": ["mrt", "plane", "heli", "ship"],
+    "nature": ["trees", "clouds", "citizens"],
+    "themes": ["default", "christmas", "deepavali", "cny", "hari_raya"],
+    "weathers": ["sunshine", "cloudy", "stormy"]
   },
-  {
-    "timestamp": 6,
-    "action": "command",
-    "value": "change weather to stormy"
+  "scenePatch": {
+    "themes": {
+      "national_day": { "color": "#ff4757", "mix": 0.55 }
+    },
+    "weathers": {
+      "haze": { "bg": "#b2bec3", "fogDensity": 0.0042, "dirLight": 0.08, "ambient": 0.45 }
+    }
   },
-  {
-    "timestamp": 9,
-    "action": "command",
-    "value": "stop train"
-  },
-  {
-    "timestamp": 12,
-    "action": "command",
-    "value": "start train"
-  },
-  {
-    "timestamp": 15,
-    "action": "command",
-    "value": "make citizens normal"
-  },
-  {
-    "timestamp": 18,
-    "action": "command",
-    "value": "change weather to sunshine"
-  },
-  {
-    "timestamp": 21,
-    "action": "command",
-    "value": "faster train"
-  },
-  {
-    "timestamp": 24,
-    "action": "command",
-    "value": "stop plane"
-  },
-  {
-    "timestamp": 27,
-    "action": "command",
-    "value": "start plane"
-  },
-  {
-    "timestamp": 30,
-    "action": "command",
-    "value": "stop heli"
-  },
-  {
-    "timestamp": 33,
-    "action": "command",
-    "value": "start heli"
-  },
-  {
-    "timestamp": 36,
-    "action": "command",
-    "value": "stop ship"
-  },
-  {
-    "timestamp": 39,
-    "action": "command",
-    "value": "start ship"
-  },
-  {
-    "timestamp": 42,
-    "action": "chat",
-    "message": "here comes the sun"
-  },
-  {
-    "timestamp": 45,
-    "action": "command",
-    "value": "change weather to sunshine"
-  },
-  {
-    "timestamp": 48,
-    "action": "chat",
-    "message": "AI bots attack!"
-  },
-  {
-    "timestamp": 51,
-    "action": "bubble",
-    "message": "AI bots attack! Run! 🤖"
-  },
-  {
-    "timestamp": 54,
-    "action": "chat",
-    "message": "more airplanes!"
-  },
-  {
-    "timestamp": 57,
-    "action": "command",
-    "value": "faster plane"
-  },
-  {
-    "timestamp": 60,
-    "action": "chat",
-    "message": "build more high-rise buildings"
-  },
-  {
-    "timestamp": 63,
-    "action": "bubble",
-    "message": "Look at all these new buildings!"
-  },
-  {
-    "timestamp": 66,
-    "action": "chat",
-    "message": "rocket launched"
-  },
-  {
-    "timestamp": 69,
-    "action": "bubble",
-    "message": "Whoa! Was that a rocket? 🚀"
-  },
-  {
-    "timestamp": 72,
-    "action": "chat",
-    "message": "Let's change the theme to Christmas!"
-  },
-  {
-    "timestamp": 75,
-    "action": "command",
-    "value": "change theme to christmas"
-  },
-  {
-    "timestamp": 78,
-    "action": "bubble",
-    "message": "Wow, the city looks so festive! 🎄"
-  },
-  {
-    "timestamp": 81,
-    "action": "chat",
-    "message": "Rolling the dice to explore new Points of Interest."
-  },
-  {
-    "timestamp": 84,
-    "action": "command",
-    "value": "roll dice"
-  },
-  {
-    "timestamp": 88,
-    "action": "bubble",
-    "message": "I love visiting Marina Bay Sands! 🏢"
-  },
-  {
-    "timestamp": 91,
-    "action": "chat",
-    "message": "Let's change the theme to Deepavali."
-  },
-  {
-    "timestamp": 94,
-    "action": "command",
-    "value": "change theme to deepavali"
-  },
-  {
-    "timestamp": 97,
-    "action": "chat",
-    "message": "Look at the beautiful geography!"
-  },
-  {
-    "timestamp": 100,
-    "action": "bubble",
-    "message": "The water and terrain look amazing today! 🌊"
-  },
-  {
-    "timestamp": 103,
-    "action": "command",
-    "value": "change weather to cloudy"
-  },
-  {
-    "timestamp": 106,
-    "action": "chat",
-    "message": "Looks like the weather is getting cloudy over Sentosa."
-  },
-  {
-    "timestamp": 109,
-    "action": "bubble",
-    "message": "A nice cool day for a walk in nature. ☁️"
-  },
-  {
-    "timestamp": 112,
-    "action": "command",
-    "value": "change theme to default"
-  },
-  {
-    "timestamp": 115,
-    "action": "chat",
-    "message": "Returning the city to normal."
-  },
-  {
-    "timestamp": 118,
-    "action": "command",
-    "value": "make citizens normal"
-  },
-  {
-    "timestamp": 121,
-    "action": "command",
-    "value": "start train"
-  },
-  {
-    "timestamp": 124,
-    "action": "log",
-    "message": "Auto loop complete. Restarting..."
-  }
-]
+  "steps": [
+    { "timestamp": 0, "action": "log", "message": "Starting Auto (Default) Swarm Intelligence Loop..." },
+    { "timestamp": 3, "action": "sentiment", "value": "happy", "message": "Swarm Intelligence online. Citizens are energised." },
+    { "timestamp": 6, "action": "setWeather", "value": "stormy" },
+    { "timestamp": 9, "action": "vehicle", "id": "mrt", "op": "stop" },
+    { "timestamp": 12, "action": "vehicle", "id": "mrt", "op": "start" },
+    { "timestamp": 15, "action": "sentiment", "value": "neutral", "message": "Stabilising the swarm. Back to normal cadence." },
+    { "timestamp": 18, "action": "setWeather", "value": "sunshine" },
+    { "timestamp": 21, "action": "vehicle", "id": "mrt", "op": "faster" },
+    { "timestamp": 24, "action": "vehicle", "id": "plane", "op": "stop" },
+    { "timestamp": 27, "action": "vehicle", "id": "plane", "op": "start" },
+    { "timestamp": 30, "action": "vehicle", "id": "heli", "op": "stop" },
+    { "timestamp": 33, "action": "vehicle", "id": "heli", "op": "start" },
+    { "timestamp": 36, "action": "vehicle", "id": "ship", "op": "stop" },
+    { "timestamp": 39, "action": "vehicle", "id": "ship", "op": "start" },
+    { "timestamp": 42, "action": "chat", "message": "here comes the sun" },
+    { "timestamp": 45, "action": "setWeather", "value": "sunshine" },
+    { "timestamp": 48, "action": "chat", "message": "AI bots attack!" },
+    { "timestamp": 51, "action": "bubble", "message": "AI bots attack! Run! 🤖", "durationMs": 4500 },
+    { "timestamp": 54, "action": "chat", "message": "more airplanes!" },
+    { "timestamp": 57, "action": "vehicle", "id": "plane", "op": "faster" },
+    { "timestamp": 60, "action": "chat", "message": "build more high-rise buildings" },
+    { "timestamp": 63, "action": "bubble", "message": "Look at all these new buildings!" },
+    { "timestamp": 66, "action": "chat", "message": "rocket launched" },
+    { "timestamp": 69, "action": "bubble", "message": "Whoa! Was that a rocket? 🚀" },
+    { "timestamp": 72, "action": "chat", "message": "Let's change the theme to Christmas!" },
+    { "timestamp": 75, "action": "setTheme", "value": "christmas" },
+    { "timestamp": 78, "action": "bubble", "message": "Wow, the city looks so festive! 🎄" },
+    { "timestamp": 81, "action": "chat", "message": "Rolling the dice to explore new Points of Interest." },
+    { "timestamp": 84, "action": "command", "value": "roll dice" },
+    { "timestamp": 88, "action": "bubble", "message": "I love visiting Marina Bay Sands! 🏢" },
+    { "timestamp": 91, "action": "chat", "message": "Let's change the theme to Deepavali." },
+    { "timestamp": 94, "action": "setTheme", "value": "deepavali" },
+    { "timestamp": 97, "action": "react", "message": "New geography assets: water, terrain, and nature layers" },
+    { "timestamp": 100, "action": "bubble", "message": "The water and terrain look amazing today! 🌊" },
+    { "timestamp": 103, "action": "setWeather", "value": "cloudy" },
+    { "timestamp": 106, "action": "chat", "message": "Looks like the weather is getting cloudy over Sentosa." },
+    { "timestamp": 109, "action": "bubble", "message": "A nice cool day for a walk in nature. ☁️" },
+    { "timestamp": 112, "action": "setTheme", "value": "national_day" },
+    { "timestamp": 115, "action": "setWeather", "value": "haze" },
+    { "timestamp": 118, "action": "sentiment", "value": "neutral", "message": "Returning the city to normal." },
+    { "timestamp": 121, "action": "vehicle", "id": "mrt", "op": "start" },
+    { "timestamp": 124, "action": "log", "message": "Auto loop complete. Restarting..." }
+  ]
+}

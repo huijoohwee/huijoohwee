@@ -4,6 +4,8 @@
 /singabldr /content/singabldr/index.html 200
 /singabldr/ /content/singabldr/index.html 200
 /singabldr.html /content/singabldr/index.html 200
+/script-0000.json /content/singabldr/script-0000.json 200
+/script-singabuildr-0000.json /content/singabldr/script-singabuildr-0000.json 200
 /singabldr.json /content/singabldr/boards/singabldr.json 200
 /singabldr/singabldr.json /content/singabldr/boards/singabldr.json 200
 /tokyopoly.json /content/singabldr/boards/tokyopoly.json 200

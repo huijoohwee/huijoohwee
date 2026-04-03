@@ -2620,6 +2620,10 @@
                 customScriptMode = e.target.value;
                 scriptLocalBtn.style.display = customScriptMode === 'local' ? 'block' : 'none';
                 scriptUrlContainer.style.display = customScriptMode === 'url' ? 'flex' : 'none';
+                // Cancel/flush any previous script run/loop to avoid stale loops under rapid switching
+                activeScriptRunId += 1;
+                scheduler.cancel('script:auto:restart');
+                scheduler.cancel('script:auto:loop');
                 
                 if (customScriptMode === 'auto') {
                     scriptStatus.innerText = "Default AI behavior is active.";
@@ -2627,26 +2631,32 @@
                     clearInterval(customScriptInterval);
                     
                     const runAutoScript = async () => {
+                        const runId = activeScriptRunId;
+                        if (!sceneData) {
+                            // Board still loading; retry shortly (coalesced) without starting a stale loop.
+                            if (customScriptMode === 'auto' && runId === activeScriptRunId) {
+                                scheduler.schedule('script:auto:restart', runAutoScript, 300);
+                            }
+                            return;
+                        }
                         try {
-                            const resp = await fetch('script-singabuildr-0000.json');
-                            if (resp.ok && customScriptMode === 'auto') {
-                                const scriptData = await resp.json();
-                                if (Array.isArray(scriptData)) {
-                                    addChatMessage("Running auto simulation script...", false);
-                                    
-                                    // Make sure panel opens so user can see it!
-                                    if (saPanel.style.display === 'none') {
-                                        saPanel.style.display = 'flex';
-                                    }
-                                    
-                                    await streamSimulationScript(scriptData);
-                                    
-                                    // If still in auto mode after the script finishes, wait 5 seconds and loop again
-                                    if (customScriptMode === 'auto') {
-                                        setTimeout(() => {
-                                            if (customScriptMode === 'auto') runAutoScript();
-                                        }, 5000);
-                                    }
+                            const scriptDoc = await fetchJsonCached('script-singabuildr-0000.json', { ttlMs: 10_000 });
+                            if (customScriptMode !== 'auto' || runId !== activeScriptRunId) return;
+
+                            const normalized = normalizeSimulationScript(scriptDoc);
+                            if (Array.isArray(normalized.steps) && normalized.steps.length > 0) {
+                                addChatMessage("Running auto simulation script...", false);
+
+                                // Make sure panel opens so user can see it!
+                                if (saPanel.style.display === 'none') {
+                                    saPanel.style.display = 'flex';
+                                }
+
+                                await streamSimulationScript(scriptDoc, { runId });
+
+                                // If still in auto mode after the script finishes, wait 5 seconds and loop again.
+                                if (customScriptMode === 'auto' && runId === activeScriptRunId) {
+                                    scheduler.schedule('script:auto:loop', runAutoScript, 5000);
                                 }
                             }
                         } catch(e) {
@@ -2655,7 +2665,7 @@
                     };
                     
                     // Start auto loop
-                    runAutoScript();
+                    scheduler.schedule('script:auto:restart', runAutoScript, 0);
                 } else if (customScriptMode === 'manual') {
                     scriptStatus.innerText = "Manual mode: Waiting for chat input.";
                     scriptStatus.style.color = "#636e72";
@@ -2687,16 +2697,19 @@
                 const reader = new FileReader();
                 reader.onload = async (e) => {
                     try {
-                        const scriptData = JSON.parse(e.target.result);
-                        if (Array.isArray(scriptData)) {
+                        const scriptData = safeJsonParse(e.target.result);
+                        const normalized = normalizeSimulationScript(scriptData);
+                        if (Array.isArray(normalized.steps) && normalized.steps.length > 0) {
                             scriptStatus.innerText = `Running local script: ${file.name}`;
                             scriptStatus.style.color = "#0984e3";
                             document.getElementById('settings-modal').style.display = 'none';
                             addChatMessage(`Running script: ${file.name}...`, false);
-                            await streamSimulationScript(scriptData);
+                            activeScriptRunId += 1;
+                            const runId = activeScriptRunId;
+                            await streamSimulationScript(scriptData, { runId });
                             scriptStatus.innerText = `Finished running ${file.name}`;
                         } else {
-                            scriptStatus.innerText = "Invalid JSON array.";
+                            scriptStatus.innerText = "Invalid script format (expected steps array or {steps:[...]}).";
                             scriptStatus.style.color = "#d63031";
                         }
                     } catch (err) {
@@ -2718,22 +2731,19 @@
                 scriptStatus.style.color = "#636e72";
                 
                 try {
-                    const resp = await fetch(url);
-                    if (resp.ok) {
-                        const scriptData = await resp.json();
-                        if (Array.isArray(scriptData)) {
-                            scriptStatus.innerText = `Running remote script.`;
-                            scriptStatus.style.color = "#0984e3";
-                            document.getElementById('settings-modal').style.display = 'none';
-                            addChatMessage(`Running script from URL...`, false);
-                            await streamSimulationScript(scriptData);
-                            scriptStatus.innerText = `Finished running remote script.`;
-                        } else {
-                            scriptStatus.innerText = "Invalid JSON array.";
-                            scriptStatus.style.color = "#d63031";
-                        }
+                    const scriptData = await fetchJsonCached(url, { ttlMs: 10_000 });
+                    const normalized = normalizeSimulationScript(scriptData);
+                    if (Array.isArray(normalized.steps) && normalized.steps.length > 0) {
+                        scriptStatus.innerText = `Running remote script.`;
+                        scriptStatus.style.color = "#0984e3";
+                        document.getElementById('settings-modal').style.display = 'none';
+                        addChatMessage(`Running script from URL...`, false);
+                        activeScriptRunId += 1;
+                        const runId = activeScriptRunId;
+                        await streamSimulationScript(scriptData, { runId });
+                        scriptStatus.innerText = `Finished running remote script.`;
                     } else {
-                        scriptStatus.innerText = "Failed to fetch URL.";
+                        scriptStatus.innerText = "Invalid script format (expected steps array or {steps:[...]}).";
                         scriptStatus.style.color = "#d63031";
                     }
                 } catch (e) {
@@ -2804,9 +2814,14 @@
             }
         }
 
-        intervalInput.addEventListener('change', startAutoChange);
-        themeSelect.addEventListener('change', () => { applyTheme(); startAutoChange(); });
-        weatherSelect.addEventListener('change', () => { applyWeather(); startAutoChange(); });
+        // Coalesce heavy updates (theme changes repaint voxel colors).
+        const scheduleApplyTheme = () => scheduler.schedule('theme:apply', applyTheme, 0);
+        const scheduleApplyWeather = () => scheduler.schedule('weather:apply', applyWeather, 0);
+        const scheduleStartAutoChange = () => scheduler.schedule('autoChange:restart', startAutoChange, 50);
+
+        intervalInput.addEventListener('change', scheduleStartAutoChange);
+        themeSelect.addEventListener('change', () => { scheduleApplyTheme(); scheduleStartAutoChange(); });
+        weatherSelect.addEventListener('change', () => { scheduleApplyWeather(); scheduleStartAutoChange(); });
 
         startAutoChange(); // Init on load
 
