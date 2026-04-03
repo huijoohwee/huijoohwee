@@ -209,80 +209,100 @@
         }
 
         @media (max-width: 768px) {
-            #info { top: 10px; }
-            h1 { font-size: 28px; letter-spacing: 1px; }
-            p.subtitle { font-size: 14px; padding: 2px 8px; }
+            #info { top: 10px; padding: 0 10px; z-index: 5; text-align: left; }
+            h1 { font-size: 20px; letter-spacing: 0px; -webkit-text-stroke: 1px #2d3436; text-shadow: 0px 2px 0px #2d3436; }
+            p.subtitle { font-size: 10px; padding: 2px 6px; border-width: 1px; }
 
             #hud { 
-                top: 80px; 
+                top: 70px; 
                 left: 10px; 
-                padding: 10px; 
-                min-width: 140px; 
+                padding: 8px 12px; 
+                min-width: 120px; 
                 border-width: 2px;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(4px);
             }
-            #hud h3 { font-size: 16px; margin: 0 0 8px 0; }
-            .player-stat { font-size: 14px; padding: 4px 8px; margin: 4px 0; }
-            .color-box { width: 16px; height: 16px; margin-right: 8px; }
+            #hud h3 { font-size: 14px; margin: 0 0 6px 0; border-bottom: 2px dashed #dfe6e9; padding-bottom: 4px; }
+            .player-stat { font-size: 12px; padding: 4px 6px; margin: 3px 0; }
+            .color-box { width: 12px; height: 12px; margin-right: 6px; border-width: 1px; border-radius: 4px; }
 
-            #watermark-container { top: 10px; right: 10px; }
-            #watermark { font-size: 12px; padding: 4px 8px; }
+            #watermark-container { top: 10px; right: 10px; gap: 8px; z-index: 1000; pointer-events: auto; }
+            #watermark-container > div { pointer-events: auto; }
+            #watermark { font-size: 11px; padding: 4px 8px; }
+            #quick-play-mode-btn { font-size: 11px; padding: 4px 8px; box-sizing: border-box; text-align: center; white-space: nowrap; width: 100%; pointer-events: auto; }
 
             #message-box { 
                 top: 60px; 
                 right: 10px; 
                 left: 10px; 
                 text-align: center; 
-                font-size: 14px; 
-                padding: 10px; 
+                font-size: 13px; 
+                padding: 8px; 
             }
 
             #ui { 
-                bottom: auto; 
-                top: 50%;
+                bottom: 100px; 
+                top: auto;
                 left: 50%; 
-                transform: translate(-50%, -50%); 
-                width: 90%; 
-                max-width: 320px; 
+                transform: translateX(-50%); 
+                width: 92%; 
+                max-width: 340px; 
                 padding: 15px; 
                 box-sizing: border-box; 
                 z-index: 100;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+                border-width: 2px;
+                border-left-width: 8px;
             }
-            #prop-name { font-size: 20px; }
-            .detail { font-size: 14px; }
-            .price { font-size: 18px; }
-            .btn { padding: 10px 15px; font-size: 14px; width: 100%; margin-right: 0; margin-bottom: 8px; box-sizing: border-box; }
+            #prop-name { font-size: 18px; margin-bottom: 8px; }
+            .detail { font-size: 13px; margin: 4px 0; }
+            .price { font-size: 16px; }
+            .btn { padding: 10px 12px; font-size: 14px; width: 100%; margin-right: 0; margin-bottom: 8px; box-sizing: border-box; border-width: 2px; }
 
             #dice-container { 
-                bottom: 20px; 
+                bottom: 15px; 
                 left: 50%; 
                 transform: translateX(-50%); 
                 right: auto; 
-                width: 90%; 
-                max-width: 320px; 
+                width: 92%; 
+                max-width: 340px; 
             }
             #dice-btn { 
                 width: 100%; 
-                padding: 15px 20px; 
-                font-size: 20px; 
+                padding: 12px 15px; 
+                font-size: 18px; 
+                border-width: 2px;
+                border-radius: 12px;
             }
             #dice-result { 
-                font-size: 16px; 
-                padding: 8px 15px; 
+                font-size: 14px; 
+                padding: 6px 12px; 
+                margin-top: 10px;
             }
             #superagent-panel {
                 width: 100%;
                 bottom: 100%;
                 right: 0;
+                margin-bottom: 8px;
+                border-width: 2px;
             }
             
             #loading {
-                font-size: 24px;
-                padding: 15px 25px;
-                width: 80%;
+                font-size: 20px;
+                padding: 15px 20px;
+                width: 85%;
                 text-align: center;
                 box-sizing: border-box;
+                border-width: 2px;
             }
+
+            #login-screen > div, #settings-modal > div {
+                width: 95%;
+                padding: 20px;
+            }
+            #login-screen h1 { font-size: 36px; }
+            #login-screen p { font-size: 16px; }
         }
     </style>
 </head>
@@ -306,8 +326,8 @@
         <p class="subtitle" id="game-subtitle">Loading...</p>
     </div>
     
-    <div id="watermark-container" style="position: absolute; top: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; align-items: flex-end; gap: 15px;">
-        <div style="position: relative; display: flex; flex-direction: column; align-items: flex-end; z-index: 102;">
+    <div id="watermark-container" style="position: absolute; top: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; pointer-events: none;">
+        <div style="position: relative; display: flex; flex-direction: column; align-items: flex-end; z-index: 1002; pointer-events: auto;">
             <div id="watermark" style="cursor: pointer; font-size: 14px; font-weight: 900; color: #ffffff; background: rgba(0, 0, 0, 0.2); padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); backdrop-filter: blur(4px);" onclick="const d = document.getElementById('watermark-dropdown'); d.style.display = d.style.display === 'none' ? 'block' : 'none';">☀️ airvio - joohwee</div>
             <div id="watermark-dropdown" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: white; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden; box-shadow: 4px 4px 0px rgba(0,0,0,0.1); min-width: 160px; z-index: 103;">
                 <button id="nav-login-btn" style="display: block; width: 100%; padding: 10px 15px; background: none; border: none; text-align: left; font-family: 'Fredoka One', cursive; font-size: 14px; color: #2d3436; cursor: pointer; white-space: nowrap;" onmouseover="this.style.background='#f1f2f6'" onmouseout="this.style.background='none'" onclick="document.getElementById('login-screen').style.display='flex'; document.getElementById('watermark-dropdown').style.display='none';">WhatsApp Login</button>
@@ -316,8 +336,8 @@
             </div>
         </div>
         
-        <div style="position: relative; z-index: 100;">
-            <div id="quick-play-mode-btn" style="cursor: pointer; font-size: 14px; font-weight: 900; color: #ffffff; background: rgba(0, 0, 0, 0.2); padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); backdrop-filter: blur(4px); width: 100%; box-sizing: border-box;" onclick="if(window.togglePlayMode) window.togglePlayMode();">
+        <div style="position: relative; z-index: 100; width: 100%; pointer-events: auto;">
+            <div id="quick-play-mode-btn" style="cursor: pointer; font-size: 14px; font-weight: 900; color: #ffffff; background: rgba(0, 0, 0, 0.2); padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); backdrop-filter: blur(4px); box-sizing: border-box; text-align: center; white-space: nowrap; width: 100%; pointer-events: auto;" onclick="if(window.togglePlayMode) window.togglePlayMode();">
                 Play with AI 🤖
             </div>
         </div>
@@ -615,6 +635,12 @@
                 document.getElementById('nav-logout-btn').style.display = 'none';
                 document.getElementById('nav-login-btn').style.display = 'block';
                 myPlayerIndex = 0; // Default fallback to first player if not logged in
+            }
+            
+            // Update Quick Play Mode Button text
+            const qBtn = document.getElementById('quick-play-mode-btn');
+            if (qBtn) {
+                qBtn.innerText = currentPlayMode === 'ai' ? 'Play with Human 👫🏻' : 'Play with AI 🤖';
             }
             
             // Toggle SuperAgent container based purely on mode
