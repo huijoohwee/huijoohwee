@@ -171,8 +171,14 @@
             position: absolute;
             bottom: 40px;
             right: 40px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
             z-index: 20;
+            pointer-events: none;
+        }
+        #dice-container > * {
             pointer-events: auto;
         }
         #dice-btn {
@@ -195,7 +201,6 @@
         #dice-btn:disabled { background: #b2bec3 !important; cursor: not-allowed; transform: translateY(6px); box-shadow: 0 0 0 #2d3436; filter: none;}
         
         #dice-result {
-            margin-top: 15px;
             font-size: 20px;
             font-weight: 900;
             color: #2d3436;
@@ -267,13 +272,12 @@
             .btn { padding: 10px 12px; font-size: 14px; width: 100%; margin-right: 0; margin-bottom: 8px; box-sizing: border-box; border-width: 2px; }
 
             #dice-container { 
-                bottom: 15px; 
+                bottom: 30px; 
                 left: 50%; 
                 transform: translateX(-50%); 
                 right: auto; 
                 width: 92%; 
                 max-width: 340px; 
-                pointer-events: auto;
             }
             #dice-btn { 
                 width: 100%; 
@@ -285,7 +289,6 @@
             #dice-result { 
                 font-size: 14px; 
                 padding: 6px 12px; 
-                margin-top: 10px;
             }
             #superagent-panel {
                 width: 100%;
@@ -422,7 +425,7 @@
     </div>
 
     <div id="dice-container">
-        <div id="superagent-container" style="display: none; margin-bottom: 15px; position: relative; pointer-events: auto;">
+        <div id="superagent-container" style="display: none; position: relative; pointer-events: auto; width: 100%;">
             <div id="superagent-panel" style="display: none; position: absolute; bottom: 100%; right: 0; margin-bottom: 10px; width: 300px; background: white; border: 4px solid #2d3436; border-radius: 16px; box-shadow: 8px 8px 0 rgba(0,0,0,0.1); flex-direction: column; overflow: hidden; font-family: 'Nunito', sans-serif;">
                 <div style="background: #a29bfe; color: white; padding: 10px 15px; font-family: 'Fredoka One', cursive; border-bottom: 3px solid #2d3436; display: flex; justify-content: space-between; align-items: center; text-transform: none;">
                     <span>DeerFlow 🦌</span>
@@ -1372,13 +1375,56 @@
             let changed = false;
             let updatedPlayers = JSON.parse(JSON.stringify(yPlayers));
 
+            // Step 1: Claim user's slot first
+            if (!currentUser) {
+                let emptyIdx = updatedPlayers.findIndex(p => !p.phone || p.phone === 'local');
+                if (emptyIdx === -1 && currentPlayMode === 'ai') emptyIdx = 0;
+                
+                if (emptyIdx !== -1) {
+                    updatedPlayers[emptyIdx].phone = 'local';
+                    updatedPlayers[emptyIdx].name = '☀️ airvio - joohwee';
+                    if (players[emptyIdx]) {
+                        players[emptyIdx].phone = 'local';
+                        players[emptyIdx].name = '☀️ airvio - joohwee';
+                    }
+                    myPlayerIndex = emptyIdx;
+                    changed = true;
+                } else {
+                    let localIdx = updatedPlayers.findIndex(p => p.phone === 'local');
+                    if (localIdx !== -1) myPlayerIndex = localIdx;
+                }
+            } else {
+                let existingIdx = updatedPlayers.findIndex(p => p.phone === currentUser.phone);
+                if (existingIdx !== -1) {
+                    myPlayerIndex = existingIdx;
+                    if (updatedPlayers[existingIdx].name !== currentUser.name) {
+                        updatedPlayers[existingIdx].name = currentUser.name;
+                        if (players[existingIdx]) players[existingIdx].name = currentUser.name;
+                        changed = true;
+                    }
+                } else {
+                    let emptyIdx = updatedPlayers.findIndex(p => !p.phone || (currentPlayMode === 'ai' && p.phone.startsWith('ai-')));
+                    if (emptyIdx === -1 && currentPlayMode === 'ai') emptyIdx = 0; // force overwrite slot 0
+                    
+                    if (emptyIdx !== -1) {
+                        updatedPlayers[emptyIdx].phone = currentUser.phone;
+                        updatedPlayers[emptyIdx].name = currentUser.name;
+                        if (players[emptyIdx]) {
+                            players[emptyIdx].phone = currentUser.phone;
+                            players[emptyIdx].name = currentUser.name;
+                        }
+                        myPlayerIndex = emptyIdx;
+                        changed = true;
+                    } else {
+                        myPlayerIndex = -1;
+                    }
+                }
+            }
+
+            // Step 2: Fill remaining slots with AI if in AI mode
             if (currentPlayMode === 'ai') {
-                // Ensure AI players exist in slots 1 and 2
                 for (let i = 0; i < 3; i++) {
-                    if (i !== myPlayerIndex && (!updatedPlayers[i].phone || !updatedPlayers[i].name.includes('DeerFlow'))) {
-                        // Skip if this slot is already claimed by the user
-                        if (currentUser && updatedPlayers[i].phone === currentUser.phone) continue;
-                        
+                    if (i !== myPlayerIndex && (!updatedPlayers[i].phone || !updatedPlayers[i].phone.startsWith('ai-'))) {
                         updatedPlayers[i].phone = `ai-${i}`;
                         updatedPlayers[i].name = `DeerFlow 🦌 ${i}`;
                         if (players[i]) {
@@ -1390,70 +1436,10 @@
                 }
             }
 
-            if (!currentUser) {
-                // If AI mode, we still need a Local Player placeholder so the human can play
-                let localChanged = false;
-                let emptyIdx = updatedPlayers.findIndex(p => !p.phone || p.phone === 'local');
-                
-                // Also check if slot 0 is an AI, we need to overwrite it with local human player
-                if (emptyIdx === -1 && currentPlayMode === 'ai') {
-                    emptyIdx = 0; // force slot 0 to be human
-                }
-                
-                if (emptyIdx !== -1) {
-                    updatedPlayers[emptyIdx].phone = 'local';
-                    updatedPlayers[emptyIdx].name = '☀️ airvio - joohwee';
-                    if (players[emptyIdx]) {
-                        players[emptyIdx].phone = 'local';
-                        players[emptyIdx].name = '☀️ airvio - joohwee';
-                    }
-                    myPlayerIndex = emptyIdx;
-                    localChanged = true;
-                } else {
-                    // Check if 'local' is already in the array, if so, claim it
-                    let localIdx = updatedPlayers.findIndex(p => p.phone === 'local');
-                    if (localIdx !== -1) {
-                        myPlayerIndex = localIdx;
-                    }
-                }
-                
-                if (changed || localChanged) {
-                    yGameState.set('players', updatedPlayers);
-                    return true;
-                }
-                return false;
+            if (changed) {
+                yGameState.set('players', updatedPlayers);
             }
-
-            let existingIdx = updatedPlayers.findIndex(p => p.phone === currentUser.phone);
-            if (existingIdx !== -1) {
-                myPlayerIndex = existingIdx;
-                // If name changed from previous session, update it
-                if (updatedPlayers[existingIdx].name !== currentUser.name) {
-                    updatedPlayers[existingIdx].name = currentUser.name;
-                    if (players[existingIdx]) players[existingIdx].name = currentUser.name;
-                    yGameState.set('players', updatedPlayers);
-                    return true;
-                }
-                if (changed) yGameState.set('players', updatedPlayers);
-                return changed;
-            } else {
-                let emptyIdx = updatedPlayers.findIndex(p => !p.phone || (currentPlayMode === 'ai' && p.phone.startsWith('ai-') && !p.name.includes('DeerFlow')));
-                if (emptyIdx !== -1) {
-                    updatedPlayers[emptyIdx].phone = currentUser.phone;
-                    updatedPlayers[emptyIdx].name = currentUser.name;
-                    if (players[emptyIdx]) {
-                        players[emptyIdx].phone = currentUser.phone;
-                        players[emptyIdx].name = currentUser.name;
-                    }
-                    yGameState.set('players', updatedPlayers);
-                    myPlayerIndex = emptyIdx;
-                    return true;
-                } else {
-                    myPlayerIndex = -1;
-                    if (changed) yGameState.set('players', updatedPlayers);
-                    return changed;
-                }
-            }
+            return changed;
         }
 
         let lastKnownPositions = [];
@@ -1555,23 +1541,18 @@
             }
         }
 
-        let syncSchedulerKey = null;
-        let syncTimeoutKey = null;
+        let sharedSyncSchedulerKey = null;
 
         function scheduleSyncState() {
-            if (syncSchedulerKey) cancelAnimationFrame(syncSchedulerKey);
-            syncSchedulerKey = requestAnimationFrame(() => {
+            if (sharedSyncSchedulerKey) clearTimeout(sharedSyncSchedulerKey);
+            sharedSyncSchedulerKey = setTimeout(() => {
                 syncStateFromYjs();
-                syncSchedulerKey = null;
-            });
+                sharedSyncSchedulerKey = null;
+            }, 50); // Coalesced debounce across runtime & persistence subscriptions
         }
 
         function scheduleSyncStateDeferred() {
-            if (syncTimeoutKey) clearTimeout(syncTimeoutKey);
-            syncTimeoutKey = setTimeout(() => {
-                scheduleSyncState();
-                syncTimeoutKey = null;
-            }, 100);
+            scheduleSyncState();
         }
 
         yGameState.observe(event => {
@@ -1634,25 +1615,30 @@
                 if (!hudCache.pDiv[i]) hudCache.pDiv[i] = document.getElementById(`player-${i}`);
                 
                 const cashEl = hudCache.cash[i];
-                if (cashEl) cashEl.innerText = p.cash;
+                const newCash = String(p.cash);
+                if (cashEl && cashEl.innerText !== newCash) cashEl.innerText = newCash;
                 
                 const nameEl = hudCache.name[i];
                 if (nameEl) {
+                    let expectedHtml = p.name;
                     if (p.name && p.name.includes('DeerFlow')) {
-                        nameEl.innerHTML = `<a href="https://github.com/bytedance/deer-flow.git" target="_blank" style="color: inherit; text-decoration: underline;">${p.name}</a>`;
-                    } else {
-                        nameEl.innerText = p.name;
+                        expectedHtml = `<a href="https://github.com/bytedance/deer-flow.git" target="_blank" style="color: inherit; text-decoration: underline;">${p.name}</a>`;
                     }
-                    
                     if (currentUser && p.phone === currentUser.phone) {
-                        nameEl.innerHTML += " (You)";
+                        expectedHtml += " (You)";
+                    }
+                    if (nameEl.innerHTML !== expectedHtml) {
+                        nameEl.innerHTML = expectedHtml;
                     }
                 }
                 
                 const pDiv = hudCache.pDiv[i];
                 if (pDiv) {
-                    if (i === currentPlayerIndex) pDiv.classList.add('active-turn');
-                    else pDiv.classList.remove('active-turn');
+                    if (i === currentPlayerIndex) {
+                        if (!pDiv.classList.contains('active-turn')) pDiv.classList.add('active-turn');
+                    } else {
+                        if (pDiv.classList.contains('active-turn')) pDiv.classList.remove('active-turn');
+                    }
                 }
             });
         }
@@ -1674,11 +1660,13 @@
                     const offsetX = Math.cos(offsetAngle) * radius;
                     const offsetZ = Math.sin(offsetAngle) * radius;
                     
-                    p.mesh.position.set(
-                        space.position.x + offsetX, 
-                        space.position.y, 
-                        space.position.z + offsetZ
-                    );
+                    const targetX = space.position.x + offsetX;
+                    const targetY = space.position.y;
+                    const targetZ = space.position.z + offsetZ;
+
+                    if (Math.abs(p.mesh.position.x - targetX) > 0.01 || Math.abs(p.mesh.position.z - targetZ) > 0.01) {
+                        p.mesh.position.set(targetX, targetY, targetZ);
+                    }
                 });
             });
         }
