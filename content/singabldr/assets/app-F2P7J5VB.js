@@ -2920,6 +2920,28 @@ if (!window.__singabldr_runtime_patch_v1) {
     };
   }
 
+  function deepMergeInto(target, patch) {
+    if (!target || typeof target !== "object" || !patch || typeof patch !== "object") return;
+    for (const [key, value] of Object.entries(patch)) {
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        if (!target[key] || typeof target[key] !== "object" || Array.isArray(target[key])) target[key] = {};
+        deepMergeInto(target[key], value);
+      } else {
+        target[key] = value;
+      }
+    }
+  }
+
+  function resolveRefUrlMaybe(refUrl) {
+    if (typeof refUrl !== "string" || !refUrl) return null;
+    try {
+      // Support absolute/relative URLs; keep it generic.
+      return new URL(refUrl, window.location.href).href;
+    } catch {
+      return null;
+    }
+  }
+
   // Replace scheduler so all existing closures use the upgraded coalescing behavior.
   try {
     wn = createCoalescedScheduler();
@@ -3115,11 +3137,13 @@ if (!window.__singabldr_runtime_patch_v1) {
     const water = le.geography.water;
     const level = Number.isFinite(Number(water.level)) ? Number(water.level) : -2;
     const color = typeof water.color === "string" ? water.color : "#0984e3";
-    const opacity = Number.isFinite(Number(water.opacity)) ? Number(water.opacity) : 0.75;
+    // Opaque water by default to avoid visual “stacking” artifacts (multiple blue layers showing through).
+    const opacity = Number.isFinite(Number(water.opacity)) ? Number(water.opacity) : 1.0;
     const waveSpeed = Number.isFinite(Number(water.waveSpeed)) ? Number(water.waveSpeed) : 0.8;
 
     const geo = new ce(ri, 0.6, si);
-    const mat = new _e({ color, transparent: true, opacity });
+    const isTransparent = opacity < 0.98;
+    const mat = new _e({ color, transparent: isTransparent, opacity });
     const mesh = new J(geo, mat);
     mesh.position.set(0, level, 0);
     mesh.receiveShadow = true;
@@ -3137,6 +3161,295 @@ if (!window.__singabldr_runtime_patch_v1) {
   }
 
   const activeRockets = [];
+
+  // ---- InfiniTown-like interactivity (JSON-driven) --------------------------
+  let __sceneRotationEnabled = false;
+  let __sceneRotationSpeedY = 0; // radians per frame @60fps (InfiniTown-like feel)
+  let __lastFrameTsMs = 0;
+
+  // Camera controls: rotate around a pinned ground target (no ground rotation).
+  let __cameraControlsEnabled = false;
+  let __cameraControlsOverride = false;
+  let __cameraControlsInstalled = false;
+  const __cameraTarget = new b(0, 0, 0);
+  let __cameraRadius = 520;
+  let __cameraTheta = Math.PI * 0.25; // yaw
+  let __cameraPhi = Math.PI * 0.35; // polar
+  let __cameraMinRadius = 120;
+  let __cameraMaxRadius = 1600;
+  let __cameraRotateSpeed = 1.0;
+  let __cameraPanSpeed = 1.0;
+  let __cameraZoomSpeed = 1.0;
+  const __cameraTmpA = new b();
+  const __cameraTmpB = new b();
+  const __cameraTmpC = new b();
+  const __dragState = {
+    isDown: false,
+    mode: "rotate", // rotate | pan
+    lastX: 0,
+    lastY: 0,
+    touchMode: "none", // none | rotate | pinch
+    pinchDist: 0,
+    pinchMidX: 0,
+    pinchMidY: 0,
+  };
+
+  function refreshInteractivityConfig() {
+    try {
+      const cfg = le?.elements?.interactivity?.sceneRotation;
+      __sceneRotationEnabled = !!cfg?.enabled;
+      const speed = Number(cfg?.speedY);
+      __sceneRotationSpeedY = Number.isFinite(speed) ? speed : 0;
+    } catch {
+      __sceneRotationEnabled = false;
+      __sceneRotationSpeedY = 0;
+    }
+
+    try {
+      const orbit = le?.elements?.interactivity?.cameraOrbit;
+      __cameraControlsEnabled = !!orbit?.enabled;
+      __cameraControlsOverride = !!orbit?.overrideCamera;
+
+      const radius = Number(orbit?.radius);
+      const height = Number(orbit?.height);
+      const speed = Number(orbit?.speed);
+      if (Number.isFinite(radius) && radius > 10) __cameraRadius = radius;
+      if (Number.isFinite(speed) && speed > 0) {
+        // Map to rotate/pan/zoom speed multipliers (keep simple + predictable).
+        __cameraRotateSpeed = Math.max(0.2, Math.min(4, speed / 0.06));
+        __cameraPanSpeed = Math.max(0.2, Math.min(4, speed / 0.06));
+        __cameraZoomSpeed = Math.max(0.2, Math.min(4, speed / 0.06));
+      }
+
+      const target = Array.isArray(orbit?.target) ? orbit.target : null;
+      if (target && target.length >= 3) {
+        __cameraTarget.set(Number(target[0]) || 0, Number(target[1]) || 0, Number(target[2]) || 0);
+      } else {
+        __cameraTarget.set(0, 0, 0);
+      }
+
+      // Choose a pleasant default elevation using `height` (if provided).
+      if (Number.isFinite(height) && height > 0) {
+        const clampedHeight = Math.min(__cameraRadius * 0.95, height);
+        const phi = Math.acos(Math.max(-1, Math.min(1, clampedHeight / __cameraRadius)));
+        if (Number.isFinite(phi)) __cameraPhi = Math.max(0.15, Math.min(Math.PI - 0.15, phi));
+      }
+    } catch {
+      __cameraControlsEnabled = false;
+      __cameraControlsOverride = false;
+    }
+  }
+
+  function isUiEventTarget(target) {
+    const el = target instanceof Element ? target : null;
+    if (!el) return false;
+    return !!el.closest("#hud,#ui,#dice-container,#settings-modal,#login-screen,#superagent-panel");
+  }
+
+  function clampNumber(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function syncSphericalFromCameraIfNeeded() {
+    if (!vn) return;
+    __cameraTmpA.copy(vn.position).sub(__cameraTarget);
+    const r = __cameraTmpA.length();
+    if (!Number.isFinite(r) || r < 1e-3) return;
+    __cameraRadius = clampNumber(r, __cameraMinRadius, __cameraMaxRadius);
+    __cameraTheta = Math.atan2(__cameraTmpA.x, __cameraTmpA.z);
+    __cameraPhi = Math.acos(clampNumber(__cameraTmpA.y / __cameraRadius, -1, 1));
+    __cameraPhi = clampNumber(__cameraPhi, 0.15, Math.PI - 0.15);
+  }
+
+  function applyCameraFromSpherical() {
+    if (!vn) return;
+    const r = clampNumber(__cameraRadius, __cameraMinRadius, __cameraMaxRadius);
+    __cameraRadius = r;
+
+    const sinPhi = Math.sin(__cameraPhi);
+    const x = r * sinPhi * Math.sin(__cameraTheta);
+    const y = r * Math.cos(__cameraPhi);
+    const z = r * sinPhi * Math.cos(__cameraTheta);
+
+    vn.position.set(__cameraTarget.x + x, __cameraTarget.y + y, __cameraTarget.z + z);
+    vn.lookAt(__cameraTarget);
+  }
+
+  function panOnGround(deltaXpx, deltaYpx) {
+    if (!vn) return;
+    // Approximate world units per pixel based on radius (cheap, stable on mobile).
+    const scale = __cameraRadius * 0.0014 * __cameraPanSpeed;
+
+    // Ground-plane right vector (camera local +X projected to XZ).
+    __cameraTmpA.set(1, 0, 0).applyQuaternion(vn.quaternion);
+    __cameraTmpA.y = 0;
+    if (__cameraTmpA.lengthSq() < 1e-6) return;
+    __cameraTmpA.normalize();
+
+    // Ground-plane forward vector (camera local -Z projected to XZ).
+    __cameraTmpB.set(0, 0, -1).applyQuaternion(vn.quaternion);
+    __cameraTmpB.y = 0;
+    if (__cameraTmpB.lengthSq() < 1e-6) return;
+    __cameraTmpB.normalize();
+
+    __cameraTmpC
+      .copy(__cameraTmpA)
+      .multiplyScalar(-deltaXpx * scale)
+      .add(__cameraTmpB.multiplyScalar(deltaYpx * scale));
+
+    __cameraTarget.x += __cameraTmpC.x;
+    __cameraTarget.z += __cameraTmpC.z;
+    // Keep target pinned on ground.
+    __cameraTarget.y = 0;
+  }
+
+  function installCameraControlsOnce() {
+    if (__cameraControlsInstalled) return;
+    __cameraControlsInstalled = true;
+
+    const canvas = document.querySelector("canvas");
+    if (canvas) {
+      canvas.style.touchAction = "none";
+      canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+
+      canvas.addEventListener(
+        "mousedown",
+        (e) => {
+          if (isUiEventTarget(e.target)) return;
+          __dragState.isDown = true;
+          __dragState.lastX = e.clientX;
+          __dragState.lastY = e.clientY;
+          __dragState.mode = e.button === 2 || e.button === 1 || e.shiftKey ? "pan" : "rotate";
+          syncSphericalFromCameraIfNeeded();
+        },
+        true
+      );
+
+      window.addEventListener(
+        "mousemove",
+        (e) => {
+          if (!__dragState.isDown || !__cameraControlsEnabled || !__cameraControlsOverride) return;
+          const dx = e.clientX - __dragState.lastX;
+          const dy = e.clientY - __dragState.lastY;
+          __dragState.lastX = e.clientX;
+          __dragState.lastY = e.clientY;
+
+          if (__dragState.mode === "pan") {
+            panOnGround(dx, dy);
+          } else {
+            __cameraTheta -= dx * 0.005 * __cameraRotateSpeed;
+            __cameraPhi = clampNumber(__cameraPhi - dy * 0.005 * __cameraRotateSpeed, 0.15, Math.PI - 0.15);
+          }
+          applyCameraFromSpherical();
+        },
+        true
+      );
+
+      window.addEventListener(
+        "mouseup",
+        () => {
+          __dragState.isDown = false;
+        },
+        true
+      );
+
+      canvas.addEventListener(
+        "wheel",
+        (e) => {
+          if (isUiEventTarget(e.target)) return;
+          if (!__cameraControlsEnabled || !__cameraControlsOverride) return;
+          e.preventDefault();
+          syncSphericalFromCameraIfNeeded();
+          const delta = clampNumber(e.deltaY, -200, 200);
+          const factor = 1 + delta * 0.0015 * __cameraZoomSpeed;
+          __cameraRadius = clampNumber(__cameraRadius * factor, __cameraMinRadius, __cameraMaxRadius);
+          applyCameraFromSpherical();
+        },
+        { passive: false, capture: true }
+      );
+
+      // Touch support (mobile): 1-finger rotate, 2-finger pinch zoom + pan.
+      canvas.addEventListener(
+        "touchstart",
+        (e) => {
+          if (isUiEventTarget(e.target)) return;
+          if (!__cameraControlsEnabled || !__cameraControlsOverride) return;
+          if (e.touches.length === 1) {
+            __dragState.touchMode = "rotate";
+            __dragState.lastX = e.touches[0].clientX;
+            __dragState.lastY = e.touches[0].clientY;
+            syncSphericalFromCameraIfNeeded();
+          } else if (e.touches.length >= 2) {
+            __dragState.touchMode = "pinch";
+            const x1 = e.touches[0].clientX;
+            const y1 = e.touches[0].clientY;
+            const x2 = e.touches[1].clientX;
+            const y2 = e.touches[1].clientY;
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            __dragState.pinchDist = Math.hypot(dx, dy);
+            __dragState.pinchMidX = (x1 + x2) * 0.5;
+            __dragState.pinchMidY = (y1 + y2) * 0.5;
+            syncSphericalFromCameraIfNeeded();
+          }
+        },
+        { passive: true, capture: true }
+      );
+
+      canvas.addEventListener(
+        "touchmove",
+        (e) => {
+          if (isUiEventTarget(e.target)) return;
+          if (!__cameraControlsEnabled || !__cameraControlsOverride) return;
+          if (__dragState.touchMode === "rotate" && e.touches.length === 1) {
+            e.preventDefault();
+            const x = e.touches[0].clientX;
+            const y = e.touches[0].clientY;
+            const dx = x - __dragState.lastX;
+            const dy = y - __dragState.lastY;
+            __dragState.lastX = x;
+            __dragState.lastY = y;
+            __cameraTheta -= dx * 0.006 * __cameraRotateSpeed;
+            __cameraPhi = clampNumber(__cameraPhi - dy * 0.006 * __cameraRotateSpeed, 0.15, Math.PI - 0.15);
+            applyCameraFromSpherical();
+          } else if (__dragState.touchMode === "pinch" && e.touches.length >= 2) {
+            e.preventDefault();
+            const x1 = e.touches[0].clientX;
+            const y1 = e.touches[0].clientY;
+            const x2 = e.touches[1].clientX;
+            const y2 = e.touches[1].clientY;
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const dist = Math.hypot(dx, dy);
+            const midX = (x1 + x2) * 0.5;
+            const midY = (y1 + y2) * 0.5;
+
+            const distDelta = dist - __dragState.pinchDist;
+            __dragState.pinchDist = dist;
+            const panDx = midX - __dragState.pinchMidX;
+            const panDy = midY - __dragState.pinchMidY;
+            __dragState.pinchMidX = midX;
+            __dragState.pinchMidY = midY;
+
+            // pinch zoom
+            __cameraRadius = clampNumber(__cameraRadius * (1 - distDelta * 0.0035 * __cameraZoomSpeed), __cameraMinRadius, __cameraMaxRadius);
+            // 2-finger translate pans
+            panOnGround(panDx, panDy);
+            applyCameraFromSpherical();
+          }
+        },
+        { passive: false, capture: true }
+      );
+
+      canvas.addEventListener(
+        "touchend",
+        () => {
+          __dragState.touchMode = "none";
+        },
+        { passive: true, capture: true }
+      );
+    }
+  }
 
   function launchRocket() {
     if (!xn || !le?.transportation?.rocket) return;
@@ -3757,6 +4070,17 @@ if (!window.__singabldr_runtime_patch_v1) {
       _origFw(ts);
       try {
         const t = ZR.getElapsedTime();
+
+        // InfiniTown-like scene rotation (cheap + mobile-friendly).
+        if (__sceneRotationEnabled && xn) {
+          const now = Number(ts) || performance.now();
+          const dtMs = __lastFrameTsMs ? now - __lastFrameTsMs : 16.666;
+          __lastFrameTsMs = now;
+          const scale = Math.max(0, Math.min(4, dtMs / 16.666));
+          xn.rotation.y += __sceneRotationSpeedY * scale;
+        }
+
+        const tmpWorldPos = new b();
         if (__waterMesh?.userData?.type === "water") {
           const amp = Number(__waterMesh.userData.waveAmp) || 0;
           const baseY = Number(__waterMesh.userData.baseY) || 0;
@@ -3807,12 +4131,11 @@ if (!window.__singabldr_runtime_patch_v1) {
           }
 
           if (!vn) continue;
-          const worldPos = new b();
-          bubbleRec.citizen.getWorldPosition(worldPos);
-          worldPos.y += 14; // place above head
-          worldPos.project(vn);
-          const x = (worldPos.x * 0.5 + 0.5) * window.innerWidth;
-          const y = (-worldPos.y * 0.5 + 0.5) * window.innerHeight;
+          bubbleRec.citizen.getWorldPosition(tmpWorldPos);
+          tmpWorldPos.y += 14; // place above head
+          tmpWorldPos.project(vn);
+          const x = (tmpWorldPos.x * 0.5 + 0.5) * window.innerWidth;
+          const y = (-tmpWorldPos.y * 0.5 + 0.5) * window.innerHeight;
 
           const bw = Number.isFinite(bubbleRec.w) ? bubbleRec.w : 360;
           const bh = Number.isFinite(bubbleRec.h) ? bubbleRec.h : 240;
@@ -3840,12 +4163,11 @@ if (!window.__singabldr_runtime_patch_v1) {
           }
 
           if (!vn) continue;
-          const worldPos = new b();
-          bubbleRec.citizen.getWorldPosition(worldPos);
-          worldPos.y += 10;
-          worldPos.project(vn);
-          const x = (worldPos.x * 0.5 + 0.5) * window.innerWidth;
-          const y = (-worldPos.y * 0.5 + 0.5) * window.innerHeight;
+          bubbleRec.citizen.getWorldPosition(tmpWorldPos);
+          tmpWorldPos.y += 10;
+          tmpWorldPos.project(vn);
+          const x = (tmpWorldPos.x * 0.5 + 0.5) * window.innerWidth;
+          const y = (-tmpWorldPos.y * 0.5 + 0.5) * window.innerHeight;
 
           const bw = Number.isFinite(bubbleRec.w) ? bubbleRec.w : 280;
           const bh = Number.isFinite(bubbleRec.h) ? bubbleRec.h : 96;
@@ -3904,6 +4226,46 @@ if (!window.__singabldr_runtime_patch_v1) {
     patchRocketCommand();
     patchUrlToIframeBubble();
     patchAnimateLoop();
+    installCameraControlsOnce();
+
+    // Load dedicated asset/element registries if board references them.
+    try {
+      const assetRefUrl = resolveRefUrlMaybe(le?.assetRefUrl);
+      const elementRefUrl = resolveRefUrlMaybe(le?.elementRefUrl);
+
+      if (assetRefUrl) {
+        wn.schedule("board:assets:merge", async () => {
+          try {
+            const assetsJson = await zp(assetRefUrl, { ttlMs: 60_000 });
+            if (assetsJson && typeof assetsJson === "object") {
+              le.assets = le.assets && typeof le.assets === "object" ? le.assets : {};
+              deepMergeInto(le.assets, assetsJson);
+            }
+          } catch {}
+        }, 0);
+      }
+
+      if (elementRefUrl) {
+        wn.schedule("board:elements:merge", async () => {
+          try {
+            const elementsJson = await zp(elementRefUrl, { ttlMs: 60_000 });
+            if (elementsJson && typeof elementsJson === "object") {
+              le.elements = le.elements && typeof le.elements === "object" ? le.elements : {};
+              deepMergeInto(le.elements, elementsJson);
+              refreshInteractivityConfig();
+            }
+          } catch {}
+        }, 0);
+      }
+    } catch {}
+
+    // Ensure interactivity is configured even if no elementRefUrl is used.
+    refreshInteractivityConfig();
+    // Apply camera once after config.
+    if (__cameraControlsEnabled && __cameraControlsOverride) {
+      syncSphericalFromCameraIfNeeded();
+      applyCameraFromSpherical();
+    }
 
     // If a persisted theme is present, apply it once.
     wn.schedule("theme:apply:init", () => Vh?.(), 0);
