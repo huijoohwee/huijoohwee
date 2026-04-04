@@ -1,5 +1,8 @@
 /singapoly /singabldr 301
 /singapoly/ /singabldr 301
+/hackamap /hackamap/ 301
+/hackamap/ /content/hackamap/index.html 200
+/hackamap/* /content/hackamap/:splat 200
 / /content/singabldr/index.html 200
 /singabldr /content/singabldr/index.html 200
 /singabldr/ /content/singabldr/index.html 200
