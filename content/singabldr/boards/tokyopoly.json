@@ -91,6 +91,97 @@
       "attack": ["attack"],
       "build": ["build", "buildings", "high-rise"],
       "rocket": ["rocket"]
+    },
+    "assets": {
+      "version": "tokyopoly-assets@1",
+      "palette": {
+        "primary": "#00a8ff",
+        "accent": "#e84118",
+        "land": ["#2f3640", "#353b48", "#718093"],
+        "sand": "#f5f6fa",
+        "water": "#192a56",
+        "outline": "#2d3436"
+      },
+      "materials": {
+        "voxelLand": { "shader": "lambert", "receiveShadow": true },
+        "voxelWater": { "shader": "lambert", "opacity": 0.85, "receiveShadow": true },
+        "road": { "shader": "lambert", "color": "#2f3640" },
+        "roadDash": { "shader": "lambert", "color": "#f5f6fa" }
+      },
+      "ui": {
+        "bubble": { "maxWidth": 150, "borderRadius": 12, "ttlMs": 5000 },
+        "chat": { "maxMessages": 120 }
+      }
+    },
+    "elements": {
+      "version": "tokyopoly-elements@1",
+      "geographic_features": {
+        "coastline": { "type": "polygon", "source": "scene.polygons[mainPolygonIndex]" },
+        "islands": [{ "id": "odaiba", "label": "Odaiba", "source": "scene.polygons[1]" }]
+      },
+      "points_of_interest": {
+        "shibuya": { "kind": "district", "model": "mall", "focus": true, "tags": ["crossing", "nightlife"] },
+        "akihabara": { "kind": "district", "model": "skyscraper", "focus": true, "tags": ["electronics", "anime"] },
+        "tokyotower": { "kind": "monument", "model": "monument", "focus": true, "tags": ["viewpoint"] },
+        "skytree": { "kind": "monument", "model": "monument", "focus": true, "tags": ["viewpoint"] }
+      },
+      "transportation": {
+        "mrt": { "kind": "rail", "path": "nodes", "defaultSpeed": 0.008, "yOffset": 8, "supports": ["start", "stop", "faster"] },
+        "plane": { "kind": "air", "path": "circular", "radius": 220, "y": 120, "defaultSpeed": 0.004, "supports": ["start", "stop", "faster"] },
+        "heli": { "kind": "air", "path": "patrol", "y": 60, "defaultSpeed": 0.05, "supports": ["start", "stop"] },
+        "ship": { "kind": "sea", "path": "circular", "radius": 300, "y": -3, "defaultSpeed": 0.002, "supports": ["start", "stop"] },
+        "rocket": { "kind": "space", "path": "launch", "supports": ["launch"] }
+      },
+      "nature": {
+        "citizens": {
+          "defaultSentiment": "neutral",
+          "sentiments": ["neutral", "happy"],
+          "bubbleTriggers": ["react", "bubble", "url", "file"],
+          "bubbleTemplates": {
+            "react:heard": "Did you hear about “{snippet}”?",
+            "react:file": "I just read “{snippet}”.",
+            "react:url": "I saw this on {domain}…",
+            "poi:visit": "Meet at {poi}!",
+            "swarm:status": "Swarm status: {status}",
+            "swarm:burst": "Agents everywhere! 🤖",
+            "weather:change": "Weather update: {weather}",
+            "theme:change": "Theme update: {theme}"
+          }
+        },
+        "clouds": { "drift": { "enabled": true } },
+        "trees": { "placement": { "mode": "landOnly" } }
+      },
+      "swarm": {
+        "version": "swarm@1",
+        "agents": [
+          { "id": "flowinfish", "role": "superagent", "tags": ["deer-flow", "mirofish"] },
+          { "id": "citizen_swarm", "role": "swarm_engine", "tags": ["bubbles", "sentiment", "poi"] }
+        ],
+        "loops": {
+          "default": { "burstEverySeconds": 15, "maxBubblesPerBurst": 4, "intensityRange": [0.3, 1.0] }
+        }
+      },
+      "theme": {
+        "default": { "mix": 0, "snow": false },
+        "sakura": { "color": "#fd79a8", "mix": 0.35, "snow": false },
+        "matsuri": { "color": "#00a8ff", "mix": 0.3, "snow": false },
+        "new_year": { "color": "#ffffff", "mix": 0.45, "snow": false }
+      },
+      "weather": {
+        "sunshine": { "effects": [] },
+        "cloudy": { "effects": [] },
+        "stormy": { "effects": ["wind"] },
+        "drizzle": { "effects": ["rainLight"] }
+      },
+      "animation": {
+        "citizen_bubble": { "fadeInMs": 10, "fadeOutMs": 300, "projectToScreen": true },
+        "vehicle_motion": { "ease": "linear", "speedMultiplierCap": 8 },
+        "interactions": {
+          "rollDice": { "cooldownMs": 1200 },
+          "camera": { "tweenMs": 900 },
+          "poiHighlight": { "pulseMs": 1200 }
+        }
+      }
     }
   },
   "type": "FeatureCollection",

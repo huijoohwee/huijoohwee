@@ -1,111 +1,84 @@
-[
-  {
-    "timestamp": 0,
-    "action": "log",
-    "message": "Starting the Singapore AI Agent Boom Simulation..."
+{
+  "version": "singabldr-script@1",
+  "meta": {
+    "name": "Singapore AI Agent Boom (Demo)",
+    "durationSeconds": 120,
+    "loop": false
   },
-  {
-    "timestamp": 5,
-    "action": "chat",
-    "message": "Hey FlowinFish, what's happening in Singapore right now?"
+  "assets": {
+    "geography": ["terrain", "water", "coastline", "islands"],
+    "scenes": ["day", "twilight", "night"],
+    "pointOfInterests": ["Sentosa Island", "Marina Bay Sands", "Merlion Park", "Gardens by the Bay"],
+    "transportation": ["mrt", "plane", "heli", "ship"],
+    "nature": ["trees", "clouds", "citizens"],
+    "themes": ["default", "cny", "deepavali", "christmas", "national_day"],
+    "weathers": ["sunshine", "cloudy", "stormy", "haze"]
   },
-  {
-    "timestamp": 12,
-    "action": "sentiment",
-    "value": "neutral",
-    "message": "AI agents are starting to appear everywhere in Singapore."
+  "scenePatch": {
+    "themes": {
+      "national_day": { "color": "#ff4757", "mix": 0.55 }
+    },
+    "weathers": {
+      "haze": { "bg": "#b2bec3", "fogDensity": 0.0042, "dirLight": 0.08, "ambient": 0.45 }
+    }
   },
-  {
-    "timestamp": 15,
-    "action": "bubble",
-    "message": "I heard GovTech launched a new AI assistant today!"
-  },
-  {
-    "timestamp": 20,
-    "action": "bubble",
-    "message": "My company is testing Swarm Intelligence next week."
-  },
-  {
-    "timestamp": 30,
-    "action": "chat",
-    "message": "Are the people happy about the AI boom?"
-  },
-  {
-    "timestamp": 35,
-    "action": "sentiment",
-    "value": "happy",
-    "message": "The tech sector is booming and everyone is excited about the future!"
-  },
-  {
-    "timestamp": 38,
-    "action": "bubble",
-    "message": "I just got a promotion because of my AI skills! 🎉"
-  },
-  {
-    "timestamp": 42,
-    "action": "bubble",
-    "message": "FlowinFish is making my daily work so much easier!"
-  },
-  {
-    "timestamp": 55,
-    "action": "chat",
-    "message": "Change the weather to stormy, I think some people are worried."
-  },
-  {
-    "timestamp": 60,
-    "action": "command",
-    "value": "change weather to stormy"
-  },
-  {
-    "timestamp": 65,
-    "action": "sentiment",
-    "value": "neutral",
-    "message": "Some citizens are expressing concerns about job displacement."
-  },
-  {
-    "timestamp": 70,
-    "action": "bubble",
-    "message": "Is this Swarm AI going to take over my accounting job?"
-  },
-  {
-    "timestamp": 75,
-    "action": "bubble",
-    "message": "I need to learn prompt engineering fast..."
-  },
-  {
-    "timestamp": 85,
-    "action": "chat",
-    "message": "But the government is providing heavy subsidies for upskilling!"
-  },
-  {
-    "timestamp": 90,
-    "action": "command",
-    "value": "change weather to sunshine"
-  },
-  {
-    "timestamp": 95,
-    "action": "sentiment",
-    "value": "happy",
-    "message": "The SkillsFuture credits are helping everyone adapt!"
-  },
-  {
-    "timestamp": 100,
-    "action": "bubble",
-    "message": "Just signed up for a free AI course! 🥳"
-  },
-  {
-    "timestamp": 105,
-    "action": "bubble",
-    "message": "Singapore is going to be the top AI hub in Asia!"
-  },
-  {
-    "timestamp": 115,
-    "action": "chat",
-    "message": "FlowinFish, the future looks bright!"
-  },
-  {
-    "timestamp": 120,
-    "action": "log",
-    "message": "Ending simulation."
-  }
-]
+  "steps": [
+    { "timestamp": 0, "action": "log", "message": "Starting the Singapore AI Agent Boom Simulation..." },
+    { "timestamp": 5, "action": "chat", "message": "Hey FlowinFish, what's happening in Singapore right now?" },
+
+    { "timestamp": 9, "action": "url", "domain": "gov.sg", "snippet": "New policy: AI sandboxes expanded for startups", "count": 3 },
+    { "timestamp": 12, "action": "sentiment", "value": "neutral", "message": "AI agents are starting to appear everywhere in Singapore." },
+    { "timestamp": 15, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "GovTech launched a new AI assistant today", "count": 4 },
+    { "timestamp": 16, "action": "chat", "message": "Live feed: here's my X post on multi-agent orchestration speedups." },
+    {
+      "timestamp": 17,
+      "action": "command",
+      "value": "https://x.com/HuiJooHwee/status/2039406997997785182"
+    },
+    { "timestamp": 18, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "From 3 days → 30 minutes. Exponential acceleration.", "count": 4, "durationMs": 5200 },
+    { "timestamp": 18, "action": "poiBubble", "poiId": "mbs", "templateId": "poi:visit", "durationMs": 5500 },
+    { "timestamp": 21, "action": "poiBubble", "poiId": "merlion", "templateId": "poi:visit" },
+
+    { "timestamp": 25, "action": "setTheme", "value": "cny", "bubble": true },
+    { "timestamp": 28, "action": "swarm", "op": "status", "status": "bootstrapping", "durationMs": 4500 },
+    { "timestamp": 30, "action": "chat", "message": "Are the people happy about the AI boom?" },
+    { "timestamp": 35, "action": "sentiment", "value": "happy", "message": "The tech sector is booming and everyone is excited about the future!" },
+    { "timestamp": 38, "action": "bubble", "message": "I just got a promotion because of my AI skills! 🎉" },
+    { "timestamp": 42, "action": "bubble", "message": "FlowinFish is making my daily work so much easier!" },
+
+    { "timestamp": 46, "action": "swarm", "op": "burst", "count": 5, "durationMs": 4500 },
+    { "timestamp": 48, "action": "vehicle", "id": "mrt", "op": "faster" },
+    { "timestamp": 50, "action": "interact", "type": "rollDice" },
+
+    { "timestamp": 55, "action": "chat", "message": "Change the weather to stormy, I think some people are worried." },
+    { "timestamp": 60, "action": "setWeather", "value": "stormy", "bubble": true },
+    { "timestamp": 65, "action": "sentiment", "value": "neutral", "message": "Some citizens are expressing concerns about job displacement." },
+    { "timestamp": 70, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Will swarm AI take over my job?", "count": 4 },
+    { "timestamp": 75, "action": "file", "snippet": "internal-memo.txt: retraining program + funding details", "count": 3 },
+    { "timestamp": 78, "action": "chat", "message": "Community pulse: Reddit builders sharing their Trae SOLO experience." },
+    {
+      "timestamp": 79,
+      "action": "command",
+      "value": "https://www.reddit.com/r/Trae_ai/comments/1ovcca2/comment/nojw5gz"
+    },
+    { "timestamp": 80, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Diagram-to-code on infinite-canvas projects (educational use case).", "count": 4, "durationMs": 5200 },
+
+    { "timestamp": 82, "action": "setWeather", "value": "haze", "bubble": true },
+    { "timestamp": 85, "action": "chat", "message": "But the government is providing heavy subsidies for upskilling!" },
+    { "timestamp": 90, "action": "setWeather", "value": "sunshine", "bubble": true },
+    { "timestamp": 92, "action": "setTheme", "value": "national_day", "bubble": true },
+    { "timestamp": 93, "action": "chat", "message": "And here's the same idea on LinkedIn: multi-agent orchestration rewriting the playbook." },
+    {
+      "timestamp": 94,
+      "action": "command",
+      "value": "https://www.linkedin.com/posts/huijoohwee_simply-amazed-by-multi-agent-orchestration-ugcPost-7445173659155148801-XCvb"
+    },
+    { "timestamp": 95, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Innovation isn’t just speeding up — it’s exponentially accelerating.", "count": 4, "durationMs": 5200 },
+    { "timestamp": 95, "action": "sentiment", "value": "happy", "message": "The SkillsFuture credits are helping everyone adapt!" },
+    { "timestamp": 100, "action": "bubble", "message": "Just signed up for a free AI course! 🥳" },
+    { "timestamp": 105, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Singapore is going to be the top AI hub in Asia!", "count": 4 },
+    { "timestamp": 110, "action": "swarm", "op": "status", "status": "stable", "durationMs": 4500 },
+    { "timestamp": 115, "action": "chat", "message": "FlowinFish, the future looks bright!" },
+    { "timestamp": 120, "action": "log", "message": "Ending simulation." }
+  ]
+}
