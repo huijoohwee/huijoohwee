@@ -1,1 +1,0 @@
-import{r as o}from"./react-CkqBYhkq.js";import{i as s}from"./lib-ui-BrOl85Tn.js";function i(){const[n,m]=o.useState(()=>s());return o.useEffect(()=>{const u=()=>{const t=s();m(r=>r!==t?t:r)},e=new MutationObserver(u);return e.observe(document.documentElement,{attributes:!0,attributeFilter:["class","data-theme"]}),()=>e.disconnect()},[]),n}export{i as u};

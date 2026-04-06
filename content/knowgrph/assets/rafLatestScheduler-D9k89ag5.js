@@ -1,0 +1,1 @@
+function a(u){let n=null,e=null;const t=()=>{if(n=null,e==null)return;const l=e;e=null,u(l)};return{schedule:l=>{if(e=l,n==null){if(typeof window>"u"){t();return}n=window.requestAnimationFrame(t)}},cancel:()=>{if(n!=null){try{window.cancelAnimationFrame(n)}catch{}n=null,e=null}}}}export{a as c};

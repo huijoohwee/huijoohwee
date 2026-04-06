@@ -1,1 +1,0 @@
-function i(c){const r=String(c??""),n=globalThis;if(n.Buffer&&typeof n.Buffer.from=="function")return n.Buffer.from(r,"utf8").toString("base64");const o=new TextEncoder().encode(r);let t="";const f=32768;for(let e=0;e<o.length;e+=f){const a=o.subarray(e,Math.min(o.length,e+f));t+=String.fromCharCode(...Array.from(a))}return btoa(t)}export{i as e};

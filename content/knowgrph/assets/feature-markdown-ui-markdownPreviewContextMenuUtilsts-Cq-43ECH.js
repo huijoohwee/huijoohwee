@@ -1,1 +1,0 @@
-const L=(r,a)=>{if(!r)return null;const s=a;if(!s)return null;let e=s,t=null,i=null;for(;e&&e!==r;){const n=e.dataset;if(n&&n.startLine){const l=Number.parseInt(n.startLine,10),u=n.endLine?Number.parseInt(n.endLine,10):l;if(Number.isFinite(l)&&Number.isFinite(u)){t=l,i=u;break}}e=e.parentElement}return t==null||i==null?null:{startLine:t,endLine:i}};export{L as f};

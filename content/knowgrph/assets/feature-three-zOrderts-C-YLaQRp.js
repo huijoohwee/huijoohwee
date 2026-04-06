@@ -1,1 +1,0 @@
-const r=e=>{if(typeof e=="number"&&Number.isFinite(e))return e;if(typeof e=="string"){const n=Number(e);if(Number.isFinite(n))return n}return null};function u(e){if(!e)return 0;const n=r(e["visual:zIndex"])??r(e["visual:depth"])??r(e["visual:z"])??r(e.zIndex)??r(e.z);return n==null?0:Math.max(-4,Math.min(4,Math.round(n)))}export{u as r};

@@ -1,1 +1,0 @@
-function s(t){const n=String(t.pathname||"");if(n==="/"||n==="")return null;const a=String(t.search||""),h=String(t.hash||""),e=new URLSearchParams(a.startsWith("?")?a.slice(1):a);e.get("kgPath")||e.set("kgPath",n);const r=e.toString();return{pathname:"/",search:r?`?${r}`:"",hash:h}}export{s as n};

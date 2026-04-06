@@ -1,1 +1,0 @@
-function e(n){var i;const r=String(n||"").trim()||"id";try{const t=globalThis.crypto,c=(i=t==null?void 0:t.randomUUID)==null?void 0:i.call(t);if(c)return`${r}-${c}`}catch{}return`${r}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,10)}`}export{e as c};
