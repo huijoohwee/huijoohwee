@@ -1,0 +1,1 @@
+import{o as s}from"./monaco-base-common-errorsjs-DmhyQooZ.js";function u(t,c){var n;const e=globalThis.MonacoEnvironment;if(e!=null&&e.createTrustedTypesPolicy)try{return e.createTrustedTypesPolicy(t,c)}catch(r){s(r);return}try{return(n=globalThis.trustedTypes)==null?void 0:n.createPolicy(t,c)}catch(r){s(r);return}}export{u as c};

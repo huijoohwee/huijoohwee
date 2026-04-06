@@ -1,0 +1,1 @@
+import{b as s,c as e}from"./monaco-base-common-platformjs-CFtQXxHv.js";const a=s?'"Segoe WPC", "Segoe UI", sans-serif':e?"-apple-system, BlinkMacSystemFont, sans-serif":'system-ui, "Ubuntu", "Droid Sans", sans-serif';export{a as D};
