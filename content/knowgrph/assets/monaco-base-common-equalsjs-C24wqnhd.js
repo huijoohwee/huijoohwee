@@ -1,0 +1,1 @@
+import{e as r}from"./monaco-base-common-arraysjs-BH7rQSP0.js";const i=(e,n)=>e===n;function f(e=i){return(n,t)=>r(n,t,e)}function o(){return(e,n)=>e.equals(n)}function q(e,n,t){{const a=e;return(u,s)=>u==null||s===void 0||s===null?s===u:a(u,s)}}export{o as a,q as e,f as i,i as s};

@@ -1,0 +1,1 @@
+import{f as c}from"./monaco-base-common-typesjs-DpuS9Tl8.js";const o=Object.create(null);function s(e,n){if(c(n)){const r=o[n];if(r===void 0)throw new Error(`${e} references an unknown codicon: ${n}`);n=r}return o[e]=n,{id:e}}function t(){return o}export{t as g,s as r};

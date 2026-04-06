@@ -1,0 +1,1 @@
+function f(r){return!!r&&typeof r=="object"&&!Array.isArray(r)}function e(r,t=0){if(t>20)return!1;if(r===null||typeof r=="string"||typeof r=="number"||typeof r=="boolean")return!0;if(Array.isArray(r))return r.every(n=>e(n,t+1));if(!f(r))return!1;for(const n of Object.values(r))if(!e(n,t+1))return!1;return!0}export{e as i};

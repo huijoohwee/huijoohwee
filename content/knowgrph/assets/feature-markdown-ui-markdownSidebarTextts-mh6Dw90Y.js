@@ -1,0 +1,1 @@
+function r({uiPanelTextFontClass:e,uiPanelMicroLabelTextSizeClass:t,uiPanelKeyValueTextSizeClass:a,fallbackSizeClass:i="text-[10px]",textColorClassName:n}){return[e,t||a||i,"font-semibold uppercase tracking-wide truncate",n].join(" ")}export{r as b};

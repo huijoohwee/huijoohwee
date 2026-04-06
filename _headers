@@ -9,10 +9,16 @@
 /content/knowgrph/index.html
   Cache-Control: public, max-age=0, must-revalidate
 
+/content/knowgrph/*.json
+  Cache-Control: public, max-age=0, must-revalidate
+
 /content/singabldr/index.html
   Cache-Control: public, max-age=0, must-revalidate
 
 /content/*/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/content/*/vendor/*
   Cache-Control: public, max-age=31536000, immutable
 
 /content/singabldr/boards/*.json

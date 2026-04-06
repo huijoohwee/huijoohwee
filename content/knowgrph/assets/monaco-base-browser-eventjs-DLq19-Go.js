@@ -1,0 +1,1 @@
+import{E as n}from"./monaco-base-common-eventjs-BXDjItKc.js";class d{get event(){return this.emitter.event}constructor(t,e,i){const r=s=>this.emitter.fire(s);this.emitter=new n({onWillAddFirstListener:()=>t.addEventListener(e,r,i),onDidRemoveLastListener:()=>t.removeEventListener(e,r,i)})}dispose(){this.emitter.dispose()}}export{d as D};

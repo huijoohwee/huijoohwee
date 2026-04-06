@@ -1,0 +1,1 @@
+import{r as o}from"./react-DvxGsSsn.js";import{useGraphStore as s}from"./hook-useGraphStorets-B98lrjdX.js";function a(r){const t=o.useRef(s.getState()[r]);return o.useEffect(()=>s.subscribe(e=>e[r],e=>{t.current=e}),[r]),t}export{a as u};

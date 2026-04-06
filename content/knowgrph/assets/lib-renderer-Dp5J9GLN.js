@@ -1,0 +1,1 @@
+const t=["d3","d3Bipartite","flow","design","flowEditor"];function e(r){return r==="d3Bipartite"?"Bipartite":r==="flowEditor"?"Edit":r==="flow"?"Flow":r==="design"?"Design":"D3"}export{t as C,e as g};

@@ -5,6 +5,17 @@
 /hackamap/* /content/hackamap/:splat 200
 /knowgrph /knowgrph/ 301
 /knowgrph/assets/* /content/knowgrph/assets/:splat 200
+/knowgrph/vendor/* /content/knowgrph/vendor/:splat 200
+/knowgrph/*.js /content/knowgrph/:splat 200
+/knowgrph/*.mjs /content/knowgrph/:splat 200
+/knowgrph/*.css /content/knowgrph/:splat 200
+/knowgrph/*.svg /content/knowgrph/:splat 200
+/knowgrph/*.ico /content/knowgrph/:splat 200
+/knowgrph/*.json /content/knowgrph/:splat 200
+/knowgrph/*.wasm /content/knowgrph/:splat 200
+/knowgrph/*.txt /content/knowgrph/:splat 200
+/knowgrph/*.webmanifest /content/knowgrph/:splat 200
+/knowgrph/*.map /content/knowgrph/:splat 200
 /knowgrph/ /content/knowgrph/index.html 200
 /knowgrph/* /content/knowgrph/index.html 200
 / /content/singabldr/index.html 200

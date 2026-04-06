@@ -1,0 +1,1 @@
+const r={pagerank:!0,hits:!0,betweenness:!0,closeness:!0},o=s=>{if(!s||typeof s!="object"||Array.isArray(s))return null;const e=s,n=["pagerank","hits","betweenness","closeness"];for(const t of n)if(typeof e[t]!="boolean")return null;return{pagerank:e.pagerank,hits:e.hits,betweenness:e.betweenness,closeness:e.closeness}};export{r as D,o as p};

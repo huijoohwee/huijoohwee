@@ -1,0 +1,1 @@
+import"./lib-configts-9d_qfRyG.js";import{U as o}from"./lib-config-copy-B1lklWY2.js";const t={emptyArrayLabel:o.jsonToMarkdownEmptyArrayLabel,emptyListLabel:o.jsonToMarkdownEmptyListLabel,moreRowsLabel:a=>o.jsonToMarkdownMoreRowsLabel(a),itemLabel:a=>o.jsonToMarkdownItemLabel(a)};export{t as J};

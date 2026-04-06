@@ -1,0 +1,1 @@
+import{j as a}from"./react-DvxGsSsn.js";function o(e){const{frameClassName:s,slideStyle:l,slideTransitionStyle:t,onDoubleClick:i,children:r}=e;return a.jsx("article",{className:s,style:{...l,...t},onDoubleClick:i,children:r})}export{o as S};

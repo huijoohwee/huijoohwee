@@ -1,0 +1,1 @@
+import"./three-Threejs-DqdeAVsp.js";import{P as s,V as n}from"./three-math-CUfZG_iw.js";const a=new n(0,0,1),P=(e,o=0,c)=>{const r=new s(a,-o),t=new n;return e.intersectPlane(r,t)?t:null};export{P as i};

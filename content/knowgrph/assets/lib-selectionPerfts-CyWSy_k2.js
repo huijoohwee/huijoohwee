@@ -1,0 +1,1 @@
+function i(){return typeof window>"u"||!window.__KG_SELECTION_PERF_ENABLED__?null:performance.now()}function w(n,e){if(!(e==null||typeof window>"u"||!window.__KG_SELECTION_PERF_ENABLED__))try{const o=performance.now()-e,t=new CustomEvent("kg-selection-perf",{detail:{subscriber:n,durationMs:o,ts:performance.now()}});window.dispatchEvent(t)}catch{}}export{w as a,i as s};

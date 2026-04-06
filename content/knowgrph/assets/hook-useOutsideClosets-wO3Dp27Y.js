@@ -1,0 +1,1 @@
+import{r as a}from"./react-DvxGsSsn.js";function m(r,e,t,c){a.useEffect(()=>{if(!r)return;const n=i=>{const s=i.target,u=t&&t.current?t.current:null;u&&s&&u.contains(s)||e(!1)},o={capture:!0};return document.addEventListener("pointerdown",n,o),()=>document.removeEventListener("pointerdown",n,o)},[r,e,t,c])}export{m as u};
