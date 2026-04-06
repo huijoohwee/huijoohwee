@@ -1,1 +1,0 @@
-import{E as t}from"./monaco-base-common-eventjs-Cp3dW218.js";class n{constructor(){this._inputMode="insert",this._onDidChangeInputMode=new t,this.onDidChangeInputMode=this._onDidChangeInputMode.event}getInputMode(){return this._inputMode}}const i=new n;export{i as I};

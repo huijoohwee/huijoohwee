@@ -1,1 +1,0 @@
-import{a}from"./three-renderers-XuCrcUv2.js";class l extends a{constructor(e=1,t=1,r=1,s={}){console.warn('THREE.WebGLMultipleRenderTargets has been deprecated and will be removed in r172. Use THREE.WebGLRenderTarget and set the "count" parameter to enable MRT.'),super(e,t,{...s,count:r}),this.isWebGLMultipleRenderTargets=!0}get texture(){return this.textures}}export{l as W};
