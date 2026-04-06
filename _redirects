@@ -21,10 +21,15 @@
 /content/knowgrph /content/knowgrph/index.html 200
 /content/knowgrph/ /content/knowgrph/index.html 200
 /content/knowgrph/* /content/knowgrph/:splat 200
-/ /content/singabldr/index.html 200
-/singabldr /content/singabldr/index.html 200
+/ /singabldr/ 301
+/singabldr /singabldr/ 301
 /singabldr/ /content/singabldr/index.html 200
 /singabldr.html /content/singabldr/index.html 200
+/singabldr/assets/* /content/singabldr/assets/:splat 200
+/singabldr/flowinfish.prompts.json /content/singabldr/flowinfish.prompts.json 200
+/singabldr/flowinfish.domains.json /content/singabldr/flowinfish.domains.json 200
+/singabldr/script-0000.json /content/singabldr/script-0000.json 200
+/singabldr/script-singabuildr-0000.json /content/singabldr/script-singabuildr-0000.json 200
 /script-0000.json /content/singabldr/script-0000.json 200
 /script-singabuildr-0000.json /content/singabldr/script-singabuildr-0000.json 200
 /singabldr.json /content/singabldr/boards/singabldr.json 200
@@ -33,3 +38,5 @@
 /singabldr/tokyopoly.json /content/singabldr/boards/tokyopoly.json 200
 /boards/* /content/singabldr/boards/:splat 200
 /singabldr/boards/* /content/singabldr/boards/:splat 200
+/content/singabldr /singabldr/ 301
+/content/singabldr/ /singabldr/ 301
