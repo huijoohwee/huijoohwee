@@ -6,6 +6,17 @@
     <title>Singabldr</title>
 
     <script>
+      (function () {
+        try {
+          var path = String(window.location.pathname || "");
+          if (path === "/knowgrph" || path === "/knowgrph/") {
+            window.location.replace("/content/knowgrph/");
+          }
+        } catch {}
+      })();
+    </script>
+
+    <script>
       // Backend API base (DeerFlow gateway behind nginx). Keep secrets server-side.
       // Production: https://api.airvio.co
       window.__API_BASE = window.__API_BASE || "https://api.airvio.co";
