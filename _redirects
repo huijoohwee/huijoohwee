@@ -3,6 +3,10 @@
 /hackamap /hackamap/ 301
 /hackamap/ /content/hackamap/index.html 200
 /hackamap/* /content/hackamap/:splat 200
+/knowgrph /knowgrph/ 301
+/knowgrph/assets/* /content/knowgrph/assets/:splat 200
+/knowgrph/ /content/knowgrph/index.html 200
+/knowgrph/* /content/knowgrph/index.html 200
 / /content/singabldr/index.html 200
 /singabldr /content/singabldr/index.html 200
 /singabldr/ /content/singabldr/index.html 200

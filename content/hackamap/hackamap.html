@@ -132,6 +132,87 @@
       #tooltip .muted {
         color: var(--muted);
       }
+      #urlPreview {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        width: min(460px, calc(100vw - 24px));
+        height: min(340px, calc(100vh - 24px));
+        display: none;
+        z-index: 25;
+        background: rgba(0, 0, 0, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+      }
+      #urlPreviewHeader {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 10px 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      #urlPreviewTitle {
+        flex: 1;
+        font-size: 12px;
+        font-weight: 650;
+        color: rgba(255, 255, 255, 0.92);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #urlPreviewOpen {
+        font-size: 12px;
+      }
+      #urlPreviewClose {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        padding: 0;
+        line-height: 26px;
+        text-align: center;
+      }
+      #urlPreviewFrame {
+        width: 100%;
+        height: calc(100% - 44px);
+        border: 0;
+        background: rgba(0, 0, 0, 0.28);
+      }
+      #urlPreviewStatus {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 44px;
+        bottom: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 14px;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.86);
+        background: rgba(0, 0, 0, 0.35);
+        white-space: pre-line;
+        pointer-events: none;
+      }
+      @media (max-width: 640px) {
+        #app {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+        }
+        #sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+          max-height: 44vh;
+        }
+        #urlPreview {
+          left: 12px;
+          top: 12px;
+          width: auto;
+          height: min(44vh, calc(100vh - 24px));
+        }
+      }
       #toolbar {
         position: absolute;
         top: 12px;
@@ -245,6 +326,21 @@
           <div id="actions"></div>
         </div>
         <div id="tooltip"></div>
+        <div id="urlPreview" aria-label="URL preview">
+          <div id="urlPreviewHeader">
+            <div id="urlPreviewTitle">Preview</div>
+            <a id="urlPreviewOpen" href="#" target="_blank" rel="noopener">Open</a>
+            <button id="urlPreviewClose" type="button" aria-label="Close preview">×</button>
+          </div>
+          <div id="urlPreviewStatus">Loading preview…</div>
+          <iframe
+            id="urlPreviewFrame"
+            title="URL preview frame"
+            sandbox="allow-forms allow-scripts allow-popups allow-same-origin"
+            referrerpolicy="no-referrer"
+            loading="lazy"
+          ></iframe>
+        </div>
         <svg id="svg" role="img" aria-label="HackaMap force graph"></svg>
         <div id="three" aria-label="HackaMap 3D force graph"></div>
       </main>

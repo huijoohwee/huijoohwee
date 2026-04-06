@@ -5,13 +5,15 @@ import {
   COLORS,
   RADII,
   EDGE_COLORS,
-  createCoalescedScheduler,
+  getSharedCoalescedScheduler,
+  PREVIEW_PROXY_HOST_SUFFIXES,
   nodeTooltipHtml,
   loader,
   buildGraphFromMarkdown,
 } from "./hackamap-core.js";
 
-const scheduler = createCoalescedScheduler();
+// Shared scheduler: dedupe across runtime + any future persistence subscriptions.
+const scheduler = getSharedCoalescedScheduler("hackamap-ui");
 
 function buildLegend(types) {
   const legend = document.getElementById("legend");
@@ -37,7 +39,7 @@ function buildFilters(types, onChange) {
     filtersEl.appendChild(label);
     label.querySelector("input").addEventListener("change", (e) => {
       state[t] = e.target.checked;
-      onChange({ ...state });
+      onChange(state);
     });
   }
   return state;
@@ -46,6 +48,12 @@ function buildFilters(types, onChange) {
 export function renderGraph(graph) {
   const statusEl = document.getElementById("status");
   const tooltip = document.getElementById("tooltip");
+  const urlPreview = document.getElementById("urlPreview");
+  const urlPreviewFrame = document.getElementById("urlPreviewFrame");
+  const urlPreviewTitle = document.getElementById("urlPreviewTitle");
+  const urlPreviewOpen = document.getElementById("urlPreviewOpen");
+  const urlPreviewClose = document.getElementById("urlPreviewClose");
+  const urlPreviewStatus = document.getElementById("urlPreviewStatus");
   const svg = d3.select("#svg");
   const threeEl = document.getElementById("three");
   const modeSelect = document.getElementById("mode");
@@ -78,6 +86,235 @@ export function renderGraph(graph) {
     tooltip.style.display = "none";
   }
 
+  // URL preview panel (hover-driven). Kept outside tooltip to avoid constant innerHTML churn.
+  let previewLocked = false;
+  let lastPreviewUrl = null;
+  let hoveredPreviewNode = null;
+  let previewSeq = 0;
+  /** @type {Map<string, Promise<any>>} */
+  const linkPreviewMetaCache = new Map();
+  /** @type {Promise<boolean> | null} */
+  let previewApiAvailablePromise = null;
+  /** @type {{ x: number, y: number }} */
+  let lastPointer = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.5 };
+
+  const showPreviewStatus = (msg) => {
+    if (!urlPreviewStatus) return;
+    urlPreviewStatus.textContent = msg;
+    urlPreviewStatus.style.display = "flex";
+  };
+  const hidePreviewStatus = () => {
+    if (!urlPreviewStatus) return;
+    urlPreviewStatus.style.display = "none";
+  };
+
+  if (urlPreviewFrame && urlPreview) {
+    urlPreviewFrame.addEventListener("load", () => {
+      const active = urlPreview.dataset?.previewSeq;
+      if (!active) return;
+      if (active !== String(previewSeq)) return;
+      hidePreviewStatus();
+    });
+  }
+
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  const positionUrlPreview = (clientX, clientY) => {
+    if (!urlPreview) return;
+    if (!Number.isFinite(clientX) || !Number.isFinite(clientY)) return;
+    // urlPreview is positioned within #main (position: relative), so convert viewport coords
+    // (clientX/clientY) into local coords.
+    const mainRect = mainEl?.getBoundingClientRect?.() ?? null;
+    if (!mainRect) return;
+    const localX = clientX - mainRect.left;
+    const localY = clientY - mainRect.top;
+    const pad = 12;
+    const gap = 14;
+    const w = urlPreview.offsetWidth || 460;
+    const h = urlPreview.offsetHeight || 340;
+
+    let left = localX + gap;
+    let top = localY + gap;
+    if (left + w > mainRect.width - pad) left = localX - gap - w;
+    if (top + h > mainRect.height - pad) top = localY - gap - h;
+
+    const maxLeft = Math.max(pad, mainRect.width - pad - w);
+    const maxTop = Math.max(pad, mainRect.height - pad - h);
+    left = clamp(left, pad, maxLeft);
+    top = clamp(top, pad, maxTop);
+
+    urlPreview.style.left = `${left}px`;
+    urlPreview.style.top = `${top}px`;
+    urlPreview.style.right = "";
+    urlPreview.style.bottom = "";
+  };
+
+  const loadLinkPreviewMeta = async (targetUrl) => {
+    if (!targetUrl) return null;
+    if (linkPreviewMetaCache.has(targetUrl)) return linkPreviewMetaCache.get(targetUrl);
+    const p = (async () => {
+      try {
+        const res = await fetch(`/api/link-preview?url=${encodeURIComponent(targetUrl)}`, { cache: "force-cache" });
+        if (!res.ok) return null;
+        return await res.json();
+      } catch (_) {
+        return null;
+      }
+    })();
+    linkPreviewMetaCache.set(targetUrl, p);
+    if (linkPreviewMetaCache.size > 250) {
+      const firstKey = linkPreviewMetaCache.keys().next().value;
+      linkPreviewMetaCache.delete(firstKey);
+    }
+    return p;
+  };
+
+  const proxiedPreviewUrl = (targetUrl) => `/api/link-proxy?url=${encodeURIComponent(targetUrl)}`;
+  const hasPreviewApi = () => {
+    if (previewApiAvailablePromise) return previewApiAvailablePromise;
+    previewApiAvailablePromise = (async () => {
+      try {
+        const res = await Promise.race([
+          fetch("/api/link-preview?ping=1", { cache: "no-store" }),
+          new Promise((resolve) => window.setTimeout(() => resolve(null), 800)),
+        ]);
+        if (!res || !res.ok) return false;
+        const data = await res.json().catch(() => null);
+        return Boolean(data && typeof data === "object" && data.ok === true);
+      } catch (_) {
+        return false;
+      }
+    })();
+    return previewApiAvailablePromise;
+  };
+
+  const shouldProxyFirst = (targetUrl) => {
+    try {
+      const host = new URL(String(targetUrl)).host.toLowerCase();
+      return PREVIEW_PROXY_HOST_SUFFIXES.some((suffix) => host === suffix || host.endsWith(`.${suffix}`));
+    } catch (_) {
+      return false;
+    }
+  };
+
+  const isPreviewableUrl = (url) => {
+    if (!url || url === NULL_CELL) return false;
+    try {
+      const u = new URL(String(url));
+      return u.protocol === "http:" || u.protocol === "https:";
+    } catch (_) {
+      return false;
+    }
+  };
+
+  const hideUrlPreview = ({ clearSrc } = { clearSrc: false }) => {
+    if (!urlPreview) return;
+    if (previewLocked) return;
+    urlPreview.style.display = "none";
+    hidePreviewStatus();
+    scheduler.cancel?.("url-preview-timeout");
+    if (clearSrc && urlPreviewFrame) {
+      lastPreviewUrl = null;
+      // Release resources after the user stops hovering for a bit.
+      scheduler.schedule("url-preview-clear", () => {
+        if (!urlPreviewFrame) return;
+        urlPreviewFrame.src = "about:blank";
+      }, 900);
+    }
+  };
+
+  const showUrlPreviewForNode = (node) => {
+    if (!urlPreview || !urlPreviewFrame || !urlPreviewTitle || !urlPreviewOpen) return;
+    const url = node?.meta?.url;
+    if (!isPreviewableUrl(url)) {
+      hideUrlPreview({ clearSrc: true });
+      return;
+    }
+
+    const nextUrl = String(url);
+    if (nextUrl === lastPreviewUrl && urlPreview.style.display === "block") return;
+
+    previewSeq += 1;
+    urlPreview.dataset.previewSeq = String(previewSeq);
+    lastPreviewUrl = nextUrl;
+    urlPreviewTitle.textContent = node?.label || node?.id || "Preview";
+    urlPreviewOpen.href = nextUrl;
+    urlPreview.style.display = "block";
+    showPreviewStatus("Loading preview…");
+    positionUrlPreview(lastPointer.x, lastPointer.y);
+
+    // Coalesce rapid hover switches to avoid iframe reload churn.
+    scheduler.schedule("url-preview-src", () => {
+      if (!urlPreviewFrame) return;
+      // Proxy-first for commonly blocked sites to avoid net::ERR_ABORTED spam and blank previews.
+      if (shouldProxyFirst(nextUrl)) urlPreviewFrame.src = proxiedPreviewUrl(nextUrl);
+      else urlPreviewFrame.src = nextUrl;
+    }, 80);
+
+    // Many sites block iframing (X-Frame-Options / CSP). Provide a visible fallback hint.
+    scheduler.schedule("url-preview-timeout", () => {
+      if (!urlPreviewStatus) return;
+      if (urlPreview.dataset?.previewSeq !== String(previewSeq)) return;
+      hasPreviewApi().then((ok) => {
+        if (urlPreview.dataset?.previewSeq !== String(previewSeq)) return;
+        if (!ok) {
+          showPreviewStatus("Preview blocked by site policy (no preview API). Use “Open”.");
+          return;
+        }
+
+        showPreviewStatus("Preview blocked by site policy. Loading safe preview…");
+        scheduler.schedule("url-preview-proxy", () => {
+          if (!urlPreviewFrame) return;
+          if (urlPreview.dataset?.previewSeq !== String(previewSeq)) return;
+          urlPreviewFrame.src = proxiedPreviewUrl(nextUrl);
+        }, 0);
+
+        // If proxy still fails to render something useful, fallback to metadata.
+        scheduler.schedule("url-preview-meta", () => {
+          if (urlPreview.dataset?.previewSeq !== String(previewSeq)) return;
+          showPreviewStatus("Safe preview unavailable. Fetching metadata…");
+          loadLinkPreviewMeta(nextUrl).then((meta) => {
+            if (urlPreview.dataset?.previewSeq !== String(previewSeq)) return;
+            const title = meta?.title || meta?.siteName || meta?.domain || null;
+            const desc = meta?.description || null;
+            if (title && desc) showPreviewStatus(`${title}\n${desc}`);
+            else if (title) showPreviewStatus(`${title}\nPreview blocked by site policy. Use “Open”.`);
+            else showPreviewStatus("Preview blocked by site policy. Use “Open”.");
+          });
+        }, 2600);
+      });
+    }, 900);
+  };
+
+  if (urlPreview) {
+    urlPreview.addEventListener("mouseenter", () => {
+      previewLocked = true;
+    });
+    urlPreview.addEventListener("mouseleave", () => {
+      previewLocked = false;
+      if (!hoveredPreviewNode) hideUrlPreview({ clearSrc: false });
+    });
+  }
+  if (urlPreviewClose) {
+    urlPreviewClose.addEventListener("click", () => {
+      hoveredPreviewNode = null;
+      hideUrlPreview({ clearSrc: true });
+    });
+  }
+  if (mainEl) {
+    mainEl.addEventListener("mousemove", (e) => {
+      lastPointer = { x: e.clientX, y: e.clientY };
+      if (!urlPreview) return;
+      if (previewLocked) return;
+      if (urlPreview.style.display !== "block") return;
+      scheduler.schedule("url-preview-pos", () => positionUrlPreview(lastPointer.x, lastPointer.y), 0);
+    });
+    mainEl.addEventListener("mouseleave", () => {
+      hoveredPreviewNode = null;
+      hideUrlPreview({ clearSrc: true });
+    });
+  }
+
   // Types present
   const types = Array.from(new Set(graph.nodes.map((n) => n.type))).sort();
   buildLegend(types);
@@ -98,8 +335,14 @@ export function renderGraph(graph) {
   });
 
   // Filters (coalesced)
+  let visibleIdsToken = 0;
+  /** @type {Set<string> | null} */
+  let visibleIdsCache = null;
+  let visibleIdsCacheToken = -1;
+
   state.filterState = buildFilters(types, (next) => {
     state.filterState = next;
+    visibleIdsToken += 1;
     scheduler.schedule("apply-visibility", applyVisibilityAndStatus, 0);
     scheduler.schedule("apply-hulls", updateHullsNow, 120);
     scheduler.schedule("apply-search", applySearchHighlight, 60);
@@ -167,8 +410,13 @@ export function renderGraph(graph) {
     .on("mousemove", (event, d) => {
       if (state.mode !== "2d") return;
       showTooltip(nodeTooltipHtml(d), event.clientX, event.clientY);
+      hoveredPreviewNode = d;
+      lastPointer = { x: event.clientX, y: event.clientY };
+      scheduler.schedule("url-preview", () => showUrlPreviewForNode(d), 60);
     })
-    .on("mouseleave", hideTooltip)
+    .on("mouseleave", () => {
+      hideTooltip();
+    })
     .on("click", (_event, d) => {
       const url = d.meta?.url;
       if (url && url !== NULL_CELL) window.open(url, "_blank", "noopener");
@@ -190,11 +438,14 @@ export function renderGraph(graph) {
   applyLabelsVisibility();
 
   function visibleNodeIds() {
+    if (visibleIdsCache && visibleIdsCacheToken === visibleIdsToken) return visibleIdsCache;
     const ids = new Set();
     for (const n of graph.nodes) {
       if (state.filterState?.[n.type] === false) continue;
       ids.add(n.id);
     }
+    visibleIdsCache = ids;
+    visibleIdsCacheToken = visibleIdsToken;
     return ids;
   }
 
@@ -331,7 +582,8 @@ export function renderGraph(graph) {
       .attr("y2", (d) => d.target.y ?? 0);
     nodeSel.attr("cx", (d) => d.x ?? 0).attr("cy", (d) => d.y ?? 0);
     labelSel.attr("x", (d) => d.x ?? 0).attr("y", (d) => d.y ?? 0);
-    scheduler.schedule("apply-hulls", updateHullsNow, 120);
+    // Hot loop: avoid cancel/reschedule churn. Throttle by only scheduling if absent.
+    scheduler.scheduleIfAbsent("apply-hulls", updateHullsNow, 120);
   });
 
   function fit2D() {
@@ -363,6 +615,12 @@ export function renderGraph(graph) {
       .linkDirectionalParticles(0)
       .linkColor((l) => EDGE_COLORS[l.type] || "rgba(255,255,255,0.16)")
       .linkWidth((l) => (l.type === "has_demo" ? 1.6 : 1.0));
+    fg3d.onNodeHover((n) => {
+      if (state.mode !== "3d") return;
+      if (!n) return;
+      hoveredPreviewNode = n;
+      scheduler.schedule("url-preview", () => showUrlPreviewForNode(n), 60);
+    });
     fg3d.onNodeClick((n) => {
       const url = n?.meta?.url;
       if (url && url !== NULL_CELL) window.open(url, "_blank", "noopener");
@@ -405,6 +663,8 @@ export function renderGraph(graph) {
     svg.style("display", is3d ? "none" : null);
     threeEl.style.display = is3d ? "block" : "none";
     hideTooltip();
+    hoveredPreviewNode = null;
+    hideUrlPreview({ clearSrc: false });
     scheduler.schedule("apply-visibility", applyVisibilityAndStatus, 0);
     scheduler.schedule("apply-search", applySearchHighlight, 0);
     scheduler.schedule("apply-hulls", updateHullsNow, 120);
@@ -479,4 +739,3 @@ export async function main() {
     setStatus(`Failed to build graph: ${e?.message || e}`);
   }
 }
-

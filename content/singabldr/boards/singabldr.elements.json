@@ -51,7 +51,12 @@
         "swarm:status": "Swarm status: {status}",
         "swarm:burst": "Agents everywhere! 🤖",
         "weather:change": "Weather update: {weather}",
-        "theme:change": "Theme update: {theme}"
+        "theme:change": "Theme update: {theme}",
+        "ai:news:ask": "Any hot AI news today? 👀",
+        "ai:news:hot": "AI buzz: {snippet}",
+        "ai:sg:pulse": "Singapore AI pulse: {snippet}",
+        "ai:agents:swarm": "Swarm idea: {snippet}",
+        "ai:tools:tip": "Tool tip: {snippet}"
       }
     },
     "clouds": { "drift": { "enabled": true } },
@@ -66,6 +71,32 @@
     "loops": {
       "default": { "burstEverySeconds": 15, "maxBubblesPerBurst": 4, "intensityRange": [0.3, 1.0] }
     }
+  },
+  "ai": {
+    "debateRoles": ["Pro", "Con", "Policy", "Builder", "Neutral"],
+    "topics": [
+      "agentic workflows",
+      "swarm intelligence",
+      "RAG and retrieval",
+      "evaluation and benchmarks",
+      "multimodal models",
+      "on-device AI",
+      "AI safety and governance",
+      "Singapore AI governance (AI Verify, IMDA)",
+      "GovTech and public sector AI",
+      "NUS/NTU research",
+      "A*STAR research",
+      "AI in finance",
+      "AI in logistics",
+      "AI in healthcare"
+    ],
+    "newsHints": [
+      "new model releases",
+      "open-source agent frameworks",
+      "AI regulation updates",
+      "agent tooling (orchestration, memory, evals)",
+      "Singapore initiatives and funding"
+    ]
   },
   "theme": {
     "default": { "mix": 0, "snow": false },

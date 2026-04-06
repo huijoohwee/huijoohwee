@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Singabldr</title>
 
+    <script>
+      // Backend API base (DeerFlow gateway behind nginx). Keep secrets server-side.
+      // Production: https://api.airvio.co
+      window.__API_BASE = window.__API_BASE || "https://api.airvio.co";
+    </script>
+
     <link rel="stylesheet" href="./assets/styles-c7d1dd9b.css" />
   </head>
   <body>
@@ -50,68 +56,168 @@
             <button onclick="document.getElementById('settings-modal').style.display='none';" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72;">✖</button>
             <h3 style="margin-top: 0; color: #2d3436; font-size: 24px; text-align: center;">Settings</h3>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Script:</label>
-                <select id="script-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
-                    <option value="auto">Auto (Default)</option>
-                    <option value="manual">Manual</option>
-                    <option value="local">Local file</option>
-                    <option value="url">URL</option>
-                </select>
+            <!-- Collapsible sections (collapsed by default) -->
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">Script</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Mode:</label>
+                    <select id="script-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
+                        <option value="none">None</option>
+                        <option value="auto">Auto (Default)</option>
+                        <option value="manual">Manual</option>
+                        <option value="local">Local file</option>
+                        <option value="url">URL</option>
+                    </select>
 
-                <label id="script-preset-label" style="font-size: 14px; color: #2d3436; display: block; margin: 6px 0 5px 0; font-family: 'Nunito', sans-serif; font-weight: 900;">Preset:</label>
-                <select id="script-preset-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
-                    <option value="script-0000.json">AI Agent Boom Demo (script-0000.json)</option>
-                    <option value="script-singabuildr-0000.json">Swarm Loop (script-singabuildr-0000.json)</option>
-                </select>
-                
-                <input type="file" id="script-file-input" style="display: none;" accept=".json">
-                <button id="script-local-btn" style="display: none; width: 100%; background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive; margin-bottom: 8px;">Upload Local Script</button>
-                
-                <div id="script-url-container" style="display: none; flex-direction: row; gap: 5px; margin-bottom: 8px;">
-                    <input type="text" id="script-url-input" placeholder="https://..." style="flex: 1; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 14px; outline: none; min-width: 0;">
-                    <button id="script-url-btn" style="background: #00b894; color: white; border: 3px solid #2d3436; padding: 8px 12px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive;">Load</button>
+                    <label id="script-preset-label" style="font-size: 14px; color: #2d3436; display: block; margin: 6px 0 5px 0; font-family: 'Nunito', sans-serif; font-weight: 900;">Preset:</label>
+                    <select id="script-preset-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
+                        <option value="script-0000.json">AI Agent Boom Demo (script-0000.json)</option>
+                        <option value="script-singabuildr-0000.json">Swarm Loop (script-singabuildr-0000.json)</option>
+                    </select>
+
+                    <input type="file" id="script-file-input" style="display: none;" accept=".json">
+                    <button id="script-local-btn" style="display: none; width: 100%; background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive; margin-bottom: 8px;">Upload Local Script</button>
+
+                    <div id="script-url-container" style="display: none; flex-direction: row; gap: 5px; margin-bottom: 8px;">
+                        <input type="text" id="script-url-input" placeholder="https://..." style="flex: 1; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 14px; outline: none; min-width: 0;">
+                        <button id="script-url-btn" style="background: #00b894; color: white; border: 3px solid #2d3436; padding: 8px 12px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive;">Load</button>
+                    </div>
+
+                    <p id="script-status" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Default AI behavior is active.</p>
                 </div>
-                
-                <p id="script-status" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Default AI behavior is active.</p>
-            </div>
+            </details>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Play Mode:</label>
-                <select id="play-mode-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                    <option value="ai">Play with AI 🤖 (FlowinFish 🐟)</option>
-                    <option value="human">Play with Human 👫🏻</option>
-                </select>
-                <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Switching play mode will reload the game.</p>
-            </div>
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">Interaction Mode</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Mode:</label>
+                    <select id="interaction-mode-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
+                        <option value="command">Command mode (Default)</option>
+                        <option value="chat">Chat mode</option>
+                    </select>
+                    <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 6px; margin-bottom: 0;">
+                        Command mode tries to control the game; Chat mode answers questions directly.
+                    </p>
+                </div>
+            </details>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Board / Map:</label>
-                <select id="board-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                    <option value="singabldr.json">Singabldr</option>
-                </select>
-                <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Switching boards will reload the game.</p>
-            </div>
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">AI Model</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Provider:</label>
+                    <select id="llm-model-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
+                        <option value="none">None</option>
+                        <option value="byteplus_seed_2_lite">Dola-Seed-2.0-lite (BytePlus Ark)</option>
+                        <option value="zenmux_agnes_1_5_pro">Agnes-1.5-Pro (ZenMux)</option>
+                    </select>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Theme:</label>
-                <select id="theme-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                </select>
-            </div>
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin: 6px 0 5px 0; font-family: 'Nunito', sans-serif; font-weight: 900;">API Key (stored on this device):</label>
+                    <input type="password" id="llm-api-key-input" placeholder="Paste your API key…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box; outline: none; margin-bottom: 8px;">
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Weather:</label>
-                <select id="weather-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
-                </select>
-            </div>
+                    <div style="display: flex; gap: 10px; align-items: center; justify-content: space-between;">
+                        <label style="display: flex; gap: 8px; align-items: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 12px; color: #2d3436; cursor: pointer;">
+                            <input type="checkbox" id="llm-remember-key" style="transform: scale(1.1);">
+                            Remember key (localStorage)
+                        </label>
+                        <button id="llm-clear-key-btn" style="background: #d63031; color: white; border: 3px solid #2d3436; padding: 6px 10px; font-size: 12px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive;">Clear</button>
+                    </div>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 16px; color: #2d3436; display: block; margin-bottom: 5px;">Auto-Change Interval (s):</label>
-                <input type="number" id="auto-change-interval" value="0" min="0" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box;">
-                <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Set to 0 to disable auto-change (recommended for stable backgrounds).</p>
-            </div>
+                    <p id="llm-status" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 6px; margin-bottom: 0;">
+                        For maximum security, keys are session-only by default and never sent anywhere except your selected model endpoint.
+                    </p>
+                </div>
+            </details>
+
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">Play Mode</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Mode:</label>
+                    <select id="play-mode-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
+                        <option value="ai">Play with AI 🤖 (FlowinFish 🐟)</option>
+                        <option value="human">Play with Human 👫🏻</option>
+                    </select>
+                    <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 6px; margin-bottom: 0;">Switching play mode will reload the game.</p>
+                </div>
+            </details>
+
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">Board / Map</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Board:</label>
+                    <select id="board-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;">
+                        <option value="singabldr.json">Singabldr</option>
+                    </select>
+                    <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 6px; margin-bottom: 0;">Switching boards will reload the game.</p>
+                </div>
+            </details>
+
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">Theme</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <select id="theme-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;"></select>
+                </div>
+            </details>
+
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">Weather</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <select id="weather-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;"></select>
+                </div>
+            </details>
+
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">Auto-Change Interval</span>
+                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Seconds:</label>
+                    <input type="number" id="auto-change-interval" value="0" min="0" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box;">
+                    <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 6px; margin-bottom: 0;">Set to 0 to disable auto-change (recommended for stable backgrounds).</p>
+                </div>
+            </details>
         </div>
     </div>
+
+    <script>
+      (function () {
+        try {
+          var root = document.getElementById("settings-modal");
+          if (!root) return;
+          var sections = root.querySelectorAll('details[data-collapsible="1"]');
+          sections.forEach(function (d) {
+            var label = d.querySelector("[data-toggle-label]");
+            var update = function () {
+              if (!label) return;
+              label.textContent = d.open ? "Collapse" : "Expand";
+            };
+            d.addEventListener("toggle", update);
+            update();
+          });
+        } catch {}
+      })();
+    </script>
     
     <div id="loading">Generating Voxels...</div>
     <div id="message-box">Message</div>
@@ -155,7 +261,56 @@
         <div id="dice-result" style="pointer-events: none;">Red's Turn</div>
     </div>
 
+    <!-- Hotfix: normalize demos.yjs.dev websocket URL (avoid /ws double-path) -->
+    <script>
+      (function () {
+        try {
+          // Default to local-only mode unless explicitly enabled via ?multiplayer=1
+          // (prevents noisy WebSocket errors when public demo servers are unavailable).
+          try {
+            const url = new URL(window.location.href);
+            const mp = url.searchParams.get("multiplayer");
+            const enabled = mp === "1" || mp === "true";
+            if (!enabled && !url.searchParams.has("multiplayer")) {
+              url.searchParams.set("multiplayer", "0");
+              history.replaceState(null, "", url.toString());
+            }
+          } catch {}
+
+          const OrigWebSocket = window.WebSocket;
+          if (!OrigWebSocket || window.__singabldr_ws_rewrite_v1) return;
+          window.__singabldr_ws_rewrite_v1 = true;
+
+          function rewrite(urlLike) {
+            try {
+              const url = typeof urlLike === "string" ? urlLike : urlLike?.toString?.();
+              if (typeof url !== "string") return urlLike;
+              if (!url.includes("demos.yjs.dev/ws")) return urlLike;
+              return url.replace("wss://demos.yjs.dev/ws/", "wss://demos.yjs.dev/").replace("wss://demos.yjs.dev/ws", "wss://demos.yjs.dev");
+            } catch {
+              return urlLike;
+            }
+          }
+
+          function PatchedWebSocket(url, protocols) {
+            return new OrigWebSocket(rewrite(url), protocols);
+          }
+          PatchedWebSocket.prototype = OrigWebSocket.prototype;
+          ["CONNECTING", "OPEN", "CLOSING", "CLOSED"].forEach((k) => {
+            try {
+              PatchedWebSocket[k] = OrigWebSocket[k];
+            } catch {}
+          });
+          try {
+            PatchedWebSocket.toString = () => OrigWebSocket.toString();
+          } catch {}
+
+          window.WebSocket = PatchedWebSocket;
+        } catch {}
+      })();
+    </script>
+
     <!-- App bundle (minified, ESM; includes three.js + tween + yjs locally) -->
-    <script type="module" src="./assets/app-F2P7J5VB.js"></script>
+    <script type="module" src="./assets/app-F2P7J5VB.js?v=20260405-12"></script>
   </body>
 </html>

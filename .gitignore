@@ -12,3 +12,9 @@ pnpm-debug.log*
 # Project-specific local scratch
 content/singapoly/test.js
 content/singapoly/test2.js
+
+# Singabldr: NEVER commit secrets (local-only convenience files)
+content/singabldr/user-secrets.json
+content/singabldr/user-secrets.local.json
+content/singabldr/.env.local
+content/singabldr/LLM_KEYS.md

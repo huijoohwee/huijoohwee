@@ -194,6 +194,17 @@
           "default": { "burstEverySeconds": 15, "maxBubblesPerBurst": 4, "intensityRange": [0.3, 1.0] }
         }
       },
+      "ai": {
+        "version": "flowinfish-ai@1",
+        "domainPackRefUrl": "flowinfish.domains.json",
+        "topics": ["ai", "education", "finance", "investment", "tech"],
+        "intents": {
+          "explain": ["explain", "what is", "how does", "difference"],
+          "plan": ["plan", "roadmap", "steps", "checklist", "template"],
+          "analyze": ["analyze", "evaluate", "compare", "pros", "cons", "trade-offs"],
+          "simulate": ["simulate", "scenario", "sensitivity", "what if"]
+        }
+      },
       "theme": {
         "default": { "mix": 0, "snow": false },
         "christmas": { "mix": 0.6, "snow": true },

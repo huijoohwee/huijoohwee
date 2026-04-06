@@ -2865,6 +2865,38 @@ if (!window.__singabldr_runtime_patch_v1) {
   const LS_KEY_THEME_IMAGE_PREFIX = "singabldr_theme_image";
   const THEME_ID_UPLOADED_IMAGE = "uploaded_image";
   const JSON_FETCH_CACHE_MAX_ENTRIES = 32;
+  const FLOWINFISH_PROMPTS_URL = "flowinfish.prompts.json";
+  const FLOWINFISH_DOMAINS_URL = "flowinfish.domains.json";
+  const LS_KEY_FLOWINFISH_TRACE = "singabldr_flowinfish_trace_v1";
+  const FLOWINFISH_TRACE_MAX = 200;
+
+  // ---- LLM (user-provided key; client-side only) ----------------------------
+  // NOTE: For maximum security, we do NOT ship any API keys. Users can paste a key
+  // at runtime; by default it's session-only (sessionStorage), with optional local
+  // persistence (localStorage) if explicitly enabled by the user.
+  const LS_KEY_LLM_MODEL = "singabldr_llm_model";
+  const LS_KEY_LLM_REMEMBER_KEY = "singabldr_llm_remember_key";
+  const LS_KEY_LLM_API_KEY_PERSIST = "singabldr_llm_api_key";
+  const SS_KEY_LLM_API_KEY = "singabldr_llm_api_key_session";
+  const LS_KEY_INTERACTION_MODE = "singabldr_interaction_mode";
+
+  const LLM_PROVIDERS = {
+    none: {
+      label: "None",
+      baseUrl: "",
+      model: "",
+    },
+    byteplus_seed_2_lite: {
+      label: "Dola-Seed-2.0-lite (BytePlus Ark)",
+      baseUrl: "https://ark.ap-southeast.bytepluses.com/api/v3",
+      model: "seed-2-0-lite-260228",
+    },
+    zenmux_agnes_1_5_pro: {
+      label: "Agnes-1.5-Pro (ZenMux)",
+      baseUrl: "https://zenmux.ai/api/v1",
+      model: "sapiens-ai/agnes-1.5-pro",
+    },
+  };
 
   function getBoardSlugSafe() {
     try {
@@ -2918,6 +2950,367 @@ if (!window.__singabldr_runtime_patch_v1) {
         scheduled.delete(key);
       },
     };
+  }
+
+  // ---- FlowinFish prompt config (JSON, data-driven) -------------------------
+  // Modularize user->LLM messages/content via a JSON asset so we can iterate
+  // prompt structure without editing the JS bundle.
+  let __flowinfishPromptCfgPromise = null;
+  const __flowinfishPromptCfgFallback = {
+    version: "flowinfish-prompts@fallback",
+    planner: {
+      payload: { temperature: 0.4, max_tokens: 260, stop: ["```"] },
+      messages: [
+        {
+          role: "system",
+          content: [
+            "You are FlowinFish 🐟 (SuperAgent + Swarm Intelligence Engine) inside Singabldr (a 3D city/board game).",
+            "Goal: respond conversationally AND optionally control the game via a single safe command.",
+            "You MUST output JSON only (no markdown). Schema:",
+            '{ "reply": string, "command": string|null, "bubbleSnippets": string[] }',
+            "Rules:",
+            "- reply: a helpful answer for the user (1-4 sentences).",
+            "- command: null unless the user EXPLICITLY requests a game action (roll/buy/theme/weather/start/stop/etc).",
+            "- If the user asks for news/articles/links/files, set command=null and put the reaction into bubbleSnippets.",
+            "- bubbleSnippets: 0-3 short citizen chat bubble lines reacting to the user's message or provided file/URL.",
+            "- Do NOT invent IDs: use only themes/weathers/commands present in the board context when referencing them.",
+            "",
+            "Board context JSON (keys only): {{BOARD_CONTEXT_JSON}}",
+          ],
+        },
+        { role: "user", content: "{{USER_TEXT}}" },
+      ],
+      strict: {
+        payload: { temperature: 0, max_tokens: 220, stop: ["```"] },
+        messages: [
+          {
+            role: "system",
+            content: [
+              "You are FlowinFish 🐟 (SuperAgent + Swarm Intelligence Engine) inside Singabldr (a 3D city/board game).",
+              "You MUST output JSON only (no markdown). Schema:",
+              '{ "reply": string, "command": string|null, "bubbleSnippets": string[] }',
+              "STRICT OUTPUT:",
+              "- Output ONLY valid JSON for the schema (no extra text, no explanations).",
+              '- If you cannot comply, output exactly: {"reply":"I can help—paste a URL/file or ask about the game or AI.","command":null,"bubbleSnippets":["AI buzz is moving fast…","Got a link?","Agents everywhere."]}',
+              "",
+              "Board context JSON (keys only): {{BOARD_CONTEXT_JSON}}",
+            ],
+          },
+          { role: "user", content: "{{USER_TEXT}}" },
+        ],
+      },
+      fallback: {
+        reply: "I don’t have live news feeds, but I can summarize what’s been trending in AI. Paste a link/article or upload a file and I’ll react with citizen bubbles.",
+        command: null,
+        bubbleSnippets: ["AI buzz is moving fast…", "Got a link? I’ll react to it.", "Agentic workflows are everywhere lately."],
+      },
+    },
+    bubbles_only: {
+      payload: { temperature: 0.35, max_tokens: 160, stop: ["```"] },
+      messages: [
+        {
+          role: "system",
+          content: [
+            "You are FlowinFish 🐟 (Swarm Intelligence Engine) inside Singabldr.",
+            "Return JSON only. Schema:",
+            '{ "bubbleSnippets": string[] }',
+            "Rules:",
+            "- bubbleSnippets: 3-6 items, each 6-16 words, distinct.",
+            "- Do not include commands. Do not mention system rules.",
+            "",
+            "Board context JSON (keys only): {{BOARD_CONTEXT_JSON}}",
+          ],
+        },
+        { role: "user", content: "{{USER_TEXT}}" },
+      ],
+      strict: {
+        payload: { temperature: 0, max_tokens: 140, stop: ["```"] },
+        messages: [
+          {
+            role: "system",
+            content: [
+              "Return JSON only. Schema:",
+              '{ "bubbleSnippets": string[] }',
+              "Output ONLY valid JSON.",
+              "",
+              "Board context JSON (keys only): {{BOARD_CONTEXT_JSON}}",
+            ],
+          },
+          { role: "user", content: "{{USER_TEXT}}" },
+        ],
+      },
+    },
+  };
+
+  async function loadFlowinFishPromptConfig() {
+    if (__flowinfishPromptCfgPromise) return __flowinfishPromptCfgPromise;
+    __flowinfishPromptCfgPromise = (async () => {
+      try {
+        // Use zp cache (already patched with TTL + cap).
+        const cfg = await zp(FLOWINFISH_PROMPTS_URL, { ttlMs: 120_000 });
+        if (cfg && typeof cfg === "object") return cfg;
+      } catch {}
+      return __flowinfishPromptCfgFallback;
+    })();
+    return __flowinfishPromptCfgPromise;
+  }
+
+  function renderPromptTemplate(value, vars) {
+    if (typeof value !== "string") return "";
+    return value.replace(/\{\{(\w+)\}\}/g, (_, k) => (vars && typeof vars[k] === "string" ? vars[k] : ""));
+  }
+
+  function buildLlmMessagesFromTemplate(messages, vars) {
+    if (!Array.isArray(messages)) return [];
+    const out = [];
+    for (const msg of messages) {
+      const role = msg?.role;
+      if (role !== "system" && role !== "user" && role !== "assistant") continue;
+      const c = msg?.content;
+      const content = Array.isArray(c) ? c.map((line) => renderPromptTemplate(String(line), vars)).join("\n") : renderPromptTemplate(String(c ?? ""), vars);
+      out.push({ role, content });
+    }
+    return out;
+  }
+
+  // ---- FlowinFish domain expertise pack (JSON, data-driven) -----------------
+  let __flowinfishDomainPackPromise = null;
+  const __flowinfishDomainPackFallback = {
+    version: "flowinfish-domains@fallback",
+    global: {
+      styleGuidelines: [
+        "Be concise, actionable, and correct. Ask 1-2 clarifying questions if needed.",
+        "Prefer structured outputs: bullets, steps, checklists, templates.",
+        "If finance/investment: include risk disclaimer; avoid specific buy/sell instructions unless user provides constraints and asks explicitly.",
+      ],
+    },
+    detection: {
+      keywords: {
+        ai: ["llm", "prompt", "rag", "agent", "transformer", "token", "embedding", "fine-tune", "inference"],
+        education: ["curriculum", "lesson", "teach", "learning", "quiz", "rubric", "student", "homework"],
+        finance: ["cashflow", "budget", "tax", "accounting", "balance sheet", "p&l", "valuation", "irr"],
+        investment: ["portfolio", "stocks", "bonds", "etf", "vc", "angel", "seed", "term sheet", "due diligence"],
+        tech: ["architecture", "backend", "frontend", "database", "cloud", "api", "latency", "scalability", "kubernetes"],
+      },
+    },
+    domains: {
+      ai: {
+        focus: "LLM systems, prompting, RAG, evaluation, safety, cost/latency tradeoffs.",
+        checklist: ["Define objective + constraints", "Pick model + context window", "Design schema outputs", "Add guardrails", "Measure with eval set"],
+      },
+      education: {
+        focus: "Learning design, scaffolding, exercises, assessment rubrics, differentiated instruction.",
+        checklist: ["Learning outcomes", "Prereqs", "Worked examples", "Practice + feedback", "Assessment + rubric"],
+      },
+      finance: {
+        focus: "Personal/business finance, budgeting, unit economics, financial statements, forecasting.",
+        checklist: ["Assumptions", "Revenue/cost drivers", "Sensitivity", "Cash runway", "Risks"],
+        disclaimer: "Not financial advice; verify with qualified professionals.",
+      },
+      investment: {
+        focus: "Portfolio construction, risk management, VC/angel process, term sheets, diligence checklists.",
+        checklist: ["Goal + horizon", "Risk tolerance", "Diversification", "Downside plan", "Fees/taxes"],
+        disclaimer: "Not investment advice; do your own research.",
+      },
+      tech: {
+        focus: "Software engineering, system design, performance, security, maintainability.",
+        checklist: ["SSOT + schema", "Perf budget", "Caching + dedupe", "Observability", "Security + abuse cases"],
+      },
+    },
+  };
+
+  async function loadFlowinFishDomainPack() {
+    if (__flowinfishDomainPackPromise) return __flowinfishDomainPackPromise;
+    __flowinfishDomainPackPromise = (async () => {
+      try {
+        const pack = await zp(FLOWINFISH_DOMAINS_URL, { ttlMs: 300_000 });
+        if (pack && typeof pack === "object") return pack;
+      } catch {}
+      return __flowinfishDomainPackFallback;
+    })();
+    return __flowinfishDomainPackPromise;
+  }
+
+  function detectDomainKey(userText, pack) {
+    const s = String(userText || "").toLowerCase();
+    const kws = pack?.detection?.keywords && typeof pack.detection.keywords === "object" ? pack.detection.keywords : {};
+    const score = (arr) => (Array.isArray(arr) ? arr.reduce((n, k) => (s.includes(String(k).toLowerCase()) ? n + 1 : n), 0) : 0);
+    const candidates = ["investment", "finance", "ai", "tech", "education"];
+    let best = "ai";
+    let bestScore = 0;
+    for (const key of candidates) {
+      const sc = score(kws[key]);
+      if (sc > bestScore) {
+        bestScore = sc;
+        best = key;
+      }
+    }
+    return bestScore > 0 ? best : "ai";
+  }
+
+  function buildDomainContextForLlm(pack, domainKey, maxChars = 1200) {
+    try {
+      const obj = {
+        domain: domainKey,
+        global: pack?.global || {},
+        domainPack: (pack?.domains && typeof pack.domains === "object" ? pack.domains[domainKey] : null) || {},
+      };
+      const s = JSON.stringify(obj);
+      return s.length <= maxChars ? s : s.slice(0, maxChars);
+    } catch {
+      return "";
+    }
+  }
+
+  // ---- FlowinFish end-to-end JSON protocol (chat + game control) ------------
+  // All user<->LLM request/response + planned commands pass through this
+  // dispatcher so the Chat UI remains the single source of truth.
+  function flowinfishGetTraceRing() {
+    try {
+      if (!window.__flowinfish_trace_ring_v1) window.__flowinfish_trace_ring_v1 = [];
+      if (Array.isArray(window.__flowinfish_trace_ring_v1)) return window.__flowinfish_trace_ring_v1;
+    } catch {}
+    return [];
+  }
+
+  function flowinfishRecord(event) {
+    try {
+      const ring = flowinfishGetTraceRing();
+      ring.push(event);
+      if (ring.length > FLOWINFISH_TRACE_MAX) ring.splice(0, ring.length - FLOWINFISH_TRACE_MAX);
+      // Best-effort persistence (throttled) to aid debugging/replay.
+      wn?.schedule?.(
+        "persist:flowinfish_trace",
+        () => {
+          try {
+            const serialized = JSON.stringify(ring.slice(-FLOWINFISH_TRACE_MAX));
+            localStorage.setItem(LS_KEY_FLOWINFISH_TRACE, serialized);
+          } catch {}
+        },
+        250
+      );
+    } catch {}
+  }
+
+  function flowinfishEmit(event) {
+    const ev = event && typeof event === "object" ? event : { type: "unknown" };
+    const stamped = { ts: Date.now(), ...ev };
+    flowinfishRecord(stamped);
+
+    // Route to Chat UI + game control (safe).
+    try {
+      const formatMarkdownBullets = (text, { min = 1, max = 7 } = {}) => {
+        let raw = String(text || "").trim();
+        if (!raw) return "";
+
+        // If the model accidentally returns JSON (or truncated JSON), extract "reply" value.
+        try {
+          const jsonish = raw.startsWith("{") || raw.includes('"reply"') || raw.includes("'reply'");
+          if (jsonish) {
+            const m =
+              raw.match(/"reply"\s*:\s*"([^"]+)/) ||
+              raw.match(/'reply'\s*:\s*'([^']+)/) ||
+              raw.match(/reply"\s*:\s*"([^"]+)/);
+            if (m && m[1]) {
+              raw = m[1].replace(/\\"/g, '"').trim();
+            }
+          }
+        } catch {}
+
+        const normalizeBullet = (line) => (line.startsWith("* ") ? `- ${line.slice(2).trim()}` : line);
+        const stripBulletPrefix = (line) => String(line || "").replace(/^[-*]\s+/, "").trim();
+
+        const splitToChunks = (s) => {
+          const base = String(s || "")
+            .replace(/\s+/g, " ")
+            .trim();
+          if (!base) return [];
+          // 1) sentence-ish
+          let chunks = base
+            .split(/(?<=[.!?])\s+|;\s+|\s+\-\s+/g)
+            .map((x) => x.trim())
+            .filter(Boolean);
+          // 2) if still too few, split by commas / "and" / "with" (helps "credits, subsidies, ..." cases)
+          if (chunks.length <= 1) {
+            chunks = base
+              .split(/,\s+|\s+and\s+|\s+with\s+|\s+through\s+/gi)
+              .map((x) => x.trim())
+              .filter(Boolean);
+          }
+          return chunks;
+        };
+
+        const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+        const isAlreadyBullets = lines.length > 0 && lines.every((l) => l.startsWith("- ") || l.startsWith("* "));
+        if (isAlreadyBullets) {
+          const normalizedLines = lines.map(normalizeBullet);
+          if (normalizedLines.length >= min) return normalizedLines.slice(0, max).join("\n");
+
+          // Expand the last bullet into additional bullets to reach `min`.
+          const head = normalizedLines.slice(0, Math.max(0, normalizedLines.length - 1));
+          const last = stripBulletPrefix(normalizedLines[normalizedLines.length - 1]);
+          const extra = splitToChunks(last).map((c) => `- ${c}`);
+          const merged = [...head, ...(extra.length ? extra : [`- ${last}`])].slice(0, max);
+          while (merged.length < min) merged.push("- …");
+          return merged.join("\n");
+        }
+
+        const chunks = splitToChunks(raw);
+        const picked = (chunks.length ? chunks : [raw]).slice(0, max);
+        while (picked.length < min) picked.push("…");
+        return picked.filter(Boolean).map((s) => `- ${s}`).join("\n");
+      };
+
+      if (stamped.type === "chat:user" && typeof Ee === "function") Ee(String(stamped.text || ""), true);
+      // Chat UI: multi-bullet reply (sentence splitting allowed).
+      if (stamped.type === "chat:assistant" && typeof Ee === "function") Ee(formatMarkdownBullets(String(stamped.text || ""), { min: 3, max: 7 }) || "- (No response)", false);
+      if (stamped.type === "chat:status" && typeof Ee === "function") Ee(String(stamped.text || ""), false);
+      if (stamped.type === "swarm:bubbles") {
+        const source = typeof stamped.source === "string" ? stamped.source : "chat";
+        const count = Number.isFinite(stamped.count) ? stamped.count : 3;
+        const snippetsArr = Array.isArray(stamped.snippets)
+          ? stamped.snippets.filter((s) => typeof s === "string" && s.trim())
+          : typeof stamped.snippet === "string"
+            ? stamped.snippet
+                .split(" · ")
+                .map((s) => s.trim())
+                .filter(Boolean)
+            : [];
+
+        // Legacy aggregator (may be unavailable in some builds).
+        if (typeof Ri === "function") {
+          const joined = snippetsArr.slice(0, count).join(" · ").slice(0, 240);
+          if (joined) Ri({ snippet: joined, source, count: Math.min(count, snippetsArr.length || count) });
+        }
+
+        // Guaranteed visible bubbles: create DOM bubbles anchored to citizens.
+        try {
+          if (typeof createCitizenSnippetBubble === "function") {
+            const citizens = [getCitizenAtIndex?.(0) || null, getCitizenAtIndex?.(1) || null, getCitizenAtIndex?.(3) || null];
+            let lastCitizen = null;
+            snippetsArr.slice(0, Math.max(3, count)).forEach((s, i) => {
+              wn?.schedule?.(
+                `flowinfish:bubbles:${source}:${Date.now()}:${i}`,
+                () => {
+                  const citizen = citizens[i] || pickCitizen(lastCitizen);
+                  lastCitizen = citizen || lastCitizen;
+                  createCitizenSnippetBubble(s, { ttlMs: 16_000, citizen, hue: 190 + i * 20 });
+                },
+                i * 420
+              );
+            });
+          }
+        } catch {}
+      }
+      if (stamped.type === "game:command" && typeof stamped.command === "string") {
+        const cmd = normalizePlannedGameCommand(stamped.command);
+        if (cmd && typeof un === "function") {
+          // Always show command in chat (SSOT).
+          if (typeof Ee === "function") Ee(cmd, false);
+          un(cmd, true);
+        }
+      }
+    } catch {}
   }
 
   function deepMergeInto(target, patch) {
@@ -4183,6 +4576,359 @@ if (!window.__singabldr_runtime_patch_v1) {
     };
   }
 
+  function parseDebateSnippet(snippet) {
+    const raw = String(snippet || "").trim();
+    if (!raw) return { role: "", text: "" };
+    const m = raw.match(/^\s*(Pro|Con|Neutral|Policy|Builder|Citizen|Skeptic|Optimist|Realist)\s*:\s*(.+)$/i);
+    if (!m) return { role: "", text: raw };
+    return { role: (m[1] || "").trim(), text: (m[2] || "").trim() };
+  }
+
+  function roleHue(role, fallbackHue = 200) {
+    const r = String(role || "").toLowerCase();
+    if (!r) return fallbackHue;
+    if (r === "pro" || r === "optimist") return 140;
+    if (r === "con" || r === "skeptic") return 10;
+    if (r === "policy") return 210;
+    if (r === "builder") return 280;
+    if (r === "neutral" || r === "realist") return 50;
+    return fallbackHue;
+  }
+
+  function createCitizenSnippetBubble(snippet, { ttlMs = 12_000, citizen = null, hue = 200, headerTitle = "" } = {}) {
+    const parsed = parseDebateSnippet(snippet);
+    const text = String(parsed.text || "").trim();
+    if (!text) return;
+    citizen = citizen || pickCitizen(null);
+    if (!citizen) return;
+
+    const root = document.createElement("div");
+    root.style.position = "absolute";
+    root.style.left = "0px";
+    root.style.top = "0px";
+    root.style.width = "240px";
+    root.style.transform = "translate(-50%, -100%)";
+    root.style.border = "3px solid #2d3436";
+    root.style.borderRadius = "14px";
+    root.style.boxShadow = "8px 8px 0 rgba(0,0,0,0.12)";
+    root.style.background = "white";
+    root.style.overflow = "hidden";
+    // Ensure key-point bubbles stay above iframe/snapshot bubbles.
+    root.style.zIndex = "2005";
+    root.style.pointerEvents = "auto";
+
+    const header = document.createElement("div");
+    header.style.display = "flex";
+    header.style.alignItems = "center";
+    header.style.justifyContent = "space-between";
+    header.style.padding = "8px 10px";
+    const finalHue = roleHue(parsed.role, hue);
+    header.style.background = `hsl(${finalHue}, 80%, 70%)`;
+    header.style.color = "#2d3436";
+    header.style.fontFamily = "Nunito, sans-serif";
+    header.style.fontWeight = "900";
+    header.style.borderBottom = "3px solid #2d3436";
+
+    const titleEl = document.createElement("div");
+    titleEl.textContent = parsed.role ? `Citizen (${parsed.role})` : headerTitle || "Citizen";
+    titleEl.style.fontSize = "12px";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "✖";
+    closeBtn.style.border = "none";
+    closeBtn.style.background = "transparent";
+    closeBtn.style.color = "#2d3436";
+    closeBtn.style.cursor = "pointer";
+    closeBtn.style.fontSize = "14px";
+    closeBtn.onclick = () => root.remove();
+
+    header.appendChild(titleEl);
+    header.appendChild(closeBtn);
+
+    const body = document.createElement("div");
+    body.style.padding = "10px";
+    body.style.fontFamily = "Nunito, sans-serif";
+    body.style.fontSize = "12px";
+    body.style.fontWeight = "900";
+    body.style.color = "#2d3436";
+    body.style.lineHeight = "1.25";
+    body.textContent = text;
+
+    root.appendChild(header);
+    root.appendChild(body);
+    document.body.appendChild(root);
+
+    // Lightweight interaction/animation: pop-in + settle.
+    try {
+      root.animate(
+        [
+          { transform: "translate(-50%, -100%) scale(0.92)", opacity: 0 },
+          { transform: "translate(-50%, -106%) scale(1.03)", opacity: 1, offset: 0.6 },
+          { transform: "translate(-50%, -100%) scale(1)", opacity: 1 },
+        ],
+        { duration: 420, easing: "cubic-bezier(0.2, 0.9, 0.2, 1)" }
+      );
+    } catch {}
+
+    linkBubbles.push({
+      citizen,
+      el: root,
+      w: 240,
+      h: 92,
+      expiresAt: Date.now() + (Number.isFinite(ttlMs) ? ttlMs : 12_000),
+    });
+  }
+
+  function normalizeSnippetText(s) {
+    return String(s || "")
+      .replace(/\s+/g, " ")
+      .replace(/[“”]/g, '"')
+      .trim();
+  }
+
+  function cleanBubbleSnippet(s, maxLen = 96) {
+    let t = normalizeSnippetText(s);
+    if (!t) return "";
+    // Filter obvious meta/prompt leakage.
+    const lower = t.toLowerCase();
+    if (lower.includes("we need to") || lower.includes("output json") || lower.includes("schema") || lower.includes("the user asks")) return "";
+    // Filter generic URL template spam (we generate key points instead).
+    if (lower.startsWith("i saw this on")) return "";
+    // Single key point: keep first sentence-ish chunk.
+    t = t.split(" · ")[0].split(" | ")[0].split("\n")[0].trim();
+    if (t.length > maxLen) t = t.slice(0, maxLen - 1).trimEnd() + "…";
+    return t;
+  }
+
+  function removeGenericUrlTemplateBubbles() {
+    try {
+      const nodes = document.querySelectorAll("div");
+      let removed = 0;
+      for (const el of nodes) {
+        if (removed >= 20) break;
+        if (!el || !(el instanceof HTMLElement)) continue;
+        const txt = String(el.textContent || "").trim();
+        if (!txt) continue;
+        if (!/^I saw this on\\s+/i.test(txt)) continue;
+        const stylePos = el.style?.position;
+        if (stylePos && stylePos !== "absolute") continue;
+        // Try to remove the whole bubble container (walk up a bit).
+        let target = el;
+        for (let i = 0; i < 4; i++) {
+          if (target?.style?.transform?.includes("translate(-50%")) break;
+          target = target?.parentElement || target;
+        }
+        try {
+          target?.remove?.();
+          removed++;
+        } catch {}
+      }
+    } catch {}
+  }
+
+  function dedupeSnippets(snippets, maxCount = 3) {
+    const seen = new Set();
+    const recent = (window.__singabldr_recent_bubble_snippets_v1 =
+      window.__singabldr_recent_bubble_snippets_v1 || []);
+    const recentSet = new Set(recent.map((x) => String(x || "").toLowerCase()));
+
+    const out = [];
+    for (const s of Array.isArray(snippets) ? snippets : []) {
+      const cleaned = cleanBubbleSnippet(s);
+      if (!cleaned) continue;
+      const key = cleaned.toLowerCase();
+      if (seen.has(key) || recentSet.has(key)) continue;
+      seen.add(key);
+      out.push(cleaned);
+      if (out.length >= maxCount) break;
+    }
+
+    // remember last 24 snippets
+    for (const s of out) recent.push(s);
+    while (recent.length > 24) recent.shift();
+    return out;
+  }
+
+  async function createUrlKeyPointBubbles(url) {
+    try {
+      const providerKey = readSelectedLlmProviderKey?.() || "none";
+      const apiKey = readLlmApiKeyMaybe?.();
+      const mode = readInteractionMode?.() || "command";
+
+      // Dedup repeated URL handling.
+      const schedKey = `flowinfish:url:${url}`;
+      let didRun = false;
+      await new Promise((resolve) => {
+        wn?.schedule?.(
+          schedKey,
+          async () => {
+            didRun = true;
+            try {
+              let snapshot = "";
+              try {
+                const oembedUrl = getOembedJsonUrl(url);
+                if (oembedUrl) {
+                  const res = await fetch(oembedUrl, { mode: "cors", credentials: "omit" });
+                  if (res.ok) {
+                    const data = await res.json();
+                    const title = typeof data?.title === "string" ? data.title : "";
+                    const html = typeof data?.html === "string" ? data.html : "";
+                    const text = stripHtmlUnsafe(html);
+                    snapshot = [title, text].filter(Boolean).join(" — ").slice(0, 1600);
+                  }
+                }
+              } catch {}
+
+              const urlObj = (() => {
+                try {
+                  return new URL(url);
+                } catch {
+                  return null;
+                }
+              })();
+              const domain = urlObj?.hostname || "this link";
+
+              const deriveSlugTitle = () => {
+                try {
+                  const path = String(urlObj?.pathname || "");
+                  // LinkedIn common: /posts/<slug>-activity-<id>-<hash>
+                  const m = path.match(/\/posts\/([^/?#]+)/i);
+                  if (m?.[1]) {
+                    const raw = m[1];
+                    const cleaned = raw
+                      .replace(/-activity-\d+.*$/i, "")
+                      .replace(/-ugcpost-\d+.*$/i, "")
+                      .replace(/[-_]+/g, " ")
+                      .trim();
+                    if (cleaned) return cleaned.slice(0, 64);
+                  }
+                  const seg = path.split("/").filter(Boolean).pop() || "";
+                  const cleaned2 = seg.replace(/[-_]+/g, " ").trim();
+                  return cleaned2 ? cleaned2.slice(0, 64) : "";
+                } catch {
+                  return "";
+                }
+              };
+
+              const slugTitle = deriveSlugTitle();
+              const localFallback = dedupeSnippets([
+                slugTitle ? `Key point: ${slugTitle}` : `Key point: shared from ${domain}`,
+                snapshot ? "Key point: preview text available (ask for 3 takeaways)" : "Key point: paste 2 lines for a quick summary",
+                "Key point: want highlights, risks, or action items?",
+              ]);
+
+              let snippets = [];
+              const canUseLlm = mode === "chat" && providerKey !== "none" && apiKey;
+              if (canUseLlm) {
+                const isSmartNationAiStrategy =
+                  domain.includes("smartnation.gov.sg") && String(urlObj?.pathname || "").toLowerCase().includes("national-ai-strategy");
+
+                const prompt = isSmartNationAiStrategy
+                  ? [
+                      `User shared a URL: ${url}`,
+                      snapshot ? `Snapshot text: ${snapshot}` : "",
+                      "Task: create a citizen DEBATE about this page (Singapore National AI Strategy).",
+                      "Return JSON with bubbleSnippets only (5-6 items).",
+                      "Each bubbleSnippets item must be ONE key point (8-16 words), DISTINCT.",
+                      'Prefix each with a role label like: "Pro:", "Con:", "Policy:", "Builder:", "Neutral:".',
+                      'Do NOT use phrases like "I saw this on" or mention the domain.',
+                      "No commands; command must be null.",
+                    ]
+                      .filter(Boolean)
+                      .join("\n")
+                  : [
+                      `User shared a URL: ${url}`,
+                      snapshot ? `Snapshot text: ${snapshot}` : "",
+                      "Return JSON with bubbleSnippets only (3 items).",
+                      "Each bubbleSnippets item must be ONE key point (6-14 words), DISTINCT.",
+                      'Do NOT use phrases like "I saw this on" or mention the domain unless necessary.',
+                      "No commands; command must be null.",
+                    ]
+                      .filter(Boolean)
+                      .join("\n");
+
+                const plan = await invokeFlowinFishPlan({ providerKey, apiKey, userText: prompt, promptKey: "bubbles_only" });
+                const desired = isSmartNationAiStrategy ? 6 : 3;
+                snippets = dedupeSnippets(plan?.bubbleSnippets || [], desired);
+              }
+
+              // If model output collapses to generic “I saw this on …”, use the local fallback.
+              const genericPrefix = (s) => String(s || "").toLowerCase().startsWith("i saw this on");
+              const genericCount = (snippets || []).filter(genericPrefix).length;
+              if (snippets.length < 2 || genericCount >= Math.max(2, Math.ceil(snippets.length * 0.6))) snippets = localFallback;
+
+              // If model fails, create at least one bubble using domain.
+              const finalSnippets = snippets.length > 0 ? snippets : localFallback;
+
+              // Create bubbles on distinct citizens to reduce overlap.
+              const citizens = [
+                getCitizenAtIndex(0) || null,
+                getCitizenAtIndex(1) || null,
+                getCitizenAtIndex(3) || null,
+              ];
+              let lastCitizen = null;
+              finalSnippets.forEach((s, i) => {
+                wn?.schedule?.(
+                  `${schedKey}:bubble:${i}`,
+                  () => {
+                    const preferred = citizens[i] || null;
+                    const citizen = preferred || pickCitizen(lastCitizen);
+                    lastCitizen = citizen || lastCitizen;
+                    createCitizenSnippetBubble(s, { ttlMs: 18_000, citizen, hue: 190 + i * 20 });
+                  },
+                  i * 450
+                );
+              });
+
+              // Defensive cleanup: suppress legacy generic URL-template bubbles if any external swarm loop emits them.
+              try {
+                wn?.schedule?.(`${schedKey}:cleanup:0`, removeGenericUrlTemplateBubbles, 0);
+                wn?.schedule?.(`${schedKey}:cleanup:1`, removeGenericUrlTemplateBubbles, 300);
+                wn?.schedule?.(`${schedKey}:cleanup:2`, removeGenericUrlTemplateBubbles, 900);
+                wn?.schedule?.(`${schedKey}:cleanup:3`, removeGenericUrlTemplateBubbles, 1800);
+              } catch {}
+            } catch {}
+            resolve();
+          },
+          0
+        );
+      });
+      return didRun;
+    } catch {
+      return false;
+    }
+  }
+
+  function getApiBase() {
+    try {
+      const raw = (window.__API_BASE || "").toString().trim();
+      if (!raw) return "";
+      return raw.endsWith("/") ? raw.slice(0, -1) : raw;
+    } catch {
+      return "";
+    }
+  }
+
+  async function flowinfishPushToProd(notesFile, { sendTelegram = true } = {}) {
+    const apiBase = getApiBase();
+    if (!apiBase) throw new Error("Missing window.__API_BASE");
+    if (!notesFile) throw new Error("No notes file selected");
+
+    const form = new FormData();
+    form.append("notes", notesFile, notesFile?.name || "notes.txt");
+    form.append("send_telegram", sendTelegram ? "true" : "false");
+
+    const res = await fetch(`${apiBase}/api/flowinfish/push-to-prod`, {
+      method: "POST",
+      body: form,
+    });
+    if (!res.ok) {
+      const txt = await res.text().catch(() => "");
+      throw new Error(`push-to-prod failed (${res.status}): ${txt.slice(0, 300)}`);
+    }
+    return await res.json();
+  }
+
   function patchUrlToIframeBubble() {
     if (typeof un !== "function") return;
     const _origUn = un;
@@ -4191,21 +4937,1463 @@ if (!window.__singabldr_runtime_patch_v1) {
       try {
         const url = extractFirstUrl(String(message || ""));
         if (url) {
-          // Align: 3 bubbles with stable citizen indices when available.
-          // citizen-000000 -> embed, citizen-000001 -> text, citizen-000003 -> clickable URL.
-          const citizenEmbed = getCitizenAtIndex(0) || pickCitizen(null);
-          const citizenText = getCitizenAtIndex(1) || pickCitizen(citizenEmbed);
-          const citizenLink = getCitizenAtIndex(3) || pickCitizen(citizenText);
-
-          createCitizenIframeBubble(url, { ttlMs: 25_000, citizen: citizenEmbed });
-          createCitizenTextBubble(url, { ttlMs: 25_000, citizen: citizenText });
-          createCitizenLinkBubble(url, { ttlMs: 25_000, excludeCitizen: citizenText ?? citizenEmbed ?? citizenLink });
-
-          if (typeof Ee === "function") Ee(`🔗 Created citizen embed + text + link bubbles.`, false);
+          // Always prefer compact key-point bubbles for URLs to avoid clutter/overlap.
+          // (No iframe/snapshot bubbles here; those often cover the key points.)
+          createUrlKeyPointBubbles(url);
         }
       } catch {}
       return result;
     };
+  }
+
+  function fixYjsWebsocketProviderUrlIfNeeded() {
+    // y-websocket expects the base server URL WITHOUT the "/ws" suffix.
+    // Using "wss://demos.yjs.dev/ws" results in "wss://demos.yjs.dev/ws/<room>",
+    // which can yield a non-101 handshake ("bad response") depending on the server.
+    try {
+      if (!Vp || typeof Vp !== "object") return;
+      const serverUrl = typeof Vp.serverUrl === "string" ? Vp.serverUrl : "";
+      if (!serverUrl || !serverUrl.includes("demos.yjs.dev/ws")) return;
+      if (window.__singabldr_yjs_url_fixed_v1) return;
+      window.__singabldr_yjs_url_fixed_v1 = true;
+
+      const nextUrl = serverUrl.replace("demos.yjs.dev/ws", "demos.yjs.dev");
+      // Avoid disconnecting (which triggers "closed before established" noise).
+      // Instead, normalize URL fields so future reconnects use the correct base.
+      try {
+        Vp.serverUrl = nextUrl;
+      } catch {}
+      try {
+        if (typeof Vp.url === "string") Vp.url = Vp.url.replace("demos.yjs.dev/ws", "demos.yjs.dev");
+      } catch {}
+      try {
+        if (typeof Vp.bcChannel === "string") Vp.bcChannel = Vp.bcChannel.replace("demos.yjs.dev/ws", "demos.yjs.dev");
+      } catch {}
+
+      console.log("[singabldr] Normalized y-websocket URL fields:", serverUrl, "->", nextUrl);
+    } catch {}
+  }
+
+  function patchScriptNoneMode() {
+    const scriptSelect = document.getElementById("script-select");
+    if (!scriptSelect) return;
+
+    const presetLabel = document.getElementById("script-preset-label");
+    const presetSelect = document.getElementById("script-preset-select");
+    const localBtn = document.getElementById("script-local-btn");
+    const urlContainer = document.getElementById("script-url-container");
+    const statusEl = document.getElementById("script-status");
+
+    // Capture-phase so we can suppress the existing handler when value === "none".
+    scriptSelect.addEventListener(
+      "change",
+      (ev) => {
+        try {
+          if (scriptSelect.value !== "none") return;
+          ev?.stopImmediatePropagation?.();
+          ev?.preventDefault?.();
+
+          // Cancel any in-flight / scheduled loops to prevent stale concurrency.
+          try {
+            if (typeof rn === "number") rn += 1;
+          } catch {}
+          try {
+            wn?.cancel?.("script:auto:restart");
+            wn?.cancel?.("script:auto:loop");
+          } catch {}
+
+          if (presetLabel) presetLabel.style.display = "none";
+          if (presetSelect) presetSelect.style.display = "none";
+          if (localBtn) localBtn.style.display = "none";
+          if (urlContainer) urlContainer.style.display = "none";
+
+          if (statusEl) {
+            statusEl.innerText = "None: Script execution is disabled.";
+            statusEl.style.color = "#636e72";
+          }
+        } catch {}
+      },
+      true
+    );
+  }
+
+  // ---- LLM command router ---------------------------------------------------
+  function readRememberLlmKeyFlag() {
+    try {
+      return localStorage.getItem(LS_KEY_LLM_REMEMBER_KEY) === "1";
+    } catch {
+      return false;
+    }
+  }
+
+  function writeRememberLlmKeyFlag(enabled) {
+    try {
+      localStorage.setItem(LS_KEY_LLM_REMEMBER_KEY, enabled ? "1" : "0");
+    } catch {}
+  }
+
+  function readLlmApiKeyMaybe() {
+    try {
+      const sessionKey = sessionStorage.getItem(SS_KEY_LLM_API_KEY);
+      if (sessionKey) return sessionKey;
+    } catch {}
+
+    try {
+      const persisted = localStorage.getItem(LS_KEY_LLM_API_KEY_PERSIST);
+      if (persisted) return persisted;
+    } catch {}
+
+    return null;
+  }
+
+  function persistLlmApiKey(nextKey, { remember } = {}) {
+    const normalized = typeof nextKey === "string" ? nextKey.trim() : "";
+    try {
+      if (normalized) sessionStorage.setItem(SS_KEY_LLM_API_KEY, normalized);
+      else sessionStorage.removeItem(SS_KEY_LLM_API_KEY);
+    } catch {}
+
+    const shouldPersist = remember ?? readRememberLlmKeyFlag();
+    try {
+      if (shouldPersist && normalized) localStorage.setItem(LS_KEY_LLM_API_KEY_PERSIST, normalized);
+      else localStorage.removeItem(LS_KEY_LLM_API_KEY_PERSIST);
+    } catch {}
+  }
+
+  function readSelectedLlmProviderKey() {
+    try {
+      const v = localStorage.getItem(LS_KEY_LLM_MODEL);
+      if (v && LLM_PROVIDERS[v]) return v;
+    } catch {}
+    return "byteplus_seed_2_lite";
+  }
+
+  function persistSelectedLlmProviderKey(providerKey) {
+    try {
+      if (providerKey && LLM_PROVIDERS[providerKey]) localStorage.setItem(LS_KEY_LLM_MODEL, providerKey);
+    } catch {}
+  }
+
+  function readInteractionMode() {
+    try {
+      const v = localStorage.getItem(LS_KEY_INTERACTION_MODE);
+      if (v === "chat" || v === "command") return v;
+    } catch {}
+    return "command";
+  }
+
+  function installInteractionModeUi() {
+    const select = document.getElementById("interaction-mode-select");
+    if (!select) return;
+    const current = readInteractionMode();
+    if (select.value !== current) select.value = current;
+    select.addEventListener("change", () => {
+      try {
+        localStorage.setItem(LS_KEY_INTERACTION_MODE, select.value);
+      } catch {}
+    });
+  }
+
+  function updateLlmStatusText(statusEl, { providerKey, apiKey } = {}) {
+    if (!statusEl) return;
+    const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
+    const remember = readRememberLlmKeyFlag();
+    const scopeLabel = apiKey ? (remember ? "localStorage" : "sessionStorage") : "none";
+    if (providerKey === "none") {
+      statusEl.textContent = "LLM disabled: AI Model is set to None.";
+      return;
+    }
+    statusEl.textContent = apiKey
+      ? `LLM ready: ${provider?.label || providerKey} (key in ${scopeLabel}).`
+      : `LLM disabled: set an API key to enable model calls (session-only by default).`;
+  }
+
+  function installLlmSettingsUi() {
+    const modelSelect = document.getElementById("llm-model-select");
+    const apiKeyInput = document.getElementById("llm-api-key-input");
+    const rememberCb = document.getElementById("llm-remember-key");
+    const clearBtn = document.getElementById("llm-clear-key-btn");
+    const statusEl = document.getElementById("llm-status");
+
+    if (!modelSelect || !apiKeyInput || !rememberCb || !clearBtn || !statusEl) return;
+
+    const providerKey = readSelectedLlmProviderKey();
+    if (modelSelect.value !== providerKey) modelSelect.value = providerKey;
+
+    const remember = readRememberLlmKeyFlag();
+    rememberCb.checked = remember;
+
+    const existingKey = readLlmApiKeyMaybe();
+    if (existingKey && !apiKeyInput.value) apiKeyInput.value = existingKey;
+    updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: existingKey });
+
+    const syncEnabledState = () => {
+      const disabled = modelSelect.value === "none";
+      apiKeyInput.disabled = disabled;
+      rememberCb.disabled = disabled;
+      clearBtn.disabled = disabled;
+      apiKeyInput.style.opacity = disabled ? "0.6" : "1";
+    };
+    syncEnabledState();
+
+    // Local dev convenience: allow a gitignored local file to hydrate the key.
+    // Security: only attempt on localhost / 127.0.0.1, and only if no key exists yet.
+    if (!existingKey) {
+      try {
+        const host = String(window.location.hostname || "");
+        const isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+        if (isLocalhost) {
+          wn?.schedule?.(
+            "llm:hydrateLocalSecrets",
+            async () => {
+              try {
+                const res = await fetch("./user-secrets.local.json", { cache: "no-store" });
+                if (!res.ok) return;
+                const json = await res.json();
+                const providerKey = modelSelect.value;
+                const candidate = json?.llm?.[providerKey]?.apiKey;
+                if (typeof candidate !== "string" || !candidate.trim()) return;
+                apiKeyInput.value = candidate.trim();
+                persistLlmApiKey(candidate.trim(), { remember: rememberCb.checked });
+                updateLlmStatusText(statusEl, { providerKey, apiKey: candidate.trim() });
+              } catch {}
+            },
+            0
+          );
+        }
+      } catch {}
+    }
+
+    modelSelect.addEventListener("change", () => {
+      persistSelectedLlmProviderKey(modelSelect.value);
+      updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: readLlmApiKeyMaybe() });
+      syncEnabledState();
+    });
+
+    rememberCb.addEventListener("change", () => {
+      writeRememberLlmKeyFlag(rememberCb.checked);
+      const key = readLlmApiKeyMaybe();
+      persistLlmApiKey(key || "", { remember: rememberCb.checked });
+      updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: readLlmApiKeyMaybe() });
+    });
+
+    apiKeyInput.addEventListener("input", () => {
+      const nextKey = apiKeyInput.value;
+      // Coalesce writes to avoid churn while the user types.
+      wn?.schedule?.(
+        "persist:llmApiKey",
+        () => {
+          persistLlmApiKey(nextKey, { remember: rememberCb.checked });
+          updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: readLlmApiKeyMaybe() });
+        },
+        250
+      );
+    });
+
+    clearBtn.addEventListener("click", (ev) => {
+      ev?.preventDefault?.();
+      apiKeyInput.value = "";
+      persistLlmApiKey("", { remember: false });
+      rememberCb.checked = false;
+      writeRememberLlmKeyFlag(false);
+      updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: null });
+    });
+  }
+
+  function shouldSkipLlmRouting(messageLower) {
+    if (!messageLower) return true;
+
+    if (messageLower.includes("run script") || messageLower.includes("start simulation")) return true;
+    if (extractFirstUrl(messageLower)) return true;
+
+    // Fast path: if local rules can handle it, avoid LLM call.
+    try {
+      const commands = le?.commands;
+      if (commands && typeof commands === "object") {
+        for (const [commandKey, synonyms] of Object.entries(commands)) {
+          if (!Array.isArray(synonyms)) continue;
+          for (const syn of synonyms) {
+            if (typeof syn === "string" && syn && messageLower.includes(syn)) return true;
+          }
+          // Minor optimization: short-circuit on popular commands.
+          if (commandKey === "roll" || commandKey === "weather" || commandKey === "theme") {
+            // already covered by synonym scanning above
+          }
+        }
+      }
+    } catch {}
+
+    return false;
+  }
+
+  const __llmInflight = new Map();
+
+  async function invokeLlmCommand({ providerKey, apiKey, userText, strict = false }) {
+    const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
+    if (!provider) throw new Error("Unknown LLM provider");
+    if (!apiKey) throw new Error("Missing API key");
+
+    const normalized = String(userText || "").trim();
+    const inflightKey = `${providerKey}:${normalized}`;
+    const existing = __llmInflight.get(inflightKey);
+    if (existing) return existing;
+
+    const promise = (async () => {
+      function extractChatContent(responseJson) {
+        try {
+          // OpenAI-compatible shapes seen in the wild:
+          // - { choices:[{ message:{ content:string } }] }
+          // - { choices:[{ message:{ content:[{type:"text", text:"..."}] } }] }
+          // - { choices:[{ message:{ content:{type:"text", text:"..."} } }] }
+          // - { choices:[{ message:{ reasoning:"..." } }] } (provider-specific)
+          // - { choices:[{ text:"..." }] }
+          // - { choices:[{ delta:{ content:"..." } }] } (non-streaming proxies sometimes misuse delta)
+          const choice = responseJson?.choices?.[0];
+          if (!choice) return "";
+
+          const message = choice.message ?? choice.delta ?? null;
+
+          const extractAnyText = (value) => {
+            if (!value) return "";
+            if (typeof value === "string") return value.trim();
+            if (Array.isArray(value)) {
+              return value
+                .map((p) => {
+                  if (!p) return "";
+                  if (typeof p === "string") return p;
+                  if (typeof p.text === "string") return p.text;
+                  if (typeof p.content === "string") return p.content;
+                  if (typeof p.value === "string") return p.value;
+                  return "";
+                })
+                .join("")
+                .trim();
+            }
+            if (typeof value === "object") {
+              if (typeof value.text === "string") return value.text.trim();
+              if (typeof value.content === "string") return value.content.trim();
+              if (typeof value.value === "string") return value.value.trim();
+            }
+            return "";
+          };
+
+          // Prefer assistant content, then common provider-specific fields.
+          let content =
+            extractAnyText(message?.content) ||
+            extractAnyText(message?.reasoning) ||
+            extractAnyText(message?.thinking) ||
+            extractAnyText(message?.analysis) ||
+            extractAnyText(choice.text) ||
+            "";
+
+          return content;
+        } catch {
+          return "";
+        }
+      }
+
+      const supportedKeys = (() => {
+        try {
+          const keys = le?.commands && typeof le.commands === "object" ? Object.keys(le.commands) : [];
+          return keys.length ? keys : ["roll", "buy", "pass", "stop", "start", "theme", "weather", "status"];
+        } catch {
+          return ["roll", "buy", "pass", "stop", "start", "theme", "weather", "status"];
+        }
+      })();
+
+      const system = [
+        "You are FlowinFish, an agent controlling a 3D city/board game UI.",
+        "Convert the user's request into ONE executable command string for the game.",
+        "Rules:",
+        "- Output ONLY the command text (one line). No markdown, no code fences, no explanations.",
+        "- Never output reasoning or meta text.",
+        "- If you are unsure which command to run, output: status",
+        "- Prefer existing commands/synonyms already used by the UI.",
+        `- Supported command families: ${supportedKeys.join(", ")}.`,
+        "Examples: roll dice | change weather to stormy | make citizens happy | stop train | status",
+      ].join("\n");
+
+      const systemStrict = [
+        "Output EXACTLY ONE command line for the game UI.",
+        "No explanations. No punctuation. No quotes. No markdown.",
+        "If unsure: status",
+      ].join("\n");
+
+      const payload = {
+        model: provider.model,
+        temperature: strict ? 0 : 0.2,
+        max_tokens: strict ? 40 : 120,
+        // Avoid code blocks, but allow newlines so models can place the command on the last line.
+        stop: ["```"],
+        messages: [
+          { role: "system", content: strict ? `${system}\n\n${systemStrict}` : system },
+          { role: "user", content: normalized },
+        ],
+      };
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20_000);
+      try {
+        const res = await fetch(`${provider.baseUrl}/chat/completions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error(`LLM request failed (${res.status})`);
+        const json = await res.json();
+        const content = extractChatContent(json);
+        if (content) return content;
+
+        const finishReason = json?.choices?.[0]?.finish_reason;
+        if (typeof finishReason === "string" && finishReason) {
+          throw new Error(`LLM returned no content (finish_reason=${finishReason})`);
+        }
+
+        const providerError =
+          typeof json?.error?.message === "string"
+            ? json.error.message
+            : typeof json?.message === "string"
+              ? json.message
+              : "";
+        if (providerError) throw new Error(providerError);
+
+        // Debug in console (never shown as HTML). Helps diagnose provider schema drift.
+        try {
+          console.warn("[Singabldr][LLM] Empty content response", { providerKey, json });
+        } catch {}
+        return "";
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    })()
+      .finally(() => {
+        __llmInflight.delete(inflightKey);
+      });
+
+    __llmInflight.set(inflightKey, promise);
+    return promise;
+  }
+
+  async function invokeLlmChat({ providerKey, apiKey, userText }) {
+    const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
+    if (!provider) throw new Error("Unknown LLM provider");
+    if (!apiKey) throw new Error("Missing API key");
+
+    const normalized = String(userText || "").trim();
+    const inflightKey = `chat:${providerKey}:${normalized}`;
+    const existing = __llmInflight.get(inflightKey);
+    if (existing) return existing;
+
+    const promise = (async () => {
+      const system = [
+        "You are FlowinFish 🐟, a friendly AI guide inside Singabldr (a 3D city/board game).",
+        "Answer the user's question directly and concisely.",
+        "Rules:",
+        "- Do NOT output game commands.",
+        "- No meta reasoning; just the answer.",
+        "- If the user asks how to control the game, suggest one or two example commands (as plain text).",
+      ].join("\n");
+
+      const payload = {
+        model: provider.model,
+        temperature: 0.6,
+        max_tokens: 240,
+        stop: ["```"],
+        messages: [
+          { role: "system", content: system },
+          { role: "user", content: normalized },
+        ],
+      };
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20_000);
+      try {
+        const res = await fetch(`${provider.baseUrl}/chat/completions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error(`LLM request failed (${res.status})`);
+        const json = await res.json();
+        const choice = json?.choices?.[0];
+        const message = choice?.message ?? choice?.delta ?? null;
+
+        const extractAnyText = (value) => {
+          if (!value) return "";
+          if (typeof value === "string") return value.trim();
+          if (Array.isArray(value)) {
+            return value
+              .map((p) => {
+                if (!p) return "";
+                if (typeof p === "string") return p;
+                if (typeof p.text === "string") return p.text;
+                if (typeof p.content === "string") return p.content;
+                if (typeof p.value === "string") return p.value;
+                return "";
+              })
+              .join("")
+              .trim();
+          }
+          if (typeof value === "object") {
+            if (typeof value.text === "string") return value.text.trim();
+            if (typeof value.content === "string") return value.content.trim();
+            if (typeof value.value === "string") return value.value.trim();
+          }
+          return "";
+        };
+
+        const content =
+          extractAnyText(message?.content) ||
+          extractAnyText(message?.reasoning) ||
+          extractAnyText(message?.thinking) ||
+          extractAnyText(message?.analysis) ||
+          extractAnyText(choice?.text) ||
+          "";
+
+        if (content) return content;
+
+        const finishReason = choice?.finish_reason;
+        const providerError =
+          typeof json?.error?.message === "string"
+            ? json.error.message
+            : typeof json?.message === "string"
+              ? json.message
+              : "";
+        if (providerError) return `LLM error: ${providerError}`;
+        if (typeof finishReason === "string" && finishReason) return `LLM returned no content (finish_reason=${finishReason})`;
+
+        return "";
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    })().finally(() => {
+      __llmInflight.delete(inflightKey);
+    });
+
+    __llmInflight.set(inflightKey, promise);
+    return promise;
+  }
+
+  let __boardCtxMemo = { sig: "", value: "" };
+  function buildBoardContextForLlm(maxChars = 1400) {
+    try {
+      const board = le && typeof le === "object" ? le : {};
+      const themes = board.themes && typeof board.themes === "object" ? Object.keys(board.themes) : [];
+      const weathers = board.weathers && typeof board.weathers === "object" ? Object.keys(board.weathers) : [];
+      const commands = board.commands && typeof board.commands === "object" ? Object.keys(board.commands) : [];
+      const bubbleTemplates =
+        board?.elements?.nature?.citizens?.bubbleTemplates && typeof board.elements.nature.citizens.bubbleTemplates === "object"
+          ? Object.keys(board.elements.nature.citizens.bubbleTemplates)
+          : [];
+      const aiTopics = board?.elements?.ai?.topics && Array.isArray(board.elements.ai.topics) ? board.elements.ai.topics : [];
+      const sig = [
+        typeof board.name === "string" ? board.name : "Singabldr",
+        themes.length,
+        weathers.length,
+        commands.length,
+        bubbleTemplates.length,
+        aiTopics.length,
+      ].join("|");
+      if (__boardCtxMemo.sig === sig && __boardCtxMemo.value) return __boardCtxMemo.value;
+
+      const ctx = {
+        board: typeof board.name === "string" ? board.name : "Singabldr",
+        themes: themes.slice(0, 40),
+        weathers: weathers.slice(0, 40),
+        commands: commands.slice(0, 60),
+        assets: board.assets && typeof board.assets === "object" ? Object.keys(board.assets).slice(0, 60) : [],
+        elements: board.elements && typeof board.elements === "object" ? Object.keys(board.elements).slice(0, 60) : [],
+        citizenBubbleTemplateKeys: bubbleTemplates.slice(0, 60),
+        aiTopics: aiTopics.slice(0, 40),
+      };
+      const s = JSON.stringify(ctx);
+      const v = s.length <= maxChars ? s : s.slice(0, maxChars);
+      __boardCtxMemo = { sig, value: v };
+      return v;
+    } catch {
+      return "";
+    }
+  }
+
+  function getBoardCommandSynonymMap(board) {
+    const map = new Map();
+    try {
+      const cmds = board?.commands && typeof board.commands === "object" ? board.commands : {};
+      for (const [canonical, syns] of Object.entries(cmds)) {
+        map.set(String(canonical).toLowerCase(), String(canonical).toLowerCase());
+        if (Array.isArray(syns)) {
+          for (const s of syns) map.set(String(s).toLowerCase(), String(canonical).toLowerCase());
+        }
+      }
+    } catch {}
+    return map;
+  }
+
+  function normalizePlannedGameCommand(commandRaw) {
+    const raw = String(commandRaw || "").trim();
+    if (!raw) return "";
+    const oneLine = raw.split(/\r?\n/)[0].trim();
+    const cleaned = oneLine.replace(/^\/cmd\s+/i, "").replace(/^\/chat\s+/i, "").replace(/^\/llm\s+/i, "").trim();
+    if (!cleaned) return "";
+
+    const board = le && typeof le === "object" ? le : {};
+    const map = getBoardCommandSynonymMap(board);
+
+    const parts = cleaned.split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return "";
+    const head = String(parts[0]).toLowerCase();
+    const canonical = map.get(head) || "";
+    if (!canonical) return "";
+
+    const arg = parts.slice(1).join(" ").trim();
+    if (canonical === "weather" && arg) {
+      const ok = board.weathers && typeof board.weathers === "object" && Object.prototype.hasOwnProperty.call(board.weathers, arg);
+      return ok ? `${canonical} ${arg}` : "";
+    }
+    if (canonical === "theme" && arg) {
+      const okTheme =
+        (board.themes && typeof board.themes === "object" && Object.prototype.hasOwnProperty.call(board.themes, arg)) || arg === THEME_ID_UPLOADED_IMAGE;
+      return okTheme ? `${canonical} ${arg}` : "";
+    }
+
+    // Movement/control commands can optionally target transportation. Keep it permissive but safe:
+    // only allow known transportation keys when arg is present.
+    if ((canonical === "start" || canonical === "stop" || canonical === "faster" || canonical === "slower") && arg) {
+      const transport = board?.scene?.transportation && typeof board.scene.transportation === "object" ? board.scene.transportation : {};
+      const ok = Object.prototype.hasOwnProperty.call(transport, arg);
+      return ok ? `${canonical} ${arg}` : canonical;
+    }
+
+    return arg ? `${canonical} ${arg}` : canonical;
+  }
+
+  function parseJsonLoose(text) {
+    const raw = String(text || "").trim();
+    if (!raw) return null;
+    try {
+      return JSON.parse(raw);
+    } catch {}
+    // Try extracting first JSON object/array in the response.
+    try {
+      const m = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
+      if (m && m[1]) return JSON.parse(m[1]);
+    } catch {}
+    return null;
+  }
+
+  function shouldExecutePlannedCommand(userText, command) {
+    const u = String(userText || "").toLowerCase();
+    const c = String(command || "").toLowerCase().trim();
+    if (!c) return false;
+
+    // Require explicit user intent for high-impact commands to prevent out-of-context actions.
+    if (c === "status") return u.includes("status") || u.includes("where am i") || u.includes("how much") || u.includes("money");
+    if (c.includes("roll")) return u.includes("roll") || u.includes("dice") || u.includes("🎲");
+    if (c.includes("buy")) return u.includes("buy") || u.includes("purchase");
+    if (c.includes("pass") || c.includes("end")) return u.includes("pass") || u.includes("end turn") || u.includes("skip");
+    if (c.includes("weather")) return u.includes("weather") || u.includes("rain") || u.includes("storm") || u.includes("sun");
+    if (c.includes("theme")) return u.includes("theme") || u.includes("cny") || u.includes("christmas") || u.includes("deepavali") || u.includes("hari");
+    if (c.includes("train") || c.includes("mrt")) return u.includes("train") || u.includes("mrt");
+    if (c.includes("plane")) return u.includes("plane") || u.includes("airplane");
+    if (c.includes("heli")) return u.includes("heli") || u.includes("helicopter");
+    if (c.includes("ship")) return u.includes("ship") || u.includes("boat") || u.includes("port");
+    if (c.includes("rocket")) return u.includes("rocket") || u.includes("launch");
+    if (c.includes("attack")) return u.includes("attack") || u.includes("bots");
+    if (c.includes("build")) return u.includes("build") || u.includes("construct");
+    if (c.includes("happy") || c.includes("neutral") || c.includes("calm") || c.includes("normal")) return u.includes("citizen") || u.includes("citizens") || u.includes("happy") || u.includes("neutral") || u.includes("calm") || u.includes("normal");
+    if (c.includes("faster") || c.includes("slower") || c.includes("stop") || c.includes("start")) return u.includes("faster") || u.includes("slower") || u.includes("stop") || u.includes("start");
+
+    return false;
+  }
+
+  async function invokeFlowinFishPlan({ providerKey, apiKey, userText, promptKey = "planner" }) {
+    const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
+    if (!provider) throw new Error("Unknown LLM provider");
+    if (!apiKey) throw new Error("Missing API key");
+
+    const normalized = String(userText || "").trim();
+    const inflightKey = `plan:${promptKey}:${providerKey}:${normalized}`;
+    const existing = __llmInflight.get(inflightKey);
+    if (existing) return existing;
+
+    const promise = (async () => {
+      const boardCtx = buildBoardContextForLlm();
+      const [cfg, domainPack] = await Promise.all([loadFlowinFishPromptConfig(), loadFlowinFishDomainPack()]);
+      const section = cfg?.[promptKey] || cfg?.planner || __flowinfishPromptCfgFallback.planner;
+      const domainKey = detectDomainKey(normalized, domainPack);
+      const domainCtx = buildDomainContextForLlm(domainPack, domainKey);
+      const vars = { BOARD_CONTEXT_JSON: boardCtx, DOMAIN_KEY: domainKey, DOMAIN_CONTEXT_JSON: domainCtx, USER_TEXT: normalized };
+
+      const normalizeSpace = (s) => String(s || "").replace(/\s+/g, " ").trim();
+      const hasShouldIntent = (s) => /\bshould\b/i.test(String(s || ""));
+      const isSkillsFutureTopic = (s) => {
+        const lower = String(s || "").toLowerCase();
+        return lower.includes("skillsfuture") || lower.includes("skills future");
+      };
+      const isSmartNationTopic = (s) => {
+        const lower = String(s || "").toLowerCase();
+        return lower.includes("smart nation");
+      };
+      const sanitizeBubbleSnippets = (snippets) => {
+        const out = [];
+        const seen = new Set();
+        const bad = ["agents everywhere", "ai buzz is moving fast", "got a link?"];
+        for (const v of Array.isArray(snippets) ? snippets : []) {
+          if (typeof v !== "string") continue;
+          const t = v.trim();
+          if (!t) continue;
+          const low = t.toLowerCase();
+          if (bad.some((b) => low.includes(b))) continue;
+          if (seen.has(low)) continue;
+          seen.add(low);
+          out.push(t);
+        }
+        return out;
+      };
+
+      const ensureContextualSnippets = (snippetsMaybe, questionText) => {
+        const cleaned = sanitizeBubbleSnippets(snippetsMaybe);
+        if (cleaned.length > 0) return cleaned;
+        // Local swarm fallback: always contextual (never generic).
+        return buildLocalDebateSnippets(questionText).slice(0, 6);
+      };
+      const buildLocalDebateSnippets = (questionText) => {
+        const q = normalizeSpace(questionText);
+        if (isSkillsFutureTopic(q)) {
+          return [
+            "Pro: Subsidies/credits lower cost for upskilling toward in-demand roles.",
+            "Pro: Structured learning boosts confidence, portfolio, and interview stories.",
+            "Con: Time cost; low-quality courses can waste weekends and motivation.",
+            "Policy: Verify accreditation, outcomes, and trainer track record before paying.",
+            "Builder: Start with one short course + project, then iterate to a certification.",
+            "Neutral: If your employer supports it, ROI is usually higher and faster.",
+          ];
+        }
+        return [
+          "Pro: Could accelerate your goal if tightly aligned to your skills gap.",
+          "Con: Not worth it if it replaces higher-ROI practice/projects.",
+          "Policy: Define success metric and a 4-week trial before committing.",
+          "Builder: Pair learning with a small deliverable to prove value.",
+          "Neutral: Reassess after one iteration and adjust your plan.",
+        ];
+      };
+      const buildLocalFallbackPlan = () => {
+        const q = normalizeSpace(normalized);
+        if (promptKey === "bubbles_only") return { bubbleSnippets: buildLocalDebateSnippets(q).slice(0, 7) };
+        if (promptKey === "command_only") return { reply: "- I can’t determine a safe command right now.", command: null, bubbleSnippets: [] };
+
+        const isSkills = isSkillsFutureTopic(q);
+        const isSmartNation = isSmartNationTopic(q);
+
+        if (isSkills && isSmartNation && hasShouldIntent(q)) {
+          return {
+            reply: [
+              "- Choose SkillsFuture if your goal is upskilling/reskilling via subsidized courses and certifications.",
+              "- Choose Smart Nation if your goal is building/using digital public services and national tech initiatives.",
+              "- If you want career ROI: start with SkillsFuture + a project aligned to Smart Nation problems.",
+              "- Quick filter: need skills → SkillsFuture; want to contribute/build solutions → Smart Nation.",
+              "- Tell me your role + target role and I’ll recommend a 4-week path.",
+            ].join("\n"),
+            command: null,
+            bubbleSnippets: [],
+          };
+        }
+
+        if (isSkills) {
+          if (hasShouldIntent(q)) {
+            return {
+              reply: [
+                "- SkillsFuture is worth joining if you have a clear learning goal and time to commit.",
+                "- Use credits/subsidies to reduce cost for role-relevant, accredited courses.",
+                "- Choose outcomes-first: project-based learning, assessments, and recognized certification.",
+                "- Watch opportunity cost: time/energy vs on-the-job practice or a portfolio project.",
+                "- Tell me your role + target role and I’ll suggest a 4-week plan.",
+              ].join("\n"),
+              command: null,
+              bubbleSnippets: [],
+            };
+          }
+          return {
+            reply: [
+              "- SkillsFuture is Singapore’s lifelong-learning initiative with credits/subsidies for courses.",
+              "- It helps individuals upskill/reskill for employability and career transitions.",
+              "- Key components include SkillsFuture Credit and subsidized accredited programs.",
+              "- Best use: pick a goal → choose an accredited course → apply credits/subsidies → build a project.",
+              "- Share your goal and I’ll outline a learning roadmap.",
+            ].join("\n"),
+            command: null,
+            bubbleSnippets: [],
+          };
+        }
+
+        if (isSmartNation) {
+          if (hasShouldIntent(q)) {
+            return {
+              reply: [
+                "- “Join Smart Nation” usually means engaging with digital initiatives or building solutions in that ecosystem.",
+                "- It’s a good fit if you want to work on gov-tech/public-service problems and applied AI/data projects.",
+                "- Start small: pick one problem area (mobility/health/services) and build a measurable demo.",
+                "- If your goal is career upskilling, pair it with structured learning (e.g., SkillsFuture courses).",
+                "- Tell me your background and I’ll suggest concrete next steps.",
+              ].join("\n"),
+              command: null,
+              bubbleSnippets: [],
+            };
+          }
+          return {
+            reply: [
+              "- Smart Nation is Singapore’s initiative to use tech/data to improve public services and quality of life.",
+              "- It emphasizes digital infrastructure, data-driven policy, and adoption of AI/IoT where useful.",
+              "- Citizens/companies engage via digital services, pilots, and building solutions for public needs.",
+              "- If you share your interest area, I can suggest projects/resources to explore.",
+            ].join("\n"),
+            command: null,
+            bubbleSnippets: [],
+          };
+        }
+
+        return {
+          reply: [
+            "- I can still help with this topic; share your goal and constraints for a sharper answer.",
+            "- If you want a debate/pros-cons view, ask explicitly and I’ll generate citizen bubbles.",
+            "- If you paste a link or upload a file, I can react to it with contextual bubbles.",
+          ].join("\n"),
+          command: null,
+          bubbleSnippets: [],
+        };
+      };
+      const isGenericFallbackReply = (replyText) => {
+        const low = String(replyText || "").toLowerCase();
+        return low.includes("i can help—paste a url/file") || low.includes("having trouble generating a structured reply");
+      };
+
+      const payload = {
+        model: provider.model,
+        ...(section?.payload && typeof section.payload === "object" ? section.payload : {}),
+        messages: buildLlmMessagesFromTemplate(section?.messages, vars),
+      };
+
+      // Trace (JSON protocol): record request metadata (not the full prompt).
+      try {
+        flowinfishRecord({
+          type: "llm:request",
+          promptKey,
+          providerKey,
+          model: provider.model,
+          domainKey,
+          userText: normalized.slice(0, 240),
+        });
+      } catch {}
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20_000);
+      try {
+        const res = await fetch(`${provider.baseUrl}/chat/completions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error(`LLM request failed (${res.status})`);
+        const json = await res.json();
+        const choice = json?.choices?.[0];
+        const message = choice?.message ?? choice?.delta ?? null;
+
+        const extractAnyText = (value) => {
+          if (!value) return "";
+          if (typeof value === "string") return value.trim();
+          if (Array.isArray(value)) {
+            return value
+              .map((p) => {
+                if (!p) return "";
+                if (typeof p === "string") return p;
+                if (typeof p.text === "string") return p.text;
+                if (typeof p.content === "string") return p.content;
+                if (typeof p.value === "string") return p.value;
+                return "";
+              })
+              .join("")
+              .trim();
+          }
+          if (typeof value === "object") {
+            if (typeof value.text === "string") return value.text.trim();
+            if (typeof value.content === "string") return value.content.trim();
+            if (typeof value.value === "string") return value.value.trim();
+          }
+          return "";
+        };
+
+        const text =
+          extractAnyText(message?.content) ||
+          extractAnyText(choice?.text) ||
+          extractAnyText(message?.analysis) ||
+          extractAnyText(message?.reasoning) ||
+          "";
+
+        const looksMetaLike = (maybeText) => {
+          const lower = String(maybeText || "").toLowerCase();
+          return (
+            lower.includes("we need to output json") ||
+            lower.includes("output json only") ||
+            lower.includes("schema:") ||
+            lower.includes("rules:") ||
+            lower.includes("the user asks") ||
+            lower.includes("we must") ||
+            lower.includes("provide json only")
+          );
+        };
+
+        const coercePlanFromNonJson = (maybeText) => {
+          const raw = String(maybeText || "").trim();
+          if (!raw) return null;
+          const cleaned = raw.replace(/```[\s\S]*?```/g, " ").trim();
+          if (!cleaned) return null;
+          if (looksMetaLike(cleaned)) return null;
+
+          const toBullets = (s, max = 7) => {
+            const text = String(s || "").trim();
+            if (!text) return "";
+            const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+            const already = lines.length > 0 && lines.every((l) => l.startsWith("- ") || l.startsWith("* "));
+            if (already) return lines.map((l) => (l.startsWith("* ") ? `- ${l.slice(2).trim()}` : l)).slice(0, max).join("\n");
+            const chunks = text
+              .replace(/\s+/g, " ")
+              .split(/(?<=[.!?])\s+|;\s+|\s+\-\s+/g)
+              .map((x) => x.trim())
+              .filter(Boolean)
+              .slice(0, max);
+            return (chunks.length ? chunks : [text]).slice(0, max).map((x) => `- ${x}`).join("\n");
+          };
+
+          if (promptKey === "bubbles_only") {
+            const parts = cleaned
+              .split(/\r?\n|[•·]/g)
+              .map((s) => String(s || "").trim())
+              .filter(Boolean)
+              .map((s) => s.replace(/^\-+\s*/g, "").trim())
+              .filter(Boolean);
+            const uniq = [];
+            const seen = new Set();
+            for (const p of parts) {
+              const k = p.toLowerCase();
+              if (seen.has(k)) continue;
+              seen.add(k);
+              uniq.push(p);
+              if (uniq.length >= 6) break;
+            }
+            if (uniq.length === 0) return null;
+            return { bubbleSnippets: uniq.slice(0, 6) };
+          }
+
+          const cmd = promptKey === "command_only" ? normalizePlannedGameCommand(cleaned) : "";
+          const replyRaw = cleaned.length > 520 ? cleaned.slice(0, 520) + "…" : cleaned;
+          return { reply: toBullets(replyRaw, promptKey === "command_only" ? 3 : 7), command: cmd || null, bubbleSnippets: [] };
+        };
+
+        const plan = parseJsonLoose(text) || coercePlanFromNonJson(text);
+        if (plan && typeof plan === "object") {
+          try {
+            flowinfishRecord({ type: "llm:response", promptKey, providerKey, ok: true, coerced: !String(text || "").trim().startsWith("{") });
+          } catch {}
+          // Avoid showing generic fallback content; provide contextual local fallback instead.
+          if (promptKey === "planner" && isGenericFallbackReply(plan?.reply)) return buildLocalFallbackPlan();
+          if (promptKey === "planner") {
+            if (Array.isArray(plan?.bubbleSnippets)) plan.bubbleSnippets = ensureContextualSnippets(plan.bubbleSnippets, normalized);
+            const replyText = typeof plan?.reply === "string" ? plan.reply.trim() : "";
+            if (!replyText) {
+              const fallback = buildLocalFallbackPlan();
+              plan.reply = fallback.reply;
+              if (!Array.isArray(plan.bubbleSnippets)) plan.bubbleSnippets = [];
+            }
+          }
+          if (promptKey === "bubbles_only" && Array.isArray(plan?.bubbleSnippets)) {
+            plan.bubbleSnippets = ensureContextualSnippets(plan.bubbleSnippets, normalized);
+          }
+          return plan;
+        }
+
+        const looksMeta = looksMetaLike(text);
+
+        // If the model leaked reasoning/meta (or did not output JSON), retry strict once.
+        if (looksMeta || !String(text || "").trim().startsWith("{")) {
+          try {
+            const strictSection = section?.strict && typeof section.strict === "object" ? section.strict : null;
+            const strictPayload = {
+              ...payload,
+              ...(strictSection?.payload && typeof strictSection.payload === "object" ? strictSection.payload : { temperature: 0, max_tokens: 220 }),
+              messages: buildLlmMessagesFromTemplate(strictSection?.messages || section?.messages, vars),
+            };
+            const res2 = await fetch(`${provider.baseUrl}/chat/completions`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${apiKey}`,
+              },
+              body: JSON.stringify(strictPayload),
+              signal: controller.signal,
+            });
+            if (res2.ok) {
+              const json2 = await res2.json();
+              const choice2 = json2?.choices?.[0];
+              const message2 = choice2?.message ?? choice2?.delta ?? null;
+              const text2 =
+                extractAnyText(message2?.content) ||
+                extractAnyText(choice2?.text) ||
+                extractAnyText(message2?.analysis) ||
+                extractAnyText(message2?.reasoning) ||
+                "";
+              const plan2 = parseJsonLoose(text2) || coercePlanFromNonJson(text2);
+              if (plan2 && typeof plan2 === "object") {
+                try {
+                  flowinfishRecord({ type: "llm:response", promptKey, providerKey, ok: true, strict: true, coerced: !String(text2 || "").trim().startsWith("{") });
+                } catch {}
+                if (promptKey === "planner" && isGenericFallbackReply(plan2?.reply)) return buildLocalFallbackPlan();
+                if (promptKey === "planner") {
+                  if (Array.isArray(plan2?.bubbleSnippets)) plan2.bubbleSnippets = ensureContextualSnippets(plan2.bubbleSnippets, normalized);
+                  const replyText = typeof plan2?.reply === "string" ? plan2.reply.trim() : "";
+                  if (!replyText) {
+                    const fallback = buildLocalFallbackPlan();
+                    plan2.reply = fallback.reply;
+                    if (!Array.isArray(plan2.bubbleSnippets)) plan2.bubbleSnippets = [];
+                  }
+                }
+                if (promptKey === "bubbles_only" && Array.isArray(plan2?.bubbleSnippets)) {
+                  plan2.bubbleSnippets = ensureContextualSnippets(plan2.bubbleSnippets, normalized);
+                }
+                return plan2;
+              }
+            }
+          } catch {}
+        }
+
+        // Final fallback: never show leaked meta text to end-users.
+        try {
+          flowinfishRecord({ type: "llm:response", promptKey, providerKey, ok: false });
+        } catch {}
+        // Always use contextual local fallback to avoid generic/non-contextual UX.
+        return buildLocalFallbackPlan();
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    })().finally(() => {
+      __llmInflight.delete(inflightKey);
+    });
+
+    __llmInflight.set(inflightKey, promise);
+    return promise;
+  }
+
+  function patchLlmCommandRouter() {
+    if (typeof un !== "function") return;
+    if (un.__singabldr_llm_patched) return;
+
+    const _origUn = un;
+    async function un_llm_patched(message, isAuto) {
+      const msg = String(message || "");
+      const trimmed = msg.trim();
+      if (!trimmed) return _origUn(message, isAuto);
+
+      if (isAuto) return _origUn(message, isAuto);
+
+      const forceLlm = trimmed.startsWith("/llm ");
+      const forceLocal = trimmed.startsWith("/local ");
+      const forceChat = trimmed.startsWith("/chat ");
+      const forceCmd = trimmed.startsWith("/cmd ");
+      const userText = forceLlm
+        ? trimmed.slice("/llm ".length).trim()
+        : forceLocal
+          ? trimmed.slice("/local ".length).trim()
+          : forceChat
+            ? trimmed.slice("/chat ".length).trim()
+            : forceCmd
+              ? trimmed.slice("/cmd ".length).trim()
+              : trimmed;
+
+      if (!userText) return _origUn("", isAuto);
+      if (forceLocal) return _origUn(userText, isAuto);
+
+      // Server-side FlowinFish pipeline trigger (no keys exposed to browser).
+      // Usage: upload a notes file via the file picker, then type: /push-to-prod
+      const lowerQuick = userText.toLowerCase();
+      if (lowerQuick === "/push-to-prod" || lowerQuick === "/push" || lowerQuick === "/ppt") {
+        try {
+          const file = window.__singabldr_last_uploaded_file_v1 || null;
+          if (!file) {
+            if (typeof Ee === "function") Ee("Upload a notes file first, then type /push-to-prod.", false);
+            return;
+          }
+          if (typeof Ee === "function") Ee(userText, true);
+          if (typeof Ee === "function") Ee("🚀 Sending notes to FlowinFish pipeline…", false);
+          const result = await flowinfishPushToProd(file, { sendTelegram: true });
+
+          const apiBase = getApiBase();
+          const tid = result?.thread_id;
+          const artifacts = result?.artifacts || {};
+          const outlineMd = artifacts?.outline_md;
+          const bundleZip = artifacts?.bundle_zip;
+
+          if (typeof Ee === "function") Ee("✅ Outline + assets generated.", false);
+          if (apiBase && tid && outlineMd) {
+            Ee(`Outline: ${apiBase}/api/threads/${tid}/artifacts/${outlineMd}`, false);
+          }
+          if (apiBase && tid && bundleZip) {
+            Ee(`Bundle ZIP: ${apiBase}/api/threads/${tid}/artifacts/${bundleZip}?download=true`, false);
+          }
+
+          // Citizen bubbles: key points (distinct).
+          try {
+            createCitizenSnippetBubble("Builder: PPT outline ready", { ttlMs: 16_000, citizen: getCitizenAtIndex(0) || null });
+            createCitizenSnippetBubble("Policy: Telegram delivery attempted", { ttlMs: 16_000, citizen: getCitizenAtIndex(1) || null });
+            createCitizenSnippetBubble("Pro: Images generated (or prompts saved)", { ttlMs: 16_000, citizen: getCitizenAtIndex(3) || null });
+          } catch {}
+          return;
+        } catch (e) {
+          if (typeof Ee === "function") Ee(`❌ push-to-prod error: ${String(e?.message || e)}`, false);
+          return;
+        }
+      }
+
+      const apiKey = readLlmApiKeyMaybe();
+      if (!apiKey) return _origUn(userText, isAuto);
+
+      const providerKey = readSelectedLlmProviderKey();
+      if (providerKey === "none") return _origUn(userText, isAuto);
+      const lower = userText.toLowerCase();
+
+      // URL-first handling (Chat mode): prevent local URL handlers from generating duplicate generic bubbles.
+      try {
+        const url = extractFirstUrl(userText);
+        const interactionMode = readInteractionMode();
+        if (url && (forceChat || interactionMode === "chat") && !forceCmd && !forceLlm) {
+          flowinfishEmit({ type: "chat:user", text: userText });
+          flowinfishEmit({ type: "chat:status", text: "🔗 Summarizing link into citizen key points…" });
+          createUrlKeyPointBubbles(url);
+          return;
+        }
+      } catch {}
+      const shouldRoute = forceLlm || forceChat || forceCmd || !shouldSkipLlmRouting(lower);
+      if (!shouldRoute) return _origUn(userText, isAuto);
+
+      try {
+        const provider = LLM_PROVIDERS[providerKey];
+        // Preserve chat UX: show the user's message bubble even when we route to LLM
+        // (we intentionally avoid calling the original local parser to prevent side effects).
+        flowinfishEmit({ type: "chat:user", text: userText });
+        flowinfishEmit({ type: "chat:status", text: `🤖 Calling ${provider?.label || providerKey}...` });
+
+        const looksLikeGameCommandIntent = (s) => {
+          if (!s) return false;
+          // High precision keywords: keep small to avoid accidental triggering.
+          return /(roll|buy|pass|end|weather|theme|train|plane|heli|ship|rocket|attack|build|citizen|citizens|happy|neutral|calm|normal|faster|slower|stop|start)\b/.test(
+            s
+          );
+        };
+
+        const interactionMode = readInteractionMode();
+        const routeAsChat =
+          forceChat ||
+          (interactionMode === "chat" && !forceCmd) ||
+          (interactionMode === "command" && !forceLlm && !forceCmd && !looksLikeGameCommandIntent(lower));
+        if (routeAsChat) {
+          // Enhanced Chat mode: generate reply + optional command + citizen bubbles (FlowinFish-style).
+          let plan = null;
+          try {
+            plan = await invokeFlowinFishPlan({ providerKey, apiKey, userText });
+          } catch (err) {
+            plan = { reply: `LLM error: ${String(err?.message || err)}`, command: null, bubbleSnippets: [] };
+          }
+
+          const reply = typeof plan?.reply === "string" ? plan.reply.trim() : "";
+          flowinfishEmit({ type: "chat:assistant", text: reply || "LLM returned no content." });
+
+          const wantsDebate = (() => {
+            // Debate bubbles: enable when user explicitly asks for pros/cons OR asks "should ...?"
+            const s = String(userText || "").toLowerCase();
+            return (
+              /\bshould\b/.test(s) ||
+              s.includes("pros") ||
+              s.includes("cons") ||
+              s.includes("pros/cons") ||
+              s.includes("debate") ||
+              s.includes("argue") ||
+              s.includes("compare") ||
+              /\bvs\b/.test(s)
+            );
+          })();
+
+          // Trigger citizen chat bubbles (Swarm reactions).
+          try {
+            const existing = Array.isArray(plan?.bubbleSnippets) ? plan.bubbleSnippets.filter((s) => typeof s === "string" && s.trim()) : [];
+            if (existing.length > 0) {
+              flowinfishEmit({ type: "swarm:bubbles", snippets: existing.slice(0, 7), source: "chat", count: Math.min(6, existing.length) });
+            } else {
+              // Swarm Intelligence Engine guarantee: ALWAYS show contextual bubbles for every response.
+              const prompt = [
+                `User question: ${userText}`,
+                reply ? `Assistant answer bullets:\n${reply}` : "",
+                "",
+                wantsDebate
+                  ? "Task: produce debate key points (Pro/Con/Policy/Builder/Neutral)."
+                  : "Task: produce 5-7 distinct citizen perspectives (Optimist/Skeptic/Policy/Builder/Neutral).",
+                "Return JSON with bubbleSnippets only (5-7 items).",
+                "Each item must be 6-16 words and start with a role label like 'Optimist:' or 'Con:'.",
+                "No generic filler; must reference the topic explicitly.",
+              ]
+                .filter(Boolean)
+                .join("\n");
+              const bubblePlan = await invokeFlowinFishPlan({ providerKey, apiKey, userText: prompt, promptKey: "bubbles_only" });
+              const snippets2 = Array.isArray(bubblePlan?.bubbleSnippets)
+                ? bubblePlan.bubbleSnippets.filter((s) => typeof s === "string" && s.trim())
+                : [];
+              if (snippets2.length > 0) flowinfishEmit({ type: "swarm:bubbles", snippets: snippets2.slice(0, 7), source: "chat", count: Math.min(6, snippets2.length) });
+            }
+          } catch {}
+
+          // Optional command execution (chat mode can still control the game when intent is clear).
+          try {
+            const cmd = typeof plan?.command === "string" ? normalizePlannedGameCommand(plan.command) : "";
+            if (cmd) {
+              if (shouldExecutePlannedCommand(userText, cmd)) {
+                flowinfishEmit({ type: "game:command", command: cmd });
+                return;
+              }
+              // Reject out-of-context commands to prevent accidental local triggers (e.g. "roll" on news requests).
+              flowinfishEmit({
+                type: "chat:status",
+                text: "Tip: paste a URL or upload a file to trigger citizen news bubbles; use /cmd <action> for explicit game control.",
+              });
+            }
+          } catch {}
+          return;
+        }
+
+        // Command-routing path (still JSON end-to-end): request {reply,command,...} and execute allowlisted command.
+        try {
+          let plan = null;
+          try {
+            plan = await invokeFlowinFishPlan({ providerKey, apiKey, userText, promptKey: "command_only" });
+          } catch (err) {
+            plan = { reply: `LLM error: ${String(err?.message || err)}`, command: null, bubbleSnippets: [] };
+          }
+
+          const reply = typeof plan?.reply === "string" ? plan.reply.trim() : "";
+          if (reply) flowinfishEmit({ type: "chat:assistant", text: reply });
+
+          const cmd = typeof plan?.command === "string" ? normalizePlannedGameCommand(plan.command) : "";
+          if (cmd) {
+            // In Command mode, the user's intent is already commandy (routeAsChat=false),
+            // but we still enforce allowlists via normalizePlannedGameCommand().
+            flowinfishEmit({ type: "game:command", command: cmd });
+            return;
+          }
+
+          flowinfishEmit({ type: "chat:status", text: "LLM returned no executable command. Try: /cmd roll | /cmd weather rainy | /cmd theme cny" });
+          return;
+        } catch {}
+
+        function sanitizeLlmCommand(raw) {
+          const text = String(raw || "").trim();
+          if (!text) return "";
+
+          const stripCodeFences = (s) => s.replace(/```[\s\S]*?```/g, " ").trim();
+          const cleaned = stripCodeFences(text);
+
+          const normalizeCandidate = (s) =>
+            String(s || "")
+              .trim()
+              .replace(/^["'`]+|["'`]+$/g, "")
+              .replace(/^command\\s*[:\\-]\\s*/i, "")
+              .replace(/^output\\s*[:\\-]\\s*/i, "")
+              .trim();
+
+          const looksLikeMeta = (s) => {
+            const lower = s.toLowerCase();
+            return (
+              lower.includes("we need to") ||
+              lower.includes("the user asks") ||
+              lower.includes("command families") ||
+              lower.includes("output a command") ||
+              lower.includes("convert the user") ||
+              lower.includes("rules:") ||
+              lower.includes("supported command") ||
+              lower.startsWith("we ") ||
+              lower.startsWith("the user ") ||
+              lower.includes("possibly") ||
+              lower.includes("maybe ")
+            );
+          };
+
+          const lines = cleaned.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+          const isCommandy = (s) => {
+            const cmdLower = s.toLowerCase();
+            return (
+              cmdLower === "status" ||
+              cmdLower.includes("roll") ||
+              cmdLower.includes("buy") ||
+              cmdLower.includes("pass") ||
+              cmdLower.includes("end") ||
+              cmdLower.includes("weather") ||
+              cmdLower.includes("theme") ||
+              cmdLower.includes("train") ||
+              cmdLower.includes("plane") ||
+              cmdLower.includes("heli") ||
+              cmdLower.includes("ship") ||
+              cmdLower.includes("rocket") ||
+              cmdLower.includes("attack") ||
+              cmdLower.includes("build") ||
+              cmdLower.includes("happy") ||
+              cmdLower.includes("neutral") ||
+              cmdLower.includes("calm") ||
+              cmdLower.includes("normal") ||
+              cmdLower.includes("faster") ||
+              cmdLower.includes("slower") ||
+              cmdLower.includes("stop") ||
+              cmdLower.includes("start")
+            );
+          };
+
+          // Prefer the last short command-like line (models often put the command last).
+          for (let i = lines.length - 1; i >= 0; i--) {
+            const candidate = normalizeCandidate(lines[i]);
+            if (!candidate || candidate.length > 140) continue;
+            if (looksLikeMeta(candidate)) continue;
+            if (isCommandy(candidate)) return candidate;
+          }
+
+          // Fallback: extract a command substring from a longer reasoning blob.
+          const blob = cleaned.replace(/\s+/g, " ").trim();
+          const m = blob.match(
+            /(status|roll\\s+dice|roll|buy|pass|end|stop\\s+train|start\\s+train|stop\\s+plane|start\\s+plane|stop\\s+heli|start\\s+heli|stop\\s+ship|start\\s+ship|faster|slower|rocket|attack|build|make\\s+citizens\\s+(happy|neutral|calm|normal)|change\\s+weather\\s+to\\s+\\w+|change\\s+theme\\s+to\\s+\\w+)/i
+          );
+          if (m && m[0]) {
+            const candidate = normalizeCandidate(m[0]);
+            if (candidate && candidate.length <= 140) return candidate;
+          }
+
+          // Conservative allowlist: only accept short “imperative-like” commands.
+          return "";
+        }
+
+        const raw = await invokeLlmCommand({ providerKey, apiKey, userText, strict: false });
+        let cmd = sanitizeLlmCommand(raw);
+        if (!cmd) {
+          const rawStrict = await invokeLlmCommand({ providerKey, apiKey, userText, strict: true });
+          cmd = sanitizeLlmCommand(rawStrict);
+        }
+        cmd = cmd || "status";
+        if (!cmd) {
+          if (typeof Ee === "function") Ee("LLM returned an empty response.", false);
+          return;
+        }
+
+        // Keep UI clean: never show fallback metadata to end-users.
+        if (typeof Ee === "function") Ee(cmd, false);
+        // Execute without echoing it as user input (avoid recursion back into LLM).
+        return _origUn(cmd, true);
+      } catch (err) {
+        if (typeof Ee === "function") Ee(`LLM error: ${String(err?.message || err)}`, false);
+      }
+    }
+
+    un_llm_patched.__singabldr_llm_patched = true;
+    un = un_llm_patched;
+    un.__singabldr_llm_patched = true;
+  }
+
+  function installFlowinFishFileReactionHandler() {
+    const fileInput = document.getElementById("superagent-file");
+    if (!fileInput) return;
+    if (fileInput.__singabldr_file_react_v1) return;
+    fileInput.__singabldr_file_react_v1 = true;
+
+    const isTextLike = (file) => {
+      const name = String(file?.name || "").toLowerCase();
+      const type = String(file?.type || "").toLowerCase();
+      if (type.startsWith("image/")) return false;
+      if (type.startsWith("text/")) return true;
+      return (
+        name.endsWith(".txt") ||
+        name.endsWith(".md") ||
+        name.endsWith(".csv") ||
+        name.endsWith(".json") ||
+        name.endsWith(".html") ||
+        name.endsWith(".htm")
+      );
+    };
+
+    fileInput.addEventListener(
+      "change",
+      (ev) => {
+        try {
+          const file = ev?.target?.files?.[0];
+          if (!file || !isTextLike(file)) return;
+          try {
+            window.__singabldr_last_uploaded_file_v1 = file;
+          } catch {}
+
+          // Dedup repeated change events / rapid re-uploads.
+          wn?.schedule?.(
+            `flowinfish:file:${file.name}`,
+            () => {
+              try {
+                const reader = new FileReader();
+                reader.onload = async () => {
+                  const raw = String(reader.result || "");
+                  const excerpt = raw.slice(0, 1800);
+
+                  // Always trigger citizen reactions for files (FlowinFish vibe).
+                  try {
+                    const snippet = excerpt.replace(/\s+/g, " ").trim().slice(0, 240);
+                    if (snippet) flowinfishEmit({ type: "swarm:bubbles", snippet, source: "file", count: 3 });
+                  } catch {}
+
+                  // If in Chat mode, ask the LLM to generate a reply + optional action.
+                  try {
+                    const mode = readInteractionMode();
+                    const providerKey = readSelectedLlmProviderKey();
+                    const apiKey = readLlmApiKeyMaybe();
+                    if (mode !== "chat" || providerKey === "none" || !apiKey) return;
+
+                    flowinfishEmit({ type: "chat:user", text: `📎 Uploaded file: ${file.name}` });
+                    flowinfishEmit({ type: "chat:status", text: `🤖 Calling ${LLM_PROVIDERS[providerKey]?.label || providerKey}...` });
+
+                    const plan = await invokeFlowinFishPlan({
+                      providerKey,
+                      apiKey,
+                      userText: `User uploaded a file (${file.name}). Content excerpt:\n\n${excerpt}`,
+                    });
+
+                    const reply = typeof plan?.reply === "string" ? plan.reply.trim() : "";
+                    flowinfishEmit({ type: "chat:assistant", text: reply || "LLM returned no content." });
+
+                    const cmd = typeof plan?.command === "string" ? normalizePlannedGameCommand(plan.command) : "";
+                    if (cmd && typeof un === "function" && shouldExecutePlannedCommand(`file:${file.name}`, cmd)) {
+                      flowinfishEmit({ type: "game:command", command: cmd });
+                    }
+                  } catch (err) {
+                    flowinfishEmit({ type: "chat:status", text: `LLM error: ${String(err?.message || err)}` });
+                  }
+                };
+                reader.readAsText(file);
+              } catch {}
+            },
+            0
+          );
+        } catch {}
+      },
+      true
+    );
   }
 
   function initWhenReady(attempt = 0) {
@@ -4214,6 +6402,8 @@ if (!window.__singabldr_runtime_patch_v1) {
       setTimeout(() => initWhenReady(attempt + 1), 50);
       return;
     }
+
+    fixYjsWebsocketProviderUrlIfNeeded();
 
     // Apply persisted uploaded theme image (if any).
     try {
@@ -4225,6 +6415,11 @@ if (!window.__singabldr_runtime_patch_v1) {
     ensureWaterPlane();
     patchRocketCommand();
     patchUrlToIframeBubble();
+    patchLlmCommandRouter();
+    installLlmSettingsUi();
+    installInteractionModeUi();
+    patchScriptNoneMode();
+    installFlowinFishFileReactionHandler();
     patchAnimateLoop();
     installCameraControlsOnce();
 

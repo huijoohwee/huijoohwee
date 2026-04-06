@@ -47,32 +47,93 @@ export const EDGE_COLORS = {
   sourced_from: "rgba(255,255,255,0.14)",
 };
 
-export function createCoalescedScheduler() {
-  /** @type {Map<string, number>} */
-  const scheduled = new Map();
-  return {
-    schedule(key, fn, delayMs = 0) {
-      const existing = scheduled.get(key);
-      if (existing !== undefined) {
-        if (delayMs === 0) cancelAnimationFrame(existing);
-        else clearTimeout(existing);
-        scheduled.delete(key);
-      }
-      if (delayMs === 0) {
-        const id = requestAnimationFrame(() => {
-          scheduled.delete(key);
-          fn();
-        });
-        scheduled.set(key, id);
-        return;
-      }
-      const id = window.setTimeout(() => {
+// Hosts that frequently block iframe embedding; use same-origin proxy for a useful preview.
+export const PREVIEW_PROXY_HOST_SUFFIXES = [
+  "devpost.com",
+  "linkedin.com",
+  "lnkd.in",
+  "luma.com",
+  "x.com",
+  "twitter.com",
+];
+
+/**
+ * Coalesced scheduler with:
+ * - keyed dedupe (schedule)
+ * - throttle-style scheduling for hot loops (scheduleIfAbsent)
+ *
+ * @param {Map<string, { kind: "raf" | "timeout"; id: number }>=} sharedScheduled
+ */
+export function createCoalescedScheduler(sharedScheduled) {
+  /** @type {Map<string, { kind: "raf" | "timeout"; id: number }>} */
+  const scheduled = sharedScheduled ?? new Map();
+
+  const cancelScheduled = (entry) => {
+    if (!entry) return;
+    if (entry.kind === "raf") cancelAnimationFrame(entry.id);
+    else clearTimeout(entry.id);
+  };
+
+  const scheduleImpl = (key, fn, delayMs, replaceExisting) => {
+    const existing = scheduled.get(key);
+    if (existing) {
+      if (!replaceExisting) return;
+      cancelScheduled(existing);
+      scheduled.delete(key);
+    }
+
+    if (delayMs === 0) {
+      const id = requestAnimationFrame(() => {
         scheduled.delete(key);
         fn();
-      }, delayMs);
-      scheduled.set(key, id);
+      });
+      scheduled.set(key, { kind: "raf", id });
+      return;
+    }
+
+    const id = window.setTimeout(() => {
+      scheduled.delete(key);
+      fn();
+    }, delayMs);
+    scheduled.set(key, { kind: "timeout", id });
+  };
+
+  return {
+    /** Replace any existing scheduled work for this key. */
+    schedule(key, fn, delayMs = 0) {
+      scheduleImpl(key, fn, delayMs, true);
+    },
+    /** If a key is already scheduled, do nothing. Useful for hot loops (e.g., simulation ticks). */
+    scheduleIfAbsent(key, fn, delayMs = 0) {
+      scheduleImpl(key, fn, delayMs, false);
+    },
+    cancel(key) {
+      const existing = scheduled.get(key);
+      if (!existing) return;
+      cancelScheduled(existing);
+      scheduled.delete(key);
     },
   };
+}
+
+const LS_KEY_SHARED_SCHEDULERS = "__HACKAMAP_SHARED_COALESCED_SCHEDULERS__";
+
+/**
+ * Shared scheduler (dedupes across modules + runtime subscriptions) via globalThis.
+ * @param {string} scope
+ */
+export function getSharedCoalescedScheduler(scope = "default") {
+  /** @type {Map<string, ReturnType<typeof createCoalescedScheduler>>} */
+  const root =
+    /** @type {any} */ (globalThis)[LS_KEY_SHARED_SCHEDULERS] ??
+    (/** @type {any} */ (globalThis)[LS_KEY_SHARED_SCHEDULERS] = new Map());
+
+  const existing = root.get(scope);
+  if (existing) return existing;
+
+  const scheduler = createCoalescedScheduler();
+  root.set(scope, scheduler);
+  return scheduler;
 }
 
 export function sanitizeCell(value) {
@@ -84,12 +145,25 @@ export function parseJsonArrayCell(cell) {
   if (!c || c === NULL_CELL) return [];
   let raw = c;
   if (raw.startsWith("`") && raw.endsWith("`")) raw = raw.slice(1, -1).trim();
+  if (parseJsonArrayCellCache.has(raw)) return parseJsonArrayCellCache.get(raw);
   try {
     const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) return parsed.map((x) => sanitizeCell(String(x))).filter((x) => x !== NULL_CELL);
+    if (Array.isArray(parsed)) {
+      const normalized = parsed.map((x) => sanitizeCell(String(x))).filter((x) => x !== NULL_CELL);
+      parseJsonArrayCellCache.set(raw, normalized);
+      if (parseJsonArrayCellCache.size > PARSE_JSON_ARRAY_CELL_CACHE_LIMIT) {
+        const firstKey = parseJsonArrayCellCache.keys().next().value;
+        parseJsonArrayCellCache.delete(firstKey);
+      }
+      return normalized;
+    }
   } catch (_) {}
   return [];
 }
+
+const PARSE_JSON_ARRAY_CELL_CACHE_LIMIT = 800;
+/** @type {Map<string, string[]>} */
+const parseJsonArrayCellCache = new Map();
 
 export function splitUrls(cell) {
   const c = (cell ?? "").toString().trim();
@@ -414,4 +488,3 @@ export async function buildGraphFromMarkdown() {
 
   return { nodes: Array.from(nodes.values()), links };
 }
-
