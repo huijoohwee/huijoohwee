@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Singabldr – News Feed (Demo)</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --ink: #2d3436;
+        --muted: #636e72;
+        --card: #f7f7fb;
+        --accent: #a29bfe;
+        --border: #2d3436;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Nunito, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+      .wrap {
+        box-sizing: border-box;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 2px solid var(--border);
+        background: var(--accent);
+        color: #fff;
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 0.2px;
+      }
+      .h {
+        font-weight: 900;
+        font-size: 13px;
+        margin: 0;
+      }
+      .sub {
+        margin: 0;
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 800;
+      }
+      .list {
+        flex: 1;
+        overflow: auto;
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        background: var(--card);
+        padding: 8px;
+      }
+      .item {
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        background: #fff;
+        padding: 8px;
+        margin-bottom: 8px;
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+      }
+      .item:last-child {
+        margin-bottom: 0;
+      }
+      .kicker {
+        font-size: 10px;
+        color: var(--muted);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-bottom: 4px;
+      }
+      .headline {
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1.25;
+      }
+      .note {
+        font-size: 10px;
+        color: var(--muted);
+        font-weight: 800;
+        margin-top: 6px;
+      }
+      .note code {
+        font-weight: 900;
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="title">
+        <div>
+          <p class="h" id="feed-title">AI Feed</p>
+          <p class="sub">Demo feed (local), safe to iframe</p>
+        </div>
+        <span class="badge">News</span>
+      </div>
+      <div class="list" id="feed-list"></div>
+      <div class="note">
+        This is a local demo. To wire real feeds later, proxy RSS/HTML via your server
+        and render sanitized snapshots (avoid third-party iframe blocks).
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        function getTopic() {
+          try {
+            var u = new URL(window.location.href);
+            return String(u.searchParams.get("topic") || "").trim();
+          } catch {
+            return "";
+          }
+        }
+
+        var TOPICS = {
+          "kampong-ai": {
+            title: "Kampong AI (Singapore)",
+            items: [
+              { src: "Community", text: "‘Kampong AI’ meetups: practical demos, not hype—agents, RAG, evals." },
+              { src: "Builders", text: "More ‘AI kopitiam’ style workshops: prompt patterns + shipping small tools." },
+              { src: "Policy", text: "Safety by default: allowlists, local-only keys, and observable trace logs." },
+              { src: "Talent", text: "SkillsFuture courses trending: applied LLM ops, guardrails, and governance." },
+            ],
+          },
+          "smart-nation": {
+            title: "Smart Nation / GovTech pulse",
+            items: [
+              { src: "GovTech", text: "Prototype-first: thin UI, fast iteration, clear audit trail for model calls." },
+              { src: "Infra", text: "More teams exploring RAG over internal docs with redaction + provenance." },
+              { src: "Ops", text: "Move secrets server-side (Workers/Functions) when leaving local demos." },
+              { src: "UX", text: "Human-in-the-loop controls: mode toggles (chat vs command), safe fallbacks." },
+            ],
+          },
+          startups: {
+            title: "Singapore AI Startups",
+            items: [
+              { src: "Founders", text: "Agentic workflows as product features: planning + tools + verifiable output." },
+              { src: "Go-to-market", text: "Vertical AI: compliance-aware assistants for finance/health/education." },
+              { src: "Tech", text: "Realtime voice/assistants rising—but requires different API + infra." },
+              { src: "Cost", text: "Latency/cost focus: smaller models + caching + deduped subscriptions." },
+            ],
+          },
+        };
+
+        var topic = getTopic();
+        var cfg = TOPICS[topic] || TOPICS["kampong-ai"];
+        document.getElementById("feed-title").textContent = cfg.title;
+
+        var list = document.getElementById("feed-list");
+        cfg.items.forEach(function (it) {
+          var card = document.createElement("div");
+          card.className = "item";
+
+          var kicker = document.createElement("div");
+          kicker.className = "kicker";
+          kicker.textContent = it.src;
+
+          var headline = document.createElement("div");
+          headline.className = "headline";
+          headline.textContent = it.text;
+
+          card.appendChild(kicker);
+          card.appendChild(headline);
+          list.appendChild(card);
+        });
+      })();
+    </script>
+  </body>
+</html>
+

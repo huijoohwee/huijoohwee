@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Singabldr</title>
-    <base href="/singabldr/" />
+    <!--
+      Base URL:
+      - Local dev (served at /): keep relative so ./assets works.
+      - Production (served at /singabldr/): boot.js enforces trailing slash so relative URLs resolve correctly.
+    -->
+    <base href="./" />
 
     <!-- CSP-safe boot (no inline scripts / inline event handlers) -->
     <script src="./assets/boot.js?v=20260406-1" defer></script>
@@ -116,6 +121,9 @@
                         <option value="none">None</option>
                         <option value="byteplus_seed_2_lite">Dola-Seed-2.0-lite (BytePlus Ark)</option>
                         <option value="zenmux_agnes_1_5_pro">Agnes-1.5-Pro (ZenMux)</option>
+                        <option value="openai_gpt_5_4_nano">GPT-5.4 nano (OpenAI)</option>
+                        <option value="openai_gpt_4o_mini_tts">GPT-4o mini TTS (OpenAI)</option>
+                        <option value="openai_gpt_realtime_mini">gpt-realtime-mini (OpenAI)</option>
                     </select>
 
                     <label style="font-size: 14px; color: #2d3436; display: block; margin: 6px 0 5px 0; font-family: 'Nunito', sans-serif; font-weight: 900;">API Key (stored on this device):</label>
@@ -242,6 +250,6 @@
     </div>
 
     <!-- App bundle (minified, ESM; includes three.js + tween + yjs locally) -->
-    <script type="module" src="./assets/app-F2P7J5VB.js?v=20260405-12"></script>
+    <script type="module" src="./assets/app-F2P7J5VB.js?v=20260407-5"></script>
   </body>
 </html>

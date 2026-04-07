@@ -18,6 +18,21 @@
     }
   });
 
+  safe(function normalizeSingabldrBasePath() {
+    // When served at /singabldr (no trailing slash), relative URLs resolve as if
+    // "/singabldr" were a file, causing ./assets and ./boards to 404.
+    // Enforce the directory form to keep relative URLs stable.
+    var path = String(window.location && window.location.pathname ? window.location.pathname : "");
+    if (path === "/singabldr") {
+      window.location.replace("/singabldr/");
+      return;
+    }
+    if (path === "/content/singabldr") {
+      window.location.replace("/content/singabldr/");
+      return;
+    }
+  });
+
   safe(function setApiBase() {
     // Backend API base (DeerFlow gateway behind nginx). Keep secrets server-side.
     // Production: https://api.airvio.co

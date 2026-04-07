@@ -2869,6 +2869,7 @@ if (!window.__singabldr_runtime_patch_v1) {
   const FLOWINFISH_DOMAINS_URL = "flowinfish.domains.json";
   const LS_KEY_FLOWINFISH_TRACE = "singabldr_flowinfish_trace_v1";
   const FLOWINFISH_TRACE_MAX = 200;
+  const OPENAI_BASE_URL = "https://api.openai.com/v1";
 
   // ---- LLM (user-provided key; client-side only) ----------------------------
   // NOTE: For maximum security, we do NOT ship any API keys. Users can paste a key
@@ -2885,18 +2886,50 @@ if (!window.__singabldr_runtime_patch_v1) {
       label: "None",
       baseUrl: "",
       model: "",
+      apiKind: "none",
     },
     byteplus_seed_2_lite: {
       label: "Dola-Seed-2.0-lite (BytePlus Ark)",
       baseUrl: "https://ark.ap-southeast.bytepluses.com/api/v3",
       model: "seed-2-0-lite-260228",
+      apiKind: "chat_completions",
     },
     zenmux_agnes_1_5_pro: {
       label: "Agnes-1.5-Pro (ZenMux)",
       baseUrl: "https://zenmux.ai/api/v1",
       model: "sapiens-ai/agnes-1.5-pro",
+      apiKind: "chat_completions",
+    },
+    openai_gpt_5_4_nano: {
+      label: "GPT-5.4 nano (OpenAI)",
+      baseUrl: OPENAI_BASE_URL,
+      model: "gpt-5.4-nano",
+      apiKind: "responses",
+    },
+    openai_gpt_4o_mini_tts: {
+      label: "GPT-4o mini TTS (OpenAI)",
+      baseUrl: OPENAI_BASE_URL,
+      model: "gpt-4o-mini-tts",
+      apiKind: "tts",
+    },
+    openai_gpt_realtime_mini: {
+      label: "gpt-realtime-mini (OpenAI)",
+      baseUrl: OPENAI_BASE_URL,
+      model: "gpt-realtime-mini",
+      apiKind: "realtime",
     },
   };
+
+  function llmProviderSupportsText(providerKey) {
+    const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
+    if (!provider) return false;
+    // We only support text LLM calls from the browser. Anything else must be disabled.
+    return (
+      provider.apiKind == null ||
+      provider.apiKind === "chat_completions" ||
+      provider.apiKind === "responses"
+    );
+  }
 
   function getBoardSlugSafe() {
     try {
@@ -3893,6 +3926,292 @@ if (!window.__singabldr_runtime_patch_v1) {
   // ---- Citizen iframe bubbles (URL -> citizen overlay) ----------------------
   const iframeBubbles = [];
   const linkBubbles = [];
+  const BUBBLE_TTL_MS = 10_000;
+  const BUBBLE_COLLISION_GAP_PX = 10;
+
+  function rectsOverlap(a, b) {
+    return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+  }
+
+  function setBubblePinned(bubbleRec, pinned) {
+    if (!bubbleRec || !bubbleRec.el) return;
+    bubbleRec.pinned = !!pinned;
+    if (bubbleRec.pinned) {
+      bubbleRec.expiresAt = Infinity;
+      bubbleRec.el.setAttribute("data-pinned", "1");
+    } else {
+      bubbleRec.expiresAt = Date.now() + BUBBLE_TTL_MS;
+      bubbleRec.el.removeAttribute("data-pinned");
+    }
+  }
+
+  function attachBubbleDrag({ bubbleRec, headerEl }) {
+    if (!bubbleRec || !headerEl) return;
+    headerEl.style.cursor = "move";
+    headerEl.style.userSelect = "none";
+    headerEl.style.touchAction = "none";
+
+    const state = {
+      dragging: false,
+      pointerId: null,
+      offsetX: 0,
+      offsetY: 0,
+    };
+
+    const getPoint = (ev) => {
+      if (!ev) return null;
+      if (ev.touches && ev.touches[0]) {
+        return { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
+      }
+      if (typeof ev.clientX === "number" && typeof ev.clientY === "number") {
+        return { x: ev.clientX, y: ev.clientY };
+      }
+      return null;
+    };
+
+    const start = (ev) => {
+      const p = getPoint(ev);
+      if (!p) return;
+      state.dragging = true;
+      bubbleRec.dragging = true;
+      bubbleRec.manual = true;
+      bubbleRec.manualCx = Number.isFinite(bubbleRec.cx) ? bubbleRec.cx : p.x;
+      bubbleRec.manualBy = Number.isFinite(bubbleRec.by) ? bubbleRec.by : p.y;
+      state.offsetX = bubbleRec.manualCx - p.x;
+      state.offsetY = bubbleRec.manualBy - p.y;
+      try {
+        // Extend life while interacting (but don't force pin).
+        if (!bubbleRec.pinned) bubbleRec.expiresAt = Date.now() + BUBBLE_TTL_MS;
+      } catch {}
+      try {
+        ev.preventDefault?.();
+        ev.stopPropagation?.();
+      } catch {}
+    };
+
+    const move = (ev) => {
+      if (!state.dragging) return;
+      const p = getPoint(ev);
+      if (!p) return;
+      bubbleRec.manualCx = p.x + state.offsetX;
+      bubbleRec.manualBy = p.y + state.offsetY;
+      try {
+        ev.preventDefault?.();
+      } catch {}
+    };
+
+    const end = () => {
+      if (!state.dragging) return;
+      state.dragging = false;
+      bubbleRec.dragging = false;
+      if (!bubbleRec.pinned) {
+        bubbleRec.expiresAt = Date.now() + BUBBLE_TTL_MS;
+      }
+    };
+
+    headerEl.addEventListener("mousedown", start, { passive: false });
+    window.addEventListener("mousemove", move, { passive: false });
+    window.addEventListener("mouseup", end, { passive: true });
+
+    headerEl.addEventListener("touchstart", start, { passive: false });
+    window.addEventListener("touchmove", move, { passive: false });
+    window.addEventListener("touchend", end, { passive: true });
+    window.addEventListener("touchcancel", end, { passive: true });
+  }
+
+  function appendChatBubbleLocal(role, text) {
+    const chat = document.getElementById("superagent-chat");
+    const panel = document.getElementById("superagent-panel");
+    const container = document.getElementById("superagent-container");
+    if (!chat) return;
+    try {
+      if (container) container.style.display = "block";
+      if (panel) panel.style.display = "flex";
+    } catch {}
+
+    const wrap = document.createElement("div");
+    wrap.style.display = "flex";
+    wrap.style.flexDirection = "column";
+    wrap.style.gap = "6px";
+    wrap.style.alignItems = role === "user" ? "flex-end" : "flex-start";
+
+    const bubble = document.createElement("div");
+    bubble.style.maxWidth = "85%";
+    bubble.style.border = "3px solid #2d3436";
+    bubble.style.borderRadius = "14px";
+    bubble.style.padding = "8px 10px";
+    bubble.style.boxShadow = "4px 4px 0 rgba(0,0,0,0.1)";
+    bubble.style.fontWeight = "900";
+    bubble.style.fontSize = "12px";
+    bubble.style.lineHeight = "1.25";
+    bubble.style.whiteSpace = "pre-wrap";
+    bubble.style.wordBreak = "break-word";
+    bubble.style.background = role === "user" ? "#a29bfe" : "#ffffff";
+    bubble.style.color = role === "user" ? "#ffffff" : "#2d3436";
+    bubble.textContent = String(text || "");
+
+    wrap.appendChild(bubble);
+    chat.appendChild(wrap);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function appendBubbleChainEntry(bubbleRec, { label, text }) {
+    if (!bubbleRec?.chainEl) return;
+    const t = String(text || "").trim();
+    if (!t) return;
+
+    const item = document.createElement("div");
+    item.style.borderTop = "2px dashed rgba(45,52,54,0.25)";
+    item.style.padding = "8px 10px";
+    item.style.fontFamily = "Nunito, sans-serif";
+    item.style.fontSize = "12px";
+    item.style.fontWeight = "800";
+    item.style.color = "#2d3436";
+    item.style.whiteSpace = "pre-wrap";
+    item.style.wordBreak = "break-word";
+
+    const head = document.createElement("div");
+    head.style.fontSize = "11px";
+    head.style.fontWeight = "900";
+    head.style.color = "#636e72";
+    head.style.marginBottom = "4px";
+    head.textContent = label || "Chat";
+
+    const body = document.createElement("div");
+    body.textContent = t;
+
+    item.appendChild(head);
+    item.appendChild(body);
+    bubbleRec.chainEl.appendChild(item);
+    bubbleRec.chainEl.scrollTop = bubbleRec.chainEl.scrollHeight;
+  }
+
+  async function addBubbleToChatAndChain(bubbleRec, seedText) {
+    const providerKey = readSelectedLlmProviderKey?.() || "none";
+    const apiKey = readLlmApiKeyMaybe?.();
+
+    appendChatBubbleLocal("user", seedText);
+    appendBubbleChainEntry(bubbleRec, { label: "User", text: seedText });
+
+    if (!providerKey || providerKey === "none" || !apiKey) {
+      const msg = "LLM disabled: set AI Model + API key in Settings.";
+      appendChatBubbleLocal("assistant", msg);
+      appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: msg });
+      return;
+    }
+
+    try {
+      const reply = await invokeLlmChat({ providerKey, apiKey, userText: seedText });
+      appendChatBubbleLocal("assistant", reply || "(empty response)");
+      appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: reply || "(empty response)" });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err || "LLM error");
+      appendChatBubbleLocal("assistant", `LLM error: ${msg}`);
+      appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: `LLM error: ${msg}` });
+    }
+  }
+
+  function attachPinButton({ bubbleRec, containerEl, baseZIndex }) {
+    if (!bubbleRec || !bubbleRec.el || !containerEl) return;
+    const btn = document.createElement("button");
+    btn.textContent = "📌";
+    btn.title = "Pin / unpin";
+    btn.style.border = "none";
+    btn.style.background = "rgba(255,255,255,0.18)";
+    btn.style.color = "white";
+    btn.style.cursor = "pointer";
+    btn.style.fontSize = "14px";
+    btn.style.lineHeight = "1";
+    btn.style.padding = "2px 6px";
+    btn.style.borderRadius = "10px";
+
+    btn.onclick = () => {
+      const next = !bubbleRec.pinned;
+      setBubblePinned(bubbleRec, next);
+      // Pinned bubbles must stay on top.
+      try {
+        const z = Number(baseZIndex) || 2000;
+        bubbleRec.el.style.zIndex = String(next ? z + 50 : z);
+      } catch {}
+      btn.textContent = next ? "📍" : "📌";
+    };
+
+    containerEl.appendChild(btn);
+  }
+
+  function layoutBubblePositions(items, { width, height, margin } = {}) {
+    const W = Number.isFinite(width) ? width : window.innerWidth;
+    const H = Number.isFinite(height) ? height : window.innerHeight;
+    const M = Number.isFinite(margin) ? margin : 12;
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+    const gap = BUBBLE_COLLISION_GAP_PX;
+
+    // Priority first (pinned, then higher z-index bubbles), then stable ordering by Y then X.
+    items.sort(
+      (a, b) =>
+        (b.bubbleRec?.pinned ? 1 : 0) - (a.bubbleRec?.pinned ? 1 : 0) ||
+        (b.priority || 0) - (a.priority || 0) ||
+        (a.by || 0) - (b.by || 0) ||
+        (a.cx || 0) - (b.cx || 0),
+    );
+
+    const placed = [];
+    for (const item of items) {
+      const w = Number.isFinite(item.w) ? item.w : 240;
+      const h = Number.isFinite(item.h) ? item.h : 92;
+
+      let cx = clamp(
+        Number.isFinite(item.cx) ? item.cx : W * 0.5,
+        M + w / 2,
+        W - M - w / 2,
+      );
+      let by = clamp(
+        Number.isFinite(item.by) ? item.by : H * 0.75,
+        M + h,
+        H - M,
+      );
+
+      const rectOf = (_cx, _by) => ({
+        left: _cx - w / 2,
+        right: _cx + w / 2,
+        top: _by - h,
+        bottom: _by,
+      });
+
+      // Greedy packing: resolve overlaps against ALL prior placements.
+      let rect = rectOf(cx, by);
+      for (let iter = 0; iter < 24; iter++) {
+        let overlapping = null;
+        for (const prev of placed) {
+          if (!rectsOverlap(rect, prev.rect)) continue;
+          overlapping = prev;
+          break;
+        }
+        if (!overlapping) break;
+
+        // Prefer shifting upward above the overlap; if not possible, place below; else nudge sideways.
+        const upBy = overlapping.rect.top - gap;
+        const downBy = overlapping.rect.bottom + h + gap;
+        if (upBy >= M + h) {
+          by = upBy;
+        } else if (downBy <= H - M) {
+          by = downBy;
+        } else {
+          const dir = iter % 2 === 0 ? 1 : -1;
+          cx = clamp(cx + dir * (28 + iter * 8), M + w / 2, W - M - w / 2);
+        }
+
+        rect = rectOf(cx, by);
+      }
+
+      item.cx = cx;
+      item.by = by;
+      item.rect = rect;
+      placed.push(item);
+    }
+
+    return items;
+  }
 
   function pickCitizen(excludeCitizen) {
     if (!Tt || Tt.length === 0) return null;
@@ -4031,7 +4350,7 @@ if (!window.__singabldr_runtime_patch_v1) {
     return null;
   }
 
-  function createCitizenIframeBubble(url, { ttlMs = 20_000, citizen = null } = {}) {
+  function createCitizenIframeBubble(url, { ttlMs = BUBBLE_TTL_MS, citizen = null } = {}) {
     if (!url || !Tt || Tt.length === 0) return;
 
     // Choose a citizen as anchor.
@@ -4076,6 +4395,17 @@ if (!window.__singabldr_runtime_patch_v1) {
     actions.style.alignItems = "center";
     actions.style.gap = "8px";
 
+    // Bubble record is created early so pin/close handlers can update state.
+    const bubbleRec = {
+      citizen,
+      el: root,
+      w: 360,
+      h: 240,
+      yOffset: 14,
+      pinned: false,
+      expiresAt: Date.now() + BUBBLE_TTL_MS,
+    };
+
     const openLink = document.createElement("a");
     openLink.href = url;
     openLink.target = "_blank";
@@ -4099,6 +4429,26 @@ if (!window.__singabldr_runtime_patch_v1) {
     };
 
     actions.appendChild(openLink);
+    attachPinButton({ bubbleRec, containerEl: actions, baseZIndex: 2000 });
+
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "➕";
+    addBtn.title = "Add to Chat + chain on bubble";
+    addBtn.style.border = "none";
+    addBtn.style.background = "rgba(255,255,255,0.18)";
+    addBtn.style.color = "white";
+    addBtn.style.cursor = "pointer";
+    addBtn.style.fontSize = "14px";
+    addBtn.style.lineHeight = "1";
+    addBtn.style.padding = "2px 6px";
+    addBtn.style.borderRadius = "10px";
+    addBtn.onclick = async () => {
+      try {
+        const seed = typeof bubbleRec.sourceUrl === "string" && bubbleRec.sourceUrl ? bubbleRec.sourceUrl : url;
+        await addBubbleToChatAndChain(bubbleRec, seed);
+      } catch {}
+    };
+    actions.appendChild(addBtn);
     actions.appendChild(closeBtn);
     header.appendChild(title);
     header.appendChild(actions);
@@ -4148,8 +4498,22 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     root.appendChild(header);
     root.appendChild(contentWrap);
+
+    const chain = document.createElement("div");
+    chain.style.maxHeight = "110px";
+    chain.style.overflow = "auto";
+    chain.style.background = "#f7f7fb";
+    chain.style.borderTop = "3px solid #2d3436";
+    chain.style.fontFamily = "Nunito, sans-serif";
+    chain.style.pointerEvents = "auto";
+    bubbleRec.chainEl = chain;
+    bubbleRec.sourceUrl = url;
+    root.appendChild(chain);
+
     root.appendChild(footer);
     document.body.appendChild(root);
+
+    attachBubbleDrag({ bubbleRec, headerEl: header });
 
     // Debug: helps verify which src we ended up using without opening devtools.
     root.setAttribute("data-iframe-src", embedSrc);
@@ -4260,16 +4624,10 @@ if (!window.__singabldr_runtime_patch_v1) {
       }
     } catch {}
 
-    iframeBubbles.push({
-      citizen,
-      el: root,
-      w: 360,
-      h: 240,
-      expiresAt: Date.now() + (Number.isFinite(ttlMs) ? ttlMs : 20_000),
-    });
+    iframeBubbles.push(bubbleRec);
   }
 
-  function createCitizenLinkBubble(url, { ttlMs = 20_000, excludeCitizen = null } = {}) {
+  function createCitizenLinkBubble(url, { ttlMs = BUBBLE_TTL_MS, excludeCitizen = null } = {}) {
     if (!url) return;
 
     const citizen = pickCitizen(excludeCitizen);
@@ -4304,6 +4662,17 @@ if (!window.__singabldr_runtime_patch_v1) {
     title.textContent = "Citizen link";
     title.style.fontSize = "12px";
 
+    const bubbleRec = {
+      citizen,
+      el: root,
+      w: 280,
+      // approximate height; actual varies by URL wrapping. used only for clamp.
+      h: 96,
+      yOffset: 10,
+      pinned: false,
+      expiresAt: Date.now() + BUBBLE_TTL_MS,
+    };
+
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "✖";
     closeBtn.style.border = "none";
@@ -4318,7 +4687,30 @@ if (!window.__singabldr_runtime_patch_v1) {
     };
 
     header.appendChild(title);
-    header.appendChild(closeBtn);
+    const headerActions = document.createElement("div");
+    headerActions.style.display = "flex";
+    headerActions.style.alignItems = "center";
+    headerActions.style.gap = "8px";
+    attachPinButton({ bubbleRec, containerEl: headerActions, baseZIndex: 1999 });
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "➕";
+    addBtn.title = "Add to Chat + chain on bubble";
+    addBtn.style.border = "none";
+    addBtn.style.background = "rgba(255,255,255,0.18)";
+    addBtn.style.color = "white";
+    addBtn.style.cursor = "pointer";
+    addBtn.style.fontSize = "14px";
+    addBtn.style.lineHeight = "1";
+    addBtn.style.padding = "2px 6px";
+    addBtn.style.borderRadius = "10px";
+    addBtn.onclick = async () => {
+      try {
+        await addBubbleToChatAndChain(bubbleRec, url);
+      } catch {}
+    };
+    headerActions.appendChild(addBtn);
+    headerActions.appendChild(closeBtn);
+    header.appendChild(headerActions);
 
     const body = document.createElement("div");
     body.style.padding = "10px";
@@ -4340,19 +4732,25 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     root.appendChild(header);
     root.appendChild(body);
+
+    const chain = document.createElement("div");
+    chain.style.maxHeight = "110px";
+    chain.style.overflow = "auto";
+    chain.style.background = "#f7f7fb";
+    chain.style.borderTop = "3px solid #2d3436";
+    chain.style.fontFamily = "Nunito, sans-serif";
+    chain.style.pointerEvents = "auto";
+    bubbleRec.chainEl = chain;
+    bubbleRec.sourceUrl = url;
+    root.appendChild(chain);
     document.body.appendChild(root);
 
-    linkBubbles.push({
-      citizen,
-      el: root,
-      w: 280,
-      // approximate height; actual varies by URL wrapping. used only for clamp.
-      h: 96,
-      expiresAt: Date.now() + (Number.isFinite(ttlMs) ? ttlMs : 20_000),
-    });
+    attachBubbleDrag({ bubbleRec, headerEl: header });
+
+    linkBubbles.push(bubbleRec);
   }
 
-  function createCitizenTextBubble(url, { ttlMs = 20_000, citizen = null } = {}) {
+  function createCitizenTextBubble(url, { ttlMs = BUBBLE_TTL_MS, citizen = null } = {}) {
     if (!url) return;
     citizen = citizen || pickCitizen(null);
     if (!citizen) return;
@@ -4386,6 +4784,16 @@ if (!window.__singabldr_runtime_patch_v1) {
     title.textContent = "Citizen text";
     title.style.fontSize = "12px";
 
+    const bubbleRec = {
+      citizen,
+      el: root,
+      w: 320,
+      h: 190,
+      yOffset: 10,
+      pinned: false,
+      expiresAt: Date.now() + BUBBLE_TTL_MS,
+    };
+
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "✖";
     closeBtn.style.border = "none";
@@ -4396,7 +4804,30 @@ if (!window.__singabldr_runtime_patch_v1) {
     closeBtn.onclick = () => root.remove();
 
     header.appendChild(title);
-    header.appendChild(closeBtn);
+    const headerActions = document.createElement("div");
+    headerActions.style.display = "flex";
+    headerActions.style.alignItems = "center";
+    headerActions.style.gap = "8px";
+    attachPinButton({ bubbleRec, containerEl: headerActions, baseZIndex: 1998 });
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "➕";
+    addBtn.title = "Add to Chat + chain on bubble";
+    addBtn.style.border = "none";
+    addBtn.style.background = "rgba(255,255,255,0.18)";
+    addBtn.style.color = "#2d3436";
+    addBtn.style.cursor = "pointer";
+    addBtn.style.fontSize = "14px";
+    addBtn.style.lineHeight = "1";
+    addBtn.style.padding = "2px 6px";
+    addBtn.style.borderRadius = "10px";
+    addBtn.onclick = async () => {
+      try {
+        await addBubbleToChatAndChain(bubbleRec, url);
+      } catch {}
+    };
+    headerActions.appendChild(addBtn);
+    headerActions.appendChild(closeBtn);
+    header.appendChild(headerActions);
 
     const body = document.createElement("div");
     body.style.padding = "10px";
@@ -4411,16 +4842,23 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     root.appendChild(header);
     root.appendChild(body);
+
+    const chain = document.createElement("div");
+    chain.style.maxHeight = "110px";
+    chain.style.overflow = "auto";
+    chain.style.background = "#f7f7fb";
+    chain.style.borderTop = "3px solid #2d3436";
+    chain.style.fontFamily = "Nunito, sans-serif";
+    chain.style.pointerEvents = "auto";
+    bubbleRec.chainEl = chain;
+    bubbleRec.sourceUrl = url;
+    root.appendChild(chain);
     document.body.appendChild(root);
 
+    attachBubbleDrag({ bubbleRec, headerEl: header });
+
     // Update position (re-use linkBubbles tracking; same projection/clamp logic).
-    linkBubbles.push({
-      citizen,
-      el: root,
-      w: 320,
-      h: 190,
-      expiresAt: Date.now() + (Number.isFinite(ttlMs) ? ttlMs : 20_000),
-    });
+    linkBubbles.push(bubbleRec);
 
     const oembedUrl = getOembedJsonUrl(url);
     if (!oembedUrl) {
@@ -4454,6 +4892,24 @@ if (!window.__singabldr_runtime_patch_v1) {
       },
       0
     );
+  }
+
+  function createNewsFeedIframeBubbles() {
+    // Local-only demo "news feed" iframes (no hardcoded third-party domains).
+    // Triggered explicitly via "/news" to avoid unsolicited overlays.
+    const urls = [
+      "news-feed.html?topic=kampong-ai",
+      "news-feed.html?topic=smart-nation",
+      "news-feed.html?topic=startups",
+    ];
+
+    // Try stable citizen anchors first; fallback to random picks.
+    const anchors = [getCitizenAtIndex(0), getCitizenAtIndex(1), getCitizenAtIndex(2)];
+    for (let i = 0; i < urls.length; i++) {
+      const citizen = anchors[i] || pickCitizen(null);
+      if (!citizen) continue;
+      createCitizenIframeBubble(urls[i], { ttlMs: BUBBLE_TTL_MS, citizen });
+    }
   }
 
   function patchAnimateLoop() {
@@ -4510,67 +4966,77 @@ if (!window.__singabldr_runtime_patch_v1) {
         const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
         const margin = 12;
 
-        // Update + GC iframe bubbles
+        // Update + GC bubbles (iframe + link/snippet/text) with collision avoidance.
+        const bubbleItems = [];
+        const nowMs = Date.now();
+        const W = window.innerWidth;
+        const H = window.innerHeight;
+
+        const collectBubble = (bubbleRec, priority, defaultW, defaultH) => {
+          if (!bubbleRec?.el || !bubbleRec?.citizen) return;
+          if (!bubbleRec.pinned && nowMs > (bubbleRec.expiresAt || 0)) {
+            try {
+              bubbleRec.el.remove();
+            } catch {}
+            bubbleRec.__remove = true;
+            return;
+          }
+          if (!vn) return;
+
+          bubbleRec.citizen.getWorldPosition(tmpWorldPos);
+          tmpWorldPos.y += Number.isFinite(bubbleRec.yOffset) ? bubbleRec.yOffset : priority >= 2 ? 10 : 14;
+          tmpWorldPos.project(vn);
+          const x = (tmpWorldPos.x * 0.5 + 0.5) * W;
+          const y = (-tmpWorldPos.y * 0.5 + 0.5) * H;
+
+          const bw = Number.isFinite(bubbleRec.w) ? bubbleRec.w : defaultW;
+          const bh = Number.isFinite(bubbleRec.h) ? bubbleRec.h : defaultH;
+
+          // Because bubble uses translate(-50%, -100%): left is center, top is bottom.
+          const rawCx = Number.isFinite(x) ? x : W * 0.5;
+          const rawBy = Number.isFinite(y) ? y : H * 0.8;
+          const cx = clamp(rawCx, margin + bw / 2, W - margin - bw / 2);
+          const by = clamp(rawBy, margin + bh, H - margin);
+
+          const forcedPriority = bubbleRec.dragging ? 4 : bubbleRec.pinned ? 3 : priority;
+          bubbleItems.push({
+            bubbleRec,
+            el: bubbleRec.el,
+            cx: bubbleRec.manual && Number.isFinite(bubbleRec.manualCx) ? bubbleRec.manualCx : cx,
+            by: bubbleRec.manual && Number.isFinite(bubbleRec.manualBy) ? bubbleRec.manualBy : by,
+            w: bw,
+            h: bh,
+            priority: forcedPriority,
+          });
+        };
+
+        // iframe bubbles (lower priority than key-point/snippet bubbles)
         for (let idx = iframeBubbles.length - 1; idx >= 0; idx--) {
           const bubbleRec = iframeBubbles[idx];
-          if (!bubbleRec?.el || !bubbleRec?.citizen) {
-            iframeBubbles.splice(idx, 1);
-            continue;
-          }
-          if (Date.now() > (bubbleRec.expiresAt || 0)) {
-            bubbleRec.el.remove();
-            iframeBubbles.splice(idx, 1);
-            continue;
-          }
-
-          if (!vn) continue;
-          bubbleRec.citizen.getWorldPosition(tmpWorldPos);
-          tmpWorldPos.y += 14; // place above head
-          tmpWorldPos.project(vn);
-          const x = (tmpWorldPos.x * 0.5 + 0.5) * window.innerWidth;
-          const y = (-tmpWorldPos.y * 0.5 + 0.5) * window.innerHeight;
-
-          const bw = Number.isFinite(bubbleRec.w) ? bubbleRec.w : 360;
-          const bh = Number.isFinite(bubbleRec.h) ? bubbleRec.h : 240;
-          // Because bubble uses translate(-50%, -100%): left is center, top is bottom.
-          const rawCx = Number.isFinite(x) ? x : window.innerWidth * 0.5;
-          const rawBy = Number.isFinite(y) ? y : window.innerHeight * 0.8;
-          const cx = clamp(rawCx, margin + bw / 2, window.innerWidth - margin - bw / 2);
-          const by = clamp(rawBy, margin + bh, window.innerHeight - margin);
-
-          bubbleRec.el.style.left = `${cx}px`;
-          bubbleRec.el.style.top = `${by}px`;
+          collectBubble(bubbleRec, 1, 360, 240);
+          if (bubbleRec?.__remove) iframeBubbles.splice(idx, 1);
         }
 
-        // Update + GC link bubbles
+        // link/snippet/text bubbles (higher priority)
         for (let idx = linkBubbles.length - 1; idx >= 0; idx--) {
           const bubbleRec = linkBubbles[idx];
-          if (!bubbleRec?.el || !bubbleRec?.citizen) {
-            linkBubbles.splice(idx, 1);
-            continue;
-          }
-          if (Date.now() > (bubbleRec.expiresAt || 0)) {
-            bubbleRec.el.remove();
-            linkBubbles.splice(idx, 1);
-            continue;
-          }
+          collectBubble(bubbleRec, 2, 280, 96);
+          if (bubbleRec?.__remove) linkBubbles.splice(idx, 1);
+        }
 
-          if (!vn) continue;
-          bubbleRec.citizen.getWorldPosition(tmpWorldPos);
-          tmpWorldPos.y += 10;
-          tmpWorldPos.project(vn);
-          const x = (tmpWorldPos.x * 0.5 + 0.5) * window.innerWidth;
-          const y = (-tmpWorldPos.y * 0.5 + 0.5) * window.innerHeight;
+        if (bubbleItems.length > 1) {
+          layoutBubblePositions(bubbleItems, { width: W, height: H, margin });
+        }
 
-          const bw = Number.isFinite(bubbleRec.w) ? bubbleRec.w : 280;
-          const bh = Number.isFinite(bubbleRec.h) ? bubbleRec.h : 96;
-          const rawCx = Number.isFinite(x) ? x : window.innerWidth * 0.5;
-          const rawBy = Number.isFinite(y) ? y : window.innerHeight * 0.8;
-          const cx = clamp(rawCx, margin + bw / 2, window.innerWidth - margin - bw / 2);
-          const by = clamp(rawBy, margin + bh, window.innerHeight - margin);
-
-          bubbleRec.el.style.left = `${cx}px`;
-          bubbleRec.el.style.top = `${by}px`;
+        for (const item of bubbleItems) {
+          item.el.style.left = `${item.cx}px`;
+          item.el.style.top = `${item.by}px`;
+          // Enforce Z-index layering (pinned on top, then priority buckets).
+          try {
+            const base = item.priority >= 2 ? 2005 : 2000;
+            const z = (item.bubbleRec?.pinned ? base + 50 : base) + (item.priority || 0);
+            item.el.style.zIndex = String(z);
+          } catch {}
         }
       } catch {}
     };
@@ -4595,7 +5061,7 @@ if (!window.__singabldr_runtime_patch_v1) {
     return fallbackHue;
   }
 
-  function createCitizenSnippetBubble(snippet, { ttlMs = 12_000, citizen = null, hue = 200, headerTitle = "" } = {}) {
+  function createCitizenSnippetBubble(snippet, { ttlMs = BUBBLE_TTL_MS, citizen = null, hue = 200, headerTitle = "" } = {}) {
     const parsed = parseDebateSnippet(snippet);
     const text = String(parsed.text || "").trim();
     if (!text) return;
@@ -4633,6 +5099,16 @@ if (!window.__singabldr_runtime_patch_v1) {
     titleEl.textContent = parsed.role ? `Citizen (${parsed.role})` : headerTitle || "Citizen";
     titleEl.style.fontSize = "12px";
 
+    const bubbleRec = {
+      citizen,
+      el: root,
+      w: 240,
+      h: 92,
+      yOffset: 10,
+      pinned: false,
+      expiresAt: Date.now() + BUBBLE_TTL_MS,
+    };
+
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "✖";
     closeBtn.style.border = "none";
@@ -4640,10 +5116,37 @@ if (!window.__singabldr_runtime_patch_v1) {
     closeBtn.style.color = "#2d3436";
     closeBtn.style.cursor = "pointer";
     closeBtn.style.fontSize = "14px";
-    closeBtn.onclick = () => root.remove();
+    closeBtn.onclick = () => {
+      root.remove();
+      const idx = linkBubbles.findIndex((b) => b.el === root);
+      if (idx >= 0) linkBubbles.splice(idx, 1);
+    };
 
     header.appendChild(titleEl);
-    header.appendChild(closeBtn);
+    const headerActions = document.createElement("div");
+    headerActions.style.display = "flex";
+    headerActions.style.alignItems = "center";
+    headerActions.style.gap = "8px";
+    attachPinButton({ bubbleRec, containerEl: headerActions, baseZIndex: 2005 });
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "➕";
+    addBtn.title = "Add to Chat + chain on bubble";
+    addBtn.style.border = "none";
+    addBtn.style.background = "rgba(255,255,255,0.18)";
+    addBtn.style.color = "#2d3436";
+    addBtn.style.cursor = "pointer";
+    addBtn.style.fontSize = "14px";
+    addBtn.style.lineHeight = "1";
+    addBtn.style.padding = "2px 6px";
+    addBtn.style.borderRadius = "10px";
+    addBtn.onclick = async () => {
+      try {
+        await addBubbleToChatAndChain(bubbleRec, String(snippet || "").slice(0, 700));
+      } catch {}
+    };
+    headerActions.appendChild(addBtn);
+    headerActions.appendChild(closeBtn);
+    header.appendChild(headerActions);
 
     const body = document.createElement("div");
     body.style.padding = "10px";
@@ -4656,7 +5159,20 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     root.appendChild(header);
     root.appendChild(body);
+
+    const chain = document.createElement("div");
+    chain.style.maxHeight = "110px";
+    chain.style.overflow = "auto";
+    chain.style.background = "#f7f7fb";
+    chain.style.borderTop = "3px solid #2d3436";
+    chain.style.fontFamily = "Nunito, sans-serif";
+    chain.style.pointerEvents = "auto";
+    bubbleRec.chainEl = chain;
+    bubbleRec.sourceUrl = "";
+    root.appendChild(chain);
     document.body.appendChild(root);
+
+    attachBubbleDrag({ bubbleRec, headerEl: header });
 
     // Lightweight interaction/animation: pop-in + settle.
     try {
@@ -4670,13 +5186,7 @@ if (!window.__singabldr_runtime_patch_v1) {
       );
     } catch {}
 
-    linkBubbles.push({
-      citizen,
-      el: root,
-      w: 240,
-      h: 92,
-      expiresAt: Date.now() + (Number.isFinite(ttlMs) ? ttlMs : 12_000),
-    });
+    linkBubbles.push(bubbleRec);
   }
 
   function normalizeSnippetText(s) {
@@ -4935,6 +5445,11 @@ if (!window.__singabldr_runtime_patch_v1) {
     un = function un_url_iframe_patched(message, isAuto) {
       const result = _origUn(message, isAuto);
       try {
+        const lower = String(message || "").toLowerCase();
+        if (lower.startsWith("/news")) {
+          createNewsFeedIframeBubbles();
+          return result;
+        }
         const url = extractFirstUrl(String(message || ""));
         if (url) {
           // Always prefer compact key-point bubbles for URLs to avoid clutter/overlap.
@@ -5070,7 +5585,11 @@ if (!window.__singabldr_runtime_patch_v1) {
 
   function persistSelectedLlmProviderKey(providerKey) {
     try {
-      if (providerKey && LLM_PROVIDERS[providerKey]) localStorage.setItem(LS_KEY_LLM_MODEL, providerKey);
+      if (!providerKey || !LLM_PROVIDERS[providerKey]) return;
+      const prev = localStorage.getItem(LS_KEY_LLM_MODEL);
+      if (prev === providerKey) return;
+      // Coalesce persistence writes to avoid churn under rapid switching.
+      wn?.schedule?.("persist:llm:provider", () => localStorage.setItem(LS_KEY_LLM_MODEL, providerKey), 50);
     } catch {}
   }
 
@@ -5103,6 +5622,10 @@ if (!window.__singabldr_runtime_patch_v1) {
       statusEl.textContent = "LLM disabled: AI Model is set to None.";
       return;
     }
+    if (providerKey && !llmProviderSupportsText(providerKey)) {
+      statusEl.textContent = `LLM disabled: ${provider?.label || providerKey} requires a non-text API (${provider?.apiKind || "unknown"}).`;
+      return;
+    }
     statusEl.textContent = apiKey
       ? `LLM ready: ${provider?.label || providerKey} (key in ${scopeLabel}).`
       : `LLM disabled: set an API key to enable model calls (session-only by default).`;
@@ -5128,7 +5651,7 @@ if (!window.__singabldr_runtime_patch_v1) {
     updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: existingKey });
 
     const syncEnabledState = () => {
-      const disabled = modelSelect.value === "none";
+      const disabled = modelSelect.value === "none" || !llmProviderSupportsText(modelSelect.value);
       apiKeyInput.disabled = disabled;
       rememberCb.disabled = disabled;
       clearBtn.disabled = disabled;
@@ -5228,10 +5751,67 @@ if (!window.__singabldr_runtime_patch_v1) {
 
   const __llmInflight = new Map();
 
+  async function readLlmErrorMessage(res) {
+    try {
+      const text = await res.text();
+      if (!text) return `LLM request failed (${res.status})`;
+      try {
+        const json = JSON.parse(text);
+        const msg =
+          typeof json?.error?.message === "string"
+            ? json.error.message
+            : typeof json?.message === "string"
+              ? json.message
+              : "";
+        if (msg) return `LLM request failed (${res.status}): ${msg}`;
+      } catch {}
+      return `LLM request failed (${res.status}): ${text.slice(0, 500)}`;
+    } catch {
+      return `LLM request failed (${res.status})`;
+    }
+  }
+
+  function extractResponsesText(responseJson) {
+    try {
+      const output = Array.isArray(responseJson?.output) ? responseJson.output : [];
+      const texts = [];
+      for (const item of output) {
+        const content = Array.isArray(item?.content) ? item.content : [];
+        for (const part of content) {
+          if (!part) continue;
+          if (typeof part === "string") {
+            if (part.trim()) texts.push(part.trim());
+            continue;
+          }
+          if (typeof part?.text === "string" && part.text.trim()) {
+            texts.push(part.text.trim());
+            continue;
+          }
+          if (typeof part?.content === "string" && part.content.trim()) {
+            texts.push(part.content.trim());
+            continue;
+          }
+          if (typeof part?.refusal === "string" && part.refusal.trim()) {
+            texts.push(part.refusal.trim());
+            continue;
+          }
+        }
+      }
+      return texts.join("\n").trim();
+    } catch {
+      return "";
+    }
+  }
+
   async function invokeLlmCommand({ providerKey, apiKey, userText, strict = false }) {
     const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
     if (!provider) throw new Error("Unknown LLM provider");
     if (!apiKey) throw new Error("Missing API key");
+    if (providerKey && !llmProviderSupportsText(providerKey)) {
+      throw new Error(
+        `Selected model is not supported for text chat in Singabldr (${provider?.label || providerKey}).`,
+      );
+    }
 
     const normalized = String(userText || "").trim();
     const inflightKey = `${providerKey}:${normalized}`;
@@ -5319,22 +5899,32 @@ if (!window.__singabldr_runtime_patch_v1) {
         "If unsure: status",
       ].join("\n");
 
-      const payload = {
-        model: provider.model,
-        temperature: strict ? 0 : 0.2,
-        max_tokens: strict ? 40 : 120,
-        // Avoid code blocks, but allow newlines so models can place the command on the last line.
-        stop: ["```"],
-        messages: [
-          { role: "system", content: strict ? `${system}\n\n${systemStrict}` : system },
-          { role: "user", content: normalized },
-        ],
-      };
+      const isResponsesApi = provider.apiKind === "responses";
+      const messages = [
+        { role: "system", content: strict ? `${system}\n\n${systemStrict}` : system },
+        { role: "user", content: normalized },
+      ];
+      const payload = isResponsesApi
+        ? {
+            model: provider.model,
+            temperature: strict ? 0 : 0.2,
+            max_output_tokens: strict ? 40 : 120,
+            input: messages,
+          }
+        : {
+            model: provider.model,
+            temperature: strict ? 0 : 0.2,
+            max_tokens: strict ? 40 : 120,
+            // Avoid code blocks, but allow newlines so models can place the command on the last line.
+            stop: ["```"],
+            messages,
+          };
 
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 20_000);
       try {
-        const res = await fetch(`${provider.baseUrl}/chat/completions`, {
+        const endpoint = isResponsesApi ? "responses" : "chat/completions";
+        const res = await fetch(`${provider.baseUrl}/${endpoint}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -5343,12 +5933,12 @@ if (!window.__singabldr_runtime_patch_v1) {
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
-        if (!res.ok) throw new Error(`LLM request failed (${res.status})`);
+        if (!res.ok) throw new Error(await readLlmErrorMessage(res));
         const json = await res.json();
-        const content = extractChatContent(json);
+        const content = isResponsesApi ? extractResponsesText(json) : extractChatContent(json);
         if (content) return content;
 
-        const finishReason = json?.choices?.[0]?.finish_reason;
+        const finishReason = isResponsesApi ? json?.status : json?.choices?.[0]?.finish_reason;
         if (typeof finishReason === "string" && finishReason) {
           throw new Error(`LLM returned no content (finish_reason=${finishReason})`);
         }
@@ -5382,6 +5972,11 @@ if (!window.__singabldr_runtime_patch_v1) {
     const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
     if (!provider) throw new Error("Unknown LLM provider");
     if (!apiKey) throw new Error("Missing API key");
+    if (providerKey && !llmProviderSupportsText(providerKey)) {
+      throw new Error(
+        `Selected model is not supported for text chat in Singabldr (${provider?.label || providerKey}).`,
+      );
+    }
 
     const normalized = String(userText || "").trim();
     const inflightKey = `chat:${providerKey}:${normalized}`;
@@ -5398,21 +5993,31 @@ if (!window.__singabldr_runtime_patch_v1) {
         "- If the user asks how to control the game, suggest one or two example commands (as plain text).",
       ].join("\n");
 
-      const payload = {
-        model: provider.model,
-        temperature: 0.6,
-        max_tokens: 240,
-        stop: ["```"],
-        messages: [
-          { role: "system", content: system },
-          { role: "user", content: normalized },
-        ],
-      };
+      const isResponsesApi = provider.apiKind === "responses";
+      const messages = [
+        { role: "system", content: system },
+        { role: "user", content: normalized },
+      ];
+      const payload = isResponsesApi
+        ? {
+            model: provider.model,
+            temperature: 0.6,
+            max_output_tokens: 240,
+            input: messages,
+          }
+        : {
+            model: provider.model,
+            temperature: 0.6,
+            max_tokens: 240,
+            stop: ["```"],
+            messages,
+          };
 
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 20_000);
       try {
-        const res = await fetch(`${provider.baseUrl}/chat/completions`, {
+        const endpoint = isResponsesApi ? "responses" : "chat/completions";
+        const res = await fetch(`${provider.baseUrl}/${endpoint}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -5421,8 +6026,13 @@ if (!window.__singabldr_runtime_patch_v1) {
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
-        if (!res.ok) throw new Error(`LLM request failed (${res.status})`);
+        if (!res.ok) throw new Error(await readLlmErrorMessage(res));
         const json = await res.json();
+        if (isResponsesApi) {
+          const content = extractResponsesText(json);
+          if (content) return content;
+          return "";
+        }
         const choice = json?.choices?.[0];
         const message = choice?.message ?? choice?.delta ?? null;
 
@@ -5480,6 +6090,28 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     __llmInflight.set(inflightKey, promise);
     return promise;
+  }
+
+  function sanitizeResponsesPayload(payload) {
+    const p = payload && typeof payload === "object" ? payload : {};
+    // The Responses API rejects chat/completions fields like `stop` and `messages`.
+    // Keep a small allowlist to avoid 400s due to unknown params.
+    const allowedKeys = [
+      "temperature",
+      "max_output_tokens",
+      "top_p",
+      "presence_penalty",
+      "frequency_penalty",
+      "seed",
+      "metadata",
+      "store",
+      "user",
+    ];
+    const out = {};
+    for (const key of allowedKeys) {
+      if (Object.prototype.hasOwnProperty.call(p, key)) out[key] = p[key];
+    }
+    return out;
   }
 
   let __boardCtxMemo = { sig: "", value: "" };
@@ -5618,6 +6250,11 @@ if (!window.__singabldr_runtime_patch_v1) {
     const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
     if (!provider) throw new Error("Unknown LLM provider");
     if (!apiKey) throw new Error("Missing API key");
+    if (providerKey && !llmProviderSupportsText(providerKey)) {
+      throw new Error(
+        `Selected model is not supported for text chat in Singabldr (${provider?.label || providerKey}).`,
+      );
+    }
 
     const normalized = String(userText || "").trim();
     const inflightKey = `plan:${promptKey}:${providerKey}:${normalized}`;
@@ -5775,11 +6412,18 @@ if (!window.__singabldr_runtime_patch_v1) {
         return low.includes("i can help—paste a url/file") || low.includes("having trouble generating a structured reply");
       };
 
-      const payload = {
-        model: provider.model,
-        ...(section?.payload && typeof section.payload === "object" ? section.payload : {}),
-        messages: buildLlmMessagesFromTemplate(section?.messages, vars),
-      };
+      const isResponsesApi = provider.apiKind === "responses";
+      const basePayload = section?.payload && typeof section.payload === "object" ? section.payload : {};
+      const messages = buildLlmMessagesFromTemplate(section?.messages, vars);
+      const payload = isResponsesApi
+        ? (() => {
+            // Responses API uses max_output_tokens, and "input" instead of "messages".
+            const p = { ...basePayload };
+            if (p && p.max_output_tokens == null && p.max_tokens != null) p.max_output_tokens = p.max_tokens;
+            const sanitized = sanitizeResponsesPayload(p);
+            return { model: provider.model, ...sanitized, input: messages };
+          })()
+        : { model: provider.model, ...basePayload, messages };
 
       // Trace (JSON protocol): record request metadata (not the full prompt).
       try {
@@ -5796,7 +6440,8 @@ if (!window.__singabldr_runtime_patch_v1) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 20_000);
       try {
-        const res = await fetch(`${provider.baseUrl}/chat/completions`, {
+        const endpoint = isResponsesApi ? "responses" : "chat/completions";
+        const res = await fetch(`${provider.baseUrl}/${endpoint}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -5805,10 +6450,22 @@ if (!window.__singabldr_runtime_patch_v1) {
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
-        if (!res.ok) throw new Error(`LLM request failed (${res.status})`);
+        if (!res.ok) throw new Error(await readLlmErrorMessage(res));
         const json = await res.json();
-        const choice = json?.choices?.[0];
-        const message = choice?.message ?? choice?.delta ?? null;
+        if (isResponsesApi) {
+          const text = extractResponsesText(json);
+          if (!text) throw new Error("LLM returned no content");
+          // The downstream parser expects JSON text; continue with the same logic.
+          // Wrap as "text" so the existing extraction pipeline can be reused.
+          const choice = { text };
+          const message = { content: text };
+          // eslint-disable-next-line no-unused-vars
+          void choice;
+          // eslint-disable-next-line no-unused-vars
+          void message;
+        }
+        const choice = isResponsesApi ? { text: extractResponsesText(json) } : json?.choices?.[0];
+        const message = isResponsesApi ? { content: choice?.text } : choice?.message ?? choice?.delta ?? null;
 
         const extractAnyText = (value) => {
           if (!value) return "";
@@ -5928,13 +6585,31 @@ if (!window.__singabldr_runtime_patch_v1) {
         // If the model leaked reasoning/meta (or did not output JSON), retry strict once.
         if (looksMeta || !String(text || "").trim().startsWith("{")) {
           try {
+            const isResponsesApi = provider.apiKind === "responses";
             const strictSection = section?.strict && typeof section.strict === "object" ? section.strict : null;
-            const strictPayload = {
-              ...payload,
-              ...(strictSection?.payload && typeof strictSection.payload === "object" ? strictSection.payload : { temperature: 0, max_tokens: 220 }),
-              messages: buildLlmMessagesFromTemplate(strictSection?.messages || section?.messages, vars),
-            };
-            const res2 = await fetch(`${provider.baseUrl}/chat/completions`, {
+            const strictBase =
+              strictSection?.payload && typeof strictSection.payload === "object"
+                ? strictSection.payload
+                : { temperature: 0, max_tokens: 220 };
+            const strictMessages = buildLlmMessagesFromTemplate(strictSection?.messages || section?.messages, vars);
+            const strictPayload = isResponsesApi
+              ? (() => {
+                  const p = { ...payload, ...strictBase };
+                  if (p && p.max_output_tokens == null && p.max_tokens != null) p.max_output_tokens = p.max_tokens;
+                  try {
+                    delete p.max_tokens;
+                    delete p.messages;
+                  } catch {}
+                  const sanitized = sanitizeResponsesPayload(p);
+                  return { ...sanitized, model: provider.model, input: strictMessages };
+                })()
+              : {
+                  ...payload,
+                  ...strictBase,
+                  messages: strictMessages,
+                };
+            const endpoint = isResponsesApi ? "responses" : "chat/completions";
+            const res2 = await fetch(`${provider.baseUrl}/${endpoint}`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -5945,14 +6620,19 @@ if (!window.__singabldr_runtime_patch_v1) {
             });
             if (res2.ok) {
               const json2 = await res2.json();
-              const choice2 = json2?.choices?.[0];
-              const message2 = choice2?.message ?? choice2?.delta ?? null;
-              const text2 =
-                extractAnyText(message2?.content) ||
-                extractAnyText(choice2?.text) ||
-                extractAnyText(message2?.analysis) ||
-                extractAnyText(message2?.reasoning) ||
-                "";
+              const text2 = isResponsesApi
+                ? extractResponsesText(json2)
+                : (() => {
+                    const choice2 = json2?.choices?.[0];
+                    const message2 = choice2?.message ?? choice2?.delta ?? null;
+                    return (
+                      extractAnyText(message2?.content) ||
+                      extractAnyText(choice2?.text) ||
+                      extractAnyText(message2?.analysis) ||
+                      extractAnyText(message2?.reasoning) ||
+                      ""
+                    );
+                  })();
               const plan2 = parseJsonLoose(text2) || coercePlanFromNonJson(text2);
               if (plan2 && typeof plan2 === "object") {
                 try {
