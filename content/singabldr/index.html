@@ -63,9 +63,14 @@
     </div>
     
     <div id="settings-modal" style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(169, 225, 255, 0.8); z-index: 1000; display: none; flex-direction: column; justify-content: center; align-items: center; font-family: 'Fredoka One', cursive;">
-        <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: left; width: 90%; max-width: 350px; position: relative; box-sizing: border-box; height: 50vh; overflow-y: auto;">
-            <button id="settings-close-btn" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72;">✖</button>
-            <h3 style="margin-top: 0; color: #2d3436; font-size: 24px; text-align: center;">Settings</h3>
+        <div id="settings-panel" style="background: white; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: left; width: 90%; max-width: 350px; position: relative; box-sizing: border-box; height: 50vh; overflow-y: auto;">
+            <!-- Header panel (sticky) -->
+            <div id="settings-header-panel" style="position: sticky; top: 0; z-index: 10; background: white; border-bottom: 3px solid #2d3436; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                <h3 style="margin: 0; color: #2d3436; font-size: 24px; line-height: 1; text-align: left;">Settings</h3>
+                <button id="settings-close-btn" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72; line-height: 1; padding: 6px 8px;">✖</button>
+            </div>
+
+            <div id="settings-body" style="padding: 14px;">
 
             <!-- Collapsible sections (collapsed by default) -->
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
@@ -213,6 +218,7 @@
                     <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 6px; margin-bottom: 0;">Set to 0 to disable auto-change (recommended for stable backgrounds).</p>
                 </div>
             </details>
+            </div>
         </div>
     </div>
 

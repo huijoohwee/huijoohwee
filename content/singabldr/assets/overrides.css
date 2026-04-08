@@ -20,6 +20,30 @@ textarea {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Settings header + sticky collapsible section headers */
+#settings-panel {
+  /* Filled by boot.js based on the actual rendered header height. */
+  --settings-sticky-top: 0px;
+}
+
+#settings-header-panel {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+#settings-panel details[data-collapsible="1"] > summary {
+  position: sticky;
+  top: var(--settings-sticky-top);
+  z-index: 40;
+  background: #f1f2f6;
+}
+
+#settings-panel details[data-collapsible="1"] > summary:focus-visible {
+  outline: 3px solid rgba(9, 132, 227, 0.6);
+  outline-offset: 2px;
+}
+
 /* Respect notches / safe areas for top-right controls */
 #watermark-container {
   top: calc(12px + var(--sf-top)) !important;
@@ -69,4 +93,3 @@ textarea {
     max-height: calc(70vh - var(--sf-top) - var(--sf-bottom)) !important;
   }
 }
-

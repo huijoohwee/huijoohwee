@@ -11,6 +11,138 @@
     }
   }
 
+  // Shared coalesced scheduler (single keyspace) to suppress repeated churn
+  // across runtime + persistence subscriptions (storage events, UI toggles, etc).
+  function createCoalescedScheduler() {
+    /** @type {Map<string, () => void>} */
+    var pending = new Map();
+    var scheduled = false;
+
+    function flush() {
+      scheduled = false;
+      if (pending.size === 0) return;
+      var tasks = Array.from(pending.entries());
+      pending.clear();
+      for (var i = 0; i < tasks.length; i++) {
+        try {
+          tasks[i][1]();
+        } catch {
+          // ignore
+        }
+      }
+    }
+
+    /** @param {string} key @param {() => void} fn */
+    function schedule(key, fn) {
+      pending.set(String(key || "default"), fn);
+      if (scheduled) return;
+      scheduled = true;
+      // microtask: coalesce bursts without adding frame latency
+      Promise.resolve().then(flush);
+    }
+
+    return schedule;
+  }
+
+  var coalesce = createCoalescedScheduler();
+  safe(function exposeCoalescer() {
+    try {
+      window.__SINGABLDR_COALESCE = coalesce;
+    } catch {
+      // ignore
+    }
+  });
+
+  // Persistence churn guard: avoid writing the same value repeatedly.
+  // This reduces stringify/parse churn and suppresses redundant subscriptions in
+  // libraries that observe storage writes.
+  safe(function hardenStorageSetItem() {
+    if (typeof Storage === "undefined" || !Storage || !Storage.prototype) return;
+    var proto = Storage.prototype;
+    var origSet = proto.setItem;
+    var origRemove = proto.removeItem;
+    if (typeof origSet !== "function" || typeof origRemove !== "function") return;
+
+    proto.setItem = function (k, v) {
+      try {
+        var key = String(k);
+        var next = String(v);
+        var prev = this.getItem(key);
+        if (prev === next) return;
+      } catch {
+        // ignore
+      }
+      return origSet.call(this, k, v);
+    };
+
+    proto.removeItem = function (k) {
+      try {
+        var key = String(k);
+        var prev2 = this.getItem(key);
+        if (prev2 == null) return;
+      } catch {
+        // ignore
+      }
+      return origRemove.call(this, k);
+    };
+  });
+
+  // Persistence subscription churn guard: coalesce bursts of 'storage' events.
+  safe(function coalesceStorageEvents() {
+    if (typeof window.addEventListener !== "function" || typeof window.removeEventListener !== "function") return;
+    var origAdd = window.addEventListener.bind(window);
+    var origRemove = window.removeEventListener.bind(window);
+
+    /** @type {WeakMap<EventListenerOrEventListenerObject, {wrapped: any, options: any}>} */
+    var storageListenerMap = new WeakMap();
+
+    window.addEventListener = function (type, listener, options) {
+      if (type !== "storage" || !listener) return origAdd(type, listener, options);
+
+      // Normalize listener into a callable function (EventListenerObject support).
+      var fn =
+        typeof listener === "function"
+          ? listener
+          : typeof listener === "object" && typeof listener.handleEvent === "function"
+            ? function (ev) {
+                listener.handleEvent(ev);
+              }
+            : null;
+      if (!fn) return origAdd(type, listener, options);
+
+      var wrapped = function (ev) {
+        var k = "";
+        try {
+          k = ev && typeof ev.key === "string" ? ev.key : "";
+        } catch {
+          k = "";
+        }
+        coalesce("storage:" + k, function () {
+          fn(ev);
+        });
+      };
+
+      try {
+        storageListenerMap.set(listener, { wrapped: wrapped, options: options });
+      } catch {
+        // ignore
+      }
+      return origAdd(type, wrapped, options);
+    };
+
+    window.removeEventListener = function (type, listener, options) {
+      if (type !== "storage" || !listener) return origRemove(type, listener, options);
+      var entry = null;
+      try {
+        entry = storageListenerMap.get(listener) || null;
+      } catch {
+        entry = null;
+      }
+      if (entry && entry.wrapped) return origRemove(type, entry.wrapped, options || entry.options);
+      return origRemove(type, listener, options);
+    };
+  });
+
   safe(function redirectKnowgrphIfNeeded() {
     var path = String(window.location && window.location.pathname ? window.location.pathname : "");
     if (path === "/knowgrph" || path === "/knowgrph/") {
@@ -453,6 +585,26 @@
     });
   });
 
+  // Sticky header offsets: keep section headers from hiding under the Settings header panel.
+  safe(function setSettingsStickyOffsets() {
+    var panel = document.getElementById("settings-panel");
+    var header = document.getElementById("settings-header-panel");
+    if (!panel || !header) return;
+    var apply = function () {
+      try {
+        var h = header.getBoundingClientRect().height || 0;
+        panel.style.setProperty("--settings-sticky-top", String(Math.ceil(h)) + "px");
+      } catch {
+        // ignore
+      }
+    };
+    apply();
+    // Recompute on resize/orientation changes (cheap; coalesced).
+    window.addEventListener("resize", function () {
+      coalesce("settings:sticky:resize", apply);
+    });
+  });
+
   safe(function defaultMultiplayerOff() {
     // Stricter hardening: force local-only mode (multiplayer disabled in production).
     // This prevents any WebSocket usage and avoids CSP/connect-src needing wss:// allowances.
@@ -562,6 +714,264 @@
       quickPlayModeBtn.addEventListener("click", function () {
         if (typeof window.togglePlayMode === "function") window.togglePlayMode();
       });
+    }
+  });
+
+  // History == Script: export + replay (CSP-safe; no bundle rebuild).
+  safe(function installHistoryExportAndReplay() {
+    var LS_KEY_HISTORY = "singabldr.history.v1";
+
+    function pad2(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    // yyyymmddhhmmss (local time)
+    function stamp() {
+      var d = new Date();
+      return (
+        String(d.getFullYear()) +
+        pad2(d.getMonth() + 1) +
+        pad2(d.getDate()) +
+        pad2(d.getHours()) +
+        pad2(d.getMinutes()) +
+        pad2(d.getSeconds())
+      );
+    }
+
+    function readHistorySafe() {
+      try {
+        var raw = localStorage.getItem(LS_KEY_HISTORY);
+        var parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function downloadText(filename, mime, text) {
+      try {
+        var blob = new Blob([String(text || "")], { type: String(mime || "text/plain") });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.rel = "noopener";
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () {
+          try {
+            URL.revokeObjectURL(url);
+          } catch {}
+          try {
+            a.remove();
+          } catch {}
+        }, 0);
+      } catch {
+        // ignore
+      }
+    }
+
+    function escapeMdCell(s) {
+      return String(s || "")
+        .replace(/\r?\n/g, "<br/>")
+        .replace(/\|/g, "\\|");
+    }
+
+    function exportHistoryJson() {
+      var h = readHistorySafe();
+      var payload = JSON.stringify(h, null, 2);
+      downloadText("singabldr-history-" + stamp() + ".json", "application/json;charset=utf-8", payload);
+    }
+
+    function exportHistoryMd() {
+      var h2 = readHistorySafe();
+      var out = [];
+      out.push("# Singabldr History");
+      out.push("");
+      out.push("- Exported: " + new Date().toISOString());
+      out.push("- Items: " + String(h2.length));
+      out.push("");
+      out.push("| Time (ms) | Role | Text |");
+      out.push("|---:|---|---|");
+      for (var i = 0; i < h2.length; i++) {
+        var e = h2[i] || {};
+        out.push(
+          "|" +
+            escapeMdCell(e.ts) +
+            "|" +
+            escapeMdCell(e.role) +
+            "|" +
+            escapeMdCell(e.text) +
+            "|"
+        );
+      }
+      out.push("");
+      downloadText("singabldr-history-" + stamp() + ".md", "text/markdown;charset=utf-8", out.join("\n"));
+    }
+
+    function openSuperagentPanel() {
+      try {
+        var container = document.getElementById("superagent-container");
+        if (container) container.style.display = "block";
+      } catch {}
+      try {
+        var panel = document.getElementById("superagent-panel");
+        if (panel) panel.style.display = "flex";
+      } catch {}
+    }
+
+    function appendReplayBubble(role, text) {
+      var chat = document.getElementById("superagent-chat");
+      if (!chat) return;
+
+      var wrap = document.createElement("div");
+      wrap.style.display = "flex";
+      wrap.style.flexDirection = "column";
+      wrap.style.gap = "6px";
+      wrap.style.alignItems = role === "user" ? "flex-end" : "flex-start";
+
+      var bubble = document.createElement("div");
+      bubble.style.maxWidth = "85%";
+      bubble.style.border = "3px solid #2d3436";
+      bubble.style.borderRadius = "14px";
+      bubble.style.padding = "8px 10px";
+      bubble.style.boxShadow = "4px 4px 0 rgba(0,0,0,0.1)";
+      bubble.style.fontWeight = "900";
+      bubble.style.fontSize = "12px";
+      bubble.style.lineHeight = "1.25";
+      bubble.style.whiteSpace = "pre-wrap";
+      bubble.style.wordBreak = "break-word";
+      bubble.style.background = role === "user" ? "#a29bfe" : "#ffffff";
+      bubble.style.color = role === "user" ? "#ffffff" : "#2d3436";
+      bubble.textContent = String(text || "");
+
+      wrap.appendChild(bubble);
+      chat.appendChild(wrap);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function clearReplayChat() {
+      var chat2 = document.getElementById("superagent-chat");
+      if (!chat2) return;
+      try {
+        chat2.innerHTML = "";
+      } catch {
+        while (chat2.firstChild) chat2.removeChild(chat2.firstChild);
+      }
+    }
+
+    function getReplayState() {
+      try {
+        if (!window.__SINGABLDR_HISTORY_REPLAY) window.__SINGABLDR_HISTORY_REPLAY = { running: false, timer: 0 };
+        return window.__SINGABLDR_HISTORY_REPLAY;
+      } catch {
+        return { running: false, timer: 0 };
+      }
+    }
+
+    function stopReplay() {
+      var st = getReplayState();
+      st.running = false;
+      try {
+        if (st.timer) clearTimeout(st.timer);
+      } catch {}
+      st.timer = 0;
+    }
+
+    function replayHistory() {
+      var st2 = getReplayState();
+      if (st2.running) {
+        stopReplay();
+        return;
+      }
+      var h3 = readHistorySafe();
+      if (!h3.length) return;
+
+      st2.running = true;
+      openSuperagentPanel();
+      clearReplayChat();
+      appendReplayBubble("assistant", "Replay started (" + String(h3.length) + " events)...");
+
+      var i2 = 0;
+      var tick = function () {
+        if (!st2.running) return;
+        if (i2 >= h3.length) {
+          appendReplayBubble("assistant", "Replay finished.");
+          stopReplay();
+          return;
+        }
+        var e2 = h3[i2++] || {};
+        var role = String(e2.role || "");
+        role = role === "user" ? "user" : "assistant";
+        appendReplayBubble(role, e2.text || "");
+
+        // Small dynamic delay (bounded) to keep UX responsive.
+        var t = String(e2.text || "");
+        var delay = 220 + Math.min(900, Math.floor(t.length / 6) * 60);
+        st2.timer = setTimeout(tick, delay);
+      };
+
+      st2.timer = setTimeout(tick, 350);
+    }
+
+    function ensureHistoryHeaderControls() {
+      var header = document.querySelector("#history-panel > div");
+      if (!header) return;
+
+      // Controls container exists in index.html (Clear + Close). Reuse it.
+      var controls = header.querySelector("div");
+      if (!controls) return;
+
+      if (controls.querySelector("[data-history-export-json]")) return; // already installed
+
+      function mkBtn(label, attr, onClick) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = label;
+        b.setAttribute(attr, "1");
+        b.style.background = "none";
+        b.style.border = "none";
+        b.style.color = "white";
+        b.style.cursor = "pointer";
+        b.style.fontSize = "14px";
+        b.style.fontFamily = "Nunito, sans-serif";
+        b.style.fontWeight = "900";
+        b.addEventListener("click", function (ev) {
+          try {
+            ev.preventDefault?.();
+            ev.stopPropagation?.();
+          } catch {}
+          onClick();
+        });
+        return b;
+      }
+
+      // Insert before "Clear" for a stable, compact layout.
+      var btnJson = mkBtn("Export .json", "data-history-export-json", exportHistoryJson);
+      var btnMd = mkBtn("Export .md", "data-history-export-md", exportHistoryMd);
+      var btnReplay = mkBtn("Replay", "data-history-replay", replayHistory);
+
+      try {
+        controls.insertBefore(btnReplay, controls.firstChild);
+        controls.insertBefore(btnMd, controls.firstChild);
+        controls.insertBefore(btnJson, controls.firstChild);
+      } catch {
+        controls.appendChild(btnJson);
+        controls.appendChild(btnMd);
+        controls.appendChild(btnReplay);
+      }
+    }
+
+    // Install once after DOM is ready (non-blocking).
+    try {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", ensureHistoryHeaderControls, { once: true });
+      } else {
+        ensureHistoryHeaderControls();
+      }
+    } catch {
+      // ignore
     }
   });
 })();
