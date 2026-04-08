@@ -6285,13 +6285,12 @@ if (!window.__singabldr_runtime_patch_v1) {
       try {
         localStorage.removeItem(LS_KEY_LLM_API_KEY_PERSIST);
       } catch {}
-      // Only keep provider selection; do not call /api/llm/session/key in prod.
-      return;
+      // Continue: provider selection should still work in production (server-managed key).
     }
 
     // Local dev convenience: allow a gitignored local file to hydrate the key.
     // Security: only attempt on localhost / 127.0.0.1, and only if no key exists yet.
-    if (!existingKey) {
+    if (byokEnabled && !existingKey) {
       try {
         const host = String(window.location.hostname || "");
         const isLocalhost = host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
@@ -6324,8 +6323,8 @@ if (!window.__singabldr_runtime_patch_v1) {
       persistSelectedLlmProviderKey(modelSelect.value);
       updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: readLlmApiKeyMaybe() });
       syncEnabledState();
-      // Best-effort: keep DeerFlow session key bound to the current provider selection.
-      // Coalesced to avoid churn under rapid switching.
+      if (!byokEnabled) return;
+      // Local dev only: keep DeerFlow session key bound to the current provider selection.
       try {
         wn?.schedule?.(
           "deerflow:llm:bind",
@@ -6338,6 +6337,8 @@ if (!window.__singabldr_runtime_patch_v1) {
         );
       } catch {}
     });
+
+    if (!byokEnabled) return;
 
     rememberCb.addEventListener("change", () => {
       writeRememberLlmKeyFlag(rememberCb.checked);
