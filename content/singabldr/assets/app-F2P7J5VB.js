@@ -4102,8 +4102,35 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     try {
       const reply = await invokeLlmChat({ providerKey, apiKey, userText: seedText });
-      appendChatBubbleLocal("assistant", reply || "(empty response)");
-      appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: reply || "(empty response)" });
+      const safeReply = reply || "(empty response)";
+      appendChatBubbleLocal("assistant", safeReply);
+      appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: safeReply });
+
+      // Chain-of-bubbles: spawn a new bubble for the assistant reply, stacked after the parent.
+      try {
+        const parentCx = Number.isFinite(bubbleRec.manualCx) ? bubbleRec.manualCx : bubbleRec.cx;
+        const parentBy = Number.isFinite(bubbleRec.manualBy) ? bubbleRec.manualBy : bubbleRec.by;
+        const baseCx = Number.isFinite(parentCx) ? parentCx : window.innerWidth * 0.6;
+        const baseBy = Number.isFinite(parentBy) ? parentBy : window.innerHeight * 0.7;
+        const nextBy =
+          Number.isFinite(bubbleRec.chainNextBy)
+            ? bubbleRec.chainNextBy
+            : baseBy + (Number.isFinite(bubbleRec.h) ? bubbleRec.h : 96) + 24;
+
+        const child = createCitizenSnippetBubble(safeReply, {
+          citizen: bubbleRec.citizen,
+          headerTitle: "Chain",
+          hue: 210,
+        });
+        if (child) {
+          setBubblePinned(child, true);
+          child.manual = true;
+          child.manualCx = baseCx;
+          child.manualBy = nextBy;
+          bubbleRec.chainNextBy =
+            nextBy + (Number.isFinite(child.h) ? child.h : 92) + 24;
+        }
+      } catch {}
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err || "LLM error");
       appendChatBubbleLocal("assistant", `LLM error: ${msg}`);
@@ -4114,7 +4141,7 @@ if (!window.__singabldr_runtime_patch_v1) {
   function attachPinButton({ bubbleRec, containerEl, baseZIndex }) {
     if (!bubbleRec || !bubbleRec.el || !containerEl) return;
     const btn = document.createElement("button");
-    btn.textContent = "📌";
+    btn.textContent = bubbleRec.pinned ? "📍" : "📌";
     btn.title = "Pin / unpin";
     btn.style.border = "none";
     btn.style.background = "rgba(255,255,255,0.18)";
@@ -4156,7 +4183,31 @@ if (!window.__singabldr_runtime_patch_v1) {
     );
 
     const placed = [];
+
+    // 1) Place locked bubbles first (drag/manual): they become obstacles and won't be moved.
     for (const item of items) {
+      if (!item.locked) continue;
+      const w = Number.isFinite(item.w) ? item.w : 240;
+      const h = Number.isFinite(item.h) ? item.h : 92;
+      const cx = clamp(
+        Number.isFinite(item.cx) ? item.cx : W * 0.5,
+        M + w / 2,
+        W - M - w / 2,
+      );
+      const by = clamp(
+        Number.isFinite(item.by) ? item.by : H * 0.75,
+        M + h,
+        H - M,
+      );
+      item.cx = cx;
+      item.by = by;
+      item.rect = { left: cx - w / 2, right: cx + w / 2, top: by - h, bottom: by };
+      placed.push(item);
+    }
+
+    // 2) Place the rest with collision avoidance.
+    for (const item of items) {
+      if (item.locked) continue;
       const w = Number.isFinite(item.w) ? item.w : 240;
       const h = Number.isFinite(item.h) ? item.h : 92;
 
@@ -4402,9 +4453,13 @@ if (!window.__singabldr_runtime_patch_v1) {
       w: 360,
       h: 240,
       yOffset: 14,
-      pinned: false,
-      expiresAt: Date.now() + BUBBLE_TTL_MS,
+      // Open by default until user closes (user may unpin to re-enable TTL).
+      pinned: true,
+      expiresAt: Infinity,
     };
+    try {
+      root.setAttribute("data-pinned", "1");
+    } catch {}
 
     const openLink = document.createElement("a");
     openLink.href = url;
@@ -4625,6 +4680,7 @@ if (!window.__singabldr_runtime_patch_v1) {
     } catch {}
 
     iframeBubbles.push(bubbleRec);
+    return bubbleRec;
   }
 
   function createCitizenLinkBubble(url, { ttlMs = BUBBLE_TTL_MS, excludeCitizen = null } = {}) {
@@ -4669,9 +4725,12 @@ if (!window.__singabldr_runtime_patch_v1) {
       // approximate height; actual varies by URL wrapping. used only for clamp.
       h: 96,
       yOffset: 10,
-      pinned: false,
-      expiresAt: Date.now() + BUBBLE_TTL_MS,
+      pinned: true,
+      expiresAt: Infinity,
     };
+    try {
+      root.setAttribute("data-pinned", "1");
+    } catch {}
 
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "✖";
@@ -4748,6 +4807,7 @@ if (!window.__singabldr_runtime_patch_v1) {
     attachBubbleDrag({ bubbleRec, headerEl: header });
 
     linkBubbles.push(bubbleRec);
+    return bubbleRec;
   }
 
   function createCitizenTextBubble(url, { ttlMs = BUBBLE_TTL_MS, citizen = null } = {}) {
@@ -4790,9 +4850,12 @@ if (!window.__singabldr_runtime_patch_v1) {
       w: 320,
       h: 190,
       yOffset: 10,
-      pinned: false,
-      expiresAt: Date.now() + BUBBLE_TTL_MS,
+      pinned: true,
+      expiresAt: Infinity,
     };
+    try {
+      root.setAttribute("data-pinned", "1");
+    } catch {}
 
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "✖";
@@ -4801,7 +4864,11 @@ if (!window.__singabldr_runtime_patch_v1) {
     closeBtn.style.color = "#2d3436";
     closeBtn.style.cursor = "pointer";
     closeBtn.style.fontSize = "14px";
-    closeBtn.onclick = () => root.remove();
+    closeBtn.onclick = () => {
+      root.remove();
+      const idx = linkBubbles.findIndex((b) => b.el === root);
+      if (idx >= 0) linkBubbles.splice(idx, 1);
+    };
 
     header.appendChild(title);
     const headerActions = document.createElement("div");
@@ -4892,6 +4959,7 @@ if (!window.__singabldr_runtime_patch_v1) {
       },
       0
     );
+    return bubbleRec;
   }
 
   function createNewsFeedIframeBubbles() {
@@ -5007,6 +5075,7 @@ if (!window.__singabldr_runtime_patch_v1) {
             w: bw,
             h: bh,
             priority: forcedPriority,
+            locked: bubbleRec.dragging === true || bubbleRec.manual === true,
           });
         };
 
@@ -5031,6 +5100,11 @@ if (!window.__singabldr_runtime_patch_v1) {
         for (const item of bubbleItems) {
           item.el.style.left = `${item.cx}px`;
           item.el.style.top = `${item.by}px`;
+          // Keep latest layout coordinates for chaining/dragging calculations.
+          try {
+            item.bubbleRec.cx = item.cx;
+            item.bubbleRec.by = item.by;
+          } catch {}
           // Enforce Z-index layering (pinned on top, then priority buckets).
           try {
             const base = item.priority >= 2 ? 2005 : 2000;
@@ -5105,9 +5179,12 @@ if (!window.__singabldr_runtime_patch_v1) {
       w: 240,
       h: 92,
       yOffset: 10,
-      pinned: false,
-      expiresAt: Date.now() + BUBBLE_TTL_MS,
+      pinned: true,
+      expiresAt: Infinity,
     };
+    try {
+      root.setAttribute("data-pinned", "1");
+    } catch {}
 
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "✖";
@@ -5187,6 +5264,7 @@ if (!window.__singabldr_runtime_patch_v1) {
     } catch {}
 
     linkBubbles.push(bubbleRec);
+    return bubbleRec;
   }
 
   function normalizeSnippetText(s) {

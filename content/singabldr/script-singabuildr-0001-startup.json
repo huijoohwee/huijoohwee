@@ -1,0 +1,65 @@
+{
+  "version": "singabldr-script@1",
+  "meta": {
+    "name": "Startup Funding + DeerFlow Gateway + MiroFish E2E (Demo)",
+    "durationSeconds": 90,
+    "loop": false,
+    "mirofishSimulationId": "startup_demo_0001",
+    "notes": "Demo intent: Singabldr calls DeerFlow Gateway only (/api/llm/*). Replace mirofishSimulationId with a real simulation_id in your MiroFish backend."
+  },
+  "assets": {
+    "geography": ["terrain", "water"],
+    "scenes": ["day", "twilight", "night"],
+    "pointOfInterests": ["Marina Bay Sands", "Merlion Park", "Gardens by the Bay"],
+    "transportation": ["mrt", "plane", "heli", "ship"],
+    "nature": ["trees", "clouds", "citizens"],
+    "themes": ["default", "national_day"],
+    "weathers": ["sunshine", "cloudy", "haze"]
+  },
+  "scenePatch": {
+    "themes": {
+      "national_day": { "color": "#ff4757", "mix": 0.55 }
+    },
+    "weathers": {
+      "haze": { "bg": "#b2bec3", "fogDensity": 0.0042, "dirLight": 0.08, "ambient": 0.45 }
+    }
+  },
+  "steps": [
+    { "timestamp": 0, "action": "log", "message": "Demo: DeerFlow Gateway is the only LLM calling surface; Singabldr routes via /api/llm/*." },
+    { "timestamp": 1, "action": "swarm", "op": "status", "status": "Gateway: /api/llm/* (SSOT)", "durationMs": 6000 },
+    { "timestamp": 2, "action": "chat", "message": "I want to bootstrap with AI EdTech, should I take Venture Debts, SME grants?" },
+    { "timestamp": 2.4, "action": "swarm", "op": "status", "status": "🤖 Calling GPT-5.4 nano (OpenAI) via DeerFlow...", "durationMs": 7000 },
+    { "timestamp": 3.5, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Optimist: Venture debt could accelerate runway if your cashflow is predictable.", "count": 1, "durationMs": 5200 },
+    { "timestamp": 4.2, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Skeptic: SME grants are safer, but timelines and compliance can slow product iteration.", "count": 1, "durationMs": 5200 },
+    { "timestamp": 4.9, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Policy: Match funding terms to your risk controls; educational only—verify with qualified advisors.", "count": 1, "durationMs": 5200 },
+    { "timestamp": 5.6, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Builder: Pre-revenue → start with grants + milestones; add debt only after traction.", "count": 1, "durationMs": 5200 },
+    { "timestamp": 6.3, "action": "bubbleBurst", "templateId": "react:heard", "snippet": "Neutral: Compare total cost of capital (fees, risk-adjusted return, opportunity cost), not just time-to-cash.", "count": 1, "durationMs": 5200 },
+    { "timestamp": 9, "action": "chat", "message": "Neutral: I’d compare total cost of capital, not just how fast money arrives." },
+    { "timestamp": 10.5, "action": "chat", "message": "Agreed—compare total cost of capital (interest/fees, risk-adjusted return, opportunity cost), not only time-to-cash. Share the two options and I’ll help structure a simple comparison checklist." },
+
+    { "timestamp": 13, "action": "react", "message": "E2E orchestration: start → stream → stop (MiroFish) from chat commands", "count": 3, "durationMs": 8000 },
+    { "timestamp": 14, "action": "chat", "message": "/mirofish startup_demo_0001 parallel" },
+    { "timestamp": 14.1, "action": "command", "value": "/mirofish startup_demo_0001 parallel" },
+    { "timestamp": 15, "action": "swarm", "op": "status", "status": "MiroFish: starting simulation…", "durationMs": 7000 },
+    { "timestamp": 18, "action": "chat", "message": "/mirofish stream startup_demo_0001 swarm" },
+    { "timestamp": 18.1, "action": "command", "value": "/mirofish stream startup_demo_0001 swarm" },
+    { "timestamp": 19, "action": "swarm", "op": "burst", "count": 5, "durationMs": 4500 },
+    { "timestamp": 20, "action": "sentiment", "value": "happy", "message": "Swarm UI streaming: citizens reacting to simulation events." },
+
+    { "timestamp": 23, "action": "chat", "message": "/news" },
+    { "timestamp": 23.1, "action": "command", "value": "/news" },
+    { "timestamp": 24, "action": "bubble", "message": "Chain of Bubbles: pin + drag a bubble, then ➕ Add to Chat to append replies onto the bubble.", "durationMs": 9000 },
+
+    { "timestamp": 33, "action": "chat", "message": "/mirofish stop startup_demo_0001" },
+    { "timestamp": 33.1, "action": "command", "value": "/mirofish stop startup_demo_0001" },
+    { "timestamp": 34, "action": "swarm", "op": "status", "status": "MiroFish: stopped (stream closed)", "durationMs": 6000 },
+    { "timestamp": 36, "action": "sentiment", "value": "neutral", "message": "Returning to baseline." },
+
+    { "timestamp": 40, "action": "setTheme", "value": "national_day", "bubble": true },
+    { "timestamp": 44, "action": "setWeather", "value": "haze", "bubble": true },
+    { "timestamp": 50, "action": "setWeather", "value": "sunshine", "bubble": true },
+
+    { "timestamp": 60, "action": "log", "message": "Demo complete. (Security: no client-side direct OpenAI calls; Gateway is the single LLM surface.)" }
+  ]
+}
+
