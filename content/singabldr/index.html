@@ -12,11 +12,11 @@
     <base href="./" />
 
     <!-- CSP-safe boot (no inline scripts / inline event handlers) -->
-    <script src="./assets/boot.js?v=20260408-1" defer></script>
+    <script src="./assets/boot.js?v=20260408-4" defer></script>
 
     <!-- Preload critical assets (improves first interaction on mobile networks) -->
     <link rel="preload" href="./assets/styles-c7d1dd9b.css" as="style" />
-    <link rel="modulepreload" href="./assets/app-F2P7J5VB.js?v=20260407-6" />
+    <link rel="modulepreload" href="./assets/app-F2P7J5VB.js?v=20260408-4" />
     <link rel="preload" href="./assets/fonts/fredoka-one-400-1d92d7b002.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="./assets/fonts/nunito-700-fd8b8aea8f.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="./assets/fonts/nunito-900-fd8b8aea8f.woff2" as="font" type="font/woff2" crossorigin />
@@ -82,6 +82,8 @@
                         <option value="local">Local file</option>
                         <option value="url">URL</option>
                     </select>
+
+                    <button id="history-open-btn" style="width: 100%; background: #0984e3; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive; margin-bottom: 8px;">History</button>
 
                     <label id="script-preset-label" style="font-size: 14px; color: #2d3436; display: block; margin: 6px 0 5px 0; font-family: 'Nunito', sans-serif; font-weight: 900;">Preset:</label>
                     <select id="script-preset-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
@@ -251,6 +253,29 @@
                     <button id="superagent-send" style="background: #a29bfe; color: white; border: none; border-left: 3px solid #2d3436; padding: 0 15px; cursor: pointer; font-weight: bold; font-family: 'Nunito', sans-serif; text-transform: none;">Send</button>
                 </div>
             </div>
+
+            <div id="history-panel" style="display: none; position: absolute; bottom: 100%; right: 0; margin-bottom: 10px; width: 360px; background: white; border: 4px solid #2d3436; border-radius: 16px; box-shadow: 8px 8px 0 rgba(0,0,0,0.1); flex-direction: column; overflow: hidden; font-family: 'Nunito', sans-serif; text-transform: none;">
+                <div style="background: #0984e3; color: white; padding: 10px 15px; font-family: 'Fredoka One', cursive; border-bottom: 3px solid #2d3436; display: flex; justify-content: space-between; align-items: center;">
+                    <span>History</span>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <button id="history-clear-btn" style="background:none; border:none; color:white; cursor:pointer; font-size:14px; font-family: 'Nunito', sans-serif; font-weight: 900;" title="Clear history">Clear</button>
+                        <button id="history-close-btn" style="background:none; border:none; color:white; cursor:pointer; font-size:16px;" title="Close">✖</button>
+                    </div>
+                </div>
+                <div style="height: 260px; overflow: auto; background: #f1f2f6; padding: 10px;">
+                    <table style="width:100%; border-collapse: collapse; font-size: 12px; text-transform: none;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding:6px; border-bottom:2px solid #2d3436;">Time</th>
+                                <th style="text-align:left; padding:6px; border-bottom:2px solid #2d3436;">User/AI</th>
+                                <th style="text-align:left; padding:6px; border-bottom:2px solid #2d3436;">Request/Response log</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
             <button id="superagent-btn" style="background: #a29bfe; color: white; border: 3px solid #2d3436; padding: 15px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; font-weight: 900; box-shadow: 0 6px 0 #2d3436; font-family: 'Fredoka One', cursive; transition: all 0.1s; width: 100%; text-transform: uppercase; letter-spacing: 1px;">FlowinFish 🐟</button>
         </div>
         <button id="dice-btn">Roll Dice 🎲</button>
@@ -258,6 +283,6 @@
     </div>
 
     <!-- App bundle (minified, ESM; includes three.js + tween + yjs locally) -->
-    <script type="module" src="./assets/app-F2P7J5VB.js?v=20260407-6"></script>
+    <script type="module" src="./assets/app-F2P7J5VB.js?v=20260408-4"></script>
   </body>
 </html>

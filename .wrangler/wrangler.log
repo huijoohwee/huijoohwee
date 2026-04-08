@@ -1,0 +1,276 @@
+
+--- 2026-04-08T11:30:28.120Z debug
+🪵  Writing logs to "/Users/huijoohwee/Documents/GitHub/huijoohwee/.wrangler/wrangler.log"
+---
+
+--- 2026-04-08T11:30:28.120Z debug
+.env file not found at "/Users/huijoohwee/Documents/GitHub/huijoohwee/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-08T11:30:28.121Z debug
+.env file not found at "/Users/huijoohwee/Documents/GitHub/huijoohwee/.env.local". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-08T11:30:28.128Z log
+
+ ⛅️ wrangler 4.81.0
+───────────────────
+---
+
+--- 2026-04-08T11:30:28.131Z debug
+Metrics dispatcher: Posting data {"deviceId":"40d8c19d-6306-4513-91a9-a8ffda87ad0a","event":"wrangler command started","timestamp":1775647828131,"properties":{"amplitude_session_id":1775647828129,"amplitude_event_id":0,"wranglerVersion":"4.81.0","wranglerMajorVersion":4,"wranglerMinorVersion":81,"wranglerPatchVersion":0,"osPlatform":"Mac OS","osVersion":"Darwin Kernel Version 25.3.0: Wed Jan 28 20:54:46 PST 2026; root:xnu-12377.91.3~2/RELEASE_ARM64_T6000","nodeVersion":25,"packageManager":"npm","isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"argsUsed":["ip","port"],"argsCombination":"ip, port","sanitizedCommand":"pages dev","sanitizedArgs":{}}}
+---
+
+--- 2026-04-08T11:30:28.189Z warn
+▲ [WARNING] No compatibility_date was specified. Using today's date: 2026-04-08.
+
+  ❯❯ Add one to your Wrangler configuration file: compatibility_date =
+  "2026-04-08", or
+  ❯❯ Pass it in your terminal: wrangler pages dev [<DIRECTORY>]
+  --compatibility-date=2026-04-08
+  
+  See https://developers.cloudflare.com/workers/platform/compatibility-dates/
+  for more information.
+
+
+---
+
+--- 2026-04-08T11:30:28.190Z debug
+Compiling worker to "/Users/huijoohwee/Documents/GitHub/huijoohwee/.wrangler/tmp/pages-qXj0BM/functionsWorker-0.7976425963613241.mjs"...
+---
+
+--- 2026-04-08T11:30:28.258Z log
+✨ Compiled Worker successfully
+---
+
+--- 2026-04-08T11:30:28.258Z debug
+Metrics dispatcher: Posting data {"deviceId":"40d8c19d-6306-4513-91a9-a8ffda87ad0a","event":"build pages functions","timestamp":1775647828258,"properties":{"amplitude_session_id":1775647828258,"amplitude_event_id":0,"wranglerVersion":"4.81.0","wranglerMajorVersion":4,"wranglerMinorVersion":81,"wranglerPatchVersion":0,"osPlatform":"Mac OS","osVersion":"Darwin Kernel Version 25.3.0: Wed Jan 28 20:54:46 PST 2026; root:xnu-12377.91.3~2/RELEASE_ARM64_T6000","nodeVersion":25,"packageManager":"npm","isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"category":"Workers","os":"darwin:arm64"}}
+---
+
+--- 2026-04-08T11:30:28.344Z log
+✨ Parsed 35 valid redirect rules.
+---
+
+--- 2026-04-08T11:30:28.344Z warn
+▲ [WARNING] Found 6 invalid redirect rules:
+
+  ▶︎ Infinite loop detected in this rule and has been ignored. This will cause a
+  redirect to strip `.html` or `/index` and end up triggering this rule again.
+  Please fix or remove this rule to silence this warning.
+      at _redirects:4 | /hackamap/ /content/hackamap/index.html 200
+  
+  ▶︎ Infinite loop detected in this rule and has been ignored. This will cause a
+  redirect to strip `.html` or `/index` and end up triggering this rule again.
+  Please fix or remove this rule to silence this warning.
+      at _redirects:19 | /knowgrph/ /content/knowgrph/index.html 200
+  
+  ▶︎ Infinite loop detected in this rule and has been ignored. This will cause a
+  redirect to strip `.html` or `/index` and end up triggering this rule again.
+  Please fix or remove this rule to silence this warning.
+      at _redirects:20 | /knowgrph/* /content/knowgrph/index.html 200
+  
+  ▶︎ Infinite loop detected in this rule and has been ignored. This will cause a
+  redirect to strip `.html` or `/index` and end up triggering this rule again.
+  Please fix or remove this rule to silence this warning.
+      at _redirects:22 | /content/knowgrph/ /content/knowgrph/index.html 200
+  
+  ▶︎ Infinite loop detected in this rule and has been ignored. This will cause a
+  redirect to strip `.html` or `/index` and end up triggering this rule again.
+  Please fix or remove this rule to silence this warning.
+      at _redirects:24 | / /content/singabldr/index.html 200
+  
+  ▶︎ Infinite loop detected in this rule and has been ignored. This will cause a
+  redirect to strip `.html` or `/index` and end up triggering this rule again.
+  Please fix or remove this rule to silence this warning.
+      at _redirects:27 | /singabldr/ /content/singabldr/index.html 200
+  
+  
+
+
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /knowgrph → 200 /content/knowgrph/index.html could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /content/knowgrph → 200 /content/knowgrph/index.html could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /index.html → 200 /content/singabldr/index.html could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr → 200 /content/singabldr/index.html could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr.html → 200 /content/singabldr/index.html could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr/flowinfish.prompts.json → 200 /content/singabldr/flowinfish.prompts.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr/flowinfish.domains.json → 200 /content/singabldr/flowinfish.domains.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr/script-0000.json → 200 /content/singabldr/script-0000.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr/script-singabuildr-0000.json → 200 /content/singabldr/script-singabuildr-0000.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /script-0000.json → 200 /content/singabldr/script-0000.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /script-singabuildr-0000.json → 200 /content/singabldr/script-singabuildr-0000.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr.json → 200 /content/singabldr/boards/singabldr.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr/singabldr.json → 200 /content/singabldr/boards/singabldr.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /tokyopoly.json → 200 /content/singabldr/boards/tokyopoly.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z info
+The redirect rule /singabldr/tokyopoly.json → 200 /content/singabldr/boards/tokyopoly.json could be made more performant by bringing it above any lines with splats or placeholders.
+---
+
+--- 2026-04-08T11:30:28.345Z log
+✨ Parsed 21 valid header rules.
+---
+
+--- 2026-04-08T11:30:28.345Z debug
+setting config
+---
+
+--- 2026-04-08T11:30:28.345Z debug
+Updating config... undefined undefined
+---
+
+--- 2026-04-08T11:30:28.351Z debug
+local dev variables file not found at ".dev.vars". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-08T11:30:28.351Z debug
+.env file not found at "/Users/huijoohwee/Documents/GitHub/huijoohwee/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-08T11:30:28.351Z debug
+.env file not found at "/Users/huijoohwee/Documents/GitHub/huijoohwee/.env.local". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-08T11:30:28.352Z log
+Your Worker has access to the following bindings:
+---
+
+--- 2026-04-08T11:30:28.352Z log
+Binding                    Resource                Mode
+---
+
+--- 2026-04-08T11:30:28.352Z log
+env.CF_PAGES               Environment Variable    local
+  "1"
+---
+
+--- 2026-04-08T11:30:28.352Z log
+env.CF_PAGES_BRANCH        Environment Variable    local
+  "main"
+---
+
+--- 2026-04-08T11:30:28.352Z log
+env.CF_PAGES_COMMIT_SHA    Environment Variable    local
+  "f2208818d03497ddb8ee9c13448da55cd851a..."
+---
+
+--- 2026-04-08T11:30:28.352Z log
+env.CF_PAGES_URL           Environment Variable    local
+  "https://f220881.huijoohwee.pages.dev"
+---
+
+--- 2026-04-08T11:30:28.352Z log
+
+---
+
+--- 2026-04-08T11:30:28.361Z debug
+Metrics dispatcher: Posting data {"deviceId":"40d8c19d-6306-4513-91a9-a8ffda87ad0a","event":"run pages dev","timestamp":1775647828361,"properties":{"amplitude_session_id":1775647828361,"amplitude_event_id":0,"wranglerVersion":"4.81.0","wranglerMajorVersion":4,"wranglerMinorVersion":81,"wranglerPatchVersion":0,"osPlatform":"Mac OS","osVersion":"Darwin Kernel Version 25.3.0: Wed Jan 28 20:54:46 PST 2026; root:xnu-12377.91.3~2/RELEASE_ARM64_T6000","nodeVersion":25,"packageManager":"npm","isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"category":"Workers","os":"darwin:arm64"}}
+---
+
+--- 2026-04-08T11:30:28.384Z debug
+RemoteRuntimeController teardown beginning...
+---
+
+--- 2026-04-08T11:30:28.385Z debug
+RemoteRuntimeController teardown complete
+---
+
+--- 2026-04-08T11:30:28.391Z log
+⎔ Starting local server...
+---
+
+--- 2026-04-08T11:30:28.534Z debug
+[InspectorProxyWorker] handleProxyControllerIncomingMessage {"type":"reloadStart"}
+---
+
+--- 2026-04-08T11:30:28.587Z debug
+Error in LocalRuntimeController: Error reloading local server
+ Error: EPERM: operation not permitted, mkdir '/Users/huijoohwee/Library/Preferences/.wrangler/registry'
+    at mkdirSync (node:fs:1333:26)
+    at DevRegistry.register (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:85472:36)
+    at #registerWorkers (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:87570:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async /Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:87578:7
+    at async #onBundleComplete (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/wrangler/wrangler-dist/cli.js:311556:33)
+    at async Mutex.runWith (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:56720:48) {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'mkdir',
+  path: '/Users/huijoohwee/Library/Preferences/.wrangler/registry'
+}
+---
+
+--- 2026-04-08T11:30:28.587Z debug
+=> Error contextual data: undefined
+---
+
+--- 2026-04-08T11:30:28.587Z debug
+Metrics dispatcher: Posting data {"deviceId":"40d8c19d-6306-4513-91a9-a8ffda87ad0a","event":"wrangler command errored","timestamp":1775647828587,"properties":{"amplitude_session_id":1775647828129,"amplitude_event_id":1,"wranglerVersion":"4.81.0","wranglerMajorVersion":4,"wranglerMinorVersion":81,"wranglerPatchVersion":0,"osPlatform":"Mac OS","osVersion":"Darwin Kernel Version 25.3.0: Wed Jan 28 20:54:46 PST 2026; root:xnu-12377.91.3~2/RELEASE_ARM64_T6000","nodeVersion":25,"packageManager":"npm","isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"argsUsed":["ip","port"],"argsCombination":"ip, port","sanitizedCommand":"pages dev","sanitizedArgs":{},"durationMs":466}}
+---
+
+--- 2026-04-08T11:30:28.588Z log
+
+---
+
+--- 2026-04-08T11:30:28.588Z error
+✘ [ERROR] EPERM: operation not permitted, mkdir '/Users/huijoohwee/Library/Preferences/.wrangler/registry'
+
+
+---
+
+--- 2026-04-08T11:30:28.588Z debug
+Error: EPERM: operation not permitted, mkdir '/Users/huijoohwee/Library/Preferences/.wrangler/registry'
+    at mkdirSync (node:fs:1333:26)
+    at DevRegistry.register (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:85472:36)
+    at #registerWorkers (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:87570:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async /Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:87578:7
+    at async #onBundleComplete (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/wrangler/wrangler-dist/cli.js:311556:33)
+    at async Mutex.runWith (/Users/huijoohwee/.npm/_npx/32026684e21afda6/node_modules/miniflare/dist/src/index.js:56720:48)
+---
+
+--- 2026-04-08T11:30:28.588Z log
+If you think this is a bug then please create an issue at https://github.com/cloudflare/workers-sdk/issues/new/choose
+---

@@ -1,57 +1,35 @@
+import {
+  OPENAI_HOST,
+  getDeerflowUpstreamBase,
+  isLocalHost,
+  jsonResponse,
+  normalizeHost,
+  parseAllowedHosts,
+  readHeader,
+} from '../api/_integrationHub.js';
+
 const CHAT_PROXY_PREFIX = '/__chat_proxy';
-const OPENAI_HOST = 'api.openai.com';
-const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0']);
-
-const normalizeHost = (value) => String(value || '').trim().toLowerCase();
-
-const readHeader = (headers, name) => String(headers.get(name) || '').trim();
-
-const isLocalHost = (hostname) => LOCAL_HOSTS.has(normalizeHost(hostname));
-
-const parseAllowedHosts = (env) => {
-  const raw = String(env.KNOWGRPH_CHAT_PROXY_ALLOWED_HOSTS || '').trim();
-  if (!raw) return new Set([...LOCAL_HOSTS, OPENAI_HOST]);
-  const out = new Set();
-  raw
-    .split(',')
-    .map((part) => normalizeHost(part))
-    .filter(Boolean)
-    .forEach((host) => out.add(host));
-  if (!out.size) return new Set([...LOCAL_HOSTS, OPENAI_HOST]);
-  return out;
-};
-
-const jsonResponse = (body, status, origin = '') =>
-  new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-      'cache-control': 'no-store',
-      ...(origin ? { 'access-control-allow-origin': origin, vary: 'Origin' } : {}),
-    },
-  });
 
 const pickUpstreamBase = ({ provider, requestedUpstream, env, deerflowOnly }) => {
-  const deerflowBase = String(env.KNOWGRPH_CHAT_PROXY_DEERFLOW_UPSTREAM || '').trim();
+  const deerflowBase = getDeerflowUpstreamBase(env);
   if (deerflowOnly || provider === 'deerflow') {
-    return deerflowBase || String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim() || 'http://127.0.0.1:1234';
+    return deerflowBase;
   }
   if (provider === 'openai') return 'https://api.openai.com';
   if (requestedUpstream) return requestedUpstream;
-  return String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim() || 'http://127.0.0.1:1234';
+  return String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim() || deerflowBase;
 };
 
 export async function onRequest(context) {
   const { request, env } = context;
   const method = String(request.method || 'GET').toUpperCase();
   const requestUrl = new URL(request.url);
-  const origin = readHeader(request.headers, 'origin');
 
   if (method === 'OPTIONS') {
     return new Response(null, {
       status: 204,
       headers: {
-        'access-control-allow-origin': origin || '*',
+        'access-control-allow-origin': readHeader(request.headers, 'origin') || '*',
         'access-control-allow-methods': 'GET, HEAD, POST, OPTIONS',
         'access-control-allow-headers': '*',
         'access-control-max-age': '86400',
@@ -59,14 +37,14 @@ export async function onRequest(context) {
     });
   }
   if (!['GET', 'HEAD', 'POST'].includes(method)) {
-    return jsonResponse({ ok: false, error: 'Unsupported method' }, 405, origin);
+    return jsonResponse(request, { ok: false, error: 'Unsupported method' }, 405);
   }
 
   const provider = normalizeHost(readHeader(request.headers, 'x-kg-chat-provider'));
   const gatewayMode = String(env.KNOWGRPH_CHAT_GATEWAY_MODE || '').trim().toLowerCase();
   const deerflowOnly = gatewayMode === 'deerflow-only';
   if (deerflowOnly && provider && provider !== 'deerflow') {
-    return jsonResponse({ ok: false, error: 'Chat proxy is running in deerflow-only gateway mode' }, 400, origin);
+    return jsonResponse(request, { ok: false, error: 'Chat proxy is running in deerflow-only gateway mode' }, 400);
   }
 
   const upstreamBaseRaw = pickUpstreamBase({
@@ -79,16 +57,16 @@ export async function onRequest(context) {
   try {
     upstreamBase = new URL(upstreamBaseRaw);
   } catch {
-    return jsonResponse({ ok: false, error: 'Invalid chat proxy upstream configuration' }, 500, origin);
+    return jsonResponse(request, { ok: false, error: 'Invalid chat proxy upstream configuration' }, 500);
   }
 
-  const allowedHosts = parseAllowedHosts(env);
+  const allowedHosts = parseAllowedHosts(env, { includeOpenAi: true });
   const upstreamHostname = normalizeHost(upstreamBase.hostname);
   if (!allowedHosts.has(upstreamHostname)) {
-    return jsonResponse({ ok: false, error: 'Chat proxy upstream host is not allowed' }, 403, origin);
+    return jsonResponse(request, { ok: false, error: 'Chat proxy upstream host is not allowed' }, 403);
   }
   if (!isLocalHost(upstreamHostname) && upstreamBase.protocol !== 'https:') {
-    return jsonResponse({ ok: false, error: 'Chat proxy requires HTTPS for non-local upstream hosts' }, 403, origin);
+    return jsonResponse(request, { ok: false, error: 'Chat proxy requires HTTPS for non-local upstream hosts' }, 403);
   }
 
   const requiresOpenAiKey = !deerflowOnly && (provider === 'openai' || upstreamHostname === OPENAI_HOST);
@@ -96,13 +74,13 @@ export async function onRequest(context) {
     readHeader(request.headers, 'x-kg-chat-api-key') || String(env.KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY || '').trim()
   ).slice(0, 512);
   if (requiresOpenAiKey && !openAiApiKey) {
-    return jsonResponse({ ok: false, error: 'Missing OpenAI API key for chat proxy upstream' }, 500, origin);
+    return jsonResponse(request, { ok: false, error: 'Missing OpenAI API key for chat proxy upstream' }, 500);
   }
 
   if (method === 'POST') {
     const contentType = readHeader(request.headers, 'content-type').toLowerCase();
     if (!contentType.includes('application/json')) {
-      return jsonResponse({ ok: false, error: 'Chat proxy expects application/json payloads' }, 415, origin);
+      return jsonResponse(request, { ok: false, error: 'Chat proxy expects application/json payloads' }, 415);
     }
   }
 
@@ -135,6 +113,7 @@ export async function onRequest(context) {
     responseHeaders.delete('content-length');
     responseHeaders.delete('www-authenticate');
     responseHeaders.set('cache-control', 'no-store');
+    const origin = readHeader(request.headers, 'origin');
     if (origin) {
       responseHeaders.set('access-control-allow-origin', origin);
       responseHeaders.set('vary', 'Origin');
@@ -154,7 +133,7 @@ export async function onRequest(context) {
   } catch (error) {
     const message = error && typeof error === 'object' && 'message' in error ? String(error.message || '') : '';
     const aborted = abortController.signal.aborted || /aborted|timeout/i.test(message);
-    return jsonResponse({ ok: false, error: message || 'Failed to reach chat upstream' }, aborted ? 504 : 502, origin);
+    return jsonResponse(request, { ok: false, error: message || 'Failed to reach chat upstream' }, aborted ? 504 : 502);
   } finally {
     clearTimeout(timeoutId);
   }

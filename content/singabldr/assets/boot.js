@@ -151,9 +151,11 @@
       isLocalhost = false;
     }
 
-    // Local dev default: prefer gateway direct (8001). Nginx (2026) is convenient
-    // but frequently occupied by other workspaces, causing hard-to-debug HTML 404s.
-    window.__API_BASE = window.__API_BASE || (isLocalhost ? "http://localhost:8001" : "https://api.airvio.co");
+    // Local dev default: use same-origin. A local dev server can proxy `/api/llm/*`
+    // to DeerFlow (or another upstream) to avoid CORS + port conflicts.
+    // Pages Functions deployment (recommended): keep `/api/llm/*` same-origin on airvio.co.
+    // If you want a separate API host, set it via `?apiBase=` or localStorage `singabldr.apiBase`.
+    window.__API_BASE = window.__API_BASE || window.location.origin;
 
     // Local dev hardening: auto-detect DeerFlow when the default port is occupied
     // by another workspace (commonly a Next/Vite server).
@@ -496,6 +498,14 @@
     if (superagentCloseBtn && superagentPanel) {
       superagentCloseBtn.addEventListener("click", function () {
         superagentPanel.style.display = "none";
+      });
+    }
+
+    var historyPanel = byId("history-panel");
+    var historyCloseBtn = byId("history-close-btn");
+    if (historyCloseBtn && historyPanel) {
+      historyCloseBtn.addEventListener("click", function () {
+        historyPanel.style.display = "none";
       });
     }
 

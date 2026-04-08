@@ -4055,6 +4055,114 @@ if (!window.__singabldr_runtime_patch_v1) {
     chat.scrollTop = chat.scrollHeight;
   }
 
+  const LS_KEY_HISTORY = "singabldr.history.v1";
+  const HISTORY_MAX = 300;
+  let historyCache = null;
+
+  function formatTs(ts) {
+    const d = new Date(ts);
+    const pad = (n) => String(n).padStart(2, "0");
+    const y = d.getFullYear();
+    const m = pad(d.getMonth() + 1);
+    const da = pad(d.getDate());
+    const h = pad(d.getHours());
+    const mi = pad(d.getMinutes());
+    const s = pad(d.getSeconds());
+    return `${y}-${m}-${da} ${h}:${mi}:${s}`;
+  }
+
+  function loadHistory() {
+    if (historyCache) return historyCache;
+    try {
+      const raw = localStorage.getItem(LS_KEY_HISTORY);
+      const arr = raw ? JSON.parse(raw) : [];
+      historyCache = Array.isArray(arr) ? arr : [];
+    } catch {
+      historyCache = [];
+    }
+    return historyCache;
+  }
+
+  function persistHistory() {
+    try {
+      if (!historyCache) return;
+      localStorage.setItem(LS_KEY_HISTORY, JSON.stringify(historyCache.slice(-HISTORY_MAX)));
+    } catch {}
+  }
+
+  function historyAppend(role, text) {
+    const entry = {
+      ts: Date.now(),
+      role: String(role || ""),
+      text: String(text || ""),
+    };
+    const h = loadHistory();
+    h.push(entry);
+    if (h.length > HISTORY_MAX) h.splice(0, h.length - HISTORY_MAX);
+    persistHistory();
+    try {
+      renderHistoryTable();
+    } catch {}
+  }
+
+  function renderHistoryTable() {
+    const tbody = document.getElementById("history-tbody");
+    if (!tbody) return;
+    const h = loadHistory();
+    tbody.innerHTML = "";
+    // Newest first
+    for (let i = h.length - 1; i >= 0; i--) {
+      const e = h[i];
+      const tr = document.createElement("tr");
+      tr.style.background = i % 2 === 0 ? "#ffffff" : "#f7f7fb";
+
+      const tdTime = document.createElement("td");
+      tdTime.style.padding = "6px";
+      tdTime.style.borderBottom = "1px solid rgba(45,52,54,0.15)";
+      tdTime.style.whiteSpace = "nowrap";
+      tdTime.textContent = formatTs(e.ts);
+
+      const tdRole = document.createElement("td");
+      tdRole.style.padding = "6px";
+      tdRole.style.borderBottom = "1px solid rgba(45,52,54,0.15)";
+      tdRole.style.fontWeight = "900";
+      tdRole.textContent = e.role || "";
+
+      const tdText = document.createElement("td");
+      tdText.style.padding = "6px";
+      tdText.style.borderBottom = "1px solid rgba(45,52,54,0.15)";
+      tdText.style.whiteSpace = "pre-wrap";
+      tdText.style.wordBreak = "break-word";
+      tdText.textContent = e.text || "";
+
+      tr.appendChild(tdTime);
+      tr.appendChild(tdRole);
+      tr.appendChild(tdText);
+      tbody.appendChild(tr);
+    }
+  }
+
+  function installHistoryPanelUi() {
+    const openBtn = document.getElementById("history-open-btn");
+    const panel = document.getElementById("history-panel");
+    const clearBtn = document.getElementById("history-clear-btn");
+    if (openBtn && panel) {
+      openBtn.addEventListener("click", () => {
+        panel.style.display = "flex";
+        renderHistoryTable();
+      });
+    }
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        historyCache = [];
+        try {
+          localStorage.removeItem(LS_KEY_HISTORY);
+        } catch {}
+        renderHistoryTable();
+      });
+    }
+  }
+
   function appendBubbleChainEntry(bubbleRec, { label, text }) {
     if (!bubbleRec?.chainEl) return;
     const t = String(text || "").trim();
@@ -4086,16 +4194,128 @@ if (!window.__singabldr_runtime_patch_v1) {
     bubbleRec.chainEl.scrollTop = bubbleRec.chainEl.scrollHeight;
   }
 
+  function ensureBubbleLinkLayer() {
+    if (typeof document === "undefined") return null;
+    const existing = document.getElementById("bubble-links-layer");
+    if (existing) return existing;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("id", "bubble-links-layer");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.style.position = "fixed";
+    svg.style.left = "0";
+    svg.style.top = "0";
+    svg.style.width = "100%";
+    svg.style.height = "100%";
+    svg.style.pointerEvents = "none";
+    // Keep links behind bubbles but above WebGL.
+    svg.style.zIndex = "1999";
+    document.body.appendChild(svg);
+    return svg;
+  }
+
+  function bubbleAnchorPoint(bubbleRec) {
+    const w = Number.isFinite(bubbleRec?.w) ? bubbleRec.w : 240;
+    const h = Number.isFinite(bubbleRec?.h) ? bubbleRec.h : 92;
+    const cx = Number.isFinite(bubbleRec?.cx) ? bubbleRec.cx : Number.isFinite(bubbleRec?.manualCx) ? bubbleRec.manualCx : 0;
+    const by = Number.isFinite(bubbleRec?.by) ? bubbleRec.by : Number.isFinite(bubbleRec?.manualBy) ? bubbleRec.manualBy : 0;
+    return {
+      x: cx,
+      y: by - h, // top edge
+      w,
+      h,
+    };
+  }
+
+  function updateBubbleTreeLinks(bubbleItems) {
+    const svg = ensureBubbleLinkLayer();
+    if (!svg) return;
+    try {
+      svg.innerHTML = "";
+    } catch {
+      // Fallback: remove children manually
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+    }
+
+    const lineColor = "rgba(45, 52, 54, 0.78)";
+    for (const item of bubbleItems) {
+      const child = item?.bubbleRec;
+      const parent = child?.chainParent;
+      if (!child || !parent) continue;
+
+      const p = bubbleAnchorPoint(parent);
+      const c = bubbleAnchorPoint(child);
+
+      const x1 = p.x;
+      const y1 = p.y + 6;
+      const x2 = c.x;
+      const y2 = c.y + 6;
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      const midY = (y1 + y2) / 2;
+      path.setAttribute("d", `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`);
+      path.setAttribute("fill", "none");
+      path.setAttribute("stroke", lineColor);
+      path.setAttribute("stroke-width", "2");
+      path.setAttribute("stroke-linecap", "round");
+      svg.appendChild(path);
+
+      // Add small endpoints for visibility.
+      const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      dot.setAttribute("cx", String(x2));
+      dot.setAttribute("cy", String(y2));
+      dot.setAttribute("r", "3.5");
+      dot.setAttribute("fill", lineColor);
+      svg.appendChild(dot);
+    }
+  }
+
+  function attachAsTreeChild(parentRec, childRec) {
+    if (!parentRec || !childRec) return;
+    parentRec.chainChildren = Array.isArray(parentRec.chainChildren) ? parentRec.chainChildren : [];
+    const index = parentRec.chainChildren.length;
+    parentRec.chainChildren.push(childRec);
+    childRec.chainParent = parentRec;
+
+    const parentCx = Number.isFinite(parentRec.manualCx) ? parentRec.manualCx : parentRec.cx;
+    const parentBy = Number.isFinite(parentRec.manualBy) ? parentRec.manualBy : parentRec.by;
+    const baseCx = Number.isFinite(parentCx) ? parentCx : window.innerWidth * 0.6;
+    const baseBy = Number.isFinite(parentBy) ? parentBy : window.innerHeight * 0.55;
+
+    // Tree layout: branch left/right, grow down by levels.
+    const branch = index % 2 === 0 ? 1 : -1;
+    const level = Math.floor(index / 2) + 1;
+    const dx = 220 + level * 26;
+    const dy = 120 + level * 18;
+
+    childRec.manual = true;
+    childRec.manualCx = baseCx + branch * dx;
+    childRec.manualBy = baseBy + dy;
+
+    // Keep children open by default.
+    setBubblePinned(childRec, true);
+  }
+
   async function addBubbleToChatAndChain(bubbleRec, seedText) {
     const providerKey = readSelectedLlmProviderKey?.() || "none";
     const apiKey = readLlmApiKeyMaybe?.();
 
     appendChatBubbleLocal("user", seedText);
+    historyAppend("User", seedText);
     appendBubbleChainEntry(bubbleRec, { label: "User", text: seedText });
 
-    if (!providerKey || providerKey === "none" || !apiKey) {
-      const msg = "LLM disabled: set AI Model + API key in Settings.";
+    const byokEnabled = isByokEnabled();
+    if (!providerKey || providerKey === "none") {
+      const msg = "LLM disabled: set AI Model in Settings.";
       appendChatBubbleLocal("assistant", msg);
+      historyAppend("AI", msg);
+      appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: msg });
+      return;
+    }
+    if (byokEnabled && (!apiKey || !String(apiKey).trim())) {
+      const msg = "LLM disabled: set API key in Settings (local dev).";
+      appendChatBubbleLocal("assistant", msg);
+      historyAppend("AI", msg);
       appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: msg });
       return;
     }
@@ -4104,38 +4324,178 @@ if (!window.__singabldr_runtime_patch_v1) {
       const reply = await invokeLlmChat({ providerKey, apiKey, userText: seedText });
       const safeReply = reply || "(empty response)";
       appendChatBubbleLocal("assistant", safeReply);
+      historyAppend("AI", safeReply);
       appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: safeReply });
 
-      // Chain-of-bubbles: spawn a new bubble for the assistant reply, stacked after the parent.
+      // Chain-of-bubbles (tree): spawn a child bubble connected to the parent.
       try {
-        const parentCx = Number.isFinite(bubbleRec.manualCx) ? bubbleRec.manualCx : bubbleRec.cx;
-        const parentBy = Number.isFinite(bubbleRec.manualBy) ? bubbleRec.manualBy : bubbleRec.by;
-        const baseCx = Number.isFinite(parentCx) ? parentCx : window.innerWidth * 0.6;
-        const baseBy = Number.isFinite(parentBy) ? parentBy : window.innerHeight * 0.7;
-        const nextBy =
-          Number.isFinite(bubbleRec.chainNextBy)
-            ? bubbleRec.chainNextBy
-            : baseBy + (Number.isFinite(bubbleRec.h) ? bubbleRec.h : 96) + 24;
-
         const child = createCitizenSnippetBubble(safeReply, {
           citizen: bubbleRec.citizen,
           headerTitle: "Chain",
           hue: 210,
         });
-        if (child) {
-          setBubblePinned(child, true);
-          child.manual = true;
-          child.manualCx = baseCx;
-          child.manualBy = nextBy;
-          bubbleRec.chainNextBy =
-            nextBy + (Number.isFinite(child.h) ? child.h : 92) + 24;
-        }
+        if (child) attachAsTreeChild(bubbleRec, child);
       } catch {}
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err || "LLM error");
       appendChatBubbleLocal("assistant", `LLM error: ${msg}`);
+      historyAppend("AI", `LLM error: ${msg}`);
       appendBubbleChainEntry(bubbleRec, { label: "Assistant", text: `LLM error: ${msg}` });
     }
+  }
+
+  function openAddToChatComposer(bubbleRec, seedText) {
+    if (!bubbleRec) return;
+    const host = bubbleRec.chainEl || bubbleRec.el;
+    if (!host) return;
+
+    try {
+      if (bubbleRec.addComposerEl) bubbleRec.addComposerEl.remove();
+    } catch {}
+    bubbleRec.addComposerEl = null;
+
+    const panel = document.createElement("div");
+    panel.style.borderTop = "3px solid #2d3436";
+    panel.style.background = "#ffffff";
+    panel.style.padding = "10px";
+    panel.style.display = "flex";
+    panel.style.flexDirection = "column";
+    panel.style.gap = "8px";
+    panel.style.fontFamily = "Nunito, sans-serif";
+    panel.style.pointerEvents = "auto";
+
+    const title = document.createElement("div");
+    title.textContent = "➕ Add to Chat";
+    title.style.fontWeight = "900";
+    title.style.fontSize = "12px";
+    title.style.color = "#2d3436";
+    panel.appendChild(title);
+
+    const hint = document.createElement("div");
+    hint.textContent = "Select lenses (multi-select) and/or add remarks, then submit to generate a child bubble.";
+    hint.style.fontWeight = "800";
+    hint.style.fontSize = "11px";
+    hint.style.color = "#636e72";
+    panel.appendChild(hint);
+
+    const opts = document.createElement("div");
+    opts.style.display = "flex";
+    opts.style.flexWrap = "wrap";
+    opts.style.gap = "10px";
+
+    const mkOpt = (label) => {
+      const wrap = document.createElement("label");
+      wrap.style.display = "flex";
+      wrap.style.alignItems = "center";
+      wrap.style.gap = "6px";
+      wrap.style.fontSize = "12px";
+      wrap.style.fontWeight = "900";
+      wrap.style.color = "#2d3436";
+      wrap.style.cursor = "pointer";
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.style.transform = "scale(1.1)";
+      wrap.appendChild(cb);
+      wrap.appendChild(document.createTextNode(label));
+      opts.appendChild(wrap);
+      return cb;
+    };
+
+    const cbOptimist = mkOpt("Optimist");
+    const cbSkeptic = mkOpt("Skeptic");
+    const cbPolicy = mkOpt("Policy");
+    panel.appendChild(opts);
+
+    const ta = document.createElement("textarea");
+    ta.placeholder = "Additional remarks (optional)…";
+    ta.rows = 3;
+    ta.style.width = "100%";
+    ta.style.border = "2px solid rgba(45,52,54,0.35)";
+    ta.style.borderRadius = "10px";
+    ta.style.padding = "8px";
+    ta.style.fontFamily = "Nunito, sans-serif";
+    ta.style.fontWeight = "800";
+    ta.style.fontSize = "12px";
+    ta.style.resize = "vertical";
+    panel.appendChild(ta);
+
+    const actions = document.createElement("div");
+    actions.style.display = "flex";
+    actions.style.gap = "10px";
+    actions.style.justifyContent = "flex-end";
+
+    const cancel = document.createElement("button");
+    cancel.textContent = "Cancel";
+    cancel.style.border = "3px solid #2d3436";
+    cancel.style.borderRadius = "10px";
+    cancel.style.padding = "6px 10px";
+    cancel.style.background = "#f1f2f6";
+    cancel.style.cursor = "pointer";
+    cancel.style.fontFamily = "Nunito, sans-serif";
+    cancel.style.fontWeight = "900";
+    cancel.onclick = () => {
+      try {
+        panel.remove();
+      } catch {}
+      bubbleRec.addComposerEl = null;
+    };
+
+    const submit = document.createElement("button");
+    submit.textContent = "Submit";
+    submit.style.border = "3px solid #2d3436";
+    submit.style.borderRadius = "10px";
+    submit.style.padding = "6px 10px";
+    submit.style.background = "#a29bfe";
+    submit.style.color = "white";
+    submit.style.cursor = "pointer";
+    submit.style.fontFamily = "Nunito, sans-serif";
+    submit.style.fontWeight = "900";
+    submit.onclick = async () => {
+      const lenses = [];
+      if (cbOptimist.checked) lenses.push("Optimist");
+      if (cbSkeptic.checked) lenses.push("Skeptic");
+      if (cbPolicy.checked) lenses.push("Policy");
+      const extra = String(ta.value || "").trim();
+
+      const promptParts = [];
+      promptParts.push(String(seedText || "").trim());
+      if (lenses.length > 0) promptParts.push(`\n\nLenses selected: ${lenses.join(", ")}.`);
+      if (extra) promptParts.push(`\n\nAdditional remarks: ${extra}`);
+      promptParts.push(
+        "\n\nRespond concisely. Use bullets where helpful. If providing guidance, include an educational-only disclaimer.",
+      );
+      const composed = promptParts.join("");
+
+      submit.disabled = true;
+      submit.style.opacity = "0.7";
+      try {
+        await addBubbleToChatAndChain(bubbleRec, composed);
+      } finally {
+        try {
+          panel.remove();
+        } catch {}
+        bubbleRec.addComposerEl = null;
+      }
+    };
+
+    actions.appendChild(cancel);
+    actions.appendChild(submit);
+    panel.appendChild(actions);
+
+    // Insert at top of chain area so it is visible without scrolling.
+    try {
+      if (bubbleRec.chainEl && bubbleRec.chainEl.firstChild) {
+        bubbleRec.chainEl.insertBefore(panel, bubbleRec.chainEl.firstChild);
+      } else {
+        host.appendChild(panel);
+      }
+    } catch {
+      host.appendChild(panel);
+    }
+    bubbleRec.addComposerEl = panel;
+    try {
+      setBubblePinned(bubbleRec, true);
+    } catch {}
   }
 
   function attachPinButton({ bubbleRec, containerEl, baseZIndex }) {
@@ -4497,10 +4857,10 @@ if (!window.__singabldr_runtime_patch_v1) {
     addBtn.style.lineHeight = "1";
     addBtn.style.padding = "2px 6px";
     addBtn.style.borderRadius = "10px";
-    addBtn.onclick = async () => {
+    addBtn.onclick = () => {
       try {
         const seed = typeof bubbleRec.sourceUrl === "string" && bubbleRec.sourceUrl ? bubbleRec.sourceUrl : url;
-        await addBubbleToChatAndChain(bubbleRec, seed);
+        openAddToChatComposer(bubbleRec, seed);
       } catch {}
     };
     actions.appendChild(addBtn);
@@ -4762,9 +5122,9 @@ if (!window.__singabldr_runtime_patch_v1) {
     addBtn.style.lineHeight = "1";
     addBtn.style.padding = "2px 6px";
     addBtn.style.borderRadius = "10px";
-    addBtn.onclick = async () => {
+    addBtn.onclick = () => {
       try {
-        await addBubbleToChatAndChain(bubbleRec, url);
+        openAddToChatComposer(bubbleRec, url);
       } catch {}
     };
     headerActions.appendChild(addBtn);
@@ -4887,9 +5247,9 @@ if (!window.__singabldr_runtime_patch_v1) {
     addBtn.style.lineHeight = "1";
     addBtn.style.padding = "2px 6px";
     addBtn.style.borderRadius = "10px";
-    addBtn.onclick = async () => {
+    addBtn.onclick = () => {
       try {
-        await addBubbleToChatAndChain(bubbleRec, url);
+        openAddToChatComposer(bubbleRec, url);
       } catch {}
     };
     headerActions.appendChild(addBtn);
@@ -5112,6 +5472,11 @@ if (!window.__singabldr_runtime_patch_v1) {
             item.el.style.zIndex = String(z);
           } catch {}
         }
+
+        // Tree-like chain connectors (parent → child).
+        try {
+          updateBubbleTreeLinks(bubbleItems);
+        } catch {}
       } catch {}
     };
   }
@@ -5216,9 +5581,9 @@ if (!window.__singabldr_runtime_patch_v1) {
     addBtn.style.lineHeight = "1";
     addBtn.style.padding = "2px 6px";
     addBtn.style.borderRadius = "10px";
-    addBtn.onclick = async () => {
+    addBtn.onclick = () => {
       try {
-        await addBubbleToChatAndChain(bubbleRec, String(snippet || "").slice(0, 700));
+        openAddToChatComposer(bubbleRec, String(snippet || "").slice(0, 700));
       } catch {}
     };
     headerActions.appendChild(addBtn);
@@ -5489,6 +5854,11 @@ if (!window.__singabldr_runtime_patch_v1) {
 
   function getApiBase() {
     try {
+      // Local dev: always use same-origin. A local dev server can proxy `/api/llm/*`
+      // to DeerFlow (or another upstream). This avoids DNS/CORS issues.
+      const host = String(window.location && window.location.hostname ? window.location.hostname : "");
+      const isLocal = host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+      if (isLocal) return String(window.location.origin || "").replace(/\/+$/, "");
       const raw = (window.__API_BASE || "").toString().trim();
       if (!raw) return "";
       return raw.endsWith("/") ? raw.slice(0, -1) : raw;
@@ -5496,6 +5866,14 @@ if (!window.__singabldr_runtime_patch_v1) {
       return "";
     }
   }
+
+  // Debug (non-UI): helps diagnose wrong API base / DNS / CORS quickly.
+  try {
+    if (!window.__singabldr_api_base_logged_v1) {
+      window.__singabldr_api_base_logged_v1 = true;
+      console.log("[singabldr][apiBase]", { origin: window.location.origin, apiBase: getApiBase() });
+    }
+  } catch {}
 
   async function flowinfishPushToProd(notesFile, { sendTelegram = true } = {}) {
     const apiBase = getApiBase();
@@ -5677,7 +6055,23 @@ if (!window.__singabldr_runtime_patch_v1) {
     } catch {}
   }
 
+  function isLocalDevHost() {
+    try {
+      const host = String(window.location && window.location.hostname ? window.location.hostname : "");
+      return host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+    } catch {
+      return false;
+    }
+  }
+
+  // Production (airvio.co via Pages Functions): server-managed key only.
+  // Local dev: BYOK allowed for testing.
+  function isByokEnabled() {
+    return isLocalDevHost();
+  }
+
   function readLlmApiKeyMaybe() {
+    if (!isByokEnabled()) return null;
     try {
       const sessionKey = sessionStorage.getItem(SS_KEY_LLM_API_KEY);
       if (sessionKey) return sessionKey;
@@ -5692,6 +6086,7 @@ if (!window.__singabldr_runtime_patch_v1) {
   }
 
   function persistLlmApiKey(nextKey, { remember } = {}) {
+    if (!isByokEnabled()) return;
     const normalized = typeof nextKey === "string" ? nextKey.trim() : "";
     try {
       if (normalized) sessionStorage.setItem(SS_KEY_LLM_API_KEY, normalized);
@@ -5748,7 +6143,8 @@ if (!window.__singabldr_runtime_patch_v1) {
     const res = await fetch(`${apiBase}/api/llm/session/key`, {
       method: "PUT",
       headers: buildDeerflowLlmHeaders({ providerKey }),
-      body: JSON.stringify({ apiKey: key, providerKey: providerKey || "" }),
+      // DeerFlow expects snake_case: api_key (max security: stored server-side by session id).
+      body: JSON.stringify({ api_key: key }),
     });
     if (!res.ok) {
       const txt = await res.text().catch(() => "");
@@ -5811,12 +6207,17 @@ if (!window.__singabldr_runtime_patch_v1) {
     const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
     const remember = readRememberLlmKeyFlag();
     const scopeLabel = apiKey ? (remember ? "localStorage" : "sessionStorage") : "none";
+    const byokEnabled = isByokEnabled();
     if (providerKey === "none") {
       statusEl.textContent = "LLM disabled: AI Model is set to None.";
       return;
     }
     if (providerKey && !llmProviderSupportsText(providerKey)) {
       statusEl.textContent = `LLM disabled: ${provider?.label || providerKey} requires a non-text API (${provider?.apiKind || "unknown"}).`;
+      return;
+    }
+    if (!byokEnabled) {
+      statusEl.textContent = `LLM ready: ${provider?.label || providerKey} (server-managed key).`;
       return;
     }
     statusEl.textContent = apiKey
@@ -5833,6 +6234,8 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     if (!modelSelect || !apiKeyInput || !rememberCb || !clearBtn || !statusEl) return;
 
+    const byokEnabled = isByokEnabled();
+
     const providerKey = readSelectedLlmProviderKey();
     if (modelSelect.value !== providerKey) modelSelect.value = providerKey;
 
@@ -5845,12 +6248,46 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     const syncEnabledState = () => {
       const disabled = modelSelect.value === "none" || !llmProviderSupportsText(modelSelect.value);
-      apiKeyInput.disabled = disabled;
-      rememberCb.disabled = disabled;
-      clearBtn.disabled = disabled;
-      apiKeyInput.style.opacity = disabled ? "0.6" : "1";
+      if (byokEnabled) {
+        apiKeyInput.disabled = disabled;
+        rememberCb.disabled = disabled;
+        clearBtn.disabled = disabled;
+        apiKeyInput.style.opacity = disabled ? "0.6" : "1";
+      } else {
+        // Production: remove BYOK surfaces.
+        apiKeyInput.disabled = true;
+        rememberCb.disabled = true;
+        clearBtn.disabled = true;
+      }
     };
     syncEnabledState();
+
+    if (!byokEnabled) {
+      // Production hardening: hide BYOK UI and clear any stored keys.
+      try {
+        apiKeyInput.value = "";
+        apiKeyInput.style.display = "none";
+      } catch {}
+      try {
+        // rememberCb is nested in a <label>; hide the whole control.
+        const label = rememberCb.closest ? rememberCb.closest("label") : rememberCb.parentElement;
+        if (label) label.style.display = "none";
+      } catch {}
+      try {
+        clearBtn.style.display = "none";
+      } catch {}
+      try {
+        writeRememberLlmKeyFlag(false);
+      } catch {}
+      try {
+        sessionStorage.removeItem(SS_KEY_LLM_API_KEY);
+      } catch {}
+      try {
+        localStorage.removeItem(LS_KEY_LLM_API_KEY_PERSIST);
+      } catch {}
+      // Only keep provider selection; do not call /api/llm/session/key in prod.
+      return;
+    }
 
     // Local dev convenience: allow a gitignored local file to hydrate the key.
     // Security: only attempt on localhost / 127.0.0.1, and only if no key exists yet.
@@ -7421,6 +7858,7 @@ if (!window.__singabldr_runtime_patch_v1) {
     patchLlmCommandRouter();
     installLlmSettingsUi();
     installInteractionModeUi();
+    installHistoryPanelUi();
     patchScriptNoneMode();
     installFlowinFishFileReactionHandler();
     patchAnimateLoop();
