@@ -4734,13 +4734,13 @@ if (!window.__singabldr_runtime_patch_v1) {
 
     const host = urlObj.hostname.toLowerCase();
     if (host.endsWith("linkedin.com")) {
-      return `https://www.linkedin.com/embeds/oembed.json?url=${encodeURIComponent(inputUrl)}`;
+      return `/api/oembed?url=${encodeURIComponent(inputUrl)}`;
     }
     if (host === "x.com" || host === "twitter.com" || host.endsWith(".x.com") || host.endsWith(".twitter.com")) {
-      return `https://publish.twitter.com/oembed?omit_script=1&url=${encodeURIComponent(inputUrl)}`;
+      return `/api/oembed?url=${encodeURIComponent(inputUrl)}`;
     }
     if (host === "reddit.com" || host.endsWith(".reddit.com")) {
-      return `https://www.reddit.com/oembed?url=${encodeURIComponent(inputUrl)}`;
+      return `/api/oembed?url=${encodeURIComponent(inputUrl)}`;
     }
     return null;
   }

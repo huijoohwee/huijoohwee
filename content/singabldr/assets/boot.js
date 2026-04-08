@@ -974,4 +974,52 @@
       // ignore
     }
   });
+
+  // Script -> Mode: Auto (Default) should auto-open the Chat UI on initial load.
+  // Rationale: "Auto" implies script-driven experience; opening the chat panel
+  // makes the behavior visible and reduces "blank/hidden UI" confusion.
+  safe(function autoOpenChatUiWhenScriptAuto() {
+    function openChatUi() {
+      try {
+        var container = document.getElementById("superagent-container");
+        if (container) container.style.display = "block";
+      } catch {}
+      try {
+        var panel = document.getElementById("superagent-panel");
+        if (panel) panel.style.display = "flex";
+      } catch {}
+    }
+
+    function shouldAutoOpen() {
+      try {
+        var select = document.getElementById("script-select");
+        if (!select) return false;
+        return String(select.value || "").toLowerCase() === "auto";
+      } catch {
+        return false;
+      }
+    }
+
+    function run() {
+      if (!shouldAutoOpen()) return;
+      // Coalesce to avoid racing the main bundle's UI initialization.
+      try {
+        if (typeof window.__SINGABLDR_COALESCE === "function") {
+          window.__SINGABLDR_COALESCE("ui:autoOpenChat", openChatUi);
+          return;
+        }
+      } catch {}
+      try {
+        setTimeout(openChatUi, 0);
+      } catch {}
+    }
+
+    try {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", run, { once: true });
+      } else {
+        run();
+      }
+    } catch {}
+  });
 })();
