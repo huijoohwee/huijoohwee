@@ -12,17 +12,6 @@
     -->
     <meta http-equiv="refresh" content="0; url=/content/singabldr/" />
     <link rel="canonical" href="/content/singabldr/" />
-
-    <script>
-      // JS redirect (keeps query params like ?mode=ai&board=... intact)
-      (function redirectToSingabldr() {
-        const target = new URL("/content/singabldr/", window.location.origin);
-        const current = new URL(window.location.href);
-        target.search = current.search;
-        target.hash = current.hash;
-        window.location.replace(target.toString());
-      })();
-    </script>
   </head>
   <body>
     <noscript>
@@ -30,4 +19,3 @@
     </noscript>
   </body>
 </html>
-
