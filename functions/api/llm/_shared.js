@@ -6,7 +6,7 @@
  * - Server-managed API key only (no BYOK by default).
  * - Strict allowlist (models + endpoints), size caps, and fail-closed behavior.
  */
-const OPENAI_API_BASE = "https://api.openai.com/v1";
+const DEFAULT_OPENAI_API_BASE = "https://api.openai.com/v1";
 
 const DEFAULT_MAX_BODY_BYTES = 1_000_000;
 
@@ -22,8 +22,8 @@ function normalizeOrigin(value) {
 function isAllowedOrigin(origin) {
   const o = normalizeOrigin(origin);
   if (!o) return false;
-  if (o === "https://airvio.co") return true;
-  // Local dev.
+  // CORS is only needed for non-same-origin callers. Production should be same-origin,
+  // so we keep this allowlist minimal and avoid hardcoding production domains.
   return (
     o.startsWith("http://localhost:") ||
     o.startsWith("http://127.0.0.1:") ||
@@ -93,7 +93,8 @@ async function proxyToOpenAi({ request, env, pathname, payload }) {
   const openAiKey = requireOpenAiKey(env);
   enforceAllowedModel(payload);
 
-  const upstreamUrl = `${OPENAI_API_BASE}${pathname}`;
+  const apiBase = normalizeOrigin(env.OPENAI_API_BASE) || DEFAULT_OPENAI_API_BASE;
+  const upstreamUrl = `${apiBase}${pathname}`;
   const res = await fetch(upstreamUrl, {
     method: "POST",
     headers: {
@@ -124,4 +125,3 @@ export {
   readJsonBody,
   text,
 };
-

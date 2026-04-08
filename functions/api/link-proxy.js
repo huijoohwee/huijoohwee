@@ -5,17 +5,9 @@
  * This endpoint fetches the remote HTML server-side, strips active content, and serves
  * a "reader-ish" version from same-origin so the iframe can display something useful.
  */
+import { parseAndValidateExternalUrl, shouldRejectCrossSiteFetch } from "./_urlPolicy.js";
+
 const MAX_HTML_CHARS = 350_000; // cap memory/runtime
-
-
-function isHttpUrl(value) {
-  try {
-    const u = new URL(String(value));
-    return u.protocol === "http:" || u.protocol === "https:";
-  } catch (_) {
-    return false;
-  }
-}
 
 function stripActiveContent(html) {
   let out = html;
@@ -68,11 +60,17 @@ export async function onRequestGet(context) {
   const reqUrl = new URL(context.request.url);
   const target = reqUrl.searchParams.get("url") || "";
 
-  if (!isHttpUrl(target)) {
-    return new Response("Invalid url", { status: 400 });
+  if (shouldRejectCrossSiteFetch(context.request)) {
+    return new Response("Forbidden", { status: 403, headers: { "cache-control": "no-store" } });
   }
 
-  const targetUrl = new URL(target);
+  let targetUrl;
+  try {
+    targetUrl = parseAndValidateExternalUrl(target);
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "invalid_url";
+    return new Response(msg, { status: 400, headers: { "cache-control": "no-store" } });
+  }
 
   try {
     const res = await fetch(targetUrl.toString(), {

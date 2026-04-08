@@ -5,6 +5,8 @@
  * This endpoint fetches only small metadata (title/description/image) so the UI can show
  * a useful preview without embedding the full page.
  */
+import { parseAndValidateExternalUrl, shouldRejectCrossSiteFetch } from "./_urlPolicy.js";
+
 const DEFAULT_HEADERS = {
   "content-type": "application/json; charset=utf-8",
   "cache-control": "public, max-age=600",
@@ -16,15 +18,6 @@ function json(data, init = {}) {
     ...init,
     headers: { ...DEFAULT_HEADERS, ...(init.headers || {}) },
   });
-}
-
-function isHttpUrl(value) {
-  try {
-    const u = new URL(String(value));
-    return u.protocol === "http:" || u.protocol === "https:";
-  } catch (_) {
-    return false;
-  }
 }
 
 function pickFirst(...values) {
@@ -63,15 +56,15 @@ export async function onRequestGet(context) {
   }
   const target = u.searchParams.get("url") || "";
 
-  if (!isHttpUrl(target)) {
-    return json({ ok: false, error: "invalid_url" }, { status: 400 });
+  if (shouldRejectCrossSiteFetch(context.request)) {
+    return json({ ok: false, error: "forbidden" }, { status: 403, headers: { "cache-control": "no-store" } });
   }
 
   let targetUrl;
   try {
-    targetUrl = new URL(target);
-  } catch (_) {
-    return json({ ok: false, error: "invalid_url" }, { status: 400 });
+    targetUrl = parseAndValidateExternalUrl(target);
+  } catch {
+    return json({ ok: false, error: "invalid_url" }, { status: 400, headers: { "cache-control": "no-store" } });
   }
 
   try {

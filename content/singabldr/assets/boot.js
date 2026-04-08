@@ -53,6 +53,36 @@
     }
   });
 
+  // URL aliasing (SSOT): prevent legacy placeholder files from breaking runtime.
+  // This runs early and is intentionally narrow (only affects a few known assets).
+  safe(function installFetchUrlAliases() {
+    if (typeof window.fetch !== "function") return;
+    var orig = window.fetch.bind(window);
+
+    function rewrite(rawUrl) {
+      var u = String(rawUrl || "");
+      if (!u) return u;
+      // Match absolute or relative paths.
+      u = u.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.json");
+      u = u.replace(/(^|\/)script-singabuildr-0000\.json(\b|$)/, "$1script-singabuildr-0000.v1.json");
+      return u;
+    }
+
+    window.fetch = function (input, init) {
+      try {
+        var url = typeof input === "string" ? input : input && input.url ? String(input.url) : "";
+        var next = rewrite(url);
+        if (next && next !== url) {
+          if (typeof input === "string") input = next;
+          else if (typeof Request !== "undefined" && input instanceof Request) input = new Request(next, input);
+        }
+      } catch {
+        // ignore
+      }
+      return orig(input, init);
+    };
+  });
+
   // Persistence churn guard: avoid writing the same value repeatedly.
   // This reduces stringify/parse churn and suppresses redundant subscriptions in
   // libraries that observe storage writes.
@@ -163,6 +193,212 @@
       window.location.replace("/content/singabldr/");
       return;
     }
+  });
+
+  // Render-churn suppression: throttle requestAnimationFrame under background tabs
+  // and allow an explicit FPS cap via `window.__SINGABLDR_MAX_FPS`.
+  safe(function throttleAnimationFrames() {
+    if (typeof window.requestAnimationFrame !== "function") return;
+    var origRaf = window.requestAnimationFrame.bind(window);
+
+    // Shared state across all raf callbacks.
+    var lastDeliveredTs = 0;
+
+    function getMaxFps() {
+      try {
+        var forced = Number(window.__SINGABLDR_MAX_FPS || 0);
+        if (forced && forced > 0) return forced;
+      } catch {}
+      // Conservative defaults:
+      // - foreground: 60fps
+      // - background/hidden: 12fps (dramatically reduces churn)
+      try {
+        return document && document.hidden ? 12 : 60;
+      } catch {
+        return 60;
+      }
+    }
+
+    window.requestAnimationFrame = function (cb) {
+      if (typeof cb !== "function") return origRaf(cb);
+
+      var maxFps = getMaxFps();
+      var minDelta = maxFps > 0 ? 1000 / maxFps : 0;
+
+      function tick(ts) {
+        try {
+          // When paused, reschedule but do not run user callback.
+          if (window.__SINGABLDR_RENDER_PAUSED) return origRaf(tick);
+        } catch {}
+
+        if (minDelta > 0 && lastDeliveredTs && ts - lastDeliveredTs < minDelta) {
+          return origRaf(tick);
+        }
+        lastDeliveredTs = ts;
+        cb(ts);
+      }
+
+      return origRaf(tick);
+    };
+  });
+
+  // Granularity / LOD tuning at load time (prevents voxel explosion on small devices).
+  // This runs entirely client-side by rewriting the fetched board JSON response.
+  safe(function installBoardJsonLodPatch() {
+    if (typeof window.fetch !== "function") return;
+
+    var LS_KEY = "singabldr.lod";
+
+    safe(function exposeLodSetter() {
+      try {
+        window.__setSingabldrLod = function (mode) {
+          var m = String(mode || "").trim().toLowerCase();
+          if (m !== "fine" && m !== "coarse" && m !== "auto") return false;
+          try {
+            localStorage.setItem(LS_KEY, m);
+          } catch {}
+          try {
+            window.location.reload();
+          } catch {}
+          return true;
+        };
+      } catch {
+        // ignore
+      }
+    });
+
+    function getLodMode() {
+      var url = null;
+      try {
+        url = new URL(window.location.href);
+      } catch {
+        url = null;
+      }
+      var mode = "";
+      try {
+        if (url) mode = String(url.searchParams.get("lod") || "").trim().toLowerCase();
+      } catch {
+        mode = "";
+      }
+      if (mode === "fine" || mode === "coarse" || mode === "auto") return mode;
+      try {
+        var persisted = String(localStorage.getItem(LS_KEY) || "").trim().toLowerCase();
+        if (persisted === "fine" || persisted === "coarse" || persisted === "auto") return persisted;
+      } catch {}
+      return "auto";
+    }
+
+    function autoPick() {
+      try {
+        // If the user prefers reduced motion, pick coarse.
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return "coarse";
+      } catch {}
+      try {
+        var mem = Number(navigator.deviceMemory || 0);
+        var cores = Number(navigator.hardwareConcurrency || 0);
+        var width = Number(window.innerWidth || 0);
+        if ((mem && mem < 4) || (cores && cores < 4) || (width && width < 768)) return "coarse";
+      } catch {}
+      return "fine";
+    }
+
+    function shouldPatchBoardUrl(rawUrl) {
+      var u = String(rawUrl || "");
+      if (!u) return false;
+      // Only patch Singabldr board JSON (do not affect other content).
+      return u.indexOf("/content/singabldr/boards/") >= 0 && u.indexOf(".json") >= 0;
+    }
+
+    function applyLod(data) {
+      if (!data || typeof data !== "object") return data;
+      var scene = data.scene;
+      if (!scene || typeof scene !== "object") return data;
+      var grid = scene.grid;
+      if (!grid || typeof grid !== "object") return data;
+
+      var mode = getLodMode();
+      if (mode === "auto") mode = autoPick();
+
+      // Coarse starts faster; fine is default desktop.
+      var multiplier = mode === "coarse" ? 2 : 1;
+      var current = Number(grid.voxelSize || 0);
+      if (!(current > 0)) return data;
+
+      var next = current * multiplier;
+      // Cap to avoid accidental extremes via invalid stored state.
+      next = Math.min(Math.max(next, 0.5), 10);
+      grid.voxelSize = next;
+
+      // Expose final mode for debugging.
+      try {
+        window.__SINGABLDR_LOD_MODE = mode;
+        window.__SINGABLDR_VOXEL_SIZE = next;
+      } catch {}
+      return data;
+    }
+
+    var orig = window.fetch.bind(window);
+    window.fetch = function (input, init) {
+      var url = "";
+      try {
+        url = typeof input === "string" ? input : input && input.url ? String(input.url) : "";
+      } catch {
+        url = "";
+      }
+      // Compatibility aliases:
+      // Some legacy placeholder files are unreadable (0-byte / write-only). Fail-safe by
+      // redirecting requests to stable versioned filenames that we control.
+      var effectiveUrl = url;
+      try {
+        // Match both absolute and relative paths (e.g. "boards/..." vs "/boards/...").
+        effectiveUrl = effectiveUrl.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.json");
+        effectiveUrl = effectiveUrl.replace(
+          /(^|\/)script-singabuildr-0000\.json(\b|$)/,
+          "$1script-singabuildr-0000.v1.json"
+        );
+      } catch {
+        effectiveUrl = url;
+      }
+      if (effectiveUrl && effectiveUrl !== url) {
+        try {
+          if (typeof input === "string") input = effectiveUrl;
+          else if (typeof Request !== "undefined" && input instanceof Request) input = new Request(effectiveUrl, input);
+        } catch {
+          // ignore; fall back to original input
+        }
+      }
+      return orig(input, init).then(function (res) {
+        try {
+          if (!res || !res.ok) return res;
+          if (!shouldPatchBoardUrl(effectiveUrl || url)) return res;
+          // Read via clone so callers can still consume the returned response body.
+          return res
+            .clone()
+            .json()
+            .then(function (data) {
+              var patched = applyLod(data);
+              return new Response(JSON.stringify(patched), {
+                status: res.status,
+                statusText: res.statusText,
+                headers: (function () {
+                  try {
+                    var h = new Headers(res.headers);
+                    h.set("content-type", "application/json; charset=utf-8");
+                    return h;
+                  } catch {
+                    return { "content-type": "application/json; charset=utf-8" };
+                  }
+                })(),
+              });
+            })
+            .catch(function () {
+              return res;
+            });
+        } catch {
+          return res;
+        }
+      });
+    };
   });
 
   safe(function setApiBase() {
@@ -445,581 +681,5 @@
       }
       return orig(input, init);
     };
-  });
-
-  // Coalesced fetch dedupe + lightweight caching (boot-level, no bundle rebuild).
-  // Goals:
-  // - suppress repeated GETs during rapid switching (boards/scripts/config)
-  // - share in-flight requests keyed by URL
-  // - avoid churn from repeated JSON downloads
-  safe(function installFetchDedupeAndCache() {
-    if (typeof window.fetch !== "function") return;
-
-    var orig = window.fetch.bind(window);
-
-    /** @type {Map<string, Promise<Response>>} */
-    var inflight = new Map();
-    /** @type {Map<string, {at:number, ttl:number, resp:Response}>} */
-    var cache = new Map();
-
-    function now() {
-      return Date.now();
-    }
-
-    function normalizeUrl(u) {
-      try {
-        return new URL(String(u), window.location.href).toString();
-      } catch {
-        return String(u);
-      }
-    }
-
-    function getMethod(init) {
-      try {
-        return String((init && init.method) || "GET").toUpperCase();
-      } catch {
-        return "GET";
-      }
-    }
-
-    function isCacheableGet(url) {
-      // Only cache static JSON/config-ish endpoints (avoid caching dynamic API).
-      // Keep it conservative to avoid stale UX.
-      return (
-        url.indexOf("/boards/") >= 0 ||
-        url.indexOf("/script-") >= 0 ||
-        url.indexOf("/flowinfish.") >= 0 ||
-        url.indexOf("/api/llm/models") >= 0
-      );
-    }
-
-    function ttlFor(url) {
-      if (url.indexOf("/api/llm/models") >= 0) return 30 * 1000;
-      if (url.indexOf("/flowinfish.") >= 0) return 60 * 1000;
-      if (url.indexOf("/script-") >= 0) return 30 * 1000;
-      if (url.indexOf("/boards/") >= 0) return 5 * 60 * 1000;
-      return 0;
-    }
-
-    function cacheKey(method, url) {
-      return method + " " + url;
-    }
-
-    window.fetch = function (input, init) {
-      var method = getMethod(init);
-      var url = normalizeUrl(typeof input === "string" ? input : input && input.url ? input.url : "");
-
-      // Only operate on GET; leave POST streaming untouched.
-      if (method !== "GET" || !url) {
-        return orig(input, init);
-      }
-
-      var key = cacheKey(method, url);
-
-      if (isCacheableGet(url)) {
-        var entry = cache.get(key);
-        if (entry && now() - entry.at <= entry.ttl) {
-          try {
-            return Promise.resolve(entry.resp.clone());
-          } catch {
-            cache.delete(key);
-          }
-        }
-      }
-
-      var existing = inflight.get(key);
-      if (existing) {
-        return existing.then(function (resp) {
-          try {
-            return resp.clone();
-          } catch {
-            return resp;
-          }
-        });
-      }
-
-      var p = orig(input, init)
-        .then(function (resp) {
-          try {
-            if (resp && resp.ok && isCacheableGet(url)) {
-              var ttl = ttlFor(url);
-              if (ttl > 0) {
-                cache.set(key, { at: now(), ttl: ttl, resp: resp.clone() });
-              }
-            }
-          } catch {}
-          return resp;
-        })
-        .finally(function () {
-          inflight.delete(key);
-          // Opportunistic cache trimming (avoid memory growth).
-          if (cache.size > 64) {
-            try {
-              var cutoff = now() - 60 * 1000;
-              cache.forEach(function (v, k2) {
-                if (v.at < cutoff) cache.delete(k2);
-              });
-            } catch {}
-          }
-        });
-
-      inflight.set(key, p);
-      return p;
-    };
-  });
-
-  safe(function wireSettingsCollapsibleLabels() {
-    var root = document.getElementById("settings-modal");
-    if (!root) return;
-
-    var sections = root.querySelectorAll('details[data-collapsible="1"]');
-    sections.forEach(function (details) {
-      var label = details.querySelector("[data-toggle-label]");
-      var update = function () {
-        if (!label) return;
-        // Icon-only (requested): open = down chevron, closed = right chevron.
-        label.textContent = details.open ? "▾" : "▸";
-      };
-      details.addEventListener("toggle", update);
-      update();
-    });
-  });
-
-  // Sticky header offsets: keep section headers from hiding under the Settings header panel.
-  safe(function setSettingsStickyOffsets() {
-    var panel = document.getElementById("settings-panel");
-    var header = document.getElementById("settings-header-panel");
-    if (!panel || !header) return;
-    var apply = function () {
-      try {
-        var h = header.getBoundingClientRect().height || 0;
-        panel.style.setProperty("--settings-sticky-top", String(Math.ceil(h)) + "px");
-      } catch {
-        // ignore
-      }
-    };
-    apply();
-    // Recompute on resize/orientation changes (cheap; coalesced).
-    window.addEventListener("resize", function () {
-      coalesce("settings:sticky:resize", apply);
-    });
-  });
-
-  safe(function defaultMultiplayerOff() {
-    // Stricter hardening: force local-only mode (multiplayer disabled in production).
-    // This prevents any WebSocket usage and avoids CSP/connect-src needing wss:// allowances.
-    try {
-      var url = new URL(window.location.href);
-      url.searchParams.set("multiplayer", "0");
-      history.replaceState(null, "", url.toString());
-    } catch {
-      // ignore
-    }
-    try {
-      window.__SINGABLDR_MULTIPLAYER_DISABLED = true;
-    } catch {
-      // ignore
-    }
-  });
-
-  safe(function wireInlineHandlersToListeners() {
-    function byId(id) {
-      return document.getElementById(id);
-    }
-
-    var loginScreen = byId("login-screen");
-    var settingsModal = byId("settings-modal");
-    var watermarkDropdown = byId("watermark-dropdown");
-    var superagentPanel = byId("superagent-panel");
-
-    var loginCloseBtn = byId("login-close-btn");
-    if (loginCloseBtn && loginScreen) {
-      loginCloseBtn.addEventListener("click", function () {
-        loginScreen.style.display = "none";
-      });
-    }
-
-    var settingsCloseBtn = byId("settings-close-btn");
-    if (settingsCloseBtn && settingsModal) {
-      settingsCloseBtn.addEventListener("click", function () {
-        settingsModal.style.display = "none";
-      });
-    }
-
-    var superagentCloseBtn = byId("superagent-close-btn");
-    if (superagentCloseBtn && superagentPanel) {
-      superagentCloseBtn.addEventListener("click", function () {
-        superagentPanel.style.display = "none";
-      });
-    }
-
-    var historyPanel = byId("history-panel");
-    var historyCloseBtn = byId("history-close-btn");
-    if (historyCloseBtn && historyPanel) {
-      historyCloseBtn.addEventListener("click", function () {
-        historyPanel.style.display = "none";
-      });
-    }
-
-    var watermark = byId("watermark");
-    if (watermark && watermarkDropdown) {
-      watermark.addEventListener("click", function () {
-        watermarkDropdown.style.display = watermarkDropdown.style.display === "none" ? "block" : "none";
-      });
-    }
-
-    function wireHoverBackground(buttonEl) {
-      if (!buttonEl) return;
-      buttonEl.addEventListener("mouseover", function () {
-        buttonEl.style.background = "#f1f2f6";
-      });
-      buttonEl.addEventListener("mouseout", function () {
-        buttonEl.style.background = "none";
-      });
-    }
-
-    var navLoginBtn = byId("nav-login-btn");
-    if (navLoginBtn && loginScreen && watermarkDropdown) {
-      navLoginBtn.addEventListener("click", function () {
-        loginScreen.style.display = "flex";
-        watermarkDropdown.style.display = "none";
-      });
-      wireHoverBackground(navLoginBtn);
-    }
-
-    var navSettingsBtn = byId("nav-settings-btn");
-    if (navSettingsBtn && settingsModal && watermarkDropdown) {
-      navSettingsBtn.addEventListener("click", function () {
-        settingsModal.style.display = "flex";
-        watermarkDropdown.style.display = "none";
-      });
-      wireHoverBackground(navSettingsBtn);
-    }
-
-    var navLogoutBtn = byId("nav-logout-btn");
-    if (navLogoutBtn) {
-      navLogoutBtn.addEventListener("click", function () {
-        try {
-          localStorage.removeItem("singabldr_user");
-        } catch {
-          // ignore
-        }
-        window.location.reload();
-      });
-      wireHoverBackground(navLogoutBtn);
-    }
-
-    var quickPlayModeBtn = byId("quick-play-mode-btn");
-    if (quickPlayModeBtn) {
-      quickPlayModeBtn.addEventListener("click", function () {
-        if (typeof window.togglePlayMode === "function") window.togglePlayMode();
-      });
-    }
-  });
-
-  // History == Script: export + replay (CSP-safe; no bundle rebuild).
-  safe(function installHistoryExportAndReplay() {
-    var LS_KEY_HISTORY = "singabldr.history.v1";
-
-    function pad2(n) {
-      return String(n).padStart(2, "0");
-    }
-
-    // yyyymmddhhmmss (local time)
-    function stamp() {
-      var d = new Date();
-      return (
-        String(d.getFullYear()) +
-        pad2(d.getMonth() + 1) +
-        pad2(d.getDate()) +
-        pad2(d.getHours()) +
-        pad2(d.getMinutes()) +
-        pad2(d.getSeconds())
-      );
-    }
-
-    function readHistorySafe() {
-      try {
-        var raw = localStorage.getItem(LS_KEY_HISTORY);
-        var parsed = raw ? JSON.parse(raw) : [];
-        return Array.isArray(parsed) ? parsed : [];
-      } catch {
-        return [];
-      }
-    }
-
-    function downloadText(filename, mime, text) {
-      try {
-        var blob = new Blob([String(text || "")], { type: String(mime || "text/plain") });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = url;
-        a.download = filename;
-        a.rel = "noopener";
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function () {
-          try {
-            URL.revokeObjectURL(url);
-          } catch {}
-          try {
-            a.remove();
-          } catch {}
-        }, 0);
-      } catch {
-        // ignore
-      }
-    }
-
-    function escapeMdCell(s) {
-      return String(s || "")
-        .replace(/\r?\n/g, "<br/>")
-        .replace(/\|/g, "\\|");
-    }
-
-    function exportHistoryJson() {
-      var h = readHistorySafe();
-      var payload = JSON.stringify(h, null, 2);
-      downloadText("singabldr-history-" + stamp() + ".json", "application/json;charset=utf-8", payload);
-    }
-
-    function exportHistoryMd() {
-      var h2 = readHistorySafe();
-      var out = [];
-      out.push("# Singabldr History");
-      out.push("");
-      out.push("- Exported: " + new Date().toISOString());
-      out.push("- Items: " + String(h2.length));
-      out.push("");
-      out.push("| Time (ms) | Role | Text |");
-      out.push("|---:|---|---|");
-      for (var i = 0; i < h2.length; i++) {
-        var e = h2[i] || {};
-        out.push(
-          "|" +
-            escapeMdCell(e.ts) +
-            "|" +
-            escapeMdCell(e.role) +
-            "|" +
-            escapeMdCell(e.text) +
-            "|"
-        );
-      }
-      out.push("");
-      downloadText("singabldr-history-" + stamp() + ".md", "text/markdown;charset=utf-8", out.join("\n"));
-    }
-
-    function openSuperagentPanel() {
-      try {
-        var container = document.getElementById("superagent-container");
-        if (container) container.style.display = "block";
-      } catch {}
-      try {
-        var panel = document.getElementById("superagent-panel");
-        if (panel) panel.style.display = "flex";
-      } catch {}
-    }
-
-    function appendReplayBubble(role, text) {
-      var chat = document.getElementById("superagent-chat");
-      if (!chat) return;
-
-      var wrap = document.createElement("div");
-      wrap.style.display = "flex";
-      wrap.style.flexDirection = "column";
-      wrap.style.gap = "6px";
-      wrap.style.alignItems = role === "user" ? "flex-end" : "flex-start";
-
-      var bubble = document.createElement("div");
-      bubble.style.maxWidth = "85%";
-      bubble.style.border = "3px solid #2d3436";
-      bubble.style.borderRadius = "14px";
-      bubble.style.padding = "8px 10px";
-      bubble.style.boxShadow = "4px 4px 0 rgba(0,0,0,0.1)";
-      bubble.style.fontWeight = "900";
-      bubble.style.fontSize = "12px";
-      bubble.style.lineHeight = "1.25";
-      bubble.style.whiteSpace = "pre-wrap";
-      bubble.style.wordBreak = "break-word";
-      bubble.style.background = role === "user" ? "#a29bfe" : "#ffffff";
-      bubble.style.color = role === "user" ? "#ffffff" : "#2d3436";
-      bubble.textContent = String(text || "");
-
-      wrap.appendChild(bubble);
-      chat.appendChild(wrap);
-      chat.scrollTop = chat.scrollHeight;
-    }
-
-    function clearReplayChat() {
-      var chat2 = document.getElementById("superagent-chat");
-      if (!chat2) return;
-      try {
-        chat2.innerHTML = "";
-      } catch {
-        while (chat2.firstChild) chat2.removeChild(chat2.firstChild);
-      }
-    }
-
-    function getReplayState() {
-      try {
-        if (!window.__SINGABLDR_HISTORY_REPLAY) window.__SINGABLDR_HISTORY_REPLAY = { running: false, timer: 0 };
-        return window.__SINGABLDR_HISTORY_REPLAY;
-      } catch {
-        return { running: false, timer: 0 };
-      }
-    }
-
-    function stopReplay() {
-      var st = getReplayState();
-      st.running = false;
-      try {
-        if (st.timer) clearTimeout(st.timer);
-      } catch {}
-      st.timer = 0;
-    }
-
-    function replayHistory() {
-      var st2 = getReplayState();
-      if (st2.running) {
-        stopReplay();
-        return;
-      }
-      var h3 = readHistorySafe();
-      if (!h3.length) return;
-
-      st2.running = true;
-      openSuperagentPanel();
-      clearReplayChat();
-      appendReplayBubble("assistant", "Replay started (" + String(h3.length) + " events)...");
-
-      var i2 = 0;
-      var tick = function () {
-        if (!st2.running) return;
-        if (i2 >= h3.length) {
-          appendReplayBubble("assistant", "Replay finished.");
-          stopReplay();
-          return;
-        }
-        var e2 = h3[i2++] || {};
-        var role = String(e2.role || "");
-        role = role === "user" ? "user" : "assistant";
-        appendReplayBubble(role, e2.text || "");
-
-        // Small dynamic delay (bounded) to keep UX responsive.
-        var t = String(e2.text || "");
-        var delay = 220 + Math.min(900, Math.floor(t.length / 6) * 60);
-        st2.timer = setTimeout(tick, delay);
-      };
-
-      st2.timer = setTimeout(tick, 350);
-    }
-
-    function ensureHistoryHeaderControls() {
-      var header = document.querySelector("#history-panel > div");
-      if (!header) return;
-
-      // Controls container exists in index.html (Clear + Close). Reuse it.
-      var controls = header.querySelector("div");
-      if (!controls) return;
-
-      if (controls.querySelector("[data-history-export-json]")) return; // already installed
-
-      function mkBtn(label, attr, onClick) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.textContent = label;
-        b.setAttribute(attr, "1");
-        b.style.background = "none";
-        b.style.border = "none";
-        b.style.color = "white";
-        b.style.cursor = "pointer";
-        b.style.fontSize = "14px";
-        b.style.fontFamily = "Nunito, sans-serif";
-        b.style.fontWeight = "900";
-        b.addEventListener("click", function (ev) {
-          try {
-            ev.preventDefault?.();
-            ev.stopPropagation?.();
-          } catch {}
-          onClick();
-        });
-        return b;
-      }
-
-      // Insert before "Clear" for a stable, compact layout.
-      var btnJson = mkBtn("Export .json", "data-history-export-json", exportHistoryJson);
-      var btnMd = mkBtn("Export .md", "data-history-export-md", exportHistoryMd);
-      var btnReplay = mkBtn("Replay", "data-history-replay", replayHistory);
-
-      try {
-        controls.insertBefore(btnReplay, controls.firstChild);
-        controls.insertBefore(btnMd, controls.firstChild);
-        controls.insertBefore(btnJson, controls.firstChild);
-      } catch {
-        controls.appendChild(btnJson);
-        controls.appendChild(btnMd);
-        controls.appendChild(btnReplay);
-      }
-    }
-
-    // Install once after DOM is ready (non-blocking).
-    try {
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", ensureHistoryHeaderControls, { once: true });
-      } else {
-        ensureHistoryHeaderControls();
-      }
-    } catch {
-      // ignore
-    }
-  });
-
-  // Script -> Mode: Auto (Default) should auto-open the Chat UI on initial load.
-  // Rationale: "Auto" implies script-driven experience; opening the chat panel
-  // makes the behavior visible and reduces "blank/hidden UI" confusion.
-  safe(function autoOpenChatUiWhenScriptAuto() {
-    function openChatUi() {
-      try {
-        var container = document.getElementById("superagent-container");
-        if (container) container.style.display = "block";
-      } catch {}
-      try {
-        var panel = document.getElementById("superagent-panel");
-        if (panel) panel.style.display = "flex";
-      } catch {}
-    }
-
-    function shouldAutoOpen() {
-      try {
-        var select = document.getElementById("script-select");
-        if (!select) return false;
-        return String(select.value || "").toLowerCase() === "auto";
-      } catch {
-        return false;
-      }
-    }
-
-    function run() {
-      if (!shouldAutoOpen()) return;
-      // Coalesce to avoid racing the main bundle's UI initialization.
-      try {
-        if (typeof window.__SINGABLDR_COALESCE === "function") {
-          window.__SINGABLDR_COALESCE("ui:autoOpenChat", openChatUi);
-          return;
-        }
-      } catch {}
-      try {
-        setTimeout(openChatUi, 0);
-      } catch {}
-    }
-
-    try {
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", run, { once: true });
-      } else {
-        run();
-      }
-    } catch {}
   });
 })();
