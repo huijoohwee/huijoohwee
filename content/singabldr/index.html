@@ -12,9 +12,17 @@
     <base href="./" />
 
     <!-- CSP-safe boot (no inline scripts / inline event handlers) -->
-    <script src="./assets/boot.js?v=20260406-1" defer></script>
+    <script src="./assets/boot.js?v=20260408-1" defer></script>
+
+    <!-- Preload critical assets (improves first interaction on mobile networks) -->
+    <link rel="preload" href="./assets/styles-c7d1dd9b.css" as="style" />
+    <link rel="modulepreload" href="./assets/app-F2P7J5VB.js?v=20260407-5" />
+    <link rel="preload" href="./assets/fonts/fredoka-one-400-1d92d7b002.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./assets/fonts/nunito-700-fd8b8aea8f.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./assets/fonts/nunito-900-fd8b8aea8f.woff2" as="font" type="font/woff2" crossorigin />
 
     <link rel="stylesheet" href="./assets/styles-c7d1dd9b.css" />
+    <link rel="stylesheet" href="./assets/overrides.css?v=20260408-1" />
   </head>
   <body>
 <div id="chat-bubbles-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 5;"></div>
@@ -55,7 +63,7 @@
     </div>
     
     <div id="settings-modal" style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(169, 225, 255, 0.8); z-index: 1000; display: none; flex-direction: column; justify-content: center; align-items: center; font-family: 'Fredoka One', cursive;">
-        <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: left; width: 90%; max-width: 350px; position: relative; box-sizing: border-box;">
+        <div style="background: white; padding: 30px; border-radius: 20px; border: 4px solid #2d3436; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); text-align: left; width: 90%; max-width: 350px; position: relative; box-sizing: border-box; height: 50vh; overflow-y: auto;">
             <button id="settings-close-btn" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer; color: #636e72;">✖</button>
             <h3 style="margin-top: 0; color: #2d3436; font-size: 24px; text-align: center;">Settings</h3>
 
@@ -63,7 +71,7 @@
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
                 <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
                     <span style="font-size: 16px; color: #2d3436;">Script</span>
-                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
                 </summary>
                 <div style="padding: 12px;">
                     <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Mode:</label>
@@ -96,7 +104,7 @@
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
                 <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
                     <span style="font-size: 16px; color: #2d3436;">Interaction Mode</span>
-                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
                 </summary>
                 <div style="padding: 12px;">
                     <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Mode:</label>
@@ -113,10 +121,10 @@
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
                 <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
                     <span style="font-size: 16px; color: #2d3436;">AI Model</span>
-                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
                 </summary>
                 <div style="padding: 12px;">
-                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Provider:</label>
+                    <label for="llm-model-select" style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Provider:</label>
                     <select id="llm-model-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
                         <option value="none">None</option>
                         <option value="byteplus_seed_2_lite">Dola-Seed-2.0-lite (BytePlus Ark)</option>
@@ -126,7 +134,7 @@
                         <option value="openai_gpt_realtime_mini">gpt-realtime-mini (OpenAI)</option>
                     </select>
 
-                    <label style="font-size: 14px; color: #2d3436; display: block; margin: 6px 0 5px 0; font-family: 'Nunito', sans-serif; font-weight: 900;">API Key (stored on this device):</label>
+                    <label for="llm-api-key-input" style="font-size: 14px; color: #2d3436; display: block; margin: 6px 0 5px 0; font-family: 'Nunito', sans-serif; font-weight: 900;">API Key (stored on this device):</label>
                     <input type="password" id="llm-api-key-input" placeholder="Paste your API key…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box; outline: none; margin-bottom: 8px;">
 
                     <div style="display: flex; gap: 10px; align-items: center; justify-content: space-between;">
@@ -146,7 +154,7 @@
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
                 <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
                     <span style="font-size: 16px; color: #2d3436;">Play Mode</span>
-                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
                 </summary>
                 <div style="padding: 12px;">
                     <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Mode:</label>
@@ -161,7 +169,7 @@
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
                 <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
                     <span style="font-size: 16px; color: #2d3436;">Board / Map</span>
-                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
                 </summary>
                 <div style="padding: 12px;">
                     <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Board:</label>
@@ -175,7 +183,7 @@
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
                 <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
                     <span style="font-size: 16px; color: #2d3436;">Theme</span>
-                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
                 </summary>
                 <div style="padding: 12px;">
                     <select id="theme-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;"></select>
@@ -185,7 +193,7 @@
             <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
                 <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
                     <span style="font-size: 16px; color: #2d3436;">Weather</span>
-                    <span data-toggle-label style="font-size: 12px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">Expand</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
                 </summary>
                 <div style="padding: 12px;">
                     <select id="weather-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px;"></select>

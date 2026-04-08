@@ -5439,6 +5439,58 @@ if (!window.__singabldr_runtime_patch_v1) {
     return await res.json();
   }
 
+  async function mirofishStartSimulation(
+    simulationId,
+    { platform = "parallel", maxRounds = null, force = true, enableGraphMemoryUpdate = false } = {}
+  ) {
+    const apiBase = getApiBase();
+    if (!apiBase) throw new Error("Missing window.__API_BASE");
+    const sid = String(simulationId || "").trim();
+    if (!sid) throw new Error("Missing simulation_id");
+
+    const qs = new URLSearchParams();
+    qs.set("platform", String(platform || "parallel"));
+    qs.set("force", force ? "true" : "false");
+    qs.set("enable_graph_memory_update", enableGraphMemoryUpdate ? "true" : "false");
+    if (maxRounds != null && Number.isFinite(Number(maxRounds))) qs.set("max_rounds", String(Math.max(1, Number(maxRounds))));
+
+    const res = await fetch(`${apiBase}/api/mirofish/simulations/${encodeURIComponent(sid)}/start?${qs.toString()}`, { method: "POST" });
+    if (!res.ok) {
+      const txt = await res.text().catch(() => "");
+      throw new Error(`mirofish start failed (${res.status}): ${txt.slice(0, 300)}`);
+    }
+    return await res.json();
+  }
+
+  async function mirofishStopSimulation(simulationId) {
+    const apiBase = getApiBase();
+    if (!apiBase) throw new Error("Missing window.__API_BASE");
+    const sid = String(simulationId || "").trim();
+    if (!sid) throw new Error("Missing simulation_id");
+
+    const res = await fetch(`${apiBase}/api/mirofish/simulations/${encodeURIComponent(sid)}/stop`, { method: "POST" });
+    if (!res.ok) {
+      const txt = await res.text().catch(() => "");
+      throw new Error(`mirofish stop failed (${res.status}): ${txt.slice(0, 300)}`);
+    }
+    return await res.json();
+  }
+
+  function mirofishOpenStream(simulationId, { platform = "" } = {}) {
+    const apiBase = getApiBase();
+    const sid = String(simulationId || "").trim();
+    if (!apiBase || !sid) return null;
+
+    const qs = new URLSearchParams();
+    if (platform) qs.set("platform", String(platform));
+    const url = `${apiBase}/api/mirofish/simulations/${encodeURIComponent(sid)}/stream?${qs.toString()}`;
+    try {
+      return new EventSource(url);
+    } catch {
+      return null;
+    }
+  }
+
   function patchUrlToIframeBubble() {
     if (typeof un !== "function") return;
     const _origUn = un;
@@ -5575,6 +5627,69 @@ if (!window.__singabldr_runtime_patch_v1) {
     } catch {}
   }
 
+  // ---- DeerFlow unified LLM surface (single calling surface) ----------------
+  const LS_KEY_FLOWINFISH_SESSION_ID = "singabldr.flowinfish.session_id";
+
+  function getFlowinfishSessionId() {
+    try {
+      const existing = localStorage.getItem(LS_KEY_FLOWINFISH_SESSION_ID);
+      if (existing && typeof existing === "string" && existing.length >= 8) return existing;
+    } catch {}
+
+    let next = "";
+    try {
+      const buf = new Uint8Array(12);
+      crypto.getRandomValues(buf);
+      next = Array.from(buf)
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+    } catch {
+      next = `sess_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
+    }
+
+    try {
+      localStorage.setItem(LS_KEY_FLOWINFISH_SESSION_ID, next);
+    } catch {}
+    return next;
+  }
+
+  function buildDeerflowLlmHeaders({ providerKey } = {}) {
+    const headers = { "Content-Type": "application/json", "X-FlowinFish-Session": getFlowinfishSessionId() };
+    try {
+      const pk = typeof providerKey === "string" ? providerKey.trim() : "";
+      if (pk) headers["X-FlowinFish-Provider"] = pk;
+    } catch {}
+    return headers;
+  }
+
+  async function deerflowUpsertLlmSessionKey({ providerKey, apiKey } = {}) {
+    const apiBase = getApiBase();
+    if (!apiBase) return { ok: false, error: "Missing window.__API_BASE" };
+    const key = typeof apiKey === "string" ? apiKey.trim() : "";
+    if (!key) return { ok: false, error: "Missing API key" };
+    const res = await fetch(`${apiBase}/api/llm/session/key`, {
+      method: "PUT",
+      headers: buildDeerflowLlmHeaders({ providerKey }),
+      body: JSON.stringify({ apiKey: key, providerKey: providerKey || "" }),
+    });
+    if (!res.ok) {
+      const txt = await res.text().catch(() => "");
+      return { ok: false, error: `deerflow key store failed (${res.status}): ${txt.slice(0, 200)}` };
+    }
+    return { ok: true };
+  }
+
+  async function deerflowClearLlmSessionKey() {
+    const apiBase = getApiBase();
+    if (!apiBase) return { ok: false, error: "Missing window.__API_BASE" };
+    const res = await fetch(`${apiBase}/api/llm/session/key`, {
+      method: "DELETE",
+      headers: buildDeerflowLlmHeaders(),
+    });
+    if (!res.ok) return { ok: false, error: `deerflow key clear failed (${res.status})` };
+    return { ok: true };
+  }
+
   function readSelectedLlmProviderKey() {
     try {
       const v = localStorage.getItem(LS_KEY_LLM_MODEL);
@@ -5679,6 +5794,9 @@ if (!window.__singabldr_runtime_patch_v1) {
                 apiKeyInput.value = candidate.trim();
                 persistLlmApiKey(candidate.trim(), { remember: rememberCb.checked });
                 updateLlmStatusText(statusEl, { providerKey, apiKey: candidate.trim() });
+                try {
+                  void deerflowUpsertLlmSessionKey({ providerKey, apiKey: candidate.trim() });
+                } catch {}
               } catch {}
             },
             0
@@ -5691,6 +5809,19 @@ if (!window.__singabldr_runtime_patch_v1) {
       persistSelectedLlmProviderKey(modelSelect.value);
       updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: readLlmApiKeyMaybe() });
       syncEnabledState();
+      // Best-effort: keep DeerFlow session key bound to the current provider selection.
+      // Coalesced to avoid churn under rapid switching.
+      try {
+        wn?.schedule?.(
+          "deerflow:llm:bind",
+          () => {
+            const k = readLlmApiKeyMaybe();
+            if (!k) return;
+            void deerflowUpsertLlmSessionKey({ providerKey: modelSelect.value, apiKey: k });
+          },
+          150
+        );
+      } catch {}
     });
 
     rememberCb.addEventListener("change", () => {
@@ -5708,6 +5839,9 @@ if (!window.__singabldr_runtime_patch_v1) {
         () => {
           persistLlmApiKey(nextKey, { remember: rememberCb.checked });
           updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: readLlmApiKeyMaybe() });
+          // Store server-side (single LLM calling surface) so browser no longer needs to send keys on each call.
+          const k = readLlmApiKeyMaybe();
+          if (k) void deerflowUpsertLlmSessionKey({ providerKey: modelSelect.value, apiKey: k });
         },
         250
       );
@@ -5720,6 +5854,9 @@ if (!window.__singabldr_runtime_patch_v1) {
       rememberCb.checked = false;
       writeRememberLlmKeyFlag(false);
       updateLlmStatusText(statusEl, { providerKey: modelSelect.value, apiKey: null });
+      try {
+        void deerflowClearLlmSessionKey();
+      } catch {}
     });
   }
 
@@ -5806,7 +5943,6 @@ if (!window.__singabldr_runtime_patch_v1) {
   async function invokeLlmCommand({ providerKey, apiKey, userText, strict = false }) {
     const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
     if (!provider) throw new Error("Unknown LLM provider");
-    if (!apiKey) throw new Error("Missing API key");
     if (providerKey && !llmProviderSupportsText(providerKey)) {
       throw new Error(
         `Selected model is not supported for text chat in Singabldr (${provider?.label || providerKey}).`,
@@ -5923,13 +6059,12 @@ if (!window.__singabldr_runtime_patch_v1) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 20_000);
       try {
+        const apiBase = getApiBase();
+        if (!apiBase) throw new Error("Missing window.__API_BASE");
         const endpoint = isResponsesApi ? "responses" : "chat/completions";
-        const res = await fetch(`${provider.baseUrl}/${endpoint}`, {
+        const res = await fetch(`${apiBase}/api/llm/${endpoint}`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
+          headers: buildDeerflowLlmHeaders({ providerKey }),
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
@@ -5971,7 +6106,6 @@ if (!window.__singabldr_runtime_patch_v1) {
   async function invokeLlmChat({ providerKey, apiKey, userText }) {
     const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
     if (!provider) throw new Error("Unknown LLM provider");
-    if (!apiKey) throw new Error("Missing API key");
     if (providerKey && !llmProviderSupportsText(providerKey)) {
       throw new Error(
         `Selected model is not supported for text chat in Singabldr (${provider?.label || providerKey}).`,
@@ -6016,13 +6150,12 @@ if (!window.__singabldr_runtime_patch_v1) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 20_000);
       try {
+        const apiBase = getApiBase();
+        if (!apiBase) throw new Error("Missing window.__API_BASE");
         const endpoint = isResponsesApi ? "responses" : "chat/completions";
-        const res = await fetch(`${provider.baseUrl}/${endpoint}`, {
+        const res = await fetch(`${apiBase}/api/llm/${endpoint}`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
+          headers: buildDeerflowLlmHeaders({ providerKey }),
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
@@ -6249,7 +6382,6 @@ if (!window.__singabldr_runtime_patch_v1) {
   async function invokeFlowinFishPlan({ providerKey, apiKey, userText, promptKey = "planner" }) {
     const provider = providerKey ? LLM_PROVIDERS[providerKey] : null;
     if (!provider) throw new Error("Unknown LLM provider");
-    if (!apiKey) throw new Error("Missing API key");
     if (providerKey && !llmProviderSupportsText(providerKey)) {
       throw new Error(
         `Selected model is not supported for text chat in Singabldr (${provider?.label || providerKey}).`,
@@ -6440,13 +6572,12 @@ if (!window.__singabldr_runtime_patch_v1) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 20_000);
       try {
+        const apiBase = getApiBase();
+        if (!apiBase) throw new Error("Missing window.__API_BASE");
         const endpoint = isResponsesApi ? "responses" : "chat/completions";
-        const res = await fetch(`${provider.baseUrl}/${endpoint}`, {
+        const res = await fetch(`${apiBase}/api/llm/${endpoint}`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
+          headers: buildDeerflowLlmHeaders({ providerKey }),
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
@@ -6609,12 +6740,11 @@ if (!window.__singabldr_runtime_patch_v1) {
                   messages: strictMessages,
                 };
             const endpoint = isResponsesApi ? "responses" : "chat/completions";
-            const res2 = await fetch(`${provider.baseUrl}/${endpoint}`, {
+            const apiBase2 = getApiBase();
+            if (!apiBase2) throw new Error("Missing window.__API_BASE");
+            const res2 = await fetch(`${apiBase2}/api/llm/${endpoint}`, {
               method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${apiKey}`,
-              },
+              headers: buildDeerflowLlmHeaders({ providerKey }),
               body: JSON.stringify(strictPayload),
               signal: controller.signal,
             });
@@ -6684,8 +6814,6 @@ if (!window.__singabldr_runtime_patch_v1) {
       const trimmed = msg.trim();
       if (!trimmed) return _origUn(message, isAuto);
 
-      if (isAuto) return _origUn(message, isAuto);
-
       const forceLlm = trimmed.startsWith("/llm ");
       const forceLocal = trimmed.startsWith("/local ");
       const forceChat = trimmed.startsWith("/chat ");
@@ -6706,6 +6834,16 @@ if (!window.__singabldr_runtime_patch_v1) {
       // Server-side FlowinFish pipeline trigger (no keys exposed to browser).
       // Usage: upload a notes file via the file picker, then type: /push-to-prod
       const lowerQuick = userText.toLowerCase();
+      // IMPORTANT: allow a small set of orchestration commands in Auto mode.
+      // Auto scripts call `un(..., true)`. We still want `/mirofish ...` to work end-to-end
+      // while keeping LLM calls disabled for background/auto triggers.
+      const allowAutoOrchestration =
+        lowerQuick === "/push-to-prod" ||
+        lowerQuick === "/push" ||
+        lowerQuick === "/ppt" ||
+        lowerQuick.startsWith("/mirofish") ||
+        lowerQuick.startsWith("/mf");
+      if (isAuto && !allowAutoOrchestration) return _origUn(message, isAuto);
       if (lowerQuick === "/push-to-prod" || lowerQuick === "/push" || lowerQuick === "/ppt") {
         try {
           const file = window.__singabldr_last_uploaded_file_v1 || null;
@@ -6744,8 +6882,115 @@ if (!window.__singabldr_runtime_patch_v1) {
         }
       }
 
+      // MiroFish simulation trigger + SSE stream (proxied by DeerFlow Gateway).
+      // Usage:
+      //   /mirofish sim_xxxx [parallel|reddit|twitter]
+      //   /mirofish stream sim_xxxx [reddit|twitter]
+      //   /mirofish stop sim_xxxx
+      if (lowerQuick.startsWith("/mirofish") || lowerQuick.startsWith("/mf")) {
+        const parts = userText.trim().split(/\s+/).filter(Boolean);
+        const verb = (parts[1] || "").toLowerCase();
+        const isStop = verb === "stop";
+        const isStreamOnly = verb === "stream";
+        const simId = isStop || isStreamOnly ? (parts[2] || "").trim() : (parts[1] || "").trim();
+        const platformRaw = (isStop ? "" : (isStreamOnly ? parts[3] : parts[2]) || "").toLowerCase();
+        const platform = platformRaw === "twitter" || platformRaw === "reddit" || platformRaw === "parallel" ? platformRaw : "";
+        if (!simId) {
+          if (typeof Ee === "function") Ee("Usage: /mirofish sim_xxxx [parallel|reddit|twitter]  (or /mirofish stop sim_xxxx)", false);
+          return;
+        }
+
+        const closePrevStream = () => {
+          try {
+            const prev = window.__singabldr_mirofish_es_v1;
+            if (prev && typeof prev.close === "function") prev.close();
+          } catch {}
+          try {
+            window.__singabldr_mirofish_es_v1 = null;
+            window.__singabldr_mirofish_sim_id_v1 = null;
+          } catch {}
+        };
+
+        const formatActionSnippet = (action) => {
+          const plat = String(action?.platform || "mirofish").slice(0, 16);
+          const who = String(action?.agent_name || `agent#${action?.agent_id ?? "?"}`).slice(0, 22);
+          const typ = String(action?.action_type || "ACTION").slice(0, 24);
+          const result = typeof action?.result === "string" ? action.result.trim() : "";
+          const argText = (() => {
+            try {
+              const a = action?.action_args && typeof action.action_args === "object" ? action.action_args : {};
+              const s = JSON.stringify(a);
+              return s.length > 0 && s !== "{}" ? s : "";
+            } catch {
+              return "";
+            }
+          })();
+          const tail = (result || argText).replace(/\s+/g, " ").trim();
+          const clipped = tail.length > 120 ? tail.slice(0, 120) + "…" : tail;
+          return clipped ? `${plat}:${who} ${typ} — ${clipped}` : `${plat}:${who} ${typ}`;
+        };
+
+        (async () => {
+          try {
+            if (typeof Ee === "function") Ee(userText, true);
+            flowinfishEmit({ type: "chat:status", text: `🎣 MiroFish: ${isStop ? "stopping" : "starting"} ${simId}…` });
+
+            if (isStop) {
+              closePrevStream();
+              await mirofishStopSimulation(simId);
+              flowinfishEmit({ type: "chat:assistant", text: `MiroFish stopped: ${simId}` });
+              return;
+            }
+
+            closePrevStream();
+            if (!isStreamOnly) {
+              await mirofishStartSimulation(simId, { platform: platform || "parallel", force: true });
+            }
+
+            const streamPlatform = platform === "twitter" || platform === "reddit" ? platform : "";
+            const es = mirofishOpenStream(simId, { platform: streamPlatform });
+            if (!es) throw new Error("Failed to open SSE stream. Ensure DeerFlow /api/mirofish is reachable.");
+            try {
+              window.__singabldr_mirofish_es_v1 = es;
+              window.__singabldr_mirofish_sim_id_v1 = simId;
+            } catch {}
+
+            flowinfishEmit({ type: "chat:status", text: "📡 Streaming MiroFish actions into Swarm UI…" });
+
+            es.addEventListener("action", (ev) => {
+              try {
+                const action = JSON.parse(String(ev?.data || "{}"));
+                const snippet = formatActionSnippet(action);
+                if (snippet) flowinfishEmit({ type: "swarm:bubbles", snippets: [snippet], source: "mirofish", count: 1 });
+                if (snippet) flowinfishEmit({ type: "chat:status", text: snippet });
+              } catch {}
+            });
+
+            es.addEventListener("done", (ev) => {
+              try {
+                const data = JSON.parse(String(ev?.data || "{}"));
+                const st = String(data?.runner_status || "done");
+                flowinfishEmit({ type: "chat:assistant", text: `MiroFish stream ended (${st}).` });
+              } catch {
+                flowinfishEmit({ type: "chat:assistant", text: "MiroFish stream ended." });
+              }
+              closePrevStream();
+            });
+
+            es.onerror = () => {
+              flowinfishEmit({ type: "chat:status", text: "⚠️ MiroFish stream error (will stop). Check DeerFlow↔MiroFish connectivity." });
+              closePrevStream();
+            };
+          } catch (e) {
+            closePrevStream();
+            flowinfishEmit({ type: "chat:assistant", text: `❌ MiroFish error: ${String(e?.message || e)}` });
+          }
+        })();
+        return;
+      }
+
       const apiKey = readLlmApiKeyMaybe();
-      if (!apiKey) return _origUn(userText, isAuto);
+      // Unified LLM surface: key is stored server-side; client key is optional after provisioning.
 
       const providerKey = readSelectedLlmProviderKey();
       if (providerKey === "none") return _origUn(userText, isAuto);

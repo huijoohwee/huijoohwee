@@ -62,6 +62,9 @@
 /content/*/vendor/*
   Cache-Control: public, max-age=31536000, immutable
 
+/__chat_proxy/*
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
 /content/singabldr/boards/*.json
   Cache-Control: public, max-age=0, must-revalidate
 
