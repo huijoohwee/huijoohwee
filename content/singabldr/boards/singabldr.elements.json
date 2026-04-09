@@ -65,7 +65,7 @@
   "swarm": {
     "version": "swarm@1",
     "agents": [
-      { "id": "flowinfish", "role": "superagent", "tags": ["deer-flow", "mirofish"] },
+    { "id": "flowinfish", "role": "superagent", "tags": ["local-llm", "local-sim"] },
       { "id": "citizen_swarm", "role": "swarm_engine", "tags": ["bubbles", "sentiment", "poi"] }
     ],
     "loops": {
