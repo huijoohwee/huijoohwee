@@ -1,6 +1,5 @@
 import {
   OPENAI_HOST,
-  getDeerflowUpstreamBase,
   isLocalHost,
   jsonResponse,
   normalizeHost,
@@ -10,14 +9,14 @@ import {
 
 const CHAT_PROXY_PREFIX = '/__chat_proxy';
 
-const pickUpstreamBase = ({ provider, requestedUpstream, env, deerflowOnly }) => {
-  const deerflowBase = getDeerflowUpstreamBase(env);
-  if (deerflowOnly || provider === 'deerflow') {
-    return deerflowBase;
-  }
+const pickUpstreamBase = ({ provider, requestedUpstream, env }) => {
+  // Fully independent mode: no DeerFlow upstream support here.
+  // The proxy either targets:
+  // - OpenAI (https://api.openai.com) when provider=openai
+  // - a configured HTTPS upstream (env.KNOWGRPH_CHAT_PROXY_UPSTREAM or request override)
   if (provider === 'openai') return 'https://api.openai.com';
   if (requestedUpstream) return requestedUpstream;
-  return String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim() || deerflowBase;
+  return String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim();
 };
 
 export async function onRequest(context) {
@@ -41,18 +40,14 @@ export async function onRequest(context) {
   }
 
   const provider = normalizeHost(readHeader(request.headers, 'x-kg-chat-provider'));
-  const gatewayMode = String(env.KNOWGRPH_CHAT_GATEWAY_MODE || '').trim().toLowerCase();
-  const deerflowOnly = gatewayMode === 'deerflow-only';
-  if (deerflowOnly && provider && provider !== 'deerflow') {
-    return jsonResponse(request, { ok: false, error: 'Chat proxy is running in deerflow-only gateway mode' }, 400);
-  }
-
   const upstreamBaseRaw = pickUpstreamBase({
     provider,
     requestedUpstream: readHeader(request.headers, 'x-kg-chat-upstream'),
     env,
-    deerflowOnly,
   });
+  if (!upstreamBaseRaw) {
+    return jsonResponse(request, { ok: false, error: 'Missing chat proxy upstream configuration' }, 500);
+  }
   let upstreamBase;
   try {
     upstreamBase = new URL(upstreamBaseRaw);
@@ -69,7 +64,7 @@ export async function onRequest(context) {
     return jsonResponse(request, { ok: false, error: 'Chat proxy requires HTTPS for non-local upstream hosts' }, 403);
   }
 
-  const requiresOpenAiKey = !deerflowOnly && (provider === 'openai' || upstreamHostname === OPENAI_HOST);
+  const requiresOpenAiKey = provider === 'openai' || upstreamHostname === OPENAI_HOST;
   const openAiApiKey = (
     readHeader(request.headers, 'x-kg-chat-api-key') || String(env.KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY || '').trim()
   ).slice(0, 512);
@@ -84,10 +79,11 @@ export async function onRequest(context) {
     }
   }
 
-  const suffix = requestUrl.pathname.startsWith(CHAT_PROXY_PREFIX)
+  const suffixRaw = requestUrl.pathname.startsWith(CHAT_PROXY_PREFIX)
     ? requestUrl.pathname.slice(CHAT_PROXY_PREFIX.length) || '/v1/chat/completions'
     : '/v1/chat/completions';
-  const upstreamPath = suffix.startsWith('/') ? suffix : `/${suffix}`;
+  let upstreamPath = suffixRaw.startsWith('/') ? suffixRaw : `/${suffixRaw}`;
+
   const upstreamUrl = new URL(`${upstreamPath}${requestUrl.search || ''}`, upstreamBase);
 
   const headers = new Headers();

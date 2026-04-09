@@ -48,10 +48,23 @@
     }
   }
 
+  function readScriptPreset() {
+    try {
+      var select = document.getElementById("script-preset-select");
+      if (!select) return "";
+      return String(select.value || "").trim().toLowerCase();
+    } catch {
+      return "";
+    }
+  }
+
   // Script -> Mode: Auto (Default) should auto-open the Chat UI on initial load.
   safe(function autoOpenChatUiWhenScriptAuto() {
     function run() {
       if (readScriptMode() !== "auto") return;
+      // When SimEngine (Live, Procedural) is running, do not auto-open the chat UI.
+      // This avoids interrupting the simulation with onboarding prompts.
+      if (readScriptPreset() === "script-simengine.json") return;
       coalesce("ui:autoOpenChat", openChatUi);
     }
 
@@ -66,6 +79,7 @@
       if (select) {
         select.addEventListener("change", function () {
           if (readScriptMode() !== "auto") return;
+          if (readScriptPreset() === "script-simengine.json") return;
           coalesce("ui:autoOpenChat:change", openChatUi);
         });
       }
@@ -206,4 +220,3 @@
     } catch {}
   });
 })();
-

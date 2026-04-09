@@ -53,6 +53,60 @@
     }
   });
 
+  // Shared throttle built on the same keyspace.
+  // Usage: __SINGABLDR_THROTTLE(key, fn, waitMs)
+  safe(function exposeThrottle() {
+    /** @type {Map<string, {at:number, timer:any, fn:(() => void) | null}>} */
+    var state = new Map();
+
+    function now() {
+      return Date.now();
+    }
+
+    /** @param {string} key @param {() => void} fn @param {number} waitMs */
+    function throttle(key, fn, waitMs) {
+      var k = String(key || "default");
+      var w = Number(waitMs || 0);
+      if (!(w > 0)) {
+        coalesce(k, fn);
+        return;
+      }
+      var entry = state.get(k);
+      if (!entry) {
+        entry = { at: 0, timer: 0, fn: null };
+        state.set(k, entry);
+      }
+      entry.fn = fn;
+      var elapsed = now() - entry.at;
+      if (elapsed >= w && !entry.timer) {
+        entry.at = now();
+        coalesce("throttle:" + k, function () {
+          try {
+            entry.fn && entry.fn();
+          } catch {}
+        });
+        return;
+      }
+      if (entry.timer) return;
+      var delay = Math.max(0, w - elapsed);
+      entry.timer = setTimeout(function () {
+        entry.timer = 0;
+        entry.at = now();
+        coalesce("throttle:" + k + ":timer", function () {
+          try {
+            entry.fn && entry.fn();
+          } catch {}
+        });
+      }, delay);
+    }
+
+    try {
+      window.__SINGABLDR_THROTTLE = throttle;
+    } catch {
+      // ignore
+    }
+  });
+
   // URL aliasing (SSOT): prevent legacy placeholder files from breaking runtime.
   // This runs early and is intentionally narrow (only affects a few known assets).
   safe(function installFetchUrlAliases() {
@@ -64,6 +118,9 @@
       if (!u) return u;
       // Match absolute or relative paths.
       u = u.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.json");
+      // Legacy locations: some servers (hybrid python http.server) don't have root copies.
+      u = u.replace(/(^|\/)singabldr\.assets\.json(\b|$)/, "$1boards/singabldr.assets.json");
+      u = u.replace(/(^|\/)singabldr\.elements\.json(\b|$)/, "$1boards/singabldr.elements.json");
       u = u.replace(/(^|\/)script-singabuildr-0000\.json(\b|$)/, "$1script-singabuildr-0000.v1.json");
       return u;
     }
@@ -75,6 +132,37 @@
         if (next && next !== url) {
           if (typeof input === "string") input = next;
           else if (typeof Request !== "undefined" && input instanceof Request) input = new Request(next, input);
+        }
+
+        // MAX-SECURITY: disable oEmbed fetching (prevents pulling third-party HTML/embeds).
+        // The app will simply skip rendering rich embeds for these links.
+        // Return a small JSON payload so callers doing `await res.json()` won't throw.
+        if (String(next || url).indexOf("/api/oembed?") >= 0) {
+          return Promise.resolve(
+            new Response(JSON.stringify({ ok: false, error: "disabled_by_policy" }), {
+              status: 200,
+              headers: {
+                "content-type": "application/json; charset=utf-8",
+                "cache-control": "no-store",
+              },
+            }),
+          );
+        }
+
+        // Dev UX: silence missing local secrets file noise.
+        // The main bundle may probe `./user-secrets.local.json` for optional local config.
+        // Return empty JSON to avoid console 404 errors.
+        var u2 = String(next || url);
+        if (u2.endsWith("/user-secrets.local.json") || u2 === "./user-secrets.local.json" || u2 === "user-secrets.local.json") {
+          return Promise.resolve(
+            new Response("{}", {
+              status: 200,
+              headers: {
+                "content-type": "application/json; charset=utf-8",
+                "cache-control": "no-store",
+              },
+            }),
+          );
         }
       } catch {
         // ignore
@@ -402,21 +490,30 @@
   });
 
   safe(function setApiBase() {
-    // Backend API base (DeerFlow gateway behind nginx). Keep secrets server-side.
+    // Backend API base (same-origin Cloudflare Pages Functions in production).
     //
     // Priority:
-    //  1) URL override: ?apiBase=http://localhost:2026 (persist to localStorage)
-    //  2) localStorage override
-    //  3) localhost default (dev)
-    //  4) production default
+    //  1) URL override (localhost only): ?apiBase=http://localhost:5175  (persist to localStorage)
+    //  2) localStorage override (localhost only)
+    //  3) default: same-origin
     //
-    // This avoids editing files for local dev while keeping a safe default for production.
+    // Production hardening:
+    // - forbid cross-origin apiBase overrides (must stay same-origin)
+    // - clear any leftover overrides automatically
     var LS_KEY = "singabldr.apiBase";
     var url = null;
     try {
       url = new URL(window.location.href);
     } catch {
       url = null;
+    }
+
+    var isLocalhost = false;
+    try {
+      var host0 = String(window.location && window.location.hostname ? window.location.hostname : "");
+      isLocalhost = host0 === "localhost" || host0 === "127.0.0.1";
+    } catch {
+      isLocalhost = false;
     }
 
     /** @param {string} raw */
@@ -436,7 +533,7 @@
       paramBase = "";
     }
 
-    if (paramBase) {
+    if (paramBase && isLocalhost) {
       try {
         localStorage.setItem(LS_KEY, paramBase);
       } catch {
@@ -452,10 +549,10 @@
     } catch {
       storedBase = "";
     }
-    if (storedBase) {
+    if (storedBase && isLocalhost) {
       window.__API_BASE = storedBase;
-      // Validate persisted base. If a different workspace hijacked the port,
-      // clear it and fall back to auto-detection.
+      // Validate persisted base (best-effort). If it is unreachable, clear it so
+      // future loads fall back to same-origin.
       try {
         var validateTimeout = 700;
         var controller2 = null;
@@ -479,151 +576,32 @@
           .fetch(storedBase + "/health", { method: "GET", mode: "cors", cache: "no-store", signal: signal2 })
           .then(function (res) {
             if (!res || !res.ok) throw new Error("health_not_ok");
-            return res.text();
-          })
-          .then(function (txt) {
-            var t = String(txt || "").toLowerCase();
-            var ok =
-              t.indexOf("deer-flow") >= 0 ||
-              t.indexOf("\"service\":\"deer-flow-nginx\"") >= 0 ||
-              t.indexOf("\"service\":\"deer-flow-gateway\"") >= 0;
-            if (!ok) throw new Error("health_not_deerflow");
+            return true;
           })
           .catch(function () {
             try {
               localStorage.removeItem(LS_KEY);
-            } catch {}
-            // Re-run detection in the background.
-            try {
-              setTimeout(function () {
-                try {
-                  window.__API_BASE = "";
-                } catch {}
-              }, 0);
             } catch {}
           })
           .finally(function () {
             if (timer2) clearTimeout(timer2);
           });
       } catch {}
-      // Continue boot without blocking; fetch hook will pick up updates.
-      // Fall through to auto-detection only if no storedBase existed.
       return;
     }
 
-    var isLocalhost = false;
-    try {
-      var host = String(window.location && window.location.hostname ? window.location.hostname : "");
-      isLocalhost = host === "localhost" || host === "127.0.0.1";
-    } catch {
-      isLocalhost = false;
-    }
-
-    // Local dev default: use same-origin. A local dev server can proxy `/api/llm/*`
-    // to DeerFlow (or another upstream) to avoid CORS + port conflicts.
-    // Pages Functions deployment (recommended): keep `/api/llm/*` same-origin on airvio.co.
-    // If you want a separate API host, set it via `?apiBase=` or localStorage `singabldr.apiBase`.
-    window.__API_BASE = window.__API_BASE || window.location.origin;
-
-    // Local dev hardening: auto-detect DeerFlow when the default port is occupied
-    // by another workspace (commonly a Next/Vite server).
-    //
-    // We do NOT block initial boot; we update __API_BASE in the background and
-    // persist to localStorage for subsequent requests.
-    if (!isLocalhost) return;
-    if (paramBase || storedBase) return;
-    if (typeof window.fetch !== "function") return;
-
-    function makeDeerflowCandidates() {
-      // Probe a small port window because 2026 is commonly taken by other workspaces
-      // (e.g. Next.js dev servers). Our `npm run hybrid` will auto-pick a free port.
-      var ports = [8001, 2026, 2027, 2028, 3026];
-      var out = [];
-      for (var i = 0; i < ports.length; i++) {
-        out.push("http://localhost:" + ports[i]);
-        out.push("http://127.0.0.1:" + ports[i]);
-      }
-      return out;
-    }
-
-    var candidates = makeDeerflowCandidates();
-
-    function looksLikeDeerFlowHealth(text) {
-      var t = String(text || "").toLowerCase();
-      if (!t) return false;
-      return (
-        t.indexOf("deer-flow") >= 0 ||
-        t.indexOf("\"service\":\"deer-flow-nginx\"") >= 0 ||
-        t.indexOf("\"service\":\"deer-flow-gateway\"") >= 0 ||
-        t.indexOf("\"status\":\"healthy\"") >= 0
-      );
-    }
-
-    function probe(base, timeoutMs) {
-      var controller = null;
-      var signal = null;
+    // Production: clear any leftover overrides.
+    if (!isLocalhost) {
       try {
-        controller = new AbortController();
-        signal = controller.signal;
-      } catch {
-        controller = null;
-        signal = null;
-      }
-
-      var timer = null;
-      if (controller) {
-        timer = setTimeout(function () {
-          try {
-            controller.abort();
-          } catch {}
-        }, timeoutMs);
-      }
-
-      return window
-        .fetch(base + "/health", { method: "GET", mode: "cors", cache: "no-store", signal: signal })
-        .then(function (res) {
-          return res
-            .text()
-            .then(function (txt) {
-              return { ok: res && res.ok, text: txt };
-            })
-            .catch(function () {
-              return { ok: false, text: "" };
-            });
-        })
-        .catch(function () {
-          return { ok: false, text: "" };
-        })
-        .finally(function () {
-          if (timer) clearTimeout(timer);
-        });
+        localStorage.removeItem(LS_KEY);
+      } catch {}
     }
 
-    (function detectAndPersistApiBase() {
-      var i = 0;
-      function next() {
-        if (i >= candidates.length) return;
-        var base = candidates[i++];
-        probe(base, 600).then(function (result) {
-          if (result && result.ok && looksLikeDeerFlowHealth(result.text)) {
-            try {
-              localStorage.setItem(LS_KEY, base);
-            } catch {}
-            window.__API_BASE = base;
-            return;
-          }
-          next();
-        });
-      }
-      // Run after other boot tasks schedule, without blocking.
-      setTimeout(next, 0);
-    })();
+    // Default: same-origin.
+    window.__API_BASE = window.__API_BASE || window.location.origin;
   });
 
-  // Inject FlowinFish session header into API fetch calls (SSOT for unified LLM keys).
-  // This ensures *all* browser → DeerFlow requests (including LangGraph SDK calls)
-  // carry the same session id, so LangGraph runs can reuse the key provisioned
-  // via Settings → AI Model.
+  // Inject FlowinFish session header into same-origin API fetch calls.
   safe(function installFlowinfishSessionFetchHook() {
     if (typeof window.fetch !== "function") return;
     var LS_KEY = "singabldr.flowinfish.session_id";

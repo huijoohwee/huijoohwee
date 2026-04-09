@@ -1,0 +1,14 @@
+{
+  "version": "singabldr-script@1",
+  "meta": {
+    "name": "SimEngine (Live, Procedural)",
+    "durationSeconds": 15,
+    "loop": false,
+    "notes": "Selecting this script activates the live SimEngine loop via boot-sim-engine.js."
+  },
+  "steps": [
+    { "timestamp": 0, "action": "log", "message": "SimEngine selected. Live procedural simulation loop will take over." },
+    { "timestamp": 1, "action": "sentiment", "value": "neutral", "message": "Bootstrapping economy + traffic + sentiment loops..." }
+  ]
+}
+

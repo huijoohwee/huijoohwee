@@ -12,10 +12,11 @@
     <base href="./" />
 
     <!-- CSP-safe boot (no inline scripts / inline event handlers) -->
-    <script src="./assets/boot.js?v=20260409-2" defer></script>
-    <script src="./assets/boot-perf-ui.js?v=20260409-1" defer></script>
+    <script src="./assets/boot.js?v=20260409-8" defer></script>
+    <script src="./assets/boot-perf-ui.js?v=20260409-2" defer></script>
     <script src="./assets/boot-history.js?v=20260409-1" defer></script>
-    <script src="./assets/boot-script.js?v=20260409-1" defer></script>
+    <script src="./assets/boot-script.js?v=20260409-2" defer></script>
+    <script src="./assets/boot-sim-engine.js?v=20260409-15" defer></script>
 
     <!-- Preload critical assets (improves first interaction on mobile networks) -->
     <link rel="preload" href="./assets/styles-c7d1dd9b.css" as="style" />
@@ -97,6 +98,7 @@
                     <select id="script-preset-select" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; margin-bottom: 8px;">
                         <option value="script-0000.json">AI Agent Boom Demo (script-0000.json)</option>
                         <option value="script-singabuildr-0000.json">Swarm Loop (script-singabuildr-0000.json)</option>
+                        <option value="script-simengine.json" selected>SimEngine (Live, Procedural)</option>
                     </select>
 
                     <input type="file" id="script-file-input" style="display: none;" accept=".json">
@@ -107,7 +109,47 @@
                         <button id="script-url-btn" style="background: #00b894; color: white; border: 3px solid #2d3436; padding: 8px 12px; font-size: 14px; border-radius: 8px; cursor: pointer; font-family: 'Fredoka One', cursive;">Load</button>
                     </div>
 
-                    <p id="script-status" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">Default AI behavior is active.</p>
+                    <p id="script-status" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 4px; margin-bottom: 0;">SimEngine (Live, Procedural) is the default preset.</p>
+                </div>
+            </details>
+
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">SimEngine</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 12px; color: #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900;">Status:</span>
+                        <span id="simengine-badge" style="display: inline-block; padding: 2px 8px; border-radius: 999px; border: 2px solid #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.2px; background: #dfe6e9; color: #2d3436; white-space: nowrap;">
+                            IDLE
+                        </span>
+                    </div>
+                    <label style="display: flex; gap: 10px; align-items: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: #2d3436; cursor: pointer; margin-bottom: 10px;">
+                        <input type="checkbox" id="simengine-enabled" style="transform: scale(1.15);">
+                        Enable SimEngine (procedural)
+                    </label>
+
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Tick seconds (3–60):</label>
+                    <input type="number" id="simengine-tick-seconds" value="8" min="3" max="60" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box; outline: none; margin-bottom: 10px;">
+
+                    <label style="display: flex; gap: 10px; align-items: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: #2d3436; cursor: pointer; margin-bottom: 10px;">
+                        <input type="checkbox" id="simengine-use-deerflow" style="transform: scale(1.15);">
+                        Use server events (optional)
+                    </label>
+
+                    <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Simulation ID:</label>
+                    <input type="text" id="simengine-mirofish-id" placeholder="sim_xxxxxxxx" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box; outline: none; margin-bottom: 10px;">
+
+                    <div style="display: flex; gap: 10px;">
+                        <button id="simengine-start-btn" style="flex: 1; background: #00b894; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 13px; border-radius: 10px; cursor: pointer; font-family: 'Fredoka One', cursive;">Start</button>
+                        <button id="simengine-stop-btn" style="flex: 1; background: #d63031; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 13px; border-radius: 10px; cursor: pointer; font-family: 'Fredoka One', cursive;">Stop</button>
+                    </div>
+                    <button id="simengine-reset-btn" style="width: 100%; background: #636e72; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 13px; border-radius: 10px; cursor: pointer; font-family: 'Fredoka One', cursive; margin-top: 10px;">Reset Sim State</button>
+
+                    <p id="simengine-status" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 8px; margin-bottom: 0;">
+                        SimEngine is idle.
+                    </p>
                 </div>
             </details>
 

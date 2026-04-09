@@ -11,6 +11,14 @@
  */
 import { corsHeaders } from "./_integrationHub.js";
 
+// MAX-SECURITY MODE:
+// We explicitly disable upstream oEmbed fetching because oEmbed responses often contain
+// provider-supplied HTML snippets. Even if we sanitize, it creates an unnecessary attack
+// surface and pulls third-party content at runtime.
+//
+// Keep the endpoint so the client can safely `res.json()` without console noise.
+const OEMBED_DISABLED_BY_POLICY = true;
+
 const CACHE_TTL_SECONDS = 10 * 60;
 
 const DEFAULT_JSON_HEADERS = {
@@ -107,6 +115,14 @@ export async function onRequest(context) {
     return jsonResponse(request, { ok: true, ping: true });
   }
 
+  if (OEMBED_DISABLED_BY_POLICY) {
+    return jsonResponse(
+      request,
+      { ok: false, error: "disabled_by_policy" },
+      { status: 200, headers: { "cache-control": "no-store" } },
+    );
+  }
+
   const targetRaw = u.searchParams.get("url") || "";
   if (!isHttpUrl(targetRaw)) {
     return jsonResponse(
@@ -164,4 +180,3 @@ export async function onRequest(context) {
   responseHeaders.set("content-type", "application/json; charset=utf-8");
   return new Response(text, { status: upstreamRes.status, headers: responseHeaders });
 }
-

@@ -73,19 +73,6 @@ const handleOptions = (request) => {
   });
 };
 
-const getDeerflowUpstreamBase = (env) => {
-  const candidates = [
-    env.KNOWGRPH_DEERFLOW_UPSTREAM,
-    env.KNOWGRPH_CHAT_PROXY_DEERFLOW_UPSTREAM,
-    env.KNOWGRPH_CHAT_PROXY_UPSTREAM,
-  ];
-  for (const candidate of candidates) {
-    const value = String(candidate || '').trim();
-    if (value) return value;
-  }
-  return 'http://127.0.0.1:1234';
-};
-
 const fetchWithTimeout = async (url, init, timeoutMs) => {
   const abortController = new AbortController();
   const timeoutId = setTimeout(() => abortController.abort(), timeoutMs);
@@ -188,7 +175,6 @@ export {
   OPENAI_HOST,
   LOCAL_HOSTS,
   corsHeaders,
-  getDeerflowUpstreamBase,
   handleOptions,
   isLocalHost,
   jsonResponse,
@@ -198,4 +184,3 @@ export {
   readHeader,
   readTimeoutMs,
 };
-

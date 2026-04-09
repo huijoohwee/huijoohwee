@@ -6,12 +6,17 @@
   Cross-Origin-Resource-Policy: same-origin
   Permissions-Policy: camera=(), microphone=(), payment=(), usb=(), interest-cohort=(), geolocation=(self), fullscreen=(self)
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://api.openai.com https://ark.ap-southeast.bytepluses.com https://zenmux.ai https://publish.twitter.com https://platform.twitter.com https://www.linkedin.com https://www.reddit.com https://www.redditmedia.com; frame-src 'self' https://platform.twitter.com https://www.linkedin.com; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests; block-all-mixed-content
+  # NOTE: Do NOT set CSP here. CSP is defined centrally at repo root (_headers)
+  # for /content/singabldr/* and /singabldr/* so browsers don't receive multiple
+  # Content-Security-Policy headers (which would enforce the intersection).
 
 /index.html
   Cache-Control: no-store
 
 /assets/boot.js
+  Cache-Control: no-store
+
+/assets/boot-sim-engine.js
   Cache-Control: no-store
 
 /assets/overrides.css
