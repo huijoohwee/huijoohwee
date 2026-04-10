@@ -1,1 +1,0 @@
-const e=new Map,r=(n,s)=>{const t=String(n||"").trim();if(!t)return"";const a=String(s||"").trim();return a?`${t}::${a}`:t};function c(n,s){const t=r(n,s);return t&&e.get(t)||null}function u(n,s,t){const a=r(n,t);if(a&&(e.set(a,s),e.size>8)){const o=e.keys().next().value;o&&e.delete(o)}}function i(){e.clear()}export{i as c,c as g,u as s};

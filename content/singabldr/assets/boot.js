@@ -107,9 +107,384 @@
     }
   });
 
+  // UX guard: hide the legacy "Generating Voxels..." overlay once the app is actually running.
+  // This prevents a common "looks frozen" failure mode when the underlying renderer is fine but
+  // the overlay isn't dismissed (e.g. path differences like /singabldr/ vs /).
+  safe(function hideLoadingOverlayWhenReady() {
+    function getEl(id) {
+      try {
+        return document.getElementById(id);
+      } catch {
+        return null;
+      }
+    }
+    var titleEl = getEl("game-title");
+    var loadingEl = getEl("loading");
+    if (!titleEl || !loadingEl) return;
+
+    function shouldHideByTitle() {
+      try {
+        var s = String(titleEl.textContent || "");
+        if (!s) return false;
+        var lowered = s.toLowerCase();
+        if (lowered.indexOf("generating") >= 0) return false;
+        if (lowered.indexOf("loading") >= 0) return false;
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    function hide() {
+      try {
+        loadingEl.style.display = "none";
+      } catch {
+        // ignore
+      }
+    }
+
+    function check() {
+      if (shouldHideByTitle()) hide();
+    }
+
+    // Initial check + observe title changes.
+    check();
+    try {
+      new MutationObserver(function () {
+        try {
+          coalesce("ui:loading:hide", check);
+        } catch {
+          check();
+        }
+      }).observe(titleEl, { childList: true, subtree: true, characterData: true });
+    } catch {
+      // ignore
+    }
+
+    // Fallback: if a canvas is present after a short delay, hide the overlay to avoid "perma-freeze".
+    setTimeout(function () {
+      try {
+        if (loadingEl.style && loadingEl.style.display === "none") return;
+      } catch {}
+      try {
+        var hasCanvas = !!document.querySelector("canvas");
+        if (hasCanvas) hide();
+      } catch {}
+    }, 6000);
+
+    // If we still look stuck after a longer delay, replace the overlay text with a clear error hint
+    // instead of misleading "Generating Voxels...".
+    setTimeout(function () {
+      try {
+        if (loadingEl.style && loadingEl.style.display === "none") return;
+      } catch {}
+      try {
+        var t = String(loadingEl.textContent || "");
+        if (t && t.toLowerCase().indexOf("generating voxels") >= 0) {
+          loadingEl.textContent = "Load stalled (check DevTools Console/Network).";
+        }
+      } catch {}
+    }, 15000);
+  });
+
+  // Unified fetch hook: keep a SINGLE wrapper layer for:
+  // - SSOT URL aliasing (legacy-safe)
+  // - max-security fetch blocks (oEmbed)
+  // - LOD patching (only when it actually changes data)
+  // - same-origin session header injection
+  //
+  // This prevents stacking multiple fetch wrappers (performance + correctness).
+  safe(function installUnifiedFetchHook() {
+    if (window.__SINGABLDR_FETCH_WRAPPED) return;
+    if (typeof window.fetch !== "function") return;
+
+    var baseFetch = window.fetch.bind(window);
+    try {
+      window.__SINGABLDR_FETCH_BASE = baseFetch;
+    } catch {
+      // ignore
+    }
+
+    var LS_KEY_LOD = "singabldr.lod";
+    var LS_KEY_FLOWINFISH_SESSION = "singabldr.flowinfish.session_id";
+
+    /** @param {string} raw */
+    function normalizeAbsUrl(raw) {
+      try {
+        return new URL(String(raw || ""), window.location.href);
+      } catch {
+        return null;
+      }
+    }
+
+    /** @param {any} input */
+    function getInputUrl(input) {
+      try {
+        return typeof input === "string" ? input : input && input.url ? String(input.url) : "";
+      } catch {
+        return "";
+      }
+    }
+
+    /** @param {string} rawUrl */
+    function rewriteUrl(rawUrl) {
+      var u = String(rawUrl || "");
+      if (!u) return u;
+      // Match absolute or relative paths.
+      // Production bundle still requests `singabldr.board.json`; redirect to the stable v2 artifact.
+      u = u.replace(/(^|\/)boards\/singabldr\.board\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
+      u = u.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
+      // Bare filename fallback (avoid double "boards/boards" via negative lookahead).
+      u = u.replace(/(^|\/)(?!boards\/)singabldr\.board\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
+      u = u.replace(/(^|\/)singabldr\.assets\.json(\b|$)/, "$1boards/singabldr.assets.v2.json");
+      u = u.replace(/(^|\/)singabldr\.elements\.json(\b|$)/, "$1boards/singabldr.elements.v2.json");
+      u = u.replace(/(^|\/)script-singabuildr-0000\.json(\b|$)/, "$1script-singabuildr-0000.v2.json");
+      return u;
+    }
+
+    function isLocalSecretsPath(u) {
+      var s = String(u || "");
+      return (
+        s.endsWith("/user-secrets.local.json") ||
+        s === "./user-secrets.local.json" ||
+        s === "user-secrets.local.json"
+      );
+    }
+
+    function isOembedPath(u) {
+      return String(u || "").indexOf("/api/oembed?") >= 0;
+    }
+
+    function getLodMode() {
+      var url = null;
+      try {
+        url = new URL(window.location.href);
+      } catch {
+        url = null;
+      }
+      var mode = "";
+      try {
+        if (url) mode = String(url.searchParams.get("lod") || "").trim().toLowerCase();
+      } catch {
+        mode = "";
+      }
+      if (mode === "fine" || mode === "coarse" || mode === "auto") return mode;
+      try {
+        var persisted = String(localStorage.getItem(LS_KEY_LOD) || "").trim().toLowerCase();
+        if (persisted === "fine" || persisted === "coarse" || persisted === "auto") return persisted;
+      } catch {}
+      return "auto";
+    }
+
+    function autoPickLod() {
+      try {
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return "coarse";
+      } catch {}
+      try {
+        var mem = Number(navigator.deviceMemory || 0);
+        var cores = Number(navigator.hardwareConcurrency || 0);
+        var width = Number(window.innerWidth || 0);
+        if ((mem && mem < 4) || (cores && cores < 4) || (width && width < 768)) return "coarse";
+      } catch {}
+      return "fine";
+    }
+
+    function getLodMultiplier() {
+      var mode = getLodMode();
+      if (mode === "auto") mode = autoPickLod();
+      return mode === "coarse" ? 2 : 1;
+    }
+
+    safe(function exposeLodSetter() {
+      try {
+        window.__setSingabldrLod = function (mode) {
+          var m = String(mode || "").trim().toLowerCase();
+          if (m !== "fine" && m !== "coarse" && m !== "auto") return false;
+          try {
+            localStorage.setItem(LS_KEY_LOD, m);
+          } catch {}
+          try {
+            window.location.reload();
+          } catch {}
+          return true;
+        };
+      } catch {
+        // ignore
+      }
+    });
+
+    /** @param {URL | null} abs */
+    function shouldPatchBoardResponse(abs) {
+      if (!abs) return false;
+      var p = String(abs.pathname || "");
+      if (!p.endsWith(".json")) return false;
+      return p.indexOf("/content/singabldr/boards/") >= 0 || p.indexOf("/singabldr/boards/") >= 0;
+    }
+
+    function applyLodPatch(data, multiplier) {
+      if (!(multiplier > 1)) return { changed: false, data: data };
+      if (!data || typeof data !== "object") return { changed: false, data: data };
+      var scene = data.scene;
+      if (!scene || typeof scene !== "object") return { changed: false, data: data };
+      var grid = scene.grid;
+      if (!grid || typeof grid !== "object") return { changed: false, data: data };
+      var current = Number(grid.voxelSize || 0);
+      if (!(current > 0)) return { changed: false, data: data };
+      var next = current * multiplier;
+      next = Math.min(Math.max(next, 0.5), 10);
+      if (next === current) return { changed: false, data: data };
+      grid.voxelSize = next;
+      try {
+        window.__SINGABLDR_LOD_MODE = multiplier > 1 ? "coarse" : "fine";
+        window.__SINGABLDR_VOXEL_SIZE = next;
+      } catch {}
+      return { changed: true, data: data };
+    }
+
+    var cachedSessionId = "";
+    function getFlowinfishSessionId() {
+      if (cachedSessionId && cachedSessionId.length >= 8) return cachedSessionId;
+      try {
+        var existing = localStorage.getItem(LS_KEY_FLOWINFISH_SESSION);
+        if (existing && typeof existing === "string" && existing.length >= 8) {
+          cachedSessionId = existing;
+          return existing;
+        }
+      } catch {}
+      var next = "";
+      try {
+        var buf = new Uint8Array(12);
+        crypto.getRandomValues(buf);
+        next = Array.from(buf)
+          .map(function (b) {
+            return b.toString(16).padStart(2, "0");
+          })
+          .join("");
+      } catch {
+        next = "sess_" + Math.random().toString(16).slice(2) + "_" + Date.now().toString(16);
+      }
+      try {
+        localStorage.setItem(LS_KEY_FLOWINFISH_SESSION, next);
+      } catch {}
+      cachedSessionId = next;
+      return next;
+    }
+
+    /** @param {URL | null} abs */
+    function shouldInjectSession(abs) {
+      if (!abs) return false;
+      // Same-origin only.
+      try {
+        if (abs.origin !== window.location.origin) return false;
+      } catch {
+        return false;
+      }
+      var p = String(abs.pathname || "");
+      return p.indexOf("/api/") === 0 || p.indexOf("/__chat_proxy") === 0;
+    }
+
+    window.fetch = function (input, init) {
+      var url0 = getInputUrl(input);
+      var url1 = rewriteUrl(url0);
+      var abs = normalizeAbsUrl(url1 || url0);
+
+      // MAX-SECURITY: disable oEmbed fetching (prevents pulling third-party HTML/embeds).
+      if (isOembedPath(url1 || url0)) {
+        return Promise.resolve(
+          new Response(JSON.stringify({ ok: false, error: "disabled_by_policy" }), {
+            status: 200,
+            headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+          }),
+        );
+      }
+
+      // Dev UX: silence missing local secrets file noise.
+      if (isLocalSecretsPath(url1 || url0)) {
+        return Promise.resolve(
+          new Response("{}", {
+            status: 200,
+            headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+          }),
+        );
+      }
+
+      // Apply rewritten URL to Request/string input.
+      if (url1 && url1 !== url0) {
+        try {
+          if (typeof input === "string") input = url1;
+          else if (typeof Request !== "undefined" && input instanceof Request) input = new Request(url1, input);
+        } catch {
+          // ignore
+        }
+      }
+
+      // Same-origin session header injection for API routes.
+      if (shouldInjectSession(abs)) {
+        try {
+          var sessionId = getFlowinfishSessionId();
+          if (typeof Request !== "undefined" && input instanceof Request) {
+            var h1 = new Headers(input.headers);
+            if (!h1.has("X-FlowinFish-Session")) h1.set("X-FlowinFish-Session", sessionId);
+            input = new Request(input, { headers: h1 });
+          } else {
+            var headers0 = (init && init.headers) || null;
+            var h2 = headers0 instanceof Headers ? new Headers(headers0) : new Headers(headers0 || {});
+            if (!h2.has("X-FlowinFish-Session")) h2.set("X-FlowinFish-Session", sessionId);
+            init = Object.assign({}, init || {}, { headers: h2 });
+          }
+        } catch {
+          // ignore
+        }
+      }
+
+      return baseFetch(input, init).then(function (res) {
+        try {
+          if (!res || !res.ok) return res;
+          if (!shouldPatchBoardResponse(abs)) return res;
+          var multiplier = getLodMultiplier();
+          // Critical perf: if multiplier does not change data, do NOT parse/stringify.
+          if (!(multiplier > 1)) return res;
+          return res
+            .clone()
+            .json()
+            .then(function (data) {
+              var patched = applyLodPatch(data, multiplier);
+              if (!patched.changed) return res;
+              return new Response(JSON.stringify(patched.data), {
+                status: res.status,
+                statusText: res.statusText,
+                headers: (function () {
+                  try {
+                    var h = new Headers(res.headers);
+                    h.set("content-type", "application/json; charset=utf-8");
+                    return h;
+                  } catch {
+                    return { "content-type": "application/json; charset=utf-8" };
+                  }
+                })(),
+              });
+            })
+            .catch(function () {
+              return res;
+            });
+        } catch {
+          return res;
+        }
+      });
+    };
+
+    // Mark after successful installation so other hooks can safely bail out.
+    try {
+      window.__SINGABLDR_FETCH_WRAPPED = true;
+    } catch {
+      // ignore
+    }
+  });
+
   // URL aliasing (SSOT): prevent legacy placeholder files from breaking runtime.
   // This runs early and is intentionally narrow (only affects a few known assets).
   safe(function installFetchUrlAliases() {
+    if (window.__SINGABLDR_FETCH_WRAPPED) return;
     if (typeof window.fetch !== "function") return;
     var orig = window.fetch.bind(window);
 
@@ -333,6 +708,7 @@
   // Granularity / LOD tuning at load time (prevents voxel explosion on small devices).
   // This runs entirely client-side by rewriting the fetched board JSON response.
   safe(function installBoardJsonLodPatch() {
+    if (window.__SINGABLDR_FETCH_WRAPPED) return;
     if (typeof window.fetch !== "function") return;
 
     var LS_KEY = "singabldr.lod";
@@ -603,6 +979,7 @@
 
   // Inject FlowinFish session header into same-origin API fetch calls.
   safe(function installFlowinfishSessionFetchHook() {
+    if (window.__SINGABLDR_FETCH_WRAPPED) return;
     if (typeof window.fetch !== "function") return;
     var LS_KEY = "singabldr.flowinfish.session_id";
 

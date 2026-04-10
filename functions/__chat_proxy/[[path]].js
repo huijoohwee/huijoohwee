@@ -10,7 +10,7 @@ import {
 const CHAT_PROXY_PREFIX = '/__chat_proxy';
 
 const pickUpstreamBase = ({ provider, requestedUpstream, env }) => {
-  // Fully independent mode: no DeerFlow upstream support here.
+  // Fully independent mode: no external gateway-specific coupling here.
   // The proxy either targets:
   // - OpenAI (https://api.openai.com) when provider=openai
   // - a configured HTTPS upstream (env.KNOWGRPH_CHAT_PROXY_UPSTREAM or request override)

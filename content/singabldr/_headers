@@ -1,10 +1,10 @@
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
-  Referrer-Policy: no-referrer
+  Referrer-Policy: strict-origin-when-cross-origin
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
-  Permissions-Policy: camera=(), microphone=(), payment=(), usb=(), interest-cohort=(), geolocation=(self), fullscreen=(self)
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=(), interest-cohort=(), fullscreen=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   # NOTE: Do NOT set CSP here. CSP is defined centrally at repo root (_headers)
   # for /content/singabldr/* and /singabldr/* so browsers don't receive multiple
