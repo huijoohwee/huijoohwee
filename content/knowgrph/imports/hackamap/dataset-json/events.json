@@ -1,0 +1,4695 @@
+[
+  {
+    "id": "Event:evt-001",
+    "type": "Event",
+    "label": "IBM x UNSA Hackathon",
+    "meta": {
+      "ref_id": "evt-001",
+      "url": "https://ibm-unsa-hackathon.devpost.com/",
+      "urls": [
+        "https://ibm-unsa-hackathon.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2026-05-08",
+      "date_end": "2026-05-10",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "IBM Z Sheridan",
+        "UNSA Sheridan"
+      ],
+      "tech_focus": [
+        "AI tools (unspecified)",
+        "IBM Z + cloud (mentioned)"
+      ],
+      "search_text": "Event | IBM x UNSA Hackathon | evt-001 | https://ibm-unsa-hackathon.devpost.com/ | https://ibm-unsa-hackathon.devpost.com/ | Online | online | IBM Z Sheridan UNSA Sheridan | AI tools (unspecified) IBM Z + cloud (mentioned) | high | devpost event-page | 2026-05-08 | 2026-05-10"
+    }
+  },
+  {
+    "id": "Event:evt-002",
+    "type": "Event",
+    "label": "MY AI Video Hackathon",
+    "meta": {
+      "ref_id": "evt-002",
+      "url": "https://x.com/BytePlusGlobal/status/2039621356195586166",
+      "urls": [
+        "https://x.com/BytePlusGlobal/status/2039621356195586166"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "marketing"
+      ],
+      "date_start": "2026-04-02",
+      "date_end": "2026-04-02",
+      "format": "in-person",
+      "location": "Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Building with AI community",
+        "local MY creators"
+      ],
+      "tech_focus": [
+        "Seedance model",
+        "ModelArk"
+      ],
+      "search_text": "Event | MY AI Video Hackathon | evt-002 | https://x.com/BytePlusGlobal/status/2039621356195586166 | https://x.com/BytePlusGlobal/status/2039621356195586166 | Malaysia | in-person | Building with AI community local MY creators | Seedance model ModelArk | low | marketing | 2026-04-02 | 2026-04-02"
+    }
+  },
+  {
+    "id": "Event:evt-003",
+    "type": "Event",
+    "label": "TinyFish Web Agent Hackathon (Singapore) — winners showcase",
+    "meta": {
+      "ref_id": "evt-003",
+      "url": "https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM",
+      "urls": [
+        "https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM",
+        "https://lnkd.in/g52ftBkm",
+        "https://lnkd.in/gKJ5hhZu",
+        "https://lnkd.in/gMKstPsh",
+        "https://lnkd.in/gbnrajW9",
+        "https://lnkd.in/g7FyRCDn",
+        "https://lnkd.in/gDeJvw6P"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "linkedin",
+        "winners-showcase",
+        "demo-links"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "TinyFish",
+        "Acacia AI Society",
+        "NUS",
+        "350+ hackers (reported)"
+      ],
+      "tech_focus": [
+        "TinyFish web agents",
+        "OpenAI (powered by, mentioned)"
+      ],
+      "search_text": "Event | TinyFish Web Agent Hackathon (Singapore) — winners showcase | evt-003 | https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM | https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM https://lnkd.in/g52ftBkm https://lnkd.in/gKJ5hhZu https://lnkd.in/gMKstPsh https://lnkd.in/gbnrajW9 https://lnkd.in/g7FyRCDn https://lnkd.in/gDeJvw6P | Singapore | in-person | TinyFish Acacia AI Society NUS 350+ hackers (reported) | TinyFish web agents OpenAI (powered by, mentioned) | medium | linkedin winners-showcase demo-links"
+    }
+  },
+  {
+    "id": "Event:evt-004",
+    "type": "Event",
+    "label": "GitLab AI Hackathon",
+    "meta": {
+      "ref_id": "evt-004",
+      "url": "https://x.com/devpost/status/2020965804687446360",
+      "urls": [
+        "https://x.com/devpost/status/2020965804687446360"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2026-03-25",
+      "date_end": "2026-03-25",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Devpost",
+        "GitLab"
+      ],
+      "tech_focus": [
+        "GitLab workflows"
+      ],
+      "search_text": "Event | GitLab AI Hackathon | evt-004 | https://x.com/devpost/status/2020965804687446360 | https://x.com/devpost/status/2020965804687446360 | Online | online | Devpost GitLab | GitLab workflows | medium | announcement marketing | 2026-03-25 | 2026-03-25"
+    }
+  },
+  {
+    "id": "Event:evt-005",
+    "type": "Event",
+    "label": "AI filmmaking hackathon @ SXSW",
+    "meta": {
+      "ref_id": "evt-005",
+      "url": "https://x.com/meh_agarwal/status/2033596708513341710",
+      "urls": [
+        "https://x.com/meh_agarwal/status/2033596708513341710"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "community",
+        "event-recap"
+      ],
+      "date_start": "2026-03-17",
+      "date_end": "2026-03-17",
+      "format": "in-person",
+      "location": "Austin, TX, USA",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "SXSW community",
+        "KoyalAI",
+        "100+ filmmakers"
+      ],
+      "tech_focus": [
+        "KoyalAI"
+      ],
+      "search_text": "Event | AI filmmaking hackathon @ SXSW | evt-005 | https://x.com/meh_agarwal/status/2033596708513341710 | https://x.com/meh_agarwal/status/2033596708513341710 | Austin, TX, USA | in-person | SXSW community KoyalAI 100+ filmmakers | KoyalAI | medium | community event-recap | 2026-03-17 | 2026-03-17"
+    }
+  },
+  {
+    "id": "Event:evt-006",
+    "type": "Event",
+    "label": "Hack AI 2026 (project gallery / winners)",
+    "meta": {
+      "ref_id": "evt-006",
+      "url": "https://hackai-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://hackai-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "date_start": "2026-03-07",
+      "date_end": "2026-03-08",
+      "format": "in-person",
+      "location": "Richardson, TX, USA",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Hack AI organizers",
+        "participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | Hack AI 2026 (project gallery / winners) | evt-006 | https://hackai-2026.devpost.com/project-gallery | https://hackai-2026.devpost.com/project-gallery | Richardson, TX, USA | in-person | Hack AI organizers participants | Devpost | high | devpost project-gallery winners | 2026-03-07 | 2026-03-08"
+    }
+  },
+  {
+    "id": "Event:evt-007",
+    "type": "Event",
+    "label": "Codex Hackathon",
+    "meta": {
+      "ref_id": "evt-007",
+      "url": "https://x.com/romainhuet/status/2028586504407470503",
+      "urls": [
+        "https://x.com/romainhuet/status/2028586504407470503",
+        "https://x.com/agrimsingh/status/2027736501241700461"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "community",
+        "event-recap",
+        "demo"
+      ],
+      "date_start": "2026-03-03",
+      "date_end": "2026-03-03",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Codex hackathon participants",
+        "OpenAI community",
+        "OpenAI Codex hackathon participants"
+      ],
+      "tech_focus": [
+        "Codex",
+        "ARKit (mentioned)"
+      ],
+      "search_text": "Event | Codex Hackathon | evt-007 | https://x.com/romainhuet/status/2028586504407470503 | https://x.com/romainhuet/status/2028586504407470503 https://x.com/agrimsingh/status/2027736501241700461 | Singapore | in-person | Codex hackathon participants OpenAI community OpenAI Codex hackathon participants | Codex ARKit (mentioned) | low | community event-recap demo | 2026-03-03 | 2026-03-03"
+    }
+  },
+  {
+    "id": "Event:evt-008",
+    "type": "Event",
+    "label": "Codex Hackathon (APAC)",
+    "meta": {
+      "ref_id": "evt-008",
+      "url": "https://x.com/OpenAIDevs/status/2028588617095057902",
+      "urls": [
+        "https://x.com/OpenAIDevs/status/2028588617095057902"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "event-recap"
+      ],
+      "date_start": "2026-03-03",
+      "date_end": "2026-03-03",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "OpenAI Developers",
+        "100+ developers (participants)"
+      ],
+      "tech_focus": [
+        "Codex"
+      ],
+      "search_text": "Event | Codex Hackathon (APAC) | evt-008 | https://x.com/OpenAIDevs/status/2028588617095057902 | https://x.com/OpenAIDevs/status/2028588617095057902 | Singapore | in-person | OpenAI Developers 100+ developers (participants) | Codex | medium | announcement event-recap | 2026-03-03 | 2026-03-03"
+    }
+  },
+  {
+    "id": "Event:evt-009",
+    "type": "Event",
+    "label": "Multimodal Frontier Hackathon",
+    "meta": {
+      "ref_id": "evt-009",
+      "url": "https://x.com/ycombinator/status/2028564751882871056",
+      "urls": [
+        "https://x.com/ycombinator/status/2028564751882871056"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2026-03-03",
+      "date_end": "2026-03-03",
+      "format": "—",
+      "location": "—",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Y Combinator",
+        "Google DeepMind"
+      ],
+      "tech_focus": [
+        "Gemini 3.1",
+        "Lyria",
+        "NanoBanana 2"
+      ],
+      "search_text": "Event | Multimodal Frontier Hackathon | evt-009 | https://x.com/ycombinator/status/2028564751882871056 | https://x.com/ycombinator/status/2028564751882871056 | Y Combinator Google DeepMind | Gemini 3.1 Lyria NanoBanana 2 | medium | announcement marketing | 2026-03-03 | 2026-03-03"
+    }
+  },
+  {
+    "id": "Event:evt-010",
+    "type": "Event",
+    "label": "Hack For Humanity 2026 (project gallery / winners)",
+    "meta": {
+      "ref_id": "evt-010",
+      "url": "https://hack-for-humanity-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://hack-for-humanity-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "date_start": "2026-02-28",
+      "date_end": "2026-03-01",
+      "format": "in-person",
+      "location": "Santa Clara, CA, USA",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Santa Clara University",
+        "Hack For Humanity participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | Hack For Humanity 2026 (project gallery / winners) | evt-010 | https://hack-for-humanity-2026.devpost.com/project-gallery | https://hack-for-humanity-2026.devpost.com/project-gallery | Santa Clara, CA, USA | in-person | Santa Clara University Hack For Humanity participants | Devpost | high | devpost project-gallery winners | 2026-02-28 | 2026-03-01"
+    }
+  },
+  {
+    "id": "Event:evt-011",
+    "type": "Event",
+    "label": "Hack For Humanity 2026",
+    "meta": {
+      "ref_id": "evt-011",
+      "url": "https://hack-for-humanity-2026.devpost.com/",
+      "urls": [
+        "https://hack-for-humanity-2026.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2026-02-28",
+      "date_end": "2026-03-01",
+      "format": "in-person",
+      "location": "Santa Clara, CA, USA",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Santa Clara University",
+        "participants"
+      ],
+      "tech_focus": [
+        "Devpost",
+        "Discord (mentioned)",
+        "GitHub (submission requirement)"
+      ],
+      "search_text": "Event | Hack For Humanity 2026 | evt-011 | https://hack-for-humanity-2026.devpost.com/ | https://hack-for-humanity-2026.devpost.com/ | Santa Clara, CA, USA | in-person | Santa Clara University participants | Devpost Discord (mentioned) GitHub (submission requirement) | high | devpost event-page | 2026-02-28 | 2026-03-01"
+    }
+  },
+  {
+    "id": "Event:evt-012",
+    "type": "Event",
+    "label": "DeveloperWeek 2026 Hackathon (project gallery / winners)",
+    "meta": {
+      "ref_id": "evt-012",
+      "url": "https://developerweek-2026-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://developerweek-2026-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "date_start": "2026-02-02",
+      "date_end": "2026-02-20",
+      "format": "hybrid",
+      "location": "San Jose, CA, USA / Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "DevNetwork",
+        "DeveloperWeek 2026 participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | DeveloperWeek 2026 Hackathon (project gallery / winners) | evt-012 | https://developerweek-2026-hackathon.devpost.com/project-gallery | https://developerweek-2026-hackathon.devpost.com/project-gallery | San Jose, CA, USA / Online | hybrid | DevNetwork DeveloperWeek 2026 participants | Devpost | high | devpost project-gallery winners | 2026-02-02 | 2026-02-20"
+    }
+  },
+  {
+    "id": "Event:evt-013",
+    "type": "Event",
+    "label": "DeveloperWeek 2026 Hackathon",
+    "meta": {
+      "ref_id": "evt-013",
+      "url": "https://developerweek-2026-hackathon.devpost.com/",
+      "urls": [
+        "https://developerweek-2026-hackathon.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2026-02-02",
+      "date_end": "2026-02-20",
+      "format": "hybrid",
+      "location": "San Jose, CA, USA / Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "DevNetwork",
+        "DeveloperWeek community"
+      ],
+      "tech_focus": [
+        "Devpost",
+        "(various sponsor APIs)"
+      ],
+      "search_text": "Event | DeveloperWeek 2026 Hackathon | evt-013 | https://developerweek-2026-hackathon.devpost.com/ | https://developerweek-2026-hackathon.devpost.com/ | San Jose, CA, USA / Online | hybrid | DevNetwork DeveloperWeek community | Devpost (various sponsor APIs) | high | devpost event-page | 2026-02-02 | 2026-02-20"
+    }
+  },
+  {
+    "id": "Event:evt-014",
+    "type": "Event",
+    "label": "TreeHacks 2026 (project gallery / winners)",
+    "meta": {
+      "ref_id": "evt-014",
+      "url": "https://treehacks-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://treehacks-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "date_start": "2026-02-14",
+      "date_end": "2026-02-15",
+      "format": "in-person",
+      "location": "Stanford, CA, USA",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "TreeHacks organizers",
+        "TreeHacks 2026 participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | TreeHacks 2026 (project gallery / winners) | evt-014 | https://treehacks-2026.devpost.com/project-gallery | https://treehacks-2026.devpost.com/project-gallery | Stanford, CA, USA | in-person | TreeHacks organizers TreeHacks 2026 participants | Devpost | high | devpost project-gallery winners | 2026-02-14 | 2026-02-15"
+    }
+  },
+  {
+    "id": "Event:evt-015",
+    "type": "Event",
+    "label": "TreeHacks 2026",
+    "meta": {
+      "ref_id": "evt-015",
+      "url": "https://treehacks-2026.devpost.com/",
+      "urls": [
+        "https://treehacks-2026.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2026-02-14",
+      "date_end": "2026-02-15",
+      "format": "in-person",
+      "location": "Stanford, CA, USA",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "TreeHacks",
+        "Stanford student community (participants)"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | TreeHacks 2026 | evt-015 | https://treehacks-2026.devpost.com/ | https://treehacks-2026.devpost.com/ | Stanford, CA, USA | in-person | TreeHacks Stanford student community (participants) | Devpost | high | devpost event-page | 2026-02-14 | 2026-02-15"
+    }
+  },
+  {
+    "id": "Event:evt-016",
+    "type": "Event",
+    "label": "2026 Daily Games Hackathon (winners announcement)",
+    "meta": {
+      "ref_id": "evt-016",
+      "url": "https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/",
+      "urls": [
+        "https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "reddit",
+        "winners-announcement"
+      ],
+      "date_start": "2026-02-12",
+      "date_end": "2026-02-12",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "r/Devvit (Reddit)",
+        "Reddit Daily Games Hackathon judges",
+        "GameMaker"
+      ],
+      "tech_focus": [
+        "Reddit Devvit platform",
+        "Devpost (project gallery)"
+      ],
+      "search_text": "Event | 2026 Daily Games Hackathon (winners announcement) | evt-016 | https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/ | https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/ | Online | online | r/Devvit (Reddit) Reddit Daily Games Hackathon judges GameMaker | Reddit Devvit platform Devpost (project gallery) | high | reddit winners-announcement | 2026-02-12 | 2026-02-12"
+    }
+  },
+  {
+    "id": "Event:evt-017",
+    "type": "Event",
+    "label": "The Reddit Daily Games Hackathon (project gallery / winners)",
+    "meta": {
+      "ref_id": "evt-017",
+      "url": "https://redditdailygames2026.devpost.com/project-gallery",
+      "urls": [
+        "https://redditdailygames2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "date_start": "2026-01-15",
+      "date_end": "2026-02-12",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Reddit",
+        "GameMaker",
+        "hackathon participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | The Reddit Daily Games Hackathon (project gallery / winners) | evt-017 | https://redditdailygames2026.devpost.com/project-gallery | https://redditdailygames2026.devpost.com/project-gallery | Online | online | Reddit GameMaker hackathon participants | Devpost | high | devpost project-gallery winners | 2026-01-15 | 2026-02-12"
+    }
+  },
+  {
+    "id": "Event:evt-018",
+    "type": "Event",
+    "label": "The Reddit Daily Games Hackathon",
+    "meta": {
+      "ref_id": "evt-018",
+      "url": "https://redditdailygames2026.devpost.com/",
+      "urls": [
+        "https://redditdailygames2026.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2026-01-15",
+      "date_end": "2026-02-12",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Reddit",
+        "GameMaker"
+      ],
+      "tech_focus": [
+        "Devvit Web",
+        "(React/Phaser/three.js or game engines mentioned)"
+      ],
+      "search_text": "Event | The Reddit Daily Games Hackathon | evt-018 | https://redditdailygames2026.devpost.com/ | https://redditdailygames2026.devpost.com/ | Online | online | Reddit GameMaker | Devvit Web (React/Phaser/three.js or game engines mentioned) | high | devpost event-page | 2026-01-15 | 2026-02-12"
+    }
+  },
+  {
+    "id": "Event:evt-019",
+    "type": "Event",
+    "label": "Hack&Roll 2026 (project gallery / winners)",
+    "meta": {
+      "ref_id": "evt-019",
+      "url": "https://hacknroll2026.devpost.com/project-gallery",
+      "urls": [
+        "https://hacknroll2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "date_start": "2026-01-17",
+      "date_end": "2026-01-18",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NUS Hackers",
+        "Hack&Roll 2026 participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | Hack&Roll 2026 (project gallery / winners) | evt-019 | https://hacknroll2026.devpost.com/project-gallery | https://hacknroll2026.devpost.com/project-gallery | Singapore | in-person | NUS Hackers Hack&Roll 2026 participants | Devpost | high | devpost project-gallery winners | 2026-01-17 | 2026-01-18"
+    }
+  },
+  {
+    "id": "Event:evt-020",
+    "type": "Event",
+    "label": "Hack&Roll 2026",
+    "meta": {
+      "ref_id": "evt-020",
+      "url": "https://hacknroll2026.devpost.com/",
+      "urls": [
+        "https://hacknroll2026.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2026-01-17",
+      "date_end": "2026-01-18",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NUS Hackers",
+        "participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | Hack&Roll 2026 | evt-020 | https://hacknroll2026.devpost.com/ | https://hacknroll2026.devpost.com/ | Singapore | in-person | NUS Hackers participants | Devpost | high | devpost event-page | 2026-01-17 | 2026-01-18"
+    }
+  },
+  {
+    "id": "Event:evt-021",
+    "type": "Event",
+    "label": "Casper Hackathon 2026",
+    "meta": {
+      "ref_id": "evt-021",
+      "url": "https://x.com/OurTinTinLand/status/1993995697256058967",
+      "urls": [
+        "https://x.com/OurTinTinLand/status/1993995697256058967"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "x.com",
+        "community",
+        "curation"
+      ],
+      "date_start": "2025-11-14",
+      "date_end": "2026-01-04",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "TinTinLand"
+      ],
+      "tech_focus": [
+        "Web3 ecosystems (Casper/Solana/Arbitrum mentioned)"
+      ],
+      "search_text": "Event | Casper Hackathon 2026 | evt-021 | https://x.com/OurTinTinLand/status/1993995697256058967 | https://x.com/OurTinTinLand/status/1993995697256058967 | Online | online | TinTinLand | Web3 ecosystems (Casper/Solana/Arbitrum mentioned) | medium | x.com community curation | 2025-11-14 | 2026-01-04"
+    }
+  },
+  {
+    "id": "Event:evt-022",
+    "type": "Event",
+    "label": "Google DeepMind SG Hackathon",
+    "meta": {
+      "ref_id": "evt-022",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/",
+      "urls": [
+        "https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "project-demo"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "ruban sk",
+        "Google DeepMind SG hackathon participants"
+      ],
+      "tech_focus": [
+        "Gemini (Live API mentioned)",
+        "Three.js",
+        "AWS terrain tiles",
+        "fal (Nano Banana Pro mentioned)"
+      ],
+      "search_text": "Event | Google DeepMind SG Hackathon | evt-022 | https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/ | https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/ | Singapore | in-person | ruban sk Google DeepMind SG hackathon participants | Gemini (Live API mentioned) Three.js AWS terrain tiles fal (Nano Banana Pro mentioned) | low | linkedin project-demo"
+    }
+  },
+  {
+    "id": "Event:evt-023",
+    "type": "Event",
+    "label": "Cursor x Anthropic Hackathon Malaysia",
+    "meta": {
+      "ref_id": "evt-023",
+      "url": "https://x.com/therakyatpost/status/2001218375389769766",
+      "urls": [
+        "https://x.com/therakyatpost/status/2001218375389769766",
+        "https://cursor-hack-my.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "media",
+        "event-recap",
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2025-12-17",
+      "date_end": "2025-12-17",
+      "format": "in-person",
+      "location": "Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Cursor",
+        "Anthropic",
+        "Malaysia hackathon participants",
+        "community partners",
+        "participants"
+      ],
+      "tech_focus": [
+        "Cursor",
+        "Anthropic (implied)",
+        "Anthropic API",
+        "Convex",
+        "Vercel",
+        "TiDB",
+        "ElevenLabs",
+        "LeanMCP (tracks mentioned)"
+      ],
+      "search_text": "Event | Cursor x Anthropic Hackathon Malaysia | evt-023 | https://x.com/therakyatpost/status/2001218375389769766 | https://x.com/therakyatpost/status/2001218375389769766 https://cursor-hack-my.devpost.com/ | Malaysia | in-person | Cursor Anthropic Malaysia hackathon participants community partners participants | Cursor Anthropic (implied) Anthropic API Convex Vercel TiDB ElevenLabs LeanMCP (tracks mentioned) | high | media event-recap devpost event-page | 2025-12-17 | 2025-12-17"
+    }
+  },
+  {
+    "id": "Event:evt-024",
+    "type": "Event",
+    "label": "Sui Bootcamp Indonesia Mini Hackathon",
+    "meta": {
+      "ref_id": "evt-024",
+      "url": "https://x.com/SuiCommunity_MY/status/2000233825423749530",
+      "urls": [
+        "https://x.com/SuiCommunity_MY/status/2000233825423749530"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "community",
+        "event-recap"
+      ],
+      "date_start": "2025-12-14",
+      "date_end": "2025-12-14",
+      "format": "in-person",
+      "location": "Jakarta, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Sui Malaysia",
+        "Sui Indonesia",
+        "builders (participants)"
+      ],
+      "tech_focus": [
+        "Sui",
+        "Move"
+      ],
+      "search_text": "Event | Sui Bootcamp Indonesia Mini Hackathon | evt-024 | https://x.com/SuiCommunity_MY/status/2000233825423749530 | https://x.com/SuiCommunity_MY/status/2000233825423749530 | Jakarta, Indonesia | in-person | Sui Malaysia Sui Indonesia builders (participants) | Sui Move | low | community event-recap | 2025-12-14 | 2025-12-14"
+    }
+  },
+  {
+    "id": "Event:evt-025",
+    "type": "Event",
+    "label": "UKSAEI Hackathon 2025",
+    "meta": {
+      "ref_id": "evt-025",
+      "url": "https://uksaei-hackathon.devpost.com/",
+      "urls": [
+        "https://uksaei-hackathon.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2025-12-09",
+      "date_end": "2025-12-11",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "UKSAEI",
+        "Singapore University of Social Sciences",
+        "UK/SG students"
+      ],
+      "tech_focus": [
+        "Devpost",
+        "Discord (mentioned)"
+      ],
+      "search_text": "Event | UKSAEI Hackathon 2025 | evt-025 | https://uksaei-hackathon.devpost.com/ | https://uksaei-hackathon.devpost.com/ | Online | online | UKSAEI Singapore University of Social Sciences UK/SG students | Devpost Discord (mentioned) | high | devpost event-page | 2025-12-09 | 2025-12-11"
+    }
+  },
+  {
+    "id": "Event:evt-026",
+    "type": "Event",
+    "label": "Cursor x Anthropic Hackathon Malaysia (project gallery)",
+    "meta": {
+      "ref_id": "evt-026",
+      "url": "https://cursor-hack-my.devpost.com/project-gallery",
+      "urls": [
+        "https://cursor-hack-my.devpost.com/project-gallery"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "devpost",
+        "project-gallery"
+      ],
+      "date_start": "2025-12-06",
+      "date_end": "2025-12-07",
+      "format": "in-person",
+      "location": "Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Cursor",
+        "Anthropic",
+        "participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | Cursor x Anthropic Hackathon Malaysia (project gallery) | evt-026 | https://cursor-hack-my.devpost.com/project-gallery | https://cursor-hack-my.devpost.com/project-gallery | Malaysia | in-person | Cursor Anthropic participants | Devpost | medium | devpost project-gallery | 2025-12-06 | 2025-12-07"
+    }
+  },
+  {
+    "id": "Event:evt-027",
+    "type": "Event",
+    "label": "xAI Hackathon",
+    "meta": {
+      "ref_id": "evt-027",
+      "url": "https://x.com/xai/status/1987696575314104339",
+      "urls": [
+        "https://x.com/xai/status/1987696575314104339"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2025-11-10",
+      "date_end": "2025-11-10",
+      "format": "—",
+      "location": "—",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "xAI"
+      ],
+      "tech_focus": [
+        "Grok models",
+        "X APIs"
+      ],
+      "search_text": "Event | xAI Hackathon | evt-027 | https://x.com/xai/status/1987696575314104339 | https://x.com/xai/status/1987696575314104339 | xAI | Grok models X APIs | medium | announcement marketing | 2025-11-10 | 2025-11-10"
+    }
+  },
+  {
+    "id": "Event:evt-028",
+    "type": "Event",
+    "label": "Cardano Summit 2025 Hackathon",
+    "meta": {
+      "ref_id": "evt-028",
+      "url": "https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/",
+      "urls": [
+        "https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "reddit",
+        "announcement"
+      ],
+      "date_start": "2025-11-03",
+      "date_end": "2025-11-04",
+      "format": "hybrid",
+      "location": "Berlin, Germany / Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Cardano Foundation",
+        "sponsor engineers/mentors"
+      ],
+      "tech_focus": [
+        "Cardano ecosystem (implied)"
+      ],
+      "search_text": "Event | Cardano Summit 2025 Hackathon | evt-028 | https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/ | https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/ | Berlin, Germany / Online | hybrid | Cardano Foundation sponsor engineers/mentors | Cardano ecosystem (implied) | medium | reddit announcement | 2025-11-03 | 2025-11-04"
+    }
+  },
+  {
+    "id": "Event:evt-029",
+    "type": "Event",
+    "label": "Cursor Hackathon",
+    "meta": {
+      "ref_id": "evt-029",
+      "url": "https://x.com/gabrielchua/status/1975949011409412425",
+      "urls": [
+        "https://x.com/gabrielchua/status/1975949011409412425"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2025-10-08",
+      "date_end": "2025-10-08",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "@cursor_ai",
+        "hackathon organizers",
+        "participants"
+      ],
+      "tech_focus": [
+        "Cursor",
+        "AI dev tools (mentioned in post)"
+      ],
+      "search_text": "Event | Cursor Hackathon | evt-029 | https://x.com/gabrielchua/status/1975949011409412425 | https://x.com/gabrielchua/status/1975949011409412425 | Singapore | in-person | @cursor_ai hackathon organizers participants | Cursor AI dev tools (mentioned in post) | medium | announcement marketing | 2025-10-08 | 2025-10-08"
+    }
+  },
+  {
+    "id": "Event:evt-030",
+    "type": "Event",
+    "label": "Community Shaper 2025: Hackathon Beta",
+    "meta": {
+      "ref_id": "evt-030",
+      "url": "https://cs-2025-hackathon-beta.devpost.com/",
+      "urls": [
+        "https://cs-2025-hackathon-beta.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2025-09-06",
+      "date_end": "2025-09-23",
+      "format": "in-person",
+      "location": "Hong Kong, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "CNHK",
+        "Community Shaper participants"
+      ],
+      "tech_focus": [
+        "AI + emerging tech (unspecified)"
+      ],
+      "search_text": "Event | Community Shaper 2025: Hackathon Beta | evt-030 | https://cs-2025-hackathon-beta.devpost.com/ | https://cs-2025-hackathon-beta.devpost.com/ | Hong Kong, China | in-person | CNHK Community Shaper participants | AI + emerging tech (unspecified) | high | devpost event-page | 2025-09-06 | 2025-09-23"
+    }
+  },
+  {
+    "id": "Event:evt-031",
+    "type": "Event",
+    "label": "BI-OJK Hackathon 2025",
+    "meta": {
+      "ref_id": "evt-031",
+      "url": "https://x.com/bank_indonesia/status/1964290193348772338",
+      "urls": [
+        "https://x.com/bank_indonesia/status/1964290193348772338"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "announcement",
+        "government"
+      ],
+      "date_start": "2025-09-06",
+      "date_end": "2025-09-06",
+      "format": "in-person",
+      "location": "Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Bank Indonesia",
+        "OJK Indonesia"
+      ],
+      "tech_focus": [
+        "fintech (unspecified)"
+      ],
+      "search_text": "Event | BI-OJK Hackathon 2025 | evt-031 | https://x.com/bank_indonesia/status/1964290193348772338 | https://x.com/bank_indonesia/status/1964290193348772338 | Indonesia | in-person | Bank Indonesia OJK Indonesia | fintech (unspecified) | low | announcement government | 2025-09-06 | 2025-09-06"
+    }
+  },
+  {
+    "id": "Event:evt-032",
+    "type": "Event",
+    "label": "HackitRx Singapore 2025",
+    "meta": {
+      "ref_id": "evt-032",
+      "url": "https://hackitrx.devpost.com/",
+      "urls": [
+        "https://hackitrx.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2025-08-01",
+      "date_end": "2025-08-24",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Pharmaceutical Society of Singapore",
+        "hackathon participants (2-5 per team)"
+      ],
+      "tech_focus": [
+        "Cogniss (no-code platform, mentioned)",
+        "AWS (scaling support, mentioned)"
+      ],
+      "search_text": "Event | HackitRx Singapore 2025 | evt-032 | https://hackitrx.devpost.com/ | https://hackitrx.devpost.com/ | Singapore | in-person | Pharmaceutical Society of Singapore hackathon participants (2-5 per team) | Cogniss (no-code platform, mentioned) AWS (scaling support, mentioned) | high | devpost event-page | 2025-08-01 | 2025-08-24"
+    }
+  },
+  {
+    "id": "Event:evt-033",
+    "type": "Event",
+    "label": "ETHShenzhen Hackathon",
+    "meta": {
+      "ref_id": "evt-033",
+      "url": "https://x.com/OpenBuildxyz/status/1963547236585148902",
+      "urls": [
+        "https://x.com/OpenBuildxyz/status/1963547236585148902"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2025-08-23",
+      "date_end": "2025-08-24",
+      "format": "in-person",
+      "location": "Shenzhen, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "OpenBuild",
+        "ETHShenzhen participants"
+      ],
+      "tech_focus": [
+        "Ethereum (implied)"
+      ],
+      "search_text": "Event | ETHShenzhen Hackathon | evt-033 | https://x.com/OpenBuildxyz/status/1963547236585148902 | https://x.com/OpenBuildxyz/status/1963547236585148902 | Shenzhen, China | in-person | OpenBuild ETHShenzhen participants | Ethereum (implied) | low | announcement marketing | 2025-08-23 | 2025-08-24"
+    }
+  },
+  {
+    "id": "Event:evt-034",
+    "type": "Event",
+    "label": "Global AI Gateway Hackathon",
+    "meta": {
+      "ref_id": "evt-034",
+      "url": "https://x.com/vercel/status/1959307873143665060",
+      "urls": [
+        "https://x.com/vercel/status/1959307873143665060"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2025-08-24",
+      "date_end": "2025-08-24",
+      "format": "—",
+      "location": "—",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Vercel"
+      ],
+      "tech_focus": [
+        "Vercel",
+        "AI Gateway"
+      ],
+      "search_text": "Event | Global AI Gateway Hackathon | evt-034 | https://x.com/vercel/status/1959307873143665060 | https://x.com/vercel/status/1959307873143665060 | Vercel | Vercel AI Gateway | medium | announcement marketing | 2025-08-24 | 2025-08-24"
+    }
+  },
+  {
+    "id": "Event:evt-035",
+    "type": "Event",
+    "label": "OpenAI Open Model Hackathon",
+    "meta": {
+      "ref_id": "evt-035",
+      "url": "https://x.com/devpost/status/1952806091022319670",
+      "urls": [
+        "https://x.com/devpost/status/1952806091022319670"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2025-08-06",
+      "date_end": "2025-08-06",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Devpost",
+        "OpenAI"
+      ],
+      "tech_focus": [
+        "gpt-oss-120b",
+        "gpt-oss-20b"
+      ],
+      "search_text": "Event | OpenAI Open Model Hackathon | evt-035 | https://x.com/devpost/status/1952806091022319670 | https://x.com/devpost/status/1952806091022319670 | Online | online | Devpost OpenAI | gpt-oss-120b gpt-oss-20b | medium | announcement marketing | 2025-08-06 | 2025-08-06"
+    }
+  },
+  {
+    "id": "Event:evt-036",
+    "type": "Event",
+    "label": "LifeHack 2025",
+    "meta": {
+      "ref_id": "evt-036",
+      "url": "https://lifehack-2025.devpost.com/",
+      "urls": [
+        "https://lifehack-2025.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2025-06-16",
+      "date_end": "2025-06-18",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NUS Computing Club",
+        "students (participants)"
+      ],
+      "tech_focus": [
+        "GitHub (submission requirement)",
+        "Devpost"
+      ],
+      "search_text": "Event | LifeHack 2025 | evt-036 | https://lifehack-2025.devpost.com/ | https://lifehack-2025.devpost.com/ | Singapore | in-person | NUS Computing Club students (participants) | GitHub (submission requirement) Devpost | high | devpost event-page | 2025-06-16 | 2025-06-18"
+    }
+  },
+  {
+    "id": "Event:evt-037",
+    "type": "Event",
+    "label": "MCP Hackathon (story)",
+    "meta": {
+      "ref_id": "evt-037",
+      "url": "https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc",
+      "urls": [
+        "https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "story"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "—",
+      "location": "—",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "April team",
+        "MCP Hackathon participants",
+        "YC (accelerator)"
+      ],
+      "tech_focus": [
+        "AI assistant (unspecified)"
+      ],
+      "search_text": "Event | MCP Hackathon (story) | evt-037 | https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc | https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc | April team MCP Hackathon participants YC (accelerator) | AI assistant (unspecified) | low | producthunt story"
+    }
+  },
+  {
+    "id": "Event:evt-038",
+    "type": "Event",
+    "label": "Azure AI Developer Hackathon (winners)",
+    "meta": {
+      "ref_id": "evt-038",
+      "url": "https://x.com/devpost/status/1915951678274097425",
+      "urls": [
+        "https://x.com/devpost/status/1915951678274097425"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "date_start": "2025-04-26",
+      "date_end": "2025-04-26",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Azure",
+        "GitHub Copilot",
+        "Devpost",
+        "hackathon winners"
+      ],
+      "tech_focus": [
+        "Azure",
+        "GitHub Copilot"
+      ],
+      "search_text": "Event | Azure AI Developer Hackathon (winners) | evt-038 | https://x.com/devpost/status/1915951678274097425 | https://x.com/devpost/status/1915951678274097425 | Online | online | Azure GitHub Copilot Devpost hackathon winners | Azure GitHub Copilot | medium | announcement marketing | 2025-04-26 | 2025-04-26"
+    }
+  },
+  {
+    "id": "Event:evt-039",
+    "type": "Event",
+    "label": "Product Hunt x bolt.new Hackathon (Phoenix)",
+    "meta": {
+      "ref_id": "evt-039",
+      "url": "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions",
+      "urls": [
+        "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "community-post"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "in-person",
+      "location": "Phoenix, AZ, USA",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Product Hunt community",
+        "bolt.new"
+      ],
+      "tech_focus": [
+        "bolt.new credits (mentioned)"
+      ],
+      "search_text": "Event | Product Hunt x bolt.new Hackathon (Phoenix) | evt-039 | https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions | https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions | Phoenix, AZ, USA | in-person | Product Hunt community bolt.new | bolt.new credits (mentioned) | low | producthunt community-post"
+    }
+  },
+  {
+    "id": "Event:evt-040",
+    "type": "Event",
+    "label": "Bitcoin City Hackathon (Bitcoin Indonesia)",
+    "meta": {
+      "ref_id": "evt-040",
+      "url": "https://bitcoin-indonesia-hackathon.devpost.com/",
+      "urls": [
+        "https://bitcoin-indonesia-hackathon.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2025-01-10",
+      "date_end": "2025-01-24",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Bitcoin Indonesia",
+        "community contributors"
+      ],
+      "tech_focus": [
+        "GitHub (open-source requirement)",
+        "Devpost",
+        "(web stack unspecified)"
+      ],
+      "search_text": "Event | Bitcoin City Hackathon (Bitcoin Indonesia) | evt-040 | https://bitcoin-indonesia-hackathon.devpost.com/ | https://bitcoin-indonesia-hackathon.devpost.com/ | Online | online | Bitcoin Indonesia community contributors | GitHub (open-source requirement) Devpost (web stack unspecified) | high | devpost event-page | 2025-01-10 | 2025-01-24"
+    }
+  },
+  {
+    "id": "Event:evt-041",
+    "type": "Event",
+    "label": "Hack&Roll 2025",
+    "meta": {
+      "ref_id": "evt-041",
+      "url": "https://hacknroll2025.devpost.com/",
+      "urls": [
+        "https://hacknroll2025.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2025-01-18",
+      "date_end": "2025-01-19",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NUS Hackers",
+        "participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | Hack&Roll 2025 | evt-041 | https://hacknroll2025.devpost.com/ | https://hacknroll2025.devpost.com/ | Singapore | in-person | NUS Hackers participants | Devpost | high | devpost event-page | 2025-01-18 | 2025-01-19"
+    }
+  },
+  {
+    "id": "Event:evt-042",
+    "type": "Event",
+    "label": "GenAI for Finance Hackathon 2024",
+    "meta": {
+      "ref_id": "evt-042",
+      "url": "https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j",
+      "urls": [
+        "https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j"
+      ],
+      "confidence": "medium",
+      "source_type": [
+        "linkedin",
+        "announcement"
+      ],
+      "date_start": "2024-06-04",
+      "date_end": "2024-06-04",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "AWS",
+        "Singapore FinTech Association",
+        "MongoDB",
+        "Mission Plus",
+        "Nvidia",
+        "Tenity"
+      ],
+      "tech_focus": [
+        "GenAI (unspecified)"
+      ],
+      "search_text": "Event | GenAI for Finance Hackathon 2024 | evt-042 | https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j | https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j | Singapore | in-person | AWS Singapore FinTech Association MongoDB Mission Plus Nvidia Tenity | GenAI (unspecified) | medium | linkedin announcement | 2024-06-04 | 2024-06-04"
+    }
+  },
+  {
+    "id": "Event:evt-043",
+    "type": "Event",
+    "label": "Hack&Roll 2024",
+    "meta": {
+      "ref_id": "evt-043",
+      "url": "https://hacknroll2024.devpost.com/",
+      "urls": [
+        "https://hacknroll2024.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2024-01-20",
+      "date_end": "2024-01-21",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NUS Hackers",
+        "participants"
+      ],
+      "tech_focus": [
+        "Devpost"
+      ],
+      "search_text": "Event | Hack&Roll 2024 | evt-043 | https://hacknroll2024.devpost.com/ | https://hacknroll2024.devpost.com/ | Singapore | in-person | NUS Hackers participants | Devpost | high | devpost event-page | 2024-01-20 | 2024-01-21"
+    }
+  },
+  {
+    "id": "Event:evt-044",
+    "type": "Event",
+    "label": "MY Streamlit Hack",
+    "meta": {
+      "ref_id": "evt-044",
+      "url": "https://my-streamlit-hack.devpost.com/",
+      "urls": [
+        "https://my-streamlit-hack.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2023-09-08",
+      "date_end": "2023-10-06",
+      "format": "online",
+      "location": "Malaysia (Online)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Streamlit",
+        "Malaysia student community (participants)"
+      ],
+      "tech_focus": [
+        "Python",
+        "Streamlit"
+      ],
+      "search_text": "Event | MY Streamlit Hack | evt-044 | https://my-streamlit-hack.devpost.com/ | https://my-streamlit-hack.devpost.com/ | Malaysia (Online) | online | Streamlit Malaysia student community (participants) | Python Streamlit | high | devpost event-page | 2023-09-08 | 2023-10-06"
+    }
+  },
+  {
+    "id": "Event:evt-045",
+    "type": "Event",
+    "label": "KL Mini Hack",
+    "meta": {
+      "ref_id": "evt-045",
+      "url": "https://cny-hack-kuala-lumpur.devpost.com/",
+      "urls": [
+        "https://cny-hack-kuala-lumpur.devpost.com/"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "date_start": "2023-02-11",
+      "date_end": "2023-02-17",
+      "format": "in-person",
+      "location": "Kuala Lumpur, Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "ETH KL",
+        "cypherX",
+        "participants"
+      ],
+      "tech_focus": [
+        "web3 (various)"
+      ],
+      "search_text": "Event | KL Mini Hack | evt-045 | https://cny-hack-kuala-lumpur.devpost.com/ | https://cny-hack-kuala-lumpur.devpost.com/ | Kuala Lumpur, Malaysia | in-person | ETH KL cypherX participants | web3 (various) | high | devpost event-page | 2023-02-11 | 2023-02-17"
+    }
+  },
+  {
+    "id": "Event:evt-046",
+    "type": "Event",
+    "label": "Product Hunt Global Hackathon (winners newsletter)",
+    "meta": {
+      "ref_id": "evt-046",
+      "url": "https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon",
+      "urls": [
+        "https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "producthunt",
+        "newsletter",
+        "winners-announcement"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "online",
+      "location": "Online (Global)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Product Hunt",
+        "global makers"
+      ],
+      "tech_focus": [
+        "Product Hunt newsletter"
+      ],
+      "search_text": "Event | Product Hunt Global Hackathon (winners newsletter) | evt-046 | https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon | https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon | Online (Global) | online | Product Hunt global makers | Product Hunt newsletter | high | producthunt newsletter winners-announcement"
+    }
+  },
+  {
+    "id": "Event:evt-047",
+    "type": "Event",
+    "label": "Temasek–SUTD Generative AI Hackathon",
+    "meta": {
+      "ref_id": "evt-047",
+      "url": "https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM",
+      "urls": [
+        "https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "event-recap"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Temasek",
+        "SUTD students",
+        "Temasek staff"
+      ],
+      "tech_focus": [
+        "GenAI (unspecified)"
+      ],
+      "search_text": "Event | Temasek–SUTD Generative AI Hackathon | evt-047 | https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM | https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM | Singapore | in-person | Temasek SUTD students Temasek staff | GenAI (unspecified) | low | linkedin event-recap"
+    }
+  },
+  {
+    "id": "Event:evt-048",
+    "type": "Event",
+    "label": "GovTech x OpenAI Hackathon (recap)",
+    "meta": {
+      "ref_id": "evt-048",
+      "url": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs",
+      "urls": [
+        "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "event-recap"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "GovTech Singapore",
+        "OpenAI",
+        "top 3 teams (winners)"
+      ],
+      "tech_focus": [
+        "OpenAI APIs (credits mentioned)"
+      ],
+      "search_text": "Event | GovTech x OpenAI Hackathon (recap) | evt-048 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs | Singapore | in-person | GovTech Singapore OpenAI top 3 teams (winners) | OpenAI APIs (credits mentioned) | low | linkedin event-recap"
+    }
+  },
+  {
+    "id": "Event:evt-049",
+    "type": "Event",
+    "label": "GovTech x OpenAI Hackathon",
+    "meta": {
+      "ref_id": "evt-049",
+      "url": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5",
+      "urls": [
+        "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "announcement"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "GovTech Singapore",
+        "OpenAI",
+        "hackathon participants"
+      ],
+      "tech_focus": [
+        "GPT-4o Realtime (mentioned)",
+        "o1 reasoning model (mentioned)"
+      ],
+      "search_text": "Event | GovTech x OpenAI Hackathon | evt-049 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5 | Singapore | in-person | GovTech Singapore OpenAI hackathon participants | GPT-4o Realtime (mentioned) o1 reasoning model (mentioned) | low | linkedin announcement"
+    }
+  },
+  {
+    "id": "Event:evt-050",
+    "type": "Event",
+    "label": "Product Hunt Makers Festival (hackathon)",
+    "meta": {
+      "ref_id": "evt-050",
+      "url": "https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here",
+      "urls": [
+        "https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "story"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Product Hunt",
+        "partners (TechCrunch/Webflow, mentioned)"
+      ],
+      "tech_focus": [
+        "no-code + code (inclusive)"
+      ],
+      "search_text": "Event | Product Hunt Makers Festival (hackathon) | evt-050 | https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here | https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here | Online | online | Product Hunt partners (TechCrunch/Webflow, mentioned) | no-code + code (inclusive) | low | producthunt story"
+    }
+  },
+  {
+    "id": "Event:evt-051",
+    "type": "Event",
+    "label": "Generative AI Hackathon (mentioned)",
+    "meta": {
+      "ref_id": "evt-051",
+      "url": "https://www.producthunt.com/products/agi-chat",
+      "urls": [
+        "https://www.producthunt.com/products/agi-chat"
+      ],
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "product-page"
+      ],
+      "date_start": "—",
+      "date_end": "—",
+      "format": "—",
+      "location": "—",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "AGI.Chat makers"
+      ],
+      "tech_focus": [
+        "Cohere LLMs (mentioned)"
+      ],
+      "search_text": "Event | Generative AI Hackathon (mentioned) | evt-051 | https://www.producthunt.com/products/agi-chat | https://www.producthunt.com/products/agi-chat | AGI.Chat makers | Cohere LLMs (mentioned) | low | producthunt product-page"
+    }
+  },
+  {
+    "id": "Event:evt-052",
+    "type": "Event",
+    "label": "Hack&Roll 2023",
+    "meta": {
+      "ref_id": "evt-052",
+      "url": "https://hacknroll2023.devpost.com/",
+      "urls": [
+        "https://hacknroll2023.devpost.com/",
+        "https://hacknroll.nushackers.org/",
+        "https://hacknroll2023.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "official-site",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2023-01-14",
+      "date_end": "2023-01-15",
+      "format": "in-person",
+      "location": "Cinnamon-Tembusu Dining Hall, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NUS Hackers"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Open Ended"
+      ],
+      "search_text": "Event | Hack&Roll 2023 | evt-052 | https://hacknroll2023.devpost.com/ | https://hacknroll2023.devpost.com/ https://hacknroll.nushackers.org/ https://hacknroll2023.devpost.com/project-gallery | Cinnamon-Tembusu Dining Hall, Singapore | in-person | NUS Hackers | Beginner Friendly Open Ended | high | devpost official-site event-site project_gallery | 2023-01-14 | 2023-01-15"
+    }
+  },
+  {
+    "id": "Event:evt-053",
+    "type": "Event",
+    "label": "Hack for Good 2023",
+    "meta": {
+      "ref_id": "evt-053",
+      "url": "https://hack-for-good-2023.devpost.com/",
+      "urls": [
+        "https://hack-for-good-2023.devpost.com/",
+        "https://hack-for-good-2023.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2023-02-01",
+      "date_end": "2023-02-11",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Developer Student Clubs @NUS Computing"
+      ],
+      "tech_focus": [
+        "Productivity",
+        "Social Good",
+        "Web"
+      ],
+      "search_text": "Event | Hack for Good 2023 | evt-053 | https://hack-for-good-2023.devpost.com/ | https://hack-for-good-2023.devpost.com/ https://hack-for-good-2023.devpost.com/project-gallery | Online | online | Developer Student Clubs @NUS Computing | Productivity Social Good Web | high | devpost project_gallery | 2023-02-01 | 2023-02-11"
+    }
+  },
+  {
+    "id": "Event:evt-054",
+    "type": "Event",
+    "label": "YouthxHack Total Defence Hackathon",
+    "meta": {
+      "ref_id": "evt-054",
+      "url": "https://youthxhack.devpost.com/",
+      "urls": [
+        "https://youthxhack.devpost.com/",
+        "https://youthxhack.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2023-02-03",
+      "date_end": "2023-02-10",
+      "format": "in-person",
+      "location": "The Matchbox, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Cyber Youth Singapore"
+      ],
+      "tech_focus": [
+        "Social Good"
+      ],
+      "search_text": "Event | YouthxHack Total Defence Hackathon | evt-054 | https://youthxhack.devpost.com/ | https://youthxhack.devpost.com/ https://youthxhack.devpost.com/project-gallery | The Matchbox, Singapore | in-person | Cyber Youth Singapore | Social Good | high | devpost project_gallery | 2023-02-03 | 2023-02-10"
+    }
+  },
+  {
+    "id": "Event:evt-055",
+    "type": "Event",
+    "label": "NUS Fintech Month Hackathon 2023 (Round 1:Ideation)",
+    "meta": {
+      "ref_id": "evt-055",
+      "url": "https://nus-ftm-ideation-hackathon.devpost.com/",
+      "urls": [
+        "https://nus-ftm-ideation-hackathon.devpost.com/",
+        "https://nus-ftm-ideation-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2022-12-12",
+      "date_end": "2023-01-10",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "National University of Singapore"
+      ],
+      "tech_focus": [
+        "Blockchain",
+        "Fintech",
+        "Machine Learning/AI"
+      ],
+      "search_text": "Event | NUS Fintech Month Hackathon 2023 (Round 1:Ideation) | evt-055 | https://nus-ftm-ideation-hackathon.devpost.com/ | https://nus-ftm-ideation-hackathon.devpost.com/ https://nus-ftm-ideation-hackathon.devpost.com/project-gallery | Singapore | in-person | National University of Singapore | Blockchain Fintech Machine Learning/AI | high | devpost project_gallery | 2022-12-12 | 2023-01-10"
+    }
+  },
+  {
+    "id": "Event:evt-056",
+    "type": "Event",
+    "label": ".HACKathon",
+    "meta": {
+      "ref_id": "evt-056",
+      "url": "https://dothackathon.devpost.com/",
+      "urls": [
+        "https://dothackathon.devpost.com/",
+        "https://smudothack.surge.sh/",
+        "https://dothackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2025-08-01",
+      "date_end": "2025-08-02",
+      "format": "in-person",
+      "location": "Singapore Management University, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Singapore Management University"
+      ],
+      "tech_focus": [
+        "Social Good",
+        "Education",
+        "Lifehacks"
+      ],
+      "search_text": "Event | .HACKathon | evt-056 | https://dothackathon.devpost.com/ | https://dothackathon.devpost.com/ https://smudothack.surge.sh/ https://dothackathon.devpost.com/project-gallery | Singapore Management University, Singapore | in-person | Singapore Management University | Social Good Education Lifehacks | high | devpost event-site project_gallery | 2025-08-01 | 2025-08-02"
+    }
+  },
+  {
+    "id": "Event:evt-057",
+    "type": "Event",
+    "label": "FOSSASIA UNESCO Open Science and Data Hackathon",
+    "meta": {
+      "ref_id": "evt-057",
+      "url": "https://fossasia-unesco.devpost.com/",
+      "urls": [
+        "https://fossasia-unesco.devpost.com/",
+        "https://unesco.sciencehack.asia/",
+        "https://fossasia-unesco.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2018-03-24",
+      "date_end": "2018-03-25",
+      "format": "in-person",
+      "location": "Lifelong Learning Institute, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "FOSSASIA",
+        "UNESCO"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | FOSSASIA UNESCO Open Science and Data Hackathon | evt-057 | https://fossasia-unesco.devpost.com/ | https://fossasia-unesco.devpost.com/ https://unesco.sciencehack.asia/ https://fossasia-unesco.devpost.com/project-gallery | Lifelong Learning Institute, Singapore | in-person | FOSSASIA UNESCO | high | devpost event-site project_gallery | 2018-03-24 | 2018-03-25"
+    }
+  },
+  {
+    "id": "Event:evt-058",
+    "type": "Event",
+    "label": "FOSSASIA Hackathon with UNESCO",
+    "meta": {
+      "ref_id": "evt-058",
+      "url": "https://fossasia-hackathon.devpost.com/",
+      "urls": [
+        "https://fossasia-hackathon.devpost.com/",
+        "https://2019.fossasia.org/",
+        "https://fossasia-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2019-03-15",
+      "date_end": "2019-03-17",
+      "format": "in-person",
+      "location": "Lifelong Learning Institute, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "FOSSASIA",
+        "UNESCO"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | FOSSASIA Hackathon with UNESCO | evt-058 | https://fossasia-hackathon.devpost.com/ | https://fossasia-hackathon.devpost.com/ https://2019.fossasia.org/ https://fossasia-hackathon.devpost.com/project-gallery | Lifelong Learning Institute, Singapore | in-person | FOSSASIA UNESCO | high | devpost event-site project_gallery | 2019-03-15 | 2019-03-17"
+    }
+  },
+  {
+    "id": "Event:evt-059",
+    "type": "Event",
+    "label": "AWS AI Hackathon Hong Kong",
+    "meta": {
+      "ref_id": "evt-059",
+      "url": "https://aws-hong-kong-hackathon.devpost.com/",
+      "urls": [
+        "https://aws-hong-kong-hackathon.devpost.com/",
+        "https://aws-hong-kong-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-08-15",
+      "date_end": "2025-09-30",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "AWS Hong Kong"
+      ],
+      "tech_focus": [
+        "Machine Learning/AI"
+      ],
+      "search_text": "Event | AWS AI Hackathon Hong Kong | evt-059 | https://aws-hong-kong-hackathon.devpost.com/ | https://aws-hong-kong-hackathon.devpost.com/ https://aws-hong-kong-hackathon.devpost.com/project-gallery | Online | online | AWS Hong Kong | Machine Learning/AI | high | devpost project_gallery | 2025-08-15 | 2025-09-30"
+    }
+  },
+  {
+    "id": "Event:evt-060",
+    "type": "Event",
+    "label": "MiniMax 2025 AI Hackathon in Hong Kong",
+    "meta": {
+      "ref_id": "evt-060",
+      "url": "https://minimax-hackathon-in-hk.devpost.com/",
+      "urls": [
+        "https://minimax-hackathon-in-hk.devpost.com/",
+        "https://minimax-hackathon-in-hk.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-08-29",
+      "date_end": "2025-09-13",
+      "format": "in-person",
+      "location": "Hong Kong",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "MiniMax"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "DevOps",
+        "Machine Learning/AI"
+      ],
+      "search_text": "Event | MiniMax 2025 AI Hackathon in Hong Kong | evt-060 | https://minimax-hackathon-in-hk.devpost.com/ | https://minimax-hackathon-in-hk.devpost.com/ https://minimax-hackathon-in-hk.devpost.com/project-gallery | Hong Kong | in-person | MiniMax | Beginner Friendly DevOps Machine Learning/AI | high | devpost project_gallery | 2025-08-29 | 2025-09-13"
+    }
+  },
+  {
+    "id": "Event:evt-061",
+    "type": "Event",
+    "label": "Hack4HK",
+    "meta": {
+      "ref_id": "evt-061",
+      "url": "https://hack4hk-23258.devpost.com/",
+      "urls": [
+        "https://hack4hk-23258.devpost.com/",
+        "https://hack4hk-23258.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-12-12",
+      "date_end": "2025-01-05",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Hack4HK"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Low/No Code",
+        "Social Good"
+      ],
+      "search_text": "Event | Hack4HK | evt-061 | https://hack4hk-23258.devpost.com/ | https://hack4hk-23258.devpost.com/ https://hack4hk-23258.devpost.com/project-gallery | Online | online | Hack4HK | Beginner Friendly Low/No Code Social Good | high | devpost project_gallery | 2024-12-12 | 2025-01-05"
+    }
+  },
+  {
+    "id": "Event:evt-062",
+    "type": "Event",
+    "label": "Smart City Hackathon Hong Kong 2018",
+    "meta": {
+      "ref_id": "evt-062",
+      "url": "https://odhack-hk-2018.devpost.com/",
+      "urls": [
+        "https://odhack-hk-2018.devpost.com/",
+        "https://www.eventbrite.com/e/smart-city-hackathon-hong-kong-2018-tickets-48336709399",
+        "https://odhack-hk-2018.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "eventbrite",
+        "project_gallery"
+      ],
+      "date_start": "2018-08-31",
+      "date_end": "2018-09-02",
+      "format": "in-person",
+      "location": "Hong Kong Science and Technology Park, Hong Kong",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [],
+      "search_text": "Event | Smart City Hackathon Hong Kong 2018 | evt-062 | https://odhack-hk-2018.devpost.com/ | https://odhack-hk-2018.devpost.com/ https://www.eventbrite.com/e/smart-city-hackathon-hong-kong-2018-tickets-48336709399 https://odhack-hk-2018.devpost.com/project-gallery | Hong Kong Science and Technology Park, Hong Kong | in-person | high | devpost eventbrite project_gallery | 2018-08-31 | 2018-09-02"
+    }
+  },
+  {
+    "id": "Event:evt-063",
+    "type": "Event",
+    "label": "AI Hackathon with Google Cloud (Japan)",
+    "meta": {
+      "ref_id": "evt-063",
+      "url": "https://googlecloudjapanaihackathon.devpost.com/",
+      "urls": [
+        "https://googlecloudjapanaihackathon.devpost.com/",
+        "https://googlecloudjapanaihackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-08-01",
+      "date_end": "2024-09-23",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Google"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Enterprise"
+      ],
+      "search_text": "Event | AI Hackathon with Google Cloud (Japan) | evt-063 | https://googlecloudjapanaihackathon.devpost.com/ | https://googlecloudjapanaihackathon.devpost.com/ https://googlecloudjapanaihackathon.devpost.com/project-gallery | Online | online | Google | Beginner Friendly Machine Learning/AI Enterprise | high | devpost project_gallery | 2024-08-01 | 2024-09-23"
+    }
+  },
+  {
+    "id": "Event:evt-065",
+    "type": "Event",
+    "label": "Junction Tokyo 2018",
+    "meta": {
+      "ref_id": "evt-065",
+      "url": "https://junctiontokyo2018.devpost.com/",
+      "urls": [
+        "https://junctiontokyo2018.devpost.com/",
+        "http://tokyo.hackjunction.com/",
+        "https://junctiontokyo2018.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2018-03-23",
+      "date_end": "2018-03-25",
+      "format": "in-person",
+      "location": "Terrada Warehouse, Tokyo, Japan",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [],
+      "search_text": "Event | Junction Tokyo 2018 | evt-065 | https://junctiontokyo2018.devpost.com/ | https://junctiontokyo2018.devpost.com/ http://tokyo.hackjunction.com/ https://junctiontokyo2018.devpost.com/project-gallery | Terrada Warehouse, Tokyo, Japan | in-person | high | devpost event-site project_gallery | 2018-03-23 | 2018-03-25"
+    }
+  },
+  {
+    "id": "Event:evt-066",
+    "type": "Event",
+    "label": "I’M-POSSIBLE Hackathon — Japan-Israel Online Disability Hackathon",
+    "meta": {
+      "ref_id": "evt-066",
+      "url": "https://makerpossible.devpost.com/",
+      "urls": [
+        "https://makerpossible.devpost.com/",
+        "https://makerpossible.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2021-08-10",
+      "date_end": "2021-10-08",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Israel Embassy Tokyo",
+        "Nippon Foundation"
+      ],
+      "tech_focus": [
+        "Health",
+        "Social Good"
+      ],
+      "search_text": "Event | I’M-POSSIBLE Hackathon — Japan-Israel Online Disability Hackathon | evt-066 | https://makerpossible.devpost.com/ | https://makerpossible.devpost.com/ https://makerpossible.devpost.com/project-gallery | Online | online | Israel Embassy Tokyo Nippon Foundation | Health Social Good | high | devpost project_gallery | 2021-08-10 | 2021-10-08"
+    }
+  },
+  {
+    "id": "Event:evt-067",
+    "type": "Event",
+    "label": "SeoulHacks",
+    "meta": {
+      "ref_id": "evt-067",
+      "url": "https://seoulhacks.devpost.com/",
+      "urls": [
+        "https://seoulhacks.devpost.com/",
+        "https://seoulhacks.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2020-11-01",
+      "date_end": "2020-11-01",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [],
+      "search_text": "Event | SeoulHacks | evt-067 | https://seoulhacks.devpost.com/ | https://seoulhacks.devpost.com/ https://seoulhacks.devpost.com/project-gallery | Online | online | high | devpost project_gallery | 2020-11-01 | 2020-11-01"
+    }
+  },
+  {
+    "id": "Event:evt-068",
+    "type": "Event",
+    "label": "Students@AI Seoul Hackathon",
+    "meta": {
+      "ref_id": "evt-068",
+      "url": "https://students-ai-seoul-hackathon.devpost.com/",
+      "urls": [
+        "https://students-ai-seoul-hackathon.devpost.com/",
+        "https://students-ai-seoul-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-04-12",
+      "date_end": "2025-04-13",
+      "format": "in-person",
+      "location": "Elice Labs (Seoul), South Korea",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "AI Consensus"
+      ],
+      "tech_focus": [
+        "Education",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "search_text": "Event | Students@AI Seoul Hackathon | evt-068 | https://students-ai-seoul-hackathon.devpost.com/ | https://students-ai-seoul-hackathon.devpost.com/ https://students-ai-seoul-hackathon.devpost.com/project-gallery | Elice Labs (Seoul), South Korea | in-person | AI Consensus | Education Machine Learning/AI Social Good | high | devpost project_gallery | 2025-04-12 | 2025-04-13"
+    }
+  },
+  {
+    "id": "Event:evt-069",
+    "type": "Event",
+    "label": "Seoul Tech Impact 2024",
+    "meta": {
+      "ref_id": "evt-069",
+      "url": "https://seoul-tech-impact-2024.devpost.com/",
+      "urls": [
+        "https://seoul-tech-impact-2024.devpost.com/",
+        "https://www.seoultechimpact.com/register",
+        "https://seoul-tech-impact-2024.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "registration",
+        "project_gallery"
+      ],
+      "date_start": "2024-09-07",
+      "date_end": "2024-09-08",
+      "format": "in-person",
+      "location": "Pangyo, South Korea",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Seoul Tech Impact"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Social Good"
+      ],
+      "search_text": "Event | Seoul Tech Impact 2024 | evt-069 | https://seoul-tech-impact-2024.devpost.com/ | https://seoul-tech-impact-2024.devpost.com/ https://www.seoultechimpact.com/register https://seoul-tech-impact-2024.devpost.com/project-gallery | Pangyo, South Korea | in-person | Seoul Tech Impact | Beginner Friendly Social Good | high | devpost registration project_gallery | 2024-09-07 | 2024-09-08"
+    }
+  },
+  {
+    "id": "Event:evt-071",
+    "type": "Event",
+    "label": "IndiaAI Impact Gen-AI Hackathon",
+    "meta": {
+      "ref_id": "evt-071",
+      "url": "https://iisc-ibm-india-ai-impact.devpost.com/",
+      "urls": [
+        "https://iisc-ibm-india-ai-impact.devpost.com/",
+        "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-08-14",
+      "date_end": "2025-08-31",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Centre for Networked Intelligence, IISc"
+      ],
+      "tech_focus": [
+        "Education",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "search_text": "Event | IndiaAI Impact Gen-AI Hackathon | evt-071 | https://iisc-ibm-india-ai-impact.devpost.com/ | https://iisc-ibm-india-ai-impact.devpost.com/ https://iisc-ibm-india-ai-impact.devpost.com/project-gallery | Online | online | Centre for Networked Intelligence, IISc | Education Machine Learning/AI Social Good | high | devpost project_gallery | 2025-08-14 | 2025-08-31"
+    }
+  },
+  {
+    "id": "Event:evt-072",
+    "type": "Event",
+    "label": "HackIndia",
+    "meta": {
+      "ref_id": "evt-072",
+      "url": "https://hackindia.devpost.com/",
+      "urls": [
+        "https://hackindia.devpost.com/",
+        "https://hackindia.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2015-07-18",
+      "date_end": "2015-07-19",
+      "format": "in-person",
+      "location": "PESIT Bangalore - Banashankari Campus, Bengaluru, India",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "PES University"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | HackIndia | evt-072 | https://hackindia.devpost.com/ | https://hackindia.devpost.com/ https://hackindia.devpost.com/project-gallery | PESIT Bangalore - Banashankari Campus, Bengaluru, India | in-person | PES University | high | devpost project_gallery | 2015-07-18 | 2015-07-19"
+    }
+  },
+  {
+    "id": "Event:evt-073",
+    "type": "Event",
+    "label": "India Solar Hackathon",
+    "meta": {
+      "ref_id": "evt-073",
+      "url": "https://indiasolarhackathon.devpost.com/",
+      "urls": [
+        "https://indiasolarhackathon.devpost.com/",
+        "https://indiasolarhackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2016-11-11",
+      "date_end": "2016-11-12",
+      "format": "in-person",
+      "location": "Startup Tunnel (Vihara Innovation Campus), New Delhi, India",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "New Energy Nexus"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | India Solar Hackathon | evt-073 | https://indiasolarhackathon.devpost.com/ | https://indiasolarhackathon.devpost.com/ https://indiasolarhackathon.devpost.com/project-gallery | Startup Tunnel (Vihara Innovation Campus), New Delhi, India | in-person | New Energy Nexus | high | devpost project_gallery | 2016-11-11 | 2016-11-12"
+    }
+  },
+  {
+    "id": "Event:evt-074",
+    "type": "Event",
+    "label": "IC Hack 22",
+    "meta": {
+      "ref_id": "evt-074",
+      "url": "https://ic-hack.devpost.com/",
+      "urls": [
+        "https://ic-hack.devpost.com/",
+        "https://ic-hack.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2022-09-03",
+      "date_end": "2022-09-04",
+      "format": "in-person",
+      "location": "Bengaluru, India",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "IEEE India Council"
+      ],
+      "tech_focus": [
+        "Education",
+        "Health"
+      ],
+      "search_text": "Event | IC Hack 22 | evt-074 | https://ic-hack.devpost.com/ | https://ic-hack.devpost.com/ https://ic-hack.devpost.com/project-gallery | Bengaluru, India | in-person | IEEE India Council | Education Health | high | devpost project_gallery | 2022-09-03 | 2022-09-04"
+    }
+  },
+  {
+    "id": "Event:evt-075",
+    "type": "Event",
+    "label": "Elite Coding Cup India",
+    "meta": {
+      "ref_id": "evt-075",
+      "url": "https://coding-cup.devpost.com/",
+      "urls": [
+        "https://coding-cup.devpost.com/",
+        "https://coding-cup.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-08-16",
+      "date_end": "2024-08-18",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "india"
+      ],
+      "tech_focus": [
+        "Blockchain",
+        "Machine Learning/AI",
+        "Web"
+      ],
+      "search_text": "Event | Elite Coding Cup India | evt-075 | https://coding-cup.devpost.com/ | https://coding-cup.devpost.com/ https://coding-cup.devpost.com/project-gallery | Online | online | india | Blockchain Machine Learning/AI Web | high | devpost project_gallery | 2024-08-16 | 2024-08-18"
+    }
+  },
+  {
+    "id": "Event:evt-076",
+    "type": "Event",
+    "label": "Garuda Hacks 6.0",
+    "meta": {
+      "ref_id": "evt-076",
+      "url": "https://gh6.devpost.com/",
+      "urls": [
+        "https://gh6.devpost.com/",
+        "https://gh6.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-07-24",
+      "date_end": "2025-07-25",
+      "format": "in-person",
+      "location": "Universitas Multimedia Nusantara (Tangerang), Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Garuda Hacks"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "search_text": "Event | Garuda Hacks 6.0 | evt-076 | https://gh6.devpost.com/ | https://gh6.devpost.com/ https://gh6.devpost.com/project-gallery | Universitas Multimedia Nusantara (Tangerang), Indonesia | in-person | Garuda Hacks | Beginner Friendly Machine Learning/AI Social Good | high | devpost project_gallery | 2025-07-24 | 2025-07-25"
+    }
+  },
+  {
+    "id": "Event:evt-077",
+    "type": "Event",
+    "label": "Garuda Hacks 4.0",
+    "meta": {
+      "ref_id": "evt-077",
+      "url": "https://garuda-hacks.devpost.com/",
+      "urls": [
+        "https://garuda-hacks.devpost.com/",
+        "https://garuda-hacks.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2023-07-21",
+      "date_end": "2023-07-23",
+      "format": "in-person",
+      "location": "Universitas Tarumanagara, Jakarta, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Garuda HQ"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "search_text": "Event | Garuda Hacks 4.0 | evt-077 | https://garuda-hacks.devpost.com/ | https://garuda-hacks.devpost.com/ https://garuda-hacks.devpost.com/project-gallery | Universitas Tarumanagara, Jakarta, Indonesia | in-person | Garuda HQ | Beginner Friendly Machine Learning/AI Social Good | high | devpost project_gallery | 2023-07-21 | 2023-07-23"
+    }
+  },
+  {
+    "id": "Event:evt-078",
+    "type": "Event",
+    "label": "Komodo Hacks 1.0",
+    "meta": {
+      "ref_id": "evt-078",
+      "url": "https://komodo-hacks.devpost.com/",
+      "urls": [
+        "https://komodo-hacks.devpost.com/",
+        "https://komodo-hacks.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2022-07-22",
+      "date_end": "2022-07-26",
+      "format": "in-person",
+      "location": "Jakarta, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Garuda HQ"
+      ],
+      "tech_focus": [
+        "Education"
+      ],
+      "search_text": "Event | Komodo Hacks 1.0 | evt-078 | https://komodo-hacks.devpost.com/ | https://komodo-hacks.devpost.com/ https://komodo-hacks.devpost.com/project-gallery | Jakarta, Indonesia | in-person | Garuda HQ | Education | high | devpost project_gallery | 2022-07-22 | 2022-07-26"
+    }
+  },
+  {
+    "id": "Event:evt-079",
+    "type": "Event",
+    "label": "HackIdea",
+    "meta": {
+      "ref_id": "evt-079",
+      "url": "https://hackidea.devpost.com/",
+      "urls": [
+        "https://hackidea.devpost.com/",
+        "https://hackidea.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2023-12-29",
+      "date_end": "2024-01-03",
+      "format": "in-person",
+      "location": "The Sultan Convention Center, Palembang, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "TPM"
+      ],
+      "tech_focus": [
+        "Cybersecurity",
+        "E-commerce/Retail",
+        "Mobile"
+      ],
+      "search_text": "Event | HackIdea | evt-079 | https://hackidea.devpost.com/ | https://hackidea.devpost.com/ https://hackidea.devpost.com/project-gallery | The Sultan Convention Center, Palembang, Indonesia | in-person | TPM | Cybersecurity E-commerce/Retail Mobile | high | devpost project_gallery | 2023-12-29 | 2024-01-03"
+    }
+  },
+  {
+    "id": "Event:evt-080",
+    "type": "Event",
+    "label": "Bitcoin City Hackathon - by Bitcoin Indonesia",
+    "meta": {
+      "ref_id": "evt-080",
+      "url": "https://bitcoin-indonesia-hackathon.devpost.com/",
+      "urls": [
+        "https://bitcoin-indonesia-hackathon.devpost.com/",
+        "https://bitcoin-indonesia-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-01-10",
+      "date_end": "2025-01-24",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Bitcoin Indonesia"
+      ],
+      "tech_focus": [
+        "Blockchain",
+        "Education",
+        "Social Good"
+      ],
+      "search_text": "Event | Bitcoin City Hackathon - by Bitcoin Indonesia | evt-080 | https://bitcoin-indonesia-hackathon.devpost.com/ | https://bitcoin-indonesia-hackathon.devpost.com/ https://bitcoin-indonesia-hackathon.devpost.com/project-gallery | Online | online | Bitcoin Indonesia | Blockchain Education Social Good | high | devpost project_gallery | 2025-01-10 | 2025-01-24"
+    }
+  },
+  {
+    "id": "Event:evt-081",
+    "type": "Event",
+    "label": "Build with AI: Gemini Hackathon with Google DeepMind",
+    "meta": {
+      "ref_id": "evt-081",
+      "url": "https://build-with-deepmind.devpost.com/",
+      "urls": [
+        "https://build-with-deepmind.devpost.com/",
+        "https://build-with-deepmind.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2026-03-08",
+      "date_end": "2026-03-08",
+      "format": "in-person",
+      "location": "Xsolla Curine Academy, Kuala Lumpur, Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "GDG CLuod KL"
+      ],
+      "tech_focus": [
+        "Machine Learning/AI",
+        "Open Ended",
+        "Productivity"
+      ],
+      "search_text": "Event | Build with AI: Gemini Hackathon with Google DeepMind | evt-081 | https://build-with-deepmind.devpost.com/ | https://build-with-deepmind.devpost.com/ https://build-with-deepmind.devpost.com/project-gallery | Xsolla Curine Academy, Kuala Lumpur, Malaysia | in-person | GDG CLuod KL | Machine Learning/AI Open Ended Productivity | high | devpost project_gallery | 2026-03-08 | 2026-03-08"
+    }
+  },
+  {
+    "id": "Event:evt-082",
+    "type": "Event",
+    "label": "MATLAB HACKATHON (MH) UTM 2025",
+    "meta": {
+      "ref_id": "evt-082",
+      "url": "https://mathworks-utm-2025.devpost.com/",
+      "urls": [
+        "https://mathworks-utm-2025.devpost.com/",
+        "https://mathworks-utm-2025.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-06-14",
+      "date_end": "2025-06-14",
+      "format": "in-person",
+      "location": "Universiti Teknologi Malaysia, P19 Hall (Johor Bahru), Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Mathworks"
+      ],
+      "tech_focus": [
+        "Machine Learning/AI"
+      ],
+      "search_text": "Event | MATLAB HACKATHON (MH) UTM 2025 | evt-082 | https://mathworks-utm-2025.devpost.com/ | https://mathworks-utm-2025.devpost.com/ https://mathworks-utm-2025.devpost.com/project-gallery | Universiti Teknologi Malaysia, P19 Hall (Johor Bahru), Malaysia | in-person | Mathworks | Machine Learning/AI | high | devpost project_gallery | 2025-06-14 | 2025-06-14"
+    }
+  },
+  {
+    "id": "Event:evt-083",
+    "type": "Event",
+    "label": "YME Hackathon 2021",
+    "meta": {
+      "ref_id": "evt-083",
+      "url": "https://yme-hackathon-2021.devpost.com/",
+      "urls": [
+        "https://yme-hackathon-2021.devpost.com/",
+        "https://yme-hackathon-2021.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2021-08-18",
+      "date_end": "2021-08-26",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Young Malaysian Engineers"
+      ],
+      "tech_focus": [
+        "Education",
+        "COVID-19",
+        "Social Good"
+      ],
+      "search_text": "Event | YME Hackathon 2021 | evt-083 | https://yme-hackathon-2021.devpost.com/ | https://yme-hackathon-2021.devpost.com/ https://yme-hackathon-2021.devpost.com/project-gallery | Online | online | Young Malaysian Engineers | Education COVID-19 Social Good | high | devpost project_gallery | 2021-08-18 | 2021-08-26"
+    }
+  },
+  {
+    "id": "Event:evt-085",
+    "type": "Event",
+    "label": "DISH 2019",
+    "meta": {
+      "ref_id": "evt-085",
+      "url": "https://dish-2019.devpost.com/",
+      "urls": [
+        "https://dish-2019.devpost.com/",
+        "https://dish2019.com/",
+        "https://dish-2019.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2019-04-06",
+      "date_end": "2019-04-07",
+      "format": "in-person",
+      "location": "Acceler8 by UnionSPACE - Finman Building (Makati), Philippines",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Blockdevs Asia"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | DISH 2019 | evt-085 | https://dish-2019.devpost.com/ | https://dish-2019.devpost.com/ https://dish2019.com/ https://dish-2019.devpost.com/project-gallery | Acceler8 by UnionSPACE - Finman Building (Makati), Philippines | in-person | Blockdevs Asia | high | devpost event-site project_gallery | 2019-04-06 | 2019-04-07"
+    }
+  },
+  {
+    "id": "Event:evt-086",
+    "type": "Event",
+    "label": "HackBangPH",
+    "meta": {
+      "ref_id": "evt-086",
+      "url": "https://hackbangph.devpost.com/",
+      "urls": [
+        "https://hackbangph.devpost.com/",
+        "https://hackbangph.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2020-06-26",
+      "date_end": "2020-06-29",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [
+        "Productivity",
+        "Lifehacks",
+        "COVID-19"
+      ],
+      "search_text": "Event | HackBangPH | evt-086 | https://hackbangph.devpost.com/ | https://hackbangph.devpost.com/ https://hackbangph.devpost.com/project-gallery | Online | online | Productivity Lifehacks COVID-19 | high | devpost project_gallery | 2020-06-26 | 2020-06-29"
+    }
+  },
+  {
+    "id": "Event:evt-087",
+    "type": "Event",
+    "label": "LotusHacks x HackHarvard x GenAI Fund Vietnam Hackathon",
+    "meta": {
+      "ref_id": "evt-087",
+      "url": "https://lotushacks2026.devpost.com/",
+      "urls": [
+        "https://lotushacks2026.devpost.com/",
+        "https://lotushacks2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2026-03-22",
+      "date_end": "2026-03-22",
+      "format": "in-person",
+      "location": "VNG Group JSC, Ho Chi Minh City, Vietnam",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Lotushacks"
+      ],
+      "tech_focus": [
+        "Beginner Friendly"
+      ],
+      "search_text": "Event | LotusHacks x HackHarvard x GenAI Fund Vietnam Hackathon | evt-087 | https://lotushacks2026.devpost.com/ | https://lotushacks2026.devpost.com/ https://lotushacks2026.devpost.com/project-gallery | VNG Group JSC, Ho Chi Minh City, Vietnam | in-person | Lotushacks | Beginner Friendly | high | devpost project_gallery | 2026-03-22 | 2026-03-22"
+    }
+  },
+  {
+    "id": "Event:evt-088",
+    "type": "Event",
+    "label": "Vietnam Smart Energy Hackathon 2019",
+    "meta": {
+      "ref_id": "evt-088",
+      "url": "https://vietnam-smart-energy-hackathon.devpost.com/",
+      "urls": [
+        "https://vietnam-smart-energy-hackathon.devpost.com/",
+        "https://vietnam-smart-energy-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2019-06-02",
+      "date_end": "2019-06-02",
+      "format": "in-person",
+      "location": "Ho Chi Minh City, Vietnam",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [],
+      "search_text": "Event | Vietnam Smart Energy Hackathon 2019 | evt-088 | https://vietnam-smart-energy-hackathon.devpost.com/ | https://vietnam-smart-energy-hackathon.devpost.com/ https://vietnam-smart-energy-hackathon.devpost.com/project-gallery | Ho Chi Minh City, Vietnam | in-person | high | devpost project_gallery | 2019-06-02 | 2019-06-02"
+    }
+  },
+  {
+    "id": "Event:evt-089",
+    "type": "Event",
+    "label": "FOSSASIA UNESCO Hackathon Vietnam 2018",
+    "meta": {
+      "ref_id": "evt-089",
+      "url": "https://unesco-hackathon.devpost.com/",
+      "urls": [
+        "https://unesco-hackathon.devpost.com/",
+        "https://en.unesco.org/youthmobile",
+        "https://unesco-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2018-10-13",
+      "date_end": "2018-10-14",
+      "format": "in-person",
+      "location": "Officience Vietnam (Ho Chi Minh City), Vietnam",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "UNESCO",
+        "FOSSASIA"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | FOSSASIA UNESCO Hackathon Vietnam 2018 | evt-089 | https://unesco-hackathon.devpost.com/ | https://unesco-hackathon.devpost.com/ https://en.unesco.org/youthmobile https://unesco-hackathon.devpost.com/project-gallery | Officience Vietnam (Ho Chi Minh City), Vietnam | in-person | UNESCO FOSSASIA | high | devpost project_gallery | 2018-10-13 | 2018-10-14"
+    }
+  },
+  {
+    "id": "Event:evt-090",
+    "type": "Event",
+    "label": "Hackathon Vietnam 2014 - Hanoi",
+    "meta": {
+      "ref_id": "evt-090",
+      "url": "https://hackathonvietnam2014hanoi.devpost.com/",
+      "urls": [
+        "https://hackathonvietnam2014hanoi.devpost.com/",
+        "http://www.hackathonvietnam.com/",
+        "https://hackathonvietnam2014hanoi.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2014-08-01",
+      "date_end": "2014-08-02",
+      "format": "in-person",
+      "location": "Hanoi University of Science and Technology (Bách Khoa), Hanoi, Vietnam",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Formation 8"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | Hackathon Vietnam 2014 - Hanoi | evt-090 | https://hackathonvietnam2014hanoi.devpost.com/ | https://hackathonvietnam2014hanoi.devpost.com/ http://www.hackathonvietnam.com/ https://hackathonvietnam2014hanoi.devpost.com/project-gallery | Hanoi University of Science and Technology (Bách Khoa), Hanoi, Vietnam | in-person | Formation 8 | high | devpost event-site project_gallery | 2014-08-01 | 2014-08-02"
+    }
+  },
+  {
+    "id": "Event:evt-091",
+    "type": "Event",
+    "label": "Hackathon Vietnam 2014 - Ho Chi Minh City",
+    "meta": {
+      "ref_id": "evt-091",
+      "url": "https://hackathonvietnam2014hcmc.devpost.com/",
+      "urls": [
+        "https://hackathonvietnam2014hcmc.devpost.com/",
+        "http://www.hackathonvietnam.com/",
+        "https://hackathonvietnam2014hcmc.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2014-08-01",
+      "date_end": "2014-08-02",
+      "format": "in-person",
+      "location": "National Institute of Administration (District 10), Ho Chi Minh City, Vietnam",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Formation 8"
+      ],
+      "tech_focus": [],
+      "search_text": "Event | Hackathon Vietnam 2014 - Ho Chi Minh City | evt-091 | https://hackathonvietnam2014hcmc.devpost.com/ | https://hackathonvietnam2014hcmc.devpost.com/ http://www.hackathonvietnam.com/ https://hackathonvietnam2014hcmc.devpost.com/project-gallery | National Institute of Administration (District 10), Ho Chi Minh City, Vietnam | in-person | Formation 8 | high | devpost event-site project_gallery | 2014-08-01 | 2014-08-02"
+    }
+  },
+  {
+    "id": "Event:evt-092",
+    "type": "Event",
+    "label": "Smart Energy Hackathon (Bangkok) 2017",
+    "meta": {
+      "ref_id": "evt-092",
+      "url": "https://smartenergyhackathon.devpost.com/",
+      "urls": [
+        "https://smartenergyhackathon.devpost.com/",
+        "https://smartenergyhackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2017-09-08",
+      "date_end": "2017-09-10",
+      "format": "in-person",
+      "location": "Chamchuri 10 Bldg., Chulalongkorn University, Bangkok, Thailand",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [],
+      "search_text": "Event | Smart Energy Hackathon (Bangkok) 2017 | evt-092 | https://smartenergyhackathon.devpost.com/ | https://smartenergyhackathon.devpost.com/ https://smartenergyhackathon.devpost.com/project-gallery | Chamchuri 10 Bldg., Chulalongkorn University, Bangkok, Thailand | in-person | high | devpost project_gallery | 2017-09-08 | 2017-09-10"
+    }
+  },
+  {
+    "id": "Event:evt-093",
+    "type": "Event",
+    "label": "Smart Energy Hackathon (Bangkok) 2018",
+    "meta": {
+      "ref_id": "evt-093",
+      "url": "https://smart-energy-hackathon.devpost.com/",
+      "urls": [
+        "https://smart-energy-hackathon.devpost.com/",
+        "https://smart-energy-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2018-09-07",
+      "date_end": "2018-09-09",
+      "format": "in-person",
+      "location": "KX Innovation Center, Bangkok, Thailand",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [],
+      "search_text": "Event | Smart Energy Hackathon (Bangkok) 2018 | evt-093 | https://smart-energy-hackathon.devpost.com/ | https://smart-energy-hackathon.devpost.com/ https://smart-energy-hackathon.devpost.com/project-gallery | KX Innovation Center, Bangkok, Thailand | in-person | high | devpost project_gallery | 2018-09-07 | 2018-09-09"
+    }
+  },
+  {
+    "id": "Event:evt-094",
+    "type": "Event",
+    "label": "Seafood Trackathon",
+    "meta": {
+      "ref_id": "evt-094",
+      "url": "https://seafood-trackathon.devpost.com/",
+      "urls": [
+        "https://seafood-trackathon.devpost.com/",
+        "https://seafood-trackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2019-02-11",
+      "date_end": "2019-02-12",
+      "format": "in-person",
+      "location": "Centara Grand Central Plaza Ladprao Bangkok Hotel, Bangkok, Thailand",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [],
+      "tech_focus": [
+        "Blockchain"
+      ],
+      "search_text": "Event | Seafood Trackathon | evt-094 | https://seafood-trackathon.devpost.com/ | https://seafood-trackathon.devpost.com/ https://seafood-trackathon.devpost.com/project-gallery | Centara Grand Central Plaza Ladprao Bangkok Hotel, Bangkok, Thailand | in-person | Blockchain | high | devpost project_gallery | 2019-02-11 | 2019-02-12"
+    }
+  },
+  {
+    "id": "Event:evt-095",
+    "type": "Event",
+    "label": "UNIHACK 2025",
+    "meta": {
+      "ref_id": "evt-095",
+      "url": "https://unihack2025.devpost.com/",
+      "urls": [
+        "https://unihack2025.devpost.com/",
+        "https://unihack.net/",
+        "https://unihack2025.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "official-site",
+        "event-site",
+        "project_gallery"
+      ],
+      "date_start": "2025-03-14",
+      "date_end": "2025-03-16",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "UNIHACK"
+      ],
+      "tech_focus": [
+        "Open Ended"
+      ],
+      "search_text": "Event | UNIHACK 2025 | evt-095 | https://unihack2025.devpost.com/ | https://unihack2025.devpost.com/ https://unihack.net/ https://unihack2025.devpost.com/project-gallery | Online | online | UNIHACK | Open Ended | high | devpost official-site event-site project_gallery | 2025-03-14 | 2025-03-16"
+    }
+  },
+  {
+    "id": "Event:evt-096",
+    "type": "Event",
+    "label": "Presence Platform Hackathon (Japan 2024)",
+    "meta": {
+      "ref_id": "evt-096",
+      "url": "https://presence-platform-japan-2024.devpost.com/",
+      "urls": [
+        "https://presence-platform-japan-2024.devpost.com/",
+        "https://presence-platform-japan-2024.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-07-09",
+      "date_end": "2024-07-11",
+      "format": "in-person",
+      "location": "Meta Japan Office, Tokyo, Japan",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Meta"
+      ],
+      "tech_focus": [
+        "AR/VR"
+      ],
+      "search_text": "Event | Presence Platform Hackathon (Japan 2024) | evt-096 | https://presence-platform-japan-2024.devpost.com/ | https://presence-platform-japan-2024.devpost.com/ https://presence-platform-japan-2024.devpost.com/project-gallery | Meta Japan Office, Tokyo, Japan | in-person | Meta | AR/VR | high | devpost project_gallery | 2024-07-09 | 2024-07-11"
+    }
+  },
+  {
+    "id": "Event:evt-097",
+    "type": "Event",
+    "label": "Presence Platform Hackathon (Seoul 2024)",
+    "meta": {
+      "ref_id": "evt-097",
+      "url": "https://presence-platform-seoul-2024.devpost.com/",
+      "urls": [
+        "https://presence-platform-seoul-2024.devpost.com/",
+        "https://presence-platform-seoul-2024.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-07-16",
+      "date_end": "2024-07-18",
+      "format": "in-person",
+      "location": "Meta South Korea Office (Seoul), South Korea",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Meta"
+      ],
+      "tech_focus": [
+        "AR/VR"
+      ],
+      "search_text": "Event | Presence Platform Hackathon (Seoul 2024) | evt-097 | https://presence-platform-seoul-2024.devpost.com/ | https://presence-platform-seoul-2024.devpost.com/ https://presence-platform-seoul-2024.devpost.com/project-gallery | Meta South Korea Office (Seoul), South Korea | in-person | Meta | AR/VR | high | devpost project_gallery | 2024-07-16 | 2024-07-18"
+    }
+  },
+  {
+    "id": "Event:evt-098",
+    "type": "Event",
+    "label": "Xircus (Draper Hackathon @ Manila)",
+    "meta": {
+      "ref_id": "evt-098",
+      "url": "https://xircus-apr-hackathon-manila.devpost.com/",
+      "urls": [
+        "https://xircus-apr-hackathon-manila.devpost.com/",
+        "https://xircus-apr-hackathon-manila.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2023-04-01",
+      "date_end": "2023-04-02",
+      "format": "in-person",
+      "location": "Draper Startup House (Manila, Makati), Philippines",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Xircus WEB3 Protocol"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Blockchain",
+        "Low/No Code"
+      ],
+      "search_text": "Event | Xircus (Draper Hackathon @ Manila) | evt-098 | https://xircus-apr-hackathon-manila.devpost.com/ | https://xircus-apr-hackathon-manila.devpost.com/ https://xircus-apr-hackathon-manila.devpost.com/project-gallery | Draper Startup House (Manila, Makati), Philippines | in-person | Xircus WEB3 Protocol | Beginner Friendly Blockchain Low/No Code | high | devpost project_gallery | 2023-04-01 | 2023-04-02"
+    }
+  },
+  {
+    "id": "Event:evt-099",
+    "type": "Event",
+    "label": "Hack4Good 2024",
+    "meta": {
+      "ref_id": "evt-099",
+      "url": "https://hack4good-2024.devpost.com/",
+      "urls": [
+        "https://hack4good-2024.devpost.com/",
+        "https://hack4good-2024.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-01-27",
+      "date_end": "2024-02-10",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "National University of Singapore"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Social Good"
+      ],
+      "search_text": "Event | Hack4Good 2024 | evt-099 | https://hack4good-2024.devpost.com/ | https://hack4good-2024.devpost.com/ https://hack4good-2024.devpost.com/project-gallery | Online | online | National University of Singapore | Beginner Friendly Social Good | high | devpost project_gallery | 2024-01-27 | 2024-02-10"
+    }
+  },
+  {
+    "id": "Event:evt-100",
+    "type": "Event",
+    "label": "NUS Datathon 2024: Singlife",
+    "meta": {
+      "ref_id": "evt-100",
+      "url": "https://nus-datathon-2024-cat-b.devpost.com/",
+      "urls": [
+        "https://nus-datathon-2024-cat-b.devpost.com/",
+        "https://nus-datathon-2024-cat-b.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-01-25",
+      "date_end": "2024-01-30",
+      "format": "hybrid",
+      "location": "Singapore / Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NUS Statistics and Data Science Society"
+      ],
+      "tech_focus": [
+        "Beginner Friendly"
+      ],
+      "search_text": "Event | NUS Datathon 2024: Singlife | evt-100 | https://nus-datathon-2024-cat-b.devpost.com/ | https://nus-datathon-2024-cat-b.devpost.com/ https://nus-datathon-2024-cat-b.devpost.com/project-gallery | Singapore / Online | hybrid | NUS Statistics and Data Science Society | Beginner Friendly | high | devpost project_gallery | 2024-01-25 | 2024-01-30"
+    }
+  },
+  {
+    "id": "Event:evt-101",
+    "type": "Event",
+    "label": "YouthxHack 2024",
+    "meta": {
+      "ref_id": "evt-101",
+      "url": "https://youthxhack2024.devpost.com/",
+      "urls": [
+        "https://youthxhack2024.devpost.com/",
+        "https://youthxhack2024.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-08-31",
+      "date_end": "2024-09-03",
+      "format": "in-person",
+      "location": "Temasek Polytechnic, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Cyber Youth Singapore"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Open Ended",
+        "Social Good"
+      ],
+      "search_text": "Event | YouthxHack 2024 | evt-101 | https://youthxhack2024.devpost.com/ | https://youthxhack2024.devpost.com/ https://youthxhack2024.devpost.com/project-gallery | Temasek Polytechnic, Singapore | in-person | Cyber Youth Singapore | Beginner Friendly Open Ended Social Good | high | devpost project_gallery | 2024-08-31 | 2024-09-03"
+    }
+  },
+  {
+    "id": "Event:evt-102",
+    "type": "Event",
+    "label": "CloudHacks 2024",
+    "meta": {
+      "ref_id": "evt-102",
+      "url": "https://cloudhacks-2024.devpost.com/",
+      "urls": [
+        "https://cloudhacks-2024.devpost.com/",
+        "https://cloudhacks-2024.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-06-22",
+      "date_end": "2024-06-23",
+      "format": "in-person",
+      "location": "Bishan Community Club, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Cloudhacks"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Open Ended"
+      ],
+      "search_text": "Event | CloudHacks 2024 | evt-102 | https://cloudhacks-2024.devpost.com/ | https://cloudhacks-2024.devpost.com/ https://cloudhacks-2024.devpost.com/project-gallery | Bishan Community Club, Singapore | in-person | Cloudhacks | Beginner Friendly Open Ended | high | devpost project_gallery | 2024-06-22 | 2024-06-23"
+    }
+  },
+  {
+    "id": "Event:evt-103",
+    "type": "Event",
+    "label": "DIVE 2024 (Data Insights and Visualization Event 2024)",
+    "meta": {
+      "ref_id": "evt-103",
+      "url": "https://dive2024inbusan.devpost.com/",
+      "urls": [
+        "https://dive2024inbusan.devpost.com/",
+        "https://dive2024inbusan.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-10-04",
+      "date_end": "2024-10-06",
+      "format": "in-person",
+      "location": "Bexco, Busan, South Korea",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "busan"
+      ],
+      "tech_focus": [
+        "Databases",
+        "DevOps",
+        "Enterprise"
+      ],
+      "search_text": "Event | DIVE 2024 (Data Insights and Visualization Event 2024) | evt-103 | https://dive2024inbusan.devpost.com/ | https://dive2024inbusan.devpost.com/ https://dive2024inbusan.devpost.com/project-gallery | Bexco, Busan, South Korea | in-person | busan | Databases DevOps Enterprise | high | devpost project_gallery | 2024-10-04 | 2024-10-06"
+    }
+  },
+  {
+    "id": "Event:evt-104",
+    "type": "Event",
+    "label": "Garuda Hacks 5.0",
+    "meta": {
+      "ref_id": "evt-104",
+      "url": "https://gh5.devpost.com/",
+      "urls": [
+        "https://gh5.devpost.com/",
+        "https://gh5.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2024-07-11",
+      "date_end": "2024-07-13",
+      "format": "in-person",
+      "location": "Universitas Multimedia Nusantara, Tangerang, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Garuda Hacks"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Social Good",
+        "Machine Learning/AI"
+      ],
+      "search_text": "Event | Garuda Hacks 5.0 | evt-104 | https://gh5.devpost.com/ | https://gh5.devpost.com/ https://gh5.devpost.com/project-gallery | Universitas Multimedia Nusantara, Tangerang, Indonesia | in-person | Garuda Hacks | Beginner Friendly Social Good Machine Learning/AI | high | devpost project_gallery | 2024-07-11 | 2024-07-13"
+    }
+  },
+  {
+    "id": "Event:evt-105",
+    "type": "Event",
+    "label": "IATA ONE Record Hackathon – hosted by Cathay Cargo & CHAMP Cargosystems",
+    "meta": {
+      "ref_id": "evt-105",
+      "url": "https://onerecord-hkg.devpost.com/",
+      "urls": [
+        "https://onerecord-hkg.devpost.com/",
+        "https://onerecord-hkg.devpost.com/details/dates",
+        "https://onerecord-hkg.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-04-24",
+      "date_end": "2026-04-26",
+      "format": "in-person",
+      "location": "Cathay City, Hong Kong (Lantau, Hong Kong)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "IATA",
+        "Cathay Cargo",
+        "CHAMP Cargosystems"
+      ],
+      "tech_focus": [
+        "ONE Record",
+        "aviation logistics",
+        "APIs",
+        "AR/VR",
+        "Education",
+        "Low/No Code"
+      ],
+      "search_text": "Event | IATA ONE Record Hackathon – hosted by Cathay Cargo & CHAMP Cargosystems | evt-105 | https://onerecord-hkg.devpost.com/ | https://onerecord-hkg.devpost.com/ https://onerecord-hkg.devpost.com/details/dates https://onerecord-hkg.devpost.com/project-gallery | Cathay City, Hong Kong (Lantau, Hong Kong) | in-person | IATA Cathay Cargo CHAMP Cargosystems | ONE Record aviation logistics APIs AR/VR Education Low/No Code | high | devpost details/dates project_gallery | 2026-04-24 | 2026-04-26"
+    }
+  },
+  {
+    "id": "Event:evt-106",
+    "type": "Event",
+    "label": "BUHack",
+    "meta": {
+      "ref_id": "evt-106",
+      "url": "https://buhack-28545.devpost.com/",
+      "urls": [
+        "https://buhack-28545.devpost.com/",
+        "https://buhack-28545.devpost.com/details/dates",
+        "https://buhack-28545.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-03-05",
+      "date_end": "2026-03-08",
+      "format": "hybrid",
+      "location": "Online (Mar 5–7, 2026) + HKBU in-person closing ceremony (Hong Kong)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "HKBU Coding Club",
+        "Hong Kong Baptist University (HKBU)"
+      ],
+      "tech_focus": [
+        "Digital Wellbeing",
+        "Productivity",
+        "Beginner Friendly",
+        "Web",
+        "Design"
+      ],
+      "search_text": "Event | BUHack | evt-106 | https://buhack-28545.devpost.com/ | https://buhack-28545.devpost.com/ https://buhack-28545.devpost.com/details/dates https://buhack-28545.devpost.com/project-gallery | Online (Mar 5–7, 2026) + HKBU in-person closing ceremony (Hong Kong) | hybrid | HKBU Coding Club Hong Kong Baptist University (HKBU) | Digital Wellbeing Productivity Beginner Friendly Web Design | high | devpost details/dates project_gallery | 2026-03-05 | 2026-03-08"
+    }
+  },
+  {
+    "id": "Event:evt-107",
+    "type": "Event",
+    "label": "RWA Demo Day",
+    "meta": {
+      "ref_id": "evt-107",
+      "url": "https://rwa-demo-day.devpost.com/",
+      "urls": [
+        "https://rwa-demo-day.devpost.com/",
+        "https://rwa-demo-day.devpost.com/details/dates",
+        "https://rwa-demo-day.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-03-10",
+      "date_end": "2026-03-31",
+      "format": "hybrid",
+      "location": "Hong Kong (anchored by Hong Kong Web3 Festival) + online final pitch event",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Nano Labs",
+        "BNB Chain",
+        "ICCombinator",
+        "ABGAasia",
+        "MetaEraCN"
+      ],
+      "tech_focus": [
+        "RWA",
+        "Web3",
+        "Blockchain"
+      ],
+      "search_text": "Event | RWA Demo Day | evt-107 | https://rwa-demo-day.devpost.com/ | https://rwa-demo-day.devpost.com/ https://rwa-demo-day.devpost.com/details/dates https://rwa-demo-day.devpost.com/project-gallery | Hong Kong (anchored by Hong Kong Web3 Festival) + online final pitch event | hybrid | Nano Labs BNB Chain ICCombinator ABGAasia MetaEraCN | RWA Web3 Blockchain | high | devpost details/dates project_gallery | 2026-03-10 | 2026-03-31"
+    }
+  },
+  {
+    "id": "Event:evt-108",
+    "type": "Event",
+    "label": "Elastic Forge The Future Singapore",
+    "meta": {
+      "ref_id": "evt-108",
+      "url": "https://elastic-forge-the-future.devpost.com/",
+      "urls": [
+        "https://elastic-forge-the-future.devpost.com/",
+        "https://elastic-forge-the-future.devpost.com/details/dates",
+        "https://elastic-forge-the-future.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-02-03",
+      "date_end": "2026-03-02",
+      "format": "in-person",
+      "location": "AWS Office, Singapore (2 Central Blvd, Singapore 018916)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Elastic"
+      ],
+      "tech_focus": [
+        "Databases",
+        "IoT",
+        "Machine Learning/AI",
+        "Search",
+        "Observability",
+        "Security"
+      ],
+      "search_text": "Event | Elastic Forge The Future Singapore | evt-108 | https://elastic-forge-the-future.devpost.com/ | https://elastic-forge-the-future.devpost.com/ https://elastic-forge-the-future.devpost.com/details/dates https://elastic-forge-the-future.devpost.com/project-gallery | AWS Office, Singapore (2 Central Blvd, Singapore 018916) | in-person | Elastic | Databases IoT Machine Learning/AI Search Observability Security | high | devpost details/dates project_gallery | 2026-02-03 | 2026-03-02"
+    }
+  },
+  {
+    "id": "Event:evt-109",
+    "type": "Event",
+    "label": "PINUS HACK 2026",
+    "meta": {
+      "ref_id": "evt-109",
+      "url": "https://pinus-hack-2026.devpost.com/",
+      "urls": [
+        "https://pinus-hack-2026.devpost.com/",
+        "https://pinus-hack-2026.devpost.com/details/dates",
+        "https://pinus-hack-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-01-26",
+      "date_end": "2026-02-07",
+      "format": "hybrid",
+      "location": "Online opening + onsite finals at NUS (Shaw Foundation Alumni House), Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "PINUS"
+      ],
+      "tech_focus": [
+        "Machine Learning/AI",
+        "Mobile",
+        "Web",
+        "student hackathon"
+      ],
+      "search_text": "Event | PINUS HACK 2026 | evt-109 | https://pinus-hack-2026.devpost.com/ | https://pinus-hack-2026.devpost.com/ https://pinus-hack-2026.devpost.com/details/dates https://pinus-hack-2026.devpost.com/project-gallery | Online opening + onsite finals at NUS (Shaw Foundation Alumni House), Singapore | hybrid | PINUS | Machine Learning/AI Mobile Web student hackathon | high | devpost details/dates project_gallery | 2026-01-26 | 2026-02-07"
+    }
+  },
+  {
+    "id": "Event:evt-110",
+    "type": "Event",
+    "label": "SCDS Techfest 2026",
+    "meta": {
+      "ref_id": "evt-110",
+      "url": "https://scds-techfest-2026.devpost.com/",
+      "urls": [
+        "https://scds-techfest-2026.devpost.com/",
+        "https://scds-techfest-2026.devpost.com/details/dates",
+        "https://scds-techfest-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-01-22",
+      "date_end": "2026-01-25",
+      "format": "in-person",
+      "location": "LKC-LT (Lee Kong Chian Lecture Theatre), NTU, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NTU SCDS"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Education",
+        "Productivity"
+      ],
+      "search_text": "Event | SCDS Techfest 2026 | evt-110 | https://scds-techfest-2026.devpost.com/ | https://scds-techfest-2026.devpost.com/ https://scds-techfest-2026.devpost.com/details/dates https://scds-techfest-2026.devpost.com/project-gallery | LKC-LT (Lee Kong Chian Lecture Theatre), NTU, Singapore | in-person | NTU SCDS | Beginner Friendly Education Productivity | high | devpost details/dates project_gallery | 2026-01-22 | 2026-01-25"
+    }
+  },
+  {
+    "id": "Event:evt-111",
+    "type": "Event",
+    "label": "NTU Beyond Binary Techathon 2026",
+    "meta": {
+      "ref_id": "evt-111",
+      "url": "https://ntu-beyond-binary-2026.devpost.com/",
+      "urls": [
+        "https://ntu-beyond-binary-2026.devpost.com/",
+        "https://ntu-beyond-binary-2026.devpost.com/details/dates",
+        "https://ntu-beyond-binary-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-02-09",
+      "date_end": "2026-02-13",
+      "format": "hybrid",
+      "location": "Online + NTU Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NTU Women In Tech"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Social Good",
+        "Ideathon",
+        "Hackathon"
+      ],
+      "search_text": "Event | NTU Beyond Binary Techathon 2026 | evt-111 | https://ntu-beyond-binary-2026.devpost.com/ | https://ntu-beyond-binary-2026.devpost.com/ https://ntu-beyond-binary-2026.devpost.com/details/dates https://ntu-beyond-binary-2026.devpost.com/project-gallery | Online + NTU Singapore | hybrid | NTU Women In Tech | Beginner Friendly Machine Learning/AI Social Good Ideathon Hackathon | high | devpost details/dates project_gallery | 2026-02-09 | 2026-02-13"
+    }
+  },
+  {
+    "id": "Event:evt-112",
+    "type": "Event",
+    "label": "RHDevs - Inter-Hall Hackathon 2026",
+    "meta": {
+      "ref_id": "evt-112",
+      "url": "https://inter-hall-hackathon-2026.devpost.com/",
+      "urls": [
+        "https://inter-hall-hackathon-2026.devpost.com/",
+        "https://inter-hall-hackathon-2026.devpost.com/details/dates",
+        "https://inter-hall-hackathon-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-02-07",
+      "date_end": "2026-02-08",
+      "format": "in-person",
+      "location": "NUS Raffles Hall Communal Hall, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "RH Developers",
+        "NUS Raffles Hall"
+      ],
+      "tech_focus": [
+        "Open Ended",
+        "Social Good"
+      ],
+      "search_text": "Event | RHDevs - Inter-Hall Hackathon 2026 | evt-112 | https://inter-hall-hackathon-2026.devpost.com/ | https://inter-hall-hackathon-2026.devpost.com/ https://inter-hall-hackathon-2026.devpost.com/details/dates https://inter-hall-hackathon-2026.devpost.com/project-gallery | NUS Raffles Hall Communal Hall, Singapore | in-person | RH Developers NUS Raffles Hall | Open Ended Social Good | high | devpost details/dates project_gallery | 2026-02-07 | 2026-02-08"
+    }
+  },
+  {
+    "id": "Event:evt-113",
+    "type": "Event",
+    "label": "Build for Impact 2026",
+    "meta": {
+      "ref_id": "evt-113",
+      "url": "https://build-for-impact-2026-28173.devpost.com/",
+      "urls": [
+        "https://build-for-impact-2026-28173.devpost.com/",
+        "https://build-for-impact-2026-28173.devpost.com/details/dates",
+        "https://build-for-impact-2026-28173.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-01-17",
+      "date_end": "2026-01-17",
+      "format": "in-person",
+      "location": "Singapore (32 Carpenter St, Singapore 059911)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "BuildLearning (hackathon manager)",
+        "SEA-LION (mentioned use case focus)"
+      ],
+      "tech_focus": [
+        "Low/No Code",
+        "Social Good",
+        "AI prototyping",
+        "design thinking"
+      ],
+      "search_text": "Event | Build for Impact 2026 | evt-113 | https://build-for-impact-2026-28173.devpost.com/ | https://build-for-impact-2026-28173.devpost.com/ https://build-for-impact-2026-28173.devpost.com/details/dates https://build-for-impact-2026-28173.devpost.com/project-gallery | Singapore (32 Carpenter St, Singapore 059911) | in-person | BuildLearning (hackathon manager) SEA-LION (mentioned use case focus) | Low/No Code Social Good AI prototyping design thinking | high | devpost details/dates project_gallery | 2026-01-17 | 2026-01-17"
+    }
+  },
+  {
+    "id": "Event:evt-114",
+    "type": "Event",
+    "label": "1st International Prosolve 2026",
+    "meta": {
+      "ref_id": "evt-114",
+      "url": "https://international-prosolve-2026.devpost.com/",
+      "urls": [
+        "https://international-prosolve-2026.devpost.com/",
+        "https://international-prosolve-2026.devpost.com/details/dates",
+        "https://international-prosolve-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2026-04-12",
+      "date_end": "2026-05-23",
+      "format": "hybrid",
+      "location": "Online preliminary (Google Meet) + in-person finale at UiTM Shah Alam, Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Artificial Intelligence Society (UiTM Shah Alam)",
+        "Globalite Solution"
+      ],
+      "tech_focus": [
+        "competitive programming",
+        "Education",
+        "Beginner Friendly",
+        "Machine Learning/AI (theme tag on listing)"
+      ],
+      "search_text": "Event | 1st International Prosolve 2026 | evt-114 | https://international-prosolve-2026.devpost.com/ | https://international-prosolve-2026.devpost.com/ https://international-prosolve-2026.devpost.com/details/dates https://international-prosolve-2026.devpost.com/project-gallery | Online preliminary (Google Meet) + in-person finale at UiTM Shah Alam, Malaysia | hybrid | Artificial Intelligence Society (UiTM Shah Alam) Globalite Solution | competitive programming Education Beginner Friendly Machine Learning/AI (theme tag on listing) | high | devpost details/dates project_gallery | 2026-04-12 | 2026-05-23"
+    }
+  },
+  {
+    "id": "Event:evt-115",
+    "type": "Event",
+    "label": "PayHack 2025",
+    "meta": {
+      "ref_id": "evt-115",
+      "url": "https://payhack-2025.devpost.com/",
+      "urls": [
+        "https://payhack-2025.devpost.com/",
+        "https://payhack-2025.devpost.com/details/dates",
+        "https://payhack-2025.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2025-06-17",
+      "date_end": "2025-07-01",
+      "format": "in-person",
+      "location": "Asia Pacific University, Kuala Lumpur, Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "PayNet"
+      ],
+      "tech_focus": [
+        "Fintech",
+        "Machine Learning/AI",
+        "Cybersecurity",
+        "digital payments"
+      ],
+      "search_text": "Event | PayHack 2025 | evt-115 | https://payhack-2025.devpost.com/ | https://payhack-2025.devpost.com/ https://payhack-2025.devpost.com/details/dates https://payhack-2025.devpost.com/project-gallery | Asia Pacific University, Kuala Lumpur, Malaysia | in-person | PayNet | Fintech Machine Learning/AI Cybersecurity digital payments | high | devpost details/dates project_gallery | 2025-06-17 | 2025-07-01"
+    }
+  },
+  {
+    "id": "Event:evt-116",
+    "type": "Event",
+    "label": "Zoohackathon 2019 - Kota Kinabalu",
+    "meta": {
+      "ref_id": "evt-116",
+      "url": "https://zoohackathon2019-kk-malaysia.devpost.com/",
+      "urls": [
+        "https://zoohackathon2019-kk-malaysia.devpost.com/",
+        "https://zoohackathon2019-kk-malaysia.devpost.com/details/dates",
+        "https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2019-11-02",
+      "date_end": "2019-11-15",
+      "format": "in-person",
+      "location": "University of Malaysia Sabah, Kota Kinabalu, Sabah, Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "U.S. Department of State (Zoohackathon)",
+        "University of Malaysia Sabah",
+        "U.S. Embassy Kuala Lumpur (mentioned)"
+      ],
+      "tech_focus": [
+        "wildlife trafficking",
+        "Social Good",
+        "Machine Learning/AI",
+        "Communication"
+      ],
+      "search_text": "Event | Zoohackathon 2019 - Kota Kinabalu | evt-116 | https://zoohackathon2019-kk-malaysia.devpost.com/ | https://zoohackathon2019-kk-malaysia.devpost.com/ https://zoohackathon2019-kk-malaysia.devpost.com/details/dates https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery | University of Malaysia Sabah, Kota Kinabalu, Sabah, Malaysia | in-person | U.S. Department of State (Zoohackathon) University of Malaysia Sabah U.S. Embassy Kuala Lumpur (mentioned) | wildlife trafficking Social Good Machine Learning/AI Communication | high | devpost details/dates project_gallery | 2019-11-02 | 2019-11-15"
+    }
+  },
+  {
+    "id": "Event:evt-117",
+    "type": "Event",
+    "label": "Make for the Planet Borneo",
+    "meta": {
+      "ref_id": "evt-117",
+      "url": "https://make-for-the-planet.devpost.com/",
+      "urls": [
+        "https://make-for-the-planet.devpost.com/",
+        "https://make-for-the-planet.devpost.com/details/dates",
+        "https://make-for-the-planet.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2018-06-24",
+      "date_end": "2018-06-29",
+      "format": "in-person",
+      "location": "The Waterfront Hotel Kuching, Sarawak, Malaysia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Conservation X Labs",
+        "International Marine Conservation Congress (IMCC5)"
+      ],
+      "tech_focus": [
+        "marine conservation",
+        "climate",
+        "prototype building"
+      ],
+      "search_text": "Event | Make for the Planet Borneo | evt-117 | https://make-for-the-planet.devpost.com/ | https://make-for-the-planet.devpost.com/ https://make-for-the-planet.devpost.com/details/dates https://make-for-the-planet.devpost.com/project-gallery | The Waterfront Hotel Kuching, Sarawak, Malaysia | in-person | Conservation X Labs International Marine Conservation Congress (IMCC5) | marine conservation climate prototype building | high | devpost details/dates project_gallery | 2018-06-24 | 2018-06-29"
+    }
+  },
+  {
+    "id": "Event:evt-118",
+    "type": "Event",
+    "label": "Indonesia Maju HackFest 2020",
+    "meta": {
+      "ref_id": "evt-118",
+      "url": "https://indonesiamajuhackfest.devpost.com/",
+      "urls": [
+        "https://indonesiamajuhackfest.devpost.com/",
+        "https://indonesiamajuhackfest.devpost.com/details/dates",
+        "https://indonesiamajuhackfest.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2020-08-07",
+      "date_end": "2020-08-23",
+      "format": "online",
+      "location": "Online (Indonesia-focused)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Komunitas Flutter Indonesia (mentioned)",
+        "Google Developers (mentioned)",
+        "Google"
+      ],
+      "tech_focus": [
+        "Flutter",
+        "Dart",
+        "Social Good",
+        "Indonesia"
+      ],
+      "search_text": "Event | Indonesia Maju HackFest 2020 | evt-118 | https://indonesiamajuhackfest.devpost.com/ | https://indonesiamajuhackfest.devpost.com/ https://indonesiamajuhackfest.devpost.com/details/dates https://indonesiamajuhackfest.devpost.com/project-gallery | Online (Indonesia-focused) | online | Komunitas Flutter Indonesia (mentioned) Google Developers (mentioned) Google | Flutter Dart Social Good Indonesia | high | devpost details/dates project_gallery | 2020-08-07 | 2020-08-23"
+    }
+  },
+  {
+    "id": "Event:evt-119",
+    "type": "Event",
+    "label": "BSJ FOBISIA Hackathon",
+    "meta": {
+      "ref_id": "evt-119",
+      "url": "https://bsj-fobisia-hackathon.devpost.com/",
+      "urls": [
+        "https://bsj-fobisia-hackathon.devpost.com/",
+        "https://bsj-fobisia-hackathon.devpost.com/details/dates",
+        "https://bsj-fobisia-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2025-09-19",
+      "date_end": "2025-09-22",
+      "format": "in-person",
+      "location": "Jakarta, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "BSJ Hackathon Team",
+        "FOBISIA (mentioned)"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Education",
+        "Lifehacks",
+        "FOBISIA schools"
+      ],
+      "search_text": "Event | BSJ FOBISIA Hackathon | evt-119 | https://bsj-fobisia-hackathon.devpost.com/ | https://bsj-fobisia-hackathon.devpost.com/ https://bsj-fobisia-hackathon.devpost.com/details/dates https://bsj-fobisia-hackathon.devpost.com/project-gallery | Jakarta, Indonesia | in-person | BSJ Hackathon Team FOBISIA (mentioned) | Beginner Friendly Education Lifehacks FOBISIA schools | high | devpost details/dates project_gallery | 2025-09-19 | 2025-09-22"
+    }
+  },
+  {
+    "id": "Event:evt-120",
+    "type": "Event",
+    "label": "#HACKGOV 2015",
+    "meta": {
+      "ref_id": "evt-120",
+      "url": "https://hackgov.devpost.com/",
+      "urls": [
+        "https://hackgov.devpost.com/",
+        "https://hackgov.devpost.com/details/dates",
+        "https://hackgov.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2015-11-28",
+      "date_end": "2015-11-29",
+      "format": "in-person",
+      "location": "Eastparc Hotel, Yogyakarta, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "HackGov (brand)"
+      ],
+      "tech_focus": [
+        "government",
+        "civic tech",
+        "data visualization"
+      ],
+      "search_text": "Event | #HACKGOV 2015 | evt-120 | https://hackgov.devpost.com/ | https://hackgov.devpost.com/ https://hackgov.devpost.com/details/dates https://hackgov.devpost.com/project-gallery | Eastparc Hotel, Yogyakarta, Indonesia | in-person | HackGov (brand) | government civic tech data visualization | high | devpost details/dates project_gallery | 2015-11-28 | 2015-11-29"
+    }
+  },
+  {
+    "id": "Event:evt-121",
+    "type": "Event",
+    "label": "Kelas Desain Pengalaman Pengguna 2021",
+    "meta": {
+      "ref_id": "evt-121",
+      "url": "https://dpp-2021.devpost.com/",
+      "urls": [
+        "https://dpp-2021.devpost.com/",
+        "https://dpp-2021.devpost.com/details/dates",
+        "https://dpp-2021.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2021-12-20",
+      "date_end": "2022-01-09",
+      "format": "in-person",
+      "location": "Universitas Telkom area (Dayeuhkolot), Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Universitas Telkom"
+      ],
+      "tech_focus": [
+        "Design",
+        "UX",
+        "student showcase"
+      ],
+      "search_text": "Event | Kelas Desain Pengalaman Pengguna 2021 | evt-121 | https://dpp-2021.devpost.com/ | https://dpp-2021.devpost.com/ https://dpp-2021.devpost.com/details/dates https://dpp-2021.devpost.com/project-gallery | Universitas Telkom area (Dayeuhkolot), Indonesia | in-person | Universitas Telkom | Design UX student showcase | high | devpost details/dates project_gallery | 2021-12-20 | 2022-01-09"
+    }
+  },
+  {
+    "id": "Event:evt-122",
+    "type": "Event",
+    "label": "Hackathon Bojonegoro",
+    "meta": {
+      "ref_id": "evt-122",
+      "url": "https://hackathonbojonegoro.devpost.com/",
+      "urls": [
+        "https://hackathonbojonegoro.devpost.com/",
+        "https://hackathonbojonegoro.devpost.com/details/dates",
+        "https://hackathonbojonegoro.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2019-11-03",
+      "date_end": "2019-11-24",
+      "format": "in-person",
+      "location": "Bojonegoro, East Java, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Dinas Perindustrian dan Tenaga Kerja Kabupaten Bojonegoro (mentioned)",
+        "Relawan TIK Bojonegoro (mentioned)"
+      ],
+      "tech_focus": [
+        "Social Good",
+        "Cybersecurity",
+        "DevOps"
+      ],
+      "search_text": "Event | Hackathon Bojonegoro | evt-122 | https://hackathonbojonegoro.devpost.com/ | https://hackathonbojonegoro.devpost.com/ https://hackathonbojonegoro.devpost.com/details/dates https://hackathonbojonegoro.devpost.com/project-gallery | Bojonegoro, East Java, Indonesia | in-person | Dinas Perindustrian dan Tenaga Kerja Kabupaten Bojonegoro (mentioned) Relawan TIK Bojonegoro (mentioned) | Social Good Cybersecurity DevOps | high | devpost details/dates project_gallery | 2019-11-03 | 2019-11-24"
+    }
+  },
+  {
+    "id": "Event:evt-123",
+    "type": "Event",
+    "label": "Android Hackathon x Slash 2025",
+    "meta": {
+      "ref_id": "evt-123",
+      "url": "https://test-android-hackathon-2025.devpost.com/",
+      "urls": [
+        "https://test-android-hackathon-2025.devpost.com/",
+        "https://test-android-hackathon-2025.devpost.com/details/dates",
+        "https://test-android-hackathon-2025.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2025-06-04",
+      "date_end": "2025-07-08",
+      "format": "online",
+      "location": "Online",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "UPN \"Veteran\" Jakarta"
+      ],
+      "tech_focus": [
+        "Education",
+        "Health",
+        "Social Good"
+      ],
+      "search_text": "Event | Android Hackathon x Slash 2025 | evt-123 | https://test-android-hackathon-2025.devpost.com/ | https://test-android-hackathon-2025.devpost.com/ https://test-android-hackathon-2025.devpost.com/details/dates https://test-android-hackathon-2025.devpost.com/project-gallery | Online | online | UPN \"Veteran\" Jakarta | Education Health Social Good | high | devpost details/dates project_gallery | 2025-06-04 | 2025-07-08"
+    }
+  },
+  {
+    "id": "Event:evt-124",
+    "type": "Event",
+    "label": "IATA ONE Record Hackathon – hosted by ICCS",
+    "meta": {
+      "ref_id": "evt-124",
+      "url": "https://onerecord-szx.devpost.com/",
+      "urls": [
+        "https://onerecord-szx.devpost.com/",
+        "https://onerecord-szx.devpost.com/details/dates",
+        "https://onerecord-szx.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2024-03-16",
+      "date_end": "2024-03-17",
+      "format": "in-person",
+      "location": "Shenzhen Virtual University Park (SZVUP), Shenzhen, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "ICCS",
+        "IATA"
+      ],
+      "tech_focus": [
+        "Enterprise",
+        "IoT",
+        "Machine Learning/AI",
+        "aviation logistics",
+        "APIs"
+      ],
+      "search_text": "Event | IATA ONE Record Hackathon – hosted by ICCS | evt-124 | https://onerecord-szx.devpost.com/ | https://onerecord-szx.devpost.com/ https://onerecord-szx.devpost.com/details/dates https://onerecord-szx.devpost.com/project-gallery | Shenzhen Virtual University Park (SZVUP), Shenzhen, China | in-person | ICCS IATA | Enterprise IoT Machine Learning/AI aviation logistics APIs | high | devpost details/dates project_gallery | 2024-03-16 | 2024-03-17"
+    }
+  },
+  {
+    "id": "Event:evt-125",
+    "type": "Event",
+    "label": "HackDevs",
+    "meta": {
+      "ref_id": "evt-125",
+      "url": "https://hackdevs.devpost.com/",
+      "urls": [
+        "https://hackdevs.devpost.com/",
+        "https://hackdevs.devpost.com/details/dates",
+        "https://hackdevs.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2024-03-18",
+      "date_end": "2024-03-19",
+      "format": "online",
+      "location": "Online (BISZ Developers' Club)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "BASIS Int'l School Shenzhen"
+      ],
+      "tech_focus": [
+        "Open Ended",
+        "Quantum"
+      ],
+      "search_text": "Event | HackDevs | evt-125 | https://hackdevs.devpost.com/ | https://hackdevs.devpost.com/ https://hackdevs.devpost.com/details/dates https://hackdevs.devpost.com/project-gallery | Online (BISZ Developers' Club) | online | BASIS Int'l School Shenzhen | Open Ended Quantum | high | devpost details/dates project_gallery | 2024-03-18 | 2024-03-19"
+    }
+  },
+  {
+    "id": "Event:evt-126",
+    "type": "Event",
+    "label": "Celebrate Ubuntu Hackathon - Beijing",
+    "meta": {
+      "ref_id": "evt-126",
+      "url": "https://beijing-hackathon.devpost.com/",
+      "urls": [
+        "https://beijing-hackathon.devpost.com/",
+        "https://beijing-hackathon.devpost.com/details/dates",
+        "https://beijing-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2016-05-07",
+      "date_end": "2016-05-08",
+      "format": "hybrid",
+      "location": "Beijing, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Canonical",
+        "Ubuntu"
+      ],
+      "tech_focus": [
+        "Ubuntu",
+        "developer community"
+      ],
+      "search_text": "Event | Celebrate Ubuntu Hackathon - Beijing | evt-126 | https://beijing-hackathon.devpost.com/ | https://beijing-hackathon.devpost.com/ https://beijing-hackathon.devpost.com/details/dates https://beijing-hackathon.devpost.com/project-gallery | Beijing, China | hybrid | Canonical Ubuntu | Ubuntu developer community | high | devpost details/dates project_gallery | 2016-05-07 | 2016-05-08"
+    }
+  },
+  {
+    "id": "Event:evt-127",
+    "type": "Event",
+    "label": "HackPKU2016",
+    "meta": {
+      "ref_id": "evt-127",
+      "url": "https://hackpku2016.devpost.com/",
+      "urls": [
+        "https://hackpku2016.devpost.com/",
+        "https://hackpku2016.devpost.com/details/dates",
+        "https://hackpku2016.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2016-04-08",
+      "date_end": "2016-04-10",
+      "format": "in-person",
+      "location": "Peking University, Beijing, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Peking University (北京大学)"
+      ],
+      "tech_focus": [
+        "student hackathon",
+        "innovation"
+      ],
+      "search_text": "Event | HackPKU2016 | evt-127 | https://hackpku2016.devpost.com/ | https://hackpku2016.devpost.com/ https://hackpku2016.devpost.com/details/dates https://hackpku2016.devpost.com/project-gallery | Peking University, Beijing, China | in-person | Peking University (北京大学) | student hackathon innovation | high | devpost details/dates project_gallery | 2016-04-08 | 2016-04-10"
+    }
+  },
+  {
+    "id": "Event:evt-128",
+    "type": "Event",
+    "label": "JUNCTIONxTsinghua 2018",
+    "meta": {
+      "ref_id": "evt-128",
+      "url": "https://junthu2018.devpost.com/",
+      "urls": [
+        "https://junthu2018.devpost.com/",
+        "https://junthu2018.devpost.com/details/dates",
+        "https://junthu2018.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2018-05-17",
+      "date_end": "2018-05-20",
+      "format": "in-person",
+      "location": "Tsinghua University, Beijing, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "THUSAST",
+        "Tsinghua University",
+        "Junction (mentioned)"
+      ],
+      "tech_focus": [
+        "Smart City",
+        "Second Brain",
+        "Care for Senior Citizens"
+      ],
+      "search_text": "Event | JUNCTIONxTsinghua 2018 | evt-128 | https://junthu2018.devpost.com/ | https://junthu2018.devpost.com/ https://junthu2018.devpost.com/details/dates https://junthu2018.devpost.com/project-gallery | Tsinghua University, Beijing, China | in-person | THUSAST Tsinghua University Junction (mentioned) | Smart City Second Brain Care for Senior Citizens | high | devpost details/dates project_gallery | 2018-05-17 | 2018-05-20"
+    }
+  },
+  {
+    "id": "Event:evt-129",
+    "type": "Event",
+    "label": "Uber Hackathon - Improving Cities with Uber API 为城市喝彩",
+    "meta": {
+      "ref_id": "evt-129",
+      "url": "https://uber-china-hackathon.devpost.com/",
+      "urls": [
+        "https://uber-china-hackathon.devpost.com/",
+        "https://uber-china-hackathon.devpost.com/details/dates",
+        "https://uber-china-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2016-01-16",
+      "date_end": "2016-01-17",
+      "format": "in-person",
+      "location": "Microsoft Asia-Pacific R&D Group Building 1, Beijing, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Uber",
+        "Mobvoi (mentioned)",
+        "SenseTime (mentioned)"
+      ],
+      "tech_focus": [
+        "Uber API",
+        "smart cities"
+      ],
+      "search_text": "Event | Uber Hackathon - Improving Cities with Uber API 为城市喝彩 | evt-129 | https://uber-china-hackathon.devpost.com/ | https://uber-china-hackathon.devpost.com/ https://uber-china-hackathon.devpost.com/details/dates https://uber-china-hackathon.devpost.com/project-gallery | Microsoft Asia-Pacific R&D Group Building 1, Beijing, China | in-person | Uber Mobvoi (mentioned) SenseTime (mentioned) | Uber API smart cities | high | devpost details/dates project_gallery | 2016-01-16 | 2016-01-17"
+    }
+  },
+  {
+    "id": "Event:evt-130",
+    "type": "Event",
+    "label": "TechCrunch Shanghai 2016 Hackathon",
+    "meta": {
+      "ref_id": "evt-130",
+      "url": "https://tcsh-2016-hackathon.devpost.com/",
+      "urls": [
+        "https://tcsh-2016-hackathon.devpost.com/",
+        "https://tcsh-2016-hackathon.devpost.com/details/dates",
+        "https://tcsh-2016-hackathon.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2016-06-25",
+      "date_end": "2016-06-26",
+      "format": "in-person",
+      "location": "West Bund Art Center, Shanghai, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "TechCrunch (mentioned)",
+        "TechNode (mentioned)"
+      ],
+      "tech_focus": [
+        "startup",
+        "product design"
+      ],
+      "search_text": "Event | TechCrunch Shanghai 2016 Hackathon | evt-130 | https://tcsh-2016-hackathon.devpost.com/ | https://tcsh-2016-hackathon.devpost.com/ https://tcsh-2016-hackathon.devpost.com/details/dates https://tcsh-2016-hackathon.devpost.com/project-gallery | West Bund Art Center, Shanghai, China | in-person | TechCrunch (mentioned) TechNode (mentioned) | startup product design | high | devpost details/dates project_gallery | 2016-06-25 | 2016-06-26"
+    }
+  },
+  {
+    "id": "Event:evt-131",
+    "type": "Event",
+    "label": "Hyperledger BlockChain Hackathon Shanghai 2017",
+    "meta": {
+      "ref_id": "evt-131",
+      "url": "https://hyperledger-shanghai.devpost.com/",
+      "urls": [
+        "https://hyperledger-shanghai.devpost.com/",
+        "https://hyperledger-shanghai.devpost.com/details/dates",
+        "https://hyperledger-shanghai.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2017-03-10",
+      "date_end": "2017-03-12",
+      "format": "in-person",
+      "location": "Wanda Reign on the Bund, Shanghai, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Wanda Internet Technology Group",
+        "IBM",
+        "Linux Foundation / Hyperledger"
+      ],
+      "tech_focus": [
+        "Blockchain",
+        "Hyperledger"
+      ],
+      "search_text": "Event | Hyperledger BlockChain Hackathon Shanghai 2017 | evt-131 | https://hyperledger-shanghai.devpost.com/ | https://hyperledger-shanghai.devpost.com/ https://hyperledger-shanghai.devpost.com/details/dates https://hyperledger-shanghai.devpost.com/project-gallery | Wanda Reign on the Bund, Shanghai, China | in-person | Wanda Internet Technology Group IBM Linux Foundation / Hyperledger | Blockchain Hyperledger | high | devpost details/dates project_gallery | 2017-03-10 | 2017-03-12"
+    }
+  },
+  {
+    "id": "Event:evt-132",
+    "type": "Event",
+    "label": "hack.init() 2017",
+    "meta": {
+      "ref_id": "evt-132",
+      "url": "https://hackinit.devpost.com/",
+      "urls": [
+        "https://hackinit.devpost.com/",
+        "https://hackinit.devpost.com/details/dates",
+        "https://hackinit.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2017-07-08",
+      "date_end": "2017-07-09",
+      "format": "in-person",
+      "location": "ShanghaiTech University, Shanghai, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "hack.init()"
+      ],
+      "tech_focus": [
+        "youth hackathon",
+        "Artificial Intelligence",
+        "Hardware",
+        "IoT",
+        "AR/VR",
+        "Web Development"
+      ],
+      "search_text": "Event | hack.init() 2017 | evt-132 | https://hackinit.devpost.com/ | https://hackinit.devpost.com/ https://hackinit.devpost.com/details/dates https://hackinit.devpost.com/project-gallery | ShanghaiTech University, Shanghai, China | in-person | hack.init() | youth hackathon Artificial Intelligence Hardware IoT AR/VR Web Development | high | devpost details/dates project_gallery | 2017-07-08 | 2017-07-09"
+    }
+  },
+  {
+    "id": "Event:evt-133",
+    "type": "Event",
+    "label": "HackNYU @ NYUSH",
+    "meta": {
+      "ref_id": "evt-133",
+      "url": "https://hacknyu-nyush.devpost.com/",
+      "urls": [
+        "https://hacknyu-nyush.devpost.com/",
+        "https://hacknyu-nyush.devpost.com/details/dates",
+        "https://hacknyu-nyush.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2019-02-15",
+      "date_end": "2019-02-17",
+      "format": "in-person",
+      "location": "NYU Shanghai Academic Building, Shanghai, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "HackNYU",
+        "NYU Shanghai"
+      ],
+      "tech_focus": [
+        "student hackathon",
+        "Sustainability & Social Impact",
+        "Health and Well-Being",
+        "Educational Technology",
+        "Financial Empowerment"
+      ],
+      "search_text": "Event | HackNYU @ NYUSH | evt-133 | https://hacknyu-nyush.devpost.com/ | https://hacknyu-nyush.devpost.com/ https://hacknyu-nyush.devpost.com/details/dates https://hacknyu-nyush.devpost.com/project-gallery | NYU Shanghai Academic Building, Shanghai, China | in-person | HackNYU NYU Shanghai | student hackathon Sustainability & Social Impact Health and Well-Being Educational Technology Financial Empowerment | high | devpost details/dates project_gallery | 2019-02-15 | 2019-02-17"
+    }
+  },
+  {
+    "id": "Event:evt-134",
+    "type": "Event",
+    "label": "Hack the Pearl",
+    "meta": {
+      "ref_id": "evt-134",
+      "url": "https://hack-the-pearl.devpost.com/",
+      "urls": [
+        "https://hack-the-pearl.devpost.com/",
+        "https://hack-the-pearl.devpost.com/details/dates",
+        "https://hack-the-pearl.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "date_start": "2019-04-19",
+      "date_end": "2019-04-21",
+      "format": "in-person",
+      "location": "NYU Shanghai Main Campus Academic Building, Shanghai, China",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "NYU Shanghai"
+      ],
+      "tech_focus": [
+        "student-run",
+        "multi-theme hackathon"
+      ],
+      "search_text": "Event | Hack the Pearl | evt-134 | https://hack-the-pearl.devpost.com/ | https://hack-the-pearl.devpost.com/ https://hack-the-pearl.devpost.com/details/dates https://hack-the-pearl.devpost.com/project-gallery | NYU Shanghai Main Campus Academic Building, Shanghai, China | in-person | NYU Shanghai | student-run multi-theme hackathon | high | devpost details/dates project_gallery | 2019-04-19 | 2019-04-21"
+    }
+  },
+  {
+    "id": "Event:evt-135",
+    "type": "Event",
+    "label": "OpenClaw Global Unhackathon (Hong Kong)",
+    "meta": {
+      "ref_id": "evt-135",
+      "url": "https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong",
+      "urls": [
+        "https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong",
+        "https://hong-kong.aitinkerers.org/hackathons/h_xM9rYwACgZE",
+        "https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery"
+      ],
+      "confidence": "medium",
+      "source_type": [],
+      "date_start": "2026-02-28",
+      "date_end": "2026-02-28",
+      "format": "in-person",
+      "location": "Wan Chai, Hong Kong (exact venue shared upon acceptance)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "AI Tinkerers Hong Kong"
+      ],
+      "tech_focus": [
+        "OpenClaw",
+        "ClawdBot",
+        "AI agents",
+        "builders",
+        "unhackathon"
+      ],
+      "search_text": "Event | OpenClaw Global Unhackathon (Hong Kong) | evt-135 | https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong | https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong https://hong-kong.aitinkerers.org/hackathons/h_xM9rYwACgZE https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery | Wan Chai, Hong Kong (exact venue shared upon acceptance) | in-person | AI Tinkerers Hong Kong | OpenClaw ClawdBot AI agents builders unhackathon | medium | 2026-02-28 | 2026-02-28"
+    }
+  },
+  {
+    "id": "Event:evt-136",
+    "type": "Event",
+    "label": "OpenClaw Meet-up (HKU CAMO)",
+    "meta": {
+      "ref_id": "evt-136",
+      "url": "https://camo.hku.hk/28-march-2026-openclaw-meet-up/",
+      "urls": [
+        "https://camo.hku.hk/28-march-2026-openclaw-meet-up/",
+        "https://luma.com/6glx4b1y"
+      ],
+      "confidence": "medium",
+      "source_type": [],
+      "date_start": "2026-03-28",
+      "date_end": "2026-03-28",
+      "format": "in-person",
+      "location": "HKU iCube, Central Exchange Square, Hong Kong",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "HKU Centre for AI, Management and Organization (HKU CAMO)"
+      ],
+      "tech_focus": [
+        "OpenClaw",
+        "AI workflows",
+        "builders meetup",
+        "business"
+      ],
+      "search_text": "Event | OpenClaw Meet-up (HKU CAMO) | evt-136 | https://camo.hku.hk/28-march-2026-openclaw-meet-up/ | https://camo.hku.hk/28-march-2026-openclaw-meet-up/ https://luma.com/6glx4b1y | HKU iCube, Central Exchange Square, Hong Kong | in-person | HKU Centre for AI, Management and Organization (HKU CAMO) | OpenClaw AI workflows builders meetup business | medium | 2026-03-28 | 2026-03-28"
+    }
+  },
+  {
+    "id": "Event:evt-137",
+    "type": "Event",
+    "label": "January Capital — Builders Session with Codex x OpenClaw x OpenAI Multimodal APIs",
+    "meta": {
+      "ref_id": "evt-137",
+      "url": "https://luma.com/claw",
+      "urls": [
+        "https://luma.com/claw"
+      ],
+      "confidence": "medium",
+      "source_type": [],
+      "date_start": "2026-04-07",
+      "date_end": "2026-04-07",
+      "format": "in-person",
+      "location": "Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "January Capital",
+        "BLOCK71 Singapore"
+      ],
+      "tech_focus": [
+        "OpenClaw",
+        "Codex",
+        "OpenAI",
+        "Multimodal APIs",
+        "AI agents",
+        "builders session"
+      ],
+      "search_text": "Event | January Capital — Builders Session with Codex x OpenClaw x OpenAI Multimodal APIs | evt-137 | https://luma.com/claw | https://luma.com/claw | Singapore | in-person | January Capital BLOCK71 Singapore | OpenClaw Codex OpenAI Multimodal APIs AI agents builders session | medium | 2026-04-07 | 2026-04-07"
+    }
+  },
+  {
+    "id": "Event:evt-138",
+    "type": "Event",
+    "label": "OpenClaw Singapore - Finance Edition",
+    "meta": {
+      "ref_id": "evt-138",
+      "url": "https://luma.com/claw",
+      "urls": [
+        "https://luma.com/claw"
+      ],
+      "confidence": "medium",
+      "source_type": [],
+      "date_start": "2026-04-08",
+      "date_end": "2026-04-08",
+      "format": "in-person",
+      "location": "StashAway, Singapore",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "StashAway"
+      ],
+      "tech_focus": [
+        "OpenClaw",
+        "Finance",
+        "Fintech",
+        "AI agents"
+      ],
+      "search_text": "Event | OpenClaw Singapore - Finance Edition | evt-138 | https://luma.com/claw | https://luma.com/claw | StashAway, Singapore | in-person | StashAway | OpenClaw Finance Fintech AI agents | medium | 2026-04-08 | 2026-04-08"
+    }
+  },
+  {
+    "id": "Event:evt-139",
+    "type": "Event",
+    "label": "OpenClaw Meetup JKT #2",
+    "meta": {
+      "ref_id": "evt-139",
+      "url": "https://luma.com/claw",
+      "urls": [
+        "https://luma.com/claw"
+      ],
+      "confidence": "medium",
+      "source_type": [],
+      "date_start": "2026-04-08",
+      "date_end": "2026-04-08",
+      "format": "in-person",
+      "location": "Jakarta, Indonesia",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "OpenClaw Jakarta community"
+      ],
+      "tech_focus": [
+        "OpenClaw",
+        "AI agents",
+        "builders meetup"
+      ],
+      "search_text": "Event | OpenClaw Meetup JKT #2 | evt-139 | https://luma.com/claw | https://luma.com/claw | Jakarta, Indonesia | in-person | OpenClaw Jakarta community | OpenClaw AI agents builders meetup | medium | 2026-04-08 | 2026-04-08"
+    }
+  },
+  {
+    "id": "Event:evt-140",
+    "type": "Event",
+    "label": "Student Life Track Hackathon 2026",
+    "meta": {
+      "ref_id": "evt-140",
+      "url": "https://acaciahackathonstudentlife.devpost.com/",
+      "urls": [
+        "https://acaciahackathonstudentlife.devpost.com/",
+        "https://acaciahackathonstudentlife.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2026-03-29",
+      "date_end": "2026-03-29",
+      "format": "online",
+      "location": "Online (Singapore residential colleges / UTown Residence)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "Acacia College, NUS"
+      ],
+      "tech_focus": [
+        "Beginner Friendly",
+        "Lifehacks",
+        "Low/No Code",
+        "AI-themed residential college"
+      ],
+      "search_text": "Event | Student Life Track Hackathon 2026 | evt-140 | https://acaciahackathonstudentlife.devpost.com/ | https://acaciahackathonstudentlife.devpost.com/ https://acaciahackathonstudentlife.devpost.com/project-gallery | Online (Singapore residential colleges / UTown Residence) | online | Acacia College, NUS | Beginner Friendly Lifehacks Low/No Code AI-themed residential college | high | devpost project_gallery | 2026-03-29 | 2026-03-29"
+    }
+  },
+  {
+    "id": "Event:evt-141",
+    "type": "Event",
+    "label": "Tech For Good 2026 - Initial Organizer Submissions",
+    "meta": {
+      "ref_id": "evt-141",
+      "url": "https://ccds-tech-for-good-2026.devpost.com/",
+      "urls": [
+        "https://ccds-tech-for-good-2026.devpost.com/",
+        "https://ccds-tech-for-good-2026.devpost.com/project-gallery"
+      ],
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "date_start": "2025-12-05",
+      "date_end": "2026-01-21",
+      "format": "in-person",
+      "location": "ABCD (Yunnan Drive 3, Singapore)",
+      "theme": "—",
+      "prize_pool": "—",
+      "eligibility": [],
+      "organizers": [
+        "nanyang technological university"
+      ],
+      "tech_focus": [
+        "Education",
+        "Gaming",
+        "Health",
+        "LLMs",
+        "LangChain",
+        "Azure OpenAI",
+        "Pygame"
+      ],
+      "search_text": "Event | Tech For Good 2026 - Initial Organizer Submissions | evt-141 | https://ccds-tech-for-good-2026.devpost.com/ | https://ccds-tech-for-good-2026.devpost.com/ https://ccds-tech-for-good-2026.devpost.com/project-gallery | ABCD (Yunnan Drive 3, Singapore) | in-person | nanyang technological university | Education Gaming Health LLMs LangChain Azure OpenAI Pygame | high | devpost project_gallery | 2025-12-05 | 2026-01-21"
+    }
+  }
+]

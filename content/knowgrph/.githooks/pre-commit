@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# FORBID churn across the integrated HackaMap → Knowgrph import pipeline.
+#
+hook_dir="$(cd "$(dirname "$0")" && pwd)"
+
+# This repo is typically nested inside a monorepo; the git toplevel may be higher.
+# When invoked by `git commit`, `git rev-parse` works. When run manually outside
+# the repo, fall back to a path-based guess.
+git_root="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+if [ -z "${git_root}" ]; then
+  git_root="$(cd "${hook_dir}/../../.." && pwd)"
+fi
+
+cd "${git_root}"
+
+echo "[pre-commit] Running integrated integrity checks..."
+
+# Knowgrph HackaMap import bundle integrity (forbid partial updates / stale files)
+python3 "${hook_dir}/../scripts/check_hackamap_import_bundle.py"
+
+echo "[pre-commit] OK"

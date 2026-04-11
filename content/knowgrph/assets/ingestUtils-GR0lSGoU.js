@@ -1,1 +1,0 @@
-import"./index-D5Zvua4j.js";function o(r){if(typeof window>"u"||typeof window.prompt!="function")return null;try{return(window.prompt(r,"")||"").trim()||null}catch{return null}}function i(r){const n=String(r||"").trim();return n?`${n.replace(/\.pdf$/i,"")||"document"}.md`:"document.md"}export{i as d,o as p};

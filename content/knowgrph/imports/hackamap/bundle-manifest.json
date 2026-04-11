@@ -1,0 +1,131 @@
+{
+  "source_repo": "project/prjt4000-hackamap",
+  "source_ssot": "site/",
+  "bundle_subdir": "imports/hackamap",
+  "files": [
+    {
+      "path": "dataset-json/dataset-manifest.json",
+      "sha256": "6b76ba478dc16ada8148a24ae0803872b13e13b084a664299e9b34d62d13af3f"
+    },
+    {
+      "path": "dataset-json/demos.json",
+      "sha256": "9f665a73ea33f875a25d5764bb86405231224c6b42b62ae1fd8e9647e3ae7c04"
+    },
+    {
+      "path": "dataset-json/events.json",
+      "sha256": "cd5fb023d93fe10f311d68d995008e5076147b05c0d69879cab4453207acaa8e"
+    },
+    {
+      "path": "dataset-json/links.json",
+      "sha256": "3831ebdcb972184a405428419b0ed2f7f917538f5353cdbafdc6b6eb71fd66e3"
+    },
+    {
+      "path": "dataset-json/nodes.json",
+      "sha256": "fb424effd4a0e0686c29ef55be82e997af0cf38eebfb394cfb59e8e920ce9743"
+    },
+    {
+      "path": "dataset-json/organizer.json",
+      "sha256": "2ef67dc8589e6ba64b2d86f06fccf422920310a9944955a7253ca9c59177bf4a"
+    },
+    {
+      "path": "dataset-json/sources.json",
+      "sha256": "8c3d44773b714a54b346482ef27248c27198ed941f25efceea315e77e5cebccd"
+    },
+    {
+      "path": "dataset-json/team.json",
+      "sha256": "6a5f0115a1df3895d92bd971de7c2b7a2c57b8dd23bf4d3540a9a3e93c9bd99a"
+    },
+    {
+      "path": "dataset-json/techstack.json",
+      "sha256": "f100dc89bf0ed0f1d4965bee00459c6e2f5ea7a0ae09515bbadeac5bfb39c518"
+    },
+    {
+      "path": "hackamap-graph.json",
+      "sha256": "373b858cc4b22ccf4a2cd3acdeb39c3197e3ca3c81d801416fc48a421dc9299e"
+    },
+    {
+      "path": "hackamap_links.json",
+      "sha256": "3831ebdcb972184a405428419b0ed2f7f917538f5353cdbafdc6b6eb71fd66e3"
+    },
+    {
+      "path": "hackamap_nodes.json",
+      "sha256": "fb424effd4a0e0686c29ef55be82e997af0cf38eebfb394cfb59e8e920ce9743"
+    },
+    {
+      "path": "hackamap_query.json",
+      "sha256": "6d0ca44f1d793462a35eb65738027ba6ddfed210e9551c22dda5a34ee4742e75"
+    },
+    {
+      "path": "hackamap_query.md",
+      "sha256": "bb520eb033af750a3d4e2b8a3554c9598efe39bccfcb08e851e8e7f1aeda29f9"
+    },
+    {
+      "path": "query-outputs/demos.query.json",
+      "sha256": "dd681b32b18c685700c06d5d478946ae6b51bd0dc8739536ad729b71e7e8de85"
+    },
+    {
+      "path": "query-outputs/demos.query.md",
+      "sha256": "b409cc1f0d2cfaec6719f4c33d6c5101e047e00bba336bcc48b532b9426f13a6"
+    },
+    {
+      "path": "query-outputs/events.query.json",
+      "sha256": "e6b3efb8cb7998d9903ef3cc43f0a0285f85b4147a1544c9354147e1fd36ce55"
+    },
+    {
+      "path": "query-outputs/events.query.md",
+      "sha256": "6021b00e38951992a8bdd0b106fb236617d7d665cc5d8b6b79e58a44df9dabe1"
+    },
+    {
+      "path": "query-outputs/hackamap-enhanced-query-results.json",
+      "sha256": "f691697fbd730aac44390ce5839eae530c6bf3cc88c853bc49b8c0c644302e1d"
+    },
+    {
+      "path": "query-outputs/hackamap-enhanced-query-results.md",
+      "sha256": "35edf6fc66cb957d31a625e5c6d952fe6cabe9016e5885885fa4db0735cdf545"
+    },
+    {
+      "path": "query-outputs/hackamap-query-results.json",
+      "sha256": "93b33b1208ca58e65837b333dda95fb720dfd3f0d1a0895133a1222fd936dbdd"
+    },
+    {
+      "path": "query-outputs/hackamap-query-results.md",
+      "sha256": "eeaab350948357d710b79e3de491a78681c9da7e535aacef9ea5c134ddfe252e"
+    },
+    {
+      "path": "query-outputs/hackamap-query-results.results.json",
+      "sha256": "05bfa82d7668165118e672af93894da28c65c826b6b8b3972a25ac3ea7473f50"
+    },
+    {
+      "path": "query-outputs/organizer.query.json",
+      "sha256": "7fe25c6ef4eb1fb9db57813bc595359348e97a13160548970913b834301ab847"
+    },
+    {
+      "path": "query-outputs/organizer.query.md",
+      "sha256": "38c887ad5e848a62a999408121ca164ffc950995e9490e62fb2d74abbb11c220"
+    },
+    {
+      "path": "query-outputs/sources.query.json",
+      "sha256": "cdcdeed82561ef26d1849f9dcc7eb87d68dd21f82013d81c7f9b3e5732446363"
+    },
+    {
+      "path": "query-outputs/sources.query.md",
+      "sha256": "be853033b8dd4b0f4f7fcafe60174c4494e76629e7c500bf1daedf4792c94398"
+    },
+    {
+      "path": "query-outputs/team.query.json",
+      "sha256": "144336480c25b887f0c49f49bd97815cdac43ac9fefb0804490c04cce3f38355"
+    },
+    {
+      "path": "query-outputs/team.query.md",
+      "sha256": "ea56ce173bbc48e26983219836ffe97fc7d1f7676fb6577b08faf00c20a4a235"
+    },
+    {
+      "path": "query-outputs/techstack.query.json",
+      "sha256": "54cda533c3b830263a80bb74646c7c5b298ec32414620964c50b08124de207ca"
+    },
+    {
+      "path": "query-outputs/techstack.query.md",
+      "sha256": "2eba181018b69e1ac6a4aca9a0de7e93ad87f2ea441aa0ba427438829a6795c7"
+    }
+  ]
+}

@@ -1,0 +1,3230 @@
+[
+  {
+    "id": "Source:http://tokyo.hackjunction.com/",
+    "type": "Source",
+    "label": "tokyo.hackjunction.com",
+    "meta": {
+      "url": "http://tokyo.hackjunction.com/",
+      "domain": "tokyo.hackjunction.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-211",
+      "search_text": "Source | tokyo.hackjunction.com | src-211 | http://tokyo.hackjunction.com/ | tokyo.hackjunction.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:http://www.hackathonvietnam.com/",
+    "type": "Source",
+    "label": "www.hackathonvietnam.com",
+    "meta": {
+      "url": "http://www.hackathonvietnam.com/",
+      "domain": "www.hackathonvietnam.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-227",
+      "search_text": "Source | www.hackathonvietnam.com | src-227 | http://www.hackathonvietnam.com/ | www.hackathonvietnam.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://2019.fossasia.org/",
+    "type": "Source",
+    "label": "2019.fossasia.org",
+    "meta": {
+      "url": "https://2019.fossasia.org/",
+      "domain": "2019.fossasia.org",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-001",
+      "search_text": "Source | 2019.fossasia.org | src-001 | https://2019.fossasia.org/ | 2019.fossasia.org | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://acaciahackathonstudentlife.devpost.com/",
+    "type": "Source",
+    "label": "acaciahackathonstudentlife.devpost.com",
+    "meta": {
+      "url": "https://acaciahackathonstudentlife.devpost.com/",
+      "domain": "acaciahackathonstudentlife.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-002",
+      "search_text": "Source | acaciahackathonstudentlife.devpost.com | src-002 | https://acaciahackathonstudentlife.devpost.com/ | acaciahackathonstudentlife.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://acaciahackathonstudentlife.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "acaciahackathonstudentlife.devpost.com",
+    "meta": {
+      "url": "https://acaciahackathonstudentlife.devpost.com/project-gallery",
+      "domain": "acaciahackathonstudentlife.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-003",
+      "search_text": "Source | acaciahackathonstudentlife.devpost.com | src-003 | https://acaciahackathonstudentlife.devpost.com/project-gallery | acaciahackathonstudentlife.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://aws-hong-kong-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "aws-hong-kong-hackathon.devpost.com",
+    "meta": {
+      "url": "https://aws-hong-kong-hackathon.devpost.com/",
+      "domain": "aws-hong-kong-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-004",
+      "search_text": "Source | aws-hong-kong-hackathon.devpost.com | src-004 | https://aws-hong-kong-hackathon.devpost.com/ | aws-hong-kong-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://aws-hong-kong-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "aws-hong-kong-hackathon.devpost.com",
+    "meta": {
+      "url": "https://aws-hong-kong-hackathon.devpost.com/project-gallery",
+      "domain": "aws-hong-kong-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-005",
+      "search_text": "Source | aws-hong-kong-hackathon.devpost.com | src-005 | https://aws-hong-kong-hackathon.devpost.com/project-gallery | aws-hong-kong-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://beijing-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "beijing-hackathon.devpost.com",
+    "meta": {
+      "url": "https://beijing-hackathon.devpost.com/",
+      "domain": "beijing-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-006",
+      "search_text": "Source | beijing-hackathon.devpost.com | src-006 | https://beijing-hackathon.devpost.com/ | beijing-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://beijing-hackathon.devpost.com/details/dates",
+    "type": "Source",
+    "label": "beijing-hackathon.devpost.com",
+    "meta": {
+      "url": "https://beijing-hackathon.devpost.com/details/dates",
+      "domain": "beijing-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-007",
+      "search_text": "Source | beijing-hackathon.devpost.com | src-007 | https://beijing-hackathon.devpost.com/details/dates | beijing-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://beijing-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "beijing-hackathon.devpost.com",
+    "meta": {
+      "url": "https://beijing-hackathon.devpost.com/project-gallery",
+      "domain": "beijing-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-008",
+      "search_text": "Source | beijing-hackathon.devpost.com | src-008 | https://beijing-hackathon.devpost.com/project-gallery | beijing-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://bitcoin-indonesia-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "bitcoin-indonesia-hackathon.devpost.com",
+    "meta": {
+      "url": "https://bitcoin-indonesia-hackathon.devpost.com/",
+      "domain": "bitcoin-indonesia-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\", \"project_gallery\"]`",
+      "ref_id": "src-009",
+      "search_text": "Source | bitcoin-indonesia-hackathon.devpost.com | src-009 | https://bitcoin-indonesia-hackathon.devpost.com/ | bitcoin-indonesia-hackathon.devpost.com | `[\"devpost\", \"event-page\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://bitcoin-indonesia-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "bitcoin-indonesia-hackathon.devpost.com",
+    "meta": {
+      "url": "https://bitcoin-indonesia-hackathon.devpost.com/project-gallery",
+      "domain": "bitcoin-indonesia-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-010",
+      "search_text": "Source | bitcoin-indonesia-hackathon.devpost.com | src-010 | https://bitcoin-indonesia-hackathon.devpost.com/project-gallery | bitcoin-indonesia-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://bsj-fobisia-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "bsj-fobisia-hackathon.devpost.com",
+    "meta": {
+      "url": "https://bsj-fobisia-hackathon.devpost.com/",
+      "domain": "bsj-fobisia-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-011",
+      "search_text": "Source | bsj-fobisia-hackathon.devpost.com | src-011 | https://bsj-fobisia-hackathon.devpost.com/ | bsj-fobisia-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://bsj-fobisia-hackathon.devpost.com/details/dates",
+    "type": "Source",
+    "label": "bsj-fobisia-hackathon.devpost.com",
+    "meta": {
+      "url": "https://bsj-fobisia-hackathon.devpost.com/details/dates",
+      "domain": "bsj-fobisia-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-012",
+      "search_text": "Source | bsj-fobisia-hackathon.devpost.com | src-012 | https://bsj-fobisia-hackathon.devpost.com/details/dates | bsj-fobisia-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://bsj-fobisia-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "bsj-fobisia-hackathon.devpost.com",
+    "meta": {
+      "url": "https://bsj-fobisia-hackathon.devpost.com/project-gallery",
+      "domain": "bsj-fobisia-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-013",
+      "search_text": "Source | bsj-fobisia-hackathon.devpost.com | src-013 | https://bsj-fobisia-hackathon.devpost.com/project-gallery | bsj-fobisia-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://buhack-28545.devpost.com/",
+    "type": "Source",
+    "label": "buhack-28545.devpost.com",
+    "meta": {
+      "url": "https://buhack-28545.devpost.com/",
+      "domain": "buhack-28545.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-014",
+      "search_text": "Source | buhack-28545.devpost.com | src-014 | https://buhack-28545.devpost.com/ | buhack-28545.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://buhack-28545.devpost.com/details/dates",
+    "type": "Source",
+    "label": "buhack-28545.devpost.com",
+    "meta": {
+      "url": "https://buhack-28545.devpost.com/details/dates",
+      "domain": "buhack-28545.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-015",
+      "search_text": "Source | buhack-28545.devpost.com | src-015 | https://buhack-28545.devpost.com/details/dates | buhack-28545.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://buhack-28545.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "buhack-28545.devpost.com",
+    "meta": {
+      "url": "https://buhack-28545.devpost.com/project-gallery",
+      "domain": "buhack-28545.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-016",
+      "search_text": "Source | buhack-28545.devpost.com | src-016 | https://buhack-28545.devpost.com/project-gallery | buhack-28545.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://build-for-impact-2026-28173.devpost.com/",
+    "type": "Source",
+    "label": "build-for-impact-2026-28173.devpost.com",
+    "meta": {
+      "url": "https://build-for-impact-2026-28173.devpost.com/",
+      "domain": "build-for-impact-2026-28173.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-017",
+      "search_text": "Source | build-for-impact-2026-28173.devpost.com | src-017 | https://build-for-impact-2026-28173.devpost.com/ | build-for-impact-2026-28173.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://build-for-impact-2026-28173.devpost.com/details/dates",
+    "type": "Source",
+    "label": "build-for-impact-2026-28173.devpost.com",
+    "meta": {
+      "url": "https://build-for-impact-2026-28173.devpost.com/details/dates",
+      "domain": "build-for-impact-2026-28173.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-018",
+      "search_text": "Source | build-for-impact-2026-28173.devpost.com | src-018 | https://build-for-impact-2026-28173.devpost.com/details/dates | build-for-impact-2026-28173.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://build-for-impact-2026-28173.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "build-for-impact-2026-28173.devpost.com",
+    "meta": {
+      "url": "https://build-for-impact-2026-28173.devpost.com/project-gallery",
+      "domain": "build-for-impact-2026-28173.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-019",
+      "search_text": "Source | build-for-impact-2026-28173.devpost.com | src-019 | https://build-for-impact-2026-28173.devpost.com/project-gallery | build-for-impact-2026-28173.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://build-with-deepmind.devpost.com/",
+    "type": "Source",
+    "label": "build-with-deepmind.devpost.com",
+    "meta": {
+      "url": "https://build-with-deepmind.devpost.com/",
+      "domain": "build-with-deepmind.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-020",
+      "search_text": "Source | build-with-deepmind.devpost.com | src-020 | https://build-with-deepmind.devpost.com/ | build-with-deepmind.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://build-with-deepmind.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "build-with-deepmind.devpost.com",
+    "meta": {
+      "url": "https://build-with-deepmind.devpost.com/project-gallery",
+      "domain": "build-with-deepmind.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-021",
+      "search_text": "Source | build-with-deepmind.devpost.com | src-021 | https://build-with-deepmind.devpost.com/project-gallery | build-with-deepmind.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://camo.hku.hk/28-march-2026-openclaw-meet-up/",
+    "type": "Source",
+    "label": "camo.hku.hk",
+    "meta": {
+      "url": "https://camo.hku.hk/28-march-2026-openclaw-meet-up/",
+      "domain": "camo.hku.hk",
+      "source_type": "—",
+      "ref_id": "src-022",
+      "search_text": "Source | camo.hku.hk | src-022 | https://camo.hku.hk/28-march-2026-openclaw-meet-up/ | camo.hku.hk"
+    }
+  },
+  {
+    "id": "Source:https://ccds-tech-for-good-2026.devpost.com/",
+    "type": "Source",
+    "label": "ccds-tech-for-good-2026.devpost.com",
+    "meta": {
+      "url": "https://ccds-tech-for-good-2026.devpost.com/",
+      "domain": "ccds-tech-for-good-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-023",
+      "search_text": "Source | ccds-tech-for-good-2026.devpost.com | src-023 | https://ccds-tech-for-good-2026.devpost.com/ | ccds-tech-for-good-2026.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://ccds-tech-for-good-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "ccds-tech-for-good-2026.devpost.com",
+    "meta": {
+      "url": "https://ccds-tech-for-good-2026.devpost.com/project-gallery",
+      "domain": "ccds-tech-for-good-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-024",
+      "search_text": "Source | ccds-tech-for-good-2026.devpost.com | src-024 | https://ccds-tech-for-good-2026.devpost.com/project-gallery | ccds-tech-for-good-2026.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://cloudhacks-2024.devpost.com/",
+    "type": "Source",
+    "label": "cloudhacks-2024.devpost.com",
+    "meta": {
+      "url": "https://cloudhacks-2024.devpost.com/",
+      "domain": "cloudhacks-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-025",
+      "search_text": "Source | cloudhacks-2024.devpost.com | src-025 | https://cloudhacks-2024.devpost.com/ | cloudhacks-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://cloudhacks-2024.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "cloudhacks-2024.devpost.com",
+    "meta": {
+      "url": "https://cloudhacks-2024.devpost.com/project-gallery",
+      "domain": "cloudhacks-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-026",
+      "search_text": "Source | cloudhacks-2024.devpost.com | src-026 | https://cloudhacks-2024.devpost.com/project-gallery | cloudhacks-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://cny-hack-kuala-lumpur.devpost.com/",
+    "type": "Source",
+    "label": "cny-hack-kuala-lumpur.devpost.com",
+    "meta": {
+      "url": "https://cny-hack-kuala-lumpur.devpost.com/",
+      "domain": "cny-hack-kuala-lumpur.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-027",
+      "search_text": "Source | cny-hack-kuala-lumpur.devpost.com | src-027 | https://cny-hack-kuala-lumpur.devpost.com/ | cny-hack-kuala-lumpur.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://coding-cup.devpost.com/",
+    "type": "Source",
+    "label": "coding-cup.devpost.com",
+    "meta": {
+      "url": "https://coding-cup.devpost.com/",
+      "domain": "coding-cup.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-028",
+      "search_text": "Source | coding-cup.devpost.com | src-028 | https://coding-cup.devpost.com/ | coding-cup.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://coding-cup.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "coding-cup.devpost.com",
+    "meta": {
+      "url": "https://coding-cup.devpost.com/project-gallery",
+      "domain": "coding-cup.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-029",
+      "search_text": "Source | coding-cup.devpost.com | src-029 | https://coding-cup.devpost.com/project-gallery | coding-cup.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://cs-2025-hackathon-beta.devpost.com/",
+    "type": "Source",
+    "label": "cs-2025-hackathon-beta.devpost.com",
+    "meta": {
+      "url": "https://cs-2025-hackathon-beta.devpost.com/",
+      "domain": "cs-2025-hackathon-beta.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-030",
+      "search_text": "Source | cs-2025-hackathon-beta.devpost.com | src-030 | https://cs-2025-hackathon-beta.devpost.com/ | cs-2025-hackathon-beta.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://cursor-hack-my.devpost.com/",
+    "type": "Source",
+    "label": "cursor-hack-my.devpost.com",
+    "meta": {
+      "url": "https://cursor-hack-my.devpost.com/",
+      "domain": "cursor-hack-my.devpost.com",
+      "source_type": "`[\"media\", \"event-recap\", \"devpost\", \"event-page\"]`",
+      "ref_id": "src-031",
+      "search_text": "Source | cursor-hack-my.devpost.com | src-031 | https://cursor-hack-my.devpost.com/ | cursor-hack-my.devpost.com | `[\"media\", \"event-recap\", \"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://cursor-hack-my.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "cursor-hack-my.devpost.com",
+    "meta": {
+      "url": "https://cursor-hack-my.devpost.com/project-gallery",
+      "domain": "cursor-hack-my.devpost.com",
+      "source_type": "`[\"devpost\", \"project-gallery\"]`",
+      "ref_id": "src-032",
+      "search_text": "Source | cursor-hack-my.devpost.com | src-032 | https://cursor-hack-my.devpost.com/project-gallery | cursor-hack-my.devpost.com | `[\"devpost\", \"project-gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://developerweek-2026-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "developerweek-2026-hackathon.devpost.com",
+    "meta": {
+      "url": "https://developerweek-2026-hackathon.devpost.com/",
+      "domain": "developerweek-2026-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-033",
+      "search_text": "Source | developerweek-2026-hackathon.devpost.com | src-033 | https://developerweek-2026-hackathon.devpost.com/ | developerweek-2026-hackathon.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://developerweek-2026-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "developerweek-2026-hackathon.devpost.com",
+    "meta": {
+      "url": "https://developerweek-2026-hackathon.devpost.com/project-gallery",
+      "domain": "developerweek-2026-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project-gallery\", \"winners\"]`",
+      "ref_id": "src-034",
+      "search_text": "Source | developerweek-2026-hackathon.devpost.com | src-034 | https://developerweek-2026-hackathon.devpost.com/project-gallery | developerweek-2026-hackathon.devpost.com | `[\"devpost\", \"project-gallery\", \"winners\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dish-2019.devpost.com/",
+    "type": "Source",
+    "label": "dish-2019.devpost.com",
+    "meta": {
+      "url": "https://dish-2019.devpost.com/",
+      "domain": "dish-2019.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-035",
+      "search_text": "Source | dish-2019.devpost.com | src-035 | https://dish-2019.devpost.com/ | dish-2019.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dish-2019.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "dish-2019.devpost.com",
+    "meta": {
+      "url": "https://dish-2019.devpost.com/project-gallery",
+      "domain": "dish-2019.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-036",
+      "search_text": "Source | dish-2019.devpost.com | src-036 | https://dish-2019.devpost.com/project-gallery | dish-2019.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dish2019.com/",
+    "type": "Source",
+    "label": "dish2019.com",
+    "meta": {
+      "url": "https://dish2019.com/",
+      "domain": "dish2019.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-037",
+      "search_text": "Source | dish2019.com | src-037 | https://dish2019.com/ | dish2019.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dive2024inbusan.devpost.com/",
+    "type": "Source",
+    "label": "dive2024inbusan.devpost.com",
+    "meta": {
+      "url": "https://dive2024inbusan.devpost.com/",
+      "domain": "dive2024inbusan.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-038",
+      "search_text": "Source | dive2024inbusan.devpost.com | src-038 | https://dive2024inbusan.devpost.com/ | dive2024inbusan.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dive2024inbusan.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "dive2024inbusan.devpost.com",
+    "meta": {
+      "url": "https://dive2024inbusan.devpost.com/project-gallery",
+      "domain": "dive2024inbusan.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-039",
+      "search_text": "Source | dive2024inbusan.devpost.com | src-039 | https://dive2024inbusan.devpost.com/project-gallery | dive2024inbusan.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dothackathon.devpost.com/",
+    "type": "Source",
+    "label": "dothackathon.devpost.com",
+    "meta": {
+      "url": "https://dothackathon.devpost.com/",
+      "domain": "dothackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-040",
+      "search_text": "Source | dothackathon.devpost.com | src-040 | https://dothackathon.devpost.com/ | dothackathon.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dothackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "dothackathon.devpost.com",
+    "meta": {
+      "url": "https://dothackathon.devpost.com/project-gallery",
+      "domain": "dothackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-041",
+      "search_text": "Source | dothackathon.devpost.com | src-041 | https://dothackathon.devpost.com/project-gallery | dothackathon.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dpp-2021.devpost.com/",
+    "type": "Source",
+    "label": "dpp-2021.devpost.com",
+    "meta": {
+      "url": "https://dpp-2021.devpost.com/",
+      "domain": "dpp-2021.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-042",
+      "search_text": "Source | dpp-2021.devpost.com | src-042 | https://dpp-2021.devpost.com/ | dpp-2021.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dpp-2021.devpost.com/details/dates",
+    "type": "Source",
+    "label": "dpp-2021.devpost.com",
+    "meta": {
+      "url": "https://dpp-2021.devpost.com/details/dates",
+      "domain": "dpp-2021.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-043",
+      "search_text": "Source | dpp-2021.devpost.com | src-043 | https://dpp-2021.devpost.com/details/dates | dpp-2021.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://dpp-2021.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "dpp-2021.devpost.com",
+    "meta": {
+      "url": "https://dpp-2021.devpost.com/project-gallery",
+      "domain": "dpp-2021.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-044",
+      "search_text": "Source | dpp-2021.devpost.com | src-044 | https://dpp-2021.devpost.com/project-gallery | dpp-2021.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://elastic-forge-the-future.devpost.com/",
+    "type": "Source",
+    "label": "elastic-forge-the-future.devpost.com",
+    "meta": {
+      "url": "https://elastic-forge-the-future.devpost.com/",
+      "domain": "elastic-forge-the-future.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-045",
+      "search_text": "Source | elastic-forge-the-future.devpost.com | src-045 | https://elastic-forge-the-future.devpost.com/ | elastic-forge-the-future.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://elastic-forge-the-future.devpost.com/details/dates",
+    "type": "Source",
+    "label": "elastic-forge-the-future.devpost.com",
+    "meta": {
+      "url": "https://elastic-forge-the-future.devpost.com/details/dates",
+      "domain": "elastic-forge-the-future.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-046",
+      "search_text": "Source | elastic-forge-the-future.devpost.com | src-046 | https://elastic-forge-the-future.devpost.com/details/dates | elastic-forge-the-future.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://elastic-forge-the-future.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "elastic-forge-the-future.devpost.com",
+    "meta": {
+      "url": "https://elastic-forge-the-future.devpost.com/project-gallery",
+      "domain": "elastic-forge-the-future.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-047",
+      "search_text": "Source | elastic-forge-the-future.devpost.com | src-047 | https://elastic-forge-the-future.devpost.com/project-gallery | elastic-forge-the-future.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://en.unesco.org/youthmobile",
+    "type": "Source",
+    "label": "en.unesco.org",
+    "meta": {
+      "url": "https://en.unesco.org/youthmobile",
+      "domain": "en.unesco.org",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-048",
+      "search_text": "Source | en.unesco.org | src-048 | https://en.unesco.org/youthmobile | en.unesco.org | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://fossasia-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "fossasia-hackathon.devpost.com",
+    "meta": {
+      "url": "https://fossasia-hackathon.devpost.com/",
+      "domain": "fossasia-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-049",
+      "search_text": "Source | fossasia-hackathon.devpost.com | src-049 | https://fossasia-hackathon.devpost.com/ | fossasia-hackathon.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://fossasia-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "fossasia-hackathon.devpost.com",
+    "meta": {
+      "url": "https://fossasia-hackathon.devpost.com/project-gallery",
+      "domain": "fossasia-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-050",
+      "search_text": "Source | fossasia-hackathon.devpost.com | src-050 | https://fossasia-hackathon.devpost.com/project-gallery | fossasia-hackathon.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://fossasia-unesco.devpost.com/",
+    "type": "Source",
+    "label": "fossasia-unesco.devpost.com",
+    "meta": {
+      "url": "https://fossasia-unesco.devpost.com/",
+      "domain": "fossasia-unesco.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-051",
+      "search_text": "Source | fossasia-unesco.devpost.com | src-051 | https://fossasia-unesco.devpost.com/ | fossasia-unesco.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://fossasia-unesco.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "fossasia-unesco.devpost.com",
+    "meta": {
+      "url": "https://fossasia-unesco.devpost.com/project-gallery",
+      "domain": "fossasia-unesco.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-052",
+      "search_text": "Source | fossasia-unesco.devpost.com | src-052 | https://fossasia-unesco.devpost.com/project-gallery | fossasia-unesco.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://garuda-hacks.devpost.com/",
+    "type": "Source",
+    "label": "garuda-hacks.devpost.com",
+    "meta": {
+      "url": "https://garuda-hacks.devpost.com/",
+      "domain": "garuda-hacks.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-053",
+      "search_text": "Source | garuda-hacks.devpost.com | src-053 | https://garuda-hacks.devpost.com/ | garuda-hacks.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://garuda-hacks.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "garuda-hacks.devpost.com",
+    "meta": {
+      "url": "https://garuda-hacks.devpost.com/project-gallery",
+      "domain": "garuda-hacks.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-054",
+      "search_text": "Source | garuda-hacks.devpost.com | src-054 | https://garuda-hacks.devpost.com/project-gallery | garuda-hacks.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://gh5.devpost.com/",
+    "type": "Source",
+    "label": "gh5.devpost.com",
+    "meta": {
+      "url": "https://gh5.devpost.com/",
+      "domain": "gh5.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-055",
+      "search_text": "Source | gh5.devpost.com | src-055 | https://gh5.devpost.com/ | gh5.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://gh5.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "gh5.devpost.com",
+    "meta": {
+      "url": "https://gh5.devpost.com/project-gallery",
+      "domain": "gh5.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-056",
+      "search_text": "Source | gh5.devpost.com | src-056 | https://gh5.devpost.com/project-gallery | gh5.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://gh6.devpost.com/",
+    "type": "Source",
+    "label": "gh6.devpost.com",
+    "meta": {
+      "url": "https://gh6.devpost.com/",
+      "domain": "gh6.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-057",
+      "search_text": "Source | gh6.devpost.com | src-057 | https://gh6.devpost.com/ | gh6.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://gh6.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "gh6.devpost.com",
+    "meta": {
+      "url": "https://gh6.devpost.com/project-gallery",
+      "domain": "gh6.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-058",
+      "search_text": "Source | gh6.devpost.com | src-058 | https://gh6.devpost.com/project-gallery | gh6.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://googlecloudjapanaihackathon.devpost.com/",
+    "type": "Source",
+    "label": "googlecloudjapanaihackathon.devpost.com",
+    "meta": {
+      "url": "https://googlecloudjapanaihackathon.devpost.com/",
+      "domain": "googlecloudjapanaihackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-059",
+      "search_text": "Source | googlecloudjapanaihackathon.devpost.com | src-059 | https://googlecloudjapanaihackathon.devpost.com/ | googlecloudjapanaihackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://googlecloudjapanaihackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "googlecloudjapanaihackathon.devpost.com",
+    "meta": {
+      "url": "https://googlecloudjapanaihackathon.devpost.com/project-gallery",
+      "domain": "googlecloudjapanaihackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-060",
+      "search_text": "Source | googlecloudjapanaihackathon.devpost.com | src-060 | https://googlecloudjapanaihackathon.devpost.com/project-gallery | googlecloudjapanaihackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack-for-good-2023.devpost.com/",
+    "type": "Source",
+    "label": "hack-for-good-2023.devpost.com",
+    "meta": {
+      "url": "https://hack-for-good-2023.devpost.com/",
+      "domain": "hack-for-good-2023.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-061",
+      "search_text": "Source | hack-for-good-2023.devpost.com | src-061 | https://hack-for-good-2023.devpost.com/ | hack-for-good-2023.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack-for-good-2023.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hack-for-good-2023.devpost.com",
+    "meta": {
+      "url": "https://hack-for-good-2023.devpost.com/project-gallery",
+      "domain": "hack-for-good-2023.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-062",
+      "search_text": "Source | hack-for-good-2023.devpost.com | src-062 | https://hack-for-good-2023.devpost.com/project-gallery | hack-for-good-2023.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack-for-humanity-2026.devpost.com/",
+    "type": "Source",
+    "label": "hack-for-humanity-2026.devpost.com",
+    "meta": {
+      "url": "https://hack-for-humanity-2026.devpost.com/",
+      "domain": "hack-for-humanity-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-063",
+      "search_text": "Source | hack-for-humanity-2026.devpost.com | src-063 | https://hack-for-humanity-2026.devpost.com/ | hack-for-humanity-2026.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack-for-humanity-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hack-for-humanity-2026.devpost.com",
+    "meta": {
+      "url": "https://hack-for-humanity-2026.devpost.com/project-gallery",
+      "domain": "hack-for-humanity-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project-gallery\", \"winners\"]`",
+      "ref_id": "src-064",
+      "search_text": "Source | hack-for-humanity-2026.devpost.com | src-064 | https://hack-for-humanity-2026.devpost.com/project-gallery | hack-for-humanity-2026.devpost.com | `[\"devpost\", \"project-gallery\", \"winners\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack-the-pearl.devpost.com/",
+    "type": "Source",
+    "label": "hack-the-pearl.devpost.com",
+    "meta": {
+      "url": "https://hack-the-pearl.devpost.com/",
+      "domain": "hack-the-pearl.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-065",
+      "search_text": "Source | hack-the-pearl.devpost.com | src-065 | https://hack-the-pearl.devpost.com/ | hack-the-pearl.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack-the-pearl.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hack-the-pearl.devpost.com",
+    "meta": {
+      "url": "https://hack-the-pearl.devpost.com/details/dates",
+      "domain": "hack-the-pearl.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-066",
+      "search_text": "Source | hack-the-pearl.devpost.com | src-066 | https://hack-the-pearl.devpost.com/details/dates | hack-the-pearl.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack-the-pearl.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hack-the-pearl.devpost.com",
+    "meta": {
+      "url": "https://hack-the-pearl.devpost.com/project-gallery",
+      "domain": "hack-the-pearl.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-067",
+      "search_text": "Source | hack-the-pearl.devpost.com | src-067 | https://hack-the-pearl.devpost.com/project-gallery | hack-the-pearl.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack4good-2024.devpost.com/",
+    "type": "Source",
+    "label": "hack4good-2024.devpost.com",
+    "meta": {
+      "url": "https://hack4good-2024.devpost.com/",
+      "domain": "hack4good-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-068",
+      "search_text": "Source | hack4good-2024.devpost.com | src-068 | https://hack4good-2024.devpost.com/ | hack4good-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack4good-2024.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hack4good-2024.devpost.com",
+    "meta": {
+      "url": "https://hack4good-2024.devpost.com/project-gallery",
+      "domain": "hack4good-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-069",
+      "search_text": "Source | hack4good-2024.devpost.com | src-069 | https://hack4good-2024.devpost.com/project-gallery | hack4good-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack4hk-23258.devpost.com/",
+    "type": "Source",
+    "label": "hack4hk-23258.devpost.com",
+    "meta": {
+      "url": "https://hack4hk-23258.devpost.com/",
+      "domain": "hack4hk-23258.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-070",
+      "search_text": "Source | hack4hk-23258.devpost.com | src-070 | https://hack4hk-23258.devpost.com/ | hack4hk-23258.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hack4hk-23258.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hack4hk-23258.devpost.com",
+    "meta": {
+      "url": "https://hack4hk-23258.devpost.com/project-gallery",
+      "domain": "hack4hk-23258.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-071",
+      "search_text": "Source | hack4hk-23258.devpost.com | src-071 | https://hack4hk-23258.devpost.com/project-gallery | hack4hk-23258.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackai-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackai-2026.devpost.com",
+    "meta": {
+      "url": "https://hackai-2026.devpost.com/project-gallery",
+      "domain": "hackai-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project-gallery\", \"winners\"]`",
+      "ref_id": "src-072",
+      "search_text": "Source | hackai-2026.devpost.com | src-072 | https://hackai-2026.devpost.com/project-gallery | hackai-2026.devpost.com | `[\"devpost\", \"project-gallery\", \"winners\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackathonbojonegoro.devpost.com/",
+    "type": "Source",
+    "label": "hackathonbojonegoro.devpost.com",
+    "meta": {
+      "url": "https://hackathonbojonegoro.devpost.com/",
+      "domain": "hackathonbojonegoro.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-073",
+      "search_text": "Source | hackathonbojonegoro.devpost.com | src-073 | https://hackathonbojonegoro.devpost.com/ | hackathonbojonegoro.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackathonbojonegoro.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hackathonbojonegoro.devpost.com",
+    "meta": {
+      "url": "https://hackathonbojonegoro.devpost.com/details/dates",
+      "domain": "hackathonbojonegoro.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-074",
+      "search_text": "Source | hackathonbojonegoro.devpost.com | src-074 | https://hackathonbojonegoro.devpost.com/details/dates | hackathonbojonegoro.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackathonbojonegoro.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackathonbojonegoro.devpost.com",
+    "meta": {
+      "url": "https://hackathonbojonegoro.devpost.com/project-gallery",
+      "domain": "hackathonbojonegoro.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-075",
+      "search_text": "Source | hackathonbojonegoro.devpost.com | src-075 | https://hackathonbojonegoro.devpost.com/project-gallery | hackathonbojonegoro.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackathonvietnam2014hanoi.devpost.com/",
+    "type": "Source",
+    "label": "hackathonvietnam2014hanoi.devpost.com",
+    "meta": {
+      "url": "https://hackathonvietnam2014hanoi.devpost.com/",
+      "domain": "hackathonvietnam2014hanoi.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-076",
+      "search_text": "Source | hackathonvietnam2014hanoi.devpost.com | src-076 | https://hackathonvietnam2014hanoi.devpost.com/ | hackathonvietnam2014hanoi.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackathonvietnam2014hanoi.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackathonvietnam2014hanoi.devpost.com",
+    "meta": {
+      "url": "https://hackathonvietnam2014hanoi.devpost.com/project-gallery",
+      "domain": "hackathonvietnam2014hanoi.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-077",
+      "search_text": "Source | hackathonvietnam2014hanoi.devpost.com | src-077 | https://hackathonvietnam2014hanoi.devpost.com/project-gallery | hackathonvietnam2014hanoi.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackathonvietnam2014hcmc.devpost.com/",
+    "type": "Source",
+    "label": "hackathonvietnam2014hcmc.devpost.com",
+    "meta": {
+      "url": "https://hackathonvietnam2014hcmc.devpost.com/",
+      "domain": "hackathonvietnam2014hcmc.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-078",
+      "search_text": "Source | hackathonvietnam2014hcmc.devpost.com | src-078 | https://hackathonvietnam2014hcmc.devpost.com/ | hackathonvietnam2014hcmc.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackathonvietnam2014hcmc.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackathonvietnam2014hcmc.devpost.com",
+    "meta": {
+      "url": "https://hackathonvietnam2014hcmc.devpost.com/project-gallery",
+      "domain": "hackathonvietnam2014hcmc.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-079",
+      "search_text": "Source | hackathonvietnam2014hcmc.devpost.com | src-079 | https://hackathonvietnam2014hcmc.devpost.com/project-gallery | hackathonvietnam2014hcmc.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackbangph.devpost.com/",
+    "type": "Source",
+    "label": "hackbangph.devpost.com",
+    "meta": {
+      "url": "https://hackbangph.devpost.com/",
+      "domain": "hackbangph.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-080",
+      "search_text": "Source | hackbangph.devpost.com | src-080 | https://hackbangph.devpost.com/ | hackbangph.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackbangph.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackbangph.devpost.com",
+    "meta": {
+      "url": "https://hackbangph.devpost.com/project-gallery",
+      "domain": "hackbangph.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-081",
+      "search_text": "Source | hackbangph.devpost.com | src-081 | https://hackbangph.devpost.com/project-gallery | hackbangph.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackdevs.devpost.com/",
+    "type": "Source",
+    "label": "hackdevs.devpost.com",
+    "meta": {
+      "url": "https://hackdevs.devpost.com/",
+      "domain": "hackdevs.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-082",
+      "search_text": "Source | hackdevs.devpost.com | src-082 | https://hackdevs.devpost.com/ | hackdevs.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackdevs.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hackdevs.devpost.com",
+    "meta": {
+      "url": "https://hackdevs.devpost.com/details/dates",
+      "domain": "hackdevs.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-083",
+      "search_text": "Source | hackdevs.devpost.com | src-083 | https://hackdevs.devpost.com/details/dates | hackdevs.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackdevs.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackdevs.devpost.com",
+    "meta": {
+      "url": "https://hackdevs.devpost.com/project-gallery",
+      "domain": "hackdevs.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-084",
+      "search_text": "Source | hackdevs.devpost.com | src-084 | https://hackdevs.devpost.com/project-gallery | hackdevs.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackgov.devpost.com/",
+    "type": "Source",
+    "label": "hackgov.devpost.com",
+    "meta": {
+      "url": "https://hackgov.devpost.com/",
+      "domain": "hackgov.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-085",
+      "search_text": "Source | hackgov.devpost.com | src-085 | https://hackgov.devpost.com/ | hackgov.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackgov.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hackgov.devpost.com",
+    "meta": {
+      "url": "https://hackgov.devpost.com/details/dates",
+      "domain": "hackgov.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-086",
+      "search_text": "Source | hackgov.devpost.com | src-086 | https://hackgov.devpost.com/details/dates | hackgov.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackgov.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackgov.devpost.com",
+    "meta": {
+      "url": "https://hackgov.devpost.com/project-gallery",
+      "domain": "hackgov.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-087",
+      "search_text": "Source | hackgov.devpost.com | src-087 | https://hackgov.devpost.com/project-gallery | hackgov.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackidea.devpost.com/",
+    "type": "Source",
+    "label": "hackidea.devpost.com",
+    "meta": {
+      "url": "https://hackidea.devpost.com/",
+      "domain": "hackidea.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-088",
+      "search_text": "Source | hackidea.devpost.com | src-088 | https://hackidea.devpost.com/ | hackidea.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackidea.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackidea.devpost.com",
+    "meta": {
+      "url": "https://hackidea.devpost.com/project-gallery",
+      "domain": "hackidea.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-089",
+      "search_text": "Source | hackidea.devpost.com | src-089 | https://hackidea.devpost.com/project-gallery | hackidea.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackindia.devpost.com/",
+    "type": "Source",
+    "label": "hackindia.devpost.com",
+    "meta": {
+      "url": "https://hackindia.devpost.com/",
+      "domain": "hackindia.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-090",
+      "search_text": "Source | hackindia.devpost.com | src-090 | https://hackindia.devpost.com/ | hackindia.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackindia.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackindia.devpost.com",
+    "meta": {
+      "url": "https://hackindia.devpost.com/project-gallery",
+      "domain": "hackindia.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-091",
+      "search_text": "Source | hackindia.devpost.com | src-091 | https://hackindia.devpost.com/project-gallery | hackindia.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackinit.devpost.com/",
+    "type": "Source",
+    "label": "hackinit.devpost.com",
+    "meta": {
+      "url": "https://hackinit.devpost.com/",
+      "domain": "hackinit.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-092",
+      "search_text": "Source | hackinit.devpost.com | src-092 | https://hackinit.devpost.com/ | hackinit.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackinit.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hackinit.devpost.com",
+    "meta": {
+      "url": "https://hackinit.devpost.com/details/dates",
+      "domain": "hackinit.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-093",
+      "search_text": "Source | hackinit.devpost.com | src-093 | https://hackinit.devpost.com/details/dates | hackinit.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackinit.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackinit.devpost.com",
+    "meta": {
+      "url": "https://hackinit.devpost.com/project-gallery",
+      "domain": "hackinit.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-094",
+      "search_text": "Source | hackinit.devpost.com | src-094 | https://hackinit.devpost.com/project-gallery | hackinit.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackitrx.devpost.com/",
+    "type": "Source",
+    "label": "hackitrx.devpost.com",
+    "meta": {
+      "url": "https://hackitrx.devpost.com/",
+      "domain": "hackitrx.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-095",
+      "search_text": "Source | hackitrx.devpost.com | src-095 | https://hackitrx.devpost.com/ | hackitrx.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknroll.nushackers.org/",
+    "type": "Source",
+    "label": "hacknroll.nushackers.org",
+    "meta": {
+      "url": "https://hacknroll.nushackers.org/",
+      "domain": "hacknroll.nushackers.org",
+      "source_type": "`[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-096",
+      "search_text": "Source | hacknroll.nushackers.org | src-096 | https://hacknroll.nushackers.org/ | hacknroll.nushackers.org | `[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknroll2023.devpost.com/",
+    "type": "Source",
+    "label": "hacknroll2023.devpost.com",
+    "meta": {
+      "url": "https://hacknroll2023.devpost.com/",
+      "domain": "hacknroll2023.devpost.com",
+      "source_type": "`[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-097",
+      "search_text": "Source | hacknroll2023.devpost.com | src-097 | https://hacknroll2023.devpost.com/ | hacknroll2023.devpost.com | `[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknroll2023.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hacknroll2023.devpost.com",
+    "meta": {
+      "url": "https://hacknroll2023.devpost.com/project-gallery",
+      "domain": "hacknroll2023.devpost.com",
+      "source_type": "`[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-098",
+      "search_text": "Source | hacknroll2023.devpost.com | src-098 | https://hacknroll2023.devpost.com/project-gallery | hacknroll2023.devpost.com | `[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknroll2024.devpost.com/",
+    "type": "Source",
+    "label": "hacknroll2024.devpost.com",
+    "meta": {
+      "url": "https://hacknroll2024.devpost.com/",
+      "domain": "hacknroll2024.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-099",
+      "search_text": "Source | hacknroll2024.devpost.com | src-099 | https://hacknroll2024.devpost.com/ | hacknroll2024.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknroll2025.devpost.com/",
+    "type": "Source",
+    "label": "hacknroll2025.devpost.com",
+    "meta": {
+      "url": "https://hacknroll2025.devpost.com/",
+      "domain": "hacknroll2025.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-100",
+      "search_text": "Source | hacknroll2025.devpost.com | src-100 | https://hacknroll2025.devpost.com/ | hacknroll2025.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknroll2026.devpost.com/",
+    "type": "Source",
+    "label": "hacknroll2026.devpost.com",
+    "meta": {
+      "url": "https://hacknroll2026.devpost.com/",
+      "domain": "hacknroll2026.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-101",
+      "search_text": "Source | hacknroll2026.devpost.com | src-101 | https://hacknroll2026.devpost.com/ | hacknroll2026.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknroll2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hacknroll2026.devpost.com",
+    "meta": {
+      "url": "https://hacknroll2026.devpost.com/project-gallery",
+      "domain": "hacknroll2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project-gallery\", \"winners\"]`",
+      "ref_id": "src-102",
+      "search_text": "Source | hacknroll2026.devpost.com | src-102 | https://hacknroll2026.devpost.com/project-gallery | hacknroll2026.devpost.com | `[\"devpost\", \"project-gallery\", \"winners\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknyu-nyush.devpost.com/",
+    "type": "Source",
+    "label": "hacknyu-nyush.devpost.com",
+    "meta": {
+      "url": "https://hacknyu-nyush.devpost.com/",
+      "domain": "hacknyu-nyush.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-103",
+      "search_text": "Source | hacknyu-nyush.devpost.com | src-103 | https://hacknyu-nyush.devpost.com/ | hacknyu-nyush.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknyu-nyush.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hacknyu-nyush.devpost.com",
+    "meta": {
+      "url": "https://hacknyu-nyush.devpost.com/details/dates",
+      "domain": "hacknyu-nyush.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-104",
+      "search_text": "Source | hacknyu-nyush.devpost.com | src-104 | https://hacknyu-nyush.devpost.com/details/dates | hacknyu-nyush.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hacknyu-nyush.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hacknyu-nyush.devpost.com",
+    "meta": {
+      "url": "https://hacknyu-nyush.devpost.com/project-gallery",
+      "domain": "hacknyu-nyush.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-105",
+      "search_text": "Source | hacknyu-nyush.devpost.com | src-105 | https://hacknyu-nyush.devpost.com/project-gallery | hacknyu-nyush.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackpku2016.devpost.com/",
+    "type": "Source",
+    "label": "hackpku2016.devpost.com",
+    "meta": {
+      "url": "https://hackpku2016.devpost.com/",
+      "domain": "hackpku2016.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-106",
+      "search_text": "Source | hackpku2016.devpost.com | src-106 | https://hackpku2016.devpost.com/ | hackpku2016.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackpku2016.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hackpku2016.devpost.com",
+    "meta": {
+      "url": "https://hackpku2016.devpost.com/details/dates",
+      "domain": "hackpku2016.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-107",
+      "search_text": "Source | hackpku2016.devpost.com | src-107 | https://hackpku2016.devpost.com/details/dates | hackpku2016.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hackpku2016.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hackpku2016.devpost.com",
+    "meta": {
+      "url": "https://hackpku2016.devpost.com/project-gallery",
+      "domain": "hackpku2016.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-108",
+      "search_text": "Source | hackpku2016.devpost.com | src-108 | https://hackpku2016.devpost.com/project-gallery | hackpku2016.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hong-kong.aitinkerers.org/hackathons/h_xM9rYwACgZE",
+    "type": "Source",
+    "label": "hong-kong.aitinkerers.org",
+    "meta": {
+      "url": "https://hong-kong.aitinkerers.org/hackathons/h_xM9rYwACgZE",
+      "domain": "hong-kong.aitinkerers.org",
+      "source_type": "—",
+      "ref_id": "src-109",
+      "search_text": "Source | hong-kong.aitinkerers.org | src-109 | https://hong-kong.aitinkerers.org/hackathons/h_xM9rYwACgZE | hong-kong.aitinkerers.org"
+    }
+  },
+  {
+    "id": "Source:https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery",
+    "type": "Source",
+    "label": "hong-kong.aitinkerers.org",
+    "meta": {
+      "url": "https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery",
+      "domain": "hong-kong.aitinkerers.org",
+      "source_type": "—",
+      "ref_id": "src-110",
+      "search_text": "Source | hong-kong.aitinkerers.org | src-110 | https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery | hong-kong.aitinkerers.org"
+    }
+  },
+  {
+    "id": "Source:https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong",
+    "type": "Source",
+    "label": "hong-kong.aitinkerers.org",
+    "meta": {
+      "url": "https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong",
+      "domain": "hong-kong.aitinkerers.org",
+      "source_type": "—",
+      "ref_id": "src-111",
+      "search_text": "Source | hong-kong.aitinkerers.org | src-111 | https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong | hong-kong.aitinkerers.org"
+    }
+  },
+  {
+    "id": "Source:https://hyperledger-shanghai.devpost.com/",
+    "type": "Source",
+    "label": "hyperledger-shanghai.devpost.com",
+    "meta": {
+      "url": "https://hyperledger-shanghai.devpost.com/",
+      "domain": "hyperledger-shanghai.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-112",
+      "search_text": "Source | hyperledger-shanghai.devpost.com | src-112 | https://hyperledger-shanghai.devpost.com/ | hyperledger-shanghai.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hyperledger-shanghai.devpost.com/details/dates",
+    "type": "Source",
+    "label": "hyperledger-shanghai.devpost.com",
+    "meta": {
+      "url": "https://hyperledger-shanghai.devpost.com/details/dates",
+      "domain": "hyperledger-shanghai.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-113",
+      "search_text": "Source | hyperledger-shanghai.devpost.com | src-113 | https://hyperledger-shanghai.devpost.com/details/dates | hyperledger-shanghai.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://hyperledger-shanghai.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "hyperledger-shanghai.devpost.com",
+    "meta": {
+      "url": "https://hyperledger-shanghai.devpost.com/project-gallery",
+      "domain": "hyperledger-shanghai.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-114",
+      "search_text": "Source | hyperledger-shanghai.devpost.com | src-114 | https://hyperledger-shanghai.devpost.com/project-gallery | hyperledger-shanghai.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://ibm-unsa-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "ibm-unsa-hackathon.devpost.com",
+    "meta": {
+      "url": "https://ibm-unsa-hackathon.devpost.com/",
+      "domain": "ibm-unsa-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-115",
+      "search_text": "Source | ibm-unsa-hackathon.devpost.com | src-115 | https://ibm-unsa-hackathon.devpost.com/ | ibm-unsa-hackathon.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://ic-hack.devpost.com/",
+    "type": "Source",
+    "label": "ic-hack.devpost.com",
+    "meta": {
+      "url": "https://ic-hack.devpost.com/",
+      "domain": "ic-hack.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-116",
+      "search_text": "Source | ic-hack.devpost.com | src-116 | https://ic-hack.devpost.com/ | ic-hack.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://ic-hack.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "ic-hack.devpost.com",
+    "meta": {
+      "url": "https://ic-hack.devpost.com/project-gallery",
+      "domain": "ic-hack.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-117",
+      "search_text": "Source | ic-hack.devpost.com | src-117 | https://ic-hack.devpost.com/project-gallery | ic-hack.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://iisc-ibm-india-ai-impact.devpost.com/",
+    "type": "Source",
+    "label": "iisc-ibm-india-ai-impact.devpost.com",
+    "meta": {
+      "url": "https://iisc-ibm-india-ai-impact.devpost.com/",
+      "domain": "iisc-ibm-india-ai-impact.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-118",
+      "search_text": "Source | iisc-ibm-india-ai-impact.devpost.com | src-118 | https://iisc-ibm-india-ai-impact.devpost.com/ | iisc-ibm-india-ai-impact.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://iisc-ibm-india-ai-impact.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "iisc-ibm-india-ai-impact.devpost.com",
+    "meta": {
+      "url": "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery",
+      "domain": "iisc-ibm-india-ai-impact.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-119",
+      "search_text": "Source | iisc-ibm-india-ai-impact.devpost.com | src-119 | https://iisc-ibm-india-ai-impact.devpost.com/project-gallery | iisc-ibm-india-ai-impact.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://indiasolarhackathon.devpost.com/",
+    "type": "Source",
+    "label": "indiasolarhackathon.devpost.com",
+    "meta": {
+      "url": "https://indiasolarhackathon.devpost.com/",
+      "domain": "indiasolarhackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-120",
+      "search_text": "Source | indiasolarhackathon.devpost.com | src-120 | https://indiasolarhackathon.devpost.com/ | indiasolarhackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://indiasolarhackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "indiasolarhackathon.devpost.com",
+    "meta": {
+      "url": "https://indiasolarhackathon.devpost.com/project-gallery",
+      "domain": "indiasolarhackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-121",
+      "search_text": "Source | indiasolarhackathon.devpost.com | src-121 | https://indiasolarhackathon.devpost.com/project-gallery | indiasolarhackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://indonesiamajuhackfest.devpost.com/",
+    "type": "Source",
+    "label": "indonesiamajuhackfest.devpost.com",
+    "meta": {
+      "url": "https://indonesiamajuhackfest.devpost.com/",
+      "domain": "indonesiamajuhackfest.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-122",
+      "search_text": "Source | indonesiamajuhackfest.devpost.com | src-122 | https://indonesiamajuhackfest.devpost.com/ | indonesiamajuhackfest.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://indonesiamajuhackfest.devpost.com/details/dates",
+    "type": "Source",
+    "label": "indonesiamajuhackfest.devpost.com",
+    "meta": {
+      "url": "https://indonesiamajuhackfest.devpost.com/details/dates",
+      "domain": "indonesiamajuhackfest.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-123",
+      "search_text": "Source | indonesiamajuhackfest.devpost.com | src-123 | https://indonesiamajuhackfest.devpost.com/details/dates | indonesiamajuhackfest.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://indonesiamajuhackfest.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "indonesiamajuhackfest.devpost.com",
+    "meta": {
+      "url": "https://indonesiamajuhackfest.devpost.com/project-gallery",
+      "domain": "indonesiamajuhackfest.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-124",
+      "search_text": "Source | indonesiamajuhackfest.devpost.com | src-124 | https://indonesiamajuhackfest.devpost.com/project-gallery | indonesiamajuhackfest.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://inter-hall-hackathon-2026.devpost.com/",
+    "type": "Source",
+    "label": "inter-hall-hackathon-2026.devpost.com",
+    "meta": {
+      "url": "https://inter-hall-hackathon-2026.devpost.com/",
+      "domain": "inter-hall-hackathon-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-125",
+      "search_text": "Source | inter-hall-hackathon-2026.devpost.com | src-125 | https://inter-hall-hackathon-2026.devpost.com/ | inter-hall-hackathon-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://inter-hall-hackathon-2026.devpost.com/details/dates",
+    "type": "Source",
+    "label": "inter-hall-hackathon-2026.devpost.com",
+    "meta": {
+      "url": "https://inter-hall-hackathon-2026.devpost.com/details/dates",
+      "domain": "inter-hall-hackathon-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-126",
+      "search_text": "Source | inter-hall-hackathon-2026.devpost.com | src-126 | https://inter-hall-hackathon-2026.devpost.com/details/dates | inter-hall-hackathon-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://inter-hall-hackathon-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "inter-hall-hackathon-2026.devpost.com",
+    "meta": {
+      "url": "https://inter-hall-hackathon-2026.devpost.com/project-gallery",
+      "domain": "inter-hall-hackathon-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-127",
+      "search_text": "Source | inter-hall-hackathon-2026.devpost.com | src-127 | https://inter-hall-hackathon-2026.devpost.com/project-gallery | inter-hall-hackathon-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://international-prosolve-2026.devpost.com/",
+    "type": "Source",
+    "label": "international-prosolve-2026.devpost.com",
+    "meta": {
+      "url": "https://international-prosolve-2026.devpost.com/",
+      "domain": "international-prosolve-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-128",
+      "search_text": "Source | international-prosolve-2026.devpost.com | src-128 | https://international-prosolve-2026.devpost.com/ | international-prosolve-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://international-prosolve-2026.devpost.com/details/dates",
+    "type": "Source",
+    "label": "international-prosolve-2026.devpost.com",
+    "meta": {
+      "url": "https://international-prosolve-2026.devpost.com/details/dates",
+      "domain": "international-prosolve-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-129",
+      "search_text": "Source | international-prosolve-2026.devpost.com | src-129 | https://international-prosolve-2026.devpost.com/details/dates | international-prosolve-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://international-prosolve-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "international-prosolve-2026.devpost.com",
+    "meta": {
+      "url": "https://international-prosolve-2026.devpost.com/project-gallery",
+      "domain": "international-prosolve-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-130",
+      "search_text": "Source | international-prosolve-2026.devpost.com | src-130 | https://international-prosolve-2026.devpost.com/project-gallery | international-prosolve-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://junctiontokyo2018.devpost.com/",
+    "type": "Source",
+    "label": "junctiontokyo2018.devpost.com",
+    "meta": {
+      "url": "https://junctiontokyo2018.devpost.com/",
+      "domain": "junctiontokyo2018.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-131",
+      "search_text": "Source | junctiontokyo2018.devpost.com | src-131 | https://junctiontokyo2018.devpost.com/ | junctiontokyo2018.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://junctiontokyo2018.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "junctiontokyo2018.devpost.com",
+    "meta": {
+      "url": "https://junctiontokyo2018.devpost.com/project-gallery",
+      "domain": "junctiontokyo2018.devpost.com",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-132",
+      "search_text": "Source | junctiontokyo2018.devpost.com | src-132 | https://junctiontokyo2018.devpost.com/project-gallery | junctiontokyo2018.devpost.com | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://junthu2018.devpost.com/",
+    "type": "Source",
+    "label": "junthu2018.devpost.com",
+    "meta": {
+      "url": "https://junthu2018.devpost.com/",
+      "domain": "junthu2018.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-133",
+      "search_text": "Source | junthu2018.devpost.com | src-133 | https://junthu2018.devpost.com/ | junthu2018.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://junthu2018.devpost.com/details/dates",
+    "type": "Source",
+    "label": "junthu2018.devpost.com",
+    "meta": {
+      "url": "https://junthu2018.devpost.com/details/dates",
+      "domain": "junthu2018.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-134",
+      "search_text": "Source | junthu2018.devpost.com | src-134 | https://junthu2018.devpost.com/details/dates | junthu2018.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://junthu2018.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "junthu2018.devpost.com",
+    "meta": {
+      "url": "https://junthu2018.devpost.com/project-gallery",
+      "domain": "junthu2018.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-135",
+      "search_text": "Source | junthu2018.devpost.com | src-135 | https://junthu2018.devpost.com/project-gallery | junthu2018.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://komodo-hacks.devpost.com/",
+    "type": "Source",
+    "label": "komodo-hacks.devpost.com",
+    "meta": {
+      "url": "https://komodo-hacks.devpost.com/",
+      "domain": "komodo-hacks.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-136",
+      "search_text": "Source | komodo-hacks.devpost.com | src-136 | https://komodo-hacks.devpost.com/ | komodo-hacks.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://komodo-hacks.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "komodo-hacks.devpost.com",
+    "meta": {
+      "url": "https://komodo-hacks.devpost.com/project-gallery",
+      "domain": "komodo-hacks.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-137",
+      "search_text": "Source | komodo-hacks.devpost.com | src-137 | https://komodo-hacks.devpost.com/project-gallery | komodo-hacks.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lifehack-2025.devpost.com/",
+    "type": "Source",
+    "label": "lifehack-2025.devpost.com",
+    "meta": {
+      "url": "https://lifehack-2025.devpost.com/",
+      "domain": "lifehack-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-138",
+      "search_text": "Source | lifehack-2025.devpost.com | src-138 | https://lifehack-2025.devpost.com/ | lifehack-2025.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lnkd.in/g52ftBkm",
+    "type": "Source",
+    "label": "lnkd.in",
+    "meta": {
+      "url": "https://lnkd.in/g52ftBkm",
+      "domain": "lnkd.in",
+      "source_type": "`[\"linkedin\", \"winners-showcase\", \"demo-links\"]`",
+      "ref_id": "src-139",
+      "search_text": "Source | lnkd.in | src-139 | https://lnkd.in/g52ftBkm | lnkd.in | `[\"linkedin\", \"winners-showcase\", \"demo-links\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lnkd.in/g7FyRCDn",
+    "type": "Source",
+    "label": "lnkd.in",
+    "meta": {
+      "url": "https://lnkd.in/g7FyRCDn",
+      "domain": "lnkd.in",
+      "source_type": "`[\"linkedin\", \"winners-showcase\", \"demo-links\"]`",
+      "ref_id": "src-140",
+      "search_text": "Source | lnkd.in | src-140 | https://lnkd.in/g7FyRCDn | lnkd.in | `[\"linkedin\", \"winners-showcase\", \"demo-links\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lnkd.in/gDeJvw6P",
+    "type": "Source",
+    "label": "lnkd.in",
+    "meta": {
+      "url": "https://lnkd.in/gDeJvw6P",
+      "domain": "lnkd.in",
+      "source_type": "`[\"linkedin\", \"winners-showcase\", \"demo-links\"]`",
+      "ref_id": "src-141",
+      "search_text": "Source | lnkd.in | src-141 | https://lnkd.in/gDeJvw6P | lnkd.in | `[\"linkedin\", \"winners-showcase\", \"demo-links\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lnkd.in/gKJ5hhZu",
+    "type": "Source",
+    "label": "lnkd.in",
+    "meta": {
+      "url": "https://lnkd.in/gKJ5hhZu",
+      "domain": "lnkd.in",
+      "source_type": "`[\"linkedin\", \"winners-showcase\", \"demo-links\"]`",
+      "ref_id": "src-142",
+      "search_text": "Source | lnkd.in | src-142 | https://lnkd.in/gKJ5hhZu | lnkd.in | `[\"linkedin\", \"winners-showcase\", \"demo-links\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lnkd.in/gMKstPsh",
+    "type": "Source",
+    "label": "lnkd.in",
+    "meta": {
+      "url": "https://lnkd.in/gMKstPsh",
+      "domain": "lnkd.in",
+      "source_type": "`[\"linkedin\", \"winners-showcase\", \"demo-links\"]`",
+      "ref_id": "src-143",
+      "search_text": "Source | lnkd.in | src-143 | https://lnkd.in/gMKstPsh | lnkd.in | `[\"linkedin\", \"winners-showcase\", \"demo-links\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lnkd.in/gbnrajW9",
+    "type": "Source",
+    "label": "lnkd.in",
+    "meta": {
+      "url": "https://lnkd.in/gbnrajW9",
+      "domain": "lnkd.in",
+      "source_type": "`[\"linkedin\", \"winners-showcase\", \"demo-links\"]`",
+      "ref_id": "src-144",
+      "search_text": "Source | lnkd.in | src-144 | https://lnkd.in/gbnrajW9 | lnkd.in | `[\"linkedin\", \"winners-showcase\", \"demo-links\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lotushacks2026.devpost.com/",
+    "type": "Source",
+    "label": "lotushacks2026.devpost.com",
+    "meta": {
+      "url": "https://lotushacks2026.devpost.com/",
+      "domain": "lotushacks2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-145",
+      "search_text": "Source | lotushacks2026.devpost.com | src-145 | https://lotushacks2026.devpost.com/ | lotushacks2026.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://lotushacks2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "lotushacks2026.devpost.com",
+    "meta": {
+      "url": "https://lotushacks2026.devpost.com/project-gallery",
+      "domain": "lotushacks2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-146",
+      "search_text": "Source | lotushacks2026.devpost.com | src-146 | https://lotushacks2026.devpost.com/project-gallery | lotushacks2026.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://luma.com/6glx4b1y",
+    "type": "Source",
+    "label": "luma.com",
+    "meta": {
+      "url": "https://luma.com/6glx4b1y",
+      "domain": "luma.com",
+      "source_type": "—",
+      "ref_id": "src-147",
+      "search_text": "Source | luma.com | src-147 | https://luma.com/6glx4b1y | luma.com"
+    }
+  },
+  {
+    "id": "Source:https://luma.com/claw",
+    "type": "Source",
+    "label": "luma.com",
+    "meta": {
+      "url": "https://luma.com/claw",
+      "domain": "luma.com",
+      "source_type": "—",
+      "ref_id": "src-148",
+      "search_text": "Source | luma.com | src-148 | https://luma.com/claw | luma.com"
+    }
+  },
+  {
+    "id": "Source:https://make-for-the-planet.devpost.com/",
+    "type": "Source",
+    "label": "make-for-the-planet.devpost.com",
+    "meta": {
+      "url": "https://make-for-the-planet.devpost.com/",
+      "domain": "make-for-the-planet.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-149",
+      "search_text": "Source | make-for-the-planet.devpost.com | src-149 | https://make-for-the-planet.devpost.com/ | make-for-the-planet.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://make-for-the-planet.devpost.com/details/dates",
+    "type": "Source",
+    "label": "make-for-the-planet.devpost.com",
+    "meta": {
+      "url": "https://make-for-the-planet.devpost.com/details/dates",
+      "domain": "make-for-the-planet.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-150",
+      "search_text": "Source | make-for-the-planet.devpost.com | src-150 | https://make-for-the-planet.devpost.com/details/dates | make-for-the-planet.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://make-for-the-planet.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "make-for-the-planet.devpost.com",
+    "meta": {
+      "url": "https://make-for-the-planet.devpost.com/project-gallery",
+      "domain": "make-for-the-planet.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-151",
+      "search_text": "Source | make-for-the-planet.devpost.com | src-151 | https://make-for-the-planet.devpost.com/project-gallery | make-for-the-planet.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://makerpossible.devpost.com/",
+    "type": "Source",
+    "label": "makerpossible.devpost.com",
+    "meta": {
+      "url": "https://makerpossible.devpost.com/",
+      "domain": "makerpossible.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-152",
+      "search_text": "Source | makerpossible.devpost.com | src-152 | https://makerpossible.devpost.com/ | makerpossible.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://makerpossible.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "makerpossible.devpost.com",
+    "meta": {
+      "url": "https://makerpossible.devpost.com/project-gallery",
+      "domain": "makerpossible.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-153",
+      "search_text": "Source | makerpossible.devpost.com | src-153 | https://makerpossible.devpost.com/project-gallery | makerpossible.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://mathworks-utm-2025.devpost.com/",
+    "type": "Source",
+    "label": "mathworks-utm-2025.devpost.com",
+    "meta": {
+      "url": "https://mathworks-utm-2025.devpost.com/",
+      "domain": "mathworks-utm-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-154",
+      "search_text": "Source | mathworks-utm-2025.devpost.com | src-154 | https://mathworks-utm-2025.devpost.com/ | mathworks-utm-2025.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://mathworks-utm-2025.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "mathworks-utm-2025.devpost.com",
+    "meta": {
+      "url": "https://mathworks-utm-2025.devpost.com/project-gallery",
+      "domain": "mathworks-utm-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-155",
+      "search_text": "Source | mathworks-utm-2025.devpost.com | src-155 | https://mathworks-utm-2025.devpost.com/project-gallery | mathworks-utm-2025.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://minimax-hackathon-in-hk.devpost.com/",
+    "type": "Source",
+    "label": "minimax-hackathon-in-hk.devpost.com",
+    "meta": {
+      "url": "https://minimax-hackathon-in-hk.devpost.com/",
+      "domain": "minimax-hackathon-in-hk.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-156",
+      "search_text": "Source | minimax-hackathon-in-hk.devpost.com | src-156 | https://minimax-hackathon-in-hk.devpost.com/ | minimax-hackathon-in-hk.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://minimax-hackathon-in-hk.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "minimax-hackathon-in-hk.devpost.com",
+    "meta": {
+      "url": "https://minimax-hackathon-in-hk.devpost.com/project-gallery",
+      "domain": "minimax-hackathon-in-hk.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-157",
+      "search_text": "Source | minimax-hackathon-in-hk.devpost.com | src-157 | https://minimax-hackathon-in-hk.devpost.com/project-gallery | minimax-hackathon-in-hk.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://my-streamlit-hack.devpost.com/",
+    "type": "Source",
+    "label": "my-streamlit-hack.devpost.com",
+    "meta": {
+      "url": "https://my-streamlit-hack.devpost.com/",
+      "domain": "my-streamlit-hack.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-158",
+      "search_text": "Source | my-streamlit-hack.devpost.com | src-158 | https://my-streamlit-hack.devpost.com/ | my-streamlit-hack.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://ntu-beyond-binary-2026.devpost.com/",
+    "type": "Source",
+    "label": "ntu-beyond-binary-2026.devpost.com",
+    "meta": {
+      "url": "https://ntu-beyond-binary-2026.devpost.com/",
+      "domain": "ntu-beyond-binary-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-159",
+      "search_text": "Source | ntu-beyond-binary-2026.devpost.com | src-159 | https://ntu-beyond-binary-2026.devpost.com/ | ntu-beyond-binary-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://ntu-beyond-binary-2026.devpost.com/details/dates",
+    "type": "Source",
+    "label": "ntu-beyond-binary-2026.devpost.com",
+    "meta": {
+      "url": "https://ntu-beyond-binary-2026.devpost.com/details/dates",
+      "domain": "ntu-beyond-binary-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-160",
+      "search_text": "Source | ntu-beyond-binary-2026.devpost.com | src-160 | https://ntu-beyond-binary-2026.devpost.com/details/dates | ntu-beyond-binary-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://ntu-beyond-binary-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "ntu-beyond-binary-2026.devpost.com",
+    "meta": {
+      "url": "https://ntu-beyond-binary-2026.devpost.com/project-gallery",
+      "domain": "ntu-beyond-binary-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-161",
+      "search_text": "Source | ntu-beyond-binary-2026.devpost.com | src-161 | https://ntu-beyond-binary-2026.devpost.com/project-gallery | ntu-beyond-binary-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://nus-datathon-2024-cat-b.devpost.com/",
+    "type": "Source",
+    "label": "nus-datathon-2024-cat-b.devpost.com",
+    "meta": {
+      "url": "https://nus-datathon-2024-cat-b.devpost.com/",
+      "domain": "nus-datathon-2024-cat-b.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-162",
+      "search_text": "Source | nus-datathon-2024-cat-b.devpost.com | src-162 | https://nus-datathon-2024-cat-b.devpost.com/ | nus-datathon-2024-cat-b.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://nus-datathon-2024-cat-b.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "nus-datathon-2024-cat-b.devpost.com",
+    "meta": {
+      "url": "https://nus-datathon-2024-cat-b.devpost.com/project-gallery",
+      "domain": "nus-datathon-2024-cat-b.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-163",
+      "search_text": "Source | nus-datathon-2024-cat-b.devpost.com | src-163 | https://nus-datathon-2024-cat-b.devpost.com/project-gallery | nus-datathon-2024-cat-b.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://nus-ftm-ideation-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "nus-ftm-ideation-hackathon.devpost.com",
+    "meta": {
+      "url": "https://nus-ftm-ideation-hackathon.devpost.com/",
+      "domain": "nus-ftm-ideation-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-164",
+      "search_text": "Source | nus-ftm-ideation-hackathon.devpost.com | src-164 | https://nus-ftm-ideation-hackathon.devpost.com/ | nus-ftm-ideation-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://nus-ftm-ideation-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "nus-ftm-ideation-hackathon.devpost.com",
+    "meta": {
+      "url": "https://nus-ftm-ideation-hackathon.devpost.com/project-gallery",
+      "domain": "nus-ftm-ideation-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-165",
+      "search_text": "Source | nus-ftm-ideation-hackathon.devpost.com | src-165 | https://nus-ftm-ideation-hackathon.devpost.com/project-gallery | nus-ftm-ideation-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://odhack-hk-2018.devpost.com/",
+    "type": "Source",
+    "label": "odhack-hk-2018.devpost.com",
+    "meta": {
+      "url": "https://odhack-hk-2018.devpost.com/",
+      "domain": "odhack-hk-2018.devpost.com",
+      "source_type": "`[\"devpost\", \"eventbrite\", \"project_gallery\"]`",
+      "ref_id": "src-166",
+      "search_text": "Source | odhack-hk-2018.devpost.com | src-166 | https://odhack-hk-2018.devpost.com/ | odhack-hk-2018.devpost.com | `[\"devpost\", \"eventbrite\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://odhack-hk-2018.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "odhack-hk-2018.devpost.com",
+    "meta": {
+      "url": "https://odhack-hk-2018.devpost.com/project-gallery",
+      "domain": "odhack-hk-2018.devpost.com",
+      "source_type": "`[\"devpost\", \"eventbrite\", \"project_gallery\"]`",
+      "ref_id": "src-167",
+      "search_text": "Source | odhack-hk-2018.devpost.com | src-167 | https://odhack-hk-2018.devpost.com/project-gallery | odhack-hk-2018.devpost.com | `[\"devpost\", \"eventbrite\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://onerecord-hkg.devpost.com/",
+    "type": "Source",
+    "label": "onerecord-hkg.devpost.com",
+    "meta": {
+      "url": "https://onerecord-hkg.devpost.com/",
+      "domain": "onerecord-hkg.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-168",
+      "search_text": "Source | onerecord-hkg.devpost.com | src-168 | https://onerecord-hkg.devpost.com/ | onerecord-hkg.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://onerecord-hkg.devpost.com/details/dates",
+    "type": "Source",
+    "label": "onerecord-hkg.devpost.com",
+    "meta": {
+      "url": "https://onerecord-hkg.devpost.com/details/dates",
+      "domain": "onerecord-hkg.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-169",
+      "search_text": "Source | onerecord-hkg.devpost.com | src-169 | https://onerecord-hkg.devpost.com/details/dates | onerecord-hkg.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://onerecord-hkg.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "onerecord-hkg.devpost.com",
+    "meta": {
+      "url": "https://onerecord-hkg.devpost.com/project-gallery",
+      "domain": "onerecord-hkg.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-170",
+      "search_text": "Source | onerecord-hkg.devpost.com | src-170 | https://onerecord-hkg.devpost.com/project-gallery | onerecord-hkg.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://onerecord-szx.devpost.com/",
+    "type": "Source",
+    "label": "onerecord-szx.devpost.com",
+    "meta": {
+      "url": "https://onerecord-szx.devpost.com/",
+      "domain": "onerecord-szx.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-171",
+      "search_text": "Source | onerecord-szx.devpost.com | src-171 | https://onerecord-szx.devpost.com/ | onerecord-szx.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://onerecord-szx.devpost.com/details/dates",
+    "type": "Source",
+    "label": "onerecord-szx.devpost.com",
+    "meta": {
+      "url": "https://onerecord-szx.devpost.com/details/dates",
+      "domain": "onerecord-szx.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-172",
+      "search_text": "Source | onerecord-szx.devpost.com | src-172 | https://onerecord-szx.devpost.com/details/dates | onerecord-szx.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://onerecord-szx.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "onerecord-szx.devpost.com",
+    "meta": {
+      "url": "https://onerecord-szx.devpost.com/project-gallery",
+      "domain": "onerecord-szx.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-173",
+      "search_text": "Source | onerecord-szx.devpost.com | src-173 | https://onerecord-szx.devpost.com/project-gallery | onerecord-szx.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://payhack-2025.devpost.com/",
+    "type": "Source",
+    "label": "payhack-2025.devpost.com",
+    "meta": {
+      "url": "https://payhack-2025.devpost.com/",
+      "domain": "payhack-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-174",
+      "search_text": "Source | payhack-2025.devpost.com | src-174 | https://payhack-2025.devpost.com/ | payhack-2025.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://payhack-2025.devpost.com/details/dates",
+    "type": "Source",
+    "label": "payhack-2025.devpost.com",
+    "meta": {
+      "url": "https://payhack-2025.devpost.com/details/dates",
+      "domain": "payhack-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-175",
+      "search_text": "Source | payhack-2025.devpost.com | src-175 | https://payhack-2025.devpost.com/details/dates | payhack-2025.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://payhack-2025.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "payhack-2025.devpost.com",
+    "meta": {
+      "url": "https://payhack-2025.devpost.com/project-gallery",
+      "domain": "payhack-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-176",
+      "search_text": "Source | payhack-2025.devpost.com | src-176 | https://payhack-2025.devpost.com/project-gallery | payhack-2025.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://pinus-hack-2026.devpost.com/",
+    "type": "Source",
+    "label": "pinus-hack-2026.devpost.com",
+    "meta": {
+      "url": "https://pinus-hack-2026.devpost.com/",
+      "domain": "pinus-hack-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-177",
+      "search_text": "Source | pinus-hack-2026.devpost.com | src-177 | https://pinus-hack-2026.devpost.com/ | pinus-hack-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://pinus-hack-2026.devpost.com/details/dates",
+    "type": "Source",
+    "label": "pinus-hack-2026.devpost.com",
+    "meta": {
+      "url": "https://pinus-hack-2026.devpost.com/details/dates",
+      "domain": "pinus-hack-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-178",
+      "search_text": "Source | pinus-hack-2026.devpost.com | src-178 | https://pinus-hack-2026.devpost.com/details/dates | pinus-hack-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://pinus-hack-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "pinus-hack-2026.devpost.com",
+    "meta": {
+      "url": "https://pinus-hack-2026.devpost.com/project-gallery",
+      "domain": "pinus-hack-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-179",
+      "search_text": "Source | pinus-hack-2026.devpost.com | src-179 | https://pinus-hack-2026.devpost.com/project-gallery | pinus-hack-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://presence-platform-japan-2024.devpost.com/",
+    "type": "Source",
+    "label": "presence-platform-japan-2024.devpost.com",
+    "meta": {
+      "url": "https://presence-platform-japan-2024.devpost.com/",
+      "domain": "presence-platform-japan-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-180",
+      "search_text": "Source | presence-platform-japan-2024.devpost.com | src-180 | https://presence-platform-japan-2024.devpost.com/ | presence-platform-japan-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://presence-platform-japan-2024.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "presence-platform-japan-2024.devpost.com",
+    "meta": {
+      "url": "https://presence-platform-japan-2024.devpost.com/project-gallery",
+      "domain": "presence-platform-japan-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-181",
+      "search_text": "Source | presence-platform-japan-2024.devpost.com | src-181 | https://presence-platform-japan-2024.devpost.com/project-gallery | presence-platform-japan-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://presence-platform-seoul-2024.devpost.com/",
+    "type": "Source",
+    "label": "presence-platform-seoul-2024.devpost.com",
+    "meta": {
+      "url": "https://presence-platform-seoul-2024.devpost.com/",
+      "domain": "presence-platform-seoul-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-182",
+      "search_text": "Source | presence-platform-seoul-2024.devpost.com | src-182 | https://presence-platform-seoul-2024.devpost.com/ | presence-platform-seoul-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://presence-platform-seoul-2024.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "presence-platform-seoul-2024.devpost.com",
+    "meta": {
+      "url": "https://presence-platform-seoul-2024.devpost.com/project-gallery",
+      "domain": "presence-platform-seoul-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-183",
+      "search_text": "Source | presence-platform-seoul-2024.devpost.com | src-183 | https://presence-platform-seoul-2024.devpost.com/project-gallery | presence-platform-seoul-2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://redditdailygames2026.devpost.com/",
+    "type": "Source",
+    "label": "redditdailygames2026.devpost.com",
+    "meta": {
+      "url": "https://redditdailygames2026.devpost.com/",
+      "domain": "redditdailygames2026.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-184",
+      "search_text": "Source | redditdailygames2026.devpost.com | src-184 | https://redditdailygames2026.devpost.com/ | redditdailygames2026.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://redditdailygames2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "redditdailygames2026.devpost.com",
+    "meta": {
+      "url": "https://redditdailygames2026.devpost.com/project-gallery",
+      "domain": "redditdailygames2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project-gallery\", \"winners\"]`",
+      "ref_id": "src-185",
+      "search_text": "Source | redditdailygames2026.devpost.com | src-185 | https://redditdailygames2026.devpost.com/project-gallery | redditdailygames2026.devpost.com | `[\"devpost\", \"project-gallery\", \"winners\"]`"
+    }
+  },
+  {
+    "id": "Source:https://rwa-demo-day.devpost.com/",
+    "type": "Source",
+    "label": "rwa-demo-day.devpost.com",
+    "meta": {
+      "url": "https://rwa-demo-day.devpost.com/",
+      "domain": "rwa-demo-day.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-186",
+      "search_text": "Source | rwa-demo-day.devpost.com | src-186 | https://rwa-demo-day.devpost.com/ | rwa-demo-day.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://rwa-demo-day.devpost.com/details/dates",
+    "type": "Source",
+    "label": "rwa-demo-day.devpost.com",
+    "meta": {
+      "url": "https://rwa-demo-day.devpost.com/details/dates",
+      "domain": "rwa-demo-day.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-187",
+      "search_text": "Source | rwa-demo-day.devpost.com | src-187 | https://rwa-demo-day.devpost.com/details/dates | rwa-demo-day.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://rwa-demo-day.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "rwa-demo-day.devpost.com",
+    "meta": {
+      "url": "https://rwa-demo-day.devpost.com/project-gallery",
+      "domain": "rwa-demo-day.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-188",
+      "search_text": "Source | rwa-demo-day.devpost.com | src-188 | https://rwa-demo-day.devpost.com/project-gallery | rwa-demo-day.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://scds-techfest-2026.devpost.com/",
+    "type": "Source",
+    "label": "scds-techfest-2026.devpost.com",
+    "meta": {
+      "url": "https://scds-techfest-2026.devpost.com/",
+      "domain": "scds-techfest-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-189",
+      "search_text": "Source | scds-techfest-2026.devpost.com | src-189 | https://scds-techfest-2026.devpost.com/ | scds-techfest-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://scds-techfest-2026.devpost.com/details/dates",
+    "type": "Source",
+    "label": "scds-techfest-2026.devpost.com",
+    "meta": {
+      "url": "https://scds-techfest-2026.devpost.com/details/dates",
+      "domain": "scds-techfest-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-190",
+      "search_text": "Source | scds-techfest-2026.devpost.com | src-190 | https://scds-techfest-2026.devpost.com/details/dates | scds-techfest-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://scds-techfest-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "scds-techfest-2026.devpost.com",
+    "meta": {
+      "url": "https://scds-techfest-2026.devpost.com/project-gallery",
+      "domain": "scds-techfest-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-191",
+      "search_text": "Source | scds-techfest-2026.devpost.com | src-191 | https://scds-techfest-2026.devpost.com/project-gallery | scds-techfest-2026.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://seafood-trackathon.devpost.com/",
+    "type": "Source",
+    "label": "seafood-trackathon.devpost.com",
+    "meta": {
+      "url": "https://seafood-trackathon.devpost.com/",
+      "domain": "seafood-trackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-192",
+      "search_text": "Source | seafood-trackathon.devpost.com | src-192 | https://seafood-trackathon.devpost.com/ | seafood-trackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://seafood-trackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "seafood-trackathon.devpost.com",
+    "meta": {
+      "url": "https://seafood-trackathon.devpost.com/project-gallery",
+      "domain": "seafood-trackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-193",
+      "search_text": "Source | seafood-trackathon.devpost.com | src-193 | https://seafood-trackathon.devpost.com/project-gallery | seafood-trackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://seoul-tech-impact-2024.devpost.com/",
+    "type": "Source",
+    "label": "seoul-tech-impact-2024.devpost.com",
+    "meta": {
+      "url": "https://seoul-tech-impact-2024.devpost.com/",
+      "domain": "seoul-tech-impact-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"registration\", \"project_gallery\"]`",
+      "ref_id": "src-194",
+      "search_text": "Source | seoul-tech-impact-2024.devpost.com | src-194 | https://seoul-tech-impact-2024.devpost.com/ | seoul-tech-impact-2024.devpost.com | `[\"devpost\", \"registration\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://seoul-tech-impact-2024.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "seoul-tech-impact-2024.devpost.com",
+    "meta": {
+      "url": "https://seoul-tech-impact-2024.devpost.com/project-gallery",
+      "domain": "seoul-tech-impact-2024.devpost.com",
+      "source_type": "`[\"devpost\", \"registration\", \"project_gallery\"]`",
+      "ref_id": "src-195",
+      "search_text": "Source | seoul-tech-impact-2024.devpost.com | src-195 | https://seoul-tech-impact-2024.devpost.com/project-gallery | seoul-tech-impact-2024.devpost.com | `[\"devpost\", \"registration\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://seoulhacks.devpost.com/",
+    "type": "Source",
+    "label": "seoulhacks.devpost.com",
+    "meta": {
+      "url": "https://seoulhacks.devpost.com/",
+      "domain": "seoulhacks.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-196",
+      "search_text": "Source | seoulhacks.devpost.com | src-196 | https://seoulhacks.devpost.com/ | seoulhacks.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://seoulhacks.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "seoulhacks.devpost.com",
+    "meta": {
+      "url": "https://seoulhacks.devpost.com/project-gallery",
+      "domain": "seoulhacks.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-197",
+      "search_text": "Source | seoulhacks.devpost.com | src-197 | https://seoulhacks.devpost.com/project-gallery | seoulhacks.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://smart-energy-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "smart-energy-hackathon.devpost.com",
+    "meta": {
+      "url": "https://smart-energy-hackathon.devpost.com/",
+      "domain": "smart-energy-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-198",
+      "search_text": "Source | smart-energy-hackathon.devpost.com | src-198 | https://smart-energy-hackathon.devpost.com/ | smart-energy-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://smart-energy-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "smart-energy-hackathon.devpost.com",
+    "meta": {
+      "url": "https://smart-energy-hackathon.devpost.com/project-gallery",
+      "domain": "smart-energy-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-199",
+      "search_text": "Source | smart-energy-hackathon.devpost.com | src-199 | https://smart-energy-hackathon.devpost.com/project-gallery | smart-energy-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://smartenergyhackathon.devpost.com/",
+    "type": "Source",
+    "label": "smartenergyhackathon.devpost.com",
+    "meta": {
+      "url": "https://smartenergyhackathon.devpost.com/",
+      "domain": "smartenergyhackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-200",
+      "search_text": "Source | smartenergyhackathon.devpost.com | src-200 | https://smartenergyhackathon.devpost.com/ | smartenergyhackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://smartenergyhackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "smartenergyhackathon.devpost.com",
+    "meta": {
+      "url": "https://smartenergyhackathon.devpost.com/project-gallery",
+      "domain": "smartenergyhackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-201",
+      "search_text": "Source | smartenergyhackathon.devpost.com | src-201 | https://smartenergyhackathon.devpost.com/project-gallery | smartenergyhackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://smudothack.surge.sh/",
+    "type": "Source",
+    "label": "smudothack.surge.sh",
+    "meta": {
+      "url": "https://smudothack.surge.sh/",
+      "domain": "smudothack.surge.sh",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-202",
+      "search_text": "Source | smudothack.surge.sh | src-202 | https://smudothack.surge.sh/ | smudothack.surge.sh | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://students-ai-seoul-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "students-ai-seoul-hackathon.devpost.com",
+    "meta": {
+      "url": "https://students-ai-seoul-hackathon.devpost.com/",
+      "domain": "students-ai-seoul-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-203",
+      "search_text": "Source | students-ai-seoul-hackathon.devpost.com | src-203 | https://students-ai-seoul-hackathon.devpost.com/ | students-ai-seoul-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://students-ai-seoul-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "students-ai-seoul-hackathon.devpost.com",
+    "meta": {
+      "url": "https://students-ai-seoul-hackathon.devpost.com/project-gallery",
+      "domain": "students-ai-seoul-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-204",
+      "search_text": "Source | students-ai-seoul-hackathon.devpost.com | src-204 | https://students-ai-seoul-hackathon.devpost.com/project-gallery | students-ai-seoul-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://tcsh-2016-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "tcsh-2016-hackathon.devpost.com",
+    "meta": {
+      "url": "https://tcsh-2016-hackathon.devpost.com/",
+      "domain": "tcsh-2016-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-205",
+      "search_text": "Source | tcsh-2016-hackathon.devpost.com | src-205 | https://tcsh-2016-hackathon.devpost.com/ | tcsh-2016-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://tcsh-2016-hackathon.devpost.com/details/dates",
+    "type": "Source",
+    "label": "tcsh-2016-hackathon.devpost.com",
+    "meta": {
+      "url": "https://tcsh-2016-hackathon.devpost.com/details/dates",
+      "domain": "tcsh-2016-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-206",
+      "search_text": "Source | tcsh-2016-hackathon.devpost.com | src-206 | https://tcsh-2016-hackathon.devpost.com/details/dates | tcsh-2016-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://tcsh-2016-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "tcsh-2016-hackathon.devpost.com",
+    "meta": {
+      "url": "https://tcsh-2016-hackathon.devpost.com/project-gallery",
+      "domain": "tcsh-2016-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-207",
+      "search_text": "Source | tcsh-2016-hackathon.devpost.com | src-207 | https://tcsh-2016-hackathon.devpost.com/project-gallery | tcsh-2016-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://test-android-hackathon-2025.devpost.com/",
+    "type": "Source",
+    "label": "test-android-hackathon-2025.devpost.com",
+    "meta": {
+      "url": "https://test-android-hackathon-2025.devpost.com/",
+      "domain": "test-android-hackathon-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-208",
+      "search_text": "Source | test-android-hackathon-2025.devpost.com | src-208 | https://test-android-hackathon-2025.devpost.com/ | test-android-hackathon-2025.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://test-android-hackathon-2025.devpost.com/details/dates",
+    "type": "Source",
+    "label": "test-android-hackathon-2025.devpost.com",
+    "meta": {
+      "url": "https://test-android-hackathon-2025.devpost.com/details/dates",
+      "domain": "test-android-hackathon-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-209",
+      "search_text": "Source | test-android-hackathon-2025.devpost.com | src-209 | https://test-android-hackathon-2025.devpost.com/details/dates | test-android-hackathon-2025.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://test-android-hackathon-2025.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "test-android-hackathon-2025.devpost.com",
+    "meta": {
+      "url": "https://test-android-hackathon-2025.devpost.com/project-gallery",
+      "domain": "test-android-hackathon-2025.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-210",
+      "search_text": "Source | test-android-hackathon-2025.devpost.com | src-210 | https://test-android-hackathon-2025.devpost.com/project-gallery | test-android-hackathon-2025.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://treehacks-2026.devpost.com/",
+    "type": "Source",
+    "label": "treehacks-2026.devpost.com",
+    "meta": {
+      "url": "https://treehacks-2026.devpost.com/",
+      "domain": "treehacks-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-212",
+      "search_text": "Source | treehacks-2026.devpost.com | src-212 | https://treehacks-2026.devpost.com/ | treehacks-2026.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://treehacks-2026.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "treehacks-2026.devpost.com",
+    "meta": {
+      "url": "https://treehacks-2026.devpost.com/project-gallery",
+      "domain": "treehacks-2026.devpost.com",
+      "source_type": "`[\"devpost\", \"project-gallery\", \"winners\"]`",
+      "ref_id": "src-213",
+      "search_text": "Source | treehacks-2026.devpost.com | src-213 | https://treehacks-2026.devpost.com/project-gallery | treehacks-2026.devpost.com | `[\"devpost\", \"project-gallery\", \"winners\"]`"
+    }
+  },
+  {
+    "id": "Source:https://uber-china-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "uber-china-hackathon.devpost.com",
+    "meta": {
+      "url": "https://uber-china-hackathon.devpost.com/",
+      "domain": "uber-china-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-214",
+      "search_text": "Source | uber-china-hackathon.devpost.com | src-214 | https://uber-china-hackathon.devpost.com/ | uber-china-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://uber-china-hackathon.devpost.com/details/dates",
+    "type": "Source",
+    "label": "uber-china-hackathon.devpost.com",
+    "meta": {
+      "url": "https://uber-china-hackathon.devpost.com/details/dates",
+      "domain": "uber-china-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-215",
+      "search_text": "Source | uber-china-hackathon.devpost.com | src-215 | https://uber-china-hackathon.devpost.com/details/dates | uber-china-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://uber-china-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "uber-china-hackathon.devpost.com",
+    "meta": {
+      "url": "https://uber-china-hackathon.devpost.com/project-gallery",
+      "domain": "uber-china-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-216",
+      "search_text": "Source | uber-china-hackathon.devpost.com | src-216 | https://uber-china-hackathon.devpost.com/project-gallery | uber-china-hackathon.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://uksaei-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "uksaei-hackathon.devpost.com",
+    "meta": {
+      "url": "https://uksaei-hackathon.devpost.com/",
+      "domain": "uksaei-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"event-page\"]`",
+      "ref_id": "src-217",
+      "search_text": "Source | uksaei-hackathon.devpost.com | src-217 | https://uksaei-hackathon.devpost.com/ | uksaei-hackathon.devpost.com | `[\"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://unesco-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "unesco-hackathon.devpost.com",
+    "meta": {
+      "url": "https://unesco-hackathon.devpost.com/",
+      "domain": "unesco-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-218",
+      "search_text": "Source | unesco-hackathon.devpost.com | src-218 | https://unesco-hackathon.devpost.com/ | unesco-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://unesco-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "unesco-hackathon.devpost.com",
+    "meta": {
+      "url": "https://unesco-hackathon.devpost.com/project-gallery",
+      "domain": "unesco-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-219",
+      "search_text": "Source | unesco-hackathon.devpost.com | src-219 | https://unesco-hackathon.devpost.com/project-gallery | unesco-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://unesco.sciencehack.asia/",
+    "type": "Source",
+    "label": "unesco.sciencehack.asia",
+    "meta": {
+      "url": "https://unesco.sciencehack.asia/",
+      "domain": "unesco.sciencehack.asia",
+      "source_type": "`[\"devpost\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-220",
+      "search_text": "Source | unesco.sciencehack.asia | src-220 | https://unesco.sciencehack.asia/ | unesco.sciencehack.asia | `[\"devpost\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://unihack.net/",
+    "type": "Source",
+    "label": "unihack.net",
+    "meta": {
+      "url": "https://unihack.net/",
+      "domain": "unihack.net",
+      "source_type": "`[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-221",
+      "search_text": "Source | unihack.net | src-221 | https://unihack.net/ | unihack.net | `[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://unihack2025.devpost.com/",
+    "type": "Source",
+    "label": "unihack2025.devpost.com",
+    "meta": {
+      "url": "https://unihack2025.devpost.com/",
+      "domain": "unihack2025.devpost.com",
+      "source_type": "`[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-222",
+      "search_text": "Source | unihack2025.devpost.com | src-222 | https://unihack2025.devpost.com/ | unihack2025.devpost.com | `[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://unihack2025.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "unihack2025.devpost.com",
+    "meta": {
+      "url": "https://unihack2025.devpost.com/project-gallery",
+      "domain": "unihack2025.devpost.com",
+      "source_type": "`[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`",
+      "ref_id": "src-223",
+      "search_text": "Source | unihack2025.devpost.com | src-223 | https://unihack2025.devpost.com/project-gallery | unihack2025.devpost.com | `[\"devpost\", \"official-site\", \"event-site\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://vietnam-smart-energy-hackathon.devpost.com/",
+    "type": "Source",
+    "label": "vietnam-smart-energy-hackathon.devpost.com",
+    "meta": {
+      "url": "https://vietnam-smart-energy-hackathon.devpost.com/",
+      "domain": "vietnam-smart-energy-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-224",
+      "search_text": "Source | vietnam-smart-energy-hackathon.devpost.com | src-224 | https://vietnam-smart-energy-hackathon.devpost.com/ | vietnam-smart-energy-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://vietnam-smart-energy-hackathon.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "vietnam-smart-energy-hackathon.devpost.com",
+    "meta": {
+      "url": "https://vietnam-smart-energy-hackathon.devpost.com/project-gallery",
+      "domain": "vietnam-smart-energy-hackathon.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-225",
+      "search_text": "Source | vietnam-smart-energy-hackathon.devpost.com | src-225 | https://vietnam-smart-energy-hackathon.devpost.com/project-gallery | vietnam-smart-energy-hackathon.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.eventbrite.com/e/smart-city-hackathon-hong-kong-2018-tickets-48336709399",
+    "type": "Source",
+    "label": "www.eventbrite.com",
+    "meta": {
+      "url": "https://www.eventbrite.com/e/smart-city-hackathon-hong-kong-2018-tickets-48336709399",
+      "domain": "www.eventbrite.com",
+      "source_type": "`[\"devpost\", \"eventbrite\", \"project_gallery\"]`",
+      "ref_id": "src-226",
+      "search_text": "Source | www.eventbrite.com | src-226 | https://www.eventbrite.com/e/smart-city-hackathon-hong-kong-2018-tickets-48336709399 | www.eventbrite.com | `[\"devpost\", \"eventbrite\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/",
+    "type": "Source",
+    "label": "www.linkedin.com",
+    "meta": {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/",
+      "domain": "www.linkedin.com",
+      "source_type": "`[\"linkedin\", \"project-demo\"]`",
+      "ref_id": "src-228",
+      "search_text": "Source | www.linkedin.com | src-228 | https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/ | www.linkedin.com | `[\"linkedin\", \"project-demo\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5",
+    "type": "Source",
+    "label": "www.linkedin.com",
+    "meta": {
+      "url": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5",
+      "domain": "www.linkedin.com",
+      "source_type": "`[\"linkedin\", \"announcement\"]`",
+      "ref_id": "src-229",
+      "search_text": "Source | www.linkedin.com | src-229 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5 | www.linkedin.com | `[\"linkedin\", \"announcement\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs",
+    "type": "Source",
+    "label": "www.linkedin.com",
+    "meta": {
+      "url": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs",
+      "domain": "www.linkedin.com",
+      "source_type": "`[\"linkedin\", \"event-recap\"]`",
+      "ref_id": "src-230",
+      "search_text": "Source | www.linkedin.com | src-230 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs | www.linkedin.com | `[\"linkedin\", \"event-recap\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j",
+    "type": "Source",
+    "label": "www.linkedin.com",
+    "meta": {
+      "url": "https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j",
+      "domain": "www.linkedin.com",
+      "source_type": "`[\"linkedin\", \"announcement\"]`",
+      "ref_id": "src-231",
+      "search_text": "Source | www.linkedin.com | src-231 | https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j | www.linkedin.com | `[\"linkedin\", \"announcement\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM",
+    "type": "Source",
+    "label": "www.linkedin.com",
+    "meta": {
+      "url": "https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM",
+      "domain": "www.linkedin.com",
+      "source_type": "`[\"linkedin\", \"event-recap\"]`",
+      "ref_id": "src-232",
+      "search_text": "Source | www.linkedin.com | src-232 | https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM | www.linkedin.com | `[\"linkedin\", \"event-recap\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM",
+    "type": "Source",
+    "label": "www.linkedin.com",
+    "meta": {
+      "url": "https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM",
+      "domain": "www.linkedin.com",
+      "source_type": "`[\"linkedin\", \"winners-showcase\", \"demo-links\"]`",
+      "ref_id": "src-233",
+      "search_text": "Source | www.linkedin.com | src-233 | https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM | www.linkedin.com | `[\"linkedin\", \"winners-showcase\", \"demo-links\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon",
+    "type": "Source",
+    "label": "www.producthunt.com",
+    "meta": {
+      "url": "https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon",
+      "domain": "www.producthunt.com",
+      "source_type": "`[\"producthunt\", \"newsletter\", \"winners-announcement\"]`",
+      "ref_id": "src-234",
+      "search_text": "Source | www.producthunt.com | src-234 | https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon | www.producthunt.com | `[\"producthunt\", \"newsletter\", \"winners-announcement\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc",
+    "type": "Source",
+    "label": "www.producthunt.com",
+    "meta": {
+      "url": "https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc",
+      "domain": "www.producthunt.com",
+      "source_type": "`[\"producthunt\", \"story\"]`",
+      "ref_id": "src-235",
+      "search_text": "Source | www.producthunt.com | src-235 | https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc | www.producthunt.com | `[\"producthunt\", \"story\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions",
+    "type": "Source",
+    "label": "www.producthunt.com",
+    "meta": {
+      "url": "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions",
+      "domain": "www.producthunt.com",
+      "source_type": "`[\"producthunt\", \"community-post\"]`",
+      "ref_id": "src-236",
+      "search_text": "Source | www.producthunt.com | src-236 | https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions | www.producthunt.com | `[\"producthunt\", \"community-post\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.producthunt.com/products/agi-chat",
+    "type": "Source",
+    "label": "www.producthunt.com",
+    "meta": {
+      "url": "https://www.producthunt.com/products/agi-chat",
+      "domain": "www.producthunt.com",
+      "source_type": "`[\"producthunt\", \"product-page\"]`",
+      "ref_id": "src-237",
+      "search_text": "Source | www.producthunt.com | src-237 | https://www.producthunt.com/products/agi-chat | www.producthunt.com | `[\"producthunt\", \"product-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here",
+    "type": "Source",
+    "label": "www.producthunt.com",
+    "meta": {
+      "url": "https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here",
+      "domain": "www.producthunt.com",
+      "source_type": "`[\"producthunt\", \"story\"]`",
+      "ref_id": "src-238",
+      "search_text": "Source | www.producthunt.com | src-238 | https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here | www.producthunt.com | `[\"producthunt\", \"story\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/",
+    "type": "Source",
+    "label": "www.reddit.com",
+    "meta": {
+      "url": "https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/",
+      "domain": "www.reddit.com",
+      "source_type": "`[\"reddit\", \"winners-announcement\"]`",
+      "ref_id": "src-239",
+      "search_text": "Source | www.reddit.com | src-239 | https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/ | www.reddit.com | `[\"reddit\", \"winners-announcement\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/",
+    "type": "Source",
+    "label": "www.reddit.com",
+    "meta": {
+      "url": "https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/",
+      "domain": "www.reddit.com",
+      "source_type": "`[\"reddit\", \"announcement\"]`",
+      "ref_id": "src-240",
+      "search_text": "Source | www.reddit.com | src-240 | https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/ | www.reddit.com | `[\"reddit\", \"announcement\"]`"
+    }
+  },
+  {
+    "id": "Source:https://www.seoultechimpact.com/register",
+    "type": "Source",
+    "label": "www.seoultechimpact.com",
+    "meta": {
+      "url": "https://www.seoultechimpact.com/register",
+      "domain": "www.seoultechimpact.com",
+      "source_type": "`[\"devpost\", \"registration\", \"project_gallery\"]`",
+      "ref_id": "src-241",
+      "search_text": "Source | www.seoultechimpact.com | src-241 | https://www.seoultechimpact.com/register | www.seoultechimpact.com | `[\"devpost\", \"registration\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/BytePlusGlobal/status/2039621356195586166",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/BytePlusGlobal/status/2039621356195586166",
+      "domain": "x.com",
+      "source_type": "`[\"marketing\"]`",
+      "ref_id": "src-242",
+      "search_text": "Source | x.com | src-242 | https://x.com/BytePlusGlobal/status/2039621356195586166 | x.com | `[\"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/OpenAIDevs/status/2028588617095057902",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/OpenAIDevs/status/2028588617095057902",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"event-recap\"]`",
+      "ref_id": "src-243",
+      "search_text": "Source | x.com | src-243 | https://x.com/OpenAIDevs/status/2028588617095057902 | x.com | `[\"announcement\", \"event-recap\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/OpenBuildxyz/status/1963547236585148902",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/OpenBuildxyz/status/1963547236585148902",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-244",
+      "search_text": "Source | x.com | src-244 | https://x.com/OpenBuildxyz/status/1963547236585148902 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/OurTinTinLand/status/1993995697256058967",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/OurTinTinLand/status/1993995697256058967",
+      "domain": "x.com",
+      "source_type": "`[\"x.com\", \"community\", \"curation\"]`",
+      "ref_id": "src-245",
+      "search_text": "Source | x.com | src-245 | https://x.com/OurTinTinLand/status/1993995697256058967 | x.com | `[\"x.com\", \"community\", \"curation\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/SuiCommunity_MY/status/2000233825423749530",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/SuiCommunity_MY/status/2000233825423749530",
+      "domain": "x.com",
+      "source_type": "`[\"community\", \"event-recap\"]`",
+      "ref_id": "src-246",
+      "search_text": "Source | x.com | src-246 | https://x.com/SuiCommunity_MY/status/2000233825423749530 | x.com | `[\"community\", \"event-recap\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/agrimsingh/status/2027736501241700461",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/agrimsingh/status/2027736501241700461",
+      "domain": "x.com",
+      "source_type": "`[\"community\", \"event-recap\", \"demo\"]`",
+      "ref_id": "src-247",
+      "search_text": "Source | x.com | src-247 | https://x.com/agrimsingh/status/2027736501241700461 | x.com | `[\"community\", \"event-recap\", \"demo\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/bank_indonesia/status/1964290193348772338",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/bank_indonesia/status/1964290193348772338",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"government\"]`",
+      "ref_id": "src-248",
+      "search_text": "Source | x.com | src-248 | https://x.com/bank_indonesia/status/1964290193348772338 | x.com | `[\"announcement\", \"government\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/devpost/status/1915951678274097425",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/devpost/status/1915951678274097425",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-249",
+      "search_text": "Source | x.com | src-249 | https://x.com/devpost/status/1915951678274097425 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/devpost/status/1952806091022319670",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/devpost/status/1952806091022319670",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-250",
+      "search_text": "Source | x.com | src-250 | https://x.com/devpost/status/1952806091022319670 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/devpost/status/2020965804687446360",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/devpost/status/2020965804687446360",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-251",
+      "search_text": "Source | x.com | src-251 | https://x.com/devpost/status/2020965804687446360 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/gabrielchua/status/1975949011409412425",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/gabrielchua/status/1975949011409412425",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-252",
+      "search_text": "Source | x.com | src-252 | https://x.com/gabrielchua/status/1975949011409412425 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/meh_agarwal/status/2033596708513341710",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/meh_agarwal/status/2033596708513341710",
+      "domain": "x.com",
+      "source_type": "`[\"community\", \"event-recap\"]`",
+      "ref_id": "src-253",
+      "search_text": "Source | x.com | src-253 | https://x.com/meh_agarwal/status/2033596708513341710 | x.com | `[\"community\", \"event-recap\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/romainhuet/status/2028586504407470503",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/romainhuet/status/2028586504407470503",
+      "domain": "x.com",
+      "source_type": "`[\"community\", \"event-recap\", \"demo\"]`",
+      "ref_id": "src-254",
+      "search_text": "Source | x.com | src-254 | https://x.com/romainhuet/status/2028586504407470503 | x.com | `[\"community\", \"event-recap\", \"demo\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/therakyatpost/status/2001218375389769766",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/therakyatpost/status/2001218375389769766",
+      "domain": "x.com",
+      "source_type": "`[\"media\", \"event-recap\", \"devpost\", \"event-page\"]`",
+      "ref_id": "src-255",
+      "search_text": "Source | x.com | src-255 | https://x.com/therakyatpost/status/2001218375389769766 | x.com | `[\"media\", \"event-recap\", \"devpost\", \"event-page\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/vercel/status/1959307873143665060",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/vercel/status/1959307873143665060",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-256",
+      "search_text": "Source | x.com | src-256 | https://x.com/vercel/status/1959307873143665060 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/xai/status/1987696575314104339",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/xai/status/1987696575314104339",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-257",
+      "search_text": "Source | x.com | src-257 | https://x.com/xai/status/1987696575314104339 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://x.com/ycombinator/status/2028564751882871056",
+    "type": "Source",
+    "label": "x.com",
+    "meta": {
+      "url": "https://x.com/ycombinator/status/2028564751882871056",
+      "domain": "x.com",
+      "source_type": "`[\"announcement\", \"marketing\"]`",
+      "ref_id": "src-258",
+      "search_text": "Source | x.com | src-258 | https://x.com/ycombinator/status/2028564751882871056 | x.com | `[\"announcement\", \"marketing\"]`"
+    }
+  },
+  {
+    "id": "Source:https://xircus-apr-hackathon-manila.devpost.com/",
+    "type": "Source",
+    "label": "xircus-apr-hackathon-manila.devpost.com",
+    "meta": {
+      "url": "https://xircus-apr-hackathon-manila.devpost.com/",
+      "domain": "xircus-apr-hackathon-manila.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-259",
+      "search_text": "Source | xircus-apr-hackathon-manila.devpost.com | src-259 | https://xircus-apr-hackathon-manila.devpost.com/ | xircus-apr-hackathon-manila.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://xircus-apr-hackathon-manila.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "xircus-apr-hackathon-manila.devpost.com",
+    "meta": {
+      "url": "https://xircus-apr-hackathon-manila.devpost.com/project-gallery",
+      "domain": "xircus-apr-hackathon-manila.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-260",
+      "search_text": "Source | xircus-apr-hackathon-manila.devpost.com | src-260 | https://xircus-apr-hackathon-manila.devpost.com/project-gallery | xircus-apr-hackathon-manila.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://yme-hackathon-2021.devpost.com/",
+    "type": "Source",
+    "label": "yme-hackathon-2021.devpost.com",
+    "meta": {
+      "url": "https://yme-hackathon-2021.devpost.com/",
+      "domain": "yme-hackathon-2021.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-261",
+      "search_text": "Source | yme-hackathon-2021.devpost.com | src-261 | https://yme-hackathon-2021.devpost.com/ | yme-hackathon-2021.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://yme-hackathon-2021.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "yme-hackathon-2021.devpost.com",
+    "meta": {
+      "url": "https://yme-hackathon-2021.devpost.com/project-gallery",
+      "domain": "yme-hackathon-2021.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-262",
+      "search_text": "Source | yme-hackathon-2021.devpost.com | src-262 | https://yme-hackathon-2021.devpost.com/project-gallery | yme-hackathon-2021.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://youthxhack.devpost.com/",
+    "type": "Source",
+    "label": "youthxhack.devpost.com",
+    "meta": {
+      "url": "https://youthxhack.devpost.com/",
+      "domain": "youthxhack.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-263",
+      "search_text": "Source | youthxhack.devpost.com | src-263 | https://youthxhack.devpost.com/ | youthxhack.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://youthxhack.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "youthxhack.devpost.com",
+    "meta": {
+      "url": "https://youthxhack.devpost.com/project-gallery",
+      "domain": "youthxhack.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-264",
+      "search_text": "Source | youthxhack.devpost.com | src-264 | https://youthxhack.devpost.com/project-gallery | youthxhack.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://youthxhack2024.devpost.com/",
+    "type": "Source",
+    "label": "youthxhack2024.devpost.com",
+    "meta": {
+      "url": "https://youthxhack2024.devpost.com/",
+      "domain": "youthxhack2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-265",
+      "search_text": "Source | youthxhack2024.devpost.com | src-265 | https://youthxhack2024.devpost.com/ | youthxhack2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://youthxhack2024.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "youthxhack2024.devpost.com",
+    "meta": {
+      "url": "https://youthxhack2024.devpost.com/project-gallery",
+      "domain": "youthxhack2024.devpost.com",
+      "source_type": "`[\"devpost\", \"project_gallery\"]`",
+      "ref_id": "src-266",
+      "search_text": "Source | youthxhack2024.devpost.com | src-266 | https://youthxhack2024.devpost.com/project-gallery | youthxhack2024.devpost.com | `[\"devpost\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://zoohackathon2019-kk-malaysia.devpost.com/",
+    "type": "Source",
+    "label": "zoohackathon2019-kk-malaysia.devpost.com",
+    "meta": {
+      "url": "https://zoohackathon2019-kk-malaysia.devpost.com/",
+      "domain": "zoohackathon2019-kk-malaysia.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-267",
+      "search_text": "Source | zoohackathon2019-kk-malaysia.devpost.com | src-267 | https://zoohackathon2019-kk-malaysia.devpost.com/ | zoohackathon2019-kk-malaysia.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://zoohackathon2019-kk-malaysia.devpost.com/details/dates",
+    "type": "Source",
+    "label": "zoohackathon2019-kk-malaysia.devpost.com",
+    "meta": {
+      "url": "https://zoohackathon2019-kk-malaysia.devpost.com/details/dates",
+      "domain": "zoohackathon2019-kk-malaysia.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-268",
+      "search_text": "Source | zoohackathon2019-kk-malaysia.devpost.com | src-268 | https://zoohackathon2019-kk-malaysia.devpost.com/details/dates | zoohackathon2019-kk-malaysia.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  },
+  {
+    "id": "Source:https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery",
+    "type": "Source",
+    "label": "zoohackathon2019-kk-malaysia.devpost.com",
+    "meta": {
+      "url": "https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery",
+      "domain": "zoohackathon2019-kk-malaysia.devpost.com",
+      "source_type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+      "ref_id": "src-269",
+      "search_text": "Source | zoohackathon2019-kk-malaysia.devpost.com | src-269 | https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery | zoohackathon2019-kk-malaysia.devpost.com | `[\"devpost\", \"details/dates\", \"project_gallery\"]`"
+    }
+  }
+]

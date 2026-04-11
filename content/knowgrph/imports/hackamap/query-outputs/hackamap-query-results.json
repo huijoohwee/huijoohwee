@@ -1,0 +1,142 @@
+{
+  "query": {
+    "from": {
+      "files": [
+        "events.md",
+        "demos.md",
+        "sources.md",
+        "organizer.md",
+        "team.md",
+        "techstack.md"
+      ]
+    },
+    "where_by_file": {
+      "events.md": {
+        "or": [
+          {
+            "and": [
+              { "field": "Location", "op": "contains", "value": "Singapore" },
+              { "field": "Confidence", "op": "in", "value": ["high", "medium"] }
+            ]
+          },
+          {
+            "or": [
+              { "op": "any", "value": "claude" },
+              { "op": "any", "value": "openai" },
+              { "op": "any", "value": "google" },
+              { "op": "any", "value": "openclaw" }
+            ]
+          }
+        ]
+      },
+      "demos.md": {
+        "or": [
+          {
+            "and": [
+              { "field": "Location", "op": "contains", "value": "Singapore" },
+              { "field": "Confidence", "op": "in", "value": ["high", "medium"] }
+            ]
+          },
+          {
+            "or": [
+              { "op": "any", "value": "claude" },
+              { "op": "any", "value": "openai" },
+              { "op": "any", "value": "google" },
+              { "op": "any", "value": "openclaw" }
+            ]
+          }
+        ]
+      },
+      "sources.md": {
+        "or": [
+          {
+            "and": [
+              { "field": "Location", "op": "contains", "value": "Singapore" },
+              { "field": "Confidence", "op": "in", "value": ["high", "medium"] }
+            ]
+          },
+          {
+            "or": [
+              { "op": "any", "value": "claude" },
+              { "op": "any", "value": "openai" },
+              { "op": "any", "value": "google" },
+              { "op": "any", "value": "openclaw" }
+            ]
+          }
+        ]
+      },
+      "organizer.md": {
+        "or": [
+          {
+            "and": [
+              { "field": "Location", "op": "contains", "value": "Singapore" },
+              { "field": "Confidence", "op": "in", "value": ["high", "medium"] }
+            ]
+          },
+          {
+            "or": [
+              { "op": "any", "value": "claude" },
+              { "op": "any", "value": "openai" },
+              { "op": "any", "value": "google" },
+              { "op": "any", "value": "openclaw" }
+            ]
+          }
+        ]
+      },
+      "team.md": {
+        "or": [
+          {
+            "and": [
+              { "field": "Location", "op": "contains", "value": "Singapore" },
+              { "field": "Confidence", "op": "in", "value": ["high", "medium"] }
+            ]
+          },
+          {
+            "or": [
+              { "op": "any", "value": "claude" },
+              { "op": "any", "value": "openai" },
+              { "op": "any", "value": "google" },
+              { "op": "any", "value": "openclaw" }
+            ]
+          }
+        ]
+      },
+      "techstack.md": {
+        "or": [
+          { "field": "Tech", "op": "contains", "value": "claude" },
+          { "field": "Tech", "op": "contains", "value": "openai" },
+          { "field": "Tech", "op": "contains", "value": "google" },
+          { "field": "Tech", "op": "contains", "value": "openclaw" },
+          { "field": "Vendor/Org", "op": "contains", "value": "openai" },
+          { "field": "Vendor/Org", "op": "contains", "value": "google" }
+        ]
+      }
+    }
+  },
+  "counts": {
+    "events.md": 42,
+    "demos.md": 18,
+    "sources.md": 7,
+    "organizer.md": 9,
+    "team.md": 9,
+    "techstack.md": 5
+  },
+  "ids": {
+    "events.md": [
+      "evt-003","evt-007","evt-008","evt-009","evt-019","evt-020","evt-022","evt-029","evt-032","evt-035",
+      "evt-036","evt-041","evt-042","evt-043","evt-048","evt-049","evt-052","evt-054","evt-055","evt-056",
+      "evt-057","evt-058","evt-063","evt-081","evt-100","evt-101","evt-102","evt-108","evt-109","evt-110",
+      "evt-111","evt-112","evt-113","evt-114","evt-118","evt-135","evt-136","evt-137","evt-138","evt-139",
+      "evt-140","evt-141"
+    ],
+    "demos.md": [
+      "demo-003","demo-007","demo-008","demo-009","demo-012","demo-023","demo-028","demo-037","demo-050","demo-051",
+      "demo-065","demo-120","demo-137","demo-138","demo-139","demo-140","demo-141","demo-143"
+    ],
+    "sources.md": ["src-022","src-059","src-060","src-111","src-229","src-230","src-243"],
+    "organizer.md": ["org-064","org-065","org-066","org-067","org-124","org-125","org-126","org-127","org-129"],
+    "team.md": ["team-064","team-065","team-066","team-067","team-124","team-125","team-126","team-127","team-129"],
+    "techstack.md": ["tech-023","tech-115","tech-116","tech-117","tech-118"]
+  }
+}
+

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -11,6 +12,7 @@ from urllib.parse import urlparse
 
 
 NULL = "—"
+SEARCH_TEXT_MAX_CHARS = 12_000
 
 
 def sanitize_cell(s: str) -> str:
@@ -88,6 +90,94 @@ def domain_of(url: str) -> str:
         return u.netloc or NULL
     except Exception:
         return NULL
+
+
+def compact_list(items: Iterable[str]) -> List[str]:
+    out: List[str] = []
+    seen: set[str] = set()
+    for raw in items:
+        s = sanitize_cell(str(raw))
+        if not s or s == NULL:
+            continue
+        if s in seen:
+            continue
+        seen.add(s)
+        out.append(s)
+    return out
+
+
+def stringify_for_search(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (int, float, bool)):
+        return str(value)
+    if isinstance(value, list):
+        return " ".join([stringify_for_search(v) for v in value])
+    if isinstance(value, dict):
+        parts: List[str] = []
+        for k, v in value.items():
+            kk = sanitize_cell(str(k))
+            vv = stringify_for_search(v)
+            if kk != NULL and vv:
+                parts.append(f"{kk} {vv}")
+        return " ".join(parts)
+    return str(value)
+
+
+def build_search_text(node_type: str, label: str, meta: Dict[str, Any]) -> str:
+    """
+    Search UX: hackamap UI matches against label + metadata. Give it a single
+    flattened string containing the highest-signal fields so users can search by:
+    - names, locations, organizers, tech, dates, domains, awards, etc.
+    """
+    parts: List[str] = [sanitize_cell(node_type), sanitize_cell(label)]
+    # Prefer curated fields first (stable ordering helps deterministic signature).
+    preferred_keys = [
+        "ref_id",
+        "event_id",
+        "url",
+        "urls",
+        "domain",
+        "location",
+        "format",
+        "theme",
+        "prize_pool",
+        "eligibility",
+        "organizer",
+        "organizers",
+        "team",
+        "teams",
+        "tech_focus",
+        "tech_stack",
+        "product",
+        "products",
+        "pain_point",
+        "solution",
+        "award",
+        "confidence",
+        "source_type",
+        "date_start",
+        "date_end",
+    ]
+    for k in preferred_keys:
+        if k not in meta:
+            continue
+        v = stringify_for_search(meta.get(k))
+        if v:
+            parts.append(v)
+    # Add remaining fields (bounded).
+    for k in sorted(meta.keys()):
+        if k in preferred_keys:
+            continue
+        v = stringify_for_search(meta.get(k))
+        if v:
+            parts.append(v)
+    text = " | ".join([p for p in parts if p and p != NULL]).strip()
+    if len(text) > SEARCH_TEXT_MAX_CHARS:
+        return text[:SEARCH_TEXT_MAX_CHARS]
+    return text
 
 
 @dataclass
@@ -198,11 +288,20 @@ def build_graph(base: Path) -> Dict[str, Any]:
         event_meta: Dict[str, Any] = {
             "ref_id": eid,
             "url": event_urls[0] if event_urls else NULL,
+            "urls": compact_list(event_urls),
             "confidence": sanitize_cell(r[e.get("Confidence", 0)]).lower() if "Confidence" in e else NULL,
             "source_type": parse_json_array_cell(r[e["Source Type"]]) if "Source Type" in e else [],
             "date_start": sanitize_cell(r[e.get("Date Start", 0)]) if "Date Start" in e else NULL,
             "date_end": sanitize_cell(r[e.get("Date End", 0)]) if "Date End" in e else NULL,
+            "format": sanitize_cell(r[e.get("Format", 0)]) if "Format" in e else NULL,
+            "location": sanitize_cell(r[e.get("Location", 0)]) if "Location" in e else NULL,
+            "theme": sanitize_cell(r[e.get("Theme", 0)]) if "Theme" in e else NULL,
+            "prize_pool": sanitize_cell(r[e.get("Prize Pool", 0)]) if "Prize Pool" in e else NULL,
+            "eligibility": compact_list(parse_json_array_cell(r[e["Eligibility"]])) if "Eligibility" in e else [],
+            "organizers": compact_list(parse_json_array_cell(r[e["Organizer"]])) if "Organizer" in e else [],
+            "tech_focus": compact_list(parse_json_array_cell(r[e["Tech Focus"]])) if "Tech Focus" in e else [],
         }
+        event_meta["search_text"] = build_search_text("Event", event_label, event_meta)
         n_event = gb.add_node("Event", eid, label=event_label, meta=event_meta)
 
         # Location
@@ -269,11 +368,19 @@ def build_graph(base: Path) -> Dict[str, Any]:
             "ref_id": did,
             "event_id": sanitize_cell(r[d["event_id"]]) if "event_id" in d else NULL,
             "url": demo_urls[0] if demo_urls else NULL,
+            "urls": compact_list(demo_urls),
             "repo_url": repo_url,
             "video_url": video_url,
+            "pain_point": sanitize_cell(r[d.get("Pain Point", 0)]) if "Pain Point" in d else NULL,
+            "solution": sanitize_cell(r[d.get("Solution", 0)]) if "Solution" in d else NULL,
+            "products": compact_list(products),
+            "teams": compact_list(parse_json_array_cell(r[d["Team"]])) if "Team" in d else [],
+            "tech_stack": compact_list(parse_json_array_cell(r[d["Tech Stack"]])) if "Tech Stack" in d else [],
+            "award": sanitize_cell(r[d.get("Award", 0)]) if "Award" in d else NULL,
             "confidence": sanitize_cell(r[d.get("Confidence", 0)]).lower() if "Confidence" in d else NULL,
             "source_type": parse_json_array_cell(r[d["Source Type"]]) if "Source Type" in d else [],
         }
+        demo_meta["search_text"] = build_search_text("Demo", demo_label, demo_meta)
         n_demo = gb.add_node("Demo", did, label=demo_label, meta=demo_meta)
 
         # FK edge: Event -> Demo
@@ -336,13 +443,34 @@ def build_graph(base: Path) -> Dict[str, Any]:
             n_src = gb.add_node("Source", url, label=domain_of(url) or url, meta=smeta)
             gb.add_link(n_demo, n_src, "sourced_from")
 
-    return {
+    nodes: List[Dict[str, Any]] = []
+    for n in gb.nodes.values():
+        meta = dict(n.meta or {})
+        if "search_text" not in meta:
+            meta["search_text"] = build_search_text(n.type, n.label, meta)
+        nodes.append({"id": n.id, "type": n.type, "label": n.label, "meta": meta})
+    # Provide deterministic link ids for easier downstream indexing/debugging.
+    links = [
+        {
+            "id": hashlib.sha256(f"{l.source}|{l.target}|{l.type}".encode("utf-8")).hexdigest()[:16],
+            "source": l.source,
+            "target": l.target,
+            "type": l.type,
+        }
+        for l in gb.links
+    ]
+    nodes.sort(key=lambda x: (str(x.get("type", "")), str(x.get("id", "")), str(x.get("label", ""))))
+    links.sort(key=lambda x: (str(x.get("source", "")), str(x.get("target", "")), str(x.get("type", ""))))
+    graph: Dict[str, Any] = {
         "schema_version": "1.0",
-        "nodes": [
-            {"id": n.id, "type": n.type, "label": n.label, "meta": n.meta} for n in gb.nodes.values()
-        ],
-        "links": [{"source": l.source, "target": l.target, "type": l.type} for l in gb.links],
+        "nodes": nodes,
+        "links": links,
     }
+    canonical = json.dumps(graph, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    graph["content_signature"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    graph["node_count"] = len(nodes)
+    graph["link_count"] = len(links)
+    return graph
 
 
 def main() -> None:
@@ -361,4 +489,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "content_signature": "5e3322c1d54ba7c18c2656d78b16938e656ce1b00d3205f9d8adfcaf2f35c856",
+  "source_graph_json": "hackamap-graph.json",
+  "counts": {
+    "nodes": 1323,
+    "links": 2044,
+    "Demo": 140,
+    "Event": 138,
+    "Location": 84,
+    "Organizer": 193,
+    "PainPoint": 53,
+    "Product": 96,
+    "Source": 269,
+    "Team": 193,
+    "Tech": 157
+  },
+  "files": {
+    "Event": "events.json",
+    "Demo": "demos.json",
+    "Source": "sources.json",
+    "Organizer": "organizer.json",
+    "Team": "team.json",
+    "Tech": "techstack.json",
+    "nodes": "nodes.json",
+    "links": "links.json"
+  }
+}

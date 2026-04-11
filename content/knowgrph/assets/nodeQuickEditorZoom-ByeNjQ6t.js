@@ -1,1 +1,0 @@
-const n={width:360,height:520};function c(t,i,e){return Number.isFinite(t)?Math.max(i,Math.min(e,t)):i}function E(t,i,e){const N=Number.isFinite(t)?t:1;return c(N,.05,1)}function o(t){const i=Number.isFinite(t)?t:1;return{width:n.width*i,height:n.height*i}}export{n as N,o as a,E as c};

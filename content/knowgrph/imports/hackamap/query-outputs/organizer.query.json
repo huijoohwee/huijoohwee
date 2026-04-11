@@ -1,0 +1,123 @@
+[
+  {
+    "_row": "11",
+    "id": "org-011",
+    "Organizer": "Anthropic",
+    "Type": "company",
+    "URL": "https://www.anthropic.com/",
+    "Events": "`[\"evt-023\", \"evt-026\"]`",
+    "Source Type": "`[\"media\", \"event-recap\", \"devpost\", \"event-page\", \"project-gallery\"]`",
+    "Confidence": "high",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "64",
+    "id": "org-064",
+    "Organizer": "Google",
+    "Type": "company",
+    "URL": "https://www.google.com/",
+    "Events": "`[\"evt-063\", \"evt-118\"]`",
+    "Source Type": "`[\"devpost\", \"project_gallery\", \"details/dates\"]`",
+    "Confidence": "high",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "65",
+    "id": "org-065",
+    "Organizer": "Google DeepMind",
+    "Type": "company",
+    "URL": "https://deepmind.google/",
+    "Events": "`[\"evt-009\"]`",
+    "Source Type": "`[\"announcement\", \"marketing\"]`",
+    "Confidence": "medium",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "66",
+    "id": "org-066",
+    "Organizer": "Google DeepMind SG hackathon participants",
+    "Type": "—",
+    "URL": "—",
+    "Events": "`[\"evt-022\"]`",
+    "Source Type": "`[\"linkedin\", \"project-demo\"]`",
+    "Confidence": "low",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "67",
+    "id": "org-067",
+    "Organizer": "Google Developers (mentioned)",
+    "Type": "—",
+    "URL": "—",
+    "Events": "`[\"evt-118\"]`",
+    "Source Type": "`[\"devpost\", \"details/dates\", \"project_gallery\"]`",
+    "Confidence": "high",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "68",
+    "id": "org-068",
+    "Organizer": "GovTech Singapore",
+    "Type": "—",
+    "URL": "—",
+    "Events": "`[\"evt-048\", \"evt-049\"]`",
+    "Source Type": "`[\"linkedin\", \"event-recap\", \"announcement\"]`",
+    "Confidence": "low",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "124",
+    "id": "org-124",
+    "Organizer": "OpenAI",
+    "Type": "company",
+    "URL": "https://openai.com/",
+    "Events": "`[\"evt-035\", \"evt-048\", \"evt-049\"]`",
+    "Source Type": "`[\"announcement\", \"marketing\", \"linkedin\", \"event-recap\"]`",
+    "Confidence": "medium",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "125",
+    "id": "org-125",
+    "Organizer": "OpenAI Codex hackathon participants",
+    "Type": "—",
+    "URL": "—",
+    "Events": "`[\"evt-007\"]`",
+    "Source Type": "`[\"community\", \"event-recap\", \"demo\"]`",
+    "Confidence": "low",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "126",
+    "id": "org-126",
+    "Organizer": "OpenAI community",
+    "Type": "—",
+    "URL": "—",
+    "Events": "`[\"evt-007\"]`",
+    "Source Type": "`[\"community\", \"event-recap\", \"demo\"]`",
+    "Confidence": "low",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "127",
+    "id": "org-127",
+    "Organizer": "OpenAI Developers",
+    "Type": "—",
+    "URL": "—",
+    "Events": "`[\"evt-008\"]`",
+    "Source Type": "`[\"announcement\", \"event-recap\"]`",
+    "Confidence": "medium",
+    "Extracted At": "—"
+  },
+  {
+    "_row": "129",
+    "id": "org-129",
+    "Organizer": "OpenClaw Jakarta community",
+    "Type": "—",
+    "URL": "—",
+    "Events": "`[\"evt-139\"]`",
+    "Source Type": "—",
+    "Confidence": "medium",
+    "Extracted At": "—"
+  }
+]

@@ -1,0 +1,1 @@
+const e={width:360,height:520};function c(t,i,n){return Number.isFinite(t)?Math.max(i,Math.min(n,t)):i}function a(t,i,n){if(((n==null?void 0:n.mode)==="floating"?"floating":"pinnedInCanvas")==="floating")return 1;const N=Number.isFinite(t)?t:1;return c(N,.05,1)}function E(t){const i=Number.isFinite(t)?t:1;return{width:e.width*i,height:e.height*i}}export{e as N,E as a,a as c};

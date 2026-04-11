@@ -1,0 +1,1 @@
+import{a as s}from"./react-BoA_4QeP.js";import{u}from"./index-CnwYl3O6.js";function f(r){const t=s.useRef(u.getState()[r]);return s.useEffect(()=>u.subscribe(e=>e[r],e=>{t.current=e}),[r]),t}export{f as u};

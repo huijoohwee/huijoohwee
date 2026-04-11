@@ -1,0 +1,1932 @@
+[
+  {
+    "id": "Team:100+ developers (participants)",
+    "type": "Team",
+    "label": "100+ developers (participants)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | 100+ developers (participants)"
+    }
+  },
+  {
+    "id": "Team:100+ filmmakers",
+    "type": "Team",
+    "label": "100+ filmmakers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | 100+ filmmakers"
+    }
+  },
+  {
+    "id": "Team:350+ hackers (reported)",
+    "type": "Team",
+    "label": "350+ hackers (reported)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | 350+ hackers (reported)"
+    }
+  },
+  {
+    "id": "Team:@cursor_ai",
+    "type": "Team",
+    "label": "@cursor_ai",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | @cursor_ai"
+    }
+  },
+  {
+    "id": "Team:ABGAasia",
+    "type": "Team",
+    "label": "ABGAasia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | ABGAasia"
+    }
+  },
+  {
+    "id": "Team:AGI.Chat makers",
+    "type": "Team",
+    "label": "AGI.Chat makers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | AGI.Chat makers"
+    }
+  },
+  {
+    "id": "Team:AI Consensus",
+    "type": "Team",
+    "label": "AI Consensus",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | AI Consensus"
+    }
+  },
+  {
+    "id": "Team:AI Tinkerers Hong Kong",
+    "type": "Team",
+    "label": "AI Tinkerers Hong Kong",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | AI Tinkerers Hong Kong"
+    }
+  },
+  {
+    "id": "Team:AWS",
+    "type": "Team",
+    "label": "AWS",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://aws.amazon.com/",
+      "search_text": "Team | AWS | https://aws.amazon.com/ | company"
+    }
+  },
+  {
+    "id": "Team:AWS Hong Kong",
+    "type": "Team",
+    "label": "AWS Hong Kong",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | AWS Hong Kong"
+    }
+  },
+  {
+    "id": "Team:Acacia AI Society",
+    "type": "Team",
+    "label": "Acacia AI Society",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Acacia AI Society"
+    }
+  },
+  {
+    "id": "Team:Acacia College, NUS",
+    "type": "Team",
+    "label": "Acacia College, NUS",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Acacia College, NUS"
+    }
+  },
+  {
+    "id": "Team:Anthropic",
+    "type": "Team",
+    "label": "Anthropic",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://www.anthropic.com/",
+      "search_text": "Team | Anthropic | https://www.anthropic.com/ | company"
+    }
+  },
+  {
+    "id": "Team:April team",
+    "type": "Team",
+    "label": "April team",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | April team"
+    }
+  },
+  {
+    "id": "Team:Artificial Intelligence Society (UiTM Shah Alam)",
+    "type": "Team",
+    "label": "Artificial Intelligence Society (UiTM Shah Alam)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Artificial Intelligence Society (UiTM Shah Alam)"
+    }
+  },
+  {
+    "id": "Team:Azure",
+    "type": "Team",
+    "label": "Azure",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Azure"
+    }
+  },
+  {
+    "id": "Team:BASIS Int'l School Shenzhen",
+    "type": "Team",
+    "label": "BASIS Int'l School Shenzhen",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | BASIS Int'l School Shenzhen"
+    }
+  },
+  {
+    "id": "Team:BLOCK71 Singapore",
+    "type": "Team",
+    "label": "BLOCK71 Singapore",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | BLOCK71 Singapore"
+    }
+  },
+  {
+    "id": "Team:BNB Chain",
+    "type": "Team",
+    "label": "BNB Chain",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | BNB Chain"
+    }
+  },
+  {
+    "id": "Team:BSJ Hackathon Team",
+    "type": "Team",
+    "label": "BSJ Hackathon Team",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | BSJ Hackathon Team"
+    }
+  },
+  {
+    "id": "Team:Bank Indonesia",
+    "type": "Team",
+    "label": "Bank Indonesia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Bank Indonesia"
+    }
+  },
+  {
+    "id": "Team:Bitcoin Indonesia",
+    "type": "Team",
+    "label": "Bitcoin Indonesia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Bitcoin Indonesia"
+    }
+  },
+  {
+    "id": "Team:Blockdevs Asia",
+    "type": "Team",
+    "label": "Blockdevs Asia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Blockdevs Asia"
+    }
+  },
+  {
+    "id": "Team:BuildLearning (hackathon manager)",
+    "type": "Team",
+    "label": "BuildLearning (hackathon manager)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | BuildLearning (hackathon manager)"
+    }
+  },
+  {
+    "id": "Team:Building with AI community",
+    "type": "Team",
+    "label": "Building with AI community",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Building with AI community"
+    }
+  },
+  {
+    "id": "Team:CHAMP Cargosystems",
+    "type": "Team",
+    "label": "CHAMP Cargosystems",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | CHAMP Cargosystems"
+    }
+  },
+  {
+    "id": "Team:CNHK",
+    "type": "Team",
+    "label": "CNHK",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | CNHK"
+    }
+  },
+  {
+    "id": "Team:Canonical",
+    "type": "Team",
+    "label": "Canonical",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Canonical"
+    }
+  },
+  {
+    "id": "Team:Cardano Foundation",
+    "type": "Team",
+    "label": "Cardano Foundation",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Cardano Foundation"
+    }
+  },
+  {
+    "id": "Team:Cathay Cargo",
+    "type": "Team",
+    "label": "Cathay Cargo",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Cathay Cargo"
+    }
+  },
+  {
+    "id": "Team:Centre for Networked Intelligence, IISc",
+    "type": "Team",
+    "label": "Centre for Networked Intelligence, IISc",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Centre for Networked Intelligence, IISc"
+    }
+  },
+  {
+    "id": "Team:Cloudhacks",
+    "type": "Team",
+    "label": "Cloudhacks",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Cloudhacks"
+    }
+  },
+  {
+    "id": "Team:Codex hackathon participants",
+    "type": "Team",
+    "label": "Codex hackathon participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Codex hackathon participants"
+    }
+  },
+  {
+    "id": "Team:Community Shaper participants",
+    "type": "Team",
+    "label": "Community Shaper participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Community Shaper participants"
+    }
+  },
+  {
+    "id": "Team:Conservation X Labs",
+    "type": "Team",
+    "label": "Conservation X Labs",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Conservation X Labs"
+    }
+  },
+  {
+    "id": "Team:Cursor",
+    "type": "Team",
+    "label": "Cursor",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://cursor.com/",
+      "search_text": "Team | Cursor | https://cursor.com/ | company"
+    }
+  },
+  {
+    "id": "Team:Cyber Youth Singapore",
+    "type": "Team",
+    "label": "Cyber Youth Singapore",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Cyber Youth Singapore"
+    }
+  },
+  {
+    "id": "Team:DevNetwork",
+    "type": "Team",
+    "label": "DevNetwork",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | DevNetwork"
+    }
+  },
+  {
+    "id": "Team:Developer Student Clubs @NUS Computing",
+    "type": "Team",
+    "label": "Developer Student Clubs @NUS Computing",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Developer Student Clubs @NUS Computing"
+    }
+  },
+  {
+    "id": "Team:DeveloperWeek 2026 participants",
+    "type": "Team",
+    "label": "DeveloperWeek 2026 participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | DeveloperWeek 2026 participants"
+    }
+  },
+  {
+    "id": "Team:DeveloperWeek community",
+    "type": "Team",
+    "label": "DeveloperWeek community",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | DeveloperWeek community"
+    }
+  },
+  {
+    "id": "Team:Devpost",
+    "type": "Team",
+    "label": "Devpost",
+    "meta": {
+      "entity_type": "platform",
+      "url": "https://devpost.com/",
+      "search_text": "Team | Devpost | https://devpost.com/ | platform"
+    }
+  },
+  {
+    "id": "Team:Dinas Perindustrian dan Tenaga Kerja Kabupaten Bojonegoro (mentioned)",
+    "type": "Team",
+    "label": "Dinas Perindustrian dan Tenaga Kerja Kabupaten Bojonegoro (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Dinas Perindustrian dan Tenaga Kerja Kabupaten Bojonegoro (mentioned)"
+    }
+  },
+  {
+    "id": "Team:ETH KL",
+    "type": "Team",
+    "label": "ETH KL",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | ETH KL"
+    }
+  },
+  {
+    "id": "Team:ETHShenzhen participants",
+    "type": "Team",
+    "label": "ETHShenzhen participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | ETHShenzhen participants"
+    }
+  },
+  {
+    "id": "Team:Elastic",
+    "type": "Team",
+    "label": "Elastic",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Elastic"
+    }
+  },
+  {
+    "id": "Team:FOBISIA (mentioned)",
+    "type": "Team",
+    "label": "FOBISIA (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | FOBISIA (mentioned)"
+    }
+  },
+  {
+    "id": "Team:FOSSASIA",
+    "type": "Team",
+    "label": "FOSSASIA",
+    "meta": {
+      "entity_type": "community",
+      "url": "https://fossasia.org/",
+      "search_text": "Team | FOSSASIA | https://fossasia.org/ | community"
+    }
+  },
+  {
+    "id": "Team:Formation 8",
+    "type": "Team",
+    "label": "Formation 8",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Formation 8"
+    }
+  },
+  {
+    "id": "Team:GDG CLuod KL",
+    "type": "Team",
+    "label": "GDG CLuod KL",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | GDG CLuod KL"
+    }
+  },
+  {
+    "id": "Team:GameMaker",
+    "type": "Team",
+    "label": "GameMaker",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | GameMaker"
+    }
+  },
+  {
+    "id": "Team:Garuda HQ",
+    "type": "Team",
+    "label": "Garuda HQ",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Garuda HQ"
+    }
+  },
+  {
+    "id": "Team:Garuda Hacks",
+    "type": "Team",
+    "label": "Garuda Hacks",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Garuda Hacks"
+    }
+  },
+  {
+    "id": "Team:GitHub Copilot",
+    "type": "Team",
+    "label": "GitHub Copilot",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | GitHub Copilot"
+    }
+  },
+  {
+    "id": "Team:GitLab",
+    "type": "Team",
+    "label": "GitLab",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://about.gitlab.com/",
+      "search_text": "Team | GitLab | https://about.gitlab.com/ | company"
+    }
+  },
+  {
+    "id": "Team:Globalite Solution",
+    "type": "Team",
+    "label": "Globalite Solution",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Globalite Solution"
+    }
+  },
+  {
+    "id": "Team:Google",
+    "type": "Team",
+    "label": "Google",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://www.google.com/",
+      "search_text": "Team | Google | https://www.google.com/ | company"
+    }
+  },
+  {
+    "id": "Team:Google DeepMind",
+    "type": "Team",
+    "label": "Google DeepMind",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://deepmind.google/",
+      "search_text": "Team | Google DeepMind | https://deepmind.google/ | company"
+    }
+  },
+  {
+    "id": "Team:Google DeepMind SG hackathon participants",
+    "type": "Team",
+    "label": "Google DeepMind SG hackathon participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Google DeepMind SG hackathon participants"
+    }
+  },
+  {
+    "id": "Team:Google Developers (mentioned)",
+    "type": "Team",
+    "label": "Google Developers (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Google Developers (mentioned)"
+    }
+  },
+  {
+    "id": "Team:GovTech Singapore",
+    "type": "Team",
+    "label": "GovTech Singapore",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | GovTech Singapore"
+    }
+  },
+  {
+    "id": "Team:HKBU Coding Club",
+    "type": "Team",
+    "label": "HKBU Coding Club",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | HKBU Coding Club"
+    }
+  },
+  {
+    "id": "Team:HKU Centre for AI, Management and Organization (HKU CAMO)",
+    "type": "Team",
+    "label": "HKU Centre for AI, Management and Organization (HKU CAMO)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | HKU Centre for AI, Management and Organization (HKU CAMO)"
+    }
+  },
+  {
+    "id": "Team:Hack AI organizers",
+    "type": "Team",
+    "label": "Hack AI organizers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Hack AI organizers"
+    }
+  },
+  {
+    "id": "Team:Hack For Humanity participants",
+    "type": "Team",
+    "label": "Hack For Humanity participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Hack For Humanity participants"
+    }
+  },
+  {
+    "id": "Team:Hack&Roll 2026 participants",
+    "type": "Team",
+    "label": "Hack&Roll 2026 participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Hack&Roll 2026 participants"
+    }
+  },
+  {
+    "id": "Team:Hack4HK",
+    "type": "Team",
+    "label": "Hack4HK",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Hack4HK"
+    }
+  },
+  {
+    "id": "Team:HackGov (brand)",
+    "type": "Team",
+    "label": "HackGov (brand)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | HackGov (brand)"
+    }
+  },
+  {
+    "id": "Team:HackNYU",
+    "type": "Team",
+    "label": "HackNYU",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | HackNYU"
+    }
+  },
+  {
+    "id": "Team:Hong Kong Baptist University (HKBU)",
+    "type": "Team",
+    "label": "Hong Kong Baptist University (HKBU)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Hong Kong Baptist University (HKBU)"
+    }
+  },
+  {
+    "id": "Team:IATA",
+    "type": "Team",
+    "label": "IATA",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | IATA"
+    }
+  },
+  {
+    "id": "Team:IBM",
+    "type": "Team",
+    "label": "IBM",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | IBM"
+    }
+  },
+  {
+    "id": "Team:IBM Z Sheridan",
+    "type": "Team",
+    "label": "IBM Z Sheridan",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | IBM Z Sheridan"
+    }
+  },
+  {
+    "id": "Team:ICCS",
+    "type": "Team",
+    "label": "ICCS",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | ICCS"
+    }
+  },
+  {
+    "id": "Team:ICCombinator",
+    "type": "Team",
+    "label": "ICCombinator",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | ICCombinator"
+    }
+  },
+  {
+    "id": "Team:IEEE India Council",
+    "type": "Team",
+    "label": "IEEE India Council",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | IEEE India Council"
+    }
+  },
+  {
+    "id": "Team:International Marine Conservation Congress (IMCC5)",
+    "type": "Team",
+    "label": "International Marine Conservation Congress (IMCC5)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | International Marine Conservation Congress (IMCC5)"
+    }
+  },
+  {
+    "id": "Team:Israel Embassy Tokyo",
+    "type": "Team",
+    "label": "Israel Embassy Tokyo",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Israel Embassy Tokyo"
+    }
+  },
+  {
+    "id": "Team:January Capital",
+    "type": "Team",
+    "label": "January Capital",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | January Capital"
+    }
+  },
+  {
+    "id": "Team:Junction (mentioned)",
+    "type": "Team",
+    "label": "Junction (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Junction (mentioned)"
+    }
+  },
+  {
+    "id": "Team:Komunitas Flutter Indonesia (mentioned)",
+    "type": "Team",
+    "label": "Komunitas Flutter Indonesia (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Komunitas Flutter Indonesia (mentioned)"
+    }
+  },
+  {
+    "id": "Team:KoyalAI",
+    "type": "Team",
+    "label": "KoyalAI",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | KoyalAI"
+    }
+  },
+  {
+    "id": "Team:Linux Foundation / Hyperledger",
+    "type": "Team",
+    "label": "Linux Foundation / Hyperledger",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Linux Foundation / Hyperledger"
+    }
+  },
+  {
+    "id": "Team:Lotushacks",
+    "type": "Team",
+    "label": "Lotushacks",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Lotushacks"
+    }
+  },
+  {
+    "id": "Team:MCP Hackathon participants",
+    "type": "Team",
+    "label": "MCP Hackathon participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | MCP Hackathon participants"
+    }
+  },
+  {
+    "id": "Team:Malaysia hackathon participants",
+    "type": "Team",
+    "label": "Malaysia hackathon participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Malaysia hackathon participants"
+    }
+  },
+  {
+    "id": "Team:Malaysia student community (participants)",
+    "type": "Team",
+    "label": "Malaysia student community (participants)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Malaysia student community (participants)"
+    }
+  },
+  {
+    "id": "Team:Mathworks",
+    "type": "Team",
+    "label": "Mathworks",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Mathworks"
+    }
+  },
+  {
+    "id": "Team:Meta",
+    "type": "Team",
+    "label": "Meta",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://about.meta.com/",
+      "search_text": "Team | Meta | https://about.meta.com/ | company"
+    }
+  },
+  {
+    "id": "Team:MetaEraCN",
+    "type": "Team",
+    "label": "MetaEraCN",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | MetaEraCN"
+    }
+  },
+  {
+    "id": "Team:MiniMax",
+    "type": "Team",
+    "label": "MiniMax",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | MiniMax"
+    }
+  },
+  {
+    "id": "Team:Mission Plus",
+    "type": "Team",
+    "label": "Mission Plus",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Mission Plus"
+    }
+  },
+  {
+    "id": "Team:Mobvoi (mentioned)",
+    "type": "Team",
+    "label": "Mobvoi (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Mobvoi (mentioned)"
+    }
+  },
+  {
+    "id": "Team:MongoDB",
+    "type": "Team",
+    "label": "MongoDB",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | MongoDB"
+    }
+  },
+  {
+    "id": "Team:NTU SCDS",
+    "type": "Team",
+    "label": "NTU SCDS",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | NTU SCDS"
+    }
+  },
+  {
+    "id": "Team:NTU Women In Tech",
+    "type": "Team",
+    "label": "NTU Women In Tech",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | NTU Women In Tech"
+    }
+  },
+  {
+    "id": "Team:NUS",
+    "type": "Team",
+    "label": "NUS",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | NUS"
+    }
+  },
+  {
+    "id": "Team:NUS Computing Club",
+    "type": "Team",
+    "label": "NUS Computing Club",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | NUS Computing Club"
+    }
+  },
+  {
+    "id": "Team:NUS Hackers",
+    "type": "Team",
+    "label": "NUS Hackers",
+    "meta": {
+      "entity_type": "community",
+      "url": "https://nushackers.org/",
+      "search_text": "Team | NUS Hackers | https://nushackers.org/ | community"
+    }
+  },
+  {
+    "id": "Team:NUS Raffles Hall",
+    "type": "Team",
+    "label": "NUS Raffles Hall",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | NUS Raffles Hall"
+    }
+  },
+  {
+    "id": "Team:NUS Statistics and Data Science Society",
+    "type": "Team",
+    "label": "NUS Statistics and Data Science Society",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | NUS Statistics and Data Science Society"
+    }
+  },
+  {
+    "id": "Team:NYU Shanghai",
+    "type": "Team",
+    "label": "NYU Shanghai",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | NYU Shanghai"
+    }
+  },
+  {
+    "id": "Team:Nano Labs",
+    "type": "Team",
+    "label": "Nano Labs",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Nano Labs"
+    }
+  },
+  {
+    "id": "Team:National University of Singapore",
+    "type": "Team",
+    "label": "National University of Singapore",
+    "meta": {
+      "entity_type": "university",
+      "url": "https://www.nus.edu.sg/",
+      "search_text": "Team | National University of Singapore | https://www.nus.edu.sg/ | university"
+    }
+  },
+  {
+    "id": "Team:New Energy Nexus",
+    "type": "Team",
+    "label": "New Energy Nexus",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | New Energy Nexus"
+    }
+  },
+  {
+    "id": "Team:Nippon Foundation",
+    "type": "Team",
+    "label": "Nippon Foundation",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Nippon Foundation"
+    }
+  },
+  {
+    "id": "Team:Nvidia",
+    "type": "Team",
+    "label": "Nvidia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Nvidia"
+    }
+  },
+  {
+    "id": "Team:OJK Indonesia",
+    "type": "Team",
+    "label": "OJK Indonesia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | OJK Indonesia"
+    }
+  },
+  {
+    "id": "Team:OpenAI",
+    "type": "Team",
+    "label": "OpenAI",
+    "meta": {
+      "entity_type": "company",
+      "url": "https://openai.com/",
+      "search_text": "Team | OpenAI | https://openai.com/ | company"
+    }
+  },
+  {
+    "id": "Team:OpenAI Codex hackathon participants",
+    "type": "Team",
+    "label": "OpenAI Codex hackathon participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | OpenAI Codex hackathon participants"
+    }
+  },
+  {
+    "id": "Team:OpenAI Developers",
+    "type": "Team",
+    "label": "OpenAI Developers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | OpenAI Developers"
+    }
+  },
+  {
+    "id": "Team:OpenAI community",
+    "type": "Team",
+    "label": "OpenAI community",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | OpenAI community"
+    }
+  },
+  {
+    "id": "Team:OpenBuild",
+    "type": "Team",
+    "label": "OpenBuild",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | OpenBuild"
+    }
+  },
+  {
+    "id": "Team:OpenClaw Jakarta community",
+    "type": "Team",
+    "label": "OpenClaw Jakarta community",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | OpenClaw Jakarta community"
+    }
+  },
+  {
+    "id": "Team:PES University",
+    "type": "Team",
+    "label": "PES University",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | PES University"
+    }
+  },
+  {
+    "id": "Team:PINUS",
+    "type": "Team",
+    "label": "PINUS",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | PINUS"
+    }
+  },
+  {
+    "id": "Team:PayNet",
+    "type": "Team",
+    "label": "PayNet",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | PayNet"
+    }
+  },
+  {
+    "id": "Team:Peking University (北京大学)",
+    "type": "Team",
+    "label": "Peking University (北京大学)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Peking University (北京大学)"
+    }
+  },
+  {
+    "id": "Team:Pharmaceutical Society of Singapore",
+    "type": "Team",
+    "label": "Pharmaceutical Society of Singapore",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Pharmaceutical Society of Singapore"
+    }
+  },
+  {
+    "id": "Team:Product Hunt",
+    "type": "Team",
+    "label": "Product Hunt",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Product Hunt"
+    }
+  },
+  {
+    "id": "Team:Product Hunt community",
+    "type": "Team",
+    "label": "Product Hunt community",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Product Hunt community"
+    }
+  },
+  {
+    "id": "Team:RH Developers",
+    "type": "Team",
+    "label": "RH Developers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | RH Developers"
+    }
+  },
+  {
+    "id": "Team:Reddit",
+    "type": "Team",
+    "label": "Reddit",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Reddit"
+    }
+  },
+  {
+    "id": "Team:Reddit Daily Games Hackathon judges",
+    "type": "Team",
+    "label": "Reddit Daily Games Hackathon judges",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Reddit Daily Games Hackathon judges"
+    }
+  },
+  {
+    "id": "Team:Relawan TIK Bojonegoro (mentioned)",
+    "type": "Team",
+    "label": "Relawan TIK Bojonegoro (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Relawan TIK Bojonegoro (mentioned)"
+    }
+  },
+  {
+    "id": "Team:SEA-LION (mentioned use case focus)",
+    "type": "Team",
+    "label": "SEA-LION (mentioned use case focus)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | SEA-LION (mentioned use case focus)"
+    }
+  },
+  {
+    "id": "Team:SUTD students",
+    "type": "Team",
+    "label": "SUTD students",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | SUTD students"
+    }
+  },
+  {
+    "id": "Team:SXSW community",
+    "type": "Team",
+    "label": "SXSW community",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | SXSW community"
+    }
+  },
+  {
+    "id": "Team:Santa Clara University",
+    "type": "Team",
+    "label": "Santa Clara University",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Santa Clara University"
+    }
+  },
+  {
+    "id": "Team:SenseTime (mentioned)",
+    "type": "Team",
+    "label": "SenseTime (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | SenseTime (mentioned)"
+    }
+  },
+  {
+    "id": "Team:Seoul Tech Impact",
+    "type": "Team",
+    "label": "Seoul Tech Impact",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Seoul Tech Impact"
+    }
+  },
+  {
+    "id": "Team:Singapore FinTech Association",
+    "type": "Team",
+    "label": "Singapore FinTech Association",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Singapore FinTech Association"
+    }
+  },
+  {
+    "id": "Team:Singapore Management University",
+    "type": "Team",
+    "label": "Singapore Management University",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Singapore Management University"
+    }
+  },
+  {
+    "id": "Team:Singapore University of Social Sciences",
+    "type": "Team",
+    "label": "Singapore University of Social Sciences",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Singapore University of Social Sciences"
+    }
+  },
+  {
+    "id": "Team:Stanford student community (participants)",
+    "type": "Team",
+    "label": "Stanford student community (participants)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Stanford student community (participants)"
+    }
+  },
+  {
+    "id": "Team:StashAway",
+    "type": "Team",
+    "label": "StashAway",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | StashAway"
+    }
+  },
+  {
+    "id": "Team:Streamlit",
+    "type": "Team",
+    "label": "Streamlit",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Streamlit"
+    }
+  },
+  {
+    "id": "Team:Sui Indonesia",
+    "type": "Team",
+    "label": "Sui Indonesia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Sui Indonesia"
+    }
+  },
+  {
+    "id": "Team:Sui Malaysia",
+    "type": "Team",
+    "label": "Sui Malaysia",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Sui Malaysia"
+    }
+  },
+  {
+    "id": "Team:THUSAST",
+    "type": "Team",
+    "label": "THUSAST",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | THUSAST"
+    }
+  },
+  {
+    "id": "Team:TPM",
+    "type": "Team",
+    "label": "TPM",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TPM"
+    }
+  },
+  {
+    "id": "Team:TechCrunch (mentioned)",
+    "type": "Team",
+    "label": "TechCrunch (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TechCrunch (mentioned)"
+    }
+  },
+  {
+    "id": "Team:TechNode (mentioned)",
+    "type": "Team",
+    "label": "TechNode (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TechNode (mentioned)"
+    }
+  },
+  {
+    "id": "Team:Temasek",
+    "type": "Team",
+    "label": "Temasek",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Temasek"
+    }
+  },
+  {
+    "id": "Team:Temasek staff",
+    "type": "Team",
+    "label": "Temasek staff",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Temasek staff"
+    }
+  },
+  {
+    "id": "Team:Tenity",
+    "type": "Team",
+    "label": "Tenity",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Tenity"
+    }
+  },
+  {
+    "id": "Team:TinTinLand",
+    "type": "Team",
+    "label": "TinTinLand",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TinTinLand"
+    }
+  },
+  {
+    "id": "Team:TinyFish",
+    "type": "Team",
+    "label": "TinyFish",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TinyFish"
+    }
+  },
+  {
+    "id": "Team:TreeHacks",
+    "type": "Team",
+    "label": "TreeHacks",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TreeHacks"
+    }
+  },
+  {
+    "id": "Team:TreeHacks 2026 participants",
+    "type": "Team",
+    "label": "TreeHacks 2026 participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TreeHacks 2026 participants"
+    }
+  },
+  {
+    "id": "Team:TreeHacks organizers",
+    "type": "Team",
+    "label": "TreeHacks organizers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | TreeHacks organizers"
+    }
+  },
+  {
+    "id": "Team:Tsinghua University",
+    "type": "Team",
+    "label": "Tsinghua University",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Tsinghua University"
+    }
+  },
+  {
+    "id": "Team:U.S. Department of State (Zoohackathon)",
+    "type": "Team",
+    "label": "U.S. Department of State (Zoohackathon)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | U.S. Department of State (Zoohackathon)"
+    }
+  },
+  {
+    "id": "Team:U.S. Embassy Kuala Lumpur (mentioned)",
+    "type": "Team",
+    "label": "U.S. Embassy Kuala Lumpur (mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | U.S. Embassy Kuala Lumpur (mentioned)"
+    }
+  },
+  {
+    "id": "Team:UK/SG students",
+    "type": "Team",
+    "label": "UK/SG students",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | UK/SG students"
+    }
+  },
+  {
+    "id": "Team:UKSAEI",
+    "type": "Team",
+    "label": "UKSAEI",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | UKSAEI"
+    }
+  },
+  {
+    "id": "Team:UNESCO",
+    "type": "Team",
+    "label": "UNESCO",
+    "meta": {
+      "entity_type": "igo",
+      "url": "https://www.unesco.org/",
+      "search_text": "Team | UNESCO | https://www.unesco.org/ | igo"
+    }
+  },
+  {
+    "id": "Team:UNIHACK",
+    "type": "Team",
+    "label": "UNIHACK",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | UNIHACK"
+    }
+  },
+  {
+    "id": "Team:UNSA Sheridan",
+    "type": "Team",
+    "label": "UNSA Sheridan",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | UNSA Sheridan"
+    }
+  },
+  {
+    "id": "Team:UPN \"Veteran\" Jakarta",
+    "type": "Team",
+    "label": "UPN \"Veteran\" Jakarta",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | UPN \"Veteran\" Jakarta"
+    }
+  },
+  {
+    "id": "Team:Uber",
+    "type": "Team",
+    "label": "Uber",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Uber"
+    }
+  },
+  {
+    "id": "Team:Ubuntu",
+    "type": "Team",
+    "label": "Ubuntu",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Ubuntu"
+    }
+  },
+  {
+    "id": "Team:Universitas Telkom",
+    "type": "Team",
+    "label": "Universitas Telkom",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Universitas Telkom"
+    }
+  },
+  {
+    "id": "Team:University of Malaysia Sabah",
+    "type": "Team",
+    "label": "University of Malaysia Sabah",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | University of Malaysia Sabah"
+    }
+  },
+  {
+    "id": "Team:Vercel",
+    "type": "Team",
+    "label": "Vercel",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Vercel"
+    }
+  },
+  {
+    "id": "Team:Wanda Internet Technology Group",
+    "type": "Team",
+    "label": "Wanda Internet Technology Group",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Wanda Internet Technology Group"
+    }
+  },
+  {
+    "id": "Team:Xircus WEB3 Protocol",
+    "type": "Team",
+    "label": "Xircus WEB3 Protocol",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Xircus WEB3 Protocol"
+    }
+  },
+  {
+    "id": "Team:Y Combinator",
+    "type": "Team",
+    "label": "Y Combinator",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Y Combinator"
+    }
+  },
+  {
+    "id": "Team:YC (accelerator)",
+    "type": "Team",
+    "label": "YC (accelerator)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | YC (accelerator)"
+    }
+  },
+  {
+    "id": "Team:Young Malaysian Engineers",
+    "type": "Team",
+    "label": "Young Malaysian Engineers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | Young Malaysian Engineers"
+    }
+  },
+  {
+    "id": "Team:bolt.new",
+    "type": "Team",
+    "label": "bolt.new",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | bolt.new"
+    }
+  },
+  {
+    "id": "Team:builders (participants)",
+    "type": "Team",
+    "label": "builders (participants)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | builders (participants)"
+    }
+  },
+  {
+    "id": "Team:busan",
+    "type": "Team",
+    "label": "busan",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | busan"
+    }
+  },
+  {
+    "id": "Team:community contributors",
+    "type": "Team",
+    "label": "community contributors",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | community contributors"
+    }
+  },
+  {
+    "id": "Team:community partners",
+    "type": "Team",
+    "label": "community partners",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | community partners"
+    }
+  },
+  {
+    "id": "Team:cypherX",
+    "type": "Team",
+    "label": "cypherX",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | cypherX"
+    }
+  },
+  {
+    "id": "Team:global makers",
+    "type": "Team",
+    "label": "global makers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | global makers"
+    }
+  },
+  {
+    "id": "Team:hack.init()",
+    "type": "Team",
+    "label": "hack.init()",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | hack.init()"
+    }
+  },
+  {
+    "id": "Team:hackathon organizers",
+    "type": "Team",
+    "label": "hackathon organizers",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | hackathon organizers"
+    }
+  },
+  {
+    "id": "Team:hackathon participants",
+    "type": "Team",
+    "label": "hackathon participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | hackathon participants"
+    }
+  },
+  {
+    "id": "Team:hackathon participants (2-5 per team)",
+    "type": "Team",
+    "label": "hackathon participants (2-5 per team)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | hackathon participants (2-5 per team)"
+    }
+  },
+  {
+    "id": "Team:hackathon winners",
+    "type": "Team",
+    "label": "hackathon winners",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | hackathon winners"
+    }
+  },
+  {
+    "id": "Team:india",
+    "type": "Team",
+    "label": "india",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | india"
+    }
+  },
+  {
+    "id": "Team:local MY creators",
+    "type": "Team",
+    "label": "local MY creators",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | local MY creators"
+    }
+  },
+  {
+    "id": "Team:nanyang technological university",
+    "type": "Team",
+    "label": "nanyang technological university",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | nanyang technological university"
+    }
+  },
+  {
+    "id": "Team:participants",
+    "type": "Team",
+    "label": "participants",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | participants"
+    }
+  },
+  {
+    "id": "Team:partners (TechCrunch/Webflow, mentioned)",
+    "type": "Team",
+    "label": "partners (TechCrunch/Webflow, mentioned)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | partners (TechCrunch/Webflow, mentioned)"
+    }
+  },
+  {
+    "id": "Team:r/Devvit (Reddit)",
+    "type": "Team",
+    "label": "r/Devvit (Reddit)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | r/Devvit (Reddit)"
+    }
+  },
+  {
+    "id": "Team:ruban sk",
+    "type": "Team",
+    "label": "ruban sk",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | ruban sk"
+    }
+  },
+  {
+    "id": "Team:sponsor engineers/mentors",
+    "type": "Team",
+    "label": "sponsor engineers/mentors",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | sponsor engineers/mentors"
+    }
+  },
+  {
+    "id": "Team:students (participants)",
+    "type": "Team",
+    "label": "students (participants)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | students (participants)"
+    }
+  },
+  {
+    "id": "Team:top 3 teams (winners)",
+    "type": "Team",
+    "label": "top 3 teams (winners)",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | top 3 teams (winners)"
+    }
+  },
+  {
+    "id": "Team:xAI",
+    "type": "Team",
+    "label": "xAI",
+    "meta": {
+      "entity_type": "—",
+      "url": "—",
+      "search_text": "Team | xAI"
+    }
+  }
+]

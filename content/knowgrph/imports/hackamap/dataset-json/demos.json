@@ -1,0 +1,4982 @@
+[
+  {
+    "id": "Demo:demo-001",
+    "type": "Demo",
+    "label": "AI prototypes",
+    "meta": {
+      "ref_id": "demo-001",
+      "event_id": "evt-001",
+      "url": "https://ibm-unsa-hackathon.devpost.com/",
+      "urls": [
+        "https://ibm-unsa-hackathon.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "global students need an accessible virtual venue to build AI solutions aligned to UN SDGs; teams need a short demo video requirement to communicate projects",
+      "solution": "3-day virtual hackathon; submission requires repo and 2–3 minute demo video",
+      "products": [
+        "AI prototypes",
+        "demo videos"
+      ],
+      "teams": [
+        "IBM Z Sheridan",
+        "UNSA Sheridan"
+      ],
+      "tech_stack": [
+        "AI tools (unspecified)",
+        "IBM Z + cloud (mentioned)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | AI prototypes | demo-001 | evt-001 | https://ibm-unsa-hackathon.devpost.com/ | https://ibm-unsa-hackathon.devpost.com/ | IBM Z Sheridan UNSA Sheridan | AI tools (unspecified) IBM Z + cloud (mentioned) | AI prototypes demo videos | global students need an accessible virtual venue to build AI solutions aligned to UN SDGs; teams need a short demo video requirement to communicate projects | 3-day virtual hackathon; submission requires repo and 2–3 minute demo video | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-002",
+    "type": "Demo",
+    "label": "text-to-video",
+    "meta": {
+      "ref_id": "demo-002",
+      "event_id": "evt-002",
+      "url": "https://x.com/BytePlusGlobal/status/2039621356195586166",
+      "urls": [
+        "https://x.com/BytePlusGlobal/status/2039621356195586166"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "content creators lack cinematic video production tools; high barrier to media production",
+      "solution": "AI-generated video from text and image input",
+      "products": [
+        "text-to-video",
+        "image-to-video",
+        "cinematic output"
+      ],
+      "teams": [
+        "Building with AI community",
+        "local MY creators"
+      ],
+      "tech_stack": [
+        "Seedance model",
+        "ModelArk"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "marketing"
+      ],
+      "search_text": "Demo | text-to-video | demo-002 | evt-002 | https://x.com/BytePlusGlobal/status/2039621356195586166 | https://x.com/BytePlusGlobal/status/2039621356195586166 | Building with AI community local MY creators | Seedance model ModelArk | text-to-video image-to-video cinematic output | content creators lack cinematic video production tools; high barrier to media production | AI-generated video from text and image input | low | marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-003",
+    "type": "Demo",
+    "label": "winner showcase",
+    "meta": {
+      "ref_id": "demo-003",
+      "event_id": "evt-003",
+      "url": "https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM",
+      "urls": [
+        "https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM",
+        "https://lnkd.in/g52ftBkm",
+        "https://lnkd.in/gKJ5hhZu",
+        "https://lnkd.in/gMKstPsh",
+        "https://lnkd.in/gbnrajW9",
+        "https://lnkd.in/g7FyRCDn",
+        "https://lnkd.in/gDeJvw6P"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders need a high-signal venue to ship autonomous web agents; winners need public recognition and links to demos/projects",
+      "solution": "in-person hackathon with a hard constraint (must require autonomous web agents) and awards for top projects",
+      "products": [
+        "winner showcase",
+        "autonomous web-agent demos",
+        "143 projects (reported)"
+      ],
+      "teams": [
+        "TinyFish",
+        "Acacia AI Society",
+        "NUS",
+        "350+ hackers (reported)"
+      ],
+      "tech_stack": [
+        "TinyFish web agents",
+        "OpenAI (powered by, mentioned)"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "linkedin",
+        "winners-showcase",
+        "demo-links"
+      ],
+      "search_text": "Demo | winner showcase | demo-003 | evt-003 | https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM | https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM https://lnkd.in/g52ftBkm https://lnkd.in/gKJ5hhZu https://lnkd.in/gMKstPsh https://lnkd.in/gbnrajW9 https://lnkd.in/g7FyRCDn https://lnkd.in/gDeJvw6P | TinyFish Acacia AI Society NUS 350+ hackers (reported) | TinyFish web agents OpenAI (powered by, mentioned) | winner showcase autonomous web-agent demos 143 projects (reported) | builders need a high-signal venue to ship autonomous web agents; winners need public recognition and links to demos/projects | in-person hackathon with a hard constraint (must require autonomous web agents) and awards for top projects | medium | linkedin winners-showcase demo-links"
+    }
+  },
+  {
+    "id": "Demo:demo-004",
+    "type": "Demo",
+    "label": "AI agents for SDLC",
+    "meta": {
+      "ref_id": "demo-004",
+      "event_id": "evt-004",
+      "url": "https://x.com/devpost/status/2020965804687446360",
+      "urls": [
+        "https://x.com/devpost/status/2020965804687446360"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "teams need to operationalize AI beyond code generation; orgs want agents for planning/security/compliance/deployments",
+      "solution": "hackathon encouraging teams to build workflow agents inside GitLab; prizes and deadline",
+      "products": [
+        "AI agents for SDLC",
+        "workflow automation"
+      ],
+      "teams": [
+        "Devpost",
+        "GitLab"
+      ],
+      "tech_stack": [
+        "GitLab workflows"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | AI agents for SDLC | demo-004 | evt-004 | https://x.com/devpost/status/2020965804687446360 | https://x.com/devpost/status/2020965804687446360 | Devpost GitLab | GitLab workflows | AI agents for SDLC workflow automation | teams need to operationalize AI beyond code generation; orgs want agents for planning/security/compliance/deployments | hackathon encouraging teams to build workflow agents inside GitLab; prizes and deadline | medium | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-005",
+    "type": "Demo",
+    "label": "AI filmmaking tool testing",
+    "meta": {
+      "ref_id": "demo-005",
+      "event_id": "evt-005",
+      "url": "https://x.com/meh_agarwal/status/2033596708513341710",
+      "urls": [
+        "https://x.com/meh_agarwal/status/2033596708513341710"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "filmmakers/creators need fast ways to produce short films; teams need rapid feedback on AI filmmaking tools under tight time constraints",
+      "solution": "AI filmmaking hackathon format enabling teams to create films in <3 hours using an AI tool",
+      "products": [
+        "AI filmmaking tool testing",
+        "rapid short-film creation"
+      ],
+      "teams": [
+        "SXSW community",
+        "KoyalAI",
+        "100+ filmmakers"
+      ],
+      "tech_stack": [
+        "KoyalAI"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "community",
+        "event-recap"
+      ],
+      "search_text": "Demo | AI filmmaking tool testing | demo-005 | evt-005 | https://x.com/meh_agarwal/status/2033596708513341710 | https://x.com/meh_agarwal/status/2033596708513341710 | SXSW community KoyalAI 100+ filmmakers | KoyalAI | AI filmmaking tool testing rapid short-film creation | filmmakers/creators need fast ways to produce short films; teams need rapid feedback on AI filmmaking tools under tight time constraints | AI filmmaking hackathon format enabling teams to create films in <3 hours using an AI tool | medium | community event-recap"
+    }
+  },
+  {
+    "id": "Demo:demo-006",
+    "type": "Demo",
+    "label": "winner project gallery",
+    "meta": {
+      "ref_id": "demo-006",
+      "event_id": "evt-006",
+      "url": "https://hackai-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://hackai-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "AI hackathon submissions need a simple way to surface winners and demos; participants need a page to browse winning projects",
+      "solution": "Devpost project gallery showing winner ribbons and links to demos/projects",
+      "products": [
+        "winner project gallery",
+        "demo pages"
+      ],
+      "teams": [
+        "Hack AI organizers",
+        "participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "search_text": "Demo | winner project gallery | demo-006 | evt-006 | https://hackai-2026.devpost.com/project-gallery | https://hackai-2026.devpost.com/project-gallery | Hack AI organizers participants | Devpost | winner project gallery demo pages | AI hackathon submissions need a simple way to surface winners and demos; participants need a page to browse winning projects | Devpost project gallery showing winner ribbons and links to demos/projects | high | devpost project-gallery winners"
+    }
+  },
+  {
+    "id": "Demo:demo-007",
+    "type": "Demo",
+    "label": "rapid prototyping",
+    "meta": {
+      "ref_id": "demo-007",
+      "event_id": "evt-007",
+      "url": "https://x.com/romainhuet/status/2028586504407470503",
+      "urls": [
+        "https://x.com/romainhuet/status/2028586504407470503"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders need in-person hackathons to quickly prototype with Codex and iOS XR stacks",
+      "solution": "post-hackathon winner shoutout; highlights rapid ARKit prototyping with Codex",
+      "products": [
+        "rapid prototyping",
+        "ARKit experience"
+      ],
+      "teams": [
+        "Codex hackathon participants",
+        "OpenAI community"
+      ],
+      "tech_stack": [
+        "Codex",
+        "ARKit (mentioned)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "community",
+        "event-recap"
+      ],
+      "search_text": "Demo | rapid prototyping | demo-007 | evt-007 | https://x.com/romainhuet/status/2028586504407470503 | https://x.com/romainhuet/status/2028586504407470503 | Codex hackathon participants OpenAI community | Codex ARKit (mentioned) | rapid prototyping ARKit experience | builders need in-person hackathons to quickly prototype with Codex and iOS XR stacks | post-hackathon winner shoutout; highlights rapid ARKit prototyping with Codex | low | community event-recap"
+    }
+  },
+  {
+    "id": "Demo:demo-008",
+    "type": "Demo",
+    "label": "agentic coding",
+    "meta": {
+      "ref_id": "demo-008",
+      "event_id": "evt-008",
+      "url": "https://x.com/OpenAIDevs/status/2028588617095057902",
+      "urls": [
+        "https://x.com/OpenAIDevs/status/2028588617095057902"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "APAC developers need hands-on access to Codex; teams need a venue to build and demo Codex projects quickly",
+      "solution": "in-person hackathon in Singapore with Codex; winners showcased their projects",
+      "products": [
+        "agentic coding",
+        "project demos",
+        "winner showcase"
+      ],
+      "teams": [
+        "OpenAI Developers",
+        "100+ developers (participants)"
+      ],
+      "tech_stack": [
+        "Codex"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "event-recap"
+      ],
+      "search_text": "Demo | agentic coding | demo-008 | evt-008 | https://x.com/OpenAIDevs/status/2028588617095057902 | https://x.com/OpenAIDevs/status/2028588617095057902 | OpenAI Developers 100+ developers (participants) | Codex | agentic coding project demos winner showcase | APAC developers need hands-on access to Codex; teams need a venue to build and demo Codex projects quickly | in-person hackathon in Singapore with Codex; winners showcased their projects | medium | announcement event-recap"
+    }
+  },
+  {
+    "id": "Demo:demo-009",
+    "type": "Demo",
+    "label": "multimodal hackathon",
+    "meta": {
+      "ref_id": "demo-009",
+      "event_id": "evt-009",
+      "url": "https://x.com/ycombinator/status/2028564751882871056",
+      "urls": [
+        "https://x.com/ycombinator/status/2028564751882871056"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "most AI apps don’t use the full multimodal stack; builders lack access to a complete multimodal toolchain for experiments",
+      "solution": "hackathon providing access to multiple multimodal models so teams can build end-to-end multimodal apps",
+      "products": [
+        "multimodal hackathon",
+        "model access",
+        "rapid prototyping"
+      ],
+      "teams": [
+        "Y Combinator",
+        "Google DeepMind"
+      ],
+      "tech_stack": [
+        "Gemini 3.1",
+        "Lyria",
+        "NanoBanana 2"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | multimodal hackathon | demo-009 | evt-009 | https://x.com/ycombinator/status/2028564751882871056 | https://x.com/ycombinator/status/2028564751882871056 | Y Combinator Google DeepMind | Gemini 3.1 Lyria NanoBanana 2 | multimodal hackathon model access rapid prototyping | most AI apps don’t use the full multimodal stack; builders lack access to a complete multimodal toolchain for experiments | hackathon providing access to multiple multimodal models so teams can build end-to-end multimodal apps | medium | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-010",
+    "type": "Demo",
+    "label": "winner project gallery",
+    "meta": {
+      "ref_id": "demo-010",
+      "event_id": "evt-010",
+      "url": "https://hack-for-humanity-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://hack-for-humanity-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "social-good hackathon demos get lost after judging; participants need a browseable set of winning projects",
+      "solution": "publish Devpost gallery of submissions with winner ribbons and linked demo pages",
+      "products": [
+        "winner project gallery",
+        "project demos"
+      ],
+      "teams": [
+        "Santa Clara University",
+        "Hack For Humanity participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "search_text": "Demo | winner project gallery | demo-010 | evt-010 | https://hack-for-humanity-2026.devpost.com/project-gallery | https://hack-for-humanity-2026.devpost.com/project-gallery | Santa Clara University Hack For Humanity participants | Devpost | winner project gallery project demos | social-good hackathon demos get lost after judging; participants need a browseable set of winning projects | publish Devpost gallery of submissions with winner ribbons and linked demo pages | high | devpost project-gallery winners"
+    }
+  },
+  {
+    "id": "Demo:demo-011",
+    "type": "Demo",
+    "label": "social-good prototypes",
+    "meta": {
+      "ref_id": "demo-011",
+      "event_id": "evt-011",
+      "url": "https://hack-for-humanity-2026.devpost.com/",
+      "urls": [
+        "https://hack-for-humanity-2026.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "students need a venue to build social-good prototypes with mentors; teams need clear submission artifacts (repo + demo video + slides)",
+      "solution": "social-good hackathon with workshops/mentors; submit repo and recommended demo video + slides",
+      "products": [
+        "social-good prototypes",
+        "demo videos",
+        "presentation slides"
+      ],
+      "teams": [
+        "Santa Clara University",
+        "participants"
+      ],
+      "tech_stack": [
+        "Devpost",
+        "Discord (mentioned)",
+        "GitHub (submission requirement)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | social-good prototypes | demo-011 | evt-011 | https://hack-for-humanity-2026.devpost.com/ | https://hack-for-humanity-2026.devpost.com/ | Santa Clara University participants | Devpost Discord (mentioned) GitHub (submission requirement) | social-good prototypes demo videos presentation slides | students need a venue to build social-good prototypes with mentors; teams need clear submission artifacts (repo + demo video + slides) | social-good hackathon with workshops/mentors; submit repo and recommended demo video + slides | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-012",
+    "type": "Demo",
+    "label": "demo video",
+    "meta": {
+      "ref_id": "demo-012",
+      "event_id": "evt-007",
+      "url": "https://x.com/agrimsingh/status/2027736501241700461",
+      "urls": [
+        "https://x.com/agrimsingh/status/2027736501241700461"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hackathon participants need quick ways to share demos and artifacts; teams need community visibility for hackathon builds",
+      "solution": "short demo/video sneak peek from an in-person Codex hackathon",
+      "products": [
+        "demo video",
+        "hackathon showcase"
+      ],
+      "teams": [
+        "OpenAI Codex hackathon participants"
+      ],
+      "tech_stack": [
+        "Codex"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "community",
+        "demo"
+      ],
+      "search_text": "Demo | demo video | demo-012 | evt-007 | https://x.com/agrimsingh/status/2027736501241700461 | https://x.com/agrimsingh/status/2027736501241700461 | OpenAI Codex hackathon participants | Codex | demo video hackathon showcase | hackathon participants need quick ways to share demos and artifacts; teams need community visibility for hackathon builds | short demo/video sneak peek from an in-person Codex hackathon | low | community demo"
+    }
+  },
+  {
+    "id": "Demo:demo-013",
+    "type": "Demo",
+    "label": "winner project gallery",
+    "meta": {
+      "ref_id": "demo-013",
+      "event_id": "evt-012",
+      "url": "https://developerweek-2026-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://developerweek-2026-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "large hybrid hackathons need an easy way to browse winners and demo projects after judging; teams need durable distribution for winning submissions",
+      "solution": "publish a Devpost project gallery with winner ribbons and project/demo pages",
+      "products": [
+        "winner project gallery",
+        "demo pages",
+        "project links"
+      ],
+      "teams": [
+        "DevNetwork",
+        "DeveloperWeek 2026 participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "search_text": "Demo | winner project gallery | demo-013 | evt-012 | https://developerweek-2026-hackathon.devpost.com/project-gallery | https://developerweek-2026-hackathon.devpost.com/project-gallery | DevNetwork DeveloperWeek 2026 participants | Devpost | winner project gallery demo pages project links | large hybrid hackathons need an easy way to browse winners and demo projects after judging; teams need durable distribution for winning submissions | publish a Devpost project gallery with winner ribbons and project/demo pages | high | devpost project-gallery winners"
+    }
+  },
+  {
+    "id": "Demo:demo-014",
+    "type": "Demo",
+    "label": "challenge tracks",
+    "meta": {
+      "ref_id": "demo-014",
+      "event_id": "evt-013",
+      "url": "https://developerweek-2026-hackathon.devpost.com/",
+      "urls": [
+        "https://developerweek-2026-hackathon.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "developers need a hybrid (online + in-person) venue to ship and demo projects with sponsors; teams need clear challenges and prize incentives",
+      "solution": "challenge-driven hackathon with online phase and in-person finals; submit demo video and project page",
+      "products": [
+        "challenge tracks",
+        "project submissions",
+        "demo video"
+      ],
+      "teams": [
+        "DevNetwork",
+        "DeveloperWeek community"
+      ],
+      "tech_stack": [
+        "Devpost",
+        "(various sponsor APIs)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | challenge tracks | demo-014 | evt-013 | https://developerweek-2026-hackathon.devpost.com/ | https://developerweek-2026-hackathon.devpost.com/ | DevNetwork DeveloperWeek community | Devpost (various sponsor APIs) | challenge tracks project submissions demo video | developers need a hybrid (online + in-person) venue to ship and demo projects with sponsors; teams need clear challenges and prize incentives | challenge-driven hackathon with online phase and in-person finals; submit demo video and project page | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-015",
+    "type": "Demo",
+    "label": "winner project gallery",
+    "meta": {
+      "ref_id": "demo-015",
+      "event_id": "evt-014",
+      "url": "https://treehacks-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://treehacks-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hackathon winners need durable distribution beyond the weekend; builders want a single page to browse winning demos",
+      "solution": "publish a Devpost project gallery with winner-marked submissions and links to demos/repos",
+      "products": [
+        "winner project gallery",
+        "demo pages"
+      ],
+      "teams": [
+        "TreeHacks organizers",
+        "TreeHacks 2026 participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "search_text": "Demo | winner project gallery | demo-015 | evt-014 | https://treehacks-2026.devpost.com/project-gallery | https://treehacks-2026.devpost.com/project-gallery | TreeHacks organizers TreeHacks 2026 participants | Devpost | winner project gallery demo pages | hackathon winners need durable distribution beyond the weekend; builders want a single page to browse winning demos | publish a Devpost project gallery with winner-marked submissions and links to demos/repos | high | devpost project-gallery winners"
+    }
+  },
+  {
+    "id": "Demo:demo-016",
+    "type": "Demo",
+    "label": "hackathon program",
+    "meta": {
+      "ref_id": "demo-016",
+      "event_id": "evt-015",
+      "url": "https://treehacks-2026.devpost.com/",
+      "urls": [
+        "https://treehacks-2026.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "collegiate builders need a high-signal venue to ship ambitious hacks quickly; teams want strong incentives and sponsor tracks",
+      "solution": "in-person collegiate hackathon with project submission + demos via Devpost; multiple sponsor prize tracks",
+      "products": [
+        "hackathon program",
+        "project gallery",
+        "prize tracks"
+      ],
+      "teams": [
+        "TreeHacks",
+        "Stanford student community (participants)"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | hackathon program | demo-016 | evt-015 | https://treehacks-2026.devpost.com/ | https://treehacks-2026.devpost.com/ | TreeHacks Stanford student community (participants) | Devpost | hackathon program project gallery prize tracks | collegiate builders need a high-signal venue to ship ambitious hacks quickly; teams want strong incentives and sponsor tracks | in-person collegiate hackathon with project submission + demos via Devpost; multiple sponsor prize tracks | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-017",
+    "type": "Demo",
+    "label": "winners announcement",
+    "meta": {
+      "ref_id": "demo-017",
+      "event_id": "evt-016",
+      "url": "https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/",
+      "urls": [
+        "https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "virtual hackathons need a transparent winners announcement and links to demo posts; developers need recognition + discoverability for winning demos",
+      "solution": "publish a winners announcement post with links to winning demo posts and the project gallery",
+      "products": [
+        "winners announcement",
+        "demo post links",
+        "project gallery links"
+      ],
+      "teams": [
+        "r/Devvit (Reddit)",
+        "Reddit Daily Games Hackathon judges",
+        "GameMaker"
+      ],
+      "tech_stack": [
+        "Reddit Devvit platform",
+        "Devpost (project gallery)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "reddit",
+        "winners-announcement"
+      ],
+      "search_text": "Demo | winners announcement | demo-017 | evt-016 | https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/ | https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/ | r/Devvit (Reddit) Reddit Daily Games Hackathon judges GameMaker | Reddit Devvit platform Devpost (project gallery) | winners announcement demo post links project gallery links | virtual hackathons need a transparent winners announcement and links to demo posts; developers need recognition + discoverability for winning demos | publish a winners announcement post with links to winning demo posts and the project gallery | high | reddit winners-announcement"
+    }
+  },
+  {
+    "id": "Demo:demo-018",
+    "type": "Demo",
+    "label": "winner project gallery",
+    "meta": {
+      "ref_id": "demo-018",
+      "event_id": "evt-017",
+      "url": "https://redditdailygames2026.devpost.com/project-gallery",
+      "urls": [
+        "https://redditdailygames2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "virtual hackathons need a canonical page to browse winning demos; participants want direct links to demo-ready projects",
+      "solution": "publish Devpost gallery with winner ribbons and links to project demo pages",
+      "products": [
+        "winner project gallery",
+        "demo pages"
+      ],
+      "teams": [
+        "Reddit",
+        "GameMaker",
+        "hackathon participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "search_text": "Demo | winner project gallery | demo-018 | evt-017 | https://redditdailygames2026.devpost.com/project-gallery | https://redditdailygames2026.devpost.com/project-gallery | Reddit GameMaker hackathon participants | Devpost | winner project gallery demo pages | virtual hackathons need a canonical page to browse winning demos; participants want direct links to demo-ready projects | publish Devpost gallery with winner ribbons and links to project demo pages | high | devpost project-gallery winners"
+    }
+  },
+  {
+    "id": "Demo:demo-019",
+    "type": "Demo",
+    "label": "daily games",
+    "meta": {
+      "ref_id": "demo-019",
+      "event_id": "evt-018",
+      "url": "https://redditdailygames2026.devpost.com/",
+      "urls": [
+        "https://redditdailygames2026.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "developers need a structured venue to build and demo interactive daily games on Reddit; teams need clear submission artifacts (app listing + demo post)",
+      "solution": "virtual hackathon on Reddit Devvit platform; submit app listing and demo post for judging",
+      "products": [
+        "daily games",
+        "demo posts",
+        "project gallery"
+      ],
+      "teams": [
+        "Reddit",
+        "GameMaker"
+      ],
+      "tech_stack": [
+        "Devvit Web",
+        "(React/Phaser/three.js or game engines mentioned)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | daily games | demo-019 | evt-018 | https://redditdailygames2026.devpost.com/ | https://redditdailygames2026.devpost.com/ | Reddit GameMaker | Devvit Web (React/Phaser/three.js or game engines mentioned) | daily games demo posts project gallery | developers need a structured venue to build and demo interactive daily games on Reddit; teams need clear submission artifacts (app listing + demo post) | virtual hackathon on Reddit Devvit platform; submit app listing and demo post for judging | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-020",
+    "type": "Demo",
+    "label": "winner project gallery",
+    "meta": {
+      "ref_id": "demo-020",
+      "event_id": "evt-019",
+      "url": "https://hacknroll2026.devpost.com/project-gallery",
+      "urls": [
+        "https://hacknroll2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hackathon outcomes are hard to discover after the event; teams need a public place to showcase demos and winners",
+      "solution": "publish a project gallery with winner ribbons and demo/project pages",
+      "products": [
+        "winner project gallery",
+        "demo pages",
+        "project links"
+      ],
+      "teams": [
+        "NUS Hackers",
+        "Hack&Roll 2026 participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project-gallery",
+        "winners"
+      ],
+      "search_text": "Demo | winner project gallery | demo-020 | evt-019 | https://hacknroll2026.devpost.com/project-gallery | https://hacknroll2026.devpost.com/project-gallery | NUS Hackers Hack&Roll 2026 participants | Devpost | winner project gallery demo pages project links | hackathon outcomes are hard to discover after the event; teams need a public place to showcase demos and winners | publish a project gallery with winner ribbons and demo/project pages | high | devpost project-gallery winners"
+    }
+  },
+  {
+    "id": "Demo:demo-021",
+    "type": "Demo",
+    "label": "student hackathon",
+    "meta": {
+      "ref_id": "demo-021",
+      "event_id": "evt-020",
+      "url": "https://hacknroll2026.devpost.com/",
+      "urls": [
+        "https://hacknroll2026.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging",
+      "solution": "24-hour student hackathon with open-ended builds; submissions and project gallery on Devpost",
+      "products": [
+        "student hackathon",
+        "project submissions",
+        "project gallery"
+      ],
+      "teams": [
+        "NUS Hackers",
+        "participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | student hackathon | demo-021 | evt-020 | https://hacknroll2026.devpost.com/ | https://hacknroll2026.devpost.com/ | NUS Hackers participants | Devpost | student hackathon project submissions project gallery | students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging | 24-hour student hackathon with open-ended builds; submissions and project gallery on Devpost | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-022",
+    "type": "Demo",
+    "label": "hackathon roundup",
+    "meta": {
+      "ref_id": "demo-022",
+      "event_id": "evt-021",
+      "url": "https://x.com/OurTinTinLand/status/1993995697256058967",
+      "urls": [
+        "https://x.com/OurTinTinLand/status/1993995697256058967"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders need timely discovery of hackathon opportunities; teams need a centralized shortlist of upcoming hackathons",
+      "solution": "curation post listing multiple hackathons with dates and links to register",
+      "products": [
+        "hackathon roundup",
+        "registration links"
+      ],
+      "teams": [
+        "TinTinLand"
+      ],
+      "tech_stack": [
+        "Web3 ecosystems (Casper/Solana/Arbitrum mentioned)"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "x.com",
+        "community",
+        "curation"
+      ],
+      "search_text": "Demo | hackathon roundup | demo-022 | evt-021 | https://x.com/OurTinTinLand/status/1993995697256058967 | https://x.com/OurTinTinLand/status/1993995697256058967 | TinTinLand | Web3 ecosystems (Casper/Solana/Arbitrum mentioned) | hackathon roundup registration links | builders need timely discovery of hackathon opportunities; teams need a centralized shortlist of upcoming hackathons | curation post listing multiple hackathons with dates and links to register | medium | x.com community curation"
+    }
+  },
+  {
+    "id": "Demo:demo-023",
+    "type": "Demo",
+    "label": "3D terrain flythrough",
+    "meta": {
+      "ref_id": "demo-023",
+      "event_id": "evt-022",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/",
+      "urls": [
+        "https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders need a venue to prototype and demo AI ideas in-person; hackathon teams want post-event visibility (repo + live demo)",
+      "solution": "project-demo recap post highlighting a hackathon build; shares repo + longer live demo",
+      "products": [
+        "3D terrain flythrough",
+        "Gemini tour guide",
+        "topo-map to 3D mesh pipeline"
+      ],
+      "teams": [
+        "ruban sk",
+        "Google DeepMind SG hackathon participants"
+      ],
+      "tech_stack": [
+        "Gemini (Live API mentioned)",
+        "Three.js",
+        "AWS terrain tiles",
+        "fal (Nano Banana Pro mentioned)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "project-demo"
+      ],
+      "search_text": "Demo | 3D terrain flythrough | demo-023 | evt-022 | https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/ | https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/ | ruban sk Google DeepMind SG hackathon participants | Gemini (Live API mentioned) Three.js AWS terrain tiles fal (Nano Banana Pro mentioned) | 3D terrain flythrough Gemini tour guide topo-map to 3D mesh pipeline | builders need a venue to prototype and demo AI ideas in-person; hackathon teams want post-event visibility (repo + live demo) | project-demo recap post highlighting a hackathon build; shares repo + longer live demo | low | linkedin project-demo"
+    }
+  },
+  {
+    "id": "Demo:demo-024",
+    "type": "Demo",
+    "label": "AI hackathon",
+    "meta": {
+      "ref_id": "demo-024",
+      "event_id": "evt-023",
+      "url": "https://x.com/therakyatpost/status/2001218375389769766",
+      "urls": [
+        "https://x.com/therakyatpost/status/2001218375389769766"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "teams want access to frontier AI tools for rapid prototyping; builders need a local venue to ship AI projects quickly",
+      "solution": "24-hour AI hackathon recap; highlights scale (projects built in one weekend)",
+      "products": [
+        "AI hackathon",
+        "project showcase/recap"
+      ],
+      "teams": [
+        "Cursor",
+        "Anthropic",
+        "Malaysia hackathon participants"
+      ],
+      "tech_stack": [
+        "Cursor",
+        "Anthropic (implied)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "media",
+        "event-recap"
+      ],
+      "search_text": "Demo | AI hackathon | demo-024 | evt-023 | https://x.com/therakyatpost/status/2001218375389769766 | https://x.com/therakyatpost/status/2001218375389769766 | Cursor Anthropic Malaysia hackathon participants | Cursor Anthropic (implied) | AI hackathon project showcase/recap | teams want access to frontier AI tools for rapid prototyping; builders need a local venue to ship AI projects quickly | 24-hour AI hackathon recap; highlights scale (projects built in one weekend) | low | media event-recap"
+    }
+  },
+  {
+    "id": "Demo:demo-025",
+    "type": "Demo",
+    "label": "mini hackathon",
+    "meta": {
+      "ref_id": "demo-025",
+      "event_id": "evt-024",
+      "url": "https://x.com/SuiCommunity_MY/status/2000233825423749530",
+      "urls": [
+        "https://x.com/SuiCommunity_MY/status/2000233825423749530"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders want structured bootcamps + hackathons to ship blockchain projects; teams need recognition and visibility for winners",
+      "solution": "mini hackathon results recap for Sui Bootcamp Indonesia (Jakarta)",
+      "products": [
+        "mini hackathon",
+        "bootcamp project results"
+      ],
+      "teams": [
+        "Sui Malaysia",
+        "Sui Indonesia",
+        "builders (participants)"
+      ],
+      "tech_stack": [
+        "Sui",
+        "Move"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "community",
+        "event-recap"
+      ],
+      "search_text": "Demo | mini hackathon | demo-025 | evt-024 | https://x.com/SuiCommunity_MY/status/2000233825423749530 | https://x.com/SuiCommunity_MY/status/2000233825423749530 | Sui Malaysia Sui Indonesia builders (participants) | Sui Move | mini hackathon bootcamp project results | builders want structured bootcamps + hackathons to ship blockchain projects; teams need recognition and visibility for winners | mini hackathon results recap for Sui Bootcamp Indonesia (Jakarta) | low | community event-recap"
+    }
+  },
+  {
+    "id": "Demo:demo-026",
+    "type": "Demo",
+    "label": "pitch deck submission",
+    "meta": {
+      "ref_id": "demo-026",
+      "event_id": "evt-025",
+      "url": "https://uksaei-hackathon.devpost.com/",
+      "urls": [
+        "https://uksaei-hackathon.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "UK and Singapore student teams need a venue to collaborate on impact entrepreneurship; teams need a structured pitch + judging format",
+      "solution": "online hackathon producing a startup concept and pitch deck for judges",
+      "products": [
+        "pitch deck submission",
+        "mentor-supported ideation"
+      ],
+      "teams": [
+        "UKSAEI",
+        "Singapore University of Social Sciences",
+        "UK/SG students"
+      ],
+      "tech_stack": [
+        "Devpost",
+        "Discord (mentioned)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | pitch deck submission | demo-026 | evt-025 | https://uksaei-hackathon.devpost.com/ | https://uksaei-hackathon.devpost.com/ | UKSAEI Singapore University of Social Sciences UK/SG students | Devpost Discord (mentioned) | pitch deck submission mentor-supported ideation | UK and Singapore student teams need a venue to collaborate on impact entrepreneurship; teams need a structured pitch + judging format | online hackathon producing a startup concept and pitch deck for judges | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-027",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-027",
+      "event_id": "evt-026",
+      "url": "https://cursor-hack-my.devpost.com/project-gallery",
+      "urls": [
+        "https://cursor-hack-my.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hackathon demo projects need a stable gallery for discovery; sponsor tracks need a place to list submissions",
+      "solution": "publish a Devpost project gallery as a central index of demo projects",
+      "products": [
+        "project gallery",
+        "demo projects"
+      ],
+      "teams": [
+        "Cursor",
+        "Anthropic",
+        "participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "devpost",
+        "project-gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-027 | evt-026 | https://cursor-hack-my.devpost.com/project-gallery | https://cursor-hack-my.devpost.com/project-gallery | Cursor Anthropic participants | Devpost | project gallery demo projects | hackathon demo projects need a stable gallery for discovery; sponsor tracks need a place to list submissions | publish a Devpost project gallery as a central index of demo projects | medium | devpost project-gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-028",
+    "type": "Demo",
+    "label": "in-person hackathon",
+    "meta": {
+      "ref_id": "demo-028",
+      "event_id": "evt-023",
+      "url": "https://cursor-hack-my.devpost.com/",
+      "urls": [
+        "https://cursor-hack-my.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders want a local venue to ship AI projects quickly; teams need incentives + credits to prototype with Cursor/Claude",
+      "solution": "24-hour in-person hackathon with sponsor tracks and prize categories; submit projects on Devpost",
+      "products": [
+        "in-person hackathon",
+        "sponsor tracks",
+        "project submissions"
+      ],
+      "teams": [
+        "Cursor",
+        "Anthropic",
+        "community partners",
+        "participants"
+      ],
+      "tech_stack": [
+        "Cursor",
+        "Anthropic API",
+        "Convex",
+        "Vercel",
+        "TiDB",
+        "ElevenLabs",
+        "LeanMCP (tracks mentioned)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | in-person hackathon | demo-028 | evt-023 | https://cursor-hack-my.devpost.com/ | https://cursor-hack-my.devpost.com/ | Cursor Anthropic community partners participants | Cursor Anthropic API Convex Vercel TiDB ElevenLabs LeanMCP (tracks mentioned) | in-person hackathon sponsor tracks project submissions | builders want a local venue to ship AI projects quickly; teams need incentives + credits to prototype with Cursor/Claude | 24-hour in-person hackathon with sponsor tracks and prize categories; submit projects on Devpost | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-029",
+    "type": "Demo",
+    "label": "hackathon program",
+    "meta": {
+      "ref_id": "demo-029",
+      "event_id": "evt-027",
+      "url": "https://x.com/xai/status/1987696575314104339",
+      "urls": [
+        "https://x.com/xai/status/1987696575314104339"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hardcore product builders need a fast way to prototype with frontier models; limited access to upcoming models/APIs outside special programs",
+      "solution": "time-boxed hackathon with exclusive early access to upcoming models and platform APIs",
+      "products": [
+        "hackathon program",
+        "early model/API access",
+        "rapid prototyping (24h)"
+      ],
+      "teams": [
+        "xAI"
+      ],
+      "tech_stack": [
+        "Grok models",
+        "X APIs"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | hackathon program | demo-029 | evt-027 | https://x.com/xai/status/1987696575314104339 | https://x.com/xai/status/1987696575314104339 | xAI | Grok models X APIs | hackathon program early model/API access rapid prototyping (24h) | hardcore product builders need a fast way to prototype with frontier models; limited access to upcoming models/APIs outside special programs | time-boxed hackathon with exclusive early access to upcoming models and platform APIs | medium | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-030",
+    "type": "Demo",
+    "label": "hackathon program",
+    "meta": {
+      "ref_id": "demo-030",
+      "event_id": "evt-028",
+      "url": "https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/",
+      "urls": [
+        "https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders need clear timelines and a venue to showcase demos after a hackathon; teams want global visibility and prizes",
+      "solution": "hybrid hackathon (online + Berlin) with a showcase day and prize pool",
+      "products": [
+        "hackathon program",
+        "project showcase day"
+      ],
+      "teams": [
+        "Cardano Foundation",
+        "sponsor engineers/mentors"
+      ],
+      "tech_stack": [
+        "Cardano ecosystem (implied)"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "reddit",
+        "announcement"
+      ],
+      "search_text": "Demo | hackathon program | demo-030 | evt-028 | https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/ | https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/ | Cardano Foundation sponsor engineers/mentors | Cardano ecosystem (implied) | hackathon program project showcase day | builders need clear timelines and a venue to showcase demos after a hackathon; teams want global visibility and prizes | hybrid hackathon (online + Berlin) with a showcase day and prize pool | medium | reddit announcement"
+    }
+  },
+  {
+    "id": "Demo:demo-031",
+    "type": "Demo",
+    "label": "24h hackathon",
+    "meta": {
+      "ref_id": "demo-031",
+      "event_id": "evt-029",
+      "url": "https://x.com/gabrielchua/status/1975949011409412425",
+      "urls": [
+        "https://x.com/gabrielchua/status/1975949011409412425"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders need a fast, high-signal way to ship projects in 24 hours; teams want credits/cash incentives to prototype rapidly",
+      "solution": "24-hour hackathon format with cash + tool credits to ship projects (Cursor hackathon)",
+      "products": [
+        "24h hackathon",
+        "project shipping"
+      ],
+      "teams": [
+        "@cursor_ai",
+        "hackathon organizers",
+        "participants"
+      ],
+      "tech_stack": [
+        "Cursor",
+        "AI dev tools (mentioned in post)"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | 24h hackathon | demo-031 | evt-029 | https://x.com/gabrielchua/status/1975949011409412425 | https://x.com/gabrielchua/status/1975949011409412425 | @cursor_ai hackathon organizers participants | Cursor AI dev tools (mentioned in post) | 24h hackathon project shipping | builders need a fast, high-signal way to ship projects in 24 hours; teams want credits/cash incentives to prototype rapidly | 24-hour hackathon format with cash + tool credits to ship projects (Cursor hackathon) | medium | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-032",
+    "type": "Demo",
+    "label": "project slides",
+    "meta": {
+      "ref_id": "demo-032",
+      "event_id": "evt-030",
+      "url": "https://cs-2025-hackathon-beta.devpost.com/",
+      "urls": [
+        "https://cs-2025-hackathon-beta.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "youth innovators need a structured program to go from ideation to prototype and launch; teams need prompts and a live demo/pitch artifact",
+      "solution": "design-thinking hackathon with workshops; requires slides and intro video (pitch or live demo)",
+      "products": [
+        "project slides",
+        "short intro video",
+        "prototype demo"
+      ],
+      "teams": [
+        "CNHK",
+        "Community Shaper participants"
+      ],
+      "tech_stack": [
+        "AI + emerging tech (unspecified)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | project slides | demo-032 | evt-030 | https://cs-2025-hackathon-beta.devpost.com/ | https://cs-2025-hackathon-beta.devpost.com/ | CNHK Community Shaper participants | AI + emerging tech (unspecified) | project slides short intro video prototype demo | youth innovators need a structured program to go from ideation to prototype and launch; teams need prompts and a live demo/pitch artifact | design-thinking hackathon with workshops; requires slides and intro video (pitch or live demo) | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-033",
+    "type": "Demo",
+    "label": "hackathon program",
+    "meta": {
+      "ref_id": "demo-033",
+      "event_id": "evt-031",
+      "url": "https://x.com/bank_indonesia/status/1964290193348772338",
+      "urls": [
+        "https://x.com/bank_indonesia/status/1964290193348772338"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "Indonesia needs innovation in digital finance and economic digitization; teams need a pathway from selection to final showcase",
+      "solution": "national hackathon program selecting finalists and progressing toward a final showcase",
+      "products": [
+        "hackathon program",
+        "finalist selection"
+      ],
+      "teams": [
+        "Bank Indonesia",
+        "OJK Indonesia"
+      ],
+      "tech_stack": [
+        "fintech (unspecified)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "announcement",
+        "government"
+      ],
+      "search_text": "Demo | hackathon program | demo-033 | evt-031 | https://x.com/bank_indonesia/status/1964290193348772338 | https://x.com/bank_indonesia/status/1964290193348772338 | Bank Indonesia OJK Indonesia | fintech (unspecified) | hackathon program finalist selection | Indonesia needs innovation in digital finance and economic digitization; teams need a pathway from selection to final showcase | national hackathon program selecting finalists and progressing toward a final showcase | low | announcement government"
+    }
+  },
+  {
+    "id": "Demo:demo-034",
+    "type": "Demo",
+    "label": "health-tech prototypes",
+    "meta": {
+      "ref_id": "demo-034",
+      "event_id": "evt-032",
+      "url": "https://hackitrx.devpost.com/",
+      "urls": [
+        "https://hackitrx.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "healthcare teams face burnout and rising care costs; builders need a structured venue to prototype health-tech solutions with clinical input",
+      "solution": "in-person healthcare hackathon with kickoff, video pitch submission, demo day pitching, and finals",
+      "products": [
+        "health-tech prototypes",
+        "demo day pitching",
+        "video pitch submissions"
+      ],
+      "teams": [
+        "Pharmaceutical Society of Singapore",
+        "hackathon participants (2-5 per team)"
+      ],
+      "tech_stack": [
+        "Cogniss (no-code platform, mentioned)",
+        "AWS (scaling support, mentioned)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | health-tech prototypes | demo-034 | evt-032 | https://hackitrx.devpost.com/ | https://hackitrx.devpost.com/ | Pharmaceutical Society of Singapore hackathon participants (2-5 per team) | Cogniss (no-code platform, mentioned) AWS (scaling support, mentioned) | health-tech prototypes demo day pitching video pitch submissions | healthcare teams face burnout and rising care costs; builders need a structured venue to prototype health-tech solutions with clinical input | in-person healthcare hackathon with kickoff, video pitch submission, demo day pitching, and finals | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-035",
+    "type": "Demo",
+    "label": "winner announcement",
+    "meta": {
+      "ref_id": "demo-035",
+      "event_id": "evt-033",
+      "url": "https://x.com/OpenBuildxyz/status/1963547236585148902",
+      "urls": [
+        "https://x.com/OpenBuildxyz/status/1963547236585148902"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hackathon participants need visibility and clear results after judging; teams want public winner lists and links to projects",
+      "solution": "publish hackathon winner announcement thread/list after a 2-day in-person hackathon",
+      "products": [
+        "winner announcement",
+        "project list"
+      ],
+      "teams": [
+        "OpenBuild",
+        "ETHShenzhen participants"
+      ],
+      "tech_stack": [
+        "Ethereum (implied)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | winner announcement | demo-035 | evt-033 | https://x.com/OpenBuildxyz/status/1963547236585148902 | https://x.com/OpenBuildxyz/status/1963547236585148902 | OpenBuild ETHShenzhen participants | Ethereum (implied) | winner announcement project list | hackathon participants need visibility and clear results after judging; teams want public winner lists and links to projects | publish hackathon winner announcement thread/list after a 2-day in-person hackathon | low | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-036",
+    "type": "Demo",
+    "label": "AI Gateway",
+    "meta": {
+      "ref_id": "demo-036",
+      "event_id": "evt-034",
+      "url": "https://x.com/vercel/status/1959307873143665060",
+      "urls": [
+        "https://x.com/vercel/status/1959307873143665060"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "teams want a vendor-neutral way to build and ship AI agents; builders need incentives/credits to test agent ideas quickly",
+      "solution": "online hackathon encouraging builders to submit agents built with a hosted AI gateway; prizes in AI credits",
+      "products": [
+        "AI Gateway",
+        "hackathon challenge",
+        "agent submissions"
+      ],
+      "teams": [
+        "Vercel"
+      ],
+      "tech_stack": [
+        "Vercel",
+        "AI Gateway"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | AI Gateway | demo-036 | evt-034 | https://x.com/vercel/status/1959307873143665060 | https://x.com/vercel/status/1959307873143665060 | Vercel | Vercel AI Gateway | AI Gateway hackathon challenge agent submissions | teams want a vendor-neutral way to build and ship AI agents; builders need incentives/credits to test agent ideas quickly | online hackathon encouraging builders to submit agents built with a hosted AI gateway; prizes in AI credits | medium | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-037",
+    "type": "Demo",
+    "label": "open-model hackathon",
+    "meta": {
+      "ref_id": "demo-037",
+      "event_id": "evt-035",
+      "url": "https://x.com/devpost/status/1952806091022319670",
+      "urls": [
+        "https://x.com/devpost/status/1952806091022319670"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "builders want open(-weight) frontier-scale models to fine-tune and agentify; lack of structured events to showcase open-model builds",
+      "solution": "hackathon centered on building with open(-weight) reasoning models; prizes and deadline-driven build sprint",
+      "products": [
+        "open-model hackathon",
+        "fine-tuning",
+        "agentification"
+      ],
+      "teams": [
+        "Devpost",
+        "OpenAI"
+      ],
+      "tech_stack": [
+        "gpt-oss-120b",
+        "gpt-oss-20b"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | open-model hackathon | demo-037 | evt-035 | https://x.com/devpost/status/1952806091022319670 | https://x.com/devpost/status/1952806091022319670 | Devpost OpenAI | gpt-oss-120b gpt-oss-20b | open-model hackathon fine-tuning agentification | builders want open(-weight) frontier-scale models to fine-tune and agentify; lack of structured events to showcase open-model builds | hackathon centered on building with open(-weight) reasoning models; prizes and deadline-driven build sprint | medium | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-038",
+    "type": "Demo",
+    "label": "social-good prototypes",
+    "meta": {
+      "ref_id": "demo-038",
+      "event_id": "evt-036",
+      "url": "https://lifehack-2025.devpost.com/",
+      "urls": [
+        "https://lifehack-2025.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "communities need tools to improve interconnectivity; students need a platform to prototype social-good solutions quickly",
+      "solution": "student hackathon with short build sprint and demo video submission",
+      "products": [
+        "social-good prototypes",
+        "demo video submission"
+      ],
+      "teams": [
+        "NUS Computing Club",
+        "students (participants)"
+      ],
+      "tech_stack": [
+        "GitHub (submission requirement)",
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | social-good prototypes | demo-038 | evt-036 | https://lifehack-2025.devpost.com/ | https://lifehack-2025.devpost.com/ | NUS Computing Club students (participants) | GitHub (submission requirement) Devpost | social-good prototypes demo video submission | communities need tools to improve interconnectivity; students need a platform to prototype social-good solutions quickly | student hackathon with short build sprint and demo video submission | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-039",
+    "type": "Demo",
+    "label": "voice email assistant demo",
+    "meta": {
+      "ref_id": "demo-039",
+      "event_id": "evt-037",
+      "url": "https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc",
+      "urls": [
+        "https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "founders need credible distribution and validation for early demos; hackathon teams want pathways to accelerators",
+      "solution": "build and demo at a hackathon; winner prize includes accelerator interview; validate demand via landing page",
+      "products": [
+        "voice email assistant demo",
+        "landing page validation"
+      ],
+      "teams": [
+        "April team",
+        "MCP Hackathon participants",
+        "YC (accelerator)"
+      ],
+      "tech_stack": [
+        "AI assistant (unspecified)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "story"
+      ],
+      "search_text": "Demo | voice email assistant demo | demo-039 | evt-037 | https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc | https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc | April team MCP Hackathon participants YC (accelerator) | AI assistant (unspecified) | voice email assistant demo landing page validation | founders need credible distribution and validation for early demos; hackathon teams want pathways to accelerators | build and demo at a hackathon; winner prize includes accelerator interview; validate demand via landing page | low | producthunt story"
+    }
+  },
+  {
+    "id": "Demo:demo-040",
+    "type": "Demo",
+    "label": "winner announcement",
+    "meta": {
+      "ref_id": "demo-040",
+      "event_id": "evt-038",
+      "url": "https://x.com/devpost/status/1915951678274097425",
+      "urls": [
+        "https://x.com/devpost/status/1915951678274097425"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "devs need examples and recognition after hackathons conclude; winners need visibility for projects",
+      "solution": "announce winners and link to their projects after the hackathon wraps",
+      "products": [
+        "winner announcement",
+        "project links"
+      ],
+      "teams": [
+        "Azure",
+        "GitHub Copilot",
+        "Devpost",
+        "hackathon winners"
+      ],
+      "tech_stack": [
+        "Azure",
+        "GitHub Copilot"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "announcement",
+        "marketing"
+      ],
+      "search_text": "Demo | winner announcement | demo-040 | evt-038 | https://x.com/devpost/status/1915951678274097425 | https://x.com/devpost/status/1915951678274097425 | Azure GitHub Copilot Devpost hackathon winners | Azure GitHub Copilot | winner announcement project links | devs need examples and recognition after hackathons conclude; winners need visibility for projects | announce winners and link to their projects after the hackathon wraps | medium | announcement marketing"
+    }
+  },
+  {
+    "id": "Demo:demo-041",
+    "type": "Demo",
+    "label": "hackathon submissions thread",
+    "meta": {
+      "ref_id": "demo-041",
+      "event_id": "evt-039",
+      "url": "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions",
+      "urls": [
+        "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "makers need a lightweight format to ship and share demos quickly; hackathon participants want a place to submit and vote on projects",
+      "solution": "small in-person hackathon; participants submit projects in a Product Hunt thread and vote",
+      "products": [
+        "hackathon submissions thread",
+        "community voting"
+      ],
+      "teams": [
+        "Product Hunt community",
+        "bolt.new"
+      ],
+      "tech_stack": [
+        "bolt.new credits (mentioned)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "community-post"
+      ],
+      "search_text": "Demo | hackathon submissions thread | demo-041 | evt-039 | https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions | https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions | Product Hunt community bolt.new | bolt.new credits (mentioned) | hackathon submissions thread community voting | makers need a lightweight format to ship and share demos quickly; hackathon participants want a place to submit and vote on projects | small in-person hackathon; participants submit projects in a Product Hunt thread and vote | low | producthunt community-post"
+    }
+  },
+  {
+    "id": "Demo:demo-042",
+    "type": "Demo",
+    "label": "Bitcoin City visualization",
+    "meta": {
+      "ref_id": "demo-042",
+      "event_id": "evt-040",
+      "url": "https://bitcoin-indonesia-hackathon.devpost.com/",
+      "urls": [
+        "https://bitcoin-indonesia-hackathon.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "Indonesian builders need engaging ways to learn Bitcoin and Lightning; teams need a structured sprint to ship an educational demo",
+      "solution": "2-week online hackathon to build a live transaction visualization demo for Bitcoin and Lightning",
+      "products": [
+        "Bitcoin City visualization",
+        "Lightning transaction visualization",
+        "deployed website demo"
+      ],
+      "teams": [
+        "Bitcoin Indonesia",
+        "community contributors"
+      ],
+      "tech_stack": [
+        "GitHub (open-source requirement)",
+        "Devpost",
+        "(web stack unspecified)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | Bitcoin City visualization | demo-042 | evt-040 | https://bitcoin-indonesia-hackathon.devpost.com/ | https://bitcoin-indonesia-hackathon.devpost.com/ | Bitcoin Indonesia community contributors | GitHub (open-source requirement) Devpost (web stack unspecified) | Bitcoin City visualization Lightning transaction visualization deployed website demo | Indonesian builders need engaging ways to learn Bitcoin and Lightning; teams need a structured sprint to ship an educational demo | 2-week online hackathon to build a live transaction visualization demo for Bitcoin and Lightning | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-043",
+    "type": "Demo",
+    "label": "student hackathon",
+    "meta": {
+      "ref_id": "demo-043",
+      "event_id": "evt-041",
+      "url": "https://hacknroll2025.devpost.com/",
+      "urls": [
+        "https://hacknroll2025.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging",
+      "solution": "24-hour student hackathon with project submission + judging and winner announcement on Devpost",
+      "products": [
+        "student hackathon",
+        "project submissions",
+        "winners gallery"
+      ],
+      "teams": [
+        "NUS Hackers",
+        "participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | student hackathon | demo-043 | evt-041 | https://hacknroll2025.devpost.com/ | https://hacknroll2025.devpost.com/ | NUS Hackers participants | Devpost | student hackathon project submissions winners gallery | students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging | 24-hour student hackathon with project submission + judging and winner announcement on Devpost | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-044",
+    "type": "Demo",
+    "label": "hackathon program",
+    "meta": {
+      "ref_id": "demo-044",
+      "event_id": "evt-042",
+      "url": "https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j",
+      "urls": [
+        "https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "startups and developers need a venue to explore GenAI use cases in finance; teams need a demo day to present MVPs to judges",
+      "solution": "GenAI hackathon with registration and a scheduled Demo Day for participants",
+      "products": [
+        "hackathon program",
+        "demo day"
+      ],
+      "teams": [
+        "AWS",
+        "Singapore FinTech Association",
+        "MongoDB",
+        "Mission Plus",
+        "Nvidia",
+        "Tenity"
+      ],
+      "tech_stack": [
+        "GenAI (unspecified)"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [
+        "linkedin",
+        "announcement"
+      ],
+      "search_text": "Demo | hackathon program | demo-044 | evt-042 | https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j | https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j | AWS Singapore FinTech Association MongoDB Mission Plus Nvidia Tenity | GenAI (unspecified) | hackathon program demo day | startups and developers need a venue to explore GenAI use cases in finance; teams need a demo day to present MVPs to judges | GenAI hackathon with registration and a scheduled Demo Day for participants | medium | linkedin announcement"
+    }
+  },
+  {
+    "id": "Demo:demo-045",
+    "type": "Demo",
+    "label": "student hackathon",
+    "meta": {
+      "ref_id": "demo-045",
+      "event_id": "evt-043",
+      "url": "https://hacknroll2024.devpost.com/",
+      "urls": [
+        "https://hacknroll2024.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging",
+      "solution": "24-hour student hackathon with open-ended builds; submissions and project gallery on Devpost",
+      "products": [
+        "student hackathon",
+        "project submissions",
+        "project gallery"
+      ],
+      "teams": [
+        "NUS Hackers",
+        "participants"
+      ],
+      "tech_stack": [
+        "Devpost"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | student hackathon | demo-045 | evt-043 | https://hacknroll2024.devpost.com/ | https://hacknroll2024.devpost.com/ | NUS Hackers participants | Devpost | student hackathon project submissions project gallery | students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging | 24-hour student hackathon with open-ended builds; submissions and project gallery on Devpost | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-046",
+    "type": "Demo",
+    "label": "Streamlit hosted demos",
+    "meta": {
+      "ref_id": "demo-046",
+      "event_id": "evt-044",
+      "url": "https://my-streamlit-hack.devpost.com/",
+      "urls": [
+        "https://my-streamlit-hack.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "Malaysia student builders need lightweight hackathons to ship and demo data apps; teams need clear submission requirements (hosted demo + repo)",
+      "solution": "online hackathon to build and host a Streamlit app; submit hosted link and GitHub repo",
+      "products": [
+        "Streamlit hosted demos",
+        "GitHub repos"
+      ],
+      "teams": [
+        "Streamlit",
+        "Malaysia student community (participants)"
+      ],
+      "tech_stack": [
+        "Python",
+        "Streamlit"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | Streamlit hosted demos | demo-046 | evt-044 | https://my-streamlit-hack.devpost.com/ | https://my-streamlit-hack.devpost.com/ | Streamlit Malaysia student community (participants) | Python Streamlit | Streamlit hosted demos GitHub repos | Malaysia student builders need lightweight hackathons to ship and demo data apps; teams need clear submission requirements (hosted demo + repo) | online hackathon to build and host a Streamlit app; submit hosted link and GitHub repo | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-047",
+    "type": "Demo",
+    "label": "project demos",
+    "meta": {
+      "ref_id": "demo-047",
+      "event_id": "evt-045",
+      "url": "https://cny-hack-kuala-lumpur.devpost.com/",
+      "urls": [
+        "https://cny-hack-kuala-lumpur.devpost.com/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "local web3 builders need hands-on experience and an IRL pitch venue; teams need a hybrid online-to-IRL workflow to ship demos",
+      "solution": "week-long hackathon: hack online, then gather IRL for final judging and pitching",
+      "products": [
+        "project demos",
+        "IRL pitches",
+        "winner announcement"
+      ],
+      "teams": [
+        "ETH KL",
+        "cypherX",
+        "participants"
+      ],
+      "tech_stack": [
+        "web3 (various)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-page"
+      ],
+      "search_text": "Demo | project demos | demo-047 | evt-045 | https://cny-hack-kuala-lumpur.devpost.com/ | https://cny-hack-kuala-lumpur.devpost.com/ | ETH KL cypherX participants | web3 (various) | project demos IRL pitches winner announcement | local web3 builders need hands-on experience and an IRL pitch venue; teams need a hybrid online-to-IRL workflow to ship demos | week-long hackathon: hack online, then gather IRL for final judging and pitching | high | devpost event-page"
+    }
+  },
+  {
+    "id": "Demo:demo-048",
+    "type": "Demo",
+    "label": "winners list",
+    "meta": {
+      "ref_id": "demo-048",
+      "event_id": "evt-046",
+      "url": "https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon",
+      "urls": [
+        "https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "global hackathon winners need a canonical public announcement; makers want a quick summary of category and grand prize winners",
+      "solution": "newsletter-style winners announcement summarizing category winners and grand prize winners",
+      "products": [
+        "winners list",
+        "category winners",
+        "grand prize winners"
+      ],
+      "teams": [
+        "Product Hunt",
+        "global makers"
+      ],
+      "tech_stack": [
+        "Product Hunt newsletter"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "producthunt",
+        "newsletter",
+        "winners-announcement"
+      ],
+      "search_text": "Demo | winners list | demo-048 | evt-046 | https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon | https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon | Product Hunt global makers | Product Hunt newsletter | winners list category winners grand prize winners | global hackathon winners need a canonical public announcement; makers want a quick summary of category and grand prize winners | newsletter-style winners announcement summarizing category winners and grand prize winners | high | producthunt newsletter winners-announcement"
+    }
+  },
+  {
+    "id": "Demo:demo-049",
+    "type": "Demo",
+    "label": "19 GenAI prototypes",
+    "meta": {
+      "ref_id": "demo-049",
+      "event_id": "evt-047",
+      "url": "https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM",
+      "urls": [
+        "https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "enterprises need rapid ways to test GenAI for internal workflows; teams need a structured sprint to build working prototypes",
+      "solution": "five-day hackathon pairing staff with students to build GenAI prototypes for real problem statements",
+      "products": [
+        "19 GenAI prototypes",
+        "rapid experimentation format"
+      ],
+      "teams": [
+        "Temasek",
+        "SUTD students",
+        "Temasek staff"
+      ],
+      "tech_stack": [
+        "GenAI (unspecified)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "event-recap"
+      ],
+      "search_text": "Demo | 19 GenAI prototypes | demo-049 | evt-047 | https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM | https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM | Temasek SUTD students Temasek staff | GenAI (unspecified) | 19 GenAI prototypes rapid experimentation format | enterprises need rapid ways to test GenAI for internal workflows; teams need a structured sprint to build working prototypes | five-day hackathon pairing staff with students to build GenAI prototypes for real problem statements | low | linkedin event-recap"
+    }
+  },
+  {
+    "id": "Demo:demo-050",
+    "type": "Demo",
+    "label": "recap video",
+    "meta": {
+      "ref_id": "demo-050",
+      "event_id": "evt-048",
+      "url": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs",
+      "urls": [
+        "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hackathon organizers need a public recap to recognize winners and show outcomes; participants need post-event visibility to continue building",
+      "solution": "post-hackathon recap highlighting winners and outcomes; emphasizes continuing projects beyond the hackathon",
+      "products": [
+        "recap video",
+        "winner recognition",
+        "API credits for teams"
+      ],
+      "teams": [
+        "GovTech Singapore",
+        "OpenAI",
+        "top 3 teams (winners)"
+      ],
+      "tech_stack": [
+        "OpenAI APIs (credits mentioned)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "event-recap"
+      ],
+      "search_text": "Demo | recap video | demo-050 | evt-048 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs | GovTech Singapore OpenAI top 3 teams (winners) | OpenAI APIs (credits mentioned) | recap video winner recognition API credits for teams | hackathon organizers need a public recap to recognize winners and show outcomes; participants need post-event visibility to continue building | post-hackathon recap highlighting winners and outcomes; emphasizes continuing projects beyond the hackathon | low | linkedin event-recap"
+    }
+  },
+  {
+    "id": "Demo:demo-051",
+    "type": "Demo",
+    "label": "prototype demos",
+    "meta": {
+      "ref_id": "demo-051",
+      "event_id": "evt-049",
+      "url": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5",
+      "urls": [
+        "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "public sector teams need a safe, time-boxed environment to prototype AI-for-public-good use cases; builders need a stage + incentives to demo prototypes",
+      "solution": "one-day in-person hackathon with judging; winning teams receive API credits to continue building",
+      "products": [
+        "prototype demos",
+        "API credits for winners"
+      ],
+      "teams": [
+        "GovTech Singapore",
+        "OpenAI",
+        "hackathon participants"
+      ],
+      "tech_stack": [
+        "GPT-4o Realtime (mentioned)",
+        "o1 reasoning model (mentioned)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "linkedin",
+        "announcement"
+      ],
+      "search_text": "Demo | prototype demos | demo-051 | evt-049 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5 | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5 | GovTech Singapore OpenAI hackathon participants | GPT-4o Realtime (mentioned) o1 reasoning model (mentioned) | prototype demos API credits for winners | public sector teams need a safe, time-boxed environment to prototype AI-for-public-good use cases; builders need a stage + incentives to demo prototypes | one-day in-person hackathon with judging; winning teams receive API credits to continue building | low | linkedin announcement"
+    }
+  },
+  {
+    "id": "Demo:demo-052",
+    "type": "Demo",
+    "label": "online hackathon program",
+    "meta": {
+      "ref_id": "demo-052",
+      "event_id": "evt-050",
+      "url": "https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here",
+      "urls": [
+        "https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "makers need time-boxed formats to build and launch quickly; communities need inclusive online hackathons for makers of all disciplines",
+      "solution": "virtual makers festival/hackathon encouraging makers to build and launch; offers prizes and partners",
+      "products": [
+        "online hackathon program",
+        "prizes"
+      ],
+      "teams": [
+        "Product Hunt",
+        "partners (TechCrunch/Webflow, mentioned)"
+      ],
+      "tech_stack": [
+        "no-code + code (inclusive)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "story"
+      ],
+      "search_text": "Demo | online hackathon program | demo-052 | evt-050 | https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here | https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here | Product Hunt partners (TechCrunch/Webflow, mentioned) | no-code + code (inclusive) | online hackathon program prizes | makers need time-boxed formats to build and launch quickly; communities need inclusive online hackathons for makers of all disciplines | virtual makers festival/hackathon encouraging makers to build and launch; offers prizes and partners | low | producthunt story"
+    }
+  },
+  {
+    "id": "Demo:demo-053",
+    "type": "Demo",
+    "label": "AGI.Chat (open-source demo)",
+    "meta": {
+      "ref_id": "demo-053",
+      "event_id": "evt-051",
+      "url": "https://www.producthunt.com/products/agi-chat",
+      "urls": [
+        "https://www.producthunt.com/products/agi-chat"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "hackathon prototypes often lack distribution after the event; builders want a place to showcase hackathon-made demos",
+      "solution": "publish an open-source demo built during a hackathon on a discovery platform",
+      "products": [
+        "AGI.Chat (open-source demo)"
+      ],
+      "teams": [
+        "AGI.Chat makers"
+      ],
+      "tech_stack": [
+        "Cohere LLMs (mentioned)"
+      ],
+      "award": "—",
+      "confidence": "low",
+      "source_type": [
+        "producthunt",
+        "product-page"
+      ],
+      "search_text": "Demo | AGI.Chat (open-source demo) | demo-053 | evt-051 | https://www.producthunt.com/products/agi-chat | https://www.producthunt.com/products/agi-chat | AGI.Chat makers | Cohere LLMs (mentioned) | AGI.Chat (open-source demo) | hackathon prototypes often lack distribution after the event; builders want a place to showcase hackathon-made demos | publish an open-source demo built during a hackathon on a discovery platform | low | producthunt product-page"
+    }
+  },
+  {
+    "id": "Demo:demo-054",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-054",
+      "event_id": "evt-052",
+      "url": "https://hacknroll2023.devpost.com/project-gallery",
+      "urls": [
+        "https://hacknroll2023.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "NUS Hackers"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Open Ended"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "official-site",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-054 | evt-052 | https://hacknroll2023.devpost.com/project-gallery | https://hacknroll2023.devpost.com/project-gallery | NUS Hackers | Beginner Friendly Open Ended | project gallery | high | devpost official-site event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-055",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-055",
+      "event_id": "evt-053",
+      "url": "https://hack-for-good-2023.devpost.com/project-gallery",
+      "urls": [
+        "https://hack-for-good-2023.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Developer Student Clubs @NUS Computing"
+      ],
+      "tech_stack": [
+        "Productivity",
+        "Social Good",
+        "Web"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-055 | evt-053 | https://hack-for-good-2023.devpost.com/project-gallery | https://hack-for-good-2023.devpost.com/project-gallery | Developer Student Clubs @NUS Computing | Productivity Social Good Web | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-056",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-056",
+      "event_id": "evt-054",
+      "url": "https://youthxhack.devpost.com/project-gallery",
+      "urls": [
+        "https://youthxhack.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Cyber Youth Singapore"
+      ],
+      "tech_stack": [
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-056 | evt-054 | https://youthxhack.devpost.com/project-gallery | https://youthxhack.devpost.com/project-gallery | Cyber Youth Singapore | Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-057",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-057",
+      "event_id": "evt-055",
+      "url": "https://nus-ftm-ideation-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://nus-ftm-ideation-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "National University of Singapore"
+      ],
+      "tech_stack": [
+        "Blockchain",
+        "Fintech",
+        "Machine Learning/AI"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-057 | evt-055 | https://nus-ftm-ideation-hackathon.devpost.com/project-gallery | https://nus-ftm-ideation-hackathon.devpost.com/project-gallery | National University of Singapore | Blockchain Fintech Machine Learning/AI | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-058",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-058",
+      "event_id": "evt-056",
+      "url": "https://dothackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://dothackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Singapore Management University"
+      ],
+      "tech_stack": [
+        "Social Good",
+        "Education",
+        "Lifehacks"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-058 | evt-056 | https://dothackathon.devpost.com/project-gallery | https://dothackathon.devpost.com/project-gallery | Singapore Management University | Social Good Education Lifehacks | project gallery | high | devpost event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-059",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-059",
+      "event_id": "evt-057",
+      "url": "https://fossasia-unesco.devpost.com/project-gallery",
+      "urls": [
+        "https://fossasia-unesco.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "FOSSASIA",
+        "UNESCO"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-059 | evt-057 | https://fossasia-unesco.devpost.com/project-gallery | https://fossasia-unesco.devpost.com/project-gallery | FOSSASIA UNESCO | project gallery | high | devpost event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-060",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-060",
+      "event_id": "evt-058",
+      "url": "https://fossasia-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://fossasia-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "FOSSASIA",
+        "UNESCO"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-060 | evt-058 | https://fossasia-hackathon.devpost.com/project-gallery | https://fossasia-hackathon.devpost.com/project-gallery | FOSSASIA UNESCO | project gallery | high | devpost event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-061",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-061",
+      "event_id": "evt-059",
+      "url": "https://aws-hong-kong-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://aws-hong-kong-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "AWS Hong Kong"
+      ],
+      "tech_stack": [
+        "Machine Learning/AI"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-061 | evt-059 | https://aws-hong-kong-hackathon.devpost.com/project-gallery | https://aws-hong-kong-hackathon.devpost.com/project-gallery | AWS Hong Kong | Machine Learning/AI | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-062",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-062",
+      "event_id": "evt-060",
+      "url": "https://minimax-hackathon-in-hk.devpost.com/project-gallery",
+      "urls": [
+        "https://minimax-hackathon-in-hk.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "MiniMax"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "DevOps",
+        "Machine Learning/AI"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-062 | evt-060 | https://minimax-hackathon-in-hk.devpost.com/project-gallery | https://minimax-hackathon-in-hk.devpost.com/project-gallery | MiniMax | Beginner Friendly DevOps Machine Learning/AI | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-063",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-063",
+      "event_id": "evt-061",
+      "url": "https://hack4hk-23258.devpost.com/project-gallery",
+      "urls": [
+        "https://hack4hk-23258.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Hack4HK"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Low/No Code",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-063 | evt-061 | https://hack4hk-23258.devpost.com/project-gallery | https://hack4hk-23258.devpost.com/project-gallery | Hack4HK | Beginner Friendly Low/No Code Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-064",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-064",
+      "event_id": "evt-062",
+      "url": "https://odhack-hk-2018.devpost.com/project-gallery",
+      "urls": [
+        "https://odhack-hk-2018.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "eventbrite",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-064 | evt-062 | https://odhack-hk-2018.devpost.com/project-gallery | https://odhack-hk-2018.devpost.com/project-gallery | project gallery | high | devpost eventbrite project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-065",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-065",
+      "event_id": "evt-063",
+      "url": "https://googlecloudjapanaihackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://googlecloudjapanaihackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Google"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Enterprise"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-065 | evt-063 | https://googlecloudjapanaihackathon.devpost.com/project-gallery | https://googlecloudjapanaihackathon.devpost.com/project-gallery | Google | Beginner Friendly Machine Learning/AI Enterprise | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-067",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-067",
+      "event_id": "evt-065",
+      "url": "https://junctiontokyo2018.devpost.com/project-gallery",
+      "urls": [
+        "https://junctiontokyo2018.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-067 | evt-065 | https://junctiontokyo2018.devpost.com/project-gallery | https://junctiontokyo2018.devpost.com/project-gallery | project gallery | high | devpost event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-068",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-068",
+      "event_id": "evt-066",
+      "url": "https://makerpossible.devpost.com/project-gallery",
+      "urls": [
+        "https://makerpossible.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Israel Embassy Tokyo",
+        "Nippon Foundation"
+      ],
+      "tech_stack": [
+        "Health",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-068 | evt-066 | https://makerpossible.devpost.com/project-gallery | https://makerpossible.devpost.com/project-gallery | Israel Embassy Tokyo Nippon Foundation | Health Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-069",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-069",
+      "event_id": "evt-067",
+      "url": "https://seoulhacks.devpost.com/project-gallery",
+      "urls": [
+        "https://seoulhacks.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-069 | evt-067 | https://seoulhacks.devpost.com/project-gallery | https://seoulhacks.devpost.com/project-gallery | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-070",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-070",
+      "event_id": "evt-068",
+      "url": "https://students-ai-seoul-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://students-ai-seoul-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "AI Consensus"
+      ],
+      "tech_stack": [
+        "Education",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-070 | evt-068 | https://students-ai-seoul-hackathon.devpost.com/project-gallery | https://students-ai-seoul-hackathon.devpost.com/project-gallery | AI Consensus | Education Machine Learning/AI Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-071",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-071",
+      "event_id": "evt-069",
+      "url": "https://seoul-tech-impact-2024.devpost.com/project-gallery",
+      "urls": [
+        "https://seoul-tech-impact-2024.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Seoul Tech Impact"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "registration",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-071 | evt-069 | https://seoul-tech-impact-2024.devpost.com/project-gallery | https://seoul-tech-impact-2024.devpost.com/project-gallery | Seoul Tech Impact | Beginner Friendly Social Good | project gallery | high | devpost registration project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-073",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-073",
+      "event_id": "evt-071",
+      "url": "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery",
+      "urls": [
+        "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Centre for Networked Intelligence, IISc"
+      ],
+      "tech_stack": [
+        "Education",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-073 | evt-071 | https://iisc-ibm-india-ai-impact.devpost.com/project-gallery | https://iisc-ibm-india-ai-impact.devpost.com/project-gallery | Centre for Networked Intelligence, IISc | Education Machine Learning/AI Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-074",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-074",
+      "event_id": "evt-072",
+      "url": "https://hackindia.devpost.com/project-gallery",
+      "urls": [
+        "https://hackindia.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "PES University"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-074 | evt-072 | https://hackindia.devpost.com/project-gallery | https://hackindia.devpost.com/project-gallery | PES University | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-075",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-075",
+      "event_id": "evt-073",
+      "url": "https://indiasolarhackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://indiasolarhackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "New Energy Nexus"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-075 | evt-073 | https://indiasolarhackathon.devpost.com/project-gallery | https://indiasolarhackathon.devpost.com/project-gallery | New Energy Nexus | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-076",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-076",
+      "event_id": "evt-074",
+      "url": "https://ic-hack.devpost.com/project-gallery",
+      "urls": [
+        "https://ic-hack.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "IEEE India Council"
+      ],
+      "tech_stack": [
+        "Education",
+        "Health"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-076 | evt-074 | https://ic-hack.devpost.com/project-gallery | https://ic-hack.devpost.com/project-gallery | IEEE India Council | Education Health | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-077",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-077",
+      "event_id": "evt-075",
+      "url": "https://coding-cup.devpost.com/project-gallery",
+      "urls": [
+        "https://coding-cup.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "india"
+      ],
+      "tech_stack": [
+        "Blockchain",
+        "Machine Learning/AI",
+        "Web"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-077 | evt-075 | https://coding-cup.devpost.com/project-gallery | https://coding-cup.devpost.com/project-gallery | india | Blockchain Machine Learning/AI Web | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-078",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-078",
+      "event_id": "evt-076",
+      "url": "https://gh6.devpost.com/project-gallery",
+      "urls": [
+        "https://gh6.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Garuda Hacks"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-078 | evt-076 | https://gh6.devpost.com/project-gallery | https://gh6.devpost.com/project-gallery | Garuda Hacks | Beginner Friendly Machine Learning/AI Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-079",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-079",
+      "event_id": "evt-077",
+      "url": "https://garuda-hacks.devpost.com/project-gallery",
+      "urls": [
+        "https://garuda-hacks.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Garuda HQ"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-079 | evt-077 | https://garuda-hacks.devpost.com/project-gallery | https://garuda-hacks.devpost.com/project-gallery | Garuda HQ | Beginner Friendly Machine Learning/AI Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-080",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-080",
+      "event_id": "evt-078",
+      "url": "https://komodo-hacks.devpost.com/project-gallery",
+      "urls": [
+        "https://komodo-hacks.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Garuda HQ"
+      ],
+      "tech_stack": [
+        "Education"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-080 | evt-078 | https://komodo-hacks.devpost.com/project-gallery | https://komodo-hacks.devpost.com/project-gallery | Garuda HQ | Education | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-081",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-081",
+      "event_id": "evt-079",
+      "url": "https://hackidea.devpost.com/project-gallery",
+      "urls": [
+        "https://hackidea.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "TPM"
+      ],
+      "tech_stack": [
+        "Cybersecurity",
+        "E-commerce/Retail",
+        "Mobile"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-081 | evt-079 | https://hackidea.devpost.com/project-gallery | https://hackidea.devpost.com/project-gallery | TPM | Cybersecurity E-commerce/Retail Mobile | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-082",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-082",
+      "event_id": "evt-080",
+      "url": "https://bitcoin-indonesia-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://bitcoin-indonesia-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Bitcoin Indonesia"
+      ],
+      "tech_stack": [
+        "Blockchain",
+        "Education",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-082 | evt-080 | https://bitcoin-indonesia-hackathon.devpost.com/project-gallery | https://bitcoin-indonesia-hackathon.devpost.com/project-gallery | Bitcoin Indonesia | Blockchain Education Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-083",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-083",
+      "event_id": "evt-081",
+      "url": "https://build-with-deepmind.devpost.com/project-gallery",
+      "urls": [
+        "https://build-with-deepmind.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "GDG CLuod KL"
+      ],
+      "tech_stack": [
+        "Machine Learning/AI",
+        "Open Ended",
+        "Productivity"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-083 | evt-081 | https://build-with-deepmind.devpost.com/project-gallery | https://build-with-deepmind.devpost.com/project-gallery | GDG CLuod KL | Machine Learning/AI Open Ended Productivity | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-084",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-084",
+      "event_id": "evt-082",
+      "url": "https://mathworks-utm-2025.devpost.com/project-gallery",
+      "urls": [
+        "https://mathworks-utm-2025.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Mathworks"
+      ],
+      "tech_stack": [
+        "Machine Learning/AI"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-084 | evt-082 | https://mathworks-utm-2025.devpost.com/project-gallery | https://mathworks-utm-2025.devpost.com/project-gallery | Mathworks | Machine Learning/AI | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-085",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-085",
+      "event_id": "evt-083",
+      "url": "https://yme-hackathon-2021.devpost.com/project-gallery",
+      "urls": [
+        "https://yme-hackathon-2021.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Young Malaysian Engineers"
+      ],
+      "tech_stack": [
+        "Education",
+        "COVID-19",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-085 | evt-083 | https://yme-hackathon-2021.devpost.com/project-gallery | https://yme-hackathon-2021.devpost.com/project-gallery | Young Malaysian Engineers | Education COVID-19 Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-087",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-087",
+      "event_id": "evt-085",
+      "url": "https://dish-2019.devpost.com/project-gallery",
+      "urls": [
+        "https://dish-2019.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Blockdevs Asia"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-087 | evt-085 | https://dish-2019.devpost.com/project-gallery | https://dish-2019.devpost.com/project-gallery | Blockdevs Asia | project gallery | high | devpost event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-088",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-088",
+      "event_id": "evt-086",
+      "url": "https://hackbangph.devpost.com/project-gallery",
+      "urls": [
+        "https://hackbangph.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [
+        "Productivity",
+        "Lifehacks",
+        "COVID-19"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-088 | evt-086 | https://hackbangph.devpost.com/project-gallery | https://hackbangph.devpost.com/project-gallery | Productivity Lifehacks COVID-19 | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-089",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-089",
+      "event_id": "evt-087",
+      "url": "https://lotushacks2026.devpost.com/project-gallery",
+      "urls": [
+        "https://lotushacks2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Lotushacks"
+      ],
+      "tech_stack": [
+        "Beginner Friendly"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-089 | evt-087 | https://lotushacks2026.devpost.com/project-gallery | https://lotushacks2026.devpost.com/project-gallery | Lotushacks | Beginner Friendly | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-090",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-090",
+      "event_id": "evt-088",
+      "url": "https://vietnam-smart-energy-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://vietnam-smart-energy-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-090 | evt-088 | https://vietnam-smart-energy-hackathon.devpost.com/project-gallery | https://vietnam-smart-energy-hackathon.devpost.com/project-gallery | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-091",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-091",
+      "event_id": "evt-089",
+      "url": "https://unesco-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://unesco-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "UNESCO",
+        "FOSSASIA"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-091 | evt-089 | https://unesco-hackathon.devpost.com/project-gallery | https://unesco-hackathon.devpost.com/project-gallery | UNESCO FOSSASIA | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-092",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-092",
+      "event_id": "evt-090",
+      "url": "https://hackathonvietnam2014hanoi.devpost.com/project-gallery",
+      "urls": [
+        "https://hackathonvietnam2014hanoi.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Formation 8"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-092 | evt-090 | https://hackathonvietnam2014hanoi.devpost.com/project-gallery | https://hackathonvietnam2014hanoi.devpost.com/project-gallery | Formation 8 | project gallery | high | devpost event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-093",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-093",
+      "event_id": "evt-091",
+      "url": "https://hackathonvietnam2014hcmc.devpost.com/project-gallery",
+      "urls": [
+        "https://hackathonvietnam2014hcmc.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Formation 8"
+      ],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-093 | evt-091 | https://hackathonvietnam2014hcmc.devpost.com/project-gallery | https://hackathonvietnam2014hcmc.devpost.com/project-gallery | Formation 8 | project gallery | high | devpost event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-094",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-094",
+      "event_id": "evt-092",
+      "url": "https://smartenergyhackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://smartenergyhackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-094 | evt-092 | https://smartenergyhackathon.devpost.com/project-gallery | https://smartenergyhackathon.devpost.com/project-gallery | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-095",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-095",
+      "event_id": "evt-093",
+      "url": "https://smart-energy-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://smart-energy-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-095 | evt-093 | https://smart-energy-hackathon.devpost.com/project-gallery | https://smart-energy-hackathon.devpost.com/project-gallery | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-096",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-096",
+      "event_id": "evt-094",
+      "url": "https://seafood-trackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://seafood-trackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [],
+      "tech_stack": [
+        "Blockchain"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-096 | evt-094 | https://seafood-trackathon.devpost.com/project-gallery | https://seafood-trackathon.devpost.com/project-gallery | Blockchain | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-097",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-097",
+      "event_id": "evt-095",
+      "url": "https://unihack2025.devpost.com/project-gallery",
+      "urls": [
+        "https://unihack2025.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "UNIHACK"
+      ],
+      "tech_stack": [
+        "Open Ended"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "official-site",
+        "event-site",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-097 | evt-095 | https://unihack2025.devpost.com/project-gallery | https://unihack2025.devpost.com/project-gallery | UNIHACK | Open Ended | project gallery | high | devpost official-site event-site project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-098",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-098",
+      "event_id": "evt-096",
+      "url": "https://presence-platform-japan-2024.devpost.com/project-gallery",
+      "urls": [
+        "https://presence-platform-japan-2024.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Meta"
+      ],
+      "tech_stack": [
+        "AR/VR"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-098 | evt-096 | https://presence-platform-japan-2024.devpost.com/project-gallery | https://presence-platform-japan-2024.devpost.com/project-gallery | Meta | AR/VR | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-099",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-099",
+      "event_id": "evt-097",
+      "url": "https://presence-platform-seoul-2024.devpost.com/project-gallery",
+      "urls": [
+        "https://presence-platform-seoul-2024.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Meta"
+      ],
+      "tech_stack": [
+        "AR/VR"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-099 | evt-097 | https://presence-platform-seoul-2024.devpost.com/project-gallery | https://presence-platform-seoul-2024.devpost.com/project-gallery | Meta | AR/VR | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-100",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-100",
+      "event_id": "evt-098",
+      "url": "https://xircus-apr-hackathon-manila.devpost.com/project-gallery",
+      "urls": [
+        "https://xircus-apr-hackathon-manila.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Xircus WEB3 Protocol"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Blockchain",
+        "Low/No Code"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-100 | evt-098 | https://xircus-apr-hackathon-manila.devpost.com/project-gallery | https://xircus-apr-hackathon-manila.devpost.com/project-gallery | Xircus WEB3 Protocol | Beginner Friendly Blockchain Low/No Code | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-101",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-101",
+      "event_id": "evt-099",
+      "url": "https://hack4good-2024.devpost.com/project-gallery",
+      "urls": [
+        "https://hack4good-2024.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "National University of Singapore"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-101 | evt-099 | https://hack4good-2024.devpost.com/project-gallery | https://hack4good-2024.devpost.com/project-gallery | National University of Singapore | Beginner Friendly Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-102",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-102",
+      "event_id": "evt-100",
+      "url": "https://nus-datathon-2024-cat-b.devpost.com/project-gallery",
+      "urls": [
+        "https://nus-datathon-2024-cat-b.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "NUS Statistics and Data Science Society"
+      ],
+      "tech_stack": [
+        "Beginner Friendly"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-102 | evt-100 | https://nus-datathon-2024-cat-b.devpost.com/project-gallery | https://nus-datathon-2024-cat-b.devpost.com/project-gallery | NUS Statistics and Data Science Society | Beginner Friendly | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-103",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-103",
+      "event_id": "evt-101",
+      "url": "https://youthxhack2024.devpost.com/project-gallery",
+      "urls": [
+        "https://youthxhack2024.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Cyber Youth Singapore"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Open Ended",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-103 | evt-101 | https://youthxhack2024.devpost.com/project-gallery | https://youthxhack2024.devpost.com/project-gallery | Cyber Youth Singapore | Beginner Friendly Open Ended Social Good | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-104",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-104",
+      "event_id": "evt-102",
+      "url": "https://cloudhacks-2024.devpost.com/project-gallery",
+      "urls": [
+        "https://cloudhacks-2024.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Cloudhacks"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Open Ended"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-104 | evt-102 | https://cloudhacks-2024.devpost.com/project-gallery | https://cloudhacks-2024.devpost.com/project-gallery | Cloudhacks | Beginner Friendly Open Ended | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-105",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-105",
+      "event_id": "evt-103",
+      "url": "https://dive2024inbusan.devpost.com/project-gallery",
+      "urls": [
+        "https://dive2024inbusan.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "busan"
+      ],
+      "tech_stack": [
+        "Databases",
+        "DevOps",
+        "Enterprise"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-105 | evt-103 | https://dive2024inbusan.devpost.com/project-gallery | https://dive2024inbusan.devpost.com/project-gallery | busan | Databases DevOps Enterprise | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-106",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-106",
+      "event_id": "evt-104",
+      "url": "https://gh5.devpost.com/project-gallery",
+      "urls": [
+        "https://gh5.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Garuda Hacks"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Social Good",
+        "Machine Learning/AI"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-106 | evt-104 | https://gh5.devpost.com/project-gallery | https://gh5.devpost.com/project-gallery | Garuda Hacks | Beginner Friendly Social Good Machine Learning/AI | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-107",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-107",
+      "event_id": "evt-105",
+      "url": "https://onerecord-hkg.devpost.com/project-gallery",
+      "urls": [
+        "https://onerecord-hkg.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "IATA",
+        "Cathay Cargo",
+        "CHAMP Cargosystems"
+      ],
+      "tech_stack": [
+        "ONE Record",
+        "aviation logistics",
+        "APIs",
+        "AR/VR",
+        "Education",
+        "Low/No Code"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-107 | evt-105 | https://onerecord-hkg.devpost.com/project-gallery | https://onerecord-hkg.devpost.com/project-gallery | IATA Cathay Cargo CHAMP Cargosystems | ONE Record aviation logistics APIs AR/VR Education Low/No Code | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-108",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-108",
+      "event_id": "evt-106",
+      "url": "https://buhack-28545.devpost.com/project-gallery",
+      "urls": [
+        "https://buhack-28545.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "HKBU Coding Club",
+        "Hong Kong Baptist University (HKBU)"
+      ],
+      "tech_stack": [
+        "Digital Wellbeing",
+        "Productivity",
+        "Beginner Friendly",
+        "Web",
+        "Design"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-108 | evt-106 | https://buhack-28545.devpost.com/project-gallery | https://buhack-28545.devpost.com/project-gallery | HKBU Coding Club Hong Kong Baptist University (HKBU) | Digital Wellbeing Productivity Beginner Friendly Web Design | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-109",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-109",
+      "event_id": "evt-107",
+      "url": "https://rwa-demo-day.devpost.com/project-gallery",
+      "urls": [
+        "https://rwa-demo-day.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Nano Labs",
+        "BNB Chain",
+        "ICCombinator",
+        "ABGAasia",
+        "MetaEraCN"
+      ],
+      "tech_stack": [
+        "RWA",
+        "Web3",
+        "Blockchain"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-109 | evt-107 | https://rwa-demo-day.devpost.com/project-gallery | https://rwa-demo-day.devpost.com/project-gallery | Nano Labs BNB Chain ICCombinator ABGAasia MetaEraCN | RWA Web3 Blockchain | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-110",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-110",
+      "event_id": "evt-108",
+      "url": "https://elastic-forge-the-future.devpost.com/project-gallery",
+      "urls": [
+        "https://elastic-forge-the-future.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Elastic"
+      ],
+      "tech_stack": [
+        "Databases",
+        "IoT",
+        "Machine Learning/AI",
+        "Search",
+        "Observability",
+        "Security"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-110 | evt-108 | https://elastic-forge-the-future.devpost.com/project-gallery | https://elastic-forge-the-future.devpost.com/project-gallery | Elastic | Databases IoT Machine Learning/AI Search Observability Security | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-111",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-111",
+      "event_id": "evt-109",
+      "url": "https://pinus-hack-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://pinus-hack-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "PINUS"
+      ],
+      "tech_stack": [
+        "Machine Learning/AI",
+        "Mobile",
+        "Web",
+        "student hackathon"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-111 | evt-109 | https://pinus-hack-2026.devpost.com/project-gallery | https://pinus-hack-2026.devpost.com/project-gallery | PINUS | Machine Learning/AI Mobile Web student hackathon | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-112",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-112",
+      "event_id": "evt-110",
+      "url": "https://scds-techfest-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://scds-techfest-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "NTU SCDS"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Education",
+        "Productivity"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-112 | evt-110 | https://scds-techfest-2026.devpost.com/project-gallery | https://scds-techfest-2026.devpost.com/project-gallery | NTU SCDS | Beginner Friendly Education Productivity | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-113",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-113",
+      "event_id": "evt-111",
+      "url": "https://ntu-beyond-binary-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://ntu-beyond-binary-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "NTU Women In Tech"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Machine Learning/AI",
+        "Social Good",
+        "Ideathon",
+        "Hackathon"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-113 | evt-111 | https://ntu-beyond-binary-2026.devpost.com/project-gallery | https://ntu-beyond-binary-2026.devpost.com/project-gallery | NTU Women In Tech | Beginner Friendly Machine Learning/AI Social Good Ideathon Hackathon | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-114",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-114",
+      "event_id": "evt-112",
+      "url": "https://inter-hall-hackathon-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://inter-hall-hackathon-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "RH Developers",
+        "NUS Raffles Hall"
+      ],
+      "tech_stack": [
+        "Open Ended",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-114 | evt-112 | https://inter-hall-hackathon-2026.devpost.com/project-gallery | https://inter-hall-hackathon-2026.devpost.com/project-gallery | RH Developers NUS Raffles Hall | Open Ended Social Good | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-115",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-115",
+      "event_id": "evt-113",
+      "url": "https://build-for-impact-2026-28173.devpost.com/project-gallery",
+      "urls": [
+        "https://build-for-impact-2026-28173.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "BuildLearning (hackathon manager)",
+        "SEA-LION (mentioned use case focus)"
+      ],
+      "tech_stack": [
+        "Low/No Code",
+        "Social Good",
+        "AI prototyping",
+        "design thinking"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-115 | evt-113 | https://build-for-impact-2026-28173.devpost.com/project-gallery | https://build-for-impact-2026-28173.devpost.com/project-gallery | BuildLearning (hackathon manager) SEA-LION (mentioned use case focus) | Low/No Code Social Good AI prototyping design thinking | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-116",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-116",
+      "event_id": "evt-114",
+      "url": "https://international-prosolve-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://international-prosolve-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Artificial Intelligence Society (UiTM Shah Alam)",
+        "Globalite Solution"
+      ],
+      "tech_stack": [
+        "competitive programming",
+        "Education",
+        "Beginner Friendly",
+        "Machine Learning/AI (theme tag on listing)"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-116 | evt-114 | https://international-prosolve-2026.devpost.com/project-gallery | https://international-prosolve-2026.devpost.com/project-gallery | Artificial Intelligence Society (UiTM Shah Alam) Globalite Solution | competitive programming Education Beginner Friendly Machine Learning/AI (theme tag on listing) | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-117",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-117",
+      "event_id": "evt-115",
+      "url": "https://payhack-2025.devpost.com/project-gallery",
+      "urls": [
+        "https://payhack-2025.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "PayNet"
+      ],
+      "tech_stack": [
+        "Fintech",
+        "Machine Learning/AI",
+        "Cybersecurity",
+        "digital payments"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-117 | evt-115 | https://payhack-2025.devpost.com/project-gallery | https://payhack-2025.devpost.com/project-gallery | PayNet | Fintech Machine Learning/AI Cybersecurity digital payments | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-118",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-118",
+      "event_id": "evt-116",
+      "url": "https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery",
+      "urls": [
+        "https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "U.S. Department of State (Zoohackathon)",
+        "University of Malaysia Sabah",
+        "U.S. Embassy Kuala Lumpur (mentioned)"
+      ],
+      "tech_stack": [
+        "wildlife trafficking",
+        "Social Good",
+        "Machine Learning/AI",
+        "Communication"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-118 | evt-116 | https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery | https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery | U.S. Department of State (Zoohackathon) University of Malaysia Sabah U.S. Embassy Kuala Lumpur (mentioned) | wildlife trafficking Social Good Machine Learning/AI Communication | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-119",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-119",
+      "event_id": "evt-117",
+      "url": "https://make-for-the-planet.devpost.com/project-gallery",
+      "urls": [
+        "https://make-for-the-planet.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Conservation X Labs",
+        "International Marine Conservation Congress (IMCC5)"
+      ],
+      "tech_stack": [
+        "marine conservation",
+        "climate",
+        "prototype building"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-119 | evt-117 | https://make-for-the-planet.devpost.com/project-gallery | https://make-for-the-planet.devpost.com/project-gallery | Conservation X Labs International Marine Conservation Congress (IMCC5) | marine conservation climate prototype building | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-120",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-120",
+      "event_id": "evt-118",
+      "url": "https://indonesiamajuhackfest.devpost.com/project-gallery",
+      "urls": [
+        "https://indonesiamajuhackfest.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Komunitas Flutter Indonesia (mentioned)",
+        "Google Developers (mentioned)",
+        "Google"
+      ],
+      "tech_stack": [
+        "Flutter",
+        "Dart",
+        "Social Good",
+        "Indonesia"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-120 | evt-118 | https://indonesiamajuhackfest.devpost.com/project-gallery | https://indonesiamajuhackfest.devpost.com/project-gallery | Komunitas Flutter Indonesia (mentioned) Google Developers (mentioned) Google | Flutter Dart Social Good Indonesia | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-121",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-121",
+      "event_id": "evt-119",
+      "url": "https://bsj-fobisia-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://bsj-fobisia-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "BSJ Hackathon Team",
+        "FOBISIA (mentioned)"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Education",
+        "Lifehacks",
+        "FOBISIA schools"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-121 | evt-119 | https://bsj-fobisia-hackathon.devpost.com/project-gallery | https://bsj-fobisia-hackathon.devpost.com/project-gallery | BSJ Hackathon Team FOBISIA (mentioned) | Beginner Friendly Education Lifehacks FOBISIA schools | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-122",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-122",
+      "event_id": "evt-120",
+      "url": "https://hackgov.devpost.com/project-gallery",
+      "urls": [
+        "https://hackgov.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "HackGov (brand)"
+      ],
+      "tech_stack": [
+        "government",
+        "civic tech",
+        "data visualization"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-122 | evt-120 | https://hackgov.devpost.com/project-gallery | https://hackgov.devpost.com/project-gallery | HackGov (brand) | government civic tech data visualization | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-123",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-123",
+      "event_id": "evt-121",
+      "url": "https://dpp-2021.devpost.com/project-gallery",
+      "urls": [
+        "https://dpp-2021.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Universitas Telkom"
+      ],
+      "tech_stack": [
+        "Design",
+        "UX",
+        "student showcase"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-123 | evt-121 | https://dpp-2021.devpost.com/project-gallery | https://dpp-2021.devpost.com/project-gallery | Universitas Telkom | Design UX student showcase | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-124",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-124",
+      "event_id": "evt-122",
+      "url": "https://hackathonbojonegoro.devpost.com/project-gallery",
+      "urls": [
+        "https://hackathonbojonegoro.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Dinas Perindustrian dan Tenaga Kerja Kabupaten Bojonegoro (mentioned)",
+        "Relawan TIK Bojonegoro (mentioned)"
+      ],
+      "tech_stack": [
+        "Social Good",
+        "Cybersecurity",
+        "DevOps"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-124 | evt-122 | https://hackathonbojonegoro.devpost.com/project-gallery | https://hackathonbojonegoro.devpost.com/project-gallery | Dinas Perindustrian dan Tenaga Kerja Kabupaten Bojonegoro (mentioned) Relawan TIK Bojonegoro (mentioned) | Social Good Cybersecurity DevOps | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-125",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-125",
+      "event_id": "evt-123",
+      "url": "https://test-android-hackathon-2025.devpost.com/project-gallery",
+      "urls": [
+        "https://test-android-hackathon-2025.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "UPN \"Veteran\" Jakarta"
+      ],
+      "tech_stack": [
+        "Education",
+        "Health",
+        "Social Good"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-125 | evt-123 | https://test-android-hackathon-2025.devpost.com/project-gallery | https://test-android-hackathon-2025.devpost.com/project-gallery | UPN \"Veteran\" Jakarta | Education Health Social Good | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-126",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-126",
+      "event_id": "evt-124",
+      "url": "https://onerecord-szx.devpost.com/project-gallery",
+      "urls": [
+        "https://onerecord-szx.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "ICCS",
+        "IATA"
+      ],
+      "tech_stack": [
+        "Enterprise",
+        "IoT",
+        "Machine Learning/AI",
+        "aviation logistics",
+        "APIs"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-126 | evt-124 | https://onerecord-szx.devpost.com/project-gallery | https://onerecord-szx.devpost.com/project-gallery | ICCS IATA | Enterprise IoT Machine Learning/AI aviation logistics APIs | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-127",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-127",
+      "event_id": "evt-125",
+      "url": "https://hackdevs.devpost.com/project-gallery",
+      "urls": [
+        "https://hackdevs.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "BASIS Int'l School Shenzhen"
+      ],
+      "tech_stack": [
+        "Open Ended",
+        "Quantum"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-127 | evt-125 | https://hackdevs.devpost.com/project-gallery | https://hackdevs.devpost.com/project-gallery | BASIS Int'l School Shenzhen | Open Ended Quantum | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-128",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-128",
+      "event_id": "evt-126",
+      "url": "https://beijing-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://beijing-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Canonical",
+        "Ubuntu"
+      ],
+      "tech_stack": [
+        "Ubuntu",
+        "developer community"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-128 | evt-126 | https://beijing-hackathon.devpost.com/project-gallery | https://beijing-hackathon.devpost.com/project-gallery | Canonical Ubuntu | Ubuntu developer community | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-129",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-129",
+      "event_id": "evt-127",
+      "url": "https://hackpku2016.devpost.com/project-gallery",
+      "urls": [
+        "https://hackpku2016.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Peking University (北京大学)"
+      ],
+      "tech_stack": [
+        "student hackathon",
+        "innovation"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-129 | evt-127 | https://hackpku2016.devpost.com/project-gallery | https://hackpku2016.devpost.com/project-gallery | Peking University (北京大学) | student hackathon innovation | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-130",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-130",
+      "event_id": "evt-128",
+      "url": "https://junthu2018.devpost.com/project-gallery",
+      "urls": [
+        "https://junthu2018.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "THUSAST",
+        "Tsinghua University",
+        "Junction (mentioned)"
+      ],
+      "tech_stack": [
+        "Smart City",
+        "Second Brain",
+        "Care for Senior Citizens"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-130 | evt-128 | https://junthu2018.devpost.com/project-gallery | https://junthu2018.devpost.com/project-gallery | THUSAST Tsinghua University Junction (mentioned) | Smart City Second Brain Care for Senior Citizens | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-131",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-131",
+      "event_id": "evt-129",
+      "url": "https://uber-china-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://uber-china-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Uber",
+        "Mobvoi (mentioned)",
+        "SenseTime (mentioned)"
+      ],
+      "tech_stack": [
+        "Uber API",
+        "smart cities"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-131 | evt-129 | https://uber-china-hackathon.devpost.com/project-gallery | https://uber-china-hackathon.devpost.com/project-gallery | Uber Mobvoi (mentioned) SenseTime (mentioned) | Uber API smart cities | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-132",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-132",
+      "event_id": "evt-130",
+      "url": "https://tcsh-2016-hackathon.devpost.com/project-gallery",
+      "urls": [
+        "https://tcsh-2016-hackathon.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "TechCrunch (mentioned)",
+        "TechNode (mentioned)"
+      ],
+      "tech_stack": [
+        "startup",
+        "product design"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-132 | evt-130 | https://tcsh-2016-hackathon.devpost.com/project-gallery | https://tcsh-2016-hackathon.devpost.com/project-gallery | TechCrunch (mentioned) TechNode (mentioned) | startup product design | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-133",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-133",
+      "event_id": "evt-131",
+      "url": "https://hyperledger-shanghai.devpost.com/project-gallery",
+      "urls": [
+        "https://hyperledger-shanghai.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Wanda Internet Technology Group",
+        "IBM",
+        "Linux Foundation / Hyperledger"
+      ],
+      "tech_stack": [
+        "Blockchain",
+        "Hyperledger"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-133 | evt-131 | https://hyperledger-shanghai.devpost.com/project-gallery | https://hyperledger-shanghai.devpost.com/project-gallery | Wanda Internet Technology Group IBM Linux Foundation / Hyperledger | Blockchain Hyperledger | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-134",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-134",
+      "event_id": "evt-132",
+      "url": "https://hackinit.devpost.com/project-gallery",
+      "urls": [
+        "https://hackinit.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "hack.init()"
+      ],
+      "tech_stack": [
+        "youth hackathon",
+        "Artificial Intelligence",
+        "Hardware",
+        "IoT",
+        "AR/VR",
+        "Web Development"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-134 | evt-132 | https://hackinit.devpost.com/project-gallery | https://hackinit.devpost.com/project-gallery | hack.init() | youth hackathon Artificial Intelligence Hardware IoT AR/VR Web Development | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-135",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-135",
+      "event_id": "evt-133",
+      "url": "https://hacknyu-nyush.devpost.com/project-gallery",
+      "urls": [
+        "https://hacknyu-nyush.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "HackNYU",
+        "NYU Shanghai"
+      ],
+      "tech_stack": [
+        "student hackathon",
+        "Sustainability & Social Impact",
+        "Health and Well-Being",
+        "Educational Technology",
+        "Financial Empowerment"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-135 | evt-133 | https://hacknyu-nyush.devpost.com/project-gallery | https://hacknyu-nyush.devpost.com/project-gallery | HackNYU NYU Shanghai | student hackathon Sustainability & Social Impact Health and Well-Being Educational Technology Financial Empowerment | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-136",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-136",
+      "event_id": "evt-134",
+      "url": "https://hack-the-pearl.devpost.com/project-gallery",
+      "urls": [
+        "https://hack-the-pearl.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "NYU Shanghai"
+      ],
+      "tech_stack": [
+        "student-run",
+        "multi-theme hackathon"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "details/dates",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-136 | evt-134 | https://hack-the-pearl.devpost.com/project-gallery | https://hack-the-pearl.devpost.com/project-gallery | NYU Shanghai | student-run multi-theme hackathon | project gallery | high | devpost details/dates project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-137",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-137",
+      "event_id": "evt-135",
+      "url": "https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery",
+      "urls": [
+        "https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "AI Tinkerers Hong Kong"
+      ],
+      "tech_stack": [
+        "OpenClaw",
+        "ClawdBot",
+        "AI agents",
+        "builders",
+        "unhackathon"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [],
+      "search_text": "Demo | project gallery | demo-137 | evt-135 | https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery | https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery | AI Tinkerers Hong Kong | OpenClaw ClawdBot AI agents builders unhackathon | project gallery | medium"
+    }
+  },
+  {
+    "id": "Demo:demo-138",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-138",
+      "event_id": "evt-136",
+      "url": "https://camo.hku.hk/28-march-2026-openclaw-meet-up/",
+      "urls": [
+        "https://camo.hku.hk/28-march-2026-openclaw-meet-up/"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "HKU Centre for AI, Management and Organization (HKU CAMO)"
+      ],
+      "tech_stack": [
+        "OpenClaw",
+        "AI workflows",
+        "builders meetup",
+        "business"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [],
+      "search_text": "Demo | project gallery | demo-138 | evt-136 | https://camo.hku.hk/28-march-2026-openclaw-meet-up/ | https://camo.hku.hk/28-march-2026-openclaw-meet-up/ | HKU Centre for AI, Management and Organization (HKU CAMO) | OpenClaw AI workflows builders meetup business | project gallery | medium"
+    }
+  },
+  {
+    "id": "Demo:demo-139",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-139",
+      "event_id": "evt-137",
+      "url": "https://luma.com/claw",
+      "urls": [
+        "https://luma.com/claw"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "January Capital",
+        "BLOCK71 Singapore"
+      ],
+      "tech_stack": [
+        "OpenClaw",
+        "Codex",
+        "OpenAI",
+        "Multimodal APIs",
+        "AI agents",
+        "builders session"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [],
+      "search_text": "Demo | project gallery | demo-139 | evt-137 | https://luma.com/claw | https://luma.com/claw | January Capital BLOCK71 Singapore | OpenClaw Codex OpenAI Multimodal APIs AI agents builders session | project gallery | medium"
+    }
+  },
+  {
+    "id": "Demo:demo-140",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-140",
+      "event_id": "evt-138",
+      "url": "https://luma.com/claw",
+      "urls": [
+        "https://luma.com/claw"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "StashAway"
+      ],
+      "tech_stack": [
+        "OpenClaw",
+        "Finance",
+        "Fintech",
+        "AI agents"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [],
+      "search_text": "Demo | project gallery | demo-140 | evt-138 | https://luma.com/claw | https://luma.com/claw | StashAway | OpenClaw Finance Fintech AI agents | project gallery | medium"
+    }
+  },
+  {
+    "id": "Demo:demo-141",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-141",
+      "event_id": "evt-139",
+      "url": "https://luma.com/claw",
+      "urls": [
+        "https://luma.com/claw"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "OpenClaw Jakarta community"
+      ],
+      "tech_stack": [
+        "OpenClaw",
+        "AI agents",
+        "builders meetup"
+      ],
+      "award": "—",
+      "confidence": "medium",
+      "source_type": [],
+      "search_text": "Demo | project gallery | demo-141 | evt-139 | https://luma.com/claw | https://luma.com/claw | OpenClaw Jakarta community | OpenClaw AI agents builders meetup | project gallery | medium"
+    }
+  },
+  {
+    "id": "Demo:demo-142",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-142",
+      "event_id": "evt-140",
+      "url": "https://acaciahackathonstudentlife.devpost.com/project-gallery",
+      "urls": [
+        "https://acaciahackathonstudentlife.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "Acacia College, NUS"
+      ],
+      "tech_stack": [
+        "Beginner Friendly",
+        "Lifehacks",
+        "Low/No Code",
+        "AI-themed residential college"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-142 | evt-140 | https://acaciahackathonstudentlife.devpost.com/project-gallery | https://acaciahackathonstudentlife.devpost.com/project-gallery | Acacia College, NUS | Beginner Friendly Lifehacks Low/No Code AI-themed residential college | project gallery | high | devpost project_gallery"
+    }
+  },
+  {
+    "id": "Demo:demo-143",
+    "type": "Demo",
+    "label": "project gallery",
+    "meta": {
+      "ref_id": "demo-143",
+      "event_id": "evt-141",
+      "url": "https://ccds-tech-for-good-2026.devpost.com/project-gallery",
+      "urls": [
+        "https://ccds-tech-for-good-2026.devpost.com/project-gallery"
+      ],
+      "repo_url": "—",
+      "video_url": "—",
+      "pain_point": "—",
+      "solution": "—",
+      "products": [
+        "project gallery"
+      ],
+      "teams": [
+        "nanyang technological university"
+      ],
+      "tech_stack": [
+        "Education",
+        "Gaming",
+        "Health",
+        "LLMs",
+        "LangChain",
+        "Azure OpenAI",
+        "Pygame"
+      ],
+      "award": "—",
+      "confidence": "high",
+      "source_type": [
+        "devpost",
+        "project_gallery"
+      ],
+      "search_text": "Demo | project gallery | demo-143 | evt-141 | https://ccds-tech-for-good-2026.devpost.com/project-gallery | https://ccds-tech-for-good-2026.devpost.com/project-gallery | nanyang technological university | Education Gaming Health LLMs LangChain Azure OpenAI Pygame | project gallery | high | devpost project_gallery"
+    }
+  }
+]

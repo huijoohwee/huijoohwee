@@ -1,0 +1,2200 @@
+[
+  {
+    "id": "Tech:(React/Phaser/three.js or game engines mentioned)",
+    "type": "Tech",
+    "label": "(React/Phaser/three.js or game engines mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | (React/Phaser/three.js or game engines mentioned)"
+    }
+  },
+  {
+    "id": "Tech:(various sponsor APIs)",
+    "type": "Tech",
+    "label": "(various sponsor APIs)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | (various sponsor APIs)"
+    }
+  },
+  {
+    "id": "Tech:(web stack unspecified)",
+    "type": "Tech",
+    "label": "(web stack unspecified)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | (web stack unspecified)"
+    }
+  },
+  {
+    "id": "Tech:AI + emerging tech (unspecified)",
+    "type": "Tech",
+    "label": "AI + emerging tech (unspecified)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI + emerging tech (unspecified)"
+    }
+  },
+  {
+    "id": "Tech:AI Gateway",
+    "type": "Tech",
+    "label": "AI Gateway",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI Gateway"
+    }
+  },
+  {
+    "id": "Tech:AI agents",
+    "type": "Tech",
+    "label": "AI agents",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI agents"
+    }
+  },
+  {
+    "id": "Tech:AI assistant (unspecified)",
+    "type": "Tech",
+    "label": "AI assistant (unspecified)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI assistant (unspecified)"
+    }
+  },
+  {
+    "id": "Tech:AI dev tools (mentioned in post)",
+    "type": "Tech",
+    "label": "AI dev tools (mentioned in post)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI dev tools (mentioned in post)"
+    }
+  },
+  {
+    "id": "Tech:AI prototyping",
+    "type": "Tech",
+    "label": "AI prototyping",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI prototyping"
+    }
+  },
+  {
+    "id": "Tech:AI tools (unspecified)",
+    "type": "Tech",
+    "label": "AI tools (unspecified)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI tools (unspecified)"
+    }
+  },
+  {
+    "id": "Tech:AI workflows",
+    "type": "Tech",
+    "label": "AI workflows",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI workflows"
+    }
+  },
+  {
+    "id": "Tech:AI-themed residential college",
+    "type": "Tech",
+    "label": "AI-themed residential college",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AI-themed residential college"
+    }
+  },
+  {
+    "id": "Tech:APIs",
+    "type": "Tech",
+    "label": "APIs",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | APIs"
+    }
+  },
+  {
+    "id": "Tech:AR/VR",
+    "type": "Tech",
+    "label": "AR/VR",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AR/VR"
+    }
+  },
+  {
+    "id": "Tech:ARKit (mentioned)",
+    "type": "Tech",
+    "label": "ARKit (mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | ARKit (mentioned)"
+    }
+  },
+  {
+    "id": "Tech:AWS (scaling support, mentioned)",
+    "type": "Tech",
+    "label": "AWS (scaling support, mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AWS (scaling support, mentioned)"
+    }
+  },
+  {
+    "id": "Tech:AWS terrain tiles",
+    "type": "Tech",
+    "label": "AWS terrain tiles",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | AWS terrain tiles"
+    }
+  },
+  {
+    "id": "Tech:Anthropic (implied)",
+    "type": "Tech",
+    "label": "Anthropic (implied)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Anthropic (implied)"
+    }
+  },
+  {
+    "id": "Tech:Anthropic API",
+    "type": "Tech",
+    "label": "Anthropic API",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Anthropic API"
+    }
+  },
+  {
+    "id": "Tech:Artificial Intelligence",
+    "type": "Tech",
+    "label": "Artificial Intelligence",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Artificial Intelligence"
+    }
+  },
+  {
+    "id": "Tech:Azure",
+    "type": "Tech",
+    "label": "Azure",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Azure"
+    }
+  },
+  {
+    "id": "Tech:Azure OpenAI",
+    "type": "Tech",
+    "label": "Azure OpenAI",
+    "meta": {
+      "category": "llm-api",
+      "foss": "no",
+      "license": "—",
+      "vendor": "Microsoft Azure",
+      "tco_notes": "Usage-based API cost; enterprise procurement + regional availability can dominate TCO.",
+      "foss_alternatives": "`[\"self-hosted open models\"]`",
+      "search_text": "Tech | Azure OpenAI | llm-api | no | `[\"self-hosted open models\"]` | Usage-based API cost; enterprise procurement + regional availability can dominate TCO. | Microsoft Azure"
+    }
+  },
+  {
+    "id": "Tech:Beginner Friendly",
+    "type": "Tech",
+    "label": "Beginner Friendly",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Beginner Friendly"
+    }
+  },
+  {
+    "id": "Tech:Blockchain",
+    "type": "Tech",
+    "label": "Blockchain",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Blockchain"
+    }
+  },
+  {
+    "id": "Tech:COVID-19",
+    "type": "Tech",
+    "label": "COVID-19",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | COVID-19"
+    }
+  },
+  {
+    "id": "Tech:Cardano ecosystem (implied)",
+    "type": "Tech",
+    "label": "Cardano ecosystem (implied)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Cardano ecosystem (implied)"
+    }
+  },
+  {
+    "id": "Tech:Care for Senior Citizens",
+    "type": "Tech",
+    "label": "Care for Senior Citizens",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Care for Senior Citizens"
+    }
+  },
+  {
+    "id": "Tech:ClawdBot",
+    "type": "Tech",
+    "label": "ClawdBot",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | ClawdBot"
+    }
+  },
+  {
+    "id": "Tech:Codex",
+    "type": "Tech",
+    "label": "Codex",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Codex"
+    }
+  },
+  {
+    "id": "Tech:Cogniss (no-code platform, mentioned)",
+    "type": "Tech",
+    "label": "Cogniss (no-code platform, mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Cogniss (no-code platform, mentioned)"
+    }
+  },
+  {
+    "id": "Tech:Cohere LLMs (mentioned)",
+    "type": "Tech",
+    "label": "Cohere LLMs (mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Cohere LLMs (mentioned)"
+    }
+  },
+  {
+    "id": "Tech:Communication",
+    "type": "Tech",
+    "label": "Communication",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Communication"
+    }
+  },
+  {
+    "id": "Tech:Convex",
+    "type": "Tech",
+    "label": "Convex",
+    "meta": {
+      "category": "backend-platform",
+      "foss": "no",
+      "license": "—",
+      "vendor": "Convex",
+      "tco_notes": "Managed backend; TCO depends on usage + developer velocity; watch vendor lock-in.",
+      "foss_alternatives": "`[\"Supabase\", \"Firebase alternatives\"]`",
+      "search_text": "Tech | Convex | backend-platform | no | `[\"Supabase\", \"Firebase alternatives\"]` | Managed backend; TCO depends on usage + developer velocity; watch vendor lock-in. | Convex"
+    }
+  },
+  {
+    "id": "Tech:Cursor",
+    "type": "Tech",
+    "label": "Cursor",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Cursor"
+    }
+  },
+  {
+    "id": "Tech:Cybersecurity",
+    "type": "Tech",
+    "label": "Cybersecurity",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Cybersecurity"
+    }
+  },
+  {
+    "id": "Tech:Dart",
+    "type": "Tech",
+    "label": "Dart",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Dart"
+    }
+  },
+  {
+    "id": "Tech:Databases",
+    "type": "Tech",
+    "label": "Databases",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Databases"
+    }
+  },
+  {
+    "id": "Tech:Design",
+    "type": "Tech",
+    "label": "Design",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Design"
+    }
+  },
+  {
+    "id": "Tech:DevOps",
+    "type": "Tech",
+    "label": "DevOps",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | DevOps"
+    }
+  },
+  {
+    "id": "Tech:Devpost",
+    "type": "Tech",
+    "label": "Devpost",
+    "meta": {
+      "category": "platform",
+      "foss": "no",
+      "license": "—",
+      "vendor": "Devpost",
+      "tco_notes": "SaaS platform; TCO mainly time + workflow lock-in rather than infra cost.",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Devpost | platform | no | SaaS platform; TCO mainly time + workflow lock-in rather than infra cost. | Devpost"
+    }
+  },
+  {
+    "id": "Tech:Devpost (project gallery)",
+    "type": "Tech",
+    "label": "Devpost (project gallery)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Devpost (project gallery)"
+    }
+  },
+  {
+    "id": "Tech:Devvit Web",
+    "type": "Tech",
+    "label": "Devvit Web",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Devvit Web"
+    }
+  },
+  {
+    "id": "Tech:Digital Wellbeing",
+    "type": "Tech",
+    "label": "Digital Wellbeing",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Digital Wellbeing"
+    }
+  },
+  {
+    "id": "Tech:Discord (mentioned)",
+    "type": "Tech",
+    "label": "Discord (mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Discord (mentioned)"
+    }
+  },
+  {
+    "id": "Tech:E-commerce/Retail",
+    "type": "Tech",
+    "label": "E-commerce/Retail",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | E-commerce/Retail"
+    }
+  },
+  {
+    "id": "Tech:Education",
+    "type": "Tech",
+    "label": "Education",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Education"
+    }
+  },
+  {
+    "id": "Tech:Educational Technology",
+    "type": "Tech",
+    "label": "Educational Technology",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Educational Technology"
+    }
+  },
+  {
+    "id": "Tech:ElevenLabs",
+    "type": "Tech",
+    "label": "ElevenLabs",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | ElevenLabs"
+    }
+  },
+  {
+    "id": "Tech:Enterprise",
+    "type": "Tech",
+    "label": "Enterprise",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Enterprise"
+    }
+  },
+  {
+    "id": "Tech:Ethereum (implied)",
+    "type": "Tech",
+    "label": "Ethereum (implied)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Ethereum (implied)"
+    }
+  },
+  {
+    "id": "Tech:FOBISIA schools",
+    "type": "Tech",
+    "label": "FOBISIA schools",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | FOBISIA schools"
+    }
+  },
+  {
+    "id": "Tech:Finance",
+    "type": "Tech",
+    "label": "Finance",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Finance"
+    }
+  },
+  {
+    "id": "Tech:Financial Empowerment",
+    "type": "Tech",
+    "label": "Financial Empowerment",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Financial Empowerment"
+    }
+  },
+  {
+    "id": "Tech:Fintech",
+    "type": "Tech",
+    "label": "Fintech",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Fintech"
+    }
+  },
+  {
+    "id": "Tech:Flutter",
+    "type": "Tech",
+    "label": "Flutter",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Flutter"
+    }
+  },
+  {
+    "id": "Tech:GPT-4o Realtime (mentioned)",
+    "type": "Tech",
+    "label": "GPT-4o Realtime (mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | GPT-4o Realtime (mentioned)"
+    }
+  },
+  {
+    "id": "Tech:Gaming",
+    "type": "Tech",
+    "label": "Gaming",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Gaming"
+    }
+  },
+  {
+    "id": "Tech:Gemini (Live API mentioned)",
+    "type": "Tech",
+    "label": "Gemini (Live API mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Gemini (Live API mentioned)"
+    }
+  },
+  {
+    "id": "Tech:Gemini 3.1",
+    "type": "Tech",
+    "label": "Gemini 3.1",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Gemini 3.1"
+    }
+  },
+  {
+    "id": "Tech:GenAI (unspecified)",
+    "type": "Tech",
+    "label": "GenAI (unspecified)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | GenAI (unspecified)"
+    }
+  },
+  {
+    "id": "Tech:GitHub (open-source requirement)",
+    "type": "Tech",
+    "label": "GitHub (open-source requirement)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | GitHub (open-source requirement)"
+    }
+  },
+  {
+    "id": "Tech:GitHub (submission requirement)",
+    "type": "Tech",
+    "label": "GitHub (submission requirement)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | GitHub (submission requirement)"
+    }
+  },
+  {
+    "id": "Tech:GitHub Copilot",
+    "type": "Tech",
+    "label": "GitHub Copilot",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | GitHub Copilot"
+    }
+  },
+  {
+    "id": "Tech:GitLab workflows",
+    "type": "Tech",
+    "label": "GitLab workflows",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | GitLab workflows"
+    }
+  },
+  {
+    "id": "Tech:Grok models",
+    "type": "Tech",
+    "label": "Grok models",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Grok models"
+    }
+  },
+  {
+    "id": "Tech:Hackathon",
+    "type": "Tech",
+    "label": "Hackathon",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Hackathon"
+    }
+  },
+  {
+    "id": "Tech:Hardware",
+    "type": "Tech",
+    "label": "Hardware",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Hardware"
+    }
+  },
+  {
+    "id": "Tech:Health",
+    "type": "Tech",
+    "label": "Health",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Health"
+    }
+  },
+  {
+    "id": "Tech:Health and Well-Being",
+    "type": "Tech",
+    "label": "Health and Well-Being",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Health and Well-Being"
+    }
+  },
+  {
+    "id": "Tech:Hyperledger",
+    "type": "Tech",
+    "label": "Hyperledger",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Hyperledger"
+    }
+  },
+  {
+    "id": "Tech:IBM Z + cloud (mentioned)",
+    "type": "Tech",
+    "label": "IBM Z + cloud (mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | IBM Z + cloud (mentioned)"
+    }
+  },
+  {
+    "id": "Tech:Ideathon",
+    "type": "Tech",
+    "label": "Ideathon",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Ideathon"
+    }
+  },
+  {
+    "id": "Tech:Indonesia",
+    "type": "Tech",
+    "label": "Indonesia",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Indonesia"
+    }
+  },
+  {
+    "id": "Tech:IoT",
+    "type": "Tech",
+    "label": "IoT",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | IoT"
+    }
+  },
+  {
+    "id": "Tech:KoyalAI",
+    "type": "Tech",
+    "label": "KoyalAI",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | KoyalAI"
+    }
+  },
+  {
+    "id": "Tech:LLMs",
+    "type": "Tech",
+    "label": "LLMs",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | LLMs"
+    }
+  },
+  {
+    "id": "Tech:LangChain",
+    "type": "Tech",
+    "label": "LangChain",
+    "meta": {
+      "category": "agent-framework",
+      "foss": "yes",
+      "license": "MIT (commonly)",
+      "vendor": "LangChain",
+      "tco_notes": "FOSS framework; infra + model/API costs dominate; maintenance cost scales with integrations.",
+      "foss_alternatives": "`[\"LlamaIndex\", \"Haystack\"]`",
+      "search_text": "Tech | LangChain | agent-framework | yes | `[\"LlamaIndex\", \"Haystack\"]` | MIT (commonly) | FOSS framework; infra + model/API costs dominate; maintenance cost scales with integrations. | LangChain"
+    }
+  },
+  {
+    "id": "Tech:LeanMCP (tracks mentioned)",
+    "type": "Tech",
+    "label": "LeanMCP (tracks mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | LeanMCP (tracks mentioned)"
+    }
+  },
+  {
+    "id": "Tech:Lifehacks",
+    "type": "Tech",
+    "label": "Lifehacks",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Lifehacks"
+    }
+  },
+  {
+    "id": "Tech:Low/No Code",
+    "type": "Tech",
+    "label": "Low/No Code",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Low/No Code"
+    }
+  },
+  {
+    "id": "Tech:Lyria",
+    "type": "Tech",
+    "label": "Lyria",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Lyria"
+    }
+  },
+  {
+    "id": "Tech:Machine Learning/AI",
+    "type": "Tech",
+    "label": "Machine Learning/AI",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Machine Learning/AI"
+    }
+  },
+  {
+    "id": "Tech:Machine Learning/AI (theme tag on listing)",
+    "type": "Tech",
+    "label": "Machine Learning/AI (theme tag on listing)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Machine Learning/AI (theme tag on listing)"
+    }
+  },
+  {
+    "id": "Tech:Mobile",
+    "type": "Tech",
+    "label": "Mobile",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Mobile"
+    }
+  },
+  {
+    "id": "Tech:ModelArk",
+    "type": "Tech",
+    "label": "ModelArk",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | ModelArk"
+    }
+  },
+  {
+    "id": "Tech:Move",
+    "type": "Tech",
+    "label": "Move",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Move"
+    }
+  },
+  {
+    "id": "Tech:Multimodal APIs",
+    "type": "Tech",
+    "label": "Multimodal APIs",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Multimodal APIs"
+    }
+  },
+  {
+    "id": "Tech:NanoBanana 2",
+    "type": "Tech",
+    "label": "NanoBanana 2",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | NanoBanana 2"
+    }
+  },
+  {
+    "id": "Tech:ONE Record",
+    "type": "Tech",
+    "label": "ONE Record",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | ONE Record"
+    }
+  },
+  {
+    "id": "Tech:Observability",
+    "type": "Tech",
+    "label": "Observability",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Observability"
+    }
+  },
+  {
+    "id": "Tech:Open Ended",
+    "type": "Tech",
+    "label": "Open Ended",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Open Ended"
+    }
+  },
+  {
+    "id": "Tech:OpenAI",
+    "type": "Tech",
+    "label": "OpenAI",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | OpenAI"
+    }
+  },
+  {
+    "id": "Tech:OpenAI (powered by, mentioned)",
+    "type": "Tech",
+    "label": "OpenAI (powered by, mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | OpenAI (powered by, mentioned)"
+    }
+  },
+  {
+    "id": "Tech:OpenAI APIs (credits mentioned)",
+    "type": "Tech",
+    "label": "OpenAI APIs (credits mentioned)",
+    "meta": {
+      "category": "llm-api",
+      "foss": "no",
+      "license": "—",
+      "vendor": "OpenAI",
+      "tco_notes": "Usage-based API cost; watch token spend + rate limits; consider caching/RAG to reduce calls.",
+      "foss_alternatives": "`[\"self-hosted open models\"]`",
+      "search_text": "Tech | OpenAI APIs (credits mentioned) | llm-api | no | `[\"self-hosted open models\"]` | Usage-based API cost; watch token spend + rate limits; consider caching/RAG to reduce calls. | OpenAI"
+    }
+  },
+  {
+    "id": "Tech:OpenClaw",
+    "type": "Tech",
+    "label": "OpenClaw",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | OpenClaw"
+    }
+  },
+  {
+    "id": "Tech:Product Hunt newsletter",
+    "type": "Tech",
+    "label": "Product Hunt newsletter",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Product Hunt newsletter"
+    }
+  },
+  {
+    "id": "Tech:Productivity",
+    "type": "Tech",
+    "label": "Productivity",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Productivity"
+    }
+  },
+  {
+    "id": "Tech:Pygame",
+    "type": "Tech",
+    "label": "Pygame",
+    "meta": {
+      "category": "ui-framework",
+      "foss": "yes",
+      "license": "LGPL (commonly)",
+      "vendor": "pygame community",
+      "tco_notes": "No license cost; TCO is engineering time + packaging/distribution.",
+      "foss_alternatives": "`[\"Godot (for games)\", \"SDL bindings\"]`",
+      "search_text": "Tech | Pygame | ui-framework | yes | `[\"Godot (for games)\", \"SDL bindings\"]` | LGPL (commonly) | No license cost; TCO is engineering time + packaging/distribution. | pygame community"
+    }
+  },
+  {
+    "id": "Tech:Python",
+    "type": "Tech",
+    "label": "Python",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Python"
+    }
+  },
+  {
+    "id": "Tech:Quantum",
+    "type": "Tech",
+    "label": "Quantum",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Quantum"
+    }
+  },
+  {
+    "id": "Tech:RWA",
+    "type": "Tech",
+    "label": "RWA",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | RWA"
+    }
+  },
+  {
+    "id": "Tech:Reddit Devvit platform",
+    "type": "Tech",
+    "label": "Reddit Devvit platform",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Reddit Devvit platform"
+    }
+  },
+  {
+    "id": "Tech:Search",
+    "type": "Tech",
+    "label": "Search",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Search"
+    }
+  },
+  {
+    "id": "Tech:Second Brain",
+    "type": "Tech",
+    "label": "Second Brain",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Second Brain"
+    }
+  },
+  {
+    "id": "Tech:Security",
+    "type": "Tech",
+    "label": "Security",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Security"
+    }
+  },
+  {
+    "id": "Tech:Seedance model",
+    "type": "Tech",
+    "label": "Seedance model",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Seedance model"
+    }
+  },
+  {
+    "id": "Tech:Smart City",
+    "type": "Tech",
+    "label": "Smart City",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Smart City"
+    }
+  },
+  {
+    "id": "Tech:Social Good",
+    "type": "Tech",
+    "label": "Social Good",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Social Good"
+    }
+  },
+  {
+    "id": "Tech:Streamlit",
+    "type": "Tech",
+    "label": "Streamlit",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Streamlit"
+    }
+  },
+  {
+    "id": "Tech:Sui",
+    "type": "Tech",
+    "label": "Sui",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Sui"
+    }
+  },
+  {
+    "id": "Tech:Sustainability & Social Impact",
+    "type": "Tech",
+    "label": "Sustainability & Social Impact",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Sustainability & Social Impact"
+    }
+  },
+  {
+    "id": "Tech:Three.js",
+    "type": "Tech",
+    "label": "Three.js",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Three.js"
+    }
+  },
+  {
+    "id": "Tech:TiDB",
+    "type": "Tech",
+    "label": "TiDB",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | TiDB"
+    }
+  },
+  {
+    "id": "Tech:TinyFish web agents",
+    "type": "Tech",
+    "label": "TinyFish web agents",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | TinyFish web agents"
+    }
+  },
+  {
+    "id": "Tech:UX",
+    "type": "Tech",
+    "label": "UX",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | UX"
+    }
+  },
+  {
+    "id": "Tech:Uber API",
+    "type": "Tech",
+    "label": "Uber API",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Uber API"
+    }
+  },
+  {
+    "id": "Tech:Ubuntu",
+    "type": "Tech",
+    "label": "Ubuntu",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Ubuntu"
+    }
+  },
+  {
+    "id": "Tech:Vercel",
+    "type": "Tech",
+    "label": "Vercel",
+    "meta": {
+      "category": "hosting",
+      "foss": "no",
+      "license": "—",
+      "vendor": "Vercel",
+      "tco_notes": "SaaS hosting; costs grow with traffic/build minutes; self-host trades money for ops.",
+      "foss_alternatives": "`[\"self-host (Docker)\", \"Netlify\", \"Cloudflare Pages\"]`",
+      "search_text": "Tech | Vercel | hosting | no | `[\"self-host (Docker)\", \"Netlify\", \"Cloudflare Pages\"]` | SaaS hosting; costs grow with traffic/build minutes; self-host trades money for ops. | Vercel"
+    }
+  },
+  {
+    "id": "Tech:Web",
+    "type": "Tech",
+    "label": "Web",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Web"
+    }
+  },
+  {
+    "id": "Tech:Web Development",
+    "type": "Tech",
+    "label": "Web Development",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Web Development"
+    }
+  },
+  {
+    "id": "Tech:Web3",
+    "type": "Tech",
+    "label": "Web3",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Web3"
+    }
+  },
+  {
+    "id": "Tech:Web3 ecosystems (Casper/Solana/Arbitrum mentioned)",
+    "type": "Tech",
+    "label": "Web3 ecosystems (Casper/Solana/Arbitrum mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | Web3 ecosystems (Casper/Solana/Arbitrum mentioned)"
+    }
+  },
+  {
+    "id": "Tech:X APIs",
+    "type": "Tech",
+    "label": "X APIs",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | X APIs"
+    }
+  },
+  {
+    "id": "Tech:aviation logistics",
+    "type": "Tech",
+    "label": "aviation logistics",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | aviation logistics"
+    }
+  },
+  {
+    "id": "Tech:bolt.new credits (mentioned)",
+    "type": "Tech",
+    "label": "bolt.new credits (mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | bolt.new credits (mentioned)"
+    }
+  },
+  {
+    "id": "Tech:builders",
+    "type": "Tech",
+    "label": "builders",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | builders"
+    }
+  },
+  {
+    "id": "Tech:builders meetup",
+    "type": "Tech",
+    "label": "builders meetup",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | builders meetup"
+    }
+  },
+  {
+    "id": "Tech:builders session",
+    "type": "Tech",
+    "label": "builders session",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | builders session"
+    }
+  },
+  {
+    "id": "Tech:business",
+    "type": "Tech",
+    "label": "business",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | business"
+    }
+  },
+  {
+    "id": "Tech:civic tech",
+    "type": "Tech",
+    "label": "civic tech",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | civic tech"
+    }
+  },
+  {
+    "id": "Tech:climate",
+    "type": "Tech",
+    "label": "climate",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | climate"
+    }
+  },
+  {
+    "id": "Tech:competitive programming",
+    "type": "Tech",
+    "label": "competitive programming",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | competitive programming"
+    }
+  },
+  {
+    "id": "Tech:data visualization",
+    "type": "Tech",
+    "label": "data visualization",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | data visualization"
+    }
+  },
+  {
+    "id": "Tech:design thinking",
+    "type": "Tech",
+    "label": "design thinking",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | design thinking"
+    }
+  },
+  {
+    "id": "Tech:developer community",
+    "type": "Tech",
+    "label": "developer community",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | developer community"
+    }
+  },
+  {
+    "id": "Tech:digital payments",
+    "type": "Tech",
+    "label": "digital payments",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | digital payments"
+    }
+  },
+  {
+    "id": "Tech:fal (Nano Banana Pro mentioned)",
+    "type": "Tech",
+    "label": "fal (Nano Banana Pro mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | fal (Nano Banana Pro mentioned)"
+    }
+  },
+  {
+    "id": "Tech:fintech (unspecified)",
+    "type": "Tech",
+    "label": "fintech (unspecified)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | fintech (unspecified)"
+    }
+  },
+  {
+    "id": "Tech:government",
+    "type": "Tech",
+    "label": "government",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | government"
+    }
+  },
+  {
+    "id": "Tech:gpt-oss-120b",
+    "type": "Tech",
+    "label": "gpt-oss-120b",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | gpt-oss-120b"
+    }
+  },
+  {
+    "id": "Tech:gpt-oss-20b",
+    "type": "Tech",
+    "label": "gpt-oss-20b",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | gpt-oss-20b"
+    }
+  },
+  {
+    "id": "Tech:innovation",
+    "type": "Tech",
+    "label": "innovation",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | innovation"
+    }
+  },
+  {
+    "id": "Tech:marine conservation",
+    "type": "Tech",
+    "label": "marine conservation",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | marine conservation"
+    }
+  },
+  {
+    "id": "Tech:multi-theme hackathon",
+    "type": "Tech",
+    "label": "multi-theme hackathon",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | multi-theme hackathon"
+    }
+  },
+  {
+    "id": "Tech:no-code + code (inclusive)",
+    "type": "Tech",
+    "label": "no-code + code (inclusive)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | no-code + code (inclusive)"
+    }
+  },
+  {
+    "id": "Tech:o1 reasoning model (mentioned)",
+    "type": "Tech",
+    "label": "o1 reasoning model (mentioned)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | o1 reasoning model (mentioned)"
+    }
+  },
+  {
+    "id": "Tech:product design",
+    "type": "Tech",
+    "label": "product design",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | product design"
+    }
+  },
+  {
+    "id": "Tech:prototype building",
+    "type": "Tech",
+    "label": "prototype building",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | prototype building"
+    }
+  },
+  {
+    "id": "Tech:smart cities",
+    "type": "Tech",
+    "label": "smart cities",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | smart cities"
+    }
+  },
+  {
+    "id": "Tech:startup",
+    "type": "Tech",
+    "label": "startup",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | startup"
+    }
+  },
+  {
+    "id": "Tech:student hackathon",
+    "type": "Tech",
+    "label": "student hackathon",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | student hackathon"
+    }
+  },
+  {
+    "id": "Tech:student showcase",
+    "type": "Tech",
+    "label": "student showcase",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | student showcase"
+    }
+  },
+  {
+    "id": "Tech:student-run",
+    "type": "Tech",
+    "label": "student-run",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | student-run"
+    }
+  },
+  {
+    "id": "Tech:unhackathon",
+    "type": "Tech",
+    "label": "unhackathon",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | unhackathon"
+    }
+  },
+  {
+    "id": "Tech:web3 (various)",
+    "type": "Tech",
+    "label": "web3 (various)",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | web3 (various)"
+    }
+  },
+  {
+    "id": "Tech:wildlife trafficking",
+    "type": "Tech",
+    "label": "wildlife trafficking",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | wildlife trafficking"
+    }
+  },
+  {
+    "id": "Tech:youth hackathon",
+    "type": "Tech",
+    "label": "youth hackathon",
+    "meta": {
+      "category": "—",
+      "foss": "—",
+      "license": "—",
+      "vendor": "—",
+      "tco_notes": "—",
+      "foss_alternatives": "—",
+      "search_text": "Tech | youth hackathon"
+    }
+  }
+]
