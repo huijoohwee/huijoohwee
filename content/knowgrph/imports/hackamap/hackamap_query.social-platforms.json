@@ -1,0 +1,51 @@
+{
+  "query": {
+    "from": {
+      "files": [
+        "sources.md",
+        "events.md",
+        "demos.md"
+      ]
+    },
+    "where_by_file": {
+      "sources.md": {
+        "or": [
+          { "field": "Domain", "op": "contains", "value": "x.com" },
+          { "field": "Domain", "op": "contains", "value": "twitter.com" },
+          { "field": "Domain", "op": "contains", "value": "t.co" },
+          { "field": "Domain", "op": "contains", "value": "reddit.com" },
+          { "field": "Domain", "op": "contains", "value": "linkedin.com" },
+          { "field": "Domain", "op": "contains", "value": "producthunt.com" },
+          { "op": "any", "value": ["x.com", "twitter", "tweet", "thread"] },
+          { "op": "any", "value": ["reddit", "subreddit", "r/"] },
+          { "op": "any", "value": ["linkedin", "linkedin post"] },
+          { "op": "any", "value": ["product hunt", "producthunt", "ph", "launch"] }
+        ]
+      },
+      "events.md": {
+        "or": [
+          { "op": "any", "value": ["x.com", "twitter", "tweet", "thread"] },
+          { "op": "any", "value": ["reddit", "subreddit", "r/"] },
+          { "op": "any", "value": ["linkedin", "linkedin post"] },
+          { "op": "any", "value": ["product hunt", "producthunt", "ph", "launch"] }
+        ]
+      },
+      "demos.md": {
+        "or": [
+          { "op": "any", "value": ["x.com", "twitter", "tweet", "thread"] },
+          { "op": "any", "value": ["reddit", "subreddit", "r/"] },
+          { "op": "any", "value": ["linkedin", "linkedin post"] },
+          { "op": "any", "value": ["product hunt", "producthunt", "ph", "launch"] }
+        ]
+      }
+    },
+    "limit": 250,
+    "output": {
+      "title": "hackamap-social-platforms",
+      "json_path": "hackamap-social-platforms.json",
+      "md_path": "hackamap-social-platforms.md",
+      "table_prefix": "social-platforms"
+    }
+  }
+}
+

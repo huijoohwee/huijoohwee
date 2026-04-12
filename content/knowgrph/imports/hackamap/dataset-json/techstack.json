@@ -10,7 +10,37 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | (React/Phaser/three.js or game engines mentioned)"
+      "ref_id": "tech-001",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-001"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-001"
+        }
+      ],
+      "search_text": "Tech | (React/Phaser/three.js or game engines mentioned) | tech-001 | table techstack file techstack.md row_id tech-001 | table techstack file techstack.md row_id tech-001",
+      "search_terms": [
+        "tech",
+        "react",
+        "phaser",
+        "three",
+        "js",
+        "game",
+        "engines",
+        "mentioned",
+        "001",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -24,7 +54,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | (various sponsor APIs)"
+      "ref_id": "tech-002",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-002"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-002"
+        }
+      ],
+      "search_text": "Tech | (various sponsor APIs) | tech-002 | table techstack file techstack.md row_id tech-002 | table techstack file techstack.md row_id tech-002",
+      "search_terms": [
+        "tech",
+        "various",
+        "sponsor",
+        "apis",
+        "002",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -38,7 +94,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | (web stack unspecified)"
+      "ref_id": "tech-003",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-003"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-003"
+        }
+      ],
+      "search_text": "Tech | (web stack unspecified) | tech-003 | table techstack file techstack.md row_id tech-003 | table techstack file techstack.md row_id tech-003",
+      "search_terms": [
+        "tech",
+        "web",
+        "stack",
+        "unspecified",
+        "003",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -52,7 +134,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI + emerging tech (unspecified)"
+      "ref_id": "tech-004",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-004"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-004"
+        }
+      ],
+      "search_text": "Tech | AI + emerging tech (unspecified) | tech-004 | table techstack file techstack.md row_id tech-004 | table techstack file techstack.md row_id tech-004",
+      "search_terms": [
+        "tech",
+        "ai",
+        "emerging",
+        "unspecified",
+        "004",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -66,7 +174,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI Gateway"
+      "ref_id": "tech-008",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-008"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-008"
+        }
+      ],
+      "search_text": "Tech | AI Gateway | tech-008 | table techstack file techstack.md row_id tech-008 | table techstack file techstack.md row_id tech-008",
+      "search_terms": [
+        "tech",
+        "ai",
+        "gateway",
+        "008",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -80,7 +213,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI agents"
+      "ref_id": "tech-005",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-005"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-005"
+        }
+      ],
+      "search_text": "Tech | AI agents | tech-005 | table techstack file techstack.md row_id tech-005 | table techstack file techstack.md row_id tech-005",
+      "search_terms": [
+        "tech",
+        "ai",
+        "agents",
+        "005",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -94,7 +252,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI assistant (unspecified)"
+      "ref_id": "tech-006",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-006"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-006"
+        }
+      ],
+      "search_text": "Tech | AI assistant (unspecified) | tech-006 | table techstack file techstack.md row_id tech-006 | table techstack file techstack.md row_id tech-006",
+      "search_terms": [
+        "tech",
+        "ai",
+        "assistant",
+        "unspecified",
+        "006",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -108,7 +292,35 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI dev tools (mentioned in post)"
+      "ref_id": "tech-007",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-007"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-007"
+        }
+      ],
+      "search_text": "Tech | AI dev tools (mentioned in post) | tech-007 | table techstack file techstack.md row_id tech-007 | table techstack file techstack.md row_id tech-007",
+      "search_terms": [
+        "tech",
+        "ai",
+        "dev",
+        "tools",
+        "mentioned",
+        "post",
+        "007",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -122,7 +334,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI prototyping"
+      "ref_id": "tech-009",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-009"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-009"
+        }
+      ],
+      "search_text": "Tech | AI prototyping | tech-009 | table techstack file techstack.md row_id tech-009 | table techstack file techstack.md row_id tech-009",
+      "search_terms": [
+        "tech",
+        "ai",
+        "prototyping",
+        "009",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -136,7 +373,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI tools (unspecified)"
+      "ref_id": "tech-010",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-010"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-010"
+        }
+      ],
+      "search_text": "Tech | AI tools (unspecified) | tech-010 | table techstack file techstack.md row_id tech-010 | table techstack file techstack.md row_id tech-010",
+      "search_terms": [
+        "tech",
+        "ai",
+        "tools",
+        "unspecified",
+        "010",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -150,7 +413,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI workflows"
+      "ref_id": "tech-011",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-011"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-011"
+        }
+      ],
+      "search_text": "Tech | AI workflows | tech-011 | table techstack file techstack.md row_id tech-011 | table techstack file techstack.md row_id tech-011",
+      "search_terms": [
+        "tech",
+        "ai",
+        "workflows",
+        "011",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -164,7 +452,34 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AI-themed residential college"
+      "ref_id": "tech-012",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-012"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-012"
+        }
+      ],
+      "search_text": "Tech | AI-themed residential college | tech-012 | table techstack file techstack.md row_id tech-012 | table techstack file techstack.md row_id tech-012",
+      "search_terms": [
+        "tech",
+        "ai",
+        "themed",
+        "residential",
+        "college",
+        "012",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -178,7 +493,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | APIs"
+      "ref_id": "tech-015",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-015"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-015"
+        }
+      ],
+      "search_text": "Tech | APIs | tech-015 | table techstack file techstack.md row_id tech-015 | table techstack file techstack.md row_id tech-015",
+      "search_terms": [
+        "tech",
+        "apis",
+        "015",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -192,7 +531,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AR/VR"
+      "ref_id": "tech-016",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-016"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-016"
+        }
+      ],
+      "search_text": "Tech | AR/VR | tech-016 | table techstack file techstack.md row_id tech-016 | table techstack file techstack.md row_id tech-016",
+      "search_terms": [
+        "tech",
+        "ar",
+        "vr",
+        "016",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -206,7 +570,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | ARKit (mentioned)"
+      "ref_id": "tech-017",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-017"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-017"
+        }
+      ],
+      "search_text": "Tech | ARKit (mentioned) | tech-017 | table techstack file techstack.md row_id tech-017 | table techstack file techstack.md row_id tech-017",
+      "search_terms": [
+        "tech",
+        "arkit",
+        "mentioned",
+        "017",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -220,7 +609,34 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AWS (scaling support, mentioned)"
+      "ref_id": "tech-020",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-020"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-020"
+        }
+      ],
+      "search_text": "Tech | AWS (scaling support, mentioned) | tech-020 | table techstack file techstack.md row_id tech-020 | table techstack file techstack.md row_id tech-020",
+      "search_terms": [
+        "tech",
+        "aws",
+        "scaling",
+        "support",
+        "mentioned",
+        "020",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -234,7 +650,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | AWS terrain tiles"
+      "ref_id": "tech-021",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-021"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-021"
+        }
+      ],
+      "search_text": "Tech | AWS terrain tiles | tech-021 | table techstack file techstack.md row_id tech-021 | table techstack file techstack.md row_id tech-021",
+      "search_terms": [
+        "tech",
+        "aws",
+        "terrain",
+        "tiles",
+        "021",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -248,7 +690,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Anthropic (implied)"
+      "ref_id": "tech-013",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-013"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-013"
+        }
+      ],
+      "search_text": "Tech | Anthropic (implied) | tech-013 | table techstack file techstack.md row_id tech-013 | table techstack file techstack.md row_id tech-013",
+      "search_terms": [
+        "tech",
+        "anthropic",
+        "implied",
+        "013",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -262,7 +729,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Anthropic API"
+      "ref_id": "tech-014",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-014"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-014"
+        }
+      ],
+      "search_text": "Tech | Anthropic API | tech-014 | table techstack file techstack.md row_id tech-014 | table techstack file techstack.md row_id tech-014",
+      "search_terms": [
+        "tech",
+        "anthropic",
+        "api",
+        "014",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -276,7 +768,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Artificial Intelligence"
+      "ref_id": "tech-018",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-018"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-018"
+        }
+      ],
+      "search_text": "Tech | Artificial Intelligence | tech-018 | table techstack file techstack.md row_id tech-018 | table techstack file techstack.md row_id tech-018",
+      "search_terms": [
+        "tech",
+        "artificial",
+        "intelligence",
+        "018",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -290,7 +807,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Azure"
+      "ref_id": "tech-022",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-022"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-022"
+        }
+      ],
+      "search_text": "Tech | Azure | tech-022 | table techstack file techstack.md row_id tech-022 | table techstack file techstack.md row_id tech-022",
+      "search_terms": [
+        "tech",
+        "azure",
+        "022",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -304,7 +845,50 @@
       "vendor": "Microsoft Azure",
       "tco_notes": "Usage-based API cost; enterprise procurement + regional availability can dominate TCO.",
       "foss_alternatives": "`[\"self-hosted open models\"]`",
-      "search_text": "Tech | Azure OpenAI | llm-api | no | `[\"self-hosted open models\"]` | Usage-based API cost; enterprise procurement + regional availability can dominate TCO. | Microsoft Azure"
+      "ref_id": "tech-023",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-023"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-023"
+        }
+      ],
+      "search_text": "Tech | Azure OpenAI | tech-023 | llm-api | no | `[\"self-hosted open models\"]` | table techstack file techstack.md row_id tech-023 | table techstack file techstack.md row_id tech-023 | Usage-based API cost; enterprise procurement + regional availability can dominate TCO. | Microsoft Azure",
+      "search_terms": [
+        "tech",
+        "azure",
+        "openai",
+        "023",
+        "llm",
+        "api",
+        "no",
+        "self",
+        "hosted",
+        "open",
+        "models",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id",
+        "usage",
+        "based",
+        "cost",
+        "enterprise",
+        "procurement",
+        "regional",
+        "availability",
+        "can",
+        "dominate",
+        "tco",
+        "microsoft"
+      ]
     }
   },
   {
@@ -318,7 +902,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Beginner Friendly"
+      "ref_id": "tech-024",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-024"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-024"
+        }
+      ],
+      "search_text": "Tech | Beginner Friendly | tech-024 | table techstack file techstack.md row_id tech-024 | table techstack file techstack.md row_id tech-024",
+      "search_terms": [
+        "tech",
+        "beginner",
+        "friendly",
+        "024",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -332,7 +941,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Blockchain"
+      "ref_id": "tech-025",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-025"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-025"
+        }
+      ],
+      "search_text": "Tech | Blockchain | tech-025 | table techstack file techstack.md row_id tech-025 | table techstack file techstack.md row_id tech-025",
+      "search_terms": [
+        "tech",
+        "blockchain",
+        "025",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -346,7 +979,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | COVID-19"
+      "ref_id": "tech-042",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-042"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-042"
+        }
+      ],
+      "search_text": "Tech | COVID-19 | tech-042 | table techstack file techstack.md row_id tech-042 | table techstack file techstack.md row_id tech-042",
+      "search_terms": [
+        "tech",
+        "covid",
+        "19",
+        "042",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -360,7 +1018,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Cardano ecosystem (implied)"
+      "ref_id": "tech-031",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-031"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-031"
+        }
+      ],
+      "search_text": "Tech | Cardano ecosystem (implied) | tech-031 | table techstack file techstack.md row_id tech-031 | table techstack file techstack.md row_id tech-031",
+      "search_terms": [
+        "tech",
+        "cardano",
+        "ecosystem",
+        "implied",
+        "031",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -374,7 +1058,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Care for Senior Citizens"
+      "ref_id": "tech-032",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-032"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-032"
+        }
+      ],
+      "search_text": "Tech | Care for Senior Citizens | tech-032 | table techstack file techstack.md row_id tech-032 | table techstack file techstack.md row_id tech-032",
+      "search_terms": [
+        "tech",
+        "care",
+        "senior",
+        "citizens",
+        "032",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -388,7 +1098,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | ClawdBot"
+      "ref_id": "tech-034",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-034"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-034"
+        }
+      ],
+      "search_text": "Tech | ClawdBot | tech-034 | table techstack file techstack.md row_id tech-034 | table techstack file techstack.md row_id tech-034",
+      "search_terms": [
+        "tech",
+        "clawdbot",
+        "034",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -402,7 +1136,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Codex"
+      "ref_id": "tech-036",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-036"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-036"
+        }
+      ],
+      "search_text": "Tech | Codex | tech-036 | table techstack file techstack.md row_id tech-036 | table techstack file techstack.md row_id tech-036",
+      "search_terms": [
+        "tech",
+        "codex",
+        "036",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -416,7 +1174,35 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Cogniss (no-code platform, mentioned)"
+      "ref_id": "tech-037",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-037"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-037"
+        }
+      ],
+      "search_text": "Tech | Cogniss (no-code platform, mentioned) | tech-037 | table techstack file techstack.md row_id tech-037 | table techstack file techstack.md row_id tech-037",
+      "search_terms": [
+        "tech",
+        "cogniss",
+        "no",
+        "code",
+        "platform",
+        "mentioned",
+        "037",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -430,7 +1216,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Cohere LLMs (mentioned)"
+      "ref_id": "tech-038",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-038"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-038"
+        }
+      ],
+      "search_text": "Tech | Cohere LLMs (mentioned) | tech-038 | table techstack file techstack.md row_id tech-038 | table techstack file techstack.md row_id tech-038",
+      "search_terms": [
+        "tech",
+        "cohere",
+        "llms",
+        "mentioned",
+        "038",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -444,7 +1256,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Communication"
+      "ref_id": "tech-039",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-039"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-039"
+        }
+      ],
+      "search_text": "Tech | Communication | tech-039 | table techstack file techstack.md row_id tech-039 | table techstack file techstack.md row_id tech-039",
+      "search_terms": [
+        "tech",
+        "communication",
+        "039",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -458,7 +1294,46 @@
       "vendor": "Convex",
       "tco_notes": "Managed backend; TCO depends on usage + developer velocity; watch vendor lock-in.",
       "foss_alternatives": "`[\"Supabase\", \"Firebase alternatives\"]`",
-      "search_text": "Tech | Convex | backend-platform | no | `[\"Supabase\", \"Firebase alternatives\"]` | Managed backend; TCO depends on usage + developer velocity; watch vendor lock-in. | Convex"
+      "ref_id": "tech-041",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-041"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-041"
+        }
+      ],
+      "search_text": "Tech | Convex | tech-041 | backend-platform | no | `[\"Supabase\", \"Firebase alternatives\"]` | table techstack file techstack.md row_id tech-041 | table techstack file techstack.md row_id tech-041 | Managed backend; TCO depends on usage + developer velocity; watch vendor lock-in. | Convex",
+      "search_terms": [
+        "tech",
+        "convex",
+        "041",
+        "backend",
+        "platform",
+        "no",
+        "supabase",
+        "firebase",
+        "alternatives",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id",
+        "managed",
+        "tco",
+        "depends",
+        "usage",
+        "developer",
+        "velocity",
+        "watch",
+        "vendor",
+        "lock"
+      ]
     }
   },
   {
@@ -472,7 +1347,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Cursor"
+      "ref_id": "tech-043",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-043"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-043"
+        }
+      ],
+      "search_text": "Tech | Cursor | tech-043 | table techstack file techstack.md row_id tech-043 | table techstack file techstack.md row_id tech-043",
+      "search_terms": [
+        "tech",
+        "cursor",
+        "043",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -486,7 +1385,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Cybersecurity"
+      "ref_id": "tech-044",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-044"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-044"
+        }
+      ],
+      "search_text": "Tech | Cybersecurity | tech-044 | table techstack file techstack.md row_id tech-044 | table techstack file techstack.md row_id tech-044",
+      "search_terms": [
+        "tech",
+        "cybersecurity",
+        "044",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -500,7 +1423,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Dart"
+      "ref_id": "tech-045",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-045"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-045"
+        }
+      ],
+      "search_text": "Tech | Dart | tech-045 | table techstack file techstack.md row_id tech-045 | table techstack file techstack.md row_id tech-045",
+      "search_terms": [
+        "tech",
+        "dart",
+        "045",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -514,7 +1461,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Databases"
+      "ref_id": "tech-047",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-047"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-047"
+        }
+      ],
+      "search_text": "Tech | Databases | tech-047 | table techstack file techstack.md row_id tech-047 | table techstack file techstack.md row_id tech-047",
+      "search_terms": [
+        "tech",
+        "databases",
+        "047",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -528,7 +1499,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Design"
+      "ref_id": "tech-048",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-048"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-048"
+        }
+      ],
+      "search_text": "Tech | Design | tech-048 | table techstack file techstack.md row_id tech-048 | table techstack file techstack.md row_id tech-048",
+      "search_terms": [
+        "tech",
+        "design",
+        "048",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -542,7 +1537,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | DevOps"
+      "ref_id": "tech-051",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-051"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-051"
+        }
+      ],
+      "search_text": "Tech | DevOps | tech-051 | table techstack file techstack.md row_id tech-051 | table techstack file techstack.md row_id tech-051",
+      "search_terms": [
+        "tech",
+        "devops",
+        "051",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -556,7 +1575,43 @@
       "vendor": "Devpost",
       "tco_notes": "SaaS platform; TCO mainly time + workflow lock-in rather than infra cost.",
       "foss_alternatives": "—",
-      "search_text": "Tech | Devpost | platform | no | SaaS platform; TCO mainly time + workflow lock-in rather than infra cost. | Devpost"
+      "ref_id": "tech-052",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-052"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-052"
+        }
+      ],
+      "search_text": "Tech | Devpost | tech-052 | platform | no | table techstack file techstack.md row_id tech-052 | table techstack file techstack.md row_id tech-052 | SaaS platform; TCO mainly time + workflow lock-in rather than infra cost. | Devpost",
+      "search_terms": [
+        "tech",
+        "devpost",
+        "052",
+        "platform",
+        "no",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id",
+        "saas",
+        "tco",
+        "mainly",
+        "time",
+        "workflow",
+        "lock",
+        "rather",
+        "than",
+        "infra",
+        "cost"
+      ]
     }
   },
   {
@@ -570,7 +1625,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Devpost (project gallery)"
+      "ref_id": "tech-053",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-053"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-053"
+        }
+      ],
+      "search_text": "Tech | Devpost (project gallery) | tech-053 | table techstack file techstack.md row_id tech-053 | table techstack file techstack.md row_id tech-053",
+      "search_terms": [
+        "tech",
+        "devpost",
+        "project",
+        "gallery",
+        "053",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -584,7 +1665,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Devvit Web"
+      "ref_id": "tech-054",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-054"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-054"
+        }
+      ],
+      "search_text": "Tech | Devvit Web | tech-054 | table techstack file techstack.md row_id tech-054 | table techstack file techstack.md row_id tech-054",
+      "search_terms": [
+        "tech",
+        "devvit",
+        "web",
+        "054",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -598,7 +1704,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Digital Wellbeing"
+      "ref_id": "tech-056",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-056"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-056"
+        }
+      ],
+      "search_text": "Tech | Digital Wellbeing | tech-056 | table techstack file techstack.md row_id tech-056 | table techstack file techstack.md row_id tech-056",
+      "search_terms": [
+        "tech",
+        "digital",
+        "wellbeing",
+        "056",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -612,7 +1743,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Discord (mentioned)"
+      "ref_id": "tech-057",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-057"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-057"
+        }
+      ],
+      "search_text": "Tech | Discord (mentioned) | tech-057 | table techstack file techstack.md row_id tech-057 | table techstack file techstack.md row_id tech-057",
+      "search_terms": [
+        "tech",
+        "discord",
+        "mentioned",
+        "057",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -626,7 +1782,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | E-commerce/Retail"
+      "ref_id": "tech-058",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-058"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-058"
+        }
+      ],
+      "search_text": "Tech | E-commerce/Retail | tech-058 | table techstack file techstack.md row_id tech-058 | table techstack file techstack.md row_id tech-058",
+      "search_terms": [
+        "tech",
+        "commerce",
+        "retail",
+        "058",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -640,7 +1821,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Education"
+      "ref_id": "tech-059",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-059"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-059"
+        }
+      ],
+      "search_text": "Tech | Education | tech-059 | table techstack file techstack.md row_id tech-059 | table techstack file techstack.md row_id tech-059",
+      "search_terms": [
+        "tech",
+        "education",
+        "059",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -654,7 +1859,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Educational Technology"
+      "ref_id": "tech-060",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-060"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-060"
+        }
+      ],
+      "search_text": "Tech | Educational Technology | tech-060 | table techstack file techstack.md row_id tech-060 | table techstack file techstack.md row_id tech-060",
+      "search_terms": [
+        "tech",
+        "educational",
+        "technology",
+        "060",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -668,7 +1898,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | ElevenLabs"
+      "ref_id": "tech-061",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-061"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-061"
+        }
+      ],
+      "search_text": "Tech | ElevenLabs | tech-061 | table techstack file techstack.md row_id tech-061 | table techstack file techstack.md row_id tech-061",
+      "search_terms": [
+        "tech",
+        "elevenlabs",
+        "061",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -682,7 +1936,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Enterprise"
+      "ref_id": "tech-062",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-062"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-062"
+        }
+      ],
+      "search_text": "Tech | Enterprise | tech-062 | table techstack file techstack.md row_id tech-062 | table techstack file techstack.md row_id tech-062",
+      "search_terms": [
+        "tech",
+        "enterprise",
+        "062",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -696,7 +1974,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Ethereum (implied)"
+      "ref_id": "tech-063",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-063"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-063"
+        }
+      ],
+      "search_text": "Tech | Ethereum (implied) | tech-063 | table techstack file techstack.md row_id tech-063 | table techstack file techstack.md row_id tech-063",
+      "search_terms": [
+        "tech",
+        "ethereum",
+        "implied",
+        "063",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -710,7 +2013,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | FOBISIA schools"
+      "ref_id": "tech-070",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-070"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-070"
+        }
+      ],
+      "search_text": "Tech | FOBISIA schools | tech-070 | table techstack file techstack.md row_id tech-070 | table techstack file techstack.md row_id tech-070",
+      "search_terms": [
+        "tech",
+        "fobisia",
+        "schools",
+        "070",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -724,7 +2052,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Finance"
+      "ref_id": "tech-065",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-065"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-065"
+        }
+      ],
+      "search_text": "Tech | Finance | tech-065 | table techstack file techstack.md row_id tech-065 | table techstack file techstack.md row_id tech-065",
+      "search_terms": [
+        "tech",
+        "finance",
+        "065",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -738,7 +2090,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Financial Empowerment"
+      "ref_id": "tech-066",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-066"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-066"
+        }
+      ],
+      "search_text": "Tech | Financial Empowerment | tech-066 | table techstack file techstack.md row_id tech-066 | table techstack file techstack.md row_id tech-066",
+      "search_terms": [
+        "tech",
+        "financial",
+        "empowerment",
+        "066",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -752,7 +2129,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Fintech"
+      "ref_id": "tech-067",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-067"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-067"
+        }
+      ],
+      "search_text": "Tech | Fintech | tech-067 | table techstack file techstack.md row_id tech-067 | table techstack file techstack.md row_id tech-067",
+      "search_terms": [
+        "tech",
+        "fintech",
+        "067",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -766,7 +2167,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Flutter"
+      "ref_id": "tech-069",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-069"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-069"
+        }
+      ],
+      "search_text": "Tech | Flutter | tech-069 | table techstack file techstack.md row_id tech-069 | table techstack file techstack.md row_id tech-069",
+      "search_terms": [
+        "tech",
+        "flutter",
+        "069",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -780,7 +2205,34 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | GPT-4o Realtime (mentioned)"
+      "ref_id": "tech-080",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-080"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-080"
+        }
+      ],
+      "search_text": "Tech | GPT-4o Realtime (mentioned) | tech-080 | table techstack file techstack.md row_id tech-080 | table techstack file techstack.md row_id tech-080",
+      "search_terms": [
+        "tech",
+        "gpt",
+        "4o",
+        "realtime",
+        "mentioned",
+        "080",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -794,7 +2246,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Gaming"
+      "ref_id": "tech-071",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-071"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-071"
+        }
+      ],
+      "search_text": "Tech | Gaming | tech-071 | table techstack file techstack.md row_id tech-071 | table techstack file techstack.md row_id tech-071",
+      "search_terms": [
+        "tech",
+        "gaming",
+        "071",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -808,7 +2284,34 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Gemini (Live API mentioned)"
+      "ref_id": "tech-072",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-072"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-072"
+        }
+      ],
+      "search_text": "Tech | Gemini (Live API mentioned) | tech-072 | table techstack file techstack.md row_id tech-072 | table techstack file techstack.md row_id tech-072",
+      "search_terms": [
+        "tech",
+        "gemini",
+        "live",
+        "api",
+        "mentioned",
+        "072",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -822,7 +2325,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Gemini 3.1"
+      "ref_id": "tech-073",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-073"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-073"
+        }
+      ],
+      "search_text": "Tech | Gemini 3.1 | tech-073 | table techstack file techstack.md row_id tech-073 | table techstack file techstack.md row_id tech-073",
+      "search_terms": [
+        "tech",
+        "gemini",
+        "073",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -836,7 +2363,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | GenAI (unspecified)"
+      "ref_id": "tech-074",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-074"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-074"
+        }
+      ],
+      "search_text": "Tech | GenAI (unspecified) | tech-074 | table techstack file techstack.md row_id tech-074 | table techstack file techstack.md row_id tech-074",
+      "search_terms": [
+        "tech",
+        "genai",
+        "unspecified",
+        "074",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -850,7 +2402,34 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | GitHub (open-source requirement)"
+      "ref_id": "tech-075",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-075"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-075"
+        }
+      ],
+      "search_text": "Tech | GitHub (open-source requirement) | tech-075 | table techstack file techstack.md row_id tech-075 | table techstack file techstack.md row_id tech-075",
+      "search_terms": [
+        "tech",
+        "github",
+        "open",
+        "source",
+        "requirement",
+        "075",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -864,7 +2443,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | GitHub (submission requirement)"
+      "ref_id": "tech-076",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-076"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-076"
+        }
+      ],
+      "search_text": "Tech | GitHub (submission requirement) | tech-076 | table techstack file techstack.md row_id tech-076 | table techstack file techstack.md row_id tech-076",
+      "search_terms": [
+        "tech",
+        "github",
+        "submission",
+        "requirement",
+        "076",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -878,7 +2483,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | GitHub Copilot"
+      "ref_id": "tech-077",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-077"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-077"
+        }
+      ],
+      "search_text": "Tech | GitHub Copilot | tech-077 | table techstack file techstack.md row_id tech-077 | table techstack file techstack.md row_id tech-077",
+      "search_terms": [
+        "tech",
+        "github",
+        "copilot",
+        "077",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -892,7 +2522,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | GitLab workflows"
+      "ref_id": "tech-078",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-078"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-078"
+        }
+      ],
+      "search_text": "Tech | GitLab workflows | tech-078 | table techstack file techstack.md row_id tech-078 | table techstack file techstack.md row_id tech-078",
+      "search_terms": [
+        "tech",
+        "gitlab",
+        "workflows",
+        "078",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -906,7 +2561,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Grok models"
+      "ref_id": "tech-083",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-083"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-083"
+        }
+      ],
+      "search_text": "Tech | Grok models | tech-083 | table techstack file techstack.md row_id tech-083 | table techstack file techstack.md row_id tech-083",
+      "search_terms": [
+        "tech",
+        "grok",
+        "models",
+        "083",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -920,7 +2600,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Hackathon"
+      "ref_id": "tech-084",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-084"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-084"
+        }
+      ],
+      "search_text": "Tech | Hackathon | tech-084 | table techstack file techstack.md row_id tech-084 | table techstack file techstack.md row_id tech-084",
+      "search_terms": [
+        "tech",
+        "hackathon",
+        "084",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -934,7 +2638,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Hardware"
+      "ref_id": "tech-085",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-085"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-085"
+        }
+      ],
+      "search_text": "Tech | Hardware | tech-085 | table techstack file techstack.md row_id tech-085 | table techstack file techstack.md row_id tech-085",
+      "search_terms": [
+        "tech",
+        "hardware",
+        "085",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -948,7 +2676,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Health"
+      "ref_id": "tech-086",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-086"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-086"
+        }
+      ],
+      "search_text": "Tech | Health | tech-086 | table techstack file techstack.md row_id tech-086 | table techstack file techstack.md row_id tech-086",
+      "search_terms": [
+        "tech",
+        "health",
+        "086",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -962,7 +2714,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Health and Well-Being"
+      "ref_id": "tech-087",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-087"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-087"
+        }
+      ],
+      "search_text": "Tech | Health and Well-Being | tech-087 | table techstack file techstack.md row_id tech-087 | table techstack file techstack.md row_id tech-087",
+      "search_terms": [
+        "tech",
+        "health",
+        "well",
+        "being",
+        "087",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -976,7 +2754,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Hyperledger"
+      "ref_id": "tech-088",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-088"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-088"
+        }
+      ],
+      "search_text": "Tech | Hyperledger | tech-088 | table techstack file techstack.md row_id tech-088 | table techstack file techstack.md row_id tech-088",
+      "search_terms": [
+        "tech",
+        "hyperledger",
+        "088",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -990,7 +2792,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | IBM Z + cloud (mentioned)"
+      "ref_id": "tech-089",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-089"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-089"
+        }
+      ],
+      "search_text": "Tech | IBM Z + cloud (mentioned) | tech-089 | table techstack file techstack.md row_id tech-089 | table techstack file techstack.md row_id tech-089",
+      "search_terms": [
+        "tech",
+        "ibm",
+        "cloud",
+        "mentioned",
+        "089",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1004,7 +2832,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Ideathon"
+      "ref_id": "tech-090",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-090"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-090"
+        }
+      ],
+      "search_text": "Tech | Ideathon | tech-090 | table techstack file techstack.md row_id tech-090 | table techstack file techstack.md row_id tech-090",
+      "search_terms": [
+        "tech",
+        "ideathon",
+        "090",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1018,7 +2870,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Indonesia"
+      "ref_id": "tech-091",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-091"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-091"
+        }
+      ],
+      "search_text": "Tech | Indonesia | tech-091 | table techstack file techstack.md row_id tech-091 | table techstack file techstack.md row_id tech-091",
+      "search_terms": [
+        "tech",
+        "indonesia",
+        "091",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1032,7 +2908,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | IoT"
+      "ref_id": "tech-093",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-093"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-093"
+        }
+      ],
+      "search_text": "Tech | IoT | tech-093 | table techstack file techstack.md row_id tech-093 | table techstack file techstack.md row_id tech-093",
+      "search_terms": [
+        "tech",
+        "iot",
+        "093",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1046,7 +2946,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | KoyalAI"
+      "ref_id": "tech-094",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-094"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-094"
+        }
+      ],
+      "search_text": "Tech | KoyalAI | tech-094 | table techstack file techstack.md row_id tech-094 | table techstack file techstack.md row_id tech-094",
+      "search_terms": [
+        "tech",
+        "koyalai",
+        "094",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1060,7 +2984,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | LLMs"
+      "ref_id": "tech-098",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-098"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-098"
+        }
+      ],
+      "search_text": "Tech | LLMs | tech-098 | table techstack file techstack.md row_id tech-098 | table techstack file techstack.md row_id tech-098",
+      "search_terms": [
+        "tech",
+        "llms",
+        "098",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1074,7 +3022,48 @@
       "vendor": "LangChain",
       "tco_notes": "FOSS framework; infra + model/API costs dominate; maintenance cost scales with integrations.",
       "foss_alternatives": "`[\"LlamaIndex\", \"Haystack\"]`",
-      "search_text": "Tech | LangChain | agent-framework | yes | `[\"LlamaIndex\", \"Haystack\"]` | MIT (commonly) | FOSS framework; infra + model/API costs dominate; maintenance cost scales with integrations. | LangChain"
+      "ref_id": "tech-095",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-095"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-095"
+        }
+      ],
+      "search_text": "Tech | LangChain | tech-095 | agent-framework | yes | `[\"LlamaIndex\", \"Haystack\"]` | MIT (commonly) | table techstack file techstack.md row_id tech-095 | table techstack file techstack.md row_id tech-095 | FOSS framework; infra + model/API costs dominate; maintenance cost scales with integrations. | LangChain",
+      "search_terms": [
+        "tech",
+        "langchain",
+        "095",
+        "agent",
+        "framework",
+        "yes",
+        "llamaindex",
+        "haystack",
+        "mit",
+        "commonly",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id",
+        "foss",
+        "infra",
+        "model",
+        "api",
+        "costs",
+        "dominate",
+        "maintenance",
+        "cost",
+        "scales",
+        "integrations"
+      ]
     }
   },
   {
@@ -1088,7 +3077,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | LeanMCP (tracks mentioned)"
+      "ref_id": "tech-096",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-096"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-096"
+        }
+      ],
+      "search_text": "Tech | LeanMCP (tracks mentioned) | tech-096 | table techstack file techstack.md row_id tech-096 | table techstack file techstack.md row_id tech-096",
+      "search_terms": [
+        "tech",
+        "leanmcp",
+        "tracks",
+        "mentioned",
+        "096",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1102,7 +3117,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Lifehacks"
+      "ref_id": "tech-097",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-097"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-097"
+        }
+      ],
+      "search_text": "Tech | Lifehacks | tech-097 | table techstack file techstack.md row_id tech-097 | table techstack file techstack.md row_id tech-097",
+      "search_terms": [
+        "tech",
+        "lifehacks",
+        "097",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1116,7 +3155,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Low/No Code"
+      "ref_id": "tech-099",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-099"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-099"
+        }
+      ],
+      "search_text": "Tech | Low/No Code | tech-099 | table techstack file techstack.md row_id tech-099 | table techstack file techstack.md row_id tech-099",
+      "search_terms": [
+        "tech",
+        "low",
+        "no",
+        "code",
+        "099",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1130,7 +3195,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Lyria"
+      "ref_id": "tech-100",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-100"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-100"
+        }
+      ],
+      "search_text": "Tech | Lyria | tech-100 | table techstack file techstack.md row_id tech-100 | table techstack file techstack.md row_id tech-100",
+      "search_terms": [
+        "tech",
+        "lyria",
+        "100",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1144,7 +3233,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Machine Learning/AI"
+      "ref_id": "tech-101",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-101"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-101"
+        }
+      ],
+      "search_text": "Tech | Machine Learning/AI | tech-101 | table techstack file techstack.md row_id tech-101 | table techstack file techstack.md row_id tech-101",
+      "search_terms": [
+        "tech",
+        "machine",
+        "learning",
+        "ai",
+        "101",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1158,7 +3273,36 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Machine Learning/AI (theme tag on listing)"
+      "ref_id": "tech-102",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-102"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-102"
+        }
+      ],
+      "search_text": "Tech | Machine Learning/AI (theme tag on listing) | tech-102 | table techstack file techstack.md row_id tech-102 | table techstack file techstack.md row_id tech-102",
+      "search_terms": [
+        "tech",
+        "machine",
+        "learning",
+        "ai",
+        "theme",
+        "tag",
+        "listing",
+        "102",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1172,7 +3316,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Mobile"
+      "ref_id": "tech-104",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-104"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-104"
+        }
+      ],
+      "search_text": "Tech | Mobile | tech-104 | table techstack file techstack.md row_id tech-104 | table techstack file techstack.md row_id tech-104",
+      "search_terms": [
+        "tech",
+        "mobile",
+        "104",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1186,7 +3354,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | ModelArk"
+      "ref_id": "tech-105",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-105"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-105"
+        }
+      ],
+      "search_text": "Tech | ModelArk | tech-105 | table techstack file techstack.md row_id tech-105 | table techstack file techstack.md row_id tech-105",
+      "search_terms": [
+        "tech",
+        "modelark",
+        "105",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1200,7 +3392,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Move"
+      "ref_id": "tech-106",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-106"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-106"
+        }
+      ],
+      "search_text": "Tech | Move | tech-106 | table techstack file techstack.md row_id tech-106 | table techstack file techstack.md row_id tech-106",
+      "search_terms": [
+        "tech",
+        "move",
+        "106",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1214,7 +3430,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Multimodal APIs"
+      "ref_id": "tech-108",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-108"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-108"
+        }
+      ],
+      "search_text": "Tech | Multimodal APIs | tech-108 | table techstack file techstack.md row_id tech-108 | table techstack file techstack.md row_id tech-108",
+      "search_terms": [
+        "tech",
+        "multimodal",
+        "apis",
+        "108",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1228,7 +3469,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | NanoBanana 2"
+      "ref_id": "tech-109",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-109"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-109"
+        }
+      ],
+      "search_text": "Tech | NanoBanana 2 | tech-109 | table techstack file techstack.md row_id tech-109 | table techstack file techstack.md row_id tech-109",
+      "search_terms": [
+        "tech",
+        "nanobanana",
+        "109",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1242,7 +3507,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | ONE Record"
+      "ref_id": "tech-113",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-113"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-113"
+        }
+      ],
+      "search_text": "Tech | ONE Record | tech-113 | table techstack file techstack.md row_id tech-113 | table techstack file techstack.md row_id tech-113",
+      "search_terms": [
+        "tech",
+        "one",
+        "record",
+        "113",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1256,7 +3546,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Observability"
+      "ref_id": "tech-112",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-112"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-112"
+        }
+      ],
+      "search_text": "Tech | Observability | tech-112 | table techstack file techstack.md row_id tech-112 | table techstack file techstack.md row_id tech-112",
+      "search_terms": [
+        "tech",
+        "observability",
+        "112",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1270,7 +3584,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Open Ended"
+      "ref_id": "tech-114",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-114"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-114"
+        }
+      ],
+      "search_text": "Tech | Open Ended | tech-114 | table techstack file techstack.md row_id tech-114 | table techstack file techstack.md row_id tech-114",
+      "search_terms": [
+        "tech",
+        "open",
+        "ended",
+        "114",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1284,7 +3623,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | OpenAI"
+      "ref_id": "tech-115",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-115"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-115"
+        }
+      ],
+      "search_text": "Tech | OpenAI | tech-115 | table techstack file techstack.md row_id tech-115 | table techstack file techstack.md row_id tech-115",
+      "search_terms": [
+        "tech",
+        "openai",
+        "115",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1298,7 +3661,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | OpenAI (powered by, mentioned)"
+      "ref_id": "tech-116",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-116"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-116"
+        }
+      ],
+      "search_text": "Tech | OpenAI (powered by, mentioned) | tech-116 | table techstack file techstack.md row_id tech-116 | table techstack file techstack.md row_id tech-116",
+      "search_terms": [
+        "tech",
+        "openai",
+        "powered",
+        "mentioned",
+        "116",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1312,7 +3701,54 @@
       "vendor": "OpenAI",
       "tco_notes": "Usage-based API cost; watch token spend + rate limits; consider caching/RAG to reduce calls.",
       "foss_alternatives": "`[\"self-hosted open models\"]`",
-      "search_text": "Tech | OpenAI APIs (credits mentioned) | llm-api | no | `[\"self-hosted open models\"]` | Usage-based API cost; watch token spend + rate limits; consider caching/RAG to reduce calls. | OpenAI"
+      "ref_id": "tech-117",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-117"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-117"
+        }
+      ],
+      "search_text": "Tech | OpenAI APIs (credits mentioned) | tech-117 | llm-api | no | `[\"self-hosted open models\"]` | table techstack file techstack.md row_id tech-117 | table techstack file techstack.md row_id tech-117 | Usage-based API cost; watch token spend + rate limits; consider caching/RAG to reduce calls. | OpenAI",
+      "search_terms": [
+        "tech",
+        "openai",
+        "apis",
+        "credits",
+        "mentioned",
+        "117",
+        "llm",
+        "api",
+        "no",
+        "self",
+        "hosted",
+        "open",
+        "models",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id",
+        "usage",
+        "based",
+        "cost",
+        "watch",
+        "token",
+        "spend",
+        "rate",
+        "limits",
+        "consider",
+        "caching",
+        "rag",
+        "reduce",
+        "calls"
+      ]
     }
   },
   {
@@ -1326,7 +3762,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | OpenClaw"
+      "ref_id": "tech-118",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-118"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-118"
+        }
+      ],
+      "search_text": "Tech | OpenClaw | tech-118 | table techstack file techstack.md row_id tech-118 | table techstack file techstack.md row_id tech-118",
+      "search_terms": [
+        "tech",
+        "openclaw",
+        "118",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1340,7 +3800,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Product Hunt newsletter"
+      "ref_id": "tech-120",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-120"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-120"
+        }
+      ],
+      "search_text": "Tech | Product Hunt newsletter | tech-120 | table techstack file techstack.md row_id tech-120 | table techstack file techstack.md row_id tech-120",
+      "search_terms": [
+        "tech",
+        "product",
+        "hunt",
+        "newsletter",
+        "120",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1354,7 +3840,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Productivity"
+      "ref_id": "tech-121",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-121"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-121"
+        }
+      ],
+      "search_text": "Tech | Productivity | tech-121 | table techstack file techstack.md row_id tech-121 | table techstack file techstack.md row_id tech-121",
+      "search_terms": [
+        "tech",
+        "productivity",
+        "121",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1368,7 +3878,49 @@
       "vendor": "pygame community",
       "tco_notes": "No license cost; TCO is engineering time + packaging/distribution.",
       "foss_alternatives": "`[\"Godot (for games)\", \"SDL bindings\"]`",
-      "search_text": "Tech | Pygame | ui-framework | yes | `[\"Godot (for games)\", \"SDL bindings\"]` | LGPL (commonly) | No license cost; TCO is engineering time + packaging/distribution. | pygame community"
+      "ref_id": "tech-123",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-123"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-123"
+        }
+      ],
+      "search_text": "Tech | Pygame | tech-123 | ui-framework | yes | `[\"Godot (for games)\", \"SDL bindings\"]` | LGPL (commonly) | table techstack file techstack.md row_id tech-123 | table techstack file techstack.md row_id tech-123 | No license cost; TCO is engineering time + packaging/distribution. | pygame community",
+      "search_terms": [
+        "tech",
+        "pygame",
+        "123",
+        "ui",
+        "framework",
+        "yes",
+        "godot",
+        "games",
+        "sdl",
+        "bindings",
+        "lgpl",
+        "commonly",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id",
+        "no",
+        "license",
+        "cost",
+        "tco",
+        "engineering",
+        "time",
+        "packaging",
+        "distribution",
+        "community"
+      ]
     }
   },
   {
@@ -1382,7 +3934,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Python"
+      "ref_id": "tech-124",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-124"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-124"
+        }
+      ],
+      "search_text": "Tech | Python | tech-124 | table techstack file techstack.md row_id tech-124 | table techstack file techstack.md row_id tech-124",
+      "search_terms": [
+        "tech",
+        "python",
+        "124",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1396,7 +3972,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Quantum"
+      "ref_id": "tech-125",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-125"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-125"
+        }
+      ],
+      "search_text": "Tech | Quantum | tech-125 | table techstack file techstack.md row_id tech-125 | table techstack file techstack.md row_id tech-125",
+      "search_terms": [
+        "tech",
+        "quantum",
+        "125",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1410,7 +4010,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | RWA"
+      "ref_id": "tech-127",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-127"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-127"
+        }
+      ],
+      "search_text": "Tech | RWA | tech-127 | table techstack file techstack.md row_id tech-127 | table techstack file techstack.md row_id tech-127",
+      "search_terms": [
+        "tech",
+        "rwa",
+        "127",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1424,7 +4048,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Reddit Devvit platform"
+      "ref_id": "tech-126",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-126"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-126"
+        }
+      ],
+      "search_text": "Tech | Reddit Devvit platform | tech-126 | table techstack file techstack.md row_id tech-126 | table techstack file techstack.md row_id tech-126",
+      "search_terms": [
+        "tech",
+        "reddit",
+        "devvit",
+        "platform",
+        "126",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1438,7 +4088,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Search"
+      "ref_id": "tech-128",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-128"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-128"
+        }
+      ],
+      "search_text": "Tech | Search | tech-128 | table techstack file techstack.md row_id tech-128 | table techstack file techstack.md row_id tech-128",
+      "search_terms": [
+        "tech",
+        "search",
+        "128",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1452,7 +4126,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Second Brain"
+      "ref_id": "tech-129",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-129"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-129"
+        }
+      ],
+      "search_text": "Tech | Second Brain | tech-129 | table techstack file techstack.md row_id tech-129 | table techstack file techstack.md row_id tech-129",
+      "search_terms": [
+        "tech",
+        "second",
+        "brain",
+        "129",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1466,7 +4165,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Security"
+      "ref_id": "tech-130",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-130"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-130"
+        }
+      ],
+      "search_text": "Tech | Security | tech-130 | table techstack file techstack.md row_id tech-130 | table techstack file techstack.md row_id tech-130",
+      "search_terms": [
+        "tech",
+        "security",
+        "130",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1480,7 +4203,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Seedance model"
+      "ref_id": "tech-131",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-131"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-131"
+        }
+      ],
+      "search_text": "Tech | Seedance model | tech-131 | table techstack file techstack.md row_id tech-131 | table techstack file techstack.md row_id tech-131",
+      "search_terms": [
+        "tech",
+        "seedance",
+        "model",
+        "131",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1494,7 +4242,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Smart City"
+      "ref_id": "tech-133",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-133"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-133"
+        }
+      ],
+      "search_text": "Tech | Smart City | tech-133 | table techstack file techstack.md row_id tech-133 | table techstack file techstack.md row_id tech-133",
+      "search_terms": [
+        "tech",
+        "smart",
+        "city",
+        "133",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1508,7 +4281,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Social Good"
+      "ref_id": "tech-134",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-134"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-134"
+        }
+      ],
+      "search_text": "Tech | Social Good | tech-134 | table techstack file techstack.md row_id tech-134 | table techstack file techstack.md row_id tech-134",
+      "search_terms": [
+        "tech",
+        "social",
+        "good",
+        "134",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1522,7 +4320,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Streamlit"
+      "ref_id": "tech-136",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-136"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-136"
+        }
+      ],
+      "search_text": "Tech | Streamlit | tech-136 | table techstack file techstack.md row_id tech-136 | table techstack file techstack.md row_id tech-136",
+      "search_terms": [
+        "tech",
+        "streamlit",
+        "136",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1536,7 +4358,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Sui"
+      "ref_id": "tech-140",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-140"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-140"
+        }
+      ],
+      "search_text": "Tech | Sui | tech-140 | table techstack file techstack.md row_id tech-140 | table techstack file techstack.md row_id tech-140",
+      "search_terms": [
+        "tech",
+        "sui",
+        "140",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1550,7 +4396,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Sustainability & Social Impact"
+      "ref_id": "tech-141",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-141"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-141"
+        }
+      ],
+      "search_text": "Tech | Sustainability & Social Impact | tech-141 | table techstack file techstack.md row_id tech-141 | table techstack file techstack.md row_id tech-141",
+      "search_terms": [
+        "tech",
+        "sustainability",
+        "social",
+        "impact",
+        "141",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1564,7 +4436,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Three.js"
+      "ref_id": "tech-142",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-142"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-142"
+        }
+      ],
+      "search_text": "Tech | Three.js | tech-142 | table techstack file techstack.md row_id tech-142 | table techstack file techstack.md row_id tech-142",
+      "search_terms": [
+        "tech",
+        "three",
+        "js",
+        "142",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1578,7 +4475,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | TiDB"
+      "ref_id": "tech-143",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-143"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-143"
+        }
+      ],
+      "search_text": "Tech | TiDB | tech-143 | table techstack file techstack.md row_id tech-143 | table techstack file techstack.md row_id tech-143",
+      "search_terms": [
+        "tech",
+        "tidb",
+        "143",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1592,7 +4513,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | TinyFish web agents"
+      "ref_id": "tech-144",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-144"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-144"
+        }
+      ],
+      "search_text": "Tech | TinyFish web agents | tech-144 | table techstack file techstack.md row_id tech-144 | table techstack file techstack.md row_id tech-144",
+      "search_terms": [
+        "tech",
+        "tinyfish",
+        "web",
+        "agents",
+        "144",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1606,7 +4553,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | UX"
+      "ref_id": "tech-148",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-148"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-148"
+        }
+      ],
+      "search_text": "Tech | UX | tech-148 | table techstack file techstack.md row_id tech-148 | table techstack file techstack.md row_id tech-148",
+      "search_terms": [
+        "tech",
+        "ux",
+        "148",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1620,7 +4591,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Uber API"
+      "ref_id": "tech-145",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-145"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-145"
+        }
+      ],
+      "search_text": "Tech | Uber API | tech-145 | table techstack file techstack.md row_id tech-145 | table techstack file techstack.md row_id tech-145",
+      "search_terms": [
+        "tech",
+        "uber",
+        "api",
+        "145",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1634,7 +4630,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Ubuntu"
+      "ref_id": "tech-146",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-146"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-146"
+        }
+      ],
+      "search_text": "Tech | Ubuntu | tech-146 | table techstack file techstack.md row_id tech-146 | table techstack file techstack.md row_id tech-146",
+      "search_terms": [
+        "tech",
+        "ubuntu",
+        "146",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1648,7 +4668,48 @@
       "vendor": "Vercel",
       "tco_notes": "SaaS hosting; costs grow with traffic/build minutes; self-host trades money for ops.",
       "foss_alternatives": "`[\"self-host (Docker)\", \"Netlify\", \"Cloudflare Pages\"]`",
-      "search_text": "Tech | Vercel | hosting | no | `[\"self-host (Docker)\", \"Netlify\", \"Cloudflare Pages\"]` | SaaS hosting; costs grow with traffic/build minutes; self-host trades money for ops. | Vercel"
+      "ref_id": "tech-149",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-149"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-149"
+        }
+      ],
+      "search_text": "Tech | Vercel | tech-149 | hosting | no | `[\"self-host (Docker)\", \"Netlify\", \"Cloudflare Pages\"]` | table techstack file techstack.md row_id tech-149 | table techstack file techstack.md row_id tech-149 | SaaS hosting; costs grow with traffic/build minutes; self-host trades money for ops. | Vercel",
+      "search_terms": [
+        "tech",
+        "vercel",
+        "149",
+        "hosting",
+        "no",
+        "self",
+        "host",
+        "docker",
+        "netlify",
+        "cloudflare",
+        "pages",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id",
+        "saas",
+        "costs",
+        "grow",
+        "traffic",
+        "build",
+        "minutes",
+        "trades",
+        "money",
+        "ops"
+      ]
     }
   },
   {
@@ -1662,7 +4723,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Web"
+      "ref_id": "tech-150",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-150"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-150"
+        }
+      ],
+      "search_text": "Tech | Web | tech-150 | table techstack file techstack.md row_id tech-150 | table techstack file techstack.md row_id tech-150",
+      "search_terms": [
+        "tech",
+        "web",
+        "150",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1676,7 +4761,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Web Development"
+      "ref_id": "tech-151",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-151"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-151"
+        }
+      ],
+      "search_text": "Tech | Web Development | tech-151 | table techstack file techstack.md row_id tech-151 | table techstack file techstack.md row_id tech-151",
+      "search_terms": [
+        "tech",
+        "web",
+        "development",
+        "151",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1690,7 +4800,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Web3"
+      "ref_id": "tech-152",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-152"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-152"
+        }
+      ],
+      "search_text": "Tech | Web3 | tech-152 | table techstack file techstack.md row_id tech-152 | table techstack file techstack.md row_id tech-152",
+      "search_terms": [
+        "tech",
+        "web3",
+        "152",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1704,7 +4838,36 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | Web3 ecosystems (Casper/Solana/Arbitrum mentioned)"
+      "ref_id": "tech-154",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-154"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-154"
+        }
+      ],
+      "search_text": "Tech | Web3 ecosystems (Casper/Solana/Arbitrum mentioned) | tech-154 | table techstack file techstack.md row_id tech-154 | table techstack file techstack.md row_id tech-154",
+      "search_terms": [
+        "tech",
+        "web3",
+        "ecosystems",
+        "casper",
+        "solana",
+        "arbitrum",
+        "mentioned",
+        "154",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1718,7 +4881,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | X APIs"
+      "ref_id": "tech-156",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-156"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-156"
+        }
+      ],
+      "search_text": "Tech | X APIs | tech-156 | table techstack file techstack.md row_id tech-156 | table techstack file techstack.md row_id tech-156",
+      "search_terms": [
+        "tech",
+        "apis",
+        "156",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1732,7 +4919,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | aviation logistics"
+      "ref_id": "tech-019",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-019"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-019"
+        }
+      ],
+      "search_text": "Tech | aviation logistics | tech-019 | table techstack file techstack.md row_id tech-019 | table techstack file techstack.md row_id tech-019",
+      "search_terms": [
+        "tech",
+        "aviation",
+        "logistics",
+        "019",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1746,7 +4958,34 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | bolt.new credits (mentioned)"
+      "ref_id": "tech-026",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-026"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-026"
+        }
+      ],
+      "search_text": "Tech | bolt.new credits (mentioned) | tech-026 | table techstack file techstack.md row_id tech-026 | table techstack file techstack.md row_id tech-026",
+      "search_terms": [
+        "tech",
+        "bolt",
+        "new",
+        "credits",
+        "mentioned",
+        "026",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1760,7 +4999,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | builders"
+      "ref_id": "tech-027",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-027"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-027"
+        }
+      ],
+      "search_text": "Tech | builders | tech-027 | table techstack file techstack.md row_id tech-027 | table techstack file techstack.md row_id tech-027",
+      "search_terms": [
+        "tech",
+        "builders",
+        "027",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1774,7 +5037,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | builders meetup"
+      "ref_id": "tech-028",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-028"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-028"
+        }
+      ],
+      "search_text": "Tech | builders meetup | tech-028 | table techstack file techstack.md row_id tech-028 | table techstack file techstack.md row_id tech-028",
+      "search_terms": [
+        "tech",
+        "builders",
+        "meetup",
+        "028",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1788,7 +5076,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | builders session"
+      "ref_id": "tech-029",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-029"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-029"
+        }
+      ],
+      "search_text": "Tech | builders session | tech-029 | table techstack file techstack.md row_id tech-029 | table techstack file techstack.md row_id tech-029",
+      "search_terms": [
+        "tech",
+        "builders",
+        "session",
+        "029",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1802,7 +5115,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | business"
+      "ref_id": "tech-030",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-030"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-030"
+        }
+      ],
+      "search_text": "Tech | business | tech-030 | table techstack file techstack.md row_id tech-030 | table techstack file techstack.md row_id tech-030",
+      "search_terms": [
+        "tech",
+        "business",
+        "030",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1816,7 +5153,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | civic tech"
+      "ref_id": "tech-033",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-033"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-033"
+        }
+      ],
+      "search_text": "Tech | civic tech | tech-033 | table techstack file techstack.md row_id tech-033 | table techstack file techstack.md row_id tech-033",
+      "search_terms": [
+        "tech",
+        "civic",
+        "033",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1830,7 +5191,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | climate"
+      "ref_id": "tech-035",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-035"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-035"
+        }
+      ],
+      "search_text": "Tech | climate | tech-035 | table techstack file techstack.md row_id tech-035 | table techstack file techstack.md row_id tech-035",
+      "search_terms": [
+        "tech",
+        "climate",
+        "035",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1844,7 +5229,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | competitive programming"
+      "ref_id": "tech-040",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-040"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-040"
+        }
+      ],
+      "search_text": "Tech | competitive programming | tech-040 | table techstack file techstack.md row_id tech-040 | table techstack file techstack.md row_id tech-040",
+      "search_terms": [
+        "tech",
+        "competitive",
+        "programming",
+        "040",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1858,7 +5268,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | data visualization"
+      "ref_id": "tech-046",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-046"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-046"
+        }
+      ],
+      "search_text": "Tech | data visualization | tech-046 | table techstack file techstack.md row_id tech-046 | table techstack file techstack.md row_id tech-046",
+      "search_terms": [
+        "tech",
+        "data",
+        "visualization",
+        "046",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1872,7 +5307,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | design thinking"
+      "ref_id": "tech-049",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-049"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-049"
+        }
+      ],
+      "search_text": "Tech | design thinking | tech-049 | table techstack file techstack.md row_id tech-049 | table techstack file techstack.md row_id tech-049",
+      "search_terms": [
+        "tech",
+        "design",
+        "thinking",
+        "049",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1886,7 +5346,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | developer community"
+      "ref_id": "tech-050",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-050"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-050"
+        }
+      ],
+      "search_text": "Tech | developer community | tech-050 | table techstack file techstack.md row_id tech-050 | table techstack file techstack.md row_id tech-050",
+      "search_terms": [
+        "tech",
+        "developer",
+        "community",
+        "050",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1900,7 +5385,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | digital payments"
+      "ref_id": "tech-055",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-055"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-055"
+        }
+      ],
+      "search_text": "Tech | digital payments | tech-055 | table techstack file techstack.md row_id tech-055 | table techstack file techstack.md row_id tech-055",
+      "search_terms": [
+        "tech",
+        "digital",
+        "payments",
+        "055",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1914,7 +5424,35 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | fal (Nano Banana Pro mentioned)"
+      "ref_id": "tech-064",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-064"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-064"
+        }
+      ],
+      "search_text": "Tech | fal (Nano Banana Pro mentioned) | tech-064 | table techstack file techstack.md row_id tech-064 | table techstack file techstack.md row_id tech-064",
+      "search_terms": [
+        "tech",
+        "fal",
+        "nano",
+        "banana",
+        "pro",
+        "mentioned",
+        "064",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1928,7 +5466,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | fintech (unspecified)"
+      "ref_id": "tech-068",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-068"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-068"
+        }
+      ],
+      "search_text": "Tech | fintech (unspecified) | tech-068 | table techstack file techstack.md row_id tech-068 | table techstack file techstack.md row_id tech-068",
+      "search_terms": [
+        "tech",
+        "fintech",
+        "unspecified",
+        "068",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1942,7 +5505,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | government"
+      "ref_id": "tech-079",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-079"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-079"
+        }
+      ],
+      "search_text": "Tech | government | tech-079 | table techstack file techstack.md row_id tech-079 | table techstack file techstack.md row_id tech-079",
+      "search_terms": [
+        "tech",
+        "government",
+        "079",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1956,7 +5543,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | gpt-oss-120b"
+      "ref_id": "tech-081",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-081"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-081"
+        }
+      ],
+      "search_text": "Tech | gpt-oss-120b | tech-081 | table techstack file techstack.md row_id tech-081 | table techstack file techstack.md row_id tech-081",
+      "search_terms": [
+        "tech",
+        "gpt",
+        "oss",
+        "120b",
+        "081",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1970,7 +5583,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | gpt-oss-20b"
+      "ref_id": "tech-082",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-082"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-082"
+        }
+      ],
+      "search_text": "Tech | gpt-oss-20b | tech-082 | table techstack file techstack.md row_id tech-082 | table techstack file techstack.md row_id tech-082",
+      "search_terms": [
+        "tech",
+        "gpt",
+        "oss",
+        "20b",
+        "082",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1984,7 +5623,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | innovation"
+      "ref_id": "tech-092",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-092"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-092"
+        }
+      ],
+      "search_text": "Tech | innovation | tech-092 | table techstack file techstack.md row_id tech-092 | table techstack file techstack.md row_id tech-092",
+      "search_terms": [
+        "tech",
+        "innovation",
+        "092",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -1998,7 +5661,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | marine conservation"
+      "ref_id": "tech-103",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-103"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-103"
+        }
+      ],
+      "search_text": "Tech | marine conservation | tech-103 | table techstack file techstack.md row_id tech-103 | table techstack file techstack.md row_id tech-103",
+      "search_terms": [
+        "tech",
+        "marine",
+        "conservation",
+        "103",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2012,7 +5700,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | multi-theme hackathon"
+      "ref_id": "tech-107",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-107"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-107"
+        }
+      ],
+      "search_text": "Tech | multi-theme hackathon | tech-107 | table techstack file techstack.md row_id tech-107 | table techstack file techstack.md row_id tech-107",
+      "search_terms": [
+        "tech",
+        "multi",
+        "theme",
+        "hackathon",
+        "107",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2026,7 +5740,33 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | no-code + code (inclusive)"
+      "ref_id": "tech-110",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-110"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-110"
+        }
+      ],
+      "search_text": "Tech | no-code + code (inclusive) | tech-110 | table techstack file techstack.md row_id tech-110 | table techstack file techstack.md row_id tech-110",
+      "search_terms": [
+        "tech",
+        "no",
+        "code",
+        "inclusive",
+        "110",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2040,7 +5780,34 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | o1 reasoning model (mentioned)"
+      "ref_id": "tech-111",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-111"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-111"
+        }
+      ],
+      "search_text": "Tech | o1 reasoning model (mentioned) | tech-111 | table techstack file techstack.md row_id tech-111 | table techstack file techstack.md row_id tech-111",
+      "search_terms": [
+        "tech",
+        "o1",
+        "reasoning",
+        "model",
+        "mentioned",
+        "111",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2054,7 +5821,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | product design"
+      "ref_id": "tech-119",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-119"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-119"
+        }
+      ],
+      "search_text": "Tech | product design | tech-119 | table techstack file techstack.md row_id tech-119 | table techstack file techstack.md row_id tech-119",
+      "search_terms": [
+        "tech",
+        "product",
+        "design",
+        "119",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2068,7 +5860,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | prototype building"
+      "ref_id": "tech-122",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-122"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-122"
+        }
+      ],
+      "search_text": "Tech | prototype building | tech-122 | table techstack file techstack.md row_id tech-122 | table techstack file techstack.md row_id tech-122",
+      "search_terms": [
+        "tech",
+        "prototype",
+        "building",
+        "122",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2082,7 +5899,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | smart cities"
+      "ref_id": "tech-132",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-132"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-132"
+        }
+      ],
+      "search_text": "Tech | smart cities | tech-132 | table techstack file techstack.md row_id tech-132 | table techstack file techstack.md row_id tech-132",
+      "search_terms": [
+        "tech",
+        "smart",
+        "cities",
+        "132",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2096,7 +5938,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | startup"
+      "ref_id": "tech-135",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-135"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-135"
+        }
+      ],
+      "search_text": "Tech | startup | tech-135 | table techstack file techstack.md row_id tech-135 | table techstack file techstack.md row_id tech-135",
+      "search_terms": [
+        "tech",
+        "startup",
+        "135",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2110,7 +5976,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | student hackathon"
+      "ref_id": "tech-137",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-137"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-137"
+        }
+      ],
+      "search_text": "Tech | student hackathon | tech-137 | table techstack file techstack.md row_id tech-137 | table techstack file techstack.md row_id tech-137",
+      "search_terms": [
+        "tech",
+        "student",
+        "hackathon",
+        "137",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2124,7 +6015,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | student showcase"
+      "ref_id": "tech-138",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-138"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-138"
+        }
+      ],
+      "search_text": "Tech | student showcase | tech-138 | table techstack file techstack.md row_id tech-138 | table techstack file techstack.md row_id tech-138",
+      "search_terms": [
+        "tech",
+        "student",
+        "showcase",
+        "138",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2138,7 +6054,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | student-run"
+      "ref_id": "tech-139",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-139"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-139"
+        }
+      ],
+      "search_text": "Tech | student-run | tech-139 | table techstack file techstack.md row_id tech-139 | table techstack file techstack.md row_id tech-139",
+      "search_terms": [
+        "tech",
+        "student",
+        "run",
+        "139",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2152,7 +6093,31 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | unhackathon"
+      "ref_id": "tech-147",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-147"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-147"
+        }
+      ],
+      "search_text": "Tech | unhackathon | tech-147 | table techstack file techstack.md row_id tech-147 | table techstack file techstack.md row_id tech-147",
+      "search_terms": [
+        "tech",
+        "unhackathon",
+        "147",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2166,7 +6131,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | web3 (various)"
+      "ref_id": "tech-153",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-153"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-153"
+        }
+      ],
+      "search_text": "Tech | web3 (various) | tech-153 | table techstack file techstack.md row_id tech-153 | table techstack file techstack.md row_id tech-153",
+      "search_terms": [
+        "tech",
+        "web3",
+        "various",
+        "153",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2180,7 +6170,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | wildlife trafficking"
+      "ref_id": "tech-155",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-155"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-155"
+        }
+      ],
+      "search_text": "Tech | wildlife trafficking | tech-155 | table techstack file techstack.md row_id tech-155 | table techstack file techstack.md row_id tech-155",
+      "search_terms": [
+        "tech",
+        "wildlife",
+        "trafficking",
+        "155",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   },
   {
@@ -2194,7 +6209,32 @@
       "vendor": "—",
       "tco_notes": "—",
       "foss_alternatives": "—",
-      "search_text": "Tech | youth hackathon"
+      "ref_id": "tech-157",
+      "source": {
+        "table": "techstack",
+        "file": "techstack.md",
+        "row_id": "tech-157"
+      },
+      "sources": [
+        {
+          "table": "techstack",
+          "file": "techstack.md",
+          "row_id": "tech-157"
+        }
+      ],
+      "search_text": "Tech | youth hackathon | tech-157 | table techstack file techstack.md row_id tech-157 | table techstack file techstack.md row_id tech-157",
+      "search_terms": [
+        "tech",
+        "youth",
+        "hackathon",
+        "157",
+        "table",
+        "techstack",
+        "file",
+        "md",
+        "row",
+        "id"
+      ]
     }
   }
 ]

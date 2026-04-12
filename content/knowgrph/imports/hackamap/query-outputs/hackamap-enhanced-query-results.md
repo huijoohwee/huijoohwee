@@ -92,6 +92,34 @@ Query (JSON DSL):
             {
               "op": "any",
               "value": "postgres"
+            },
+            {
+              "op": "any",
+              "value": "postgresql"
+            },
+            {
+              "op": "any",
+              "value": "neon"
+            },
+            {
+              "op": "any",
+              "value": "web agent"
+            },
+            {
+              "op": "any",
+              "value": "agent"
+            },
+            {
+              "op": "any",
+              "value": "autonomous"
+            },
+            {
+              "op": "any",
+              "value": "langgraph"
+            },
+            {
+              "op": "any",
+              "value": "n8n"
             }
           ]
         },
@@ -198,6 +226,26 @@ Query (JSON DSL):
             {
               "op": "any",
               "value": "supabase"
+            },
+            {
+              "op": "any",
+              "value": "web agent"
+            },
+            {
+              "op": "any",
+              "value": "agent"
+            },
+            {
+              "op": "any",
+              "value": "autonomous"
+            },
+            {
+              "op": "any",
+              "value": "langgraph"
+            },
+            {
+              "op": "any",
+              "value": "n8n"
             }
           ]
         }
@@ -399,17 +447,20 @@ Query (JSON DSL):
 
 | _file | _row | id | event_id | Pain Point | Solution | Product | Team | Tech Stack | Demo URL | Repo URL | Video URL | Award | Source Type | Confidence | Extracted At |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| demos.md | 3 | demo-003 | evt-003 | builders need a high-signal venue to ship autonomous web agents; winners need public recognition and links to demos/projects | in-person hackathon with a hard constraint (must require autonomous web agents) and awards for top projects | `["winner showcase", "autonomous web-agent demos", "143 projects (reported)"]` | `["TinyFish", "Acacia AI Society", "NUS", "350+ hackers (reported)"]` | `["TinyFish web agents", "OpenAI (powered by, mentioned)"]` | https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM; https://lnkd.in/g52ftBkm; https://lnkd.in/gKJ5hhZu; https://lnkd.in/gMKstPsh; https://lnkd.in/gbnrajW9; https://lnkd.in/g7FyRCDn; https://lnkd.in/gDeJvw6P | — | — | — | `["linkedin", "winners-showcase", "demo-links"]` | medium | 2026-04-04 |
 | demos.md | 7 | demo-007 | evt-007 | builders need in-person hackathons to quickly prototype with Codex and iOS XR stacks | post-hackathon winner shoutout; highlights rapid ARKit prototyping with Codex | `["rapid prototyping", "ARKit experience"]` | `["Codex hackathon participants", "OpenAI community"]` | `["Codex", "ARKit (mentioned)"]` | https://x.com/romainhuet/status/2028586504407470503 | — | — | — | `["community", "event-recap"]` | low | 2026-04-04 |
 | demos.md | 8 | demo-008 | evt-008 | APAC developers need hands-on access to Codex; teams need a venue to build and demo Codex projects quickly | in-person hackathon in Singapore with Codex; winners showcased their projects | `["agentic coding", "project demos", "winner showcase"]` | `["OpenAI Developers", "100+ developers (participants)"]` | `["Codex"]` | https://x.com/OpenAIDevs/status/2028588617095057902 | — | — | — | `["announcement", "event-recap"]` | medium | 2026-04-04 |
 | demos.md | 28 | demo-028 | evt-023 | builders want a local venue to ship AI projects quickly; teams need incentives + credits to prototype with Cursor/Claude | 24-hour in-person hackathon with sponsor tracks and prize categories; submit projects on Devpost | `["in-person hackathon", "sponsor tracks", "project submissions"]` | `["Cursor", "Anthropic", "community partners", "participants"]` | `["Cursor", "Anthropic API", "Convex", "Vercel", "TiDB", "ElevenLabs", "LeanMCP (tracks mentioned)"]` | https://cursor-hack-my.devpost.com/ | — | — | — | `["devpost", "event-page"]` | high | 2026-04-04 |
+| demos.md | 36 | demo-036 | evt-034 | teams want a vendor-neutral way to build and ship AI agents; builders need incentives/credits to test agent ideas quickly | online hackathon encouraging builders to submit agents built with a hosted AI gateway; prizes in AI credits | `["AI Gateway", "hackathon challenge", "agent submissions"]` | `["Vercel"]` | `["Vercel", "AI Gateway"]` | https://x.com/vercel/status/1959307873143665060 | — | — | — | `["announcement", "marketing"]` | medium | 2026-04-04 |
 | events.md | 7 | evt-007 |  |  |  |  |  |  |  |  |  |  | `["community", "event-recap", "demo"]` | low | 2026-04-04 |
 | events.md | 23 | evt-023 |  |  |  |  |  |  |  |  |  |  | `["media", "event-recap", "devpost", "event-page"]` | high | 2026-04-04 |
 | events.md | 48 | evt-048 |  |  |  |  |  |  |  |  |  |  | `["linkedin", "event-recap"]` | low | 2026-04-04 |
 | events.md | 63 | evt-063 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| demos.md | 4 | demo-004 | evt-004 | teams need to operationalize AI beyond code generation; orgs want agents for planning/security/compliance/deployments | hackathon encouraging teams to build workflow agents inside GitLab; prizes and deadline | `["AI agents for SDLC", "workflow automation"]` | `["Devpost", "GitLab"]` | `["GitLab workflows"]` | https://x.com/devpost/status/2020965804687446360 | — | — | — | `["announcement", "marketing"]` | medium | 2026-04-04 |
 | demos.md | 12 | demo-012 | evt-007 | hackathon participants need quick ways to share demos and artifacts; teams need community visibility for hackathon builds | short demo/video sneak peek from an in-person Codex hackathon | `["demo video", "hackathon showcase"]` | `["OpenAI Codex hackathon participants"]` | `["Codex"]` | https://x.com/agrimsingh/status/2027736501241700461 | — | — | — | `["community", "demo"]` | low | 2026-04-04 |
 | demos.md | 31 | demo-031 | evt-029 | builders need a fast, high-signal way to ship projects in 24 hours; teams want credits/cash incentives to prototype rapidly | 24-hour hackathon format with cash + tool credits to ship projects (Cursor hackathon) | `["24h hackathon", "project shipping"]` | `["@cursor_ai", "hackathon organizers", "participants"]` | `["Cursor", "AI dev tools (mentioned in post)"]` | https://x.com/gabrielchua/status/1975949011409412425 | — | — | — | `["announcement", "marketing"]` | medium | 2026-04-04 |
-| demos.md | 36 | demo-036 | evt-034 | teams want a vendor-neutral way to build and ship AI agents; builders need incentives/credits to test agent ideas quickly | online hackathon encouraging builders to submit agents built with a hosted AI gateway; prizes in AI credits | `["AI Gateway", "hackathon challenge", "agent submissions"]` | `["Vercel"]` | `["Vercel", "AI Gateway"]` | https://x.com/vercel/status/1959307873143665060 | — | — | — | `["announcement", "marketing"]` | medium | 2026-04-04 |
 | demos.md | 50 | demo-050 | evt-048 | hackathon organizers need a public recap to recognize winners and show outcomes; participants need post-event visibility to continue building | post-hackathon recap highlighting winners and outcomes; emphasizes continuing projects beyond the hackathon | `["recap video", "winner recognition", "API credits for teams"]` | `["GovTech Singapore", "OpenAI", "top 3 teams (winners)"]` | `["OpenAI APIs (credits mentioned)"]` | https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs | — | — | — | `["linkedin", "event-recap"]` | low | 2026-04-04 |
+| events.md | 3 | evt-003 |  |  |  |  |  |  |  |  |  |  | `["linkedin", "winners-showcase", "demo-links"]` | medium | 2026-04-04 |
 | events.md | 26 | evt-026 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project-gallery"]` | medium | 2026-04-04 |
 | events.md | 29 | evt-029 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | medium | 2026-04-04 |
 | events.md | 34 | evt-034 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | medium | 2026-04-04 |
@@ -430,7 +481,6 @@ Query (JSON DSL):
 | demos.md | 117 | demo-120 | evt-118 | — | — | `["project gallery"]` | `["Komunitas Flutter Indonesia (mentioned)", "Google Developers (mentioned)", "Google"]` | `["Flutter", "Dart", "Social Good", "Indonesia"]` | https://indonesiamajuhackfest.devpost.com/project-gallery | — | — | — | `["devpost", "details/dates", "project_gallery"]` | high | 2026-04-04 |
 | demos.md | 135 | demo-138 | evt-136 | — | — | `["project gallery"]` | `["HKU Centre for AI, Management and Organization (HKU CAMO)"]` | `["OpenClaw", "AI workflows", "builders meetup", "business"]` | https://camo.hku.hk/28-march-2026-openclaw-meet-up/ | — | — | — | — | medium | 2026-04-04 |
 | demos.md | 138 | demo-141 | evt-139 | — | — | `["project gallery"]` | `["OpenClaw Jakarta community"]` | `["OpenClaw", "AI agents", "builders meetup"]` | https://luma.com/claw | — | — | — | — | medium | 2026-04-04 |
-| events.md | 3 | evt-003 |  |  |  |  |  |  |  |  |  |  | `["linkedin", "winners-showcase", "demo-links"]` | medium | 2026-04-04 |
 | events.md | 8 | evt-008 |  |  |  |  |  |  |  |  |  |  | `["announcement", "event-recap"]` | medium | 2026-04-04 |
 | events.md | 19 | evt-019 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project-gallery", "winners"]` | high | 2026-04-04 |
 | events.md | 20 | evt-020 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
@@ -462,8 +512,6 @@ Query (JSON DSL):
 | sources.md | 59 | src-059 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | — |
 | sources.md | 60 | src-060 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | — |
 | demos.md | 1 | demo-001 | evt-001 | global students need an accessible virtual venue to build AI solutions aligned to UN SDGs; teams need a short demo video requirement to communicate projects | 3-day virtual hackathon; submission requires repo and 2–3 minute demo video | `["AI prototypes", "demo videos"]` | `["IBM Z Sheridan", "UNSA Sheridan"]` | `["AI tools (unspecified)", "IBM Z + cloud (mentioned)"]` | https://ibm-unsa-hackathon.devpost.com/ | — | — | — | `["devpost", "event-page"]` | high | 2026-04-04 |
-| demos.md | 3 | demo-003 | evt-003 | builders need a high-signal venue to ship autonomous web agents; winners need public recognition and links to demos/projects | in-person hackathon with a hard constraint (must require autonomous web agents) and awards for top projects | `["winner showcase", "autonomous web-agent demos", "143 projects (reported)"]` | `["TinyFish", "Acacia AI Society", "NUS", "350+ hackers (reported)"]` | `["TinyFish web agents", "OpenAI (powered by, mentioned)"]` | https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM; https://lnkd.in/g52ftBkm; https://lnkd.in/gKJ5hhZu; https://lnkd.in/gMKstPsh; https://lnkd.in/gbnrajW9; https://lnkd.in/g7FyRCDn; https://lnkd.in/gDeJvw6P | — | — | — | `["linkedin", "winners-showcase", "demo-links"]` | medium | 2026-04-04 |
-| demos.md | 4 | demo-004 | evt-004 | teams need to operationalize AI beyond code generation; orgs want agents for planning/security/compliance/deployments | hackathon encouraging teams to build workflow agents inside GitLab; prizes and deadline | `["AI agents for SDLC", "workflow automation"]` | `["Devpost", "GitLab"]` | `["GitLab workflows"]` | https://x.com/devpost/status/2020965804687446360 | — | — | — | `["announcement", "marketing"]` | medium | 2026-04-04 |
 | demos.md | 5 | demo-005 | evt-005 | filmmakers/creators need fast ways to produce short films; teams need rapid feedback on AI filmmaking tools under tight time constraints | AI filmmaking hackathon format enabling teams to create films in <3 hours using an AI tool | `["AI filmmaking tool testing", "rapid short-film creation"]` | `["SXSW community", "KoyalAI", "100+ filmmakers"]` | `["KoyalAI"]` | https://x.com/meh_agarwal/status/2033596708513341710 | — | — | — | `["community", "event-recap"]` | medium | 2026-04-04 |
 | demos.md | 6 | demo-006 | evt-006 | AI hackathon submissions need a simple way to surface winners and demos; participants need a page to browse winning projects | Devpost project gallery showing winner ribbons and links to demos/projects | `["winner project gallery", "demo pages"]` | `["Hack AI organizers", "participants"]` | `["Devpost"]` | https://hackai-2026.devpost.com/project-gallery | — | — | — | `["devpost", "project-gallery", "winners"]` | high | 2026-04-04 |
 | demos.md | 9 | demo-009 | evt-009 | most AI apps don’t use the full multimodal stack; builders lack access to a complete multimodal toolchain for experiments | hackathon providing access to multiple multimodal models so teams can build end-to-end multimodal apps | `["multimodal hackathon", "model access", "rapid prototyping"]` | `["Y Combinator", "Google DeepMind"]` | `["Gemini 3.1", "Lyria", "NanoBanana 2"]` | https://x.com/ycombinator/status/2028564751882871056 | — | — | — | `["announcement", "marketing"]` | medium | 2026-04-04 |

@@ -1,0 +1,107 @@
+[
+  {
+    "_file": "techstack.md",
+    "_row": 43,
+    "id": "tech-043",
+    "Tech": "Cursor",
+    "Category": null,
+    "FOSS": null,
+    "License": null,
+    "Vendor/Org": null,
+    "FOSS Alternatives": null,
+    "TCO Notes": null,
+    "Events": [
+      "evt-023",
+      "evt-029"
+    ],
+    "Demos": [
+      "demo-024",
+      "demo-028",
+      "demo-031"
+    ],
+    "Source URLs": [
+      "https://x.com/therakyatpost/status/2001218375389769766",
+      "https://cursor-hack-my.devpost.com/",
+      "https://x.com/gabrielchua/status/1975949011409412425"
+    ],
+    "Source Type": [
+      "media",
+      "event-recap",
+      "devpost",
+      "event-page",
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "techstack.md",
+    "_row": 96,
+    "id": "tech-096",
+    "Tech": "LeanMCP (tracks mentioned)",
+    "Category": null,
+    "FOSS": null,
+    "License": null,
+    "Vendor/Org": null,
+    "FOSS Alternatives": null,
+    "TCO Notes": null,
+    "Events": [
+      "evt-023"
+    ],
+    "Demos": [
+      "demo-028"
+    ],
+    "Source URLs": [
+      "https://x.com/therakyatpost/status/2001218375389769766",
+      "https://cursor-hack-my.devpost.com/"
+    ],
+    "Source Type": [
+      "media",
+      "event-recap",
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "techstack.md",
+    "_row": 149,
+    "id": "tech-149",
+    "Tech": "Vercel",
+    "Category": "hosting",
+    "FOSS": "no",
+    "License": null,
+    "Vendor/Org": "Vercel",
+    "FOSS Alternatives": [
+      "self-host (Docker)",
+      "Netlify",
+      "Cloudflare Pages"
+    ],
+    "TCO Notes": "SaaS hosting; costs grow with traffic/build minutes; self-host trades money for ops.",
+    "Events": [
+      "evt-023",
+      "evt-034"
+    ],
+    "Demos": [
+      "demo-028",
+      "demo-036"
+    ],
+    "Source URLs": [
+      "https://x.com/therakyatpost/status/2001218375389769766",
+      "https://cursor-hack-my.devpost.com/",
+      "https://x.com/vercel/status/1959307873143665060"
+    ],
+    "Source Type": [
+      "media",
+      "event-recap",
+      "devpost",
+      "event-page",
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

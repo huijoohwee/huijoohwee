@@ -5,83 +5,183 @@
   "files": [
     {
       "path": "dataset-json/dataset-manifest.json",
-      "sha256": "6b76ba478dc16ada8148a24ae0803872b13e13b084a664299e9b34d62d13af3f"
+      "sha256": "38fab1902f87df0cfce9ebc032beb77d83c8d7c855372d43c589c9238274903a"
     },
     {
       "path": "dataset-json/demos.json",
-      "sha256": "9f665a73ea33f875a25d5764bb86405231224c6b42b62ae1fd8e9647e3ae7c04"
+      "sha256": "b163e1b3b63ef605d8d7ae360f66ada1fb0bbe14bc6da5217cebc69914acc10f"
     },
     {
       "path": "dataset-json/events.json",
-      "sha256": "cd5fb023d93fe10f311d68d995008e5076147b05c0d69879cab4453207acaa8e"
+      "sha256": "01feff4194005d60c694c869695ed965ff665837f8e562bae7d195390409be82"
     },
     {
       "path": "dataset-json/links.json",
-      "sha256": "3831ebdcb972184a405428419b0ed2f7f917538f5353cdbafdc6b6eb71fd66e3"
+      "sha256": "b95c2c355b427a7155a48dd5e1277edbea93501305ee56233171a63b2eef0141"
     },
     {
       "path": "dataset-json/nodes.json",
-      "sha256": "fb424effd4a0e0686c29ef55be82e997af0cf38eebfb394cfb59e8e920ce9743"
+      "sha256": "37c733c3b7c7cd8abc743f55662bd825672a1ba4c98d67cc4376ff5bb9fceeda"
     },
     {
       "path": "dataset-json/organizer.json",
-      "sha256": "2ef67dc8589e6ba64b2d86f06fccf422920310a9944955a7253ca9c59177bf4a"
+      "sha256": "239c95eb5f7cde3b377d9b548692db2925d19fe7778d695ceae3eead4ce53009"
     },
     {
       "path": "dataset-json/sources.json",
-      "sha256": "8c3d44773b714a54b346482ef27248c27198ed941f25efceea315e77e5cebccd"
+      "sha256": "39759a26703a2f8bd213e70743acc0440bf49ed5b01dac2678d84195556a5072"
     },
     {
       "path": "dataset-json/team.json",
-      "sha256": "6a5f0115a1df3895d92bd971de7c2b7a2c57b8dd23bf4d3540a9a3e93c9bd99a"
+      "sha256": "5230622d018e16f933de83497f82a84184f2dde7129f3bf19bcb968405372f8d"
     },
     {
       "path": "dataset-json/techstack.json",
-      "sha256": "f100dc89bf0ed0f1d4965bee00459c6e2f5ea7a0ae09515bbadeac5bfb39c518"
+      "sha256": "b23b4aaa7ae96cbcbdc5a159e05842a1822e454b73a76d8a611d048dd1333cb6"
     },
     {
       "path": "hackamap-graph.json",
-      "sha256": "373b858cc4b22ccf4a2cd3acdeb39c3197e3ca3c81d801416fc48a421dc9299e"
+      "sha256": "7c3dd50b1ade6eb28de83b09ccc411e7ff780b2bb58a6e2438e5931c0c1b6640"
     },
     {
       "path": "hackamap_links.json",
-      "sha256": "3831ebdcb972184a405428419b0ed2f7f917538f5353cdbafdc6b6eb71fd66e3"
+      "sha256": "b95c2c355b427a7155a48dd5e1277edbea93501305ee56233171a63b2eef0141"
     },
     {
       "path": "hackamap_nodes.json",
-      "sha256": "fb424effd4a0e0686c29ef55be82e997af0cf38eebfb394cfb59e8e920ce9743"
+      "sha256": "37c733c3b7c7cd8abc743f55662bd825672a1ba4c98d67cc4376ff5bb9fceeda"
+    },
+    {
+      "path": "hackamap_query.chinese-content.json",
+      "sha256": "92eebbcc96adb99fd44b423a6a93c9682e9bd0798432e161dd93da2e3fee8977"
+    },
+    {
+      "path": "hackamap_query.github-star-history.json",
+      "sha256": "07e3715707e1568522e13eb8b1643d5cba0635e9053652d42eeea87da4a6b45d"
     },
     {
       "path": "hackamap_query.json",
-      "sha256": "6d0ca44f1d793462a35eb65738027ba6ddfed210e9551c22dda5a34ee4742e75"
+      "sha256": "f5f26a6dd6d3d86826a042359eceb129cc06efff10d9c80f576a774f2b2be13b"
     },
     {
       "path": "hackamap_query.md",
-      "sha256": "bb520eb033af750a3d4e2b8a3554c9598efe39bccfcb08e851e8e7f1aeda29f9"
+      "sha256": "a3ad6220844ae7084d87668653ada6bac900a8b9fd717d3c78f493f8fef2bbe9"
+    },
+    {
+      "path": "hackamap_query.sg-agents-postgres-devtools.json",
+      "sha256": "17da04abf156a6689d54f0230576ee6d1be975266f823065a3503a4217a97bb7"
+    },
+    {
+      "path": "hackamap_query.social-platforms.json",
+      "sha256": "8bafe71bde0e998d50fb493db5c646da1ab7d1a87896527a3e7ca6662ecf7481"
+    },
+    {
+      "path": "hackamap_query_presets.json",
+      "sha256": "2dbe0e7dbcd1f0bafae47e8b1c1640c12d43237252fb95af9c670354c5040be6"
+    },
+    {
+      "path": "query-outputs/demos.chinese-content.query.json",
+      "sha256": "e86c5a91f86476ed95023b8c937b8e32ae0b242244efc8f6e7f183ebeaa1819b"
+    },
+    {
+      "path": "query-outputs/demos.chinese-content.query.md",
+      "sha256": "94ad8ca72c841f2bd95ebf0fffcf63c1c59d97bdf04fcbc36eff66c990bea1ab"
+    },
+    {
+      "path": "query-outputs/demos.github-star-history.query.json",
+      "sha256": "c2ca336c4ab689ef79f8be8ebee4477e159660e1dd0f2eab72f8b69d73d299e4"
+    },
+    {
+      "path": "query-outputs/demos.github-star-history.query.md",
+      "sha256": "527a1cc426f2348888e251cf93d2d4d6f89a95436800f559827cd4f79cbaddb3"
     },
     {
       "path": "query-outputs/demos.query.json",
-      "sha256": "dd681b32b18c685700c06d5d478946ae6b51bd0dc8739536ad729b71e7e8de85"
+      "sha256": "143c91f4f6d3caf1e84087ae7dff53e8fb6da50fbc40c07f1bd31b4d3929c1f6"
     },
     {
       "path": "query-outputs/demos.query.md",
-      "sha256": "b409cc1f0d2cfaec6719f4c33d6c5101e047e00bba336bcc48b532b9426f13a6"
+      "sha256": "ef3973719a709560cf928b63b7213573876adaba64ff6d39c21f7306e8439136"
+    },
+    {
+      "path": "query-outputs/demos.sg-agents-postgres-devtools.query.json",
+      "sha256": "22288f4995e124e8a52191dc683aeb6d1f161d9ef1e63b6db455d0ec76998732"
+    },
+    {
+      "path": "query-outputs/demos.sg-agents-postgres-devtools.query.md",
+      "sha256": "1fafca4006b0db395e66350ac7471bc2c95ea52c86f914f854688fc70710abf5"
+    },
+    {
+      "path": "query-outputs/demos.social-platforms.query.json",
+      "sha256": "2ea6fd20b4cfee6c9ed95b21ede15dfe98735d5627fe95fca9e739768451a970"
+    },
+    {
+      "path": "query-outputs/demos.social-platforms.query.md",
+      "sha256": "7ca9e19f412811539e7713cc559a0352a2f2860fd6cfbe1f6a79123df7a44f43"
+    },
+    {
+      "path": "query-outputs/events.chinese-content.query.json",
+      "sha256": "b716ee61c82330cd9f96e5f1c87492af4ddab09a1b3d23c01f94fd3714e6d9ef"
+    },
+    {
+      "path": "query-outputs/events.chinese-content.query.md",
+      "sha256": "4471f854eaeb63ed00928d4c6ae1487a84f3e3fd50dfd04fc6bd82d47b649a1b"
+    },
+    {
+      "path": "query-outputs/events.github-star-history.query.json",
+      "sha256": "446940d655dbf6e0255a8e1bde28f1ce21bb2484b238f8102e3874793e259f5b"
+    },
+    {
+      "path": "query-outputs/events.github-star-history.query.md",
+      "sha256": "0558a26854e89f0515e1c8a76059edbf255ddba9bebe057f1f8cccf4359f8d92"
     },
     {
       "path": "query-outputs/events.query.json",
-      "sha256": "e6b3efb8cb7998d9903ef3cc43f0a0285f85b4147a1544c9354147e1fd36ce55"
+      "sha256": "ea1cd38c53fe7369eea4e1719394782c471400c3ac90dc340941aa307565a938"
     },
     {
       "path": "query-outputs/events.query.md",
-      "sha256": "6021b00e38951992a8bdd0b106fb236617d7d665cc5d8b6b79e58a44df9dabe1"
+      "sha256": "8d048f530ea0ed6183fad2090fac1857404fb9bb7238270d8343703a2e2f16b5"
+    },
+    {
+      "path": "query-outputs/events.sg-agents-postgres-devtools.query.json",
+      "sha256": "366fbb4a84e11fcfa71e58eef21c0515247a507dbfea5dea6415d5b379f7bbd1"
+    },
+    {
+      "path": "query-outputs/events.sg-agents-postgres-devtools.query.md",
+      "sha256": "06367328538407cf808fc7b57b2e0fca44afc468b43cd094fce8394e3e4e8b56"
+    },
+    {
+      "path": "query-outputs/events.social-platforms.query.json",
+      "sha256": "892e421980af854306bbed19faa4c96a56c61c12cc7c7c755cb44161d9cb4ac9"
+    },
+    {
+      "path": "query-outputs/events.social-platforms.query.md",
+      "sha256": "0f1d33b7b0de07d051080e0e299dd2c32adda2cd2cc283907f3e2ca5206ab891"
+    },
+    {
+      "path": "query-outputs/hackamap-chinese-content.json",
+      "sha256": "9d6ac51a4afc61b042a7368c2d5afd6f977362b02ca0e36896452b6b4f0020d2"
+    },
+    {
+      "path": "query-outputs/hackamap-chinese-content.md",
+      "sha256": "bd300ee53a956dabe179a4f2255c4cc89ebc8f4869608941a569ae399efa1038"
     },
     {
       "path": "query-outputs/hackamap-enhanced-query-results.json",
-      "sha256": "f691697fbd730aac44390ce5839eae530c6bf3cc88c853bc49b8c0c644302e1d"
+      "sha256": "5b45636ac981287857f72f8484b2c0842f043a3c049cb30eca5a6d0efb1f46e5"
     },
     {
       "path": "query-outputs/hackamap-enhanced-query-results.md",
-      "sha256": "35edf6fc66cb957d31a625e5c6d952fe6cabe9016e5885885fa4db0735cdf545"
+      "sha256": "b9f6f85ea28c59d49def5afe32c163f56e8c0ed4eaeb23fe4bdbba6db707954c"
+    },
+    {
+      "path": "query-outputs/hackamap-github-star-history.json",
+      "sha256": "d2484be119e7176e06aed0e933ee8bfb93c1190f03f24a24f064227eb328d5d5"
+    },
+    {
+      "path": "query-outputs/hackamap-github-star-history.md",
+      "sha256": "b66913a6acd4489382bbc8a47ad1c730c066e754586f66c88e73df08f7bdccaf"
     },
     {
       "path": "query-outputs/hackamap-query-results.json",
@@ -96,36 +196,140 @@
       "sha256": "05bfa82d7668165118e672af93894da28c65c826b6b8b3972a25ac3ea7473f50"
     },
     {
+      "path": "query-outputs/hackamap-sg-agents-postgres-devtools.json",
+      "sha256": "889b4566c8c08e202a7f4b06aeb45121a3563c26224b1ac587c3a3fedc1abe53"
+    },
+    {
+      "path": "query-outputs/hackamap-sg-agents-postgres-devtools.md",
+      "sha256": "18823fbdd08dc1b6336075e75578f4e65926c390e640e04f972ac57cf0d60ab3"
+    },
+    {
+      "path": "query-outputs/hackamap-social-platforms.json",
+      "sha256": "02ceb41012028da12cf29a5daf057fe31157076be70fbaf4fa9e71edf528e8c8"
+    },
+    {
+      "path": "query-outputs/hackamap-social-platforms.md",
+      "sha256": "e05a0c3d9f77713e43acc4e8907daee7652fb551027d490f3a5e0fe5ded4b900"
+    },
+    {
+      "path": "query-outputs/organizer.chinese-content.query.json",
+      "sha256": "be10172741042f58821547d7e5bab7cf0f2d6a8304ec8264f9fee546a82f9d97"
+    },
+    {
+      "path": "query-outputs/organizer.chinese-content.query.md",
+      "sha256": "87f14e9b58d4f8839bd0d116043f6b36cb75426a42baffce43eebd8e844cf644"
+    },
+    {
       "path": "query-outputs/organizer.query.json",
-      "sha256": "7fe25c6ef4eb1fb9db57813bc595359348e97a13160548970913b834301ab847"
+      "sha256": "3b1653001f57ec336b42f29abed5b8cdafd378dd48186273b61c815048c2dedd"
     },
     {
       "path": "query-outputs/organizer.query.md",
-      "sha256": "38c887ad5e848a62a999408121ca164ffc950995e9490e62fb2d74abbb11c220"
+      "sha256": "46647ddf5675729636da599db9e93391add708b69b20c385d8974d0c6779d006"
+    },
+    {
+      "path": "query-outputs/organizer.sg-agents-postgres-devtools.query.json",
+      "sha256": "71ad18ff7ef0f6bf484ecb29617234ec2f4c3e2f7d846e54814ea112dbeb0a6d"
+    },
+    {
+      "path": "query-outputs/organizer.sg-agents-postgres-devtools.query.md",
+      "sha256": "2d094c3d139b7e64b50d57da3c66d0ff78744b720f689647f274287ed6229c43"
+    },
+    {
+      "path": "query-outputs/sources.chinese-content.query.json",
+      "sha256": "80921d9495c2b56d7363f7890a78b47bc1fbb9dc49b8e0555b7b3705fd8584fa"
+    },
+    {
+      "path": "query-outputs/sources.chinese-content.query.md",
+      "sha256": "5665f3b35f059d53bccab515cc5085ee31db6dd951fea174f07b5f5a0614bf12"
+    },
+    {
+      "path": "query-outputs/sources.github-star-history.query.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "query-outputs/sources.github-star-history.query.md",
+      "sha256": "7a14187c052b04c1a2f49657518d7ff398d8dafdbc9a363059beff7f5244c497"
     },
     {
       "path": "query-outputs/sources.query.json",
-      "sha256": "cdcdeed82561ef26d1849f9dcc7eb87d68dd21f82013d81c7f9b3e5732446363"
+      "sha256": "d253baede8d7670df3f459f35ecb355fa90d6aafa840f712ac5e392418528882"
     },
     {
       "path": "query-outputs/sources.query.md",
-      "sha256": "be853033b8dd4b0f4f7fcafe60174c4494e76629e7c500bf1daedf4792c94398"
+      "sha256": "30231266c46d380f020798b01a342f9730e63a706c68e3c89fc95e069bdb5d17"
+    },
+    {
+      "path": "query-outputs/sources.sg-agents-postgres-devtools.query.json",
+      "sha256": "94efb230f953df18f7a9a1770ae54940540922da48c14e9d7867fb0b9001c871"
+    },
+    {
+      "path": "query-outputs/sources.sg-agents-postgres-devtools.query.md",
+      "sha256": "cff089bd9674b18aa68625c402c061f07adbc91f57ac174f6c51a430dad5b9e0"
+    },
+    {
+      "path": "query-outputs/sources.social-platforms.query.json",
+      "sha256": "2f7c6a6bda7cfebee2d04b7cc36a819f98316155a1ea3e3df3a9a5a84fbf4979"
+    },
+    {
+      "path": "query-outputs/sources.social-platforms.query.md",
+      "sha256": "c634dfaf0a526a9276086e381bba5e3f8d63f9e4464a9928ccae603bc91ae109"
+    },
+    {
+      "path": "query-outputs/team.chinese-content.query.json",
+      "sha256": "f26219d5f5c380a4dbbfe93a8d942b9cc89b6614fcd98ead7d8f6f38ed0ab690"
+    },
+    {
+      "path": "query-outputs/team.chinese-content.query.md",
+      "sha256": "aaad0ad85d427c278dcd5cce3bdc6cacd708bb3a471f2b6955ff5f6d68f837aa"
     },
     {
       "path": "query-outputs/team.query.json",
-      "sha256": "144336480c25b887f0c49f49bd97815cdac43ac9fefb0804490c04cce3f38355"
+      "sha256": "89499bd7aa7e558fdd5d734baefd0e9336791af570809240120c22fb63b4a468"
     },
     {
       "path": "query-outputs/team.query.md",
-      "sha256": "ea56ce173bbc48e26983219836ffe97fc7d1f7676fb6577b08faf00c20a4a235"
+      "sha256": "396385b6ff154d2d23cbbad0211814c8140edbf0ca4c4c0a35f4d8c6f3a8270c"
+    },
+    {
+      "path": "query-outputs/team.sg-agents-postgres-devtools.query.json",
+      "sha256": "904cd8a64e6e074b4bcaab4a49937c02d8bc857303368db7871f10a9637b3c4a"
+    },
+    {
+      "path": "query-outputs/team.sg-agents-postgres-devtools.query.md",
+      "sha256": "e9402d8c40f349a6756b060da2d0bca7d843153441a265636e63eb986ae459ef"
+    },
+    {
+      "path": "query-outputs/techstack.chinese-content.query.json",
+      "sha256": "0b26035aa0c8edfb7847f7c5835dc3eed1a00c98c0786f0cd8a88949c7bfcc6e"
+    },
+    {
+      "path": "query-outputs/techstack.chinese-content.query.md",
+      "sha256": "28ac91376a3b538fb08bdf06d90dd8efd808cf2ae572a6dd91a91c44e0cfb35c"
+    },
+    {
+      "path": "query-outputs/techstack.github-star-history.query.json",
+      "sha256": "0fb1268872afc8903b0e2a61b743222da1dd04c09c804f87b81cb9feb3b5e05e"
+    },
+    {
+      "path": "query-outputs/techstack.github-star-history.query.md",
+      "sha256": "27a82956f931959fd6ad7420b4d94d0ba271348d2527eade418fc574d70e25d6"
     },
     {
       "path": "query-outputs/techstack.query.json",
-      "sha256": "54cda533c3b830263a80bb74646c7c5b298ec32414620964c50b08124de207ca"
+      "sha256": "cd4323614b8283cb9be2d2b1f63d5a1973f2fe652bf9e3f8ebd63f573393b836"
     },
     {
       "path": "query-outputs/techstack.query.md",
-      "sha256": "2eba181018b69e1ac6a4aca9a0de7e93ad87f2ea441aa0ba427438829a6795c7"
+      "sha256": "f15fa2b3976536827f1d56e58cb22d682e5958b484b5fffbc2a06dc7d2529f0c"
+    },
+    {
+      "path": "query-outputs/techstack.sg-agents-postgres-devtools.query.json",
+      "sha256": "eb12a22c2501c49dfeb1b6491b33db205e1ac5badb767666f74d0beed49734e1"
+    },
+    {
+      "path": "query-outputs/techstack.sg-agents-postgres-devtools.query.md",
+      "sha256": "a37fc0eeab7fd629c48b3f8256eb877428b61a20ddcc33fb79239b45e4edfe31"
     }
   ]
 }

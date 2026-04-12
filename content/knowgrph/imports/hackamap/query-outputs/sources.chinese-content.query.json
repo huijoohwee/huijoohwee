@@ -1,0 +1,77 @@
+[
+  {
+    "_file": "sources.md",
+    "_row": 27,
+    "id": "src-027",
+    "URL": "https://cny-hack-kuala-lumpur.devpost.com/",
+    "Domain": "cny-hack-kuala-lumpur.devpost.com",
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Events": [
+      "evt-045"
+    ],
+    "Demos": [
+      "demo-047"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 214,
+    "id": "src-214",
+    "URL": "https://uber-china-hackathon.devpost.com/",
+    "Domain": "uber-china-hackathon.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-129"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 215,
+    "id": "src-215",
+    "URL": "https://uber-china-hackathon.devpost.com/details/dates",
+    "Domain": "uber-china-hackathon.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-129"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 216,
+    "id": "src-216",
+    "URL": "https://uber-china-hackathon.devpost.com/project-gallery",
+    "Domain": "uber-china-hackathon.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-129"
+    ],
+    "Demos": [
+      "demo-131"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

@@ -1,0 +1,468 @@
+[
+  {
+    "_file": "events.md",
+    "_row": 30,
+    "id": "evt-030",
+    "Event": "Community Shaper 2025: Hackathon Beta",
+    "Organizer": [
+      "CNHK",
+      "Community Shaper participants"
+    ],
+    "Format": "in-person",
+    "Location": "Hong Kong, China",
+    "Date Start": "2025-09-06",
+    "Date End": "2025-09-23",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "AI + emerging tech (unspecified)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://cs-2025-hackathon-beta.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 33,
+    "id": "evt-033",
+    "Event": "ETHShenzhen Hackathon",
+    "Organizer": [
+      "OpenBuild",
+      "ETHShenzhen participants"
+    ],
+    "Format": "in-person",
+    "Location": "Shenzhen, China",
+    "Date Start": "2025-08-23",
+    "Date End": "2025-08-24",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Ethereum (implied)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/OpenBuildxyz/status/1963547236585148902"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 45,
+    "id": "evt-045",
+    "Event": "KL Mini Hack",
+    "Organizer": [
+      "ETH KL",
+      "cypherX",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Kuala Lumpur, Malaysia",
+    "Date Start": "2023-02-11",
+    "Date End": "2023-02-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "web3 (various)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://cny-hack-kuala-lumpur.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 104,
+    "id": "evt-107",
+    "Event": "RWA Demo Day",
+    "Organizer": [
+      "Nano Labs",
+      "BNB Chain",
+      "ICCombinator",
+      "ABGAasia",
+      "MetaEraCN"
+    ],
+    "Format": "hybrid",
+    "Location": "Hong Kong (anchored by Hong Kong Web3 Festival) + online final pitch event",
+    "Date Start": "2026-03-10",
+    "Date End": "2026-03-31",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "RWA",
+      "Web3",
+      "Blockchain"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://rwa-demo-day.devpost.com/",
+      "https://rwa-demo-day.devpost.com/details/dates",
+      "https://rwa-demo-day.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 121,
+    "id": "evt-124",
+    "Event": "IATA ONE Record Hackathon – hosted by ICCS",
+    "Organizer": [
+      "ICCS",
+      "IATA"
+    ],
+    "Format": "in-person",
+    "Location": "Shenzhen Virtual University Park (SZVUP), Shenzhen, China",
+    "Date Start": "2024-03-16",
+    "Date End": "2024-03-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Enterprise",
+      "IoT",
+      "Machine Learning/AI",
+      "aviation logistics",
+      "APIs"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://onerecord-szx.devpost.com/",
+      "https://onerecord-szx.devpost.com/details/dates",
+      "https://onerecord-szx.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 123,
+    "id": "evt-126",
+    "Event": "Celebrate Ubuntu Hackathon - Beijing",
+    "Organizer": [
+      "Canonical",
+      "Ubuntu"
+    ],
+    "Format": "hybrid",
+    "Location": "Beijing, China",
+    "Date Start": "2016-05-07",
+    "Date End": "2016-05-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Ubuntu",
+      "developer community"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://beijing-hackathon.devpost.com/",
+      "https://beijing-hackathon.devpost.com/details/dates",
+      "https://beijing-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 124,
+    "id": "evt-127",
+    "Event": "HackPKU2016",
+    "Organizer": [
+      "Peking University (北京大学)"
+    ],
+    "Format": "in-person",
+    "Location": "Peking University, Beijing, China",
+    "Date Start": "2016-04-08",
+    "Date End": "2016-04-10",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "student hackathon",
+      "innovation"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hackpku2016.devpost.com/",
+      "https://hackpku2016.devpost.com/details/dates",
+      "https://hackpku2016.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 125,
+    "id": "evt-128",
+    "Event": "JUNCTIONxTsinghua 2018",
+    "Organizer": [
+      "THUSAST",
+      "Tsinghua University",
+      "Junction (mentioned)"
+    ],
+    "Format": "in-person",
+    "Location": "Tsinghua University, Beijing, China",
+    "Date Start": "2018-05-17",
+    "Date End": "2018-05-20",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Smart City",
+      "Second Brain",
+      "Care for Senior Citizens"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://junthu2018.devpost.com/",
+      "https://junthu2018.devpost.com/details/dates",
+      "https://junthu2018.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 126,
+    "id": "evt-129",
+    "Event": "Uber Hackathon - Improving Cities with Uber API 为城市喝彩",
+    "Organizer": [
+      "Uber",
+      "Mobvoi (mentioned)",
+      "SenseTime (mentioned)"
+    ],
+    "Format": "in-person",
+    "Location": "Microsoft Asia-Pacific R&D Group Building 1, Beijing, China",
+    "Date Start": "2016-01-16",
+    "Date End": "2016-01-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Uber API",
+      "smart cities"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://uber-china-hackathon.devpost.com/",
+      "https://uber-china-hackathon.devpost.com/details/dates",
+      "https://uber-china-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 127,
+    "id": "evt-130",
+    "Event": "TechCrunch Shanghai 2016 Hackathon",
+    "Organizer": [
+      "TechCrunch (mentioned)",
+      "TechNode (mentioned)"
+    ],
+    "Format": "in-person",
+    "Location": "West Bund Art Center, Shanghai, China",
+    "Date Start": "2016-06-25",
+    "Date End": "2016-06-26",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "startup",
+      "product design"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://tcsh-2016-hackathon.devpost.com/",
+      "https://tcsh-2016-hackathon.devpost.com/details/dates",
+      "https://tcsh-2016-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 128,
+    "id": "evt-131",
+    "Event": "Hyperledger BlockChain Hackathon Shanghai 2017",
+    "Organizer": [
+      "Wanda Internet Technology Group",
+      "IBM",
+      "Linux Foundation / Hyperledger"
+    ],
+    "Format": "in-person",
+    "Location": "Wanda Reign on the Bund, Shanghai, China",
+    "Date Start": "2017-03-10",
+    "Date End": "2017-03-12",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Blockchain",
+      "Hyperledger"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hyperledger-shanghai.devpost.com/",
+      "https://hyperledger-shanghai.devpost.com/details/dates",
+      "https://hyperledger-shanghai.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 129,
+    "id": "evt-132",
+    "Event": "hack.init() 2017",
+    "Organizer": [
+      "hack.init()"
+    ],
+    "Format": "in-person",
+    "Location": "ShanghaiTech University, Shanghai, China",
+    "Date Start": "2017-07-08",
+    "Date End": "2017-07-09",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "youth hackathon",
+      "Artificial Intelligence",
+      "Hardware",
+      "IoT",
+      "AR/VR",
+      "Web Development"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hackinit.devpost.com/",
+      "https://hackinit.devpost.com/details/dates",
+      "https://hackinit.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 130,
+    "id": "evt-133",
+    "Event": "HackNYU @ NYUSH",
+    "Organizer": [
+      "HackNYU",
+      "NYU Shanghai"
+    ],
+    "Format": "in-person",
+    "Location": "NYU Shanghai Academic Building, Shanghai, China",
+    "Date Start": "2019-02-15",
+    "Date End": "2019-02-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "student hackathon",
+      "Sustainability & Social Impact",
+      "Health and Well-Being",
+      "Educational Technology",
+      "Financial Empowerment"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hacknyu-nyush.devpost.com/",
+      "https://hacknyu-nyush.devpost.com/details/dates",
+      "https://hacknyu-nyush.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 131,
+    "id": "evt-134",
+    "Event": "Hack the Pearl",
+    "Organizer": [
+      "NYU Shanghai"
+    ],
+    "Format": "in-person",
+    "Location": "NYU Shanghai Main Campus Academic Building, Shanghai, China",
+    "Date Start": "2019-04-19",
+    "Date End": "2019-04-21",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "student-run",
+      "multi-theme hackathon"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hack-the-pearl.devpost.com/",
+      "https://hack-the-pearl.devpost.com/details/dates",
+      "https://hack-the-pearl.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  }
+]

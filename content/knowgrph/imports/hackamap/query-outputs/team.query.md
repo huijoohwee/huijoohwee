@@ -93,6 +93,34 @@ Query (JSON DSL):
             {
               "op": "any",
               "value": "postgres"
+            },
+            {
+              "op": "any",
+              "value": "postgresql"
+            },
+            {
+              "op": "any",
+              "value": "neon"
+            },
+            {
+              "op": "any",
+              "value": "web agent"
+            },
+            {
+              "op": "any",
+              "value": "agent"
+            },
+            {
+              "op": "any",
+              "value": "autonomous"
+            },
+            {
+              "op": "any",
+              "value": "langgraph"
+            },
+            {
+              "op": "any",
+              "value": "n8n"
             }
           ]
         },
@@ -199,6 +227,26 @@ Query (JSON DSL):
             {
               "op": "any",
               "value": "supabase"
+            },
+            {
+              "op": "any",
+              "value": "web agent"
+            },
+            {
+              "op": "any",
+              "value": "agent"
+            },
+            {
+              "op": "any",
+              "value": "autonomous"
+            },
+            {
+              "op": "any",
+              "value": "langgraph"
+            },
+            {
+              "op": "any",
+              "value": "n8n"
             }
           ]
         }

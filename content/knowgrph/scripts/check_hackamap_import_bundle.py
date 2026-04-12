@@ -48,6 +48,8 @@ def main() -> None:
         if not rel or not expected:
             mismatches.append(f"Invalid manifest entry: {entry}")
             continue
+        if rel == "bundle-manifest.json":
+            continue
         p = (bundle_dir / rel).resolve()
         expected_paths.add(p)
         if not p.exists():
@@ -77,4 +79,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
