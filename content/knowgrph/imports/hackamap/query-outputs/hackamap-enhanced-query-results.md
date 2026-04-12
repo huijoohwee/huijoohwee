@@ -440,7 +440,8 @@ Query (JSON DSL):
   "output": {
     "title": "hackamap-enhanced-query-results",
     "json_path": "hackamap-enhanced-query-results.json",
-    "md_path": "hackamap-enhanced-query-results.md"
+    "md_path": "hackamap-enhanced-query-results.md",
+    "table_prefix": "enhanced"
   }
 }
 ```

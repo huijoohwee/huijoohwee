@@ -8,6 +8,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.npm/
+.wrangler/
+Library/
 
 # Project-specific local scratch
 content/singapoly/test.js

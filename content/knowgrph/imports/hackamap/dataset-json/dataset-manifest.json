@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "content_signature": "bd51e735d8e33c62cdd6d0b741e98cf239791bbfc8356926c4b3ca5949f971c5",
+  "content_signature": "a3e1e510da4e4f737deb6296bd239073316e460a6633c884a10a69cf4a1287d3",
   "source_graph_json": "hackamap-graph.json",
   "counts": {
     "nodes": 1477,

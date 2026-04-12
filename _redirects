@@ -6,6 +6,7 @@
 /knowgrph /content/knowgrph/index.html 200
 /knowgrph/assets/* /content/knowgrph/assets/:splat 200
 /knowgrph/vendor/* /content/knowgrph/vendor/:splat 200
+/knowgrph/imports/* /content/knowgrph/imports/:splat 200
 /knowgrph/*.js /content/knowgrph/:splat 200
 /knowgrph/*.mjs /content/knowgrph/:splat 200
 /knowgrph/*.css /content/knowgrph/:splat 200

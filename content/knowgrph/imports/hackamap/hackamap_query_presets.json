@@ -6,7 +6,7 @@
     "output": {
       "combined_json": "hackamap-enhanced-query-results.json",
       "combined_md": "hackamap-enhanced-query-results.md",
-      "per_table_prefix": ""
+      "per_table_prefix": "enhanced"
     },
     "params": {}
   },
@@ -53,6 +53,17 @@
       "combined_json": "hackamap-github-star-history.json",
       "combined_md": "hackamap-github-star-history.md",
       "per_table_prefix": "github-star-history"
+    },
+    "params": {}
+  },
+  {
+    "id": "year-2026",
+    "title": "Year 2026 (events + sources + demos)",
+    "file": "hackamap-query-preset-year-2026.json",
+    "output": {
+      "combined_json": "hackamap-year-2026.json",
+      "combined_md": "hackamap-year-2026.md",
+      "per_table_prefix": "year-2026"
     },
     "params": {}
   }
