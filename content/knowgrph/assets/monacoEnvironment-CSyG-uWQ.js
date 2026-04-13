@@ -1,0 +1,1 @@
+import{W as o,a as e,b as t}from"./monaco-CuNkO3p_.js";import"./mermaid-IQEYyC-G.js";import"./d3-B3LdqdJ1.js";import"./elk-CVD44F0V.js";function W(){const n=globalThis;n.MonacoEnvironment||(n.MonacoEnvironment={getWorker(i,r){return r==="json"?new o:r==="html"||r==="handlebars"||r==="razor"?new e:new t}})}export{W as ensureMonacoEnvironment};
