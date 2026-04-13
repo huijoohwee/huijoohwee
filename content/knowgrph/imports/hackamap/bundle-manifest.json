@@ -52,6 +52,10 @@
       "sha256": "cb9bfcff82b513e36bb32e7d053d95a294eed9a866c875cc9912ca9e4322a0f5"
     },
     {
+      "path": "hackamap_pipeline.json",
+      "sha256": "3eb28c28c5d534394741ccac4de8f112e65d39c8db5c72c19625f466d1d7a1b5"
+    },
+    {
       "path": "hackamap_query.chinese-content.json",
       "sha256": "92eebbcc96adb99fd44b423a6a93c9682e9bd0798432e161dd93da2e3fee8977"
     },
@@ -65,7 +69,7 @@
     },
     {
       "path": "hackamap_query.md",
-      "sha256": "a3ad6220844ae7084d87668653ada6bac900a8b9fd717d3c78f493f8fef2bbe9"
+      "sha256": "6956e154bf5334a42e88261b830dbde26b76453b2b046df8c48b861909f834e1"
     },
     {
       "path": "hackamap_query.sg-agents-postgres-devtools.json",
@@ -202,6 +206,10 @@
     {
       "path": "query-outputs/hackamap-github-star-history.md",
       "sha256": "b66913a6acd4489382bbc8a47ad1c730c066e754586f66c88e73df08f7bdccaf"
+    },
+    {
+      "path": "query-outputs/hackamap-query-runs.runtime.json",
+      "sha256": "cf15cd4a9f044f7c443a96793cc0f9ff515dc0b5c109b091454aeff3786f7326"
     },
     {
       "path": "query-outputs/hackamap-sg-agents-postgres-devtools.json",

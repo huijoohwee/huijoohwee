@@ -4,6 +4,7 @@ Generated from `project/prjt4000-hackamap/site/` SSOT.
 
 ## Files
 - `hackamap-graph.json` (full graph: nodes + links; enriched `meta.search_text` + `meta.search_terms`)
+- `hackamap_pipeline.json` (portable runtime pipeline config; browser-friendly)
 - `hackamap_query.json` (JSON DSL preset: enhanced; supports `and/or/not` + ops `eq/contains/in/any/exists/regex`)
 - `hackamap_query.<preset-id>.json` (JSON DSL preset specs; see preset catalog below)
 - `hackamap_query_presets.json` (preset catalog; maps preset id → spec file + output filenames + default params)

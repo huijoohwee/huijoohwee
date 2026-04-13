@@ -1,0 +1,29 @@
+[
+  {
+    "id": "enhanced",
+    "preset": "enhanced"
+  },
+  {
+    "id": "sg-agents-postgres-devtools",
+    "preset": "sg-agents-postgres-devtools",
+    "params": {
+      "location": "Singapore"
+    }
+  },
+  {
+    "id": "social-platforms",
+    "preset": "social-platforms"
+  },
+  {
+    "id": "chinese-content",
+    "preset": "chinese-content"
+  },
+  {
+    "id": "github-star-history",
+    "preset": "github-star-history"
+  },
+  {
+    "id": "year-2026",
+    "preset": "year-2026"
+  }
+]
