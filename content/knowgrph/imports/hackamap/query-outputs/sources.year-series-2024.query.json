@@ -1,0 +1,311 @@
+[
+  {
+    "_file": "sources.md",
+    "_row": 25,
+    "id": "src-025",
+    "URL": "https://cloudhacks-2024.devpost.com/",
+    "Domain": "cloudhacks-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-102"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 26,
+    "id": "src-026",
+    "URL": "https://cloudhacks-2024.devpost.com/project-gallery",
+    "Domain": "cloudhacks-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-102"
+    ],
+    "Demos": [
+      "demo-104"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 38,
+    "id": "src-038",
+    "URL": "https://dive2024inbusan.devpost.com/",
+    "Domain": "dive2024inbusan.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-103"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 39,
+    "id": "src-039",
+    "URL": "https://dive2024inbusan.devpost.com/project-gallery",
+    "Domain": "dive2024inbusan.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-103"
+    ],
+    "Demos": [
+      "demo-105"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 68,
+    "id": "src-068",
+    "URL": "https://hack4good-2024.devpost.com/",
+    "Domain": "hack4good-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-099"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 69,
+    "id": "src-069",
+    "URL": "https://hack4good-2024.devpost.com/project-gallery",
+    "Domain": "hack4good-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-099"
+    ],
+    "Demos": [
+      "demo-101"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 99,
+    "id": "src-099",
+    "URL": "https://hacknroll2024.devpost.com/",
+    "Domain": "hacknroll2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Events": [
+      "evt-043"
+    ],
+    "Demos": [
+      "demo-045"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 162,
+    "id": "src-162",
+    "URL": "https://nus-datathon-2024-cat-b.devpost.com/",
+    "Domain": "nus-datathon-2024-cat-b.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-100"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 163,
+    "id": "src-163",
+    "URL": "https://nus-datathon-2024-cat-b.devpost.com/project-gallery",
+    "Domain": "nus-datathon-2024-cat-b.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-100"
+    ],
+    "Demos": [
+      "demo-102"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 180,
+    "id": "src-180",
+    "URL": "https://presence-platform-japan-2024.devpost.com/",
+    "Domain": "presence-platform-japan-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-096"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 181,
+    "id": "src-181",
+    "URL": "https://presence-platform-japan-2024.devpost.com/project-gallery",
+    "Domain": "presence-platform-japan-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-096"
+    ],
+    "Demos": [
+      "demo-098"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 182,
+    "id": "src-182",
+    "URL": "https://presence-platform-seoul-2024.devpost.com/",
+    "Domain": "presence-platform-seoul-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-097"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 183,
+    "id": "src-183",
+    "URL": "https://presence-platform-seoul-2024.devpost.com/project-gallery",
+    "Domain": "presence-platform-seoul-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-097"
+    ],
+    "Demos": [
+      "demo-099"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 194,
+    "id": "src-194",
+    "URL": "https://seoul-tech-impact-2024.devpost.com/",
+    "Domain": "seoul-tech-impact-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "registration",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-069"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 195,
+    "id": "src-195",
+    "URL": "https://seoul-tech-impact-2024.devpost.com/project-gallery",
+    "Domain": "seoul-tech-impact-2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "registration",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-069"
+    ],
+    "Demos": [
+      "demo-071"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 265,
+    "id": "src-265",
+    "URL": "https://youthxhack2024.devpost.com/",
+    "Domain": "youthxhack2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-101"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 266,
+    "id": "src-266",
+    "URL": "https://youthxhack2024.devpost.com/project-gallery",
+    "Domain": "youthxhack2024.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-101"
+    ],
+    "Demos": [
+      "demo-103"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

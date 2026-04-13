@@ -1,0 +1,1228 @@
+[
+  {
+    "_file": "events.md",
+    "_row": 1,
+    "id": "evt-001",
+    "Event": "IBM x UNSA Hackathon",
+    "Organizer": [
+      "IBM Z Sheridan",
+      "UNSA Sheridan"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2026-05-08",
+    "Date End": "2026-05-10",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "AI tools (unspecified)",
+      "IBM Z + cloud (mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://ibm-unsa-hackathon.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 2,
+    "id": "evt-002",
+    "Event": "MY AI Video Hackathon",
+    "Organizer": [
+      "Building with AI community",
+      "local MY creators"
+    ],
+    "Format": "in-person",
+    "Location": "Malaysia",
+    "Date Start": "2026-04-02",
+    "Date End": "2026-04-02",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Seedance model",
+      "ModelArk"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/BytePlusGlobal/status/2039621356195586166"
+    ],
+    "Source Type": [
+      "marketing"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 4,
+    "id": "evt-004",
+    "Event": "GitLab AI Hackathon",
+    "Organizer": [
+      "Devpost",
+      "GitLab"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2026-03-25",
+    "Date End": "2026-03-25",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "GitLab workflows"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/devpost/status/2020965804687446360"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 5,
+    "id": "evt-005",
+    "Event": "AI filmmaking hackathon @ SXSW",
+    "Organizer": [
+      "SXSW community",
+      "KoyalAI",
+      "100+ filmmakers"
+    ],
+    "Format": "in-person",
+    "Location": "Austin, TX, USA",
+    "Date Start": "2026-03-17",
+    "Date End": "2026-03-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "KoyalAI"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/meh_agarwal/status/2033596708513341710"
+    ],
+    "Source Type": [
+      "community",
+      "event-recap"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 6,
+    "id": "evt-006",
+    "Event": "Hack AI 2026 (project gallery / winners)",
+    "Organizer": [
+      "Hack AI organizers",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Richardson, TX, USA",
+    "Date Start": "2026-03-07",
+    "Date End": "2026-03-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hackai-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 7,
+    "id": "evt-007",
+    "Event": "Codex Hackathon",
+    "Organizer": [
+      "Codex hackathon participants",
+      "OpenAI community",
+      "OpenAI Codex hackathon participants"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2026-03-03",
+    "Date End": "2026-03-03",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Codex",
+      "ARKit (mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/romainhuet/status/2028586504407470503",
+      "https://x.com/agrimsingh/status/2027736501241700461"
+    ],
+    "Source Type": [
+      "community",
+      "event-recap",
+      "demo"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 8,
+    "id": "evt-008",
+    "Event": "Codex Hackathon (APAC)",
+    "Organizer": [
+      "OpenAI Developers",
+      "100+ developers (participants)"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2026-03-03",
+    "Date End": "2026-03-03",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Codex"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/OpenAIDevs/status/2028588617095057902"
+    ],
+    "Source Type": [
+      "announcement",
+      "event-recap"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 9,
+    "id": "evt-009",
+    "Event": "Multimodal Frontier Hackathon",
+    "Organizer": [
+      "Y Combinator",
+      "Google DeepMind"
+    ],
+    "Format": null,
+    "Location": null,
+    "Date Start": "2026-03-03",
+    "Date End": "2026-03-03",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Gemini 3.1",
+      "Lyria",
+      "NanoBanana 2"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/ycombinator/status/2028564751882871056"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 10,
+    "id": "evt-010",
+    "Event": "Hack For Humanity 2026 (project gallery / winners)",
+    "Organizer": [
+      "Santa Clara University",
+      "Hack For Humanity participants"
+    ],
+    "Format": "in-person",
+    "Location": "Santa Clara, CA, USA",
+    "Date Start": "2026-02-28",
+    "Date End": "2026-03-01",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hack-for-humanity-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 11,
+    "id": "evt-011",
+    "Event": "Hack For Humanity 2026",
+    "Organizer": [
+      "Santa Clara University",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Santa Clara, CA, USA",
+    "Date Start": "2026-02-28",
+    "Date End": "2026-03-01",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost",
+      "Discord (mentioned)",
+      "GitHub (submission requirement)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hack-for-humanity-2026.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 12,
+    "id": "evt-012",
+    "Event": "DeveloperWeek 2026 Hackathon (project gallery / winners)",
+    "Organizer": [
+      "DevNetwork",
+      "DeveloperWeek 2026 participants"
+    ],
+    "Format": "hybrid",
+    "Location": "San Jose, CA, USA / Online",
+    "Date Start": "2026-02-02",
+    "Date End": "2026-02-20",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://developerweek-2026-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 13,
+    "id": "evt-013",
+    "Event": "DeveloperWeek 2026 Hackathon",
+    "Organizer": [
+      "DevNetwork",
+      "DeveloperWeek community"
+    ],
+    "Format": "hybrid",
+    "Location": "San Jose, CA, USA / Online",
+    "Date Start": "2026-02-02",
+    "Date End": "2026-02-20",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost",
+      "(various sponsor APIs)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://developerweek-2026-hackathon.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 14,
+    "id": "evt-014",
+    "Event": "TreeHacks 2026 (project gallery / winners)",
+    "Organizer": [
+      "TreeHacks organizers",
+      "TreeHacks 2026 participants"
+    ],
+    "Format": "in-person",
+    "Location": "Stanford, CA, USA",
+    "Date Start": "2026-02-14",
+    "Date End": "2026-02-15",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://treehacks-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 15,
+    "id": "evt-015",
+    "Event": "TreeHacks 2026",
+    "Organizer": [
+      "TreeHacks",
+      "Stanford student community (participants)"
+    ],
+    "Format": "in-person",
+    "Location": "Stanford, CA, USA",
+    "Date Start": "2026-02-14",
+    "Date End": "2026-02-15",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://treehacks-2026.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 16,
+    "id": "evt-016",
+    "Event": "2026 Daily Games Hackathon (winners announcement)",
+    "Organizer": [
+      "r/Devvit (Reddit)",
+      "Reddit Daily Games Hackathon judges",
+      "GameMaker"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2026-02-12",
+    "Date End": "2026-02-12",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Reddit Devvit platform",
+      "Devpost (project gallery)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/"
+    ],
+    "Source Type": [
+      "reddit",
+      "winners-announcement"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 17,
+    "id": "evt-017",
+    "Event": "The Reddit Daily Games Hackathon (project gallery / winners)",
+    "Organizer": [
+      "Reddit",
+      "GameMaker",
+      "hackathon participants"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2026-01-15",
+    "Date End": "2026-02-12",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://redditdailygames2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 18,
+    "id": "evt-018",
+    "Event": "The Reddit Daily Games Hackathon",
+    "Organizer": [
+      "Reddit",
+      "GameMaker"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2026-01-15",
+    "Date End": "2026-02-12",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devvit Web",
+      "(React/Phaser/three.js or game engines mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://redditdailygames2026.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 19,
+    "id": "evt-019",
+    "Event": "Hack&Roll 2026 (project gallery / winners)",
+    "Organizer": [
+      "NUS Hackers",
+      "Hack&Roll 2026 participants"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2026-01-17",
+    "Date End": "2026-01-18",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hacknroll2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 20,
+    "id": "evt-020",
+    "Event": "Hack&Roll 2026",
+    "Organizer": [
+      "NUS Hackers",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2026-01-17",
+    "Date End": "2026-01-18",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hacknroll2026.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 21,
+    "id": "evt-021",
+    "Event": "Casper Hackathon 2026",
+    "Organizer": [
+      "TinTinLand"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-11-14",
+    "Date End": "2026-01-04",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Web3 ecosystems (Casper/Solana/Arbitrum mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/OurTinTinLand/status/1993995697256058967"
+    ],
+    "Source Type": [
+      "x.com",
+      "community",
+      "curation"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 79,
+    "id": "evt-081",
+    "Event": "Build with AI: Gemini Hackathon with Google DeepMind",
+    "Organizer": [
+      "GDG CLuod KL"
+    ],
+    "Format": "in-person",
+    "Location": "Xsolla Curine Academy, Kuala Lumpur, Malaysia",
+    "Date Start": "2026-03-08",
+    "Date End": "2026-03-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Machine Learning/AI",
+      "Open Ended",
+      "Productivity"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://build-with-deepmind.devpost.com/",
+      "https://build-with-deepmind.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 84,
+    "id": "evt-087",
+    "Event": "LotusHacks x HackHarvard x GenAI Fund Vietnam Hackathon",
+    "Organizer": [
+      "Lotushacks"
+    ],
+    "Format": "in-person",
+    "Location": "VNG Group JSC, Ho Chi Minh City, Vietnam",
+    "Date Start": "2026-03-22",
+    "Date End": "2026-03-22",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://lotushacks2026.devpost.com/",
+      "https://lotushacks2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 102,
+    "id": "evt-105",
+    "Event": "IATA ONE Record Hackathon – hosted by Cathay Cargo & CHAMP Cargosystems",
+    "Organizer": [
+      "IATA",
+      "Cathay Cargo",
+      "CHAMP Cargosystems"
+    ],
+    "Format": "in-person",
+    "Location": "Cathay City, Hong Kong (Lantau, Hong Kong)",
+    "Date Start": "2026-04-24",
+    "Date End": "2026-04-26",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "ONE Record",
+      "aviation logistics",
+      "APIs",
+      "AR/VR",
+      "Education",
+      "Low/No Code"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://onerecord-hkg.devpost.com/",
+      "https://onerecord-hkg.devpost.com/details/dates",
+      "https://onerecord-hkg.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 103,
+    "id": "evt-106",
+    "Event": "BUHack",
+    "Organizer": [
+      "HKBU Coding Club",
+      "Hong Kong Baptist University (HKBU)"
+    ],
+    "Format": "hybrid",
+    "Location": "Online (Mar 5–7, 2026) + HKBU in-person closing ceremony (Hong Kong)",
+    "Date Start": "2026-03-05",
+    "Date End": "2026-03-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Digital Wellbeing",
+      "Productivity",
+      "Beginner Friendly",
+      "Web",
+      "Design"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://buhack-28545.devpost.com/",
+      "https://buhack-28545.devpost.com/details/dates",
+      "https://buhack-28545.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 104,
+    "id": "evt-107",
+    "Event": "RWA Demo Day",
+    "Organizer": [
+      "Nano Labs",
+      "BNB Chain",
+      "ICCombinator",
+      "ABGAasia",
+      "MetaEraCN"
+    ],
+    "Format": "hybrid",
+    "Location": "Hong Kong (anchored by Hong Kong Web3 Festival) + online final pitch event",
+    "Date Start": "2026-03-10",
+    "Date End": "2026-03-31",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "RWA",
+      "Web3",
+      "Blockchain"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://rwa-demo-day.devpost.com/",
+      "https://rwa-demo-day.devpost.com/details/dates",
+      "https://rwa-demo-day.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 105,
+    "id": "evt-108",
+    "Event": "Elastic Forge The Future Singapore",
+    "Organizer": [
+      "Elastic"
+    ],
+    "Format": "in-person",
+    "Location": "AWS Office, Singapore (2 Central Blvd, Singapore 018916)",
+    "Date Start": "2026-02-03",
+    "Date End": "2026-03-02",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Databases",
+      "IoT",
+      "Machine Learning/AI",
+      "Search",
+      "Observability",
+      "Security"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://elastic-forge-the-future.devpost.com/",
+      "https://elastic-forge-the-future.devpost.com/details/dates",
+      "https://elastic-forge-the-future.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 106,
+    "id": "evt-109",
+    "Event": "PINUS HACK 2026",
+    "Organizer": [
+      "PINUS"
+    ],
+    "Format": "hybrid",
+    "Location": "Online opening + onsite finals at NUS (Shaw Foundation Alumni House), Singapore",
+    "Date Start": "2026-01-26",
+    "Date End": "2026-02-07",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Machine Learning/AI",
+      "Mobile",
+      "Web",
+      "student hackathon"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://pinus-hack-2026.devpost.com/",
+      "https://pinus-hack-2026.devpost.com/details/dates",
+      "https://pinus-hack-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 107,
+    "id": "evt-110",
+    "Event": "SCDS Techfest 2026",
+    "Organizer": [
+      "NTU SCDS"
+    ],
+    "Format": "in-person",
+    "Location": "LKC-LT (Lee Kong Chian Lecture Theatre), NTU, Singapore",
+    "Date Start": "2026-01-22",
+    "Date End": "2026-01-25",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Education",
+      "Productivity"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://scds-techfest-2026.devpost.com/",
+      "https://scds-techfest-2026.devpost.com/details/dates",
+      "https://scds-techfest-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 108,
+    "id": "evt-111",
+    "Event": "NTU Beyond Binary Techathon 2026",
+    "Organizer": [
+      "NTU Women In Tech"
+    ],
+    "Format": "hybrid",
+    "Location": "Online + NTU Singapore",
+    "Date Start": "2026-02-09",
+    "Date End": "2026-02-13",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Machine Learning/AI",
+      "Social Good",
+      "Ideathon",
+      "Hackathon"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://ntu-beyond-binary-2026.devpost.com/",
+      "https://ntu-beyond-binary-2026.devpost.com/details/dates",
+      "https://ntu-beyond-binary-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 109,
+    "id": "evt-112",
+    "Event": "RHDevs - Inter-Hall Hackathon 2026",
+    "Organizer": [
+      "RH Developers",
+      "NUS Raffles Hall"
+    ],
+    "Format": "in-person",
+    "Location": "NUS Raffles Hall Communal Hall, Singapore",
+    "Date Start": "2026-02-07",
+    "Date End": "2026-02-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Open Ended",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://inter-hall-hackathon-2026.devpost.com/",
+      "https://inter-hall-hackathon-2026.devpost.com/details/dates",
+      "https://inter-hall-hackathon-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 110,
+    "id": "evt-113",
+    "Event": "Build for Impact 2026",
+    "Organizer": [
+      "BuildLearning (hackathon manager)",
+      "SEA-LION (mentioned use case focus)"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore (32 Carpenter St, Singapore 059911)",
+    "Date Start": "2026-01-17",
+    "Date End": "2026-01-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Low/No Code",
+      "Social Good",
+      "AI prototyping",
+      "design thinking"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://build-for-impact-2026-28173.devpost.com/",
+      "https://build-for-impact-2026-28173.devpost.com/details/dates",
+      "https://build-for-impact-2026-28173.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 111,
+    "id": "evt-114",
+    "Event": "1st International Prosolve 2026",
+    "Organizer": [
+      "Artificial Intelligence Society (UiTM Shah Alam)",
+      "Globalite Solution"
+    ],
+    "Format": "hybrid",
+    "Location": "Online preliminary (Google Meet) + in-person finale at UiTM Shah Alam, Malaysia",
+    "Date Start": "2026-04-12",
+    "Date End": "2026-05-23",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "competitive programming",
+      "Education",
+      "Beginner Friendly",
+      "Machine Learning/AI (theme tag on listing)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://international-prosolve-2026.devpost.com/",
+      "https://international-prosolve-2026.devpost.com/details/dates",
+      "https://international-prosolve-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 132,
+    "id": "evt-135",
+    "Event": "OpenClaw Global Unhackathon (Hong Kong)",
+    "Organizer": [
+      "AI Tinkerers Hong Kong"
+    ],
+    "Format": "in-person",
+    "Location": "Wan Chai, Hong Kong (exact venue shared upon acceptance)",
+    "Date Start": "2026-02-28",
+    "Date End": "2026-02-28",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "OpenClaw",
+      "ClawdBot",
+      "AI agents",
+      "builders",
+      "unhackathon"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hong-kong.aitinkerers.org/p/openclaw-global-unhackathon-hong-kong",
+      "https://hong-kong.aitinkerers.org/hackathons/h_xM9rYwACgZE",
+      "https://hong-kong.aitinkerers.org/meetup/mu_1tFOHM9tQ6Q/gallery"
+    ],
+    "Source Type": null,
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 133,
+    "id": "evt-136",
+    "Event": "OpenClaw Meet-up (HKU CAMO)",
+    "Organizer": [
+      "HKU Centre for AI, Management and Organization (HKU CAMO)"
+    ],
+    "Format": "in-person",
+    "Location": "HKU iCube, Central Exchange Square, Hong Kong",
+    "Date Start": "2026-03-28",
+    "Date End": "2026-03-28",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "OpenClaw",
+      "AI workflows",
+      "builders meetup",
+      "business"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://camo.hku.hk/28-march-2026-openclaw-meet-up/",
+      "https://luma.com/6glx4b1y"
+    ],
+    "Source Type": null,
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 134,
+    "id": "evt-137",
+    "Event": "January Capital — Builders Session with Codex x OpenClaw x OpenAI Multimodal APIs",
+    "Organizer": [
+      "January Capital",
+      "BLOCK71 Singapore"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2026-04-07",
+    "Date End": "2026-04-07",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "OpenClaw",
+      "Codex",
+      "OpenAI",
+      "Multimodal APIs",
+      "AI agents",
+      "builders session"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://luma.com/claw"
+    ],
+    "Source Type": null,
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 135,
+    "id": "evt-138",
+    "Event": "OpenClaw Singapore - Finance Edition",
+    "Organizer": [
+      "StashAway"
+    ],
+    "Format": "in-person",
+    "Location": "StashAway, Singapore",
+    "Date Start": "2026-04-08",
+    "Date End": "2026-04-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "OpenClaw",
+      "Finance",
+      "Fintech",
+      "AI agents"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://luma.com/claw"
+    ],
+    "Source Type": null,
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 136,
+    "id": "evt-139",
+    "Event": "OpenClaw Meetup JKT #2",
+    "Organizer": [
+      "OpenClaw Jakarta community"
+    ],
+    "Format": "in-person",
+    "Location": "Jakarta, Indonesia",
+    "Date Start": "2026-04-08",
+    "Date End": "2026-04-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "OpenClaw",
+      "AI agents",
+      "builders meetup"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://luma.com/claw"
+    ],
+    "Source Type": null,
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 137,
+    "id": "evt-140",
+    "Event": "Student Life Track Hackathon 2026",
+    "Organizer": [
+      "Acacia College, NUS"
+    ],
+    "Format": "online",
+    "Location": "Online (Singapore residential colleges / UTown Residence)",
+    "Date Start": "2026-03-29",
+    "Date End": "2026-03-29",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Lifehacks",
+      "Low/No Code",
+      "AI-themed residential college"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://acaciahackathonstudentlife.devpost.com/",
+      "https://acaciahackathonstudentlife.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 138,
+    "id": "evt-141",
+    "Event": "Tech For Good 2026 - Initial Organizer Submissions",
+    "Organizer": [
+      "nanyang technological university"
+    ],
+    "Format": "in-person",
+    "Location": "ABCD (Yunnan Drive 3, Singapore)",
+    "Date Start": "2025-12-05",
+    "Date End": "2026-01-21",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Education",
+      "Gaming",
+      "Health",
+      "LLMs",
+      "LangChain",
+      "Azure OpenAI",
+      "Pygame"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://ccds-tech-for-good-2026.devpost.com/",
+      "https://ccds-tech-for-good-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  }
+]

@@ -1,0 +1,1027 @@
+[
+  {
+    "_file": "events.md",
+    "_row": 21,
+    "id": "evt-021",
+    "Event": "Casper Hackathon 2026",
+    "Organizer": [
+      "TinTinLand"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-11-14",
+    "Date End": "2026-01-04",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Web3 ecosystems (Casper/Solana/Arbitrum mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/OurTinTinLand/status/1993995697256058967"
+    ],
+    "Source Type": [
+      "x.com",
+      "community",
+      "curation"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 23,
+    "id": "evt-023",
+    "Event": "Cursor x Anthropic Hackathon Malaysia",
+    "Organizer": [
+      "Cursor",
+      "Anthropic",
+      "Malaysia hackathon participants",
+      "community partners",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Malaysia",
+    "Date Start": "2025-12-17",
+    "Date End": "2025-12-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Cursor",
+      "Anthropic (implied)",
+      "Anthropic API",
+      "Convex",
+      "Vercel",
+      "TiDB",
+      "ElevenLabs",
+      "LeanMCP (tracks mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/therakyatpost/status/2001218375389769766",
+      "https://cursor-hack-my.devpost.com/"
+    ],
+    "Source Type": [
+      "media",
+      "event-recap",
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 24,
+    "id": "evt-024",
+    "Event": "Sui Bootcamp Indonesia Mini Hackathon",
+    "Organizer": [
+      "Sui Malaysia",
+      "Sui Indonesia",
+      "builders (participants)"
+    ],
+    "Format": "in-person",
+    "Location": "Jakarta, Indonesia",
+    "Date Start": "2025-12-14",
+    "Date End": "2025-12-14",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Sui",
+      "Move"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/SuiCommunity_MY/status/2000233825423749530"
+    ],
+    "Source Type": [
+      "community",
+      "event-recap"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 25,
+    "id": "evt-025",
+    "Event": "UKSAEI Hackathon 2025",
+    "Organizer": [
+      "UKSAEI",
+      "Singapore University of Social Sciences",
+      "UK/SG students"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-12-09",
+    "Date End": "2025-12-11",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost",
+      "Discord (mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://uksaei-hackathon.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 26,
+    "id": "evt-026",
+    "Event": "Cursor x Anthropic Hackathon Malaysia (project gallery)",
+    "Organizer": [
+      "Cursor",
+      "Anthropic",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Malaysia",
+    "Date Start": "2025-12-06",
+    "Date End": "2025-12-07",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://cursor-hack-my.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 27,
+    "id": "evt-027",
+    "Event": "xAI Hackathon",
+    "Organizer": [
+      "xAI"
+    ],
+    "Format": null,
+    "Location": null,
+    "Date Start": "2025-11-10",
+    "Date End": "2025-11-10",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Grok models",
+      "X APIs"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/xai/status/1987696575314104339"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 28,
+    "id": "evt-028",
+    "Event": "Cardano Summit 2025 Hackathon",
+    "Organizer": [
+      "Cardano Foundation",
+      "sponsor engineers/mentors"
+    ],
+    "Format": "hybrid",
+    "Location": "Berlin, Germany / Online",
+    "Date Start": "2025-11-03",
+    "Date End": "2025-11-04",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Cardano ecosystem (implied)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/"
+    ],
+    "Source Type": [
+      "reddit",
+      "announcement"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 29,
+    "id": "evt-029",
+    "Event": "Cursor Hackathon",
+    "Organizer": [
+      "@cursor_ai",
+      "hackathon organizers",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2025-10-08",
+    "Date End": "2025-10-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Cursor",
+      "AI dev tools (mentioned in post)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/gabrielchua/status/1975949011409412425"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 30,
+    "id": "evt-030",
+    "Event": "Community Shaper 2025: Hackathon Beta",
+    "Organizer": [
+      "CNHK",
+      "Community Shaper participants"
+    ],
+    "Format": "in-person",
+    "Location": "Hong Kong, China",
+    "Date Start": "2025-09-06",
+    "Date End": "2025-09-23",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "AI + emerging tech (unspecified)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://cs-2025-hackathon-beta.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 31,
+    "id": "evt-031",
+    "Event": "BI-OJK Hackathon 2025",
+    "Organizer": [
+      "Bank Indonesia",
+      "OJK Indonesia"
+    ],
+    "Format": "in-person",
+    "Location": "Indonesia",
+    "Date Start": "2025-09-06",
+    "Date End": "2025-09-06",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "fintech (unspecified)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/bank_indonesia/status/1964290193348772338"
+    ],
+    "Source Type": [
+      "announcement",
+      "government"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 32,
+    "id": "evt-032",
+    "Event": "HackitRx Singapore 2025",
+    "Organizer": [
+      "Pharmaceutical Society of Singapore",
+      "hackathon participants (2-5 per team)"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2025-08-01",
+    "Date End": "2025-08-24",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Cogniss (no-code platform, mentioned)",
+      "AWS (scaling support, mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hackitrx.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 33,
+    "id": "evt-033",
+    "Event": "ETHShenzhen Hackathon",
+    "Organizer": [
+      "OpenBuild",
+      "ETHShenzhen participants"
+    ],
+    "Format": "in-person",
+    "Location": "Shenzhen, China",
+    "Date Start": "2025-08-23",
+    "Date End": "2025-08-24",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Ethereum (implied)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/OpenBuildxyz/status/1963547236585148902"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 34,
+    "id": "evt-034",
+    "Event": "Global AI Gateway Hackathon",
+    "Organizer": [
+      "Vercel"
+    ],
+    "Format": null,
+    "Location": null,
+    "Date Start": "2025-08-24",
+    "Date End": "2025-08-24",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Vercel",
+      "AI Gateway"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/vercel/status/1959307873143665060"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 35,
+    "id": "evt-035",
+    "Event": "OpenAI Open Model Hackathon",
+    "Organizer": [
+      "Devpost",
+      "OpenAI"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-08-06",
+    "Date End": "2025-08-06",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "gpt-oss-120b",
+      "gpt-oss-20b"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/devpost/status/1952806091022319670"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 36,
+    "id": "evt-036",
+    "Event": "LifeHack 2025",
+    "Organizer": [
+      "NUS Computing Club",
+      "students (participants)"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2025-06-16",
+    "Date End": "2025-06-18",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "GitHub (submission requirement)",
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://lifehack-2025.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 38,
+    "id": "evt-038",
+    "Event": "Azure AI Developer Hackathon (winners)",
+    "Organizer": [
+      "Azure",
+      "GitHub Copilot",
+      "Devpost",
+      "hackathon winners"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-04-26",
+    "Date End": "2025-04-26",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Azure",
+      "GitHub Copilot"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://x.com/devpost/status/1915951678274097425"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 39,
+    "id": "evt-039",
+    "Event": "Product Hunt x bolt.new Hackathon (Phoenix)",
+    "Organizer": [
+      "Product Hunt community",
+      "bolt.new"
+    ],
+    "Format": "in-person",
+    "Location": "Phoenix, AZ, USA",
+    "Date Start": null,
+    "Date End": null,
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "bolt.new credits (mentioned)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions"
+    ],
+    "Source Type": [
+      "producthunt",
+      "community-post"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 40,
+    "id": "evt-040",
+    "Event": "Bitcoin City Hackathon (Bitcoin Indonesia)",
+    "Organizer": [
+      "Bitcoin Indonesia",
+      "community contributors"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-01-10",
+    "Date End": "2025-01-24",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "GitHub (open-source requirement)",
+      "Devpost",
+      "(web stack unspecified)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://bitcoin-indonesia-hackathon.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 41,
+    "id": "evt-041",
+    "Event": "Hack&Roll 2025",
+    "Organizer": [
+      "NUS Hackers",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2025-01-18",
+    "Date End": "2025-01-19",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hacknroll2025.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 56,
+    "id": "evt-056",
+    "Event": ".HACKathon",
+    "Organizer": [
+      "Singapore Management University"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore Management University, Singapore",
+    "Date Start": "2025-08-01",
+    "Date End": "2025-08-02",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Social Good",
+      "Education",
+      "Lifehacks"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://dothackathon.devpost.com/",
+      "https://smudothack.surge.sh/",
+      "https://dothackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-site",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 59,
+    "id": "evt-059",
+    "Event": "AWS AI Hackathon Hong Kong",
+    "Organizer": [
+      "AWS Hong Kong"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-08-15",
+    "Date End": "2025-09-30",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Machine Learning/AI"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://aws-hong-kong-hackathon.devpost.com/",
+      "https://aws-hong-kong-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 60,
+    "id": "evt-060",
+    "Event": "MiniMax 2025 AI Hackathon in Hong Kong",
+    "Organizer": [
+      "MiniMax"
+    ],
+    "Format": "in-person",
+    "Location": "Hong Kong",
+    "Date Start": "2025-08-29",
+    "Date End": "2025-09-13",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "DevOps",
+      "Machine Learning/AI"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://minimax-hackathon-in-hk.devpost.com/",
+      "https://minimax-hackathon-in-hk.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 61,
+    "id": "evt-061",
+    "Event": "Hack4HK",
+    "Organizer": [
+      "Hack4HK"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2024-12-12",
+    "Date End": "2025-01-05",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Low/No Code",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hack4hk-23258.devpost.com/",
+      "https://hack4hk-23258.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 67,
+    "id": "evt-068",
+    "Event": "Students@AI Seoul Hackathon",
+    "Organizer": [
+      "AI Consensus"
+    ],
+    "Format": "in-person",
+    "Location": "Elice Labs (Seoul), South Korea",
+    "Date Start": "2025-04-12",
+    "Date End": "2025-04-13",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Education",
+      "Machine Learning/AI",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://students-ai-seoul-hackathon.devpost.com/",
+      "https://students-ai-seoul-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 69,
+    "id": "evt-071",
+    "Event": "IndiaAI Impact Gen-AI Hackathon",
+    "Organizer": [
+      "Centre for Networked Intelligence, IISc"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-08-14",
+    "Date End": "2025-08-31",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Education",
+      "Machine Learning/AI",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://iisc-ibm-india-ai-impact.devpost.com/",
+      "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 74,
+    "id": "evt-076",
+    "Event": "Garuda Hacks 6.0",
+    "Organizer": [
+      "Garuda Hacks"
+    ],
+    "Format": "in-person",
+    "Location": "Universitas Multimedia Nusantara (Tangerang), Indonesia",
+    "Date Start": "2025-07-24",
+    "Date End": "2025-07-25",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Machine Learning/AI",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://gh6.devpost.com/",
+      "https://gh6.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 78,
+    "id": "evt-080",
+    "Event": "Bitcoin City Hackathon - by Bitcoin Indonesia",
+    "Organizer": [
+      "Bitcoin Indonesia"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-01-10",
+    "Date End": "2025-01-24",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Blockchain",
+      "Education",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://bitcoin-indonesia-hackathon.devpost.com/",
+      "https://bitcoin-indonesia-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 80,
+    "id": "evt-082",
+    "Event": "MATLAB HACKATHON (MH) UTM 2025",
+    "Organizer": [
+      "Mathworks"
+    ],
+    "Format": "in-person",
+    "Location": "Universiti Teknologi Malaysia, P19 Hall (Johor Bahru), Malaysia",
+    "Date Start": "2025-06-14",
+    "Date End": "2025-06-14",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Machine Learning/AI"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://mathworks-utm-2025.devpost.com/",
+      "https://mathworks-utm-2025.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 92,
+    "id": "evt-095",
+    "Event": "UNIHACK 2025",
+    "Organizer": [
+      "UNIHACK"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-03-14",
+    "Date End": "2025-03-16",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Open Ended"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://unihack2025.devpost.com/",
+      "https://unihack.net/",
+      "https://unihack2025.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "official-site",
+      "event-site",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 112,
+    "id": "evt-115",
+    "Event": "PayHack 2025",
+    "Organizer": [
+      "PayNet"
+    ],
+    "Format": "in-person",
+    "Location": "Asia Pacific University, Kuala Lumpur, Malaysia",
+    "Date Start": "2025-06-17",
+    "Date End": "2025-07-01",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Fintech",
+      "Machine Learning/AI",
+      "Cybersecurity",
+      "digital payments"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://payhack-2025.devpost.com/",
+      "https://payhack-2025.devpost.com/details/dates",
+      "https://payhack-2025.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 116,
+    "id": "evt-119",
+    "Event": "BSJ FOBISIA Hackathon",
+    "Organizer": [
+      "BSJ Hackathon Team",
+      "FOBISIA (mentioned)"
+    ],
+    "Format": "in-person",
+    "Location": "Jakarta, Indonesia",
+    "Date Start": "2025-09-19",
+    "Date End": "2025-09-22",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Education",
+      "Lifehacks",
+      "FOBISIA schools"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://bsj-fobisia-hackathon.devpost.com/",
+      "https://bsj-fobisia-hackathon.devpost.com/details/dates",
+      "https://bsj-fobisia-hackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 120,
+    "id": "evt-123",
+    "Event": "Android Hackathon x Slash 2025",
+    "Organizer": [
+      "UPN \"Veteran\" Jakarta"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2025-06-04",
+    "Date End": "2025-07-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Education",
+      "Health",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://test-android-hackathon-2025.devpost.com/",
+      "https://test-android-hackathon-2025.devpost.com/details/dates",
+      "https://test-android-hackathon-2025.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 138,
+    "id": "evt-141",
+    "Event": "Tech For Good 2026 - Initial Organizer Submissions",
+    "Organizer": [
+      "nanyang technological university"
+    ],
+    "Format": "in-person",
+    "Location": "ABCD (Yunnan Drive 3, Singapore)",
+    "Date Start": "2025-12-05",
+    "Date End": "2026-01-21",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Education",
+      "Gaming",
+      "Health",
+      "LLMs",
+      "LangChain",
+      "Azure OpenAI",
+      "Pygame"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://ccds-tech-for-good-2026.devpost.com/",
+      "https://ccds-tech-for-good-2026.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  }
+]

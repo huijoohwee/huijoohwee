@@ -31,17 +31,210 @@ async function fetchHackamapGraphJson(request) {
   return await res.json();
 }
 
-async function fetchHackamapApiGraphJson(request) {
-  const url = new URL("/knowgrph/imports/hackamap/hackamap_api_graph.json", request.url);
+async function fetchHackamapJson(request, pathname) {
+  const url = new URL(pathname, request.url);
   const res = await fetch(url.toString(), { redirect: "follow" });
   if (!res.ok) return null;
-  const payload = await res.json();
+  return await res.json();
+}
+
+async function fetchHackamapApiGraphJson(request) {
+  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/hackamap_api_graph.json");
   return isApiGraphPayload(payload) ? payload : null;
+}
+
+async function fetchHackamapPipelineJson(request) {
+  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/hackamap_pipeline.json");
+  return payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
+}
+
+async function fetchHackamapQueryPresetsJson(request) {
+  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/hackamap_query_presets.json");
+  return Array.isArray(payload) ? payload.filter(Boolean) : [];
+}
+
+async function fetchHackamapQueryRunsManifestJson(request) {
+  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/query-outputs/query-runs.manifest.json");
+  return payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
 }
 
 function isApiGraphPayload(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   return Array.isArray(value.nodes) && Array.isArray(value.edges);
+}
+
+function buildHackamapTablePrefix(presetEntry, runEntry) {
+  const basePrefix = String((presetEntry && presetEntry.output && presetEntry.output.per_table_prefix) || presetEntry?.id || runEntry?.preset || "").trim();
+  const suffix = String(runEntry?.output_suffix || "").trim();
+  return suffix ? `${basePrefix}-${suffix}` : basePrefix;
+}
+
+function collectRowIds(rows, key) {
+  if (!Array.isArray(rows)) return [];
+  const out = [];
+  for (const row of rows) {
+    if (!row || typeof row !== "object" || Array.isArray(row)) continue;
+    const value = String(row[key] || "").trim();
+    if (value) out.push(value);
+  }
+  return out;
+}
+
+function sortObjectKeys(value) {
+  if (Array.isArray(value)) return value.map(sortObjectKeys);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(
+    Object.entries(value)
+      .sort(([left], [right]) => String(left).localeCompare(String(right)))
+      .map(([key, nested]) => [key, sortObjectKeys(nested)]),
+  );
+}
+
+function stableParamSignature(value) {
+  try {
+    return JSON.stringify(sortObjectKeys(value));
+  } catch {
+    return "";
+  }
+}
+
+function toBuilderOption(value) {
+  if (typeof value === "string") return { value, label: value };
+  return { value, label: JSON.stringify(value) };
+}
+
+function buildHackamapPresetRuntimeEntries(presets, runs) {
+  return presets
+    .map((entry) => {
+      const presetId = String(entry?.id || "").trim();
+      if (!presetId) return null;
+      const defaults = entry?.params && typeof entry.params === "object" && !Array.isArray(entry.params) ? entry.params : {};
+      const relatedRuns = runs.filter((run) => String(run?.preset || "").trim() === presetId);
+      const paramKeys = Array.from(
+        new Set([
+          ...Object.keys(defaults),
+          ...relatedRuns.flatMap((run) =>
+            run?.params && typeof run.params === "object" && !Array.isArray(run.params) ? Object.keys(run.params) : [],
+          ),
+        ]),
+      ).sort((left, right) => String(left).localeCompare(String(right)));
+      const publishedParamOptions = Object.fromEntries(
+        paramKeys.map((key) => {
+          const seen = new Set();
+          const options = [];
+          const values = [
+            defaults[key],
+            ...relatedRuns.map((run) =>
+              run?.params && typeof run.params === "object" && !Array.isArray(run.params) ? run.params[key] : undefined,
+            ),
+          ];
+          for (const candidate of values) {
+            if (typeof candidate === "undefined") continue;
+            const signature = stableParamSignature(candidate);
+            if (!signature || seen.has(signature)) continue;
+            seen.add(signature);
+            options.push(toBuilderOption(candidate));
+          }
+          return [key, options];
+        }),
+      );
+      return {
+        id: presetId,
+        title: String(entry?.title || presetId).trim(),
+        params: defaults,
+        param_keys: paramKeys,
+        published_param_options: publishedParamOptions,
+      };
+    })
+    .filter(Boolean);
+}
+
+async function buildHackamapRuntimeMeta(request) {
+  const [pipeline, presets, runsManifest] = await Promise.all([
+    fetchHackamapPipelineJson(request),
+    fetchHackamapQueryPresetsJson(request),
+    fetchHackamapQueryRunsManifestJson(request),
+  ]);
+  const runtime = pipeline && typeof pipeline === "object" ? pipeline.runtime || {} : {};
+  const defaultRunId = String(runtime?.query_selection?.default_run_id || "").trim() || "enhanced";
+  const runsRaw = Array.isArray(runsManifest?.runs) ? runsManifest.runs : [];
+  const runs = runsRaw
+    .map((entry) => ({
+      id: String(entry?.id || "").trim(),
+      preset: String(entry?.preset || "").trim(),
+      title: String(entry?.title || entry?.id || "").trim(),
+      params: entry?.params && typeof entry.params === "object" && !Array.isArray(entry.params) ? entry.params : {},
+      output_suffix: String(entry?.output_suffix || "").trim(),
+      is_default: String(entry?.id || "").trim() === defaultRunId,
+    }))
+    .filter((entry) => entry.id);
+  return {
+    ok: true,
+    runtime: {
+      ...(runtime && typeof runtime === "object" ? runtime : {}),
+      presets: buildHackamapPresetRuntimeEntries(presets, runs),
+      runs,
+    },
+  };
+}
+
+async function readHackamapQueryRunSelection(request, runId) {
+  const normalizedRunId = String(runId || "").trim();
+  if (!normalizedRunId) return null;
+  const [presets, runsManifest] = await Promise.all([
+    fetchHackamapQueryPresetsJson(request),
+    fetchHackamapQueryRunsManifestJson(request),
+  ]);
+  const runs = Array.isArray(runsManifest?.runs) ? runsManifest.runs : [];
+  const runEntry = runs.find((entry) => String(entry?.id || "").trim() === normalizedRunId);
+  if (!runEntry) return null;
+  const presetEntry = presets.find((entry) => String(entry?.id || "").trim() === String(runEntry?.preset || "").trim());
+  const tablePrefix = buildHackamapTablePrefix(presetEntry, runEntry);
+  if (!tablePrefix) return null;
+  const [eventsJson, demosJson] = await Promise.all([
+    fetchHackamapJson(request, `/knowgrph/imports/hackamap/query-outputs/events.${tablePrefix}.query.json`),
+    fetchHackamapJson(request, `/knowgrph/imports/hackamap/query-outputs/demos.${tablePrefix}.query.json`),
+  ]);
+  const eventIds = new Set(collectRowIds(eventsJson, "id"));
+  const demoIds = new Set(collectRowIds(demosJson, "id"));
+  const demoEventIds = collectRowIds(demosJson, "event_id");
+  for (const id of demoEventIds) eventIds.add(id);
+  return { eventIds, demoIds };
+}
+
+function filterHackamapApiGraphPayloadByRun(payload, runId, selection) {
+  if (!selection || !isApiGraphPayload(payload)) return payload;
+  if (selection.eventIds.size === 0 && selection.demoIds.size === 0) {
+    return {
+      ...payload,
+      meta: {
+        ...(payload?.meta && typeof payload.meta === "object" ? payload.meta : {}),
+        selected_run_id: runId,
+        selected_run_filter_skipped: "no-event-demo-rows",
+      },
+    };
+  }
+  const keep = new Set();
+  selection.eventIds.forEach((id) => keep.add(`Event:${id}`));
+  selection.demoIds.forEach((id) => keep.add(`Demo:${id}`));
+  const nodes = Array.isArray(payload.nodes) ? payload.nodes.filter((node) => keep.has(String(node?.id || "").trim())) : [];
+  const keepIds = new Set(nodes.map((node) => String(node?.id || "").trim()).filter(Boolean));
+  const edges = Array.isArray(payload.edges)
+    ? payload.edges.filter((edge) => keepIds.has(String(edge?.source || "").trim()) && keepIds.has(String(edge?.target || "").trim()))
+    : [];
+  return {
+    ...payload,
+    nodes,
+    edges,
+    meta: {
+      ...(payload?.meta && typeof payload.meta === "object" ? payload.meta : {}),
+      selected_run_id: runId,
+      selected_event_count: selection.eventIds.size,
+      selected_demo_count: selection.demoIds.size,
+      total_problems: nodes.filter((node) => String(node?.type || "").trim() === "problem").length,
+      total_solutions: nodes.filter((node) => String(node?.type || "").trim() === "solution").length,
+    },
+  };
 }
 
 function toBipartiteApiPayload(graphJson) {
@@ -93,6 +286,7 @@ function toBipartiteApiPayload(graphJson) {
 export async function onRequest(context) {
   const { request } = context;
   const method = String(request.method || "GET").toUpperCase();
+  const url = new URL(request.url);
   if (method === "OPTIONS") {
     return new Response(null, {
       status: 204,
@@ -108,10 +302,20 @@ export async function onRequest(context) {
     return jsonResponse(request, { ok: false, error: "unsupported_method" }, 405);
   }
 
+  if (String(url.searchParams.get("view") || "").trim().toLowerCase() === "meta") {
+    const metaPayload = await buildHackamapRuntimeMeta(request);
+    if (method === "HEAD") return new Response(null, { status: 200, headers: { ...JSON_HEADERS, ...corsHeaders(request) } });
+    return jsonResponse(request, metaPayload, 200);
+  }
+
+  const runId = String(url.searchParams.get("run") || "").trim();
+  const selection = await readHackamapQueryRunSelection(request, runId);
+
   const apiPayload = await fetchHackamapApiGraphJson(request);
   if (apiPayload) {
+    const filteredPayload = filterHackamapApiGraphPayloadByRun(apiPayload, runId, selection);
     if (method === "HEAD") return new Response(null, { status: 200, headers: { ...JSON_HEADERS, ...corsHeaders(request) } });
-    return jsonResponse(request, apiPayload, 200);
+    return jsonResponse(request, filteredPayload, 200);
   }
 
   const graphJson = await fetchHackamapGraphJson(request);
@@ -128,6 +332,7 @@ export async function onRequest(context) {
   }
 
   const payload = toBipartiteApiPayload(graphJson);
+  const filteredPayload = filterHackamapApiGraphPayloadByRun(payload, runId, selection);
   if (method === "HEAD") return new Response(null, { status: 200, headers: { ...JSON_HEADERS, ...corsHeaders(request) } });
-  return jsonResponse(request, payload, 200);
+  return jsonResponse(request, filteredPayload, 200);
 }

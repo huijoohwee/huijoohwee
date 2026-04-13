@@ -66,5 +66,18 @@
       "per_table_prefix": "year-2026"
     },
     "params": {}
+  },
+  {
+    "id": "year-series",
+    "title": "Year series (published exact years)",
+    "file": "hackamap-query-preset-year-series.json",
+    "output": {
+      "combined_json": "hackamap-year-series.json",
+      "combined_md": "hackamap-year-series.md",
+      "per_table_prefix": "year-series"
+    },
+    "params": {
+      "year": "2026"
+    }
   }
 ]

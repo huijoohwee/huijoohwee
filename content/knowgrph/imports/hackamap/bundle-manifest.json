@@ -57,7 +57,7 @@
     },
     {
       "path": "hackamap_pipeline.json",
-      "sha256": "76aaec5967bda588edafc2b5c0ffb34556c7c23e60cceff906b0bda298b98412"
+      "sha256": "1d62ba60dcec82467d81705233bc88c6ef653221deb154c7a672896e8c536a6a"
     },
     {
       "path": "hackamap_query.chinese-content.json",
@@ -88,8 +88,12 @@
       "sha256": "e882d0a7fec941a5f809385c6f06445411e0fd3f32c7ff65e8c7c64f60d4e08a"
     },
     {
+      "path": "hackamap_query.year-series.json",
+      "sha256": "ac1cf55337afc9b8ac5d45f5e9062024fe50e5c150385fb63cec919b1a9570e4"
+    },
+    {
       "path": "hackamap_query_presets.json",
-      "sha256": "fbad46a3680915d291f27da3334b5625a0a9c9a38888ada4e323d7bb4fdc17d0"
+      "sha256": "46ad51db8b41186b56baadbcb28b2b22acd13f11d05ad022643885eb032af618"
     },
     {
       "path": "query-outputs/demos.chinese-content.query.json",
@@ -116,6 +120,22 @@
       "sha256": "527a1cc426f2348888e251cf93d2d4d6f89a95436800f559827cd4f79cbaddb3"
     },
     {
+      "path": "query-outputs/demos.sg-agents-postgres-devtools-jakarta.query.json",
+      "sha256": "22288f4995e124e8a52191dc683aeb6d1f161d9ef1e63b6db455d0ec76998732"
+    },
+    {
+      "path": "query-outputs/demos.sg-agents-postgres-devtools-jakarta.query.md",
+      "sha256": "7b7506ac3a829724f9a518e36a2274ad9fc278e78b1d8292ac4740ee54cc6823"
+    },
+    {
+      "path": "query-outputs/demos.sg-agents-postgres-devtools-kl.query.json",
+      "sha256": "22288f4995e124e8a52191dc683aeb6d1f161d9ef1e63b6db455d0ec76998732"
+    },
+    {
+      "path": "query-outputs/demos.sg-agents-postgres-devtools-kl.query.md",
+      "sha256": "bd279d647a2450b78785f540745d88156ea15e4b9b854581e98b0bf0ea3dfc6b"
+    },
+    {
       "path": "query-outputs/demos.sg-agents-postgres-devtools.query.json",
       "sha256": "22288f4995e124e8a52191dc683aeb6d1f161d9ef1e63b6db455d0ec76998732"
     },
@@ -138,6 +158,30 @@
     {
       "path": "query-outputs/demos.year-2026.query.md",
       "sha256": "52e738f51e141d563a979e17c0e3663da2eaf2417222c6d79b5cb0b76a9226dd"
+    },
+    {
+      "path": "query-outputs/demos.year-series-2024.query.json",
+      "sha256": "6e1a337e42e57c9b07a02401eecf1d5f9ea2fea7cdb28bbf4f13291cb514d103"
+    },
+    {
+      "path": "query-outputs/demos.year-series-2024.query.md",
+      "sha256": "c9b22dd74102dc3e9530c1669442e8a0a55e813f83acb27df6dadaba7ce444bc"
+    },
+    {
+      "path": "query-outputs/demos.year-series-2025.query.json",
+      "sha256": "cb30d214131128f11aee3cba8c6ff83a5eee3b976d0e2aed44cbc32a51fd04bc"
+    },
+    {
+      "path": "query-outputs/demos.year-series-2025.query.md",
+      "sha256": "43b617c9321e5b352537a3b49ba6ea7514414faf5f4a59e66ef2c076657b4cea"
+    },
+    {
+      "path": "query-outputs/demos.year-series-2026.query.json",
+      "sha256": "c2ca336c4ab689ef79f8be8ebee4477e159660e1dd0f2eab72f8b69d73d299e4"
+    },
+    {
+      "path": "query-outputs/demos.year-series-2026.query.md",
+      "sha256": "ef2fd8ce0a82eb49192e8c02e98acad8618fe426d23c68daac14b6431a98601c"
     },
     {
       "path": "query-outputs/events.chinese-content.query.json",
@@ -164,6 +208,22 @@
       "sha256": "0558a26854e89f0515e1c8a76059edbf255ddba9bebe057f1f8cccf4359f8d92"
     },
     {
+      "path": "query-outputs/events.sg-agents-postgres-devtools-jakarta.query.json",
+      "sha256": "9c990df6def70bc2c0e976b65bf0f498c50914c4b39e7c25b2cb6322e7621efb"
+    },
+    {
+      "path": "query-outputs/events.sg-agents-postgres-devtools-jakarta.query.md",
+      "sha256": "17ffe6a4a5ecae9f6c7f1a5a388dfc30f85ef24e6e770d4645abf2bfcfe1c042"
+    },
+    {
+      "path": "query-outputs/events.sg-agents-postgres-devtools-kl.query.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "query-outputs/events.sg-agents-postgres-devtools-kl.query.md",
+      "sha256": "84e07027d7ad0a686ff1bb61596e9ed15c876da4c50c515bee195e158b799f79"
+    },
+    {
       "path": "query-outputs/events.sg-agents-postgres-devtools.query.json",
       "sha256": "366fbb4a84e11fcfa71e58eef21c0515247a507dbfea5dea6415d5b379f7bbd1"
     },
@@ -186,6 +246,30 @@
     {
       "path": "query-outputs/events.year-2026.query.md",
       "sha256": "4c31da0b044532f729deda15e9e220173cb663349467c33f81cbd3d8171e21bb"
+    },
+    {
+      "path": "query-outputs/events.year-series-2024.query.json",
+      "sha256": "04e7a4ed02d25f72939b3d15c895378c5036c3592b2f25096bf8119c2609625a"
+    },
+    {
+      "path": "query-outputs/events.year-series-2024.query.md",
+      "sha256": "36e9abd14428806f3e4eb5a785e3340eb20bfd0174b9771d5e3faaec0c9adb11"
+    },
+    {
+      "path": "query-outputs/events.year-series-2025.query.json",
+      "sha256": "bc4e643cec83b519a62adb40575ad200020680c94cd47dedf0897bfafc85352d"
+    },
+    {
+      "path": "query-outputs/events.year-series-2025.query.md",
+      "sha256": "824166345945038e694bc443334f154b6c96a904db8662f24cf107220057750d"
+    },
+    {
+      "path": "query-outputs/events.year-series-2026.query.json",
+      "sha256": "55d3bce81ac90bf226ba961323ecd9a6b6caebb9e66d24330d89e9d414f255f7"
+    },
+    {
+      "path": "query-outputs/events.year-series-2026.query.md",
+      "sha256": "08fa2d67e75a45916bbd8e4c750e190b6bd3a4b2f73d4d58fba74708960929b4"
     },
     {
       "path": "query-outputs/hackamap-chinese-content.json",
@@ -213,11 +297,27 @@
     },
     {
       "path": "query-outputs/hackamap-query-runs.runtime.json",
-      "sha256": "cf15cd4a9f044f7c443a96793cc0f9ff515dc0b5c109b091454aeff3786f7326"
+      "sha256": "a52fa995b7947b53241d32da82eecbe32bf448c2bd3974c248f5d02905d4453a"
+    },
+    {
+      "path": "query-outputs/hackamap-sg-agents-postgres-devtools.jakarta.json",
+      "sha256": "d6bf784c9cb39e47a5246b6ecb558e122d48821d10a21c3b81b049bc04a1443b"
+    },
+    {
+      "path": "query-outputs/hackamap-sg-agents-postgres-devtools.jakarta.md",
+      "sha256": "561b6fc852c9fa865562760ecfdd70c7b7ba9114863d644579fca047f05a3d4a"
     },
     {
       "path": "query-outputs/hackamap-sg-agents-postgres-devtools.json",
       "sha256": "889b4566c8c08e202a7f4b06aeb45121a3563c26224b1ac587c3a3fedc1abe53"
+    },
+    {
+      "path": "query-outputs/hackamap-sg-agents-postgres-devtools.kl.json",
+      "sha256": "309a07f34f1dd6dc64635cfb6be8154196303750babaafeba8e2872e30289bc2"
+    },
+    {
+      "path": "query-outputs/hackamap-sg-agents-postgres-devtools.kl.md",
+      "sha256": "8e834bb2b08f37ee3da8bed2427d211af03499549c895bd9ed3bb44f4d3be6ec"
     },
     {
       "path": "query-outputs/hackamap-sg-agents-postgres-devtools.md",
@@ -240,6 +340,30 @@
       "sha256": "7b73b28d608517f72b2907d5d59a2b9f53b52b7d45a3040622290c9355a882c1"
     },
     {
+      "path": "query-outputs/hackamap-year-series.2024.json",
+      "sha256": "a6f68940530b503c4a19bb75e3398e84f07302bb38b7fb0295c0a6d150f307df"
+    },
+    {
+      "path": "query-outputs/hackamap-year-series.2024.md",
+      "sha256": "394cad67c2a46f2f712efba92f462df8c1d77a36a48975edbce12e304872644d"
+    },
+    {
+      "path": "query-outputs/hackamap-year-series.2025.json",
+      "sha256": "14ffb4084521f8c0cb891404f607531a77180e4241a694efd080dfd15ee1fce6"
+    },
+    {
+      "path": "query-outputs/hackamap-year-series.2025.md",
+      "sha256": "a85d23bd450b4d4dec9f482228996b642a2567ed9c6e6b32b5e6ff46f4572f7c"
+    },
+    {
+      "path": "query-outputs/hackamap-year-series.2026.json",
+      "sha256": "52926114b3ae77c90a7b48784f03036fbe9f3f7b6b7e651b2e847d862ad86222"
+    },
+    {
+      "path": "query-outputs/hackamap-year-series.2026.md",
+      "sha256": "8955690da340a3210841b943077c1f3f441ce266ae0f38fdda51d1b25afb2a1c"
+    },
+    {
       "path": "query-outputs/organizer.chinese-content.query.json",
       "sha256": "be10172741042f58821547d7e5bab7cf0f2d6a8304ec8264f9fee546a82f9d97"
     },
@@ -254,6 +378,22 @@
     {
       "path": "query-outputs/organizer.enhanced.query.md",
       "sha256": "a56f2e282dd791f31515e76a959bc9b0312e5e20cd02c6629b3d0624943125c9"
+    },
+    {
+      "path": "query-outputs/organizer.sg-agents-postgres-devtools-jakarta.query.json",
+      "sha256": "71ad18ff7ef0f6bf484ecb29617234ec2f4c3e2f7d846e54814ea112dbeb0a6d"
+    },
+    {
+      "path": "query-outputs/organizer.sg-agents-postgres-devtools-jakarta.query.md",
+      "sha256": "2e2ed3de25e4c0ba251348c3d0aa68f9c11475143e2d1b7a7a3d38e8e2c104a4"
+    },
+    {
+      "path": "query-outputs/organizer.sg-agents-postgres-devtools-kl.query.json",
+      "sha256": "71ad18ff7ef0f6bf484ecb29617234ec2f4c3e2f7d846e54814ea112dbeb0a6d"
+    },
+    {
+      "path": "query-outputs/organizer.sg-agents-postgres-devtools-kl.query.md",
+      "sha256": "32e2592e5ee2b3ff916f6dd6759d765a5138a350ad605ff8397604daf1a70fc9"
     },
     {
       "path": "query-outputs/organizer.sg-agents-postgres-devtools.query.json",
@@ -272,8 +412,32 @@
       "sha256": "fea7f8186cdd7343f858b94b3237d049c69647ad5724c32fce5d01d216038724"
     },
     {
+      "path": "query-outputs/organizer.year-series-2024.query.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "query-outputs/organizer.year-series-2024.query.md",
+      "sha256": "07241ac1edeead34954251cbaaf8d316b256f9213c69f29828bb44b398aad606"
+    },
+    {
+      "path": "query-outputs/organizer.year-series-2025.query.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "query-outputs/organizer.year-series-2025.query.md",
+      "sha256": "7fca63e45b5ead168c841d191d93981966a7c156decf774411964cfd6ac3e2d4"
+    },
+    {
+      "path": "query-outputs/organizer.year-series-2026.query.json",
+      "sha256": "999c5f42921c8089bf57803c3dee3c20ed274de71ed743af5924927081c9c6b1"
+    },
+    {
+      "path": "query-outputs/organizer.year-series-2026.query.md",
+      "sha256": "b54d48546bcc4386670e0dd3bd5d978c3d17a8ee5f389f2bf15d84eebd9a9dc6"
+    },
+    {
       "path": "query-outputs/query-runs.manifest.json",
-      "sha256": "2302bbbcd2f300e9330ad2f75acd5f923808e6c2df43e337548abd098dc40ad6"
+      "sha256": "5acb327ec29791a1a3934c182a51b1f946cce148b94110ab25dcefd17128656f"
     },
     {
       "path": "query-outputs/sources.chinese-content.query.json",
@@ -300,6 +464,22 @@
       "sha256": "7a14187c052b04c1a2f49657518d7ff398d8dafdbc9a363059beff7f5244c497"
     },
     {
+      "path": "query-outputs/sources.sg-agents-postgres-devtools-jakarta.query.json",
+      "sha256": "94efb230f953df18f7a9a1770ae54940540922da48c14e9d7867fb0b9001c871"
+    },
+    {
+      "path": "query-outputs/sources.sg-agents-postgres-devtools-jakarta.query.md",
+      "sha256": "e6349c1b7b29f3ff71674602091f526afaafa37b39c55104976682b3b3740c22"
+    },
+    {
+      "path": "query-outputs/sources.sg-agents-postgres-devtools-kl.query.json",
+      "sha256": "94efb230f953df18f7a9a1770ae54940540922da48c14e9d7867fb0b9001c871"
+    },
+    {
+      "path": "query-outputs/sources.sg-agents-postgres-devtools-kl.query.md",
+      "sha256": "473d33f21ee671453d972e749c11486cb1fd0113acf7939aa3e6c5b248330ed6"
+    },
+    {
       "path": "query-outputs/sources.sg-agents-postgres-devtools.query.json",
       "sha256": "94efb230f953df18f7a9a1770ae54940540922da48c14e9d7867fb0b9001c871"
     },
@@ -324,6 +504,30 @@
       "sha256": "0cf4b2aee8381d3cd6e58660d2efb7d5bf2c205f55b6a397786d50e7c1afd049"
     },
     {
+      "path": "query-outputs/sources.year-series-2024.query.json",
+      "sha256": "afc604d1e5a4ac2368d427beef6c3236605a723d2f283fe34e7c50ac3aa30a4a"
+    },
+    {
+      "path": "query-outputs/sources.year-series-2024.query.md",
+      "sha256": "678c7f2e8c744ac85d3a1b41332185cb1853b73901ce6cab975ca5a5b4737513"
+    },
+    {
+      "path": "query-outputs/sources.year-series-2025.query.json",
+      "sha256": "814518edb60072b1e4e7116100d66f747d9400413ffb9189432e6737b0df21b1"
+    },
+    {
+      "path": "query-outputs/sources.year-series-2025.query.md",
+      "sha256": "ecbc3f3c7f209e46b0bd55d6d2f8b810fc8d4a47764c120f390ba4e7eb0594bf"
+    },
+    {
+      "path": "query-outputs/sources.year-series-2026.query.json",
+      "sha256": "26cd8cfdffc11f664f6b181991c1217c9ffa86ddf318dce1124071f7d170e846"
+    },
+    {
+      "path": "query-outputs/sources.year-series-2026.query.md",
+      "sha256": "b9c0f26c50db9b1cbf1bc757a072c12c27b5d99d223feaae8aea969f0fe2aac7"
+    },
+    {
       "path": "query-outputs/team.chinese-content.query.json",
       "sha256": "f26219d5f5c380a4dbbfe93a8d942b9cc89b6614fcd98ead7d8f6f38ed0ab690"
     },
@@ -340,6 +544,22 @@
       "sha256": "155ab11b9498e77b9314447c22a45fba60cb5802261a3a063d7aa824f6747f47"
     },
     {
+      "path": "query-outputs/team.sg-agents-postgres-devtools-jakarta.query.json",
+      "sha256": "904cd8a64e6e074b4bcaab4a49937c02d8bc857303368db7871f10a9637b3c4a"
+    },
+    {
+      "path": "query-outputs/team.sg-agents-postgres-devtools-jakarta.query.md",
+      "sha256": "1a00312409a79994a7a6fdfb53b1e19fe215da9000a0ccb08bd048ec776cc74d"
+    },
+    {
+      "path": "query-outputs/team.sg-agents-postgres-devtools-kl.query.json",
+      "sha256": "904cd8a64e6e074b4bcaab4a49937c02d8bc857303368db7871f10a9637b3c4a"
+    },
+    {
+      "path": "query-outputs/team.sg-agents-postgres-devtools-kl.query.md",
+      "sha256": "3c04f1c65caa8cbf53bd7234a584dfe2f92cf586ade8d03d4646423b8fe0ffa7"
+    },
+    {
       "path": "query-outputs/team.sg-agents-postgres-devtools.query.json",
       "sha256": "904cd8a64e6e074b4bcaab4a49937c02d8bc857303368db7871f10a9637b3c4a"
     },
@@ -354,6 +574,30 @@
     {
       "path": "query-outputs/team.year-2026.query.md",
       "sha256": "28f31093dadb7afabdcfe7c89fa90548f84080e27fd963c390e3e205a70dc942"
+    },
+    {
+      "path": "query-outputs/team.year-series-2024.query.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "query-outputs/team.year-series-2024.query.md",
+      "sha256": "8fa10bf812b5fc5adf8f3f746ec3c2b10f56c88de918b3f1e9f5c15123ab4ea9"
+    },
+    {
+      "path": "query-outputs/team.year-series-2025.query.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "query-outputs/team.year-series-2025.query.md",
+      "sha256": "1c8f0374ba159a238d738f86e3a89dc45525e95fa25423b6c15adee38c3f79da"
+    },
+    {
+      "path": "query-outputs/team.year-series-2026.query.json",
+      "sha256": "6c50d3179c374ade3276d8693f0afa00d78966b3e9f8663b0375c5fd861d42c1"
+    },
+    {
+      "path": "query-outputs/team.year-series-2026.query.md",
+      "sha256": "17a679e850ee8f3419e5b02ebaa84ea6c937e8b2c169a6914a396a287686ce5a"
     },
     {
       "path": "query-outputs/techstack.chinese-content.query.json",
@@ -380,6 +624,22 @@
       "sha256": "27a82956f931959fd6ad7420b4d94d0ba271348d2527eade418fc574d70e25d6"
     },
     {
+      "path": "query-outputs/techstack.sg-agents-postgres-devtools-jakarta.query.json",
+      "sha256": "eb12a22c2501c49dfeb1b6491b33db205e1ac5badb767666f74d0beed49734e1"
+    },
+    {
+      "path": "query-outputs/techstack.sg-agents-postgres-devtools-jakarta.query.md",
+      "sha256": "7db3df3ad1ad5475fe14500be23a9c77e60b0aaf54fd0b5e56ff6de4cbdd4039"
+    },
+    {
+      "path": "query-outputs/techstack.sg-agents-postgres-devtools-kl.query.json",
+      "sha256": "eb12a22c2501c49dfeb1b6491b33db205e1ac5badb767666f74d0beed49734e1"
+    },
+    {
+      "path": "query-outputs/techstack.sg-agents-postgres-devtools-kl.query.md",
+      "sha256": "404def5946347c55f266c7f21f2e63b1da67de7c59be3fd700e08a2bb542f0f5"
+    },
+    {
       "path": "query-outputs/techstack.sg-agents-postgres-devtools.query.json",
       "sha256": "eb12a22c2501c49dfeb1b6491b33db205e1ac5badb767666f74d0beed49734e1"
     },
@@ -394,6 +654,30 @@
     {
       "path": "query-outputs/techstack.year-2026.query.md",
       "sha256": "bc7ac05c562cd8a919f54320548b0ba25d9c0f55675dbaac8dcb8eb08552e28a"
+    },
+    {
+      "path": "query-outputs/techstack.year-series-2024.query.json",
+      "sha256": "f13bb2c478e29bccbb7076dae6a403780fd7612337c8f2cdf1a9ba337ac5b544"
+    },
+    {
+      "path": "query-outputs/techstack.year-series-2024.query.md",
+      "sha256": "2386a1a604903c052950781baf49095ee118c0f97f30e661db007b03fd4987b1"
+    },
+    {
+      "path": "query-outputs/techstack.year-series-2025.query.json",
+      "sha256": "519247a7c5b81b7d4f0483b9bcbeac70a167b45b890dbfed8d6ad8f1a17854c5"
+    },
+    {
+      "path": "query-outputs/techstack.year-series-2025.query.md",
+      "sha256": "ffd285f4b9d89d9a9d8afc407763eed1f235e1244955831077bde5feec03057a"
+    },
+    {
+      "path": "query-outputs/techstack.year-series-2026.query.json",
+      "sha256": "ff4d28f161536f319cac2abbb6e4558dbc8973a9021ccfeff518ebdf189fc1d6"
+    },
+    {
+      "path": "query-outputs/techstack.year-series-2026.query.md",
+      "sha256": "dd1328743d912838771f03f77a5f830a08bbe6c3163569d71e4c61a72e42d1dc"
     }
   ]
 }

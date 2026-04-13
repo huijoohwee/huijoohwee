@@ -52,6 +52,62 @@
       ]
     },
     {
+      "id": "sg-agents-postgres-devtools-kl",
+      "preset": "sg-agents-postgres-devtools",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-sg-agents-postgres-devtools.json",
+      "params": {
+        "location": "Kuala Lumpur"
+      },
+      "output_suffix": "kl",
+      "title": "hackamap-sg-agents-postgres-devtools (kl)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.kl.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.kl.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
+        "--preset",
+        "sg-agents-postgres-devtools",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs",
+        "--param",
+        "location=\"Kuala Lumpur\"",
+        "--output-suffix",
+        "kl"
+      ]
+    },
+    {
+      "id": "sg-agents-postgres-devtools-jakarta",
+      "preset": "sg-agents-postgres-devtools",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-sg-agents-postgres-devtools.json",
+      "params": {
+        "location": "Jakarta"
+      },
+      "output_suffix": "jakarta",
+      "title": "hackamap-sg-agents-postgres-devtools (jakarta)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.jakarta.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.jakarta.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
+        "--preset",
+        "sg-agents-postgres-devtools",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs",
+        "--param",
+        "location=\"Jakarta\"",
+        "--output-suffix",
+        "jakarta"
+      ]
+    },
+    {
       "id": "social-platforms",
       "preset": "social-platforms",
       "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-social-platforms.json",
@@ -137,6 +193,90 @@
         "--write-query-json",
         "--artifacts-dir",
         "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs"
+      ]
+    },
+    {
+      "id": "year-series-2024",
+      "preset": "year-series",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-year-series.json",
+      "params": {
+        "year": "2024"
+      },
+      "output_suffix": "2024",
+      "title": "hackamap-year-series (2024)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-series.2024.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-series.2024.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
+        "--preset",
+        "year-series",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs",
+        "--param",
+        "year=\"2024\"",
+        "--output-suffix",
+        "2024"
+      ]
+    },
+    {
+      "id": "year-series-2025",
+      "preset": "year-series",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-year-series.json",
+      "params": {
+        "year": "2025"
+      },
+      "output_suffix": "2025",
+      "title": "hackamap-year-series (2025)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-series.2025.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-series.2025.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
+        "--preset",
+        "year-series",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs",
+        "--param",
+        "year=\"2025\"",
+        "--output-suffix",
+        "2025"
+      ]
+    },
+    {
+      "id": "year-series-2026",
+      "preset": "year-series",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-year-series.json",
+      "params": {
+        "year": "2026"
+      },
+      "output_suffix": "2026",
+      "title": "hackamap-year-series (2026)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-series.2026.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-series.2026.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
+        "--preset",
+        "year-series",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs",
+        "--param",
+        "year=\"2026\"",
+        "--output-suffix",
+        "2026"
       ]
     }
   ]

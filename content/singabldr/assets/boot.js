@@ -491,12 +491,12 @@
     function rewrite(rawUrl) {
       var u = String(rawUrl || "");
       if (!u) return u;
-      // Match absolute or relative paths.
-      u = u.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.json");
+      // Match absolute or relative paths and resolve directly to stable versioned assets.
+      u = u.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
       // Legacy locations: some servers (hybrid python http.server) don't have root copies.
-      u = u.replace(/(^|\/)singabldr\.assets\.json(\b|$)/, "$1boards/singabldr.assets.json");
-      u = u.replace(/(^|\/)singabldr\.elements\.json(\b|$)/, "$1boards/singabldr.elements.json");
-      u = u.replace(/(^|\/)script-singabuildr-0000\.json(\b|$)/, "$1script-singabuildr-0000.v1.json");
+      u = u.replace(/(^|\/)singabldr\.assets\.json(\b|$)/, "$1boards/singabldr.assets.v2.json");
+      u = u.replace(/(^|\/)singabldr\.elements\.json(\b|$)/, "$1boards/singabldr.elements.v2.json");
+      u = u.replace(/(^|\/)script-singabuildr-0000\.json(\b|$)/, "$1script-singabuildr-0000.v2.json");
       return u;
     }
 
@@ -810,15 +810,14 @@
         url = "";
       }
       // Compatibility aliases:
-      // Some legacy placeholder files are unreadable (0-byte / write-only). Fail-safe by
-      // redirecting requests to stable versioned filenames that we control.
+      // Resolve legacy names directly to the stable versioned artifacts we control.
       var effectiveUrl = url;
       try {
         // Match both absolute and relative paths (e.g. "boards/..." vs "/boards/...").
-        effectiveUrl = effectiveUrl.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.json");
+        effectiveUrl = effectiveUrl.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
         effectiveUrl = effectiveUrl.replace(
           /(^|\/)script-singabuildr-0000\.json(\b|$)/,
-          "$1script-singabuildr-0000.v1.json"
+          "$1script-singabuildr-0000.v2.json"
         );
       } catch {
         effectiveUrl = url;

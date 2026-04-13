@@ -1,0 +1,29 @@
+[
+  {
+    "_file": "events.md",
+    "_row": 136,
+    "id": "evt-139",
+    "Event": "OpenClaw Meetup JKT #2",
+    "Organizer": [
+      "OpenClaw Jakarta community"
+    ],
+    "Format": "in-person",
+    "Location": "Jakarta, Indonesia",
+    "Date Start": "2026-04-08",
+    "Date End": "2026-04-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "OpenClaw",
+      "AI agents",
+      "builders meetup"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://luma.com/claw"
+    ],
+    "Source Type": null,
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  }
+]

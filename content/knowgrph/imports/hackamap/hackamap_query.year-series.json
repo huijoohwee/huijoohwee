@@ -1,0 +1,48 @@
+{
+  "query": {
+    "from": {
+      "files": [
+        "events.md",
+        "demos.md",
+        "sources.md",
+        "organizer.md",
+        "team.md",
+        "techstack.md"
+      ]
+    },
+    "where_by_file": {
+      "events.md": {
+        "or": [
+          { "field": "Date Start", "op": "contains", "value": "${year}" },
+          { "field": "Date End", "op": "contains", "value": "${year}" },
+          { "field": "Event", "op": "contains", "value": "${year}" },
+          { "field": "URL", "op": "contains", "value": "${year}" }
+        ]
+      },
+      "demos.md": {
+        "or": [
+          { "op": "any", "value": "${year}" },
+          { "field": "Demo URL", "op": "contains", "value": "${year}" },
+          { "field": "Repo URL", "op": "contains", "value": "${year}" }
+        ]
+      },
+      "sources.md": {
+        "or": [
+          { "field": "URL", "op": "contains", "value": "${year}" },
+          { "field": "Domain", "op": "contains", "value": "${year}" },
+          { "op": "any", "value": "${year}" }
+        ]
+      },
+      "organizer.md": { "op": "any", "value": "${year}" },
+      "team.md": { "op": "any", "value": "${year}" },
+      "techstack.md": { "op": "any", "value": "${year}" }
+    },
+    "limit": 300,
+    "output": {
+      "title": "hackamap-year-series",
+      "json_path": "hackamap-year-series.json",
+      "md_path": "hackamap-year-series.md",
+      "table_prefix": "year-series"
+    }
+  }
+}

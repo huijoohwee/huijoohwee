@@ -1,0 +1,266 @@
+[
+  {
+    "_file": "sources.md",
+    "_row": 30,
+    "id": "src-030",
+    "URL": "https://cs-2025-hackathon-beta.devpost.com/",
+    "Domain": "cs-2025-hackathon-beta.devpost.com",
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Events": [
+      "evt-030"
+    ],
+    "Demos": [
+      "demo-032"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 100,
+    "id": "src-100",
+    "URL": "https://hacknroll2025.devpost.com/",
+    "Domain": "hacknroll2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Events": [
+      "evt-041"
+    ],
+    "Demos": [
+      "demo-043"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 138,
+    "id": "src-138",
+    "URL": "https://lifehack-2025.devpost.com/",
+    "Domain": "lifehack-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Events": [
+      "evt-036"
+    ],
+    "Demos": [
+      "demo-038"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 154,
+    "id": "src-154",
+    "URL": "https://mathworks-utm-2025.devpost.com/",
+    "Domain": "mathworks-utm-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-082"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 155,
+    "id": "src-155",
+    "URL": "https://mathworks-utm-2025.devpost.com/project-gallery",
+    "Domain": "mathworks-utm-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-082"
+    ],
+    "Demos": [
+      "demo-084"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 174,
+    "id": "src-174",
+    "URL": "https://payhack-2025.devpost.com/",
+    "Domain": "payhack-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-115"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 175,
+    "id": "src-175",
+    "URL": "https://payhack-2025.devpost.com/details/dates",
+    "Domain": "payhack-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-115"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 176,
+    "id": "src-176",
+    "URL": "https://payhack-2025.devpost.com/project-gallery",
+    "Domain": "payhack-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-115"
+    ],
+    "Demos": [
+      "demo-117"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 208,
+    "id": "src-208",
+    "URL": "https://test-android-hackathon-2025.devpost.com/",
+    "Domain": "test-android-hackathon-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-123"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 209,
+    "id": "src-209",
+    "URL": "https://test-android-hackathon-2025.devpost.com/details/dates",
+    "Domain": "test-android-hackathon-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-123"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 210,
+    "id": "src-210",
+    "URL": "https://test-android-hackathon-2025.devpost.com/project-gallery",
+    "Domain": "test-android-hackathon-2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-123"
+    ],
+    "Demos": [
+      "demo-125"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 222,
+    "id": "src-222",
+    "URL": "https://unihack2025.devpost.com/",
+    "Domain": "unihack2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "official-site",
+      "event-site",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-095"
+    ],
+    "Demos": null,
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 223,
+    "id": "src-223",
+    "URL": "https://unihack2025.devpost.com/project-gallery",
+    "Domain": "unihack2025.devpost.com",
+    "Source Type": [
+      "devpost",
+      "official-site",
+      "event-site",
+      "project_gallery"
+    ],
+    "Events": [
+      "evt-095"
+    ],
+    "Demos": [
+      "demo-097"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "sources.md",
+    "_row": 236,
+    "id": "src-236",
+    "URL": "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions",
+    "Domain": "www.producthunt.com",
+    "Source Type": [
+      "producthunt",
+      "community-post"
+    ],
+    "Events": [
+      "evt-039"
+    ],
+    "Demos": [
+      "demo-041"
+    ],
+    "Confidence": "low",
+    "Extracted At": null
+  }
+]

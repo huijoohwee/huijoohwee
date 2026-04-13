@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "project": "hackamap",
   "ssot": {
     "site_dir": "site"
@@ -9,6 +9,7 @@
     "dataset_json_dir": "site/_generated/dataset-json",
     "api_graph_path": "site/_generated/api-graph/hackamap_api_graph.json",
     "query_outputs_dir": "site/_generated/query-outputs",
+    "query_runs_manifest_path": "site/_generated/query-outputs/query-runs.manifest.json",
     "source_cache_path": "site/_generated/source-cache/source_content.jsonl"
   },
   "source_scrape": {
@@ -17,7 +18,39 @@
     "max_text_chars": 20000,
     "max_excerpt_chars": 800,
     "max_outlinks": 80,
-    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HackaMapBot/0.1 Safari/537.36"
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HackaMapBot/0.1 Safari/537.36",
+    "extractors": {
+      "github_repo_api": true,
+      "github_oembed": true,
+      "x_oembed": true,
+      "linkedin_oembed": true,
+      "reddit_json": true,
+      "json_ld": true,
+      "generic_html": true
+    }
+  },
+  "runtime": {
+    "api": {
+      "route": "/api/graph",
+      "view_param": "view",
+      "meta_view": "meta",
+      "run_param": "run"
+    },
+    "query_selection": {
+      "enabled": true,
+      "default_run_id": "enhanced",
+      "table_files": ["events", "demos"],
+      "builder": {
+        "enabled": true,
+        "prefer_published_values_only": true,
+        "require_exact_published_run": true
+      }
+    },
+    "mobile_pwa": {
+      "compact_controls_breakpoint_px": 768,
+      "prefer_stacked_controls": true,
+      "safe_area_aware": true
+    }
   },
   "ui": {
     "graph_settings": {
@@ -265,10 +298,40 @@
         "preset": "sg-agents-postgres-devtools",
         "params": { "location": "Singapore" }
       },
+      {
+        "id": "sg-agents-postgres-devtools-kl",
+        "preset": "sg-agents-postgres-devtools",
+        "params": { "location": "Kuala Lumpur" },
+        "output_suffix": "kl"
+      },
+      {
+        "id": "sg-agents-postgres-devtools-jakarta",
+        "preset": "sg-agents-postgres-devtools",
+        "params": { "location": "Jakarta" },
+        "output_suffix": "jakarta"
+      },
       { "id": "social-platforms", "preset": "social-platforms" },
       { "id": "chinese-content", "preset": "chinese-content" },
       { "id": "github-star-history", "preset": "github-star-history" },
-      { "id": "year-2026", "preset": "year-2026" }
+      { "id": "year-2026", "preset": "year-2026" },
+      {
+        "id": "year-series-2024",
+        "preset": "year-series",
+        "params": { "year": "2024" },
+        "output_suffix": "2024"
+      },
+      {
+        "id": "year-series-2025",
+        "preset": "year-series",
+        "params": { "year": "2025" },
+        "output_suffix": "2025"
+      },
+      {
+        "id": "year-series-2026",
+        "preset": "year-series",
+        "params": { "year": "2026" },
+        "output_suffix": "2026"
+      }
     ],
     "artifacts_dir": "site/_generated/query-outputs",
     "write_query_views": true,
