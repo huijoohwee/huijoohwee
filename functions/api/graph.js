@@ -80,6 +80,24 @@ function collectRowIds(rows, key) {
   return out;
 }
 
+async function countHackamapQueryRows(request, pathname) {
+  const payload = await fetchHackamapJson(request, pathname);
+  return Array.isArray(payload) ? payload.length : 0;
+}
+
+async function readHackamapRunTableCounts(request, presetEntry, runEntry) {
+  const tablePrefix = buildHackamapTablePrefix(presetEntry, runEntry);
+  if (!tablePrefix) return {};
+  const tableFiles = ["events", "demos", "sources", "organizer", "team", "techstack"];
+  const counts = await Promise.all(
+    tableFiles.map(async (tableFile) => [
+      tableFile,
+      await countHackamapQueryRows(request, `/knowgrph/imports/hackamap/query-outputs/${tableFile}.${tablePrefix}.query.json`),
+    ]),
+  );
+  return Object.fromEntries(counts.filter(([, count]) => count > 0));
+}
+
 function sortObjectKeys(value) {
   if (Array.isArray(value)) return value.map(sortObjectKeys);
   if (!value || typeof value !== "object") return value;
@@ -158,16 +176,26 @@ async function buildHackamapRuntimeMeta(request) {
   const runtime = pipeline && typeof pipeline === "object" ? pipeline.runtime || {} : {};
   const defaultRunId = String(runtime?.query_selection?.default_run_id || "").trim() || "enhanced";
   const runsRaw = Array.isArray(runsManifest?.runs) ? runsManifest.runs : [];
-  const runs = runsRaw
-    .map((entry) => ({
-      id: String(entry?.id || "").trim(),
-      preset: String(entry?.preset || "").trim(),
-      title: String(entry?.title || entry?.id || "").trim(),
-      params: entry?.params && typeof entry.params === "object" && !Array.isArray(entry.params) ? entry.params : {},
-      output_suffix: String(entry?.output_suffix || "").trim(),
-      is_default: String(entry?.id || "").trim() === defaultRunId,
-    }))
-    .filter((entry) => entry.id);
+  const runs = (
+    await Promise.all(
+      runsRaw.map(async (entry) => {
+        const id = String(entry?.id || "").trim();
+        const presetId = String(entry?.preset || "").trim();
+        if (!id) return null;
+        const presetEntry = presets.find((preset) => String(preset?.id || "").trim() === presetId);
+        const table_counts = await readHackamapRunTableCounts(request, presetEntry, entry);
+        return {
+          id,
+          preset: presetId,
+          title: String(entry?.title || entry?.id || "").trim(),
+          params: entry?.params && typeof entry.params === "object" && !Array.isArray(entry.params) ? entry.params : {},
+          output_suffix: String(entry?.output_suffix || "").trim(),
+          is_default: id === defaultRunId,
+          table_counts,
+        };
+      }),
+    )
+  ).filter((entry) => entry?.id);
   return {
     ok: true,
     runtime: {
