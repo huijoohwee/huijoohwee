@@ -1,6 +1,10 @@
 / /index.html 200
 /singabldr /index.html 200
 /singabldr/ /index.html 200
+/singabldr/index.html /index.html 200
+/singabldr/sw.js /sw.js 200
+/singabldr/manifest.webmanifest /manifest.webmanifest 200
+/singabldr/favicon.ico /favicon.ico 200
 /user-secrets*.json /404 404
 /content/singabldr/user-secrets*.json /404 404
 /singabldr/assets/* /assets/:splat 200

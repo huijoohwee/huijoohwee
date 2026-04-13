@@ -13,6 +13,12 @@
 /index.html
   Cache-Control: no-store
 
+/manifest.webmanifest
+  Cache-Control: no-store
+
+/sw.js
+  Cache-Control: no-store
+
 /assets/boot.js
   Cache-Control: no-store
 
@@ -41,3 +47,9 @@
 
 /singabldr/script-*.json
   Cache-Control: public, max-age=60, must-revalidate
+
+/singabldr/manifest.webmanifest
+  Cache-Control: no-store
+
+/singabldr/sw.js
+  Cache-Control: no-store

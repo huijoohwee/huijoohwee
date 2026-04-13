@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Singabldr is a mobile-first geospatial voxel board game for Singapore, playable as an installable PWA." />
+    <meta name="theme-color" content="#0a84ff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Singabldr" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Singabldr</title>
     <!--
       Base URL:
@@ -15,6 +21,7 @@
     <script src="./assets/boot.js?v=20260409-8" defer></script>
     <script src="./assets/boot-perf-ui.js?v=20260409-2" defer></script>
     <script src="./assets/boot-history.js?v=20260409-1" defer></script>
+    <script src="./assets/boot-pwa.js?v=20260413-1" defer></script>
     <script src="./assets/boot-script.js?v=20260409-2" defer></script>
     <script src="./assets/boot-sim-engine.js?v=20260409-15" defer></script>
 
@@ -25,6 +32,8 @@
     <link rel="preload" href="./assets/fonts/nunito-700-fd8b8aea8f.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="./assets/fonts/nunito-900-fd8b8aea8f.woff2" as="font" type="font/woff2" crossorigin />
 
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="stylesheet" href="./assets/styles-c7d1dd9b.css" />
     <link rel="stylesheet" href="./assets/overrides.css?v=20260408-1" />
   </head>
@@ -134,12 +143,12 @@
                     <input type="number" id="simengine-tick-seconds" value="8" min="3" max="60" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box; outline: none; margin-bottom: 10px;">
 
                     <label style="display: flex; gap: 10px; align-items: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: #2d3436; cursor: pointer; margin-bottom: 10px;">
-                        <input type="checkbox" id="simengine-use-deerflow" style="transform: scale(1.15);">
+                        <input type="checkbox" id="simengine-use-server" style="transform: scale(1.15);">
                         Use server events (optional)
                     </label>
 
                     <label style="font-size: 14px; color: #2d3436; display: block; margin-bottom: 5px; font-family: 'Nunito', sans-serif; font-weight: 900;">Simulation ID:</label>
-                    <input type="text" id="simengine-mirofish-id" placeholder="sim_xxxxxxxx" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box; outline: none; margin-bottom: 10px;">
+                    <input type="text" id="simengine-simulation-id" placeholder="sim_xxxxxxxx" style="width: 100%; padding: 8px; border: 3px solid #2d3436; border-radius: 8px; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 14px; box-sizing: border-box; outline: none; margin-bottom: 10px;">
 
                     <div style="display: flex; gap: 10px;">
                         <button id="simengine-start-btn" style="flex: 1; background: #00b894; color: white; border: 3px solid #2d3436; padding: 8px; font-size: 13px; border-radius: 10px; cursor: pointer; font-family: 'Fredoka One', cursive;">Start</button>
@@ -215,6 +224,31 @@
                         <option value="human">Play with Human 👫🏻</option>
                     </select>
                     <p style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 6px; margin-bottom: 0;">Switching play mode will reload the game.</p>
+                </div>
+            </details>
+
+            <details data-collapsible="1" style="margin-bottom: 15px; border: 3px solid #2d3436; border-radius: 12px; overflow: hidden;">
+                <summary style="list-style: none; cursor: pointer; padding: 10px 12px; background: #f1f2f6; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+                    <span style="font-size: 16px; color: #2d3436;">App Install & Offline</span>
+                    <span data-toggle-label style="font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 900; color: #636e72;">▸</span>
+                </summary>
+                <div style="padding: 12px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 13px; color: #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900;">Install App</span>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span id="pwa-install-state" style="display: inline-block; padding: 2px 8px; border-radius: 999px; border: 2px solid #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.2px; background: #dfe6e9; color: #2d3436; white-space: nowrap;">Not available</span>
+                            <button id="pwa-settings-install-btn" type="button" hidden style="background: #00b894; color: white; border: 3px solid #2d3436; padding: 6px 10px; font-size: 12px; border-radius: 10px; cursor: pointer; font-family: 'Fredoka One', cursive;">Install App</button>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 13px; color: #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900;">Offline</span>
+                        <span id="pwa-offline-state" style="display: inline-block; padding: 2px 8px; border-radius: 999px; border: 2px solid #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.2px; background: #dfe6e9; color: #2d3436; white-space: nowrap;">No</span>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                        <span style="font-size: 13px; color: #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900;">Installed</span>
+                        <span id="pwa-installed-state" style="display: inline-block; padding: 2px 8px; border-radius: 999px; border: 2px solid #2d3436; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.2px; background: #dfe6e9; color: #2d3436; white-space: nowrap;">No</span>
+                    </div>
+                    <p id="pwa-state-help" style="font-size: 12px; color: #636e72; font-family: 'Nunito', sans-serif; margin-top: 8px; margin-bottom: 0;">Use this section to check install availability, offline status, and whether the app is already installed.</p>
                 </div>
             </details>
 
@@ -333,7 +367,7 @@
         <div id="dice-result" style="pointer-events: none;">Red's Turn</div>
     </div>
 
-    <!-- App bundle (minified, ESM; includes three.js + tween + yjs locally) -->
+    <!-- Active visual bundle kept aligned with the current live production renderer. -->
     <script type="module" src="./assets/app-F2P7J5VB.js?v=20260408-5"></script>
   </body>
 </html>

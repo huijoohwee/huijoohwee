@@ -26,6 +26,10 @@
 /index.html /content/singabldr/index.html 200
 /singabldr /content/singabldr/index.html 200
 /singabldr/ /content/singabldr/index.html 200
+/singabldr/index.html /content/singabldr/index.html 200
+/singabldr/sw.js /content/singabldr/sw.js 200
+/singabldr/manifest.webmanifest /content/singabldr/manifest.webmanifest 200
+/singabldr/favicon.ico /content/singabldr/favicon.ico 200
 /singabldr.html /content/singabldr/index.html 200
 /user-secrets*.json /404 404
 /content/singabldr/user-secrets*.json /404 404

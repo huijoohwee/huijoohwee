@@ -376,8 +376,8 @@
   function wireUi() {
     const enabledCb = getEl("simengine-enabled");
     const tickInput = getEl("simengine-tick-seconds");
-    const legacyRemoteCb = getEl("simengine-use-deerflow");
-    const simIdInput = getEl("simengine-mirofish-id");
+    const legacyRemoteCb = getEl("simengine-use-server");
+    const simIdInput = getEl("simengine-simulation-id");
     const startBtn = getEl("simengine-start-btn");
     const stopBtn = getEl("simengine-stop-btn");
     const resetBtn = getEl("simengine-reset-btn");
@@ -418,7 +418,7 @@
       const running = !!(st && st.running);
       if (running) {
         setBadge("RUNNING", "#00b894", "#ffffff");
-        setPanelStatus("Local simulation is running (stream via /mirofish …).");
+        setPanelStatus("Local simulation is running (stream enabled).");
       } else {
         setBadge("IDLE", "#dfe6e9", "#2d3436");
         setPanelStatus("Local simulation is idle.");
@@ -502,4 +502,3 @@
     } catch {}
   });
 })();
-

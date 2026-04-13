@@ -2,8 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Singabldr (Rebundled)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Singabldr (Rebundled Preview)</title>
+    <!--
+      Alternate shell:
+      - `index.html` is the active visual-production entry and currently boots `app-F2P7J5VB.js`.
+      - This file remains a focused preview/fallback entry for `app.rebundled.js`.
+      - Boot-script query strings here are preview-local and do not need to mirror the active shell.
+    -->
     <base href="./" />
 
     <!-- CSP-safe boot (no inline scripts / inline event handlers) -->
@@ -19,7 +25,7 @@
     <link rel="stylesheet" href="./assets/overrides.css?v=20260408-1" />
   </head>
   <body>
-    <!-- Reuse the exact same UI skeleton for A/B testing. -->
+    <!-- Reuse the active shell markup as a hidden UI scaffold for the rebundled preview path. -->
     <iframe
       src="./index.html"
       title="Singabldr UI"
@@ -27,8 +33,7 @@
       aria-hidden="true"
     ></iframe>
 
-    <!-- App bundle (rebundled source) -->
+    <!-- Preview bundle (rebundled source path) -->
     <script type="module" src="./assets/app.rebundled.js?v=20260409-1"></script>
   </body>
 </html>
-
