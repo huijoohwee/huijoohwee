@@ -1,52 +1,52 @@
 {
-  "base": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site",
-  "runs_file": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap-query-runs.json",
-  "artifacts_dir": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs",
+  "base": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
+  "runs_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-query-runs.runtime.json",
+  "artifacts_dir": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs",
   "runs": [
     {
       "id": "enhanced",
       "preset": "enhanced",
-      "preset_file": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap-query-enhance.json",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-enhance.json",
       "params": {},
       "output_suffix": "",
       "title": "hackamap-enhanced-query-results",
-      "combined_json": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-enhanced-query-results.json",
-      "combined_md": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-enhanced-query-results.md",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-enhanced-query-results.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-enhanced-query-results.md",
       "command": [
         "python3",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap_query.py",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
         "--base",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
         "--preset",
         "enhanced",
         "--write-query-views",
         "--write-query-json",
         "--artifacts-dir",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs"
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs"
       ]
     },
     {
       "id": "sg-agents-postgres-devtools",
       "preset": "sg-agents-postgres-devtools",
-      "preset_file": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap-query-preset-sg-agents-postgres-devtools.json",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-sg-agents-postgres-devtools.json",
       "params": {
         "location": "Singapore"
       },
       "output_suffix": "",
       "title": "hackamap-sg-agents-postgres-devtools",
-      "combined_json": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.json",
-      "combined_md": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.md",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.md",
       "command": [
         "python3",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap_query.py",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
         "--base",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
         "--preset",
         "sg-agents-postgres-devtools",
         "--write-query-views",
         "--write-query-json",
         "--artifacts-dir",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs",
         "--param",
         "location=\"Singapore\""
       ]
@@ -54,89 +54,89 @@
     {
       "id": "social-platforms",
       "preset": "social-platforms",
-      "preset_file": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap-query-preset-social-platforms.json",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-social-platforms.json",
       "params": {},
       "output_suffix": "",
       "title": "hackamap-social-platforms",
-      "combined_json": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-social-platforms.json",
-      "combined_md": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-social-platforms.md",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-social-platforms.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-social-platforms.md",
       "command": [
         "python3",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap_query.py",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
         "--base",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
         "--preset",
         "social-platforms",
         "--write-query-views",
         "--write-query-json",
         "--artifacts-dir",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs"
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs"
       ]
     },
     {
       "id": "chinese-content",
       "preset": "chinese-content",
-      "preset_file": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap-query-preset-chinese-content.json",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-chinese-content.json",
       "params": {},
       "output_suffix": "",
       "title": "hackamap-chinese-content",
-      "combined_json": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-chinese-content.json",
-      "combined_md": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-chinese-content.md",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-chinese-content.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-chinese-content.md",
       "command": [
         "python3",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap_query.py",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
         "--base",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
         "--preset",
         "chinese-content",
         "--write-query-views",
         "--write-query-json",
         "--artifacts-dir",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs"
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs"
       ]
     },
     {
       "id": "github-star-history",
       "preset": "github-star-history",
-      "preset_file": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap-query-preset-github-star-history.json",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-github-star-history.json",
       "params": {},
       "output_suffix": "",
       "title": "hackamap-github-star-history",
-      "combined_json": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-github-star-history.json",
-      "combined_md": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-github-star-history.md",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-github-star-history.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-github-star-history.md",
       "command": [
         "python3",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap_query.py",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
         "--base",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
         "--preset",
         "github-star-history",
         "--write-query-views",
         "--write-query-json",
         "--artifacts-dir",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs"
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs"
       ]
     },
     {
       "id": "year-2026",
       "preset": "year-2026",
-      "preset_file": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap-query-preset-year-2026.json",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap-query-preset-year-2026.json",
       "params": {},
       "output_suffix": "",
       "title": "hackamap-year-2026",
-      "combined_json": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-2026.json",
-      "combined_md": "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-2026.md",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-2026.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs/hackamap-year-2026.md",
       "command": [
         "python3",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/hackamap_query.py",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/hackamap_query.py",
         "--base",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site",
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site",
         "--preset",
         "year-2026",
         "--write-query-views",
         "--write-query-json",
         "--artifacts-dir",
-        "/sessions/69dc5fc3d869c4e4ea4628b2/workspace/project/prjt4000-hackamap/site/_generated/query-outputs"
+        "/Users/huijoohwee/Documents/GitHub/project/prjt4000-hackamap/site/_generated/query-outputs"
       ]
     }
   ]

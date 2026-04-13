@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "dataset-json/dataset-manifest.json",
-      "sha256": "d0cc8ea897f1334a5a422ce9fd32639d276668f4b4050e20a0496d78188a7a1e"
+      "sha256": "9cf062339c2d99165f6c4a2cc2700b106d0a48e8a6d17a02dc2d81b7a0da4c8f"
     },
     {
       "path": "dataset-json/demos.json",
@@ -21,7 +21,7 @@
     },
     {
       "path": "dataset-json/nodes.json",
-      "sha256": "cb9bfcff82b513e36bb32e7d053d95a294eed9a866c875cc9912ca9e4322a0f5"
+      "sha256": "503d52f8faeb8f72a693d751f67c663ccf05e6404584f69b6fba7f1dc5281c27"
     },
     {
       "path": "dataset-json/organizer.json",
@@ -29,7 +29,7 @@
     },
     {
       "path": "dataset-json/sources.json",
-      "sha256": "a8ed9194d05a2a5e2ecf4d5525b3be9a12b315a7ae027aefb2631f43832c9d47"
+      "sha256": "dd8ede035b0410bbde339e1dcaa4ca779a2c4df81a05d75902e55241991dbc20"
     },
     {
       "path": "dataset-json/team.json",
@@ -41,7 +41,11 @@
     },
     {
       "path": "hackamap-graph.json",
-      "sha256": "b00ba9b2e38157e5c5c115b57176884cbd89cb70cd9f1b37cb28114ab2467bdd"
+      "sha256": "684e4e9346b6d391592110752484eff1fb80b7a004455878e263efdd842899db"
+    },
+    {
+      "path": "hackamap_api_graph.json",
+      "sha256": "d006d80bbfa083195b139d3d19574ddbfc22ed7c8fa6707bdeb8175410435d22"
     },
     {
       "path": "hackamap_links.json",
@@ -49,11 +53,11 @@
     },
     {
       "path": "hackamap_nodes.json",
-      "sha256": "cb9bfcff82b513e36bb32e7d053d95a294eed9a866c875cc9912ca9e4322a0f5"
+      "sha256": "503d52f8faeb8f72a693d751f67c663ccf05e6404584f69b6fba7f1dc5281c27"
     },
     {
       "path": "hackamap_pipeline.json",
-      "sha256": "3eb28c28c5d534394741ccac4de8f112e65d39c8db5c72c19625f466d1d7a1b5"
+      "sha256": "76aaec5967bda588edafc2b5c0ffb34556c7c23e60cceff906b0bda298b98412"
     },
     {
       "path": "hackamap_query.chinese-content.json",
@@ -69,7 +73,7 @@
     },
     {
       "path": "hackamap_query.md",
-      "sha256": "6956e154bf5334a42e88261b830dbde26b76453b2b046df8c48b861909f834e1"
+      "sha256": "68e8ce73b94122169dff457b08823f4999008e4424249a3da996eda6b941c882"
     },
     {
       "path": "hackamap_query.sg-agents-postgres-devtools.json",
@@ -269,7 +273,7 @@
     },
     {
       "path": "query-outputs/query-runs.manifest.json",
-      "sha256": "6b913b617b95131314d69bf5b81ce1d882fa8247e359ff247748f57b50a57433"
+      "sha256": "2302bbbcd2f300e9330ad2f75acd5f923808e6c2df43e337548abd098dc40ad6"
     },
     {
       "path": "query-outputs/sources.chinese-content.query.json",

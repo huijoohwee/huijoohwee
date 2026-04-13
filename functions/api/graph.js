@@ -31,6 +31,19 @@ async function fetchHackamapGraphJson(request) {
   return await res.json();
 }
 
+async function fetchHackamapApiGraphJson(request) {
+  const url = new URL("/knowgrph/imports/hackamap/hackamap_api_graph.json", request.url);
+  const res = await fetch(url.toString(), { redirect: "follow" });
+  if (!res.ok) return null;
+  const payload = await res.json();
+  return isApiGraphPayload(payload) ? payload : null;
+}
+
+function isApiGraphPayload(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  return Array.isArray(value.nodes) && Array.isArray(value.edges);
+}
+
 function toBipartiteApiPayload(graphJson) {
   const nodesRaw = Array.isArray(graphJson?.nodes) ? graphJson.nodes : [];
   const linksRaw = Array.isArray(graphJson?.links) ? graphJson.links : [];
@@ -69,10 +82,9 @@ function toBipartiteApiPayload(graphJson) {
     nodes,
     edges,
     meta: {
-      source: "hackamap-graph.json",
+      source: "hackamap-graph.json:fallback",
       total_problems: nodes.filter((n) => n.type === "problem").length,
       total_solutions: nodes.filter((n) => n.type === "solution").length,
-      last_updated: new Date().toISOString(),
       ...(graphJson?.content_signature ? { content_signature: String(graphJson.content_signature) } : {}),
     },
   };
@@ -96,11 +108,21 @@ export async function onRequest(context) {
     return jsonResponse(request, { ok: false, error: "unsupported_method" }, 405);
   }
 
+  const apiPayload = await fetchHackamapApiGraphJson(request);
+  if (apiPayload) {
+    if (method === "HEAD") return new Response(null, { status: 200, headers: { ...JSON_HEADERS, ...corsHeaders(request) } });
+    return jsonResponse(request, apiPayload, 200);
+  }
+
   const graphJson = await fetchHackamapGraphJson(request);
   if (!graphJson) {
     return jsonResponse(
       request,
-      { ok: false, error: "missing_hackamap_graph", hint: "/knowgrph/imports/hackamap/hackamap-graph.json not found" },
+      {
+        ok: false,
+        error: "missing_hackamap_graph",
+        hint: "/knowgrph/imports/hackamap/{hackamap_api_graph.json,hackamap-graph.json} not found",
+      },
       404,
     );
   }
@@ -109,4 +131,3 @@ export async function onRequest(context) {
   if (method === "HEAD") return new Response(null, { status: 200, headers: { ...JSON_HEADERS, ...corsHeaders(request) } });
   return jsonResponse(request, payload, 200);
 }
-

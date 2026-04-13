@@ -7,6 +7,7 @@
   "generated": {
     "dir": "site/_generated",
     "dataset_json_dir": "site/_generated/dataset-json",
+    "api_graph_path": "site/_generated/api-graph/hackamap_api_graph.json",
     "query_outputs_dir": "site/_generated/query-outputs",
     "source_cache_path": "site/_generated/source-cache/source_content.jsonl"
   },
@@ -250,6 +251,10 @@
     "graph_json": "site/hackamap-graph.json",
     "out_dir": "site/_generated/dataset-json"
   },
+  "export_api_graph": {
+    "graph_json": "site/hackamap-graph.json",
+    "out_path": "site/_generated/api-graph/hackamap_api_graph.json"
+  },
   "query": {
     "presets_file": "site/hackamap-query-presets.json",
     "runs_file": "site/hackamap-query-runs.json",
@@ -272,5 +277,17 @@
   "publish": {
     "bundle_subdir": "imports/hackamap",
     "dest_knowgrph_dir": ""
+  },
+  "ingest": {
+    "runner": "docker-compose",
+    "compose_file": "docker-compose.yml",
+    "postgres_service": "postgres",
+    "compose_ingest_service": "ingest",
+    "graph_json": "site/hackamap-graph.json",
+    "migration_sql": "sql/migrations/001_hackamap_graph_snapshots.sql",
+    "database_url_env": "DATABASE_URL",
+    "head_key_env": "HACKAMAP_HEAD_KEY",
+    "head_key": "default",
+    "skip_migration": false
   }
 }
