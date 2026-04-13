@@ -2,6 +2,10 @@
 (function singabldrBootPwa() {
   "use strict";
 
+  var INSTALL_NUDGE_KEY = "singabldr.pwa.installNudgeAt";
+  var INSTALL_NUDGE_COOLDOWN_MS = 6 * 60 * 60 * 1000;
+  var lastToastSignature = "";
+
   function safe(fn) {
     try {
       return fn();
@@ -32,6 +36,8 @@
   function showMessage(text, tone) {
     var host = document.body;
     if (!host || !text) return;
+    var signature = String(tone || "info") + "::" + String(text);
+    if (lastToastSignature === signature) return;
     var toast = document.getElementById("pwa-toast");
     if (!toast) {
       toast = document.createElement("div");
@@ -43,12 +49,53 @@
     toast.textContent = String(text);
     toast.dataset.tone = String(tone || "info");
     toast.classList.add("is-visible");
+    lastToastSignature = signature;
     safe(function () {
       clearTimeout(toast.__hideTimer);
     });
     toast.__hideTimer = setTimeout(function () {
       toast.classList.remove("is-visible");
+      lastToastSignature = "";
     }, 2800);
+  }
+
+  function isMobileLike() {
+    return !!safe(function () {
+      return (
+        (window.matchMedia && window.matchMedia("(max-width: 820px)").matches) ||
+        (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) ||
+        /iphone|ipad|android|mobile/i.test(String(navigator.userAgent || ""))
+      );
+    });
+  }
+
+  function markInstallNudgeShown() {
+    safe(function () {
+      localStorage.setItem(INSTALL_NUDGE_KEY, String(Date.now()));
+    });
+  }
+
+  function shouldShowInstallNudge() {
+    return !!safe(function () {
+      var raw = localStorage.getItem(INSTALL_NUDGE_KEY);
+      var lastAt = Number(raw || 0);
+      if (!Number.isFinite(lastAt) || lastAt <= 0) return true;
+      return Date.now() - lastAt >= INSTALL_NUDGE_COOLDOWN_MS;
+    });
+  }
+
+  function syncRootState(args) {
+    var promptReady = !!(args && args.promptReady);
+    var installed = !!(args && args.installed);
+    var online = !!(args && args.online);
+    safe(function () {
+      document.documentElement.dataset.pwaInstallReady = promptReady ? "true" : "false";
+      document.documentElement.dataset.pwaInstalled = installed ? "true" : "false";
+      document.documentElement.dataset.pwaOnline = online ? "true" : "false";
+      document.body.dataset.pwaInstallReady = promptReady ? "true" : "false";
+      document.body.dataset.pwaInstalled = installed ? "true" : "false";
+      document.body.dataset.pwaOnline = online ? "true" : "false";
+    });
   }
 
   function syncDisplayModeClasses() {
@@ -101,6 +148,7 @@
   function updateUiState(hasPrompt) {
     var standalone = syncDisplayModeClasses();
     var online = syncOnlineClasses();
+    syncRootState({ promptReady: !!hasPrompt, installed: standalone, online: online });
     setStateBadge("pwa-offline-state", online ? "No" : "Yes", online ? "neutral" : "offline");
     setStateBadge("pwa-installed-state", standalone ? "Yes" : "No", standalone ? "installed" : "neutral");
     if (standalone) {
@@ -118,6 +166,10 @@
     if (hasPrompt) {
       setStateBadge("pwa-install-state", "Available", "ready");
       setStateHelp("Install App is available in this browser now.");
+      if (isMobileLike() && shouldShowInstallNudge()) {
+        markInstallNudgeShown();
+        showMessage("Install Singabldr for a full-screen mobile experience.", "info");
+      }
       return;
     }
     setStateBadge("pwa-install-state", "Not available", "neutral");
@@ -132,6 +184,17 @@
     });
     window.addEventListener("offline", function () {
       coalesce("pwa:offline", function () {
+        updateUiState(window.__SINGABLDR_PWA_PROMPT_READY === true);
+      });
+    });
+    window.addEventListener("pageshow", function () {
+      coalesce("pwa:pageshow", function () {
+        updateUiState(window.__SINGABLDR_PWA_PROMPT_READY === true);
+      });
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState !== "visible") return;
+      coalesce("pwa:visibility", function () {
         updateUiState(window.__SINGABLDR_PWA_PROMPT_READY === true);
       });
     });
@@ -163,6 +226,9 @@
   window.addEventListener("appinstalled", function () {
     deferredPrompt = null;
     window.__SINGABLDR_PWA_PROMPT_READY = false;
+    safe(function () {
+      localStorage.removeItem(INSTALL_NUDGE_KEY);
+    });
     updateUiState(false);
     showMessage("Singabldr installed.", "success");
   });
@@ -188,6 +254,7 @@
         })
         .then(function (choice) {
           var accepted = choice && choice.outcome === "accepted";
+          if (!accepted) markInstallNudgeShown();
           showMessage(accepted ? "Install started." : "Install dismissed.", accepted ? "success" : "info");
         })
         .catch(function () {
@@ -214,12 +281,22 @@
       return;
     }
     navigator.serviceWorker
-      .register("./sw.js?v=20260413-1", { scope: "./" })
+      .register("./sw.js?v=20260413-2", { scope: "./" })
       .then(function (registration) {
         safe(function () {
           window.__SINGABLDR_PWA_READY = true;
+          document.documentElement.classList.add("pwa-ready");
+          document.body.classList.add("pwa-ready");
         });
         updateUiState(window.__SINGABLDR_PWA_PROMPT_READY === true);
+        safe(function () {
+          navigator.serviceWorker.addEventListener("controllerchange", function () {
+            coalesce("pwa:controllerchange", function () {
+              showMessage("App updated for offline use.", "success");
+              updateUiState(window.__SINGABLDR_PWA_PROMPT_READY === true);
+            });
+          });
+        });
         if (registration.waiting) {
           showMessage("Update ready. Reload to use the latest app.", "info");
         }
@@ -234,6 +311,10 @@
         });
       })
       .catch(function () {
+        safe(function () {
+          document.documentElement.classList.remove("pwa-ready");
+          document.body.classList.remove("pwa-ready");
+        });
         updateUiState(false);
       });
   });

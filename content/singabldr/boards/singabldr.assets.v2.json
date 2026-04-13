@@ -15,7 +15,7 @@
     "roadDash": { "shader": "lambert", "color": "#ffffff" }
   },
   "ui": {
-    "bubble": { "maxWidth": 150, "borderRadius": 12, "ttlMs": 5000 },
-    "chat": { "maxMessages": 120 }
+    "bubble": { "maxWidth": 136, "borderRadius": 12, "ttlMs": 4200 },
+    "chat": { "maxMessages": 96 }
   }
 }

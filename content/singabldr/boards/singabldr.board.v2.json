@@ -34,7 +34,7 @@
     "nature": {
       "trees": { "count": 55, "scaleMin": 0.7, "scaleMax": 1.2, "types": ["pine", "palm", "oak"], "colors": ["#00b894", "#55efc4", "#00cec9"] },
       "clouds": { "count": 12, "yMin": 60, "yMax": 100, "speed": 0.02, "opacity": 0.6 },
-      "citizens": { "count": 18, "speed": 0.001, "bounciness": 0.4 }
+      "citizens": { "count": 22, "speed": 0.0012, "bounciness": 0.46, "districtBias": ["marina_bay", "heritage", "port"], "bubbleRadius": 16 }
     },
     "geography": {
       "terrain": { "type": "grid", "width": 450, "height": 280, "baseColor": "#b8e994", "heightMap": "perlin", "maxElevation": 15 },
@@ -46,16 +46,27 @@
       "twilight": { "ambientLight": 0.4, "directionalLight": 0.2, "fogColor": "#ff7979", "fogDensity": 0.002 }
     },
     "point_of_interests": {
-      "scaleMin": 1.0,
-      "scaleMax": 2.5,
+      "scaleMin": 1.15,
+      "scaleMax": 2.9,
       "models": ["skyscraper", "park", "monument", "mall"],
-      "highlightColor": "#ff9ff3"
+      "highlightColor": "#ff9ff3",
+      "focusPulse": 1.15,
+      "landmarkGlow": "#ffeaa7"
+    },
+    "buildings": {
+      "skylineDensity": 1.12,
+      "towerHeightBoost": 1.18,
+      "districtProfiles": {
+        "marina_bay": { "style": "skyscraper", "accent": "#9ad1d4" },
+        "heritage": { "style": "monument", "accent": "#f6c453" },
+        "port": { "style": "mall", "accent": "#efe8db" }
+      }
     },
     "transportation": {
-      "plane": { "speed": 0.004, "altitude": 120, "capacity": 200, "mesh": "jet" },
-      "heli": { "speed": 0.05, "altitude": 60, "capacity": 6, "mesh": "chopper" },
-      "mrt": { "speed": 0.008, "capacity": 300, "cars": 5, "mesh": "train" },
-      "ship": { "speed": 0.002, "waterLevel": -3, "capacity": 5000, "mesh": "cargo" },
+      "plane": { "speed": 0.0042, "altitude": 126, "capacity": 220, "mesh": "jet" },
+      "heli": { "speed": 0.042, "altitude": 68, "capacity": 6, "mesh": "chopper" },
+      "mrt": { "speed": 0.0085, "capacity": 360, "cars": 6, "mesh": "train" },
+      "ship": { "speed": 0.0018, "waterLevel": -3, "capacity": 8000, "mesh": "cargo" },
       "rocket": { "speed": 0.1, "acceleration": 1.05, "altitude": 0, "maxAltitude": 2000, "mesh": "rocket" },
       "car": { "speed": 0.01, "capacity": 4, "mesh": "sedan" },
       "bus": { "speed": 0.008, "capacity": 60, "mesh": "bus" },
@@ -63,10 +74,10 @@
       "drone": { "speed": 0.03, "altitude": 45, "capacity": 1, "mesh": "drone" }
     },
     "vehicles": [
-      { "type": "plane", "count": 1, "path": "circular", "radius": 220, "y": 120, "speed": 0.004 },
-      { "type": "heli", "count": 1, "path": "patrol", "y": 60, "speed": 0.05 },
-      { "type": "mrt", "count": 3, "path": "nodes", "speed": 0.008, "yOffset": 8 },
-      { "type": "ship", "count": 1, "path": "circular", "radius": 300, "y": -3, "speed": 0.002 },
+      { "type": "plane", "count": 2, "path": "circular", "radius": 220, "y": 126, "speed": 0.0042 },
+      { "type": "heli", "count": 2, "path": "patrol", "y": 68, "speed": 0.042 },
+      { "type": "mrt", "count": 4, "path": "nodes", "speed": 0.0085, "yOffset": 8 },
+      { "type": "ship", "count": 2, "path": "circular", "radius": 300, "y": -3, "speed": 0.0018 },
       { "type": "car", "count": 18, "path": "nodes", "speed": 0.003, "yOffset": 0 }
     ],
     "themes": {
@@ -90,6 +101,11 @@
     "animations": {
       "happy": { "speedMultiplier": 2.0, "bounceMultiplier": 0.8, "swingMultiplier": 35, "armSwing": 0.8, "armRotation": 1.5707963267948966, "message": "The citizens are now happy and celebrating! 🎉🥳" },
       "neutral": { "speedMultiplier": 1.0, "bounceMultiplier": 0.4, "swingMultiplier": 25, "armSwing": 0.4, "armRotation": 0, "message": "The citizens have calmed down. 🚶🏻‍♂️" }
+    },
+    "mobile": {
+      "preferredCameraHeight": 240,
+      "minInteractiveScale": 1.08,
+      "reduceBackgroundEffects": true
     },
     "commands": {
       "roll": ["roll", "dice"],

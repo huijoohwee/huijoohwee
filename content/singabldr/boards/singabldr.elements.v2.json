@@ -14,9 +14,17 @@
     "gbtb": { "kind": "landmark", "model": "park", "focus": true, "tags": ["nature", "gardens"] },
     "merlion": { "kind": "monument", "model": "monument", "focus": true, "tags": ["tourism"] },
     "sentosa": { "kind": "island", "model": "park", "focus": true, "tags": ["beach", "resort"] },
+    "raffles": { "kind": "district", "model": "skyscraper", "focus": true, "tags": ["cbd", "finance", "skyline"] },
+    "clarke": { "kind": "district", "model": "mall", "focus": false, "tags": ["nightlife", "river_cruise"] },
+    "bugis": { "kind": "district", "model": "mall", "focus": false, "tags": ["shopping", "street_culture"] },
     "chinatown": { "kind": "district", "model": "mall", "focus": false, "tags": ["food", "heritage"] },
     "orchard": { "kind": "district", "model": "mall", "focus": false, "tags": ["shopping"] },
     "littleindia": { "kind": "district", "model": "monument", "focus": false, "tags": ["heritage"] },
+    "oceanarium": { "kind": "attraction", "model": "park", "focus": false, "tags": ["family_fun", "marine_life"] },
+    "zoo": { "kind": "attraction", "model": "park", "focus": false, "tags": ["wildlife", "mandai"] },
+    "jurong": { "kind": "transport_hub", "model": "monument", "focus": false, "tags": ["mrt", "west"] },
+    "changi": { "kind": "transport_hub", "model": "skyscraper", "focus": true, "tags": ["airport", "aviation", "jewel"] },
+    "port": { "kind": "infrastructure", "model": "mall", "focus": true, "tags": ["port", "logistics", "containers"] },
     "civic_district": { "kind": "district", "model": "monument", "focus": false, "tags": ["culture_heritage", "architecture"] },
     "kampong_gelam": { "kind": "district", "model": "monument", "focus": false, "tags": ["culture_heritage", "street_culture"] },
     "katong_joo_chiat": { "kind": "district", "model": "mall", "focus": false, "tags": ["culture_heritage", "food"] },
@@ -31,17 +39,32 @@
     "synthesis_bar": { "kind": "experience", "model": "mall", "focus": false, "tags": ["novelty", "nightlife"] },
     "trifecta": { "kind": "experience", "model": "mall", "focus": false, "tags": ["novelty", "unique_experiences"] }
   },
+  "buildings": {
+    "profiles": {
+      "marina_bay": { "kind": "skyline", "model": "skyscraper", "accent": "#9ad1d4", "heightBoost": 1.2 },
+      "heritage": { "kind": "shophouse", "model": "monument", "accent": "#f6c453", "heightBoost": 0.9 },
+      "port": { "kind": "infrastructure", "model": "mall", "accent": "#efe8db", "heightBoost": 1.05 }
+    },
+    "highlights": {
+      "mbs": "marina_bay",
+      "raffles": "marina_bay",
+      "merlion": "heritage",
+      "chinatown": "heritage",
+      "port": "port"
+    }
+  },
   "transportation": {
-    "mrt": { "kind": "rail", "path": "nodes", "defaultSpeed": 0.008, "yOffset": 8, "supports": ["start", "stop", "faster"] },
-    "plane": { "kind": "air", "path": "circular", "radius": 220, "y": 120, "defaultSpeed": 0.004, "supports": ["start", "stop", "faster"] },
-    "heli": { "kind": "air", "path": "patrol", "y": 60, "defaultSpeed": 0.05, "supports": ["start", "stop"] },
-    "ship": { "kind": "sea", "path": "circular", "radius": 300, "y": -3, "defaultSpeed": 0.002, "supports": ["start", "stop"] },
+    "mrt": { "kind": "rail", "path": "nodes", "defaultSpeed": 0.0085, "yOffset": 8, "supports": ["start", "stop", "faster"], "formation": "six_car", "line": "east_west" },
+    "plane": { "kind": "air", "path": "circular", "radius": 220, "y": 126, "defaultSpeed": 0.0042, "supports": ["start", "stop", "faster"], "formation": "arrival_bank", "hub": "changi" },
+    "heli": { "kind": "air", "path": "patrol", "y": 68, "defaultSpeed": 0.042, "supports": ["start", "stop"], "formation": "twin_patrol", "hub": "marina_south" },
+    "ship": { "kind": "sea", "path": "circular", "radius": 300, "y": -3, "defaultSpeed": 0.0018, "supports": ["start", "stop"], "formation": "container_convoy", "hub": "port" },
     "rocket": { "kind": "space", "path": "launch", "supports": ["launch"] }
   },
   "nature": {
     "citizens": {
       "defaultSentiment": "neutral",
       "sentiments": ["neutral", "happy"],
+      "archetypes": ["commuter", "tourist", "builder", "port_worker"],
       "bubbleTriggers": ["react", "bubble", "url", "file"],
       "bubbleTemplates": {
         "react:heard": "Did you hear about “{snippet}”?",

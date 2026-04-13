@@ -1,4 +1,4 @@
-const VERSION = "20260413-1";
+const VERSION = "20260413-2";
 const SHELL_CACHE = `singabldr-shell-${VERSION}`;
 const RUNTIME_CACHE = `singabldr-runtime-${VERSION}`;
 const IMMUTABLE_CACHE = `singabldr-immutable-${VERSION}`;
@@ -20,8 +20,13 @@ const CORE_URLS = [
   "./boards/singabldr.board.v2.json",
   "./boards/singabldr.assets.v2.json",
   "./boards/singabldr.elements.v2.json",
+  "./boards/singabldr.landmarks.v2.geojson",
+  "./flowinfish.domains.json",
+  "./flowinfish.prompts.json",
   "./script-0000.json",
   "./script-singabuildr-0000.v2.json",
+  "./script-singabuildr-0001-startup.json",
+  "./script-simengine.json",
 ];
 
 self.addEventListener("install", (event) => {
@@ -67,7 +72,14 @@ function isImmutableAsset(url) {
 }
 
 function isRuntimeJson(url) {
-  return url.pathname.indexOf("/boards/") >= 0 || /\/script-[^/]+\.json$/.test(url.pathname) || url.pathname.endsWith("/manifest.webmanifest");
+  return (
+    url.pathname.indexOf("/boards/") >= 0 ||
+    /\/script-[^/]+\.json$/.test(url.pathname) ||
+    url.pathname.endsWith("/manifest.webmanifest") ||
+    url.pathname.endsWith(".geojson") ||
+    url.pathname.endsWith("/flowinfish.domains.json") ||
+    url.pathname.endsWith("/flowinfish.prompts.json")
+  );
 }
 
 async function networkFirst(request, cacheName, fallbackKey) {

@@ -1,11 +1,13 @@
 {
   "name": "Singabldr",
   "short_name": "Singabldr",
-  "description": "Mobile-first geospatial voxel board game for Singapore.",
+  "id": "/singabldr/",
+  "description": "Mobile-first geospatial voxel world for Singapore with installable offline play.",
   "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
   "background_color": "#08111f",
   "theme_color": "#0a84ff",
   "icons": [
@@ -26,6 +28,11 @@
       "name": "Play With AI",
       "short_name": "AI Mode",
       "url": "./?mode=ai"
+    },
+    {
+      "name": "Open History",
+      "short_name": "History",
+      "url": "./?open=history"
     }
   ]
 }
