@@ -1,0 +1,37 @@
+[
+  {
+    "_file": "team.md",
+    "_row": 35,
+    "id": "team-035",
+    "Team": "CNHK",
+    "Type": null,
+    "URL": null,
+    "Demos": [
+      "demo-032"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "team.md",
+    "_row": 104,
+    "id": "team-104",
+    "Team": "MetaEraCN",
+    "Type": null,
+    "URL": null,
+    "Demos": [
+      "demo-109"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

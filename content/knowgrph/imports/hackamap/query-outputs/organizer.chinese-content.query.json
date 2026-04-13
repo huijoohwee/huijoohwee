@@ -1,0 +1,37 @@
+[
+  {
+    "_file": "organizer.md",
+    "_row": 35,
+    "id": "org-035",
+    "Organizer": "CNHK",
+    "Type": null,
+    "URL": null,
+    "Events": [
+      "evt-030"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "organizer.md",
+    "_row": 104,
+    "id": "org-104",
+    "Organizer": "MetaEraCN",
+    "Type": null,
+    "URL": null,
+    "Events": [
+      "evt-107"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

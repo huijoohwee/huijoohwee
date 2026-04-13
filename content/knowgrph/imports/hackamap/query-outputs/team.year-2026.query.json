@@ -1,0 +1,56 @@
+[
+  {
+    "_file": "team.md",
+    "_row": 45,
+    "id": "team-045",
+    "Team": "DeveloperWeek 2026 participants",
+    "Type": null,
+    "URL": null,
+    "Demos": [
+      "demo-013"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "team.md",
+    "_row": 71,
+    "id": "team-071",
+    "Team": "Hack&Roll 2026 participants",
+    "Type": null,
+    "URL": null,
+    "Demos": [
+      "demo-020"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "team.md",
+    "_row": 172,
+    "id": "team-172",
+    "Team": "TreeHacks 2026 participants",
+    "Type": null,
+    "URL": null,
+    "Demos": [
+      "demo-015"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

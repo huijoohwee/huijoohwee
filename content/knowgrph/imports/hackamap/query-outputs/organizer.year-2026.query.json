@@ -1,0 +1,56 @@
+[
+  {
+    "_file": "organizer.md",
+    "_row": 45,
+    "id": "org-045",
+    "Organizer": "DeveloperWeek 2026 participants",
+    "Type": null,
+    "URL": null,
+    "Events": [
+      "evt-012"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "organizer.md",
+    "_row": 71,
+    "id": "org-071",
+    "Organizer": "Hack&Roll 2026 participants",
+    "Type": null,
+    "URL": null,
+    "Events": [
+      "evt-019"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  },
+  {
+    "_file": "organizer.md",
+    "_row": 172,
+    "id": "org-172",
+    "Organizer": "TreeHacks 2026 participants",
+    "Type": null,
+    "URL": null,
+    "Events": [
+      "evt-014"
+    ],
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

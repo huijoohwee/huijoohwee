@@ -1,0 +1,70 @@
+[
+  {
+    "id": "enhanced",
+    "title": "Enhanced (broad AI + SG + org signals)",
+    "file": "hackamap-query-enhance.json",
+    "output": {
+      "combined_json": "hackamap-enhanced-query-results.json",
+      "combined_md": "hackamap-enhanced-query-results.md",
+      "per_table_prefix": "enhanced"
+    },
+    "params": {}
+  },
+  {
+    "id": "sg-agents-postgres-devtools",
+    "title": "Singapore + Agents + Postgres + DevTools",
+    "file": "hackamap-query-preset-sg-agents-postgres-devtools.json",
+    "output": {
+      "combined_json": "hackamap-sg-agents-postgres-devtools.json",
+      "combined_md": "hackamap-sg-agents-postgres-devtools.md",
+      "per_table_prefix": "sg-agents-postgres-devtools"
+    },
+    "params": {
+      "location": "Singapore"
+    }
+  },
+  {
+    "id": "social-platforms",
+    "title": "Social platforms (X / Reddit / LinkedIn / Product Hunt)",
+    "file": "hackamap-query-preset-social-platforms.json",
+    "output": {
+      "combined_json": "hackamap-social-platforms.json",
+      "combined_md": "hackamap-social-platforms.md",
+      "per_table_prefix": "social-platforms"
+    },
+    "params": {}
+  },
+  {
+    "id": "chinese-content",
+    "title": "Chinese content signals (中文/黑客松/大模型/智能体)",
+    "file": "hackamap-query-preset-chinese-content.json",
+    "output": {
+      "combined_json": "hackamap-chinese-content.json",
+      "combined_md": "hackamap-chinese-content.md",
+      "per_table_prefix": "chinese-content"
+    },
+    "params": {}
+  },
+  {
+    "id": "github-star-history",
+    "title": "GitHub + star-history signals",
+    "file": "hackamap-query-preset-github-star-history.json",
+    "output": {
+      "combined_json": "hackamap-github-star-history.json",
+      "combined_md": "hackamap-github-star-history.md",
+      "per_table_prefix": "github-star-history"
+    },
+    "params": {}
+  },
+  {
+    "id": "year-2026",
+    "title": "Year 2026 (events + sources + demos)",
+    "file": "hackamap-query-preset-year-2026.json",
+    "output": {
+      "combined_json": "hackamap-year-2026.json",
+      "combined_md": "hackamap-year-2026.md",
+      "per_table_prefix": "year-2026"
+    },
+    "params": {}
+  }
+]
