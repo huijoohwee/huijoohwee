@@ -1,1 +1,0 @@
-import{U as e}from"./index-Io4BFhS4.js";import{v as t}from"./Canvas-73qi7TqJ.js";const n=["App-toolbar__btn","text-xs",e.button.text,e.button.hoverBg].join(" "),o={table:t.tableViewLabel,multiDimTable:t.titleDefault,kanban:t.kanbanViewLabel};function b(a){return o[a]}export{n as M,b as g};
