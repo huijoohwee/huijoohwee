@@ -2514,8 +2514,8 @@
   "meta": {
     "source": "hackamap_api_graph.json",
     "graph_source": "hackamap-graph.json",
-    "graph_content_signature": "7af61afacdba86ebc211f5c989fc57ba3725ff6393488b3895a858c37078ccb8",
-    "content_signature": "ba9b009202d04aeacba40e965ca68073e8797fe3125fbe602fbd7022dc2296b6",
+    "graph_content_signature": "7300b7d5dd7c30bfdad0fe6e10957ffe15825c555974d560de9ec1f765e26bb3",
+    "content_signature": "d06599a3acedab0d69da5fff526cf7386f797f66d0d949ed34c58ffc65a398bd",
     "total_problems": 138,
     "total_solutions": 140,
     "node_count": 278,

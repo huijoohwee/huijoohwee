@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "dataset-json/dataset-manifest.json",
-      "sha256": "9cf062339c2d99165f6c4a2cc2700b106d0a48e8a6d17a02dc2d81b7a0da4c8f"
+      "sha256": "43543986fe95d5129163fa02a619204c670c132d87f33d0dd3ac2cd3006f1e02"
     },
     {
       "path": "dataset-json/demos.json",
@@ -21,7 +21,7 @@
     },
     {
       "path": "dataset-json/nodes.json",
-      "sha256": "503d52f8faeb8f72a693d751f67c663ccf05e6404584f69b6fba7f1dc5281c27"
+      "sha256": "663f8eed75f54def52c351c5891c6260e8f5cff49d58d45ed29b748d2e8363a5"
     },
     {
       "path": "dataset-json/organizer.json",
@@ -29,7 +29,7 @@
     },
     {
       "path": "dataset-json/sources.json",
-      "sha256": "dd8ede035b0410bbde339e1dcaa4ca779a2c4df81a05d75902e55241991dbc20"
+      "sha256": "b7c8cf59722ddfa4316798b157cb0dc345427a36ea8a92bcfdfbfdca87e09b73"
     },
     {
       "path": "dataset-json/team.json",
@@ -41,11 +41,11 @@
     },
     {
       "path": "hackamap-graph.json",
-      "sha256": "684e4e9346b6d391592110752484eff1fb80b7a004455878e263efdd842899db"
+      "sha256": "fa3ad38d34cc83d7bcaaa137d1569362cbf0dc4b536625ca619a295c871bd235"
     },
     {
       "path": "hackamap_api_graph.json",
-      "sha256": "d006d80bbfa083195b139d3d19574ddbfc22ed7c8fa6707bdeb8175410435d22"
+      "sha256": "3b76dd95141b4d8934234db89ed709f42754d6658debc89300bdc41c911d68de"
     },
     {
       "path": "hackamap_links.json",
@@ -53,7 +53,7 @@
     },
     {
       "path": "hackamap_nodes.json",
-      "sha256": "503d52f8faeb8f72a693d751f67c663ccf05e6404584f69b6fba7f1dc5281c27"
+      "sha256": "663f8eed75f54def52c351c5891c6260e8f5cff49d58d45ed29b748d2e8363a5"
     },
     {
       "path": "hackamap_pipeline.json",
