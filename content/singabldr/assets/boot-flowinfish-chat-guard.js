@@ -106,6 +106,41 @@
     inputEl.value = "/chat " + text;
   }
 
+  function keepChatSurfaceActive() {
+    safe(function () {
+      var container = document.getElementById("superagent-container");
+      if (container) container.style.display = "block";
+    });
+    safe(function () {
+      var panel = document.getElementById("superagent-panel");
+      if (panel) panel.style.display = "flex";
+    });
+  }
+
+  function updateScriptStatusForChatNone() {
+    safe(function () {
+      var statusEl = document.getElementById("script-status");
+      if (!statusEl) return;
+      statusEl.innerText = "None: Script execution is disabled. Chat mode stays active.";
+      statusEl.style.color = "#636e72";
+    });
+  }
+
+  function preserveChatWhenScriptNone() {
+    var mode = readInteractionMode();
+    if (mode !== "chat") return;
+    coalesce("script:none:keep-chat", function () {
+      keepChatSurfaceActive();
+      updateScriptStatusForChatNone();
+      safe(function () {
+        var inputEl = document.getElementById("superagent-input");
+        if (!inputEl) return;
+        if (document.activeElement === inputEl) return;
+        inputEl.focus({ preventScroll: true });
+      });
+    });
+  }
+
   function installInteractionModePersistenceGuard() {
     var select = safe(function () {
       return document.getElementById("interaction-mode-select");
@@ -154,9 +189,30 @@
     );
   }
 
+  function installScriptNoneChatGuard() {
+    var scriptSelect = safe(function () {
+      return document.getElementById("script-select");
+    });
+    if (!scriptSelect) return;
+
+    scriptSelect.addEventListener(
+      "change",
+      function () {
+        if (String(scriptSelect.value || "").toLowerCase() !== "none") return;
+        preserveChatWhenScriptNone();
+      },
+      true
+    );
+
+    if (String(scriptSelect.value || "").toLowerCase() === "none") {
+      preserveChatWhenScriptNone();
+    }
+  }
+
   function boot() {
     installInteractionModePersistenceGuard();
     installSendGuards();
+    installScriptNoneChatGuard();
   }
 
   if (document.readyState === "loading") {

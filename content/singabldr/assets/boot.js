@@ -230,6 +230,14 @@
     function rewriteUrl(rawUrl) {
       var u = String(rawUrl || "");
       if (!u) return u;
+      // Dev/proxy path compatibility: when route is served from /singabldr,
+      // static JSON lives under /content/singabldr.
+      u = u.replace(/(^https?:\/\/[^/]+)?\/singabldr\/(boards\/[^?#]+)$/i, function (_, origin, tail) {
+        return (origin || "") + "/content/singabldr/" + tail;
+      });
+      u = u.replace(/(^https?:\/\/[^/]+)?\/singabldr\/(script-[^/?#]+\.json)$/i, function (_, origin, tail) {
+        return (origin || "") + "/content/singabldr/" + tail;
+      });
       // Match absolute or relative paths.
       // Production bundle still requests `singabldr.board.json`; redirect to the stable v2 artifact.
       u = u.replace(/(^|\/)boards\/singabldr\.board\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
@@ -491,6 +499,12 @@
     function rewrite(rawUrl) {
       var u = String(rawUrl || "");
       if (!u) return u;
+      u = u.replace(/(^https?:\/\/[^/]+)?\/singabldr\/(boards\/[^?#]+)$/i, function (_, origin, tail) {
+        return (origin || "") + "/content/singabldr/" + tail;
+      });
+      u = u.replace(/(^https?:\/\/[^/]+)?\/singabldr\/(script-[^/?#]+\.json)$/i, function (_, origin, tail) {
+        return (origin || "") + "/content/singabldr/" + tail;
+      });
       // Match absolute or relative paths and resolve directly to stable versioned assets.
       u = u.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
       // Legacy locations: some servers (hybrid python http.server) don't have root copies.
@@ -814,6 +828,12 @@
       var effectiveUrl = url;
       try {
         // Match both absolute and relative paths (e.g. "boards/..." vs "/boards/...").
+        effectiveUrl = effectiveUrl.replace(/(^https?:\/\/[^/]+)?\/singabldr\/(boards\/[^?#]+)$/i, function (_, origin, tail) {
+          return (origin || "") + "/content/singabldr/" + tail;
+        });
+        effectiveUrl = effectiveUrl.replace(/(^https?:\/\/[^/]+)?\/singabldr\/(script-[^/?#]+\.json)$/i, function (_, origin, tail) {
+          return (origin || "") + "/content/singabldr/" + tail;
+        });
         effectiveUrl = effectiveUrl.replace(/(^|\/)boards\/singabldr\.json(\b|$)/, "$1boards/singabldr.board.v2.json");
         effectiveUrl = effectiveUrl.replace(
           /(^|\/)script-singabuildr-0000\.json(\b|$)/,
