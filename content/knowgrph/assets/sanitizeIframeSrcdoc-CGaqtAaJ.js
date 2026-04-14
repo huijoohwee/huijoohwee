@@ -1,1 +1,0 @@
-function i(s){let r=String(s||"");return r.trim()?(r=r.replace(/<\s*script\b[\s\S]*?<\/\s*script\s*>/gi,""),r=r.replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi,""),r=r.replace(/\bjavascript\s*:/gi,""),r.trim()):""}export{i as s};
