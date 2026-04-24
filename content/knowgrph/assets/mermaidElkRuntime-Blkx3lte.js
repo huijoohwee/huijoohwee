@@ -1,2 +1,0 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/d3-vpx5RAoj.js","assets/elk-CVD44F0V.js"])))=>i.map(i=>d[i]);
-import{_ as i}from"./mermaid-CLq-Nbbe.js";import"./d3-vpx5RAoj.js";import"./elk-CVD44F0V.js";let e=!1,t=null;const n=async r=>{if(!e){if(typeof r.registerLayoutLoaders!="function"){e=!0;return}try{t||(t=i(()=>import("./mermaid-elk-core-BJ9JxdY2.js"),__vite__mapDeps([0,1])).then(o=>o.default??o));const a=await t;r.registerLayoutLoaders(a)}catch{}finally{e=!0}}};export{n as ensureMermaidElkLayoutRegistered};
