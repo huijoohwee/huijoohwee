@@ -32,6 +32,27 @@
     Promise.resolve().then(fn);
   }
 
+  function persistSet(key, value, signature) {
+    var k = String(key || "");
+    if (!k) return;
+    var v = value == null ? "" : String(value);
+    var sig = signature == null ? v : String(signature);
+    try {
+      var p = window.__SINGABLDR_PERSIST;
+      if (p && typeof p.lsSet === "function") {
+        p.lsSet(k, v, { signature: sig });
+        return;
+      }
+    } catch {}
+    coalesce("persist:" + k, function () {
+      try {
+        var prev = localStorage.getItem(k);
+        if (prev === v) return;
+        localStorage.setItem(k, v);
+      } catch {}
+    });
+  }
+
   function readInteractionMode() {
     try {
       var v = String(localStorage.getItem(LS_KEY_INTERACTION_MODE) || "").toLowerCase();
@@ -148,13 +169,7 @@
     if (!select) return;
     select.addEventListener("change", function () {
       var next = select.value === "chat" ? "chat" : "command";
-      coalesce("persist:interaction:mode:guard", function () {
-        safe(function () {
-          var prev = localStorage.getItem(LS_KEY_INTERACTION_MODE);
-          if (prev === next) return;
-          localStorage.setItem(LS_KEY_INTERACTION_MODE, next);
-        });
-      });
+      persistSet(LS_KEY_INTERACTION_MODE, next, next);
     });
   }
 

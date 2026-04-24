@@ -663,11 +663,21 @@
     // Enforce the directory form to keep relative URLs stable.
     var path = String(window.location && window.location.pathname ? window.location.pathname : "");
     if (path === "/singabldr") {
-      window.location.replace("/singabldr/");
+      // Avoid full navigation (which logs net::ERR_ABORTED in some browsers).
+      // Cloudflare Pages routing already serves the correct content at /singabldr and /singabldr/.
+      try {
+        history.replaceState(null, "", "/singabldr/" + String(window.location.search || "") + String(window.location.hash || ""));
+      } catch {}
       return;
     }
     if (path === "/content/singabldr") {
-      window.location.replace("/content/singabldr/");
+      try {
+        history.replaceState(
+          null,
+          "",
+          "/content/singabldr/" + String(window.location.search || "") + String(window.location.hash || ""),
+        );
+      } catch {}
       return;
     }
   });
@@ -944,45 +954,19 @@
     } catch {
       storedBase = "";
     }
+
+    // IMPORTANT (dev safety):
+    // Do NOT auto-apply a persisted apiBase in localhost mode.
+    // This can accidentally pin the app to a stale LAN IP (e.g. 192.168.x.x) and cause
+    // requests/navigation to abort (net::ERR_ABORTED) when that IP is unreachable.
+    //
+    // If you need a custom apiBase locally, use ?apiBase=... to opt-in each time (it will still persist).
     if (storedBase && isLocalhost) {
-      window.__API_BASE = storedBase;
-      // Validate persisted base (best-effort). If it is unreachable, clear it so
-      // future loads fall back to same-origin.
       try {
-        var validateTimeout = 700;
-        var controller2 = null;
-        var signal2 = null;
-        try {
-          controller2 = new AbortController();
-          signal2 = controller2.signal;
-        } catch {
-          controller2 = null;
-          signal2 = null;
-        }
-        var timer2 = null;
-        if (controller2) {
-          timer2 = setTimeout(function () {
-            try {
-              controller2.abort();
-            } catch {}
-          }, validateTimeout);
-        }
-        window
-          .fetch(storedBase + "/health", { method: "GET", mode: "cors", cache: "no-store", signal: signal2 })
-          .then(function (res) {
-            if (!res || !res.ok) throw new Error("health_not_ok");
-            return true;
-          })
-          .catch(function () {
-            try {
-              localStorage.removeItem(LS_KEY);
-            } catch {}
-          })
-          .finally(function () {
-            if (timer2) clearTimeout(timer2);
-          });
+        // If it isn't the current origin, treat it as stale and clear it.
+        if (storedBase !== window.location.origin) localStorage.removeItem(LS_KEY);
       } catch {}
-      return;
+      storedBase = "";
     }
 
     // Production: clear any leftover overrides.
@@ -992,8 +976,14 @@
       } catch {}
     }
 
-    // Default: same-origin.
-    window.__API_BASE = window.__API_BASE || window.location.origin;
+    // Default: same-origin (override any stale pre-set value).
+    // We intentionally do NOT keep a pre-existing window.__API_BASE here, because a stale value
+    // (e.g. persisted LAN IP) can cause cross-origin / aborted navigation in local preview.
+    try {
+      window.__API_BASE = String(window.location.origin || "").replace(/\/+$/, "");
+    } catch {
+      window.__API_BASE = window.__API_BASE || "";
+    }
   });
 
   // Inject FlowinFish session header into same-origin API fetch calls.

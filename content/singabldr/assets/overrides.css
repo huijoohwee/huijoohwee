@@ -1,10 +1,18 @@
-/* Mobile + performance overrides (kept separate from hashed bundle CSS). */
+/* Mobile + performance overrides (kept separate from hashed bundle CSS).
+ *
+ * SSOT POLICY:
+ * - Edit ONLY in prjt0002-singabldr (this file).
+ * - Synced into the Cloudflare Pages publish repo via `npm run sync:pages` / `npm run release:pages`.
+ * - FORBID hand-editing in `huijoohwee/content/singabldr/**`.
+ */
 
 :root {
   --sf-top: env(safe-area-inset-top, 0px);
   --sf-right: env(safe-area-inset-right, 0px);
   --sf-bottom: env(safe-area-inset-bottom, 0px);
   --sf-left: env(safe-area-inset-left, 0px);
+  /* JS-updated: canvas wheel/pan zoom factor (NOT browser pinch zoom). */
+  --sb-canvas-scale: 1;
 
   /* -----------------------------------------------------------------------
    * Singabldr visual refresh (2026-04)
@@ -15,8 +23,11 @@
   --sb-ink: #1f2526;
   --sb-ink-muted: rgba(31, 37, 38, 0.72);
 
-  --sb-surface: rgba(255, 255, 255, 0.86);
-  --sb-surface-strong: rgba(255, 255, 255, 0.94);
+  /* Surface alpha is tokenized for glass/minimal modes. */
+  --sb-surface-alpha: 0.86;
+  --sb-surface-strong-alpha: 0.94;
+  --sb-surface: rgba(255, 255, 255, var(--sb-surface-alpha));
+  --sb-surface-strong: rgba(255, 255, 255, var(--sb-surface-strong-alpha));
   --sb-surface-invert: rgba(31, 37, 38, 0.9);
 
   --sb-border: rgba(31, 37, 38, 0.22);
@@ -36,7 +47,197 @@
   --sb-danger: #ff4757;
   --sb-purple: #6c5ce7;
 
-  --sb-focus: rgba(10, 132, 255, 0.55);
+  /* Focus ring is tokenized: runtime can update rgb/alpha from singabldr.assets.json. */
+  --sb-focus-rgb: 10, 132, 255;
+  --sb-focus-alpha: 0.55;
+  --sb-focus: rgba(var(--sb-focus-rgb), var(--sb-focus-alpha));
+
+  /* Atlas/masterplan token hooks (runtime-updated; safe fallbacks). */
+  --sb-atlas-grid-minor-px: 24px;
+  --sb-atlas-grid-major-px: 96px;
+  --sb-atlas-grid-minor-line-px: 1px;
+  --sb-atlas-grid-major-line-px: 2px;
+  --sb-atlas-grid-minor-rgb: 11, 28, 44;
+  --sb-atlas-grid-major-rgb: 11, 28, 44;
+  --sb-atlas-grid-minor-alpha: 0.06;
+  --sb-atlas-grid-major-alpha: 0.14;
+
+  --sb-blend-grid-minor-rgb: 11, 28, 44;
+  --sb-blend-grid-minor-alpha: 0.03;
+  --sb-blend-grid-minor-px: 28px;
+  --sb-blend-grid-minor-line-px: 1px;
+  --sb-atlas-skyline-cyan-alpha: 0.26;
+  --sb-atlas-skyline-violet-alpha: 0.22;
+  --sb-atlas-skyline-warm-alpha: 0.18;
+  --sb-blend-skyline-cyan-alpha: 0.22;
+
+  /* Marina Bay glass skyline tint colors (runtime-updated; safe fallbacks). */
+  --sb-skyline-cyan-rgb: 0, 210, 255;
+  --sb-skyline-violet-rgb: 162, 155, 254;
+  --sb-skyline-warm-rgb: 255, 200, 120;
+
+  /* Accent bar (used by HUD chrome). Override per UI style. */
+  --sb-accent-bar: linear-gradient(180deg, var(--sb-accent) 0%, var(--sb-accent-2) 100%);
+
+  /* Chips (watermark / quick-play): override per UI style to make MRT more explicit. */
+  --sb-chip-bg: rgba(31, 37, 38, 0.18);
+  --sb-chip-bg-hover: rgba(31, 37, 38, 0.24);
+
+  /* CTA backgrounds: runtime can set from JSON tokens. */
+  --sb-cta-dice-bg: linear-gradient(135deg, #ff6b6b 0%, var(--sb-danger) 55%, #ff2e63 100%);
+  --sb-cta-superagent-bg: linear-gradient(
+    135deg,
+    rgba(162, 155, 254, 1) 0%,
+    rgba(108, 92, 231, 1) 55%,
+    rgba(9, 132, 227, 1) 115%
+  );
+}
+
+/* -----------------------------------------------------------------------
+ * UI style variants (Singapore vibe):
+ * - Applied by boot-bubbles-ui.js via <body data-sb-ui-style="...">
+ * - Keep deltas small: mostly tokens + background treatment (no layout churn)
+ * --------------------------------------------------------------------- */
+body[data-sb-ui-style="atlas"] {
+  /* MRT line colors (approx): use as a civic/atlas accent system. */
+  --sb-mrt-ns: #d42e12; /* North-South (red) */
+  --sb-mrt-ew: #009645; /* East-West (green) */
+  --sb-mrt-ne: #9900aa; /* North East (purple) */
+  --sb-mrt-cc: #fa9e0d; /* Circle (orange) */
+  --sb-mrt-dt: #005ec4; /* Downtown (blue) */
+  --sb-mrt-te: #9d5b25; /* Thomson-East Coast (brown) */
+  --sb-mrt-cr: #00a9b7; /* Cross Island (teal) */
+  --sb-mrt-je: #0099a8; /* Jurong Region (teal) */
+
+  --sb-ink: #182022;
+  --sb-surface: rgba(255, 255, 255, 0.92);
+  --sb-surface-strong: rgba(255, 255, 255, 0.96);
+  --sb-border: rgba(24, 32, 34, 0.18);
+  --sb-border-strong: rgba(24, 32, 34, 0.32);
+  /* Civic base accents: Downtown blue + Garden green */
+  --sb-accent: var(--sb-mrt-dt);
+  --sb-accent-2: #00b894;
+  /* MRT-inspired multi-stop accent bar for “URA panel chrome” */
+  --sb-accent-bar: linear-gradient(
+    180deg,
+    var(--sb-mrt-dt) 0%,
+    var(--sb-mrt-cc) 28%,
+    var(--sb-mrt-ew) 58%,
+    var(--sb-mrt-ns) 100%
+  );
+  --sb-focus-rgb: 0, 94, 196; /* DT */
+  --sb-focus-alpha: 0.58;
+  --sb-chip-bg: linear-gradient(
+    135deg,
+    rgba(31, 119, 180, 0.32) 0%,
+    rgba(244, 194, 13, 0.22) 36%,
+    rgba(46, 139, 87, 0.26) 72%,
+    rgba(226, 35, 26, 0.22) 100%
+  );
+  background:
+    /* Marina Bay glass skyline tint (cool cyan + violet + warm sunset) */
+    radial-gradient(
+      1100px 780px at 18% 10%,
+      rgba(var(--sb-skyline-cyan-rgb), var(--sb-atlas-skyline-cyan-alpha)) 0%,
+      rgba(var(--sb-skyline-cyan-rgb), 0) 60%
+    ),
+    radial-gradient(
+      980px 720px at 86% 18%,
+      rgba(var(--sb-skyline-violet-rgb), var(--sb-atlas-skyline-violet-alpha)) 0%,
+      rgba(var(--sb-skyline-violet-rgb), 0) 62%
+    ),
+    radial-gradient(
+      1200px 900px at 55% 110%,
+      rgba(var(--sb-skyline-warm-rgb), var(--sb-atlas-skyline-warm-alpha)) 0%,
+      rgba(var(--sb-skyline-warm-rgb), 0) 58%
+    ),
+    /* URA/masterplan grid: minor + major lines */
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--sb-atlas-grid-minor-rgb), var(--sb-atlas-grid-minor-alpha)) 0,
+      rgba(var(--sb-atlas-grid-minor-rgb), var(--sb-atlas-grid-minor-alpha)) var(--sb-atlas-grid-minor-line-px),
+      transparent var(--sb-atlas-grid-minor-line-px),
+      transparent var(--sb-atlas-grid-minor-px)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--sb-atlas-grid-minor-rgb), var(--sb-atlas-grid-minor-alpha)) 0,
+      rgba(var(--sb-atlas-grid-minor-rgb), var(--sb-atlas-grid-minor-alpha)) var(--sb-atlas-grid-minor-line-px),
+      transparent var(--sb-atlas-grid-minor-line-px),
+      transparent var(--sb-atlas-grid-minor-px)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--sb-atlas-grid-major-rgb), var(--sb-atlas-grid-major-alpha)) 0,
+      rgba(var(--sb-atlas-grid-major-rgb), var(--sb-atlas-grid-major-alpha)) var(--sb-atlas-grid-major-line-px),
+      transparent var(--sb-atlas-grid-major-line-px),
+      transparent var(--sb-atlas-grid-major-px)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--sb-atlas-grid-major-rgb), var(--sb-atlas-grid-major-alpha)) 0,
+      rgba(var(--sb-atlas-grid-major-rgb), var(--sb-atlas-grid-major-alpha)) var(--sb-atlas-grid-major-line-px),
+      transparent var(--sb-atlas-grid-major-line-px),
+      transparent var(--sb-atlas-grid-major-px)
+    ),
+    linear-gradient(180deg, #d7f1ff 0%, #c6eaff 42%, #d7f1ff 100%);
+  background-attachment: fixed;
+}
+
+body[data-sb-ui-style="blend"] {
+  /* Default recommended: atlas grid + Marina Bay tint, but softer than full atlas. */
+  --sb-accent-bar: linear-gradient(
+    180deg,
+    rgba(31, 37, 38, 0.18) 0%,
+    rgba(10, 132, 255, 0.58) 45%,
+    rgba(0, 184, 148, 0.62) 100%
+  );
+  --sb-focus-rgb: 10, 132, 255;
+  --sb-focus-alpha: 0.56;
+  --sb-chip-bg: linear-gradient(135deg, rgba(10, 132, 255, 0.26), rgba(0, 184, 148, 0.22));
+  background:
+    radial-gradient(
+      1100px 780px at 18% 10%,
+      rgba(var(--sb-skyline-cyan-rgb), var(--sb-blend-skyline-cyan-alpha)) 0%,
+      rgba(var(--sb-skyline-cyan-rgb), 0) 60%
+    ),
+    radial-gradient(980px 720px at 86% 18%, rgba(162, 155, 254, 0.18) 0%, rgba(162, 155, 254, 0) 62%),
+    radial-gradient(1200px 900px at 55% 110%, rgba(255, 200, 120, 0.14) 0%, rgba(255, 200, 120, 0) 58%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--sb-blend-grid-minor-rgb), var(--sb-blend-grid-minor-alpha)) 0,
+      rgba(var(--sb-blend-grid-minor-rgb), var(--sb-blend-grid-minor-alpha)) var(--sb-blend-grid-minor-line-px),
+      transparent var(--sb-blend-grid-minor-line-px),
+      transparent var(--sb-blend-grid-minor-px)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--sb-blend-grid-minor-rgb), var(--sb-blend-grid-minor-alpha)) 0,
+      rgba(var(--sb-blend-grid-minor-rgb), var(--sb-blend-grid-minor-alpha)) var(--sb-blend-grid-minor-line-px),
+      transparent var(--sb-blend-grid-minor-line-px),
+      transparent var(--sb-blend-grid-minor-px)
+    ),
+    linear-gradient(180deg, #bfeaff 0%, #a9e1ff 38%, #bfeaff 100%);
+  background-attachment: fixed;
+}
+
+body[data-sb-ui-style="arcade"] {
+  --sb-accent: #00d2ff; /* neon marina */
+  --sb-accent-2: #a29bfe; /* playful violet */
+  --sb-danger: #ff2e63;
+  --sb-border-strong: rgba(31, 37, 38, 0.52);
+  --sb-focus-rgb: 255, 46, 99;
+  --sb-focus-alpha: 0.56;
+}
+
+body[data-sb-ui-style="glass"] {
+  /* Glass is minimalist: fewer colors, lighter borders, softer shadows. Runtime can override via tokens. */
+  --sb-surface-alpha: 0.78;
+  --sb-surface-strong-alpha: 0.92;
+  --sb-border: rgba(31, 37, 38, 0.14);
+  --sb-border-strong: rgba(31, 37, 38, 0.22);
+  --sb-shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.05);
+  --sb-shadow-md: 0 14px 32px rgba(0, 0, 0, 0.075);
 }
 
 html,
@@ -93,6 +294,60 @@ body {
   backdrop-filter: blur(10px) saturate(1.1);
 }
 
+/* -----------------------------------------------------------------------
+ * POI realism (UI):
+ * - Injected by boot-bubbles-ui.js into #ui as a thumbnail + chip row.
+ * - Keep purely cosmetic; no layout reflow loops.
+ * --------------------------------------------------------------------- */
+#ui {
+  --sb-poi-accent: rgba(10, 132, 255, 0.8);
+}
+
+#ui.sb-poi-active {
+  border-color: color-mix(in srgb, var(--sb-poi-accent) 55%, var(--sb-border-strong)) !important;
+}
+
+#ui .sb-poi-thumb {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(31, 37, 38, 0.14);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+  display: block;
+  margin: 8px 0 10px 0;
+}
+
+#ui .sb-poi-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 8px 0;
+}
+
+#ui .sb-poi-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 37, 38, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px) saturate(1.1);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: var(--sb-ink);
+}
+
+#ui .sb-poi-chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--sb-poi-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sb-poi-accent) 18%, transparent);
+}
+
 /* Title/Subtitle readability without the heavy “poster” feel */
 #info {
   top: calc(18px + var(--sf-top)) !important;
@@ -133,7 +388,7 @@ body {
   bottom: 14px;
   width: 6px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--sb-accent) 0%, var(--sb-accent-2) 100%);
+  background: var(--sb-accent-bar, linear-gradient(180deg, var(--sb-accent) 0%, var(--sb-accent-2) 100%));
   opacity: 0.8;
   pointer-events: none;
 }
@@ -144,12 +399,19 @@ body {
 
 /* “Roll Dice” (primary CTA) */
 #dice-btn {
-  background: linear-gradient(135deg, #ff6b6b 0%, var(--sb-danger) 55%, #ff2e63 100%) !important;
+  background: var(--sb-cta-dice-bg) !important;
   border-width: 2px !important;
   border-radius: var(--sb-radius-xl) !important;
   box-shadow: var(--sb-shadow-md) !important;
   text-transform: none !important;
   letter-spacing: 0.2px !important;
+}
+
+/* MRT-forward CTAs fallback (explicit system): runtime may override via JSON tokens. */
+body[data-sb-ui-style="atlas"],
+body[data-sb-ui-style="blend"] {
+  --sb-cta-dice-bg: linear-gradient(135deg, #d42e12 0%, #fa9e0d 34%, #009645 72%, #d42e12 100%);
+  --sb-cta-superagent-bg: linear-gradient(135deg, #005ec4 0%, #fa9e0d 45%, #009645 100%);
 }
 
 #dice-btn:hover {
@@ -163,7 +425,7 @@ body {
 
 /* Superagent button: “friendly premium purple” */
 #superagent-btn {
-  background: linear-gradient(135deg, rgba(162, 155, 254, 1) 0%, rgba(108, 92, 231, 1) 55%, rgba(9, 132, 227, 1) 115%) !important;
+  background: var(--sb-cta-superagent-bg) !important;
   border-width: 2px !important;
   border-radius: var(--sb-radius-xl) !important;
   box-shadow: var(--sb-shadow-md) !important;
@@ -191,7 +453,7 @@ body {
 /* Top-right controls: more “glass chip”, less flat badge */
 #watermark,
 #quick-play-mode-btn {
-  background: rgba(31, 37, 38, 0.18) !important;
+  background: var(--sb-chip-bg) !important;
   border-color: rgba(255, 255, 255, 0.22) !important;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12) !important;
   backdrop-filter: blur(10px) saturate(1.1);
@@ -199,7 +461,7 @@ body {
 
 #watermark:hover,
 #quick-play-mode-btn:hover {
-  background: rgba(31, 37, 38, 0.24) !important;
+  background: var(--sb-chip-bg-hover) !important;
 }
 
 /* Loading overlay: lighter, more polished */
@@ -530,29 +792,183 @@ body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #
   animation: mobilityPulseGlow 3.2s ease-in-out infinite;
 }
 
+body[data-singabldr-preset="mobility"] #hud,
+body[data-singabldr-preset="mobility"] #watermark,
+body[data-singabldr-preset="mobility"] #quick-play-mode-btn {
+  animation: mobilityFloat 6.4s ease-in-out infinite;
+}
+
 body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #bubble-links-layer path,
-body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-chain-layer path {
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-chain-layer path,
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-chain-layer circle {
   filter: drop-shadow(0 2px 6px rgba(9, 132, 227, 0.2));
   animation: mobilityDashFlow 5.4s linear infinite;
 }
 
-body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] .citizen-bubble {
-  max-width: min(220px, calc(100vw - 28px));
-  border: 2px solid rgba(45, 52, 54, 0.16);
-  border-radius: 18px;
-  box-shadow: 0 12px 24px rgba(9, 132, 227, 0.14);
-  background: rgba(255, 255, 255, 0.96);
+/* Global chain-of-bubbles styling (non script-specific). */
+body[data-singabldr-bubble-style="colorful"] #mobility-chain-layer path,
+body[data-singabldr-bubble-style="colorful"] #mobility-chain-layer circle {
+  filter: drop-shadow(0 2px 6px rgba(9, 132, 227, 0.2));
+  animation: mobilityDashFlow 5.4s linear infinite;
+}
+
+/* SVG circles don't animate dash; give them a subtle pulse instead. */
+body[data-singabldr-bubble-style="colorful"] #mobility-chain-layer circle {
+  animation: mobilityBubblePulse 3.6s ease-in-out infinite;
+}
+
+/* Mobility (ALL bubble styles): UI is always Citizen bubbles (visual SSOT).
+   Do not show chain cards / chain layer to avoid mixing styles. */
+body[data-singabldr-preset="mobility"] .mobility-chain-card,
+body[data-singabldr-preset="mobility"] #mobility-chain-layer {
+  display: none !important;
+}
+
+/* Prevent mixing with legacy citizen bubbles created outside the Mobility layer. */
+body[data-singabldr-preset="mobility"] #chat-bubbles-container > .citizen-bubble {
+  display: none !important;
+}
+
+/* Reuse the ORIGINAL citizen bubble UI/visual language (small bubble with tail),
+   while ensuring visibility + overflow safety in colorful mode. */
+/* Base “Colorful bubble + Add to Chat” citizen bubble UI (reused across styles). */
+body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble {
+  display: block !important;
+  opacity: 1 !important;
+  max-width: min(calc(180px / var(--sb-canvas-scale, 1)), calc(100vw - 28px)) !important;
+  /* Keep it non-interactive at the DOM level (we hit-test from document listeners). */
+  pointer-events: none !important;
+  cursor: grab;
+}
+
+/* Keep the bubble tail (do NOT override ::after). */
+
+body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble__header {
+  display: block;
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+  font-size: 10px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  opacity: 0.92;
+  margin-bottom: 2px;
+}
+
+/* Colorful: revert to Chat UI-like look:
+   - Standard citizen bubble chrome
+   - Simple “Citizen (…)” text header (no colored pill) */
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble {
+  /* FlowinFish Chat UI-vibe (matches base .citizen-bubble in app stylesheet). */
+  background: #ffffff;
+  color: #2d3436;
+  border: 2px solid #2d3436;
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(10px, calc(12px / var(--sb-canvas-scale, 1)), 14px);
+  font-weight: 700;
+  box-shadow: 0 4px 0 rgba(45, 52, 54, 0.1);
+  max-width: min(calc(150px / var(--sb-canvas-scale, 1)), calc(100vw - 28px)) !important;
+  text-align: center;
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble__header {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  color: rgba(45, 52, 54, 0.82);
+  text-shadow: none;
+}
+
+/* Simple bubble: same UI, but no gradients (flat white). */
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="simple"] #mobility-citizen-layer .citizen-bubble {
+  background: rgba(255, 255, 255, 0.98);
+  color: #2d3436;
+  border: 1px solid rgba(45, 52, 54, 0.22);
+  box-shadow: none !important;
+  text-align: left;
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="simple"] #mobility-citizen-layer .citizen-bubble__header {
+  color: rgba(45, 52, 54, 0.82) !important;
+}
+
+/* Blank bubble (low-res): same UI, but minimal shadow/border. */
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="blank"] #mobility-citizen-layer .citizen-bubble {
+  background: rgba(255, 255, 255, 0.98);
+  color: #2d3436;
+  box-shadow: none !important;
+  border-color: rgba(45, 52, 54, 0.18) !important;
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="blank"] #mobility-citizen-layer .citizen-bubble__header {
+  color: rgba(45, 52, 54, 0.72) !important;
+}
+
+body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble__body {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* Global bubble toolbar is now rendered OUTSIDE the bubble body (fixed-position).
+   Hide any legacy in-bubble action bars to avoid duplicate icons. */
+#chat-bubbles-container .citizen-bubble__actions,
+#mobility-citizen-layer .citizen-bubble__actions {
+  display: none !important;
+}
+
+body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble__action {
+  /* Tiny floating toolbar buttons (as requested). */
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #2d3436;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+  cursor: pointer;
+}
+
+body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble__action--pin {
+  background: rgba(116, 185, 255, 0.28);
+}
+
+body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble__action--add {
+  background: rgba(85, 239, 196, 0.28);
+}
+
+body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble__action--close {
+  background: rgba(255, 118, 117, 0.22);
 }
 
 .mobility-chain-card {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: min(240px, calc(100vw - 36px));
-  padding: 12px 14px;
+  min-width: 0;
+  width: min(var(--mobility-card-width, 240px), calc(100vw - 12px));
+  max-width: calc(100vw - 12px);
+  padding: 10px 12px 12px;
   border: 3px solid #2d3436;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.98);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(233, 245, 255, 0.98));
   color: #2d3436;
   box-shadow: 8px 8px 0 rgba(45, 52, 54, 0.08);
   font-family: "Nunito", sans-serif;
@@ -560,6 +976,40 @@ body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] .
   cursor: pointer;
   outline: none;
   appearance: none;
+  transform: translate3d(0, 0, 0) scale(var(--mobility-card-scale, 1));
+  transform-origin: center center;
+  animation: mobilityFloat 6.2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mobility-chain-card[data-pinned="1"] {
+  box-shadow: 0 0 0 4px rgba(9, 132, 227, 0.16), 10px 10px 0 rgba(45, 52, 54, 0.14);
+}
+
+.mobility-chain-card[data-tone="sky"] {
+  background: linear-gradient(180deg, rgba(223, 242, 255, 0.98), rgba(180, 223, 255, 0.98));
+}
+
+.mobility-chain-card[data-tone="mint"] {
+  background: linear-gradient(180deg, rgba(225, 255, 248, 0.98), rgba(186, 245, 231, 0.98));
+}
+
+.mobility-chain-card[data-tone="violet"] {
+  background: linear-gradient(180deg, rgba(241, 236, 255, 0.98), rgba(220, 210, 255, 0.98));
+}
+
+.mobility-chain-card[data-tone="amber"] {
+  background: linear-gradient(180deg, rgba(255, 244, 224, 0.98), rgba(255, 226, 176, 0.98));
+}
+
+.mobility-chain-card[data-tone="coral"] {
+  background: linear-gradient(180deg, rgba(255, 235, 234, 0.98), rgba(255, 209, 220, 0.98));
+}
+
+.mobility-chain-card[data-tone="navy"] {
+  background: linear-gradient(180deg, rgba(225, 237, 255, 0.98), rgba(188, 212, 255, 0.98));
 }
 
 body[data-singabldr-bubble-style="blank"] .mobility-chain-card,
@@ -591,6 +1041,54 @@ body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="blank"] .cit
   font-weight: 900;
   letter-spacing: 0.2px;
   text-transform: uppercase;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobility-chain-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.mobility-chain-card__action {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #2d3436;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #2d3436;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.mobility-chain-card__action--pin {
+  background: rgba(116, 185, 255, 0.28);
+}
+
+.mobility-chain-card__action--add {
+  background: rgba(85, 239, 196, 0.28);
+}
+
+.mobility-chain-card__action--close {
+  background: rgba(255, 118, 117, 0.22);
+}
+
+.mobility-chain-card[data-pinned="1"] .mobility-chain-card__action--pin {
+  background: rgba(9, 132, 227, 0.92);
+  color: #ffffff;
 }
 
 .mobility-chain-card[data-role="user"] .mobility-chain-card__badge {
@@ -603,11 +1101,21 @@ body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="blank"] .cit
 
 .mobility-chain-card__body {
   display: block;
-  font-size: 13px;
+  font-size: var(--mobility-card-font-size, 13px);
   font-weight: 900;
   line-height: 1.35;
-  white-space: normal;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--mobility-card-body-lines, 5);
+  line-clamp: var(--mobility-card-body-lines, 5);
 }
 
 @keyframes mobilityPulseGlow {
@@ -629,9 +1137,31 @@ body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="blank"] .cit
   }
 }
 
+@keyframes mobilityBubblePulse {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateZ(0) scale(1.06);
+  }
+}
+
+@keyframes mobilityFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(var(--mobility-card-scale, 1));
+  }
+  50% {
+    transform: translate3d(0, -4px, 0) scale(var(--mobility-card-scale, 1));
+  }
+}
+
 @media (max-width: 480px) {
   .mobility-chain-card {
-    width: min(186px, calc(100vw - 30px));
+    width: min(var(--mobility-card-width, 186px), calc(100vw - 10px));
     padding: 10px 12px;
     border-radius: 16px;
   }

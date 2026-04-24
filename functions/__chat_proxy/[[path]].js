@@ -1,4 +1,6 @@
 import {
+  BYTEPLUS_AP_SOUTHEAST_HOST,
+  BYTEPLUS_EU_WEST_HOST,
   OPENAI_HOST,
   isLocalHost,
   jsonResponse,
@@ -8,13 +10,23 @@ import {
 } from '../api/_integrationHub.js';
 
 const CHAT_PROXY_PREFIX = '/__chat_proxy';
+const BYTEPLUS_PROVIDER_ID = 'byteplus-modelark';
+
+const isBytePlusHost = (hostname) => {
+  const host = normalizeHost(hostname);
+  return host === BYTEPLUS_AP_SOUTHEAST_HOST || host === BYTEPLUS_EU_WEST_HOST;
+};
 
 const pickUpstreamBase = ({ provider, requestedUpstream, env }) => {
   // Fully independent mode: no external gateway-specific coupling here.
   // The proxy either targets:
   // - OpenAI (https://api.openai.com) when provider=openai
+  // - BytePlus ModelArk (https://ark.ap-southeast.bytepluses.com) when provider=byteplus-modelark
   // - a configured HTTPS upstream (env.KNOWGRPH_CHAT_PROXY_UPSTREAM or request override)
   if (provider === 'openai') return 'https://api.openai.com';
+  if (provider === BYTEPLUS_PROVIDER_ID) {
+    return requestedUpstream || String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim() || `https://${BYTEPLUS_AP_SOUTHEAST_HOST}`;
+  }
   if (requestedUpstream) return requestedUpstream;
   return String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim();
 };
@@ -55,7 +67,7 @@ export async function onRequest(context) {
     return jsonResponse(request, { ok: false, error: 'Invalid chat proxy upstream configuration' }, 500);
   }
 
-  const allowedHosts = parseAllowedHosts(env, { includeOpenAi: true });
+  const allowedHosts = parseAllowedHosts(env, { includeOpenAi: true, includeBytePlus: true });
   const upstreamHostname = normalizeHost(upstreamBase.hostname);
   if (!allowedHosts.has(upstreamHostname)) {
     return jsonResponse(request, { ok: false, error: 'Chat proxy upstream host is not allowed' }, 403);
@@ -65,11 +77,26 @@ export async function onRequest(context) {
   }
 
   const requiresOpenAiKey = provider === 'openai' || upstreamHostname === OPENAI_HOST;
-  const openAiApiKey = (
-    readHeader(request.headers, 'x-kg-chat-api-key') || String(env.KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY || '').trim()
-  ).slice(0, 512);
+  const requiresBytePlusKey = provider === BYTEPLUS_PROVIDER_ID || isBytePlusHost(upstreamHostname);
+  const headerApiKey = readHeader(request.headers, 'x-kg-chat-api-key');
+  const envOpenAiApiKey = String(env.KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY || env.OPENAI_API_KEY || '').trim();
+  const envBytePlusApiKey = String(env.KNOWGRPH_CHAT_PROXY_BYTEPLUS_API_KEY || env.BYTEPLUS_API_KEY || '').trim();
+  const openAiApiKey = (headerApiKey || envOpenAiApiKey).slice(0, 512);
+  const bytePlusApiKey = (headerApiKey || envBytePlusApiKey).slice(0, 512);
+  const providerApiKey = requiresBytePlusKey ? bytePlusApiKey : openAiApiKey;
   if (requiresOpenAiKey && !openAiApiKey) {
-    return jsonResponse(request, { ok: false, error: 'Missing OpenAI API key for chat proxy upstream' }, 500);
+    return jsonResponse(
+      request,
+      { ok: false, error: 'Missing OpenAI API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY or OPENAI_API_KEY)' },
+      500,
+    );
+  }
+  if (requiresBytePlusKey && !providerApiKey) {
+    return jsonResponse(
+      request,
+      { ok: false, error: 'Missing BytePlus API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_BYTEPLUS_API_KEY or BYTEPLUS_API_KEY)' },
+      500,
+    );
   }
 
   if (method === 'POST') {
@@ -91,7 +118,9 @@ export async function onRequest(context) {
   const accept = readHeader(request.headers, 'accept');
   if (contentType) headers.set('content-type', contentType);
   if (accept) headers.set('accept', accept);
-  if (requiresOpenAiKey) headers.set('authorization', `Bearer ${openAiApiKey}`);
+  if (requiresOpenAiKey || requiresBytePlusKey) headers.set('authorization', `Bearer ${providerApiKey}`);
+  const clientRequestId = readHeader(request.headers, 'x-client-request-id').slice(0, 512);
+  if (clientRequestId) headers.set('x-client-request-id', clientRequestId);
 
   const abortController = new AbortController();
   const timeoutMsRaw = Number(env.KNOWGRPH_CHAT_PROXY_TIMEOUT_MS);

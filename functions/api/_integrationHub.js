@@ -1,4 +1,6 @@
 const OPENAI_HOST = 'api.openai.com';
+const BYTEPLUS_AP_SOUTHEAST_HOST = 'ark.ap-southeast.bytepluses.com';
+const BYTEPLUS_EU_WEST_HOST = 'ark.eu-west.bytepluses.com';
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0']);
 
 const normalizeHost = (value) => String(value || '').trim().toLowerCase();
@@ -19,12 +21,16 @@ const parseCsvSet = (value) => {
   return out;
 };
 
-const parseAllowedHosts = (env, { includeOpenAi = false } = {}) => {
+const parseAllowedHosts = (env, { includeOpenAi = false, includeBytePlus = false } = {}) => {
   const primary = parseCsvSet(env.KNOWGRPH_INTEGRATION_ALLOWED_HOSTS);
   const fallback = parseCsvSet(env.KNOWGRPH_CHAT_PROXY_ALLOWED_HOSTS);
   const out = primary.size ? primary : fallback;
   const base = out.size ? out : new Set([...LOCAL_HOSTS]);
   if (includeOpenAi) base.add(OPENAI_HOST);
+  if (includeBytePlus) {
+    base.add(BYTEPLUS_AP_SOUTHEAST_HOST);
+    base.add(BYTEPLUS_EU_WEST_HOST);
+  }
   return base;
 };
 
@@ -173,6 +179,8 @@ const proxyUpstream = async ({
 
 export {
   OPENAI_HOST,
+  BYTEPLUS_AP_SOUTHEAST_HOST,
+  BYTEPLUS_EU_WEST_HOST,
   LOCAL_HOSTS,
   corsHeaders,
   handleOptions,

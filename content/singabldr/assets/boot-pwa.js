@@ -1,9 +1,14 @@
-/* Singabldr PWA boot: install prompt, standalone detection, and service-worker registration. */
+/* Singabldr PWA boot (SSOT override):
+ * - Keep PWA enabled on production.
+ * - FORBID service-worker registration on localhost by default (prevents stale-cache
+ *   "visual mutates" during `npm run dev`), unless explicitly enabled.
+ */
 (function singabldrBootPwa() {
   "use strict";
 
   var INSTALL_NUDGE_KEY = "singabldr.pwa.installNudgeAt";
   var INSTALL_NUDGE_COOLDOWN_MS = 6 * 60 * 60 * 1000;
+  var DEV_SW_ENABLE_KEY = "singabldr.pwa.devSwEnabled";
   var lastToastSignature = "";
 
   function safe(fn) {
@@ -176,6 +181,19 @@
     setStateHelp(getInstallInstructions());
   }
 
+  function isLocalhost() {
+    var host = String(location.hostname || "");
+    return host === "localhost" || host === "127.0.0.1";
+  }
+
+  function isDevSwExplicitlyEnabled() {
+    return !!safe(function () {
+      var url = new URL(location.href);
+      if (url.searchParams.get("sw") === "1") return true;
+      return localStorage.getItem(DEV_SW_ENABLE_KEY) === "1";
+    });
+  }
+
   safe(function bindBasicListeners() {
     window.addEventListener("online", function () {
       coalesce("pwa:online", function () {
@@ -271,6 +289,43 @@
     }
   });
 
+  safe(function unregisterServiceWorkersInDev() {
+    if (!("serviceWorker" in navigator)) return;
+    if (!isLocalhost()) return;
+    if (isDevSwExplicitlyEnabled()) return;
+    navigator.serviceWorker
+      .getRegistrations()
+      .then(function (regs) {
+        return Promise.all(
+          (regs || []).map(function (r) {
+            try {
+              return r.unregister();
+            } catch {
+              return Promise.resolve(false);
+            }
+          }),
+        );
+      })
+      .then(function () {
+        // Best-effort cache clear (prevents "visual mutates" from stale SW caches).
+        if (!("caches" in window)) return;
+        return caches.keys().then(function (keys) {
+          return Promise.all(
+            (keys || []).map(function (k) {
+              try {
+                return caches.delete(k);
+              } catch {
+                return Promise.resolve(false);
+              }
+            }),
+          );
+        });
+      })
+      .catch(function () {
+        // ignore
+      });
+  });
+
   safe(function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) {
       updateUiState(false);
@@ -280,8 +335,16 @@
       updateUiState(false);
       return;
     }
+
+    // Dev default: do not register SW on localhost to avoid stale assets.
+    if (isLocalhost() && !isDevSwExplicitlyEnabled()) {
+      updateUiState(false);
+      return;
+    }
+
     navigator.serviceWorker
-      .register("./sw.js?v=20260413-2", { scope: "./" })
+      // IMPORTANT: bump version on any shell/style/runtime changes, otherwise PWA SW can mask updates.
+      .register("./sw.js?v=20260416-2", { scope: "./" })
       .then(function (registration) {
         safe(function () {
           window.__SINGABLDR_PWA_READY = true;

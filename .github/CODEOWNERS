@@ -1,0 +1,14 @@
+# AI-native "absolute forbid" boundary (Singabldr)
+#
+# Policy:
+# - `huijoohwee/content/singabldr/**` and `huijoohwee/singabldr/**` are DEPLOY ARTIFACTS.
+# - FORBID manual edits in the publish repo. Changes must come from:
+#   `prjt0002-singabldr` (SSOT) → `npm run release:pages` (sync/commit) → push → Cloudflare Pages
+#
+# Enforcement:
+# - GitHub branch protection should require CODEOWNERS review for these paths.
+
+# Singabldr deploy surfaces (Cloudflare Pages)
+/content/singabldr/** @huijoohwee
+/singabldr/** @huijoohwee
+

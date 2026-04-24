@@ -10,61 +10,462 @@
     ]
   },
   "points_of_interest": {
-    "mbs": { "kind": "landmark", "model": "skyscraper", "focus": true, "tags": ["marina_bay", "hotel", "skypark"] },
-    "gbtb": { "kind": "landmark", "model": "park", "focus": true, "tags": ["nature", "gardens"] },
-    "merlion": { "kind": "monument", "model": "monument", "focus": true, "tags": ["tourism"] },
-    "sentosa": { "kind": "island", "model": "park", "focus": true, "tags": ["beach", "resort"] },
-    "raffles": { "kind": "district", "model": "skyscraper", "focus": true, "tags": ["cbd", "finance", "skyline"] },
-    "clarke": { "kind": "district", "model": "mall", "focus": false, "tags": ["nightlife", "river_cruise"] },
-    "bugis": { "kind": "district", "model": "mall", "focus": false, "tags": ["shopping", "street_culture"] },
-    "chinatown": { "kind": "district", "model": "mall", "focus": false, "tags": ["food", "heritage"] },
-    "orchard": { "kind": "district", "model": "mall", "focus": false, "tags": ["shopping"] },
-    "littleindia": { "kind": "district", "model": "monument", "focus": false, "tags": ["heritage"] },
-    "oceanarium": { "kind": "attraction", "model": "park", "focus": false, "tags": ["family_fun", "marine_life"] },
-    "zoo": { "kind": "attraction", "model": "park", "focus": false, "tags": ["wildlife", "mandai"] },
-    "jurong": { "kind": "transport_hub", "model": "monument", "focus": false, "tags": ["mrt", "west"] },
-    "changi": { "kind": "transport_hub", "model": "skyscraper", "focus": true, "tags": ["airport", "aviation", "jewel"] },
-    "port": { "kind": "infrastructure", "model": "mall", "focus": true, "tags": ["port", "logistics", "containers"] },
-    "civic_district": { "kind": "district", "model": "monument", "focus": false, "tags": ["culture_heritage", "architecture"] },
-    "kampong_gelam": { "kind": "district", "model": "monument", "focus": false, "tags": ["culture_heritage", "street_culture"] },
-    "katong_joo_chiat": { "kind": "district", "model": "mall", "focus": false, "tags": ["culture_heritage", "food"] },
-    "singapore_river": { "kind": "district", "model": "monument", "focus": false, "tags": ["nightlife", "river_cruise"] },
-    "mandai": { "kind": "district", "model": "park", "focus": false, "tags": ["city_in_nature", "wildlife"] },
-    "dempsey": { "kind": "district", "model": "mall", "focus": false, "tags": ["heritage", "lifestyle"] },
-    "marina_barrage": { "kind": "landmark", "model": "monument", "focus": false, "tags": ["marina_bay", "sustainability", "city_in_nature"] },
-    "artscience_museum": { "kind": "landmark", "model": "monument", "focus": false, "tags": ["marina_bay", "culture_heritage", "architecture"] },
-    "bird_paradise": { "kind": "attraction", "model": "park", "focus": false, "tags": ["family_fun", "wildlife", "mandai"] },
-    "rainforest_wild_asia": { "kind": "attraction", "model": "park", "focus": false, "tags": ["unique_experiences", "wildlife", "mandai"] },
-    "pulau_ubin_kayaking": { "kind": "experience", "model": "park", "focus": false, "tags": ["city_in_nature", "adventure", "pulau_ubin"] },
-    "synthesis_bar": { "kind": "experience", "model": "mall", "focus": false, "tags": ["novelty", "nightlife"] },
-    "trifecta": { "kind": "experience", "model": "mall", "focus": false, "tags": ["novelty", "unique_experiences"] }
-  },
-  "buildings": {
-    "profiles": {
-      "marina_bay": { "kind": "skyline", "model": "skyscraper", "accent": "#9ad1d4", "heightBoost": 1.2 },
-      "heritage": { "kind": "shophouse", "model": "monument", "accent": "#f6c453", "heightBoost": 0.9 },
-      "port": { "kind": "infrastructure", "model": "mall", "accent": "#efe8db", "heightBoost": 1.05 }
+    "civic_district": {
+      "kind": "district",
+      "model": "monument",
+      "label": "Civic District",
+      "focus": false,
+      "tags": ["culture_heritage", "architecture"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8511298, 1.2917349] },
+      "geo": { "type": "Point", "coordinates": [103.8511298, 1.2917349] },
+      "ui": { "accentHex": "#005ec4" },
+      "visual": { "preset": "civic_stone", "material": "stone", "heightVoxels": 18 }
     },
-    "highlights": {
-      "mbs": "marina_bay",
-      "raffles": "marina_bay",
-      "merlion": "heritage",
-      "chinatown": "heritage",
-      "port": "port"
+    "kampong_gelam": {
+      "kind": "district",
+      "model": "monument",
+      "label": "Kampong Gelam",
+      "focus": false,
+      "tags": ["culture_heritage", "street_culture"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8596693, 1.3025488] },
+      "geo": { "type": "Point", "coordinates": [103.8596693, 1.3025488] },
+      "ui": { "accentHex": "#9d5b25", "thumbSrc": "./assets/poi/kampong_gelam.jpg" },
+      "visual": { "preset": "heritage_mosque", "material": "stone", "heightVoxels": 20 }
+    },
+    "katong_joo_chiat": {
+      "kind": "district",
+      "model": "mall",
+      "label": "Katong / Joo Chiat",
+      "focus": false,
+      "tags": ["culture_heritage", "food"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.902335, 1.3072648] },
+      "geo": { "type": "Point", "coordinates": [103.902335, 1.3072648] },
+      "ui": { "accentHex": "#fa9e0d" },
+      "visual": { "preset": "heritage_shophouse_pastel", "material": "painted", "heightVoxels": 16 }
+    },
+    "singapore_river": {
+      "kind": "district",
+      "model": "monument",
+      "label": "Singapore River",
+      "focus": false,
+      "tags": ["nightlife", "river_cruise"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8412096, 1.2901147] },
+      "geo": { "type": "Point", "coordinates": [103.8412096, 1.2901147] },
+      "ui": { "accentHex": "#0a84ff" },
+      "visual": { "preset": "river_quay", "material": "matte", "heightVoxels": 12 }
+    },
+    "mandai": {
+      "kind": "district",
+      "model": "park",
+      "label": "Mandai",
+      "focus": false,
+      "tags": ["city_in_nature", "wildlife"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8024597, 1.423623] },
+      "geo": { "type": "Point", "coordinates": [103.8024597, 1.423623] },
+      "ui": { "accentHex": "#009645" },
+      "visual": { "preset": "forest_canopy", "material": "matte", "heightVoxels": 14 }
+    },
+    "dempsey": {
+      "kind": "district",
+      "model": "mall",
+      "label": "Dempsey",
+      "focus": false,
+      "tags": ["heritage", "lifestyle"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8100574, 1.3045037] },
+      "geo": { "type": "Point", "coordinates": [103.8100574, 1.3045037] },
+      "ui": { "accentHex": "#00b894" },
+      "visual": { "preset": "heritage_barracks", "material": "painted", "heightVoxels": 14 }
+    },
+    "marina_barrage": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Marina Barrage",
+      "focus": false,
+      "tags": ["marina_bay", "sustainability", "city_in_nature"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8725736, 1.2814033] },
+      "geo": { "type": "Point", "coordinates": [103.8725736, 1.2814033] },
+      "ui": { "accentHex": "#00a9b7", "thumbSrc": "./assets/poi/marina_barrage.jpg" },
+      "visual": { "preset": "modern_civic_glass", "material": "glass", "glassTintHex": "#5bd3e7", "heightVoxels": 18 }
+    },
+    "artscience_museum": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "ArtScience Museum",
+      "focus": false,
+      "tags": ["marina_bay", "culture_heritage", "architecture"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8592297, 1.2861382] },
+      "geo": { "type": "Point", "coordinates": [103.8592297, 1.2861382] },
+      "ui": { "accentHex": "#5bd3e7", "thumbSrc": "./assets/poi/artscience_museum.jpg" },
+      "visual": { "preset": "modern_iconic_white", "material": "stone", "heightVoxels": 20 }
+    },
+    "mbs": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Marina Bay Sands",
+      "focus": false,
+      "tags": ["marina_bay", "iconic_architecture", "nightlife"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8607226, 1.2836965] },
+      "geo": { "type": "Point", "coordinates": [103.8607226, 1.2836965] },
+      "ui": { "accentHex": "#5bd3e7", "thumbSrc": "./assets/poi/mbs.jpg" },
+      "visual": { "preset": "glass_skyline", "material": "glass", "glassTintHex": "#bfe9ff", "heightVoxels": 28 }
+    },
+    "gbtb": {
+      "kind": "attraction",
+      "model": "park",
+      "label": "Gardens by the Bay",
+      "focus": false,
+      "tags": ["marina_bay", "city_in_nature", "unique_experiences"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.86496, 1.2811486] },
+      "geo": { "type": "Point", "coordinates": [103.86496, 1.2811486] },
+      "ui": { "accentHex": "#00a9b7", "thumbSrc": "./assets/poi/gbtb.jpg" },
+      "visual": { "preset": "garden_glass", "material": "glass", "glassTintHex": "#bfe9ff", "heightVoxels": 22 }
+    },
+    "merlion": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Merlion Park",
+      "focus": false,
+      "tags": ["civic_district", "iconic_architecture", "waterfront"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8541592, 1.2856852] },
+      "geo": { "type": "Point", "coordinates": [103.8541592, 1.2856852] },
+      "ui": { "accentHex": "#ff4757", "thumbSrc": "./assets/poi/merlion.jpg" },
+      "visual": { "preset": "stone_monument", "material": "stone", "heightVoxels": 18 }
+    },
+    "bird_paradise": {
+      "kind": "attraction",
+      "model": "park",
+      "label": "Bird Paradise",
+      "focus": false,
+      "tags": ["family_fun", "wildlife", "mandai"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.7810029, 1.4054412] },
+      "geo": { "type": "Point", "coordinates": [103.7810029, 1.4054412] },
+      "ui": { "accentHex": "#009645", "thumbSrc": "./assets/poi/bird_paradise.jpg" },
+      "visual": { "preset": "nature_dome", "material": "glass", "glassTintHex": "#bfe9ff", "heightVoxels": 18 }
+    },
+    "chinatown": {
+      "kind": "district",
+      "model": "mall",
+      "label": "Chinatown",
+      "focus": false,
+      "tags": ["culture_heritage", "food", "street_culture"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8436879, 1.2799695] },
+      "geo": { "type": "Point", "coordinates": [103.8436879, 1.2799695] },
+      "ui": { "accentHex": "#d63031", "thumbSrc": "./assets/poi/chinatown.jpg" },
+      "visual": { "preset": "heritage_shophouse", "material": "painted", "heightVoxels": 16 }
+    },
+    "littleindia": {
+      "kind": "district",
+      "model": "mall",
+      "label": "Little India",
+      "focus": false,
+      "tags": ["culture_heritage", "food", "street_culture"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8492736, 1.3068427] },
+      "geo": { "type": "Point", "coordinates": [103.8492736, 1.3068427] },
+      "ui": { "accentHex": "#9900aa", "thumbSrc": "./assets/poi/littleindia.jpg" },
+      "visual": { "preset": "heritage_temple", "material": "stone", "heightVoxels": 18 }
+    },
+    "rainforest_wild_asia": {
+      "kind": "attraction",
+      "model": "park",
+      "label": "Rainforest Wild Asia",
+      "focus": false,
+      "tags": ["unique_experiences", "wildlife", "mandai"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.7814959, 1.4093796] },
+      "geo": { "type": "Point", "coordinates": [103.7814959, 1.4093796] },
+      "ui": { "accentHex": "#009645" },
+      "visual": { "preset": "nature_trail", "material": "matte", "heightVoxels": 14 }
+    },
+    "pulau_ubin_kayaking": {
+      "kind": "experience",
+      "model": "park",
+      "label": "Pulau Ubin Kayaking",
+      "focus": false,
+      "tags": ["city_in_nature", "adventure", "pulau_ubin"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.965943, 1.4134481] },
+      "geo": { "type": "Point", "coordinates": [103.965943, 1.4134481] },
+      "ui": { "accentHex": "#00a9b7" },
+      "visual": { "preset": "island_mangrove", "material": "matte", "heightVoxels": 12 }
+    },
+    "synthesis_bar": {
+      "kind": "experience",
+      "model": "mall",
+      "label": "Synthesis Bar",
+      "focus": false,
+      "tags": ["novelty", "nightlife"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8591876, 1.2942651] },
+      "geo": { "type": "Point", "coordinates": [103.8591876, 1.2942651] },
+      "ui": { "accentHex": "#9900aa" },
+      "visual": { "preset": "neon_bar", "material": "glass", "glassTintHex": "#a29bfe", "heightVoxels": 14 }
+    },
+    "trifecta": {
+      "kind": "experience",
+      "model": "mall",
+      "label": "Trifecta",
+      "focus": false,
+      "tags": ["novelty", "unique_experiences"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.839125, 1.2996875] },
+      "geo": { "type": "Point", "coordinates": [103.839125, 1.2996875] },
+      "ui": { "accentHex": "#fa9e0d" },
+      "visual": { "preset": "sports_retail", "material": "glass", "glassTintHex": "#5bd3e7", "heightVoxels": 16 }
+    },
+    "changi": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Changi Airport",
+      "focus": true,
+      "tags": ["airport", "transport", "gateway"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.9949824, 1.3510921] },
+      "geo": { "type": "Point", "coordinates": [103.9949824, 1.3510921] },
+      "ui": { "accentHex": "#005ec4" },
+      "visual": {
+        "preset": "airport_terminal",
+        "material": "glass",
+        "glassTintHex": "#bfe9ff",
+        "heightVoxels": 26,
+        "nudgeXVoxels": -18
+      }
+    },
+    "sentosa": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Sentosa",
+      "focus": false,
+      "tags": ["island", "beach", "attractions"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8343056, 1.2489459] },
+      "geo": { "type": "Point", "coordinates": [103.8343056, 1.2489459] },
+      "visual": { "nudgeXVoxels": -14, "nudgeZVoxels": -2 }
+    },
+    "vivocity": {
+      "kind": "landmark",
+      "model": "mall",
+      "label": "VivoCity",
+      "focus": false,
+      "tags": ["mall", "shopping", "harbourfront"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8229537, 1.2643707] },
+      "geo": { "type": "Point", "coordinates": [103.8229537, 1.2643707] },
+      "visual": { "nudgeXVoxels": -12, "nudgeZVoxels": -18 }
+    },
+    "botanic_gardens": {
+      "kind": "landmark",
+      "model": "park",
+      "label": "Singapore Botanic Gardens",
+      "focus": false,
+      "tags": ["nature", "park", "unesco"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8156151, 1.3146321] },
+      "geo": { "type": "Point", "coordinates": [103.8156151, 1.3146321] }
+    },
+    "orchard_road": {
+      "kind": "district",
+      "model": "district",
+      "label": "Orchard Road",
+      "focus": false,
+      "tags": ["shopping", "district", "central"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8430417, 1.3000095] },
+      "geo": { "type": "Point", "coordinates": [103.8430417, 1.3000095] }
+    },
+    "suntec_city": {
+      "kind": "landmark",
+      "model": "mall",
+      "label": "Suntec City",
+      "focus": false,
+      "tags": ["mall", "convention", "city"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8591876, 1.2942651] },
+      "geo": { "type": "Point", "coordinates": [103.8591876, 1.2942651] }
+    },
+    "clarke_quay": {
+      "kind": "district",
+      "model": "district",
+      "label": "Clarke Quay",
+      "focus": false,
+      "tags": ["nightlife", "river", "dining"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8445791, 1.2895991] },
+      "geo": { "type": "Point", "coordinates": [103.8445791, 1.2895991] }
+    },
+    "raffles_place": {
+      "kind": "district",
+      "model": "district",
+      "label": "Raffles Place",
+      "focus": false,
+      "tags": ["cbd", "finance", "central"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8514602, 1.2835417] },
+      "geo": { "type": "Point", "coordinates": [103.8514602, 1.2835417] }
+    },
+    "bugis": {
+      "kind": "district",
+      "model": "district",
+      "label": "Bugis",
+      "focus": false,
+      "tags": ["shopping", "heritage", "central"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8560367, 1.2991457] },
+      "geo": { "type": "Point", "coordinates": [103.8560367, 1.2991457] }
+    },
+    "esplanade": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Esplanade",
+      "focus": false,
+      "tags": ["arts", "theatre", "bay"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8559542, 1.2896438] },
+      "geo": { "type": "Point", "coordinates": [103.8559542, 1.2896438] }
+    },
+    "singapore_flyer": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Singapore Flyer",
+      "focus": false,
+      "tags": ["attractions", "bay", "views"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8632598, 1.2894379] },
+      "geo": { "type": "Point", "coordinates": [103.8632598, 1.2894379] }
+    },
+    "national_gallery": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "National Gallery Singapore",
+      "focus": false,
+      "tags": ["museum", "arts", "civic_district"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8514709, 1.2902557] },
+      "geo": { "type": "Point", "coordinates": [103.8514709, 1.2902557] }
+    },
+    "national_museum": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "National Museum of Singapore",
+      "focus": false,
+      "tags": ["museum", "history", "city"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8483167, 1.2965476] },
+      "geo": { "type": "Point", "coordinates": [103.8483167, 1.2965476] }
+    },
+    "fort_canning": {
+      "kind": "landmark",
+      "model": "park",
+      "label": "Fort Canning Park",
+      "focus": false,
+      "tags": ["park", "heritage", "city"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8460084, 1.2940165] },
+      "geo": { "type": "Point", "coordinates": [103.8460084, 1.2940165] }
+    },
+    "mount_faber": {
+      "kind": "landmark",
+      "model": "park",
+      "label": "Mount Faber",
+      "focus": false,
+      "tags": ["park", "views", "cable_car"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8175338, 1.2718234] },
+      "geo": { "type": "Point", "coordinates": [103.8175338, 1.2718234] },
+      "visual": { "nudgeXVoxels": -8, "nudgeZVoxels": -12 }
+    },
+    "henderson_waves": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Henderson Waves",
+      "focus": false,
+      "tags": ["bridge", "park_connector", "views"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.8154142, 1.2760507] },
+      "geo": { "type": "Point", "coordinates": [103.8154142, 1.2760507] }
+    },
+    "east_coast_park": {
+      "kind": "landmark",
+      "model": "park",
+      "label": "East Coast Park",
+      "focus": false,
+      "tags": ["beach", "park", "cycling"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.9270779, 1.3049716] },
+      "geo": { "type": "Point", "coordinates": [103.9270779, 1.3049716] },
+      "visual": { "nudgeXVoxels": -21, "nudgeZVoxels": -5 }
+    },
+    "pasir_ris_park": {
+      "kind": "landmark",
+      "model": "park",
+      "label": "Pasir Ris Park",
+      "focus": false,
+      "tags": ["park", "mangroves", "east"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.9504783, 1.3790773] },
+      "geo": { "type": "Point", "coordinates": [103.9504783, 1.3790773] },
+      "visual": { "nudgeXVoxels": -13, "nudgeZVoxels": 4 }
+    },
+    "pulau_ubin": {
+      "kind": "landmark",
+      "model": "park",
+      "label": "Pulau Ubin",
+      "focus": false,
+      "tags": ["island", "nature", "cycling"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.965943, 1.4134481] },
+      "geo": { "type": "Point", "coordinates": [103.965943, 1.4134481] },
+      "visual": { "nudgeXVoxels": -14, "nudgeZVoxels": -2 }
+    },
+    "jurong_lake_gardens": {
+      "kind": "landmark",
+      "model": "park",
+      "label": "Jurong Lake Gardens",
+      "focus": false,
+      "tags": ["park", "west", "nature"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.7229752, 1.3446299] },
+      "geo": { "type": "Point", "coordinates": [103.7229752, 1.3446299] }
+    },
+    "science_centre": {
+      "kind": "landmark",
+      "model": "monument",
+      "label": "Science Centre Singapore",
+      "focus": false,
+      "tags": ["museum", "family", "west"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.736019, 1.3328377] },
+      "geo": { "type": "Point", "coordinates": [103.736019, 1.3328377] }
+    },
+    "changi_village": {
+      "kind": "district",
+      "model": "district",
+      "label": "Changi Village",
+      "focus": false,
+      "tags": ["food", "heritage", "east"],
+      "geoOverlay": { "type": "Point", "coordinates": [103.9880815, 1.3896588] },
+      "geo": { "type": "Point", "coordinates": [103.9880815, 1.3896588] },
+      "visual": { "nudgeXVoxels": -21, "nudgeZVoxels": 6 }
+    }
+  },
+  "poi_overlay": {
+    "enabled": true,
+    "renderAllBoardFeatures": true,
+    "visualScale": 0.55,
+    "defaults": {
+      "focus": true,
+      "kind": "landmark",
+      "model": "monument",
+      "ui": { "accentHex": "#efe8db" },
+      "visual": { "preset": "modern_civic_glass", "material": "glass", "glassTintHex": "#bfe9ff", "heightVoxels": 16 }
+    },
+    "typePresets": {
+      "property": { "kind": "landmark", "model": "mall", "visual": { "preset": "retail_glass", "material": "glass", "glassTintHex": "#5bd3e7", "heightVoxels": 18 } },
+      "station": { "kind": "landmark", "model": "monument", "visual": { "preset": "modern_civic_glass", "material": "stone", "heightVoxels": 16 } },
+      "vehicle": { "kind": "landmark", "model": "monument", "visual": { "preset": "airport_terminal", "material": "glass", "glassTintHex": "#bfe9ff", "heightVoxels": 16 } }
     }
   },
   "transportation": {
-    "mrt": { "kind": "rail", "path": "nodes", "defaultSpeed": 0.0085, "yOffset": 8, "supports": ["start", "stop", "faster"], "formation": "six_car", "line": "east_west" },
-    "plane": { "kind": "air", "path": "circular", "radius": 220, "y": 126, "defaultSpeed": 0.0042, "supports": ["start", "stop", "faster"], "formation": "arrival_bank", "hub": "changi" },
-    "heli": { "kind": "air", "path": "patrol", "y": 68, "defaultSpeed": 0.042, "supports": ["start", "stop"], "formation": "twin_patrol", "hub": "marina_south" },
-    "ship": { "kind": "sea", "path": "circular", "radius": 300, "y": -3, "defaultSpeed": 0.0018, "supports": ["start", "stop"], "formation": "container_convoy", "hub": "port" },
+    "mrt": {
+      "kind": "rail",
+      "path": "nodes",
+      "defaultSpeed": 0.008,
+      "yOffset": 8,
+      "supports": ["start", "stop", "faster"],
+      "lines": {
+        "NS": { "label": "North-South", "colorHex": "#d42e12" },
+        "EW": { "label": "East-West", "colorHex": "#009645" },
+        "NE": { "label": "North East", "colorHex": "#9900aa" },
+        "CC": { "label": "Circle", "colorHex": "#fa9e0d" },
+        "DT": { "label": "Downtown", "colorHex": "#005ec4" },
+        "TE": { "label": "Thomson-East Coast", "colorHex": "#9d5b25" },
+        "CR": { "label": "Cross Island", "colorHex": "#00a9b7" },
+        "JE": { "label": "Jurong Region", "colorHex": "#0099a8" }
+      }
+    },
+    "plane": { "kind": "air", "path": "circular", "radius": 220, "y": 120, "defaultSpeed": 0.004, "supports": ["start", "stop", "faster"] },
+    "heli": { "kind": "air", "path": "patrol", "y": 60, "defaultSpeed": 0.05, "supports": ["start", "stop"] },
+    "ship": { "kind": "sea", "path": "circular", "radius": 300, "y": -3, "defaultSpeed": 0.002, "supports": ["start", "stop"] },
     "rocket": { "kind": "space", "path": "launch", "supports": ["launch"] }
   },
   "nature": {
     "citizens": {
       "defaultSentiment": "neutral",
       "sentiments": ["neutral", "happy"],
-      "archetypes": ["commuter", "tourist", "builder", "port_worker"],
       "bubbleTriggers": ["react", "bubble", "url", "file"],
       "bubbleTemplates": {
         "react:heard": "Did you hear about “{snippet}”?",

@@ -2,10 +2,10 @@
   "version": "singabldr-script@1",
   "meta": {
     "name": "Mobility PWA Stopover Demo",
-    "durationSeconds": 36,
+    "durationSeconds": 120,
     "loop": false,
     "simulationId": "mobility_pwa_stopover_demo",
-    "notes": "Demonstrates a mobile-first travel stopover flow with citizen chatter, linked chat bubbles, and budget follow-ups."
+    "notes": "Demonstrates a mobile-first travel stopover flow with long-lived citizen chatter, linked chat bubbles, and a budget follow-up branch."
   },
   "scenePatch": {
     "themes": {
@@ -34,29 +34,50 @@
   },
   "steps": [
     { "timestamp": 0, "action": "log", "message": "Mobility preset booted for mobile/PWA travel planning." },
-    { "timestamp": 0.4, "action": "setTheme", "value": "mobility_blue_hour", "bubble": true, "durationMs": 5200 },
-    { "timestamp": 0.8, "action": "setWeather", "value": "mobility_breeze", "bubble": true, "durationMs": 5200 },
+    { "timestamp": 0.4, "action": "setTheme", "value": "mobility_blue_hour", "bubble": true, "durationMs": 120000 },
+    { "timestamp": 0.8, "action": "setWeather", "value": "mobility_breeze", "bubble": true, "durationMs": 120000 },
     { "timestamp": 1.1, "action": "vehicle", "id": "plane", "op": "start" },
     { "timestamp": 1.3, "action": "vehicle", "id": "train", "op": "start" },
-    { "timestamp": 1.6, "action": "chat", "message": "RECOMMEND 3 hidden gems in Singapore, 6 hour flight stopover at Changi Airport" },
-    { "timestamp": 2.2, "action": "swarm", "op": "status", "status": "Mobility preset: finding fast airport-to-city hops for a short stopover.", "durationMs": 5400 },
-    { "timestamp": 3.1, "action": "bubbleBurst", "templateId": "mobility:hop", "snippet": "Changi Jurassic Mile for a quick open-air ride/walk before leaving the airport zone.", "count": 1, "durationMs": 6800 },
-    { "timestamp": 3.8, "action": "bubbleBurst", "templateId": "mobility:hop", "snippet": "Katong-Joo Chiat for murals, kopi, and Peranakan snacks within a manageable cab hop.", "count": 1, "durationMs": 6800 },
-    { "timestamp": 4.5, "action": "bubbleBurst", "templateId": "mobility:hop", "snippet": "The Intan area for a quieter heritage stop if you want culture without an all-day detour.", "count": 1, "durationMs": 6800 },
-    { "timestamp": 5.4, "action": "chat", "message": "Try a mobility-balanced route: Jurassic Mile, Katong-Joo Chiat, then a quick heritage stop before heading back to Changi." },
-    { "timestamp": 6.7, "action": "chat", "message": "I optimise for transit time, queue risk, and walking comfort so the route still feels relaxed on a phone-sized itinerary." },
-    { "timestamp": 8.2, "action": "react", "message": "Mobility preset keeps the chain compact: airport edge -> east side food/culture -> return buffer.", "count": 3, "durationMs": 7600 },
-    { "timestamp": 10.5, "action": "bubbleBurst", "templateId": "mobility:followup", "snippet": "Budget SGD300", "count": 1, "durationMs": 6200 },
-    { "timestamp": 12.2, "action": "chat", "message": "Budget SGD300" },
-    { "timestamp": 13.0, "action": "swarm", "op": "status", "status": "Rebalancing mobility plan for spend, comfort, and return-to-airport buffer.", "durationMs": 5400 },
-    { "timestamp": 14.2, "action": "bubbleBurst", "templateId": "mobility:budget", "snippet": "Keep transport lean: use MRT for the city leg, reserve ride-hailing for the final airport return only if timing slips.", "count": 1, "durationMs": 6800 },
-    { "timestamp": 14.9, "action": "bubbleBurst", "templateId": "mobility:budget", "snippet": "Food and tickets stay comfortable under SGD300 if you anchor around Katong and skip long-ticket attractions.", "count": 1, "durationMs": 6800 },
-    { "timestamp": 15.6, "action": "bubbleBurst", "templateId": "mobility:route", "snippet": "Keep a 90-minute return cushion to Changi so the stopover feels smooth on mobile.", "count": 1, "durationMs": 6800 },
-    { "timestamp": 16.9, "action": "chat", "message": "With SGD300, prioritise MRT + short last-mile hops, one heritage/cafe cluster, and a generous return buffer to Changi." },
-    { "timestamp": 18.3, "action": "react", "message": "Tap any Mobility bubble to continue with tighter constraints like 'Near MRT only' or 'More local food, less walking'.", "count": 2, "durationMs": 7600 },
-    { "timestamp": 22.0, "action": "vehicle", "id": "train", "op": "faster" },
-    { "timestamp": 24.5, "action": "sentiment", "value": "happy", "message": "Citizens are sharing route ideas across the viewport." },
-    { "timestamp": 28.0, "action": "vehicle", "id": "train", "op": "start" },
-    { "timestamp": 32.0, "action": "sentiment", "value": "neutral", "message": "Mobility preset demo complete. Continue the route in chat." }
+    { "timestamp": 1.7, "action": "chat", "message": "RECOMMEND 3 hidden gems in Singapore, 6 hour flight stopover at Changi Airport" },
+    { "timestamp": 2.8, "action": "swarm", "op": "status", "status": "Mobility preset: mapping a calm stopover route with low transfer risk and a smooth return to Changi.", "durationMs": 120000 },
+
+    { "timestamp": 8, "action": "bubbleBurst", "templateId": "mobility:hop", "snippet": "Changi Jurassic Mile gives you a quick outdoors reset before you commit to a city detour.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 12, "action": "chat", "message": "Start with Jurassic Mile if you want a light airport-edge stop that still feels distinct from the terminal." },
+
+    { "timestamp": 16, "action": "bubbleBurst", "templateId": "mobility:hop", "snippet": "Katong-Joo Chiat layers murals, kopi, and Peranakan snacks into one compact east-side cluster.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 22, "action": "react", "message": "Mobility chain: airport edge -> east-side culture/food -> buffer back to Changi.", "count": 2, "durationMs": 120000 },
+
+    { "timestamp": 24, "action": "bubbleBurst", "templateId": "mobility:hop", "snippet": "The Intan area works if you want a quieter heritage pause without consuming the entire stopover.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 32, "action": "chat", "message": "The hidden-gem route stays compact: Jurassic Mile, Katong-Joo Chiat, then one quieter heritage note if time still feels comfortable." },
+
+    { "timestamp": 32, "action": "bubbleBurst", "templateId": "mobility:route", "snippet": "Keep one leg predictable: MRT outward if possible, then leave room for a faster final return if queues or rain build up.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 42, "action": "vehicle", "id": "train", "op": "faster" },
+
+    { "timestamp": 40, "action": "bubbleBurst", "templateId": "mobility:followup", "snippet": "Budget SGD300", "count": 1, "durationMs": 120000 },
+    { "timestamp": 52, "action": "chat", "message": "Budget SGD300" },
+
+    { "timestamp": 48, "action": "bubbleBurst", "templateId": "mobility:budget", "snippet": "Use MRT for the city leg, then keep ride-hailing only as a timing safety valve for the return to Changi.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 62, "action": "swarm", "op": "status", "status": "Rebalancing for SGD300 with comfort, food value, and reliable airport return timing.", "durationMs": 120000 },
+
+    { "timestamp": 56, "action": "bubbleBurst", "templateId": "mobility:budget", "snippet": "Anchor spending around one food-and-heritage cluster so the stopover feels rich without stacking ticketed attractions.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 72, "action": "chat", "message": "With SGD300, prioritise one compact heritage-food zone and keep transport flexible rather than ambitious." },
+
+    { "timestamp": 64, "action": "bubbleBurst", "templateId": "mobility:route", "snippet": "A 90-minute Changi return cushion keeps the whole trip calm on a phone-sized itinerary.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 82, "action": "react", "message": "Tap any Mobility bubble to continue with constraints like 'Near MRT only', 'More local food', or 'Less walking'.", "count": 2, "durationMs": 120000 },
+
+    { "timestamp": 72, "action": "bubbleBurst", "templateId": "mobility:budget", "snippet": "Katong-Joo Chiat stays strong for value because transport is manageable and the area packs food plus visual texture together.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 92, "action": "sentiment", "value": "happy", "message": "Citizens are sharing route ideas evenly across the viewport." },
+
+    { "timestamp": 80, "action": "bubbleBurst", "templateId": "mobility:followup", "snippet": "Near MRT only, under SGD300 total", "count": 1, "durationMs": 120000 },
+    { "timestamp": 102, "action": "chat", "message": "Near MRT only, under SGD300 total" },
+
+    { "timestamp": 88, "action": "bubbleBurst", "templateId": "mobility:route", "snippet": "For the most reliable finish, trim the route to two strong stops and keep the airport leg emotionally easy, not rushed.", "count": 1, "durationMs": 120000 },
+
+    { "timestamp": 96, "action": "bubbleBurst", "templateId": "mobility:budget", "snippet": "If you want low-effort value: pick one hawker stop near your MRT line, then keep the rest as a flexible stroll.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 104, "action": "bubbleBurst", "templateId": "mobility:route", "snippet": "Phone-first routing: one primary MRT line + one optional detour beats a tight multi-transfer plan.", "count": 1, "durationMs": 120000 },
+    { "timestamp": 112, "action": "bubbleBurst", "templateId": "mobility:followup", "snippet": "Less walking, more shade", "count": 1, "durationMs": 120000 },
+    { "timestamp": 120, "action": "bubbleBurst", "templateId": "mobility:followup", "snippet": "Tap any Mobility bubble to continue", "count": 1, "durationMs": 120000 },
+
+    { "timestamp": 118, "action": "chat", "message": "Mobility preset demo complete. The bubbles stay open until you close them, so continue by tapping one of the Mobility prompts." }
   ]
 }

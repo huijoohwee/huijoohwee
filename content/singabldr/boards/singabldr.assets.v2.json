@@ -1,12 +1,44 @@
 {
   "version": "singabldr-assets@1",
   "palette": {
-    "primary": "#0984e3",
+    "primary": "#0a84ff",
     "accent": "#ff4757",
     "land": ["#6ab04c", "#88D05C", "#badc58"],
     "sand": "#f6e58d",
-    "water": "#7fc8d4",
-    "outline": "#2d3436"
+    "water": "#56c8d8",
+    "outline": "#2d3436",
+    "mrtLines": {
+      "NS": "#d42e12",
+      "EW": "#009645",
+      "NE": "#9900aa",
+      "CC": "#fa9e0d",
+      "DT": "#005ec4",
+      "TE": "#9d5b25",
+      "CR": "#00a9b7",
+      "JE": "#0099a8"
+    }
+  },
+  "atlas": {
+    "version": "atlas@1",
+    "grid": {
+      "enabled": true,
+      "spacingVoxels": 11,
+      "majorEvery": 6,
+      "minorLineWidthPx": 1.25,
+      "majorLineWidthPx": 3.25,
+      "majorColorHex": "#08304a",
+      "minorColorHex": "#0a2236",
+      "majorOpacity": 0.28,
+      "minorOpacity": 0.12
+    },
+    "marinaBayGlass": {
+      "skylineCyanHex": "#2ae6ff",
+      "skylineVioletHex": "#b19cff",
+      "skylineWarmHex": "#ffd3a6",
+      "skylineTintHex": "#5bd3e7",
+      "fogTintHex": "#bfe9ff",
+      "edgeGlowHex": "#8be9fd"
+    }
   },
   "materials": {
     "voxelLand": { "shader": "lambert", "receiveShadow": true },
@@ -15,7 +47,44 @@
     "roadDash": { "shader": "lambert", "color": "#ffffff" }
   },
   "ui": {
-    "bubble": { "maxWidth": 136, "borderRadius": 12, "ttlMs": 4200 },
-    "chat": { "maxMessages": 96 }
+    "bubble": { "maxWidth": 150, "borderRadius": 12, "ttlMs": 5000 },
+    "chat": { "maxMessages": 120 },
+    "storageKeys": {
+      "uiStyle": "singabldr.ui.style"
+    },
+    "style": {
+      "default": "atlas",
+      "variants": ["atlas", "arcade", "glass"],
+      "assetsVersion": "20260416-1",
+      "mrtLegendOrder": ["NS", "EW", "NE", "CC", "DT", "TE", "CR", "JE"],
+      "mrtUiGradientOrder": ["DT", "CC", "NE", "EW", "NS", "TE"],
+      "ctaDiceGradientOrder": ["NS", "CC", "EW", "NE", "NS"],
+      "ctaSuperagentGradientOrder": ["DT", "CC", "TE", "EW"],
+      "tokens": {
+        "blend": {
+          "focusAlpha": 0.62,
+          "chipBgAlpha": 0.38,
+          "skylineTintAlpha": 0.3
+        },
+        "atlas": {
+          "focusAlpha": 0.78,
+          "gridMinorPx": 22,
+          "gridMajorPx": 110,
+          "chipBgAlpha": 0.5,
+          "skylineTintAlpha": 0.38
+        },
+        "arcade": {
+          "focusAlpha": 0.78,
+          "chipBgAlpha": 0.46,
+          "skylineTintAlpha": 0.22
+        },
+        "glass": {
+          "focusAlpha": 0.46,
+          "surfaceAlpha": 0.78,
+          "surfaceStrongAlpha": 0.92,
+          "shadowSoftness": 0.65
+        }
+      }
+    }
   }
 }
