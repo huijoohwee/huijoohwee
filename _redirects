@@ -7,16 +7,14 @@
 /knowgrph/assets/* /content/knowgrph/assets/:splat 200
 /knowgrph/vendor/* /content/knowgrph/vendor/:splat 200
 /knowgrph/imports/* /content/knowgrph/imports/:splat 200
-/knowgrph/*.js /content/knowgrph/:splat 200
-/knowgrph/*.mjs /content/knowgrph/:splat 200
-/knowgrph/*.css /content/knowgrph/:splat 200
-/knowgrph/*.svg /content/knowgrph/:splat 200
-/knowgrph/*.ico /content/knowgrph/:splat 200
-/knowgrph/*.json /content/knowgrph/:splat 200
-/knowgrph/*.wasm /content/knowgrph/:splat 200
-/knowgrph/*.txt /content/knowgrph/:splat 200
-/knowgrph/*.webmanifest /content/knowgrph/:splat 200
-/knowgrph/*.map /content/knowgrph/:splat 200
+# BEGIN knowgrph generated top-level file routes
+/knowgrph/favicon.svg /content/knowgrph/favicon.svg 200
+/knowgrph/manifest.webmanifest /content/knowgrph/manifest.webmanifest 200
+/knowgrph/settings-flow.json /content/knowgrph/settings-flow.json 200
+/knowgrph/sw.js /content/knowgrph/sw.js 200
+/knowgrph/unicorn-investors-top-3-3d.json /content/knowgrph/unicorn-investors-top-3-3d.json 200
+/knowgrph/workbox-2c644346.js /content/knowgrph/workbox-2c644346.js 200
+# END knowgrph generated top-level file routes
 /knowgrph/ /content/knowgrph/index.html 200
 /knowgrph/* /content/knowgrph/index.html 200
 /content/knowgrph /knowgrph 301
