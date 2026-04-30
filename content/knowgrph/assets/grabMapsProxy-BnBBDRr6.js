@@ -1,1 +1,0 @@
-import{$ as o}from"./index-gF7ymBWs.js";const a=(i,e)=>{const n=(()=>{var r;const t="".trim();return t||(typeof window>"u"?"":String(((r=window.location)==null?void 0:r.origin)||"").trim())})();if(!n)return null;try{const t=new URL(String(i||"").trim()),r=new URL(o,n);return r.searchParams.set("url",t.toString()),r.toString()}catch{return null}};export{a as t};
