@@ -1,0 +1,8 @@
+async function m(e,n){try{if(typeof window>"u"||!e)return;const o=String((n==null?void 0:n.title)||"Document"),d=document.title,i="kg-print-root",a="kg-print-style",s=document.getElementById(i);if(s)try{s.remove()}catch{}const p=document.getElementById(a);if(p)try{p.remove()}catch{}const t=document.createElement("div");t.id=i,t.style.position="fixed",t.style.inset="0",t.style.zIndex="2147483647",t.style.background="white",t.style.overflow="auto",t.style.padding="14mm";const l=e.cloneNode(!0);t.appendChild(l),document.body.appendChild(t);const r=document.createElement("style");r.id=a,r.textContent=`
+      @media print {
+        body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body > *:not(#${i}) { display: none !important; }
+        #${i} { position: static !important; inset: auto !important; overflow: visible !important; padding: 0 !important; }
+        @page { margin: 14mm; }
+      }
+    `,document.head.appendChild(r);const c=()=>{try{document.title=d}catch{}try{r.remove()}catch{}try{t.remove()}catch{}try{window.removeEventListener("afterprint",c)}catch{}};try{document.title=o}catch{}try{window.addEventListener("afterprint",c)}catch{}try{window.focus()}catch{}try{window.print()}catch{c()}setTimeout(()=>{c()},3e4)}catch{}}async function y(e){const n=e.viewerEl||e.viewerRefCurrent;if(!n){e.pushUiToast({id:"export-pdf-missing-view",kind:"warning",message:"Open the Viewer to export PDF."});return}const o=n.querySelector('[data-testid="markdown-preview-root"]')||n,d=o.querySelector("article")||o;await m(d,{title:e.exportBaseName})}export{y as exportViewerPdf};
