@@ -1,0 +1,30 @@
+import{_ as o,g as q,s as U,a as V,b as Z,q as j,p as H,l as w,c as J,E as K,I as Q,L as X,d as Y,y as tt,G as et}from"./mermaid.core-BGj1PvCs.js";import{p as rt}from"./chunk-4BX2VUAB-DjC2HwdQ.js";import{p as it}from"./treemap-KMMF4GRG-BRJH-LBW.js";import{n as G,o as at,q as ot}from"./d3-wIndiOZE.js";import"./canvas-3d-CmrngFRP.js";import"./react-Cpd4151S.js";import"./elk-api-DIMSqasN.js";import"./canvas-runtime-DAMiPXbo.js";import"./canvas-3d-shell-Z4zQVrUw.js";import"./design-canvas-ezbizOgQ.js";import"./geospatial-BOqQEtCT.js";import"./markdown-parser-BpOAmY0Z.js";import"./markdown-it-BX_wUld1.js";import"./markdown-ast-Cp1T4cP6.js";import"./ui-Cg8oVBSX.js";import"./graph-canvas-CgN8lZuY.js";import"./canvas-zoom-DFHTOp9H.js";import"./canvas-2d-CXjCMhmD.js";import"./schema-yxvpBaFC.js";import"./markdown-spqempoy.js";import"./workspace-main-BPK0pxRp.js";import"./flow-editor-ui-ChRZxtIf.js";import"./flow-editor-canvas-eM3D6YiO.js";import"./flow-canvas-core-DIn6ptcA.js";import"./workspace-fs-CKVCqbsM.js";import"./workspace-source-files-Cb5V5X9y.js";import"./panel-flow-editor-MK1n58GY.js";import"./canvas-shell-DMJYkVxp.js";import"./panels-B6MH_jKo.js";import"./schema-editor-CRQhF_AB.js";import"./toolbar-ui-BWUFbR24.js";import"./markdown-code-Dc8K5AAq.js";import"./highlightjs-Cd02PMP8.js";import"./markdown-preview-D62HXoCR.js";import"./toolbar-CIge7FQ6.js";import"./graph-canvas-root-a-_rlnHp.js";import"./toolbar-launch-BHVSursj.js";import"./settings-view-hvT6AehK.js";import"./settings-registry-CzY9m6PH.js";import"./settings-C7E2bFK7.js";import"./canvas-3d-scene-DIwYbZlT.js";import"./canvas-3d-visuals-Dk0ABQpq.js";import"./three-core-CI_PzYtU.js";import"./three-renderers-COZi_ocn.js";import"./three-textures-D4KpcNGc.js";import"./three-scene-core-Dxf37R84.js";import"./three-math-Cn_OgFNR.js";import"./three-extras-BrFkphqG.js";import"./three-objects-yoth8-Fa.js";import"./three-materials-CsgPCM-x.js";import"./three-geometries-CNb6CxmU.js";import"./three-lights-Bos6o4Yh.js";import"./three-examples-DwdOs8T0.js";import"./three-fiber-WjHjcfb-.js";import"./toolbar-imports-YanQVZmZ.js";import"./workspace-actions-DrbDEw9D.js";import"./workspace-runtime-cy-Cw5WO.js";import"./workspace-ui-CO5q3BMl.js";import"./workspace-DSy_cpIU.js";import"./panel-preview-CsyV7eDw.js";import"./panel-graph-fields-Cd_7VS5M.js";import"./spotlight-5NBq4khL.js";import"./toolbar-menu-DKX_jgOw.js";import"./flow-canvas-B-0dF9Lz.js";import"./min-wHClJwRh.js";import"./_baseUniq-BApWG1zY.js";var st=et.pie,D={sections:new Map,showData:!1},d=D.sections,C=D.showData,pt=structuredClone(st),lt=o(()=>structuredClone(pt),"getConfig"),nt=o(()=>{d=new Map,C=D.showData,tt()},"clear"),ct=o(({label:t,value:r})=>{if(r<0)throw new Error(`"${t}" has invalid value: ${r}. Negative values are not allowed in pie charts. All slice values must be >= 0.`);d.has(t)||(d.set(t,r),w.debug(`added new section: ${t}, with value: ${r}`))},"addSection"),mt=o(()=>d,"getSections"),dt=o(t=>{C=t},"setShowData"),gt=o(()=>C,"getShowData"),W={getConfig:lt,clear:nt,setDiagramTitle:H,getDiagramTitle:j,setAccTitle:Z,getAccTitle:V,setAccDescription:U,getAccDescription:q,addSection:ct,getSections:mt,setShowData:dt,getShowData:gt},ut=o((t,r)=>{rt(t,r),r.setShowData(t.showData),t.sections.map(r.addSection)},"populateDb"),ft={parse:o(async t=>{const r=await it("pie",t);w.debug(r),ut(r,W)},"parse")},ht=o(t=>`
+  .pieCircle{
+    stroke: ${t.pieStrokeColor};
+    stroke-width : ${t.pieStrokeWidth};
+    opacity : ${t.pieOpacity};
+  }
+  .pieOuterCircle{
+    stroke: ${t.pieOuterStrokeColor};
+    stroke-width: ${t.pieOuterStrokeWidth};
+    fill: none;
+  }
+  .pieTitleText {
+    text-anchor: middle;
+    font-size: ${t.pieTitleTextSize};
+    fill: ${t.pieTitleTextColor};
+    font-family: ${t.fontFamily};
+  }
+  .slice {
+    font-family: ${t.fontFamily};
+    fill: ${t.pieSectionTextColor};
+    font-size:${t.pieSectionTextSize};
+    // fill: white;
+  }
+  .legend text {
+    fill: ${t.pieLegendTextColor};
+    font-family: ${t.fontFamily};
+    font-size: ${t.pieLegendTextSize};
+  }
+`,"getStyles"),vt=ht,St=o(t=>{const r=[...t.values()].reduce((i,s)=>i+s,0),y=[...t.entries()].map(([i,s])=>({label:i,value:s})).filter(i=>i.value/r*100>=1).sort((i,s)=>s.value-i.value);return ot().value(i=>i.value)(y)},"createPieArcs"),xt=o((t,r,y,$)=>{w.debug(`rendering pie chart
+`+t);const i=$.db,s=J(),T=K(i.getConfig(),s.pie),A=40,p=18,c=4,n=450,g=n,u=Q(r),l=u.append("g");l.attr("transform","translate("+g/2+","+n/2+")");const{themeVariables:a}=s;let[b]=X(a.pieOuterStrokeWidth);b??(b=2);const E=T.textPosition,m=Math.min(g,n)/2-A,I=G().innerRadius(0).outerRadius(m),L=G().innerRadius(m*E).outerRadius(m*E);l.append("circle").attr("cx",0).attr("cy",0).attr("r",m+b/2).attr("class","pieOuterCircle");const f=i.getSections(),M=St(f),O=[a.pie1,a.pie2,a.pie3,a.pie4,a.pie5,a.pie6,a.pie7,a.pie8,a.pie9,a.pie10,a.pie11,a.pie12];let h=0;f.forEach(e=>{h+=e});const _=M.filter(e=>(e.data.value/h*100).toFixed(0)!=="0"),v=at(O);l.selectAll("mySlices").data(_).enter().append("path").attr("d",I).attr("fill",e=>v(e.data.label)).attr("class","pieCircle"),l.selectAll("mySlices").data(_).enter().append("text").text(e=>(e.data.value/h*100).toFixed(0)+"%").attr("transform",e=>"translate("+L.centroid(e)+")").style("text-anchor","middle").attr("class","slice"),l.append("text").text(i.getDiagramTitle()).attr("x",0).attr("y",-400/2).attr("class","pieTitleText");const k=[...f.entries()].map(([e,x])=>({label:e,value:x})),S=l.selectAll(".legend").data(k).enter().append("g").attr("class","legend").attr("transform",(e,x)=>{const F=p+c,R=F*k.length/2,N=12*p,B=x*F-R;return"translate("+N+","+B+")"});S.append("rect").attr("width",p).attr("height",p).style("fill",e=>v(e.label)).style("stroke",e=>v(e.label)),S.append("text").attr("x",p+c).attr("y",p-c).text(e=>i.getShowData()?`${e.label} [${e.value}]`:e.label);const P=Math.max(...S.selectAll("text").nodes().map(e=>(e==null?void 0:e.getBoundingClientRect().width)??0)),z=g+A+p+c+P;u.attr("viewBox",`0 0 ${z} ${n}`),Y(u,n,z,T.useMaxWidth)},"draw"),wt={draw:xt},Ge={parser:ft,db:W,renderer:wt,styles:vt};export{Ge as diagram};
