@@ -2118,6 +2118,24 @@
     return items.slice(0, CHAIN_ENTRY_LIMIT);
   }
 
+  function readJsonResponseSafely(res) {
+    var contentType = "";
+    try {
+      contentType = String(res && res.headers && res.headers.get ? res.headers.get("content-type") || "" : "").toLowerCase();
+    } catch {}
+    if (contentType.indexOf("application/json") >= 0) {
+      return res.json();
+    }
+    return res.text().then(function (text) {
+      var raw = String(text || "").trim();
+      if (!raw) return {};
+      if (raw.charAt(0) !== "{" && raw.charAt(0) !== "[") {
+        throw new Error("mobility preset returned non-json");
+      }
+      return JSON.parse(raw);
+    });
+  }
+
   function ensureScriptSeedLoaded() {
     if (scriptSeedRequested) return;
     scriptSeedRequested = true;
@@ -2125,7 +2143,7 @@
       fetch(PRESET_VALUE, { cache: "no-store" })
         .then(function (res) {
           if (!res.ok) throw new Error("mobility preset unavailable");
-          return res.json();
+          return readJsonResponseSafely(res);
         })
         .then(function (parsed) {
           ingestScriptMessages(extractMobilityScriptItems(parsed));
