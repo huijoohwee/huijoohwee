@@ -8,7 +8,7 @@
 (function singabldrServiceWorker() {
   "use strict";
 
-  var CACHE_VERSION = "20260504-1";
+  var CACHE_VERSION = "20260504-2";
   var CACHE_PREFIX = "singabldr-pwa";
   var CACHE_NAME = CACHE_PREFIX + ":static:" + CACHE_VERSION;
 

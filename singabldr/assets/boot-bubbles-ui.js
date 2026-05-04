@@ -1090,7 +1090,7 @@
     };
   }
 
-  /** @type {{name:string,isEnabled:()=>boolean,getBubbles:()=>HTMLElement[],getId:(el:HTMLElement)=>string,onPinToggle?:(id:string,el:HTMLElement)=>void,onAdd?:(id:string,el:HTMLElement)=>void,onClose?:(id:string,el:HTMLElement)=>void,onDragStart?:(id:string,el:HTMLElement)=>void,onDragTo?:(id:string,screenX:number,screenY:number,el:HTMLElement)=>void,onDragEnd?:(id:string,el:HTMLElement)=>void}[]} */
+  /** @type {{name:string,isEnabled:()=>boolean,getBubbles:()=>HTMLElement[],getId:(el:HTMLElement)=>string,onPinToggle?:(id:string,el:HTMLElement)=>void,onAdd?:(id:string,el:HTMLElement)=>void,onClose?:(id:string,el:HTMLElement)=>void,onDragStart?:(id:string,el:HTMLElement)=>void,onDragTo?:(id:string,screenX:number,screenY:number,el:HTMLElement)=>void,onDragEnd?:(id:string,el:HTMLElement,meta?:{didMove:boolean,isCancel:boolean,screenX?:number,screenY?:number})=>void}[]} */
   var adapters = [];
 
   function pickAdapter() {
@@ -1284,7 +1284,15 @@
 
     ensureBubbleUi(hit.el);
     var id = adapter.getId(hit.el);
+    var wasActive = state.activeId === id && state.activeEl === hit.el;
     setActive(id, hit.el);
+
+    // First tap selects a bubble and reveals the toolbar. Requiring a second gesture
+    // to drag dramatically reduces accidental fling-like motion on touch/trackpad input.
+    if (!wasActive) {
+      stopEventHard(ev);
+      return;
+    }
 
     // Start drag.
     stopEventHard(ev);
@@ -1309,7 +1317,7 @@
     var dx = pt.x - state.dragStartX;
     var dy = pt.y - state.dragStartY;
     if (!state.dragMoved) {
-      if (dx * dx + dy * dy < 36) return;
+      if (dx * dx + dy * dy < 256) return;
       state.dragMoved = true;
     }
     stopEventHard(ev);
@@ -1326,6 +1334,9 @@
     var adapter = pickAdapter() || adapters[0];
     var action = String(state.pendingToolbarAction || "");
     var didMove = !!state.dragMoved;
+    var pt = getClientPoint(ev);
+    var releaseScreenX = pt.x + state.dragOffsetX;
+    var releaseScreenY = pt.y + state.dragOffsetY;
     var isCancel = safe(function () {
       return !!(ev && typeof ev.type === "string" && ev.type.indexOf("cancel") >= 0);
     }, false);
@@ -1337,7 +1348,14 @@
     state.dragId = "";
     state.dragEl = null;
     state.dragPointerKey = -1;
-    if (adapter.onDragEnd && dragEl && dragId) adapter.onDragEnd(dragId, dragEl);
+    if (adapter.onDragEnd && dragEl && dragId) {
+      adapter.onDragEnd(dragId, dragEl, {
+        didMove: didMove,
+        isCancel: isCancel,
+        screenX: releaseScreenX,
+        screenY: releaseScreenY,
+      });
+    }
     // If the pointerdown started from the toolbar and the user did not drag, treat it as a tap action.
     if (!isCancel && action && !didMove && state.activeEl && state.activeId) {
       stopEventHard(ev);

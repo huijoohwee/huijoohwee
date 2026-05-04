@@ -48,6 +48,8 @@
   var LS_KEY_MOBILITY_DEFAULTS_APPLIED = "singabldr.mobility.defaults.v1";
   var LS_KEY_CHAT_FLOWINFISH_DEFAULT_OPEN = "singabldr.chat.flowinfish.default_open";
   var LS_KEY_MOBILITY_DRAG_HINT_DISMISSED = "singabldr.mobility.drag.hint.dismissed.v1";
+  var WIDGET_MODE_ACTIVE_DATASET_KEY = "sbWidgetModeActive";
+  var WIDGET_MODE_ACTIVE_EVENT = "singabldr:widget-mode-activate";
   var BUBBLE_STYLE_COLORFUL = "colorful";
   var BUBBLE_STYLE_SIMPLE = "simple";
   var BUBBLE_STYLE_BLANK = "blank";
@@ -66,6 +68,7 @@
   var CHAIN_STACK_COLLAPSED = "collapsed";
   // Preset reveal cadence (8s).
   var CHAIN_REVEAL_STEP_MS = 8000;
+  var CANVAS_WHEEL_ZOOM_MAX_STEP = 0.035;
   var scheduledLayout = false;
   var defaultsReasserted = false;
   var CSS_VAR_CANVAS_SCALE = "--sb-canvas-scale";
@@ -120,9 +123,17 @@
     // move WITH the view transform but are excluded from collision reflow.
     pinnedAnchorXById: Object.create(null),
     pinnedAnchorYById: Object.create(null),
+    solvedXById: Object.create(null),
+    solvedYById: Object.create(null),
+    draggingId: "",
     activeId: "",
     activeTimer: 0,
   };
+  var CITIZEN_PERSONAL_SPACE_RADIUS = 28;
+  var CITIZEN_ACTIVE_PERSONAL_SPACE_BONUS = 14;
+  var CITIZEN_COLLISION_DEADZONE_PX = 10;
+  var CITIZEN_SETTLE_GRID_PX = 3;
+  var CITIZEN_SETTLE_EPSILON_PX = 2.2;
   var citizenInteractionsInstalled = false;
   var dragHintInstalled = false;
   /** @type {HTMLElement|null} */
@@ -561,6 +572,40 @@
     return getChatContainer() || byId("superagent-container") || document.body;
   }
 
+  function isNodeInsideRuntimeBubbleLayer(node) {
+    if (!node || typeof node !== "object") return false;
+    return safe(function () {
+      if (node.nodeType === 1) {
+        var el = /** @type {Element} */ (node);
+        if (el.id === "mobility-citizen-layer" || el.id === CHAIN_LAYER_ID) return true;
+        if (typeof el.closest === "function") {
+          return !!el.closest("#mobility-citizen-layer, #" + CHAIN_LAYER_ID);
+        }
+      }
+      var parent = node.parentElement || node.parentNode;
+      if (!parent || typeof parent.closest !== "function") return false;
+      return !!parent.closest("#mobility-citizen-layer, #" + CHAIN_LAYER_ID);
+    }, false);
+  }
+
+  function mutationTouchesExternalBubbleDom(mutations) {
+    var list = Array.isArray(mutations) ? mutations : [];
+    for (var i = 0; i < list.length; i++) {
+      var m = list[i];
+      if (!m) continue;
+      if (!isNodeInsideRuntimeBubbleLayer(m.target)) return true;
+      var added = m.addedNodes || [];
+      for (var ai = 0; ai < added.length; ai++) {
+        if (!isNodeInsideRuntimeBubbleLayer(added[ai])) return true;
+      }
+      var removed = m.removedNodes || [];
+      for (var ri = 0; ri < removed.length; ri++) {
+        if (!isNodeInsideRuntimeBubbleLayer(removed[ri])) return true;
+      }
+    }
+    return false;
+  }
+
   function readActivePresetValue() {
     var select = getScriptPresetSelect();
     return select ? String(select.value || "").trim() : "";
@@ -585,8 +630,25 @@
     return false;
   }
 
+  function isWidgetModeExplicitlyActive() {
+    return safe(function () {
+      var root = document.documentElement;
+      return !!(root && root.dataset && root.dataset[WIDGET_MODE_ACTIVE_DATASET_KEY] === "1");
+    }, false);
+  }
+
+  function hasExistingWidgetBubbleDom() {
+    return safe(function () {
+      return !!document.querySelector("#mobility-citizen-layer .citizen-bubble, #chat-bubbles-container .citizen-bubble");
+    }, false);
+  }
+
+  function isWidgetModeActive() {
+    return isWidgetModeExplicitlyActive() || shouldDefaultOpenFlowinfishPanel() || hasExistingWidgetBubbleDom();
+  }
+
   function isMobilityPresetActive() {
-    return readActivePresetValue() === PRESET_VALUE;
+    return readActivePresetValue() === PRESET_VALUE && isWidgetModeActive();
   }
 
   function normalizeBubbleStyle(value) {
@@ -1148,6 +1210,14 @@
     return Math.max(min, Math.min(max, value));
   }
 
+  function getWheelZoomFactor(deltaY) {
+    var delta = Number(deltaY || 0);
+    if (!Number.isFinite(delta) || delta === 0) return 1;
+    var magnitude = clamp(Math.abs(delta), 1, 120);
+    var step = 1 + (magnitude / 120) * CANVAS_WHEEL_ZOOM_MAX_STEP;
+    return delta > 0 ? 1 / step : step;
+  }
+
   function getCanvasScale() {
     return clamp(chainState.viewScale || 1, 0.72, 2.4);
   }
@@ -1226,6 +1296,38 @@
       el.dataset.mobilityCitizenId = id;
     });
     return id;
+  }
+
+  function getStableCitizenOrderIndex(id) {
+    var key = String(id || "");
+    if (!key) return Number.MAX_SAFE_INTEGER;
+    var direct = chainState.order.indexOf(key);
+    if (direct >= 0) return direct;
+    return 1000000 + safe(function () {
+      return Number(String(key).replace(/^[^\d]*(\d+).*$/, "$1")) || 0;
+    }, 0);
+  }
+
+  function quantizeToGrid(value, step) {
+    var n = Number(value);
+    var s = Math.max(1, Number(step || 1));
+    if (!Number.isFinite(n)) return 0;
+    return Math.round(n / s) * s;
+  }
+
+  function stabilizeSolvedBubblePosition(id, x, y) {
+    var nextX = quantizeToGrid(x, CITIZEN_SETTLE_GRID_PX);
+    var nextY = quantizeToGrid(y, CITIZEN_SETTLE_GRID_PX);
+    var prevX = Number(citizenState.solvedXById[id]);
+    var prevY = Number(citizenState.solvedYById[id]);
+    if (Number.isFinite(prevX) && Number.isFinite(prevY)) {
+      var dx = nextX - prevX;
+      var dy = nextY - prevY;
+      if (Math.hypot(dx, dy) <= CITIZEN_SETTLE_EPSILON_PX) {
+        return { x: prevX, y: prevY };
+      }
+    }
+    return { x: nextX, y: nextY };
   }
 
   function ensureCitizenBubbleUi(el) {
@@ -1750,6 +1852,7 @@
       safe(function () {
         hit.el.dataset.mobilityDragging = "1";
       });
+      citizenState.draggingId = hit.id;
     }
 
     function handleMove(ev) {
@@ -1759,7 +1862,7 @@
       var dx = pt.x - drag.startX;
       var dy = pt.y - drag.startY;
       if (!drag.moved) {
-        if (dx * dx + dy * dy < 36) return; // 6px threshold
+        if (dx * dx + dy * dy < 256) return; // 16px threshold
         drag.moved = true;
       }
       stopEventHard(ev);
@@ -1767,11 +1870,10 @@
       var screenY = pt.y + drag.offsetY;
       // Update anchor continuously (so any external layout pass won't snap us back),
       // but avoid triggering full layout every move (prevents churn / jank on iOS).
-      pinBubbleAtScreen(drag.id, screenX, screenY);
-
-      // Apply transform immediately for responsive drag feedback.
+      // Also calm large sparse pointer deltas so the bubble does not "teleport" when
+      // browsers coalesce move events under load.
       if (activeEl && citizenState.activeId === drag.id) {
-        applyManagedTransform(activeEl, { x: screenX, y: screenY });
+          applyCalmedDragPreview(drag.id, activeEl, { x: screenX, y: screenY });
       } else {
         // Fallback: find node by id if selection wasn't set.
         safe(function () {
@@ -1781,7 +1883,7 @@
             if (!el) continue;
             var id = safe(function () { return String(el.dataset.mobilityCitizenId || ""); }, "");
             if (id === drag.id) {
-              applyManagedTransform(el, { x: screenX, y: screenY });
+              applyCalmedDragPreview(drag.id, el, { x: screenX, y: screenY });
               break;
             }
           }
@@ -1792,6 +1894,11 @@
     function handleUp(ev) {
       if (!drag.active) return;
       if (ev && getPointerKey(ev) !== drag.pointerKey) return;
+      var dropId = drag.id;
+      var dropPt = getClientPoint(ev);
+      var dropScreenX = dropPt.x + drag.offsetX;
+      var dropScreenY = dropPt.y + drag.offsetY;
+      var didMove = !!drag.moved;
       drag.active = false;
       drag.moved = false;
       // Release drag visual flag.
@@ -1813,8 +1920,22 @@
           }
         });
       }
+      if (didMove) {
+        safe(function () {
+          var nodes = collectCitizenBubbles();
+          for (var i = 0; i < nodes.length; i++) {
+            var el = nodes[i];
+            if (!el) continue;
+            var id = safe(function () { return String(el.dataset.mobilityCitizenId || ""); }, "");
+            if (id !== dropId) continue;
+            pinBubbleAtReleaseTarget(dropId, el, { x: dropScreenX, y: dropScreenY });
+            break;
+          }
+        });
+      }
       drag.id = "";
       drag.pointerKey = -1;
+      citizenState.draggingId = "";
       scheduleClearActiveBubble();
       // One final layout pass to settle collision avoidance.
       scheduleLayout();
@@ -3156,6 +3277,27 @@
     return out;
   }
 
+  function buildRenderableChainItemsSignature(items, style) {
+    var list = Array.isArray(items) ? items : [];
+    var parts = [String(style || ""), String(list.length)];
+    for (var i = 0; i < list.length; i++) {
+      var item = list[i];
+      if (!item) continue;
+      var id = String(item.id || "");
+      parts.push(
+        id,
+        String(item.parentId || ""),
+        String(item.role || ""),
+        String(item.kind || ""),
+        String(item.depth || 0),
+        chainState.pinned[id] ? "pinned" : "",
+        chainState.closed[id] ? "closed" : "",
+        hashText(String(item.text || "")),
+      );
+    }
+    return parts.join("|");
+  }
+
   function syncMobilityChainCards() {
     // Bubble style is FRONTEND ONLY. Under the hood, the chain model is always the SSOT.
     // Renderer:
@@ -3209,6 +3351,7 @@
     startScriptRevealIfNeeded(items);
     items = applyScriptReveal(items);
     if (items.length === 0) {
+      chainState.lastChainSignature = "";
       clearMobilityChainCards();
       clearMobilityCitizenLayer();
       return;
@@ -3216,6 +3359,7 @@
 
     var style = readBubbleStyle();
     if (style === BUBBLE_STYLE_SIMPLE) {
+      chainState.lastChainSignature = buildRenderableChainItemsSignature(items, style);
       // Simple style: render chain cards (click-to-send) + links.
       clearMobilityCitizenLayer();
       syncChainCardsFromChainItems(items);
@@ -3224,9 +3368,17 @@
 
     // Colorful/blank: render citizen bubbles driven by the chain SSOT.
     clearMobilityChainCards();
-    chainState.lastChainSignature = "";
-    syncCitizenBubblesFromChainItems(items);
-    chainState.citizenDirty = true;
+    var citizenChainSignature = buildRenderableChainItemsSignature(items, style);
+    var needsCitizenSync =
+      chainState.lastChainSignature !== citizenChainSignature
+      || !safe(function () {
+        return !!document.querySelector("#mobility-citizen-layer .citizen-bubble");
+      }, false);
+    if (needsCitizenSync) {
+      chainState.lastChainSignature = citizenChainSignature;
+      syncCitizenBubblesFromChainItems(items);
+      chainState.citizenDirty = true;
+    }
     return;
 
   }
@@ -3350,10 +3502,77 @@
     if (safe(function () { return el.dataset.mobilityDragging === "1"; }, false)) {
       el.style.transition = "none";
     } else {
-      el.style.transition = "transform 220ms ease, box-shadow 220ms ease, opacity 180ms ease";
+      el.style.transition = "transform 380ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease, opacity 180ms ease";
     }
     el.style.willChange = "transform";
     el.style.zIndex = "2100";
+  }
+
+  function getCalmedDragScreenTarget(el, target) {
+    if (!el || !target) return target;
+    var rect = el.getBoundingClientRect();
+    var currentCenterX = rect.left + rect.width * 0.5;
+    var currentBottomY = rect.bottom;
+    var targetX = Number(target.x || 0);
+    var targetY = Number(target.y || 0);
+    var dx = targetX - currentCenterX;
+    var dy = targetY - currentBottomY;
+    var distance = Math.hypot(dx, dy);
+    if (!(distance > 0.001)) return { x: targetX, y: targetY };
+    // Keep manual drags deliberately calm so sparse pointer events do not feel
+    // like the bubble is "flying" ahead of the user's hand.
+    var step = Math.min(18, distance * 0.24);
+    if (step >= distance) return { x: targetX, y: targetY };
+    var ratio = step / distance;
+    return {
+      x: currentCenterX + dx * ratio,
+      y: currentBottomY + dy * ratio,
+    };
+  }
+
+  function applyImmediateScreenTransform(el, target) {
+    if (!el || !target) return;
+    var rect = el.getBoundingClientRect();
+    var currentTx = Number(el.dataset.mobilityTx || 0);
+    var currentTy = Number(el.dataset.mobilityTy || 0);
+    var currentCenterX = rect.left + rect.width * 0.5;
+    var currentBottomY = rect.bottom;
+    var nextTx = currentTx + (target.x - currentCenterX);
+    var nextTy = currentTy + (target.y - currentBottomY);
+    el.dataset.mobilityTx = String(nextTx);
+    el.dataset.mobilityTy = String(nextTy);
+    el.style.transform = "translate3d(" + Math.round(nextTx) + "px, " + Math.round(nextTy) + "px, 0)";
+    el.style.transition = "none";
+    el.style.willChange = "transform";
+    el.style.zIndex = "2100";
+  }
+
+  function applyCalmedDragPreview(id, el, target) {
+    if (!id || !el || !target) return;
+    var visualTarget = getCalmedDragScreenTarget(el, target);
+    applyImmediateScreenTransform(el, visualTarget);
+  }
+
+  function pinBubbleAtCurrentScreenPosition(id, el) {
+    if (!id || !el) return;
+    var rect = el.getBoundingClientRect();
+    pinBubbleAtScreen(id, rect.left + rect.width * 0.5, rect.bottom);
+    safe(function () {
+      el.dataset.mobilityPinned = "1";
+    });
+  }
+
+  function pinBubbleAtReleaseTarget(id, el, target) {
+    if (!id || !el || !target) return false;
+    var screenX = Number(target.x);
+    var screenY = Number(target.y);
+    if (!Number.isFinite(screenX) || !Number.isFinite(screenY)) return false;
+    applyImmediateScreenTransform(el, { x: screenX, y: screenY });
+    pinBubbleAtScreen(id, screenX, screenY);
+    safe(function () {
+      el.dataset.mobilityPinned = "1";
+    });
+    return true;
   }
 
   function resetCitizenTransforms() {
@@ -3386,7 +3605,6 @@
     // Citizen bubble SSOT styles must NOT show chain cards.
     if (readBubbleStyle() !== BUBBLE_STYLE_SIMPLE) {
       clearMobilityChainCards();
-      chainState.lastChainSignature = "";
     }
 
     var nodes = collectCitizenBubbles();
@@ -3438,7 +3656,7 @@
     }
     if (metas.length === 0) return;
     metas.sort(function (a, b) {
-      return a.base.x - b.base.x || a.base.y - b.base.y;
+      return getStableCitizenOrderIndex(a.id) - getStableCitizenOrderIndex(b.id) || a.id.localeCompare(b.id);
     });
 
     var cx = vp.left + vp.width * 0.5;
@@ -3455,7 +3673,7 @@
       var m = metas[mi];
       var w = m.base.width;
       var h = m.base.height;
-      if (citizenState.pinnedById[m.id]) {
+      if (citizenState.pinnedById[m.id] || citizenState.draggingId === m.id) {
         var ax = Number(citizenState.pinnedAnchorXById[m.id]);
         var ay = Number(citizenState.pinnedAnchorYById[m.id]);
         if (!Number.isFinite(ax) || !Number.isFinite(ay)) {
@@ -3463,10 +3681,21 @@
           ax = m.base.x;
           ay = m.base.y;
         }
-        fixed.push({ id: m.id, width: w, height: h, x: ax, y: ay });
+        var personalSpace = CITIZEN_PERSONAL_SPACE_RADIUS;
+        if (citizenState.activeId === m.id) personalSpace += CITIZEN_ACTIVE_PERSONAL_SPACE_BONUS;
+        fixed.push({ id: m.id, width: w, height: h, x: ax, y: ay, personalSpace: personalSpace });
         continue;
       }
-      free.push({ id: m.id, width: w, height: h, x: m.base.x, y: m.base.y, meta: m });
+      free.push({
+        id: m.id,
+        width: w,
+        height: h,
+        x: Number.isFinite(Number(citizenState.solvedXById[m.id])) ? Number(citizenState.solvedXById[m.id]) : m.base.x,
+        y: Number.isFinite(Number(citizenState.solvedYById[m.id])) ? Number(citizenState.solvedYById[m.id]) : m.base.y,
+        homeX: Number.isFinite(Number(citizenState.solvedXById[m.id])) ? Number(citizenState.solvedXById[m.id]) : m.base.x,
+        homeY: Number.isFinite(Number(citizenState.solvedYById[m.id])) ? Number(citizenState.solvedYById[m.id]) : m.base.y,
+        meta: m,
+      });
     }
 
     function relaxFreeSlots(freeItems, fixedItems, bounds, gapPx, passes) {
@@ -3479,8 +3708,8 @@
           height: Math.max(48, it.height || 0),
           x: it.x,
           y: it.y,
-          baseX: it.x,
-          baseY: it.y,
+          baseX: Number.isFinite(it.homeX) ? it.homeX : it.x,
+          baseY: Number.isFinite(it.homeY) ? it.homeY : it.y,
         };
       });
       var fixedNodes = (fixedItems || []).map(function (it) {
@@ -3490,11 +3719,13 @@
           height: Math.max(48, it.height || 0),
           x: it.x,
           y: it.y,
+          personalSpace: Math.max(0, Number(it.personalSpace || 0)),
         };
       });
       var anchorStrength = clamp(0.06 + nodes.length * 0.004, 0.08, 0.16);
 
       for (var pass = 0; pass < maxPasses; pass++) {
+        var passDamping = 1 - pass / Math.max(2, maxPasses + 1);
         // free-free repel
         for (var i = 0; i < nodes.length; i++) {
           var a = nodes[i];
@@ -3505,8 +3736,14 @@
             var minDx = (a.width + b.width) * 0.5 + gap;
             var minDy = (a.height + b.height) * 0.5 + gap * 0.78;
             if (Math.abs(dx) >= minDx || Math.abs(dy) >= minDy) continue;
-            var pushX = (minDx - Math.abs(dx)) * 0.5;
-            var pushY = (minDy - Math.abs(dy)) * 0.5;
+            var overlapX = minDx - Math.abs(dx);
+            var overlapY = minDy - Math.abs(dy);
+            if (overlapX <= CITIZEN_COLLISION_DEADZONE_PX && overlapY <= CITIZEN_COLLISION_DEADZONE_PX) continue;
+            var effectiveOverlapX = Math.max(0, overlapX - CITIZEN_COLLISION_DEADZONE_PX);
+            var effectiveOverlapY = Math.max(0, overlapY - CITIZEN_COLLISION_DEADZONE_PX);
+            var pushX = Math.min(24, effectiveOverlapX * 0.22 * passDamping);
+            var pushY = Math.min(20, effectiveOverlapY * 0.22 * passDamping);
+            if (pushX < 0.05 && pushY < 0.05) continue;
             var tie = pseudoRand01(String(a.id) + "|" + String(b.id) + "|" + pass);
             var sx = dx === 0 ? (tie < 0.5 ? -1 : 1) : dx < 0 ? -1 : 1;
             var sy = dy === 0 ? (tie < 0.5 ? 1 : -1) : dy < 0 ? -1 : 1;
@@ -3523,15 +3760,23 @@
             var f = fixedNodes[fj];
             var dx2 = n.x - f.x;
             var dy2 = n.y - f.y;
-            var minDx2 = (n.width + f.width) * 0.5 + gap;
-            var minDy2 = (n.height + f.height) * 0.5 + gap * 0.78;
+            var personalSpaceX = f.personalSpace;
+            var personalSpaceY = f.personalSpace * 0.72;
+            var minDx2 = (n.width + f.width) * 0.5 + gap + personalSpaceX;
+            var minDy2 = (n.height + f.height) * 0.5 + gap * 0.78 + personalSpaceY;
             if (Math.abs(dx2) >= minDx2 || Math.abs(dy2) >= minDy2) continue;
-            var pushX2 = (minDx2 - Math.abs(dx2));
-            var pushY2 = (minDy2 - Math.abs(dy2));
+            var overlapX2 = minDx2 - Math.abs(dx2);
+            var overlapY2 = minDy2 - Math.abs(dy2);
+            if (overlapX2 <= CITIZEN_COLLISION_DEADZONE_PX && overlapY2 <= CITIZEN_COLLISION_DEADZONE_PX) continue;
+            var effectiveOverlapX2 = Math.max(0, overlapX2 - CITIZEN_COLLISION_DEADZONE_PX);
+            var effectiveOverlapY2 = Math.max(0, overlapY2 - CITIZEN_COLLISION_DEADZONE_PX);
+            var pushX2 = Math.min(20, effectiveOverlapX2 * 0.2 * passDamping);
+            var pushY2 = Math.min(16, effectiveOverlapY2 * 0.2 * passDamping);
+            if (pushX2 < 0.05 && pushY2 < 0.05) continue;
             var sx2 = dx2 === 0 ? (pseudoRand01(String(n.id) + "|" + String(f.id) + "|" + pass) < 0.5 ? -1 : 1) : dx2 < 0 ? -1 : 1;
             var sy2 = dy2 === 0 ? (pseudoRand01(String(n.id) + "|" + String(f.id) + "|y|" + pass) < 0.5 ? -1 : 1) : dy2 < 0 ? -1 : 1;
-            n.x += pushX2 * 0.5 * sx2;
-            n.y += pushY2 * 0.5 * sy2;
+            n.x += pushX2 * sx2;
+            n.y += pushY2 * sy2;
           }
         }
         // spring + clamp
@@ -3548,8 +3793,8 @@
 
     var slots = buildCitizenSlots(free.length);
     for (var si = 0; si < free.length; si++) {
-      free[si].x = slots[si].x;
-      free[si].y = slots[si].y;
+      free[si].homeX = slots[si].x;
+      free[si].homeY = slots[si].y;
     }
     var relaxedFree = relaxFreeSlots(free, fixed, vp, 12, 5);
     var relaxedById = Object.create(null);
@@ -3576,7 +3821,10 @@
         var r = relaxedById[meta.id];
         if (!r) continue;
         delete meta.el.dataset.mobilityPinned;
-        layoutTarget = { x: r.x, y: r.y };
+        var settled = stabilizeSolvedBubblePosition(meta.id, r.x, r.y);
+        citizenState.solvedXById[meta.id] = String(settled.x);
+        citizenState.solvedYById[meta.id] = String(settled.y);
+        layoutTarget = { x: settled.x, y: settled.y };
       }
 
       // Apply view transform: layout space -> screen space.
@@ -3821,7 +4069,8 @@
     var host = getChatContainer();
     if (host) {
       safe(function () {
-        var observer = new MutationObserver(function () {
+        var observer = new MutationObserver(function (mutations) {
+          if (!mutationTouchesExternalBubbleDom(mutations)) return;
           chainState.citizenDirty = true;
           scheduleLayout();
         });
@@ -3872,10 +4121,11 @@
         if (shouldTrackCanvasInteraction(ev.target)) {
           // Trackpad pinch-zoom often arrives as wheel+ctrlKey; let visualViewport.scale handle it.
           if (!ev.ctrlKey) {
-            var dir = Math.sign(Number(ev.deltaY || 0));
-            if (dir !== 0) {
-              // Match the 3D canvas camera-zoom cadence (1.08 / 0.92) for tighter coupling.
-              chainState.viewScale = clamp(chainState.viewScale * (dir > 0 ? 1.08 : 0.92), 0.72, 2.4);
+            var factor = getWheelZoomFactor(ev.deltaY);
+            if (factor !== 1) {
+              // Keep wheel zoom deliberately shallow so pinned bubbles do not appear
+              // to jump far away when the overlay is reprojected around the viewport center.
+              chainState.viewScale = clamp(chainState.viewScale * factor, 0.72, 2.4);
             }
           }
           scheduleLayout();
@@ -4132,6 +4382,7 @@
     installChainStackUi();
     installStartupDefaultsMigration();
     reassertStartupDefaultsOnce();
+    document.addEventListener(WIDGET_MODE_ACTIVE_EVENT, updateMobilityRuntime);
     // Attach/detach ALL heavy runtime listeners strictly based on preset activation.
     updateMobilityRuntime();
     scheduleLayout();
@@ -4186,25 +4437,36 @@
         }
         scheduleLayout();
       },
-      onDragStart: function (_id, el) {
-        // Mobility-specific drag UX is handled here (NOT in global code).
+      onDragStart: function (id, el) {
+        // Drag preview is visual-only during movement; commit the anchor on release.
         safe(function () {
           el.dataset.mobilityDragging = "1";
         });
+        citizenState.draggingId = id;
+        pinBubbleAtCurrentScreenPosition(id, el);
       },
       onDragTo: function (id, screenX, screenY, el) {
-        // Dragging a bubble pins it to the finger/cursor.
+        // Keep drag visual-only while moving so the bubble does not compound
+        // anchor updates and feel like it is flying around.
         safe(function () {
           el.dataset.mobilityDragging = "1";
         });
-        pinBubbleAtScreen(id, screenX, screenY);
-        // Apply transform immediately for responsive drag feedback.
-        applyManagedTransform(el, { x: screenX, y: screenY });
+        applyCalmedDragPreview(id, el, { x: screenX, y: screenY });
       },
-      onDragEnd: function (_id, el) {
+      onDragEnd: function (id, el, meta) {
         safe(function () {
           delete el.dataset.mobilityDragging;
         });
+        citizenState.draggingId = "";
+        if (!el || !id) return;
+        if (meta && meta.didMove) {
+          var pinnedAtRelease = pinBubbleAtReleaseTarget(id, el, {
+            x: meta.screenX,
+            y: meta.screenY,
+          });
+          if (!pinnedAtRelease) pinBubbleAtCurrentScreenPosition(id, el);
+        }
+        scheduleLayout();
       },
     });
   }

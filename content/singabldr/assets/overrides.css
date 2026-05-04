@@ -858,16 +858,15 @@ body[data-singabldr-preset="mobility"] #mobility-citizen-layer .citizen-bubble__
    - Standard citizen bubble chrome
    - Simple “Citizen (…)” text header (no colored pill) */
 body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble {
-  /* FlowinFish Chat UI-vibe (matches base .citizen-bubble in app stylesheet). */
-  background: #ffffff;
-  color: #2d3436;
-  border: 2px solid #2d3436;
+  background: linear-gradient(180deg, rgba(255, 244, 224, 0.98), rgba(255, 226, 176, 0.98));
+  color: #22313a;
+  border: 2px solid rgba(45, 52, 54, 0.84);
   border-radius: 12px;
   padding: 6px 10px;
   font-family: "Nunito", sans-serif;
   font-size: clamp(10px, calc(12px / var(--sb-canvas-scale, 1)), 14px);
   font-weight: 700;
-  box-shadow: 0 4px 0 rgba(45, 52, 54, 0.1);
+  box-shadow: 0 8px 18px rgba(45, 52, 54, 0.18), 0 4px 0 rgba(45, 52, 54, 0.12);
   max-width: min(calc(150px / var(--sb-canvas-scale, 1)), calc(100vw - 28px)) !important;
   text-align: center;
 }
@@ -877,8 +876,32 @@ body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #
   border: none;
   padding: 0;
   border-radius: 0;
-  color: rgba(45, 52, 54, 0.82);
+  color: rgba(34, 49, 58, 0.8);
   text-shadow: none;
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble[data-mobility-tone="sky"] {
+  background: linear-gradient(180deg, rgba(223, 242, 255, 0.98), rgba(180, 223, 255, 0.98));
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble[data-mobility-tone="mint"] {
+  background: linear-gradient(180deg, rgba(225, 255, 248, 0.98), rgba(186, 245, 231, 0.98));
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble[data-mobility-tone="violet"] {
+  background: linear-gradient(180deg, rgba(241, 236, 255, 0.98), rgba(220, 210, 255, 0.98));
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble[data-mobility-tone="amber"] {
+  background: linear-gradient(180deg, rgba(255, 244, 224, 0.98), rgba(255, 226, 176, 0.98));
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble[data-mobility-tone="coral"] {
+  background: linear-gradient(180deg, rgba(255, 235, 234, 0.98), rgba(255, 209, 220, 0.98));
+}
+
+body[data-singabldr-preset="mobility"][data-singabldr-bubble-style="colorful"] #mobility-citizen-layer .citizen-bubble[data-mobility-tone="navy"] {
+  background: linear-gradient(180deg, rgba(225, 237, 255, 0.98), rgba(188, 212, 255, 0.98));
 }
 
 /* Simple bubble: same UI, but no gradients (flat white). */

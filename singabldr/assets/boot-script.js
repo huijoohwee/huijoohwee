@@ -2,6 +2,9 @@
 (function singabldrBootScript() {
   "use strict";
 
+  var LS_KEY_CHAT_FLOWINFISH_DEFAULT_OPEN = "singabldr.chat.flowinfish.default_open";
+  var WIDGET_MODE_ACTIVE_DATASET_KEY = "sbWidgetModeActive";
+
   /** @param {() => void} fn */
   function safe(fn) {
     try {
@@ -38,6 +41,27 @@
     } catch {}
   }
 
+  function isWidgetModeExplicitlyActive() {
+    try {
+      var root = document.documentElement;
+      return !!(root && root.dataset && root.dataset[WIDGET_MODE_ACTIVE_DATASET_KEY] === "1");
+    } catch {
+      return false;
+    }
+  }
+
+  function shouldDefaultOpenFlowinfishPanel() {
+    try {
+      return String(localStorage.getItem(LS_KEY_CHAT_FLOWINFISH_DEFAULT_OPEN) || "").trim().toLowerCase() === "open";
+    } catch {
+      return false;
+    }
+  }
+
+  function shouldOpenChatUi() {
+    return isWidgetModeExplicitlyActive() || shouldDefaultOpenFlowinfishPanel();
+  }
+
   function readScriptMode() {
     try {
       var select = document.getElementById("script-select");
@@ -65,6 +89,7 @@
       // When SimEngine (Live, Procedural) is running, do not auto-open the chat UI.
       // This avoids interrupting the simulation with onboarding prompts.
       if (readScriptPreset() === "script-simengine.json") return;
+      if (!shouldOpenChatUi()) return;
       coalesce("ui:autoOpenChat", openChatUi);
     }
 
@@ -80,6 +105,7 @@
         select.addEventListener("change", function () {
           if (readScriptMode() !== "auto") return;
           if (readScriptPreset() === "script-simengine.json") return;
+          if (!shouldOpenChatUi()) return;
           coalesce("ui:autoOpenChat:change", openChatUi);
         });
       }
