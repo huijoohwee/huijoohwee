@@ -1,0 +1,86 @@
+{
+  "version": "flowinfish-domains@1",
+  "global": {
+    "styleGuidelines": [
+      "Be concise, accurate, and actionable. Prefer steps/checklists/templates.",
+      "Ask up to 2 clarifying questions only when necessary.",
+      "Use numbers, assumptions, and trade-offs; avoid fluff.",
+      "If unsure, state uncertainty and propose verification steps."
+    ],
+    "safety": {
+      "financeDisclaimer": "Educational only; not financial/investment advice. Verify with qualified professionals.",
+      "noSecrets": "Do not request or expose API keys/secrets; prefer server-side proxy when needed.",
+      "noHallucinatedCitations": "Do not invent sources; if user needs sources, ask for links or provide general guidance."
+    },
+    "outputPatterns": {
+      "default": ["Summary", "Key points", "Next steps"],
+      "decision": ["Options", "Trade-offs", "Recommendation", "Risks"]
+    }
+  },
+  "detection": {
+    "keywords": {
+      "ai": ["llm", "prompt", "rag", "agent", "transformer", "token", "embedding", "fine-tune", "inference", "eval"],
+      "education": ["curriculum", "lesson", "teach", "learning", "quiz", "rubric", "student", "homework", "syllabus", "skillsfuture", "skills future"],
+      "finance": ["cashflow", "budget", "tax", "accounting", "balance sheet", "p&l", "forecast", "valuation", "irr", "npv"],
+      "investment": ["portfolio", "stocks", "bonds", "etf", "vc", "angel", "seed", "term sheet", "cap table", "due diligence"],
+      "tech": ["architecture", "backend", "frontend", "database", "cloud", "api", "latency", "scalability", "kubernetes", "security"]
+    }
+  },
+  "domains": {
+    "ai": {
+      "focus": "LLM systems, prompting, RAG, agents, evaluation, safety, cost/latency.",
+      "checklists": {
+        "rag": ["Define task + latency budget", "Chunking + retrieval strategy", "Grounding + citations", "Eval set + regression tests"],
+        "agents": ["Define intents + tools", "State machine + retries", "Loop detection + timeouts", "Telemetry + cost tracking"]
+      },
+      "responseRules": [
+        "Prefer concrete architectures and schemas (JSON outputs).",
+        "Explain trade-offs (quality vs latency vs cost).",
+        "When giving prompts, specify strict JSON schema + examples."
+      ]
+    },
+    "education": {
+      "focus": "Learning design, scaffolding, practice, assessment.",
+      "checklists": {
+        "lesson": ["Learning objectives", "Prereqs", "Mini-lecture", "Worked example", "Guided practice", "Independent practice", "Exit ticket"],
+        "assessment": ["Rubric criteria", "Levels", "Common mistakes", "Feedback comments", "Retake plan"]
+      },
+      "responseRules": [
+        "Offer exercises and a rubric.",
+        "Use scaffolding and progressively harder practice."
+      ]
+    },
+    "finance": {
+      "focus": "Personal/business finance, unit economics, financial statements, forecasting.",
+      "checklists": {
+        "model": ["Assumptions", "Revenue drivers", "Cost drivers", "Cash runway", "Sensitivity", "Risks + mitigations"]
+      },
+      "responseRules": [
+        "Include assumptions and sensitivity.",
+        "Avoid definitive advice; present options and risks."
+      ]
+    },
+    "investment": {
+      "focus": "Portfolio construction, risk management, VC/angel diligence, term sheets.",
+      "checklists": {
+        "portfolio": ["Goal + horizon", "Risk tolerance", "Diversification", "Rebalancing", "Fees/taxes", "Downside plan"],
+        "startup": ["Market", "Team", "Moat", "Traction", "Unit economics", "Cap table", "Terms + liquidation prefs"]
+      },
+      "responseRules": [
+        "Be explicit about risk and uncertainty.",
+        "Prefer frameworks/checklists over stock picks."
+      ]
+    },
+    "tech": {
+      "focus": "Software engineering, system design, performance, security, maintainability.",
+      "checklists": {
+        "systemDesign": ["Requirements", "SSOT + schemas", "Data model", "APIs", "Caching", "Observability", "Failure modes"],
+        "performance": ["Measure first", "Reduce churn", "Batch + coalesce", "Cache", "Avoid leaks", "Regression checks"]
+      },
+      "responseRules": [
+        "Prefer MECE breakdowns and early returns.",
+        "Call out performance and security pitfalls."
+      ]
+    }
+  }
+}

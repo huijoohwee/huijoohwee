@@ -8,7 +8,7 @@
 (function singabldrServiceWorker() {
   "use strict";
 
-  var CACHE_VERSION = "20260416-108";
+  var CACHE_VERSION = "20260504-1";
   var CACHE_PREFIX = "singabldr-pwa";
   var CACHE_NAME = CACHE_PREFIX + ":static:" + CACHE_VERSION;
 
@@ -61,7 +61,7 @@
               "./index.html",
               "./manifest.webmanifest",
               "./assets/boot-pwa.js",
-              "./assets/boot-bubbles-ui.js",
+              "./assets/boot-widget-mode.js",
               "./assets/boot-flowinfish-chat-guard.js",
               "./assets/boot-mobility-preset.js",
               "./assets/overrides.css",
