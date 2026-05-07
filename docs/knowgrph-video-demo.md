@@ -6,19 +6,18 @@ date: "2026-05-01"
 lang: en-US
 
 kgCanvasSurfaceMode: "2d"
-kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "flowEditor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
-kgMultiDimTableModeEnabled: false
-kgDocumentStructureBaselineLock: false
 
 $schema: "kgc-pipeline/v1"
 
 inputs:
-  byteplus_text_model: "seed-2-0-lite-260228"
-  byteplus_image_model: "seedream-4-0-250828"
-  byteplus_video_model: "seedance-1-0-pro-fast-251015"
+  text_provider_id: "deerflow"
+  text_endpoint_url: "http://localhost:8000/api/llm/chat/completions"
+  text_model: "seed-2-0-lite-260228"
+  image_model: "seedream-4-0-250828"
+  video_model: "seedance-1-0-pro-fast-251015"
   vibe: "vivid, photorealistic, magic-realist, warm cinematic light cross-cutting to surreal multiverse glow, 9:16 vertical, TikTok-native"
   duration_seconds: 8
   duration_label: "8s"
@@ -160,11 +159,11 @@ mermaid: |
     classDef widget fill:#E1F5EE,stroke:#1D9E75,color:#085041,stroke-width:1.5px
     classDef panel  fill:#EAF3DE,stroke:#639922,color:#27500A,stroke-width:1.5px
 
-    w-text-script["BytePlus Video Script Widget\nTextGeneration\n{{inputs.byteplus_text_model}}"]
+    w-text-script["Text Script Widget\nTextGeneration\n{{inputs.text_model}}"]
     p-text-script["Rich Media Panel\nText · Script"]
-    w-img-scene["Image Widget\nScene Reference\n{{inputs.byteplus_image_model}}"]
+    w-img-scene["Image Widget\nScene Reference\n{{inputs.image_model}}"]
     p-img-scene["Rich Media Panel\nImage · Scene"]
-    w-video-scene["Video Widget\nVideoGeneration\n{{inputs.byteplus_video_model}}\n{{inputs.duration_label}}"]
+    w-video-scene["Video Widget\nVideoGeneration\n{{inputs.video_model}}\n{{inputs.duration_label}}"]
     p-video-scene["Rich Media Panel\nVideo · Scene"]
 
     w-text-script -->|text_out → output| p-text-script
@@ -184,15 +183,15 @@ flow:
   nodes:
     - id: {key: id, type: string, value: "w-text-script"}
       type: {key: type, type: string, value: "TextGeneration"}
-      label: {key: label, type: string, value: "BytePlus Video Script Widget"}
+      label: {key: label, type: string, value: "Text Script Widget"}
       phase: {key: phase, type: string, value: "generate"}
       actor: {key: actor, type: array, value: ["user", "AI"]}
       handles: {key: handles, type: object, value: {target: ["prompt_in"], source: ["text_out", "outputSrcDoc"]}}
       "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoScript"}
-      chatProvider: {key: chatProvider, type: string, value: "byteplus-modelark"}
+      chatProvider: {key: chatProvider, type: string, value: "{{inputs.text_provider_id}}"}
       chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
-      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"}
-      chatModel: {key: chatModel, type: select, value: "{{inputs.byteplus_text_model}}"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: "{{inputs.text_endpoint_url}}"}
+      chatModel: {key: chatModel, type: select, value: "{{inputs.text_model}}"}
       chatThinkingType: {key: chatThinkingType, type: select, value: "disabled"}
       chatReasoningEffort: {key: chatReasoningEffort, type: select, value: "minimal"}
       chatStream: {key: chatStream, type: boolean, value: true}
@@ -214,7 +213,7 @@ flow:
       type: {key: type, type: string, value: "ImageGeneration"}
       label: {key: label, type: string, value: "Image Widget — Scene Reference"}
       "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "imageGeneration"}
-      model: {key: model, type: select, value: "{{inputs.byteplus_image_model}}"}
+      model: {key: model, type: select, value: "{{inputs.image_model}}"}
       prompt: {key: prompt, type: textarea, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.label}}; {{inputs.theme}}. Script: {{inputs.script}}. Hero frame: CARIBBEAN locale — girl on turquoise island beach launching RoboDrone X1 into storm, mermaid queen rising from churning sea below, coral spire cathedral lit by lightning, 9:16 vertical."}
       size: {key: size, type: select, value: "2K"}
       output_format: {key: output_format, type: select, value: "jpeg"}
@@ -249,7 +248,7 @@ flow:
       actor: {key: actor, type: array, value: ["user", "AI"]}
       handles: {key: handles, type: object, value: {target: ["reference_image"], source: ["videoUrl"]}}
       "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoGeneration"}
-      model: {key: model, type: select, value: "{{inputs.byteplus_video_model}}"}
+      model: {key: model, type: select, value: "{{inputs.video_model}}"}
       prompt: {key: prompt, type: string, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.name}}; {{inputs.theme}}. Script: {{inputs.script}}"}
       ratio: {key: ratio, type: select, value: "9:16"}
       resolution: {key: resolution, type: select, value: "480p"}
@@ -388,7 +387,7 @@ director_brief:
 # Video Demo — Three Skies (RoboDrone X1 · Frontier · Tempest · RoboTown)
 
 Director brief, storyboard spec, and shot list for the 30-second three-locale multiverse reel.  
-Pipeline: `{{inputs.byteplus_text_model}}` → `{{inputs.byteplus_image_model}}` → `{{inputs.byteplus_video_model}}`
+Pipeline: `{{inputs.text_model}}` → `{{inputs.image_model}}` → `{{inputs.video_model}}`
 
 ---
 
@@ -483,3 +482,14 @@ The `director_brief.shots` list is the frontmatter SSOT for derived shot Text, I
 ## Flow Graph
 
 The `mermaid` and `flow` blocks above describe the same graph. Rich Media Panels render the output values written by each widget.
+
+## E2E Validation Contract (Universal, Path-Agnostic)
+
+This fixture is a pipeline contract demo for Ingest -> Parse -> Render over typed Flow nodes (`TextGeneration`, `ImageGeneration`, `VideoGeneration`, `RichMediaPanel`).
+
+- Source path is not part of behavior. Validate by basename (`knowgrph-video-demo.md`) or content hash, never by absolute filesystem path.
+- Runtime/provider fields are declarative fixture inputs (`inputs.text_provider_id`, `inputs.text_endpoint_url`, `inputs.text_model`, `inputs.image_model`, `inputs.video_model`) and must be resolved by runtime settings, not in-repo hardcoded constants.
+- Ingest must parse frontmatter and preserve SSOT parity across `pipeline`, `flow.nodes`, `flow.edges`, and `mermaid`.
+- Parse must resolve template bindings (`{{inputs.*}}`) once per run and surface unresolved tokens as explicit errors.
+- Render must materialize connected values without mutating graph topology or widget layout.
+- E2E checks must stay project-/file-agnostic across local runs, CI, and workspace bootstrap.
