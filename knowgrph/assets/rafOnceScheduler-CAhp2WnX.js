@@ -1,1 +1,0 @@
-function r(c){let n=null;const e=()=>{n=null,c()};return{schedule:()=>{if(n==null){if(typeof window>"u"){e();return}n=window.requestAnimationFrame(e)}},cancel:()=>{if(n!=null){try{window.cancelAnimationFrame(n)}catch{}n=null}}}}export{r as c};
