@@ -173,6 +173,10 @@ index:
 
 > Not a replacement. An extension.
 
+Watch on YouTube: [airvio | rich media canvas for global emerging market creators](https://youtu.be/RkPzWb4Bi8w)
+
+[![airvio | rich media canvas for global emerging market creators](https://raw.githubusercontent.com/huijoohwee/huijoohwee/main/docs/airvio-knowgrph.png)](https://youtu.be/RkPzWb4Bi8w)
+
 ---
 
 ## The problem — the middle is empty
