@@ -20,8 +20,8 @@
 /content/knowgrph /knowgrph 301
 /content/knowgrph/ /knowgrph/ 301
 /content/knowgrph/* /knowgrph/:splat 301
-/ /content/singabldr/index.html 200
-/index.html /content/singabldr/index.html 200
+/ /content/knowgrph/index.html 200
+/index.html /content/knowgrph/index.html 200
 /singabldr /content/singabldr/index.html 200
 /singabldr/ /content/singabldr/index.html 200
 /singabldr/index.html /content/singabldr/index.html 200
