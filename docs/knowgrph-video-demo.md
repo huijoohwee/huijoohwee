@@ -479,6 +479,97 @@ Script: {{inputs.script}}
 
 The `director_brief.shots` list is the frontmatter SSOT for derived shot Text, Image, Video, Rich Media Panel, and typed Edge nodes. S01–S03 are the hero locale row for the Flow Editor Balanced 16:9 layout; S04–S05 are the canvas reveal and CTA row. Toolbar Run all writes widget outputs into existing nodes only; it must not rewrite Balanced widget positions, Rich Media Panel layout, or edge topology.
 
+---
+
+## DeerFlow Agent Harness
+
+The `inputs.text_provider_id: "deerflow"` field activates the DeerFlow super-agent harness as the generation backend. Instead of calling each provider API directly, the Flow Editor delegates to DeerFlow's agent runtime, which orchestrates generation through research, skills, and sandbox execution.
+
+### Agent Orchestration Flow
+
+```mermaid
+sequenceDiagram
+    participant Canvas as Flow Editor Canvas
+    participant Dispatch as Generation Dispatcher
+    participant Agent as DeerFlow Lead Agent
+    participant Research as Deep-Research Skill
+    participant ImageGen as Image-Gen Skill
+    participant VideoGen as Video-Gen Skill
+    participant Sandbox as DeerFlow Sandbox
+    participant Renderer as Rich Media Panel
+
+    Canvas ->> Dispatch : Run W01 (TextGeneration)
+    Dispatch ->> Agent : POST /api/runs/stream
+    Agent ->> Research : Invoke deep-research skill
+    Research ->> Research : Web search locale context
+    Research ->> Research : Find reference images
+    Research -->> Agent : Structured prompt JSON
+    Agent -->> Dispatch : SSE: text output
+    Dispatch -->> Canvas : Write W01 properties.output
+
+    Canvas ->> Dispatch : Run W02 (ImageGeneration)
+    Dispatch ->> Agent : POST /api/runs/stream
+    Agent ->> ImageGen : Invoke image-generation skill
+    ImageGen ->> Sandbox : python generate.py --prompt-file ... --aspect-ratio 9:16
+    Sandbox -->> ImageGen : /mnt/user-data/outputs/scene.jpg
+    ImageGen ->> Agent : present_files tool
+    Agent -->> Dispatch : SSE: artifact URL
+    Dispatch ->> Dispatch : GET /api/threads/{id}/artifacts/scene.jpg
+    Dispatch -->> Canvas : Write W02 properties.imageUrl
+
+    Canvas ->> Dispatch : Run W03 (VideoGeneration)
+    Dispatch ->> Agent : POST /api/runs/stream
+    Agent ->> VideoGen : Invoke video-generation skill
+    VideoGen ->> Sandbox : python generate.py --prompt-file ... --reference-images scene.jpg
+    Sandbox -->> VideoGen : /mnt/user-data/outputs/clip.mp4
+    VideoGen ->> Agent : present_files tool
+    Agent -->> Dispatch : SSE: artifact URL
+    Dispatch ->> Dispatch : GET /api/threads/{id}/artifacts/clip.mp4
+    Dispatch -->> Canvas : Write W03 properties.videoUrl
+
+    Canvas ->> Renderer : Display artifacts in Rich Media Panel
+```
+
+### Multi-Locale Parallel Execution
+
+For the Three Skies demo, DeerFlow's sub-agent system runs all three locales concurrently:
+
+```mermaid
+flowchart TD
+    BRIEF["Markdown Brief\nvariant: ALL"] --> AGENT["DeerFlow Lead Agent"]
+    AGENT -->|"sub-agent 1"| US["US Wild West\nresearch → prompt → image → video"]
+    AGENT -->|"sub-agent 2"| CAR["Caribbean Tempest\nresearch → prompt → image → video"]
+    AGENT -->|"sub-agent 3"| SG["SG RoboTown\nresearch → prompt → image → video"]
+    US --> ART["Artifact Normalizer\nGET /api/threads/{id}/artifacts/*"]
+    CAR --> ART
+    SG --> ART
+    ART --> CANVAS["Canvas DAG\n3 parallel branches"]
+```
+
+Each sub-agent operates in an isolated context with independent tool execution, so locale-1's image generation doesn't block locale-2's text generation. The agent runtime handles parallel execution, timeout enforcement, and error recovery.
+
+### DeerFlow Skills Used
+
+| Skill | Purpose | Sandbox Script | Output |
+|---|---|---|---|
+| `deep-research` | Web search for locale context, cultural references, visual inspiration | — | Structured prompt JSON |
+| `image-search` | Find reference images via DuckDuckGo before generation | — | Reference image URLs |
+| `image-generation` | Generate scene keyframes from structured prompts | `generate.py --prompt-file --output-file --aspect-ratio --reference-images` | `.jpg` in `/mnt/user-data/outputs/` |
+| `video-generation` | Generate 9:16 video clips from reference images | `generate.py --prompt-file --output-file --reference-images` | `.mp4` in `/mnt/user-data/outputs/` |
+| `ppt-generation` | Compose generated scene images into a slide deck | `generate.py --plan-file --slide-images --output-file` | `.pptx` in `/mnt/user-data/outputs/` |
+
+### Provider Configuration
+
+The DeerFlow gateway (`inputs.text_endpoint_url`) serves as a unified proxy to all underlying models. Model selection is controlled by DeerFlow's `config.yaml`, not by knowgrph's widget properties:
+
+| Widget Property | Knowgrph Field | DeerFlow Resolution |
+|---|---|---|
+| `text_model` | `seed-2-0-lite-260228` | Resolved via `config.yaml` models[] entry |
+| `image_model` | `seedream-4-0-250828` | Routed to `image-generation` skill's sandbox script |
+| `video_model` | `seedance-1-0-pro-fast-251015` | Routed to `video-generation` skill's sandbox script |
+
+Switching from BytePlus to OpenAI or any other provider requires changing one line in DeerFlow's `config.yaml` — no knowgrph code changes needed.
+
 ## Flow Graph
 
 The `mermaid` and `flow` blocks above describe the same graph. Rich Media Panels render the output values written by each widget.

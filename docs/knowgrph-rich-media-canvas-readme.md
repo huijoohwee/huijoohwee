@@ -248,13 +248,14 @@ flowchart LR
     MD["Markdown brief\nbrand + locale + shots"]
   end
   subgraph Produce
-    MD --> TG["Text Gen\nscene plan + captions"]
+    MD --> DF["DeerFlow Agent\nresearch + skills"]
+    DF --> TG["Text Gen\nscene plan + captions"]
     TG --> IG["Image Gen\nlocal keyframes"]
     IG --> VG["Video Gen\n9:16 clip"]
   end
   subgraph Reuse
     VG --> RMP["Rich Media Panel\npreview + export"]
-    SWAP["swap variant field"] --> TG
+    SWAP["swap variant field"] --> DF
   end
 ```
 
@@ -305,23 +306,49 @@ Same drone. Three worlds. Three completely different children. Three completely 
 
 ## Architecture
 
-Client-first. The browser handles parsing, rendering, and orchestration. AI APIs called directly from the canvas. No heavy backend required.
+Client-first. The browser handles parsing, rendering, and orchestration. AI generation is delegated to **DeerFlow** — a super-agent harness that orchestrates text, image, and video generation through research, tool use, and sandbox execution. No heavy backend required beyond the DeerFlow gateway.
 
 ```mermaid
 flowchart LR
   MD[Markdown brief] --> FC[Flow Editor Canvas]
-  FC --> BP["BytePlus OpenArk\nchat · image · video · Seed"]
-  BP --> RMP[Rich Media Panel]
+  FC --> DF["DeerFlow Agent Harness\nresearch · skills · sandbox"]
+  DF -->|"LLM proxy\nchat/completions"| LLM["Multi-provider LLM\nOpenAI · Claude · Gemini · BytePlus"]
+  DF -->|"image-generation skill\nsandbox generate.py"| IMG["Image models\nSeedream · DALL-E · Stable Diffusion"]
+  DF -->|"video-generation skill\nsandbox generate.py"| VID["Video models\nSeedance · Wan2.1"]
+  DF -->|"ppt-generation skill\nsandbox compose.py"| PPT["Slide deck\n.pptx export"]
+  DF --> RMP[Rich Media Panel]
   FC --> RMP
-  RMP --> EXP["Export: MP4 / PNG / JSON"]
+  RMP --> EXP["Export: MP4 / PNG / JSON / PPTX"]
 ```
+
+### Why DeerFlow
+
+Knowgrph's canvas provides the **visual pipeline** — nodes, edges, panels, variant switching. DeerFlow provides the **agent intelligence** behind each node:
+
+| Canvas concern | Knowgrph | DeerFlow |
+|---|---|---|
+| Pipeline layout | Flow Editor DAG | — |
+| Variant switching | Brief layer swap | — |
+| Artifact rendering | Rich Media Panel | — |
+| Prompt engineering | — | Deep-research + web search + reference images |
+| Image generation | — | Sandbox `generate.py` with any model |
+| Video generation | — | Sandbox `generate.py` with any model |
+| Multi-provider routing | — | `config.yaml` model switching |
+| Multi-locale parallelism | — | Sub-agents run 3 locales concurrently |
+| PPT composition | — | Slide image generation + compose |
+| Retry / error handling | Node state machine | Bounded retry + error taxonomy |
+
+**Direct API works for simple cases.** DeerFlow adds value when you need reasoning before generation (research, reference-finding), multi-step pipelines (text → image → video → PPT), multi-provider flexibility, or parallel execution across variants.
 
 | Layer | Technology |
 |---|---|
 | Frontend | React 18 + TypeScript + Vite 6 |
 | 2D / 3D | D3.js · Three.js + R3F |
 | Markdown | markdown-it + Mermaid + KaTeX |
-| AI runtime | BytePlus OpenArk (chat · image) + Seed (video) |
+| Agent orchestrator | DeerFlow (LangGraph + LangChain) — research, skills, sandbox |
+| AI runtime | DeerFlow LLM proxy — OpenAI · Claude · Gemini · BytePlus · vLLM |
+| Image generation | DeerFlow `image-generation` skill — sandbox `generate.py` |
+| Video generation | DeerFlow `video-generation` skill — sandbox `generate.py` |
 | Local DB | RxDB — offline-first |
 | Parsers | Python 3.10+ — NetworkX · DuckDB |
 | Payments | Stripe — subscription + usage |
@@ -341,8 +368,8 @@ Shell: ~248 KB gzip. Monaco, Mermaid, Three.js lazy-loaded.
 
 ## Roadmap
 
-**Now** — brief→video pipeline, BytePlus OpenArk + Seed, Flow Editor Canvas, Stripe gating  
-**Next** — batch variant generation, eval harness, scene template library, MCP server  
+**Now** — brief→video pipeline, DeerFlow agent harness (research + skills + sandbox), Flow Editor Canvas, Stripe gating  
+**Next** — batch variant generation via sub-agents, eval harness, scene template library, MCP server  
 **Later** — mobile-first brief editor (form UI over Markdown), real-time collaboration, plugin system
 
 ---
