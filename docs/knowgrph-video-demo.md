@@ -14,7 +14,8 @@ $schema: "kgc-pipeline/v1"
 
 inputs:
   text_provider_id: "deerflow"
-  text_endpoint_url: "http://localhost:8000/api/llm/chat/completions"
+  # Keep endpoint runtime-resolved from MainPanel Integrations (Dev localhost or Prod Cloudflare Tunnel).
+  text_endpoint_url: ""
   text_model: "seed-2-0-lite-260228"
   image_model: "seedream-4-0-250828"
   video_model: "seedance-1-0-pro-fast-251015"
