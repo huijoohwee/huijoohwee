@@ -1,9 +1,9 @@
 # HackaMap import bundle (Knowgrph)
 
-Generated from `project/prjt4000-hackamap/site/` SSOT.
+Generated from `hackamap/site/` SSOT.
 
 ## Files
-- `hackamap-graph.json` (full graph: nodes + links; enriched `meta.search_text` + `meta.search_terms`)
+- `knowgrph-hackamap.json` (full graph: nodes + links; enriched `meta.search_text` + `meta.search_terms`)
 - `hackamap_api_graph.json` (deterministic bipartite API payload used by Knowgrph `/api/graph` in dev + Pages)
 - `hackamap_pipeline.json` (portable runtime pipeline config; browser-friendly)
 - `hackamap_query.json` (JSON DSL preset: enhanced; supports `and/or/not` + ops `eq/contains/in/any/exists/regex`)
@@ -14,7 +14,7 @@ Generated from `project/prjt4000-hackamap/site/` SSOT.
 - `query-outputs/` (generated query outputs + per-table query subsets; `*.query.json` is typed/decoded JSON)
 
 ## Query preset selection (CLI)
-From `project/prjt4000-hackamap`:
+From `hackamap`:
 ```bash
 python3 site/hackamap_query.py --base site --list-presets
 python3 site/hackamap_query.py --base site --preset sg-agents-postgres-devtools --param location=Singapore --write-query-views --write-query-json
@@ -23,6 +23,6 @@ python3 site/hackamap_query.py --base site --preset sg-agents-postgres-devtools 
 ```
 
 ## Import recommendation
-1) Import `hackamap-graph.json`
+1) Import `knowgrph-hackamap.json`
 2) Optionally import `query-outputs/hackamap-enhanced-query-results.md` as a curated entry doc
 

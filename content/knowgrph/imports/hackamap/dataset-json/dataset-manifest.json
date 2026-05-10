@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "content_signature": "7300b7d5dd7c30bfdad0fe6e10957ffe15825c555974d560de9ec1f765e26bb3",
-  "source_graph_json": "hackamap-graph.json",
+  "source_graph_json": "knowgrph-hackamap.json",
   "counts": {
     "nodes": 1488,
     "links": 3683,

@@ -271,7 +271,7 @@
     }
   },
   "export_graph": {
-    "out_graph_json": "site/hackamap-graph.json",
+    "out_graph_json": "site/knowgrph-hackamap.json",
     "enrich_source_content": true,
     "update_source_cache": true,
     "source_cache_path": "site/_generated/source-cache/source_content.jsonl",
@@ -281,11 +281,11 @@
     "source_cache_ttl_days_fail": 7
   },
   "export_dataset_json": {
-    "graph_json": "site/hackamap-graph.json",
+    "graph_json": "site/knowgrph-hackamap.json",
     "out_dir": "site/_generated/dataset-json"
   },
   "export_api_graph": {
-    "graph_json": "site/hackamap-graph.json",
+    "graph_json": "site/knowgrph-hackamap.json",
     "out_path": "site/_generated/api-graph/hackamap_api_graph.json"
   },
   "query": {
@@ -346,7 +346,7 @@
     "compose_file": "docker-compose.yml",
     "postgres_service": "postgres",
     "compose_ingest_service": "ingest",
-    "graph_json": "site/hackamap-graph.json",
+    "graph_json": "site/knowgrph-hackamap.json",
     "migration_sql": "sql/migrations/001_hackamap_graph_snapshots.sql",
     "database_url_env": "DATABASE_URL",
     "head_key_env": "HACKAMAP_HEAD_KEY",

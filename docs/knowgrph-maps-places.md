@@ -9,7 +9,7 @@ kgCanvasSurfaceMode: "geospatial"
 kgCanvas2dRenderer: "flowEditor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
-kgMultiDimTableModeEnabled: false
+kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 ---
 

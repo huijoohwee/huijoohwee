@@ -1,5 +1,5 @@
 {
-  "source_repo": "project/prjt4000-hackamap",
+  "source_repo": "hackamap",
   "source_ssot": "site/",
   "bundle_subdir": "imports/hackamap",
   "files": [
@@ -40,7 +40,7 @@
       "sha256": "b23b4aaa7ae96cbcbdc5a159e05842a1822e454b73a76d8a611d048dd1333cb6"
     },
     {
-      "path": "hackamap-graph.json",
+      "path": "knowgrph-hackamap.json",
       "sha256": "fa3ad38d34cc83d7bcaaa137d1569362cbf0dc4b536625ca619a295c871bd235"
     },
     {
