@@ -8,6 +8,30 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 index:
+  tableMode:
+    enabled: true
+    semanticKey: "hackamap:painpoint-demo-product"
+    rowIdentity:
+      - id
+      - demo_id
+      - event_id
+    roles:
+      node: [Demo, Product, PainPoint]
+      group: [Event, Team, Tech]
+      edge: [addresses, produces, built_by, uses, has_demo]
+    render:
+      mode: "data-grid"
+      freezeColumns: [id, Event, Demo, PainPoint, Product]
+      hiddenColumns: [raw_source, debug_notes]
+      preferArrayCellsAsTags: true
+      preserveSourceOrder: true
+  rendererProfiles:
+    primary:
+      scope: "PainPoint-Demo-Product"
+      nodePriority: [Demo, PainPoint, Product]
+      edgePriority: [addresses, produces, built_by, uses]
+      clusterBy: [Team, Tech]
+      semanticKey: "cluster:painpoint-demo-product"
   legend:
     nodes:
       Event:      "#1a6fa8 — blue   — hackathon event container"
@@ -66,7 +90,7 @@ index:
       E -->|targets| A[Audience]:::audience
       D -->|uses| C
       D -->|built_by| T
-      D -->|addresses| P[Pain Point]:::painpoint
+      D -->|addresses| P[PainPoint]:::painpoint
       D -->|produces| R[Product]:::product
 ---
 
@@ -101,7 +125,6 @@ Interactive knowledge graph of hackathon events, demos, teams, and technologies.
 | Settings → Rendering | `schema.layout.edges.type` | `bezier` | Curved edges for readability |
 | Settings → Rendering | `schema.layout.edges.opacity` | `0.6` | Semi-transparent edges reduce visual clutter |
 | Settings → Rendering | `schema.layout.edges.opacityUnderGroups` | `0.45` | Further dim edges inside collapsed groups |
-| Settings → Rendering | `schema.layout.groups.enabled` | `true` | Auto-derive cluster boundaries by node type |
 | Settings → Performance | `fitToScreenMode` | `true` | Auto-fit graph on load |
 
 ---
@@ -110,21 +133,21 @@ Interactive knowledge graph of hackathon events, demos, teams, and technologies.
 
 | Node Type | Fill Color | Shape | Radius | Stroke | Description |
 |---|---|---|---|---|---|
-| Event | `#1a6fa8` blue | circle | 12 | `#154f7a` | Hackathon event container (141 nodes) |
-| Demo | `#28A745` green | circle | 10 | `#1e7e34` | Project / submission / prototype (142 nodes) |
+| Event | `#1a6fa8` blue | circle | 12 | `#154f7a` | Hackathon event container |
+| Demo | `#28A745` green | circle | 10 | `#1e7e34` | Project / submission / prototype |
 | PainPoint | `#DC3545` red | diamond | 8 | `#a71d2a` | Unmet need / problem addressed by demo |
 | Product | `#7d3c98` purple | rect | 9 | `#5b2c6f` | Output / deliverable / artifact |
 | Team | `#1e8449` green | circle | 8 | `#145a32` | Builder group / organization |
 | Tech | `#d68910` amber | hex | 7 | `#9a6301` | Technology / tool / platform |
 | Organizer | `#117a65` teal | circle | 8 | `#0e6655` | Event host / sponsor |
 | Location | `#5d6d7e` grey | circle | 7 | `#424f5c` | Geographic venue |
-| Audience | `#e67e22` orange | circle | 6 | `#b35900` | Target participant segment |
+| Audience | `#e67e22` orange | circle | 6 | `#b35900` | Target participant segment (schema-only) |
 | Source | `#85929e` silver | circle | 5 | `#5d6d7e` | Reference URL / content origin |
-| Domain | `#aab7b8` light-grey | circle | 5 | `#808b8d` | Internet domain |
-| Platform | `#2e86c1` steel-blue | circle | 6 | `#1a5276` | Social / hosting platform |
-| SourceType | `#bb8fce` lavender | circle | 5 | `#8e44ad` | Content classification tag |
+| Domain | `#aab7b8` light-grey | circle | 5 | `#808b8d` | Internet domain (schema-only) |
+| Platform | `#2e86c1` steel-blue | circle | 6 | `#1a5276` | Social / hosting platform (schema-only) |
+| SourceType | `#bb8fce` lavender | circle | 5 | `#8e44ad` | Content classification tag (schema-only) |
 
-### Pain Point → Demo → Product Cluster Pattern
+### PainPoint → Demo → Product Cluster Pattern
 
 The primary visualization pattern groups around **Demo** nodes as the central hub:
 
@@ -136,7 +159,7 @@ Event ──has_demo──▶ Demo ──addresses──▶ PainPoint
                     └──produces──▶ Product
 ```
 
-**Recommended cluster inspection**: Select a Demo node → expand neighbors to reveal the Pain Point it addresses and the Product it produces.
+**Recommended cluster inspection**: Select a Demo node → expand neighbors to reveal the PainPoint it addresses and the Product it produces.
 
 ---
 
@@ -148,15 +171,15 @@ Event ──has_demo──▶ Demo ──addresses──▶ PainPoint
 | `organized_by` | `#117a65` | 1.5px | solid | yes | Event run by organizer |
 | `focuses_on` | `#d68910` | 1.5px | solid | yes | Event tech theme |
 | `held_at` | `#5d6d7e` | 1px | solid | yes | Event venue |
-| `targets` | `#e67e22` | 1px | solid | yes | Event audience |
+| `targets` | `#e67e22` | 1px | solid | yes | Event audience (schema-only) |
 | `uses` | `#d68910` | 1.5px | solid | yes | Demo tech stack |
 | `built_by` | `#1e8449` | 1.5px | solid | yes | Demo team |
 | `addresses` | `#DC3545` | 2px | dashed | yes | Demo solves pain point |
 | `produces` | `#7d3c98` | 1.5px | solid | yes | Demo creates product |
 | `sourced_from` | `#85929e` | 1px | dotted | yes | Entity references source |
-| `has_domain` | `#aab7b8` | 1px | dotted | no | Source domain |
-| `hosted_on` | `#2e86c1` | 1px | dotted | no | Source platform |
-| `classified_as` | `#bb8fce` | 1px | dotted | no | Source type tag |
+| `has_domain` | `#aab7b8` | 1px | dotted | no | Source domain (schema-only) |
+| `hosted_on` | `#2e86c1` | 1px | dotted | no | Source platform (schema-only) |
+| `classified_as` | `#bb8fce` | 1px | dotted | no | Source type tag (schema-only) |
 
 ---
 
@@ -164,13 +187,13 @@ Event ──has_demo──▶ Demo ──addresses──▶ PainPoint
 
 | Metric | Value |
 |---|---|
-| Events | 141 |
-| Demos | 142 |
-| Date range | 2015 – 2026 |
+| Events | Derived at runtime from `hackamap/content/events.md` |
+| Demos | Derived at runtime from `hackamap/content/demos.md` |
+| Date range | Derived from source table rows |
 | Confidence: high | Devpost event pages |
 | Confidence: medium | LinkedIn / community posts |
 | Confidence: low | Marketing / announcement posts |
-| Full graph fixture | `knowgrph-hackamap.json` (33K lines) |
+| Full graph fixture | Derived artifact from canonical source tables |
 
 ---
 
@@ -185,7 +208,7 @@ flowchart LR
     E -->|targets| A[Audience]
     D -->|uses| C
     D -->|built_by| T
-    D -->|addresses| P[Pain Point]
+    D -->|addresses| P[PainPoint]
     D -->|produces| R[Product]
 ```
 
