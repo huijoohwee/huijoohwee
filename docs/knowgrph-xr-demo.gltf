@@ -1,0 +1,3667 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "Knowgrph original XR demo generator",
+    "copyright": "Original demo geometry; no external assets copied."
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "knowgrph_xr_demo_infinite_city_scene",
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "xr_demo_ground_plate",
+      "mesh": 0,
+      "translation": [
+        0,
+        -0.04,
+        0
+      ],
+      "scale": [
+        64,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_-4",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        -28.8
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_-4",
+      "mesh": 1,
+      "translation": [
+        -28.8,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_-3",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        -21.6
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_-3",
+      "mesh": 1,
+      "translation": [
+        -21.6,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_-2",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        -14.4
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_-2",
+      "mesh": 1,
+      "translation": [
+        -14.4,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_-1",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        -7.2
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_-1",
+      "mesh": 1,
+      "translation": [
+        -7.2,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_0",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        0
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_0",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_1",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        7.2
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_1",
+      "mesh": 1,
+      "translation": [
+        7.2,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_2",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        14.4
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_2",
+      "mesh": 1,
+      "translation": [
+        14.4,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_3",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        21.6
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_3",
+      "mesh": 1,
+      "translation": [
+        21.6,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_x_4",
+      "mesh": 1,
+      "translation": [
+        0,
+        0.02,
+        28.8
+      ],
+      "scale": [
+        64,
+        0.08,
+        2.2
+      ]
+    },
+    {
+      "name": "xr_demo_avenue_z_4",
+      "mesh": 1,
+      "translation": [
+        28.8,
+        0.025,
+        0
+      ],
+      "scale": [
+        2.2,
+        0.08,
+        64
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_-7",
+      "mesh": 2,
+      "translation": [
+        -28,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_-7",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        -28
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_-6",
+      "mesh": 2,
+      "translation": [
+        -24,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_-6",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        -24
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_-5",
+      "mesh": 2,
+      "translation": [
+        -20,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_-5",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        -20
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_-4",
+      "mesh": 2,
+      "translation": [
+        -16,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_-4",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        -16
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_-3",
+      "mesh": 2,
+      "translation": [
+        -12,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_-3",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        -12
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_-2",
+      "mesh": 2,
+      "translation": [
+        -8,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_-2",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        -8
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_-1",
+      "mesh": 2,
+      "translation": [
+        -4,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_-1",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        -4
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_0",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_0",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        0
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_1",
+      "mesh": 2,
+      "translation": [
+        4,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_1",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        4
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_2",
+      "mesh": 2,
+      "translation": [
+        8,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_2",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        8
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_3",
+      "mesh": 2,
+      "translation": [
+        12,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_3",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        12
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_4",
+      "mesh": 2,
+      "translation": [
+        16,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_4",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        16
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_5",
+      "mesh": 2,
+      "translation": [
+        20,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_5",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        20
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_6",
+      "mesh": 2,
+      "translation": [
+        24,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_6",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        24
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_x_7",
+      "mesh": 2,
+      "translation": [
+        28,
+        0.12,
+        0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        3.6
+      ]
+    },
+    {
+      "name": "xr_demo_lane_marker_z_7",
+      "mesh": 2,
+      "translation": [
+        0,
+        0.13,
+        28
+      ],
+      "scale": [
+        3.6,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "name": "xr_demo_streamed_city_block_0",
+      "mesh": 3,
+      "translation": [
+        -24.4,
+        2.46,
+        -24
+      ],
+      "scale": [
+        1.79,
+        4.92,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 4
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_1",
+      "mesh": 4,
+      "translation": [
+        -24.86,
+        0.625,
+        -18
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 0
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_2",
+      "mesh": 5,
+      "translation": [
+        -24.4,
+        1.645,
+        -12
+      ],
+      "scale": [
+        1.45,
+        3.29,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 9
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_3",
+      "mesh": 6,
+      "translation": [
+        -24.86,
+        2.325,
+        -6
+      ],
+      "scale": [
+        2.13,
+        4.65,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 5
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_4",
+      "mesh": 3,
+      "translation": [
+        -23.939999999999998,
+        1.985,
+        6
+      ],
+      "scale": [
+        1.79,
+        3.97,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 10
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_5",
+      "mesh": 4,
+      "translation": [
+        -24.4,
+        0.9650000000000001,
+        12
+      ],
+      "scale": [
+        1.79,
+        1.9300000000000002,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 7
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_5",
+      "mesh": 8,
+      "translation": [
+        -24.4,
+        2.1100000000000003,
+        12
+      ],
+      "scale": [
+        0.6802,
+        0.2,
+        0.4712
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_6",
+      "mesh": 5,
+      "translation": [
+        -23.939999999999998,
+        2.325,
+        18
+      ],
+      "scale": [
+        2.13,
+        4.65,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 11
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_7",
+      "mesh": 6,
+      "translation": [
+        -24.4,
+        1.7800000000000002,
+        24
+      ],
+      "scale": [
+        2.13,
+        3.5600000000000005,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 2
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_7",
+      "mesh": 8,
+      "translation": [
+        -24.4,
+        3.7400000000000007,
+        24
+      ],
+      "scale": [
+        0.8094,
+        0.2,
+        0.722
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_8",
+      "mesh": 3,
+      "translation": [
+        -18.299999999999997,
+        0.625,
+        -24.32
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 12
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_9",
+      "mesh": 4,
+      "translation": [
+        -18.759999999999998,
+        1.7800000000000002,
+        -18.32
+      ],
+      "scale": [
+        2.13,
+        3.5600000000000005,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 8
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_10",
+      "mesh": 5,
+      "translation": [
+        -18.299999999999997,
+        1.985,
+        -12.32
+      ],
+      "scale": [
+        1.79,
+        3.97,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 4
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_11",
+      "mesh": 6,
+      "translation": [
+        -18.759999999999998,
+        0.625,
+        -6.32
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 0
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_12",
+      "mesh": 3,
+      "translation": [
+        -17.839999999999996,
+        1.3050000000000002,
+        5.68
+      ],
+      "scale": [
+        2.13,
+        2.6100000000000003,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 8
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_13",
+      "mesh": 4,
+      "translation": [
+        -18.299999999999997,
+        0.625,
+        11.68
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 12
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_14",
+      "mesh": 5,
+      "translation": [
+        -17.839999999999996,
+        2.12,
+        17.68
+      ],
+      "scale": [
+        1.45,
+        4.24,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 3
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_15",
+      "mesh": 6,
+      "translation": [
+        -18.299999999999997,
+        0.9650000000000001,
+        23.68
+      ],
+      "scale": [
+        1.79,
+        1.9300000000000002,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 7
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_16",
+      "mesh": 3,
+      "translation": [
+        -12.2,
+        0.9650000000000001,
+        -24
+      ],
+      "scale": [
+        1.79,
+        1.9300000000000002,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 7
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_17",
+      "mesh": 4,
+      "translation": [
+        -12.66,
+        1.645,
+        -18
+      ],
+      "scale": [
+        1.45,
+        3.29,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 3
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_18",
+      "mesh": 5,
+      "translation": [
+        -12.2,
+        1.44,
+        -12
+      ],
+      "scale": [
+        1.79,
+        2.88,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 1
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_19",
+      "mesh": 6,
+      "translation": [
+        -12.66,
+        2.325,
+        -6
+      ],
+      "scale": [
+        2.13,
+        4.65,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 5
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_19",
+      "mesh": 8,
+      "translation": [
+        -12.66,
+        4.83,
+        -6
+      ],
+      "scale": [
+        0.8094,
+        0.2,
+        0.6384
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_20",
+      "mesh": 3,
+      "translation": [
+        -11.739999999999998,
+        0.625,
+        6
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 0
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_21",
+      "mesh": 4,
+      "translation": [
+        -12.2,
+        2.46,
+        12
+      ],
+      "scale": [
+        1.79,
+        4.92,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 4
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_22",
+      "mesh": 5,
+      "translation": [
+        -11.739999999999998,
+        1.3050000000000002,
+        18
+      ],
+      "scale": [
+        2.13,
+        2.6100000000000003,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 8
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_22",
+      "mesh": 7,
+      "translation": [
+        -11.739999999999998,
+        2.7900000000000005,
+        18
+      ],
+      "scale": [
+        0.8094,
+        0.2,
+        0.5548
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_23",
+      "mesh": 6,
+      "translation": [
+        -12.2,
+        0.625,
+        24
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 12
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_24",
+      "mesh": 3,
+      "translation": [
+        -6.1,
+        1.3050000000000002,
+        -24.32
+      ],
+      "scale": [
+        2.13,
+        2.6100000000000003,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 2
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_25",
+      "mesh": 4,
+      "translation": [
+        -6.56,
+        1.3050000000000002,
+        -18.32
+      ],
+      "scale": [
+        2.13,
+        2.6100000000000003,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 2
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_25",
+      "mesh": 8,
+      "translation": [
+        -6.56,
+        2.7900000000000005,
+        -18.32
+      ],
+      "scale": [
+        0.8094,
+        0.2,
+        0.722
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_26",
+      "mesh": 5,
+      "translation": [
+        -6.1,
+        0.625,
+        -12.32
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 6
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_27",
+      "mesh": 6,
+      "translation": [
+        -6.1,
+        1.645,
+        11.68
+      ],
+      "scale": [
+        1.45,
+        3.29,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 9
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_27",
+      "mesh": 8,
+      "translation": [
+        -6.1,
+        3.47,
+        11.68
+      ],
+      "scale": [
+        0.5509999999999999,
+        0.2,
+        0.6384
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_28",
+      "mesh": 3,
+      "translation": [
+        -5.64,
+        0.625,
+        17.68
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 0
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_29",
+      "mesh": 4,
+      "translation": [
+        -6.1,
+        1.985,
+        23.68
+      ],
+      "scale": [
+        1.79,
+        3.97,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 4
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_29",
+      "mesh": 8,
+      "translation": [
+        -6.1,
+        4.15,
+        23.68
+      ],
+      "scale": [
+        0.6802,
+        0.2,
+        0.5548
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_30",
+      "mesh": 5,
+      "translation": [
+        6.1,
+        1.3050000000000002,
+        -23.68
+      ],
+      "scale": [
+        2.13,
+        2.6100000000000003,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 8
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_31",
+      "mesh": 6,
+      "translation": [
+        5.64,
+        0.625,
+        -17.68
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 12
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_32",
+      "mesh": 3,
+      "translation": [
+        6.1,
+        1.645,
+        -11.68
+      ],
+      "scale": [
+        1.45,
+        3.29,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 3
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_33",
+      "mesh": 4,
+      "translation": [
+        6.1,
+        0.625,
+        12.32
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 6
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_33",
+      "mesh": 8,
+      "translation": [
+        6.1,
+        1.43,
+        12.32
+      ],
+      "scale": [
+        0.5509999999999999,
+        0.2,
+        0.722
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_34",
+      "mesh": 5,
+      "translation": [
+        6.56,
+        1.985,
+        18.32
+      ],
+      "scale": [
+        1.79,
+        3.97,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 10
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_35",
+      "mesh": 6,
+      "translation": [
+        6.1,
+        0.9650000000000001,
+        24.32
+      ],
+      "scale": [
+        1.79,
+        1.9300000000000002,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 1
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_35",
+      "mesh": 8,
+      "translation": [
+        6.1,
+        2.1100000000000003,
+        24.32
+      ],
+      "scale": [
+        0.6802,
+        0.2,
+        0.6384
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_36",
+      "mesh": 3,
+      "translation": [
+        12.2,
+        0.625,
+        -24
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 0
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_36",
+      "mesh": 7,
+      "translation": [
+        12.2,
+        1.43,
+        -24
+      ],
+      "scale": [
+        0.5509999999999999,
+        0.2,
+        0.5548
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_37",
+      "mesh": 4,
+      "translation": [
+        11.739999999999998,
+        1.985,
+        -18
+      ],
+      "scale": [
+        1.79,
+        3.97,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 4
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_38",
+      "mesh": 5,
+      "translation": [
+        12.2,
+        1.7800000000000002,
+        -12
+      ],
+      "scale": [
+        2.13,
+        3.5600000000000005,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 8
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_39",
+      "mesh": 6,
+      "translation": [
+        11.739999999999998,
+        0.625,
+        -6
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 12
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_39",
+      "mesh": 8,
+      "translation": [
+        11.739999999999998,
+        1.43,
+        -6
+      ],
+      "scale": [
+        0.5509999999999999,
+        0.2,
+        0.5548
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_40",
+      "mesh": 3,
+      "translation": [
+        12.66,
+        0.9650000000000001,
+        6
+      ],
+      "scale": [
+        1.79,
+        1.9300000000000002,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 7
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_41",
+      "mesh": 4,
+      "translation": [
+        12.2,
+        2.8000000000000003,
+        12
+      ],
+      "scale": [
+        2.13,
+        5.6000000000000005,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 11
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_42",
+      "mesh": 5,
+      "translation": [
+        12.66,
+        1.3050000000000002,
+        18
+      ],
+      "scale": [
+        2.13,
+        2.6100000000000003,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 2
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_43",
+      "mesh": 6,
+      "translation": [
+        12.2,
+        0.625,
+        24
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 6
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_44",
+      "mesh": 3,
+      "translation": [
+        18.299999999999997,
+        2.325,
+        -23.68
+      ],
+      "scale": [
+        2.13,
+        4.65,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 5
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_45",
+      "mesh": 4,
+      "translation": [
+        17.839999999999996,
+        2.12,
+        -17.68
+      ],
+      "scale": [
+        1.45,
+        4.24,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 9
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_45",
+      "mesh": 8,
+      "translation": [
+        17.839999999999996,
+        4.42,
+        -17.68
+      ],
+      "scale": [
+        0.5509999999999999,
+        0.2,
+        0.6384
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_46",
+      "mesh": 5,
+      "translation": [
+        18.299999999999997,
+        0.625,
+        -11.68
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 0
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_47",
+      "mesh": 6,
+      "translation": [
+        17.839999999999996,
+        1.985,
+        -5.68
+      ],
+      "scale": [
+        1.79,
+        3.97,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 4
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_47",
+      "mesh": 8,
+      "translation": [
+        17.839999999999996,
+        4.15,
+        -5.68
+      ],
+      "scale": [
+        0.6802,
+        0.2,
+        0.5548
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_48",
+      "mesh": 3,
+      "translation": [
+        18.759999999999998,
+        0.625,
+        6.32
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 12
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_48",
+      "mesh": 7,
+      "translation": [
+        18.759999999999998,
+        1.43,
+        6.32
+      ],
+      "scale": [
+        0.5509999999999999,
+        0.2,
+        0.5548
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_49",
+      "mesh": 4,
+      "translation": [
+        18.299999999999997,
+        1.645,
+        12.32
+      ],
+      "scale": [
+        1.45,
+        3.29,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 3
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_50",
+      "mesh": 5,
+      "translation": [
+        18.759999999999998,
+        1.44,
+        18.32
+      ],
+      "scale": [
+        1.79,
+        2.88,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 7
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_50",
+      "mesh": 7,
+      "translation": [
+        18.759999999999998,
+        3.06,
+        18.32
+      ],
+      "scale": [
+        0.6802,
+        0.2,
+        0.4712
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_51",
+      "mesh": 6,
+      "translation": [
+        18.299999999999997,
+        2.325,
+        24.32
+      ],
+      "scale": [
+        2.13,
+        4.65,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 11
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_52",
+      "mesh": 3,
+      "translation": [
+        24.4,
+        2.46,
+        -24
+      ],
+      "scale": [
+        1.79,
+        4.92,
+        1.9
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 10
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_53",
+      "mesh": 4,
+      "translation": [
+        23.939999999999998,
+        0.9650000000000001,
+        -18
+      ],
+      "scale": [
+        1.79,
+        1.9300000000000002,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 1
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_53",
+      "mesh": 8,
+      "translation": [
+        23.939999999999998,
+        2.1100000000000003,
+        -18
+      ],
+      "scale": [
+        0.6802,
+        0.2,
+        0.6384
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_54",
+      "mesh": 5,
+      "translation": [
+        24.4,
+        2.325,
+        -12
+      ],
+      "scale": [
+        2.13,
+        4.65,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 5
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_55",
+      "mesh": 6,
+      "translation": [
+        23.939999999999998,
+        1.645,
+        -6
+      ],
+      "scale": [
+        1.45,
+        3.29,
+        1.68
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 9
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_56",
+      "mesh": 3,
+      "translation": [
+        24.86,
+        1.985,
+        6
+      ],
+      "scale": [
+        1.79,
+        3.97,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 4
+      }
+    },
+    {
+      "name": "xr_demo_roof_signal_56",
+      "mesh": 7,
+      "translation": [
+        24.86,
+        4.15,
+        6
+      ],
+      "scale": [
+        0.6802,
+        0.2,
+        0.5548
+      ],
+      "extras": {
+        "knowgrphRole": "roof-signal"
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_57",
+      "mesh": 4,
+      "translation": [
+        24.4,
+        1.3050000000000002,
+        12
+      ],
+      "scale": [
+        2.13,
+        2.6100000000000003,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 8
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_58",
+      "mesh": 5,
+      "translation": [
+        24.86,
+        0.625,
+        18
+      ],
+      "scale": [
+        1.45,
+        1.25,
+        1.46
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 12
+      }
+    },
+    {
+      "name": "xr_demo_streamed_city_block_59",
+      "mesh": 6,
+      "translation": [
+        24.4,
+        2.12,
+        24
+      ],
+      "scale": [
+        1.45,
+        4.24,
+        1.24
+      ],
+      "extras": {
+        "knowgrphRole": "city-block",
+        "blockSeed": 3
+      }
+    },
+    {
+      "name": "xr_demo_central_knowledge_tower",
+      "mesh": 4,
+      "translation": [
+        0,
+        3.8,
+        0
+      ],
+      "scale": [
+        1.6,
+        7.6,
+        1.6
+      ],
+      "extras": {
+        "knowgrphRole": "focus-target"
+      }
+    },
+    {
+      "name": "xr_demo_central_signal_cap",
+      "mesh": 11,
+      "translation": [
+        0,
+        7.85,
+        0
+      ],
+      "scale": [
+        3.2,
+        0.3,
+        3.2
+      ]
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_0",
+      "mesh": 7,
+      "translation": [
+        13.2,
+        0.36,
+        0
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_1",
+      "mesh": 8,
+      "translation": [
+        12.195209829148984,
+        0.36,
+        5.051421307219185
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.19509032201612825,
+        0,
+        0.9807852804032304
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_2",
+      "mesh": 7,
+      "translation": [
+        9.333809511662427,
+        0.36,
+        9.333809511662427
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.3826834323650898,
+        0,
+        0.9238795325112867
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_3",
+      "mesh": 8,
+      "translation": [
+        5.051421307219186,
+        0.36,
+        12.195209829148984
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.5555702330196022,
+        0,
+        0.8314696123025452
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_4",
+      "mesh": 7,
+      "translation": [
+        8.082668874372531e-16,
+        0.36,
+        13.2
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_5",
+      "mesh": 8,
+      "translation": [
+        -5.051421307219184,
+        0.36,
+        12.195209829148984
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.8314696123025452,
+        0,
+        0.5555702330196023
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_6",
+      "mesh": 7,
+      "translation": [
+        -9.333809511662427,
+        0.36,
+        9.333809511662427
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.9238795325112867,
+        0,
+        0.38268343236508984
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_7",
+      "mesh": 8,
+      "translation": [
+        -12.195209829148984,
+        0.36,
+        5.0514213072191865
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.9807852804032304,
+        0,
+        0.19509032201612833
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_8",
+      "mesh": 7,
+      "translation": [
+        -13.2,
+        0.36,
+        1.6165337748745062e-15
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        1,
+        0,
+        6.123233995736766e-17
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_9",
+      "mesh": 8,
+      "translation": [
+        -12.195209829148986,
+        0.36,
+        -5.051421307219183
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.9807852804032304,
+        0,
+        -0.1950903220161282
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_10",
+      "mesh": 7,
+      "translation": [
+        -9.333809511662428,
+        0.36,
+        -9.333809511662427
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.9238795325112867,
+        0,
+        -0.3826834323650897
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_11",
+      "mesh": 8,
+      "translation": [
+        -5.051421307219192,
+        0.36,
+        -12.19520982914898
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.8314696123025453,
+        0,
+        -0.555570233019602
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_12",
+      "mesh": 7,
+      "translation": [
+        -2.424800662311759e-15,
+        0.36,
+        -13.2
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.7071067811865476,
+        0,
+        -0.7071067811865475
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_13",
+      "mesh": 8,
+      "translation": [
+        5.051421307219187,
+        0.36,
+        -12.195209829148983
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.5555702330196022,
+        0,
+        -0.8314696123025453
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_14",
+      "mesh": 7,
+      "translation": [
+        9.333809511662425,
+        0.36,
+        -9.333809511662428
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.3826834323650899,
+        0,
+        -0.9238795325112867
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_orbit_focus_marker_15",
+      "mesh": 8,
+      "translation": [
+        12.19520982914898,
+        0.36,
+        -5.051421307219193
+      ],
+      "scale": [
+        0.42,
+        0.72,
+        0.42
+      ],
+      "rotation": [
+        0,
+        0.1950903220161286,
+        0,
+        -0.9807852804032304
+      ],
+      "extras": {
+        "knowgrphRole": "orbit-focus-marker"
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_0",
+      "mesh": 9,
+      "translation": [
+        -27,
+        0.42,
+        -0.72
+      ],
+      "scale": [
+        1.2,
+        0.42,
+        0.62
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "x",
+        "lane": -0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_1",
+      "mesh": 10,
+      "translation": [
+        -0.72,
+        0.42,
+        -21.9
+      ],
+      "scale": [
+        0.62,
+        0.42,
+        1.2
+      ],
+      "rotation": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "z",
+        "lane": -0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_2",
+      "mesh": 9,
+      "translation": [
+        -16.8,
+        0.42,
+        0.72
+      ],
+      "scale": [
+        1.2,
+        0.42,
+        0.62
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "x",
+        "lane": 0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_3",
+      "mesh": 10,
+      "translation": [
+        0.72,
+        0.42,
+        -11.700000000000001
+      ],
+      "scale": [
+        0.62,
+        0.42,
+        1.2
+      ],
+      "rotation": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "z",
+        "lane": 0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_4",
+      "mesh": 9,
+      "translation": [
+        -6.600000000000001,
+        0.42,
+        -0.72
+      ],
+      "scale": [
+        1.2,
+        0.42,
+        0.62
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "x",
+        "lane": -0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_5",
+      "mesh": 10,
+      "translation": [
+        -0.72,
+        0.42,
+        -1.5
+      ],
+      "scale": [
+        0.62,
+        0.42,
+        1.2
+      ],
+      "rotation": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "z",
+        "lane": -0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_6",
+      "mesh": 9,
+      "translation": [
+        3.599999999999998,
+        0.42,
+        0.72
+      ],
+      "scale": [
+        1.2,
+        0.42,
+        0.62
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "x",
+        "lane": 0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_7",
+      "mesh": 10,
+      "translation": [
+        0.72,
+        0.42,
+        8.699999999999996
+      ],
+      "scale": [
+        0.62,
+        0.42,
+        1.2
+      ],
+      "rotation": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "z",
+        "lane": 0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_8",
+      "mesh": 9,
+      "translation": [
+        13.799999999999997,
+        0.42,
+        -0.72
+      ],
+      "scale": [
+        1.2,
+        0.42,
+        0.62
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "x",
+        "lane": -0.72
+      }
+    },
+    {
+      "name": "xr_demo_loop_vehicle_9",
+      "mesh": 10,
+      "translation": [
+        -0.72,
+        0.42,
+        18.9
+      ],
+      "scale": [
+        0.62,
+        0.42,
+        1.2
+      ],
+      "rotation": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "extras": {
+        "knowgrphRole": "animated-traffic",
+        "axis": "z",
+        "lane": -0.72
+      }
+    },
+    {
+      "name": "xr_demo_reference_camera",
+      "camera": 0,
+      "translation": [
+        15,
+        11,
+        23
+      ],
+      "rotation": [
+        -0.17,
+        0.319,
+        0.058,
+        0.93
+      ],
+      "extras": {
+        "knowgrphRole": "reference-camera"
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "ground graphite box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "name": "midnight avenue box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "name": "lane cyan box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "name": "building teal box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 3
+        }
+      ]
+    },
+    {
+      "name": "building blue box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 4
+        }
+      ]
+    },
+    {
+      "name": "building violet box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 5
+        }
+      ]
+    },
+    {
+      "name": "building amber box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 6
+        }
+      ]
+    },
+    {
+      "name": "signal green box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 7
+        }
+      ]
+    },
+    {
+      "name": "signal pink box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 8
+        }
+      ]
+    },
+    {
+      "name": "traffic white box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 9
+        }
+      ]
+    },
+    {
+      "name": "traffic gold box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 10
+        }
+      ]
+    },
+    {
+      "name": "focus magenta box",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 11
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "ground graphite",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.035,
+          0.047,
+          0.068,
+          1
+        ],
+        "roughnessFactor": 0.92,
+        "metallicFactor": 0.02
+      }
+    },
+    {
+      "name": "midnight avenue",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.014,
+          0.026,
+          0.054,
+          1
+        ],
+        "roughnessFactor": 0.78,
+        "metallicFactor": 0.05
+      }
+    },
+    {
+      "name": "lane cyan",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.12,
+          0.72,
+          0.98,
+          1
+        ],
+        "roughnessFactor": 0.42,
+        "metallicFactor": 0.1
+      }
+    },
+    {
+      "name": "building teal",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.02,
+          0.48,
+          0.46,
+          1
+        ],
+        "roughnessFactor": 0.66,
+        "metallicFactor": 0.08
+      }
+    },
+    {
+      "name": "building blue",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.08,
+          0.24,
+          0.78,
+          1
+        ],
+        "roughnessFactor": 0.64,
+        "metallicFactor": 0.1
+      }
+    },
+    {
+      "name": "building violet",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.42,
+          0.18,
+          0.76,
+          1
+        ],
+        "roughnessFactor": 0.62,
+        "metallicFactor": 0.1
+      }
+    },
+    {
+      "name": "building amber",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.95,
+          0.48,
+          0.1,
+          1
+        ],
+        "roughnessFactor": 0.58,
+        "metallicFactor": 0.06
+      }
+    },
+    {
+      "name": "signal green",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.08,
+          0.78,
+          0.38,
+          1
+        ],
+        "roughnessFactor": 0.38,
+        "metallicFactor": 0.08
+      }
+    },
+    {
+      "name": "signal pink",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.9,
+          0.22,
+          0.58,
+          1
+        ],
+        "roughnessFactor": 0.36,
+        "metallicFactor": 0.08
+      }
+    },
+    {
+      "name": "traffic white",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.93,
+          0.98,
+          1,
+          1
+        ],
+        "roughnessFactor": 0.3,
+        "metallicFactor": 0.18
+      }
+    },
+    {
+      "name": "traffic gold",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0.7,
+          0.16,
+          1
+        ],
+        "roughnessFactor": 0.34,
+        "metallicFactor": 0.16
+      }
+    },
+    {
+      "name": "focus magenta",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.93,
+          0.18,
+          0.62,
+          1
+        ],
+        "roughnessFactor": 0.32,
+        "metallicFactor": 0.12
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "name": "xr_demo_reference_orbit_camera",
+      "type": "perspective",
+      "perspective": {
+        "yfov": 0.78,
+        "znear": 0.1,
+        "zfar": 500
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "xr_demo_city_motion_loop",
+      "samplers": [
+        {
+          "input": 3,
+          "output": 4,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 5,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 6,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 7,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 8,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 9,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 10,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 11,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 12,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 13,
+          "interpolation": "LINEAR"
+        },
+        {
+          "input": 3,
+          "output": 14,
+          "interpolation": "LINEAR"
+        }
+      ],
+      "channels": [
+        {
+          "sampler": 0,
+          "target": {
+            "node": 144,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 1,
+          "target": {
+            "node": 145,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 2,
+          "target": {
+            "node": 146,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 3,
+          "target": {
+            "node": 147,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 4,
+          "target": {
+            "node": 148,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 5,
+          "target": {
+            "node": 149,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 6,
+          "target": {
+            "node": 150,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 7,
+          "target": {
+            "node": 151,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 8,
+          "target": {
+            "node": 152,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 9,
+          "target": {
+            "node": 153,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 10,
+          "target": {
+            "node": 154,
+            "path": "translation"
+          }
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 24,
+      "type": "VEC3",
+      "min": [
+        -0.5,
+        -0.5,
+        -0.5
+      ],
+      "max": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 24,
+      "type": "VEC3",
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5123,
+      "count": 36,
+      "type": "SCALAR",
+      "min": [
+        0
+      ],
+      "max": [
+        23
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 5,
+      "type": "SCALAR",
+      "min": [
+        0
+      ],
+      "max": [
+        8
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -30,
+        0.42,
+        -0.72
+      ],
+      "max": [
+        18.5,
+        0.42,
+        -0.72
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -0.72,
+        0.42,
+        -25.099999999999994
+      ],
+      "max": [
+        -0.72,
+        0.42,
+        23.4
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -20.200000000000003,
+        0.42,
+        0.72
+      ],
+      "max": [
+        28.299999999999997,
+        0.42,
+        0.72
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        0.72,
+        0.42,
+        -30.799999999999997
+      ],
+      "max": [
+        0.72,
+        0.42,
+        17.700000000000003
+      ]
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -25.900000000000006,
+        0.42,
+        -0.72
+      ],
+      "max": [
+        22.6,
+        0.42,
+        -0.72
+      ]
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -0.72,
+        0.42,
+        -21
+      ],
+      "max": [
+        -0.72,
+        0.42,
+        27.5
+      ]
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -31.599999999999994,
+        0.42,
+        0.72
+      ],
+      "max": [
+        16.900000000000006,
+        0.42,
+        0.72
+      ]
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        0.72,
+        0.42,
+        -26.69999999999999
+      ],
+      "max": [
+        0.72,
+        0.42,
+        21.800000000000004
+      ]
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -21.799999999999997,
+        0.42,
+        -0.72
+      ],
+      "max": [
+        26.700000000000003,
+        0.42,
+        -0.72
+      ]
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -0.72,
+        0.42,
+        -16.900000000000006
+      ],
+      "max": [
+        -0.72,
+        0.42,
+        31.6
+      ]
+    },
+    {
+      "bufferView": 14,
+      "componentType": 5126,
+      "count": 5,
+      "type": "VEC3",
+      "min": [
+        -19,
+        11,
+        -22
+      ],
+      "max": [
+        23,
+        13,
+        23
+      ]
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 288,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 288,
+      "byteLength": 288,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 576,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 648,
+      "byteLength": 20
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 668,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 728,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 788,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 848,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 908,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 968,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1028,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1088,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1148,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1208,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1268,
+      "byteLength": 60
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1328,
+      "uri": "data:application/octet-stream;base64,AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAA/AAAAPwAAAD8AAAA/AAAAvwAAAD8AAAA/AAAAPwAAAL8AAAC/AAAAvwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAPwAAAD8AAAC/AAAAvwAAAL8AAAC/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAA/AAAAvwAAAD8AAAC/AAAAPwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAC/AAAAPwAAAD8AAAA/AAAAvwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAC/AAAAPwAAAL8AAAC/AAAAPwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcAAAAAAAAAAEAAAIBAAADAQAAAAEEAAODBPQrXPuxROL8AAEjBPQrXPuxROL8AAEBAPQrXPuxROL8AAJRBPQrXPuxROL8AAPDBPQrXPuxROL/sUTi/PQrXPs3MuMHsUTi/PQrXPjMz88DsUTi/PQrXPs3M/EDsUTi/PQrXPjMzu0HsUTi/PQrXPs3MyMGamZHBPQrXPuxROD/NzCzAPQrXPuxROD/NzExBPQrXPuxROD9mZuJBPQrXPuxROD+amaHBPQrXPuxROD/sUTg/PQrXPs3MVMHsUTg/PQrXPs3MDEDsUTg/PQrXPpqZjUHsUTg/PQrXPmZm9sHsUTg/PQrXPs3MdMFmZgbBPQrXPuxROL8zM+NAPQrXPuxROL/NzLRBPQrXPuxROL8zM8/BPQrXPuxROL9mZibBPQrXPuxROL/sUTi/PQrXPgAAYMDsUTi/PQrXPgAAQEHsUTi/PQrXPgAA3EHsUTi/PQrXPgAAqMHsUTi/PQrXPgAAsMAzM7M/PQrXPuxROD8zM4dBPQrXPuxROD/NzPzBPQrXPuxROD/NzIDBPQrXPuxROD+amRm/PQrXPuxROD/sUTg/PQrXPpqZyUDsUTg/PQrXPmZmrkHsUTg/PQrXPpqZ1cHsUTg/PQrXPjMzM8HsUTg/PQrXPpqZiUAzMzNBPQrXPuxROL+amdVBPQrXPuxROL9mZq7BPQrXPuxROL+amcnAPQrXPuxROL8zMxNBPQrXPuxROL/sUTi/PQrXPs3MgEHsUTi/PQrXPs3M/EHsUTi/PQrXPjMzh8HsUTi/PQrXPjMzs7/sUTi/PQrXPpqZYUEAAHBBAAAwQQAAuEEAALhBAABQQQAAUEEAAGBBAABAQQAAsMEAAJjBAABQQQAAcMEAAHBBAAAwQQAAuEE="
+    }
+  ],
+  "extras": {
+    "knowgrph": {
+      "assetType": "xr-demo",
+      "theme": "original infinite city block grid with animated traffic, orbit focus markers, and model-asset XR inspection affordances",
+      "parityChecklist": [
+        "infinite-city block language",
+        "dynamic city-sector loop",
+        "animated traffic paths",
+        "orbit/focus camera affordance",
+        "scene rotation ready for XR mode",
+        "self-contained GLTF ingest/parse/render proof"
+      ],
+      "route": "Import local files -> Editor Workspace -> Source Files -> Canvas View Mode -> Surface Mode -> XR Mode"
+    }
+  }
+}
