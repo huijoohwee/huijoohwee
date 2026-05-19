@@ -1,1 +1,0 @@
-import{_ as r}from"./mermaid-core-chunk-AGHRB4JF-DmijoDsK.js";var g=r(({flowchart:i})=>{var s,t;const e=((s=i==null?void 0:i.subGraphTitleMargin)==null?void 0:s.top)??0,n=((t=i==null?void 0:i.subGraphTitleMargin)==null?void 0:t.bottom)??0,p=e+n;return{subGraphTitleTopMargin:e,subGraphTitleBottomMargin:n,subGraphTitleTotalMargin:p}},"getSubGraphTitleMargins");export{g};
