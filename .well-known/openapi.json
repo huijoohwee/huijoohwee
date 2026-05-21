@@ -1,0 +1,67 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Knowgrph API",
+    "version": "0.1.0",
+    "description": "Agent discovery surface for the Knowgrph Cloudflare deployment."
+  },
+  "servers": [
+    {
+      "url": "https://airvio.co/api/storage",
+      "description": "Knowgrph storage worker"
+    }
+  ],
+  "paths": {
+    "/llms.txt": {
+      "get": {
+        "summary": "Read the Source Files LLM index",
+        "responses": {
+          "200": {
+            "description": "Plain-text LLM index"
+          }
+        }
+      }
+    },
+    "/source-files": {
+      "get": {
+        "summary": "List published Source Files",
+        "responses": {
+          "200": {
+            "description": "Source Files index"
+          }
+        }
+      }
+    },
+    "/doc/{workspaceId}/{canonicalPath}": {
+      "get": {
+        "summary": "Read a Source File markdown document",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "canonicalPath",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Markdown document"
+          },
+          "404": {
+            "description": "Document not found"
+          }
+        }
+      }
+    }
+  }
+}

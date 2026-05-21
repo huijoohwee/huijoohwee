@@ -1,0 +1,14 @@
+{
+  "resource": "https://airvio.co/knowgrph/",
+  "authorization_servers": [
+    "https://airvio.co/cdn-cgi/access"
+  ],
+  "scopes_supported": [
+    "knowgrph:read",
+    "knowgrph:source-files:read"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://airvio.co/knowgrph/llms.txt"
+}

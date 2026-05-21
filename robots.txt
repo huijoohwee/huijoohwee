@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /knowgrph/
+Disallow: /api/payments/
+
+User-agent: GPTBot
+Allow: /knowgrph/
+Disallow: /api/payments/
+
+User-agent: Claude-Web
+Allow: /knowgrph/
+Disallow: /api/payments/
+
+User-agent: Google-Extended
+Allow: /knowgrph/
+Disallow: /api/payments/
+
+User-agent: OAI-SearchBot
+Allow: /knowgrph/
+Disallow: /api/payments/
+
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Sitemap: https://airvio.co/sitemap.xml

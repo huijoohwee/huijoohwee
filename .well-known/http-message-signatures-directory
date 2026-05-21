@@ -1,0 +1,12 @@
+{
+  "keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "kid": "knowgrph-agent-ready-2026-05-21",
+      "use": "sig",
+      "alg": "EdDSA",
+      "x": "11qYAYdkVKxA4G0wV47IxPtYfFVH_H7zmC2Di2PcvLU"
+    }
+  ]
+}

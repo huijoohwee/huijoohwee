@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-skills.dev/schemas/skills-index.v0.2.json",
+  "updated_at": "2026-05-21",
+  "skills": [
+    {
+      "name": "knowgrph-source-files",
+      "type": "markdown",
+      "description": "Discover and read published Knowgrph Source Files.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-source-files.md",
+      "sha256": "9a710b68df0daff18686348f681e817f511f6b06b4986de4ae676765ccaeab19"
+    }
+  ]
+}

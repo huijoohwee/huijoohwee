@@ -1,0 +1,47 @@
+{
+  "serverInfo": {
+    "name": "knowgrph",
+    "version": "0.1.0"
+  },
+  "transport": {
+    "type": "http",
+    "url": "https://airvio.co/knowgrph/mcp"
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "list_source_files",
+        "description": "List published Knowgrph Source Files.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        }
+      },
+      {
+        "name": "read_source_file",
+        "description": "Read a published Knowgrph Source File markdown document.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "workspaceId",
+            "canonicalPath"
+          ],
+          "properties": {
+            "workspaceId": {
+              "type": "string"
+            },
+            "canonicalPath": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "links": {
+    "apiCatalog": "https://airvio.co/knowgrph/.well-known/api-catalog",
+    "skills": "https://airvio.co/knowgrph/.well-known/agent-skills/index.json"
+  }
+}

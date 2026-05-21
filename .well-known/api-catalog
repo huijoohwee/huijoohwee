@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://airvio.co/knowgrph/",
+      "service-desc": [
+        {
+          "href": "https://airvio.co/knowgrph/.well-known/openapi.json",
+          "type": "application/vnd.oai.openapi+json;version=3.1"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://airvio.co/knowgrph/llms.txt",
+          "type": "text/plain"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://airvio.co/knowgrph/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}
