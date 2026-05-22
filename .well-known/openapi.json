@@ -134,6 +134,60 @@
           }
         }
       }
+    },
+    "/knowgrph/doc-default/{canonicalPath}": {
+      "get": {
+        "summary": "Read a default-workspace shared document",
+        "parameters": [
+          {
+            "name": "canonicalPath",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML for browsers or markdown when Accept includes text/markdown"
+          },
+          "404": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/knowgrph/doc/{workspaceId}/{canonicalPath}": {
+      "get": {
+        "summary": "Read a shared document",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "canonicalPath",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML for browsers or markdown when Accept includes text/markdown"
+          },
+          "404": {
+            "description": "Document not found"
+          }
+        }
+      }
     }
   }
 }

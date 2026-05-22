@@ -10,6 +10,8 @@
 # BEGIN knowgrph generated top-level file routes
 /knowgrph /knowgrph 200
 /knowgrph/ /knowgrph/ 200
+/knowgrph/doc/* /knowgrph/doc/:splat 200
+/knowgrph/doc-default/* /knowgrph/doc-default/:splat 200
 /knowgrph/mcp /knowgrph/mcp 200
 /knowgrph/robots.txt /knowgrph/robots.txt 200
 /knowgrph/sitemap.xml /knowgrph/sitemap.xml 200
