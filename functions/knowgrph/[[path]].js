@@ -3,6 +3,10 @@ import {
   KNOWGRPH_AGENT_READY_TOOL_IDS,
 } from "../../canvas/src/features/agent-ready/knowgrphAgentReadyToolContract.mjs";
 import {
+  decodePublishedDocShareToken,
+  PUBLISHED_DOC_SHARE_TOKEN_PARAM,
+} from "../../canvas/src/features/canvas/canvasDocShareToken.mjs";
+import {
   A2A_AGENT_CARD_PATH,
   A2A_AGENT_CARD_URL,
   agentReadyMarkdownBody,
@@ -34,6 +38,7 @@ const buildStorageDocPath = (canonicalPath, workspaceId = "") => {
 };
 const DEFAULT_DOC_SHARE_PREFIX = `${APP_BASE_PATH}/doc-default/`;
 const WORKSPACE_DOC_SHARE_PREFIX = `${APP_BASE_PATH}/doc/`;
+const TOKEN_DOC_SHARE_PREFIX = `${APP_BASE_PATH}/share/`;
 const WORKSPACE_ID_PARAM = "kgWorkspaceId";
 const CANONICAL_PATH_PARAM = "kgCanonicalPath";
 
@@ -282,6 +287,18 @@ const openApi = {
         ],
         responses: {
           "200": { description: "HTML for browsers or markdown when Accept includes text/markdown" },
+          "404": { description: "Document not found" },
+        },
+      },
+    },
+    [`${APP_BASE_PATH}/share/{shareToken}`]: {
+      get: {
+        summary: "Read a shared document through the canonical opaque share token route",
+        parameters: [
+          { name: "shareToken", in: "path", required: true, schema: { type: "string" } },
+        ],
+        responses: {
+          "200": { description: "HTML for browsers or published markdown when Accept includes text/markdown" },
           "404": { description: "Document not found" },
         },
       },
@@ -617,7 +634,27 @@ const parsePublishedDocSharePath = (pathname) => {
   return { workspaceId, canonicalPath };
 };
 
+const parsePublishedDocShareTokenPath = (pathname) => {
+  const normalizedPath = String(pathname || "").replace(/\/+$/, "") || "/";
+  if (!normalizedPath.startsWith(TOKEN_DOC_SHARE_PREFIX)) return null;
+  const shareToken = decodeURIComponent(normalizedPath.slice(TOKEN_DOC_SHARE_PREFIX.length)).trim();
+  if (!shareToken) return null;
+  const decoded = decodePublishedDocShareToken(shareToken);
+  if (!decoded) return null;
+  return {
+    workspaceId: String(decoded.workspaceId || "").trim(),
+    canonicalPath: decoded.canonicalPath,
+  };
+};
+
 const parsePublishedDocDeepLinkSearch = (searchParams) => {
+  const shareToken = decodePublishedDocShareToken(searchParams?.get(PUBLISHED_DOC_SHARE_TOKEN_PARAM));
+  if (shareToken) {
+    return {
+      workspaceId: String(shareToken.workspaceId || "").trim(),
+      canonicalPath: shareToken.canonicalPath,
+    };
+  }
   const canonicalPathParam = String(searchParams?.get(CANONICAL_PATH_PARAM) || "").trim();
   if (canonicalPathParam) {
     const canonicalPath = decodeURIComponent(canonicalPathParam).trim();
@@ -810,16 +847,21 @@ export const buildAgentReadyStaticFiles = async () => ({
 });
 
 const handlesKnowgrphRoot = (pathname) => pathname === APP_BASE_PATH || pathname === `${APP_BASE_PATH}/`;
-const handlesKnowgrphHtmlSurface = (pathname) => handlesKnowgrphRoot(pathname) || Boolean(parsePublishedDocSharePath(pathname));
+const handlesKnowgrphHtmlSurface = (pathname) =>
+  handlesKnowgrphRoot(pathname) || Boolean(parsePublishedDocSharePath(pathname)) || Boolean(parsePublishedDocShareTokenPath(pathname));
 
 const routeResponse = async (request) => {
   const url = new URL(request.url);
   const pathname = url.pathname.replace(/\/+$/, "") || "/";
   const publishedDocSharePath = parsePublishedDocSharePath(pathname);
+  const publishedDocShareTokenPath = parsePublishedDocShareTokenPath(pathname);
   const publishedDocDeepLink = handlesKnowgrphRoot(url.pathname)
     ? parsePublishedDocDeepLinkSearch(url.searchParams)
     : null;
 
+  if (publishedDocShareTokenPath && wantsMarkdown(request)) {
+    return proxyPublishedDocMarkdownResponse(request, publishedDocShareTokenPath);
+  }
   if (publishedDocSharePath && wantsMarkdown(request)) {
     return proxyPublishedDocMarkdownResponse(request, publishedDocSharePath);
   }

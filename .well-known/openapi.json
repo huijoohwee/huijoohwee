@@ -188,6 +188,29 @@
           }
         }
       }
+    },
+    "/knowgrph/share/{shareToken}": {
+      "get": {
+        "summary": "Read a shared document through the canonical opaque share token route",
+        "parameters": [
+          {
+            "name": "shareToken",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML for browsers or published markdown when Accept includes text/markdown"
+          },
+          "404": {
+            "description": "Document not found"
+          }
+        }
+      }
     }
   }
 }
