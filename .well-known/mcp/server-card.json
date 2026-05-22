@@ -37,6 +37,34 @@
             }
           }
         }
+      },
+      {
+        "name": "read_shared_document",
+        "description": "Read published Knowgrph markdown content from a share token or public Knowgrph share/document URL.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "shareToken": {
+              "type": "string"
+            },
+            "shareUrl": {
+              "type": "string"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "shareToken"
+              ]
+            },
+            {
+              "required": [
+                "shareUrl"
+              ]
+            }
+          ]
+        }
       }
     ]
   },
