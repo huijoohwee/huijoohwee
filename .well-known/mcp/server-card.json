@@ -67,6 +67,34 @@
         }
       },
       {
+        "name": "inspect_shared_document_structure",
+        "description": "Inspect published Knowgrph shared-document frontmatter and body structure from a share token or public Knowgrph share/document URL.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "shareToken": {
+              "type": "string"
+            },
+            "shareUrl": {
+              "type": "string"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "shareToken"
+              ]
+            },
+            {
+              "required": [
+                "shareUrl"
+              ]
+            }
+          ]
+        }
+      },
+      {
         "name": "inspect_agent_surface",
         "description": "Inspect the deployed Knowgrph agent-ready discovery surface, including health, OpenAPI, MCP, and skill metadata.",
         "inputSchema": {
