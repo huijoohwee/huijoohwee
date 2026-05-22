@@ -8,6 +8,12 @@
 /knowgrph/vendor/* /content/knowgrph/vendor/:splat 200
 /knowgrph/imports/* /content/knowgrph/imports/:splat 200
 # BEGIN knowgrph generated top-level file routes
+/knowgrph /knowgrph 200
+/knowgrph/ /knowgrph/ 200
+/knowgrph/mcp /knowgrph/mcp 200
+/knowgrph/robots.txt /knowgrph/robots.txt 200
+/knowgrph/sitemap.xml /knowgrph/sitemap.xml 200
+/knowgrph/.well-known/* /knowgrph/.well-known/:splat 200
 /knowgrph/apple-touch-icon.png /content/knowgrph/apple-touch-icon.png 200
 /knowgrph/favicon.svg /content/knowgrph/favicon.svg 200
 /knowgrph/llms.txt /content/knowgrph/llms.txt 200

@@ -20,17 +20,17 @@
       },
       {
         "name": "read_source_file",
-        "description": "Read a published Knowgrph Source File markdown document.",
+        "description": "Read published Knowgrph Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
           "required": [
-            "workspaceId",
             "canonicalPath"
           ],
           "properties": {
             "workspaceId": {
-              "type": "string"
+              "type": "string",
+              "default": "kgws:canonical-docs"
             },
             "canonicalPath": {
               "type": "string"

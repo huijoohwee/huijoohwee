@@ -32,6 +32,29 @@
         }
       }
     },
+    "/doc-default/{canonicalPath}": {
+      "get": {
+        "summary": "Read a default-workspace Source File markdown document",
+        "parameters": [
+          {
+            "name": "canonicalPath",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Markdown document from the default Editor Workspace"
+          },
+          "404": {
+            "description": "Document not found"
+          }
+        }
+      }
+    },
     "/doc/{workspaceId}/{canonicalPath}": {
       "get": {
         "summary": "Read a Source File markdown document",
