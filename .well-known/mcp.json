@@ -65,6 +65,15 @@
             }
           ]
         }
+      },
+      {
+        "name": "inspect_agent_surface",
+        "description": "Inspect the deployed Knowgrph agent-ready discovery surface, including health, OpenAPI, MCP, and skill metadata.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        }
       }
     ]
   },
