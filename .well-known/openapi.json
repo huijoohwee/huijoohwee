@@ -7,12 +7,61 @@
   },
   "servers": [
     {
-      "url": "https://airvio.co/api/storage",
-      "description": "Knowgrph storage worker"
+      "url": "https://airvio.co",
+      "description": "Knowgrph Cloudflare deployment"
     }
   ],
   "paths": {
-    "/llms.txt": {
+    "/knowgrph/health": {
+      "get": {
+        "summary": "Read the Knowgrph agent-ready health status",
+        "responses": {
+          "200": {
+            "description": "Health status in application/health+json format"
+          }
+        }
+      }
+    },
+    "/knowgrph/mcp": {
+      "get": {
+        "summary": "Read MCP transport metadata",
+        "responses": {
+          "200": {
+            "description": "MCP transport metadata"
+          }
+        }
+      },
+      "post": {
+        "summary": "Send a JSON-RPC MCP request",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "JSON-RPC result payload"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-card.json": {
+      "get": {
+        "summary": "Read the Knowgrph A2A Agent Card",
+        "responses": {
+          "200": {
+            "description": "A2A Agent Card JSON"
+          }
+        }
+      }
+    },
+    "/api/storage/llms.txt": {
       "get": {
         "summary": "Read the Source Files LLM index",
         "responses": {
@@ -22,7 +71,7 @@
         }
       }
     },
-    "/source-files": {
+    "/api/storage/source-files": {
       "get": {
         "summary": "List published Source Files",
         "responses": {
@@ -32,7 +81,7 @@
         }
       }
     },
-    "/doc-default/{canonicalPath}": {
+    "/api/storage/doc-default/{canonicalPath}": {
       "get": {
         "summary": "Read a default-workspace Source File markdown document",
         "parameters": [
@@ -55,7 +104,7 @@
         }
       }
     },
-    "/doc/{workspaceId}/{canonicalPath}": {
+    "/api/storage/doc/{workspaceId}/{canonicalPath}": {
       "get": {
         "summary": "Read a Source File markdown document",
         "parameters": [

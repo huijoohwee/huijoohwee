@@ -28,12 +28,12 @@
             "canonicalPath"
           ],
           "properties": {
+            "canonicalPath": {
+              "type": "string"
+            },
             "workspaceId": {
               "type": "string",
               "default": "kgws:canonical-docs"
-            },
-            "canonicalPath": {
-              "type": "string"
             }
           }
         }
@@ -42,6 +42,8 @@
   },
   "links": {
     "apiCatalog": "https://airvio.co/knowgrph/.well-known/api-catalog",
-    "skills": "https://airvio.co/knowgrph/.well-known/agent-skills/index.json"
+    "skills": "https://airvio.co/knowgrph/.well-known/agent-skills/index.json",
+    "status": "https://airvio.co/knowgrph/health",
+    "agentCard": "https://airvio.co/.well-known/agent-card.json"
   }
 }

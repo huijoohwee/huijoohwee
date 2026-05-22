@@ -14,9 +14,19 @@
           "type": "text/plain"
         }
       ],
+      "status": [
+        {
+          "href": "https://airvio.co/knowgrph/health",
+          "type": "application/health+json"
+        }
+      ],
       "service-meta": [
         {
           "href": "https://airvio.co/knowgrph/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://airvio.co/.well-known/agent-card.json",
           "type": "application/json"
         }
       ]

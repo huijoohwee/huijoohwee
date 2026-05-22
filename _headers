@@ -118,6 +118,9 @@
 /.well-known/openapi.json
   Content-Type: application/vnd.oai.openapi+json; charset=utf-8
   Cache-Control: public, max-age=3600
+/.well-known/agent-card.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
 /.well-known/oauth-protected-resource
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
@@ -143,3 +146,10 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
 # END knowgrph generated agent-ready headers
+
+# BEGIN knowgrph generated homepage discovery headers
+/
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
+/index.html
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
+# END knowgrph generated homepage discovery headers
