@@ -1,0 +1,1 @@
+import{c as a,U as e}from"./index-BiygHQ4P.js";a(e.table.text),a(e.table.textSecondary),a("sticky top-0 z-10 px-3 py-2",e.table.headerBg,e.table.cellBorder),a("border-b",e.table.cellBorder,e.table.rowHover),a("px-3 py-2",e.table.textSecondary);

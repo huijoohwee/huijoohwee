@@ -81,6 +81,46 @@
         }
       }
     },
+    "/api/storage/source-files/{workspaceId}": {
+      "get": {
+        "summary": "List published Source Files for a workspace",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace-scoped Source Files index"
+          }
+        }
+      }
+    },
+    "/api/storage/source-files/{workspaceId}/llms.txt": {
+      "get": {
+        "summary": "Read the workspace-scoped Source Files LLM index",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace-scoped plain-text LLM index"
+          }
+        }
+      }
+    },
     "/api/storage/doc-default/{canonicalPath}": {
       "get": {
         "summary": "Read a default-workspace Source File markdown document",
@@ -208,6 +248,26 @@
           },
           "404": {
             "description": "Document not found"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-source-files.md": {
+      "get": {
+        "summary": "Read the Knowgrph published Source Files skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for published Source Files and shared documents"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-webmcp-readiness.md": {
+      "get": {
+        "summary": "Read the Knowgrph WebMCP readiness skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for WebMCP lifecycle and discovery readiness"
           }
         }
       }
