@@ -1,6 +1,6 @@
 {
   "name": "Knowgrph Agent",
-  "description": "Agent-readable discovery and published source-file retrieval surface for Knowgrph.",
+  "description": "Agent-readable discovery, published-document retrieval, and WebMCP-ready metadata surface for Knowgrph.",
   "version": "0.1.0",
   "provider": {
     "organization": "airvio / joohwee",
@@ -40,16 +40,17 @@
   ],
   "skills": [
     {
-      "id": "discover-source-files",
-      "name": "Discover Source Files",
-      "description": "Lists published Knowgrph Source Files for downstream agent navigation and retrieval.",
+      "id": "list-source-files",
+      "name": "List Source Files",
+      "description": "List published Knowgrph Source Files.",
       "tags": [
+        "mcp",
         "discovery",
         "source-files",
-        "markdown"
+        "read-only"
       ],
       "examples": [
-        "List the published Knowgrph source files."
+        "List the published Knowgrph Source Files."
       ],
       "inputModes": [
         "application/json",
@@ -63,8 +64,9 @@
     {
       "id": "read-source-file",
       "name": "Read Source File",
-      "description": "Reads published Knowgrph markdown documents from the default or explicit workspace.",
+      "description": "Read published Knowgrph Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
       "tags": [
+        "mcp",
         "read",
         "markdown",
         "workspace"
@@ -82,10 +84,55 @@
       ]
     },
     {
+      "id": "read-shared-document",
+      "name": "Read Shared Document",
+      "description": "Read published Knowgrph markdown content from a share token or public Knowgrph share/document URL.",
+      "tags": [
+        "mcp",
+        "read",
+        "shared-document",
+        "markdown"
+      ],
+      "examples": [
+        "Read the Knowgrph shared document behind this share URL."
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/markdown",
+        "application/json"
+      ]
+    },
+    {
+      "id": "inspect-shared-document-structure",
+      "name": "Inspect Shared Document Structure",
+      "description": "Inspect published Knowgrph shared-document frontmatter and body structure from a share token or public Knowgrph share/document URL.",
+      "tags": [
+        "mcp",
+        "inspect",
+        "shared-document",
+        "structure"
+      ],
+      "examples": [
+        "Inspect the structure of this Knowgrph shared document."
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/markdown"
+      ]
+    },
+    {
       "id": "inspect-agent-surface",
       "name": "Inspect Agent Surface",
-      "description": "Provides machine-readable discovery for health, MCP, OpenAPI, and related service metadata.",
+      "description": "Inspect the deployed Knowgrph agent-ready discovery surface, including health, OpenAPI, MCP, and skill metadata.",
       "tags": [
+        "mcp",
         "agent-ready",
         "discovery",
         "metadata"

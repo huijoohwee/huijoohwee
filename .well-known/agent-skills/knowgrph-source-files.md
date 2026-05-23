@@ -1,6 +1,6 @@
-# Knowgrph Source Files Skill
+# Knowgrph Published Documents Skill
 
-Use this skill when an agent needs to discover and read published Knowgrph Source Files from the Cloudflare storage API.
+Use this skill when an agent needs to discover, read, or inspect published Knowgrph Source Files and shared documents.
 
 ## Tools
 
@@ -8,4 +8,9 @@ Use this skill when an agent needs to discover and read published Knowgrph Sourc
 - read_source_file: fetch https://airvio.co/api/storage/doc-default/{canonicalPath} by default, or https://airvio.co/api/storage/doc/{workspaceId}/{canonicalPath} for an explicit workspace.
 - read_shared_document: resolve a Knowgrph share token or public share/document URL, then fetch the canonical published markdown document from storage.
 - inspect_shared_document_structure: inspect published Knowgrph shared-document frontmatter/body structure from a share token or public share/document URL.
-- inspect_agent_surface: inspect the deployed Knowgrph health, OpenAPI, MCP server-card, A2A agent-card, and agent-skills metadata.
+
+## Scope
+
+- Shared read-only surface across HTTP MCP, MCP server-card metadata, and deployed HTML WebMCP fallback.
+- Public/browser URLs stay canonical on https://airvio.co/api/storage/*.
+- Server-side Pages reads use https://knowgrph-storage.huijoohwee.workers.dev to avoid custom-domain self-fetch rewrite failures.

@@ -1,13 +1,20 @@
 {
   "$schema": "https://agent-skills.dev/schemas/skills-index.v0.2.json",
-  "updated_at": "2026-05-21",
+  "updated_at": "2026-05-23",
   "skills": [
     {
       "name": "knowgrph-source-files",
       "type": "markdown",
-      "description": "Discover and read published Knowgrph Source Files.",
+      "description": "Discover and inspect published Knowgrph Source Files and shared documents.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-source-files.md",
-      "sha256": "dd00c11e810d61049d7d18847f8a9f3ed70bf5ef0a350b966ecc665b472be625"
+      "sha256": "0296210a8ec68f06e1e51a6f57aede56dd3483009be06a1c7f10c287a44cb78b"
+    },
+    {
+      "name": "knowgrph-webmcp-readiness",
+      "type": "markdown",
+      "description": "Inspect Knowgrph WebMCP lifecycle, shared deployed MCP tools, and agent-ready metadata.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-webmcp-readiness.md",
+      "sha256": "d90431c6c674df56d1ef847cda1018b9ac7f095dd32bba0cb5093112345fb71e"
     }
   ]
 }
