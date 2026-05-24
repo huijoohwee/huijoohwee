@@ -24,18 +24,6 @@
 /singabldr/*
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' https://static.cloudflareinsights.com; script-src-attr 'none'; connect-src 'self' https://static.cloudflareinsights.com; frame-src 'self' https: data: blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests; block-all-mixed-content
 
-/content/knowgrph/index.html
-  Cache-Control: public, max-age=0, must-revalidate
-
-/knowgrph
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-
-/knowgrph/
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-
-/knowgrph/index.html
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-
 /knowgrph/*.json
   Cache-Control: public, max-age=0, must-revalidate
 
@@ -46,7 +34,9 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /knowgrph/*
-  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; script-src-attr 'none'; connect-src 'self' https: wss:; frame-src 'self' https: data: blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests
+  # Keep report-only directives to observable enforcement checks only. Browser-only upgrade directives
+  # are ignored in report-only mode and create live console noise without adding signal.
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; script-src-attr 'none'; connect-src 'self' https: wss:; frame-src 'self' https: data: blob:; worker-src 'self' blob:; manifest-src 'self'
 
 /content/knowgrph/*.json
   Cache-Control: public, max-age=0, must-revalidate
@@ -156,3 +146,22 @@
 /index.html
   Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
 # END knowgrph generated homepage discovery headers
+
+# BEGIN knowgrph generated app-shell cache headers
+/content/knowgrph/index.html
+  Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
+/content/knowgrph/manifest.webmanifest
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/content/knowgrph/sw.js
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/knowgrph
+  Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
+/knowgrph/
+  Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
+/knowgrph/index.html
+  Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
+/knowgrph/manifest.webmanifest
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/knowgrph/sw.js
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+# END knowgrph generated app-shell cache headers

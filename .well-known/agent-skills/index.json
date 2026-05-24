@@ -14,7 +14,7 @@
       "type": "markdown",
       "description": "Inspect Knowgrph WebMCP lifecycle, shared deployed MCP tools, and agent-ready metadata.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-webmcp-readiness.md",
-      "sha256": "6e5be7445ab8ad643c04b033c6ee1d1521d6cb1561e968a6082f6a4e390d6501"
+      "sha256": "fcb9a79d2a0ecc9a3a90c1d6eb4befb206e1bf167375b2d1e8806526eb7c3392"
     }
   ]
 }
