@@ -1,7 +1,65 @@
 ---
 title: Knowgrph Timeline Animation Demo
-kgCanvasRenderMode: 2d
-kgCanvas2dRenderer: animation
+kgCanvasSurfaceMode: "2d"
+kgCanvasRenderMode: "2d"
+kgCanvas2dRenderer: "animation"
+kgDocumentSemanticMode: "document"
+kgFrontmatterModeEnabled: true
+kgMultiDimTableModeEnabled: false
+kgDocumentStructureBaselineLock: false
+flow:
+  direction: LR
+  edgeType: smoothstep
+  nodes:
+    - id: NODE_TIMELINE
+      type: Timeline
+      label: Beat Timeline
+    - id: NODE_CLIP_01
+      type: Clip
+      label: Hook Clip
+      params:
+        beat_ref: beat_01
+    - id: NODE_OVERLAY_01
+      type: Overlay
+      label: Hook Overlay
+      params:
+        beat_ref: beat_01
+    - id: NODE_AUDIO_02
+      type: Audio
+      label: Problem Voiceover
+      params:
+        beat_ref: beat_02
+    - id: NODE_SCENE_03
+      type: Scene
+      label: Proof Scene
+      params:
+        beat_ref: beat_03
+    - id: NODE_CTA_04
+      type: Overlay
+      label: CTA Overlay
+      params:
+        beat_ref: beat_04
+  edges:
+    - id: edge:timeline:beat_01
+      source: NODE_TIMELINE
+      target: NODE_CLIP_01
+      properties:
+        "flow:sourcePortKey": beat_01_out
+    - id: edge:timeline:beat_02
+      source: NODE_TIMELINE
+      target: NODE_AUDIO_02
+      properties:
+        "flow:sourcePortKey": beat_02_out
+    - id: edge:timeline:beat_03
+      source: NODE_TIMELINE
+      target: NODE_SCENE_03
+      properties:
+        "flow:sourcePortKey": beat_03_out
+    - id: edge:timeline:beat_04
+      source: NODE_TIMELINE
+      target: NODE_CTA_04
+      properties:
+        "flow:sourcePortKey": beat_04_out
 timeline:
   beats:
     beat_01:
@@ -31,11 +89,24 @@ Use this document to validate the native `2D Renderer: Animation` surface.
 - Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: animation`.
 - Confirm animation documents reuse the same canonical Flow Editor frontmatter syntax: shared `flow:` YAML authoring surface plus optional `timeline.beats.*` timing metadata, with no parallel animation-only markdown block.
 - Confirm `timeline.beats.*` drives beat labels and timing without in-repo hardcoded demo rows.
+- Confirm the native in-repo timeline animation editor stays repo-owned and enhancement-first, without copied vendor runtime code or parallel demo-only fallback paths.
 - Confirm graph nodes linked by `beat_ref` or canonical ids like `NODE_CLIP_01` and `NODE_OVERLAY_01` populate the correct beat lanes.
 - Confirm `Enable Runtime Auto Scroll` keeps the playhead centered while playback advances.
-- Confirm the runtime auto-scroll switch preserves the required `player-config` -> `button[role="switch"]` -> `div` / `span` / `div` DOM shape.
+- Confirm the runtime auto-scroll switch preserves 100% fidelity with the reference contract: exact `player-config` -> `button[role="switch"]` -> `div` / `span` / `div` DOM shape plus `aria-checked="true"`, `class="ant-switch ant-switch-checked"`, `ant-click-animating="true"`, and `style="margin-bottom: 20px;"`.
+- Confirm the player shell preserves the native reference wrapper contract: `timeline-player` with `play-control`, `time`, and `rate-control` surfaces instead of bespoke wrapper names, and avoids extra local-only player meta chips inside that shell.
+- Confirm the next body-density layer preserves native compact geometry: `timeline-editor-time-area` stays at `32px`, lane rows stay compact by default, and action pills reuse compact movement controls instead of full toolbar-sized buttons.
+- Confirm the next beat-header density layer preserves compact beat cards: shorter beat header height, tighter beat metadata spacing, and selected beat quick-action chips collapse to compact native hints instead of long helper labels.
+- Confirm the timeline editor preserves the native reference wrapper contract: `timeline-editor`, `timeline-editor-time-area`, `timeline-editor-time-unit`, `timeline-editor-time-unit-big`, `timeline-editor-time-unit-scale`, `timeline-editor-edit-area`, `timeline-editor-cursor`, and inline `timeline-editor-action` stretch handles.
+- Confirm lane items preserve native reference effect shells: `timeline-editor-action-effect-effect0` / `effect0` for audio-style rows and `timeline-editor-action-effect-effect1` / `effect1` for animation rows, without hardcoded fixture-only markup.
+- Confirm live browser validation drives the mounted app store through `window.knowgrphWorkspaceCommand.applyMarkdownDocument(...)` instead of importing `/src/...` store modules into a parallel runtime instance.
 - Confirm beat bars support native drag-to-move and edge-drag-to-resize interactions when `timeline.beats.*` exposes absolute timing.
-- Confirm drag interactions auto-scroll horizontally near the viewport edge and commit updated `start_ms` / `end_ms` / `duration_ms` back into frontmatter on release.
+- Confirm drag interactions auto-scroll horizontally near the viewport edge continuously while the pointer is held at the rail edge, then commit updated `start_ms` / `end_ms` / `duration_ms` back into frontmatter on release.
+- Confirm the repo-owned mounted-surface validator runs through `python3 ./scripts/validate_animation_timeline_interactions.py` and proves move/resize edge-hold auto-scroll against `window.knowgrphWorkspaceCommand.applyMarkdownDocument(...)`.
+- Confirm that same mounted validator also proves `Insert Before` timing shift, non-empty delete guard, and empty-beat delete compaction against the live beat-card quick actions.
+- Confirm that same mounted validator also proves beat-card `Duplicate` forward-shift compaction and beat-card `Split` midpoint continuity against the live quick-action buttons.
+- Confirm that same mounted validator also proves beat-card `Merge Next` guard/empty-beat merge semantics and beat-card `Remove Gap` guard/backward compaction semantics against the live quick-action buttons.
+- Confirm that same mounted validator also proves lane `Hide` / `Mute` / `Solo` mutations persist into `timeline.lane_controls`, clear on original markdown reapply, and restore on mutated-markdown reapply against the live mounted surface.
+- Confirm that same mounted validator also proves lane up/down controls persist `timeline.lane_order`, clear on original markdown reapply, and restore the reordered lane rail on mutated-markdown reapply against the live mounted surface.
 - Confirm `Add Beat` inserts a new frontmatter beat and shifts following absolute-timing beats forward to preserve a non-overlapping timeline.
 - Confirm `Delete Beat` is allowed only for empty beats and compacts following beats backward after removal.
 - Confirm each beat card exposes a native delete quick-action icon on hover and keeps the same empty-beat-only delete guard as the toolbar action.
@@ -55,6 +126,26 @@ Use this document to validate the native `2D Renderer: Animation` surface.
 - Confirm `Remove Gap` compacts the active beat and following beats back to the previous beat boundary when a positive absolute-timing gap exists.
 - Confirm each beat card exposes a native remove-gap quick-action icon on hover and keeps the same positive-gap-only remove-gap guard as the toolbar action.
 - Confirm the animation action surface reuses shared Toolbar-style icon buttons and shared icon sizing utilities instead of bespoke text action buttons.
+- Confirm the native animation toolbar exposes keyboard hints for playback and beat editing: `Space`, `Left Arrow`, `Right Arrow`, `R`, `D`, and `S`.
+- Confirm native animation hotkeys are ignored while beat label/note/summary/tags editing is active or when focus is inside text-entry controls.
+- Confirm the active beat metadata controls expose native keyboard entry hints for label, note, summary, and tags: `L`, `N`, `M`, and `T`.
+- Confirm those metadata hotkeys open the corresponding active-beat editor without bypassing the existing frontmatter-backed save/cancel flow.
+- Confirm active beat note and summary editors support native multiline keyboard parity: `Cmd/Ctrl+Enter` saves and `Escape` cancels without requiring pointer-only actions.
+- Confirm lane rows support explicit native selection for lane shortcuts instead of hidden global behavior.
+- Confirm lane rows are keyboard-focusable, use visible native focus styling, and select on focus so lane shortcuts can start from `Tab` navigation.
+- Confirm lane selection uses roving tabindex semantics: one native tab stop enters the lane rail, then `Arrow Up`, `Arrow Down`, `Home`, and `End` move focus/selection between lanes.
+- Confirm the selected lane exposes native keyboard hints for reorder and lane controls: `[` move up, `]` move down, `H` hide/show, `U` mute/unmute, and `O` solo/unsolo.
+- Confirm the selected lane row surfaces inline native hint chips for lane traversal and lane controls instead of relying on header-only guidance.
+- Confirm selected-lane hotkeys reuse the existing frontmatter-backed lane control and lane order handlers.
+- Confirm visible lane items support explicit native selection and roving tabindex inside the selected lane instead of hidden global reassignment behavior.
+- Confirm selected lane items expose visible native focus styling and keyboard hints for item traversal/reassignment.
+- Confirm the selected item card surfaces inline native hint chips for lane-item traversal and reassignment instead of relying on header-only guidance.
+- Confirm the selected item exposes native keyboard hints for reassignment: `,` moves to the previous beat and `.` moves to the next beat.
+- Confirm selected-item reassignment hotkeys reuse the existing frontmatter-backed item `beat_ref` rewrite path.
+- Confirm the beat strip supports explicit native focus and roving tabindex instead of mouse-only beat selection behavior.
+- Confirm beat-strip traversal uses one native tab stop plus `Arrow Left`, `Arrow Right`, `Home`, and `End` to move focus/selection between beats.
+- Confirm beat-strip keyboard focus reuses the existing active-beat/playhead focus path instead of introducing a parallel selection state.
+- Confirm the selected beat card surfaces inline native quick-action hint chips for high-frequency actions such as rename, note, summary, tags, duplicate, and split.
 - Confirm the active beat supports native note editing and commits `timeline.beats.<beat>.note` back into frontmatter.
 - Confirm the active beat supports native summary editing and commits `timeline.beats.<beat>.summary` back into frontmatter.
 - Confirm the active beat supports native tag editing and commits `timeline.beats.<beat>.tags[]` back into frontmatter without duplicate values.
@@ -75,6 +166,8 @@ Use this document to validate the native `2D Renderer: Animation` surface.
 - Confirm lane-item reassignment rewrites the source node `params.beat_ref` in frontmatter graph nodes and re-applies the graph without vendor timeline code.
 
 ## Switch Contract
+
+This block is the exact reference-fidelity validation target for the native animation renderer switch.
 
 ```html
 <div class="player-config">
