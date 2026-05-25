@@ -39,6 +39,36 @@ flow:
       label: CTA Overlay
       params:
         beat_ref: beat_04
+    - id: NODE_SCENE_S1
+      type: Scene
+      label: The Draw
+      params:
+        beat_ref: beat_01
+        shot: WS
+        duration_ms: 5000
+        vo: "Every circle sends one."
+        sfx: crowd_murmur_mechanism_click
+        transition: cut
+    - id: NODE_SCENE_S2
+      type: Scene
+      label: The Fracture
+      params:
+        beat_ref: beat_02
+        shot: CU
+        duration_ms: 5000
+        vo: "She was born between two worlds."
+        sfx: low_resonant_tone_crack
+        transition: dissolve
+    - id: NODE_SCENE_S3
+      type: Scene
+      label: The Arc Opens
+      params:
+        beat_ref: beat_03
+        shot: MS_to_WS
+        duration_ms: 5000
+        vo: "The Arc always takes. Never returns."
+        sfx: gate_thud_silence_kg_pulse
+        transition: fade
   edges:
     - id: edge:timeline:beat_01
       source: NODE_TIMELINE
@@ -60,6 +90,21 @@ flow:
       target: NODE_CTA_04
       properties:
         "flow:sourcePortKey": beat_04_out
+    - id: edge:timeline:scene_s1
+      source: NODE_TIMELINE
+      target: NODE_SCENE_S1
+      properties:
+        "flow:sourcePortKey": beat_01_out
+    - id: edge:timeline:scene_s2
+      source: NODE_TIMELINE
+      target: NODE_SCENE_S2
+      properties:
+        "flow:sourcePortKey": beat_02_out
+    - id: edge:timeline:scene_s3
+      source: NODE_TIMELINE
+      target: NODE_SCENE_S3
+      properties:
+        "flow:sourcePortKey": beat_03_out
 timeline:
   scale:
     scale: 5
@@ -68,17 +113,26 @@ timeline:
     start_left: 20
   beats:
     beat_01:
-      label: Hook
+      label: The Draw
       start_ms: 0
-      end_ms: 4000
+      end_ms: 5000
+      note: "Wide shot — ceremonial plaza. Concentric citizen rings by Circle. Lottery mechanism center stage. Name drawn. Protagonist steps forward."
+      summary: "Hook: selection ritual reveal."
+      tags: [scene, hook, WS, lottery, crowd]
     beat_02:
-      label: Problem
-      start_ms: 4000
-      end_ms: 9000
+      label: The Fracture
+      start_ms: 5000
+      end_ms: 10000
+      note: "Close-up on protagonist. Behind her a glyph splits into two Circle symbols — warm and cool halves. Crowd divides in reaction."
+      summary: "Problem: dual-origin tension surfaces."
+      tags: [scene, problem, CU, glyph, split]
     beat_03:
-      label: Proof
-      start_ms: 9000
+      label: The Arc Opens
+      start_ms: 10000
       end_ms: 15000
+      note: "Trial gate opens. Silhouettes of other selected participants file through. Protagonist walks in — glances back once. Gate closes. KG graph pulse on black."
+      summary: "Proof: protagonist crosses threshold."
+      tags: [scene, proof, MS, gate, threshold]
     beat_04:
       label: CTA
       start_ms: 15000
@@ -212,3 +266,181 @@ This block is the exact reference-fidelity validation target for the native anim
 - `NODE_OVERLAY_01` -> lane `Overlay`
 - `NODE_AUDIO_02` or `params.beat_ref: beat_02` -> lane `Audio`
 - Any other beat-linked node -> lane `Node`
+- `NODE_SCENE_S1` / `NODE_SCENE_S2` / `NODE_SCENE_S3` -> lane `Scene`
+
+## Scenes
+
+Original dystopian fiction set in *The Meridian* — a city partitioned into Circles by civic role.
+No trademarked characters, titles, iconography, or copyrighted source material used or implied.
+Inspired by the structural grammar of faction-society and selection-ritual YA genre conventions only.
+
+---
+
+### Scene 01 — The Draw `beat_01` · 0:00–0:05 · WS
+
+```
+┌──────────────────────────────────────────────────────┐
+│  [WS]  0:00 – 0:05  "The Draw"                      │
+│                                                      │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  SKY         │
+│      ○  ○  ○  ○  ○  ○  ○  ○  ○  ○                   │
+│    ○ ●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━● ○              │
+│   ○ ● ┌──────────────────────────┐ ● ○  RINGS       │
+│  ○  ● │   ╔══════════════╗       │ ●  ○             │
+│   ○ ● │   ║   LOTTERY    ║ ◁─────┼─── mechanism     │
+│    ○ ● │   ╚══════════════╝       │ ● ○             │
+│      ○ └──────────┬───────────────┘ ○               │
+│                   ↓  [paper falls]                   │
+│         ▲  protagonist steps forward                 │
+│  ─────────────────────────────────────────────────  │
+│  VO : "Every circle sends one."                      │
+│  SFX: crowd murmur + mechanism click                 │
+│  TRANS: cut →                                        │
+└──────────────────────────────────────────────────────┘
+```
+
+```json
+{
+  "id": "NODE_SCENE_S1",
+  "type": "Scene",
+  "label": "The Draw",
+  "beat_ref": "beat_01",
+  "timing": { "start_ms": 0, "end_ms": 5000, "duration_ms": 5000 },
+  "shot": "WS",
+  "transition": "cut",
+  "composition": {
+    "bg": "ceremonial_plaza_dusk",
+    "fg_elements": ["circle_rings_crowd", "lottery_mechanism_center"],
+    "subject": "protagonist_steps_forward",
+    "camera_move": "static_push_in_slow"
+  },
+  "audio": {
+    "vo": "Every circle sends one.",
+    "sfx": ["crowd_murmur", "mechanism_click"],
+    "music": "tension_swell_low"
+  },
+  "kgc": {
+    "sigils": ["@scene:draw", "@node:NODE_SCENE_S1"],
+    "tags": ["hook", "WS", "lottery", "crowd", "meridian"]
+  }
+}
+```
+
+---
+
+### Scene 02 — The Fracture `beat_02` · 0:05–0:10 · CU
+
+```
+┌──────────────────────────────────────────────────────┐
+│  [CU]  0:05 – 0:10  "The Fracture"                  │
+│                                                      │
+│          ┌──────────────────────────┐               │
+│          │   ◉   protagonist face   │               │
+│          │       eyes : resolute    │               │
+│          └──────────────────────────┘               │
+│                                                      │
+│  BG:  ◈━━━━━━━━[ split axis ]━━━━━━━━◈             │
+│        ╲                             ╱              │
+│   Circle A (warm ████)  Circle B (cool ░░░░)        │
+│         ↑ origin glyph divides in two ↑             │
+│                                                      │
+│  crowd L: silent     crowd R: cheering               │
+│  ─────────────────────────────────────────────────  │
+│  VO : "She was born between two worlds."             │
+│  SFX: low resonant tone → crack                      │
+│  TRANS: dissolve →                                   │
+└──────────────────────────────────────────────────────┘
+```
+
+```json
+{
+  "id": "NODE_SCENE_S2",
+  "type": "Scene",
+  "label": "The Fracture",
+  "beat_ref": "beat_02",
+  "timing": { "start_ms": 5000, "end_ms": 10000, "duration_ms": 5000 },
+  "shot": "CU",
+  "transition": "dissolve",
+  "composition": {
+    "bg": "split_glyph_dual_circle_bg",
+    "fg_elements": ["protagonist_face_resolute", "glyph_fracture_animation"],
+    "subject": "protagonist_CU",
+    "camera_move": "slow_rack_focus_bg_to_fg"
+  },
+  "bg_split": {
+    "left": { "circle": "A", "tone": "warm", "crowd_state": "silent" },
+    "right": { "circle": "B", "tone": "cool", "crowd_state": "cheering" }
+  },
+  "audio": {
+    "vo": "She was born between two worlds.",
+    "sfx": ["low_resonant_tone", "fracture_crack"],
+    "music": "tension_swell_mid"
+  },
+  "kgc": {
+    "sigils": ["@scene:fracture", "@node:NODE_SCENE_S2"],
+    "tags": ["problem", "CU", "glyph", "split", "dual_origin"]
+  }
+}
+```
+
+---
+
+### Scene 03 — The Arc Opens `beat_03` · 0:10–0:15 · MS → WS
+
+```
+┌──────────────────────────────────────────────────────┐
+│  [MS→WS]  0:10 – 0:15  "The Arc Opens"              │
+│                                                      │
+│  ▓▓▓▓▓▓▓┤                    ├▓▓▓▓▓▓▓  GATE WALL   │
+│  ▓▓▓▓▓▓▓┤  ░░░░░░░░░░░░░░░░  ├▓▓▓▓▓▓▓              │
+│  ▓▓▓▓▓▓▓┤  ░  TRIAL FIELD  ░ ├▓▓▓▓▓▓▓  BEYOND      │
+│          │  ▶ silhouette 1   │                       │
+│          │  ▶ silhouette 2   │                       │
+│          │  ▶ silhouette 3   │                       │
+│          │  ↑ protagonist    │                       │
+│          │    [looks back]   │                       │
+│  ▓▓▓▓▓▓▓┤──────────────────── ▓▓▓▓▓▓▓  GATE CLOSES │
+│          ░░░░░ fade to black ░░░░░                   │
+│                    ◈  KG node pulse                  │
+│  ─────────────────────────────────────────────────  │
+│  VO : "The Arc always takes. Never returns."         │
+│  SFX: heavy gate thud → silence → KG pulse tone     │
+│  TRANS: fade →                                       │
+└──────────────────────────────────────────────────────┘
+```
+
+```json
+{
+  "id": "NODE_SCENE_S3",
+  "type": "Scene",
+  "label": "The Arc Opens",
+  "beat_ref": "beat_03",
+  "timing": { "start_ms": 10000, "end_ms": 15000, "duration_ms": 5000 },
+  "shot": "MS_to_WS",
+  "transition": "fade",
+  "composition": {
+    "bg": "trial_field_fog_infinite",
+    "fg_elements": [
+      "gate_wall_left", "gate_wall_right",
+      "silhouette_group_3", "protagonist_threshold_entry"
+    ],
+    "subject": "protagonist_looks_back",
+    "camera_move": "pull_back_crane_up_MS_to_WS"
+  },
+  "gate_sequence": [
+    { "t_ms": 10000, "state": "open" },
+    { "t_ms": 12000, "state": "participants_filing" },
+    { "t_ms": 13500, "state": "protagonist_entry_glance_back" },
+    { "t_ms": 14200, "state": "closing" },
+    { "t_ms": 15000, "state": "closed_black_kg_pulse" }
+  ],
+  "audio": {
+    "vo": "The Arc always takes. Never returns.",
+    "sfx": ["gate_thud_heavy", "silence_pad", "kg_node_pulse_tone"],
+    "music": "resolve_to_silence"
+  },
+  "kgc": {
+    "sigils": ["@scene:arc_opens", "@node:NODE_SCENE_S3"],
+    "tags": ["proof", "MS_to_WS", "gate", "threshold", "kg_pulse"]
+  }
+}
