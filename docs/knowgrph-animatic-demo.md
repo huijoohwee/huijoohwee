@@ -1,8 +1,8 @@
 ---
-title: Knowgrph Timeline Animation Demo
+title: Knowgrph Animatic Demo
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "animation"
+kgCanvas2dRenderer: "animatic"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
@@ -139,17 +139,29 @@ timeline:
       end_ms: 19000
 ---
 
-# Knowgrph Timeline Animation Demo
+# Knowgrph Animatic Demo
 
-Use this document to validate the native `2D Renderer: Animation` surface.
+Use this document to validate the native `2D Renderer: Animatic` surface.
+
+## Current Runtime Owners
+
+- Renderer registry SSOT: `knowgrph/canvas/src/lib/config.render.ts`
+- Surface mount owner: `knowgrph/canvas/src/components/CanvasViewport.tsx`
+- Runtime shell + DOM/CSS contract: `knowgrph/canvas/src/components/AnimaticCanvas.tsx`, `knowgrph/canvas/src/components/AnimaticCanvas.css`
+- Timeline model + frontmatter rewrite owner: `knowgrph/canvas/src/components/AnimaticCanvas/animaticTimeline.ts`
+- Lane presentation owner: `knowgrph/canvas/src/components/AnimaticCanvas/animaticLaneControls.ts`
+- Keyboard policy owner: `knowgrph/canvas/src/components/AnimaticCanvas/animaticKeyboard.ts`
+- Browser-facing runtime command owner: `knowgrph/canvas/src/features/agent-ready/workspaceRuntimeCommand.ts`
+- Mounted validator owner: `knowgrph/canvas/scripts/validate_animatic_timeline_interactions.py`
+- Canonical validator entry command: `npm run validate:animatic-interactions`
 
 ## Validation Goals
 
-- Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: animation`.
-- Confirm animation documents reuse the same canonical Flow Editor frontmatter syntax: shared `flow:` YAML authoring surface plus optional `timeline.beats.*` timing metadata, with no parallel animation-only markdown block.
+- Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: animatic`.
+- Confirm animatic documents reuse the same canonical Flow Editor frontmatter syntax: shared `flow:` YAML authoring surface plus optional `timeline.beats.*` timing metadata, with no parallel animatic-only markdown block.
 - Confirm `timeline.beats.*` drives beat labels and timing without in-repo hardcoded demo rows.
 - Confirm `timeline.scale.*` stays the single native scale owner for major interval, split count, rail width, and leading offset without introducing a parallel renderer-only config path.
-- Confirm the native in-repo timeline animation editor stays repo-owned and enhancement-first, without copied vendor runtime code or parallel demo-only fallback paths.
+- Confirm the native in-repo animatic editor stays repo-owned and enhancement-first, without copied vendor runtime code or parallel demo-only fallback paths.
 - Confirm graph nodes linked by `beat_ref` or canonical ids like `NODE_CLIP_01` and `NODE_OVERLAY_01` populate the correct beat lanes.
 - Confirm `Enable Runtime Auto Scroll` keeps the playhead centered while playback advances.
 - Confirm the runtime auto-scroll switch preserves 100% fidelity with the reference contract: exact `player-config` -> `button[role="switch"]` -> `div` / `span` / `div` DOM shape plus `aria-checked="true"`, `class="ant-switch ant-switch-checked"`, `ant-click-animating="true"`, and `style="margin-bottom: 20px;"`.
@@ -161,12 +173,12 @@ Use this document to validate the native `2D Renderer: Animation` surface.
 - Confirm the next visual-texture layer stays restrained: active-beat and lane highlights stay low-intensity, action gradients stay soft instead of saturated, stretch handles use subtle white tint, and the cursor glow stays narrow and understated.
 - Confirm the draggable/resizable lane shell preserves the mounted reference contract end-to-end: `timeline-editor-edit-row` renders at `32px`, the outer action pill stays `28px` tall with `4px` radius, the inner `effect0`/`effect1` wrapper stays transparent and vertically centered, and both stretch handles stay transparent rounded hit areas at `10px x 28px`.
 - Confirm the timeline editor preserves the native reference wrapper contract: `timeline-editor`, `timeline-editor-time-area`, `timeline-editor-time-unit`, `timeline-editor-time-unit-big`, `timeline-editor-time-unit-scale`, `timeline-editor-edit-area`, `timeline-editor-cursor`, and inline `timeline-editor-action` stretch handles.
-- Confirm lane items preserve native reference effect shells: `timeline-editor-action-effect-effect0` / `effect0` for audio-style rows and `timeline-editor-action-effect-effect1` / `effect1` for animation rows, without hardcoded fixture-only markup.
+- Confirm lane items preserve native reference effect shells: `timeline-editor-action-effect-effect0` / `effect0` for audio-style rows and `timeline-editor-action-effect-effect1` / `effect1` for animatic rows, without hardcoded fixture-only markup.
 - Confirm live browser validation drives the mounted app store through `window.knowgrphWorkspaceCommand.applyMarkdownDocument(...)` instead of importing `/src/...` store modules into a parallel runtime instance.
 - Confirm beat bars support native drag-to-move and edge-drag-to-resize interactions when `timeline.beats.*` exposes absolute timing.
 - Confirm drag interactions auto-scroll horizontally near the viewport edge continuously while the pointer is held at the rail edge, then commit updated `start_ms` / `end_ms` / `duration_ms` back into frontmatter on release.
 - Confirm dragging or right-resizing a contiguous beat/lane action no longer resolves to a silent no-op: when the edited range pushes into the next beat, following beats carry forward to preserve a non-overlapping sequence.
-- Confirm the repo-owned mounted-surface validator runs through `python3 ./scripts/validate_animation_timeline_interactions.py` and proves move/resize edge-hold auto-scroll against `window.knowgrphWorkspaceCommand.applyMarkdownDocument(...)`.
+- Confirm the repo-owned mounted-surface validator runs through `python3 ./scripts/validate_animatic_timeline_interactions.py` and `npm run validate:animatic-interactions`, and proves move/resize edge-hold auto-scroll against `window.knowgrphWorkspaceCommand.applyMarkdownDocument(...)`.
 - Confirm that same mounted validator also proves `Insert Before` timing shift, non-empty delete guard, and empty-beat delete compaction against the live beat-card quick actions.
 - Confirm that same mounted validator also proves beat-card `Duplicate` forward-shift compaction and beat-card `Split` midpoint continuity against the live quick-action buttons.
 - Confirm that same mounted validator also proves beat-card `Merge Next` guard/empty-beat merge semantics and beat-card `Remove Gap` guard/backward compaction semantics against the live quick-action buttons.
@@ -190,9 +202,9 @@ Use this document to validate the native `2D Renderer: Animation` surface.
 - Confirm each beat card exposes a native merge-next quick-action icon on hover and keeps the same next-empty-beat merge guard as the toolbar action.
 - Confirm `Remove Gap` compacts the active beat and following beats back to the previous beat boundary when a positive absolute-timing gap exists.
 - Confirm each beat card exposes a native remove-gap quick-action icon on hover and keeps the same positive-gap-only remove-gap guard as the toolbar action.
-- Confirm the animation action surface reuses shared Toolbar-style icon buttons and shared icon sizing utilities instead of bespoke text action buttons.
-- Confirm the native animation toolbar exposes keyboard hints for playback and beat editing: `Space`, `Left Arrow`, `Right Arrow`, `R`, `D`, and `S`.
-- Confirm native animation hotkeys are ignored while beat label/note/summary/tags editing is active or when focus is inside text-entry controls.
+- Confirm the animatic action surface reuses shared Toolbar-style icon buttons and shared icon sizing utilities instead of bespoke text action buttons.
+- Confirm the native animatic toolbar exposes keyboard hints for playback and beat editing: `Space`, `Left Arrow`, `Right Arrow`, `R`, `D`, and `S`.
+- Confirm native animatic hotkeys are ignored while beat label/note/summary/tags editing is active or when focus is inside text-entry controls.
 - Confirm the active beat metadata controls expose native keyboard entry hints for label, note, summary, and tags: `L`, `N`, `M`, and `T`.
 - Confirm those metadata hotkeys open the corresponding active-beat editor without bypassing the existing frontmatter-backed save/cancel flow.
 - Confirm active beat note and summary editors support native multiline keyboard parity: `Cmd/Ctrl+Enter` saves and `Escape` cancels without requiring pointer-only actions.
@@ -234,7 +246,7 @@ Use this document to validate the native `2D Renderer: Animation` surface.
 
 ## Switch Contract
 
-This block is the exact reference-fidelity validation target for the native animation renderer switch.
+This block is the exact reference-fidelity validation target for the native animatic renderer switch.
 
 ```html
 <div class="player-config">
