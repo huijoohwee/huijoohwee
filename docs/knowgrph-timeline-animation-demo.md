@@ -61,6 +61,11 @@ flow:
       properties:
         "flow:sourcePortKey": beat_04_out
 timeline:
+  scale:
+    scale: 5
+    scale_split_count: 10
+    scale_width: 160
+    start_left: 20
   beats:
     beat_01:
       label: Hook
@@ -89,6 +94,7 @@ Use this document to validate the native `2D Renderer: Animation` surface.
 - Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: animation`.
 - Confirm animation documents reuse the same canonical Flow Editor frontmatter syntax: shared `flow:` YAML authoring surface plus optional `timeline.beats.*` timing metadata, with no parallel animation-only markdown block.
 - Confirm `timeline.beats.*` drives beat labels and timing without in-repo hardcoded demo rows.
+- Confirm `timeline.scale.*` stays the single native scale owner for major interval, split count, rail width, and leading offset without introducing a parallel renderer-only config path.
 - Confirm the native in-repo timeline animation editor stays repo-owned and enhancement-first, without copied vendor runtime code or parallel demo-only fallback paths.
 - Confirm graph nodes linked by `beat_ref` or canonical ids like `NODE_CLIP_01` and `NODE_OVERLAY_01` populate the correct beat lanes.
 - Confirm `Enable Runtime Auto Scroll` keeps the playhead centered while playback advances.
@@ -196,6 +202,7 @@ This block is the exact reference-fidelity validation target for the native anim
 ## Authoring Notes
 
 - Prefer canonical beat refs like `beat_01`, `beat_02`, `beat_03`.
+- Use `timeline.scale.scale`, `timeline.scale.scale_split_count`, `timeline.scale.scale_width`, and `timeline.scale.start_left` to tune the native scale rail and beat geometry from frontmatter.
 - Use graph nodes with stable ids such as `NODE_CLIP_01`, `NODE_OVERLAY_01`, or any node whose `properties.params.beat_ref` points at the target beat.
 - The renderer reads the active Markdown document and active graph together. If timing is absent, it falls back to ordinal beat order instead of fixture-only fake data.
 
