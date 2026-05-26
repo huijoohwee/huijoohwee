@@ -6,9 +6,12 @@ date: "2026-05-01"
 lang: en-US
 
 kgCanvasSurfaceMode: "2d"
+kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "flowEditor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
+kgMultiDimTableModeEnabled: false
+kgDocumentStructureBaselineLock: false
 
 $schema: "kgc-pipeline/v1"
 

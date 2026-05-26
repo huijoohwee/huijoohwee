@@ -86,9 +86,9 @@ Use this document to validate the neutral alias contract for the native `2D Rend
 
 ## Related Docs
 
-- [Storyboard Demo Index](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-demo-index.md)
-- [Storyboard Demo](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-demo.md)
-- [Storyboard Product UI Demo](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-product-ui-demo.md)
+- [Storyboard Demo Index](./knowgrph-storyboard-demo-index.md)
+- [Storyboard Demo](./knowgrph-storyboard-demo.md)
+- [Storyboard Product UI Demo](./knowgrph-storyboard-product-ui-demo.md)
 
 ## Validation Goals
 

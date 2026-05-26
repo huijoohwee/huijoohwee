@@ -28,7 +28,7 @@ The app reads these files through:
 Example local value:
 
 ```bash
-VITE_WORKSPACE_INITIALIZATION_DOCS_ABS_ROOT=/Users/huijoohwee/Documents/GitHub/huijoohwee/docs
+VITE_WORKSPACE_INITIALIZATION_DOCS_ABS_ROOT=<repo>/huijoohwee/docs
 ```
 
 ## Cloudflare D1 And Worker

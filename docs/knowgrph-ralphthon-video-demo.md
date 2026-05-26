@@ -6,9 +6,12 @@ date: "2026-05-17"
 lang: en-US
 
 kgCanvasSurfaceMode: "2d"
+kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "flowEditor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
+kgMultiDimTableModeEnabled: false
+kgDocumentStructureBaselineLock: false
 kgSuperAgentHarness: true
 kgCanvasAspectRatio: "16:9"
 kgCanvasTargetResolution: "1920x1080"
@@ -28,8 +31,8 @@ inputs:
   product_name: "OpenClaw"
   demo_name: "Ralphthon"
   core_offer: "a Codex-anchored SuperAgent harness that plans, generates, verifies, recovers, and renders rich media work on a Knowgrph Canvas"
-  source_fixture: "/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-video-demo.md"
-  destination_fixture: "/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-ralphthon-video-demo.md"
+  source_fixture: "huijoohwee/docs/knowgrph-video-demo.md"
+  destination_fixture: "huijoohwee/docs/knowgrph-ralphthon-video-demo.md"
   inspiration_boundary: "Inspired by public long-horizon SuperAgent harness patterns such as multi-agent planning, tool use, memory, sandboxing, and verifier loops; no code, prompts, topology, assets, or implementation details are copied from DeerFlow."
   setting: "A three-country media mission moving from Singapore harbor lights to South Korea robotics neon to a US launch coastline, led by an OpenClaw lobster signal mark."
   script: |
@@ -48,7 +51,7 @@ inputs:
     Cinematic but technical. Use crisp UI surfaces, visible graph edges, and credible production controls. Color story: signal red, steel blue, harbor cyan, lab green, and warm launch white. Avoid a one-note palette. Treat the lobster as an emblem and motion cue, not comic relief.
 
 source_material:
-  local_reference: "/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-video-demo.md"
+  local_reference: "huijoohwee/docs/knowgrph-video-demo.md"
   external_reference: "https://github.com/bytedance/deer-flow"
   copy_policy:
     status: "forbid-copy"

@@ -166,9 +166,9 @@ Use this document to validate the native `2D Renderer: Storyboard` surface.
 
 ## Related Docs
 
-- [Storyboard Demo Index](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-demo-index.md)
-- [Storyboard Product UI Demo](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-product-ui-demo.md)
-- [Storyboard Neutral Schema Contract Demo](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-neutral-schema-contract-demo.md)
+- [Storyboard Demo Index](./knowgrph-storyboard-demo-index.md)
+- [Storyboard Product UI Demo](./knowgrph-storyboard-product-ui-demo.md)
+- [Storyboard Neutral Schema Contract Demo](./knowgrph-storyboard-neutral-schema-contract-demo.md)
 
 ## Validation Goals
 
@@ -182,11 +182,14 @@ Use this document to validate the native `2D Renderer: Storyboard` surface.
 - Confirm storyboard cards project native frame/index badges from properties such as `frame`, `frameNumber`, `sceneNumber`, `shotNumber`, or `panelNumber`.
 - Confirm storyboard cards build slugline text from `slugline` directly or from `location` + `timeOfDay` when explicit slugline text is absent.
 - Confirm storyboard cards surface native `Action` and `Dialogue` sections from graph/frontmatter fields instead of demo-only text formatting.
+- Confirm storyboard, workspace Viewer kanban, and Workflow Manager kanban surface shared paragraph-style card content from canonical text fields instead of drifting per-surface card bodies.
+- Confirm storyboard, workspace Viewer kanban, and Workflow Manager kanban allow double-click inline editing on shared card title/body text, committing back to the root markdown-table or graph-node source instead of local card state.
 - Confirm storyboard cards surface a native `Visual Brief` block from shared properties such as `prompt`, `imagePrompt`, and `style`.
 - Confirm storyboard cards surface a compact native `Reference Pack` from shared reference arrays such as `references` or `referenceUrls`.
 - Confirm image, video, and link properties such as `image`, `imageUrl`, `videoUrl`, `media_url`, `src`, `url`, or `href` render as native media-rich storyboard cards without placeholder fixtures.
 - Confirm clicking a storyboard card selects the source node in the active graph store instead of creating a parallel storyboard-only selection state.
-- Confirm the storyboard surface stays read-only by default: it projects from graph data and frontmatter authoring already owned upstream, with no extra markdown writeback format and no layered downstream patch model.
+- Confirm the storyboard surface stays source-backed during inline edits: card text commits directly to graph/frontmatter-owned fields with no storyboard-local persistence layer or parallel markdown format.
+- Confirm the shared Viewer `Properties` panel now owns add, duplicate, rename, and delete column CRUD end-to-end so Layout / Properties / Filter / Sort / Group state does not drift after a property mutation.
 - Confirm the storyboard renderer bypasses minimap-only D3 assumptions and does not inherit incompatible minimap behavior from unrelated 2D surfaces.
 - Confirm the board keeps lane/card density compact, uses horizontal lane scrolling, and avoids oversized helper chrome or copied vendor interaction patterns.
 
@@ -205,6 +208,7 @@ Use this document to validate the native `2D Renderer: Storyboard` surface.
 - Prefer `stage` for lane grouping when authoring storyboard demos because it reads cleanly as `Draft`, `Review`, and `Approved`.
 - Prefer `order` for deterministic left-to-right narrative sequencing inside each lane.
 - Prefer shared graph properties like `summary`, `owner`, `priority`, `tags`, `url`, `href`, `image`, `imageUrl`, `videoUrl`, `media_url`, `frame`, `slugline`, `location`, `timeOfDay`, `action`, `dialogue`, `prompt`, `style`, and `references` instead of renderer-local custom keys.
+- Prefer canonical text properties such as `summary`, `description`, `content`, `text`, `note`, `notes`, `action`, `dialogue`, and `prompt` when authoring card body copy so storyboard and kanban surfaces project the same paragraph content.
 - Keep storyboard content enhancement-first: edit the graph/frontmatter source, then let the renderer project the board.
 
 ## Expected Lanes

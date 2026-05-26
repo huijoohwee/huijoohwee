@@ -1,5 +1,12 @@
 ---
 title: Knowgrph Storyboard Demo Index
+kgCanvasSurfaceMode: "2d"
+kgCanvasRenderMode: "2d"
+kgCanvas2dRenderer: "d3"
+kgDocumentSemanticMode: "document"
+kgFrontmatterModeEnabled: true
+kgMultiDimTableModeEnabled: false
+kgDocumentStructureBaselineLock: false
 ---
 
 # Knowgrph Storyboard Demo Index
@@ -16,9 +23,9 @@ Central reference for the native `2D Renderer: Storyboard` demo set.
 
 ## File Reference
 
-- [knowgrph-storyboard-demo.md](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-demo.md)
-- [knowgrph-storyboard-product-ui-demo.md](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-product-ui-demo.md)
-- [knowgrph-storyboard-neutral-schema-contract-demo.md](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-neutral-schema-contract-demo.md)
+- [knowgrph-storyboard-demo.md](./knowgrph-storyboard-demo.md)
+- [knowgrph-storyboard-product-ui-demo.md](./knowgrph-storyboard-product-ui-demo.md)
+- [knowgrph-storyboard-neutral-schema-contract-demo.md](./knowgrph-storyboard-neutral-schema-contract-demo.md)
 
 ## Shared Contract
 

@@ -121,9 +121,9 @@ Use this document to validate a neutral, project-agnostic storyboard workflow fo
 
 ## Related Docs
 
-- [Storyboard Demo Index](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-demo-index.md)
-- [Storyboard Demo](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-demo.md)
-- [Storyboard Neutral Schema Contract Demo](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-storyboard-neutral-schema-contract-demo.md)
+- [Storyboard Demo Index](./knowgrph-storyboard-demo-index.md)
+- [Storyboard Demo](./knowgrph-storyboard-demo.md)
+- [Storyboard Neutral Schema Contract Demo](./knowgrph-storyboard-neutral-schema-contract-demo.md)
 
 ## Validation Goals
 
