@@ -8,66 +8,65 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 flow:
-  direction: LR
-  edgeType: smoothstep
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
+  computed: {key: computed, type: boolean, value: false}
   nodes:
-    - id: CONTRACT_ROOT
-      type: Story
-      label: Neutral Schema Contract
-      group: Contract
-      summary: Minimal storyboard contract fixture for neutral alias validation.
-      task: Hold one compact source graph for storyboard schema validation.
-      theme: Neutral
-      tags: ["storyboard", "contract", "neutral"]
-    - id: CONTRACT_A
-      type: Panel
-      label: Alias Group Step
-      group: Backlog
-      step: 1
-      context: Schema Surface
-      state: Pending
-      summary: Validates `group`, `step`, `context`, and `state`.
-      task: Validate action alias parsing through `task`.
-      narration: 'Speaker: "Validate neutral aliases."'
-      brief: Neutral board card for schema validation.
-      theme: Base
-      assets:
-        - "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-      documentUrl: "https://airvio.co/knowgrph"
-      priority: P0
-      order: 10
-    - id: CONTRACT_B
-      type: Shot
-      label: Alias Category Sequence
-      category: In Review
-      sequenceNumber: 2
-      summary: Validates `category`, `sequenceNumber`, `workflow`, and `speakerLine`.
-      workflow: Validate action alias parsing through `workflow`.
-      speakerLine: 'Reviewer: "Sequence alias remains stable."'
-      visualBrief: Minimal visual brief alias coverage.
-      variant: Review
-      referenceLinks:
-        - "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
-      imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
-      priority: P1
-      order: 20
-    - id: CONTRACT_C
-      type: Frame
-      label: Alias Bucket Position
-      bucket: Approved
-      position: 3
-      summary: Validates `bucket`, `position`, `instructions`, `quote`, `briefUrl`, and `assetRefs`.
-      instructions: Validate action alias parsing through `instructions`.
-      quote: 'Lead: "Approved contract state."'
-      artDirection: Minimal art direction alias coverage.
-      preset: Contract
-      assetRefs:
-        - "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
-      videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-      briefUrl: "https://airvio.co/knowgrph"
-      priority: P0
-      order: 30
+    - id: {key: id, type: string, value: "CONTRACT_ROOT"}
+      type: {key: type, type: string, value: "Story"}
+      label: {key: label, type: string, value: "Neutral Schema Contract"}
+      group: {key: group, type: string, value: "Contract"}
+      summary: {key: summary, type: string, value: "Minimal storyboard contract fixture for neutral alias validation."}
+      task: {key: task, type: string, value: "Hold one compact source graph for storyboard schema validation."}
+      theme: {key: theme, type: string, value: "Neutral"}
+      tags: {key: tags, type: array, value: ["storyboard", "contract", "neutral"]}
+    - id: {key: id, type: string, value: "CONTRACT_A"}
+      type: {key: type, type: string, value: "Panel"}
+      label: {key: label, type: string, value: "Alias Group Step"}
+      group: {key: group, type: string, value: "Backlog"}
+      step: {key: step, type: number, value: 1}
+      context: {key: context, type: string, value: "Schema Surface"}
+      state: {key: state, type: string, value: "Pending"}
+      summary: {key: summary, type: string, value: "Validates `group`, `step`, `context`, and `state`."}
+      task: {key: task, type: string, value: "Validate action alias parsing through `task`."}
+      narration: {key: narration, type: string, value: "Speaker: \"Validate neutral aliases.\""}
+      brief: {key: brief, type: string, value: "Neutral board card for schema validation."}
+      theme: {key: theme, type: string, value: "Base"}
+      assets: {key: assets, type: array, value: ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"]}
+      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"}
+      documentUrl: {key: documentUrl, type: string, value: "https://airvio.co/knowgrph"}
+      priority: {key: priority, type: string, value: "P0"}
+      order: {key: order, type: number, value: 10}
+    - id: {key: id, type: string, value: "CONTRACT_B"}
+      type: {key: type, type: string, value: "Shot"}
+      label: {key: label, type: string, value: "Alias Category Sequence"}
+      category: {key: category, type: string, value: "In Review"}
+      sequenceNumber: {key: sequenceNumber, type: number, value: 2}
+      summary: {key: summary, type: string, value: "Validates `category`, `sequenceNumber`, `workflow`, and `speakerLine`."}
+      workflow: {key: workflow, type: string, value: "Validate action alias parsing through `workflow`."}
+      speakerLine: {key: speakerLine, type: string, value: "Reviewer: \"Sequence alias remains stable.\""}
+      visualBrief: {key: visualBrief, type: string, value: "Minimal visual brief alias coverage."}
+      variant: {key: variant, type: string, value: "Review"}
+      referenceLinks: {key: referenceLinks, type: array, value: ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"]}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
+      priority: {key: priority, type: string, value: "P1"}
+      order: {key: order, type: number, value: 20}
+    - id: {key: id, type: string, value: "CONTRACT_C"}
+      type: {key: type, type: string, value: "Frame"}
+      label: {key: label, type: string, value: "Alias Bucket Position"}
+      bucket: {key: bucket, type: string, value: "Approved"}
+      position: {key: position, type: number, value: 3}
+      summary: {key: summary, type: string, value: "Validates `bucket`, `position`, `instructions`, `quote`, `briefUrl`, and `assetRefs`."}
+      instructions: {key: instructions, type: string, value: "Validate action alias parsing through `instructions`."}
+      quote: {key: quote, type: string, value: "Lead: \"Approved contract state.\""}
+      artDirection: {key: artDirection, type: string, value: "Minimal art direction alias coverage."}
+      preset: {key: preset, type: string, value: "Contract"}
+      assetRefs: {key: assetRefs, type: array, value: ["https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"]}
+      videoUrl: {key: videoUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
+      briefUrl: {key: briefUrl, type: string, value: "https://airvio.co/knowgrph"}
+      priority: {key: priority, type: string, value: "P0"}
+      order: {key: order, type: number, value: 30}
   edges:
     - id: edge:contract:a
       source: CONTRACT_ROOT
@@ -83,6 +82,16 @@ flow:
 # Knowgrph Storyboard Neutral Schema Contract Demo
 
 Use this document to validate the neutral alias contract for the native `2D Renderer: Storyboard` surface.
+
+This fixture keeps `flow.nodes[*]` in normalized `{key, type, value}` form so parser/runtime regression checks cover the typed ingestion path, not just the plain-YAML authoring path.
+
+## Typed Fixture Contract
+
+- This file is an approved typed validation fixture for compact storyboard schema and alias regression coverage.
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation and graph-backed storyboard data.
+- Normalized `{key, type, value}` envelopes in `flow.nodes[*]` are intentional here so typed ingest -> parse -> render behavior stays validated.
+- This document is not the canonical plain-YAML authoring example; canonical authored storyboard docs should still prefer plain YAML for frontmatter and related schema-bearing blocks.
+- Parser warning, repair, or fallback behavior is recovery-only; malformed YAML frontmatter still remains invalid source that must be fixed upstream.
 
 ## Related Docs
 

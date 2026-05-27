@@ -143,6 +143,14 @@ timeline:
 
 Use this document to validate the native `2D Renderer: Animatic` surface.
 
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, timeline metadata, and graph-backed animatic content.
+- This document is a canonical authored animatic demo, not a typed normalization fixture.
+- `flow:` and `timeline.beats.*` stay in plain YAML so the file demonstrates the default frontmatter authoring path for animatic documents.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical animatic authoring example.
+- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
+
 ## Current Runtime Owners
 
 - Renderer registry SSOT: `knowgrph/canvas/src/lib/config.render.ts`
@@ -159,6 +167,7 @@ Use this document to validate the native `2D Renderer: Animatic` surface.
 
 - Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: animatic`.
 - Confirm animatic documents reuse the same canonical Flow Editor frontmatter syntax: shared `flow:` YAML authoring surface plus optional `timeline.beats.*` timing metadata, with no parallel animatic-only markdown block.
+- Confirm this canonical animatic demo remains plain-YAML-authored and does not drift into typed-fixture-only syntax that would blur the authoring contract.
 - Confirm `timeline.beats.*` drives beat labels and timing without in-repo hardcoded demo rows.
 - Confirm `timeline.scale.*` stays the single native scale owner for major interval, split count, rail width, and leading offset without introducing a parallel renderer-only config path.
 - Confirm the native in-repo animatic editor stays repo-owned and enhancement-first, without copied vendor runtime code or parallel demo-only fallback paths.
@@ -270,6 +279,7 @@ This block is the exact reference-fidelity validation target for the native anim
 - Prefer canonical beat refs like `beat_01`, `beat_02`, `beat_03`.
 - Use `timeline.scale.scale`, `timeline.scale.scale_split_count`, `timeline.scale.scale_width`, and `timeline.scale.start_left` to tune the native scale rail and beat geometry from frontmatter.
 - Use graph nodes with stable ids such as `NODE_CLIP_01`, `NODE_OVERLAY_01`, or any node whose `properties.params.beat_ref` points at the target beat.
+- Keep this document in plain YAML for `flow:` and `timeline.*`; reserve typed envelope coverage for dedicated validation fixtures instead of canonical animatic authoring docs.
 - The renderer reads the active Markdown document and active graph together. If timing is absent, it falls back to ordinal beat order instead of fixture-only fake data.
 
 ## Minimal Graph Hints

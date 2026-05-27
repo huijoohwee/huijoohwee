@@ -191,7 +191,7 @@ flow:
       phase: {key: phase, type: string, value: "generate"}
       actor: {key: actor, type: array, value: ["user", "AI"]}
       handles: {key: handles, type: object, value: {target: ["prompt_in"], source: ["text_out", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoScript"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoScript"}
       chatProvider: {key: chatProvider, type: string, value: "{{inputs.text_provider_id}}"}
       chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
       chatEndpointUrl: {key: chatEndpointUrl, type: string, value: "{{inputs.text_endpoint_url}}"}
@@ -207,7 +207,7 @@ flow:
       phase: {key: phase, type: string, value: "render"}
       actor: {key: actor, type: array, value: ["system", "user"]}
       handles: {key: handles, type: object, value: {target: ["output", "outputSrcDoc"], source: ["output", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       output: {key: output, type: string, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
@@ -216,7 +216,7 @@ flow:
     - id: {key: id, type: string, value: "w-img-scene"}
       type: {key: type, type: string, value: "ImageGeneration"}
       label: {key: label, type: string, value: "Image Widget — Scene Reference"}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "imageGeneration"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
       model: {key: model, type: select, value: "{{inputs.image_model}}"}
       prompt: {key: prompt, type: textarea, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.label}}; {{inputs.theme}}. Script: {{inputs.script}}. Hero frame: CARIBBEAN locale — girl on turquoise island beach launching RoboDrone X1 into storm, mermaid queen rising from churning sea below, coral spire cathedral lit by lightning, 9:16 vertical."}
       size: {key: size, type: select, value: "2K"}
@@ -239,7 +239,7 @@ flow:
       phase: {key: phase, type: string, value: "render"}
       actor: {key: actor, type: array, value: ["system", "user"]}
       handles: {key: handles, type: object, value: {target: ["imageUrl", "outputSrcDoc"], source: ["imageUrl", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
       imageUrl: {key: imageUrl, type: string, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
@@ -251,7 +251,7 @@ flow:
       phase: {key: phase, type: string, value: "generate"}
       actor: {key: actor, type: array, value: ["user", "AI"]}
       handles: {key: handles, type: object, value: {target: ["reference_image"], source: ["videoUrl"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoGeneration"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
       model: {key: model, type: select, value: "{{inputs.video_model}}"}
       prompt: {key: prompt, type: string, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.name}}; {{inputs.theme}}. Script: {{inputs.script}}"}
       ratio: {key: ratio, type: select, value: "9:16"}
@@ -269,7 +269,7 @@ flow:
       phase: {key: phase, type: string, value: "render"}
       actor: {key: actor, type: array, value: ["system", "user"]}
       handles: {key: handles, type: object, value: {target: ["videoUrl", "outputSrcDoc"], source: ["videoUrl", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
       videoUrl: {key: videoUrl, type: string, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
@@ -392,6 +392,14 @@ director_brief:
 
 Director brief, storyboard spec, and shot list for the 30-second three-locale multiverse reel.  
 Pipeline: `{{inputs.text_model}}` → `{{inputs.image_model}}` → `{{inputs.video_model}}`
+
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, pipeline metadata, and graph-backed runtime inputs.
+- This document is a typed validation fixture, not a plain-YAML-only authoring example.
+- `flow.nodes[*]` intentionally uses normalized `{key, type, value}` envelopes so ingest -> parse -> render validates typed graph payload handling directly.
+- Surrounding frontmatter such as `inputs`, `spec`, `widget_bundle`, `canvas`, `runner`, `pipeline`, and `director_brief` stays canonical YAML so the fixture still demonstrates normal frontmatter authoring around the typed flow payload.
+- Runtime behavior must come from parsed document content and runtime settings, never from file path assumptions or hardcoded in-repo constants.
 
 ---
 
@@ -582,6 +590,7 @@ The `mermaid` and `flow` blocks above describe the same graph. Rich Media Panels
 
 This fixture is a pipeline contract demo for Ingest -> Parse -> Render over typed Flow nodes (`TextGeneration`, `ImageGeneration`, `VideoGeneration`, `RichMediaPanel`).
 
+- Canonical plain-YAML authoring examples live in guideline docs and non-fixture demos; this file exists to validate the normalized typed-envelope path end to end.
 - Source path is not part of behavior. Validate by basename (`knowgrph-video-demo.md`) or content hash, never by absolute filesystem path.
 - Runtime/provider fields are declarative fixture inputs (`inputs.text_provider_id`, `inputs.text_endpoint_url`, `inputs.text_model`, `inputs.image_model`, `inputs.video_model`) and must be resolved by runtime settings, not in-repo hardcoded constants.
 - Ingest must parse frontmatter and preserve SSOT parity across `pipeline`, `flow.nodes`, `flow.edges`, and `mermaid`.

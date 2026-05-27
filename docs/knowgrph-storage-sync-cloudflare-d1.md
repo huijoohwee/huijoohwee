@@ -7,6 +7,14 @@ updated: "2026-05-08"
 
 # Knowgrph Storage Sync - Cloudflare D1
 
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for storage-handoff metadata, ownership, and runtime sync configuration.
+- This document is a canonical authored runtime handoff doc, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for storage, deployment, and sync guidance.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical storage handoff example.
+- Runtime behavior must still be derived from parsed frontmatter and document content only, never from file path assumptions or hardcoded demo fallbacks.
+
 This document is the runtime handoff for the storage ladder:
 
 1. Canonical markdown authoring source: `huijoohwee/docs/**`

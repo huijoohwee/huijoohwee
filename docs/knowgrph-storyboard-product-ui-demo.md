@@ -8,98 +8,93 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 flow:
-  direction: LR
-  edgeType: smoothstep
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
+  computed: {key: computed, type: boolean, value: false}
   nodes:
-    - id: BOARD_ROOT
-      type: Story
-      label: Product Review Flow
-      group: Planning
-      summary: Neutral product UI storyboard demo for review, sync, and delivery.
-      task: Keep review artifacts, comments, and source state in one native graph-derived board.
-      theme: Neutral UI
-      tags: ["storyboard", "product-ui", "review"]
-    - id: STEP_01
-      type: Panel
-      label: Intake Triage
-      group: Backlog
-      step: 1
-      context: Review Inbox
-      state: New Request
-      summary: A new review request lands with screenshots, notes, and a target artifact.
-      task: Consolidate incoming comments into one neutral intake card without duplicating state across tools.
-      narration: 'Reviewer: "Keep the ask scoped, readable, and source-owned."'
-      brief: Product review inbox with compact cards, screenshots, and a clear canonical intake path.
-      theme: Workspace UI
-      assets:
-        - "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80"
-        - "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
-      image: "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80"
-      documentUrl: "https://airvio.co/knowgrph"
-      owner: Review
-      priority: P0
-      tags: ["intake", "backlog", "scope"]
-      order: 10
-    - id: STEP_02
-      type: Shot
-      label: Comment Merge
-      group: In Review
-      sequenceNumber: 2
-      context: Active Canvas
-      state: Consolidating
-      summary: Related comments, screenshots, and references merge into one review surface.
-      workflow: Merge overlapping requests before implementation so the board reflects one coherent ask.
-      speakerLine: 'Designer: "One board, one review path, no stale side copy."'
-      visualBrief: Product canvas with annotation chips, grouped comments, and a compact review lane.
-      variant: Comment Density
-      referenceLinks:
-        - "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
-        - "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
-      imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
-      owner: Design
-      priority: P1
-      tags: ["merge", "comments", "canvas"]
-      order: 20
-    - id: STEP_03
-      type: Frame
-      label: Selection Sync
-      category: In Review
-      ordinal: 3
-      context: Storyboard Surface
-      state: Selected
-      summary: Selecting a card keeps the source node and the review board aligned.
-      instructions: Verify the active card selects the matching graph node and preserves a neutral, project-agnostic handoff.
-      voiceOver: 'System: "Selection sync confirms one board and one source of truth."'
-      artDirection: Native storyboard card with selection emphasis, compact chips, and linked source context.
-      preset: Native Board
-      refs:
-        - "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
-      imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
-      owner: Product
-      priority: P0
-      tags: ["selection", "sync", "board"]
-      order: 30
-    - id: STEP_04
-      type: Panel
-      label: Delivery Handoff
-      bucket: Approved
-      position: 4
-      context: Delivery Surface
-      state: Ready
-      summary: The approved board card carries its brief, references, and source link into delivery.
-      task: Hand off one approved card with clear references and no project-specific assumptions baked into the structure.
-      quote: 'Lead: "Approved. Deliver the brief with source, refs, and neutral wording."'
-      brief: Final product handoff card with review summary, references, and linked implementation context.
-      theme: Delivery Kit
-      assetRefs:
-        - "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
-        - "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
-      videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-      briefUrl: "https://airvio.co/knowgrph"
-      owner: Delivery
-      priority: P0
-      tags: ["approved", "handoff", "delivery"]
-      order: 40
+    - id: {key: id, type: string, value: "BOARD_ROOT"}
+      type: {key: type, type: string, value: "Story"}
+      label: {key: label, type: string, value: "Product Review Flow"}
+      group: {key: group, type: string, value: "Planning"}
+      summary: {key: summary, type: string, value: "Neutral product UI storyboard demo for review, sync, and delivery."}
+      task: {key: task, type: string, value: "Keep review artifacts, comments, and source state in one native graph-derived board."}
+      theme: {key: theme, type: string, value: "Neutral UI"}
+      tags: {key: tags, type: array, value: ["storyboard", "product-ui", "review"]}
+    - id: {key: id, type: string, value: "STEP_01"}
+      type: {key: type, type: string, value: "Panel"}
+      label: {key: label, type: string, value: "Intake Triage"}
+      group: {key: group, type: string, value: "Backlog"}
+      step: {key: step, type: number, value: 1}
+      context: {key: context, type: string, value: "Review Inbox"}
+      state: {key: state, type: string, value: "New Request"}
+      summary: {key: summary, type: string, value: "A new review request lands with screenshots, notes, and a target artifact."}
+      task: {key: task, type: string, value: "Consolidate incoming comments into one neutral intake card without duplicating state across tools."}
+      narration: {key: narration, type: string, value: "Reviewer: \"Keep the ask scoped, readable, and source-owned.\""}
+      brief: {key: brief, type: string, value: "Product review inbox with compact cards, screenshots, and a clear canonical intake path."}
+      theme: {key: theme, type: string, value: "Workspace UI"}
+      assets: {key: assets, type: array, value: ["https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"]}
+      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80"}
+      documentUrl: {key: documentUrl, type: string, value: "https://airvio.co/knowgrph"}
+      owner: {key: owner, type: string, value: "Review"}
+      priority: {key: priority, type: string, value: "P0"}
+      tags: {key: tags, type: array, value: ["intake", "backlog", "scope"]}
+      order: {key: order, type: number, value: 10}
+    - id: {key: id, type: string, value: "STEP_02"}
+      type: {key: type, type: string, value: "Shot"}
+      label: {key: label, type: string, value: "Comment Merge"}
+      group: {key: group, type: string, value: "In Review"}
+      sequenceNumber: {key: sequenceNumber, type: number, value: 2}
+      context: {key: context, type: string, value: "Active Canvas"}
+      state: {key: state, type: string, value: "Consolidating"}
+      summary: {key: summary, type: string, value: "Related comments, screenshots, and references merge into one review surface."}
+      workflow: {key: workflow, type: string, value: "Merge overlapping requests before implementation so the board reflects one coherent ask."}
+      speakerLine: {key: speakerLine, type: string, value: "Designer: \"One board, one review path, no stale side copy.\""}
+      visualBrief: {key: visualBrief, type: string, value: "Product canvas with annotation chips, grouped comments, and a compact review lane."}
+      variant: {key: variant, type: string, value: "Comment Density"}
+      referenceLinks: {key: referenceLinks, type: array, value: ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
+      owner: {key: owner, type: string, value: "Design"}
+      priority: {key: priority, type: string, value: "P1"}
+      tags: {key: tags, type: array, value: ["merge", "comments", "canvas"]}
+      order: {key: order, type: number, value: 20}
+    - id: {key: id, type: string, value: "STEP_03"}
+      type: {key: type, type: string, value: "Frame"}
+      label: {key: label, type: string, value: "Selection Sync"}
+      category: {key: category, type: string, value: "In Review"}
+      ordinal: {key: ordinal, type: number, value: 3}
+      context: {key: context, type: string, value: "Storyboard Surface"}
+      state: {key: state, type: string, value: "Selected"}
+      summary: {key: summary, type: string, value: "Selecting a card keeps the source node and the review board aligned."}
+      instructions: {key: instructions, type: string, value: "Verify the active card selects the matching graph node and preserves a neutral, project-agnostic handoff."}
+      voiceOver: {key: voiceOver, type: string, value: "System: \"Selection sync confirms one board and one source of truth.\""}
+      artDirection: {key: artDirection, type: string, value: "Native storyboard card with selection emphasis, compact chips, and linked source context."}
+      preset: {key: preset, type: string, value: "Native Board"}
+      refs: {key: refs, type: array, value: ["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"}
+      owner: {key: owner, type: string, value: "Product"}
+      priority: {key: priority, type: string, value: "P0"}
+      tags: {key: tags, type: array, value: ["selection", "sync", "board"]}
+      order: {key: order, type: number, value: 30}
+    - id: {key: id, type: string, value: "STEP_04"}
+      type: {key: type, type: string, value: "Panel"}
+      label: {key: label, type: string, value: "Delivery Handoff"}
+      bucket: {key: bucket, type: string, value: "Approved"}
+      position: {key: position, type: number, value: 4}
+      context: {key: context, type: string, value: "Delivery Surface"}
+      state: {key: state, type: string, value: "Ready"}
+      summary: {key: summary, type: string, value: "The approved board card carries its brief, references, and source link into delivery."}
+      task: {key: task, type: string, value: "Hand off one approved card with clear references and no project-specific assumptions baked into the structure."}
+      quote: {key: quote, type: string, value: "Lead: \"Approved. Deliver the brief with source, refs, and neutral wording.\""}
+      brief: {key: brief, type: string, value: "Final product handoff card with review summary, references, and linked implementation context."}
+      theme: {key: theme, type: string, value: "Delivery Kit"}
+      assetRefs: {key: assetRefs, type: array, value: ["https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"]}
+      videoUrl: {key: videoUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
+      briefUrl: {key: briefUrl, type: string, value: "https://airvio.co/knowgrph"}
+      owner: {key: owner, type: string, value: "Delivery"}
+      priority: {key: priority, type: string, value: "P0"}
+      tags: {key: tags, type: array, value: ["approved", "handoff", "delivery"]}
+      order: {key: order, type: number, value: 40}
   edges:
     - id: edge:board:step_01
       source: BOARD_ROOT
@@ -118,6 +113,16 @@ flow:
 # Knowgrph Storyboard Product UI Demo
 
 Use this document to validate a neutral, project-agnostic storyboard workflow for product UI review.
+
+This fixture uses normalized `{key, type, value}` envelopes inside `flow.nodes[*]` so ingestion, parsing, and storyboard rendering all exercise the typed E2E contract instead of relying on plain-YAML-only alias parsing.
+
+## Typed Fixture Contract
+
+- This file is an approved typed validation fixture for neutral storyboard workflow and alias-envelope coverage.
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation and graph-backed storyboard data.
+- Normalized `{key, type, value}` envelopes in `flow.nodes[*]` are intentional here so typed ingest -> parse -> render behavior stays validated.
+- This document is not the canonical plain-YAML authoring example; canonical authored storyboard docs should still prefer plain YAML for frontmatter and related schema-bearing blocks.
+- Parser warning, repair, or fallback behavior is recovery-only; malformed YAML frontmatter still remains invalid source that must be fixed upstream.
 
 ## Related Docs
 

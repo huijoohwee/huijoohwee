@@ -1,5 +1,5 @@
 ---
-title: Knowgrph Storyboard Demo
+title: "Knowgrph Storyboard Demo"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "storyboard"
@@ -8,161 +8,156 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 flow:
-  direction: LR
-  edgeType: smoothstep
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
+  computed: {key: computed, type: boolean, value: true}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
-    - id: STORY_ROOT
-      type: Story
-      label: Creative Review Storyboard
-      stage: Planning
-      summary: Native in-repo storyboard demo for the 2D Storyboard renderer.
-      slugline: Story Spine - Review Narrative
-      action: Root story node groups all review scenes and preserves one native graph source for storyboard projection.
-      owner: Production
-      priority: P0
-      tags: ["storyboard", "demo", "launch"]
-      style: "Knowgrph Native"
-    - id: SCENE_01
-      type: Scene
-      label: Cold Open
-      stage: Draft
-      frame: 1
-      location: Conference Room
-      timeOfDay: Monday
-      summary: Open on the user pain point before the product is shown.
-      action: Designer and client review printed boards on the table while markup accumulates across the surface.
-      dialogue: 'CLIENT: "Just a few small changes."'
-      prompt: A designer and client sit at a conference table with printed storyboard boards, marked-up notes, pens, and calm office lighting.
-      style: Doodle
-      references:
-        - "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80"
-        - "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
-      owner: Director
-      priority: P0
-      tags: ["hook", "problem", "wide"]
-      image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80"
-      order: 10
-      url: "https://airvio.co/knowgrph"
-    - id: SHOT_01A
-      type: Shot
-      label: Friction Montage
-      stage: Draft
-      frame: 2
-      slugline: Review Notes - Print Markup Pass
-      summary: Quick cuts show duplicate tools, scattered notes, and timeline drift.
-      action: Printouts, sticky notes, and disconnected tools stack up faster than the team can reconcile them.
-      dialogue: 'DESIGNER: "We fixed that in the canvas, but the board is already stale."'
-      prompt: Fast montage of sticky notes, printouts, browser windows, and duplicated timeline updates spreading across a worktable.
-      style: "Paper Cut"
-      references:
-        - "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-        - "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
-      owner: Editor
-      priority: P1
-      tags: ["closeup", "workflow", "pain"]
-      imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-      order: 20
-    - id: SCENE_02
-      type: Scene
-      label: Graph-to-Storyboard Reveal
-      stage: Review
-      frame: 3
-      location: Workspace Canvas
-      timeOfDay: Live Sync
-      summary: The graph reorganizes into storyboard lanes without a second authoring system.
-      action: The same source graph snaps into a native storyboard board while lane chips, counts, and card media stay in sync.
-      dialogue: 'PM: "Same graph, same markdown, better review surface."'
-      prompt: Product interface transitions from graph nodes into a storyboard board with compact lanes, consistent chips, and native media cards.
-      style: "Product UI"
-      references:
-        - "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
-        - "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
-      owner: Product
-      priority: P0
-      tags: ["reveal", "kanban", "native"]
-      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
-      order: 30
-    - id: SHOT_02A
-      type: Shot
-      label: Lane Focus
-      stage: Review
-      frame: 4
-      slugline: Selection Sync - Active Source Node
-      summary: Clicking a card highlights the source node and keeps graph/story alignment visible.
-      action: A selected storyboard card drives the active graph selection while the lane remains compact and readable.
-      dialogue: 'REVIEWER: "Click the board, inspect the node, keep the source honest."'
-      prompt: Storyboard card selection highlights a connected source node in a graph editor, showing one unified system.
-      style: "Diagram Hybrid"
-      references:
-        - "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
-      owner: Product
-      priority: P1
-      tags: ["selection", "lane", "sync"]
-      imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
-      order: 40
-    - id: SCENE_03
-      type: Frame
-      label: Media-Rich Variant
-      stage: Approved
-      frame: 5
-      location: Publishing Surface
-      timeOfDay: Final Review
-      summary: Approved card carries poster art, tags, owner, and publish link in one native board card.
-      action: The approved frame combines preview video, review metadata, references, and outgoing brief links in a compact native card.
-      dialogue: 'MARKETING: "This one is approved. Ship the brief with the source attached."'
-      prompt: Final approved product storyboard frame with poster art, compact metadata chips, and a linked launch brief.
-      style: "Launch Polish"
-      references:
-        - "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
-        - "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
-      owner: Marketing
-      priority: P0
-      tags: ["media", "approved", "publish"]
-      videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-      order: 50
-      href: "https://airvio.co/knowgrph"
-    - id: SCENE_04
-      type: Panel
-      label: CTA End Card
-      stage: Approved
-      frame: 6
-      slugline: End Card - Workspace Native Delivery
-      summary: End card closes on a clear call to action for workspace-native production planning.
-      action: End card lands on a decisive launch message that ties storyboard review back to the shared Knowgrph workspace.
-      dialogue: 'NARRATOR: "Plan, review, and ship from the same native graph workspace."'
-      prompt: Clean final end card with bold product message, warm accent color, and confident launch composition.
-      style: "Brand Card"
-      references:
-        - "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
-      owner: Growth
-      priority: P1
-      tags: ["cta", "endcard", "publish"]
-      image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
-      order: 60
+    - id: {key: id, type: string, value: "STORY_ROOT"}
+      type: {key: type, type: string, value: "Story"}
+      label: {key: label, type: string, value: "Creative Review Storyboard"}
+      position: {key: position, type: object, value: {x: -960, y: 0}}
+      stage: {key: stage, type: string, value: "Planning"}
+      summary: {key: summary, type: string, value: "Native in-repo storyboard demo for the 2D Storyboard renderer."}
+      slugline: {key: slugline, type: string, value: "Story Spine - Review Narrative"}
+      action: {key: action, type: string, value: "Root story node groups all review scenes and preserves one native graph source for storyboard projection."}
+      owner: {key: owner, type: string, value: "Production"}
+      priority: {key: priority, type: string, value: "P0"}
+      tags: {key: tags, type: array, value: ["storyboard", "demo", "launch"]}
+      style: {key: style, type: string, value: "Knowgrph Native"}
+    - id: {key: id, type: string, value: "SCENE_01"}
+      type: {key: type, type: string, value: "Scene"}
+      label: {key: label, type: string, value: "Cold Open"}
+      position: {key: position, type: object, value: {x: -640, y: 720}}
+      stage: {key: stage, type: string, value: "Draft"}
+      frame: {key: frame, type: number, value: 1}
+      location: {key: location, type: string, value: "Conference Room"}
+      timeOfDay: {key: timeOfDay, type: string, value: "Monday"}
+      summary: {key: summary, type: string, value: "Open on the user pain point before the product is shown."}
+      action: {key: action, type: string, value: "Designer and client review printed boards on the table while markup accumulates across the surface."}
+      dialogue: {key: dialogue, type: string, value: "CLIENT: \"Just a few small changes.\""}
+      prompt: {key: prompt, type: string, value: "A designer and client sit at a conference table with printed storyboard boards, marked-up notes, pens, and calm office lighting."}
+      style: {key: style, type: string, value: "Doodle"}
+      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"]}
+      owner: {key: owner, type: string, value: "Director"}
+      priority: {key: priority, type: string, value: "P0"}
+      tags: {key: tags, type: array, value: ["hook", "problem", "wide"]}
+      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80"}
+      order: {key: order, type: number, value: 10}
+      url: {key: url, type: string, value: "https://airvio.co/knowgrph"}
+    - id: {key: id, type: string, value: "SHOT_01A"}
+      type: {key: type, type: string, value: "Shot"}
+      label: {key: label, type: string, value: "Friction Montage"}
+      position: {key: position, type: object, value: {x: -320, y: 480}}
+      stage: {key: stage, type: string, value: "Draft"}
+      frame: {key: frame, type: number, value: 2}
+      slugline: {key: slugline, type: string, value: "Review Notes - Print Markup Pass"}
+      summary: {key: summary, type: string, value: "Quick cuts show duplicate tools, scattered notes, and timeline drift."}
+      action: {key: action, type: string, value: "Printouts, sticky notes, and disconnected tools stack up faster than the team can reconcile them."}
+      dialogue: {key: dialogue, type: string, value: "DESIGNER: \"We fixed that in the canvas, but the board is already stale.\""}
+      prompt: {key: prompt, type: string, value: "Fast montage of sticky notes, printouts, browser windows, and duplicated timeline updates spreading across a worktable."}
+      style: {key: style, type: string, value: "Paper Cut"}
+      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"]}
+      owner: {key: owner, type: string, value: "Editor"}
+      priority: {key: priority, type: string, value: "P1"}
+      tags: {key: tags, type: array, value: ["closeup", "workflow", "pain"]}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"}
+      order: {key: order, type: number, value: 20}
+    - id: {key: id, type: string, value: "SCENE_02"}
+      type: {key: type, type: string, value: "Scene"}
+      label: {key: label, type: string, value: "Graph-to-Storyboard Reveal"}
+      position: {key: position, type: object, value: {x: 0, y: 240}}
+      stage: {key: stage, type: string, value: "Review"}
+      frame: {key: frame, type: number, value: 3}
+      location: {key: location, type: string, value: "Workspace Canvas"}
+      timeOfDay: {key: timeOfDay, type: string, value: "Live Sync"}
+      summary: {key: summary, type: string, value: "The graph reorganizes into storyboard lanes without a second authoring system."}
+      action: {key: action, type: string, value: "The same source graph snaps into a native storyboard board while lane chips, counts, and card media stay in sync."}
+      dialogue: {key: dialogue, type: string, value: "PM: \"Same graph, same markdown, better review surface.\""}
+      prompt: {key: prompt, type: string, value: "Product interface transitions from graph nodes into a storyboard board with compact lanes, consistent chips, and native media cards."}
+      style: {key: style, type: string, value: "Product UI"}
+      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
+      owner: {key: owner, type: string, value: "Product"}
+      priority: {key: priority, type: string, value: "P0"}
+      tags: {key: tags, type: array, value: ["reveal", "kanban", "native"]}
+      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
+      order: {key: order, type: number, value: 30}
+    - id: {key: id, type: string, value: "SHOT_02A"}
+      type: {key: type, type: string, value: "Shot"}
+      label: {key: label, type: string, value: "Lane Focus"}
+      position: {key: position, type: object, value: {x: 320, y: 0}}
+      stage: {key: stage, type: string, value: "Review"}
+      frame: {key: frame, type: number, value: 4}
+      slugline: {key: slugline, type: string, value: "Selection Sync - Active Source Node"}
+      summary: {key: summary, type: string, value: "Clicking a card highlights the source node and keeps graph/story alignment visible."}
+      action: {key: action, type: string, value: "A selected storyboard card drives the active graph selection while the lane remains compact and readable."}
+      dialogue: {key: dialogue, type: string, value: "REVIEWER: \"Click the board, inspect the node, keep the source honest.\""}
+      prompt: {key: prompt, type: string, value: "Storyboard card selection highlights a connected source node in a graph editor, showing one unified system."}
+      style: {key: style, type: string, value: "Diagram Hybrid"}
+      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
+      owner: {key: owner, type: string, value: "Product"}
+      priority: {key: priority, type: string, value: "P1"}
+      tags: {key: tags, type: array, value: ["selection", "lane", "sync"]}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"}
+      order: {key: order, type: number, value: 40}
+    - id: {key: id, type: string, value: "SCENE_03"}
+      type: {key: type, type: string, value: "Frame"}
+      label: {key: label, type: string, value: "Media-Rich Variant"}
+      position: {key: position, type: object, value: {x: 0, y: -720}}
+      stage: {key: stage, type: string, value: "Approved"}
+      frame: {key: frame, type: number, value: 5}
+      location: {key: location, type: string, value: "Publishing Surface"}
+      timeOfDay: {key: timeOfDay, type: string, value: "Final Review"}
+      summary: {key: summary, type: string, value: "Approved card carries poster art, tags, owner, and publish link in one native board card."}
+      action: {key: action, type: string, value: "The approved frame combines preview video, review metadata, references, and outgoing brief links in a compact native card."}
+      dialogue: {key: dialogue, type: string, value: "MARKETING: \"This one is approved. Ship the brief with the source attached.\""}
+      prompt: {key: prompt, type: string, value: "Final approved product storyboard frame with poster art, compact metadata chips, and a linked launch brief."}
+      style: {key: style, type: string, value: "Launch Polish"}
+      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"]}
+      owner: {key: owner, type: string, value: "Marketing"}
+      priority: {key: priority, type: string, value: "P0"}
+      tags: {key: tags, type: array, value: ["media", "approved", "publish"]}
+      videoUrl: {key: videoUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
+      order: {key: order, type: number, value: 50}
+      href: {key: href, type: string, value: "https://airvio.co/knowgrph"}
+    - id: {key: id, type: string, value: "SCENE_04"}
+      type: {key: type, type: string, value: "Panel"}
+      label: {key: label, type: string, value: "CTA End Card"}
+      position: {key: position, type: object, value: {x: 320, y: -960}}
+      stage: {key: stage, type: string, value: "Approved"}
+      frame: {key: frame, type: number, value: 6}
+      slugline: {key: slugline, type: string, value: "End Card - Workspace Native Delivery"}
+      summary: {key: summary, type: string, value: "End card closes on a clear call to action for workspace-native production planning."}
+      action: {key: action, type: string, value: "End card lands on a decisive launch message that ties storyboard review back to the shared Knowgrph workspace."}
+      dialogue: {key: dialogue, type: string, value: "NARRATOR: \"Plan, review, and ship from the same native graph workspace.\""}
+      prompt: {key: prompt, type: string, value: "Clean final end card with bold product message, warm accent color, and confident launch composition."}
+      style: {key: style, type: string, value: "Brand Card"}
+      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"]}
+      owner: {key: owner, type: string, value: "Growth"}
+      priority: {key: priority, type: string, value: "P1"}
+      tags: {key: tags, type: array, value: ["cta", "endcard", "publish"]}
+      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"}
+      order: {key: order, type: number, value: 60}
   edges:
-    - id: edge:story:scene_01
-      source: STORY_ROOT
-      target: SCENE_01
-    - id: edge:story:shot_01a
-      source: SCENE_01
-      target: SHOT_01A
-    - id: edge:story:scene_02
-      source: STORY_ROOT
-      target: SCENE_02
-    - id: edge:story:shot_02a
-      source: SCENE_02
-      target: SHOT_02A
-    - id: edge:story:scene_03
-      source: STORY_ROOT
-      target: SCENE_03
-    - id: edge:story:scene_04
-      source: STORY_ROOT
-      target: SCENE_04
+    - {id: "edge:story:scene_01", source: "STORY_ROOT", target: "SCENE_01"}
+    - {id: "edge:story:shot_01a", source: "SCENE_01", target: "SHOT_01A"}
+    - {id: "edge:story:scene_02", source: "STORY_ROOT", target: "SCENE_02"}
+    - {id: "edge:story:shot_02a", source: "SCENE_02", target: "SHOT_02A"}
+    - {id: "edge:story:scene_03", source: "STORY_ROOT", target: "SCENE_03"}
+    - {id: "edge:story:scene_04", source: "STORY_ROOT", target: "SCENE_04"}
 ---
-
 # Knowgrph Storyboard Demo
 
 Use this document to validate the native `2D Renderer: Storyboard` surface.
+
+## Typed Fixture Contract
+
+- This file is an approved typed validation fixture for storyboard ingest -> parse -> render coverage.
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation and graph-backed storyboard data.
+- Normalized `{key, type, value}` envelopes in `flow.nodes[*]` are intentional here so the typed E2E path stays exercised during regression and manual validation.
+- This document is not the canonical plain-YAML authoring example; canonical authored storyboard docs should still prefer plain YAML for frontmatter and related schema-bearing blocks.
+- Parser warning, repair, or fallback behavior is recovery-only; malformed YAML frontmatter still remains invalid source that must be fixed upstream.
 
 ## Related Docs
 

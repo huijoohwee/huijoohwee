@@ -1,6 +1,8 @@
 import {
+  AGNES_HOST,
   BYTEPLUS_AP_SOUTHEAST_HOST,
   BYTEPLUS_EU_WEST_HOST,
+  MIROMIND_HOST,
   OPENAI_HOST,
   isLocalHost,
   jsonResponse,
@@ -10,20 +12,39 @@ import {
 } from '../api/_integrationHub.js';
 
 const CHAT_PROXY_PREFIX = '/__chat_proxy';
+const AGNES_PROVIDER_ID = 'agnes-ai';
 const BYTEPLUS_PROVIDER_ID = 'byteplus-modelark';
+const MIROMIND_PROVIDER_ID = 'miromind';
+
+const normalizeProviderId = (value) => {
+  const raw = normalizeHost(value);
+  if (raw === 'openai') return 'openai';
+  if (raw === BYTEPLUS_PROVIDER_ID || raw === 'byteplus') return BYTEPLUS_PROVIDER_ID;
+  if (raw === MIROMIND_PROVIDER_ID || raw === 'miromind-api') return MIROMIND_PROVIDER_ID;
+  if (raw === AGNES_PROVIDER_ID || raw === 'agnes' || raw === 'agnes-ai-api') return AGNES_PROVIDER_ID;
+  return raw;
+};
+
+const isAgnesHost = (hostname) => normalizeHost(hostname) === AGNES_HOST;
 
 const isBytePlusHost = (hostname) => {
   const host = normalizeHost(hostname);
   return host === BYTEPLUS_AP_SOUTHEAST_HOST || host === BYTEPLUS_EU_WEST_HOST;
 };
 
+const isMiroMindHost = (hostname) => normalizeHost(hostname) === MIROMIND_HOST;
+
 const pickUpstreamBase = ({ provider, requestedUpstream, env }) => {
   // Fully independent mode: no external gateway-specific coupling here.
   // The proxy either targets:
   // - OpenAI (https://api.openai.com) when provider=openai
+  // - MiroMind (https://api.miromind.ai) when provider=miromind
+  // - Agnes AI (https://apihub.agnes-ai.com) when provider=agnes-ai
   // - BytePlus ModelArk (https://ark.ap-southeast.bytepluses.com) when provider=byteplus-modelark
   // - a configured HTTPS upstream (env.KNOWGRPH_CHAT_PROXY_UPSTREAM or request override)
   if (provider === 'openai') return 'https://api.openai.com';
+  if (provider === MIROMIND_PROVIDER_ID) return requestedUpstream || `https://${MIROMIND_HOST}`;
+  if (provider === AGNES_PROVIDER_ID) return requestedUpstream || `https://${AGNES_HOST}`;
   if (provider === BYTEPLUS_PROVIDER_ID) {
     return requestedUpstream || String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim() || `https://${BYTEPLUS_AP_SOUTHEAST_HOST}`;
   }
@@ -51,7 +72,7 @@ export async function onRequest(context) {
     return jsonResponse(request, { ok: false, error: 'Unsupported method' }, 405);
   }
 
-  const provider = normalizeHost(readHeader(request.headers, 'x-kg-chat-provider'));
+  const provider = normalizeProviderId(readHeader(request.headers, 'x-kg-chat-provider'));
   const upstreamBaseRaw = pickUpstreamBase({
     provider,
     requestedUpstream: readHeader(request.headers, 'x-kg-chat-upstream'),
@@ -67,7 +88,12 @@ export async function onRequest(context) {
     return jsonResponse(request, { ok: false, error: 'Invalid chat proxy upstream configuration' }, 500);
   }
 
-  const allowedHosts = parseAllowedHosts(env, { includeOpenAi: true, includeBytePlus: true });
+  const allowedHosts = parseAllowedHosts(env, {
+    includeOpenAi: true,
+    includeMiroMind: true,
+    includeAgnes: true,
+    includeBytePlus: true,
+  });
   const upstreamHostname = normalizeHost(upstreamBase.hostname);
   if (!allowedHosts.has(upstreamHostname)) {
     return jsonResponse(request, { ok: false, error: 'Chat proxy upstream host is not allowed' }, 403);
@@ -77,25 +103,51 @@ export async function onRequest(context) {
   }
 
   const requiresOpenAiKey = provider === 'openai' || upstreamHostname === OPENAI_HOST;
+  const requiresMiroMindKey = provider === MIROMIND_PROVIDER_ID || isMiroMindHost(upstreamHostname);
+  const requiresAgnesKey = provider === AGNES_PROVIDER_ID || isAgnesHost(upstreamHostname);
   const requiresBytePlusKey = provider === BYTEPLUS_PROVIDER_ID || isBytePlusHost(upstreamHostname);
   const headerApiKey = readHeader(request.headers, 'x-kg-chat-api-key');
   const envOpenAiApiKey = String(env.KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY || env.OPENAI_API_KEY || '').trim();
+  const envMiroMindApiKey = String(env.KNOWGRPH_CHAT_PROXY_MIROMIND_API_KEY || env.MIROMIND_API_KEY || '').trim();
+  const envAgnesApiKey = String(env.KNOWGRPH_CHAT_PROXY_AGNES_API_KEY || env.AGNES_API_KEY || '').trim();
   const envBytePlusApiKey = String(env.KNOWGRPH_CHAT_PROXY_BYTEPLUS_API_KEY || env.BYTEPLUS_API_KEY || '').trim();
   const openAiApiKey = (headerApiKey || envOpenAiApiKey).slice(0, 512);
+  const miromindApiKey = (headerApiKey || envMiroMindApiKey).slice(0, 512);
+  const agnesApiKey = (headerApiKey || envAgnesApiKey).slice(0, 512);
   const bytePlusApiKey = (headerApiKey || envBytePlusApiKey).slice(0, 512);
-  const providerApiKey = requiresBytePlusKey ? bytePlusApiKey : openAiApiKey;
+  const providerApiKey = requiresBytePlusKey
+    ? bytePlusApiKey
+    : requiresAgnesKey
+      ? agnesApiKey
+      : requiresMiroMindKey
+        ? miromindApiKey
+        : openAiApiKey;
   if (requiresOpenAiKey && !openAiApiKey) {
     return jsonResponse(
       request,
       { ok: false, error: 'Missing OpenAI API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY or OPENAI_API_KEY)' },
-      500,
+      401,
+    );
+  }
+  if (requiresMiroMindKey && !providerApiKey) {
+    return jsonResponse(
+      request,
+      { ok: false, error: 'Missing MiroMind API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_MIROMIND_API_KEY or MIROMIND_API_KEY)' },
+      401,
+    );
+  }
+  if (requiresAgnesKey && !providerApiKey) {
+    return jsonResponse(
+      request,
+      { ok: false, error: 'Missing Agnes API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_AGNES_API_KEY or AGNES_API_KEY)' },
+      401,
     );
   }
   if (requiresBytePlusKey && !providerApiKey) {
     return jsonResponse(
       request,
       { ok: false, error: 'Missing BytePlus API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_BYTEPLUS_API_KEY or BYTEPLUS_API_KEY)' },
-      500,
+      401,
     );
   }
 
@@ -118,7 +170,9 @@ export async function onRequest(context) {
   const accept = readHeader(request.headers, 'accept');
   if (contentType) headers.set('content-type', contentType);
   if (accept) headers.set('accept', accept);
-  if (requiresOpenAiKey || requiresBytePlusKey) headers.set('authorization', `Bearer ${providerApiKey}`);
+  if (requiresOpenAiKey || requiresMiroMindKey || requiresAgnesKey || requiresBytePlusKey) {
+    headers.set('authorization', `Bearer ${providerApiKey}`);
+  }
   const clientRequestId = readHeader(request.headers, 'x-client-request-id').slice(0, 512);
   if (clientRequestId) headers.set('x-client-request-id', clientRequestId);
 

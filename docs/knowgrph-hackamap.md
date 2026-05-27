@@ -96,6 +96,14 @@ index:
 
 # HackaMap — Knowledge Graph
 
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, table-mode metadata, and graph-seeding configuration.
+- This document is a canonical authored graph/table demo, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for graph demos, table-backed docs, and seeded D3 views.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical HackaMap example.
+- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
+
 Interactive knowledge graph of hackathon events, demos, teams, and technologies. Full dataset: `hackamap/content/events.md` + `hackamap/content/demos.md`.
 
 ---

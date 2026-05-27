@@ -18,6 +18,14 @@ viewportProof:
 
 # Knowgrph XR Canvas Demo
 
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for XR runtime intent, mode selection, and validation metadata.
+- This document is a canonical authored XR validation brief, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for XR demos and runtime-validation docs.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical XR validation example.
+- Runtime behavior must still be derived from parsed frontmatter and document content only, never from file path assumptions or hardcoded demo fallbacks.
+
 This brief validates an XR canvas surface for Knowgrph. It is intentionally external to the application repository and should be passed into validation commands at runtime, never baked into code, tests, scripts, or generated templates.
 
 ## Intent

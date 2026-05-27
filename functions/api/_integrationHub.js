@@ -1,4 +1,6 @@
 const OPENAI_HOST = 'api.openai.com';
+const MIROMIND_HOST = 'api.miromind.ai';
+const AGNES_HOST = 'apihub.agnes-ai.com';
 const BYTEPLUS_AP_SOUTHEAST_HOST = 'ark.ap-southeast.bytepluses.com';
 const BYTEPLUS_EU_WEST_HOST = 'ark.eu-west.bytepluses.com';
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0']);
@@ -21,12 +23,22 @@ const parseCsvSet = (value) => {
   return out;
 };
 
-const parseAllowedHosts = (env, { includeOpenAi = false, includeBytePlus = false } = {}) => {
+const parseAllowedHosts = (
+  env,
+  {
+    includeOpenAi = false,
+    includeMiroMind = false,
+    includeAgnes = false,
+    includeBytePlus = false,
+  } = {},
+) => {
   const primary = parseCsvSet(env.KNOWGRPH_INTEGRATION_ALLOWED_HOSTS);
   const fallback = parseCsvSet(env.KNOWGRPH_CHAT_PROXY_ALLOWED_HOSTS);
   const out = primary.size ? primary : fallback;
   const base = out.size ? out : new Set([...LOCAL_HOSTS]);
   if (includeOpenAi) base.add(OPENAI_HOST);
+  if (includeMiroMind) base.add(MIROMIND_HOST);
+  if (includeAgnes) base.add(AGNES_HOST);
   if (includeBytePlus) {
     base.add(BYTEPLUS_AP_SOUTHEAST_HOST);
     base.add(BYTEPLUS_EU_WEST_HOST);
@@ -179,6 +191,8 @@ const proxyUpstream = async ({
 
 export {
   OPENAI_HOST,
+  MIROMIND_HOST,
+  AGNES_HOST,
   BYTEPLUS_AP_SOUTHEAST_HOST,
   BYTEPLUS_EU_WEST_HOST,
   LOCAL_HOSTS,

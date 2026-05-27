@@ -506,6 +506,15 @@ flow:
 
 # Ralphthon Video Demo - OpenClaw SuperAgent Harness
 
+## Typed Fixture Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, harness metadata, pipeline inputs, and graph-backed runtime state.
+- This document is an approved typed validation fixture, not a canonical plain-YAML-only authoring example.
+- Normalized `{key, type, value}` envelopes in `flow.nodes[*]`, `flow.edges[*]`, and related graph-bearing frontmatter are intentional here so ingest -> parse -> render validates typed harness payload handling directly.
+- Surrounding frontmatter such as `inputs`, `spec`, `superagent_harness`, `widget_bundle`, `canvas`, `runner`, and `pipeline` stays canonical YAML so the fixture still demonstrates normal frontmatter authoring around the typed graph payload.
+- Canonical authored harness docs should still prefer plain YAML for frontmatter and related schema-bearing blocks outside dedicated validation fixtures.
+- Runtime behavior must still be derived from parsed frontmatter and document content only, never from file path assumptions or hardcoded demo fallbacks.
+
 This demo shows Knowgrph operating a Codex-anchored SuperAgent harness for rich media generation on Canvas. The point is not just that the canvas can produce text, image, and video. The point is that the harness can run a long job, inspect itself, recover lane-by-lane, and stop for a legible reason.
 
 The visual theme is OpenClaw: a precise red lobster signal mark moving across Singapore, South Korea, and the US. The mark is a routing emblem for the harness. It is used to make orchestration visible without turning the demo into a mascot reel.

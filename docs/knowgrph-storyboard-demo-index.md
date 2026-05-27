@@ -13,6 +13,15 @@ kgDocumentStructureBaselineLock: false
 
 Central reference for the native `2D Renderer: Storyboard` demo set.
 
+## Markdown YAML Frontmatter Contract
+
+- Every storyboard demo in this set starts with a valid YAML frontmatter block as the first block in the file.
+- Frontmatter and `flow.nodes[*]` remain the machine SSOT; the Markdown body is the human validation and explanation layer.
+- These storyboard demos are approved typed validation fixtures, not canonical plain-YAML authoring examples.
+- Canonical authored storyboard docs should prefer plain YAML for frontmatter and related schema-bearing blocks.
+- Normalized `{key, type, value}` wrappers in this demo set exist specifically to exercise ingest -> parse -> render fidelity for the typed E2E contract.
+- Parser warning, repair, or fallback behavior is recovery-only; malformed YAML frontmatter still remains invalid source that must be fixed upstream.
+
 ## Demo Tiers
 
 | Tier | File | Primary Purpose | Best For |
@@ -31,6 +40,8 @@ Central reference for the native `2D Renderer: Storyboard` demo set.
 
 - All demos activate the storyboard renderer through `kgCanvas2dRenderer: "storyboard"`.
 - All demos keep frontmatter and `flow.nodes[*]` as the source of truth.
+- All graph-backed storyboard fixtures in this set use normalized `{key, type, value}` envelopes in `flow.nodes[*]` so ingestion -> parsing -> rendering exercises the typed E2E contract directly.
+- This typed envelope usage is fixture-scoped only and must not redefine canonical plain-YAML authoring guidance outside the approved validation set.
 - All demos validate native storyboard projection without copied vendor shells or renderer-specific schema forks.
 - All demos are designed to stay neutral, universal, project-agnostic, and file-agnostic.
 
@@ -67,8 +78,8 @@ Central reference for the native `2D Renderer: Storyboard` demo set.
 ## Recommended Use
 
 - Use the cinematic demo for manual visual QA and storytelling checks.
-- Use the product UI demo for neutral workflow review and selection-sync validation.
-- Use the neutral contract demo for schema/alias regression checks and compact manual inspection.
+- Use the product UI demo for neutral workflow review, selection-sync validation, and typed alias-envelope coverage.
+- Use the neutral contract demo for schema/alias regression checks, typed ingestion coverage, and compact manual inspection.
 
 ## Maintenance Notes
 

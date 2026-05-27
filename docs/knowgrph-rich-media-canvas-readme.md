@@ -169,6 +169,14 @@ index:
 
 # Knowgrph
 
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, graph metadata, and reusable product narrative inputs.
+- This document is a canonical authored product/readme demo, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for product, architecture, and demo overview docs.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical readme-style authoring example.
+- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
+
 **Brief in. Campaign out.** A node canvas where Markdown becomes images — and images become video — orchestrated by AI. Built for solo creators who already know CapCut and need to go further without starting over.
 
 > Not a replacement. An extension.

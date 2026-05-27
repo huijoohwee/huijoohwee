@@ -15,6 +15,14 @@ kgDocumentStructureBaselineLock: false
 
 # GrabMaps Place — New Cafe Site Selection v1.1 (Singapore)
 
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for geospatial mode, report metadata, and place-intelligence evaluation inputs.
+- This document is a canonical authored place-intelligence report, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for geospatial reports and scored decision documents.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical place-report example.
+- Runtime behavior must still be derived from parsed frontmatter and document content only, never from file path assumptions or hardcoded demo fallbacks.
+
 > **TOPSIS Multi-Criteria Evaluation**
 >
 > **Endpoints Used:**
