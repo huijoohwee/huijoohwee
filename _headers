@@ -96,6 +96,9 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 # BEGIN knowgrph generated agent-ready headers
+/auth.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
 /robots.txt
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600
@@ -142,9 +145,9 @@
 
 # BEGIN knowgrph generated homepage discovery headers
 /
-  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </auth.md>; rel="service-doc"; type="text/markdown", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
 /index.html
-  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </auth.md>; rel="service-doc"; type="text/markdown", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
 # END knowgrph generated homepage discovery headers
 
 # BEGIN knowgrph generated app-shell cache headers

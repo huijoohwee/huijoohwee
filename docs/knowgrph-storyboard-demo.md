@@ -171,8 +171,8 @@ Use this document to validate the native `2D Renderer: Storyboard` surface.
 - Confirm the storyboard surface is repo-owned and native to Knowgrph, not copied from Boords or any vendor storyboard runtime.
 - Confirm existing graph nodes project into storyboard lanes through canonical fields such as `stage`, `status`, `lane`, `phase`, or `track`, without creating a second authoring schema.
 - Confirm scene-like node types such as `Scene`, `Shot`, `Frame`, `Panel`, `Beat`, and `Story` are recognized as storyboard-friendly inputs while structural/root-only nodes stay secondary or are filtered when richer cards exist.
-- Confirm the board reuses shared semantic-key infrastructure and does not introduce parallel identity assembly, stale local caches, or per-renderer duplicate graph derivation.
-- Confirm storyboard cards reuse shared chip/theme primitives for lane status, tags, and metadata instead of bespoke demo-only UI shells.
+- `#EF4444:Confirm` the board reuses shared semantic-key infrastructure and does not introduce parallel identity assembly, stale local caches, or per-renderer duplicate graph derivation.
+- Confirm storyboard cards reuse shared chip/theme primitives for lane status, tags, and metadata instead of **`bg#FEF08A:bespoke`** demo-only UI shells.
 - Confirm card ordering follows explicit node properties like `order`, `sequence`, `sceneOrder`, `shotOrder`, `index`, or `rank` before falling back to stable source order.
 - Confirm storyboard cards project native frame/index badges from properties such as `frame`, `frameNumber`, `sceneNumber`, `shotNumber`, or `panelNumber`.
 - Confirm storyboard cards build slugline text from `slugline` directly or from `location` + `timeOfDay` when explicit slugline text is absent.
