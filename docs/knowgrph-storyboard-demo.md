@@ -1,229 +1,404 @@
 ---
-title: "Knowgrph Storyboard Demo"
+title: "Knowgrph — Map it. Score it. Decide it."
+id: md:knowgrph-readme-v4
+author: joohwee
+institution: "Knowgrph — airvio.co/knowgrph"
+date: "2026-05-03"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "storyboard"
+kgCanvas2dRenderer: "d3"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
-flow:
-  direction: {key: direction, type: string, value: "LR"}
-  edgeType: {key: edgeType, type: string, value: "smoothstep"}
-  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
-  computed: {key: computed, type: boolean, value: true}
-  snapToGrid: {key: snapToGrid, type: boolean, value: true}
-  nodes:
-    - id: {key: id, type: string, value: "STORY_ROOT"}
-      type: {key: type, type: string, value: "Story"}
-      label: {key: label, type: string, value: "Creative Review Storyboard"}
-      position: {key: position, type: object, value: {x: -960, y: 0}}
-      stage: {key: stage, type: string, value: "Planning"}
-      summary: {key: summary, type: string, value: "Native in-repo storyboard demo for the 2D Storyboard renderer."}
-      slugline: {key: slugline, type: string, value: "Story Spine - Review Narrative"}
-      action: {key: action, type: string, value: "Root story node groups all review scenes and preserves one native graph source for storyboard projection."}
-      owner: {key: owner, type: string, value: "Production"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["storyboard", "demo", "launch"]}
-      style: {key: style, type: string, value: "Knowgrph Native"}
-    - id: {key: id, type: string, value: "SCENE_01"}
-      type: {key: type, type: string, value: "Scene"}
-      label: {key: label, type: string, value: "Cold Open"}
-      position: {key: position, type: object, value: {x: -640, y: 720}}
-      stage: {key: stage, type: string, value: "Draft"}
-      frame: {key: frame, type: number, value: 1}
-      location: {key: location, type: string, value: "Conference Room"}
-      timeOfDay: {key: timeOfDay, type: string, value: "Monday"}
-      summary: {key: summary, type: string, value: "Open on the user pain point before the product is shown."}
-      action: {key: action, type: string, value: "Designer and client review printed boards on the table while markup accumulates across the surface."}
-      dialogue: {key: dialogue, type: string, value: "CLIENT: \"Just a few small changes.\""}
-      prompt: {key: prompt, type: string, value: "A designer and client sit at a conference table with printed storyboard boards, marked-up notes, pens, and calm office lighting."}
-      style: {key: style, type: string, value: "Doodle"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Director"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["hook", "problem", "wide"]}
-      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 10}
-      url: {key: url, type: string, value: "https://airvio.co/knowgrph"}
-    - id: {key: id, type: string, value: "SHOT_01A"}
-      type: {key: type, type: string, value: "Shot"}
-      label: {key: label, type: string, value: "Friction Montage"}
-      position: {key: position, type: object, value: {x: -320, y: 480}}
-      stage: {key: stage, type: string, value: "Draft"}
-      frame: {key: frame, type: number, value: 2}
-      slugline: {key: slugline, type: string, value: "Review Notes - Print Markup Pass"}
-      summary: {key: summary, type: string, value: "Quick cuts show duplicate tools, scattered notes, and timeline drift."}
-      action: {key: action, type: string, value: "Printouts, sticky notes, and disconnected tools stack up faster than the team can reconcile them."}
-      dialogue: {key: dialogue, type: string, value: "DESIGNER: \"We fixed that in the canvas, but the board is already stale.\""}
-      prompt: {key: prompt, type: string, value: "Fast montage of sticky notes, printouts, browser windows, and duplicated timeline updates spreading across a worktable."}
-      style: {key: style, type: string, value: "Paper Cut"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Editor"}
-      priority: {key: priority, type: string, value: "P1"}
-      tags: {key: tags, type: array, value: ["closeup", "workflow", "pain"]}
-      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 20}
-    - id: {key: id, type: string, value: "SCENE_02"}
-      type: {key: type, type: string, value: "Scene"}
-      label: {key: label, type: string, value: "Graph-to-Storyboard Reveal"}
-      position: {key: position, type: object, value: {x: 0, y: 240}}
-      stage: {key: stage, type: string, value: "Review"}
-      frame: {key: frame, type: number, value: 3}
-      location: {key: location, type: string, value: "Workspace Canvas"}
-      timeOfDay: {key: timeOfDay, type: string, value: "Live Sync"}
-      summary: {key: summary, type: string, value: "The graph reorganizes into storyboard lanes without a second authoring system."}
-      action: {key: action, type: string, value: "The same source graph snaps into a native storyboard board while lane chips, counts, and card media stay in sync."}
-      dialogue: {key: dialogue, type: string, value: "PM: \"Same graph, same markdown, better review surface.\""}
-      prompt: {key: prompt, type: string, value: "Product interface transitions from graph nodes into a storyboard board with compact lanes, consistent chips, and native media cards."}
-      style: {key: style, type: string, value: "Product UI"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Product"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["reveal", "kanban", "native"]}
-      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 30}
-    - id: {key: id, type: string, value: "SHOT_02A"}
-      type: {key: type, type: string, value: "Shot"}
-      label: {key: label, type: string, value: "Lane Focus"}
-      position: {key: position, type: object, value: {x: 320, y: 0}}
-      stage: {key: stage, type: string, value: "Review"}
-      frame: {key: frame, type: number, value: 4}
-      slugline: {key: slugline, type: string, value: "Selection Sync - Active Source Node"}
-      summary: {key: summary, type: string, value: "Clicking a card highlights the source node and keeps graph/story alignment visible."}
-      action: {key: action, type: string, value: "A selected storyboard card drives the active graph selection while the lane remains compact and readable."}
-      dialogue: {key: dialogue, type: string, value: "REVIEWER: \"Click the board, inspect the node, keep the source honest.\""}
-      prompt: {key: prompt, type: string, value: "Storyboard card selection highlights a connected source node in a graph editor, showing one unified system."}
-      style: {key: style, type: string, value: "Diagram Hybrid"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Product"}
-      priority: {key: priority, type: string, value: "P1"}
-      tags: {key: tags, type: array, value: ["selection", "lane", "sync"]}
-      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 40}
-    - id: {key: id, type: string, value: "SCENE_03"}
-      type: {key: type, type: string, value: "Frame"}
-      label: {key: label, type: string, value: "Media-Rich Variant"}
-      position: {key: position, type: object, value: {x: 0, y: -720}}
-      stage: {key: stage, type: string, value: "Approved"}
-      frame: {key: frame, type: number, value: 5}
-      location: {key: location, type: string, value: "Publishing Surface"}
-      timeOfDay: {key: timeOfDay, type: string, value: "Final Review"}
-      summary: {key: summary, type: string, value: "Approved card carries poster art, tags, owner, and publish link in one native board card."}
-      action: {key: action, type: string, value: "The approved frame combines preview video, review metadata, references, and outgoing brief links in a compact native card."}
-      dialogue: {key: dialogue, type: string, value: "MARKETING: \"This one is approved. Ship the brief with the source attached.\""}
-      prompt: {key: prompt, type: string, value: "Final approved product storyboard frame with poster art, compact metadata chips, and a linked launch brief."}
-      style: {key: style, type: string, value: "Launch Polish"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Marketing"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["media", "approved", "publish"]}
-      videoUrl: {key: videoUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
-      order: {key: order, type: number, value: 50}
-      href: {key: href, type: string, value: "https://airvio.co/knowgrph"}
-    - id: {key: id, type: string, value: "SCENE_04"}
-      type: {key: type, type: string, value: "Panel"}
-      label: {key: label, type: string, value: "CTA End Card"}
-      position: {key: position, type: object, value: {x: 320, y: -960}}
-      stage: {key: stage, type: string, value: "Approved"}
-      frame: {key: frame, type: number, value: 6}
-      slugline: {key: slugline, type: string, value: "End Card - Workspace Native Delivery"}
-      summary: {key: summary, type: string, value: "End card closes on a clear call to action for workspace-native production planning."}
-      action: {key: action, type: string, value: "End card lands on a decisive launch message that ties storyboard review back to the shared Knowgrph workspace."}
-      dialogue: {key: dialogue, type: string, value: "NARRATOR: \"Plan, review, and ship from the same native graph workspace.\""}
-      prompt: {key: prompt, type: string, value: "Clean final end card with bold product message, warm accent color, and confident launch composition."}
-      style: {key: style, type: string, value: "Brand Card"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Growth"}
-      priority: {key: priority, type: string, value: "P1"}
-      tags: {key: tags, type: array, value: ["cta", "endcard", "publish"]}
-      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 60}
-  edges:
-    - {id: "edge:story:scene_01", source: "STORY_ROOT", target: "SCENE_01"}
-    - {id: "edge:story:shot_01a", source: "SCENE_01", target: "SHOT_01A"}
-    - {id: "edge:story:scene_02", source: "STORY_ROOT", target: "SCENE_02"}
-    - {id: "edge:story:shot_02a", source: "SCENE_02", target: "SHOT_02A"}
-    - {id: "edge:story:scene_03", source: "STORY_ROOT", target: "SCENE_03"}
-    - {id: "edge:story:scene_04", source: "STORY_ROOT", target: "SCENE_04"}
+index:
+  legend:
+    nodes:
+      problem:   "#c0392b — red    — pain point / market gap / decision failure"
+      insight:   "#d68910 — amber  — reframe / principle / scored signal"
+      product:   "#1a6fa8 — blue   — tool / pipeline stage / canvas layer"
+      actor:     "#1e8449 — green  — user segment / stakeholder / decision-maker"
+      output:    "#7d3c98 — purple — artifact / scored report / data export"
+      business:  "#117a65 — teal   — revenue line / model tier"
+      milestone: "#5d6d7e — grey   — roadmap item"
+      mcp:       "#0e4f6b — navy   — MCP tool / external API connector"
+      signal:    "#1a7f5a — forest — ranked result / TOPSIS score / market signal"
+    edges:
+      user_flow:   "solid #2980b9  2px   — actor interacts with product surface"
+      work_flow:   "dashed #d68910 2px   — pitch section narrative progression"
+      data_flow:   "dotted #7d3c98 1.5px — artifact passes between pipeline stages"
+      mcp_flow:    "solid #0e4f6b  1.5px — MCP tool call → collected data"
+      signal_flow: "dotted #1a7f5a 1.5px — ranked signal feeds decision layer"
+  mermaid: |
+    %%{init:{
+      "theme":"base",
+      "themeVariables":{
+        "primaryColor":"#1a1a2e","primaryTextColor":"#f0f0f0",
+        "primaryBorderColor":"#444","lineColor":"#888",
+        "secondaryColor":"#16213e","tertiaryColor":"#0f3460",
+        "edgeLabelBackground":"#1a1a2e"
+      }
+    }}%%
+    flowchart TD
+
+      classDef problem   fill:#c0392b,color:#fff,stroke:#922b21,stroke-width:1.5px
+      classDef insight   fill:#d68910,color:#fff,stroke:#9a6301,stroke-width:1.5px
+      classDef product   fill:#1a6fa8,color:#fff,stroke:#154f7a,stroke-width:1.5px
+      classDef actor     fill:#1e8449,color:#fff,stroke:#145a32,stroke-width:1.5px
+      classDef output    fill:#7d3c98,color:#fff,stroke:#5b2c6f,stroke-width:1.5px
+      classDef business  fill:#117a65,color:#fff,stroke:#0e6655,stroke-width:1.5px
+      classDef milestone fill:#5d6d7e,color:#fff,stroke:#424f5c,stroke-width:1.5px
+      classDef mcp       fill:#0e4f6b,color:#fff,stroke:#083444,stroke-width:1.5px
+      classDef signal    fill:#1a7f5a,color:#fff,stroke:#125c40,stroke-width:1.5px
+
+      subgraph S0["① Hook"]
+        TAGLINE["Map it. Score it. Decide it."]:::insight
+        POS["Geo data in · ranked decision out · no analyst required"]:::insight
+      end
+
+      subgraph S1["② Problem — Location Decisions Are Still Spreadsheets"]
+        subgraph S1A["Too manual"]
+          P_SHEET["Spreadsheet audits — hours of copy-paste per candidate"]:::problem
+          P_STALE["Stale data — offline reports miss live POI density"]:::problem
+        end
+        subgraph S1B["Too opaque"]
+          P_GUT["Gut-feel site picks — no reproducible scoring model"]:::problem
+          P_SILO["Routing + competition + catchment analysed in separate tools"]:::problem
+        end
+        P_GAP["Decision-maker flying blind — no unified, live, scored view"]:::problem
+      end
+
+      subgraph S2["③ ICP — Local Market Decision-Makers"]
+        subgraph S2A["Who"]
+          ICP_FB["F&B operator — new outlet / expansion"]:::actor
+          ICP_RET["Retailer / pop-up brand — site shortlisting"]:::actor
+          ICP_DEV["Property developer — catchment due diligence"]:::actor
+          ICP_CON["Management consultant — market entry advisory"]:::actor
+        end
+        subgraph S2B["Where — fragmented, data-poor markets"]
+          MKT_SEA["Southeast Asia — SG MY TH ID PH VN"]:::actor
+          MKT_MENA["MENA — AE SA EG"]:::actor
+          MKT_SA["South Asia — IN BD PK"]:::actor
+          MKT_LATAM["Latin America — MX BR CO"]:::actor
+        end
+        subgraph S2C["Situation"]
+          SIT_CAND["Has 5–20 candidate locations · no time to survey all"]:::actor
+          SIT_LOOP["Needs scored shortlist → site visit → final call"]:::insight
+        end
+      end
+
+      subgraph S3["④ Insight — APIs Know More Than Any Analyst"]
+        I_LIVE["Live POI density = real competition, not last year's survey"]:::insight
+        I_MCP["MCP tools = maps APIs callable in a pipeline, not a browser tab"]:::insight
+        I_TOPSIS["TOPSIS = transparent, weight-tunable, auditable scoring"]:::insight
+        I_AUTO["Swap weight → all C* scores recompute in seconds"]:::insight
+        I_POS["One pipeline. N candidates. One ranked output."]:::insight
+      end
+
+      subgraph S4["⑤ Product — Site Selection Canvas"]
+        subgraph S4A["Discover — MCP Layer"]
+          MCP_POI["POI Search — keyword · country · density"]:::mcp
+          MCP_NEAR["Nearby Search — radius · rank_by=popularity"]:::mcp
+          MCP_NAV["Routing ETA — walking · driving · cycling profiles"]:::mcp
+        end
+        subgraph S4B["Score — TOPSIS Engine"]
+          SC_MAT["Decision Matrix — m candidates × n criteria"]:::product
+          SC_NORM["Weighted Normalization — w_j × r_ij"]:::product
+          SC_RANK["C* Ranking — D⁻ / (D⁺ + D⁻) per candidate"]:::signal
+        end
+        subgraph S4C["Report Layer"]
+          OUT_RANK["Ranked Site Report — C* scores + sensitivity"]:::output
+          OUT_MAP["Scored Map Canvas — visual heat overlay"]:::output
+          OUT_MD["Markdown export — portable · version-controlled"]:::output
+        end
+      end
+
+      subgraph S5["⑥ Demo — New Cafe · Singapore · 7 Candidates"]
+        DM_BPJ["🥇 Bukit Panjang  C*=0.82 — zero competition · 16-sec MRT"]:::signal
+        DM_PGL["🥈 Punggol        C*=0.78 — 22 residential POIs · young demo"]:::signal
+        DM_WDL["🥉 Woodlands      C*=0.71 — zero competition · causeway traffic"]:::signal
+        DM_SKG["✗  Sengkang       C*=0.22 — 6 cafes incl. 2 Starbucks"]:::problem
+        DM_CBD["✗  CBD            C*=0.09 — baseline saturation"]:::problem
+        DM_API["23 API calls · 5 MCP tools · 8 criteria · 1 ranked output"]:::product
+      end
+
+      subgraph S6["⑦ Architecture"]
+        A_MCP["MCP Connectors — POI · nearby · navigation"]:::mcp
+        A_SC["TOPSIS Engine — Python · NetworkX · DuckDB"]:::product
+        A_FE["React 18 + TS + Vite — canvas + map overlay"]:::product
+        A_DB["RxDB — offline-first · version-controlled reports"]:::product
+        A_CF["Cloudflare Pages · Stripe"]:::product
+      end
+
+      subgraph S7["⑧ Business Model"]
+        B_REP["Per-report — pay-per-scored-shortlist"]:::business
+        B_SUB["Workspace subscription — unlimited scoring · saved canvases"]:::business
+        B_API["API tier — embed scorer in existing tools"]:::business
+        B_CON["Advisory — custom weight models per industry vertical"]:::business
+      end
+
+      subgraph S8["⑨ Roadmap"]
+        R_NOW["Now — MCP pipeline · TOPSIS scorer · Markdown report · Stripe"]:::milestone
+        R_NEXT["Next — scored map canvas · multi-provider geo adapter · batch candidates"]:::milestone
+        R_LATER["Later — rent-index integration · real-time rescore · collab workspace"]:::milestone
+      end
+
+      subgraph S9["⑩ The Ask"]
+        ASK_DP["Design partners — F&B / retail operators with live site decisions"]:::actor
+        ASK_GEO["Geo API access — maps POI + routing connectors per market"]:::mcp
+        ASK_DATA["Ground-truth datasets — site visits to validate C* predictions"]:::output
+        ASK_DIST["Distribution — property consultants · franchise networks · VC portfolio ops"]:::actor
+      end
+
+      %% USER FLOW
+      ICP_FB -->|"shortlists candidates"| MCP_POI
+      ICP_RET -->|"scopes market"| MCP_NEAR
+      ICP_CON -->|"advises on"| OUT_RANK
+      SIT_CAND -->|"inputs to"| SC_MAT
+
+      %% WORK FLOW
+      S0 -.->|"frames"| S1
+      S1 -.->|"scopes ICP"| S2
+      S2 -.->|"motivates"| S3
+      S3 -.->|"enables"| S4
+      S4 -.->|"shown by"| S5
+      S5 -.->|"runs on"| S6
+      S6 -.->|"monetised via"| S7
+      S7 -.->|"delivered by"| S8
+      S8 -.->|"closes"| S9
+
+      %% MCP FLOW
+      MCP_POI -->|"poi_density"| SC_MAT
+      MCP_NEAR -->|"competition_count"| SC_MAT
+      MCP_NAV -->|"eta_minutes"| SC_MAT
+      SC_MAT -->|"normalize · weight"| SC_NORM
+      SC_NORM -->|"C* per candidate"| SC_RANK
+
+      %% DATA FLOW
+      SC_RANK -->|"ranked signal"| OUT_RANK
+      SC_RANK -->|"heat scores"| OUT_MAP
+      OUT_RANK -->|"export"| OUT_MD
+      A_MCP -->|"live calls"| MCP_POI
+      A_MCP -->|"live calls"| MCP_NEAR
+      A_MCP -->|"live calls"| MCP_NAV
 ---
-# Knowgrph Storyboard Demo
 
-Use this document to validate the native `2D Renderer: Storyboard` surface.
+# Knowgrph
 
-## Typed Fixture Contract
+## Authoring Contract
 
-- This file is an approved typed validation fixture for storyboard ingest -> parse -> render coverage.
-- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation and graph-backed storyboard data.
-- Normalized `{key, type, value}` envelopes in `flow.nodes[*]` are intentional here so the typed E2E path stays exercised during regression and manual validation.
-- This document is not the canonical plain-YAML authoring example; canonical authored storyboard docs should still prefer plain YAML for frontmatter and related schema-bearing blocks.
-- Parser warning, repair, or fallback behavior is recovery-only; malformed YAML frontmatter still remains invalid source that must be fixed upstream.
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, map-scoring graph metadata, and reusable product narrative inputs.
+- This document is a canonical authored product/readme demo, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for geospatial product, architecture, and demo overview docs.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical maps readme example.
+- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
 
-## Related Docs
+**Candidates in. Ranked decisions out.** A knowledge graph canvas that calls live map APIs via MCP tools, scores every candidate location through a TOPSIS multi-criteria engine, and delivers a portable, auditable site selection report — in minutes, not weeks.
 
-- [Storyboard Demo Index](./knowgrph-storyboard-demo-index.md)
-- [Storyboard Product UI Demo](./knowgrph-storyboard-product-ui-demo.md)
-- [Storyboard Neutral Schema Contract Demo](./knowgrph-storyboard-neutral-schema-contract-demo.md)
+> Not a dashboard. A decision pipeline.
 
-## Validation Goals
+---
 
-- Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: storyboard`.
-- Confirm the storyboard surface is repo-owned and native to Knowgrph, not copied from Boords or any vendor storyboard runtime.
-- Confirm existing graph nodes project into storyboard lanes through canonical fields such as `stage`, `status`, `lane`, `phase`, or `track`, without creating a second authoring schema.
-- Confirm scene-like node types such as `Scene`, `Shot`, `Frame`, `Panel`, `Beat`, and `Story` are recognized as storyboard-friendly inputs while structural/root-only nodes stay secondary or are filtered when richer cards exist.
-- `#EF4444:Confirm` the board reuses shared semantic-key infrastructure and does not introduce parallel identity assembly, stale local caches, or per-renderer duplicate graph derivation.
-- Confirm storyboard cards reuse shared chip/theme primitives for lane status, tags, and metadata instead of **`bg#FEF08A:bespoke`** demo-only UI shells.
-- Confirm card ordering follows explicit node properties like `order`, `sequence`, `sceneOrder`, `shotOrder`, `index`, or `rank` before falling back to stable source order.
-- Confirm storyboard cards project native frame/index badges from properties such as `frame`, `frameNumber`, `sceneNumber`, `shotNumber`, or `panelNumber`.
-- Confirm storyboard cards build slugline text from `slugline` directly or from `location` + `timeOfDay` when explicit slugline text is absent.
-- Confirm storyboard cards surface native `Action` and `Dialogue` sections from graph/frontmatter fields instead of demo-only text formatting.
-- Confirm storyboard, workspace Viewer kanban, and Workflow Manager kanban surface shared paragraph-style card content from canonical text fields instead of drifting per-surface card bodies.
-- Confirm storyboard, workspace Viewer kanban, and Workflow Manager kanban allow double-click inline editing on shared card title/body text, committing back to the root markdown-table or graph-node source instead of local card state.
-- Confirm storyboard cards surface a native `Visual Brief` block from shared properties such as `prompt`, `imagePrompt`, and `style`.
-- Confirm storyboard cards surface a compact native `Reference Pack` from shared reference arrays such as `references` or `referenceUrls`.
-- Confirm image, video, and link properties such as `image`, `imageUrl`, `videoUrl`, `media_url`, `src`, `url`, or `href` render as native media-rich storyboard cards without placeholder fixtures.
-- Confirm clicking a storyboard card selects the source node in the active graph store instead of creating a parallel storyboard-only selection state.
-- Confirm the storyboard surface stays source-backed during inline edits: card text commits directly to graph/frontmatter-owned fields with no storyboard-local persistence layer or parallel markdown format.
-- Confirm the shared Viewer `Properties` panel now owns add, duplicate, rename, and delete column CRUD end-to-end so Layout / Properties / Filter / Sort / Group state does not drift after a property mutation.
-- Confirm the storyboard renderer bypasses minimap-only D3 assumptions and does not inherit incompatible minimap behavior from unrelated 2D surfaces.
-- Confirm the board keeps lane/card density compact, uses horizontal lane scrolling, and avoids oversized helper chrome or copied vendor interaction patterns.
+## The problem — location decisions are still spreadsheets
 
-## Native Contract
+Opening a cafe, placing a retail pop-up, entering a new market. The question is always the same: *which location?* The answer is almost always the same process: someone opens a spreadsheet, pastes in addresses, drives around, argues from gut feel, picks.
 
-- Frontmatter remains the single authoring owner.
-- `flow.nodes[*]` remains the canonical node source.
-- Storyboard derives view-only lane/card presentation from node labels, types, and properties.
-- Lane grouping prefers `stage`, then other shared lane-like fields.
-- Card content prefers `label`, `summary`-like fields, tags, owner, priority, and media/link URLs already present on the node.
-- Storyboard detail blocks also reuse shared graph properties for frame numbering, slugline, action, dialogue, prompt, style, and references.
+| | Status quo | Knowgrph |
+|---|---|---|
+| **Data freshness** | Offline reports, last-year surveys | Live POI density via MCP API calls |
+| **Competition analysis** | Manual Google Maps tab-switching | `nearby_search` → competitor count per radius |
+| **Routing / accessibility** | Estimated or ignored | `navigation` ETA — walking · driving · cycling |
+| **Scoring model** | Gut feel, no audit trail | TOPSIS C* — weighted, normalized, reproducible |
+| **Time per candidate** | 2–4 hours | Seconds per API call |
+| **Output** | PowerPoint with vibes | Ranked Markdown report · scored map canvas |
 
-## Authoring Notes
+The analyst time cost is real. The opacity is the bigger problem — a site pick that can't be interrogated can't be improved.
 
-- Use stable scene-like ids such as `SCENE_01`, `SHOT_01A`, or `PANEL_04`.
-- Prefer `stage` for lane grouping when authoring storyboard demos because it reads cleanly as `Draft`, `Review`, and `Approved`.
-- Prefer `order` for deterministic left-to-right narrative sequencing inside each lane.
-- Prefer shared graph properties like `summary`, `owner`, `priority`, `tags`, `url`, `href`, `image`, `imageUrl`, `videoUrl`, `media_url`, `frame`, `slugline`, `location`, `timeOfDay`, `action`, `dialogue`, `prompt`, `style`, and `references` instead of renderer-local custom keys.
-- Prefer canonical text properties such as `summary`, `description`, `content`, `text`, `note`, `notes`, `action`, `dialogue`, and `prompt` when authoring card body copy so storyboard and kanban surfaces project the same paragraph content.
-- Keep storyboard content enhancement-first: edit the graph/frontmatter source, then let the renderer project the board.
+**Knowgrph makes location intelligence reproducible, live, and legible.**
 
-## Expected Lanes
+---
 
-- `Draft` should contain `SCENE_01` and `SHOT_01A`.
-- `Review` should contain `SCENE_02` and `SHOT_02A`.
-- `Approved` should contain `SCENE_03` and `SCENE_04`.
+## Who it's for
 
-## Expected Card Signals
+The ICP is not an industry. It's a decision type: **anyone shortlisting physical locations who needs scored, evidence-based output faster than a traditional market study allows.**
 
-- `SCENE_01` should show frame `1`, a generated slugline from `Conference Room - Monday`, an `Action` block, a `Dialogue` block, a Doodle-style `Visual Brief`, a two-item `Reference Pack`, and an external brief link.
-- `SHOT_01A` should show frame `2`, explicit slugline text, workflow-pain tags, a style chip, and reference thumbnails while staying ordered after `SCENE_01`.
-- `SCENE_02` should validate graph-to-storyboard projection language: native board, shared kanban visual language, no copied vendor shell, plus a product-UI visual brief.
-- `SHOT_02A` should validate card-click selection sync back to the graph node and keep a compact selection-focused storyboard card body.
-- `SCENE_03` should validate video preview support for approved media-rich cards together with references, style, owner, priority, and launch brief metadata.
-- `SCENE_04` should validate approved CTA card rendering with compact chips, explicit end-card dialogue, and a brand-card visual brief.
+This person operates in:
 
-## Demo Intent
+- **F&B expansion** — franchise operators, independent restaurant groups, cloud kitchen networks opening outlet #2 to #10
+- **Retail / pop-up brands** — DTC brands, seasonal activations, market stall operators choosing between 5–20 viable sites
+- **Property development** — developers benchmarking commercial lots; landlords advising anchor tenant fit
+- **Management consulting** — market entry advisory, retail network optimisation, competitor gap analysis across city districts
 
-- The cold open proves storyboard cards can represent narrative setup.
-- The reveal proves current graph data can become a storyboard board without a second system.
-- The approved cards prove media-rich review planning can stay inside the same Markdown + graph authoring pipeline.
-- The overall demo proves the new storyboard-specific card sections remain graph-derived, kanban-shaped, and fully native in-repo.
+They share one bottleneck: **too many candidates, not enough scored data, not enough time.**
+
+Markets where the gap is sharpest — Southeast Asia (SG MY TH ID PH VN), MENA (AE SA EG), South Asia (IN BD), Latin America (MX BR CO) — have high physical retail density, fragmented POI data, and no local equivalent of a mature market research platform.
+
+---
+
+## The insight — APIs already know
+
+Maps platforms index millions of POIs, update in near-real-time, and expose everything needed for a rigorous site evaluation: competitor counts, category density, footfall proxies, transit ETAs across walking, driving, and cycling profiles.
+
+None of that requires a field visit. It requires a pipeline.
+
+```
+candidate coordinates
+→ MCP: POST nearby_search       → competitor count + F&B density
+→ MCP: GET /place/v2/nearby     → residential + retail + commercial POI count
+→ MCP: POST navigation          → walking ETA to transit · driving ETA to centre
+→ TOPSIS: normalize · weight    → C* score per candidate
+→ output: ranked report         → top 3 with sensitivity analysis
+```
+
+Swap a weight. All scores recompute. Same reproducibility as code.
+
+---
+
+## What it does
+
+```mermaid
+flowchart LR
+  subgraph Discover["Discover — MCP Layer"]
+    POI["POI Search\nkeyword · country · limit"]
+    NEAR["Nearby Search\nradius · rank_by=popularity"]
+    NAV["Routing ETA\nwalking · driving · cycling"]
+  end
+  subgraph Score["Score — TOPSIS Engine"]
+    MAT["Decision Matrix\nm candidates × n criteria"]
+    NORM["Weighted Normalization\nw_j × r_ij"]
+    RANK["C* Ranking\nD⁻ / (D⁺ + D⁻)"]
+  end
+  subgraph Output["Output"]
+    RPT["Ranked Report\nscored shortlist + sensitivity"]
+    MAP["Scored Map Canvas\nheat overlay"]
+    MD["Markdown export\nportable · auditable"]
+  end
+
+  POI --> MAT
+  NEAR --> MAT
+  NAV --> MAT
+  MAT --> NORM --> RANK
+  RANK --> RPT
+  RANK --> MAP
+  RPT --> MD
+```
+
+### Criteria the pipeline measures
+
+| ID | Criterion | MCP Endpoint | Direction | Weight (default) |
+|----|-----------|-------------|-----------|-----------------|
+| C1 | Competitor density (2.5 km) | `POST nearby_search` | Lower = better | 0.25 |
+| C2 | F&B / category saturation | `GET /place/v2/nearby` | Lower = better | 0.10 |
+| C3 | Residential POI count | `GET /place/v2/nearby` | Higher = better | 0.15 |
+| C4 | Retail / mall POI count | `GET /place/v2/nearby` | Higher = better | 0.10 |
+| C5 | Walk-to-transit ETA (min) | `POST navigation profile=walking` | Lower = better | 0.15 |
+| C6 | Drive-to-centre ETA (min) | `POST navigation profile=driving` | Target range | 0.05 |
+| C7 | Total area POI density | `GET /poi/v1/search` | Higher = better | 0.10 |
+| C8 | Commercial building count | `GET /place/v2/nearby` | Higher = better | 0.05 |
+
+**Transport profiles:** `walking` · `driving` · `cycling` · `motorcycle` · `tricycle`
+
+All weights are frontmatter fields. Swap one value, all C* scores recompute.
+
+---
+
+## Demo — New Cafe · Singapore · 7 Candidates · 23 API Calls
+
+**Setup:** 7 candidate areas, radius 2.5 km (~30-min walk), ranked by `popularity`. 23 MCP calls total across POI search, nearby search, and routing profiles.
+
+### TOPSIS results
+
+| Rank | Location | C* | Decisive signal |
+|------|----------|-----|----------------|
+| 🥇 1 | **Bukit Panjang** | **0.82** | Zero cafe competitors · Bukit Panjang DTL MRT **16-second walk** · C8=18 commercial buildings (highest) |
+| 🥈 2 | **Punggol** | **0.78** | C1=1 (one traditional coffeeshop only) · C3=22 HDB residential POIs · young growing demographic |
+| 🥉 3 | **Woodlands** | **0.71** | C1=0 · causeway commuter flow · education/childcare ecosystem → family catchment |
+| 4 | Yishun | 0.62 | Northpoint City mall anchor (C4=25) · C1=0 · high F&B saturation (C2=12) offsets |
+| 5 | Jurong West | 0.41 | Major transport hub · C2=20 (worst saturation) · longest MRT walk (~14 min) |
+| 6 | Sengkang | 0.22 | C1=6 cafes incl. 2 Starbucks · Compass One fully served — **do not enter** |
+| — | CBD | 0.09 | Baseline saturation reference only |
+
+### Sensitivity analysis — weight shifts change the winner
+
+| Scenario | Weight change | New winner | Rationale |
+|----------|-------------|-----------|-----------|
+| Maximise foot traffic | C4 mall → 0.25 | **Yishun** | Northpoint City C4=25 becomes decisive |
+| Minimise rent risk | Add C9 rent index → 0.10 | **Woodlands** | Northern areas ~30% below central band |
+| Weekday lunch priority | C8 commercial → 0.20 | **Bukit Panjang** | C8=18 (highest) + DTL commuter lunch crowd |
+| Family demographic focus | C3 residential → 0.30 | **Punggol** | C3=22 HDB precinct — dominant residential density |
+| Hard filter C1 > 2 | Eliminate saturated | **BPJ · Woodlands · Yishun** 3-way tie | MRT access breaks tie → BPJ wins |
+
+---
+
+## Architecture
+
+Server-light. MCP connectors call maps APIs directly. The TOPSIS engine runs in Python. The canvas renders in the browser.
+
+```mermaid
+flowchart LR
+  CAND["Candidate\ncoordinates"] --> MCP
+  subgraph MCP["MCP Connectors"]
+    POI["POI search"]
+    NEAR["Nearby search"]
+    NAV["Routing ETA"]
+  end
+  MCP --> PY["TOPSIS Engine\nPython · NetworkX · DuckDB"]
+  PY --> RANK["C* ranked signal"]
+  RANK --> FC["Flow Editor Canvas\nReact 18 + TS + Vite"]
+  FC --> MAP["Scored Map\nheat overlay"]
+  FC --> RPT["Ranked Report\nMarkdown export"]
+```
+
+| Layer | Technology |
+|---|---|
+| MCP connectors | Maps APIs — POI search · nearby · routing ETA (5 transport profiles) |
+| Scoring engine | TOPSIS — Python 3.10+ · NetworkX · DuckDB · weighted normalization · C* ranking |
+| Frontend canvas | React 18 + TypeScript + Vite 6 · D3.js · Mermaid |
+| Map overlay | D3.js / Leaflet — heat scored candidates on base map |
+| Local DB | RxDB — offline-first · report versioning |
+| Payments | Stripe — per-report + subscription |
+| Deployment | Cloudflare Pages (PWA) — airvio.co/knowgrph |
+
+---
+
+## Business model
+
+**Per-report** — pay-per-scored shortlist. Input candidates, receive ranked Markdown report + scored canvas. No subscription required to start.
+
+**Workspace subscription** — unlimited scoring runs, saved canvases, report history, weight model library.
+
+**API tier** — embed the TOPSIS scorer into existing property, F&B, or retail tools via REST. Bring your own geo API keys; Knowgrph handles the scoring logic.
+
+**Advisory** — custom weight models per vertical (F&B vs. retail vs. logistics), calibrated against ground-truth site performance data.
+
+---
+
+## Roadmap
+
+**Now** — MCP pipeline (POI + nearby + routing), TOPSIS scorer, ranked Markdown report, Stripe per-report gating
+
+**Next** — scored map canvas (heat overlay), multi-provider geo adapter (swap maps API without re-wiring scorer), batch candidate import (CSV → N runs), sensitivity dashboard
+
+**Later** — rent-index integration (URA / third-party property data), real-time rescore on candidate edit, collaborative workspace, mobile shortlisting UI
+
+---
+
+## The ask
+
+**Design partners** — F&B operators, retail brands, or property consultants with live site decisions in the next 90 days. We run your shortlist through the pipeline; you validate the C* output against what you know on the ground.
+
+**Geo API access** — teams with maps platform API keys (POI search, nearby, routing ETA) across SEA, MENA, or South Asia markets. Knowgrph is provider-agnostic; the adapter layer handles normalization.
+
+**Ground-truth datasets** — post-opening performance data (revenue, footfall) from sites already chosen by gut feel. We back-test C* predictions against actuals to calibrate weights.
+
+**Distribution intros** — franchise networks, VC portfolio ops teams, property consultancies, and retail expansion advisors who run multiple site decisions per quarter.
+
+If you believe location intelligence should be as reproducible as code — scored, auditable, and re-runnable — let us build it together.
+
+---
+
+**Product:** airvio.co/knowgrph
+
+**Docs:** see `docs/conflict-resolution.md` for repo sync policy.
+
+> *"Map it. Score it. Decide it."*

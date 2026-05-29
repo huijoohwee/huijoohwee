@@ -8,103 +8,444 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 flow:
-  direction: LR
-  edgeType: smoothstep
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
   nodes:
-    - id: NODE_TIMELINE
-      type: Timeline
-      label: Beat Timeline
-    - id: NODE_CLIP_01
-      type: Clip
-      label: Hook Clip
-      params:
-        beat_ref: beat_01
-    - id: NODE_OVERLAY_01
-      type: Overlay
-      label: Hook Overlay
-      params:
-        beat_ref: beat_01
-    - id: NODE_AUDIO_02
-      type: Audio
-      label: Problem Voiceover
-      params:
-        beat_ref: beat_02
-    - id: NODE_SCENE_03
-      type: Scene
-      label: Proof Scene
-      params:
-        beat_ref: beat_03
-    - id: NODE_CTA_04
-      type: Overlay
-      label: CTA Overlay
-      params:
-        beat_ref: beat_04
-    - id: NODE_SCENE_S1
-      type: Scene
-      label: The Draw
-      params:
-        beat_ref: beat_01
-        shot: WS
-        duration_ms: 5000
-        vo: "Every circle sends one."
-        sfx: crowd_murmur_mechanism_click
-        transition: cut
-    - id: NODE_SCENE_S2
-      type: Scene
-      label: The Fracture
-      params:
-        beat_ref: beat_02
-        shot: CU
-        duration_ms: 5000
-        vo: "She was born between two worlds."
-        sfx: low_resonant_tone_crack
-        transition: dissolve
-    - id: NODE_SCENE_S3
-      type: Scene
-      label: The Arc Opens
-      params:
-        beat_ref: beat_03
-        shot: MS_to_WS
-        duration_ms: 5000
-        vo: "The Arc always takes. Never returns."
-        sfx: gate_thud_silence_kg_pulse
-        transition: fade
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_AUDIO_02"}
+      type: {key: type, type: string, value: "Audio"}
+      label: {key: label, type: string, value: "Problem Voiceover"}
+      position: {key: position, type: object, value: {"x":0,"y":-960}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_AUDIO_02"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_01"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_CLIP_01"}
+      type: {key: type, type: string, value: "Clip"}
+      label: {key: label, type: string, value: "Hook Clip"}
+      position: {key: position, type: object, value: {"x":0,"y":-720}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_CLIP_01"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_01"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_CTA_04"}
+      type: {key: type, type: string, value: "Overlay"}
+      label: {key: label, type: string, value: "CTA Overlay"}
+      position: {key: position, type: object, value: {"x":0,"y":-480}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_CTA_04"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_04"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_OVERLAY_01"}
+      type: {key: type, type: string, value: "Overlay"}
+      label: {key: label, type: string, value: "Hook Overlay"}
+      position: {key: position, type: object, value: {"x":0,"y":-240}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_OVERLAY_01"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_01"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_SCENE_03"}
+      type: {key: type, type: string, value: "Scene"}
+      label: {key: label, type: string, value: "Proof Scene"}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_SCENE_03"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_03"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_SCENE_S1"}
+      type: {key: type, type: string, value: "Scene"}
+      label: {key: label, type: string, value: "The Draw"}
+      position: {key: position, type: object, value: {"x":0,"y":240}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_SCENE_S1"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_03","shot":"WS","duration_ms":5000,"vo":"Every circle sends one.","sfx":"crowd_murmur_mechanism_click","transition":"cut"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_SCENE_S2"}
+      type: {key: type, type: string, value: "Scene"}
+      label: {key: label, type: string, value: "The Fracture"}
+      position: {key: position, type: object, value: {"x":0,"y":480}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_SCENE_S2"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_02","shot":"CU","duration_ms":5000,"vo":"She was born between two worlds.","sfx":"low_resonant_tone_crack","transition":"dissolve"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_SCENE_S3"}
+      type: {key: type, type: string, value: "Scene"}
+      label: {key: label, type: string, value: "The Arc Opens"}
+      position: {key: position, type: object, value: {"x":0,"y":720}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_SCENE_S3"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      params: {key: params, type: object, value: {"beat_ref":"beat_03","shot":"MS_to_WS","duration_ms":5000,"vo":"The Arc always takes. Never returns.","sfx":"gate_thud_silence_kg_pulse","transition":"fade"}}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::NODE_TIMELINE"}
+      type: {key: type, type: string, value: "Timeline"}
+      label: {key: label, type: string, value: "Beat Timeline"}
+      position: {key: position, type: object, value: {"x":0,"y":960}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:NODE_TIMELINE"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:authoring-contract"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "authoring-contract"}
+      position: {key: position, type: object, value: {"x":360,"y":260}}
+      anchorId: {key: anchorId, type: string, value: "authoring-contract"}
+      chunk_text: {key: chunk_text, type: string, value: "authoring-contract"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:authoring-contract"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:authoring-notes"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "authoring-notes"}
+      position: {key: position, type: object, value: {"x":360,"y":0}}
+      anchorId: {key: anchorId, type: string, value: "authoring-notes"}
+      chunk_text: {key: chunk_text, type: string, value: "authoring-notes"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:authoring-notes"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:current-runtime-owners"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "current-runtime-owners"}
+      position: {key: position, type: object, value: {"x":720,"y":260}}
+      anchorId: {key: anchorId, type: string, value: "current-runtime-owners"}
+      chunk_text: {key: chunk_text, type: string, value: "current-runtime-owners"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:current-runtime-owners"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:knowgrph-animatic-demo"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "knowgrph-animatic-demo"}
+      position: {key: position, type: object, value: {"x":720,"y":520}}
+      anchorId: {key: anchorId, type: string, value: "knowgrph-animatic-demo"}
+      chunk_text: {key: chunk_text, type: string, value: "knowgrph-animatic-demo"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:knowgrph-animatic-demo"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:minimal-graph-hints"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "minimal-graph-hints"}
+      position: {key: position, type: object, value: {"x":720,"y":-260}}
+      anchorId: {key: anchorId, type: string, value: "minimal-graph-hints"}
+      chunk_text: {key: chunk_text, type: string, value: "minimal-graph-hints"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:minimal-graph-hints"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      position: {key: position, type: object, value: {"x":720,"y":0}}
+      anchorId: {key: anchorId, type: string, value: "scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      chunk_text: {key: chunk_text, type: string, value: "scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      position: {key: position, type: object, value: {"x":1080,"y":-260}}
+      anchorId: {key: anchorId, type: string, value: "scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      chunk_text: {key: chunk_text, type: string, value: "scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      position: {key: position, type: object, value: {"x":1080,"y":0}}
+      anchorId: {key: anchorId, type: string, value: "scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      chunk_text: {key: chunk_text, type: string, value: "scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scenes"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scenes"}
+      position: {key: position, type: object, value: {"x":1080,"y":260}}
+      anchorId: {key: anchorId, type: string, value: "scenes"}
+      chunk_text: {key: chunk_text, type: string, value: "scenes"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scenes"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:switch-contract"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "switch-contract"}
+      position: {key: position, type: object, value: {"x":1080,"y":520}}
+      anchorId: {key: anchorId, type: string, value: "switch-contract"}
+      chunk_text: {key: chunk_text, type: string, value: "switch-contract"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:switch-contract"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+    - id: {key: id, type: string, value: "ws:b0193dd7::ws:b0193dd7::anchor:md:knowgrph-animatic-demo:validation-goals"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "validation-goals"}
+      position: {key: position, type: object, value: {"x":1080,"y":780}}
+      anchorId: {key: anchorId, type: string, value: "validation-goals"}
+      chunk_text: {key: chunk_text, type: string, value: "validation-goals"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ws:b0193dd7::anchor:md:knowgrph-animatic-demo:validation-goals"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:authoring-contract"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "authoring-contract"}
+      anchorId: {key: anchorId, type: string, value: "authoring-contract"}
+      chunk_text: {key: chunk_text, type: string, value: "authoring-contract"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:authoring-notes"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "authoring-notes"}
+      anchorId: {key: anchorId, type: string, value: "authoring-notes"}
+      chunk_text: {key: chunk_text, type: string, value: "authoring-notes"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:current-runtime-owners"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "current-runtime-owners"}
+      anchorId: {key: anchorId, type: string, value: "current-runtime-owners"}
+      chunk_text: {key: chunk_text, type: string, value: "current-runtime-owners"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:knowgrph-animatic-demo"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "knowgrph-animatic-demo"}
+      anchorId: {key: anchorId, type: string, value: "knowgrph-animatic-demo"}
+      chunk_text: {key: chunk_text, type: string, value: "knowgrph-animatic-demo"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:minimal-graph-hints"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "minimal-graph-hints"}
+      anchorId: {key: anchorId, type: string, value: "minimal-graph-hints"}
+      chunk_text: {key: chunk_text, type: string, value: "minimal-graph-hints"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      anchorId: {key: anchorId, type: string, value: "scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      chunk_text: {key: chunk_text, type: string, value: "scene-01-the-draw-beat-01-0-00-0-05-ws"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      anchorId: {key: anchorId, type: string, value: "scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      chunk_text: {key: chunk_text, type: string, value: "scene-02-the-fracture-beat-02-0-05-0-10-cu"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      anchorId: {key: anchorId, type: string, value: "scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      chunk_text: {key: chunk_text, type: string, value: "scene-03-the-arc-opens-beat-03-0-10-0-15-ms-ws"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:scenes"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "scenes"}
+      anchorId: {key: anchorId, type: string, value: "scenes"}
+      chunk_text: {key: chunk_text, type: string, value: "scenes"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:switch-contract"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "switch-contract"}
+      anchorId: {key: anchorId, type: string, value: "switch-contract"}
+      chunk_text: {key: chunk_text, type: string, value: "switch-contract"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "ws:b0193dd7::anchor:md:knowgrph-animatic-demo:validation-goals"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "validation-goals"}
+      anchorId: {key: anchorId, type: string, value: "validation-goals"}
+      chunk_text: {key: chunk_text, type: string, value: "validation-goals"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
   edges:
-    - id: edge:timeline:beat_01
-      source: NODE_TIMELINE
-      target: NODE_CLIP_01
-      properties:
-        "flow:sourcePortKey": beat_01_out
-    - id: edge:timeline:beat_02
-      source: NODE_TIMELINE
-      target: NODE_AUDIO_02
-      properties:
-        "flow:sourcePortKey": beat_02_out
-    - id: edge:timeline:beat_03
-      source: NODE_TIMELINE
-      target: NODE_SCENE_03
-      properties:
-        "flow:sourcePortKey": beat_03_out
-    - id: edge:timeline:beat_04
-      source: NODE_TIMELINE
-      target: NODE_CTA_04
-      properties:
-        "flow:sourcePortKey": beat_04_out
-    - id: edge:timeline:scene_s1
-      source: NODE_TIMELINE
-      target: NODE_SCENE_S1
-      properties:
-        "flow:sourcePortKey": beat_01_out
-    - id: edge:timeline:scene_s2
-      source: NODE_TIMELINE
-      target: NODE_SCENE_S2
-      properties:
-        "flow:sourcePortKey": beat_02_out
-    - id: edge:timeline:scene_s3
-      source: NODE_TIMELINE
-      target: NODE_SCENE_S3
-      properties:
-        "flow:sourcePortKey": beat_03_out
 timeline:
   scale:
     scale: 5
@@ -116,27 +457,45 @@ timeline:
       label: The Draw
       start_ms: 0
       end_ms: 5000
-      note: "Wide shot — ceremonial plaza. Concentric citizen rings by Circle. Lottery mechanism center stage. Name drawn. Protagonist steps forward."
-      summary: "Hook: selection ritual reveal."
-      tags: [scene, hook, WS, lottery, crowd]
+      note: Wide shot — ceremonial plaza. Concentric citizen rings by Circle. Lottery mechanism center stage. Name drawn. Protagonist steps forward.
+      summary: 'Hook: selection ritual reveal.'
+      tags:
+        - scene
+        - hook
+        - WS
+        - lottery
+        - crowd
     beat_02:
       label: The Fracture
       start_ms: 5000
-      end_ms: 10000
-      note: "Close-up on protagonist. Behind her a glyph splits into two Circle symbols — warm and cool halves. Crowd divides in reaction."
-      summary: "Problem: dual-origin tension surfaces."
-      tags: [scene, problem, CU, glyph, split]
+      end_ms: 12500
+      note: Close-up on protagonist. Behind her a glyph splits into two Circle symbols — warm and cool halves. Crowd divides in reaction.
+      summary: 'Problem: dual-origin tension surfaces.'
+      tags:
+        - scene
+        - problem
+        - CU
+        - glyph
+        - split
+      duration_ms: 7500
     beat_03:
       label: The Arc Opens
-      start_ms: 10000
-      end_ms: 15000
-      note: "Trial gate opens. Silhouettes of other selected participants file through. Protagonist walks in — glances back once. Gate closes. KG graph pulse on black."
-      summary: "Proof: protagonist crosses threshold."
-      tags: [scene, proof, MS, gate, threshold]
+      start_ms: 12500
+      end_ms: 17500
+      note: Trial gate opens. Silhouettes of other selected participants file through. Protagonist walks in — glances back once. Gate closes. KG graph pulse on black.
+      summary: 'Proof: protagonist crosses threshold.'
+      tags:
+        - scene
+        - proof
+        - MS
+        - gate
+        - threshold
+      duration_ms: 5000
     beat_04:
       label: CTA
-      start_ms: 15000
-      end_ms: 19000
+      start_ms: 17500
+      end_ms: 21500
+      duration_ms: 4000
 ---
 
 # Knowgrph Animatic Demo

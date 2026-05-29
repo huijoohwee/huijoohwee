@@ -10,104 +10,225 @@ kgDocumentStructureBaselineLock: false
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
-  snapToGrid: {key: snapToGrid, type: boolean, value: true}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
   computed: {key: computed, type: boolean, value: false}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
-    - id: {key: id, type: string, value: "BOARD_ROOT"}
-      type: {key: type, type: string, value: "Story"}
-      label: {key: label, type: string, value: "Product Review Flow"}
-      group: {key: group, type: string, value: "Planning"}
-      summary: {key: summary, type: string, value: "Neutral product UI storyboard demo for review, sync, and delivery."}
-      task: {key: task, type: string, value: "Keep review artifacts, comments, and source state in one native graph-derived board."}
-      theme: {key: theme, type: string, value: "Neutral UI"}
-      tags: {key: tags, type: array, value: ["storyboard", "product-ui", "review"]}
-    - id: {key: id, type: string, value: "STEP_01"}
-      type: {key: type, type: string, value: "Panel"}
-      label: {key: label, type: string, value: "Intake Triage"}
-      group: {key: group, type: string, value: "Backlog"}
-      step: {key: step, type: number, value: 1}
-      context: {key: context, type: string, value: "Review Inbox"}
-      state: {key: state, type: string, value: "New Request"}
-      summary: {key: summary, type: string, value: "A new review request lands with screenshots, notes, and a target artifact."}
-      task: {key: task, type: string, value: "Consolidate incoming comments into one neutral intake card without duplicating state across tools."}
-      narration: {key: narration, type: string, value: "Reviewer: \"Keep the ask scoped, readable, and source-owned.\""}
-      brief: {key: brief, type: string, value: "Product review inbox with compact cards, screenshots, and a clear canonical intake path."}
-      theme: {key: theme, type: string, value: "Workspace UI"}
-      assets: {key: assets, type: array, value: ["https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"]}
-      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80"}
-      documentUrl: {key: documentUrl, type: string, value: "https://airvio.co/knowgrph"}
-      owner: {key: owner, type: string, value: "Review"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["intake", "backlog", "scope"]}
-      order: {key: order, type: number, value: 10}
-    - id: {key: id, type: string, value: "STEP_02"}
-      type: {key: type, type: string, value: "Shot"}
-      label: {key: label, type: string, value: "Comment Merge"}
-      group: {key: group, type: string, value: "In Review"}
-      sequenceNumber: {key: sequenceNumber, type: number, value: 2}
-      context: {key: context, type: string, value: "Active Canvas"}
-      state: {key: state, type: string, value: "Consolidating"}
-      summary: {key: summary, type: string, value: "Related comments, screenshots, and references merge into one review surface."}
-      workflow: {key: workflow, type: string, value: "Merge overlapping requests before implementation so the board reflects one coherent ask."}
-      speakerLine: {key: speakerLine, type: string, value: "Designer: \"One board, one review path, no stale side copy.\""}
-      visualBrief: {key: visualBrief, type: string, value: "Product canvas with annotation chips, grouped comments, and a compact review lane."}
-      variant: {key: variant, type: string, value: "Comment Density"}
-      referenceLinks: {key: referenceLinks, type: array, value: ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
-      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
-      owner: {key: owner, type: string, value: "Design"}
-      priority: {key: priority, type: string, value: "P1"}
-      tags: {key: tags, type: array, value: ["merge", "comments", "canvas"]}
-      order: {key: order, type: number, value: 20}
     - id: {key: id, type: string, value: "STEP_03"}
       type: {key: type, type: string, value: "Frame"}
       label: {key: label, type: string, value: "Selection Sync"}
+      position: {key: position, type: object, value: {"x":0,"y":-480}}
+      artDirection: {key: artDirection, type: string, value: "Native storyboard card with selection emphasis, compact chips, and linked source context."}
       category: {key: category, type: string, value: "In Review"}
-      ordinal: {key: ordinal, type: number, value: 3}
       context: {key: context, type: string, value: "Storyboard Surface"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:STEP_03"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"}
+      instructions: {key: instructions, type: string, value: "Verify the active card selects the matching graph node and preserves a neutral, project-agnostic handoff."}
+      lane: {key: lane, type: string, value: "In Review"}
+      order: {key: order, type: number, value: 3}
+      ordinal: {key: ordinal, type: number, value: 3}
+      owner: {key: owner, type: string, value: "Product"}
+      preset: {key: preset, type: string, value: "Native Board"}
+      priority: {key: priority, type: string, value: "P0"}
+      refs: {key: refs, type: array, value: ["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
       state: {key: state, type: string, value: "Selected"}
       summary: {key: summary, type: string, value: "Selecting a card keeps the source node and the review board aligned."}
-      instructions: {key: instructions, type: string, value: "Verify the active card selects the matching graph node and preserves a neutral, project-agnostic handoff."}
+      tags: {key: tags, type: array, value: ["selection","sync","board"]}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
       voiceOver: {key: voiceOver, type: string, value: "System: \"Selection sync confirms one board and one source of truth.\""}
-      artDirection: {key: artDirection, type: string, value: "Native storyboard card with selection emphasis, compact chips, and linked source context."}
-      preset: {key: preset, type: string, value: "Native Board"}
-      refs: {key: refs, type: array, value: ["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
-      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"}
-      owner: {key: owner, type: string, value: "Product"}
+    - id: {key: id, type: string, value: "STEP_01"}
+      type: {key: type, type: string, value: "Panel"}
+      label: {key: label, type: string, value: "Intake Triage"}
+      position: {key: position, type: object, value: {"x":0,"y":-240}}
+      assets: {key: assets, type: array, value: ["https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"]}
+      brief: {key: brief, type: string, value: "Product review inbox with compact cards, screenshots, and a clear canonical intake path."}
+      context: {key: context, type: string, value: "Review Inbox"}
+      documentUrl: {key: documentUrl, type: string, value: "https://airvio.co/knowgrph"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:STEP_01"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      group: {key: group, type: string, value: "Backlog"}
+      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80"}
+      lane: {key: lane, type: string, value: "Backlog"}
+      narration: {key: narration, type: string, value: "Reviewer: \"Keep the ask scoped, readable, and source-owned.\""}
+      order: {key: order, type: number, value: 4}
+      owner: {key: owner, type: string, value: "Review"}
       priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["selection", "sync", "board"]}
-      order: {key: order, type: number, value: 30}
+      state: {key: state, type: string, value: "New Request"}
+      step: {key: step, type: number, value: 1}
+      summary: {key: summary, type: string, value: "A new review request lands with screenshots, notes, and a target artifact."}
+      tags: {key: tags, type: array, value: ["intake","backlog","scope"]}
+      task: {key: task, type: string, value: "Consolidate incoming comments into one neutral intake card without duplicating state across tools."}
+      theme: {key: theme, type: string, value: "Workspace UI"}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "STEP_04"}
       type: {key: type, type: string, value: "Panel"}
       label: {key: label, type: string, value: "Delivery Handoff"}
-      bucket: {key: bucket, type: string, value: "Approved"}
-      position: {key: position, type: number, value: 4}
-      context: {key: context, type: string, value: "Delivery Surface"}
-      state: {key: state, type: string, value: "Ready"}
-      summary: {key: summary, type: string, value: "The approved board card carries its brief, references, and source link into delivery."}
-      task: {key: task, type: string, value: "Hand off one approved card with clear references and no project-specific assumptions baked into the structure."}
-      quote: {key: quote, type: string, value: "Lead: \"Approved. Deliver the brief with source, refs, and neutral wording.\""}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
+      assetRefs: {key: assetRefs, type: array, value: ["https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"]}
       brief: {key: brief, type: string, value: "Final product handoff card with review summary, references, and linked implementation context."}
-      theme: {key: theme, type: string, value: "Delivery Kit"}
-      assetRefs: {key: assetRefs, type: array, value: ["https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"]}
-      videoUrl: {key: videoUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
       briefUrl: {key: briefUrl, type: string, value: "https://airvio.co/knowgrph"}
+      bucket: {key: bucket, type: string, value: "In Review"}
+      context: {key: context, type: string, value: "Delivery Surface"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:STEP_04"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "In Review"}
+      order: {key: order, type: number, value: 1}
       owner: {key: owner, type: string, value: "Delivery"}
       priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["approved", "handoff", "delivery"]}
-      order: {key: order, type: number, value: 40}
+      quote: {key: quote, type: string, value: "Lead: \"Approved. Deliver the brief with source, refs, and neutral wording.\""}
+      state: {key: state, type: string, value: "Ready"}
+      summary: {key: summary, type: string, value: "The approved board card carries its brief, references, and source link into delivery."}
+      tags: {key: tags, type: array, value: ["approved","handoff","delivery"]}
+      task: {key: task, type: string, value: "Hand off one approved card with clear references and no project-specific assumptions baked into the structure."}
+      theme: {key: theme, type: string, value: "Delivery Kit"}
+      videoUrl: {key: videoUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "STEP_02"}
+      type: {key: type, type: string, value: "Shot"}
+      label: {key: label, type: string, value: "Comment Merge"}
+      position: {key: position, type: object, value: {"x":0,"y":240}}
+      context: {key: context, type: string, value: "Active Canvas"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:STEP_02"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      group: {key: group, type: string, value: "In Review"}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
+      lane: {key: lane, type: string, value: "In Review"}
+      order: {key: order, type: number, value: 1}
+      owner: {key: owner, type: string, value: "Design"}
+      priority: {key: priority, type: string, value: "P1"}
+      referenceLinks: {key: referenceLinks, type: array, value: ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80","https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
+      sequenceNumber: {key: sequenceNumber, type: number, value: 2}
+      speakerLine: {key: speakerLine, type: string, value: "Designer: \"One board, one review path, no stale side copy.\""}
+      state: {key: state, type: string, value: "Consolidating"}
+      summary: {key: summary, type: string, value: "Related comments, screenshots, and references merge into one review surface."}
+      tags: {key: tags, type: array, value: ["merge","comments","canvas"]}
+      variant: {key: variant, type: string, value: "Comment Density"}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+      visualBrief: {key: visualBrief, type: string, value: "Product canvas with annotation chips, grouped comments, and a compact review lane."}
+      workflow: {key: workflow, type: string, value: "Merge overlapping requests before implementation so the board reflects one coherent ask."}
+    - id: {key: id, type: string, value: "BOARD_ROOT"}
+      type: {key: type, type: string, value: "Story"}
+      label: {key: label, type: string, value: "Product Review Flow"}
+      position: {key: position, type: object, value: {"x":0,"y":480}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:BOARD_ROOT"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      group: {key: group, type: string, value: "Planning"}
+      lane: {key: lane, type: string, value: "Planning"}
+      order: {key: order, type: number, value: 5}
+      summary: {key: summary, type: string, value: "Neutral product UI storyboard demo for review, sync, and delivery."}
+      tags: {key: tags, type: array, value: ["storyboard","product-ui","review"]}
+      task: {key: task, type: string, value: "Keep review artifacts, comments, and source state in one native graph-derived board."}
+      theme: {key: theme, type: string, value: "Neutral UI"}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "anchor:md:knowgrph-storyboard-product-ui-demo:demo-intent"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "demo-intent"}
+      anchorId: {key: anchorId, type: string, value: "demo-intent"}
+      chunk_text: {key: chunk_text, type: string, value: "demo-intent"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "anchor:md:knowgrph-storyboard-product-ui-demo:expected-card-signals"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "expected-card-signals"}
+      anchorId: {key: anchorId, type: string, value: "expected-card-signals"}
+      chunk_text: {key: chunk_text, type: string, value: "expected-card-signals"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "anchor:md:knowgrph-storyboard-product-ui-demo:expected-lanes"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "expected-lanes"}
+      anchorId: {key: anchorId, type: string, value: "expected-lanes"}
+      chunk_text: {key: chunk_text, type: string, value: "expected-lanes"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "anchor:md:knowgrph-storyboard-product-ui-demo:knowgrph-storyboard-product-ui-demo"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "knowgrph-storyboard-product-ui-demo"}
+      anchorId: {key: anchorId, type: string, value: "knowgrph-storyboard-product-ui-demo"}
+      chunk_text: {key: chunk_text, type: string, value: "knowgrph-storyboard-product-ui-demo"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "anchor:md:knowgrph-storyboard-product-ui-demo:related-docs"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "related-docs"}
+      anchorId: {key: anchorId, type: string, value: "related-docs"}
+      chunk_text: {key: chunk_text, type: string, value: "related-docs"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "anchor:md:knowgrph-storyboard-product-ui-demo:typed-fixture-contract"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "typed-fixture-contract"}
+      anchorId: {key: anchorId, type: string, value: "typed-fixture-contract"}
+      chunk_text: {key: chunk_text, type: string, value: "typed-fixture-contract"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
+    - id: {key: id, type: string, value: "anchor:md:knowgrph-storyboard-product-ui-demo:validation-goals"}
+      type: {key: type, type: string, value: "Anchor"}
+      label: {key: label, type: string, value: "validation-goals"}
+      anchorId: {key: anchorId, type: string, value: "validation-goals"}
+      chunk_text: {key: chunk_text, type: string, value: "validation-goals"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      kind: {key: kind, type: string, value: "heading"}
+      labels: {key: labels, type: array, value: ["Anchor"]}
   edges:
-    - id: edge:board:step_01
-      source: BOARD_ROOT
-      target: STEP_01
-    - id: edge:board:step_02
-      source: BOARD_ROOT
-      target: STEP_02
-    - id: edge:board:step_03
-      source: BOARD_ROOT
-      target: STEP_03
-    - id: edge:board:step_04
-      source: BOARD_ROOT
-      target: STEP_04
 ---
 
 # Knowgrph Storyboard Product UI Demo
