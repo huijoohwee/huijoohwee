@@ -24,7 +24,7 @@
 /knowgrph/settings-flow.json /content/knowgrph/settings-flow.json 200
 /knowgrph/sw.js /content/knowgrph/sw.js 200
 /knowgrph/unicorn-investors-top-3-3d.json /content/knowgrph/unicorn-investors-top-3-3d.json 200
-/knowgrph/workbox-2c644346.js /content/knowgrph/workbox-2c644346.js 200
+/knowgrph/workbox-e5cff4b9.js /content/knowgrph/workbox-e5cff4b9.js 200
 # END knowgrph generated top-level file routes
 /knowgrph/ /content/knowgrph/index.html 200
 /knowgrph/* /content/knowgrph/index.html 200
