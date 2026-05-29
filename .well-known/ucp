@@ -1,0 +1,79 @@
+{
+  "ucp": {
+    "version": "2026-04-08",
+    "protocol_version": "2026-04-08",
+    "services": {
+      "dev.ucp.shopping": [
+        {
+          "version": "2026-04-08",
+          "spec": "https://ucp.dev/2026-04-08/specification/overview/",
+          "transport": "rest",
+          "endpoint": "https://airvio.co/api",
+          "schema": "https://ucp.dev/2026-04-08/services/shopping/rest.openapi.json"
+        }
+      ]
+    },
+    "capabilities": {
+      "dev.ucp.shopping.checkout": [
+        {
+          "version": "2026-04-08",
+          "spec": "https://ucp.dev/2026-04-08/specification/checkout/",
+          "schema": "https://ucp.dev/2026-04-08/schemas/shopping/checkout.json"
+        }
+      ]
+    },
+    "payment_handlers": {},
+    "endpoints": {
+      "acp": "https://airvio.co/.well-known/acp.json",
+      "api": "https://airvio.co/api",
+      "checkout_sessions": "https://airvio.co/checkout/sessions",
+      "mpp_openapi": "https://airvio.co/openapi.json",
+      "proof": "https://airvio.co/api/payments/commerce/harness-proof.json",
+      "trace": "https://airvio.co/api/payments/commerce/trace.jsonl",
+      "x402_payment_required": "https://airvio.co/api/payments/commerce/x402"
+    }
+  },
+  "protocol_version": "2026-04-08",
+  "protocol": {
+    "name": "ucp",
+    "version": "2026-04-08"
+  },
+  "seller": {
+    "id": "airvio.co"
+  },
+  "services": [
+    {
+      "id": "knowgrph-content-payments",
+      "type": "content-payments",
+      "endpoints": {
+        "x402": "https://airvio.co/api/payments/commerce/x402",
+        "checkout_sessions": "https://airvio.co/checkout/sessions",
+        "proof": "https://airvio.co/api/payments/commerce/harness-proof.json",
+        "trace": "https://airvio.co/api/payments/commerce/trace.jsonl"
+      }
+    }
+  ],
+  "capabilities": {
+    "checkout_sessions": true,
+    "content_payments": true,
+    "proof_artifacts": true,
+    "risk_signals": true,
+    "web3_settlement": true
+  },
+  "endpoints": {
+    "acp": "https://airvio.co/.well-known/acp.json",
+    "api": "https://airvio.co/api",
+    "checkout_sessions": "https://airvio.co/checkout/sessions",
+    "mpp_openapi": "https://airvio.co/openapi.json",
+    "proof": "https://airvio.co/api/payments/commerce/harness-proof.json",
+    "trace": "https://airvio.co/api/payments/commerce/trace.jsonl",
+    "x402_payment_required": "https://airvio.co/api/payments/commerce/x402"
+  },
+  "spec_urls": [
+    "https://ucp.dev/2026-04-08/specification/overview/"
+  ],
+  "schema_urls": [
+    "https://ucp.dev/2026-04-08/services/shopping/rest.openapi.json",
+    "https://ucp.dev/2026-04-08/schemas/shopping/checkout.json"
+  ]
+}

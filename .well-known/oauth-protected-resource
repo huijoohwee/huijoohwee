@@ -1,7 +1,8 @@
 {
   "resource": "https://airvio.co/knowgrph/",
+  "resource_name": "Knowgrph",
   "authorization_servers": [
-    "https://airvio.co/cdn-cgi/access"
+    "https://airvio.co"
   ],
   "scopes_supported": [
     "knowgrph:read",

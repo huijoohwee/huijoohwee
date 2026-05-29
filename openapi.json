@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Knowgrph Machine Payment Protocol",
+    "version": "2026-01-30",
+    "description": "Machine-readable payable-operation discovery for Knowgrph commerce routes."
+  },
+  "servers": [
+    {
+      "url": "https://airvio.co"
+    }
+  ],
+  "paths": {
+    "/api/payments/commerce/x402": {
+      "get": {
+        "operationId": "getKnowgrphX402PaymentRequirement",
+        "summary": "Return x402 payment requirements for an agent-readable paid resource.",
+        "x-payment-info": {
+          "intent": "charge",
+          "method": "x402",
+          "amount": "$0.001",
+          "currency": "usdc"
+        },
+        "responses": {
+          "402": {
+            "description": "Payment Required"
+          }
+        }
+      }
+    },
+    "/checkout/sessions": {
+      "post": {
+        "operationId": "createKnowgrphCommerceCheckoutSession",
+        "summary": "Create an agentic commerce checkout session.",
+        "x-payment-info": {
+          "intent": "session",
+          "method": "stripe",
+          "amount": "dynamic",
+          "currency": "request.currency"
+        },
+        "responses": {
+          "201": {
+            "description": "Checkout session created"
+          }
+        }
+      }
+    }
+  }
+}

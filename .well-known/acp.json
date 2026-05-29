@@ -1,0 +1,30 @@
+{
+  "protocol": {
+    "name": "acp",
+    "version": "2026-01-30",
+    "supported_versions": [
+      "2026-01-30"
+    ],
+    "documentation_url": "https://agenticcommerce.dev"
+  },
+  "api_base_url": "https://airvio.co",
+  "transports": [
+    "rest"
+  ],
+  "capabilities": {
+    "services": [
+      "checkout"
+    ],
+    "extensions": [
+      {
+        "name": "x-web3"
+      }
+    ]
+  },
+  "links": {
+    "config": "https://airvio.co/.well-known/acp-config",
+    "ucp": "https://airvio.co/.well-known/ucp",
+    "mpp": "https://airvio.co/openapi.json",
+    "x402": "https://airvio.co/api/payments/commerce/x402"
+  }
+}

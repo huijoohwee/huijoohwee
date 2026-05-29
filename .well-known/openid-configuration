@@ -1,5 +1,11 @@
 {
-  "issuer": "https://airvio.co/cdn-cgi/access",
+  "issuer": "https://airvio.co",
+  "resource": "https://airvio.co/knowgrph/",
+  "resource_name": "Knowgrph",
+  "authorization_servers": [
+    "https://airvio.co"
+  ],
+  "cloudflare_access_issuer": "https://airvio.co/cdn-cgi/access",
   "authorization_endpoint": "https://airvio.co/cdn-cgi/access/login",
   "token_endpoint": "https://airvio.co/cdn-cgi/access/token",
   "jwks_uri": "https://airvio.co/knowgrph/.well-known/http-message-signatures-directory",

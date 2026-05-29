@@ -66,7 +66,27 @@ flow:
   computed: true
   aspectRatio: "16:9"
   targetResolution: "1920x1080"
-  portHandleContract: "Every widget handle is named after a TCO, Web3 economics, user-journey, engine, metric, or decision driver."
+  portHandleContract: "Every Flow Editor widget handle is a canonical cost-driver key; each normal edge repeats the same driver key as sourceHandle, targetHandle, and label."
+  costDriverPortModel:
+    rendererScope: "2D Renderer: Flow Editor"
+    widgetHandleCoverageRule: "Every entry in flow.nodes[*].handles.source and flow.nodes[*].handles.target is a driver key from driverFamilies; no positional, visual-only, or stack-local alias handle is used."
+    portVocabularyRule: "driverFamilies is the semantic-key vocabulary for widget handles, edge handles, workflow computation inputs, workflow computation outputs, and chart payloads."
+    handleIdentityRule: "Widget handle id is the visible canvas driver id."
+    widgetPortResolutionRule: "Flow Editor resolves each visible widget port by looking up the handle id in driverFamilies, then applies socket_types and flow:portTypes only as rendering/type metadata."
+    widgetLocalAliasRule: "Widget type, position, and side never rename handles; source and target handles remain the same economic driver key across the canvas."
+    edgeIdentityRule: "For normal driver edges, sourceHandle == targetHandle == label."
+    rendererPayloadDriver: "outputSrcDoc is the rendered cost-report payload driver consumed by Rich Media Panel widgets."
+    driverFamilies:
+      demand: [monthly_agent_requests, avg_tool_calls_per_request, avg_tokens_per_request, retry_rate]
+      platform: [platform_subscription_usd, platform_unit_call_cost_usd, managed_hosting_required, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours]
+      token: [onchain_token_launch_required, token_setup_exposure, onchain_gas_and_token_fees, token_price_volatility]
+      revenue: [monthly_active_users, paid_conversion_rate, subscription_price_usd, marketplace_gmv_usd, agent_token_take_rate, support_refund_rate]
+      web3_journey: [prediction_accuracy_rate, wallet_activation_rate, yield_share_rate, payment_success_rate, payment_fee_rate, liquidity_spread_rate, exchange_conversion_rate, infrastructure_uptime_slo, infrastructure_unit_cost_usd]
+      stack_tco: [fetch_monthly_tco_usd, eliza_monthly_tco_usd, virtuals_monthly_tco_usd, fetch_quota_risk, eliza_ops_risk, virtuals_token_risk, fetch_tco_score, eliza_tco_score, virtuals_tco_score]
+      revenue_metrics: [monthly_revenue_usd, net_revenue_usd, revenue_per_request_usd, revenue_model_confidence]
+      value_loop_metrics: [predicted_intent_quality_score, conversion_uplift_rate, demand_forecast_index, user_value_yield_usd, protocol_yield_score, retention_value_index, settled_payment_volume_usd, payment_fee_cost_usd, payment_value_capture_usd, exchange_liquidity_depth_usd, liquidity_slippage_cost_usd, token_exchange_efficiency_score, infrastructure_cost_usd, uptime_value_score, infra_adjusted_value_usd, closed_loop_health_score, user_journey_value_loop]
+      decisions: [lowest_cash_tco_driver, highest_margin_driver, breakeven_path_driver, lowest_lockin_driver, tokenized_distribution_driver, web3_economics_decision_driver, recommended_demo_path, managed_demo_path, tokenized_demo_path, margin_optimized_path]
+      render_payloads: [outputSrcDoc]
   nodes:
     - id: workload_drivers
       type: CostDriverWidget
@@ -96,7 +116,7 @@ flow:
       position: {x: 80, y: 390}
       size: {width: 320, height: 240}
       handles:
-        source: [platform_subscription_usd, platform_unit_call_cost_usd, managed_hosting_required, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours]
+        source: [platform_subscription_usd, platform_unit_call_cost_usd, managed_hosting_required, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours]
       tags: [execution]
       "visual:fill": "#22c55e"
       "visual:stroke": "#9CA3AF"
@@ -106,12 +126,14 @@ flow:
           platform_subscription_usd: platform_cost_signal
           platform_unit_call_cost_usd: platform_cost_signal
           managed_hosting_required: platform_cost_signal
+          hosting_or_cloud_runtime_usd: platform_cost_signal
           model_provider_fee_usd: platform_cost_signal
           social_api_rpc_data_api_fees: platform_cost_signal
           ops_hours: platform_cost_signal
       platform_subscription_usd: "0-25+ depending on stack and quota"
       platform_unit_call_cost_usd: "0.003 when using Virtuals GAME paid tier"
       managed_hosting_required: "true for managed demo, false for self-host baseline"
+      hosting_or_cloud_runtime_usd: "BYO runtime, cloud credits, or managed cloud instance cost"
       model_provider_fee_usd: "explicit external meter"
       social_api_rpc_data_api_fees: "external API meter"
       ops_hours: "excluded from cash floor, scored separately"
@@ -783,7 +805,7 @@ flow:
     - {id: e-subscription-fetch, source: shared_platform_drivers, sourceHandle: platform_subscription_usd, target: fetch_agentverse_tco, targetHandle: platform_subscription_usd, label: "platform_subscription_usd", type: platform_cost_signal, animated: true}
     - {id: e-hosting-fetch, source: shared_platform_drivers, sourceHandle: managed_hosting_required, target: fetch_agentverse_tco, targetHandle: managed_hosting_required, label: "managed_hosting_required", type: platform_cost_signal, animated: true}
     - {id: e-model-fetch, source: shared_platform_drivers, sourceHandle: model_provider_fee_usd, target: fetch_agentverse_tco, targetHandle: model_provider_fee_usd, label: "model_provider_fee_usd", type: platform_cost_signal, animated: true}
-    - {id: e-hosting-eliza, source: shared_platform_drivers, sourceHandle: managed_hosting_required, target: elizaos_ai16z_tco, targetHandle: hosting_or_cloud_runtime_usd, label: "hosting_or_cloud_runtime_usd", type: platform_cost_signal, animated: true}
+    - {id: e-hosting-eliza, source: shared_platform_drivers, sourceHandle: hosting_or_cloud_runtime_usd, target: elizaos_ai16z_tco, targetHandle: hosting_or_cloud_runtime_usd, label: "hosting_or_cloud_runtime_usd", type: platform_cost_signal, animated: true}
     - {id: e-model-eliza, source: shared_platform_drivers, sourceHandle: model_provider_fee_usd, target: elizaos_ai16z_tco, targetHandle: model_provider_fee_usd, label: "model_provider_fee_usd", type: platform_cost_signal, animated: true}
     - {id: e-api-eliza, source: shared_platform_drivers, sourceHandle: social_api_rpc_data_api_fees, target: elizaos_ai16z_tco, targetHandle: social_api_rpc_data_api_fees, label: "social_api_rpc_data_api_fees", type: platform_cost_signal, animated: true}
     - {id: e-ops-eliza, source: shared_platform_drivers, sourceHandle: ops_hours, target: elizaos_ai16z_tco, targetHandle: ops_hours, label: "ops_hours", type: platform_cost_signal, animated: true}
@@ -895,12 +917,55 @@ Not investment advice. Prices, quotas, token requirements, and product terms cha
 
 ## Flow Editor Runtime Contract
 
-The frontmatter `flow:` block is the source of truth for this demo. Each widget exposes port handles named after a cost driver, risk driver, TCO metric, or decision driver. The Flow Editor should render those handles as connectable widget ports, and every edge label should repeat the exact handle name it connects.
+The frontmatter `flow:` block is the source of truth for this demo. Each widget exposes port handles named after a cost driver, risk driver, TCO metric, revenue metric, value-loop metric, rendered report payload, or decision driver. The Flow Editor should render those handles as connectable widget ports, and each normal edge must keep one canonical driver key across `sourceHandle`, `targetHandle`, and `label`.
+
+In this document, "cost driver" is intentionally broad: anything that changes monthly cost, token exposure, revenue offset, margin, break-even posture, infrastructure value, or rendered decision output is modeled as a driver handle. The handle itself is the semantic key used by ingestion, parsing, workflow computation, edge rendering, and Rich Media Panel output.
+
+## Cost-Driver Port-Handle Contract
+
+The Flow Editor canvas should read each visible handle as an economic driver, not as a generic UI socket. A valid driver edge follows this identity rule:
+
+```text
+source node driver handle -> target node driver handle
+sourceHandle == targetHandle == edge label
+```
+
+Widget port interpretation stays uniform across the canvas:
+
+| Port Site | Driver Meaning |
+|---|---|
+| `handles.source` on driver widgets | Emits editable assumptions such as workload, platform, token, revenue, and Web3 journey drivers. |
+| `handles.target` on calculator and engine widgets | Consumes the exact same driver key emitted upstream; no widget-local alias is introduced. |
+| `handles.source` on calculator and engine widgets | Emits computed cost, revenue, risk, value-loop, or decision drivers for downstream widgets. |
+| `handles.target` and `handles.source` on Rich Media Panel widgets | Carries `outputSrcDoc` as the rendered report payload driver, so chart rendering remains part of the same driver graph. |
+
+This keeps the graph neutral and inspectable:
+
+- Driver inputs such as `monthly_agent_requests`, `hosting_or_cloud_runtime_usd`, and `token_price_volatility` stay named at the widget boundary where they are consumed.
+- Computed outputs such as `fetch_monthly_tco_usd`, `payment_fee_cost_usd`, and `closed_loop_health_score` become downstream driver handles instead of hidden recalculations.
+- `outputSrcDoc` is treated as the rendered cost-report payload driver for Rich Media Panel widgets, so charts remain connected through the same port-handle contract.
+- There are no visual-only aliases such as `left`, `right`, `in`, `out`, or stack-local remaps in the edge layer.
+- `socket_types` and `flow:portTypes` decorate an existing driver handle; they do not create a second handle vocabulary.
+
+Driver-handle families:
+
+| Driver Family | Flow Editor Port Role | Port Handles |
+|---|---|---|
+| Demand | Workload meters that fan out to stack, revenue, and infrastructure widgets. | `monthly_agent_requests`, `avg_tool_calls_per_request`, `avg_tokens_per_request`, `retry_rate` |
+| Platform | Cash-cost, runtime, provider, external API, and operator meters. | `platform_subscription_usd`, `platform_unit_call_cost_usd`, `managed_hosting_required`, `hosting_or_cloud_runtime_usd`, `model_provider_fee_usd`, `social_api_rpc_data_api_fees`, `ops_hours` |
+| Token | On-chain launch, gas, token setup, and volatility exposure. | `onchain_token_launch_required`, `token_setup_exposure`, `onchain_gas_and_token_fees`, `token_price_volatility` |
+| Revenue | Product, marketplace, and refund drivers that offset TCO. | `monthly_active_users`, `paid_conversion_rate`, `subscription_price_usd`, `marketplace_gmv_usd`, `agent_token_take_rate`, `support_refund_rate` |
+| Web3 Journey | Prediction, wallet, yield, payment, liquidity, exchange, and infrastructure assumptions. | `prediction_accuracy_rate`, `wallet_activation_rate`, `yield_share_rate`, `payment_success_rate`, `payment_fee_rate`, `liquidity_spread_rate`, `exchange_conversion_rate`, `infrastructure_uptime_slo`, `infrastructure_unit_cost_usd` |
+| Stack TCO | Per-stack cost and risk outputs consumed by the TCO calculator. | `fetch_monthly_tco_usd`, `eliza_monthly_tco_usd`, `virtuals_monthly_tco_usd`, `fetch_quota_risk`, `eliza_ops_risk`, `virtuals_token_risk`, `fetch_tco_score`, `eliza_tco_score`, `virtuals_tco_score` |
+| Revenue Metrics | Computed revenue and request-normalized revenue outputs. | `monthly_revenue_usd`, `net_revenue_usd`, `revenue_per_request_usd`, `revenue_model_confidence` |
+| Value Loop Metrics | Computed engine outputs that score the closed user journey loop. | `predicted_intent_quality_score`, `conversion_uplift_rate`, `demand_forecast_index`, `user_value_yield_usd`, `protocol_yield_score`, `retention_value_index`, `settled_payment_volume_usd`, `payment_fee_cost_usd`, `payment_value_capture_usd`, `exchange_liquidity_depth_usd`, `liquidity_slippage_cost_usd`, `token_exchange_efficiency_score`, `infrastructure_cost_usd`, `uptime_value_score`, `infra_adjusted_value_usd`, `closed_loop_health_score`, `user_journey_value_loop` |
+| Decisions | Ranked path outputs emitted by calculator and decision widgets. | `lowest_cash_tco_driver`, `highest_margin_driver`, `breakeven_path_driver`, `lowest_lockin_driver`, `tokenized_distribution_driver`, `web3_economics_decision_driver`, `recommended_demo_path`, `managed_demo_path`, `tokenized_demo_path`, `margin_optimized_path` |
+| Render Payload | Chart payload handle for Rich Media Panel widgets. | `outputSrcDoc` |
 
 | Widget | Input Port Handles | Output Port Handles | Purpose |
 |---|---|---|---|
 | `workload_drivers` | n/a | `monthly_agent_requests`, `avg_tool_calls_per_request`, `avg_tokens_per_request`, `retry_rate` | Demand-side cost drivers shared by every stack. |
-| `shared_platform_drivers` | n/a | `platform_subscription_usd`, `platform_unit_call_cost_usd`, `managed_hosting_required`, `model_provider_fee_usd`, `social_api_rpc_data_api_fees`, `ops_hours` | Platform and provider meters that can hit any stack. |
+| `shared_platform_drivers` | n/a | `platform_subscription_usd`, `platform_unit_call_cost_usd`, `managed_hosting_required`, `hosting_or_cloud_runtime_usd`, `model_provider_fee_usd`, `social_api_rpc_data_api_fees`, `ops_hours` | Platform, runtime, provider, API, and ops meters that can hit any stack. |
 | `token_exposure_drivers` | n/a | `onchain_token_launch_required`, `token_setup_exposure`, `onchain_gas_and_token_fees`, `token_price_volatility` | Web3-specific token and gas exposure. |
 | `revenue_drivers` | n/a | `monthly_active_users`, `paid_conversion_rate`, `subscription_price_usd`, `marketplace_gmv_usd`, `agent_token_take_rate`, `support_refund_rate` | Revenue-side drivers used by the margin simulation. |
 | `web3_economics_drivers` | n/a | `prediction_accuracy_rate`, `wallet_activation_rate`, `yield_share_rate`, `payment_success_rate`, `payment_fee_rate`, `liquidity_spread_rate`, `exchange_conversion_rate`, `infrastructure_uptime_slo`, `infrastructure_unit_cost_usd` | Closed journey assumptions shared by the five Web3 economics engines. |
@@ -924,7 +989,9 @@ Renderer checks:
 - `kgCanvas2dRenderer` is `flowEditor`.
 - `flow.nodes[*].handles.target` defines the visible input handles.
 - `flow.nodes[*].handles.source` defines the visible output handles.
-- `flow.edges[*].sourceHandle` and `flow.edges[*].targetHandle` point to those same cost-driver names.
+- `flow.costDriverPortModel.driverFamilies` is the semantic allowlist for those visible handles.
+- Every visible widget handle resolves through `flow.costDriverPortModel.driverFamilies` before any socket styling, side placement, or widget-specific rendering is considered.
+- `flow.edges[*].sourceHandle`, `flow.edges[*].targetHandle`, and `flow.edges[*].label` use the same canonical driver key for normal driver edges.
 - `flow.computed` is enabled so the calculator can emit decision drivers and a chart `outputSrcDoc`.
 - `tco_chart_panel` is a Rich Media Panel; its only visible port is the chart payload handle.
 - Token exposure stays a separate driver group instead of being converted into fixed USD values.
@@ -1310,7 +1377,9 @@ tokenized demo = Virtuals GAME + separate token setup and per-call meters
 - Every hard dollar/token number is linked to a public source.
 - Model-provider and ops costs are not hidden inside platform fees.
 - Token-denominated costs stay token-denominated; no fixed USD conversion is embedded.
-- Every widget port handle corresponds to a cost, revenue, risk, metric, decision, or chart driver.
+- Every widget port handle corresponds to a named cost, revenue, risk, metric, decision, or rendered-report driver.
+- Widget type, side, and position do not remap a port handle; the handle id is the cost-driver key.
+- Normal Flow Editor edges preserve driver identity with matching `sourceHandle`, `targetHandle`, and `label`.
 - `socket_types` and node tags reuse the renderer palette roles exposed by the FloatingPanel Renderer settings.
 - `workflow_sections` mirrors the MainPanel Workflow Manager execution path from driver ingestion through chart rendering.
 - The five Web3 economics engines are first-class Flow Editor widgets, not prose-only rows.

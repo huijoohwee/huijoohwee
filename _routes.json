@@ -12,6 +12,7 @@
     "/api/graph",
     "/api/llm/responses",
     "/api/llm/models",
+    "/api/payments/commerce/x402",
     "/api/llm/chat/completions"
   ],
   "exclude": []
