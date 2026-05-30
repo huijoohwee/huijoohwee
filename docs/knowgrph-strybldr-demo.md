@@ -1,510 +1,404 @@
 ---
-title: "Knowgrph Strybldr Demo - 100% PRD/TAD E2E"
-graphId: "md:knowgrph-strybldr-demo-v1"
-doc_type: "Strybldr Demo - PRD/TAD E2E Validation"
-date: "2026-05-30"
-lang: en-US
-implementation_contract: "/Users/huijoohwee/Documents/GitHub/knowgrph/docs/documents/knowgrph-strybldr-prd-tad.md"
-
-kgStrybldrStoryboard: true
+title: "Knowgrph — Map it. Score it. Decide it."
+id: md:knowgrph-readme-v4
+author: joohwee
+institution: "Knowgrph — airvio.co/knowgrph"
+date: "2026-05-03"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "strybldr"
+kgCanvas2dRenderer: "d3"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
+index:
+  legend:
+    nodes:
+      problem:   "#c0392b — red    — pain point / market gap / decision failure"
+      insight:   "#d68910 — amber  — reframe / principle / scored signal"
+      product:   "#1a6fa8 — blue   — tool / pipeline stage / canvas layer"
+      actor:     "#1e8449 — green  — user segment / stakeholder / decision-maker"
+      output:    "#7d3c98 — purple — artifact / scored report / data export"
+      business:  "#117a65 — teal   — revenue line / model tier"
+      milestone: "#5d6d7e — grey   — roadmap item"
+      mcp:       "#0e4f6b — navy   — MCP tool / external API connector"
+      signal:    "#1a7f5a — forest — ranked result / TOPSIS score / market signal"
+    edges:
+      user_flow:   "solid #2980b9  2px   — actor interacts with product surface"
+      work_flow:   "dashed #d68910 2px   — pitch section narrative progression"
+      data_flow:   "dotted #7d3c98 1.5px — artifact passes between pipeline stages"
+      mcp_flow:    "solid #0e4f6b  1.5px — MCP tool call → collected data"
+      signal_flow: "dotted #1a7f5a 1.5px — ranked signal feeds decision layer"
+  mermaid: |
+    %%{init:{
+      "theme":"base",
+      "themeVariables":{
+        "primaryColor":"#1a1a2e","primaryTextColor":"#f0f0f0",
+        "primaryBorderColor":"#444","lineColor":"#888",
+        "secondaryColor":"#16213e","tertiaryColor":"#0f3460",
+        "edgeLabelBackground":"#1a1a2e"
+      }
+    }}%%
+    flowchart TD
 
-demo_flow:
-  - "Toolbar -> Launch -> Import Image"
-  - "test-validation-input-external: /Users/huijoohwee/Documents/GitHub/huijoohwee/image"
-  - "test-validation-input-forbid-hardcode-in-repo: true"
-  - "Floating Panel -> Strybldr -> Analyze locally"
-  - "Toolbar -> Canvas View Mode -> 2D Renderer: Strybldr"
-  - "User updates Source / Storyboard / Elements cards"
-  - "Toolbar -> Run All"
-  - "Floating Panel -> Strybldr -> Generate Video remains the same direct action"
-prd_tad_acceptance:
-  - "PRD-STB-E01 image import"
-  - "PRD-STB-E02 local detection first"
-  - "PRD-STB-E03 editable storyboard"
-  - "PRD-STB-E04 bounded video handoff"
-  - "PRD-STB-E05 observability and economics"
-validation_images_count: 12
-validation_total_bytes: 26944659
-expected_canvas_cards: 36
-expected_canvas_lanes:
-  - "Source"
-  - "Storyboard"
-  - "Elements"
-expected_video_artifact: "strybldr-video-*.md or strybldr-video-fallback-*.md"
+      classDef problem   fill:#c0392b,color:#fff,stroke:#922b21,stroke-width:1.5px
+      classDef insight   fill:#d68910,color:#fff,stroke:#9a6301,stroke-width:1.5px
+      classDef product   fill:#1a6fa8,color:#fff,stroke:#154f7a,stroke-width:1.5px
+      classDef actor     fill:#1e8449,color:#fff,stroke:#145a32,stroke-width:1.5px
+      classDef output    fill:#7d3c98,color:#fff,stroke:#5b2c6f,stroke-width:1.5px
+      classDef business  fill:#117a65,color:#fff,stroke:#0e6655,stroke-width:1.5px
+      classDef milestone fill:#5d6d7e,color:#fff,stroke:#424f5c,stroke-width:1.5px
+      classDef mcp       fill:#0e4f6b,color:#fff,stroke:#083444,stroke-width:1.5px
+      classDef signal    fill:#1a7f5a,color:#fff,stroke:#125c40,stroke-width:1.5px
+
+      subgraph S0["① Hook"]
+        TAGLINE["Map it. Score it. Decide it."]:::insight
+        POS["Geo data in · ranked decision out · no analyst required"]:::insight
+      end
+
+      subgraph S1["② Problem — Location Decisions Are Still Spreadsheets"]
+        subgraph S1A["Too manual"]
+          P_SHEET["Spreadsheet audits — hours of copy-paste per candidate"]:::problem
+          P_STALE["Stale data — offline reports miss live POI density"]:::problem
+        end
+        subgraph S1B["Too opaque"]
+          P_GUT["Gut-feel site picks — no reproducible scoring model"]:::problem
+          P_SILO["Routing + competition + catchment analysed in separate tools"]:::problem
+        end
+        P_GAP["Decision-maker flying blind — no unified, live, scored view"]:::problem
+      end
+
+      subgraph S2["③ ICP — Local Market Decision-Makers"]
+        subgraph S2A["Who"]
+          ICP_FB["F&B operator — new outlet / expansion"]:::actor
+          ICP_RET["Retailer / pop-up brand — site shortlisting"]:::actor
+          ICP_DEV["Property developer — catchment due diligence"]:::actor
+          ICP_CON["Management consultant — market entry advisory"]:::actor
+        end
+        subgraph S2B["Where — fragmented, data-poor markets"]
+          MKT_SEA["Southeast Asia — SG MY TH ID PH VN"]:::actor
+          MKT_MENA["MENA — AE SA EG"]:::actor
+          MKT_SA["South Asia — IN BD PK"]:::actor
+          MKT_LATAM["Latin America — MX BR CO"]:::actor
+        end
+        subgraph S2C["Situation"]
+          SIT_CAND["Has 5–20 candidate locations · no time to survey all"]:::actor
+          SIT_LOOP["Needs scored shortlist → site visit → final call"]:::insight
+        end
+      end
+
+      subgraph S3["④ Insight — APIs Know More Than Any Analyst"]
+        I_LIVE["Live POI density = real competition, not last year's survey"]:::insight
+        I_MCP["MCP tools = maps APIs callable in a pipeline, not a browser tab"]:::insight
+        I_TOPSIS["TOPSIS = transparent, weight-tunable, auditable scoring"]:::insight
+        I_AUTO["Swap weight → all C* scores recompute in seconds"]:::insight
+        I_POS["One pipeline. N candidates. One ranked output."]:::insight
+      end
+
+      subgraph S4["⑤ Product — Site Selection Canvas"]
+        subgraph S4A["Discover — MCP Layer"]
+          MCP_POI["POI Search — keyword · country · density"]:::mcp
+          MCP_NEAR["Nearby Search — radius · rank_by=popularity"]:::mcp
+          MCP_NAV["Routing ETA — walking · driving · cycling profiles"]:::mcp
+        end
+        subgraph S4B["Score — TOPSIS Engine"]
+          SC_MAT["Decision Matrix — m candidates × n criteria"]:::product
+          SC_NORM["Weighted Normalization — w_j × r_ij"]:::product
+          SC_RANK["C* Ranking — D⁻ / (D⁺ + D⁻) per candidate"]:::signal
+        end
+        subgraph S4C["Report Layer"]
+          OUT_RANK["Ranked Site Report — C* scores + sensitivity"]:::output
+          OUT_MAP["Scored Map Canvas — visual heat overlay"]:::output
+          OUT_MD["Markdown export — portable · version-controlled"]:::output
+        end
+      end
+
+      subgraph S5["⑥ Demo — New Cafe · Singapore · 7 Candidates"]
+        DM_BPJ["🥇 Bukit Panjang  C*=0.82 — zero competition · 16-sec MRT"]:::signal
+        DM_PGL["🥈 Punggol        C*=0.78 — 22 residential POIs · young demo"]:::signal
+        DM_WDL["🥉 Woodlands      C*=0.71 — zero competition · causeway traffic"]:::signal
+        DM_SKG["✗  Sengkang       C*=0.22 — 6 cafes incl. 2 Starbucks"]:::problem
+        DM_CBD["✗  CBD            C*=0.09 — baseline saturation"]:::problem
+        DM_API["23 API calls · 5 MCP tools · 8 criteria · 1 ranked output"]:::product
+      end
+
+      subgraph S6["⑦ Architecture"]
+        A_MCP["MCP Connectors — POI · nearby · navigation"]:::mcp
+        A_SC["TOPSIS Engine — Python · NetworkX · DuckDB"]:::product
+        A_FE["React 18 + TS + Vite — canvas + map overlay"]:::product
+        A_DB["RxDB — offline-first · version-controlled reports"]:::product
+        A_CF["Cloudflare Pages · Stripe"]:::product
+      end
+
+      subgraph S7["⑧ Business Model"]
+        B_REP["Per-report — pay-per-scored-shortlist"]:::business
+        B_SUB["Workspace subscription — unlimited scoring · saved canvases"]:::business
+        B_API["API tier — embed scorer in existing tools"]:::business
+        B_CON["Advisory — custom weight models per industry vertical"]:::business
+      end
+
+      subgraph S8["⑨ Roadmap"]
+        R_NOW["Now — MCP pipeline · TOPSIS scorer · Markdown report · Stripe"]:::milestone
+        R_NEXT["Next — scored map canvas · multi-provider geo adapter · batch candidates"]:::milestone
+        R_LATER["Later — rent-index integration · real-time rescore · collab workspace"]:::milestone
+      end
+
+      subgraph S9["⑩ The Ask"]
+        ASK_DP["Design partners — F&B / retail operators with live site decisions"]:::actor
+        ASK_GEO["Geo API access — maps POI + routing connectors per market"]:::mcp
+        ASK_DATA["Ground-truth datasets — site visits to validate C* predictions"]:::output
+        ASK_DIST["Distribution — property consultants · franchise networks · VC portfolio ops"]:::actor
+      end
+
+      %% USER FLOW
+      ICP_FB -->|"shortlists candidates"| MCP_POI
+      ICP_RET -->|"scopes market"| MCP_NEAR
+      ICP_CON -->|"advises on"| OUT_RANK
+      SIT_CAND -->|"inputs to"| SC_MAT
+
+      %% WORK FLOW
+      S0 -.->|"frames"| S1
+      S1 -.->|"scopes ICP"| S2
+      S2 -.->|"motivates"| S3
+      S3 -.->|"enables"| S4
+      S4 -.->|"shown by"| S5
+      S5 -.->|"runs on"| S6
+      S6 -.->|"monetised via"| S7
+      S7 -.->|"delivered by"| S8
+      S8 -.->|"closes"| S9
+
+      %% MCP FLOW
+      MCP_POI -->|"poi_density"| SC_MAT
+      MCP_NEAR -->|"competition_count"| SC_MAT
+      MCP_NAV -->|"eta_minutes"| SC_MAT
+      SC_MAT -->|"normalize · weight"| SC_NORM
+      SC_NORM -->|"C* per candidate"| SC_RANK
+
+      %% DATA FLOW
+      SC_RANK -->|"ranked signal"| OUT_RANK
+      SC_RANK -->|"heat scores"| OUT_MAP
+      OUT_RANK -->|"export"| OUT_MD
+      A_MCP -->|"live calls"| MCP_POI
+      A_MCP -->|"live calls"| MCP_NEAR
+      A_MCP -->|"live calls"| MCP_NAV
 ---
 
-# Knowgrph Strybldr Demo
+# Knowgrph
 
-This document demos the completed Strybldr path from `/Users/huijoohwee/Documents/GitHub/knowgrph/docs/documents/knowgrph-strybldr-prd-tad.md`:
+## Authoring Contract
 
-`Toolbar -> Launch -> Import Image` -> select external validation images -> `Strybldr -> Analyze locally` -> review individual element cards in `2D Renderer: Strybldr` -> user edits cards -> `Toolbar -> Run All` to reuse the Strybldr video handoff path.
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, map-scoring graph metadata, and reusable product narrative inputs.
+- This document is a canonical authored product/readme demo, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for geospatial product, architecture, and demo overview docs.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical maps readme example.
+- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
 
-It is intentionally a demo fixture, runbook, and parser-ready seed. The validation image directory is external test input only; application runtime must derive behavior from selected files, corpus source units, parsed frontmatter, transient image-file registry entries, and Strybldr graph cards instead of hardcoded paths, file names, or demo IDs.
+**Candidates in. Ranked decisions out.** A knowledge graph canvas that calls live map APIs via MCP tools, scores every candidate location through a TOPSIS multi-criteria engine, and delivers a portable, auditable site selection report — in minutes, not weeks.
 
-## Demo Contract
+> Not a dashboard. A decision pipeline.
 
-- Import path: `Launch -> Import Image`.
-- Test validation input: `/Users/huijoohwee/Documents/GitHub/huijoohwee/image`.
-- Hardcode rule: that validation path and its image filenames are allowed only in this external demo document, not in `/Users/huijoohwee/Documents/GitHub/knowgrph` implementation code.
-- Image selection: multi-select all 12 PNG files, or select one image for a smaller smoke.
-- Expected generated workspace artifact: one run-level `.strybldr.md` artifact plus imported image source files.
-- Expected reverse engineering: `Strybldr -> Analyze locally` calls the local DETR owner first and projects detected elements into editable Strybldr cards; Human geometry is privacy-safe and identity-free.
-- Expected renderer: `2D Renderer: Strybldr`, which reuses the shared Storyboard surface.
-- Expected floating panel: `Strybldr`.
-- Expected lanes on canvas: `Source`, `Storyboard`, and `Elements`.
-- Expected user update: card title, summary, action, prompt, order, and source-backed element fields remain editable before generation.
-- Expected Run All behavior: Toolbar `Run All` is enabled for `2D Renderer: Strybldr` and dispatches the same Strybldr video handoff path as the panel `Generate Video` button.
-- Expected economics: base demo costs zero paid calls; `Run All` / `Generate Video` uses configured BytePlus only when active credentials are present and otherwise writes a structured fallback artifact.
+---
 
-## Manual Runbook
+## The problem — location decisions are still spreadsheets
 
-1. Open Knowgrph at `/knowgrph/`.
-2. Open `Toolbar -> Launch`.
-3. Click `Import Image`.
-4. In the file picker, open `/Users/huijoohwee/Documents/GitHub/huijoohwee/image`.
-5. Select the 12 files listed in the manifest below.
-6. Confirm the import summary reports imported image inputs and that a `.strybldr.md` artifact is active.
-7. Confirm the active canvas switches to `Canvas View Mode -> 2D Renderer: Strybldr`.
-8. Confirm the floating panel opens to `Strybldr`.
-9. Click `Analyze locally`.
-10. Confirm local element cards are added or the fallback source-metadata cards remain usable if no local detections pass threshold.
-11. Confirm image-derived cards are visible in `Source`, `Storyboard`, and `Elements`.
-12. Edit at least one card title, summary, action, or prompt; this is the user-update gate before spend.
-13. Click Toolbar `Run All`.
-14. Confirm either a BytePlus run starts through the shared owner or a `strybldr-video-fallback-*.md` artifact is written with approved cards, compiled prompt, provider, elapsed time, paid-call count, cache state, and error reason.
-15. Optional direct-action parity check: click Strybldr `Generate Video` and confirm it writes the same generated/fallback artifact shape.
+Opening a cafe, placing a retail pop-up, entering a new market. The question is always the same: *which location?* The answer is almost always the same process: someone opens a spreadsheet, pastes in addresses, drives around, argues from gut feel, picks.
 
-## Acceptance Checklist
-
-| PRD/TAD gate | Evidence to collect | Owner proof |
+| | Status quo | Knowgrph |
 |---|---|---|
-| PRD-STB-E01 `Import Image` | Launch menu shows `Import Image`; import creates source units and a `.strybldr.md` file. | `LaunchDropdown.impl.tsx`, `workspaceActionBridge.ts`, `useWorkspaceFileActions/importActions.ts`. |
-| PRD-STB-E02 local detection first | `Analyze locally` is available; DETR evidence uses `local-object-detection`; Human geometry disables identity/demographic outputs. | `strybldrLocalVision.ts`; `@huggingface/transformers`; `Xenova/detr-resnet-50`; `@vladmandic/human`. |
-| PRD-STB-E03 editable storyboard | Strybldr canvas shows `Source`, `Storyboard`, and `Elements`; cards retain source-unit IDs, boxes, confidence, provider, and evidence kind. | `strybldrStoryboard.ts`, parser registry, shared Storyboard renderer. |
-| PRD-STB-E04 bounded video handoff | Toolbar `Run All` and Strybldr `Generate Video` compile approved card text from the active graph and write `strybldr-video-*.md` or fallback Markdown. | `Toolbar.tsx`, `StrybldrFloatingPanelView.tsx`, `buildStrybldrVideoHandoffFromGraphData`, `generateRunVideoWithBytePlus`. |
-| PRD-STB-E05 observability/economics | Artifact frontmatter includes provider, elapsedMs, paidCallCount, cacheHit, status, and errorReason when relevant. | `buildStrybldrVideoHandoffMarkdown`. |
-| No hardcoded validation input in repo | `rg` for the external validation path and image basename returns no matches inside `/Users/huijoohwee/Documents/GitHub/knowgrph`. | Runtime derives from selected files and source units, not this demo manifest. |
+| **Data freshness** | Offline reports, last-year surveys | Live POI density via MCP API calls |
+| **Competition analysis** | Manual Google Maps tab-switching | `nearby_search` → competitor count per radius |
+| **Routing / accessibility** | Estimated or ignored | `navigation` ETA — walking · driving · cycling |
+| **Scoring model** | Gut feel, no audit trail | TOPSIS C* — weighted, normalized, reproducible |
+| **Time per candidate** | 2–4 hours | Seconds per API call |
+| **Output** | PowerPoint with vibes | Ranked Markdown report · scored map canvas |
 
-## 100% Implementation Coverage Map
+The analyst time cost is real. The opacity is the bigger problem — a site pick that can't be interrogated can't be improved.
 
-| Contract item | Demo state | Runtime owner |
-|---|---|---|
-| Combined PRD/TAD is the implementation contract | This file points to `knowgrph-strybldr-prd-tad.md` and exercises every PRD story. | `docs/documents/knowgrph-strybldr-prd-tad.md`. |
-| Import one or more images | Runbook imports 12 external PNGs through `Launch -> Import Image`. | `handleImportLocalImages`. |
-| Generate Strybldr Markdown artifact | Import creates run-level `.strybldr.md`; this file also contains a direct-open seed for smoke validation. | `buildStrybldrStoryboardDocument`, `serializeStrybldrStoryboardMarkdown`. |
-| Reverse engineer to individual elements | Local analysis uses DETR to emit element cards with label, confidence, source box, provider, and evidence kind. | `runStrybldrDetrObjectDetection`. |
-| Privacy-safe human geometry | Human is available as a local harness with face descriptor, emotion, liveness, demographic inference, and embeddings disabled/unused. | `runStrybldrHumanGeometry`. |
-| Optional ModelArk visual grounding | Not automatic; paid grounding remains explicit and bounded. | Type contract supports `modelark-visual-grounding`; current demo keeps paid grounding at 0. |
-| User update before spend | Runbook requires editing a card before Toolbar `Run All` or `Generate Video`; the seed below is a post-user-update direct-open state. | Shared Storyboard card model plus active graph data. |
-| Generate video or fallback | Toolbar `Run All` and Strybldr `Generate Video` compile only approved graph cards and write a generated or fallback handoff artifact. | `supportsToolbarRunAll`, `WORKFLOW_RUN_ALL_EVENT`, `buildStrybldrVideoHandoffFromGraphData`, `buildStrybldrVideoHandoffMarkdown`, `generateRunVideoWithBytePlus`. |
-| TCO/token economics | Base import/storyboard path uses local/source metadata and paid calls stay 0 unless BytePlus is active. | Strybldr panel provider gate and handoff metadata. |
-| No duplicate workspace/import owner | Launch delegates to workspace bridge and local import owners. | `importLocalImages`, Source Files, corpus source units. |
+**Knowgrph makes location intelligence reproducible, live, and legible.**
 
-## Test Validation Input - Forbid Hardcode In Repo
-
-The path `/Users/huijoohwee/Documents/GitHub/huijoohwee/image` is the current smoke input for this external demo document. It must not become a product default, fixture branch, filename guard, provider condition, or parser rule inside `/Users/huijoohwee/Documents/GitHub/knowgrph`.
-
-Repo hardcode scan:
-
-```bash
-rg -n "/Users/huijoohwee/Documents/GitHub/huijoohwee/image|客家先民南迁图|knowgrph-strybldr-demo|strybldr-demo-hakka" \
-  /Users/huijoohwee/Documents/GitHub/knowgrph \
-  --glob '!canvas/node_modules/**' --glob '!node_modules/**' --glob '!canvas/dist/**'
-```
-
-Expected result: no matches. If this scan finds implementation matches, the demo has leaked into product code and the implementation is not PRD/TAD-compliant.
-
-## Validation Image Manifest
-
-| # | Image | Dimensions | Bytes | SHA-256 prefix |
-|---:|---|---:|---:|---|
-| 01 | `../image/客家先民南迁图-张德光-01.png` | 857x1526 | 1480452 | `f4c894630e7576c0` |
-| 02 | `../image/客家先民南迁图-张德光-02.png` | 854x1523 | 2356089 | `216fa4a68100c4dd` |
-| 03 | `../image/客家先民南迁图-张德光-03.png` | 854x1523 | 2386401 | `1a0492c4a5b9b953` |
-| 04 | `../image/客家先民南迁图-张德光-04.png` | 854x1523 | 2294129 | `47706c3e0cd6ff84` |
-| 05 | `../image/客家先民南迁图-张德光-05.png` | 854x1523 | 2346029 | `e679dc0d13f4016b` |
-| 06 | `../image/客家先民南迁图-张德光-06.png` | 854x1523 | 2421893 | `1f1ca72b7f5c9c08` |
-| 07 | `../image/客家先民南迁图-张德光-07.png` | 854x1523 | 2419950 | `b4fa969b173d7807` |
-| 08 | `../image/客家先民南迁图-张德光-08.png` | 854x1523 | 2375752 | `91fb51d18b695bfb` |
-| 09 | `../image/客家先民南迁图-张德光-09.png` | 854x1523 | 2430827 | `c9fe4579d7729b1d` |
-| 10 | `../image/客家先民南迁图-张德光-10.png` | 854x1523 | 2485719 | `447cfc1d9ad26e80` |
-| 11 | `../image/客家先民南迁图-张德光-11.png` | 854x1523 | 2414905 | `dde0ab0f3bd8e93e` |
-| 12 | `../image/客家先民南迁图-张德光-12.png` | 857x1526 | 1532513 | `87629c0eb3e18335` |
-
-## Visual Input Preview
-
-![Image 01](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-01.png)
-![Image 02](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-02.png)
-![Image 03](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-03.png)
-![Image 04](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-04.png)
-![Image 05](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-05.png)
-![Image 06](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-06.png)
-![Image 07](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-07.png)
-![Image 08](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-08.png)
-![Image 09](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-09.png)
-![Image 10](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-10.png)
-![Image 11](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-11.png)
-![Image 12](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-12.png)
-
-## Direct-Open Seed Semantics
-
-The fenced Strybldr payload below is a parser-ready direct-open snapshot for demos where the user opens this Markdown file instead of repeating the import flow. It represents the state after import, reverse engineering, and a user update pass:
-
-- `sources` mirror the imported image source-unit shape.
-- `elements` are individual editable Strybldr cards.
-- `evidenceKind: "user-edit"` marks the approved post-edit state for video handoff.
-- `sourceBox` keeps element geometry available for Storyboard/Elements cards.
-- `mediaUrl` uses `/__codebase_asset` so Viewer and Canvas render the images without hardcoding app logic.
-
-The real E2E validation remains the UI path through `Launch -> Import Image`; this seed exists to make the acceptance state inspectable, parseable, and smoke-testable from a single Markdown file.
-
-## Parser-Ready Strybldr Seed
-
-Opening this document directly should still activate Strybldr mode because the frontmatter and fenced payload are valid Strybldr storyboard input.
-
-```json strybldr-storyboard
-{
-  "version": 1,
-  "runId": "strybldr-demo-hakka-migration-20260529",
-  "createdAtMs": 1780069200000,
-  "notes": "Demo seed for Launch -> Import Image -> Strybldr validation. The element cards represent an approved post-user-update state; the live import path can replace them with local DETR/Human evidence.",
-  "sources": [
-    {
-      "sourceUnitId": "strybldr-demo-image-01",
-      "workspacePath": "/客家先民南迁图-张德光-01.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-01.png",
-      "originalName": "客家先民南迁图-张德光-01.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 1480452,
-      "textHash": "sha256:f4c894630e7576c0",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-01.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-02",
-      "workspacePath": "/客家先民南迁图-张德光-02.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-02.png",
-      "originalName": "客家先民南迁图-张德光-02.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2356089,
-      "textHash": "sha256:216fa4a68100c4dd",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-02.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-03",
-      "workspacePath": "/客家先民南迁图-张德光-03.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-03.png",
-      "originalName": "客家先民南迁图-张德光-03.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2386401,
-      "textHash": "sha256:1a0492c4a5b9b953",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-03.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-04",
-      "workspacePath": "/客家先民南迁图-张德光-04.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-04.png",
-      "originalName": "客家先民南迁图-张德光-04.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2294129,
-      "textHash": "sha256:47706c3e0cd6ff84",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-04.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-05",
-      "workspacePath": "/客家先民南迁图-张德光-05.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-05.png",
-      "originalName": "客家先民南迁图-张德光-05.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2346029,
-      "textHash": "sha256:e679dc0d13f4016b",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-05.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-06",
-      "workspacePath": "/客家先民南迁图-张德光-06.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-06.png",
-      "originalName": "客家先民南迁图-张德光-06.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2421893,
-      "textHash": "sha256:1f1ca72b7f5c9c08",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-06.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-07",
-      "workspacePath": "/客家先民南迁图-张德光-07.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-07.png",
-      "originalName": "客家先民南迁图-张德光-07.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2419950,
-      "textHash": "sha256:b4fa969b173d7807",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-07.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-08",
-      "workspacePath": "/客家先民南迁图-张德光-08.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-08.png",
-      "originalName": "客家先民南迁图-张德光-08.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2375752,
-      "textHash": "sha256:91fb51d18b695bfb",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-08.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-09",
-      "workspacePath": "/客家先民南迁图-张德光-09.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-09.png",
-      "originalName": "客家先民南迁图-张德光-09.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2430827,
-      "textHash": "sha256:c9fe4579d7729b1d",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-09.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-10",
-      "workspacePath": "/客家先民南迁图-张德光-10.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-10.png",
-      "originalName": "客家先民南迁图-张德光-10.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2485719,
-      "textHash": "sha256:447cfc1d9ad26e80",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-10.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-11",
-      "workspacePath": "/客家先民南迁图-张德光-11.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-11.png",
-      "originalName": "客家先民南迁图-张德光-11.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2414905,
-      "textHash": "sha256:dde0ab0f3bd8e93e",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-11.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-12",
-      "workspacePath": "/客家先民南迁图-张德光-12.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-12.png",
-      "originalName": "客家先民南迁图-张德光-12.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 1532513,
-      "textHash": "sha256:87629c0eb3e18335",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-12.png"
-    }
-  ],
-  "elements": [
-    {
-      "id": "strybldr-demo-el-01",
-      "sourceUnitId": "strybldr-demo-image-01",
-      "label": "Panel 01 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 1,
-      "summary": "Use imported image 01 as the opening visual reference.",
-      "action": "Run local detection, then update this card with visible subjects, route markers, captions, and composition details.",
-      "prompt": "Reverse engineer image 01 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-02",
-      "sourceUnitId": "strybldr-demo-image-02",
-      "label": "Panel 02 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 2,
-      "summary": "Use imported image 02 as the second storyboard reference.",
-      "action": "Confirm local detections and refine the card into one motion-ready scene beat.",
-      "prompt": "Reverse engineer image 02 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-03",
-      "sourceUnitId": "strybldr-demo-image-03",
-      "label": "Panel 03 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 3,
-      "summary": "Use imported image 03 as the third storyboard reference.",
-      "action": "Identify the main visible elements and convert them into editable storyboard card text.",
-      "prompt": "Reverse engineer image 03 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-04",
-      "sourceUnitId": "strybldr-demo-image-04",
-      "label": "Panel 04 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 4,
-      "summary": "Use imported image 04 as the fourth storyboard reference.",
-      "action": "Preserve visual order and update the card after detector evidence is reviewed.",
-      "prompt": "Reverse engineer image 04 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-05",
-      "sourceUnitId": "strybldr-demo-image-05",
-      "label": "Panel 05 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 5,
-      "summary": "Use imported image 05 as the fifth storyboard reference.",
-      "action": "Turn visual evidence into a clear action note before video handoff.",
-      "prompt": "Reverse engineer image 05 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-06",
-      "sourceUnitId": "strybldr-demo-image-06",
-      "label": "Panel 06 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 6,
-      "summary": "Use imported image 06 as the sixth storyboard reference.",
-      "action": "Edit the card to reflect detected foreground, midground, and background elements.",
-      "prompt": "Reverse engineer image 06 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-07",
-      "sourceUnitId": "strybldr-demo-image-07",
-      "label": "Panel 07 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 7,
-      "summary": "Use imported image 07 as the seventh storyboard reference.",
-      "action": "Confirm detections and preserve the source-image relationship on every card.",
-      "prompt": "Reverse engineer image 07 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-08",
-      "sourceUnitId": "strybldr-demo-image-08",
-      "label": "Panel 08 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 8,
-      "summary": "Use imported image 08 as the eighth storyboard reference.",
-      "action": "Refine the card into a motion-ready beat before generation.",
-      "prompt": "Reverse engineer image 08 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-09",
-      "sourceUnitId": "strybldr-demo-image-09",
-      "label": "Panel 09 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 9,
-      "summary": "Use imported image 09 as the ninth storyboard reference.",
-      "action": "Use the card to capture updated user intent after visual evidence review.",
-      "prompt": "Reverse engineer image 09 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-10",
-      "sourceUnitId": "strybldr-demo-image-10",
-      "label": "Panel 10 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 10,
-      "summary": "Use imported image 10 as the tenth storyboard reference.",
-      "action": "Keep the beat editable and source-backed before any video provider call.",
-      "prompt": "Reverse engineer image 10 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-11",
-      "sourceUnitId": "strybldr-demo-image-11",
-      "label": "Panel 11 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 11,
-      "summary": "Use imported image 11 as the eleventh storyboard reference.",
-      "action": "Review local evidence and revise the card for continuity with neighboring panels.",
-      "prompt": "Reverse engineer image 11 into a concise video beat while preserving source composition and provenance."
-    },
-    {
-      "id": "strybldr-demo-el-12",
-      "sourceUnitId": "strybldr-demo-image-12",
-      "label": "Panel 12 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 12,
-      "summary": "Use imported image 12 as the closing storyboard reference.",
-      "action": "Finalize the edited card sequence before generating or writing the video handoff artifact.",
-      "prompt": "Reverse engineer image 12 into a concise video beat while preserving source composition and provenance."
-    }
-  ]
-}
-```
-
-## Generate Video Handoff Smoke
-
-After the user edits Strybldr cards, Toolbar `Run All` and the panel `Generate Video` button must compile the active graph, not detached prompt text. The expected generated or fallback artifact is written at workspace root with this shape:
-
-```yaml
 ---
-kgStrybldrVideoHandoff: true
-status: "fallback"
-provider: "byteplus-modelark"
-elapsedMs: 0
-paidCallCount: 0
-cacheHit: false
-errorReason: "BytePlus ModelArk is not the active provider."
+
+## Who it's for
+
+The ICP is not an industry. It's a decision type: **anyone shortlisting physical locations who needs scored, evidence-based output faster than a traditional market study allows.**
+
+This person operates in:
+
+- **F&B expansion** — franchise operators, independent restaurant groups, cloud kitchen networks opening outlet #2 to #10
+- **Retail / pop-up brands** — DTC brands, seasonal activations, market stall operators choosing between 5–20 viable sites
+- **Property development** — developers benchmarking commercial lots; landlords advising anchor tenant fit
+- **Management consulting** — market entry advisory, retail network optimisation, competitor gap analysis across city districts
+
+They share one bottleneck: **too many candidates, not enough scored data, not enough time.**
+
+Markets where the gap is sharpest — Southeast Asia (SG MY TH ID PH VN), MENA (AE SA EG), South Asia (IN BD), Latin America (MX BR CO) — have high physical retail density, fragmented POI data, and no local equivalent of a mature market research platform.
+
 ---
+
+## The insight — APIs already know
+
+Maps platforms index millions of POIs, update in near-real-time, and expose everything needed for a rigorous site evaluation: competitor counts, category density, footfall proxies, transit ETAs across walking, driving, and cycling profiles.
+
+None of that requires a field visit. It requires a pipeline.
+
+```
+candidate coordinates
+→ MCP: POST nearby_search       → competitor count + F&B density
+→ MCP: GET /place/v2/nearby     → residential + retail + commercial POI count
+→ MCP: POST navigation          → walking ETA to transit · driving ETA to centre
+→ TOPSIS: normalize · weight    → C* score per candidate
+→ output: ranked report         → top 3 with sensitivity analysis
 ```
 
-Expected compiled prompt prefix:
+Swap a weight. All scores recompute. Same reproducibility as code.
 
-```text
-Create one short video from the approved Strybldr storyboard cards below.
-Use only these approved card fields and references; do not invent extra source images or hidden context.
-Preserve source composition, element positions, and card order. Keep motion concise and demo-ready.
+---
+
+## What it does
+
+```mermaid
+flowchart LR
+  subgraph Discover["Discover — MCP Layer"]
+    POI["POI Search\nkeyword · country · limit"]
+    NEAR["Nearby Search\nradius · rank_by=popularity"]
+    NAV["Routing ETA\nwalking · driving · cycling"]
+  end
+  subgraph Score["Score — TOPSIS Engine"]
+    MAT["Decision Matrix\nm candidates × n criteria"]
+    NORM["Weighted Normalization\nw_j × r_ij"]
+    RANK["C* Ranking\nD⁻ / (D⁺ + D⁻)"]
+  end
+  subgraph Output["Output"]
+    RPT["Ranked Report\nscored shortlist + sensitivity"]
+    MAP["Scored Map Canvas\nheat overlay"]
+    MD["Markdown export\nportable · auditable"]
+  end
+
+  POI --> MAT
+  NEAR --> MAT
+  NAV --> MAT
+  MAT --> NORM --> RANK
+  RANK --> RPT
+  RANK --> MAP
+  RPT --> MD
 ```
 
-Acceptance signal:
+### Criteria the pipeline measures
 
-- If BytePlus ModelArk is active with valid credentials, the artifact status is `generated` and includes `renderUrl` / `sourceUrl` when returned.
-- If BytePlus is inactive, missing credentials, or the provider fails, the artifact status is `fallback` and still includes approved cards, compiled prompt, elapsed time, paid-call count, cache state, provider, and error reason.
-- Paid call count stays `0` until the user explicitly clicks Toolbar `Run All` or `Generate Video` with BytePlus active.
-- The compiled prompt must include the edited card text from the active graph.
+| ID | Criterion | MCP Endpoint | Direction | Weight (default) |
+|----|-----------|-------------|-----------|-----------------|
+| C1 | Competitor density (2.5 km) | `POST nearby_search` | Lower = better | 0.25 |
+| C2 | F&B / category saturation | `GET /place/v2/nearby` | Lower = better | 0.10 |
+| C3 | Residential POI count | `GET /place/v2/nearby` | Higher = better | 0.15 |
+| C4 | Retail / mall POI count | `GET /place/v2/nearby` | Higher = better | 0.10 |
+| C5 | Walk-to-transit ETA (min) | `POST navigation profile=walking` | Lower = better | 0.15 |
+| C6 | Drive-to-centre ETA (min) | `POST navigation profile=driving` | Target range | 0.05 |
+| C7 | Total area POI density | `GET /poi/v1/search` | Higher = better | 0.10 |
+| C8 | Commercial building count | `GET /place/v2/nearby` | Higher = better | 0.05 |
 
-## Runtime Notes
+**Transport profiles:** `walking` · `driving` · `cycling` · `motorcycle` · `tricycle`
 
-- The authored seed above is only a direct-open demo. The main validation remains the UI path through `Launch -> Import Image`.
-- Multi-image import should create one run-level `.strybldr.md` artifact and source-backed cards for the selected images.
-- Toolbar `Run All` and the Strybldr panel must read the active graph, not detached prompt text, when compiling the video handoff.
-- A failed or unconfigured provider should still produce a useful fallback Markdown artifact with approved cards, elapsed time, provider name, paid-call count, and error reason.
-- Any validation-specific path or filename in this document is external demo input and must remain absent from the Knowgrph implementation repo.
+All weights are frontmatter fields. Swap one value, all C* scores recompute.
+
+---
+
+## Demo — New Cafe · Singapore · 7 Candidates · 23 API Calls
+
+**Setup:** 7 candidate areas, radius 2.5 km (~30-min walk), ranked by `popularity`. 23 MCP calls total across POI search, nearby search, and routing profiles.
+
+### TOPSIS results
+
+| Rank | Location | C* | Decisive signal |
+|------|----------|-----|----------------|
+| 🥇 1 | **Bukit Panjang** | **0.82** | Zero cafe competitors · Bukit Panjang DTL MRT **16-second walk** · C8=18 commercial buildings (highest) |
+| 🥈 2 | **Punggol** | **0.78** | C1=1 (one traditional coffeeshop only) · C3=22 HDB residential POIs · young growing demographic |
+| 🥉 3 | **Woodlands** | **0.71** | C1=0 · causeway commuter flow · education/childcare ecosystem → family catchment |
+| 4 | Yishun | 0.62 | Northpoint City mall anchor (C4=25) · C1=0 · high F&B saturation (C2=12) offsets |
+| 5 | Jurong West | 0.41 | Major transport hub · C2=20 (worst saturation) · longest MRT walk (~14 min) |
+| 6 | Sengkang | 0.22 | C1=6 cafes incl. 2 Starbucks · Compass One fully served — **do not enter** |
+| — | CBD | 0.09 | Baseline saturation reference only |
+
+### Sensitivity analysis — weight shifts change the winner
+
+| Scenario | Weight change | New winner | Rationale |
+|----------|-------------|-----------|-----------|
+| Maximise foot traffic | C4 mall → 0.25 | **Yishun** | Northpoint City C4=25 becomes decisive |
+| Minimise rent risk | Add C9 rent index → 0.10 | **Woodlands** | Northern areas ~30% below central band |
+| Weekday lunch priority | C8 commercial → 0.20 | **Bukit Panjang** | C8=18 (highest) + DTL commuter lunch crowd |
+| Family demographic focus | C3 residential → 0.30 | **Punggol** | C3=22 HDB precinct — dominant residential density |
+| Hard filter C1 > 2 | Eliminate saturated | **BPJ · Woodlands · Yishun** 3-way tie | MRT access breaks tie → BPJ wins |
+
+---
+
+## Architecture
+
+Server-light. MCP connectors call maps APIs directly. The TOPSIS engine runs in Python. The canvas renders in the browser.
+
+```mermaid
+flowchart LR
+  CAND["Candidate\ncoordinates"] --> MCP
+  subgraph MCP["MCP Connectors"]
+    POI["POI search"]
+    NEAR["Nearby search"]
+    NAV["Routing ETA"]
+  end
+  MCP --> PY["TOPSIS Engine\nPython · NetworkX · DuckDB"]
+  PY --> RANK["C* ranked signal"]
+  RANK --> FC["Flow Editor Canvas\nReact 18 + TS + Vite"]
+  FC --> MAP["Scored Map\nheat overlay"]
+  FC --> RPT["Ranked Report\nMarkdown export"]
+```
+
+| Layer | Technology |
+|---|---|
+| MCP connectors | Maps APIs — POI search · nearby · routing ETA (5 transport profiles) |
+| Scoring engine | TOPSIS — Python 3.10+ · NetworkX · DuckDB · weighted normalization · C* ranking |
+| Frontend canvas | React 18 + TypeScript + Vite 6 · D3.js · Mermaid |
+| Map overlay | D3.js / Leaflet — heat scored candidates on base map |
+| Local DB | RxDB — offline-first · report versioning |
+| Payments | Stripe — per-report + subscription |
+| Deployment | Cloudflare Pages (PWA) — airvio.co/knowgrph |
+
+---
+
+## Business model
+
+**Per-report** — pay-per-scored shortlist. Input candidates, receive ranked Markdown report + scored canvas. No subscription required to start.
+
+**Workspace subscription** — unlimited scoring runs, saved canvases, report history, weight model library.
+
+**API tier** — embed the TOPSIS scorer into existing property, F&B, or retail tools via REST. Bring your own geo API keys; Knowgrph handles the scoring logic.
+
+**Advisory** — custom weight models per vertical (F&B vs. retail vs. logistics), calibrated against ground-truth site performance data.
+
+---
+
+## Roadmap
+
+**Now** — MCP pipeline (POI + nearby + routing), TOPSIS scorer, ranked Markdown report, Stripe per-report gating
+
+**Next** — scored map canvas (heat overlay), multi-provider geo adapter (swap maps API without re-wiring scorer), batch candidate import (CSV → N runs), sensitivity dashboard
+
+**Later** — rent-index integration (URA / third-party property data), real-time rescore on candidate edit, collaborative workspace, mobile shortlisting UI
+
+---
+
+## The ask
+
+**Design partners** — F&B operators, retail brands, or property consultants with live site decisions in the next 90 days. We run your shortlist through the pipeline; you validate the C* output against what you know on the ground.
+
+**Geo API access** — teams with maps platform API keys (POI search, nearby, routing ETA) across SEA, MENA, or South Asia markets. Knowgrph is provider-agnostic; the adapter layer handles normalization.
+
+**Ground-truth datasets** — post-opening performance data (revenue, footfall) from sites already chosen by gut feel. We back-test C* predictions against actuals to calibrate weights.
+
+**Distribution intros** — franchise networks, VC portfolio ops teams, property consultancies, and retail expansion advisors who run multiple site decisions per quarter.
+
+If you believe location intelligence should be as reproducible as code — scored, auditable, and re-runnable — let us build it together.
+
+---
+
+**Product:** airvio.co/knowgrph
+
+**Docs:** see `docs/conflict-resolution.md` for repo sync policy.
+
+> *"Map it. Score it. Decide it."*

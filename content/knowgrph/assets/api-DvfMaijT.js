@@ -1,1 +1,0 @@
-import{qp as a}from"./index-BMd90TnP.js";import"./react-D1l5gsU-.js";function l(){return!!a.getState().geospatialModeEnabled}function u(){const t=a.getState().geospatialCursorLngLat;if(!t||typeof t!="object")return null;const e=t,n=Number(e.lng),r=Number(e.lat);return!Number.isFinite(n)||!Number.isFinite(r)?null:{lng:n,lat:r}}export{l as i,u as r};

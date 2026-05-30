@@ -1,4 +1,3 @@
----
 title: "Knowgrph Stryfork Demo - Runnable Import URL And Local File"
 graphId: "md:knowgrph-stryfork-demo-runnable-import-url-local-file"
 doc_type: "Stryfork Runnable Demo"
@@ -36,7 +35,6 @@ import_url_contract:
   - "URL import writes and focuses one .strybldr.md document"
   - "Canvas View Mode reports 2D Renderer: Strybldr"
   - "Toolbar Run all opens the Strybldr owner panel and writes a video fallback artifact when external credentials are unavailable"
----
 
 # Knowgrph Stryfork Demo - Runnable Import URL And Local File
 
@@ -52,7 +50,6 @@ filename.
 ## What The Demo Must Prove
 
 | Stage | Required behavior | Shared owner |
-|---|---|---|
 | Trigger | User opens `Toolbar -> Launch -> Import URL` or `Import local files`. | `LaunchDropdown.impl.tsx` |
 | Select | User chooses `Strybldr` in the Import URL renderer selector. | `ImportUrlRendererSelect.tsx` and `canvasPresets.ts` |
 | Fetch | YouTube import uses the shared URL import and transcript conversion owner. | `urlImport.ts`, `urlContent.ts`, `youtubeEntryText.ts` |
@@ -102,7 +99,6 @@ filename.
 Evidence collected for this source on 2026-05-30:
 
 | Evidence | Value |
-|---|---|
 | Provider | YouTube |
 | Video ID | `77FAnT935IE` |
 | oEmbed title | `Seedance 2.0 is on Artlist` |
@@ -121,7 +117,6 @@ short paraphrases so the artifact stays portable and copyright-safe.
 Evidence collected in the local app on 2026-05-30:
 
 | Check | Result |
-|---|---|
 | Fresh Import URL with `Strybldr / Document Structure Mode` | Passed in local browser E2E |
 | Fresh Import local files using this Markdown document | Passed in local browser E2E |
 | Canvas mode after import | `Canvas View Mode: 2D Renderer: Strybldr` |
