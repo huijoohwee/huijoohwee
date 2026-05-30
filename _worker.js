@@ -812,7 +812,10 @@ Knowgrph is an Agent-actionable chat-to-canvas knowledge graph workspace served 
         const fallback = document.getElementById("knowgrph-root-fallback");
         if (!root || !fallback || typeof MutationObserver === "undefined") return;
         const sync = () => {
-          fallback.hidden = root.childElementCount > 0;
+          const mounted = root.childElementCount > 0;
+          fallback.hidden = mounted;
+          fallback.style.display = mounted ? "none" : "grid";
+          fallback.dataset.knowgrphRootFallback = mounted ? "hidden" : "visible";
         };
         new MutationObserver(sync).observe(root, { childList: true });
         sync();
