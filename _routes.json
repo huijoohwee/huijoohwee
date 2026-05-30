@@ -4,6 +4,8 @@
   "include": [
     "/",
     "/health",
+    "/__youtube_transcript",
+    "/__video_frame",
     "/knowgrph/*",
     "/__chat_proxy/*",
     "/api/oembed",
