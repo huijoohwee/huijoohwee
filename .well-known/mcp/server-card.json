@@ -11,15 +11,20 @@
     "tools": [
       {
         "name": "list_source_files",
+        "title": "List Source Files",
         "description": "List published Knowgrph Source Files.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
           "properties": {}
+        },
+        "annotations": {
+          "readOnlyHint": true
         }
       },
       {
         "name": "read_source_file",
+        "title": "Read Source File",
         "description": "Read published Knowgrph Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
         "inputSchema": {
           "type": "object",
@@ -36,10 +41,14 @@
               "default": "kgws:canonical-docs"
             }
           }
+        },
+        "annotations": {
+          "readOnlyHint": true
         }
       },
       {
         "name": "read_shared_document",
+        "title": "Read Shared Document",
         "description": "Read published Knowgrph markdown content from a share token or public Knowgrph share/document URL.",
         "inputSchema": {
           "type": "object",
@@ -64,10 +73,14 @@
               ]
             }
           ]
+        },
+        "annotations": {
+          "readOnlyHint": true
         }
       },
       {
         "name": "inspect_shared_document_structure",
+        "title": "Inspect Shared Document Structure",
         "description": "Inspect published Knowgrph shared-document frontmatter and body structure from a share token or public Knowgrph share/document URL.",
         "inputSchema": {
           "type": "object",
@@ -92,18 +105,117 @@
               ]
             }
           ]
+        },
+        "annotations": {
+          "readOnlyHint": true
         }
       },
       {
         "name": "inspect_agent_surface",
+        "title": "Inspect Agent Surface",
         "description": "Inspect the deployed Knowgrph agent-ready discovery surface, including health, OpenAPI, MCP, and skill metadata.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
           "properties": {}
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "baseUrl",
+            "healthUrl",
+            "mcpUrl"
+          ],
+          "properties": {
+            "baseUrl": {
+              "type": "string"
+            },
+            "healthUrl": {
+              "type": "string"
+            },
+            "mcpUrl": {
+              "type": "string"
+            },
+            "apiCatalogUrl": {
+              "type": "string"
+            },
+            "openApiUrl": {
+              "type": "string"
+            },
+            "mcpServerCardUrl": {
+              "type": "string"
+            },
+            "agentCardUrl": {
+              "type": "string"
+            },
+            "agentSkillsUrl": {
+              "type": "string"
+            },
+            "commerceUrls": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "health": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "apiCatalog": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "openApi": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "mcpServerCard": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "agentCard": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "agentSkills": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "commerce": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "mcpAppsServerReadiness": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        },
+        "annotations": {
+          "readOnlyHint": true
+        },
+        "_meta": {
+          "ui": {
+            "resourceUri": "ui://knowgrph/agent-ready",
+            "visibility": [
+              "model",
+              "app"
+            ]
+          }
         }
       }
-    ]
+    ],
+    "resources": {
+      "listChanged": false
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "mimeTypes": [
+          "text/html;profile=mcp-app"
+        ]
+      }
+    }
   },
   "links": {
     "apiCatalog": "https://airvio.co/knowgrph/.well-known/api-catalog",

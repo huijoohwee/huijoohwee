@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Knowgrph Agent Ready</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: Canvas; color: CanvasText; }
+    main { display: grid; gap: 12px; min-height: 100vh; padding: 16px; }
+    header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; border-bottom: 1px solid color-mix(in srgb, CanvasText 18%, transparent); padding-bottom: 10px; }
+    h1 { margin: 0; font-size: 16px; line-height: 1.25; letter-spacing: 0; }
+    p { margin: 4px 0 0; color: color-mix(in srgb, CanvasText 72%, transparent); font-size: 13px; line-height: 1.45; }
+    button, a { border: 1px solid color-mix(in srgb, CanvasText 24%, transparent); border-radius: 6px; background: color-mix(in srgb, Canvas 88%, CanvasText 12%); color: CanvasText; font: inherit; padding: 7px 10px; text-decoration: none; }
+    button { cursor: pointer; }
+    section { display: grid; gap: 8px; }
+    dl { display: grid; grid-template-columns: minmax(110px, max-content) 1fr; gap: 6px 10px; margin: 0; font-size: 12px; }
+    dt { color: color-mix(in srgb, CanvasText 62%, transparent); }
+    dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+    pre { margin: 0; max-height: 48vh; overflow: auto; border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 6px; padding: 10px; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; background: color-mix(in srgb, Canvas 94%, CanvasText 6%); }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .status { font-size: 12px; color: color-mix(in srgb, CanvasText 66%, transparent); }
+    .readiness { border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 6px; padding: 10px; background: color-mix(in srgb, Canvas 96%, CanvasText 4%); font-size: 12px; }
+    .readiness strong { display: block; font-size: 13px; margin-bottom: 3px; }
+    .readiness ul { display: grid; gap: 4px; margin: 8px 0 0; padding: 0; list-style: none; }
+    .check { min-width: 0; overflow-wrap: anywhere; }
+    .check.ok { color: color-mix(in srgb, CanvasText 74%, #0f766e 26%); }
+    .check.fail { color: color-mix(in srgb, CanvasText 68%, #b91c1c 32%); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Knowgrph Agent Ready</h1>
+        <p>Interactive MCP Apps view backed by the existing read-only agent surface.</p>
+      </div>
+      <div class="actions">
+        <button id="refresh" type="button">Refresh</button>
+        <a href="https://airvio.co/knowgrph/" target="_blank" rel="noreferrer">Open</a>
+      </div>
+    </header>
+    <section aria-label="MCP app state">
+      <dl>
+        <dt>Resource</dt><dd>ui://knowgrph/agent-ready</dd>
+        <dt>Tool</dt><dd>inspect_agent_surface</dd>
+        <dt>Host</dt><dd id="host">Not connected.</dd>
+        <dt>Updated</dt><dd>2026-05-23</dd>
+        <dt>Status</dt><dd id="status" class="status">Initializing MCP Apps host bridge.</dd>
+      </dl>
+    </section>
+    <section aria-label="MCP Apps server readiness">
+      <div id="readiness" class="readiness">Waiting for structured server-readiness data.</div>
+    </section>
+    <section aria-label="Tool result">
+      <pre id="structured">No tool result received yet.</pre>
+    </section>
+  </main>
+  <script>
+  (() => {
+    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-05-23","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26"};
+    const statusEl = document.getElementById('status');
+    const hostEl = document.getElementById('host');
+    const readinessEl = document.getElementById('readiness');
+    const structuredEl = document.getElementById('structured');
+    let nextId = 1;
+    const pending = new Map();
+    const state = { hostCapabilities: null, hostContext: null, input: null, result: null };
+    const hasParent = () => window.parent && window.parent !== window;
+    const post = (message) => {
+      if (!hasParent()) return;
+      window.parent.postMessage({ jsonrpc: '2.0', ...message }, '*');
+    };
+    const notify = (method, params = {}) => post({ method, params });
+    const request = (method, params = {}) => {
+      const id = nextId++;
+      post({ id, method, params });
+      return new Promise((resolve, reject) => {
+        pending.set(id, { method, resolve, reject });
+        window.setTimeout(() => {
+          if (!pending.has(id)) return;
+          pending.delete(id);
+          reject(new Error(method + ' timed out'));
+        }, 8000);
+      });
+    };
+    const requestTool = async () => {
+      statusEl.textContent = 'Requesting ' + boot.toolName + ' through the host.';
+      try {
+        const result = await request('tools/call', { name: boot.toolName, arguments: {} });
+        state.result = result || null;
+        render();
+      } catch (error) {
+        statusEl.textContent = error && error.message ? error.message : 'Tool request failed.';
+      }
+    };
+    const updateHost = (context = {}) => {
+      state.hostContext = { ...(state.hostContext || {}), ...context };
+      const host = state.hostContext || {};
+      const label = [
+        host.displayMode,
+        host.theme,
+        host.platform,
+      ].filter(Boolean).join(' / ');
+      hostEl.textContent = label || (state.hostCapabilities ? 'Connected.' : 'Not connected.');
+      if (host.theme === 'dark' || host.theme === 'light') {
+        document.documentElement.dataset.theme = host.theme;
+      }
+    };
+    const appendText = (parent, tagName, text, className = '') => {
+      const element = document.createElement(tagName);
+      if (className) element.className = className;
+      element.textContent = text;
+      parent.appendChild(element);
+      return element;
+    };
+    const renderReadiness = (payload) => {
+      readinessEl.replaceChildren();
+      const readiness = payload && payload.mcpAppsServerReadiness;
+      if (!readiness || typeof readiness !== 'object') {
+        readinessEl.textContent = 'Waiting for structured server-readiness data.';
+        return;
+      }
+      readinessEl.className = 'readiness ' + (readiness.ready ? 'ready' : 'not-ready');
+      appendText(
+        readinessEl,
+        'strong',
+        readiness.ready ? 'MCP Apps server-ready' : 'MCP Apps server-readiness incomplete',
+      );
+      const meta = appendText(
+        readinessEl,
+        'p',
+        [readiness.app && readiness.app.protocolVersion, readiness.resource && readiness.resource.mimeType]
+          .filter(Boolean)
+          .join(' / '),
+        'status',
+      );
+      if (!meta.textContent) meta.remove();
+      const list = document.createElement('ul');
+      for (const check of Array.isArray(readiness.checklist) ? readiness.checklist : []) {
+        const item = document.createElement('li');
+        item.className = check && check.ok ? 'check ok' : 'check fail';
+        item.textContent = (check && check.ok ? 'OK ' : 'Missing ') + (check && check.label ? check.label : 'readiness check');
+        list.appendChild(item);
+      }
+      readinessEl.appendChild(list);
+    };
+    const render = () => {
+      const payload = state.result && typeof state.result === 'object'
+        ? (state.result.structuredContent || state.result)
+        : state.result;
+      renderReadiness(payload);
+      structuredEl.textContent = payload
+        ? JSON.stringify(payload, null, 2)
+        : 'No tool result received yet.';
+      statusEl.textContent = payload
+        ? 'Rendered structured tool result.'
+        : (state.hostCapabilities ? 'Connected. Waiting for tool result.' : 'Initializing MCP Apps host bridge.');
+    };
+    const sendSizeChanged = (() => {
+      let last = '';
+      return () => {
+        const body = document.body;
+        const root = document.documentElement;
+        const width = Math.ceil(Math.max(body.scrollWidth, root.scrollWidth, root.clientWidth));
+        const height = Math.ceil(Math.max(body.scrollHeight, root.scrollHeight, root.clientHeight));
+        const key = width + 'x' + height;
+        if (key === last || width <= 0 || height <= 0) return;
+        last = key;
+        notify('ui/notifications/size-changed', { width, height });
+      };
+    })();
+    const connect = async () => {
+      if (!hasParent()) {
+        statusEl.textContent = 'Standalone preview. Waiting for embedded MCP Apps host.';
+        return;
+      }
+      try {
+        const result = await request('ui/initialize', {
+          protocolVersion: boot.protocolVersion,
+          appInfo: {
+            name: 'knowgrph-mcp-app',
+            title: 'Knowgrph Agent Ready',
+            version: '0.1.0',
+            description: 'Interactive view for the Knowgrph agent-ready MCP surface.',
+            websiteUrl: boot.appUrl || undefined,
+          },
+          appCapabilities: {
+            availableDisplayModes: ['inline', 'fullscreen'],
+          },
+        });
+        state.hostCapabilities = result && result.hostCapabilities ? result.hostCapabilities : {};
+        updateHost(result && result.hostContext ? result.hostContext : {});
+        notify('ui/notifications/initialized', {});
+        sendSizeChanged();
+        statusEl.textContent = 'Connected. Waiting for tool result.';
+      } catch (error) {
+        statusEl.textContent = error && error.message ? error.message : 'Host initialization failed.';
+      }
+    };
+    window.addEventListener('message', (event) => {
+      const message = event.data;
+      if (!message || message.jsonrpc !== '2.0') return;
+      if (Object.prototype.hasOwnProperty.call(message, 'id') && (Object.prototype.hasOwnProperty.call(message, 'result') || Object.prototype.hasOwnProperty.call(message, 'error'))) {
+        const pendingRequest = pending.get(message.id);
+        if (!pendingRequest) return;
+        pending.delete(message.id);
+        if (message.error) pendingRequest.reject(new Error(message.error.message || 'MCP Apps request failed'));
+        else pendingRequest.resolve(message.result);
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-input') {
+        state.input = message.params && (message.params.arguments || message.params);
+        statusEl.textContent = 'Received tool input.';
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-input-partial') {
+        state.input = { ...(state.input || {}), ...(message.params && (message.params.arguments || message.params) || {}) };
+        statusEl.textContent = 'Received partial tool input.';
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-result') {
+        state.result = message.params || null;
+        render();
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-cancelled') {
+        statusEl.textContent = message.params && message.params.reason
+          ? 'Tool cancelled: ' + message.params.reason
+          : 'Tool cancelled.';
+        return;
+      }
+      if (message.method === 'ui/notifications/host-context-changed') {
+        updateHost(message.params || {});
+        return;
+      }
+      if (message.method === 'ui/resource-teardown') {
+        if (message.id !== undefined && message.id !== null) post({ id: message.id, result: {} });
+      }
+    });
+    document.getElementById('refresh')?.addEventListener('click', requestTool);
+    render();
+    connect();
+    if (typeof ResizeObserver === 'function') {
+      new ResizeObserver(sendSizeChanged).observe(document.body);
+    } else {
+      window.addEventListener('resize', sendSizeChanged);
+    }
+  })();
+  </script>
+</body>
+</html>
