@@ -1,0 +1,1 @@
+const r=new RegExp("(^|\\n)\\s*(?:>+|```)|!\\[[^\\]]*]\\([^)]+?\\)|(?<!!)\\[[^\\]]+]\\([^)]+?\\)|(^|[^\\\\])\\$[^$\\n]+\\$|<\\s*(?:iframe|img|video)\\b","i");function t(n){return r.test(String(n||""))}export{t as h};

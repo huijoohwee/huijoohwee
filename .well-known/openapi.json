@@ -252,22 +252,72 @@
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-source-files.md": {
+    "/knowgrph/.well-known/agent-skills/knowgrph-agent-ready.md": {
       "get": {
-        "summary": "Read the Knowgrph published Source Files skill markdown",
+        "summary": "Read the knowgrph-agent-ready agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for published Source Files and shared documents"
+            "description": "Agent skill markdown for knowgrph-agent-ready"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-webmcp-readiness.md": {
+    "/knowgrph/.well-known/agent-skills/knowgrph-chat-to-canvas.md": {
       "get": {
-        "summary": "Read the Knowgrph WebMCP readiness skill markdown",
+        "summary": "Read the knowgrph-chat-to-canvas agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for WebMCP lifecycle and discovery readiness"
+            "description": "Agent skill markdown for knowgrph-chat-to-canvas"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-commerce-readiness.md": {
+      "get": {
+        "summary": "Read the knowgrph-commerce-readiness agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-commerce-readiness"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md": {
+      "get": {
+        "summary": "Read the knowgrph-mcp-local agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-mcp-local"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-research-visual.md": {
+      "get": {
+        "summary": "Read the knowgrph-research-visual agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-research-visual"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-source-files.md": {
+      "get": {
+        "summary": "Read the knowgrph-source-files agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-source-files"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-strybldr.md": {
+      "get": {
+        "summary": "Read the knowgrph-strybldr agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-strybldr"
           }
         }
       }

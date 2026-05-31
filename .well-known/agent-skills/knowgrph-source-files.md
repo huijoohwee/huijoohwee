@@ -1,16 +1,92 @@
-# Knowgrph Published Documents Skill
+# Knowgrph Source Files Skill
 
-Use this skill when an agent needs to discover, read, or inspect published Knowgrph Source Files and shared documents.
+Use this skill when: Discover, read, inspect, and route published Source Files and shared documents through the canonical storage and document-structure owners.
+
+## Contract
+
+- Vdeoxpln id: `knowgrph-source-files`
+- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Semantic key: `kgvx_38804667`
+- Scope: `read-only-published`
+- Mutation boundary: `read-only`
+
+## Triggers
+
+- inspect document structure
+- published documents
+- read markdown
+- shared document
+- source files
+
+## Inputs
+
+- canonical path
+- published markdown
+- share token
+- share URL
+- workspace document
+
+## Outputs
+
+- document structure report
+- published markdown
+- source-files index
 
 ## Tools
 
-- list_source_files: fetch https://airvio.co/api/storage/source-files.
-- read_source_file: fetch https://airvio.co/api/storage/doc-default/{canonicalPath} by default, or https://airvio.co/api/storage/doc/{workspaceId}/{canonicalPath} for an explicit workspace.
-- read_shared_document: resolve a Knowgrph share token or public share/document URL, then fetch the canonical published markdown document from storage.
-- inspect_shared_document_structure: inspect published Knowgrph shared-document frontmatter/body structure from a share token or public share/document URL.
+Published tools:
+- inspect_shared_document_structure
+- list_source_files
+- read_shared_document
+- read_source_file
 
-## Scope
+Browser-local tools:
+- inspect_local_source_files_snapshot
 
-- Shared read-only surface across HTTP MCP, MCP server-card metadata, and deployed HTML WebMCP fallback.
-- Public/browser URLs stay canonical on https://airvio.co/api/storage/*.
-- Server-side Pages reads use https://knowgrph-storage.huijoohwee.workers.dev to avoid custom-domain self-fetch rewrite failures.
+Local MCP tools:
+- knowgrph.vdeoxpln.list
+
+## Workflow
+
+- Resolve source identity from storage, share token, or canonical path.
+- Fetch through published storage/document executors.
+- Inspect structure with the shared document-structure owner.
+- Return read-only artifacts without graph mutation.
+
+## Source Owners
+
+- canvas/src/features/agent-ready/publishedToolExecutors.mjs
+- canvas/src/features/agent-ready/sharedDocumentStructureInspection.mjs
+- canvas/src/features/source-files/sourceFilesSignatures.ts
+- canvas/src/features/workspace-fs/workspaceFs.ts
+- cloudflare/pages/knowgrph-agent-ready.mjs
+
+## Artifact Policy
+
+- Persistence: `published-read-only`
+- Graph materialization: `none`
+- Semantic-key inputs:
+- workspaceId
+- canonicalPath
+- shareToken
+- toolContract
+
+## AI Policy
+
+- Mode: `none`
+- Max attempts: `0`
+- Token budget: `0`
+- Fallback: Return source-read or structure errors without model calls.
+
+## Validation
+
+- agent-ready:check
+- pages:check-sync
+- vdeoxpln:check
+
+## Guardrails
+
+- Keep behavior source-owned in the listed Knowgrph owners.
+- Do not add compatibility aliases for stale vdeoxpln ids.
+- Do not route by absolute paths, demo filenames, provider keys, or public route labels.
+- Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

@@ -309,14 +309,14 @@ All weights are frontmatter fields. Swap one value, all C* scores recompute.
 ### TOPSIS results
 
 | Rank | Location | C* | Decisive signal |
-|------|----------|-----|----------------|
-| 🥇 1 | **Bukit Panjang** | **0.82** | Zero cafe competitors · Bukit Panjang DTL MRT **16-second walk** · C8=18 commercial buildings (highest) |
-| 🥈 2 | **Punggol** | **0.78** | C1=1 (one traditional coffeeshop only) · C3=22 HDB residential POIs · young growing demographic |
-| 🥉 3 | **Woodlands** | **0.71** | C1=0 · causeway commuter flow · education/childcare ecosystem → family catchment |
+| ---- | -------- | --- | ------------ |
+| 🥇 1 | Punggol | 0.78 | C1=1 (one traditional coffeeshop only) · C3=22 HDB residential POIs · young growing demographic |
+| 🥉 3 | Bukit Panjang | 0.82 | Zero cafe competitors · Bukit Panjang DTL MRT 16-second walk · C8=18 commercial buildings (highest) |
+| 🥉 3 | Woodlands | 0.71 | C1=0 · causeway commuter flow · education/childcare ecosystem → family catchment |
 | 4 | Yishun | 0.62 | Northpoint City mall anchor (C4=25) · C1=0 · high F&B saturation (C2=12) offsets |
 | 5 | Jurong West | 0.41 | Major transport hub · C2=20 (worst saturation) · longest MRT walk (~14 min) |
-| 6 | Sengkang | 0.22 | C1=6 cafes incl. 2 Starbucks · Compass One fully served — **do not enter** |
-| — | CBD | 0.09 | Baseline saturation reference only |
+| 6 | Sengkang | 0.22 | C1=6 cafes incl. 2 Starbucks · Compass One fully served — do not enter |
+|  | CBD | 0.09 | Baseline saturation reference only |
 
 ### Sensitivity analysis — weight shifts change the winner
 

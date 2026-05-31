@@ -3,18 +3,228 @@
   "updated_at": "2026-05-23",
   "skills": [
     {
-      "name": "knowgrph-source-files",
+      "name": "knowgrph-agent-ready",
       "type": "markdown",
-      "description": "Discover and inspect published Knowgrph Source Files and shared documents.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-source-files.md",
-      "sha256": "0296210a8ec68f06e1e51a6f57aede56dd3483009be06a1c7f10c287a44cb78b"
+      "description": "Inspect Knowgrph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-agent-ready.md",
+      "sha256": "6bdb185fc1a337bc605f5b4ac568f6b5c6fbada28cc8d2d19b278588da6e29b1",
+      "vdeoxpln": {
+        "id": "knowgrph-agent-ready",
+        "title": "Knowgrph Agent Ready",
+        "scope": "read-only-published-and-browser-local",
+        "mutation": "read-only",
+        "semanticKey": "kgvx_91081c1b",
+        "tools": {
+          "published": [
+            "inspect_agent_surface"
+          ],
+          "browserLocal": [
+            "inspect_local_2d_zoom_viewport",
+            "inspect_local_3d_camera_pose",
+            "inspect_local_3d_layout_positions",
+            "inspect_local_canvas_snapshot",
+            "inspect_local_canvas_topology",
+            "inspect_local_chat_pipeline_state",
+            "inspect_local_editor_workspace_state",
+            "inspect_local_mainpanel_chat_canvas_pipeline",
+            "inspect_local_mainpanel_state",
+            "inspect_local_settings_chat_readiness",
+            "inspect_local_source_files_snapshot",
+            "inspect_local_workspace_document"
+          ],
+          "local": [
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "browser-webmcp",
+          "http-mcp",
+          "pages-agent-skills"
+        ]
+      }
     },
     {
-      "name": "knowgrph-webmcp-readiness",
+      "name": "knowgrph-chat-to-canvas",
       "type": "markdown",
-      "description": "Inspect Knowgrph WebMCP lifecycle, shared deployed MCP tools, and agent-ready metadata.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-webmcp-readiness.md",
-      "sha256": "fcb9a79d2a0ecc9a3a90c1d6eb4befb206e1bf167375b2d1e8806526eb7c3392"
+      "description": "Route AI-assisted graph generation through FloatingPanel Chat, KGC validation, Workspace FS, Source Files, and Canvas apply owners.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-chat-to-canvas.md",
+      "sha256": "3d2b2bfb8d284140de3476a580dd320534388288c7ae950493bf32e2ae42f888",
+      "vdeoxpln": {
+        "id": "knowgrph-chat-to-canvas",
+        "title": "Knowgrph Chat To Canvas",
+        "scope": "browser-local-ai-assisted",
+        "mutation": "browser-local-user-mediated",
+        "semanticKey": "kgvx_27a79174",
+        "tools": {
+          "published": [],
+          "browserLocal": [
+            "inspect_local_canvas_snapshot",
+            "inspect_local_canvas_topology",
+            "inspect_local_chat_pipeline_state",
+            "inspect_local_mainpanel_chat_canvas_pipeline",
+            "inspect_local_workspace_document"
+          ],
+          "local": [
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "browser-webmcp",
+          "mainpanel-mcp"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph-commerce-readiness",
+      "type": "markdown",
+      "description": "Inspect Commerce, payment worker, x402, ACP, UCP, MPP, and readiness metadata without bypassing the shared payment SSOT.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-commerce-readiness.md",
+      "sha256": "f314c4eb5bb52c61865ab29aa64b443461844a662912b9f548e78bec24d009d6",
+      "vdeoxpln": {
+        "id": "knowgrph-commerce-readiness",
+        "title": "Knowgrph Commerce Readiness",
+        "scope": "read-only-published-and-browser-local",
+        "mutation": "read-only",
+        "semanticKey": "kgvx_73c86f80",
+        "tools": {
+          "published": [
+            "inspect_agent_surface"
+          ],
+          "browserLocal": [
+            "inspect_local_mainpanel_state",
+            "inspect_local_settings_chat_readiness"
+          ],
+          "local": [
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "browser-webmcp",
+          "mainpanel-mcp",
+          "pages-agent-skills"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph-mcp-local",
+      "type": "markdown",
+      "description": "Expose local UI launch, pipeline, GraphRAG, superagent, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
+      "sha256": "23da8281deb4aec98549eb150ae31c57ed65b8d2e1957e274656cfaf303305ad",
+      "vdeoxpln": {
+        "id": "knowgrph-mcp-local",
+        "title": "Knowgrph Local MCP",
+        "scope": "local-stdio",
+        "mutation": "local-confirmed",
+        "semanticKey": "kgvx_ce53c914",
+        "tools": {
+          "published": [],
+          "browserLocal": [],
+          "local": [
+            "knowgrph.browser_api.run",
+            "knowgrph.graphrag_pipeline",
+            "knowgrph.pipeline",
+            "knowgrph.superagent.run",
+            "knowgrph.ui.launch",
+            "knowgrph.ui.stop",
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "local-mcp-docs"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph-research-visual",
+      "type": "markdown",
+      "description": "Create file-backed research visual workflows from source material using Knowgrph parsing, Source Files, Storyboard, renderer, and chat owners.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-research-visual.md",
+      "sha256": "abad05ef97c357456d60432adc01bf1a663e582a656a454fd586bdaf8b20b69e",
+      "vdeoxpln": {
+        "id": "knowgrph-research-visual",
+        "title": "Knowgrph Research Visual",
+        "scope": "browser-local-ai-assisted",
+        "mutation": "browser-local-user-mediated",
+        "semanticKey": "kgvx_d426c8e4",
+        "tools": {
+          "published": [],
+          "browserLocal": [
+            "inspect_local_canvas_topology",
+            "inspect_local_chat_pipeline_state",
+            "inspect_local_source_files_snapshot"
+          ],
+          "local": [
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "browser-webmcp",
+          "mainpanel-mcp"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph-source-files",
+      "type": "markdown",
+      "description": "Discover, read, inspect, and route published Source Files and shared documents through the canonical storage and document-structure owners.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-source-files.md",
+      "sha256": "8af3434a18a2b59b6b91a7a786850c893d45e2115704932c2a342eef111d1ed9",
+      "vdeoxpln": {
+        "id": "knowgrph-source-files",
+        "title": "Knowgrph Source Files",
+        "scope": "read-only-published",
+        "mutation": "read-only",
+        "semanticKey": "kgvx_38804667",
+        "tools": {
+          "published": [
+            "inspect_shared_document_structure",
+            "list_source_files",
+            "read_shared_document",
+            "read_source_file"
+          ],
+          "browserLocal": [
+            "inspect_local_source_files_snapshot"
+          ],
+          "local": [
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "http-mcp",
+          "pages-agent-skills",
+          "webmcp-html-fallback"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph-strybldr",
+      "type": "markdown",
+      "description": "Turn image or media source units into editable Storyboard cards and bounded media handoff artifacts through Strybldr and shared renderer owners.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-strybldr.md",
+      "sha256": "ced1fb97fb0a8f882e63c0e37fa86e28040ea9614fd83a39866c51dac1e8060e",
+      "vdeoxpln": {
+        "id": "knowgrph-strybldr",
+        "title": "Knowgrph Strybldr",
+        "scope": "browser-local-source-backed",
+        "mutation": "browser-local-user-mediated",
+        "semanticKey": "kgvx_557e0e61",
+        "tools": {
+          "published": [],
+          "browserLocal": [
+            "inspect_local_canvas_snapshot",
+            "inspect_local_canvas_topology",
+            "inspect_local_source_files_snapshot"
+          ],
+          "local": [
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "browser-webmcp",
+          "mainpanel-mcp"
+        ]
+      }
     }
   ]
 }
