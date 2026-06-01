@@ -1,404 +1,587 @@
 ---
-title: "Knowgrph — Map it. Score it. Decide it."
-id: md:knowgrph-readme-v4
-author: joohwee
-institution: "Knowgrph — airvio.co/knowgrph"
-date: "2026-05-03"
+title: "Knowgrph · Video Demo — Three Skies (RoboDrone X1 · Frontier · Tempest · RoboTown)"
+graphId: "md:knowgrph-video-robodrone-demo-v1"
+doc_type: "Video Script — Director Brief"
+date: "2026-05-01"
+lang: en-US
+
 kgCanvasSurfaceMode: "2d"
-kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "d3"
+kgCanvas2dRenderer: "flowEditor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
-kgMultiDimTableModeEnabled: false
-kgDocumentStructureBaselineLock: false
-index:
-  legend:
-    nodes:
-      problem:   "#c0392b — red    — pain point / market gap / decision failure"
-      insight:   "#d68910 — amber  — reframe / principle / scored signal"
-      product:   "#1a6fa8 — blue   — tool / pipeline stage / canvas layer"
-      actor:     "#1e8449 — green  — user segment / stakeholder / decision-maker"
-      output:    "#7d3c98 — purple — artifact / scored report / data export"
-      business:  "#117a65 — teal   — revenue line / model tier"
-      milestone: "#5d6d7e — grey   — roadmap item"
-      mcp:       "#0e4f6b — navy   — MCP tool / external API connector"
-      signal:    "#1a7f5a — forest — ranked result / TOPSIS score / market signal"
-    edges:
-      user_flow:   "solid #2980b9  2px   — actor interacts with product surface"
-      work_flow:   "dashed #d68910 2px   — pitch section narrative progression"
-      data_flow:   "dotted #7d3c98 1.5px — artifact passes between pipeline stages"
-      mcp_flow:    "solid #0e4f6b  1.5px — MCP tool call → collected data"
-      signal_flow: "dotted #1a7f5a 1.5px — ranked signal feeds decision layer"
-  mermaid: |
-    %%{init:{
-      "theme":"base",
-      "themeVariables":{
-        "primaryColor":"#1a1a2e","primaryTextColor":"#f0f0f0",
-        "primaryBorderColor":"#444","lineColor":"#888",
-        "secondaryColor":"#16213e","tertiaryColor":"#0f3460",
-        "edgeLabelBackground":"#1a1a2e"
-      }
-    }}%%
-    flowchart TD
 
-      classDef problem   fill:#c0392b,color:#fff,stroke:#922b21,stroke-width:1.5px
-      classDef insight   fill:#d68910,color:#fff,stroke:#9a6301,stroke-width:1.5px
-      classDef product   fill:#1a6fa8,color:#fff,stroke:#154f7a,stroke-width:1.5px
-      classDef actor     fill:#1e8449,color:#fff,stroke:#145a32,stroke-width:1.5px
-      classDef output    fill:#7d3c98,color:#fff,stroke:#5b2c6f,stroke-width:1.5px
-      classDef business  fill:#117a65,color:#fff,stroke:#0e6655,stroke-width:1.5px
-      classDef milestone fill:#5d6d7e,color:#fff,stroke:#424f5c,stroke-width:1.5px
-      classDef mcp       fill:#0e4f6b,color:#fff,stroke:#083444,stroke-width:1.5px
-      classDef signal    fill:#1a7f5a,color:#fff,stroke:#125c40,stroke-width:1.5px
+$schema: "kgc-pipeline/v1"
 
-      subgraph S0["① Hook"]
-        TAGLINE["Map it. Score it. Decide it."]:::insight
-        POS["Geo data in · ranked decision out · no analyst required"]:::insight
-      end
+inputs:
+  text_provider_id: "deerflow"
+  # Keep endpoint runtime-resolved from MainPanel Integrations (Dev localhost or Prod Cloudflare Tunnel).
+  text_endpoint_url: ""
+  text_model: "seed-2-0-lite-260228"
+  image_model: "seedream-4-0-250828"
+  video_model: "seedance-1-0-pro-fast-251015"
+  vibe: "vivid, photorealistic, magic-realist, warm cinematic light cross-cutting to surreal multiverse glow, 9:16 vertical, TikTok-native"
+  duration_seconds: 8
+  duration_label: "8s"
+  theme: "a RoboDrone X1 lifts off in three worlds — a Wild West frontier mesa at sunrise, a Caribbean island in a turquoise tempest, a Singapore city skyline at dusk — each world dissolving into its own surreal multiverse the moment the drone clears the horizon; a parent watches proudly from the ground while a child crosses into the world above"
+  script: |
+    US — Sunrise. A boy on a mesa cliff edge launches the drone into an amber sky. It clears the canyon rim. The desert below morphs — ghost herd of mustangs charges across a sky-plain above the mesas, a spectral frontier town floats inverted from the clouds, and the drone leads the stampede through canyon arches of light.
+    CARIBBEAN — Noon storm. A girl on a turquoise island beach launches into the tempest. The drone punches through a wall of rain. Below the surface — a mermaid queen rises, crown of coral, commanding the waves. The girl steers the drone as the mermaid's herald through a cathedral of lightning-lit underwater spires.
+    SG — Dusk. A girl on the Marina Bay promenade launches before Marina Bay Sands. The Merlion morphs — stone to chrome, 100 metres, AI sentinel. Singapore becomes RoboTown — sensor arrays, drone corridors, neural grid bay. The girl ascends to the command position. She pilots the city.
+    Cut back: three parents, three phones, three proud faces. Three worlds. One drone.
+    Text fades in: "One brief. Three multiverses. The drone opens the portal."
+    "airvio.co/knowgrph — Write it. See it. Ship it."
+  location:
+    name: "US Wild West mesa → Caribbean turquoise island → Singapore Marina Bay Sands / RoboTown"
+    short_label: "3-locale-frontier-tempest-robotown"
+    label: "Three-locale traversal: US Wild West canyon mesa · Caribbean island tempest · Singapore MBS / RoboTown"
 
-      subgraph S1["② Problem — Location Decisions Are Still Spreadsheets"]
-        subgraph S1A["Too manual"]
-          P_SHEET["Spreadsheet audits — hours of copy-paste per candidate"]:::problem
-          P_STALE["Stale data — offline reports miss live POI density"]:::problem
-        end
-        subgraph S1B["Too opaque"]
-          P_GUT["Gut-feel site picks — no reproducible scoring model"]:::problem
-          P_SILO["Routing + competition + catchment analysed in separate tools"]:::problem
-        end
-        P_GAP["Decision-maker flying blind — no unified, live, scored view"]:::problem
-      end
+spec:
+  format: kgc-pipeline
+  version: "1.0.0"
+  parser: yaml-frontmatter
+  execution: computing-flow
+  topology: DAG
+  ssot_surfaces: [widget_bundle, pipeline, flow.nodes, flow.edges, mermaid, runner]
 
-      subgraph S2["③ ICP — Local Market Decision-Makers"]
-        subgraph S2A["Who"]
-          ICP_FB["F&B operator — new outlet / expansion"]:::actor
-          ICP_RET["Retailer / pop-up brand — site shortlisting"]:::actor
-          ICP_DEV["Property developer — catchment due diligence"]:::actor
-          ICP_CON["Management consultant — market entry advisory"]:::actor
-        end
-        subgraph S2B["Where — fragmented, data-poor markets"]
-          MKT_SEA["Southeast Asia — SG MY TH ID PH VN"]:::actor
-          MKT_MENA["MENA — AE SA EG"]:::actor
-          MKT_SA["South Asia — IN BD PK"]:::actor
-          MKT_LATAM["Latin America — MX BR CO"]:::actor
-        end
-        subgraph S2C["Situation"]
-          SIT_CAND["Has 5–20 candidate locations · no time to survey all"]:::actor
-          SIT_LOOP["Needs scored shortlist → site visit → final call"]:::insight
-        end
-      end
+widget_bundle:
+  kind: kg:flow:widgetBundle
+  version: 1
+  registry: []
+  graph:
+    type: Graph
+    context: frontmatter-flow
+    metadata: {kind: frontmatter-flow}
+    nodes_ref: [w-text-script, p-text-script, w-img-scene, p-img-scene, w-video-scene, p-video-scene]
+    edges_ref: [e-text-script, e-text-script-srcdoc, e-scene-image, e-scene-to-video-ref, e-video]
+    display:
+      direction: LR
+      edgeType: bezier
+    behavior:
+      drag_pan_zoom_owner: flowEditor-frontmatter-only
+      rich_media_overlay_handlers: flowEditor-frontmatter-only
+      forbid_cross_renderer_proxy: true
 
-      subgraph S3["④ Insight — APIs Know More Than Any Analyst"]
-        I_LIVE["Live POI density = real competition, not last year's survey"]:::insight
-        I_MCP["MCP tools = maps APIs callable in a pipeline, not a browser tab"]:::insight
-        I_TOPSIS["TOPSIS = transparent, weight-tunable, auditable scoring"]:::insight
-        I_AUTO["Swap weight → all C* scores recompute in seconds"]:::insight
-        I_POS["One pipeline. N candidates. One ranked output."]:::insight
-      end
+canvas:
+  auto_layout: true
+  layout_algo: dagre-LR
+  snap_to_grid: true
+  grid_size: 20
+  minimap: true
+  controls: true
+  node_defaults:
+    width: 240
+    height: 90
+  edge_defaults:
+    type: smoothstep
+    animated: true
 
-      subgraph S4["⑤ Product — Site Selection Canvas"]
-        subgraph S4A["Discover — MCP Layer"]
-          MCP_POI["POI Search — keyword · country · density"]:::mcp
-          MCP_NEAR["Nearby Search — radius · rank_by=popularity"]:::mcp
-          MCP_NAV["Routing ETA — walking · driving · cycling profiles"]:::mcp
-        end
-        subgraph S4B["Score — TOPSIS Engine"]
-          SC_MAT["Decision Matrix — m candidates × n criteria"]:::product
-          SC_NORM["Weighted Normalization — w_j × r_ij"]:::product
-          SC_RANK["C* Ranking — D⁻ / (D⁺ + D⁻) per candidate"]:::signal
-        end
-        subgraph S4C["Report Layer"]
-          OUT_RANK["Ranked Site Report — C* scores + sensitivity"]:::output
-          OUT_MAP["Scored Map Canvas — visual heat overlay"]:::output
-          OUT_MD["Markdown export — portable · version-controlled"]:::output
-        end
-      end
+runner:
+  entry: R01
+  exit: R06
+  steps:
+    - seq: R01
+      action: ingest
+      input: "raw file bytes"
+      output: "parsed YAML object"
+      description: "Parse YAML frontmatter; validate $schema == kgc-pipeline/v1; expose __doc."
+    - seq: R02
+      action: resolve
+      input: "__doc"
+      output: "__doc_resolved"
+      description: "Resolve {{key}} interpolation for body and tables; expose __doc_resolved."
+    - seq: R03
+      action: build-graph
+      input: "__doc_resolved"
+      output: "graph { nodes[], edges[] }"
+      description: "Cross-validate SSOT: pipeline[*].node == flow.nodes[*].id.value == mermaid IDs; halt on mismatch."
+    - seq: R04
+      action: compile-compute
+      input: "graph"
+      output: "graph (compiled)"
+      description: "Compile flow.nodes[*].compute.value to functions; mark nodes async if needed."
+    - seq: R05
+      action: traverse
+      input: "graph (compiled)"
+      output: "graph (executed)"
+      description: "Materialize widget nodes + edges; connected values resolve into Rich Media Panel render drivers; no feedback arcs."
+    - seq: R06
+      action: render
+      input: "graph (executed) + mermaid + body"
+      output: "rendered Knowledge Graph Canvas"
+      description: "Render Flow Graph + Pipeline table; apply parseSigil() to cells; auto-layout dagre-LR."
 
-      subgraph S5["⑥ Demo — New Cafe · Singapore · 7 Candidates"]
-        DM_BPJ["🥇 Bukit Panjang  C*=0.82 — zero competition · 16-sec MRT"]:::signal
-        DM_PGL["🥈 Punggol        C*=0.78 — 22 residential POIs · young demo"]:::signal
-        DM_WDL["🥉 Woodlands      C*=0.71 — zero competition · causeway traffic"]:::signal
-        DM_SKG["✗  Sengkang       C*=0.22 — 6 cafes incl. 2 Starbucks"]:::problem
-        DM_CBD["✗  CBD            C*=0.09 — baseline saturation"]:::problem
-        DM_API["23 API calls · 5 MCP tools · 8 criteria · 1 ranked output"]:::product
-      end
+pipeline:
+  - seq: W01
+    node: w-text-script
+    label: "script to prompt breakdown — 3 locale variants"
+    actor: ["user", "AI"]
+    edge_in: "prompt_in"
+    edge_out: "text_out"
+    user_action: "Edit locale variant field and run"
+    sys_event: "TextGeneration returns dual-layer prompts (parent trust + child multiverse) per locale for scene image + final video"
+    data_in: "properties.prompt"
+    data_out: "properties.output + properties.outputSrcDoc"
+    trigger: "run"
+    on_fail: "output unchanged"
+    confidence: high
+    status: TBD
+  - seq: W02
+    node: w-img-scene
+    label: "image generation — hero locale reference frame"
+    actor: ["user", "AI"]
+    edge_in: "prompt_in"
+    edge_out: "imageUrl"
+    user_action: "Run the scene reference image widget for selected locale"
+    sys_event: "ImageGeneration writes imageUrl for hero multiverse frame"
+    data_in: "properties.prompt + properties.model"
+    data_out: "properties.imageUrl"
+    trigger: "run"
+    on_fail: "imageUrl unchanged"
+    confidence: high
+    status: TBD
+  - seq: W03
+    node: w-video-scene
+    label: "video generation — locale clip"
+    actor: ["user", "AI"]
+    edge_in: "reference_image"
+    edge_out: "videoUrl"
+    user_action: "Run the video widget after reference image exists"
+    sys_event: "VideoGeneration writes videoUrl for 9:16 TikTok-ready locale clip"
+    data_in: "properties.prompt + properties.model + properties.duration + properties.reference_image"
+    data_out: "properties.videoUrl"
+    trigger: "run"
+    on_fail: "videoUrl unchanged"
+    confidence: high
+    status: TBD
 
-      subgraph S6["⑦ Architecture"]
-        A_MCP["MCP Connectors — POI · nearby · navigation"]:::mcp
-        A_SC["TOPSIS Engine — Python · NetworkX · DuckDB"]:::product
-        A_FE["React 18 + TS + Vite — canvas + map overlay"]:::product
-        A_DB["RxDB — offline-first · version-controlled reports"]:::product
-        A_CF["Cloudflare Pages · Stripe"]:::product
-      end
+mermaid: |
+  %%{init: {"theme": "base", "themeVariables": {"primaryColor":"#E1F5EE","primaryTextColor":"#085041","primaryBorderColor":"#1D9E75","lineColor":"#5F5E5A","secondaryColor":"#E6F1FB","tertiaryColor":"#FAEEDA"}}}%%
+  flowchart LR
+    classDef widget fill:#E1F5EE,stroke:#1D9E75,color:#085041,stroke-width:1.5px
+    classDef panel  fill:#EAF3DE,stroke:#639922,color:#27500A,stroke-width:1.5px
 
-      subgraph S7["⑧ Business Model"]
-        B_REP["Per-report — pay-per-scored-shortlist"]:::business
-        B_SUB["Workspace subscription — unlimited scoring · saved canvases"]:::business
-        B_API["API tier — embed scorer in existing tools"]:::business
-        B_CON["Advisory — custom weight models per industry vertical"]:::business
-      end
+    w-text-script["Text Script Widget\nTextGeneration\n{{inputs.text_model}}"]
+    p-text-script["Rich Media Panel\nText · Script"]
+    w-img-scene["Image Widget\nScene Reference\n{{inputs.image_model}}"]
+    p-img-scene["Rich Media Panel\nImage · Scene"]
+    w-video-scene["Video Widget\nVideoGeneration\n{{inputs.video_model}}\n{{inputs.duration_label}}"]
+    p-video-scene["Rich Media Panel\nVideo · Scene"]
 
-      subgraph S8["⑨ Roadmap"]
-        R_NOW["Now — MCP pipeline · TOPSIS scorer · Markdown report · Stripe"]:::milestone
-        R_NEXT["Next — scored map canvas · multi-provider geo adapter · batch candidates"]:::milestone
-        R_LATER["Later — rent-index integration · real-time rescore · collab workspace"]:::milestone
-      end
+    w-text-script -->|text_out → output| p-text-script
+    w-img-scene -->|imageUrl → imageUrl| p-img-scene
+    w-img-scene -->|imageUrl → reference_image| w-video-scene
+    w-video-scene -->|videoUrl → videoUrl| p-video-scene
 
-      subgraph S9["⑩ The Ask"]
-        ASK_DP["Design partners — F&B / retail operators with live site decisions"]:::actor
-        ASK_GEO["Geo API access — maps POI + routing connectors per market"]:::mcp
-        ASK_DATA["Ground-truth datasets — site visits to validate C* predictions"]:::output
-        ASK_DIST["Distribution — property consultants · franchise networks · VC portfolio ops"]:::actor
-      end
+    class w-text-script,w-img-scene,w-video-scene widget
+    class p-text-script,p-img-scene,p-video-scene panel
 
-      %% USER FLOW
-      ICP_FB -->|"shortlists candidates"| MCP_POI
-      ICP_RET -->|"scopes market"| MCP_NEAR
-      ICP_CON -->|"advises on"| OUT_RANK
-      SIT_CAND -->|"inputs to"| SC_MAT
+flow:
+  direction: {key: direction, type: string, value: LR}
+  edgeType: {key: edgeType, type: string, value: bezier}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
+  computed: {key: computed, type: boolean, value: true}
 
-      %% WORK FLOW
-      S0 -.->|"frames"| S1
-      S1 -.->|"scopes ICP"| S2
-      S2 -.->|"motivates"| S3
-      S3 -.->|"enables"| S4
-      S4 -.->|"shown by"| S5
-      S5 -.->|"runs on"| S6
-      S6 -.->|"monetised via"| S7
-      S7 -.->|"delivered by"| S8
-      S8 -.->|"closes"| S9
+  nodes:
+    - id: {key: id, type: string, value: "w-text-script"}
+      type: {key: type, type: string, value: "TextGeneration"}
+      label: {key: label, type: string, value: "Text Script Widget"}
+      phase: {key: phase, type: string, value: "generate"}
+      actor: {key: actor, type: array, value: ["user", "AI"]}
+      handles: {key: handles, type: object, value: {target: ["prompt_in"], source: ["text_out", "outputSrcDoc"]}}
+      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoScript"}
+      chatProvider: {key: chatProvider, type: string, value: "{{inputs.text_provider_id}}"}
+      chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: "{{inputs.text_endpoint_url}}"}
+      chatModel: {key: chatModel, type: select, value: "{{inputs.text_model}}"}
+      chatThinkingType: {key: chatThinkingType, type: select, value: "disabled"}
+      chatReasoningEffort: {key: chatReasoningEffort, type: select, value: "minimal"}
+      chatStream: {key: chatStream, type: boolean, value: true}
+      prompt: {key: prompt, type: string, value: "Generate dual-layer prompts for (1) one hero locale scene reference image and (2) the final video. Parent trust layer: safety badges, crash-proof shell, obstacle-sense, 20-min flight time. Child multiverse layer: locale-specific adventure scene. Use: vibe={{inputs.vibe}}, duration={{inputs.duration_label}}, location={{inputs.location.name}}, theme={{inputs.theme}}. Script: {{inputs.script}}. Output as markdown with explicit sections: Scene Image Prompt, Video Prompt."}
 
-      %% MCP FLOW
-      MCP_POI -->|"poi_density"| SC_MAT
-      MCP_NEAR -->|"competition_count"| SC_MAT
-      MCP_NAV -->|"eta_minutes"| SC_MAT
-      SC_MAT -->|"normalize · weight"| SC_NORM
-      SC_NORM -->|"C* per candidate"| SC_RANK
+    - id: {key: id, type: string, value: "p-text-script"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Panel — Text (Script)"}
+      phase: {key: phase, type: string, value: "render"}
+      actor: {key: actor, type: array, value: ["system", "user"]}
+      handles: {key: handles, type: object, value: {target: ["output", "outputSrcDoc"], source: ["output", "outputSrcDoc"]}}
+      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      output: {key: output, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
 
-      %% DATA FLOW
-      SC_RANK -->|"ranked signal"| OUT_RANK
-      SC_RANK -->|"heat scores"| OUT_MAP
-      OUT_RANK -->|"export"| OUT_MD
-      A_MCP -->|"live calls"| MCP_POI
-      A_MCP -->|"live calls"| MCP_NEAR
-      A_MCP -->|"live calls"| MCP_NAV
+    - id: {key: id, type: string, value: "w-img-scene"}
+      type: {key: type, type: string, value: "ImageGeneration"}
+      label: {key: label, type: string, value: "Image Widget — Scene Reference"}
+      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "imageGeneration"}
+      model: {key: model, type: select, value: "{{inputs.image_model}}"}
+      prompt: {key: prompt, type: textarea, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.label}}; {{inputs.theme}}. Script: {{inputs.script}}. Hero frame: CARIBBEAN locale — girl on turquoise island beach launching RoboDrone X1 into storm, mermaid queen rising from churning sea below, coral spire cathedral lit by lightning, 9:16 vertical."}
+      size: {key: size, type: select, value: "2K"}
+      output_format: {key: output_format, type: select, value: "jpeg"}
+      response_format: {key: response_format, type: select, value: "b64_json"}
+      optimize_prompt_options: {key: optimize_prompt_options, type: select, value: "fast"}
+      aspect_ratio: {key: aspect_ratio, type: number, value: 0.5625}
+      stream: {key: stream, type: boolean, value: true}
+      watermark: {key: watermark, type: boolean, value: false}
+      seed: {key: seed, type: number, value: 0}
+      guidance_scale: {key: guidance_scale, type: number, value: 0}
+      reference_image: {key: reference_image, type: string, value: ""}
+      handles: {key: handles, type: object, value: {target: ["reference_image"], source: ["imageUrl"]}}
+      phase: {key: phase, type: string, value: "generate"}
+      actor: {key: actor, type: array, value: ["user", "AI"]}
+
+    - id: {key: id, type: string, value: "p-img-scene"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Panel — Image (Scene)"}
+      phase: {key: phase, type: string, value: "render"}
+      actor: {key: actor, type: array, value: ["system", "user"]}
+      handles: {key: handles, type: object, value: {target: ["imageUrl", "outputSrcDoc"], source: ["imageUrl", "outputSrcDoc"]}}
+      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      imageUrl: {key: imageUrl, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+
+    - id: {key: id, type: string, value: "w-video-scene"}
+      type: {key: type, type: string, value: "VideoGeneration"}
+      label: {key: label, type: string, value: "Video Widget — Scene"}
+      phase: {key: phase, type: string, value: "generate"}
+      actor: {key: actor, type: array, value: ["user", "AI"]}
+      handles: {key: handles, type: object, value: {target: ["reference_image"], source: ["videoUrl"]}}
+      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoGeneration"}
+      model: {key: model, type: select, value: "{{inputs.video_model}}"}
+      prompt: {key: prompt, type: string, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.name}}; {{inputs.theme}}. Script: {{inputs.script}}"}
+      ratio: {key: ratio, type: select, value: "9:16"}
+      resolution: {key: resolution, type: select, value: "480p"}
+      duration: {key: duration, type: number, value: "{{inputs.duration_seconds}}"}
+      generate_audio: {key: generate_audio, type: boolean, value: false}
+      draft: {key: draft, type: boolean, value: true}
+      camera_fixed: {key: camera_fixed, type: boolean, value: false}
+      image_url_url: {key: image_url_url, type: select, value: "base64"}
+      reference_image: {key: reference_image, type: string, value: ""}
+
+    - id: {key: id, type: string, value: "p-video-scene"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Panel — Video (Scene)"}
+      phase: {key: phase, type: string, value: "render"}
+      actor: {key: actor, type: array, value: ["system", "user"]}
+      handles: {key: handles, type: object, value: {target: ["videoUrl", "outputSrcDoc"], source: ["videoUrl", "outputSrcDoc"]}}
+      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      videoUrl: {key: videoUrl, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+
+  edges:
+    - {id: e-text-script, source: w-text-script, sourceHandle: text_out, target: p-text-script, targetHandle: output, label: "text_out → output", animated: true}
+    - {id: e-text-script-srcdoc, source: w-text-script, sourceHandle: outputSrcDoc, target: p-text-script, targetHandle: outputSrcDoc, label: "outputSrcDoc → outputSrcDoc", animated: true}
+    - {id: e-scene-image, source: w-img-scene, sourceHandle: imageUrl, target: p-img-scene, targetHandle: imageUrl, label: "imageUrl → imageUrl", animated: true}
+    - {id: e-scene-to-video-ref, source: w-img-scene, sourceHandle: imageUrl, target: w-video-scene, targetHandle: reference_image, label: "imageUrl → reference_image", animated: true}
+    - {id: e-video, source: w-video-scene, sourceHandle: videoUrl, target: p-video-scene, targetHandle: videoUrl, label: "videoUrl → videoUrl", animated: true}
+
+director_brief:
+  title: "Three Skies"
+  runtime: "30 seconds"
+  format: "9:16 vertical · 1080p · no dialogue · no voiceover · no subtitles"
+  score: "Slide-guitar Americana lo-fi (0–10s) → steel-drum tempest swell (10–20s) → cold synth ascent (20–27s) → silence (27–28s) → single warm resolution chord (28–30s)"
+  score_note: "Score transitions with each world-shift — not with the drone launch. The music crosses the portal, not the child."
+  conceptual_spine: "Three children in three worlds each launch the same RoboDrone X1. The moment each drone clears its horizon — mesa rim, storm wall, city skyline — reality folds into a private multiverse. The parent on the ground sees the sky. The child in the sky enters another world. The recursive reveal: every world was always a node on a canvas. The brief was always building them."
+
+  shots:
+    - shot: S01
+      timecode: "00:00–00:10"
+      locale: "US · Wild West canyon mesa, sunrise"
+      frame_label: "LAUNCH — The Ghost Herd Rides"
+      description: "Amber sunrise. A boy, 11, stands at the edge of a sandstone mesa cliff. The canyon drops away below him — ochre walls, sage, the silence before heat. He holds the controller in both hands, squints into the light, and launches the RoboDrone X1. It clears the mesa rim. And the moment it does — the desert below transforms. A ghost herd of wild mustangs materialises on a sky-plain above the canyon, translucent and silver, charging through air. A spectral frontier town — water tower, saloon, dirt main street — hangs inverted from the clouds above, its windows glowing amber. The drone banks hard and leads the stampede through cathedral arches of canyon light, the boy leaning into every turn."
+      prompt: "Write the Text Widget output for S01. Produce a concise markdown scene brief with sections: Scene Image Prompt, Video Prompt, Parent Trust Beat, Adventure Hook, Rich Media Panel Summary. Use the US Wild West mesa details, ghost herd multiverse transformation, parent trust proof, and 9:16 vertical magic-realist style. No cultural sensitivities."
+      camera:
+        shot_type: "Wide Establishing → Low Drone POV → Tracking Follow"
+        lens: "28mm"
+        movement: "wide on child silhouetted against sunrise canyon, push in as drone launches, cut to low drone POV tracking through ghost herd stampede, banking through canyon light arches"
+        aperture: "T2"
+        lighting: "amber sunrise backlight on mesa rim; silver-ghost translucency on mustang herd; warm gold bloom through canyon arch formations; inverted frontier town glows amber from above"
+        vfx: "ghost mustang herd — translucent silver particle mane trails; terrain-sky plane inversion for frontier town; canyon arch light beam composites; drone banking physics with motion blur; mesa rim edge horizon fold transition"
+      image_prompt: "Boy on sandstone mesa cliff edge at amber sunrise launching small consumer drone, Wild West canyon below with ochre walls, ghost herd of translucent silver wild mustangs charging across sky-plain above canyon, inverted spectral frontier town hanging from clouds with glowing amber windows, drone banking through cathedral canyon light arches, magic-realist, photorealistic, 9:16 vertical"
+      video_prompt: "Wide shot boy silhouetted on mesa cliff at sunrise, drone launches and clears rim, cut to low drone POV — translucent silver ghost mustang herd materialises charging across sky-plain above the canyon, inverted frontier town glows amber from overhead clouds, drone banks hard leading the stampede through canyon arch light beams, boy leans into controller, amber cinematic backlight, 9:16 vertical, magic-realist"
+      duration: "10s"
+      adventure_hook: "Lead the ghost herd. Own the frontier."
+      parent_trust: "obstacle-sense · 20-min flight · crash-proof shell"
+
+    - shot: S02
+      timecode: "00:10–00:20"
+      locale: "Caribbean · turquoise island, noon tempest"
+      frame_label: "PIERCE — The Mermaid Queen Commands"
+      description: "Noon storm. A Caribbean girl, 10, stands barefoot on a white-sand beach as a wall of tropical rain sweeps in from the turquoise sea. Palm trees bend. The water churns jade and white. She launches the RoboDrone X1 directly into the storm wall — the drone punches through the curtain of rain and emerges above the tempest, bright sky above, chaos below. And in the churning water below the surface — visible through a momentary clearing in the waves — a mermaid queen rises: coral crown, bioluminescent scales, commanding. She raises one hand and the waves part. The drone descends as the queen's herald, weaving through a cathedral of lightning-lit underwater spires of coral that erupt from the seafloor, scales catching each bolt."
+      prompt: "Write the Text Widget output for S02. Produce a concise markdown scene brief with sections: Scene Image Prompt, Video Prompt, Parent Trust Beat, Adventure Hook, Rich Media Panel Summary. Use the Caribbean island tempest details, mermaid queen multiverse transformation, parent trust proof, and 9:16 vertical magic-realist style."
+      camera:
+        shot_type: "Eye-Level Rain Wall → Drone POV Punch-Through → Subsurface Reveal"
+        lens: "35mm"
+        movement: "eye-level on girl facing storm wall, drone launches into rain, cut to drone POV punching through rain curtain into clear sky, tilt down to subsurface reveal of mermaid queen rising, tracking through coral spire cathedral"
+        aperture: "T2"
+        lighting: "flat storm-diffuse on beach; bright turquoise sky above rain wall after punch-through; deep bioluminescent blue-green below surface; lightning strobe on coral spire cathedral"
+        vfx: "rain wall particle curtain with drone punch-through dynamic; subsurface caustic shimmer; mermaid queen composite — bioluminescent scale shader; coral spire cathedral environment; lightning bolt composites with scale reflection; wave surface clearing animation"
+      image_prompt: "Caribbean girl on white sand beach launching drone into approaching tropical storm wall, turquoise sea churning jade and white, drone punching through rain curtain into clear sky above, below the storm waves a mermaid queen rises from the deep — coral crown, bioluminescent blue-green scales, commanding arms raised — cathedral of lightning-lit coral spires erupting from seafloor, magic-realist, photorealistic, 9:16 vertical"
+      video_prompt: "Eye-level shot girl launching drone into tropical storm wall on Caribbean beach, drone punches through rain curtain — bright sky above, chaos below — camera tilts down below surface to reveal mermaid queen rising from seafloor bioluminescent scales and coral crown, waves part at her command, drone descends as herald weaving through coral spire cathedral lit by lightning bolts, 9:16 vertical, cinematic, vivid magic-realist"
+      duration: "10s"
+      adventure_hook: "Fly the tempest. Serve the queen."
+      parent_trust: "obstacle-sense · 20-min flight · crash-proof shell"
+
+    - shot: S03
+      timecode: "00:20–00:27"
+      locale: "SG · Marina Bay Sands / RoboTown"
+      frame_label: "ASCEND — The Merlion Becomes a Sentinel"
+      description: "Dusk. A Singaporean girl, 13, stands on the Marina Bay promenade. City lights just kindling. She launches the RoboDrone X1. It rises before Marina Bay Sands — the three towers, the sky park, the bay. Then: the Merlion shifts. Stone becomes chrome. It stands taller — 100 metres, articulated, AI-sentinel, eyes scanning slow arcs across the bay. The skyline morphs: towers grow sensor arrays, drone corridors materialise between buildings, the bay surface becomes a neural grid of pulsing light. This is RoboTown. The girl's drone ascends to the command position at the apex of the grid. The city's systems align to her heading. She is the pilot. The city waits."
+      prompt: "Write the Text Widget output for S03. Produce a concise markdown scene brief with sections: Scene Image Prompt, Video Prompt, Parent Trust Beat, Adventure Hook, Rich Media Panel Summary. Use the SG Marina Bay RoboTown details, Merlion AI sentinel transformation, parent trust proof, and 9:16 vertical futurist magic-realist style."
+      camera:
+        shot_type: "Low Angle Rise → Wide City Transform"
+        lens: "35mm"
+        movement: "low angle on girl with MBS behind, drone rises past child eyeline, camera cranes up to reveal full city transform — Merlion morph, tower arrays, neural grid bay"
+        aperture: "T1.8"
+        lighting: "blue-hour Singapore dusk on real city; cold chrome-white and electric blue on RoboTown reveal; pulsing neural grid bay surface light emission; Merlion eyes — amber scanning sweep"
+        vfx: "Merlion morph — stone-to-chrome particle transition, height exaggeration ×5; MBS tower sensor array extension composites; drone corridor network materialise between buildings; bay surface neural grid light pulse animation; city scale exaggeration — towers grow 30%; girl's drone apex glow — command position indicator"
+      image_prompt: "Singaporean girl launching drone on Marina Bay promenade at dusk, Marina Bay Sands towers behind her, Merlion transforming from stone to chrome 100m AI sentinel with amber scanning eyes, Singapore skyline morphing into RoboTown with sensor arrays on towers and drone corridors between buildings, Marina Bay surface becoming pulsing neural grid of light, girl's drone ascending to command position apex above grid, blue-hour cold chrome and electric blue tones, futurist magic-realist, photorealistic, 9:16 vertical"
+      video_prompt: "Low angle crane-up following drone rising before Marina Bay Sands at blue-hour dusk, Merlion begins morphing from stone to towering chrome AI sentinel with amber scanning eyes, Singapore skyline transforms into RoboTown — sensor arrays grow on towers, drone corridors materialise, bay surface becomes pulsing neural grid, girl's drone ascends to command apex above the city, city systems align to her heading, cold chrome and electric blue tones, 9:16 vertical, cinematic, futurist magic-realist"
+      duration: "7s"
+      adventure_hook: "Command the future. Your city. Your drone."
+      parent_trust: "obstacle-sense · 20-min flight · crash-proof shell"
+
+    - shot: S04
+      timecode: "00:27–00:29"
+      epoch: "The Canvas Reveal"
+      frame_label: "REVERSE ZOOM — Three Worlds, One Brief"
+      description: "From the SG drone's command apex — exponential pull-back. RoboTown shrinks. Then: three locale scenes appear as glowing nodes on a dark canvas, connected by luminous bezier threads. US frontier mesa node — amber glow. Caribbean tempest node — turquoise glow. SG RoboTown node — electric blue glow. Three parents visible as silhouettes at the base of each node, phones raised. A cursor materialises above the canvas, hovers. The canvas pulses once."
+      prompt: "Write the Text Widget output for S04. Produce a concise markdown scene brief with sections: Canvas Reveal Beat, Edge/Node Summary, Video Prompt, Rich Media Panel Summary. Use the three-world reverse zoom, luminous bezier edges in locale colours amber/turquoise/electric-blue, parent silhouettes, cursor reveal, and dark canvas aesthetic."
+      camera:
+        shot_type: "Rapid Reverse Zoom — Practical→Digital"
+        lens: "transition from 35mm to screen-space CG camera"
+        movement: "exponential pull-back, 0→8m/s"
+        aperture: "N/A (CG transition)"
+        lighting: "screen glow — dark canvas; three node halos: amber (US) · turquoise (Caribbean) · electric blue (SG)"
+        vfx: "full CG canvas environment; three locale nodes materialise with locale-colour halos; luminous bezier edges between nodes; cursor materialise animation; parent silhouettes at node bases; canvas pulse once"
+      image_prompt: "Extreme pull-back zoom revealing three glowing locale nodes on dark creative canvas flow graph — US Wild West mesa amber, Caribbean island turquoise, Singapore RoboTown electric blue — connected by luminous bezier curves, cursor hovering above canvas, parent silhouettes at base of each node, 9:16 vertical, dark canvas aesthetic"
+      video_prompt: "Rapid exponential reverse zoom from Singapore drone command apex to reveal three locale scenes as glowing nodes on dark canvas flow graph, luminous bezier edges in amber turquoise electric-blue, cursor materialises and hovers, three parent silhouettes glow at node bases, canvas pulses once, 9:16 vertical, cinematic, 2s"
+      duration: "2s"
+
+    - shot: S05
+      timecode: "00:29–00:30"
+      epoch: "CTA — Canvas Hold"
+      frame_label: "HOLD — Text Materialises"
+      description: "Canvas holds. Subtle parallax drift across three nodes. Two lines of text fade in over one second. Held for one second. Warm resolution chord sounds."
+      prompt: "Write the Text Widget output for S05. Produce a concise markdown scene brief with sections: CTA Copy, Video Prompt, Canvas Hold Beat, Rich Media Panel Summary. Use the final text materialisation, warm resolution chord, three glowing locale nodes, and airvio.co/knowgrph call to action."
+      camera:
+        shot_type: "Static Hold (CG)"
+        lens: "N/A"
+        movement: "subtle parallax 0.05m/s drift"
+        aperture: "N/A"
+        lighting: "canvas ambient only; three node halos maintain locale colours"
+        vfx: "text fade-in; parallax depth pass; warm chord audio"
+      cta:
+        line_1: "One brief. Three multiverses. The drone opens the portal."
+        line_2: "airvio.co/knowgrph — Write it. See it. Ship it."
+        font: "Cormorant Garamond · Light · tracked +80"
+        colour: "#FFFFFF"
+        fade_in: "1s"
+        hold: "1s"
+      duration: "1s"
 ---
 
-# Knowgrph
+# Video Demo — Three Skies (RoboDrone X1 · Frontier · Tempest · RoboTown)
 
-## Authoring Contract
-
-- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, map-scoring graph metadata, and reusable product narrative inputs.
-- This document is a canonical authored product/readme demo, not a typed normalization fixture.
-- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for geospatial product, architecture, and demo overview docs.
-- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical maps readme example.
-- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
-
-**Candidates in. Ranked decisions out.** A knowledge graph canvas that calls live map APIs via MCP tools, scores every candidate location through a TOPSIS multi-criteria engine, and delivers a portable, auditable site selection report — in minutes, not weeks.
-
-> Not a dashboard. A decision pipeline.
+Director brief, storyboard spec, and shot list for the 30-second three-locale multiverse reel.  
+Pipeline: `{{inputs.text_model}}` → `{{inputs.image_model}}` → `{{inputs.video_model}}`
 
 ---
 
-## The problem — location decisions are still spreadsheets
+## Inputs
 
-Opening a cafe, placing a retail pop-up, entering a new market. The question is always the same: *which location?* The answer is almost always the same process: someone opens a spreadsheet, pastes in addresses, drives around, argues from gut feel, picks.
+- `inputs.vibe`: `{{inputs.vibe}}`
+- `inputs.duration_label`: `{{inputs.duration_label}}` per video generation call
+- `inputs.location.name`: `{{inputs.location.name}}`
+- `inputs.theme`: `{{inputs.theme}}`
 
-| | Status quo | Knowgrph |
+Prompt contract:
+
+```text
+{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.name}}; {{inputs.theme}}.
+Script: {{inputs.script}}
+```
+
+---
+
+## Director Brief
+
+**Title:** Three Skies  
+**Runtime:** 30 seconds  
+**Format:** 9:16 vertical · 1080p · no dialogue · no voiceover · no subtitles  
+**Score:** Slide-guitar Americana lo-fi (0–10s) → steel-drum tempest swell (10–20s) → cold synth ascent (20–27s) → silence (27–28s) → warm resolution chord (28–30s)  
+**Score note:** Score transitions with each world-shift — not with the drone launch. The music crosses the portal, not the child.
+
+**Conceptual spine:** Three children in three worlds each launch the same RoboDrone X1. The moment each drone clears its horizon — mesa rim, storm wall, city skyline — reality folds into a private multiverse. The parent on the ground sees the sky. The child in the sky enters another world. The recursive reveal: every world was always a node on a canvas. *The brief was always building them.*
+
+---
+
+## Storyboard — Shot-by-Shot
+
+### S01 · 0–10s · US · Wild West Canyon Mesa · LAUNCH — The Ghost Herd Rides
+
+**Frame description:** Amber sunrise. Boy on sandstone mesa cliff edge. Drone launches, clears the rim. The desert transforms — ghost mustang herd charges silver across a sky-plain above the canyon. Inverted spectral frontier town hangs from clouds, windows glowing amber. Drone banks leading the stampede through canyon arch light beams.
+
+**Camera:** Wide establishing → low drone POV → tracking follow · 28mm · T2  
+**Score:** Slide-guitar Americana lo-fi  
+**VFX:** Ghost mustang particle mane trails; inverted frontier town composite; canyon arch light beams; mesa rim horizon fold transition  
+**Image prompt seed:** `{{director_brief.shots[0].image_prompt}}`
+
+---
+
+### S02 · 10–20s · Caribbean · Island Tempest · PIERCE — The Mermaid Queen Commands
+
+**Frame description:** Noon tropical storm. Girl on white-sand beach launches drone into the rain wall. Drone punches through into clear sky. Below the churning surface — mermaid queen rises, coral crown, bioluminescent scales, arms raised. Waves part. Drone descends as herald through a lightning-lit cathedral of coral spires.
+
+**Camera:** Eye-level rain wall → drone POV punch-through → subsurface reveal · 35mm · T2  
+**Score:** Steel-drum tempest swell  
+**VFX:** Rain wall punch-through dynamic; mermaid queen bioluminescent scale shader; coral spire cathedral; lightning bolt composites with scale reflection  
+**Image prompt seed:** `{{director_brief.shots[1].image_prompt}}`
+
+---
+
+### S03 · 20–27s · SG · Marina Bay Sands / RoboTown · ASCEND — The Merlion Becomes a Sentinel
+
+**Frame description:** Blue-hour Singapore. Girl launches before Marina Bay Sands. The Merlion morphs — stone to chrome, 100 metres, AI sentinel, amber scanning eyes. Skyline transforms into RoboTown: sensor arrays, drone corridors, neural grid bay. Girl's drone ascends to command apex. The city waits.
+
+**Camera:** Low angle rise → wide city transform · 35mm · T1.8  
+**Score:** Cold synth ascent  
+**VFX:** Merlion stone-to-chrome morph; tower sensor array extension; drone corridor network; neural grid bay pulse animation; command apex glow  
+**Image prompt seed:** `{{director_brief.shots[2].image_prompt}}`
+
+---
+
+### S04 · 27–29s · Canvas Reveal · REVERSE ZOOM — Three Worlds, One Brief
+
+**Frame description:** Exponential pull-back from SG command apex. Three locale nodes appear on dark canvas — amber (US) · turquoise (Caribbean) · electric blue (SG) — connected by luminous bezier threads. Three parent silhouettes at node bases. Cursor materialises. Canvas pulses.
+
+**Camera:** Rapid reverse zoom · 35mm → CG · exponential 0→8m/s  
+**Score:** Silence  
+**VFX:** Full CG canvas; three locale nodes with locale-colour halos; bezier edges; cursor animation; parent silhouettes; canvas pulse
+
+---
+
+### S05 · 29–30s · CTA · HOLD — Text Materialises
+
+**Frame description:** Canvas holds. Parallax drift. Text fades in. Warm chord resolves.
+
+**Camera:** Static hold CG · subtle parallax 0.05m/s  
+**Score:** Warm resolution chord
+
+---
+
+## Pipeline
+
+`W01` generates dual-layer structured prompts per locale (parent trust + child multiverse adventure), `W02` creates the hero reference frame (S02 — Caribbean mermaid queen selected as hero frame for highest visual drama and colour contrast), `W03` generates the final video from that reference.
+
+The `director_brief.shots` list is the frontmatter SSOT for derived shot Text, Image, Video, Rich Media Panel, and typed Edge nodes. S01–S03 are the hero locale row for the Flow Editor Balanced 16:9 layout; S04–S05 are the canvas reveal and CTA row. Toolbar Run all writes widget outputs into existing nodes only; it must not rewrite Balanced widget positions, Rich Media Panel layout, or edge topology.
+
+---
+
+## DeerFlow Agent Harness
+
+The `inputs.text_provider_id: "deerflow"` field activates the DeerFlow super-agent harness as the generation backend. Instead of calling each provider API directly, the Flow Editor delegates to DeerFlow's agent runtime, which orchestrates generation through research, skills, and sandbox execution.
+
+### Agent Orchestration Flow
+
+```mermaid
+sequenceDiagram
+    participant Canvas as Flow Editor Canvas
+    participant Dispatch as Generation Dispatcher
+    participant Agent as DeerFlow Lead Agent
+    participant Research as Deep-Research Skill
+    participant ImageGen as Image-Gen Skill
+    participant VideoGen as Video-Gen Skill
+    participant Sandbox as DeerFlow Sandbox
+    participant Renderer as Rich Media Panel
+
+    Canvas ->> Dispatch : Run W01 (TextGeneration)
+    Dispatch ->> Agent : POST /api/runs/stream
+    Agent ->> Research : Invoke deep-research skill
+    Research ->> Research : Web search locale context
+    Research ->> Research : Find reference images
+    Research -->> Agent : Structured prompt JSON
+    Agent -->> Dispatch : SSE: text output
+    Dispatch -->> Canvas : Write W01 properties.output
+
+    Canvas ->> Dispatch : Run W02 (ImageGeneration)
+    Dispatch ->> Agent : POST /api/runs/stream
+    Agent ->> ImageGen : Invoke image-generation skill
+    ImageGen ->> Sandbox : python generate.py --prompt-file ... --aspect-ratio 9:16
+    Sandbox -->> ImageGen : /mnt/user-data/outputs/scene.jpg
+    ImageGen ->> Agent : present_files tool
+    Agent -->> Dispatch : SSE: artifact URL
+    Dispatch ->> Dispatch : GET /api/threads/{id}/artifacts/scene.jpg
+    Dispatch -->> Canvas : Write W02 properties.imageUrl
+
+    Canvas ->> Dispatch : Run W03 (VideoGeneration)
+    Dispatch ->> Agent : POST /api/runs/stream
+    Agent ->> VideoGen : Invoke video-generation skill
+    VideoGen ->> Sandbox : python generate.py --prompt-file ... --reference-images scene.jpg
+    Sandbox -->> VideoGen : /mnt/user-data/outputs/clip.mp4
+    VideoGen ->> Agent : present_files tool
+    Agent -->> Dispatch : SSE: artifact URL
+    Dispatch ->> Dispatch : GET /api/threads/{id}/artifacts/clip.mp4
+    Dispatch -->> Canvas : Write W03 properties.videoUrl
+
+    Canvas ->> Renderer : Display artifacts in Rich Media Panel
+```
+
+### Multi-Locale Parallel Execution
+
+For the Three Skies demo, DeerFlow's sub-agent system runs all three locales concurrently:
+
+```mermaid
+flowchart TD
+    BRIEF["Markdown Brief\nvariant: ALL"] --> AGENT["DeerFlow Lead Agent"]
+    AGENT -->|"sub-agent 1"| US["US Wild West\nresearch → prompt → image → video"]
+    AGENT -->|"sub-agent 2"| CAR["Caribbean Tempest\nresearch → prompt → image → video"]
+    AGENT -->|"sub-agent 3"| SG["SG RoboTown\nresearch → prompt → image → video"]
+    US --> ART["Artifact Normalizer\nGET /api/threads/{id}/artifacts/*"]
+    CAR --> ART
+    SG --> ART
+    ART --> CANVAS["Canvas DAG\n3 parallel branches"]
+```
+
+Each sub-agent operates in an isolated context with independent tool execution, so locale-1's image generation doesn't block locale-2's text generation. The agent runtime handles parallel execution, timeout enforcement, and error recovery.
+
+### DeerFlow Skills Used
+
+| Skill | Purpose | Sandbox Script | Output |
+|---|---|---|---|
+| `deep-research` | Web search for locale context, cultural references, visual inspiration | — | Structured prompt JSON |
+| `image-search` | Find reference images via DuckDuckGo before generation | — | Reference image URLs |
+| `image-generation` | Generate scene keyframes from structured prompts | `generate.py --prompt-file --output-file --aspect-ratio --reference-images` | `.jpg` in `/mnt/user-data/outputs/` |
+| `video-generation` | Generate 9:16 video clips from reference images | `generate.py --prompt-file --output-file --reference-images` | `.mp4` in `/mnt/user-data/outputs/` |
+| `ppt-generation` | Compose generated scene images into a slide deck | `generate.py --plan-file --slide-images --output-file` | `.pptx` in `/mnt/user-data/outputs/` |
+
+### Provider Configuration
+
+The DeerFlow gateway (`inputs.text_endpoint_url`) serves as a unified proxy to all underlying models. Model selection is controlled by DeerFlow's `config.yaml`, not by knowgrph's widget properties:
+
+| Widget Property | Knowgrph Field | DeerFlow Resolution |
 |---|---|---|
-| **Data freshness** | Offline reports, last-year surveys | Live POI density via MCP API calls |
-| **Competition analysis** | Manual Google Maps tab-switching | `nearby_search` → competitor count per radius |
-| **Routing / accessibility** | Estimated or ignored | `navigation` ETA — walking · driving · cycling |
-| **Scoring model** | Gut feel, no audit trail | TOPSIS C* — weighted, normalized, reproducible |
-| **Time per candidate** | 2–4 hours | Seconds per API call |
-| **Output** | PowerPoint with vibes | Ranked Markdown report · scored map canvas |
+| `text_model` | `seed-2-0-lite-260228` | Resolved via `config.yaml` models[] entry |
+| `image_model` | `seedream-4-0-250828` | Routed to `image-generation` skill's sandbox script |
+| `video_model` | `seedance-1-0-pro-fast-251015` | Routed to `video-generation` skill's sandbox script |
 
-The analyst time cost is real. The opacity is the bigger problem — a site pick that can't be interrogated can't be improved.
+Switching from BytePlus to OpenAI or any other provider requires changing one line in DeerFlow's `config.yaml` — no knowgrph code changes needed.
 
-**Knowgrph makes location intelligence reproducible, live, and legible.**
+## Flow Graph
 
----
+The `mermaid` and `flow` blocks above describe the same graph. Rich Media Panels render the output values written by each widget.
 
-## Who it's for
+## E2E Validation Contract (Universal, Path-Agnostic)
 
-The ICP is not an industry. It's a decision type: **anyone shortlisting physical locations who needs scored, evidence-based output faster than a traditional market study allows.**
+This fixture is a pipeline contract demo for Ingest -> Parse -> Render over typed Flow nodes (`TextGeneration`, `ImageGeneration`, `VideoGeneration`, `RichMediaPanel`).
 
-This person operates in:
-
-- **F&B expansion** — franchise operators, independent restaurant groups, cloud kitchen networks opening outlet #2 to #10
-- **Retail / pop-up brands** — DTC brands, seasonal activations, market stall operators choosing between 5–20 viable sites
-- **Property development** — developers benchmarking commercial lots; landlords advising anchor tenant fit
-- **Management consulting** — market entry advisory, retail network optimisation, competitor gap analysis across city districts
-
-They share one bottleneck: **too many candidates, not enough scored data, not enough time.**
-
-Markets where the gap is sharpest — Southeast Asia (SG MY TH ID PH VN), MENA (AE SA EG), South Asia (IN BD), Latin America (MX BR CO) — have high physical retail density, fragmented POI data, and no local equivalent of a mature market research platform.
-
----
-
-## The insight — APIs already know
-
-Maps platforms index millions of POIs, update in near-real-time, and expose everything needed for a rigorous site evaluation: competitor counts, category density, footfall proxies, transit ETAs across walking, driving, and cycling profiles.
-
-None of that requires a field visit. It requires a pipeline.
-
-```
-candidate coordinates
-→ MCP: POST nearby_search       → competitor count + F&B density
-→ MCP: GET /place/v2/nearby     → residential + retail + commercial POI count
-→ MCP: POST navigation          → walking ETA to transit · driving ETA to centre
-→ TOPSIS: normalize · weight    → C* score per candidate
-→ output: ranked report         → top 3 with sensitivity analysis
-```
-
-Swap a weight. All scores recompute. Same reproducibility as code.
-
----
-
-## What it does
-
-```mermaid
-flowchart LR
-  subgraph Discover["Discover — MCP Layer"]
-    POI["POI Search\nkeyword · country · limit"]
-    NEAR["Nearby Search\nradius · rank_by=popularity"]
-    NAV["Routing ETA\nwalking · driving · cycling"]
-  end
-  subgraph Score["Score — TOPSIS Engine"]
-    MAT["Decision Matrix\nm candidates × n criteria"]
-    NORM["Weighted Normalization\nw_j × r_ij"]
-    RANK["C* Ranking\nD⁻ / (D⁺ + D⁻)"]
-  end
-  subgraph Output["Output"]
-    RPT["Ranked Report\nscored shortlist + sensitivity"]
-    MAP["Scored Map Canvas\nheat overlay"]
-    MD["Markdown export\nportable · auditable"]
-  end
-
-  POI --> MAT
-  NEAR --> MAT
-  NAV --> MAT
-  MAT --> NORM --> RANK
-  RANK --> RPT
-  RANK --> MAP
-  RPT --> MD
-```
-
-### Criteria the pipeline measures
-
-| ID | Criterion | MCP Endpoint | Direction | Weight (default) |
-|----|-----------|-------------|-----------|-----------------|
-| C1 | Competitor density (2.5 km) | `POST nearby_search` | Lower = better | 0.25 |
-| C2 | F&B / category saturation | `GET /place/v2/nearby` | Lower = better | 0.10 |
-| C3 | Residential POI count | `GET /place/v2/nearby` | Higher = better | 0.15 |
-| C4 | Retail / mall POI count | `GET /place/v2/nearby` | Higher = better | 0.10 |
-| C5 | Walk-to-transit ETA (min) | `POST navigation profile=walking` | Lower = better | 0.15 |
-| C6 | Drive-to-centre ETA (min) | `POST navigation profile=driving` | Target range | 0.05 |
-| C7 | Total area POI density | `GET /poi/v1/search` | Higher = better | 0.10 |
-| C8 | Commercial building count | `GET /place/v2/nearby` | Higher = better | 0.05 |
-
-**Transport profiles:** `walking` · `driving` · `cycling` · `motorcycle` · `tricycle`
-
-All weights are frontmatter fields. Swap one value, all C* scores recompute.
-
----
-
-## Demo — New Cafe · Singapore · 7 Candidates · 23 API Calls
-
-**Setup:** 7 candidate areas, radius 2.5 km (~30-min walk), ranked by `popularity`. 23 MCP calls total across POI search, nearby search, and routing profiles.
-
-### TOPSIS results
-
-| Rank | Location | C* | Decisive signal |
-|------|----------|-----|----------------|
-| 🥇 1 | **Bukit Panjang** | **0.82** | Zero cafe competitors · Bukit Panjang DTL MRT **16-second walk** · C8=18 commercial buildings (highest) |
-| 🥈 2 | **Punggol** | **0.78** | C1=1 (one traditional coffeeshop only) · C3=22 HDB residential POIs · young growing demographic |
-| 🥉 3 | **Woodlands** | **0.71** | C1=0 · causeway commuter flow · education/childcare ecosystem → family catchment |
-| 4 | Yishun | 0.62 | Northpoint City mall anchor (C4=25) · C1=0 · high F&B saturation (C2=12) offsets |
-| 5 | Jurong West | 0.41 | Major transport hub · C2=20 (worst saturation) · longest MRT walk (~14 min) |
-| 6 | Sengkang | 0.22 | C1=6 cafes incl. 2 Starbucks · Compass One fully served — **do not enter** |
-| — | CBD | 0.09 | Baseline saturation reference only |
-
-### Sensitivity analysis — weight shifts change the winner
-
-| Scenario | Weight change | New winner | Rationale |
-|----------|-------------|-----------|-----------|
-| Maximise foot traffic | C4 mall → 0.25 | **Yishun** | Northpoint City C4=25 becomes decisive |
-| Minimise rent risk | Add C9 rent index → 0.10 | **Woodlands** | Northern areas ~30% below central band |
-| Weekday lunch priority | C8 commercial → 0.20 | **Bukit Panjang** | C8=18 (highest) + DTL commuter lunch crowd |
-| Family demographic focus | C3 residential → 0.30 | **Punggol** | C3=22 HDB precinct — dominant residential density |
-| Hard filter C1 > 2 | Eliminate saturated | **BPJ · Woodlands · Yishun** 3-way tie | MRT access breaks tie → BPJ wins |
-
----
-
-## Architecture
-
-Server-light. MCP connectors call maps APIs directly. The TOPSIS engine runs in Python. The canvas renders in the browser.
-
-```mermaid
-flowchart LR
-  CAND["Candidate\ncoordinates"] --> MCP
-  subgraph MCP["MCP Connectors"]
-    POI["POI search"]
-    NEAR["Nearby search"]
-    NAV["Routing ETA"]
-  end
-  MCP --> PY["TOPSIS Engine\nPython · NetworkX · DuckDB"]
-  PY --> RANK["C* ranked signal"]
-  RANK --> FC["Flow Editor Canvas\nReact 18 + TS + Vite"]
-  FC --> MAP["Scored Map\nheat overlay"]
-  FC --> RPT["Ranked Report\nMarkdown export"]
-```
-
-| Layer | Technology |
-|---|---|
-| MCP connectors | Maps APIs — POI search · nearby · routing ETA (5 transport profiles) |
-| Scoring engine | TOPSIS — Python 3.10+ · NetworkX · DuckDB · weighted normalization · C* ranking |
-| Frontend canvas | React 18 + TypeScript + Vite 6 · D3.js · Mermaid |
-| Map overlay | D3.js / Leaflet — heat scored candidates on base map |
-| Local DB | RxDB — offline-first · report versioning |
-| Payments | Stripe — per-report + subscription |
-| Deployment | Cloudflare Pages (PWA) — airvio.co/knowgrph |
-
----
-
-## Business model
-
-**Per-report** — pay-per-scored shortlist. Input candidates, receive ranked Markdown report + scored canvas. No subscription required to start.
-
-**Workspace subscription** — unlimited scoring runs, saved canvases, report history, weight model library.
-
-**API tier** — embed the TOPSIS scorer into existing property, F&B, or retail tools via REST. Bring your own geo API keys; Knowgrph handles the scoring logic.
-
-**Advisory** — custom weight models per vertical (F&B vs. retail vs. logistics), calibrated against ground-truth site performance data.
-
----
-
-## Roadmap
-
-**Now** — MCP pipeline (POI + nearby + routing), TOPSIS scorer, ranked Markdown report, Stripe per-report gating
-
-**Next** — scored map canvas (heat overlay), multi-provider geo adapter (swap maps API without re-wiring scorer), batch candidate import (CSV → N runs), sensitivity dashboard
-
-**Later** — rent-index integration (URA / third-party property data), real-time rescore on candidate edit, collaborative workspace, mobile shortlisting UI
-
----
-
-## The ask
-
-**Design partners** — F&B operators, retail brands, or property consultants with live site decisions in the next 90 days. We run your shortlist through the pipeline; you validate the C* output against what you know on the ground.
-
-**Geo API access** — teams with maps platform API keys (POI search, nearby, routing ETA) across SEA, MENA, or South Asia markets. Knowgrph is provider-agnostic; the adapter layer handles normalization.
-
-**Ground-truth datasets** — post-opening performance data (revenue, footfall) from sites already chosen by gut feel. We back-test C* predictions against actuals to calibrate weights.
-
-**Distribution intros** — franchise networks, VC portfolio ops teams, property consultancies, and retail expansion advisors who run multiple site decisions per quarter.
-
-If you believe location intelligence should be as reproducible as code — scored, auditable, and re-runnable — let us build it together.
-
----
-
-**Product:** airvio.co/knowgrph
-
-**Docs:** see `docs/conflict-resolution.md` for repo sync policy.
-
-> *"Map it. Score it. Decide it."*
+- Source path is not part of behavior. Validate by basename (`knowgrph-video-demo.md`) or content hash, never by absolute filesystem path.
+- Runtime/provider fields are declarative fixture inputs (`inputs.text_provider_id`, `inputs.text_endpoint_url`, `inputs.text_model`, `inputs.image_model`, `inputs.video_model`) and must be resolved by runtime settings, not in-repo hardcoded constants.
+- Ingest must parse frontmatter and preserve SSOT parity across `pipeline`, `flow.nodes`, `flow.edges`, and `mermaid`.
+- Parse must resolve template bindings (`{{inputs.*}}`) once per run and surface unresolved tokens as explicit errors.
+- Render must materialize connected values without mutating graph topology or widget layout.
+- E2E checks must stay project-/file-agnostic across local runs, CI, and workspace bootstrap.
