@@ -21,8 +21,13 @@ local_file_import_contract:
   - "Select this Markdown document as validation input"
   - "Local import recognizes Strytree storytree payload inside Strybldr markdown"
   - "Canvas View Mode reports 2D Renderer: Strybldr"
-  - "Strybldr shows Source, Storyboard, Elements, and Storytree lanes"
+  - "Strybldr shows Source, Storyboard, Elements, Storytree, and ForkCompare lanes"
   - "Toolbar Run all writes a structured handoff or fallback artifact without calling a browser-exposed provider key"
+canvas_inspiration_contract:
+  - "spatial card canvas with visible graph edges"
+  - "side-by-side candidate comparison"
+  - "scorecard-driven branch merge"
+  - "no external page text, identifiers, payload, or styling copied into this file or repo code"
 ---
 
 # Knowgrph Strytree Demo - Runnable Storytree Through Strybldr
@@ -44,9 +49,16 @@ defaults, generated workspace paths, or implementation docs.
 | Parse | Strybldr parser reads `strybldr-storyboard` plus Strytree storytree snapshot. | `strybldrStoryboard.ts` |
 | Render | Canvas toolbar reports `Canvas View Mode: 2D Renderer: Strybldr`. | shared renderer config |
 | Storytree | Storytree cards derive edges from `parentNodeId`, not copied static edge data. | `strybldrStoryboard.ts` |
-| Edge | Storytree lane renders visible parent-child connectors from active graph edges between cards. | `StoryboardCanvas.tsx` |
+| Edge | Storytree and ForkCompare cards render visible connectors from active graph edges between cards. | `StoryboardCanvas.tsx` |
 | Calculation | Storytree cards derive depth, child counts, access state, credit projections, like rate, and inherited assets from the imported JSON. | `strybldrStoryboard.ts` |
 | Interaction | Storytree cards support status filtering, like/unlike, unlock with local credit-ledger debit, and continuation draft queueing. | `StoryboardCanvas.tsx` |
+| Compare | ForkCompare renders up to three private candidate scorecards with cost, elapsed time, fallback, moderation, inherited assets, continuity, and publish eligibility. | `strybldrStoryboard.ts` |
+| Merge | Publishing one candidate creates a durable child branch while rejected candidates remain private audit cards. | `strytreeWorkflow.ts` |
+| Provider | Queue consumer can switch from local provider-safe manifest to server-credentialed PixVerse submit/poll when a Worker secret and image refs exist. | `cloudflare/workers/knowgrph-payment/strytreeApi.ts` |
+| Webhook | Signed checkout webhook settles credits through the same token-ledger owner as the local settlement fixture. | `cloudflare/workers/knowgrph-payment/strytreeApi.ts` |
+| Wallet | Wallet read returns committed credits and pending checkout state before webhook settlement. | `cloudflare/workers/knowgrph-payment/strytreeApi.ts` |
+| Circuit | Provider budget breaker stops generation before debit or queue enqueue when the configured spend counter is exhausted. | `cloudflare/workers/knowgrph-payment/strytreeApi.ts` |
+| Ledger | Durable Object actor owns credit-ledger mutation, balance checks, and idempotent replay when the binding is present. | `cloudflare/workers/knowgrph-payment/index.ts` |
 | Run | Toolbar `Run all` compiles approved storytree cards into a provider-safe handoff. | `StrybldrFloatingPanelView.tsx` |
 | Guard | Repo code consumes this file as input and must not copyhardcode its payload. | policy tests and E2E verifier |
 
@@ -243,6 +255,69 @@ defaults, generated workspace paths, or implementation docs.
         "paidUnlocks": 0,
         "ownAssetIds": ["asset_route"]
       }
+    ],
+    "candidateRuns": [
+      {
+        "candidateRunId": "strytree_demo_compare_engineer",
+        "parentNodeId": "strytree_demo_engineer",
+        "status": "completed",
+        "maxCandidates": 3,
+        "quotedCostCredits": 15,
+        "scorecardMode": "cost_continuity",
+        "candidates": [
+          {
+            "candidateId": "strytree_demo_candidate_quiet_evac",
+            "title": "Quiet Evacuation Route",
+            "synopsis": "The engineer delays the broadcast long enough to move families through a service tunnel.",
+            "prompt": "Continue the branch as a restrained evacuation sequence with inherited radio and keycard assets.",
+            "provider": "local-harness",
+            "status": "succeeded",
+            "creditCost": 5,
+            "elapsedMs": 39000,
+            "fallbackStatus": "none",
+            "moderationStatus": "approved",
+            "inheritedAssetCount": 4,
+            "continuityScore": 0.87,
+            "publishEligible": true,
+            "selected": true,
+            "notes": "Best continuity per credit for a grounded next branch."
+          },
+          {
+            "candidateId": "strytree_demo_candidate_decoy_ping",
+            "title": "Decoy Relay Ping",
+            "synopsis": "A false signal draws drones away from the settlement but risks exposing the scout.",
+            "prompt": "Continue with a tactical decoy beat and a clear cost of deception.",
+            "provider": "local-harness",
+            "status": "succeeded",
+            "creditCost": 5,
+            "elapsedMs": 47000,
+            "fallbackStatus": "none",
+            "moderationStatus": "approved",
+            "inheritedAssetCount": 4,
+            "continuityScore": 0.78,
+            "publishEligible": true,
+            "selected": false,
+            "notes": "Higher conflict, weaker asset continuity."
+          },
+          {
+            "candidateId": "strytree_demo_candidate_battery_trade",
+            "title": "Battery Trade",
+            "synopsis": "The crew trades the spare battery for safe passage and loses one chance to transmit.",
+            "prompt": "Continue with a tense negotiation around scarce power and trust.",
+            "provider": "local-harness",
+            "status": "succeeded",
+            "creditCost": 5,
+            "elapsedMs": 56000,
+            "fallbackStatus": "fallback-preview",
+            "moderationStatus": "approved",
+            "inheritedAssetCount": 3,
+            "continuityScore": 0.69,
+            "publishEligible": true,
+            "selected": false,
+            "notes": "Useful alternative kept private until selected."
+          }
+        ]
+      }
     ]
   }
 }
@@ -252,6 +327,12 @@ defaults, generated workspace paths, or implementation docs.
 
 ```bash
 KNOWGRPH_FORBID_HARDCODE_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- policy.forbidHardcodedYouTubeUrlLiteral
+KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- strytree.demo.forkCompareCanvasInput
 KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- workspace.import.localFiles.strybldrRunnableRunAllSurface
+KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- strytree.api.generationLivePixVersePolling
+KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- strytree.api.checkoutSignedWebhookLedger
+KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- strytree.api.walletPendingPayment
+KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- strytree.api.generationBudgetCircuitBreaker
+KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" npm --prefix canvas run test:ci:unit -- strytree.api.creditLedgerDurableObject
 KNOWGRPH_STRYTREE_DEMO_INPUT="/path/to/knowgrph-strytree-demo.md" KNOWGRPH_STRYTREE_E2E_MODE=local-file npm --prefix canvas run validate:strybldr-generated-video
 ```
