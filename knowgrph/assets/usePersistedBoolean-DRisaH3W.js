@@ -1,0 +1,1 @@
+import{e as a}from"./react-D1l5gsU-.js";import{jk as s,nm as n,r5 as u}from"./index-KIsY-buz.js";function i(t,e){const[r,c]=a.useState(()=>{try{const o=s();return n(o,t,e)}catch{return e}});return a.useEffect(()=>{try{const o=s();u(o,t,r)}catch{}},[t,r]),[r,c]}export{i as u};
