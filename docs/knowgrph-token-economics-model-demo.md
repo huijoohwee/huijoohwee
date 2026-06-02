@@ -60,813 +60,890 @@ workflow_sections:
     nodes: [decision_ranking, tco_chart_panel, value_loop_chart_panel]
 
 flow:
-  direction: LR
-  edgeType: smoothstep
-  snapToGrid: true
-  computed: true
-  aspectRatio: "16:9"
-  targetResolution: "1920x1080"
-  portHandleContract: "Every Flow Editor widget handle is a canonical cost-driver key; each normal edge repeats the same driver key as sourceHandle, targetHandle, and label."
+  direction:
+    key: direction
+    type: string
+    value: LR
+  edgeType:
+    key: edgeType
+    type: string
+    value: smoothstep
+  snapToGrid:
+    key: snapToGrid
+    type: boolean
+    value: true
+  computed:
+    key: computed
+    type: boolean
+    value: true
+  aspectRatio:
+    key: aspectRatio
+    type: string
+    value: "16:9"
+  targetResolution:
+    key: targetResolution
+    type: string
+    value: 1920x1080
+  portHandleContract:
+    key: portHandleContract
+    type: string
+    value: Every Flow Editor widget handle is a canonical cost-driver key; each normal edge repeats the same driver key as sourceHandle, targetHandle, and label.
   costDriverPortModel:
-    rendererScope: "2D Renderer: Flow Editor"
-    widgetHandleCoverageRule: "Every entry in flow.nodes[*].handles.source and flow.nodes[*].handles.target is a driver key from driverFamilies; no positional, visual-only, or stack-local alias handle is used."
-    portVocabularyRule: "driverFamilies is the semantic-key vocabulary for widget handles, edge handles, workflow computation inputs, workflow computation outputs, and chart payloads."
-    handleIdentityRule: "Widget handle id is the visible canvas driver id."
-    widgetPortResolutionRule: "Flow Editor resolves each visible widget port by looking up the handle id in driverFamilies, then applies socket_types and flow:portTypes only as rendering/type metadata."
-    widgetLocalAliasRule: "Widget type, position, and side never rename handles; source and target handles remain the same economic driver key across the canvas."
-    edgeIdentityRule: "For normal driver edges, sourceHandle == targetHandle == label."
-    rendererPayloadDriver: "outputSrcDoc is the rendered cost-report payload driver consumed by Rich Media Panel widgets."
-    driverFamilies:
-      demand: [monthly_agent_requests, avg_tool_calls_per_request, avg_tokens_per_request, retry_rate]
-      platform: [platform_subscription_usd, platform_unit_call_cost_usd, managed_hosting_required, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours]
-      token: [onchain_token_launch_required, token_setup_exposure, onchain_gas_and_token_fees, token_price_volatility]
-      revenue: [monthly_active_users, paid_conversion_rate, subscription_price_usd, marketplace_gmv_usd, agent_token_take_rate, support_refund_rate]
-      web3_journey: [prediction_accuracy_rate, wallet_activation_rate, yield_share_rate, payment_success_rate, payment_fee_rate, liquidity_spread_rate, exchange_conversion_rate, infrastructure_uptime_slo, infrastructure_unit_cost_usd]
-      stack_tco: [fetch_monthly_tco_usd, eliza_monthly_tco_usd, virtuals_monthly_tco_usd, fetch_quota_risk, eliza_ops_risk, virtuals_token_risk, fetch_tco_score, eliza_tco_score, virtuals_tco_score]
-      revenue_metrics: [monthly_revenue_usd, net_revenue_usd, revenue_per_request_usd, revenue_model_confidence]
-      value_loop_metrics: [predicted_intent_quality_score, conversion_uplift_rate, demand_forecast_index, user_value_yield_usd, protocol_yield_score, retention_value_index, settled_payment_volume_usd, payment_fee_cost_usd, payment_value_capture_usd, exchange_liquidity_depth_usd, liquidity_slippage_cost_usd, token_exchange_efficiency_score, infrastructure_cost_usd, uptime_value_score, infra_adjusted_value_usd, closed_loop_health_score, user_journey_value_loop]
-      decisions: [lowest_cash_tco_driver, highest_margin_driver, breakeven_path_driver, lowest_lockin_driver, tokenized_distribution_driver, web3_economics_decision_driver, recommended_demo_path, managed_demo_path, tokenized_demo_path, margin_optimized_path]
-      render_payloads: [outputSrcDoc]
+    key: costDriverPortModel
+    type: object
+    value:
+      rendererScope: "2D Renderer: Flow Editor"
+      widgetHandleCoverageRule: Every entry in flow.nodes[*].handles.source and flow.nodes[*].handles.target is a driver key from driverFamilies; no positional, visual-only, or stack-local alias handle is used.
+      portVocabularyRule: driverFamilies is the semantic-key vocabulary for widget handles, edge handles, workflow computation inputs, workflow computation outputs, and chart payloads.
+      handleIdentityRule: Widget handle id is the visible canvas driver id.
+      widgetPortResolutionRule: Flow Editor resolves each visible widget port by looking up the handle id in driverFamilies, then applies socket_types and flow:portTypes only as rendering/type metadata.
+      widgetLocalAliasRule: Widget type, position, and side never rename handles; source and target handles remain the same economic driver key across the canvas.
+      edgeIdentityRule: For normal driver edges, sourceHandle == targetHandle == label.
+      rendererPayloadDriver: outputSrcDoc is the rendered cost-report payload driver consumed by Rich Media Panel widgets.
+      driverFamilies: {demand: [monthly_agent_requests, avg_tool_calls_per_request, avg_tokens_per_request, retry_rate], platform: [platform_subscription_usd, platform_unit_call_cost_usd, managed_hosting_required, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours], token: [onchain_token_launch_required, token_setup_exposure, onchain_gas_and_token_fees, token_price_volatility], revenue: [monthly_active_users, paid_conversion_rate, subscription_price_usd, marketplace_gmv_usd, agent_token_take_rate, support_refund_rate], web3_journey: [prediction_accuracy_rate, wallet_activation_rate, yield_share_rate, payment_success_rate, payment_fee_rate, liquidity_spread_rate, exchange_conversion_rate, infrastructure_uptime_slo, infrastructure_unit_cost_usd], stack_tco: [fetch_monthly_tco_usd, eliza_monthly_tco_usd, virtuals_monthly_tco_usd, fetch_quota_risk, eliza_ops_risk, virtuals_token_risk, fetch_tco_score, eliza_tco_score, virtuals_tco_score], revenue_metrics: [monthly_revenue_usd, net_revenue_usd, revenue_per_request_usd, revenue_model_confidence], value_loop_metrics: [predicted_intent_quality_score, conversion_uplift_rate, demand_forecast_index, user_value_yield_usd, protocol_yield_score, retention_value_index, settled_payment_volume_usd, payment_fee_cost_usd, payment_value_capture_usd, exchange_liquidity_depth_usd, liquidity_slippage_cost_usd, token_exchange_efficiency_score, infrastructure_cost_usd, uptime_value_score, infra_adjusted_value_usd, closed_loop_health_score, user_journey_value_loop], decisions: [lowest_cash_tco_driver, highest_margin_driver, breakeven_path_driver, lowest_lockin_driver, tokenized_distribution_driver, web3_economics_decision_driver, recommended_demo_path, managed_demo_path, tokenized_demo_path, margin_optimized_path], render_payloads: [outputSrcDoc]}
   nodes:
-    - id: workload_drivers
-      type: CostDriverWidget
-      label: "Workload Cost Drivers"
-      position: {x: 80, y: 120}
-      size: {width: 320, height: 190}
-      handles:
-        source: [monthly_agent_requests, avg_tool_calls_per_request, avg_tokens_per_request, retry_rate]
-      tags: [hypothesis]
-      "visual:fill": "#f59e0b"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:workload_drivers"
-      "flow:portTypes":
-        out:
-          monthly_agent_requests: demand_driver_signal
-          avg_tool_calls_per_request: demand_driver_signal
-          avg_tokens_per_request: demand_driver_signal
-          retry_rate: demand_driver_signal
-      monthly_agent_requests: 10000
-      avg_tool_calls_per_request: 1
-      avg_tokens_per_request: "bring-your-own model meter"
-      retry_rate: "tracked as risk, not baked into quoted platform fee"
-      driver_group: "demand"
-    - id: shared_platform_drivers
-      type: CostDriverWidget
-      label: "Shared Platform Drivers"
-      position: {x: 80, y: 390}
-      size: {width: 320, height: 240}
-      handles:
-        source: [platform_subscription_usd, platform_unit_call_cost_usd, managed_hosting_required, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours]
-      tags: [execution]
-      "visual:fill": "#22c55e"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:shared_platform_drivers"
-      "flow:portTypes":
-        out:
-          platform_subscription_usd: platform_cost_signal
-          platform_unit_call_cost_usd: platform_cost_signal
-          managed_hosting_required: platform_cost_signal
-          hosting_or_cloud_runtime_usd: platform_cost_signal
-          model_provider_fee_usd: platform_cost_signal
-          social_api_rpc_data_api_fees: platform_cost_signal
-          ops_hours: platform_cost_signal
-      platform_subscription_usd: "0-25+ depending on stack and quota"
-      platform_unit_call_cost_usd: "0.003 when using Virtuals GAME paid tier"
-      managed_hosting_required: "true for managed demo, false for self-host baseline"
-      hosting_or_cloud_runtime_usd: "BYO runtime, cloud credits, or managed cloud instance cost"
-      model_provider_fee_usd: "explicit external meter"
-      social_api_rpc_data_api_fees: "external API meter"
-      ops_hours: "excluded from cash floor, scored separately"
-      driver_group: "platform"
-    - id: token_exposure_drivers
-      type: CostDriverWidget
-      label: "Token Exposure Drivers"
-      position: {x: 80, y: 700}
-      size: {width: 320, height: 210}
-      handles:
-        source: [onchain_token_launch_required, token_setup_exposure, onchain_gas_and_token_fees, token_price_volatility]
-      tags: [alert]
-      "visual:fill": "#ef4444"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:token_exposure_drivers"
-      "flow:portTypes":
-        out:
-          onchain_token_launch_required: token_risk_signal
-          token_setup_exposure: token_risk_signal
-          onchain_gas_and_token_fees: token_risk_signal
-          token_price_volatility: token_risk_signal
-      onchain_token_launch_required: "only when tokenized agent launch is required"
-      token_setup_exposure: "kept token-denominated"
-      onchain_gas_and_token_fees: "chain and wallet dependent"
-      token_price_volatility: "risk driver, kept token-denominated"
-      driver_group: "web3"
-    - id: revenue_drivers
-      type: RevenueDriverWidget
-      label: "Revenue Drivers"
-      position: {x: 80, y: 990}
-      size: {width: 320, height: 250}
-      handles:
-        source: [monthly_active_users, paid_conversion_rate, subscription_price_usd, marketplace_gmv_usd, agent_token_take_rate, support_refund_rate]
-      tags: [idea]
-      "visual:fill": "var(--kg-canvas-accent)"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:revenue_drivers"
-      "flow:portTypes":
-        out:
-          monthly_active_users: revenue_driver_signal
-          paid_conversion_rate: revenue_driver_signal
-          subscription_price_usd: revenue_driver_signal
-          marketplace_gmv_usd: revenue_driver_signal
-          agent_token_take_rate: revenue_driver_signal
-          support_refund_rate: revenue_driver_signal
-      monthly_active_users: 2500
-      paid_conversion_rate: 0.03
-      subscription_price_usd: 19
-      marketplace_gmv_usd: 10000
-      agent_token_take_rate: 0.005
-      support_refund_rate: 0.12
-      driver_group: "revenue"
-    - id: web3_economics_drivers
-      type: Web3EconomicsDriverWidget
-      label: "Web3 Economics Drivers"
-      position: {x: 80, y: 1300}
-      size: {width: 340, height: 280}
-      handles:
-        source: [prediction_accuracy_rate, wallet_activation_rate, yield_share_rate, payment_success_rate, payment_fee_rate, liquidity_spread_rate, exchange_conversion_rate, infrastructure_uptime_slo, infrastructure_unit_cost_usd]
-      tags: [idea]
-      "visual:fill": "var(--kg-canvas-accent)"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:web3_economics_drivers"
-      "flow:portTypes":
-        out:
-          prediction_accuracy_rate: journey_driver_signal
-          wallet_activation_rate: journey_driver_signal
-          yield_share_rate: journey_driver_signal
-          payment_success_rate: journey_driver_signal
-          payment_fee_rate: journey_driver_signal
-          liquidity_spread_rate: journey_driver_signal
-          exchange_conversion_rate: journey_driver_signal
-          infrastructure_uptime_slo: journey_driver_signal
-          infrastructure_unit_cost_usd: journey_driver_signal
-      prediction_accuracy_rate: 0.68
-      wallet_activation_rate: 0.42
-      yield_share_rate: 0.18
-      payment_success_rate: 0.97
-      payment_fee_rate: 0.012
-      liquidity_spread_rate: 0.008
-      exchange_conversion_rate: 0.74
-      infrastructure_uptime_slo: 0.995
-      infrastructure_unit_cost_usd: 0.0004
-      driver_group: "web3_economics"
-    - id: fetch_agentverse_tco
-      type: TcoStackWidget
-      label: "Fetch.ai / Agentverse TCO"
-      position: {x: 520, y: 110}
-      size: {width: 360, height: 240}
-      handles:
-        target: [monthly_agent_requests, platform_subscription_usd, managed_hosting_required, model_provider_fee_usd, onchain_gas_and_token_fees]
-        source: [fetch_monthly_tco_usd, fetch_quota_risk, fetch_tco_score]
-      tags: [execution]
-      "visual:fill": "#22c55e"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:fetch_agentverse_tco"
-      "flow:portTypes":
-        in:
-          monthly_agent_requests: demand_driver_signal
-          platform_subscription_usd: platform_cost_signal
-          managed_hosting_required: platform_cost_signal
-          model_provider_fee_usd: platform_cost_signal
-          onchain_gas_and_token_fees: token_risk_signal
-        out:
-          fetch_monthly_tco_usd: stack_tco_metric
-          fetch_quota_risk: token_risk_signal
-          fetch_tco_score: stack_tco_metric
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const req = n(inputs.monthly_agent_requests);
-          const sub = req <= 10000 ? 0 : 25;
-          const total = sub + n(inputs.model_provider_fee_usd) + n(inputs.onchain_gas_and_token_fees);
-          return {
-            fetch_monthly_tco_usd: Math.round(total * 100) / 100,
-            fetch_quota_risk: req <= 10000 ? 'Basic quota fit at current request load' : 'Premium quota needed at current request load',
-            fetch_tco_score: total <= 25 ? 'predictable low managed cash floor' : 'managed cost rises with external meters'
-          };
-        }
-      stack: "Fetch.ai / Agentverse"
-      platform_subscription_usd: "0 on Basic if quotas fit; 25 on Premium"
-      fetch_monthly_tco_usd: 25
-      fetch_monthly_tco_note: "0-25 platform floor before model/API/FET costs"
-      fetch_quota_risk: "processed messages, compute seconds, storage"
-      fetch_tco_score: "best predictable managed starter TCO"
-    - id: elizaos_ai16z_tco
-      type: TcoStackWidget
-      label: "elizaOS / AI16Z TCO"
-      position: {x: 520, y: 420}
-      size: {width: 360, height: 250}
-      handles:
-        target: [monthly_agent_requests, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours]
-        source: [eliza_monthly_tco_usd, eliza_ops_risk, eliza_tco_score]
-      tags: [hypothesis]
-      "visual:fill": "#f59e0b"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:elizaos_ai16z_tco"
-      "flow:portTypes":
-        in:
-          monthly_agent_requests: demand_driver_signal
-          hosting_or_cloud_runtime_usd: platform_cost_signal
-          model_provider_fee_usd: platform_cost_signal
-          social_api_rpc_data_api_fees: platform_cost_signal
-          ops_hours: platform_cost_signal
-        out:
-          eliza_monthly_tco_usd: stack_tco_metric
-          eliza_ops_risk: platform_cost_signal
-          eliza_tco_score: stack_tco_metric
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const total = n(inputs.hosting_or_cloud_runtime_usd) + n(inputs.model_provider_fee_usd) + n(inputs.social_api_rpc_data_api_fees);
-          const ops = n(inputs.ops_hours);
-          return {
-            eliza_monthly_tco_usd: Math.round(total * 100) / 100,
-            eliza_ops_risk: ops > 0 ? 'operator hours dominate the real TCO' : 'ops hours tracked outside cash floor',
-            eliza_tco_score: total === 0 ? 'lowest cash floor with owner-operated runtime' : 'infra and provider meters drive cash cost'
-          };
-        }
-      stack: "elizaOS / AI16Z"
-      hosting_or_cloud_runtime_usd: "BYO when self-hosted; cloud credits when managed"
-      eliza_monthly_tco_usd: 0
-      eliza_monthly_tco_note: "0 public framework fee plus infra/model/ops"
-      eliza_ops_risk: "highest operator-owned surface"
-      eliza_tco_score: "best FOSS/control baseline"
-    - id: virtuals_game_tco
-      type: TcoStackWidget
-      label: "Virtuals / GAME TCO"
-      position: {x: 520, y: 740}
-      size: {width: 360, height: 260}
-      handles:
-        target: [monthly_agent_requests, platform_unit_call_cost_usd, onchain_token_launch_required, token_setup_exposure, onchain_gas_and_token_fees, token_price_volatility]
-        source: [virtuals_monthly_tco_usd, virtuals_token_risk, virtuals_tco_score]
-      tags: [alert]
-      "visual:fill": "#ef4444"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:virtuals_game_tco"
-      "flow:portTypes":
-        in:
-          monthly_agent_requests: demand_driver_signal
-          platform_unit_call_cost_usd: platform_cost_signal
-          onchain_token_launch_required: token_risk_signal
-          token_setup_exposure: token_risk_signal
-          onchain_gas_and_token_fees: token_risk_signal
-          token_price_volatility: token_risk_signal
-        out:
-          virtuals_monthly_tco_usd: stack_tco_metric
-          virtuals_token_risk: token_risk_signal
-          virtuals_tco_score: stack_tco_metric
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const req = n(inputs.monthly_agent_requests);
-          const unit = n(inputs.platform_unit_call_cost_usd) || 0.003;
-          const total = req * unit + n(inputs.onchain_gas_and_token_fees);
-          return {
-            virtuals_monthly_tco_usd: Math.round(total * 100) / 100,
-            virtuals_token_risk: 'launch fee, graduation threshold, gas, and VIRTUAL price stay separate',
-            virtuals_tco_score: total <= 30 ? 'tokenized distribution fit with per-call floor' : 'runtime cost scales with paid calls'
-          };
-        }
-      stack: "Virtuals Protocol / GAME"
-      platform_unit_call_cost_usd: 0.003
-      virtuals_monthly_tco_usd: 30
-      virtuals_monthly_tco_note: "30 platform call floor at 10k paid GAME calls"
-      virtuals_token_risk: "launch fee, graduation threshold, gas, VIRTUAL price"
-      virtuals_tco_score: "best tokenized-agent economy fit"
-    - id: revenue_calculator
-      type: RevenueCalculatorWidget
-      label: "Revenue Calculator"
-      position: {x: 520, y: 1060}
-      size: {width: 360, height: 250}
-      handles:
-        target: [monthly_agent_requests, monthly_active_users, paid_conversion_rate, subscription_price_usd, marketplace_gmv_usd, agent_token_take_rate, support_refund_rate]
-        source: [monthly_revenue_usd, net_revenue_usd, revenue_per_request_usd, revenue_model_confidence]
-      tags: [idea]
-      "visual:fill": "var(--kg-canvas-accent)"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:revenue_calculator"
-      "flow:portTypes":
-        in:
-          monthly_agent_requests: demand_driver_signal
-          monthly_active_users: revenue_driver_signal
-          paid_conversion_rate: revenue_driver_signal
-          subscription_price_usd: revenue_driver_signal
-          marketplace_gmv_usd: revenue_driver_signal
-          agent_token_take_rate: revenue_driver_signal
-          support_refund_rate: revenue_driver_signal
-        out:
-          monthly_revenue_usd: revenue_metric_signal
-          net_revenue_usd: revenue_metric_signal
-          revenue_per_request_usd: revenue_metric_signal
-          revenue_model_confidence: decision_driver_signal
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const req = Math.max(1, n(inputs.monthly_agent_requests) || 10000);
-          const users = n(inputs.monthly_active_users);
-          const conversion = n(inputs.paid_conversion_rate);
-          const price = n(inputs.subscription_price_usd);
-          const marketplace = n(inputs.marketplace_gmv_usd);
-          const take = n(inputs.agent_token_take_rate);
-          const refund = Math.max(0, Math.min(0.95, n(inputs.support_refund_rate)));
-          const gross = users * conversion * price + marketplace * take;
-          const net = gross * (1 - refund);
-          return {
-            monthly_revenue_usd: Math.round(gross * 100) / 100,
-            net_revenue_usd: Math.round(net * 100) / 100,
-            revenue_per_request_usd: Math.round((net / req) * 10000) / 10000,
-            revenue_model_confidence: net > 0 ? 'revenue-positive baseline, validate conversion and refunds' : 'no revenue yet, treat costs as burn'
-          };
-        }
-      formula: "net_revenue = (monthly_active_users * paid_conversion_rate * subscription_price_usd + marketplace_gmv_usd * agent_token_take_rate) * (1 - support_refund_rate)"
-    - id: tco_calculator
-      type: TcoCalculatorWidget
-      label: "TCO Calculator"
-      position: {x: 1040, y: 280}
-      size: {width: 360, height: 260}
-      handles:
-        target: [monthly_revenue_usd, net_revenue_usd, fetch_monthly_tco_usd, eliza_monthly_tco_usd, virtuals_monthly_tco_usd, fetch_quota_risk, eliza_ops_risk, virtuals_token_risk]
-        source: [lowest_cash_tco_driver, highest_margin_driver, breakeven_path_driver, lowest_lockin_driver, tokenized_distribution_driver, outputSrcDoc]
-      tags: [pivot]
-      "visual:fill": "#f97316"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:tco_calculator"
-      "flow:portTypes":
-        in:
-          monthly_revenue_usd: revenue_metric_signal
-          net_revenue_usd: revenue_metric_signal
-          fetch_monthly_tco_usd: stack_tco_metric
-          eliza_monthly_tco_usd: stack_tco_metric
-          virtuals_monthly_tco_usd: stack_tco_metric
-          fetch_quota_risk: token_risk_signal
-          eliza_ops_risk: platform_cost_signal
-          virtuals_token_risk: token_risk_signal
-        out:
-          lowest_cash_tco_driver: decision_driver_signal
-          highest_margin_driver: decision_driver_signal
-          breakeven_path_driver: decision_driver_signal
-          lowest_lockin_driver: decision_driver_signal
-          tokenized_distribution_driver: decision_driver_signal
-          outputSrcDoc: rich_media_chart_html
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const gross = n(inputs.monthly_revenue_usd);
-          const net = n(inputs.net_revenue_usd);
-          const rows = [
-            ['elizaOS / AI16Z', n(inputs.eliza_monthly_tco_usd), '#f59e0b'],
-            ['Fetch.ai / Agentverse', n(inputs.fetch_monthly_tco_usd), '#22c55e'],
-            ['Virtuals / GAME', n(inputs.virtuals_monthly_tco_usd), '#ef4444'],
-          ];
-          const scored = rows.map(row => [row[0], row[1], Math.round((net - row[1]) * 100) / 100, row[2]]);
-          const maxCost = rows.reduce((acc, row) => row[1] > acc ? row[1] : acc, 1);
-          const best = scored.reduce((acc, row) => row[2] > acc[2] ? row : acc, scored[0]);
-          const costBars = rows.map(row => `<section class="bar-row"><strong>${row[0]}</strong><span class="bar"><i style="width:${Math.max(4, Math.round((row[1] / maxCost) * 100))}%;background:${row[2]}"></i></span><b>$${row[1]}/mo</b></section>`).join('');
-          const marginBars = scored.map(row => `<section class="bar-row"><strong>${row[0]}</strong><span class="bar"><i style="width:${Math.max(4, Math.min(100, Math.round(((row[2] + maxCost) / Math.max(1, net + maxCost)) * 100)))}%;background:${row[3]}"></i></span><b>$${row[2]}/mo</b></section>`).join('');
-          const html = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font:14px system-ui,Arial,sans-serif;background:#f8fafc;color:#111827}.wrap{padding:18px}h1{font-size:18px;margin:0 0 12px}h2{font-size:13px;margin:14px 0 8px;color:#374151}.bar-row{display:grid;grid-template-columns:150px 1fr 82px;gap:10px;align-items:center;margin:8px 0}.bar{height:16px;border-radius:5px;background:#e5e7eb;overflow:hidden}.bar i{display:block;height:100%}.kpi{display:flex;gap:10px;flex-wrap:wrap}.kpi b{background:white;border:1px solid #e5e7eb;border-radius:6px;padding:6px 8px}p{margin:10px 0 0;color:#4b5563}</style></head><body><main class="wrap"><h1>Revenue and TCO simulation</h1><section class="kpi"><b>Gross $${gross}/mo</b><b>Net $${net}/mo</b><b>Best margin ${best[0]}</b></section><h2>Monthly cost</h2>${costBars}<h2>Net margin after cost</h2>${marginBars}<p>Every bar is fed by a typed Flow Editor port; token, gas, ops, and quota risk remain separate driver handles.</p></main></body></html>`;
-          return {
-            lowest_cash_tco_driver: 'elizaOS self-host cash floor when operator time is available',
-            highest_margin_driver: `${best[0]} net margin $${best[2]}/mo`,
-            breakeven_path_driver: best[2] >= 0 ? 'current revenue clears selected cost floor' : 'revenue must rise or cost floor must fall',
-            lowest_lockin_driver: 'elizaOS local/self-host',
-            tokenized_distribution_driver: 'Virtuals when agent-token distribution matters',
-            outputSrcDoc: html
-          };
-        }
-      lowest_cash_tco_driver: "elizaOS self-host cash floor, if ops are available"
-      highest_margin_driver: "waits for net revenue and computed stack costs"
-      breakeven_path_driver: "waits for net revenue and computed stack costs"
-      lowest_lockin_driver: "elizaOS local/self-host"
-      tokenized_distribution_driver: "Virtuals when agent token launch matters"
-      calculation_policy: "cash floors, net revenue, ops, and token-volatility risk stay separate until the calculator joins them"
-      outputSrcDoc: "<!doctype html><html><body><p>TCO chart waits for calculator inputs.</p></body></html>"
-    - id: prediction_engine
-      type: PredictionEngineWidget
-      label: "Prediction Engine"
-      position: {x: 960, y: 980}
-      size: {width: 340, height: 230}
-      handles:
-        target: [monthly_active_users, paid_conversion_rate, prediction_accuracy_rate, wallet_activation_rate]
-        source: [predicted_intent_quality_score, conversion_uplift_rate, demand_forecast_index]
-      tags: [hypothesis]
-      "visual:fill": "#f59e0b"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:prediction_engine"
-      "flow:portTypes":
-        in:
-          monthly_active_users: revenue_driver_signal
-          paid_conversion_rate: revenue_driver_signal
-          prediction_accuracy_rate: journey_driver_signal
-          wallet_activation_rate: journey_driver_signal
-        out:
-          predicted_intent_quality_score: prediction_engine_signal
-          conversion_uplift_rate: prediction_engine_signal
-          demand_forecast_index: prediction_engine_signal
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const users = n(inputs.monthly_active_users);
-          const conversion = n(inputs.paid_conversion_rate);
-          const accuracy = Math.max(0, Math.min(1, n(inputs.prediction_accuracy_rate)));
-          const activation = Math.max(0, Math.min(1, n(inputs.wallet_activation_rate)));
-          const quality = Math.max(0, Math.min(1, accuracy * 0.7 + activation * 0.3));
-          const uplift = conversion * quality;
-          return {
-            predicted_intent_quality_score: Math.round(quality * 1000) / 1000,
-            conversion_uplift_rate: Math.round(uplift * 10000) / 10000,
-            demand_forecast_index: Math.round(users * (1 + uplift) * 100) / 100
-          };
-        }
-      engine_role: "turns observed user intent into a demand and conversion signal"
-    - id: yield_engine
-      type: YieldEngineWidget
-      label: "Yield Engine"
-      position: {x: 1320, y: 980}
-      size: {width: 340, height: 230}
-      handles:
-        target: [net_revenue_usd, revenue_per_request_usd, yield_share_rate, predicted_intent_quality_score, demand_forecast_index]
-        source: [user_value_yield_usd, protocol_yield_score, retention_value_index]
-      tags: [execution]
-      "visual:fill": "#22c55e"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:yield_engine"
-      "flow:portTypes":
-        in:
-          net_revenue_usd: revenue_metric_signal
-          revenue_per_request_usd: revenue_metric_signal
-          yield_share_rate: journey_driver_signal
-          predicted_intent_quality_score: prediction_engine_signal
-          demand_forecast_index: prediction_engine_signal
-        out:
-          user_value_yield_usd: yield_engine_signal
-          protocol_yield_score: yield_engine_signal
-          retention_value_index: yield_engine_signal
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const net = n(inputs.net_revenue_usd);
-          const perRequest = n(inputs.revenue_per_request_usd);
-          const share = Math.max(0, Math.min(1, n(inputs.yield_share_rate)));
-          const quality = Math.max(0, Math.min(1, n(inputs.predicted_intent_quality_score)));
-          const yieldValue = net * share * Math.max(0.1, quality);
-          const score = Math.min(100, (yieldValue / Math.max(1, net)) * 100);
-          return {
-            user_value_yield_usd: Math.round(yieldValue * 100) / 100,
-            protocol_yield_score: Math.round(score * 100) / 100,
-            retention_value_index: Math.round(Math.min(1, quality + perRequest) * 1000) / 1000
-          };
-        }
-      engine_role: "converts revenue into user-retained value and protocol yield"
-    - id: payment_engine
-      type: PaymentEngineWidget
-      label: "Payment Engine"
-      position: {x: 1680, y: 980}
-      size: {width: 340, height: 230}
-      handles:
-        target: [net_revenue_usd, user_value_yield_usd, payment_success_rate, payment_fee_rate]
-        source: [settled_payment_volume_usd, payment_fee_cost_usd, payment_value_capture_usd]
-      tags: [idea]
-      "visual:fill": "var(--kg-canvas-accent)"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:payment_engine"
-      "flow:portTypes":
-        in:
-          net_revenue_usd: revenue_metric_signal
-          user_value_yield_usd: yield_engine_signal
-          payment_success_rate: journey_driver_signal
-          payment_fee_rate: journey_driver_signal
-        out:
-          settled_payment_volume_usd: payment_engine_signal
-          payment_fee_cost_usd: payment_engine_signal
-          payment_value_capture_usd: payment_engine_signal
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const success = Math.max(0, Math.min(1, n(inputs.payment_success_rate)));
-          const feeRate = Math.max(0, Math.min(1, n(inputs.payment_fee_rate)));
-          const settled = (n(inputs.net_revenue_usd) + n(inputs.user_value_yield_usd)) * success;
-          const fee = settled * feeRate;
-          return {
-            settled_payment_volume_usd: Math.round(settled * 100) / 100,
-            payment_fee_cost_usd: Math.round(fee * 100) / 100,
-            payment_value_capture_usd: Math.round((settled - fee) * 100) / 100
-          };
-        }
-      engine_role: "settles value capture through wallet/payment rails"
-    - id: liquidity_exchange_engine
-      type: LiquidityExchangeEngineWidget
-      label: "Liquidity & Exchange Engine"
-      position: {x: 1320, y: 1260}
-      size: {width: 360, height: 240}
-      handles:
-        target: [settled_payment_volume_usd, liquidity_spread_rate, exchange_conversion_rate, token_price_volatility]
-        source: [exchange_liquidity_depth_usd, liquidity_slippage_cost_usd, token_exchange_efficiency_score]
-      tags: [pivot]
-      "visual:fill": "#f97316"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:liquidity_exchange_engine"
-      "flow:portTypes":
-        in:
-          settled_payment_volume_usd: payment_engine_signal
-          liquidity_spread_rate: journey_driver_signal
-          exchange_conversion_rate: journey_driver_signal
-          token_price_volatility: token_risk_signal
-        out:
-          exchange_liquidity_depth_usd: liquidity_exchange_signal
-          liquidity_slippage_cost_usd: liquidity_exchange_signal
-          token_exchange_efficiency_score: liquidity_exchange_signal
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const settled = n(inputs.settled_payment_volume_usd);
-          const spread = Math.max(0, Math.min(1, n(inputs.liquidity_spread_rate)));
-          const conversion = Math.max(0, Math.min(1, n(inputs.exchange_conversion_rate)));
-          const volatility = Math.max(0, n(inputs.token_price_volatility));
-          const depth = settled * conversion;
-          const slippage = settled * spread * (1 + volatility);
-          const efficiency = Math.max(0, Math.min(100, conversion * 100 - spread * 100 - volatility * 10));
-          return {
-            exchange_liquidity_depth_usd: Math.round(depth * 100) / 100,
-            liquidity_slippage_cost_usd: Math.round(slippage * 100) / 100,
-            token_exchange_efficiency_score: Math.round(efficiency * 100) / 100
-          };
-        }
-      engine_role: "turns settled payments into exchangeable liquidity"
-    - id: infrastructure_engine
-      type: InfrastructureEngineWidget
-      label: "Infrastructure Engine"
-      position: {x: 960, y: 1260}
-      size: {width: 350, height: 240}
-      handles:
-        target: [monthly_agent_requests, infrastructure_unit_cost_usd, infrastructure_uptime_slo, exchange_liquidity_depth_usd, payment_fee_cost_usd]
-        source: [infrastructure_cost_usd, uptime_value_score, infra_adjusted_value_usd]
-      tags: [execution]
-      "visual:fill": "#22c55e"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:infrastructure_engine"
-      "flow:portTypes":
-        in:
-          monthly_agent_requests: demand_driver_signal
-          infrastructure_unit_cost_usd: journey_driver_signal
-          infrastructure_uptime_slo: journey_driver_signal
-          exchange_liquidity_depth_usd: liquidity_exchange_signal
-          payment_fee_cost_usd: payment_engine_signal
-        out:
-          infrastructure_cost_usd: infrastructure_engine_signal
-          uptime_value_score: infrastructure_engine_signal
-          infra_adjusted_value_usd: infrastructure_engine_signal
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const cost = n(inputs.monthly_agent_requests) * n(inputs.infrastructure_unit_cost_usd);
-          const uptime = Math.max(0, Math.min(1, n(inputs.infrastructure_uptime_slo)));
-          const adjusted = n(inputs.exchange_liquidity_depth_usd) - cost - n(inputs.payment_fee_cost_usd);
-          return {
-            infrastructure_cost_usd: Math.round(cost * 100) / 100,
-            uptime_value_score: Math.round(uptime * 10000) / 100,
-            infra_adjusted_value_usd: Math.round(adjusted * 100) / 100
-          };
-        }
-      engine_role: "prices the reliability layer that keeps the loop available"
-    - id: closed_value_loop
-      type: ClosedValueLoopWidget
-      label: "Closed User Journey Value Loop"
-      position: {x: 1680, y: 1260}
-      size: {width: 380, height: 270}
-      handles:
-        target: [predicted_intent_quality_score, protocol_yield_score, payment_value_capture_usd, token_exchange_efficiency_score, uptime_value_score, infra_adjusted_value_usd, net_revenue_usd, highest_margin_driver]
-        source: [closed_loop_health_score, user_journey_value_loop, web3_economics_decision_driver, outputSrcDoc]
-      tags: [pivot]
-      "visual:fill": "#f97316"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:closed_value_loop"
-      "flow:portTypes":
-        in:
-          predicted_intent_quality_score: prediction_engine_signal
-          protocol_yield_score: yield_engine_signal
-          payment_value_capture_usd: payment_engine_signal
-          token_exchange_efficiency_score: liquidity_exchange_signal
-          uptime_value_score: infrastructure_engine_signal
-          infra_adjusted_value_usd: infrastructure_engine_signal
-          net_revenue_usd: revenue_metric_signal
-          highest_margin_driver: decision_driver_signal
-        out:
-          closed_loop_health_score: closed_loop_signal
-          user_journey_value_loop: closed_loop_signal
-          web3_economics_decision_driver: decision_driver_signal
-          outputSrcDoc: rich_media_chart_html
-      compute: |
-        inputs => {
-          const n = v => {
-            const m = String(v ?? '').match(/-?[0-9]+(?:\.[0-9]+)?/);
-            const x = m ? Number(m[0]) : Number(v);
-            return Number.isFinite(x) ? x : 0;
-          };
-          const net = Math.max(1, n(inputs.net_revenue_usd));
-          const predictionScore = Math.max(0, Math.min(100, n(inputs.predicted_intent_quality_score) * 100));
-          const yieldScore = Math.max(0, Math.min(100, n(inputs.protocol_yield_score)));
-          const captureScore = Math.max(0, Math.min(100, (n(inputs.payment_value_capture_usd) / net) * 100));
-          const exchangeScore = Math.max(0, Math.min(100, n(inputs.token_exchange_efficiency_score)));
-          const uptimeScore = Math.max(0, Math.min(100, n(inputs.uptime_value_score)));
-          const infraValueScore = Math.max(0, Math.min(100, (n(inputs.infra_adjusted_value_usd) / net) * 100));
-          const infraScore = Math.round(((uptimeScore + infraValueScore) / 2) * 100) / 100;
-          const health = Math.round(((predictionScore + yieldScore + captureScore + exchangeScore + infraScore) / 5) * 100) / 100;
-          const margin = String(inputs.highest_margin_driver || 'margin waits for TCO inputs');
-          const html = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font:14px system-ui,Arial,sans-serif;background:#f8fafc;color:#111827}.wrap{padding:18px}h1{font-size:18px;margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 72px;gap:8px;align-items:center}.bar{height:15px;border-radius:5px;background:#e5e7eb;overflow:hidden}.bar i{display:block;height:100%;background:#f97316}.kpi{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.kpi b{background:white;border:1px solid #e5e7eb;border-radius:6px;padding:6px 8px}p{color:#4b5563;margin:10px 0 0}</style></head><body><main class="wrap"><h1>Closed user journey value loop</h1><section class="kpi"><b>Health ${health}/100</b><b>${margin}</b></section><section class="grid"><span>Prediction Engine</span><b>${predictionScore}</b><span class="bar"><i style="width:${predictionScore}%"></i></span><span></span><span>Yield Engine</span><b>${yieldScore}</b><span class="bar"><i style="width:${yieldScore}%"></i></span><span></span><span>Payment Engine</span><b>${captureScore}</b><span class="bar"><i style="width:${captureScore}%"></i></span><span></span><span>Liquidity & Exchange Engine</span><b>${exchangeScore}</b><span class="bar"><i style="width:${exchangeScore}%"></i></span><span></span><span>Infrastructure Engine</span><b>${infraScore}</b><span class="bar"><i style="width:${infraScore}%"></i></span><span></span></section><p>The loop closes when prediction, yield, payment, liquidity, and infrastructure outputs all feed the next journey decision.</p></main></body></html>`;
-          return {
-            closed_loop_health_score: health,
-            user_journey_value_loop: 'prediction -> yield -> payment -> liquidity/exchange -> infrastructure -> next prediction',
-            web3_economics_decision_driver: health >= 70 ? 'closed value loop is viable under current drivers' : 'rebalance driver assumptions before scaling the loop',
-            outputSrcDoc: html
-          };
-        }
-      engine_role: "scores the closed journey loop across all five Web3 economics engines"
-    - id: decision_ranking
-      type: DecisionWidget
-      label: "Decision Ranking"
-      position: {x: 1500, y: 310}
-      size: {width: 340, height: 240}
-      handles:
-        target: [lowest_cash_tco_driver, highest_margin_driver, breakeven_path_driver, lowest_lockin_driver, tokenized_distribution_driver]
-        source: [recommended_demo_path, managed_demo_path, tokenized_demo_path, margin_optimized_path]
-      tags: [pivot]
-      "visual:fill": "#f97316"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:decision_ranking"
-      "flow:portTypes":
-        in:
-          lowest_cash_tco_driver: decision_driver_signal
-          highest_margin_driver: decision_driver_signal
-          breakeven_path_driver: decision_driver_signal
-          lowest_lockin_driver: decision_driver_signal
-          tokenized_distribution_driver: decision_driver_signal
-        out:
-          recommended_demo_path: decision_driver_signal
-          managed_demo_path: decision_driver_signal
-          tokenized_demo_path: decision_driver_signal
-          margin_optimized_path: decision_driver_signal
-      recommended_demo_path: "local demo = elizaOS + local model + no token launch"
-      managed_demo_path: "managed demo = Fetch Agentverse Basic/Premium + explicit model cap"
-      tokenized_demo_path: "tokenized demo = Virtuals GAME + separate token setup meters"
-      margin_optimized_path: "use calculator highest_margin_driver and validate conversion inputs"
-    - id: tco_chart_panel
-      type: RichMediaPanel
-      label: "TCO Chart Panel"
-      position: {x: 1500, y: 650}
-      size: {width: 420, height: 260}
-      handles:
-        target: [outputSrcDoc]
-        source: [outputSrcDoc]
-      tags: [idea]
-      "visual:fill": "var(--kg-canvas-accent)"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "richMediaPanel"
-      "flow:portTypes":
-        in:
-          outputSrcDoc: rich_media_chart_html
-        out:
-          outputSrcDoc: rich_media_chart_html
-      richMediaActiveTab: "text"
-      output: "Interactive chart panel receives calculator outputSrcDoc."
-      outputSrcDoc: "<!doctype html><html><body><p>TCO chart waits for calculator output.</p></body></html>"
-    - id: value_loop_chart_panel
-      type: RichMediaPanel
-      label: "Value Loop Chart Panel"
-      position: {x: 2100, y: 1260}
-      size: {width: 440, height: 270}
-      handles:
-        target: [outputSrcDoc]
-        source: [outputSrcDoc]
-      tags: [idea]
-      "visual:fill": "var(--kg-canvas-accent)"
-      "visual:stroke": "#9CA3AF"
-      "flow:widgetFormId": "fm:value_loop_chart_panel"
-      "flow:portTypes":
-        in:
-          outputSrcDoc: rich_media_chart_html
-        out:
-          outputSrcDoc: rich_media_chart_html
-      richMediaActiveTab: "text"
-      output: "Closed value-loop chart panel receives closed_value_loop outputSrcDoc."
-      outputSrcDoc: "<!doctype html><html><body><p>Value loop chart waits for engine outputs.</p></body></html>"
+    - id: {key: id, type: string, value: workload_drivers}
+      type: {key: type, type: string, value: CostDriverWidget}
+      label: {key: label, type: string, value: Workload Cost Drivers}
+      position: {key: position, type: object, value: {x: 80, "y": 120}}
+      size: {key: size, type: object, value: {width: 320, height: 190}}
+      handles: {key: handles, type: object, value: {source: [monthly_agent_requests, avg_tool_calls_per_request, avg_tokens_per_request, retry_rate]}}
+      tags: {key: tags, type: array, value: [hypothesis]}
+      visual:fill: {key: visual:fill, type: string, value: "#f59e0b"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:workload_drivers}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {out: {monthly_agent_requests: demand_driver_signal, avg_tool_calls_per_request: demand_driver_signal, avg_tokens_per_request: demand_driver_signal, retry_rate: demand_driver_signal}}}
+      monthly_agent_requests: {key: monthly_agent_requests, type: number, value: 10000}
+      avg_tool_calls_per_request: {key: avg_tool_calls_per_request, type: number, value: 1}
+      avg_tokens_per_request: {key: avg_tokens_per_request, type: string, value: bring-your-own model meter}
+      retry_rate: {key: retry_rate, type: string, value: "tracked as risk, not baked into quoted platform fee"}
+      driver_group: {key: driver_group, type: string, value: demand}
+    - id: {key: id, type: string, value: shared_platform_drivers}
+      type: {key: type, type: string, value: CostDriverWidget}
+      label: {key: label, type: string, value: Shared Platform Drivers}
+      position: {key: position, type: object, value: {x: 80, "y": 390}}
+      size: {key: size, type: object, value: {width: 320, height: 240}}
+      handles: {key: handles, type: object, value: {source: [platform_subscription_usd, platform_unit_call_cost_usd, managed_hosting_required, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours]}}
+      tags: {key: tags, type: array, value: [execution]}
+      visual:fill: {key: visual:fill, type: string, value: "#22c55e"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:shared_platform_drivers}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {out: {platform_subscription_usd: platform_cost_signal, platform_unit_call_cost_usd: platform_cost_signal, managed_hosting_required: platform_cost_signal, hosting_or_cloud_runtime_usd: platform_cost_signal, model_provider_fee_usd: platform_cost_signal, social_api_rpc_data_api_fees: platform_cost_signal, ops_hours: platform_cost_signal}}}
+      platform_subscription_usd: {key: platform_subscription_usd, type: string, value: 0-25+ depending on stack and quota}
+      platform_unit_call_cost_usd: {key: platform_unit_call_cost_usd, type: string, value: 0.003 when using Virtuals GAME paid tier}
+      managed_hosting_required: {key: managed_hosting_required, type: string, value: "true for managed demo, false for self-host baseline"}
+      hosting_or_cloud_runtime_usd: {key: hosting_or_cloud_runtime_usd, type: string, value: "BYO runtime, cloud credits, or managed cloud instance cost"}
+      model_provider_fee_usd: {key: model_provider_fee_usd, type: string, value: explicit external meter}
+      social_api_rpc_data_api_fees: {key: social_api_rpc_data_api_fees, type: string, value: external API meter}
+      ops_hours: {key: ops_hours, type: string, value: "excluded from cash floor, scored separately"}
+      driver_group: {key: driver_group, type: string, value: platform}
+    - id: {key: id, type: string, value: token_exposure_drivers}
+      type: {key: type, type: string, value: CostDriverWidget}
+      label: {key: label, type: string, value: Token Exposure Drivers}
+      position: {key: position, type: object, value: {x: 80, "y": 700}}
+      size: {key: size, type: object, value: {width: 320, height: 210}}
+      handles: {key: handles, type: object, value: {source: [onchain_token_launch_required, token_setup_exposure, onchain_gas_and_token_fees, token_price_volatility]}}
+      tags: {key: tags, type: array, value: [alert]}
+      visual:fill: {key: visual:fill, type: string, value: "#ef4444"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:token_exposure_drivers}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {out: {onchain_token_launch_required: token_risk_signal, token_setup_exposure: token_risk_signal, onchain_gas_and_token_fees: token_risk_signal, token_price_volatility: token_risk_signal}}}
+      onchain_token_launch_required: {key: onchain_token_launch_required, type: string, value: only when tokenized agent launch is required}
+      token_setup_exposure: {key: token_setup_exposure, type: string, value: kept token-denominated}
+      onchain_gas_and_token_fees: {key: onchain_gas_and_token_fees, type: string, value: chain and wallet dependent}
+      token_price_volatility: {key: token_price_volatility, type: string, value: "risk driver, kept token-denominated"}
+      driver_group: {key: driver_group, type: string, value: web3}
+    - id: {key: id, type: string, value: revenue_drivers}
+      type: {key: type, type: string, value: RevenueDriverWidget}
+      label: {key: label, type: string, value: Revenue Drivers}
+      position: {key: position, type: object, value: {x: 80, "y": 990}}
+      size: {key: size, type: object, value: {width: 320, height: 250}}
+      handles: {key: handles, type: object, value: {source: [monthly_active_users, paid_conversion_rate, subscription_price_usd, marketplace_gmv_usd, agent_token_take_rate, support_refund_rate]}}
+      tags: {key: tags, type: array, value: [idea]}
+      visual:fill: {key: visual:fill, type: string, value: var(--kg-canvas-accent)}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:revenue_drivers}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {out: {monthly_active_users: revenue_driver_signal, paid_conversion_rate: revenue_driver_signal, subscription_price_usd: revenue_driver_signal, marketplace_gmv_usd: revenue_driver_signal, agent_token_take_rate: revenue_driver_signal, support_refund_rate: revenue_driver_signal}}}
+      monthly_active_users: {key: monthly_active_users, type: number, value: 2500}
+      paid_conversion_rate: {key: paid_conversion_rate, type: number, value: 0.03}
+      subscription_price_usd: {key: subscription_price_usd, type: number, value: 19}
+      marketplace_gmv_usd: {key: marketplace_gmv_usd, type: number, value: 10000}
+      agent_token_take_rate: {key: agent_token_take_rate, type: number, value: 0.005}
+      support_refund_rate: {key: support_refund_rate, type: number, value: 0.12}
+      driver_group: {key: driver_group, type: string, value: revenue}
+    - id: {key: id, type: string, value: web3_economics_drivers}
+      type: {key: type, type: string, value: Web3EconomicsDriverWidget}
+      label: {key: label, type: string, value: Web3 Economics Drivers}
+      position: {key: position, type: object, value: {x: 80, "y": 1300}}
+      size: {key: size, type: object, value: {width: 340, height: 280}}
+      handles: {key: handles, type: object, value: {source: [prediction_accuracy_rate, wallet_activation_rate, yield_share_rate, payment_success_rate, payment_fee_rate, liquidity_spread_rate, exchange_conversion_rate, infrastructure_uptime_slo, infrastructure_unit_cost_usd]}}
+      tags: {key: tags, type: array, value: [idea]}
+      visual:fill: {key: visual:fill, type: string, value: var(--kg-canvas-accent)}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:web3_economics_drivers}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {out: {prediction_accuracy_rate: journey_driver_signal, wallet_activation_rate: journey_driver_signal, yield_share_rate: journey_driver_signal, payment_success_rate: journey_driver_signal, payment_fee_rate: journey_driver_signal, liquidity_spread_rate: journey_driver_signal, exchange_conversion_rate: journey_driver_signal, infrastructure_uptime_slo: journey_driver_signal, infrastructure_unit_cost_usd: journey_driver_signal}}}
+      prediction_accuracy_rate: {key: prediction_accuracy_rate, type: number, value: 0.68}
+      wallet_activation_rate: {key: wallet_activation_rate, type: number, value: 0.42}
+      yield_share_rate: {key: yield_share_rate, type: number, value: 0.18}
+      payment_success_rate: {key: payment_success_rate, type: number, value: 0.97}
+      payment_fee_rate: {key: payment_fee_rate, type: number, value: 0.012}
+      liquidity_spread_rate: {key: liquidity_spread_rate, type: number, value: 0.008}
+      exchange_conversion_rate: {key: exchange_conversion_rate, type: number, value: 0.74}
+      infrastructure_uptime_slo: {key: infrastructure_uptime_slo, type: number, value: 0.995}
+      infrastructure_unit_cost_usd: {key: infrastructure_unit_cost_usd, type: number, value: 0.0004}
+      driver_group: {key: driver_group, type: string, value: web3_economics}
+    - id: {key: id, type: string, value: fetch_agentverse_tco}
+      type: {key: type, type: string, value: TcoStackWidget}
+      label: {key: label, type: string, value: Fetch.ai / Agentverse TCO}
+      position: {key: position, type: object, value: {x: 520, "y": 110}}
+      size: {key: size, type: object, value: {width: 360, height: 240}}
+      handles: {key: handles, type: object, value: {target: [monthly_agent_requests, platform_subscription_usd, managed_hosting_required, model_provider_fee_usd, onchain_gas_and_token_fees], source: [fetch_monthly_tco_usd, fetch_quota_risk, fetch_tco_score]}}
+      tags: {key: tags, type: array, value: [execution]}
+      visual:fill: {key: visual:fill, type: string, value: "#22c55e"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:fetch_agentverse_tco}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {monthly_agent_requests: demand_driver_signal, platform_subscription_usd: platform_cost_signal, managed_hosting_required: platform_cost_signal, model_provider_fee_usd: platform_cost_signal, onchain_gas_and_token_fees: token_risk_signal}, out: {fetch_monthly_tco_usd: stack_tco_metric, fetch_quota_risk: token_risk_signal, fetch_tco_score: stack_tco_metric}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const req = n(inputs.monthly_agent_requests);\n  const sub = req <= 10000 ? 0 : 25;\n  const total = sub + n(inputs.model_provider_fee_usd) + n(inputs.onchain_gas_and_token_fees);\n  return {\n    fetch_monthly_tco_usd: Math.round(total * 100) / 100,\n    fetch_quota_risk: req <= 10000 ? 'Basic quota fit at current request load' : 'Premium quota needed at current request load',\n    fetch_tco_score: total <= 25 ? 'predictable low managed cash floor' : 'managed cost rises with external meters'\n  };\n}\n"}
+      stack: {key: stack, type: string, value: Fetch.ai / Agentverse}
+      platform_subscription_usd: {key: platform_subscription_usd, type: string, value: 0 on Basic if quotas fit; 25 on Premium}
+      fetch_monthly_tco_usd: {key: fetch_monthly_tco_usd, type: number, value: 25}
+      fetch_monthly_tco_note: {key: fetch_monthly_tco_note, type: string, value: 0-25 platform floor before model/API/FET costs}
+      fetch_quota_risk: {key: fetch_quota_risk, type: string, value: "processed messages, compute seconds, storage"}
+      fetch_tco_score: {key: fetch_tco_score, type: string, value: best predictable managed starter TCO}
+    - id: {key: id, type: string, value: elizaos_ai16z_tco}
+      type: {key: type, type: string, value: TcoStackWidget}
+      label: {key: label, type: string, value: elizaOS / AI16Z TCO}
+      position: {key: position, type: object, value: {x: 520, "y": 420}}
+      size: {key: size, type: object, value: {width: 360, height: 250}}
+      handles: {key: handles, type: object, value: {target: [monthly_agent_requests, hosting_or_cloud_runtime_usd, model_provider_fee_usd, social_api_rpc_data_api_fees, ops_hours], source: [eliza_monthly_tco_usd, eliza_ops_risk, eliza_tco_score]}}
+      tags: {key: tags, type: array, value: [hypothesis]}
+      visual:fill: {key: visual:fill, type: string, value: "#f59e0b"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:elizaos_ai16z_tco}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {monthly_agent_requests: demand_driver_signal, hosting_or_cloud_runtime_usd: platform_cost_signal, model_provider_fee_usd: platform_cost_signal, social_api_rpc_data_api_fees: platform_cost_signal, ops_hours: platform_cost_signal}, out: {eliza_monthly_tco_usd: stack_tco_metric, eliza_ops_risk: platform_cost_signal, eliza_tco_score: stack_tco_metric}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const total = n(inputs.hosting_or_cloud_runtime_usd) + n(inputs.model_provider_fee_usd) + n(inputs.social_api_rpc_data_api_fees);\n  const ops = n(inputs.ops_hours);\n  return {\n    eliza_monthly_tco_usd: Math.round(total * 100) / 100,\n    eliza_ops_risk: ops > 0 ? 'operator hours dominate the real TCO' : 'ops hours tracked outside cash floor',\n    eliza_tco_score: total === 0 ? 'lowest cash floor with owner-operated runtime' : 'infra and provider meters drive cash cost'\n  };\n}\n"}
+      stack: {key: stack, type: string, value: elizaOS / AI16Z}
+      hosting_or_cloud_runtime_usd: {key: hosting_or_cloud_runtime_usd, type: string, value: BYO when self-hosted; cloud credits when managed}
+      eliza_monthly_tco_usd: {key: eliza_monthly_tco_usd, type: number, value: 0}
+      eliza_monthly_tco_note: {key: eliza_monthly_tco_note, type: string, value: 0 public framework fee plus infra/model/ops}
+      eliza_ops_risk: {key: eliza_ops_risk, type: string, value: highest operator-owned surface}
+      eliza_tco_score: {key: eliza_tco_score, type: string, value: best FOSS/control baseline}
+    - id: {key: id, type: string, value: virtuals_game_tco}
+      type: {key: type, type: string, value: TcoStackWidget}
+      label: {key: label, type: string, value: Virtuals / GAME TCO}
+      position: {key: position, type: object, value: {x: 520, "y": 740}}
+      size: {key: size, type: object, value: {width: 360, height: 260}}
+      handles: {key: handles, type: object, value: {target: [monthly_agent_requests, platform_unit_call_cost_usd, onchain_token_launch_required, token_setup_exposure, onchain_gas_and_token_fees, token_price_volatility], source: [virtuals_monthly_tco_usd, virtuals_token_risk, virtuals_tco_score]}}
+      tags: {key: tags, type: array, value: [alert]}
+      visual:fill: {key: visual:fill, type: string, value: "#ef4444"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:virtuals_game_tco}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {monthly_agent_requests: demand_driver_signal, platform_unit_call_cost_usd: platform_cost_signal, onchain_token_launch_required: token_risk_signal, token_setup_exposure: token_risk_signal, onchain_gas_and_token_fees: token_risk_signal, token_price_volatility: token_risk_signal}, out: {virtuals_monthly_tco_usd: stack_tco_metric, virtuals_token_risk: token_risk_signal, virtuals_tco_score: stack_tco_metric}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const req = n(inputs.monthly_agent_requests);\n  const unit = n(inputs.platform_unit_call_cost_usd) || 0.003;\n  const total = req * unit + n(inputs.onchain_gas_and_token_fees);\n  return {\n    virtuals_monthly_tco_usd: Math.round(total * 100) / 100,\n    virtuals_token_risk: 'launch fee, graduation threshold, gas, and VIRTUAL price stay separate',\n    virtuals_tco_score: total <= 30 ? 'tokenized distribution fit with per-call floor' : 'runtime cost scales with paid calls'\n  };\n}\n"}
+      stack: {key: stack, type: string, value: Virtuals Protocol / GAME}
+      platform_unit_call_cost_usd: {key: platform_unit_call_cost_usd, type: number, value: 0.003}
+      virtuals_monthly_tco_usd: {key: virtuals_monthly_tco_usd, type: number, value: 30}
+      virtuals_monthly_tco_note: {key: virtuals_monthly_tco_note, type: string, value: 30 platform call floor at 10k paid GAME calls}
+      virtuals_token_risk: {key: virtuals_token_risk, type: string, value: "launch fee, graduation threshold, gas, VIRTUAL price"}
+      virtuals_tco_score: {key: virtuals_tco_score, type: string, value: best tokenized-agent economy fit}
+    - id: {key: id, type: string, value: revenue_calculator}
+      type: {key: type, type: string, value: RevenueCalculatorWidget}
+      label: {key: label, type: string, value: Revenue Calculator}
+      position: {key: position, type: object, value: {x: 520, "y": 1060}}
+      size: {key: size, type: object, value: {width: 360, height: 250}}
+      handles: {key: handles, type: object, value: {target: [monthly_agent_requests, monthly_active_users, paid_conversion_rate, subscription_price_usd, marketplace_gmv_usd, agent_token_take_rate, support_refund_rate], source: [monthly_revenue_usd, net_revenue_usd, revenue_per_request_usd, revenue_model_confidence]}}
+      tags: {key: tags, type: array, value: [idea]}
+      visual:fill: {key: visual:fill, type: string, value: var(--kg-canvas-accent)}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:revenue_calculator}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {monthly_agent_requests: demand_driver_signal, monthly_active_users: revenue_driver_signal, paid_conversion_rate: revenue_driver_signal, subscription_price_usd: revenue_driver_signal, marketplace_gmv_usd: revenue_driver_signal, agent_token_take_rate: revenue_driver_signal, support_refund_rate: revenue_driver_signal}, out: {monthly_revenue_usd: revenue_metric_signal, net_revenue_usd: revenue_metric_signal, revenue_per_request_usd: revenue_metric_signal, revenue_model_confidence: decision_driver_signal}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const req = Math.max(1, n(inputs.monthly_agent_requests) || 10000);\n  const users = n(inputs.monthly_active_users);\n  const conversion = n(inputs.paid_conversion_rate);\n  const price = n(inputs.subscription_price_usd);\n  const marketplace = n(inputs.marketplace_gmv_usd);\n  const take = n(inputs.agent_token_take_rate);\n  const refund = Math.max(0, Math.min(0.95, n(inputs.support_refund_rate)));\n  const gross = users * conversion * price + marketplace * take;\n  const net = gross * (1 - refund);\n  return {\n    monthly_revenue_usd: Math.round(gross * 100) / 100,\n    net_revenue_usd: Math.round(net * 100) / 100,\n    revenue_per_request_usd: Math.round((net / req) * 10000) / 10000,\n    revenue_model_confidence: net > 0 ? 'revenue-positive baseline, validate conversion and refunds' : 'no revenue yet, treat costs as burn'\n  };\n}\n"}
+      formula: {key: formula, type: string, value: net_revenue = (monthly_active_users * paid_conversion_rate * subscription_price_usd + marketplace_gmv_usd * agent_token_take_rate) * (1 - support_refund_rate)}
+    - id: {key: id, type: string, value: tco_calculator}
+      type: {key: type, type: string, value: TcoCalculatorWidget}
+      label: {key: label, type: string, value: TCO Calculator}
+      position: {key: position, type: object, value: {x: 1040, "y": 280}}
+      size: {key: size, type: object, value: {width: 360, height: 260}}
+      handles: {key: handles, type: object, value: {target: [monthly_revenue_usd, net_revenue_usd, fetch_monthly_tco_usd, eliza_monthly_tco_usd, virtuals_monthly_tco_usd, fetch_quota_risk, eliza_ops_risk, virtuals_token_risk], source: [lowest_cash_tco_driver, highest_margin_driver, breakeven_path_driver, lowest_lockin_driver, tokenized_distribution_driver, outputSrcDoc]}}
+      tags: {key: tags, type: array, value: [pivot]}
+      visual:fill: {key: visual:fill, type: string, value: "#f97316"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:tco_calculator}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {monthly_revenue_usd: revenue_metric_signal, net_revenue_usd: revenue_metric_signal, fetch_monthly_tco_usd: stack_tco_metric, eliza_monthly_tco_usd: stack_tco_metric, virtuals_monthly_tco_usd: stack_tco_metric, fetch_quota_risk: token_risk_signal, eliza_ops_risk: platform_cost_signal, virtuals_token_risk: token_risk_signal}, out: {lowest_cash_tco_driver: decision_driver_signal, highest_margin_driver: decision_driver_signal, breakeven_path_driver: decision_driver_signal, lowest_lockin_driver: decision_driver_signal, tokenized_distribution_driver: decision_driver_signal, outputSrcDoc: rich_media_chart_html}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const gross = n(inputs.monthly_revenue_usd);\n  const net = n(inputs.net_revenue_usd);\n  const rows = [\n    ['elizaOS / AI16Z', n(inputs.eliza_monthly_tco_usd), '#f59e0b'],\n    ['Fetch.ai / Agentverse', n(inputs.fetch_monthly_tco_usd), '#22c55e'],\n    ['Virtuals / GAME', n(inputs.virtuals_monthly_tco_usd), '#ef4444'],\n  ];\n  const scored = rows.map(row => [row[0], row[1], Math.round((net - row[1]) * 100) / 100, row[2]]);\n  const maxCost = rows.reduce((acc, row) => row[1] > acc ? row[1] : acc, 1);\n  const best = scored.reduce((acc, row) => row[2] > acc[2] ? row : acc, scored[0]);\n  const costBars = rows.map(row => `<section class=\"bar-row\"><strong>${row[0]}</strong><span class=\"bar\"><i style=\"width:${Math.max(4, Math.round((row[1] / maxCost) * 100))}%;background:${row[2]}\"></i></span><b>$${row[1]}/mo</b></section>`).join('');\n  const marginBars = scored.map(row => `<section class=\"bar-row\"><strong>${row[0]}</strong><span class=\"bar\"><i style=\"width:${Math.max(4, Math.min(100, Math.round(((row[2] + maxCost) / Math.max(1, net + maxCost)) * 100)))}%;background:${row[3]}\"></i></span><b>$${row[2]}/mo</b></section>`).join('');\n  const html = `<!doctype html><html><head><meta charset=\"utf-8\"><style>body{margin:0;font:14px system-ui,Arial,sans-serif;background:#f8fafc;color:#111827}.wrap{padding:18px}h1{font-size:18px;margin:0 0 12px}h2{font-size:13px;margin:14px 0 8px;color:#374151}.bar-row{display:grid;grid-template-columns:150px 1fr 82px;gap:10px;align-items:center;margin:8px 0}.bar{height:16px;border-radius:5px;background:#e5e7eb;overflow:hidden}.bar i{display:block;height:100%}.kpi{display:flex;gap:10px;flex-wrap:wrap}.kpi b{background:white;border:1px solid #e5e7eb;border-radius:6px;padding:6px 8px}p{margin:10px 0 0;color:#4b5563}</style></head><body><main class=\"wrap\"><h1>Revenue and TCO simulation</h1><section class=\"kpi\"><b>Gross $${gross}/mo</b><b>Net $${net}/mo</b><b>Best margin ${best[0]}</b></section><h2>Monthly cost</h2>${costBars}<h2>Net margin after cost</h2>${marginBars}<p>Every bar is fed by a typed Flow Editor port; token, gas, ops, and quota risk remain separate driver handles.</p></main></body></html>`;\n  return {\n    lowest_cash_tco_driver: 'elizaOS self-host cash floor when operator time is available',\n    highest_margin_driver: `${best[0]} net margin $${best[2]}/mo`,\n    breakeven_path_driver: best[2] >= 0 ? 'current revenue clears selected cost floor' : 'revenue must rise or cost floor must fall',\n    lowest_lockin_driver: 'elizaOS local/self-host',\n    tokenized_distribution_driver: 'Virtuals when agent-token distribution matters',\n    outputSrcDoc: html\n  };\n}\n"}
+      lowest_cash_tco_driver: {key: lowest_cash_tco_driver, type: string, value: "elizaOS self-host cash floor, if ops are available"}
+      highest_margin_driver: {key: highest_margin_driver, type: string, value: waits for net revenue and computed stack costs}
+      breakeven_path_driver: {key: breakeven_path_driver, type: string, value: waits for net revenue and computed stack costs}
+      lowest_lockin_driver: {key: lowest_lockin_driver, type: string, value: elizaOS local/self-host}
+      tokenized_distribution_driver: {key: tokenized_distribution_driver, type: string, value: Virtuals when agent token launch matters}
+      calculation_policy: {key: calculation_policy, type: string, value: "cash floors, net revenue, ops, and token-volatility risk stay separate until the calculator joins them"}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: <!doctype html><html><body><p>TCO chart waits for calculator inputs.</p></body></html>}
+    - id: {key: id, type: string, value: prediction_engine}
+      type: {key: type, type: string, value: PredictionEngineWidget}
+      label: {key: label, type: string, value: Prediction Engine}
+      position: {key: position, type: object, value: {x: 960, "y": 980}}
+      size: {key: size, type: object, value: {width: 340, height: 230}}
+      handles: {key: handles, type: object, value: {target: [monthly_active_users, paid_conversion_rate, prediction_accuracy_rate, wallet_activation_rate], source: [predicted_intent_quality_score, conversion_uplift_rate, demand_forecast_index]}}
+      tags: {key: tags, type: array, value: [hypothesis]}
+      visual:fill: {key: visual:fill, type: string, value: "#f59e0b"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:prediction_engine}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {monthly_active_users: revenue_driver_signal, paid_conversion_rate: revenue_driver_signal, prediction_accuracy_rate: journey_driver_signal, wallet_activation_rate: journey_driver_signal}, out: {predicted_intent_quality_score: prediction_engine_signal, conversion_uplift_rate: prediction_engine_signal, demand_forecast_index: prediction_engine_signal}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const users = n(inputs.monthly_active_users);\n  const conversion = n(inputs.paid_conversion_rate);\n  const accuracy = Math.max(0, Math.min(1, n(inputs.prediction_accuracy_rate)));\n  const activation = Math.max(0, Math.min(1, n(inputs.wallet_activation_rate)));\n  const quality = Math.max(0, Math.min(1, accuracy * 0.7 + activation * 0.3));\n  const uplift = conversion * quality;\n  return {\n    predicted_intent_quality_score: Math.round(quality * 1000) / 1000,\n    conversion_uplift_rate: Math.round(uplift * 10000) / 10000,\n    demand_forecast_index: Math.round(users * (1 + uplift) * 100) / 100\n  };\n}\n"}
+      engine_role: {key: engine_role, type: string, value: turns observed user intent into a demand and conversion signal}
+    - id: {key: id, type: string, value: yield_engine}
+      type: {key: type, type: string, value: YieldEngineWidget}
+      label: {key: label, type: string, value: Yield Engine}
+      position: {key: position, type: object, value: {x: 1320, "y": 980}}
+      size: {key: size, type: object, value: {width: 340, height: 230}}
+      handles: {key: handles, type: object, value: {target: [net_revenue_usd, revenue_per_request_usd, yield_share_rate, predicted_intent_quality_score, demand_forecast_index], source: [user_value_yield_usd, protocol_yield_score, retention_value_index]}}
+      tags: {key: tags, type: array, value: [execution]}
+      visual:fill: {key: visual:fill, type: string, value: "#22c55e"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:yield_engine}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {net_revenue_usd: revenue_metric_signal, revenue_per_request_usd: revenue_metric_signal, yield_share_rate: journey_driver_signal, predicted_intent_quality_score: prediction_engine_signal, demand_forecast_index: prediction_engine_signal}, out: {user_value_yield_usd: yield_engine_signal, protocol_yield_score: yield_engine_signal, retention_value_index: yield_engine_signal}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const net = n(inputs.net_revenue_usd);\n  const perRequest = n(inputs.revenue_per_request_usd);\n  const share = Math.max(0, Math.min(1, n(inputs.yield_share_rate)));\n  const quality = Math.max(0, Math.min(1, n(inputs.predicted_intent_quality_score)));\n  const yieldValue = net * share * Math.max(0.1, quality);\n  const score = Math.min(100, (yieldValue / Math.max(1, net)) * 100);\n  return {\n    user_value_yield_usd: Math.round(yieldValue * 100) / 100,\n    protocol_yield_score: Math.round(score * 100) / 100,\n    retention_value_index: Math.round(Math.min(1, quality + perRequest) * 1000) / 1000\n  };\n}\n"}
+      engine_role: {key: engine_role, type: string, value: converts revenue into user-retained value and protocol yield}
+    - id: {key: id, type: string, value: payment_engine}
+      type: {key: type, type: string, value: PaymentEngineWidget}
+      label: {key: label, type: string, value: Payment Engine}
+      position: {key: position, type: object, value: {x: 1680, "y": 980}}
+      size: {key: size, type: object, value: {width: 340, height: 230}}
+      handles: {key: handles, type: object, value: {target: [net_revenue_usd, user_value_yield_usd, payment_success_rate, payment_fee_rate], source: [settled_payment_volume_usd, payment_fee_cost_usd, payment_value_capture_usd]}}
+      tags: {key: tags, type: array, value: [idea]}
+      visual:fill: {key: visual:fill, type: string, value: var(--kg-canvas-accent)}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:payment_engine}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {net_revenue_usd: revenue_metric_signal, user_value_yield_usd: yield_engine_signal, payment_success_rate: journey_driver_signal, payment_fee_rate: journey_driver_signal}, out: {settled_payment_volume_usd: payment_engine_signal, payment_fee_cost_usd: payment_engine_signal, payment_value_capture_usd: payment_engine_signal}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const success = Math.max(0, Math.min(1, n(inputs.payment_success_rate)));\n  const feeRate = Math.max(0, Math.min(1, n(inputs.payment_fee_rate)));\n  const settled = (n(inputs.net_revenue_usd) + n(inputs.user_value_yield_usd)) * success;\n  const fee = settled * feeRate;\n  return {\n    settled_payment_volume_usd: Math.round(settled * 100) / 100,\n    payment_fee_cost_usd: Math.round(fee * 100) / 100,\n    payment_value_capture_usd: Math.round((settled - fee) * 100) / 100\n  };\n}\n"}
+      engine_role: {key: engine_role, type: string, value: settles value capture through wallet/payment rails}
+    - id: {key: id, type: string, value: liquidity_exchange_engine}
+      type: {key: type, type: string, value: LiquidityExchangeEngineWidget}
+      label: {key: label, type: string, value: Liquidity & Exchange Engine}
+      position: {key: position, type: object, value: {x: 1320, "y": 1260}}
+      size: {key: size, type: object, value: {width: 360, height: 240}}
+      handles: {key: handles, type: object, value: {target: [settled_payment_volume_usd, liquidity_spread_rate, exchange_conversion_rate, token_price_volatility], source: [exchange_liquidity_depth_usd, liquidity_slippage_cost_usd, token_exchange_efficiency_score]}}
+      tags: {key: tags, type: array, value: [pivot]}
+      visual:fill: {key: visual:fill, type: string, value: "#f97316"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:liquidity_exchange_engine}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {settled_payment_volume_usd: payment_engine_signal, liquidity_spread_rate: journey_driver_signal, exchange_conversion_rate: journey_driver_signal, token_price_volatility: token_risk_signal}, out: {exchange_liquidity_depth_usd: liquidity_exchange_signal, liquidity_slippage_cost_usd: liquidity_exchange_signal, token_exchange_efficiency_score: liquidity_exchange_signal}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const settled = n(inputs.settled_payment_volume_usd);\n  const spread = Math.max(0, Math.min(1, n(inputs.liquidity_spread_rate)));\n  const conversion = Math.max(0, Math.min(1, n(inputs.exchange_conversion_rate)));\n  const volatility = Math.max(0, n(inputs.token_price_volatility));\n  const depth = settled * conversion;\n  const slippage = settled * spread * (1 + volatility);\n  const efficiency = Math.max(0, Math.min(100, conversion * 100 - spread * 100 - volatility * 10));\n  return {\n    exchange_liquidity_depth_usd: Math.round(depth * 100) / 100,\n    liquidity_slippage_cost_usd: Math.round(slippage * 100) / 100,\n    token_exchange_efficiency_score: Math.round(efficiency * 100) / 100\n  };\n}\n"}
+      engine_role: {key: engine_role, type: string, value: turns settled payments into exchangeable liquidity}
+    - id: {key: id, type: string, value: infrastructure_engine}
+      type: {key: type, type: string, value: InfrastructureEngineWidget}
+      label: {key: label, type: string, value: Infrastructure Engine}
+      position: {key: position, type: object, value: {x: 960, "y": 1260}}
+      size: {key: size, type: object, value: {width: 350, height: 240}}
+      handles: {key: handles, type: object, value: {target: [monthly_agent_requests, infrastructure_unit_cost_usd, infrastructure_uptime_slo, exchange_liquidity_depth_usd, payment_fee_cost_usd], source: [infrastructure_cost_usd, uptime_value_score, infra_adjusted_value_usd]}}
+      tags: {key: tags, type: array, value: [execution]}
+      visual:fill: {key: visual:fill, type: string, value: "#22c55e"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:infrastructure_engine}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {monthly_agent_requests: demand_driver_signal, infrastructure_unit_cost_usd: journey_driver_signal, infrastructure_uptime_slo: journey_driver_signal, exchange_liquidity_depth_usd: liquidity_exchange_signal, payment_fee_cost_usd: payment_engine_signal}, out: {infrastructure_cost_usd: infrastructure_engine_signal, uptime_value_score: infrastructure_engine_signal, infra_adjusted_value_usd: infrastructure_engine_signal}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const cost = n(inputs.monthly_agent_requests) * n(inputs.infrastructure_unit_cost_usd);\n  const uptime = Math.max(0, Math.min(1, n(inputs.infrastructure_uptime_slo)));\n  const adjusted = n(inputs.exchange_liquidity_depth_usd) - cost - n(inputs.payment_fee_cost_usd);\n  return {\n    infrastructure_cost_usd: Math.round(cost * 100) / 100,\n    uptime_value_score: Math.round(uptime * 10000) / 100,\n    infra_adjusted_value_usd: Math.round(adjusted * 100) / 100\n  };\n}\n"}
+      engine_role: {key: engine_role, type: string, value: prices the reliability layer that keeps the loop available}
+    - id: {key: id, type: string, value: closed_value_loop}
+      type: {key: type, type: string, value: ClosedValueLoopWidget}
+      label: {key: label, type: string, value: Closed User Journey Value Loop}
+      position: {key: position, type: object, value: {x: 1680, "y": 1260}}
+      size: {key: size, type: object, value: {width: 380, height: 270}}
+      handles: {key: handles, type: object, value: {target: [predicted_intent_quality_score, protocol_yield_score, payment_value_capture_usd, token_exchange_efficiency_score, uptime_value_score, infra_adjusted_value_usd, net_revenue_usd, highest_margin_driver], source: [closed_loop_health_score, user_journey_value_loop, web3_economics_decision_driver, outputSrcDoc]}}
+      tags: {key: tags, type: array, value: [pivot]}
+      visual:fill: {key: visual:fill, type: string, value: "#f97316"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:closed_value_loop}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {predicted_intent_quality_score: prediction_engine_signal, protocol_yield_score: yield_engine_signal, payment_value_capture_usd: payment_engine_signal, token_exchange_efficiency_score: liquidity_exchange_signal, uptime_value_score: infrastructure_engine_signal, infra_adjusted_value_usd: infrastructure_engine_signal, net_revenue_usd: revenue_metric_signal, highest_margin_driver: decision_driver_signal}, out: {closed_loop_health_score: closed_loop_signal, user_journey_value_loop: closed_loop_signal, web3_economics_decision_driver: decision_driver_signal, outputSrcDoc: rich_media_chart_html}}}
+      compute: {key: compute, type: textarea, value: "inputs => {\n  const n = v => {\n    const m = String(v ?? '').match(/-?[0-9]+(?:\\.[0-9]+)?/);\n    const x = m ? Number(m[0]) : Number(v);\n    return Number.isFinite(x) ? x : 0;\n  };\n  const net = Math.max(1, n(inputs.net_revenue_usd));\n  const predictionScore = Math.max(0, Math.min(100, n(inputs.predicted_intent_quality_score) * 100));\n  const yieldScore = Math.max(0, Math.min(100, n(inputs.protocol_yield_score)));\n  const captureScore = Math.max(0, Math.min(100, (n(inputs.payment_value_capture_usd) / net) * 100));\n  const exchangeScore = Math.max(0, Math.min(100, n(inputs.token_exchange_efficiency_score)));\n  const uptimeScore = Math.max(0, Math.min(100, n(inputs.uptime_value_score)));\n  const infraValueScore = Math.max(0, Math.min(100, (n(inputs.infra_adjusted_value_usd) / net) * 100));\n  const infraScore = Math.round(((uptimeScore + infraValueScore) / 2) * 100) / 100;\n  const health = Math.round(((predictionScore + yieldScore + captureScore + exchangeScore + infraScore) / 5) * 100) / 100;\n  const margin = String(inputs.highest_margin_driver || 'margin waits for TCO inputs');\n  const html = `<!doctype html><html><head><meta charset=\"utf-8\"><style>body{margin:0;font:14px system-ui,Arial,sans-serif;background:#f8fafc;color:#111827}.wrap{padding:18px}h1{font-size:18px;margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 72px;gap:8px;align-items:center}.bar{height:15px;border-radius:5px;background:#e5e7eb;overflow:hidden}.bar i{display:block;height:100%;background:#f97316}.kpi{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.kpi b{background:white;border:1px solid #e5e7eb;border-radius:6px;padding:6px 8px}p{color:#4b5563;margin:10px 0 0}</style></head><body><main class=\"wrap\"><h1>Closed user journey value loop</h1><section class=\"kpi\"><b>Health ${health}/100</b><b>${margin}</b></section><section class=\"grid\"><span>Prediction Engine</span><b>${predictionScore}</b><span class=\"bar\"><i style=\"width:${predictionScore}%\"></i></span><span></span><span>Yield Engine</span><b>${yieldScore}</b><span class=\"bar\"><i style=\"width:${yieldScore}%\"></i></span><span></span><span>Payment Engine</span><b>${captureScore}</b><span class=\"bar\"><i style=\"width:${captureScore}%\"></i></span><span></span><span>Liquidity & Exchange Engine</span><b>${exchangeScore}</b><span class=\"bar\"><i style=\"width:${exchangeScore}%\"></i></span><span></span><span>Infrastructure Engine</span><b>${infraScore}</b><span class=\"bar\"><i style=\"width:${infraScore}%\"></i></span><span></span></section><p>The loop closes when prediction, yield, payment, liquidity, and infrastructure outputs all feed the next journey decision.</p></main></body></html>`;\n  return {\n    closed_loop_health_score: health,\n    user_journey_value_loop: 'prediction -> yield -> payment -> liquidity/exchange -> infrastructure -> next prediction',\n    web3_economics_decision_driver: health >= 70 ? 'closed value loop is viable under current drivers' : 'rebalance driver assumptions before scaling the loop',\n    outputSrcDoc: html\n  };\n}\n"}
+      engine_role: {key: engine_role, type: string, value: scores the closed journey loop across all five Web3 economics engines}
+    - id: {key: id, type: string, value: decision_ranking}
+      type: {key: type, type: string, value: DecisionWidget}
+      label: {key: label, type: string, value: Decision Ranking}
+      position: {key: position, type: object, value: {x: 1500, "y": 310}}
+      size: {key: size, type: object, value: {width: 340, height: 240}}
+      handles: {key: handles, type: object, value: {target: [lowest_cash_tco_driver, highest_margin_driver, breakeven_path_driver, lowest_lockin_driver, tokenized_distribution_driver], source: [recommended_demo_path, managed_demo_path, tokenized_demo_path, margin_optimized_path]}}
+      tags: {key: tags, type: array, value: [pivot]}
+      visual:fill: {key: visual:fill, type: string, value: "#f97316"}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:decision_ranking}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {lowest_cash_tco_driver: decision_driver_signal, highest_margin_driver: decision_driver_signal, breakeven_path_driver: decision_driver_signal, lowest_lockin_driver: decision_driver_signal, tokenized_distribution_driver: decision_driver_signal}, out: {recommended_demo_path: decision_driver_signal, managed_demo_path: decision_driver_signal, tokenized_demo_path: decision_driver_signal, margin_optimized_path: decision_driver_signal}}}
+      recommended_demo_path: {key: recommended_demo_path, type: string, value: local demo = elizaOS + local model + no token launch}
+      managed_demo_path: {key: managed_demo_path, type: string, value: managed demo = Fetch Agentverse Basic/Premium + explicit model cap}
+      tokenized_demo_path: {key: tokenized_demo_path, type: string, value: tokenized demo = Virtuals GAME + separate token setup meters}
+      margin_optimized_path: {key: margin_optimized_path, type: string, value: use calculator highest_margin_driver and validate conversion inputs}
+    - id: {key: id, type: string, value: tco_chart_panel}
+      type: {key: type, type: string, value: RichMediaPanel}
+      label: {key: label, type: string, value: TCO Chart Panel}
+      position: {key: position, type: object, value: {x: 1500, "y": 650}}
+      size: {key: size, type: object, value: {width: 420, height: 260}}
+      handles: {key: handles, type: object, value: {target: [outputSrcDoc], source: [outputSrcDoc]}}
+      tags: {key: tags, type: array, value: [idea]}
+      visual:fill: {key: visual:fill, type: string, value: var(--kg-canvas-accent)}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: richMediaPanel}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {outputSrcDoc: rich_media_chart_html}, out: {outputSrcDoc: rich_media_chart_html}}}
+      richMediaActiveTab: {key: richMediaActiveTab, type: select, value: text}
+      output: {key: output, type: string, value: Interactive chart panel receives calculator outputSrcDoc.}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: <!doctype html><html><body><p>TCO chart waits for calculator output.</p></body></html>}
+    - id: {key: id, type: string, value: value_loop_chart_panel}
+      type: {key: type, type: string, value: RichMediaPanel}
+      label: {key: label, type: string, value: Value Loop Chart Panel}
+      position: {key: position, type: object, value: {x: 2100, "y": 1260}}
+      size: {key: size, type: object, value: {width: 440, height: 270}}
+      handles: {key: handles, type: object, value: {target: [outputSrcDoc], source: [outputSrcDoc]}}
+      tags: {key: tags, type: array, value: [idea]}
+      visual:fill: {key: visual:fill, type: string, value: var(--kg-canvas-accent)}
+      visual:stroke: {key: visual:stroke, type: string, value: "#9CA3AF"}
+      flow:widgetFormId: {key: flow:widgetFormId, type: string, value: fm:value_loop_chart_panel}
+      flow:portTypes: {key: flow:portTypes, type: object, value: {in: {outputSrcDoc: rich_media_chart_html}, out: {outputSrcDoc: rich_media_chart_html}}}
+      richMediaActiveTab: {key: richMediaActiveTab, type: select, value: text}
+      output: {key: output, type: string, value: Closed value-loop chart panel receives closed_value_loop outputSrcDoc.}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: <!doctype html><html><body><p>Value loop chart waits for engine outputs.</p></body></html>}
   edges:
-    - {id: e-workload-fetch, source: workload_drivers, sourceHandle: monthly_agent_requests, target: fetch_agentverse_tco, targetHandle: monthly_agent_requests, label: "monthly_agent_requests", type: demand_driver_signal, animated: true}
-    - {id: e-workload-eliza, source: workload_drivers, sourceHandle: monthly_agent_requests, target: elizaos_ai16z_tco, targetHandle: monthly_agent_requests, label: "monthly_agent_requests", type: demand_driver_signal, animated: true}
-    - {id: e-workload-virtuals, source: workload_drivers, sourceHandle: monthly_agent_requests, target: virtuals_game_tco, targetHandle: monthly_agent_requests, label: "monthly_agent_requests", type: demand_driver_signal, animated: true}
-    - {id: e-workload-revenue, source: workload_drivers, sourceHandle: monthly_agent_requests, target: revenue_calculator, targetHandle: monthly_agent_requests, label: "monthly_agent_requests", type: demand_driver_signal, animated: true}
-    - {id: e-subscription-fetch, source: shared_platform_drivers, sourceHandle: platform_subscription_usd, target: fetch_agentverse_tco, targetHandle: platform_subscription_usd, label: "platform_subscription_usd", type: platform_cost_signal, animated: true}
-    - {id: e-hosting-fetch, source: shared_platform_drivers, sourceHandle: managed_hosting_required, target: fetch_agentverse_tco, targetHandle: managed_hosting_required, label: "managed_hosting_required", type: platform_cost_signal, animated: true}
-    - {id: e-model-fetch, source: shared_platform_drivers, sourceHandle: model_provider_fee_usd, target: fetch_agentverse_tco, targetHandle: model_provider_fee_usd, label: "model_provider_fee_usd", type: platform_cost_signal, animated: true}
-    - {id: e-hosting-eliza, source: shared_platform_drivers, sourceHandle: hosting_or_cloud_runtime_usd, target: elizaos_ai16z_tco, targetHandle: hosting_or_cloud_runtime_usd, label: "hosting_or_cloud_runtime_usd", type: platform_cost_signal, animated: true}
-    - {id: e-model-eliza, source: shared_platform_drivers, sourceHandle: model_provider_fee_usd, target: elizaos_ai16z_tco, targetHandle: model_provider_fee_usd, label: "model_provider_fee_usd", type: platform_cost_signal, animated: true}
-    - {id: e-api-eliza, source: shared_platform_drivers, sourceHandle: social_api_rpc_data_api_fees, target: elizaos_ai16z_tco, targetHandle: social_api_rpc_data_api_fees, label: "social_api_rpc_data_api_fees", type: platform_cost_signal, animated: true}
-    - {id: e-ops-eliza, source: shared_platform_drivers, sourceHandle: ops_hours, target: elizaos_ai16z_tco, targetHandle: ops_hours, label: "ops_hours", type: platform_cost_signal, animated: true}
-    - {id: e-unit-virtuals, source: shared_platform_drivers, sourceHandle: platform_unit_call_cost_usd, target: virtuals_game_tco, targetHandle: platform_unit_call_cost_usd, label: "platform_unit_call_cost_usd", type: platform_cost_signal, animated: true}
-    - {id: e-token-launch-virtuals, source: token_exposure_drivers, sourceHandle: onchain_token_launch_required, target: virtuals_game_tco, targetHandle: onchain_token_launch_required, label: "onchain_token_launch_required", type: token_risk_signal, animated: true}
-    - {id: e-token-setup-virtuals, source: token_exposure_drivers, sourceHandle: token_setup_exposure, target: virtuals_game_tco, targetHandle: token_setup_exposure, label: "token_setup_exposure", type: token_risk_signal, animated: true}
-    - {id: e-gas-fetch, source: token_exposure_drivers, sourceHandle: onchain_gas_and_token_fees, target: fetch_agentverse_tco, targetHandle: onchain_gas_and_token_fees, label: "onchain_gas_and_token_fees", type: token_risk_signal, animated: true}
-    - {id: e-gas-virtuals, source: token_exposure_drivers, sourceHandle: onchain_gas_and_token_fees, target: virtuals_game_tco, targetHandle: onchain_gas_and_token_fees, label: "onchain_gas_and_token_fees", type: token_risk_signal, animated: true}
-    - {id: e-volatility-virtuals, source: token_exposure_drivers, sourceHandle: token_price_volatility, target: virtuals_game_tco, targetHandle: token_price_volatility, label: "token_price_volatility", type: token_risk_signal, animated: true}
-    - {id: e-revenue-users, source: revenue_drivers, sourceHandle: monthly_active_users, target: revenue_calculator, targetHandle: monthly_active_users, label: "monthly_active_users", type: revenue_driver_signal, animated: true}
-    - {id: e-revenue-conversion, source: revenue_drivers, sourceHandle: paid_conversion_rate, target: revenue_calculator, targetHandle: paid_conversion_rate, label: "paid_conversion_rate", type: revenue_driver_signal, animated: true}
-    - {id: e-revenue-price, source: revenue_drivers, sourceHandle: subscription_price_usd, target: revenue_calculator, targetHandle: subscription_price_usd, label: "subscription_price_usd", type: revenue_driver_signal, animated: true}
-    - {id: e-revenue-gmv, source: revenue_drivers, sourceHandle: marketplace_gmv_usd, target: revenue_calculator, targetHandle: marketplace_gmv_usd, label: "marketplace_gmv_usd", type: revenue_driver_signal, animated: true}
-    - {id: e-revenue-take, source: revenue_drivers, sourceHandle: agent_token_take_rate, target: revenue_calculator, targetHandle: agent_token_take_rate, label: "agent_token_take_rate", type: revenue_driver_signal, animated: true}
-    - {id: e-revenue-refund, source: revenue_drivers, sourceHandle: support_refund_rate, target: revenue_calculator, targetHandle: support_refund_rate, label: "support_refund_rate", type: revenue_driver_signal, animated: true}
-    - {id: e-revenue-gross-calc, source: revenue_calculator, sourceHandle: monthly_revenue_usd, target: tco_calculator, targetHandle: monthly_revenue_usd, label: "monthly_revenue_usd", type: revenue_metric_signal, animated: true}
-    - {id: e-revenue-net-calc, source: revenue_calculator, sourceHandle: net_revenue_usd, target: tco_calculator, targetHandle: net_revenue_usd, label: "net_revenue_usd", type: revenue_metric_signal, animated: true}
-    - {id: e-fetch-calc, source: fetch_agentverse_tco, sourceHandle: fetch_monthly_tco_usd, target: tco_calculator, targetHandle: fetch_monthly_tco_usd, label: "fetch_monthly_tco_usd", type: stack_tco_metric, animated: true}
-    - {id: e-eliza-calc, source: elizaos_ai16z_tco, sourceHandle: eliza_monthly_tco_usd, target: tco_calculator, targetHandle: eliza_monthly_tco_usd, label: "eliza_monthly_tco_usd", type: stack_tco_metric, animated: true}
-    - {id: e-virtuals-calc, source: virtuals_game_tco, sourceHandle: virtuals_monthly_tco_usd, target: tco_calculator, targetHandle: virtuals_monthly_tco_usd, label: "virtuals_monthly_tco_usd", type: stack_tco_metric, animated: true}
-    - {id: e-fetch-risk-calc, source: fetch_agentverse_tco, sourceHandle: fetch_quota_risk, target: tco_calculator, targetHandle: fetch_quota_risk, label: "fetch_quota_risk", type: token_risk_signal, animated: true}
-    - {id: e-eliza-risk-calc, source: elizaos_ai16z_tco, sourceHandle: eliza_ops_risk, target: tco_calculator, targetHandle: eliza_ops_risk, label: "eliza_ops_risk", type: platform_cost_signal, animated: true}
-    - {id: e-virtuals-risk-calc, source: virtuals_game_tco, sourceHandle: virtuals_token_risk, target: tco_calculator, targetHandle: virtuals_token_risk, label: "virtuals_token_risk", type: token_risk_signal, animated: true}
-    - {id: e-users-prediction, source: revenue_drivers, sourceHandle: monthly_active_users, target: prediction_engine, targetHandle: monthly_active_users, label: "monthly_active_users", type: revenue_driver_signal, animated: true}
-    - {id: e-conversion-prediction, source: revenue_drivers, sourceHandle: paid_conversion_rate, target: prediction_engine, targetHandle: paid_conversion_rate, label: "paid_conversion_rate", type: revenue_driver_signal, animated: true}
-    - {id: e-accuracy-prediction, source: web3_economics_drivers, sourceHandle: prediction_accuracy_rate, target: prediction_engine, targetHandle: prediction_accuracy_rate, label: "prediction_accuracy_rate", type: journey_driver_signal, animated: true}
-    - {id: e-wallet-prediction, source: web3_economics_drivers, sourceHandle: wallet_activation_rate, target: prediction_engine, targetHandle: wallet_activation_rate, label: "wallet_activation_rate", type: journey_driver_signal, animated: true}
-    - {id: e-net-yield, source: revenue_calculator, sourceHandle: net_revenue_usd, target: yield_engine, targetHandle: net_revenue_usd, label: "net_revenue_usd", type: revenue_metric_signal, animated: true}
-    - {id: e-request-yield, source: revenue_calculator, sourceHandle: revenue_per_request_usd, target: yield_engine, targetHandle: revenue_per_request_usd, label: "revenue_per_request_usd", type: revenue_metric_signal, animated: true}
-    - {id: e-share-yield, source: web3_economics_drivers, sourceHandle: yield_share_rate, target: yield_engine, targetHandle: yield_share_rate, label: "yield_share_rate", type: journey_driver_signal, animated: true}
-    - {id: e-quality-yield, source: prediction_engine, sourceHandle: predicted_intent_quality_score, target: yield_engine, targetHandle: predicted_intent_quality_score, label: "predicted_intent_quality_score", type: prediction_engine_signal, animated: true}
-    - {id: e-demand-yield, source: prediction_engine, sourceHandle: demand_forecast_index, target: yield_engine, targetHandle: demand_forecast_index, label: "demand_forecast_index", type: prediction_engine_signal, animated: true}
-    - {id: e-net-payment, source: revenue_calculator, sourceHandle: net_revenue_usd, target: payment_engine, targetHandle: net_revenue_usd, label: "net_revenue_usd", type: revenue_metric_signal, animated: true}
-    - {id: e-yield-payment, source: yield_engine, sourceHandle: user_value_yield_usd, target: payment_engine, targetHandle: user_value_yield_usd, label: "user_value_yield_usd", type: yield_engine_signal, animated: true}
-    - {id: e-success-payment, source: web3_economics_drivers, sourceHandle: payment_success_rate, target: payment_engine, targetHandle: payment_success_rate, label: "payment_success_rate", type: journey_driver_signal, animated: true}
-    - {id: e-fee-payment, source: web3_economics_drivers, sourceHandle: payment_fee_rate, target: payment_engine, targetHandle: payment_fee_rate, label: "payment_fee_rate", type: journey_driver_signal, animated: true}
-    - {id: e-settled-liquidity, source: payment_engine, sourceHandle: settled_payment_volume_usd, target: liquidity_exchange_engine, targetHandle: settled_payment_volume_usd, label: "settled_payment_volume_usd", type: payment_engine_signal, animated: true}
-    - {id: e-spread-liquidity, source: web3_economics_drivers, sourceHandle: liquidity_spread_rate, target: liquidity_exchange_engine, targetHandle: liquidity_spread_rate, label: "liquidity_spread_rate", type: journey_driver_signal, animated: true}
-    - {id: e-conversion-liquidity, source: web3_economics_drivers, sourceHandle: exchange_conversion_rate, target: liquidity_exchange_engine, targetHandle: exchange_conversion_rate, label: "exchange_conversion_rate", type: journey_driver_signal, animated: true}
-    - {id: e-volatility-liquidity, source: token_exposure_drivers, sourceHandle: token_price_volatility, target: liquidity_exchange_engine, targetHandle: token_price_volatility, label: "token_price_volatility", type: token_risk_signal, animated: true}
-    - {id: e-workload-infra, source: workload_drivers, sourceHandle: monthly_agent_requests, target: infrastructure_engine, targetHandle: monthly_agent_requests, label: "monthly_agent_requests", type: demand_driver_signal, animated: true}
-    - {id: e-unit-infra, source: web3_economics_drivers, sourceHandle: infrastructure_unit_cost_usd, target: infrastructure_engine, targetHandle: infrastructure_unit_cost_usd, label: "infrastructure_unit_cost_usd", type: journey_driver_signal, animated: true}
-    - {id: e-uptime-infra, source: web3_economics_drivers, sourceHandle: infrastructure_uptime_slo, target: infrastructure_engine, targetHandle: infrastructure_uptime_slo, label: "infrastructure_uptime_slo", type: journey_driver_signal, animated: true}
-    - {id: e-depth-infra, source: liquidity_exchange_engine, sourceHandle: exchange_liquidity_depth_usd, target: infrastructure_engine, targetHandle: exchange_liquidity_depth_usd, label: "exchange_liquidity_depth_usd", type: liquidity_exchange_signal, animated: true}
-    - {id: e-paymentfee-infra, source: payment_engine, sourceHandle: payment_fee_cost_usd, target: infrastructure_engine, targetHandle: payment_fee_cost_usd, label: "payment_fee_cost_usd", type: payment_engine_signal, animated: true}
-    - {id: e-prediction-loop, source: prediction_engine, sourceHandle: predicted_intent_quality_score, target: closed_value_loop, targetHandle: predicted_intent_quality_score, label: "predicted_intent_quality_score", type: prediction_engine_signal, animated: true}
-    - {id: e-yield-loop, source: yield_engine, sourceHandle: protocol_yield_score, target: closed_value_loop, targetHandle: protocol_yield_score, label: "protocol_yield_score", type: yield_engine_signal, animated: true}
-    - {id: e-capture-loop, source: payment_engine, sourceHandle: payment_value_capture_usd, target: closed_value_loop, targetHandle: payment_value_capture_usd, label: "payment_value_capture_usd", type: payment_engine_signal, animated: true}
-    - {id: e-exchange-loop, source: liquidity_exchange_engine, sourceHandle: token_exchange_efficiency_score, target: closed_value_loop, targetHandle: token_exchange_efficiency_score, label: "token_exchange_efficiency_score", type: liquidity_exchange_signal, animated: true}
-    - {id: e-uptime-loop, source: infrastructure_engine, sourceHandle: uptime_value_score, target: closed_value_loop, targetHandle: uptime_value_score, label: "uptime_value_score", type: infrastructure_engine_signal, animated: true}
-    - {id: e-infra-value-loop, source: infrastructure_engine, sourceHandle: infra_adjusted_value_usd, target: closed_value_loop, targetHandle: infra_adjusted_value_usd, label: "infra_adjusted_value_usd", type: infrastructure_engine_signal, animated: true}
-    - {id: e-net-loop, source: revenue_calculator, sourceHandle: net_revenue_usd, target: closed_value_loop, targetHandle: net_revenue_usd, label: "net_revenue_usd", type: revenue_metric_signal, animated: true}
-    - {id: e-margin-loop, source: tco_calculator, sourceHandle: highest_margin_driver, target: closed_value_loop, targetHandle: highest_margin_driver, label: "highest_margin_driver", type: decision_driver_signal, animated: true}
-    - {id: e-lowest-cash-decision, source: tco_calculator, sourceHandle: lowest_cash_tco_driver, target: decision_ranking, targetHandle: lowest_cash_tco_driver, label: "lowest_cash_tco_driver", type: decision_driver_signal, animated: true}
-    - {id: e-margin-decision, source: tco_calculator, sourceHandle: highest_margin_driver, target: decision_ranking, targetHandle: highest_margin_driver, label: "highest_margin_driver", type: decision_driver_signal, animated: true}
-    - {id: e-breakeven-decision, source: tco_calculator, sourceHandle: breakeven_path_driver, target: decision_ranking, targetHandle: breakeven_path_driver, label: "breakeven_path_driver", type: decision_driver_signal, animated: true}
-    - {id: e-lockin-decision, source: tco_calculator, sourceHandle: lowest_lockin_driver, target: decision_ranking, targetHandle: lowest_lockin_driver, label: "lowest_lockin_driver", type: decision_driver_signal, animated: true}
-    - {id: e-tokenized-decision, source: tco_calculator, sourceHandle: tokenized_distribution_driver, target: decision_ranking, targetHandle: tokenized_distribution_driver, label: "tokenized_distribution_driver", type: decision_driver_signal, animated: true}
-    - {id: e-calculator-chart, source: tco_calculator, sourceHandle: outputSrcDoc, target: tco_chart_panel, targetHandle: outputSrcDoc, label: "outputSrcDoc", type: rich_media_chart_html, animated: true}
-    - {id: e-value-loop-chart, source: closed_value_loop, sourceHandle: outputSrcDoc, target: value_loop_chart_panel, targetHandle: outputSrcDoc, label: "outputSrcDoc", type: rich_media_chart_html, animated: true}
-
+    - id: {key: id, type: string, value: e-workload-fetch}
+      source: {key: source, type: string, value: workload_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_agent_requests}
+      target: {key: target, type: string, value: fetch_agentverse_tco}
+      targetHandle: {key: targetHandle, type: string, value: monthly_agent_requests}
+      label: {key: label, type: string, value: monthly_agent_requests}
+      type: {key: type, type: string, value: demand_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-workload-eliza}
+      source: {key: source, type: string, value: workload_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_agent_requests}
+      target: {key: target, type: string, value: elizaos_ai16z_tco}
+      targetHandle: {key: targetHandle, type: string, value: monthly_agent_requests}
+      label: {key: label, type: string, value: monthly_agent_requests}
+      type: {key: type, type: string, value: demand_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-workload-virtuals}
+      source: {key: source, type: string, value: workload_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_agent_requests}
+      target: {key: target, type: string, value: virtuals_game_tco}
+      targetHandle: {key: targetHandle, type: string, value: monthly_agent_requests}
+      label: {key: label, type: string, value: monthly_agent_requests}
+      type: {key: type, type: string, value: demand_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-workload-revenue}
+      source: {key: source, type: string, value: workload_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_agent_requests}
+      target: {key: target, type: string, value: revenue_calculator}
+      targetHandle: {key: targetHandle, type: string, value: monthly_agent_requests}
+      label: {key: label, type: string, value: monthly_agent_requests}
+      type: {key: type, type: string, value: demand_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-subscription-fetch}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: platform_subscription_usd}
+      target: {key: target, type: string, value: fetch_agentverse_tco}
+      targetHandle: {key: targetHandle, type: string, value: platform_subscription_usd}
+      label: {key: label, type: string, value: platform_subscription_usd}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-hosting-fetch}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: managed_hosting_required}
+      target: {key: target, type: string, value: fetch_agentverse_tco}
+      targetHandle: {key: targetHandle, type: string, value: managed_hosting_required}
+      label: {key: label, type: string, value: managed_hosting_required}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-model-fetch}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: model_provider_fee_usd}
+      target: {key: target, type: string, value: fetch_agentverse_tco}
+      targetHandle: {key: targetHandle, type: string, value: model_provider_fee_usd}
+      label: {key: label, type: string, value: model_provider_fee_usd}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-hosting-eliza}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: hosting_or_cloud_runtime_usd}
+      target: {key: target, type: string, value: elizaos_ai16z_tco}
+      targetHandle: {key: targetHandle, type: string, value: hosting_or_cloud_runtime_usd}
+      label: {key: label, type: string, value: hosting_or_cloud_runtime_usd}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-model-eliza}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: model_provider_fee_usd}
+      target: {key: target, type: string, value: elizaos_ai16z_tco}
+      targetHandle: {key: targetHandle, type: string, value: model_provider_fee_usd}
+      label: {key: label, type: string, value: model_provider_fee_usd}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-api-eliza}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: social_api_rpc_data_api_fees}
+      target: {key: target, type: string, value: elizaos_ai16z_tco}
+      targetHandle: {key: targetHandle, type: string, value: social_api_rpc_data_api_fees}
+      label: {key: label, type: string, value: social_api_rpc_data_api_fees}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-ops-eliza}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: ops_hours}
+      target: {key: target, type: string, value: elizaos_ai16z_tco}
+      targetHandle: {key: targetHandle, type: string, value: ops_hours}
+      label: {key: label, type: string, value: ops_hours}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-unit-virtuals}
+      source: {key: source, type: string, value: shared_platform_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: platform_unit_call_cost_usd}
+      target: {key: target, type: string, value: virtuals_game_tco}
+      targetHandle: {key: targetHandle, type: string, value: platform_unit_call_cost_usd}
+      label: {key: label, type: string, value: platform_unit_call_cost_usd}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-token-launch-virtuals}
+      source: {key: source, type: string, value: token_exposure_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: onchain_token_launch_required}
+      target: {key: target, type: string, value: virtuals_game_tco}
+      targetHandle: {key: targetHandle, type: string, value: onchain_token_launch_required}
+      label: {key: label, type: string, value: onchain_token_launch_required}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-token-setup-virtuals}
+      source: {key: source, type: string, value: token_exposure_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: token_setup_exposure}
+      target: {key: target, type: string, value: virtuals_game_tco}
+      targetHandle: {key: targetHandle, type: string, value: token_setup_exposure}
+      label: {key: label, type: string, value: token_setup_exposure}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-gas-fetch}
+      source: {key: source, type: string, value: token_exposure_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: onchain_gas_and_token_fees}
+      target: {key: target, type: string, value: fetch_agentverse_tco}
+      targetHandle: {key: targetHandle, type: string, value: onchain_gas_and_token_fees}
+      label: {key: label, type: string, value: onchain_gas_and_token_fees}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-gas-virtuals}
+      source: {key: source, type: string, value: token_exposure_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: onchain_gas_and_token_fees}
+      target: {key: target, type: string, value: virtuals_game_tco}
+      targetHandle: {key: targetHandle, type: string, value: onchain_gas_and_token_fees}
+      label: {key: label, type: string, value: onchain_gas_and_token_fees}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-volatility-virtuals}
+      source: {key: source, type: string, value: token_exposure_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: token_price_volatility}
+      target: {key: target, type: string, value: virtuals_game_tco}
+      targetHandle: {key: targetHandle, type: string, value: token_price_volatility}
+      label: {key: label, type: string, value: token_price_volatility}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-users}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_active_users}
+      target: {key: target, type: string, value: revenue_calculator}
+      targetHandle: {key: targetHandle, type: string, value: monthly_active_users}
+      label: {key: label, type: string, value: monthly_active_users}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-conversion}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: paid_conversion_rate}
+      target: {key: target, type: string, value: revenue_calculator}
+      targetHandle: {key: targetHandle, type: string, value: paid_conversion_rate}
+      label: {key: label, type: string, value: paid_conversion_rate}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-price}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: subscription_price_usd}
+      target: {key: target, type: string, value: revenue_calculator}
+      targetHandle: {key: targetHandle, type: string, value: subscription_price_usd}
+      label: {key: label, type: string, value: subscription_price_usd}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-gmv}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: marketplace_gmv_usd}
+      target: {key: target, type: string, value: revenue_calculator}
+      targetHandle: {key: targetHandle, type: string, value: marketplace_gmv_usd}
+      label: {key: label, type: string, value: marketplace_gmv_usd}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-take}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: agent_token_take_rate}
+      target: {key: target, type: string, value: revenue_calculator}
+      targetHandle: {key: targetHandle, type: string, value: agent_token_take_rate}
+      label: {key: label, type: string, value: agent_token_take_rate}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-refund}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: support_refund_rate}
+      target: {key: target, type: string, value: revenue_calculator}
+      targetHandle: {key: targetHandle, type: string, value: support_refund_rate}
+      label: {key: label, type: string, value: support_refund_rate}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-gross-calc}
+      source: {key: source, type: string, value: revenue_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_revenue_usd}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: monthly_revenue_usd}
+      label: {key: label, type: string, value: monthly_revenue_usd}
+      type: {key: type, type: string, value: revenue_metric_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-revenue-net-calc}
+      source: {key: source, type: string, value: revenue_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: net_revenue_usd}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: net_revenue_usd}
+      label: {key: label, type: string, value: net_revenue_usd}
+      type: {key: type, type: string, value: revenue_metric_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-fetch-calc}
+      source: {key: source, type: string, value: fetch_agentverse_tco}
+      sourceHandle: {key: sourceHandle, type: string, value: fetch_monthly_tco_usd}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: fetch_monthly_tco_usd}
+      label: {key: label, type: string, value: fetch_monthly_tco_usd}
+      type: {key: type, type: string, value: stack_tco_metric}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-eliza-calc}
+      source: {key: source, type: string, value: elizaos_ai16z_tco}
+      sourceHandle: {key: sourceHandle, type: string, value: eliza_monthly_tco_usd}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: eliza_monthly_tco_usd}
+      label: {key: label, type: string, value: eliza_monthly_tco_usd}
+      type: {key: type, type: string, value: stack_tco_metric}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-virtuals-calc}
+      source: {key: source, type: string, value: virtuals_game_tco}
+      sourceHandle: {key: sourceHandle, type: string, value: virtuals_monthly_tco_usd}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: virtuals_monthly_tco_usd}
+      label: {key: label, type: string, value: virtuals_monthly_tco_usd}
+      type: {key: type, type: string, value: stack_tco_metric}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-fetch-risk-calc}
+      source: {key: source, type: string, value: fetch_agentverse_tco}
+      sourceHandle: {key: sourceHandle, type: string, value: fetch_quota_risk}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: fetch_quota_risk}
+      label: {key: label, type: string, value: fetch_quota_risk}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-eliza-risk-calc}
+      source: {key: source, type: string, value: elizaos_ai16z_tco}
+      sourceHandle: {key: sourceHandle, type: string, value: eliza_ops_risk}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: eliza_ops_risk}
+      label: {key: label, type: string, value: eliza_ops_risk}
+      type: {key: type, type: string, value: platform_cost_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-virtuals-risk-calc}
+      source: {key: source, type: string, value: virtuals_game_tco}
+      sourceHandle: {key: sourceHandle, type: string, value: virtuals_token_risk}
+      target: {key: target, type: string, value: tco_calculator}
+      targetHandle: {key: targetHandle, type: string, value: virtuals_token_risk}
+      label: {key: label, type: string, value: virtuals_token_risk}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-users-prediction}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_active_users}
+      target: {key: target, type: string, value: prediction_engine}
+      targetHandle: {key: targetHandle, type: string, value: monthly_active_users}
+      label: {key: label, type: string, value: monthly_active_users}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-conversion-prediction}
+      source: {key: source, type: string, value: revenue_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: paid_conversion_rate}
+      target: {key: target, type: string, value: prediction_engine}
+      targetHandle: {key: targetHandle, type: string, value: paid_conversion_rate}
+      label: {key: label, type: string, value: paid_conversion_rate}
+      type: {key: type, type: string, value: revenue_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-accuracy-prediction}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: prediction_accuracy_rate}
+      target: {key: target, type: string, value: prediction_engine}
+      targetHandle: {key: targetHandle, type: string, value: prediction_accuracy_rate}
+      label: {key: label, type: string, value: prediction_accuracy_rate}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-wallet-prediction}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: wallet_activation_rate}
+      target: {key: target, type: string, value: prediction_engine}
+      targetHandle: {key: targetHandle, type: string, value: wallet_activation_rate}
+      label: {key: label, type: string, value: wallet_activation_rate}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-net-yield}
+      source: {key: source, type: string, value: revenue_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: net_revenue_usd}
+      target: {key: target, type: string, value: yield_engine}
+      targetHandle: {key: targetHandle, type: string, value: net_revenue_usd}
+      label: {key: label, type: string, value: net_revenue_usd}
+      type: {key: type, type: string, value: revenue_metric_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-request-yield}
+      source: {key: source, type: string, value: revenue_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: revenue_per_request_usd}
+      target: {key: target, type: string, value: yield_engine}
+      targetHandle: {key: targetHandle, type: string, value: revenue_per_request_usd}
+      label: {key: label, type: string, value: revenue_per_request_usd}
+      type: {key: type, type: string, value: revenue_metric_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-share-yield}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: yield_share_rate}
+      target: {key: target, type: string, value: yield_engine}
+      targetHandle: {key: targetHandle, type: string, value: yield_share_rate}
+      label: {key: label, type: string, value: yield_share_rate}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-quality-yield}
+      source: {key: source, type: string, value: prediction_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: predicted_intent_quality_score}
+      target: {key: target, type: string, value: yield_engine}
+      targetHandle: {key: targetHandle, type: string, value: predicted_intent_quality_score}
+      label: {key: label, type: string, value: predicted_intent_quality_score}
+      type: {key: type, type: string, value: prediction_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-demand-yield}
+      source: {key: source, type: string, value: prediction_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: demand_forecast_index}
+      target: {key: target, type: string, value: yield_engine}
+      targetHandle: {key: targetHandle, type: string, value: demand_forecast_index}
+      label: {key: label, type: string, value: demand_forecast_index}
+      type: {key: type, type: string, value: prediction_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-net-payment}
+      source: {key: source, type: string, value: revenue_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: net_revenue_usd}
+      target: {key: target, type: string, value: payment_engine}
+      targetHandle: {key: targetHandle, type: string, value: net_revenue_usd}
+      label: {key: label, type: string, value: net_revenue_usd}
+      type: {key: type, type: string, value: revenue_metric_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-yield-payment}
+      source: {key: source, type: string, value: yield_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: user_value_yield_usd}
+      target: {key: target, type: string, value: payment_engine}
+      targetHandle: {key: targetHandle, type: string, value: user_value_yield_usd}
+      label: {key: label, type: string, value: user_value_yield_usd}
+      type: {key: type, type: string, value: yield_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-success-payment}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: payment_success_rate}
+      target: {key: target, type: string, value: payment_engine}
+      targetHandle: {key: targetHandle, type: string, value: payment_success_rate}
+      label: {key: label, type: string, value: payment_success_rate}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-fee-payment}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: payment_fee_rate}
+      target: {key: target, type: string, value: payment_engine}
+      targetHandle: {key: targetHandle, type: string, value: payment_fee_rate}
+      label: {key: label, type: string, value: payment_fee_rate}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-settled-liquidity}
+      source: {key: source, type: string, value: payment_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: settled_payment_volume_usd}
+      target: {key: target, type: string, value: liquidity_exchange_engine}
+      targetHandle: {key: targetHandle, type: string, value: settled_payment_volume_usd}
+      label: {key: label, type: string, value: settled_payment_volume_usd}
+      type: {key: type, type: string, value: payment_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-spread-liquidity}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: liquidity_spread_rate}
+      target: {key: target, type: string, value: liquidity_exchange_engine}
+      targetHandle: {key: targetHandle, type: string, value: liquidity_spread_rate}
+      label: {key: label, type: string, value: liquidity_spread_rate}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-conversion-liquidity}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: exchange_conversion_rate}
+      target: {key: target, type: string, value: liquidity_exchange_engine}
+      targetHandle: {key: targetHandle, type: string, value: exchange_conversion_rate}
+      label: {key: label, type: string, value: exchange_conversion_rate}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-volatility-liquidity}
+      source: {key: source, type: string, value: token_exposure_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: token_price_volatility}
+      target: {key: target, type: string, value: liquidity_exchange_engine}
+      targetHandle: {key: targetHandle, type: string, value: token_price_volatility}
+      label: {key: label, type: string, value: token_price_volatility}
+      type: {key: type, type: string, value: token_risk_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-workload-infra}
+      source: {key: source, type: string, value: workload_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: monthly_agent_requests}
+      target: {key: target, type: string, value: infrastructure_engine}
+      targetHandle: {key: targetHandle, type: string, value: monthly_agent_requests}
+      label: {key: label, type: string, value: monthly_agent_requests}
+      type: {key: type, type: string, value: demand_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-unit-infra}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: infrastructure_unit_cost_usd}
+      target: {key: target, type: string, value: infrastructure_engine}
+      targetHandle: {key: targetHandle, type: string, value: infrastructure_unit_cost_usd}
+      label: {key: label, type: string, value: infrastructure_unit_cost_usd}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-uptime-infra}
+      source: {key: source, type: string, value: web3_economics_drivers}
+      sourceHandle: {key: sourceHandle, type: string, value: infrastructure_uptime_slo}
+      target: {key: target, type: string, value: infrastructure_engine}
+      targetHandle: {key: targetHandle, type: string, value: infrastructure_uptime_slo}
+      label: {key: label, type: string, value: infrastructure_uptime_slo}
+      type: {key: type, type: string, value: journey_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-depth-infra}
+      source: {key: source, type: string, value: liquidity_exchange_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: exchange_liquidity_depth_usd}
+      target: {key: target, type: string, value: infrastructure_engine}
+      targetHandle: {key: targetHandle, type: string, value: exchange_liquidity_depth_usd}
+      label: {key: label, type: string, value: exchange_liquidity_depth_usd}
+      type: {key: type, type: string, value: liquidity_exchange_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-paymentfee-infra}
+      source: {key: source, type: string, value: payment_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: payment_fee_cost_usd}
+      target: {key: target, type: string, value: infrastructure_engine}
+      targetHandle: {key: targetHandle, type: string, value: payment_fee_cost_usd}
+      label: {key: label, type: string, value: payment_fee_cost_usd}
+      type: {key: type, type: string, value: payment_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-prediction-loop}
+      source: {key: source, type: string, value: prediction_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: predicted_intent_quality_score}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: predicted_intent_quality_score}
+      label: {key: label, type: string, value: predicted_intent_quality_score}
+      type: {key: type, type: string, value: prediction_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-yield-loop}
+      source: {key: source, type: string, value: yield_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: protocol_yield_score}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: protocol_yield_score}
+      label: {key: label, type: string, value: protocol_yield_score}
+      type: {key: type, type: string, value: yield_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-capture-loop}
+      source: {key: source, type: string, value: payment_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: payment_value_capture_usd}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: payment_value_capture_usd}
+      label: {key: label, type: string, value: payment_value_capture_usd}
+      type: {key: type, type: string, value: payment_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-exchange-loop}
+      source: {key: source, type: string, value: liquidity_exchange_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: token_exchange_efficiency_score}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: token_exchange_efficiency_score}
+      label: {key: label, type: string, value: token_exchange_efficiency_score}
+      type: {key: type, type: string, value: liquidity_exchange_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-uptime-loop}
+      source: {key: source, type: string, value: infrastructure_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: uptime_value_score}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: uptime_value_score}
+      label: {key: label, type: string, value: uptime_value_score}
+      type: {key: type, type: string, value: infrastructure_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-infra-value-loop}
+      source: {key: source, type: string, value: infrastructure_engine}
+      sourceHandle: {key: sourceHandle, type: string, value: infra_adjusted_value_usd}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: infra_adjusted_value_usd}
+      label: {key: label, type: string, value: infra_adjusted_value_usd}
+      type: {key: type, type: string, value: infrastructure_engine_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-net-loop}
+      source: {key: source, type: string, value: revenue_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: net_revenue_usd}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: net_revenue_usd}
+      label: {key: label, type: string, value: net_revenue_usd}
+      type: {key: type, type: string, value: revenue_metric_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-margin-loop}
+      source: {key: source, type: string, value: tco_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: highest_margin_driver}
+      target: {key: target, type: string, value: closed_value_loop}
+      targetHandle: {key: targetHandle, type: string, value: highest_margin_driver}
+      label: {key: label, type: string, value: highest_margin_driver}
+      type: {key: type, type: string, value: decision_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-lowest-cash-decision}
+      source: {key: source, type: string, value: tco_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: lowest_cash_tco_driver}
+      target: {key: target, type: string, value: decision_ranking}
+      targetHandle: {key: targetHandle, type: string, value: lowest_cash_tco_driver}
+      label: {key: label, type: string, value: lowest_cash_tco_driver}
+      type: {key: type, type: string, value: decision_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-margin-decision}
+      source: {key: source, type: string, value: tco_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: highest_margin_driver}
+      target: {key: target, type: string, value: decision_ranking}
+      targetHandle: {key: targetHandle, type: string, value: highest_margin_driver}
+      label: {key: label, type: string, value: highest_margin_driver}
+      type: {key: type, type: string, value: decision_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-breakeven-decision}
+      source: {key: source, type: string, value: tco_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: breakeven_path_driver}
+      target: {key: target, type: string, value: decision_ranking}
+      targetHandle: {key: targetHandle, type: string, value: breakeven_path_driver}
+      label: {key: label, type: string, value: breakeven_path_driver}
+      type: {key: type, type: string, value: decision_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-lockin-decision}
+      source: {key: source, type: string, value: tco_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: lowest_lockin_driver}
+      target: {key: target, type: string, value: decision_ranking}
+      targetHandle: {key: targetHandle, type: string, value: lowest_lockin_driver}
+      label: {key: label, type: string, value: lowest_lockin_driver}
+      type: {key: type, type: string, value: decision_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-tokenized-decision}
+      source: {key: source, type: string, value: tco_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: tokenized_distribution_driver}
+      target: {key: target, type: string, value: decision_ranking}
+      targetHandle: {key: targetHandle, type: string, value: tokenized_distribution_driver}
+      label: {key: label, type: string, value: tokenized_distribution_driver}
+      type: {key: type, type: string, value: decision_driver_signal}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-calculator-chart}
+      source: {key: source, type: string, value: tco_calculator}
+      sourceHandle: {key: sourceHandle, type: string, value: outputSrcDoc}
+      target: {key: target, type: string, value: tco_chart_panel}
+      targetHandle: {key: targetHandle, type: string, value: outputSrcDoc}
+      label: {key: label, type: string, value: outputSrcDoc}
+      type: {key: type, type: string, value: rich_media_chart_html}
+      animated: {key: animated, type: boolean, value: true}
+    - id: {key: id, type: string, value: e-value-loop-chart}
+      source: {key: source, type: string, value: closed_value_loop}
+      sourceHandle: {key: sourceHandle, type: string, value: outputSrcDoc}
+      target: {key: target, type: string, value: value_loop_chart_panel}
+      targetHandle: {key: targetHandle, type: string, value: outputSrcDoc}
+      label: {key: label, type: string, value: outputSrcDoc}
+      type: {key: type, type: string, value: rich_media_chart_html}
+      animated: {key: animated, type: boolean, value: true}
 node_types:
   - metric
   - lever
