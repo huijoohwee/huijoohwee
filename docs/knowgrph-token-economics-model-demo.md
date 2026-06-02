@@ -761,7 +761,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 8}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       marketplace_gmv_usd: {key: marketplace_gmv_usd, type: number, value: 10000}
-      monthly_active_users: {key: monthly_active_users, type: number, value: 2500}
+      monthly_active_users: {key: monthly_active_users, type: number, value: 250000}
       paid_conversion_rate: {key: paid_conversion_rate, type: number, value: 3000}
       size: {key: size, type: object, value: {"width":320,"height":250}}
       subscription_price_usd: {key: subscription_price_usd, type: number, value: 19}
@@ -1530,6 +1530,8 @@ The frontmatter `flow:` block is the source of truth for this demo. Each widget 
 
 In this document, "cost driver" is intentionally broad: anything that changes monthly cost, token exposure, revenue offset, margin, break-even posture, infrastructure value, or rendered decision output is modeled as a driver handle. The handle itself is the semantic key used by ingestion, parsing, workflow computation, edge rendering, and Rich Media Panel output.
 
+The normalized `{key,type,value}` frontmatter shape is part of the E2E fixture contract. Flow Editor must map each row by the wrapper `key` and normalized schema path, not by the declaration container name. For example, the `Revenue Drivers` widget exposes `agent_token_take_rate` as one inline-editable KTV row with the output port handle attached to that row. A second non-inline `agent_token_take_rate` row is invalid because it splits the editable value from the functional port.
+
 ## Cost-Driver Port-Handle Contract
 
 The Flow Editor canvas should read each visible handle as an economic driver, not as a generic UI socket. A valid driver edge follows this identity rule:
@@ -1555,6 +1557,7 @@ This keeps the graph neutral and inspectable:
 - `outputSrcDoc` is treated as the rendered cost-report payload driver for Rich Media Panel widgets, so charts remain connected through the same port-handle contract.
 - There are no visual-only aliases such as `left`, `right`, `in`, `out`, or stack-local remaps in the edge layer.
 - `socket_types` and `flow:portTypes` decorate an existing driver handle; they do not create a second handle vocabulary.
+- `handles.source` and `handles.target` list which driver keys are exposed on each side. They are not replacement handle names, and rendered rows must not collapse driver handles into `handles.source` or `handles.target`.
 
 Driver-handle families:
 
@@ -1989,6 +1992,9 @@ tokenized demo = Virtuals GAME + separate token setup and per-call meters
 - Every widget port handle corresponds to a named cost, revenue, risk, metric, decision, or rendered-report driver.
 - Widget type, side, and position do not remap a port handle; the handle id is the cost-driver key.
 - Normal Flow Editor edges preserve driver identity with matching `sourceHandle`, `targetHandle`, and `label`.
+- Matching field/port schema paths render as one editable KTV row with the functional port handle on that row; duplicate read-only rows for the same key are forbidden.
+- `Revenue Drivers -> agent_token_take_rate` renders as an inline-editable output-port row, not as a separate value row plus a separate port row.
+- Computing-flow propagation uses shared Flow Editor dataflow helpers so edits to driver rows recompute Rich Media Panel outputs without renderer-local recalculation or filename-specific branches.
 - `socket_types` and node tags reuse the renderer palette roles exposed by the FloatingPanel Renderer settings.
 - `workflow_sections` mirrors the MainPanel Workflow Manager execution path from driver ingestion through chart rendering.
 - The five Web3 economics engines are first-class Flow Editor widgets, not prose-only rows.

@@ -1,0 +1,140 @@
+---
+title: "Knowgrph · Design Renderer Demo — Floating Design Panel (Layers + DOM)"
+graphId: "md:knowgrph-design-demo-v1"
+doc_type: "Design Demo — Phase 0+1+2 E2E Functional Contract"
+date: "2026-05-14"
+lang: en-US
+
+kgCanvasSurfaceMode: "2d"
+kgCanvasRenderMode: "2d"
+kgCanvas2dRenderer: "design"
+kgDocumentSemanticMode: "document"
+kgFrontmatterModeEnabled: true
+kgMultiDimTableModeEnabled: false
+kgDocumentStructureBaselineLock: false
+---
+
+# Knowgrph · Design Renderer Demo
+
+This document is a minimal, reproducible **E2E functional** demo for the Canvas **2D Renderer: Design** editor surface (Phase **0 + 1 + 2**).
+
+## Authoring Contract
+
+- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, workspace mode, and graph-seeding metadata.
+- This document is a canonical authored design demo, not a typed normalization fixture.
+- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for design-renderer docs and workspace config.
+- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical design authoring example.
+- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
+
+It mirrors the style of [knowgrph-video-demo.md](./knowgrph-video-demo.md) frontmatter (explicit `kg*` settings), but uses a simpler graph so you can quickly validate:
+
+- Design renderer is selectable and stable.
+- A first-class **Design** floating-panel view exists (not hidden behind “More”).
+- Design view contains sub-tabs: **Layers**, **Inspector**, **DOM Tree**, **DOM Inspect** (DOM tabs are webpage-backed only).
+- A minimal Design HUD/status appears on-canvas (selection count + hint).
+- Tool mode: **Select/Pan** (UI + shortcuts).
+- Undo/Redo: **Cmd/Ctrl+Z** and **Shift+Cmd/Ctrl+Z**.
+- Inspector edits: numeric **x/y/w/h** with mixed-state handling and single-commit Apply.
+
+---
+
+## Editor Workspace (Frontmatter)
+
+| Setting | Value | Purpose |
+|---|---|---|
+| Surface Mode | `2d` | Flat surface |
+| Render Mode | `2d` | 2D pipeline |
+| 2D Renderer | `design` | SVG Design renderer surface |
+| Semantic Mode | `document` | Markdown-derived graph |
+| Frontmatter Mode | `enabled` | Enables seeding via `index.mermaid` |
+| Multi-Dim Table | `disabled` | Keep demo minimal |
+| Structure Lock | `false` | Allow structure re-derivation |
+
+---
+
+## Phase 0+1+2 E2E (What You Should See)
+
+### Floating panel header
+
+- A **Design** button (Palette icon) is present alongside existing primary views (Props / Interaction / Chat / Geo / Renderer).
+- Clicking **Design** opens a Design panel.
+- Design panel header contains:
+  - **Select** + **Pan** tool toggles (and tool mode is reflected in gesture behavior).
+  - **Undo** / **Redo** buttons (enabled/disabled based on history).
+  - `Snap:On/Off` indicator (schema-driven).
+
+### Design panel body
+
+- Sub-tabs exist inside the Design panel:
+  - **Layers**: shows graph nodes as a layer list; supports show/hide and ordering controls.
+  - **Inspector**: numeric geometry edits for selected frames (x/y/w/h) with mixed-state support.
+  - **DOM Tree**: available only when the document produces a webpage-backed layout graph.
+  - **DOM Inspect**: available only when the document produces a webpage-backed layout graph.
+
+### Design canvas HUD
+
+- When the Design renderer is active, a small HUD appears at top-left with:
+  - `Design`
+  - `{N} selected`
+  - a hint to open the Design panel
+
+---
+
+## How to Run the Demo (Manual, E2E)
+
+1. Open this document in Knowgrph.
+2. Set Canvas View Mode to **2D**.
+3. In the Eye dropdown (Canvas View Mode), choose **2D Renderer → Design**.
+4. Open the floating panel and click **Design** (Palette icon).
+5. Use **Layers**:
+   - Select a node; validate the on-canvas HUD updates `{N} selected`.
+   - Toggle visibility; validate the frame hides/shows.
+   - Move a layer up/down; validate order changes (and is undoable).
+6. Use **Tools**:
+   - Toggle **Pan** (or press `H`); validate frame drag/resize/select is disabled and pan/zoom remains usable.
+   - Toggle **Select** (or press `V`); validate selection/resize/drag returns.
+7. Use **Inspector**:
+   - Select 1 frame → set X/Y/W/H → **Apply**.
+   - Select multiple frames with different values → fields show `—` placeholder; set just `W` and Apply → all selected frames get the same width.
+8. Use **Undo/Redo**:
+   - `Cmd/Ctrl+Z` undo and `Shift+Cmd/Ctrl+Z` redo across: move, resize, inspector apply, layer visibility/order.
+
+Notes:
+- Design panels are gated and should remain inactive unless:
+  - Workspace view is `canvas`
+  - Render mode is `2d`
+  - 2D renderer is `design`
+  - Geospatial mode is disabled
+
+---
+
+## Demo Graph Seed (Frontmatter-driven)
+
+This seed graph exists only to generate a few frames you can select/move/resize in Design renderer.
+
+```yaml
+index:
+  mermaid: |
+    %%{init: {"theme":"base"}}%%
+    flowchart LR
+      A["Design Panel\n(Palette icon)"] --> B["Layers tab\n(Visibility + order)"]
+      A --> G["Inspector tab\n(x/y/w/h + Apply)"]
+      A --> T["Tools\n(Select/Pan + V/H)"]
+      A --> U["Undo/Redo\n(Cmd/Ctrl+Z)"]
+      A --> C["DOM Tree tab\n(webpage-backed only)"]
+      A --> D["DOM Inspect\n(webpage-backed only)"]
+      B --> E["Select nodes\n(HUD count updates)"]
+      E --> F["Arrange / Resize\n(no churn)"]
+      F --> U
+      G --> U
+```
+
+---
+
+## Demo Notes (Why this matters)
+
+- Phase 0 establishes a single coherent Design surface (no duplicated entry points).
+- Phase 1 adds minimal editor controls (tools + undo/redo) without introducing per-move history spam.
+- Phase 2 adds Inspector numeric geometry editing with mixed-state support and single-commit Apply.
+- This UI avoids duplicate entry points (Design tooling is not split between overflow menus and hidden views).
+- The Design panel remains a **view switch only** and must not mutate graph topology, layout caches, or overlay geometry beyond its own UI.

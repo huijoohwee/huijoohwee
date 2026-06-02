@@ -176,109 +176,1248 @@ mermaid: |
     class p-text-script,p-img-scene,p-video-scene panel
 
 flow:
-  direction: {key: direction, type: string, value: LR}
-  edgeType: {key: edgeType, type: string, value: bezier}
-  snapToGrid: {key: snapToGrid, type: boolean, value: true}
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "bezier"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
   computed: {key: computed, type: boolean, value: true}
-
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
     - id: {key: id, type: string, value: "w-text-script"}
       type: {key: type, type: string, value: "TextGeneration"}
       label: {key: label, type: string, value: "Text Script Widget"}
-      phase: {key: phase, type: string, value: "generate"}
-      actor: {key: actor, type: array, value: ["user", "AI"]}
-      handles: {key: handles, type: object, value: {target: ["prompt_in"], source: ["text_out", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoScript"}
-      chatProvider: {key: chatProvider, type: string, value: "{{inputs.text_provider_id}}"}
-      chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
-      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: "{{inputs.text_endpoint_url}}"}
-      chatModel: {key: chatModel, type: select, value: "{{inputs.text_model}}"}
-      chatThinkingType: {key: chatThinkingType, type: select, value: "disabled"}
+      position: {key: position, type: object, value: {"x":-740,"y":-2459}}
+      handles: {key: handles, type: object, value: {"target":["prompt_in"],"source":["text_out","outputSrcDoc"]}}
+      actor: {key: actor, type: array, value: ["user","AI"]}
+      chatAuthMode: {key: chatAuthMode, type: text, value: "serverManaged"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: text, value: ""}
+      chatModel: {key: chatModel, type: select, value: "seed-2-0-lite-260228"}
+      chatProvider: {key: chatProvider, type: readonly, value: "deerflow"}
       chatReasoningEffort: {key: chatReasoningEffort, type: select, value: "minimal"}
       chatStream: {key: chatStream, type: boolean, value: true}
-      prompt: {key: prompt, type: string, value: "Generate dual-layer prompts for (1) one hero locale scene reference image and (2) the final video. Parent trust layer: safety badges, crash-proof shell, obstacle-sense, 20-min flight time. Child multiverse layer: locale-specific adventure scene. Use: vibe={{inputs.vibe}}, duration={{inputs.duration_label}}, location={{inputs.location.name}}, theme={{inputs.theme}}. Script: {{inputs.script}}. Output as markdown with explicit sections: Scene Image Prompt, Video Prompt."}
-
+      chatThinkingType: {key: chatThinkingType, type: select, value: "disabled"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoScript"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      phase: {key: phase, type: string, value: "generate"}
+      prompt:
+        key: prompt
+        type: textarea
+        value: |
+          Generate dual-layer prompts for (1) one hero locale scene reference image and (2) the final video. Parent trust layer: safety badges, crash-proof shell, obstacle-sense, 20-min flight time. Child multiverse layer: locale-specific adventure scene. Use: vibe=vivid, photorealistic, magic-realist, warm cinematic light cross-cutting to surreal multiverse glow, 9:16 vertical, TikTok-native, duration=8s, location=US Wild West mesa → Caribbean turquoise island → Singapore Marina Bay Sands / RoboTown, theme=a RoboDrone X1 lifts off in three worlds — a Wild West frontier mesa at sunrise, a Caribbean island in a turquoise tempest, a Singapore city skyline at dusk — each world dissolving into its own surreal multiverse the moment the drone clears the horizon; a parent watches proudly from the ground while a child crosses into the world above. Script: US — Sunrise. A boy on a mesa cliff edge launches the drone into an amber sky. It clears the canyon rim. The desert below morphs — ghost herd of mustangs charges across a sky-plain above the mesas, a spectral frontier town floats inverted from the clouds, and the drone leads the stampede through canyon arches of light.
+          CARIBBEAN — Noon storm. A girl on a turquoise island beach launches into the tempest. The drone punches through a wall of rain. Below the surface — a mermaid queen rises, crown of coral, commanding the waves. The girl steers the drone as the mermaid's herald through a cathedral of lightning-lit underwater spires.
+          SG — Dusk. A girl on the Marina Bay promenade launches before Marina Bay Sands. The Merlion morphs — stone to chrome, 100 metres, AI sentinel. Singapore becomes RoboTown — sensor arrays, drone corridors, neural grid bay. The girl ascends to the command position. She pilots the city.
+          Cut back: three parents, three phones, three proud faces. Three worlds. One drone.
+          Text fades in: "One brief. Three multiverses. The drone opens the portal."
+          "airvio.co/knowgrph — Write it. See it. Ship it."
+          . Output as markdown with explicit sections: Scene Image Prompt, Video Prompt.
+          
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
     - id: {key: id, type: string, value: "p-text-script"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel — Text (Script)"}
-      phase: {key: phase, type: string, value: "render"}
-      actor: {key: actor, type: array, value: ["system", "user"]}
-      handles: {key: handles, type: object, value: {target: ["output", "outputSrcDoc"], source: ["output", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      position: {key: position, type: object, value: {"x":-260,"y":-2459}}
+      handles: {key: handles, type: object, value: {"target":["output","outputSrcDoc"],"source":["output","outputSrcDoc"]}}
+      actor: {key: actor, type: array, value: ["system","user"]}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      phase: {key: phase, type: string, value: "render"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
     - id: {key: id, type: string, value: "w-img-scene"}
       type: {key: type, type: string, value: "ImageGeneration"}
       label: {key: label, type: string, value: "Image Widget — Scene Reference"}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "imageGeneration"}
-      model: {key: model, type: select, value: "{{inputs.image_model}}"}
-      prompt: {key: prompt, type: textarea, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.label}}; {{inputs.theme}}. Script: {{inputs.script}}. Hero frame: CARIBBEAN locale — girl on turquoise island beach launching RoboDrone X1 into storm, mermaid queen rising from churning sea below, coral spire cathedral lit by lightning, 9:16 vertical."}
-      size: {key: size, type: select, value: "2K"}
-      output_format: {key: output_format, type: select, value: "jpeg"}
-      response_format: {key: response_format, type: select, value: "b64_json"}
-      optimize_prompt_options: {key: optimize_prompt_options, type: select, value: "fast"}
+      position: {key: position, type: object, value: {"x":220,"y":-2459}}
+      handles: {key: handles, type: object, value: {"target":["reference_image"],"source":["imageUrl"]}}
+      actor: {key: actor, type: array, value: ["user","AI"]}
       aspect_ratio: {key: aspect_ratio, type: number, value: 0.5625}
-      stream: {key: stream, type: boolean, value: true}
-      watermark: {key: watermark, type: boolean, value: false}
-      seed: {key: seed, type: number, value: 0}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       guidance_scale: {key: guidance_scale, type: number, value: 0}
-      reference_image: {key: reference_image, type: string, value: ""}
-      handles: {key: handles, type: object, value: {target: ["reference_image"], source: ["imageUrl"]}}
+      model: {key: model, type: select, value: "seedream-4-0-250828"}
+      optimize_prompt_options: {key: optimize_prompt_options, type: select, value: "fast"}
+      output_format: {key: output_format, type: select, value: "jpeg"}
       phase: {key: phase, type: string, value: "generate"}
-      actor: {key: actor, type: array, value: ["user", "AI"]}
-
+      prompt:
+        key: prompt
+        type: textarea
+        value: |
+          vivid, photorealistic, magic-realist, warm cinematic light cross-cutting to surreal multiverse glow, 9:16 vertical, TikTok-native, 8s; Three-locale traversal: US Wild West canyon mesa · Caribbean island tempest · Singapore MBS / RoboTown; a RoboDrone X1 lifts off in three worlds — a Wild West frontier mesa at sunrise, a Caribbean island in a turquoise tempest, a Singapore city skyline at dusk — each world dissolving into its own surreal multiverse the moment the drone clears the horizon; a parent watches proudly from the ground while a child crosses into the world above. Script: US — Sunrise. A boy on a mesa cliff edge launches the drone into an amber sky. It clears the canyon rim. The desert below morphs — ghost herd of mustangs charges across a sky-plain above the mesas, a spectral frontier town floats inverted from the clouds, and the drone leads the stampede through canyon arches of light.
+          CARIBBEAN — Noon storm. A girl on a turquoise island beach launches into the tempest. The drone punches through a wall of rain. Below the surface — a mermaid queen rises, crown of coral, commanding the waves. The girl steers the drone as the mermaid's herald through a cathedral of lightning-lit underwater spires.
+          SG — Dusk. A girl on the Marina Bay promenade launches before Marina Bay Sands. The Merlion morphs — stone to chrome, 100 metres, AI sentinel. Singapore becomes RoboTown — sensor arrays, drone corridors, neural grid bay. The girl ascends to the command position. She pilots the city.
+          Cut back: three parents, three phones, three proud faces. Three worlds. One drone.
+          Text fades in: "One brief. Three multiverses. The drone opens the portal."
+          "airvio.co/knowgrph — Write it. See it. Ship it."
+          . Hero frame: CARIBBEAN locale — girl on turquoise island beach launching RoboDrone X1 into storm, mermaid queen rising from churning sea below, coral spire cathedral lit by lightning, 9:16 vertical.
+          
+      reference_image: {key: reference_image, type: text, value: ""}
+      response_format: {key: response_format, type: select, value: "b64_json"}
+      seed: {key: seed, type: number, value: 0}
+      size: {key: size, type: select, value: "2K"}
+      stream: {key: stream, type: boolean, value: true}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      watermark: {key: watermark, type: boolean, value: false}
     - id: {key: id, type: string, value: "p-img-scene"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel — Image (Scene)"}
-      phase: {key: phase, type: string, value: "render"}
-      actor: {key: actor, type: array, value: ["system", "user"]}
-      handles: {key: handles, type: object, value: {target: ["imageUrl", "outputSrcDoc"], source: ["imageUrl", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
-      imageUrl: {key: imageUrl, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      position: {key: position, type: object, value: {"x":-740,"y":-1819}}
+      handles: {key: handles, type: object, value: {"target":["imageUrl","outputSrcDoc"],"source":["imageUrl","outputSrcDoc"]}}
+      actor: {key: actor, type: array, value: ["system","user"]}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      phase: {key: phase, type: string, value: "render"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
     - id: {key: id, type: string, value: "w-video-scene"}
       type: {key: type, type: string, value: "VideoGeneration"}
       label: {key: label, type: string, value: "Video Widget — Scene"}
-      phase: {key: phase, type: string, value: "generate"}
-      actor: {key: actor, type: array, value: ["user", "AI"]}
-      handles: {key: handles, type: object, value: {target: ["reference_image"], source: ["videoUrl"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoGeneration"}
-      model: {key: model, type: select, value: "{{inputs.video_model}}"}
-      prompt: {key: prompt, type: string, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.name}}; {{inputs.theme}}. Script: {{inputs.script}}"}
-      ratio: {key: ratio, type: select, value: "9:16"}
-      resolution: {key: resolution, type: select, value: "480p"}
-      duration: {key: duration, type: number, value: "{{inputs.duration_seconds}}"}
-      generate_audio: {key: generate_audio, type: boolean, value: false}
-      draft: {key: draft, type: boolean, value: true}
+      position: {key: position, type: object, value: {"x":-260,"y":-1819}}
+      handles: {key: handles, type: object, value: {"target":["reference_image"],"source":["videoUrl"]}}
+      actor: {key: actor, type: array, value: ["user","AI"]}
       camera_fixed: {key: camera_fixed, type: boolean, value: false}
+      draft: {key: draft, type: boolean, value: true}
+      duration: {key: duration, type: number, value: 8}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      generate_audio: {key: generate_audio, type: boolean, value: false}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       image_url_url: {key: image_url_url, type: select, value: "base64"}
-      reference_image: {key: reference_image, type: string, value: ""}
-
+      model: {key: model, type: select, value: "seedance-1-0-pro-fast-251015"}
+      phase: {key: phase, type: string, value: "generate"}
+      prompt:
+        key: prompt
+        type: textarea
+        value: |
+          vivid, photorealistic, magic-realist, warm cinematic light cross-cutting to surreal multiverse glow, 9:16 vertical, TikTok-native, 8s; US Wild West mesa → Caribbean turquoise island → Singapore Marina Bay Sands / RoboTown; a RoboDrone X1 lifts off in three worlds — a Wild West frontier mesa at sunrise, a Caribbean island in a turquoise tempest, a Singapore city skyline at dusk — each world dissolving into its own surreal multiverse the moment the drone clears the horizon; a parent watches proudly from the ground while a child crosses into the world above. Script: US — Sunrise. A boy on a mesa cliff edge launches the drone into an amber sky. It clears the canyon rim. The desert below morphs — ghost herd of mustangs charges across a sky-plain above the mesas, a spectral frontier town floats inverted from the clouds, and the drone leads the stampede through canyon arches of light.
+          CARIBBEAN — Noon storm. A girl on a turquoise island beach launches into the tempest. The drone punches through a wall of rain. Below the surface — a mermaid queen rises, crown of coral, commanding the waves. The girl steers the drone as the mermaid's herald through a cathedral of lightning-lit underwater spires.
+          SG — Dusk. A girl on the Marina Bay promenade launches before Marina Bay Sands. The Merlion morphs — stone to chrome, 100 metres, AI sentinel. Singapore becomes RoboTown — sensor arrays, drone corridors, neural grid bay. The girl ascends to the command position. She pilots the city.
+          Cut back: three parents, three phones, three proud faces. Three worlds. One drone.
+          Text fades in: "One brief. Three multiverses. The drone opens the portal."
+          "airvio.co/knowgrph — Write it. See it. Ship it."
+          
+      ratio: {key: ratio, type: select, value: "9:16"}
+      reference_image: {key: reference_image, type: text, value: ""}
+      resolution: {key: resolution, type: select, value: "480p"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
     - id: {key: id, type: string, value: "p-video-scene"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel — Video (Scene)"}
-      phase: {key: phase, type: string, value: "render"}
-      actor: {key: actor, type: array, value: ["system", "user"]}
-      handles: {key: handles, type: object, value: {target: ["videoUrl", "outputSrcDoc"], source: ["videoUrl", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      videoUrl: {key: videoUrl, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      position: {key: position, type: object, value: {"x":220,"y":-1819}}
+      handles: {key: handles, type: object, value: {"target":["videoUrl","outputSrcDoc"],"source":["videoUrl","outputSrcDoc"]}}
+      actor: {key: actor, type: array, value: ["system","user"]}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      phase: {key: phase, type: string, value: "render"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      videoUrl: {key: videoUrl, type: text, value: ""}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+    - id: {key: id, type: string, value: "db-shot-S01-text"}
+      type: {key: type, type: string, value: "TextGeneration"}
+      label: {key: label, type: string, value: "Shot S01 · Text"}
+      position: {key: position, type: object, value: {"x":-2860,"y":-2668.8500000000004}}
+      adventure_hook: {key: adventure_hook, type: string, value: "Lead the ghost herd. Own the frontier."}
+      camera: {key: camera, type: object, value: {"shot_type":"Wide Establishing → Low Drone POV → Tracking Follow","lens":"28mm","movement":"wide on child silhouetted against sunrise canyon, push in as drone launches, cut to low drone POV tracking through ghost herd stampede, banking through canyon light arches","aperture":"T2","lighting":"amber sunrise backlight on mesa rim; silver-ghost translucency on mustang herd; warm gold bloom through canyon arch formations; inverted frontier town glows amber from above","vfx":"ghost mustang herd — translucent silver particle mane trails; terrain-sky plane inversion for frontier town; canyon arch light beam composites; drone banking physics with motion blur; mesa rim edge horizon fold transition"}}
+      chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: ""}
+      chatModel: {key: chatModel, type: string, value: "seed-2-0-lite-260228"}
+      chatProvider: {key: chatProvider, type: string, value: "deerflow"}
+      chatReasoningEffort: {key: chatReasoningEffort, type: string, value: "minimal"}
+      chatStream: {key: chatStream, type: boolean, value: true}
+      chatThinkingType: {key: chatThinkingType, type: string, value: "disabled"}
+      description: {key: description, type: string, value: "Amber sunrise. A boy, 11, stands at the edge of a sandstone mesa cliff. The canyon drops away below him — ochre walls, sage, the silence before heat. He holds the controller in both hands, squints into the light, and launches the RoboDrone X1. It clears the mesa rim. And the moment it does — the desert below transforms. A ghost herd of wild mustangs materialises on a sky-plain above the canyon, translucent and silver, charging through air. A spectral frontier town — water tower, saloon, dirt main street — hangs inverted from the clouds above, its windows glowing amber. The drone banks hard and leads the stampede through cathedral arches of canyon light, the boy leaning into every turn."}
+      duration: {key: duration, type: string, value: "10s"}
+      duration_seconds: {key: duration_seconds, type: number, value: 10}
+      epoch: {key: epoch, type: string, value: ""}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "textGeneration"}
+      frame_label: {key: frame_label, type: string, value: "LAUNCH — The Ghost Herd Rides"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 0}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S01"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "text"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_prompt: {key: image_prompt, type: string, value: "Boy on sandstone mesa cliff edge at amber sunrise launching small consumer drone, Wild West canyon below with ochre walls, ghost herd of translucent silver wild mustangs charging across sky-plain above canyon, inverted spectral frontier town hanging from clouds with glowing amber windows, drone banking through cathedral canyon light arches, magic-realist, photorealistic, 9:16 vertical"}
+      locale: {key: locale, type: string, value: "US · Wild West canyon mesa, sunrise"}
+      output:
+        key: output
+        type: string
+        value: |
+          # Shot S01
+          
+          - Timecode: 00:00–00:10
+          - Frame: LAUNCH — The Ghost Herd Rides
+          
+          ## Description
+          
+          Amber sunrise. A boy, 11, stands at the edge of a sandstone mesa cliff. The canyon drops away below him — ochre walls, sage, the silence before heat. He holds the controller in both hands, squints into the light, and launches the RoboDrone X1. It clears the mesa rim. And the moment it does — the desert below transforms. A ghost herd of wild mustangs materialises on a sky-plain above the canyon, translucent and silver, charging through air. A spectral frontier town — water tower, saloon, dirt main street — hangs inverted from the clouds above, its windows glowing amber. The drone banks hard and leads the stampede through cathedral arches of canyon light, the boy leaning into every turn.
+          
+          - Duration: 10s
+          
+          ## Image Prompt
+          
+          Boy on sandstone mesa cliff edge at amber sunrise launching small consumer drone, Wild West canyon below with ochre walls, ghost herd of translucent silver wild mustangs charging across sky-plain above canyon, inverted spectral frontier town hanging from clouds with glowing amber windows, drone banking through cathedral canyon light arches, magic-realist, photorealistic, 9:16 vertical
+          
+          ## Video Prompt
+          
+          Wide shot boy silhouetted on mesa cliff at sunrise, drone launches and clears rim, cut to low drone POV — translucent silver ghost mustang herd materialises charging across sky-plain above the canyon, inverted frontier town glows amber from overhead clouds, drone banks hard leading the stampede through canyon arch light beams, boy leans into controller, amber cinematic backlight, 9:16 vertical, magic-realist
+          
+          ## Camera
+          
+          ```json
+          {
+            "shot_type": "Wide Establishing → Low Drone POV → Tracking Follow",
+            "lens": "28mm",
+            "movement": "wide on child silhouetted against sunrise canyon, push in as drone launches, cut to low drone POV tracking through ghost herd stampede, banking through canyon light arches",
+            "aperture": "T2",
+            "lighting": "amber sunrise backlight on mesa rim; silver-ghost translucency on mustang herd; warm gold bloom through canyon arch formations; inverted frontier town glows amber from above",
+            "vfx": "ghost mustang herd — translucent silver particle mane trails; terrain-sky plane inversion for frontier town; canyon arch light beam composites; drone banking physics with motion blur; mesa rim edge horizon fold transition"
+          }
+          ```
+          
+      parent_trust: {key: parent_trust, type: string, value: "obstacle-sense · 20-min flight · crash-proof shell"}
+      prompt: {key: prompt, type: string, value: "Write the Text Widget output for S01. Produce a concise markdown scene brief with sections: Scene Image Prompt, Video Prompt, Parent Trust Beat, Adventure Hook, Rich Media Panel Summary. Use the US Wild West mesa details, ghost herd multiverse transformation, parent trust proof, and 9:16 vertical magic-realist style. No cultural sensitivities."}
+      shot: {key: shot, type: string, value: "S01"}
+      shot_index: {key: shot_index, type: number, value: 1}
+      timecode: {key: timecode, type: string, value: "00:00–00:10"}
+      video_prompt: {key: video_prompt, type: string, value: "Wide shot boy silhouetted on mesa cliff at sunrise, drone launches and clears rim, cut to low drone POV — translucent silver ghost mustang herd materialises charging across sky-plain above the canyon, inverted frontier town glows amber from overhead clouds, drone banks hard leading the stampede through canyon arch light beams, boy leans into controller, amber cinematic backlight, 9:16 vertical, magic-realist"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -9}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S01-text-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S01 · Panel (Text)"}
+      position: {key: position, type: object, value: {"x":-2860,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 0}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S01"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "textPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -9}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S01-image"}
+      type: {key: type, type: string, value: "ImageGeneration"}
+      label: {key: label, type: string, value: "Shot S01 · Image"}
+      position: {key: position, type: object, value: {"x":-2340,"y":-2668.8500000000004}}
+      aspect_ratio: {key: aspect_ratio, type: number, value: 0.5625}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 0}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S01"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "image"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      guidance_scale: {key: guidance_scale, type: number, value: 0}
+      model: {key: model, type: string, value: "seedream-4-0-250828"}
+      optimize_prompt_options: {key: optimize_prompt_options, type: string, value: "fast"}
+      output_format: {key: output_format, type: string, value: "jpeg"}
+      prompt: {key: prompt, type: string, value: "Boy on sandstone mesa cliff edge at amber sunrise launching small consumer drone, Wild West canyon below with ochre walls, ghost herd of translucent silver wild mustangs charging across sky-plain above canyon, inverted spectral frontier town hanging from clouds with glowing amber windows, drone banking through cathedral canyon light arches, magic-realist, photorealistic, 9:16 vertical"}
+      response_format: {key: response_format, type: string, value: "b64_json"}
+      seed: {key: seed, type: number, value: 0}
+      shot: {key: shot, type: string, value: "S01"}
+      size: {key: size, type: string, value: "2K"}
+      stream: {key: stream, type: boolean, value: true}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+      watermark: {key: watermark, type: boolean, value: false}
+    - id: {key: id, type: string, value: "db-shot-S01-image-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S01 · Panel (Image)"}
+      position: {key: position, type: object, value: {"x":-2340,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 0}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S01"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "imagePanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S01-video"}
+      type: {key: type, type: string, value: "VideoGeneration"}
+      label: {key: label, type: string, value: "Shot S01 · Video"}
+      position: {key: position, type: object, value: {"x":-1820,"y":-2668.8500000000004}}
+      camera_fixed: {key: camera_fixed, type: boolean, value: false}
+      draft: {key: draft, type: boolean, value: true}
+      duration: {key: duration, type: number, value: 10}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 0}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S01"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "video"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      generate_audio: {key: generate_audio, type: boolean, value: false}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_url_url: {key: image_url_url, type: string, value: "base64"}
+      model: {key: model, type: string, value: "seedance-1-0-pro-fast-251015"}
+      prompt: {key: prompt, type: string, value: "Wide shot boy silhouetted on mesa cliff at sunrise, drone launches and clears rim, cut to low drone POV — translucent silver ghost mustang herd materialises charging across sky-plain above the canyon, inverted frontier town glows amber from overhead clouds, drone banks hard leading the stampede through canyon arch light beams, boy leans into controller, amber cinematic backlight, 9:16 vertical, magic-realist"}
+      ratio: {key: ratio, type: string, value: "9:16"}
+      resolution: {key: resolution, type: string, value: "480p"}
+      shot: {key: shot, type: string, value: "S01"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S01-video-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S01 · Panel (Video)"}
+      position: {key: position, type: object, value: {"x":-1820,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 0}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S01"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "videoPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S02-text"}
+      type: {key: type, type: string, value: "TextGeneration"}
+      label: {key: label, type: string, value: "Shot S02 · Text"}
+      position: {key: position, type: object, value: {"x":-1300,"y":-2668.8500000000004}}
+      adventure_hook: {key: adventure_hook, type: string, value: "Fly the tempest. Serve the queen."}
+      camera: {key: camera, type: object, value: {"shot_type":"Eye-Level Rain Wall → Drone POV Punch-Through → Subsurface Reveal","lens":"35mm","movement":"eye-level on girl facing storm wall, drone launches into rain, cut to drone POV punching through rain curtain into clear sky, tilt down to subsurface reveal of mermaid queen rising, tracking through coral spire cathedral","aperture":"T2","lighting":"flat storm-diffuse on beach; bright turquoise sky above rain wall after punch-through; deep bioluminescent blue-green below surface; lightning strobe on coral spire cathedral","vfx":"rain wall particle curtain with drone punch-through dynamic; subsurface caustic shimmer; mermaid queen composite — bioluminescent scale shader; coral spire cathedral environment; lightning bolt composites with scale reflection; wave surface clearing animation"}}
+      chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: ""}
+      chatModel: {key: chatModel, type: string, value: "seed-2-0-lite-260228"}
+      chatProvider: {key: chatProvider, type: string, value: "deerflow"}
+      chatReasoningEffort: {key: chatReasoningEffort, type: string, value: "minimal"}
+      chatStream: {key: chatStream, type: boolean, value: true}
+      chatThinkingType: {key: chatThinkingType, type: string, value: "disabled"}
+      description: {key: description, type: string, value: "Noon storm. A Caribbean girl, 10, stands barefoot on a white-sand beach as a wall of tropical rain sweeps in from the turquoise sea. Palm trees bend. The water churns jade and white. She launches the RoboDrone X1 directly into the storm wall — the drone punches through the curtain of rain and emerges above the tempest, bright sky above, chaos below. And in the churning water below the surface — visible through a momentary clearing in the waves — a mermaid queen rises: coral crown, bioluminescent scales, commanding. She raises one hand and the waves part. The drone descends as the queen's herald, weaving through a cathedral of lightning-lit underwater spires of coral that erupt from the seafloor, scales catching each bolt."}
+      duration: {key: duration, type: string, value: "10s"}
+      duration_seconds: {key: duration_seconds, type: number, value: 10}
+      epoch: {key: epoch, type: string, value: ""}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "textGeneration"}
+      frame_label: {key: frame_label, type: string, value: "PIERCE — The Mermaid Queen Commands"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 1}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S02"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "text"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_prompt: {key: image_prompt, type: string, value: "Caribbean girl on white sand beach launching drone into approaching tropical storm wall, turquoise sea churning jade and white, drone punching through rain curtain into clear sky above, below the storm waves a mermaid queen rises from the deep — coral crown, bioluminescent blue-green scales, commanding arms raised — cathedral of lightning-lit coral spires erupting from seafloor, magic-realist, photorealistic, 9:16 vertical"}
+      locale: {key: locale, type: string, value: "Caribbean · turquoise island, noon tempest"}
+      output:
+        key: output
+        type: string
+        value: |
+          # Shot S02
+          
+          - Timecode: 00:10–00:20
+          - Frame: PIERCE — The Mermaid Queen Commands
+          
+          ## Description
+          
+          Noon storm. A Caribbean girl, 10, stands barefoot on a white-sand beach as a wall of tropical rain sweeps in from the turquoise sea. Palm trees bend. The water churns jade and white. She launches the RoboDrone X1 directly into the storm wall — the drone punches through the curtain of rain and emerges above the tempest, bright sky above, chaos below. And in the churning water below the surface — visible through a momentary clearing in the waves — a mermaid queen rises: coral crown, bioluminescent scales, commanding. She raises one hand and the waves part. The drone descends as the queen's herald, weaving through a cathedral of lightning-lit underwater spires of coral that erupt from the seafloor, scales catching each bolt.
+          
+          - Duration: 10s
+          
+          ## Image Prompt
+          
+          Caribbean girl on white sand beach launching drone into approaching tropical storm wall, turquoise sea churning jade and white, drone punching through rain curtain into clear sky above, below the storm waves a mermaid queen rises from the deep — coral crown, bioluminescent blue-green scales, commanding arms raised — cathedral of lightning-lit coral spires erupting from seafloor, magic-realist, photorealistic, 9:16 vertical
+          
+          ## Video Prompt
+          
+          Eye-level shot girl launching drone into tropical storm wall on Caribbean beach, drone punches through rain curtain — bright sky above, chaos below — camera tilts down below surface to reveal mermaid queen rising from seafloor bioluminescent scales and coral crown, waves part at her command, drone descends as herald weaving through coral spire cathedral lit by lightning bolts, 9:16 vertical, cinematic, vivid magic-realist
+          
+          ## Camera
+          
+          ```json
+          {
+            "shot_type": "Eye-Level Rain Wall → Drone POV Punch-Through → Subsurface Reveal",
+            "lens": "35mm",
+            "movement": "eye-level on girl facing storm wall, drone launches into rain, cut to drone POV punching through rain curtain into clear sky, tilt down to subsurface reveal of mermaid queen rising, tracking through coral spire cathedral",
+            "aperture": "T2",
+            "lighting": "flat storm-diffuse on beach; bright turquoise sky above rain wall after punch-through; deep bioluminescent blue-green below surface; lightning strobe on coral spire cathedral",
+            "vfx": "rain wall particle curtain with drone punch-through dynamic; subsurface caustic shimmer; mermaid queen composite — bioluminescent scale shader; coral spire cathedral environment; lightning bolt composites with scale reflection; wave surface clearing animation"
+          }
+          ```
+          
+      parent_trust: {key: parent_trust, type: string, value: "obstacle-sense · 20-min flight · crash-proof shell"}
+      prompt: {key: prompt, type: string, value: "Write the Text Widget output for S02. Produce a concise markdown scene brief with sections: Scene Image Prompt, Video Prompt, Parent Trust Beat, Adventure Hook, Rich Media Panel Summary. Use the Caribbean island tempest details, mermaid queen multiverse transformation, parent trust proof, and 9:16 vertical magic-realist style."}
+      shot: {key: shot, type: string, value: "S02"}
+      shot_index: {key: shot_index, type: number, value: 2}
+      timecode: {key: timecode, type: string, value: "00:10–00:20"}
+      video_prompt: {key: video_prompt, type: string, value: "Eye-level shot girl launching drone into tropical storm wall on Caribbean beach, drone punches through rain curtain — bright sky above, chaos below — camera tilts down below surface to reveal mermaid queen rising from seafloor bioluminescent scales and coral crown, waves part at her command, drone descends as herald weaving through coral spire cathedral lit by lightning bolts, 9:16 vertical, cinematic, vivid magic-realist"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S02-text-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S02 · Panel (Text)"}
+      position: {key: position, type: object, value: {"x":-1300,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 1}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S02"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "textPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S02-image"}
+      type: {key: type, type: string, value: "ImageGeneration"}
+      label: {key: label, type: string, value: "Shot S02 · Image"}
+      position: {key: position, type: object, value: {"x":-780,"y":-2668.8500000000004}}
+      aspect_ratio: {key: aspect_ratio, type: number, value: 0.5625}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 1}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S02"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "image"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      guidance_scale: {key: guidance_scale, type: number, value: 0}
+      model: {key: model, type: string, value: "seedream-4-0-250828"}
+      optimize_prompt_options: {key: optimize_prompt_options, type: string, value: "fast"}
+      output_format: {key: output_format, type: string, value: "jpeg"}
+      prompt: {key: prompt, type: string, value: "Caribbean girl on white sand beach launching drone into approaching tropical storm wall, turquoise sea churning jade and white, drone punching through rain curtain into clear sky above, below the storm waves a mermaid queen rises from the deep — coral crown, bioluminescent blue-green scales, commanding arms raised — cathedral of lightning-lit coral spires erupting from seafloor, magic-realist, photorealistic, 9:16 vertical"}
+      response_format: {key: response_format, type: string, value: "b64_json"}
+      seed: {key: seed, type: number, value: 0}
+      shot: {key: shot, type: string, value: "S02"}
+      size: {key: size, type: string, value: "2K"}
+      stream: {key: stream, type: boolean, value: true}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+      watermark: {key: watermark, type: boolean, value: false}
+    - id: {key: id, type: string, value: "db-shot-S02-image-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S02 · Panel (Image)"}
+      position: {key: position, type: object, value: {"x":-780,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 1}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S02"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "imagePanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S02-video"}
+      type: {key: type, type: string, value: "VideoGeneration"}
+      label: {key: label, type: string, value: "Shot S02 · Video"}
+      position: {key: position, type: object, value: {"x":-260,"y":-2668.8500000000004}}
+      camera_fixed: {key: camera_fixed, type: boolean, value: false}
+      draft: {key: draft, type: boolean, value: true}
+      duration: {key: duration, type: number, value: 10}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 1}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S02"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "video"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      generate_audio: {key: generate_audio, type: boolean, value: false}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_url_url: {key: image_url_url, type: string, value: "base64"}
+      model: {key: model, type: string, value: "seedance-1-0-pro-fast-251015"}
+      prompt: {key: prompt, type: string, value: "Eye-level shot girl launching drone into tropical storm wall on Caribbean beach, drone punches through rain curtain — bright sky above, chaos below — camera tilts down below surface to reveal mermaid queen rising from seafloor bioluminescent scales and coral crown, waves part at her command, drone descends as herald weaving through coral spire cathedral lit by lightning bolts, 9:16 vertical, cinematic, vivid magic-realist"}
+      ratio: {key: ratio, type: string, value: "9:16"}
+      resolution: {key: resolution, type: string, value: "480p"}
+      shot: {key: shot, type: string, value: "S02"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S02-video-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S02 · Panel (Video)"}
+      position: {key: position, type: object, value: {"x":-260,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 1}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S02"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "videoPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S03-text"}
+      type: {key: type, type: string, value: "TextGeneration"}
+      label: {key: label, type: string, value: "Shot S03 · Text"}
+      position: {key: position, type: object, value: {"x":260,"y":-2668.8500000000004}}
+      adventure_hook: {key: adventure_hook, type: string, value: "Command the future. Your city. Your drone."}
+      camera: {key: camera, type: object, value: {"shot_type":"Low Angle Rise → Wide City Transform","lens":"35mm","movement":"low angle on girl with MBS behind, drone rises past child eyeline, camera cranes up to reveal full city transform — Merlion morph, tower arrays, neural grid bay","aperture":"T1.8","lighting":"blue-hour Singapore dusk on real city; cold chrome-white and electric blue on RoboTown reveal; pulsing neural grid bay surface light emission; Merlion eyes — amber scanning sweep","vfx":"Merlion morph — stone-to-chrome particle transition, height exaggeration ×5; MBS tower sensor array extension composites; drone corridor network materialise between buildings; bay surface neural grid light pulse animation; city scale exaggeration — towers grow 30%; girl's drone apex glow — command position indicator"}}
+      chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: ""}
+      chatModel: {key: chatModel, type: string, value: "seed-2-0-lite-260228"}
+      chatProvider: {key: chatProvider, type: string, value: "deerflow"}
+      chatReasoningEffort: {key: chatReasoningEffort, type: string, value: "minimal"}
+      chatStream: {key: chatStream, type: boolean, value: true}
+      chatThinkingType: {key: chatThinkingType, type: string, value: "disabled"}
+      description: {key: description, type: string, value: "Dusk. A Singaporean girl, 13, stands on the Marina Bay promenade. City lights just kindling. She launches the RoboDrone X1. It rises before Marina Bay Sands — the three towers, the sky park, the bay. Then: the Merlion shifts. Stone becomes chrome. It stands taller — 100 metres, articulated, AI-sentinel, eyes scanning slow arcs across the bay. The skyline morphs: towers grow sensor arrays, drone corridors materialise between buildings, the bay surface becomes a neural grid of pulsing light. This is RoboTown. The girl's drone ascends to the command position at the apex of the grid. The city's systems align to her heading. She is the pilot. The city waits."}
+      duration: {key: duration, type: string, value: "7s"}
+      duration_seconds: {key: duration_seconds, type: number, value: 7}
+      epoch: {key: epoch, type: string, value: ""}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "textGeneration"}
+      frame_label: {key: frame_label, type: string, value: "ASCEND — The Merlion Becomes a Sentinel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 2}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S03"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "text"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_prompt: {key: image_prompt, type: string, value: "Singaporean girl launching drone on Marina Bay promenade at dusk, Marina Bay Sands towers behind her, Merlion transforming from stone to chrome 100m AI sentinel with amber scanning eyes, Singapore skyline morphing into RoboTown with sensor arrays on towers and drone corridors between buildings, Marina Bay surface becoming pulsing neural grid of light, girl's drone ascending to command position apex above grid, blue-hour cold chrome and electric blue tones, futurist magic-realist, photorealistic, 9:16 vertical"}
+      locale: {key: locale, type: string, value: "SG · Marina Bay Sands / RoboTown"}
+      output:
+        key: output
+        type: string
+        value: |
+          # Shot S03
+          
+          - Timecode: 00:20–00:27
+          - Frame: ASCEND — The Merlion Becomes a Sentinel
+          
+          ## Description
+          
+          Dusk. A Singaporean girl, 13, stands on the Marina Bay promenade. City lights just kindling. She launches the RoboDrone X1. It rises before Marina Bay Sands — the three towers, the sky park, the bay. Then: the Merlion shifts. Stone becomes chrome. It stands taller — 100 metres, articulated, AI-sentinel, eyes scanning slow arcs across the bay. The skyline morphs: towers grow sensor arrays, drone corridors materialise between buildings, the bay surface becomes a neural grid of pulsing light. This is RoboTown. The girl's drone ascends to the command position at the apex of the grid. The city's systems align to her heading. She is the pilot. The city waits.
+          
+          - Duration: 7s
+          
+          ## Image Prompt
+          
+          Singaporean girl launching drone on Marina Bay promenade at dusk, Marina Bay Sands towers behind her, Merlion transforming from stone to chrome 100m AI sentinel with amber scanning eyes, Singapore skyline morphing into RoboTown with sensor arrays on towers and drone corridors between buildings, Marina Bay surface becoming pulsing neural grid of light, girl's drone ascending to command position apex above grid, blue-hour cold chrome and electric blue tones, futurist magic-realist, photorealistic, 9:16 vertical
+          
+          ## Video Prompt
+          
+          Low angle crane-up following drone rising before Marina Bay Sands at blue-hour dusk, Merlion begins morphing from stone to towering chrome AI sentinel with amber scanning eyes, Singapore skyline transforms into RoboTown — sensor arrays grow on towers, drone corridors materialise, bay surface becomes pulsing neural grid, girl's drone ascends to command apex above the city, city systems align to her heading, cold chrome and electric blue tones, 9:16 vertical, cinematic, futurist magic-realist
+          
+          ## Camera
+          
+          ```json
+          {
+            "shot_type": "Low Angle Rise → Wide City Transform",
+            "lens": "35mm",
+            "movement": "low angle on girl with MBS behind, drone rises past child eyeline, camera cranes up to reveal full city transform — Merlion morph, tower arrays, neural grid bay",
+            "aperture": "T1.8",
+            "lighting": "blue-hour Singapore dusk on real city; cold chrome-white and electric blue on RoboTown reveal; pulsing neural grid bay surface light emission; Merlion eyes — amber scanning sweep",
+            "vfx": "Merlion morph — stone-to-chrome particle transition, height exaggeration ×5; MBS tower sensor array extension composites; drone corridor network materialise between buildings; bay surface neural grid light pulse animation; city scale exaggeration — towers grow 30%; girl's drone apex glow — command position indicator"
+          }
+          ```
+          
+      parent_trust: {key: parent_trust, type: string, value: "obstacle-sense · 20-min flight · crash-proof shell"}
+      prompt: {key: prompt, type: string, value: "Write the Text Widget output for S03. Produce a concise markdown scene brief with sections: Scene Image Prompt, Video Prompt, Parent Trust Beat, Adventure Hook, Rich Media Panel Summary. Use the SG Marina Bay RoboTown details, Merlion AI sentinel transformation, parent trust proof, and 9:16 vertical futurist magic-realist style. 123"}
+      shot: {key: shot, type: string, value: "S03"}
+      shot_index: {key: shot_index, type: number, value: 3}
+      timecode: {key: timecode, type: string, value: "00:20–00:27"}
+      video_prompt: {key: video_prompt, type: string, value: "Low angle crane-up following drone rising before Marina Bay Sands at blue-hour dusk, Merlion begins morphing from stone to towering chrome AI sentinel with amber scanning eyes, Singapore skyline transforms into RoboTown — sensor arrays grow on towers, drone corridors materialise, bay surface becomes pulsing neural grid, girl's drone ascends to command apex above the city, city systems align to her heading, cold chrome and electric blue tones, 9:16 vertical, cinematic, futurist magic-realist"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S03-text-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S03 · Panel (Text)"}
+      position: {key: position, type: object, value: {"x":260,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 2}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S03"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "textPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S03-image"}
+      type: {key: type, type: string, value: "ImageGeneration"}
+      label: {key: label, type: string, value: "Shot S03 · Image"}
+      position: {key: position, type: object, value: {"x":780,"y":-2668.8500000000004}}
+      aspect_ratio: {key: aspect_ratio, type: number, value: 0.5625}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 2}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S03"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "image"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      guidance_scale: {key: guidance_scale, type: number, value: 0}
+      model: {key: model, type: string, value: "seedream-4-0-250828"}
+      optimize_prompt_options: {key: optimize_prompt_options, type: string, value: "fast"}
+      output_format: {key: output_format, type: string, value: "jpeg"}
+      prompt: {key: prompt, type: string, value: "Singaporean girl launching drone on Marina Bay promenade at dusk, Marina Bay Sands towers behind her, Merlion transforming from stone to chrome 100m AI sentinel with amber scanning eyes, Singapore skyline morphing into RoboTown with sensor arrays on towers and drone corridors between buildings, Marina Bay surface becoming pulsing neural grid of light, girl's drone ascending to command position apex above grid, blue-hour cold chrome and electric blue tones, futurist magic-realist, photorealistic, 9:16 vertical"}
+      response_format: {key: response_format, type: string, value: "b64_json"}
+      seed: {key: seed, type: number, value: 0}
+      shot: {key: shot, type: string, value: "S03"}
+      size: {key: size, type: string, value: "2K"}
+      stream: {key: stream, type: boolean, value: true}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+      watermark: {key: watermark, type: boolean, value: false}
+    - id: {key: id, type: string, value: "db-shot-S03-image-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S03 · Panel (Image)"}
+      position: {key: position, type: object, value: {"x":780,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 2}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S03"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "imagePanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S03-video"}
+      type: {key: type, type: string, value: "VideoGeneration"}
+      label: {key: label, type: string, value: "Shot S03 · Video"}
+      position: {key: position, type: object, value: {"x":1300,"y":-2668.8500000000004}}
+      camera_fixed: {key: camera_fixed, type: boolean, value: false}
+      draft: {key: draft, type: boolean, value: true}
+      duration: {key: duration, type: number, value: 7}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 2}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S03"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "video"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      generate_audio: {key: generate_audio, type: boolean, value: false}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_url_url: {key: image_url_url, type: string, value: "base64"}
+      model: {key: model, type: string, value: "seedance-1-0-pro-fast-251015"}
+      prompt: {key: prompt, type: string, value: "Low angle crane-up following drone rising before Marina Bay Sands at blue-hour dusk, Merlion begins morphing from stone to towering chrome AI sentinel with amber scanning eyes, Singapore skyline transforms into RoboTown — sensor arrays grow on towers, drone corridors materialise, bay surface becomes pulsing neural grid, girl's drone ascends to command apex above the city, city systems align to her heading, cold chrome and electric blue tones, 9:16 vertical, cinematic, futurist magic-realist"}
+      ratio: {key: ratio, type: string, value: "9:16"}
+      resolution: {key: resolution, type: string, value: "480p"}
+      shot: {key: shot, type: string, value: "S03"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -13}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S03-video-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S03 · Panel (Video)"}
+      position: {key: position, type: object, value: {"x":1300,"y":-2035.2500000000005}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 2}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S03"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "videoPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S04-text"}
+      type: {key: type, type: string, value: "TextGeneration"}
+      label: {key: label, type: string, value: "Shot S04 · Text"}
+      position: {key: position, type: object, value: {"x":-2080,"y":-1650.4500000000003}}
+      camera: {key: camera, type: object, value: {"shot_type":"Rapid Reverse Zoom — Practical→Digital","lens":"transition from 35mm to screen-space CG camera","movement":"exponential pull-back, 0→8m/s","aperture":"N/A (CG transition)","lighting":"screen glow — dark canvas; three node halos: amber (US) · turquoise (Caribbean) · electric blue (SG)","vfx":"full CG canvas environment; three locale nodes materialise with locale-colour halos; luminous bezier edges between nodes; cursor materialise animation; parent silhouettes at node bases; canvas pulse once"}}
+      chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: ""}
+      chatModel: {key: chatModel, type: string, value: "seed-2-0-lite-260228"}
+      chatProvider: {key: chatProvider, type: string, value: "deerflow"}
+      chatReasoningEffort: {key: chatReasoningEffort, type: string, value: "minimal"}
+      chatStream: {key: chatStream, type: boolean, value: true}
+      chatThinkingType: {key: chatThinkingType, type: string, value: "disabled"}
+      description: {key: description, type: string, value: "From the SG drone's command apex — exponential pull-back. RoboTown shrinks. Then: three locale scenes appear as glowing nodes on a dark canvas, connected by luminous bezier threads. US frontier mesa node — amber glow. Caribbean tempest node — turquoise glow. SG RoboTown node — electric blue glow. Three parents visible as silhouettes at the base of each node, phones raised. A cursor materialises above the canvas, hovers. The canvas pulses once."}
+      duration: {key: duration, type: string, value: "2s"}
+      duration_seconds: {key: duration_seconds, type: number, value: 2}
+      epoch: {key: epoch, type: string, value: "The Canvas Reveal"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "textGeneration"}
+      frame_label: {key: frame_label, type: string, value: "REVERSE ZOOM — Three Worlds, One Brief"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 3}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S04"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "text"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_prompt: {key: image_prompt, type: string, value: "Extreme pull-back zoom revealing three glowing locale nodes on dark creative canvas flow graph — US Wild West mesa amber, Caribbean island turquoise, Singapore RoboTown electric blue — connected by luminous bezier curves, cursor hovering above canvas, parent silhouettes at base of each node, 9:16 vertical, dark canvas aesthetic"}
+      output:
+        key: output
+        type: string
+        value: |
+          # Shot S04
+          
+          - Timecode: 00:27–00:29
+          - Epoch: The Canvas Reveal
+          - Frame: REVERSE ZOOM — Three Worlds, One Brief
+          
+          ## Description
+          
+          From the SG drone's command apex — exponential pull-back. RoboTown shrinks. Then: three locale scenes appear as glowing nodes on a dark canvas, connected by luminous bezier threads. US frontier mesa node — amber glow. Caribbean tempest node — turquoise glow. SG RoboTown node — electric blue glow. Three parents visible as silhouettes at the base of each node, phones raised. A cursor materialises above the canvas, hovers. The canvas pulses once.
+          
+          - Duration: 2s
+          
+          ## Image Prompt
+          
+          Extreme pull-back zoom revealing three glowing locale nodes on dark creative canvas flow graph — US Wild West mesa amber, Caribbean island turquoise, Singapore RoboTown electric blue — connected by luminous bezier curves, cursor hovering above canvas, parent silhouettes at base of each node, 9:16 vertical, dark canvas aesthetic
+          
+          ## Video Prompt
+          
+          Rapid exponential reverse zoom from Singapore drone command apex to reveal three locale scenes as glowing nodes on dark canvas flow graph, luminous bezier edges in amber turquoise electric-blue, cursor materialises and hovers, three parent silhouettes glow at node bases, canvas pulses once, 9:16 vertical, cinematic, 2s
+          
+          ## Camera
+          
+          ```json
+          {
+            "shot_type": "Rapid Reverse Zoom — Practical→Digital",
+            "lens": "transition from 35mm to screen-space CG camera",
+            "movement": "exponential pull-back, 0→8m/s",
+            "aperture": "N/A (CG transition)",
+            "lighting": "screen glow — dark canvas; three node halos: amber (US) · turquoise (Caribbean) · electric blue (SG)",
+            "vfx": "full CG canvas environment; three locale nodes materialise with locale-colour halos; luminous bezier edges between nodes; cursor materialise animation; parent silhouettes at node bases; canvas pulse once"
+          }
+          ```
+          
+      prompt: {key: prompt, type: string, value: "Write the Text Widget output for S04. Produce a concise markdown scene brief with sections: Canvas Reveal Beat, Edge/Node Summary, Video Prompt, Rich Media Panel Summary. Use the three-world reverse zoom, luminous bezier edges in locale colours amber/turquoise/electric-blue, parent silhouettes, cursor reveal, and dark canvas aesthetic."}
+      shot: {key: shot, type: string, value: "S04"}
+      shot_index: {key: shot_index, type: number, value: 4}
+      timecode: {key: timecode, type: string, value: "00:27–00:29"}
+      video_prompt: {key: video_prompt, type: string, value: "Rapid exponential reverse zoom from Singapore drone command apex to reveal three locale scenes as glowing nodes on dark canvas flow graph, luminous bezier edges in amber turquoise electric-blue, cursor materialises and hovers, three parent silhouettes glow at node bases, canvas pulses once, 9:16 vertical, cinematic, 2s"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -8}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S04-text-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S04 · Panel (Text)"}
+      position: {key: position, type: object, value: {"x":-2080,"y":-1016.8500000000003}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 3}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S04"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "textPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S04-image"}
+      type: {key: type, type: string, value: "ImageGeneration"}
+      label: {key: label, type: string, value: "Shot S04 · Image"}
+      position: {key: position, type: object, value: {"x":-1560,"y":-1650.4500000000003}}
+      aspect_ratio: {key: aspect_ratio, type: number, value: 0.5625}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 3}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S04"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "image"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      guidance_scale: {key: guidance_scale, type: number, value: 0}
+      model: {key: model, type: string, value: "seedream-4-0-250828"}
+      optimize_prompt_options: {key: optimize_prompt_options, type: string, value: "fast"}
+      output_format: {key: output_format, type: string, value: "jpeg"}
+      prompt: {key: prompt, type: string, value: "Extreme pull-back zoom revealing three glowing locale nodes on dark creative canvas flow graph — US Wild West mesa amber, Caribbean island turquoise, Singapore RoboTown electric blue — connected by luminous bezier curves, cursor hovering above canvas, parent silhouettes at base of each node, 9:16 vertical, dark canvas aesthetic"}
+      response_format: {key: response_format, type: string, value: "b64_json"}
+      seed: {key: seed, type: number, value: 0}
+      shot: {key: shot, type: string, value: "S04"}
+      size: {key: size, type: string, value: "2K"}
+      stream: {key: stream, type: boolean, value: true}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -8}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+      watermark: {key: watermark, type: boolean, value: false}
+    - id: {key: id, type: string, value: "db-shot-S04-image-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S04 · Panel (Image)"}
+      position: {key: position, type: object, value: {"x":-1560,"y":-1016.8500000000003}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 3}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S04"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "imagePanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S04-video"}
+      type: {key: type, type: string, value: "VideoGeneration"}
+      label: {key: label, type: string, value: "Shot S04 · Video"}
+      position: {key: position, type: object, value: {"x":-1040,"y":-1650.4500000000003}}
+      camera_fixed: {key: camera_fixed, type: boolean, value: false}
+      draft: {key: draft, type: boolean, value: true}
+      duration: {key: duration, type: number, value: 2}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 3}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S04"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "video"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      generate_audio: {key: generate_audio, type: boolean, value: false}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_url_url: {key: image_url_url, type: string, value: "base64"}
+      model: {key: model, type: string, value: "seedance-1-0-pro-fast-251015"}
+      prompt: {key: prompt, type: string, value: "Rapid exponential reverse zoom from Singapore drone command apex to reveal three locale scenes as glowing nodes on dark canvas flow graph, luminous bezier edges in amber turquoise electric-blue, cursor materialises and hovers, three parent silhouettes glow at node bases, canvas pulses once, 9:16 vertical, cinematic, 2s"}
+      ratio: {key: ratio, type: string, value: "9:16"}
+      resolution: {key: resolution, type: string, value: "480p"}
+      shot: {key: shot, type: string, value: "S04"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -8}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S04-video-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S04 · Panel (Video)"}
+      position: {key: position, type: object, value: {"x":-1040,"y":-1016.8500000000003}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 3}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S04"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "videoPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S05-text"}
+      type: {key: type, type: string, value: "TextGeneration"}
+      label: {key: label, type: string, value: "Shot S05 · Text"}
+      position: {key: position, type: object, value: {"x":-520,"y":-1650.4500000000003}}
+      camera: {key: camera, type: object, value: {"shot_type":"Static Hold (CG)","lens":"N/A","movement":"subtle parallax 0.05m/s drift","aperture":"N/A","lighting":"canvas ambient only; three node halos maintain locale colours","vfx":"text fade-in; parallax depth pass; warm chord audio"}}
+      chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
+      chatEndpointUrl: {key: chatEndpointUrl, type: string, value: ""}
+      chatModel: {key: chatModel, type: string, value: "seed-2-0-lite-260228"}
+      chatProvider: {key: chatProvider, type: string, value: "deerflow"}
+      chatReasoningEffort: {key: chatReasoningEffort, type: string, value: "minimal"}
+      chatStream: {key: chatStream, type: boolean, value: true}
+      chatThinkingType: {key: chatThinkingType, type: string, value: "disabled"}
+      cta: {key: cta, type: object, value: {"line_1":"One brief. Three multiverses. The drone opens the portal.","line_2":"airvio.co/knowgrph — Write it. See it. Ship it.","font":"Cormorant Garamond · Light · tracked +80","colour":"#FFFFFF","fade_in":"1s","hold":"1s"}}
+      description: {key: description, type: string, value: "Canvas holds. Subtle parallax drift across three nodes. Two lines of text fade in over one second. Held for one second. Warm resolution chord sounds."}
+      duration: {key: duration, type: string, value: "1s"}
+      duration_seconds: {key: duration_seconds, type: number, value: 1}
+      epoch: {key: epoch, type: string, value: "CTA — Canvas Hold"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "textGeneration"}
+      frame_label: {key: frame_label, type: string, value: "HOLD — Text Materialises"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 4}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S05"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "text"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_prompt: {key: image_prompt, type: string, value: ""}
+      output:
+        key: output
+        type: string
+        value: |
+          # Shot S05
+          
+          - Timecode: 00:29–00:30
+          - Epoch: CTA — Canvas Hold
+          - Frame: HOLD — Text Materialises
+          
+          ## Description
+          
+          Canvas holds. Subtle parallax drift across three nodes. Two lines of text fade in over one second. Held for one second. Warm resolution chord sounds.
+          
+          - Duration: 1s
+          
+          ## Camera
+          
+          ```json
+          {
+            "shot_type": "Static Hold (CG)",
+            "lens": "N/A",
+            "movement": "subtle parallax 0.05m/s drift",
+            "aperture": "N/A",
+            "lighting": "canvas ambient only; three node halos maintain locale colours",
+            "vfx": "text fade-in; parallax depth pass; warm chord audio"
+          }
+          ```
+          
+      prompt: {key: prompt, type: string, value: "Write the Text Widget output for S05. Produce a concise markdown scene brief with sections: CTA Copy, Video Prompt, Canvas Hold Beat, Rich Media Panel Summary. Use the final text materialisation, warm resolution chord, three glowing locale nodes, and airvio.co/knowgrph call to action."}
+      shot: {key: shot, type: string, value: "S05"}
+      shot_index: {key: shot_index, type: number, value: 5}
+      timecode: {key: timecode, type: string, value: "00:29–00:30"}
+      video_prompt: {key: video_prompt, type: string, value: ""}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -8}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S05-text-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S05 · Panel (Text)"}
+      position: {key: position, type: object, value: {"x":-520,"y":-1016.8500000000003}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 4}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S05"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "textPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 0}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S05-image"}
+      type: {key: type, type: string, value: "ImageGeneration"}
+      label: {key: label, type: string, value: "Shot S05 · Image"}
+      position: {key: position, type: object, value: {"x":0,"y":-1650.4500000000003}}
+      aspect_ratio: {key: aspect_ratio, type: number, value: 0.5625}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 4}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S05"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "image"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      guidance_scale: {key: guidance_scale, type: number, value: 0}
+      model: {key: model, type: string, value: "seedream-4-0-250828"}
+      optimize_prompt_options: {key: optimize_prompt_options, type: string, value: "fast"}
+      output_format: {key: output_format, type: string, value: "jpeg"}
+      response_format: {key: response_format, type: string, value: "b64_json"}
+      seed: {key: seed, type: number, value: 0}
+      shot: {key: shot, type: string, value: "S05"}
+      size: {key: size, type: string, value: "2K"}
+      stream: {key: stream, type: boolean, value: true}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -8}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+      watermark: {key: watermark, type: boolean, value: false}
+    - id: {key: id, type: string, value: "db-shot-S05-image-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S05 · Panel (Image)"}
+      position: {key: position, type: object, value: {"x":0,"y":-1016.8500000000003}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 4}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S05"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "imagePanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "db-shot-S05-video"}
+      type: {key: type, type: string, value: "VideoGeneration"}
+      label: {key: label, type: string, value: "Shot S05 · Video"}
+      position: {key: position, type: object, value: {"x":520,"y":-1650.4500000000003}}
+      camera_fixed: {key: camera_fixed, type: boolean, value: false}
+      draft: {key: draft, type: boolean, value: true}
+      duration: {key: duration, type: number, value: 1}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 4}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S05"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "video"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      generate_audio: {key: generate_audio, type: boolean, value: false}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image_url_url: {key: image_url_url, type: string, value: "base64"}
+      model: {key: model, type: string, value: "seedance-1-0-pro-fast-251015"}
+      ratio: {key: ratio, type: string, value: "9:16"}
+      resolution: {key: resolution, type: string, value: "480p"}
+      shot: {key: shot, type: string, value: "S05"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -8}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "db-shot-S05-video-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Shot S05 · Panel (Video)"}
+      position: {key: position, type: object, value: {"x":520,"y":-1016.8500000000003}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:collectiveGroupId": {key: "frontmatter:collectiveGroupId", type: string, value: "director_brief.shots"}
+      "frontmatter:collectiveIndex": {key: "frontmatter:collectiveIndex", type: number, value: 4}
+      "frontmatter:collectiveItemKey": {key: "frontmatter:collectiveItemKey", type: string, value: "S05"}
+      "frontmatter:collectiveRole": {key: "frontmatter:collectiveRole", type: string, value: "videoPanel"}
+      "frontmatter:collectiveRoleIndex": {key: "frontmatter:collectiveRoleIndex", type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
   edges:
-    - {id: e-text-script, source: w-text-script, sourceHandle: text_out, target: p-text-script, targetHandle: output, label: "text_out → output", animated: true}
-    - {id: e-text-script-srcdoc, source: w-text-script, sourceHandle: outputSrcDoc, target: p-text-script, targetHandle: outputSrcDoc, label: "outputSrcDoc → outputSrcDoc", animated: true}
-    - {id: e-scene-image, source: w-img-scene, sourceHandle: imageUrl, target: p-img-scene, targetHandle: imageUrl, label: "imageUrl → imageUrl", animated: true}
-    - {id: e-scene-to-video-ref, source: w-img-scene, sourceHandle: imageUrl, target: w-video-scene, targetHandle: reference_image, label: "imageUrl → reference_image", animated: true}
-    - {id: e-video, source: w-video-scene, sourceHandle: videoUrl, target: p-video-scene, targetHandle: videoUrl, label: "videoUrl → videoUrl", animated: true}
-
+    - {"id":"e-text-script","source":"w-text-script","sourceHandle":"text_out","target":"p-text-script","targetHandle":"output","label":"text_out → output"}
+    - {"id":"e-text-script-srcdoc","source":"w-text-script","sourceHandle":"outputSrcDoc","target":"p-text-script","targetHandle":"outputSrcDoc","label":"outputSrcDoc → outputSrcDoc"}
+    - {"id":"e-scene-image","source":"w-img-scene","sourceHandle":"imageUrl","target":"p-img-scene","targetHandle":"imageUrl","label":"imageUrl → imageUrl"}
+    - {"id":"e-scene-to-video-ref","source":"w-img-scene","sourceHandle":"imageUrl","target":"w-video-scene","targetHandle":"reference_image","label":"imageUrl → reference_image"}
+    - {"id":"e-video","source":"w-video-scene","sourceHandle":"videoUrl","target":"p-video-scene","targetHandle":"videoUrl","label":"videoUrl → videoUrl"}
+    - {"id":"e6","source":"db-shot-S01-text","sourceHandle":"text_out","target":"db-shot-S01-text-panel","targetHandle":"output","label":"text_out → output"}
+    - {"id":"e7","source":"db-shot-S01-text","sourceHandle":"outputSrcDoc","target":"db-shot-S01-text-panel","targetHandle":"outputSrcDoc","label":"outputSrcDoc → outputSrcDoc"}
+    - {"id":"e8","source":"db-shot-S01-image","sourceHandle":"imageUrl","target":"db-shot-S01-image-panel","targetHandle":"imageUrl","label":"imageUrl → imageUrl"}
+    - {"id":"e9","source":"db-shot-S01-image","sourceHandle":"imageUrl","target":"db-shot-S01-video","targetHandle":"reference_image","label":"imageUrl → reference_image"}
+    - {"id":"e10","source":"db-shot-S01-video","sourceHandle":"videoUrl","target":"db-shot-S01-video-panel","targetHandle":"videoUrl","label":"videoUrl → videoUrl"}
+    - {"id":"e11","source":"db-shot-S02-text","sourceHandle":"text_out","target":"db-shot-S02-text-panel","targetHandle":"output","label":"text_out → output"}
+    - {"id":"e12","source":"db-shot-S02-text","sourceHandle":"outputSrcDoc","target":"db-shot-S02-text-panel","targetHandle":"outputSrcDoc","label":"outputSrcDoc → outputSrcDoc"}
+    - {"id":"e13","source":"db-shot-S02-image","sourceHandle":"imageUrl","target":"db-shot-S02-image-panel","targetHandle":"imageUrl","label":"imageUrl → imageUrl"}
+    - {"id":"e14","source":"db-shot-S02-image","sourceHandle":"imageUrl","target":"db-shot-S02-video","targetHandle":"reference_image","label":"imageUrl → reference_image"}
+    - {"id":"e15","source":"db-shot-S02-video","sourceHandle":"videoUrl","target":"db-shot-S02-video-panel","targetHandle":"videoUrl","label":"videoUrl → videoUrl"}
+    - {"id":"e16","source":"db-shot-S03-text","sourceHandle":"text_out","target":"db-shot-S03-text-panel","targetHandle":"output","label":"text_out → output"}
+    - {"id":"e17","source":"db-shot-S03-text","sourceHandle":"outputSrcDoc","target":"db-shot-S03-text-panel","targetHandle":"outputSrcDoc","label":"outputSrcDoc → outputSrcDoc"}
+    - {"id":"e18","source":"db-shot-S03-image","sourceHandle":"imageUrl","target":"db-shot-S03-image-panel","targetHandle":"imageUrl","label":"imageUrl → imageUrl"}
+    - {"id":"e19","source":"db-shot-S03-image","sourceHandle":"imageUrl","target":"db-shot-S03-video","targetHandle":"reference_image","label":"imageUrl → reference_image"}
+    - {"id":"e20","source":"db-shot-S03-video","sourceHandle":"videoUrl","target":"db-shot-S03-video-panel","targetHandle":"videoUrl","label":"videoUrl → videoUrl"}
+    - {"id":"e21","source":"db-shot-S04-text","sourceHandle":"text_out","target":"db-shot-S04-text-panel","targetHandle":"output","label":"text_out → output"}
+    - {"id":"e22","source":"db-shot-S04-text","sourceHandle":"outputSrcDoc","target":"db-shot-S04-text-panel","targetHandle":"outputSrcDoc","label":"outputSrcDoc → outputSrcDoc"}
+    - {"id":"e23","source":"db-shot-S04-image","sourceHandle":"imageUrl","target":"db-shot-S04-image-panel","targetHandle":"imageUrl","label":"imageUrl → imageUrl"}
+    - {"id":"e24","source":"db-shot-S04-image","sourceHandle":"imageUrl","target":"db-shot-S04-video","targetHandle":"reference_image","label":"imageUrl → reference_image"}
+    - {"id":"e25","source":"db-shot-S04-video","sourceHandle":"videoUrl","target":"db-shot-S04-video-panel","targetHandle":"videoUrl","label":"videoUrl → videoUrl"}
+    - {"id":"e26","source":"db-shot-S05-text","sourceHandle":"text_out","target":"db-shot-S05-text-panel","targetHandle":"output","label":"text_out → output"}
+    - {"id":"e27","source":"db-shot-S05-text","sourceHandle":"outputSrcDoc","target":"db-shot-S05-text-panel","targetHandle":"outputSrcDoc","label":"outputSrcDoc → outputSrcDoc"}
+    - {"id":"e28","source":"db-shot-S05-image","sourceHandle":"imageUrl","target":"db-shot-S05-image-panel","targetHandle":"imageUrl","label":"imageUrl → imageUrl"}
+    - {"id":"e29","source":"db-shot-S05-image","sourceHandle":"imageUrl","target":"db-shot-S05-video","targetHandle":"reference_image","label":"imageUrl → reference_image"}
+    - {"id":"e30","source":"db-shot-S05-video","sourceHandle":"videoUrl","target":"db-shot-S05-video-panel","targetHandle":"videoUrl","label":"videoUrl → videoUrl"}
 director_brief:
   title: "Three Skies"
   runtime: "30 seconds"
