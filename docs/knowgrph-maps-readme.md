@@ -185,14 +185,6 @@ index:
 
 # Knowgrph
 
-## Authoring Contract
-
-- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, map-scoring graph metadata, and reusable product narrative inputs.
-- This document is a canonical authored product/readme demo, not a typed normalization fixture.
-- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for geospatial product, architecture, and demo overview docs.
-- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical maps readme example.
-- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
-
 **Candidates in. Ranked decisions out.** A knowledge graph canvas that calls live map APIs via MCP tools, scores every candidate location through a TOPSIS multi-criteria engine, and delivers a portable, auditable site selection report — in minutes, not weeks.
 
 > Not a dashboard. A decision pipeline.

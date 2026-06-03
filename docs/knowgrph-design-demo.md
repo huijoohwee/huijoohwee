@@ -18,15 +18,7 @@ kgDocumentStructureBaselineLock: false
 
 This document is a minimal, reproducible **E2E functional** demo for the Canvas **2D Renderer: Design** editor surface (Phase **0 + 1 + 2**).
 
-## Authoring Contract
-
-- The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation, workspace mode, and graph-seeding metadata.
-- This document is a canonical authored design demo, not a typed normalization fixture.
-- Frontmatter stays in plain YAML so the file demonstrates the default authoring path for design-renderer docs and workspace config.
-- If typed `{key, type, value}` envelopes are needed for ingestion-regression coverage, that validation should live in a dedicated fixture doc rather than replacing the canonical design authoring example.
-- Runtime behavior must still be derived from parsed frontmatter and graph content only, never from file path assumptions or hardcoded demo fallbacks.
-
-It mirrors the style of [knowgrph-video-demo.md](./knowgrph-video-demo.md) frontmatter (explicit `kg*` settings), but uses a simpler graph so you can quickly validate:
+It mirrors the style of [knowgrph-video-demo.md](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-video-demo.md) frontmatter (explicit `kg*` settings), but uses a simpler graph so you can quickly validate:
 
 - Design renderer is selectable and stable.
 - A first-class **Design** floating-panel view exists (not hidden behind “More”).
