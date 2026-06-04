@@ -1,0 +1,238 @@
+[
+  {
+    "_file": "demos.md",
+    "_row": 32,
+    "id": "demo-032",
+    "event_id": "evt-030",
+    "Pain Point": "youth innovators need a structured program to go from ideation to prototype and launch; teams need prompts and a live demo/pitch artifact",
+    "Solution": "design-thinking hackathon with workshops; requires slides and intro video (pitch or live demo)",
+    "Product": [
+      "project slides",
+      "short intro video",
+      "prototype demo"
+    ],
+    "Team": [
+      "CNHK",
+      "Community Shaper participants"
+    ],
+    "Tech Stack": [
+      "AI + emerging tech (unspecified)"
+    ],
+    "Demo URL": "https://cs-2025-hackathon-beta.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 38,
+    "id": "demo-038",
+    "event_id": "evt-036",
+    "Pain Point": "communities need tools to improve interconnectivity; students need a platform to prototype social-good solutions quickly",
+    "Solution": "student hackathon with short build sprint and demo video submission",
+    "Product": [
+      "social-good prototypes",
+      "demo video submission"
+    ],
+    "Team": [
+      "NUS Computing Club",
+      "students (participants)"
+    ],
+    "Tech Stack": [
+      "GitHub (submission requirement)",
+      "Devpost"
+    ],
+    "Demo URL": "https://lifehack-2025.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 41,
+    "id": "demo-041",
+    "event_id": "evt-039",
+    "Pain Point": "makers need a lightweight format to ship and share demos quickly; hackathon participants want a place to submit and vote on projects",
+    "Solution": "small in-person hackathon; participants submit projects in a Product Hunt thread and vote",
+    "Product": [
+      "hackathon submissions thread",
+      "community voting"
+    ],
+    "Team": [
+      "Product Hunt community",
+      "bolt.new"
+    ],
+    "Tech Stack": [
+      "bolt.new credits (mentioned)"
+    ],
+    "Demo URL": "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "producthunt",
+      "community-post"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 43,
+    "id": "demo-043",
+    "event_id": "evt-041",
+    "Pain Point": "students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging",
+    "Solution": "24-hour student hackathon with project submission + judging and winner announcement on Devpost",
+    "Product": [
+      "student hackathon",
+      "project submissions",
+      "winners gallery"
+    ],
+    "Team": [
+      "NUS Hackers",
+      "participants"
+    ],
+    "Tech Stack": [
+      "Devpost"
+    ],
+    "Demo URL": "https://hacknroll2025.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 82,
+    "id": "demo-084",
+    "event_id": "evt-082",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Mathworks"
+    ],
+    "Tech Stack": [
+      "Machine Learning/AI"
+    ],
+    "Demo URL": "https://mathworks-utm-2025.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 94,
+    "id": "demo-097",
+    "event_id": "evt-095",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "UNIHACK"
+    ],
+    "Tech Stack": [
+      "Open Ended"
+    ],
+    "Demo URL": "https://unihack2025.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "official-site",
+      "event-site",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 114,
+    "id": "demo-117",
+    "event_id": "evt-115",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "PayNet"
+    ],
+    "Tech Stack": [
+      "Fintech",
+      "Machine Learning/AI",
+      "Cybersecurity",
+      "digital payments"
+    ],
+    "Demo URL": "https://payhack-2025.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 122,
+    "id": "demo-125",
+    "event_id": "evt-123",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "UPN \"Veteran\" Jakarta"
+    ],
+    "Tech Stack": [
+      "Education",
+      "Health",
+      "Social Good"
+    ],
+    "Demo URL": "https://test-android-hackathon-2025.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  }
+]

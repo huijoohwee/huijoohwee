@@ -1,0 +1,356 @@
+{
+  "schema_version": "1.1",
+  "project": "hackamap",
+  "ssot": {
+    "site_dir": "site"
+  },
+  "generated": {
+    "dir": "site/_generated",
+    "dataset_json_dir": "site/_generated/dataset-json",
+    "api_graph_path": "site/_generated/api-graph/hackamap_api_graph.json",
+    "query_outputs_dir": "site/_generated/query-outputs",
+    "query_runs_manifest_path": "site/_generated/query-outputs/query-runs.manifest.json",
+    "source_cache_path": "site/_generated/source-cache/source_content.jsonl"
+  },
+  "source_scrape": {
+    "http_timeout_secs": 15,
+    "http_max_bytes": 2000000,
+    "max_text_chars": 20000,
+    "max_excerpt_chars": 800,
+    "max_outlinks": 80,
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HackaMapBot/0.1 Safari/537.36",
+    "extractors": {
+      "github_repo_api": true,
+      "github_oembed": true,
+      "x_oembed": true,
+      "linkedin_oembed": true,
+      "reddit_json": true,
+      "json_ld": true,
+      "generic_html": true
+    }
+  },
+  "runtime": {
+    "api": {
+      "route": "/api/graph",
+      "view_param": "view",
+      "meta_view": "meta",
+      "run_param": "run"
+    },
+    "query_selection": {
+      "enabled": true,
+      "default_run_id": "enhanced",
+      "table_files": ["events", "demos"],
+      "builder": {
+        "enabled": true,
+        "prefer_published_values_only": true,
+        "require_exact_published_run": true
+      }
+    },
+    "mobile_pwa": {
+      "compact_controls_breakpoint_px": 768,
+      "prefer_stacked_controls": true,
+      "safe_area_aware": true
+    }
+  },
+  "ui": {
+    "graph_settings": {
+      "version": 1,
+      "ui": {
+        "modeSelect": "solar",
+        "edges": "selected",
+        "labels": "selected",
+        "lod": "all",
+        "nodeSize": 3.1,
+        "spotlightSize": "small",
+        "showHelpOnStart": true
+      },
+      "spotlight": {
+        "enabled": true,
+        "intervalMs": 10000,
+        "maxRankedNodes": 60
+      },
+      "clusters": {
+        "enabled": true,
+        "planets": {
+          "ringR": 280,
+          "ax": 1.15,
+          "ay": 0.85,
+          "baseAngleJitter": 0.35,
+          "speedMin": 0.02,
+          "speedMax": 0.055,
+          "zAmpMin": 70,
+          "zAmpMax": 130,
+          "pulseSpeed": 3.2,
+          "pulseAmp": 0.06,
+          "hoverScale": 1.16,
+          "selectedScale": 1.28,
+          "haloOpacityHoverMin": 0.2,
+          "haloOpacitySelectedMin": 0.28
+        },
+        "force": {
+          "pull": 0.055,
+          "swirl": 0.02,
+          "zPull": 0.02,
+          "softening": 35
+        }
+      },
+      "rendering": {
+        "theme": {
+          "backgroundColor": "#050816",
+          "fogColor": "#050816",
+          "edgeColor": "#93c5fd",
+          "accentColor": "#79ffe1",
+          "searchGlowMixColor": "#9ae6ff",
+          "solarOrbitColor": "#9ae6ff",
+          "clusterSpokesColor": "#9ae6ff",
+          "clusterEdgesColor": "#79ffe1",
+          "focusEdgesColor": "#79ffe1",
+          "typeColors": {
+            "Event": "#7dd3fc",
+            "Demo": "#34d399",
+            "Source": "#fbbf24",
+            "Organizer": "#a78bfa",
+            "Team": "#fb7185",
+            "Tech": "#60a5fa",
+            "Domain": "#94a3b8",
+            "Location": "#22c55e",
+            "Platform": "#f472b6",
+            "SourceType": "#fca5a5",
+            "Audience": "#93c5fd",
+            "Product": "#fde047",
+            "PainPoint": "#ffa07a",
+            "default": "#9ca3af"
+          }
+        },
+        "fogDensity": 0.00115,
+        "starfield": {
+          "enabled": true,
+          "count": 2800,
+          "radiusMin": 1400,
+          "radiusMax": 3000,
+          "scaleX": 1.12,
+          "scaleY": 0.92,
+          "scaleZ": 1.05,
+          "hslHueMin": 0.62,
+          "hslHueMax": 0.7,
+          "hslSat": 0.45,
+          "hslLightMin": 0.75,
+          "hslLightMax": 0.93,
+          "pointSize": 1.15,
+          "opacity": 0.25
+        },
+        "nodes": {
+          "opacity": 0.95
+        },
+        "searchGlow": {
+          "size": 7.2,
+          "opacity": 0.95,
+          "mixAmount": 0.35,
+          "brightness": 1.35
+        },
+        "edges": {
+          "opacityGalaxy": 0.1,
+          "opacitySolar": 0.035,
+          "opacityClusterFocus": 0.03,
+          "opacityWhenFiltered": 0.05
+        },
+        "focusEdges": {
+          "opacity": 0.55
+        },
+        "clusterEdges": {
+          "opacity": 0.32
+        },
+        "clusterSpokes": {
+          "opacity": 0.14
+        },
+        "solarOrbits": {
+          "opacity": 0.18
+        },
+        "lighting": {
+          "directionalIntensity": 0.45,
+          "ambientIntensity": 0.18
+        },
+        "dimBlend": {
+          "base": 0.18
+        },
+        "tooltip": {
+          "maxExcerptChars": 280
+        }
+      },
+      "controls": {
+        "orbit": {
+          "enableDamping": true,
+          "dampingFactor": 0.08,
+          "rotateSpeed": 0.55,
+          "zoomSpeed": 0.9
+        }
+      },
+      "picking": {
+        "nodePointThreshold": 7
+      },
+      "layout": {
+        "fitMinRadius": 80,
+        "fitRadiusScale": 0.55,
+        "fitCameraZMultiplier": 1.35,
+        "nearDivisor": 5000,
+        "farMin": 3000,
+        "farMultiplier": 30
+      },
+      "labelsStyle": {
+        "nodeLabelOffsetY": 14,
+        "nodeLabelSpriteScale": { "x": 140, "y": 35 },
+        "clusterLabelSpriteScale": { "x": 80, "y": 20 }
+      },
+      "camera": {
+        "initial": { "x": 0, "y": 220, "z": 720 },
+        "flyTo": { "offsetX": 0, "offsetY": 160, "offsetZ": 520, "durationMs": 650 },
+        "solar": { "x": 0, "y": 180, "z": 460 },
+        "cluster": { "offsetX": 0, "offsetY": 160, "offsetZ": 420 }
+      },
+      "solar": {
+        "nodeSize": 4.2,
+        "sunScale": 1.8,
+        "sunOpacity": 0.65,
+        "sunLight": { "intensity": 0.85, "distance": 900, "decay": 2.0 },
+        "levelsMax": 12,
+        "orbitBase": 40,
+        "orbitStep": 28,
+        "orbitSegments": 96,
+        "ringTiltX": 0.28,
+        "ringTiltZ": 0.18,
+        "orbitScaleX": 1.08,
+        "orbitScaleY": 0.82,
+        "orbitScaleZ": 1.05,
+        "orbitDynamics": {
+          "omegaBase": 0.12,
+          "omegaRingFactor": 0.18,
+          "omegaScaleMin": 0.75,
+          "omegaScaleRange": 0.6,
+          "eccBase": 0.08,
+          "eccRange": 0.18,
+          "inclinationScale": 0.9
+        }
+      },
+      "labels": {
+        "topK": 18
+      },
+      "search": {
+        "resultsLimit": 10
+      },
+      "simulation": {
+        "galaxySeed": {
+          "R": 460,
+          "AX": 1.22,
+          "AY": 0.92,
+          "ZS": 220,
+          "ARMS": 3,
+          "ARM_SPREAD": 0.42,
+          "TWIST": 0.048
+        },
+        "galaxyForce": {
+          "centerPull": 0.012,
+          "swirl": 0.05,
+          "zConstrain": 0.03,
+          "verticalSwirl": 0.022,
+          "softening": 65,
+          "maxZ": 540,
+          "ellA": 620,
+          "ellB": 460,
+          "ellC": 420
+        },
+        "link": {
+          "eventDemoDistance": 44,
+          "otherDistance": 72,
+          "strength": 0.12
+        },
+        "chargeStrength": -42,
+        "collide": { "radius": 6, "strength": 0.55 },
+        "alphaDecay": 0.032,
+        "zSpring": 0.01
+      }
+    }
+  },
+  "export_graph": {
+    "out_graph_json": "site/knowgrph-hackamap.json",
+    "enrich_source_content": true,
+    "update_source_cache": true,
+    "source_cache_path": "site/_generated/source-cache/source_content.jsonl",
+    "max_source_fetch": 60,
+    "source_cache_sleep_ms": 200,
+    "source_cache_ttl_days_ok": 30,
+    "source_cache_ttl_days_fail": 7
+  },
+  "export_dataset_json": {
+    "graph_json": "site/knowgrph-hackamap.json",
+    "out_dir": "site/_generated/dataset-json"
+  },
+  "export_api_graph": {
+    "graph_json": "site/knowgrph-hackamap.json",
+    "out_path": "site/_generated/api-graph/hackamap_api_graph.json"
+  },
+  "query": {
+    "presets_file": "site/hackamap-query-presets.json",
+    "runs_file": "site/hackamap-query-runs.json",
+    "runs": [
+      { "id": "enhanced", "preset": "enhanced" },
+      {
+        "id": "sg-agents-postgres-devtools",
+        "preset": "sg-agents-postgres-devtools",
+        "params": { "location": "Singapore" }
+      },
+      {
+        "id": "sg-agents-postgres-devtools-kl",
+        "preset": "sg-agents-postgres-devtools",
+        "params": { "location": "Kuala Lumpur" },
+        "output_suffix": "kl"
+      },
+      {
+        "id": "sg-agents-postgres-devtools-jakarta",
+        "preset": "sg-agents-postgres-devtools",
+        "params": { "location": "Jakarta" },
+        "output_suffix": "jakarta"
+      },
+      { "id": "social-platforms", "preset": "social-platforms" },
+      { "id": "chinese-content", "preset": "chinese-content" },
+      { "id": "github-star-history", "preset": "github-star-history" },
+      { "id": "year-2026", "preset": "year-2026" },
+      {
+        "id": "year-series-2024",
+        "preset": "year-series",
+        "params": { "year": "2024" },
+        "output_suffix": "2024"
+      },
+      {
+        "id": "year-series-2025",
+        "preset": "year-series",
+        "params": { "year": "2025" },
+        "output_suffix": "2025"
+      },
+      {
+        "id": "year-series-2026",
+        "preset": "year-series",
+        "params": { "year": "2026" },
+        "output_suffix": "2026"
+      }
+    ],
+    "artifacts_dir": "site/_generated/query-outputs",
+    "write_query_views": true,
+    "write_query_json": true
+  },
+  "publish": {
+    "bundle_subdir": "imports/hackamap",
+    "dest_knowgrph_dir": ""
+  },
+  "ingest": {
+    "runner": "docker-compose",
+    "compose_file": "docker-compose.yml",
+    "postgres_service": "postgres",
+    "compose_ingest_service": "ingest",
+    "graph_json": "site/knowgrph-hackamap.json",
+    "migration_sql": "sql/migrations/001_hackamap_graph_snapshots.sql",
+    "database_url_env": "DATABASE_URL",
+    "head_key_env": "HACKAMAP_HEAD_KEY",
+    "head_key": "default",
+    "skip_migration": false
+  }
+}

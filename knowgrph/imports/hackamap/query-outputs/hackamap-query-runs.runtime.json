@@ -1,0 +1,69 @@
+[
+  {
+    "id": "enhanced",
+    "preset": "enhanced"
+  },
+  {
+    "id": "sg-agents-postgres-devtools",
+    "preset": "sg-agents-postgres-devtools",
+    "params": {
+      "location": "Singapore"
+    }
+  },
+  {
+    "id": "sg-agents-postgres-devtools-kl",
+    "preset": "sg-agents-postgres-devtools",
+    "params": {
+      "location": "Kuala Lumpur"
+    },
+    "output_suffix": "kl"
+  },
+  {
+    "id": "sg-agents-postgres-devtools-jakarta",
+    "preset": "sg-agents-postgres-devtools",
+    "params": {
+      "location": "Jakarta"
+    },
+    "output_suffix": "jakarta"
+  },
+  {
+    "id": "social-platforms",
+    "preset": "social-platforms"
+  },
+  {
+    "id": "chinese-content",
+    "preset": "chinese-content"
+  },
+  {
+    "id": "github-star-history",
+    "preset": "github-star-history"
+  },
+  {
+    "id": "year-2026",
+    "preset": "year-2026"
+  },
+  {
+    "id": "year-series-2024",
+    "preset": "year-series",
+    "params": {
+      "year": "2024"
+    },
+    "output_suffix": "2024"
+  },
+  {
+    "id": "year-series-2025",
+    "preset": "year-series",
+    "params": {
+      "year": "2025"
+    },
+    "output_suffix": "2025"
+  },
+  {
+    "id": "year-series-2026",
+    "preset": "year-series",
+    "params": {
+      "year": "2026"
+    },
+    "output_suffix": "2026"
+  }
+]

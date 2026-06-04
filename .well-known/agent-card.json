@@ -40,9 +40,53 @@
   ],
   "skills": [
     {
+      "id": "search",
+      "name": "Search Knowgrph Source Files",
+      "description": "Use this when an MCP host needs to search published Knowgrph Source Files and return stable document IDs for the `fetch` tool. Call this first for OpenAI Deep Research-style retrieval, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
+      "tags": [
+        "mcp",
+        "search",
+        "source-files",
+        "read-only"
+      ],
+      "examples": [
+        "Search Knowgrph Source Files for renderer architecture."
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "fetch",
+      "name": "Fetch Knowgrph Source File",
+      "description": "Use this when an MCP host needs the complete published Knowgrph Source File for an ID returned by `search`. Returns markdown as both `content` and `text` for OpenAI, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
+      "tags": [
+        "mcp",
+        "fetch",
+        "source-files",
+        "markdown",
+        "read-only"
+      ],
+      "examples": [
+        "Fetch the Knowgrph Source File id returned by search."
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/markdown",
+        "application/json"
+      ]
+    },
+    {
       "id": "list-source-files",
       "name": "List Source Files",
-      "description": "List published Knowgrph Source Files.",
+      "description": "Use this when an MCP host needs the published Knowgrph Source Files index as markdown.",
       "tags": [
         "mcp",
         "discovery",
@@ -64,7 +108,7 @@
     {
       "id": "read-source-file",
       "name": "Read Source File",
-      "description": "Read published Knowgrph Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
+      "description": "Use this when an MCP host knows a published Knowgrph canonical path and needs that Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
       "tags": [
         "mcp",
         "read",
@@ -86,7 +130,7 @@
     {
       "id": "read-shared-document",
       "name": "Read Shared Document",
-      "description": "Read published Knowgrph markdown content from a share token or public Knowgrph share/document URL.",
+      "description": "Use this when an MCP host has a Knowgrph share token or public Knowgrph share/document URL and needs the published markdown content.",
       "tags": [
         "mcp",
         "read",
@@ -108,7 +152,7 @@
     {
       "id": "inspect-shared-document-structure",
       "name": "Inspect Shared Document Structure",
-      "description": "Inspect published Knowgrph shared-document frontmatter and body structure from a share token or public Knowgrph share/document URL.",
+      "description": "Use this when an MCP host has a Knowgrph share token or public Knowgrph share/document URL and needs frontmatter/body structure without mutating the document.",
       "tags": [
         "mcp",
         "inspect",
@@ -130,7 +174,7 @@
     {
       "id": "inspect-agent-surface",
       "name": "Inspect Agent Surface",
-      "description": "Inspect the deployed Knowgrph agent-ready discovery surface, including health, OpenAPI, MCP, and skill metadata.",
+      "description": "Use this when an MCP Apps-capable host or generic MCP client needs to inspect Knowgrph agent-ready discovery, MCP Apps readiness, OpenAPI, and skill metadata.",
       "tags": [
         "mcp",
         "agent-ready",

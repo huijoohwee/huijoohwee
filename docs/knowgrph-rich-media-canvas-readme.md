@@ -1171,14 +1171,14 @@ flowchart LR
     MD["Markdown brief\nbrand + locale + shots"]
   end
   subgraph Produce
-    MD --> DF["DeerFlow Agent\nresearch + skills"]
-    DF --> TG["Text Gen\nscene plan + captions"]
+    MD --> SA["Knowgrph SuperAgent\nresearch + tools"]
+    SA --> TG["Text Gen\nscene plan + captions"]
     TG --> IG["Image Gen\nlocal keyframes"]
     IG --> VG["Video Gen\n9:16 clip"]
   end
   subgraph Reuse
     VG --> RMP["Rich Media Panel\npreview + export"]
-    SWAP["swap variant field"] --> DF
+    SWAP["swap variant field"] --> SA
   end
 ```
 
@@ -1229,49 +1229,49 @@ Same drone. Three worlds. Three completely different children. Three completely 
 
 ## Architecture
 
-Client-first. The browser handles parsing, rendering, and orchestration. AI generation is delegated to **DeerFlow** — a super-agent harness that orchestrates text, image, and video generation through research, tool use, and sandbox execution. No heavy backend required beyond the DeerFlow gateway.
+Client-first. The browser handles parsing, rendering, and canvas orchestration. Long-horizon research/code/create work runs through Knowgrph's native SuperAgent harness and can optionally call a DeerFlow local gateway as a provider. DeerFlow is a conceptual reference and optional gateway, not copied architecture and not the required renderer/parser owner.
 
 ```mermaid
 flowchart LR
   MD[Markdown brief] --> FC[Flow Editor Canvas]
-  FC --> DF["DeerFlow Agent Harness\nresearch · skills · sandbox"]
-  DF -->|"LLM proxy\nchat/completions"| LLM["Multi-provider LLM\nOpenAI · Claude · Gemini · BytePlus"]
-  DF -->|"image-generation skill\nsandbox generate.py"| IMG["Image models\nSeedream · DALL-E · Stable Diffusion"]
-  DF -->|"video-generation skill\nsandbox generate.py"| VID["Video models\nSeedance · Wan2.1"]
-  DF -->|"ppt-generation skill\nsandbox compose.py"| PPT["Slide deck\n.pptx export"]
-  DF --> RMP[Rich Media Panel]
+  FC --> SA["Knowgrph SuperAgent Harness\nmessage gateway · memory · tools · sandbox"]
+  SA -->|"shared provider adapters"| LLM["Multi-provider LLM\nOpenAI · Claude · Gemini · BytePlus"]
+  SA -->|"image tool/provider"| IMG["Image outputs\nimageUrl"]
+  SA -->|"video tool/provider"| VID["Video outputs\nvideoUrl"]
+  SA -->|"creation tool"| PPT["Slide deck\n.pptx export"]
+  SA --> RMP[Rich Media Panel]
   FC --> RMP
   RMP --> EXP["Export: MP4 / PNG / JSON / PPTX"]
 ```
 
-### Why DeerFlow
+### SuperAgent and DeerFlow Boundary
 
-Knowgrph's canvas provides the **visual pipeline** — nodes, edges, panels, variant switching. DeerFlow provides the **agent intelligence** behind each node:
+Knowgrph's canvas provides the **visual pipeline**: nodes, edges, panels, variant switching, and shared Rich Media Panel previews. The native SuperAgent harness provides bounded long-horizon coordination for research, tools, memory, subagents, sandboxed workspace artifacts, and verification. DeerFlow can inform concepts or serve as an optional gateway provider, but it must not replace Knowgrph's markdown/frontmatter, Flow Editor, or Rich Media Panel owners.
 
-| Canvas concern | Knowgrph | DeerFlow |
+| Canvas concern | Knowgrph owner | Optional provider/inspiration |
 |---|---|---|
 | Pipeline layout | Flow Editor DAG | — |
 | Variant switching | Brief layer swap | — |
 | Artifact rendering | Rich Media Panel | — |
-| Prompt engineering | — | Deep-research + web search + reference images |
-| Image generation | — | Sandbox `generate.py` with any model |
-| Video generation | — | Sandbox `generate.py` with any model |
-| Multi-provider routing | — | `config.yaml` model switching |
-| Multi-locale parallelism | — | Sub-agents run 3 locales concurrently |
-| PPT composition | — | Slide image generation + compose |
-| Retry / error handling | Node state machine | Bounded retry + error taxonomy |
+| Prompt engineering | SuperAgent planner/tool lane | Optional DeerFlow gateway |
+| Image generation | Shared image tool writes `imageUrl` | Optional provider |
+| Video generation | Shared video tool writes `videoUrl` | Optional provider |
+| Multi-provider routing | Settings + provider adapters | Optional DeerFlow config |
+| Multi-locale parallelism | Role-scoped subagent contracts | Conceptual reference only |
+| PPT composition | Creation tool writes workspace artifact | Optional provider |
+| Retry / error handling | Bounded run state + verifier | Conceptual reference only |
 
-**Direct API works for simple cases.** DeerFlow adds value when you need reasoning before generation (research, reference-finding), multi-step pipelines (text → image → video → PPT), multi-provider flexibility, or parallel execution across variants.
+**Direct API works for simple cases.** The native harness adds value when the run needs minutes-to-hours reasoning before generation, multi-step pipelines (text -> image -> video -> PPT), provider flexibility, or parallel execution across variants.
 
 | Layer | Technology |
 |---|---|
 | Frontend | React 18 + TypeScript + Vite 6 |
 | 2D / 3D | D3.js · Three.js + R3F |
 | Markdown | markdown-it + Mermaid + KaTeX |
-| Agent orchestrator | DeerFlow (LangGraph + LangChain) — research, skills, sandbox |
-| AI runtime | DeerFlow LLM proxy — OpenAI · Claude · Gemini · BytePlus · vLLM |
-| Image generation | DeerFlow `image-generation` skill — sandbox `generate.py` |
-| Video generation | DeerFlow `video-generation` skill — sandbox `generate.py` |
+| Agent orchestrator | Knowgrph native SuperAgent harness — message gateway · memory · tools · skills · sandbox |
+| AI runtime | Shared provider adapters — OpenAI · Claude · Gemini · BytePlus · optional DeerFlow gateway |
+| Image generation | Shared image tool output — `imageUrl` |
+| Video generation | Shared video tool output — `videoUrl` |
 | Local DB | RxDB — offline-first |
 | Parsers | Python 3.10+ — NetworkX · DuckDB |
 | Payments | Stripe — subscription + usage |
@@ -1291,8 +1291,8 @@ Shell: ~248 KB gzip. Monaco, Mermaid, Three.js lazy-loaded.
 
 ## Roadmap
 
-**Now** — brief→video pipeline, DeerFlow agent harness (research + skills + sandbox), Flow Editor Canvas, Stripe gating  
-**Next** — batch variant generation via sub-agents, eval harness, scene template library, MCP server  
+**Now** — brief→video pipeline, native SuperAgent harness (research + tools + sandbox), Flow Editor Canvas, Stripe gating
+**Next** — batch variant generation via role-scoped subagents, eval harness, scene template library, MCP server
 **Later** — mobile-first brief editor (form UI over Markdown), real-time collaboration, plugin system
 
 ---

@@ -4,28 +4,178 @@
     "version": "0.1.0"
   },
   "transport": {
-    "type": "http",
-    "url": "https://airvio.co/knowgrph/mcp"
+    "type": "streamable-http",
+    "url": "https://airvio.co/knowgrph/mcp",
+    "stateless": true,
+    "legacySse": false
   },
   "capabilities": {
     "tools": [
       {
+        "name": "search",
+        "title": "Search Knowgrph Source Files",
+        "description": "Use this when an MCP host needs to search published Knowgrph Source Files and return stable document IDs for the `fetch` tool. Call this first for OpenAI Deep Research-style retrieval, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "query"
+          ],
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "limit": {
+              "type": "number",
+              "default": 10
+            }
+          }
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "ids",
+            "results"
+          ],
+          "properties": {
+            "ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "required": [
+                  "id",
+                  "title",
+                  "url"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "snippet": {
+                    "type": "string"
+                  },
+                  "workspaceId": {
+                    "type": "string"
+                  },
+                  "canonicalPath": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ],
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false,
+          "idempotentHint": true
+        }
+      },
+      {
+        "name": "fetch",
+        "title": "Fetch Knowgrph Source File",
+        "description": "Use this when an MCP host needs the complete published Knowgrph Source File for an ID returned by `search`. Returns markdown as both `content` and `text` for OpenAI, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "id",
+            "title",
+            "content",
+            "text",
+            "url"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        },
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ],
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false,
+          "idempotentHint": true
+        }
+      },
+      {
         "name": "list_source_files",
         "title": "List Source Files",
-        "description": "List published Knowgrph Source Files.",
+        "description": "Use this when an MCP host needs the published Knowgrph Source Files index as markdown.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
           "properties": {}
         },
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ],
         "annotations": {
-          "readOnlyHint": true
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false,
+          "idempotentHint": true
         }
       },
       {
         "name": "read_source_file",
         "title": "Read Source File",
-        "description": "Read published Knowgrph Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
+        "description": "Use this when an MCP host knows a published Knowgrph canonical path and needs that Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
@@ -42,14 +192,22 @@
             }
           }
         },
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ],
         "annotations": {
-          "readOnlyHint": true
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false,
+          "idempotentHint": true
         }
       },
       {
         "name": "read_shared_document",
         "title": "Read Shared Document",
-        "description": "Read published Knowgrph markdown content from a share token or public Knowgrph share/document URL.",
+        "description": "Use this when an MCP host has a Knowgrph share token or public Knowgrph share/document URL and needs the published markdown content.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
@@ -74,14 +232,22 @@
             }
           ]
         },
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ],
         "annotations": {
-          "readOnlyHint": true
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false,
+          "idempotentHint": true
         }
       },
       {
         "name": "inspect_shared_document_structure",
         "title": "Inspect Shared Document Structure",
-        "description": "Inspect published Knowgrph shared-document frontmatter and body structure from a share token or public Knowgrph share/document URL.",
+        "description": "Use this when an MCP host has a Knowgrph share token or public Knowgrph share/document URL and needs frontmatter/body structure without mutating the document.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
@@ -106,14 +272,22 @@
             }
           ]
         },
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ],
         "annotations": {
-          "readOnlyHint": true
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false,
+          "idempotentHint": true
         }
       },
       {
         "name": "inspect_agent_surface",
         "title": "Inspect Agent Surface",
-        "description": "Inspect the deployed Knowgrph agent-ready discovery surface, including health, OpenAPI, MCP, and skill metadata.",
+        "description": "Use this when an MCP Apps-capable host or generic MCP client needs to inspect Knowgrph agent-ready discovery, MCP Apps readiness, OpenAPI, and skill metadata.",
         "inputSchema": {
           "type": "object",
           "additionalProperties": false,
@@ -192,21 +366,41 @@
             }
           }
         },
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ],
         "annotations": {
-          "readOnlyHint": true
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false,
+          "idempotentHint": true
         },
         "_meta": {
+          "securitySchemes": [
+            {
+              "type": "noauth"
+            }
+          ],
           "ui": {
             "resourceUri": "ui://knowgrph/agent-ready",
             "visibility": [
               "model",
               "app"
             ]
-          }
+          },
+          "openai/outputTemplate": "ui://knowgrph/agent-ready",
+          "openai/widgetAccessible": true,
+          "openai/toolInvocation/invoking": "Inspecting Knowgrph.",
+          "openai/toolInvocation/invoked": "Knowgrph is ready."
         }
       }
     ],
     "resources": {
+      "listChanged": false
+    },
+    "prompts": {
       "listChanged": false
     },
     "extensions": {
@@ -215,6 +409,240 @@
           "text/html;profile=mcp-app"
         ]
       }
+    }
+  },
+  "prompts": [
+    {
+      "name": "knowgrph_research_source_files",
+      "title": "Research Knowgrph Source Files",
+      "description": "Guide an MCP host through read-only Knowgrph Source Files research using search and fetch with citation-ready URLs.",
+      "arguments": [
+        {
+          "name": "query",
+          "description": "Research question or topic to pass to the read-only search tool.",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "description": "Optional decimal string for the maximum search results to inspect.",
+          "required": false
+        },
+        {
+          "name": "focus",
+          "description": "Optional aspect to prioritize when reading fetched Source Files.",
+          "required": false
+        }
+      ],
+      "_meta": {
+        "readOnly": true,
+        "tools": [
+          "search",
+          "fetch"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph_inspect_agent_surface",
+      "title": "Inspect Knowgrph Agent Surface",
+      "description": "Guide an MCP host through read-only inspection of Knowgrph agent, MCP, and MCP Apps readiness metadata.",
+      "arguments": [
+        {
+          "name": "focus",
+          "description": "Optional readiness area to emphasize, such as transport, tools, resources, prompts, retrieval, or app metadata.",
+          "required": false
+        }
+      ],
+      "_meta": {
+        "readOnly": true,
+        "tools": [
+          "inspect_agent_surface"
+        ]
+      }
+    }
+  ],
+  "resourceTemplates": [
+    {
+      "uriTemplate": "kgdoc://source-file/{id}",
+      "name": "knowgrph_source_file_by_id",
+      "title": "Knowgrph Source File By ID",
+      "description": "Read a complete published Knowgrph Source File markdown document using a stable kgdoc id returned by search.",
+      "mimeType": "text/markdown",
+      "annotations": {
+        "audience": [
+          "user",
+          "assistant"
+        ],
+        "priority": 0.8
+      },
+      "_meta": {
+        "readOnly": true,
+        "source": "knowgrph-source-files",
+        "tool": "fetch"
+      }
+    }
+  ],
+  "clientSetups": {
+    "openai-apps": {
+      "id": "openai-apps",
+      "label": "OpenAI Apps / ChatGPT",
+      "transport": "streamable-http",
+      "url": "https://airvio.co/knowgrph/mcp",
+      "appResourceUri": "ui://knowgrph/agent-ready",
+      "appToolName": "inspect_agent_surface",
+      "requiredMetadata": [
+        "openai/outputTemplate",
+        "openai/widgetAccessible",
+        "openai/widgetCSP",
+        "openai/widgetDomain"
+      ],
+      "requiredTools": [
+        "inspect_agent_surface",
+        "search",
+        "fetch"
+      ]
+    },
+    "claude-mcp-connector": {
+      "id": "claude-mcp-connector",
+      "label": "Claude MCP connector",
+      "transport": "streamable-http",
+      "url": "https://airvio.co/knowgrph/mcp",
+      "beta": "mcp-client-2025-11-20",
+      "mcp_servers": [
+        {
+          "type": "url",
+          "url": "https://airvio.co/knowgrph/mcp",
+          "name": "knowgrph"
+        }
+      ],
+      "tools": [
+        {
+          "type": "mcp_toolset",
+          "mcp_server_name": "knowgrph"
+        }
+      ],
+      "requiredTools": [
+        "search",
+        "fetch"
+      ]
+    },
+    "qwen-code": {
+      "id": "qwen-code",
+      "label": "Qwen Code",
+      "transport": "http",
+      "url": "https://airvio.co/knowgrph/mcp",
+      "command": "qwen mcp add --transport http knowgrph https://airvio.co/knowgrph/mcp",
+      "settingsJson": {
+        "mcpServers": {
+          "knowgrph": {
+            "httpUrl": "https://airvio.co/knowgrph/mcp",
+            "timeout": 30000,
+            "trust": false,
+            "includeTools": [
+              "search",
+              "fetch",
+              "inspect_agent_surface"
+            ]
+          }
+        }
+      },
+      "requiredTools": [
+        "search",
+        "fetch"
+      ],
+      "primaryFlow": "Call search with a natural-language query, then call fetch with the returned kgdoc id."
+    },
+    "kimi-cli": {
+      "id": "kimi-cli",
+      "label": "Kimi CLI",
+      "transport": "http",
+      "url": "https://airvio.co/knowgrph/mcp",
+      "command": "kimi mcp add --transport http knowgrph https://airvio.co/knowgrph/mcp",
+      "configFile": "~/.kimi/mcp.json",
+      "mcpJson": {
+        "mcpServers": {
+          "knowgrph": {
+            "url": "https://airvio.co/knowgrph/mcp",
+            "transport": "http"
+          }
+        }
+      },
+      "requiredTools": [
+        "search",
+        "fetch"
+      ],
+      "primaryFlow": "Call search with a natural-language query, then call fetch with the returned kgdoc id."
+    },
+    "byteplus-modelark": {
+      "id": "byteplus-modelark",
+      "label": "BytePlus ModelArk Responses API",
+      "transport": "streamable-http",
+      "url": "https://airvio.co/knowgrph/mcp",
+      "apiBaseUrl": "https://ark.ap-southeast.bytepluses.com/api/v3",
+      "endpoint": "/responses",
+      "requiredHeaders": {
+        "ark-beta-mcp": "true"
+      },
+      "tools": [
+        {
+          "type": "mcp",
+          "server_label": "knowgrph",
+          "server_url": "https://airvio.co/knowgrph/mcp",
+          "require_approval": "never"
+        }
+      ],
+      "openAiCompatible": {
+        "base_url": "https://ark.ap-southeast.bytepluses.com/api/v3",
+        "default_headers": {
+          "ark-beta-mcp": "true"
+        },
+        "responsesCreate": {
+          "model": "<MODELARK_MODEL_OR_ENDPOINT_ID>",
+          "tools": [
+            {
+              "type": "mcp",
+              "server_label": "knowgrph",
+              "server_url": "https://airvio.co/knowgrph/mcp",
+              "require_approval": "never"
+            }
+          ]
+        }
+      },
+      "invocationScope": "ModelArk Responses API with MCP service and model permissions enabled.",
+      "requiredTools": [
+        "search",
+        "fetch"
+      ],
+      "primaryFlow": "Use ModelArk Responses API with the Knowgrph MCP tool entry, then ask the model to call search and fetch."
+    },
+    "generic-mcp": {
+      "id": "generic-mcp",
+      "label": "Generic MCP clients",
+      "transport": "streamable-http",
+      "url": "https://airvio.co/knowgrph/mcp",
+      "initialize": {
+        "method": "initialize",
+        "accept": [
+          "application/json",
+          "text/event-stream"
+        ]
+      },
+      "requiredMethods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/call"
+      ],
+      "optionalMethods": [
+        "prompts/list",
+        "prompts/get",
+        "resources/list",
+        "resources/templates/list",
+        "resources/read"
+      ],
+      "requiredTools": [
+        "search",
+        "fetch"
+      ]
     }
   },
   "links": {

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "content_signature": "7300b7d5dd7c30bfdad0fe6e10957ffe15825c555974d560de9ec1f765e26bb3",
+  "source_graph_json": "knowgrph-hackamap.json",
+  "counts": {
+    "nodes": 1488,
+    "links": 3683,
+    "Demo": 140,
+    "Domain": 119,
+    "Event": 138,
+    "Location": 84,
+    "Organizer": 193,
+    "PainPoint": 53,
+    "Platform": 5,
+    "Product": 96,
+    "Source": 280,
+    "SourceType": 30,
+    "Team": 193,
+    "Tech": 157
+  },
+  "files": {
+    "nodes": "nodes.json",
+    "links": "links.json",
+    "Event": "events.json",
+    "Demo": "demos.json",
+    "Source": "sources.json",
+    "Organizer": "organizer.json",
+    "Team": "team.json",
+    "Tech": "techstack.json"
+  }
+}

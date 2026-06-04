@@ -1,0 +1,170 @@
+# hackamap-year-series (2025)
+
+Derived from HackaMap dataset markdown tables.
+
+Query (JSON DSL):
+```json
+{
+  "from": {
+    "files": [
+      "events.md",
+      "demos.md",
+      "sources.md",
+      "organizer.md",
+      "team.md",
+      "techstack.md"
+    ]
+  },
+  "where_by_file": {
+    "events.md": {
+      "or": [
+        {
+          "field": "Date Start",
+          "op": "contains",
+          "value": "2025"
+        },
+        {
+          "field": "Date End",
+          "op": "contains",
+          "value": "2025"
+        },
+        {
+          "field": "Event",
+          "op": "contains",
+          "value": "2025"
+        },
+        {
+          "field": "URL",
+          "op": "contains",
+          "value": "2025"
+        }
+      ]
+    },
+    "demos.md": {
+      "or": [
+        {
+          "op": "any",
+          "value": "2025"
+        },
+        {
+          "field": "Demo URL",
+          "op": "contains",
+          "value": "2025"
+        },
+        {
+          "field": "Repo URL",
+          "op": "contains",
+          "value": "2025"
+        }
+      ]
+    },
+    "sources.md": {
+      "or": [
+        {
+          "field": "URL",
+          "op": "contains",
+          "value": "2025"
+        },
+        {
+          "field": "Domain",
+          "op": "contains",
+          "value": "2025"
+        },
+        {
+          "op": "any",
+          "value": "2025"
+        }
+      ]
+    },
+    "organizer.md": {
+      "op": "any",
+      "value": "2025"
+    },
+    "team.md": {
+      "op": "any",
+      "value": "2025"
+    },
+    "techstack.md": {
+      "op": "any",
+      "value": "2025"
+    }
+  },
+  "limit": 300,
+  "output": {
+    "title": "hackamap-year-series",
+    "json_path": "hackamap-year-series.json",
+    "md_path": "hackamap-year-series.md",
+    "table_prefix": "year-series"
+  }
+}
+```
+
+| _file | _row | id | Tech | Category | FOSS | License | Vendor/Org | FOSS Alternatives | TCO Notes | Events | Demos | Source URLs | Source Type | Confidence | Extracted At |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| techstack.md | 101 | tech-101 | Machine Learning/AI | — | — | — | — | — | — | `["evt-055", "evt-059", "evt-060", "evt-063", "evt-068", "evt-071", "evt-075", "evt-076", "evt-077", "evt-081", "evt-082", "evt-104", "evt-108", "evt-109", "evt-111", "evt-115", "evt-116", "evt-124"]` | `["demo-057", "demo-061", "demo-062", "demo-065", "demo-070", "demo-073", "demo-077", "demo-078", "demo-079", "demo-083", "demo-084", "demo-106", "demo-110", "demo-111", "demo-113", "demo-117", "demo-118", "demo-126"]` | `["https://nus-ftm-ideation-hackathon.devpost.com/", "https://nus-ftm-ideation-hackathon.devpost.com/project-gallery", "https://aws-hong-kong-hackathon.devpost.com/", "https://aws-hong-kong-hackathon.devpost.com/project-gallery", "https://minimax-hackathon-in-hk.devpost.com/", "https://minimax-hackathon-in-hk.devpost.com/project-gallery", "https://googlecloudjapanaihackathon.devpost.com/", "https://googlecloudjapanaihackathon.devpost.com/project-gallery", "https://students-ai-seoul-hackathon.devpost.com/", "https://students-ai-seoul-hackathon.devpost.com/project-gallery", "https://iisc-ibm-india-ai-impact.devpost.com/", "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery", "https://coding-cup.devpost.com/", "https://coding-cup.devpost.com/project-gallery", "https://gh6.devpost.com/", "https://gh6.devpost.com/project-gallery", "https://garuda-hacks.devpost.com/", "https://garuda-hacks.devpost.com/project-gallery", "https://build-with-deepmind.devpost.com/", "https://build-with-deepmind.devpost.com/project-gallery", "https://mathworks-utm-2025.devpost.com/", "https://mathworks-utm-2025.devpost.com/project-gallery", "https://gh5.devpost.com/", "https://gh5.devpost.com/project-gallery", "https://elastic-forge-the-future.devpost.com/", "https://elastic-forge-the-future.devpost.com/details/dates", "https://elastic-forge-the-future.devpost.com/project-gallery", "https://pinus-hack-2026.devpost.com/", "https://pinus-hack-2026.devpost.com/details/dates", "https://pinus-hack-2026.devpost.com/project-gallery", "https://ntu-beyond-binary-2026.devpost.com/", "https://ntu-beyond-binary-2026.devpost.com/details/dates", "https://ntu-beyond-binary-2026.devpost.com/project-gallery", "https://payhack-2025.devpost.com/", "https://payhack-2025.devpost.com/details/dates", "https://payhack-2025.devpost.com/project-gallery", "https://zoohackathon2019-kk-malaysia.devpost.com/", "https://zoohackathon2019-kk-malaysia.devpost.com/details/dates", "https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery", "https://onerecord-szx.devpost.com/", "https://onerecord-szx.devpost.com/details/dates", "https://onerecord-szx.devpost.com/project-gallery"]` | `["devpost", "project_gallery", "details/dates"]` | high | — |
+| events.md | 112 | evt-115 |  |  |  |  |  |  |  |  |  |  | `["devpost", "details/dates", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 120 | evt-123 |  |  |  |  |  |  |  |  |  |  | `["devpost", "details/dates", "project_gallery"]` | high | 2026-04-04 |
+| techstack.md | 44 | tech-044 | Cybersecurity | — | — | — | — | — | — | `["evt-079", "evt-115", "evt-122"]` | `["demo-081", "demo-117", "demo-124"]` | `["https://hackidea.devpost.com/", "https://hackidea.devpost.com/project-gallery", "https://payhack-2025.devpost.com/", "https://payhack-2025.devpost.com/details/dates", "https://payhack-2025.devpost.com/project-gallery", "https://hackathonbojonegoro.devpost.com/", "https://hackathonbojonegoro.devpost.com/details/dates", "https://hackathonbojonegoro.devpost.com/project-gallery"]` | `["devpost", "project_gallery", "details/dates"]` | high | — |
+| techstack.md | 55 | tech-055 | digital payments | — | — | — | — | — | — | `["evt-115"]` | `["demo-117"]` | `["https://payhack-2025.devpost.com/", "https://payhack-2025.devpost.com/details/dates", "https://payhack-2025.devpost.com/project-gallery"]` | `["devpost", "details/dates", "project_gallery"]` | high | — |
+| techstack.md | 59 | tech-059 | Education | — | — | — | — | — | — | `["evt-056", "evt-068", "evt-071", "evt-074", "evt-078", "evt-080", "evt-083", "evt-105", "evt-110", "evt-114", "evt-119", "evt-123", "evt-141"]` | `["demo-058", "demo-070", "demo-073", "demo-076", "demo-080", "demo-082", "demo-085", "demo-107", "demo-112", "demo-116", "demo-121", "demo-125", "demo-143"]` | `["https://dothackathon.devpost.com/", "https://smudothack.surge.sh/", "https://dothackathon.devpost.com/project-gallery", "https://students-ai-seoul-hackathon.devpost.com/", "https://students-ai-seoul-hackathon.devpost.com/project-gallery", "https://iisc-ibm-india-ai-impact.devpost.com/", "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery", "https://ic-hack.devpost.com/", "https://ic-hack.devpost.com/project-gallery", "https://komodo-hacks.devpost.com/", "https://komodo-hacks.devpost.com/project-gallery", "https://bitcoin-indonesia-hackathon.devpost.com/", "https://bitcoin-indonesia-hackathon.devpost.com/project-gallery", "https://yme-hackathon-2021.devpost.com/", "https://yme-hackathon-2021.devpost.com/project-gallery", "https://onerecord-hkg.devpost.com/", "https://onerecord-hkg.devpost.com/details/dates", "https://onerecord-hkg.devpost.com/project-gallery", "https://scds-techfest-2026.devpost.com/", "https://scds-techfest-2026.devpost.com/details/dates", "https://scds-techfest-2026.devpost.com/project-gallery", "https://international-prosolve-2026.devpost.com/", "https://international-prosolve-2026.devpost.com/details/dates", "https://international-prosolve-2026.devpost.com/project-gallery", "https://bsj-fobisia-hackathon.devpost.com/", "https://bsj-fobisia-hackathon.devpost.com/details/dates", "https://bsj-fobisia-hackathon.devpost.com/project-gallery", "https://test-android-hackathon-2025.devpost.com/", "https://test-android-hackathon-2025.devpost.com/details/dates", "https://test-android-hackathon-2025.devpost.com/project-gallery", "https://ccds-tech-for-good-2026.devpost.com/", "https://ccds-tech-for-good-2026.devpost.com/project-gallery"]` | `["devpost", "event-site", "project_gallery", "details/dates"]` | high | — |
+| techstack.md | 67 | tech-067 | Fintech | — | — | — | — | — | — | `["evt-055", "evt-115", "evt-138"]` | `["demo-057", "demo-117", "demo-140"]` | `["https://nus-ftm-ideation-hackathon.devpost.com/", "https://nus-ftm-ideation-hackathon.devpost.com/project-gallery", "https://payhack-2025.devpost.com/", "https://payhack-2025.devpost.com/details/dates", "https://payhack-2025.devpost.com/project-gallery", "https://luma.com/claw"]` | `["devpost", "project_gallery", "details/dates"]` | high | — |
+| techstack.md | 86 | tech-086 | Health | — | — | — | — | — | — | `["evt-066", "evt-074", "evt-123", "evt-141"]` | `["demo-068", "demo-076", "demo-125", "demo-143"]` | `["https://makerpossible.devpost.com/", "https://makerpossible.devpost.com/project-gallery", "https://ic-hack.devpost.com/", "https://ic-hack.devpost.com/project-gallery", "https://test-android-hackathon-2025.devpost.com/", "https://test-android-hackathon-2025.devpost.com/details/dates", "https://test-android-hackathon-2025.devpost.com/project-gallery", "https://ccds-tech-for-good-2026.devpost.com/", "https://ccds-tech-for-good-2026.devpost.com/project-gallery"]` | `["devpost", "project_gallery", "details/dates"]` | high | — |
+| techstack.md | 134 | tech-134 | Social Good | — | — | — | — | — | — | `["evt-053", "evt-054", "evt-056", "evt-061", "evt-066", "evt-068", "evt-069", "evt-071", "evt-076", "evt-077", "evt-080", "evt-083", "evt-099", "evt-101", "evt-104", "evt-111", "evt-112", "evt-113", "evt-116", "evt-118", "evt-122", "evt-123"]` | `["demo-055", "demo-056", "demo-058", "demo-063", "demo-068", "demo-070", "demo-071", "demo-073", "demo-078", "demo-079", "demo-082", "demo-085", "demo-101", "demo-103", "demo-106", "demo-113", "demo-114", "demo-115", "demo-118", "demo-120", "demo-124", "demo-125"]` | `["https://hack-for-good-2023.devpost.com/", "https://hack-for-good-2023.devpost.com/project-gallery", "https://youthxhack.devpost.com/", "https://youthxhack.devpost.com/project-gallery", "https://dothackathon.devpost.com/", "https://smudothack.surge.sh/", "https://dothackathon.devpost.com/project-gallery", "https://hack4hk-23258.devpost.com/", "https://hack4hk-23258.devpost.com/project-gallery", "https://makerpossible.devpost.com/", "https://makerpossible.devpost.com/project-gallery", "https://students-ai-seoul-hackathon.devpost.com/", "https://students-ai-seoul-hackathon.devpost.com/project-gallery", "https://seoul-tech-impact-2024.devpost.com/", "https://www.seoultechimpact.com/register", "https://seoul-tech-impact-2024.devpost.com/project-gallery", "https://iisc-ibm-india-ai-impact.devpost.com/", "https://iisc-ibm-india-ai-impact.devpost.com/project-gallery", "https://gh6.devpost.com/", "https://gh6.devpost.com/project-gallery", "https://garuda-hacks.devpost.com/", "https://garuda-hacks.devpost.com/project-gallery", "https://bitcoin-indonesia-hackathon.devpost.com/", "https://bitcoin-indonesia-hackathon.devpost.com/project-gallery", "https://yme-hackathon-2021.devpost.com/", "https://yme-hackathon-2021.devpost.com/project-gallery", "https://hack4good-2024.devpost.com/", "https://hack4good-2024.devpost.com/project-gallery", "https://youthxhack2024.devpost.com/", "https://youthxhack2024.devpost.com/project-gallery", "https://gh5.devpost.com/", "https://gh5.devpost.com/project-gallery", "https://ntu-beyond-binary-2026.devpost.com/", "https://ntu-beyond-binary-2026.devpost.com/details/dates", "https://ntu-beyond-binary-2026.devpost.com/project-gallery", "https://inter-hall-hackathon-2026.devpost.com/", "https://inter-hall-hackathon-2026.devpost.com/details/dates", "https://inter-hall-hackathon-2026.devpost.com/project-gallery", "https://build-for-impact-2026-28173.devpost.com/", "https://build-for-impact-2026-28173.devpost.com/details/dates", "https://build-for-impact-2026-28173.devpost.com/project-gallery", "https://zoohackathon2019-kk-malaysia.devpost.com/", "https://zoohackathon2019-kk-malaysia.devpost.com/details/dates", "https://zoohackathon2019-kk-malaysia.devpost.com/project-gallery", "https://indonesiamajuhackfest.devpost.com/", "https://indonesiamajuhackfest.devpost.com/details/dates", "https://indonesiamajuhackfest.devpost.com/project-gallery", "https://hackathonbojonegoro.devpost.com/", "https://hackathonbojonegoro.devpost.com/details/dates", "https://hackathonbojonegoro.devpost.com/project-gallery", "https://test-android-hackathon-2025.devpost.com/", "https://test-android-hackathon-2025.devpost.com/details/dates", "https://test-android-hackathon-2025.devpost.com/project-gallery"]` | `["devpost", "project_gallery", "event-site", "registration", "details/dates"]` | high | — |
+| events.md | 80 | evt-082 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 92 | evt-095 |  |  |  |  |  |  |  |  |  |  | `["devpost", "official-site", "event-site", "project_gallery"]` | high | 2026-04-04 |
+| sources.md | 30 | src-030 |  |  |  |  |  |  |  | `["evt-030"]` | `["demo-032"]` |  | `["devpost", "event-page"]` | high | — |
+| sources.md | 100 | src-100 |  |  |  |  |  |  |  | `["evt-041"]` | `["demo-043"]` |  | `["devpost", "event-page"]` | high | — |
+| sources.md | 138 | src-138 |  |  |  |  |  |  |  | `["evt-036"]` | `["demo-038"]` |  | `["devpost", "event-page"]` | high | — |
+| sources.md | 154 | src-154 |  |  |  |  |  |  |  | `["evt-082"]` | — |  | `["devpost", "project_gallery"]` | high | — |
+| sources.md | 155 | src-155 |  |  |  |  |  |  |  | `["evt-082"]` | `["demo-084"]` |  | `["devpost", "project_gallery"]` | high | — |
+| sources.md | 174 | src-174 |  |  |  |  |  |  |  | `["evt-115"]` | — |  | `["devpost", "details/dates", "project_gallery"]` | high | — |
+| sources.md | 175 | src-175 |  |  |  |  |  |  |  | `["evt-115"]` | — |  | `["devpost", "details/dates", "project_gallery"]` | high | — |
+| sources.md | 176 | src-176 |  |  |  |  |  |  |  | `["evt-115"]` | `["demo-117"]` |  | `["devpost", "details/dates", "project_gallery"]` | high | — |
+| sources.md | 208 | src-208 |  |  |  |  |  |  |  | `["evt-123"]` | — |  | `["devpost", "details/dates", "project_gallery"]` | high | — |
+| sources.md | 209 | src-209 |  |  |  |  |  |  |  | `["evt-123"]` | — |  | `["devpost", "details/dates", "project_gallery"]` | high | — |
+| sources.md | 210 | src-210 |  |  |  |  |  |  |  | `["evt-123"]` | `["demo-125"]` |  | `["devpost", "details/dates", "project_gallery"]` | high | — |
+| sources.md | 222 | src-222 |  |  |  |  |  |  |  | `["evt-095"]` | — |  | `["devpost", "official-site", "event-site", "project_gallery"]` | high | — |
+| sources.md | 223 | src-223 |  |  |  |  |  |  |  | `["evt-095"]` | `["demo-097"]` |  | `["devpost", "official-site", "event-site", "project_gallery"]` | high | — |
+| techstack.md | 52 | tech-052 | Devpost | platform | no | — | Devpost | — | SaaS platform; TCO mainly time + workflow lock-in rather than infra cost. | `["evt-006", "evt-010", "evt-011", "evt-012", "evt-013", "evt-014", "evt-015", "evt-017", "evt-019", "evt-020", "evt-025", "evt-026", "evt-036", "evt-040", "evt-041", "evt-043"]` | `["demo-006", "demo-010", "demo-011", "demo-013", "demo-014", "demo-015", "demo-016", "demo-018", "demo-020", "demo-021", "demo-026", "demo-027", "demo-038", "demo-042", "demo-043", "demo-045"]` | `["https://hackai-2026.devpost.com/project-gallery", "https://hack-for-humanity-2026.devpost.com/project-gallery", "https://hack-for-humanity-2026.devpost.com/", "https://developerweek-2026-hackathon.devpost.com/project-gallery", "https://developerweek-2026-hackathon.devpost.com/", "https://treehacks-2026.devpost.com/project-gallery", "https://treehacks-2026.devpost.com/", "https://redditdailygames2026.devpost.com/project-gallery", "https://hacknroll2026.devpost.com/project-gallery", "https://hacknroll2026.devpost.com/", "https://uksaei-hackathon.devpost.com/", "https://cursor-hack-my.devpost.com/project-gallery", "https://lifehack-2025.devpost.com/", "https://bitcoin-indonesia-hackathon.devpost.com/", "https://hacknroll2025.devpost.com/", "https://hacknroll2024.devpost.com/"]` | `["devpost", "project-gallery", "winners", "event-page"]` | high | — |
+| techstack.md | 114 | tech-114 | Open Ended | — | — | — | — | — | — | `["evt-052", "evt-081", "evt-095", "evt-101", "evt-102", "evt-112", "evt-125"]` | `["demo-054", "demo-083", "demo-097", "demo-103", "demo-104", "demo-114", "demo-127"]` | `["https://hacknroll2023.devpost.com/", "https://hacknroll.nushackers.org/", "https://hacknroll2023.devpost.com/project-gallery", "https://build-with-deepmind.devpost.com/", "https://build-with-deepmind.devpost.com/project-gallery", "https://unihack2025.devpost.com/", "https://unihack.net/", "https://unihack2025.devpost.com/project-gallery", "https://youthxhack2024.devpost.com/", "https://youthxhack2024.devpost.com/project-gallery", "https://cloudhacks-2024.devpost.com/", "https://cloudhacks-2024.devpost.com/project-gallery", "https://inter-hall-hackathon-2026.devpost.com/", "https://inter-hall-hackathon-2026.devpost.com/details/dates", "https://inter-hall-hackathon-2026.devpost.com/project-gallery", "https://hackdevs.devpost.com/", "https://hackdevs.devpost.com/details/dates", "https://hackdevs.devpost.com/project-gallery"]` | `["devpost", "official-site", "event-site", "project_gallery", "details/dates"]` | high | — |
+| demos.md | 32 | demo-032 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| demos.md | 38 | demo-038 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| demos.md | 41 | demo-041 |  |  |  |  |  |  |  |  |  |  | `["producthunt", "community-post"]` | low | 2026-04-04 |
+| demos.md | 43 | demo-043 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| demos.md | 82 | demo-084 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| demos.md | 94 | demo-097 |  |  |  |  |  |  |  |  |  |  | `["devpost", "official-site", "event-site", "project_gallery"]` | high | 2026-04-04 |
+| demos.md | 114 | demo-117 |  |  |  |  |  |  |  |  |  |  | `["devpost", "details/dates", "project_gallery"]` | high | 2026-04-04 |
+| demos.md | 122 | demo-125 |  |  |  |  |  |  |  |  |  |  | `["devpost", "details/dates", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 21 | evt-021 |  |  |  |  |  |  |  |  |  |  | `["x.com", "community", "curation"]` | medium | 2026-04-04 |
+| events.md | 23 | evt-023 |  |  |  |  |  |  |  |  |  |  | `["media", "event-recap", "devpost", "event-page"]` | high | 2026-04-04 |
+| events.md | 24 | evt-024 |  |  |  |  |  |  |  |  |  |  | `["community", "event-recap"]` | low | 2026-04-04 |
+| events.md | 25 | evt-025 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| events.md | 26 | evt-026 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project-gallery"]` | medium | 2026-04-04 |
+| events.md | 27 | evt-027 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | medium | 2026-04-04 |
+| events.md | 28 | evt-028 |  |  |  |  |  |  |  |  |  |  | `["reddit", "announcement"]` | medium | 2026-04-04 |
+| events.md | 29 | evt-029 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | medium | 2026-04-04 |
+| events.md | 30 | evt-030 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| events.md | 31 | evt-031 |  |  |  |  |  |  |  |  |  |  | `["announcement", "government"]` | low | 2026-04-04 |
+| events.md | 32 | evt-032 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| events.md | 33 | evt-033 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | low | 2026-04-04 |
+| events.md | 34 | evt-034 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | medium | 2026-04-04 |
+| events.md | 35 | evt-035 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | medium | 2026-04-04 |
+| events.md | 36 | evt-036 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| events.md | 38 | evt-038 |  |  |  |  |  |  |  |  |  |  | `["announcement", "marketing"]` | medium | 2026-04-04 |
+| events.md | 39 | evt-039 |  |  |  |  |  |  |  |  |  |  | `["producthunt", "community-post"]` | low | 2026-04-04 |
+| events.md | 40 | evt-040 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| events.md | 41 | evt-041 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-page"]` | high | 2026-04-04 |
+| events.md | 56 | evt-056 |  |  |  |  |  |  |  |  |  |  | `["devpost", "event-site", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 59 | evt-059 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 60 | evt-060 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 61 | evt-061 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 67 | evt-068 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 69 | evt-071 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 74 | evt-076 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 78 | evt-080 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 116 | evt-119 |  |  |  |  |  |  |  |  |  |  | `["devpost", "details/dates", "project_gallery"]` | high | 2026-04-04 |
+| events.md | 138 | evt-141 |  |  |  |  |  |  |  |  |  |  | `["devpost", "project_gallery"]` | high | 2026-04-04 |
+| sources.md | 236 | src-236 |  |  |  |  |  |  |  | `["evt-039"]` | `["demo-041"]` |  | `["producthunt", "community-post"]` | low | — |
+| techstack.md | 4 | tech-004 | AI + emerging tech (unspecified) | — | — | — | — | — | — | `["evt-030"]` | `["demo-032"]` | `["https://cs-2025-hackathon-beta.devpost.com/"]` | `["devpost", "event-page"]` | high | — |
+| techstack.md | 26 | tech-026 | bolt.new credits (mentioned) | — | — | — | — | — | — | `["evt-039"]` | `["demo-041"]` | `["https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions"]` | `["producthunt", "community-post"]` | low | — |
+| techstack.md | 76 | tech-076 | GitHub (submission requirement) | — | — | — | — | — | — | `["evt-011", "evt-036"]` | `["demo-011", "demo-038"]` | `["https://hack-for-humanity-2026.devpost.com/", "https://lifehack-2025.devpost.com/"]` | `["devpost", "event-page"]` | high | — |

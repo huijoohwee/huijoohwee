@@ -32,26 +32,26 @@
 <body>
   <main>
     <header>
-      <div>
+      <section>
         <h1>Knowgrph Agent Ready</h1>
         <p>Interactive MCP Apps view backed by the existing read-only agent surface.</p>
-      </div>
-      <div class="actions">
+      </section>
+      <nav class="actions" aria-label="Agent Ready actions">
         <button id="refresh" type="button">Refresh</button>
         <a href="https://airvio.co/knowgrph/" target="_blank" rel="noreferrer">Open</a>
-      </div>
+      </nav>
     </header>
     <section aria-label="MCP app state">
       <dl>
         <dt>Resource</dt><dd>ui://knowgrph/agent-ready</dd>
         <dt>Tool</dt><dd>inspect_agent_surface</dd>
         <dt>Host</dt><dd id="host">Not connected.</dd>
-        <dt>Updated</dt><dd>2026-05-23</dd>
+        <dt>Updated</dt><dd>2026-06-04</dd>
         <dt>Status</dt><dd id="status" class="status">Initializing MCP Apps host bridge.</dd>
       </dl>
     </section>
     <section aria-label="MCP Apps server readiness">
-      <div id="readiness" class="readiness">Waiting for structured server-readiness data.</div>
+      <section id="readiness" class="readiness">Waiting for structured server-readiness data.</section>
     </section>
     <section aria-label="Tool result">
       <pre id="structured">No tool result received yet.</pre>
@@ -59,7 +59,7 @@
   </main>
   <script>
   (() => {
-    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-05-23","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26"};
+    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-06-04","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26"};
     const statusEl = document.getElementById('status');
     const hostEl = document.getElementById('host');
     const readinessEl = document.getElementById('readiness');
@@ -68,6 +68,10 @@
     const pending = new Map();
     const state = { hostCapabilities: null, hostContext: null, input: null, result: null };
     const hasParent = () => window.parent && window.parent !== window;
+    const readOpenAiBridge = () => {
+      const bridge = window.openai;
+      return bridge && typeof bridge === 'object' ? bridge : null;
+    };
     const post = (message) => {
       if (!hasParent()) return;
       window.parent.postMessage({ jsonrpc: '2.0', ...message }, '*');
@@ -88,7 +92,10 @@
     const requestTool = async () => {
       statusEl.textContent = 'Requesting ' + boot.toolName + ' through the host.';
       try {
-        const result = await request('tools/call', { name: boot.toolName, arguments: {} });
+        const openAiBridge = readOpenAiBridge();
+        const result = openAiBridge && typeof openAiBridge.callTool === 'function'
+          ? await openAiBridge.callTool(boot.toolName, {})
+          : await request('tools/call', { name: boot.toolName, arguments: {} });
         state.result = result || null;
         render();
       } catch (error) {
@@ -107,6 +114,21 @@
       if (host.theme === 'dark' || host.theme === 'light') {
         document.documentElement.dataset.theme = host.theme;
       }
+    };
+    const syncOpenAiGlobals = (globals = readOpenAiBridge()) => {
+      const source = globals && typeof globals === 'object' ? globals : {};
+      if (Object.prototype.hasOwnProperty.call(source, 'toolInput')) {
+        state.input = source.toolInput || null;
+      }
+      if (Object.prototype.hasOwnProperty.call(source, 'toolOutput')) {
+        state.result = source.toolOutput || null;
+      }
+      updateHost({
+        platform: 'OpenAI Apps',
+        displayMode: source.displayMode || source.hostDisplayMode,
+        theme: source.theme,
+      });
+      state.hostCapabilities = { ...(state.hostCapabilities || {}), openaiAppsBridge: true };
     };
     const appendText = (parent, tagName, text, className = '') => {
       const element = document.createElement(tagName);
@@ -172,6 +194,12 @@
       };
     })();
     const connect = async () => {
+      if (readOpenAiBridge()) {
+        syncOpenAiGlobals();
+        render();
+        sendSizeChanged();
+        return;
+      }
       if (!hasParent()) {
         statusEl.textContent = 'Standalone preview. Waiting for embedded MCP Apps host.';
         return;
@@ -238,6 +266,11 @@
       if (message.method === 'ui/resource-teardown') {
         if (message.id !== undefined && message.id !== null) post({ id: message.id, result: {} });
       }
+    });
+    window.addEventListener('openai:set_globals', (event) => {
+      syncOpenAiGlobals(event && event.detail && (event.detail.globals || event.detail));
+      render();
+      sendSizeChanged();
     });
     document.getElementById('refresh')?.addEventListener('click', requestTool);
     render();

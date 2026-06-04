@@ -1,0 +1,283 @@
+{
+  "base": "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+  "runs_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-query-runs.runtime.json",
+  "artifacts_dir": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs",
+  "runs": [
+    {
+      "id": "enhanced",
+      "preset": "enhanced",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-enhance.json",
+      "params": {},
+      "output_suffix": "",
+      "title": "hackamap-enhanced-query-results",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-enhanced-query-results.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-enhanced-query-results.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "enhanced",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs"
+      ]
+    },
+    {
+      "id": "sg-agents-postgres-devtools",
+      "preset": "sg-agents-postgres-devtools",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-sg-agents-postgres-devtools.json",
+      "params": {
+        "location": "Singapore"
+      },
+      "output_suffix": "",
+      "title": "hackamap-sg-agents-postgres-devtools",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "sg-agents-postgres-devtools",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs",
+        "--param",
+        "location=\"Singapore\""
+      ]
+    },
+    {
+      "id": "sg-agents-postgres-devtools-kl",
+      "preset": "sg-agents-postgres-devtools",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-sg-agents-postgres-devtools.json",
+      "params": {
+        "location": "Kuala Lumpur"
+      },
+      "output_suffix": "kl",
+      "title": "hackamap-sg-agents-postgres-devtools (kl)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.kl.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.kl.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "sg-agents-postgres-devtools",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs",
+        "--param",
+        "location=\"Kuala Lumpur\"",
+        "--output-suffix",
+        "kl"
+      ]
+    },
+    {
+      "id": "sg-agents-postgres-devtools-jakarta",
+      "preset": "sg-agents-postgres-devtools",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-sg-agents-postgres-devtools.json",
+      "params": {
+        "location": "Jakarta"
+      },
+      "output_suffix": "jakarta",
+      "title": "hackamap-sg-agents-postgres-devtools (jakarta)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.jakarta.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-sg-agents-postgres-devtools.jakarta.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "sg-agents-postgres-devtools",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs",
+        "--param",
+        "location=\"Jakarta\"",
+        "--output-suffix",
+        "jakarta"
+      ]
+    },
+    {
+      "id": "social-platforms",
+      "preset": "social-platforms",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-social-platforms.json",
+      "params": {},
+      "output_suffix": "",
+      "title": "hackamap-social-platforms",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-social-platforms.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-social-platforms.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "social-platforms",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs"
+      ]
+    },
+    {
+      "id": "chinese-content",
+      "preset": "chinese-content",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-chinese-content.json",
+      "params": {},
+      "output_suffix": "",
+      "title": "hackamap-chinese-content",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-chinese-content.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-chinese-content.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "chinese-content",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs"
+      ]
+    },
+    {
+      "id": "github-star-history",
+      "preset": "github-star-history",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-github-star-history.json",
+      "params": {},
+      "output_suffix": "",
+      "title": "hackamap-github-star-history",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-github-star-history.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-github-star-history.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "github-star-history",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs"
+      ]
+    },
+    {
+      "id": "year-2026",
+      "preset": "year-2026",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-year-2026.json",
+      "params": {},
+      "output_suffix": "",
+      "title": "hackamap-year-2026",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-2026.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-2026.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "year-2026",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs"
+      ]
+    },
+    {
+      "id": "year-series-2024",
+      "preset": "year-series",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-year-series.json",
+      "params": {
+        "year": "2024"
+      },
+      "output_suffix": "2024",
+      "title": "hackamap-year-series (2024)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-series.2024.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-series.2024.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "year-series",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs",
+        "--param",
+        "year=\"2024\"",
+        "--output-suffix",
+        "2024"
+      ]
+    },
+    {
+      "id": "year-series-2025",
+      "preset": "year-series",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-year-series.json",
+      "params": {
+        "year": "2025"
+      },
+      "output_suffix": "2025",
+      "title": "hackamap-year-series (2025)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-series.2025.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-series.2025.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "year-series",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs",
+        "--param",
+        "year=\"2025\"",
+        "--output-suffix",
+        "2025"
+      ]
+    },
+    {
+      "id": "year-series-2026",
+      "preset": "year-series",
+      "preset_file": "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap-query-preset-year-series.json",
+      "params": {
+        "year": "2026"
+      },
+      "output_suffix": "2026",
+      "title": "hackamap-year-series (2026)",
+      "combined_json": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-series.2026.json",
+      "combined_md": "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs/hackamap-year-series.2026.md",
+      "command": [
+        "python3",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/hackamap_query.py",
+        "--base",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site",
+        "--preset",
+        "year-series",
+        "--write-query-views",
+        "--write-query-json",
+        "--artifacts-dir",
+        "/Users/huijoohwee/Documents/GitHub/hackamap/site/_generated/query-outputs",
+        "--param",
+        "year=\"2026\"",
+        "--output-suffix",
+        "2026"
+      ]
+    }
+  ]
+}

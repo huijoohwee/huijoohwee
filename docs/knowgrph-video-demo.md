@@ -482,9 +482,9 @@ The `director_brief.shots` list is the frontmatter SSOT for derived shot Text, I
 
 ---
 
-## DeerFlow Agent Harness
+## SuperAgent Harness Boundary
 
-The `inputs.text_provider_id: "deerflow"` field activates the DeerFlow super-agent harness as the generation backend. Instead of calling each provider API directly, the Flow Editor delegates to DeerFlow's agent runtime, which orchestrates generation through research, skills, and sandbox execution.
+The `inputs.text_provider_id: "deerflow"` field selects the optional DeerFlow gateway provider for text generation. Long-horizon orchestration remains Knowgrph-native: the Flow Editor delegates generation requests through shared dispatchers, provider adapters, markdown/frontmatter parsing, and Rich Media Panel output fields. DeerFlow may provide gateway responses or conceptual inspiration for research, skills, and sandboxed work, but it is not a copied runtime stack and it does not become the parser, renderer, memory, or graph-apply owner.
 
 ### Agent Orchestration Flow
 
@@ -492,16 +492,16 @@ The `inputs.text_provider_id: "deerflow"` field activates the DeerFlow super-age
 sequenceDiagram
     participant Canvas as Flow Editor Canvas
     participant Dispatch as Generation Dispatcher
-    participant Agent as DeerFlow Lead Agent
-    participant Research as Deep-Research Skill
-    participant ImageGen as Image-Gen Skill
-    participant VideoGen as Video-Gen Skill
-    participant Sandbox as DeerFlow Sandbox
+    participant Agent as Native SuperAgent Harness
+    participant Research as Research Tool
+    participant ImageGen as Image Tool
+    participant VideoGen as Video Tool
+    participant Sandbox as Local Sandbox
     participant Renderer as Rich Media Panel
 
     Canvas ->> Dispatch : Run W01 (TextGeneration)
-    Dispatch ->> Agent : POST /api/runs/stream
-    Agent ->> Research : Invoke deep-research skill
+    Dispatch ->> Agent : Run text lane
+    Agent ->> Research : Invoke research tool when enabled
     Research ->> Research : Web search locale context
     Research ->> Research : Find reference images
     Research -->> Agent : Structured prompt JSON
@@ -509,8 +509,8 @@ sequenceDiagram
     Dispatch -->> Canvas : Write W01 properties.output
 
     Canvas ->> Dispatch : Run W02 (ImageGeneration)
-    Dispatch ->> Agent : POST /api/runs/stream
-    Agent ->> ImageGen : Invoke image-generation skill
+    Dispatch ->> Agent : Run image lane
+    Agent ->> ImageGen : Invoke image tool
     ImageGen ->> Sandbox : python generate.py --prompt-file ... --aspect-ratio 9:16
     Sandbox -->> ImageGen : /mnt/user-data/outputs/scene.jpg
     ImageGen ->> Agent : present_files tool
@@ -519,8 +519,8 @@ sequenceDiagram
     Dispatch -->> Canvas : Write W02 properties.imageUrl
 
     Canvas ->> Dispatch : Run W03 (VideoGeneration)
-    Dispatch ->> Agent : POST /api/runs/stream
-    Agent ->> VideoGen : Invoke video-generation skill
+    Dispatch ->> Agent : Run video lane
+    Agent ->> VideoGen : Invoke video tool
     VideoGen ->> Sandbox : python generate.py --prompt-file ... --reference-images scene.jpg
     Sandbox -->> VideoGen : /mnt/user-data/outputs/clip.mp4
     VideoGen ->> Agent : present_files tool
@@ -533,14 +533,14 @@ sequenceDiagram
 
 ### Multi-Locale Parallel Execution
 
-For the Three Skies demo, DeerFlow's sub-agent system runs all three locales concurrently:
+For the Three Skies demo, the native harness may run three role-scoped locale lanes concurrently:
 
 ```mermaid
 flowchart TD
-    BRIEF["Markdown Brief\nvariant: ALL"] --> AGENT["DeerFlow Lead Agent"]
-    AGENT -->|"sub-agent 1"| US["US Wild West\nresearch → prompt → image → video"]
-    AGENT -->|"sub-agent 2"| CAR["Caribbean Tempest\nresearch → prompt → image → video"]
-    AGENT -->|"sub-agent 3"| SG["SG RoboTown\nresearch → prompt → image → video"]
+    BRIEF["Markdown Brief\nvariant: ALL"] --> AGENT["Native SuperAgent Harness"]
+    AGENT -->|"locale lane 1"| US["US Wild West\nresearch -> prompt -> image -> video"]
+    AGENT -->|"locale lane 2"| CAR["Caribbean Tempest\nresearch -> prompt -> image -> video"]
+    AGENT -->|"locale lane 3"| SG["SG RoboTown\nresearch -> prompt -> image -> video"]
     US --> ART["Artifact Normalizer\nGET /api/threads/{id}/artifacts/*"]
     CAR --> ART
     SG --> ART
@@ -549,27 +549,27 @@ flowchart TD
 
 Each sub-agent operates in an isolated context with independent tool execution, so locale-1's image generation doesn't block locale-2's text generation. The agent runtime handles parallel execution, timeout enforcement, and error recovery.
 
-### DeerFlow Skills Used
+### Harness Capabilities Used
 
-| Skill | Purpose | Sandbox Script | Output |
+| Capability | Purpose | Runtime owner | Output |
 |---|---|---|---|
-| `deep-research` | Web search for locale context, cultural references, visual inspiration | — | Structured prompt JSON |
-| `image-search` | Find reference images via DuckDuckGo before generation | — | Reference image URLs |
-| `image-generation` | Generate scene keyframes from structured prompts | `generate.py --prompt-file --output-file --aspect-ratio --reference-images` | `.jpg` in `/mnt/user-data/outputs/` |
-| `video-generation` | Generate 9:16 video clips from reference images | `generate.py --prompt-file --output-file --reference-images` | `.mp4` in `/mnt/user-data/outputs/` |
-| `ppt-generation` | Compose generated scene images into a slide deck | `generate.py --plan-file --slide-images --output-file` | `.pptx` in `/mnt/user-data/outputs/` |
+| Research | Gather locale context, cultural references, visual inspiration | Native tool lane or optional provider gateway | Structured prompt JSON |
+| Image reference | Resolve reference image context before generation | Shared tool/provider adapter | Reference image URLs |
+| Image generation | Generate scene keyframes from structured prompts | Shared image tool/provider adapter | `imageUrl` |
+| Video generation | Generate 9:16 video clips from reference images | Shared video tool/provider adapter | `videoUrl` |
+| Deck composition | Compose generated scene images into a slide deck | Creation tool/workspace artifact owner | `.pptx` |
 
 ### Provider Configuration
 
-The DeerFlow gateway (`inputs.text_endpoint_url`) serves as a unified proxy to all underlying models. Model selection is controlled by DeerFlow's `config.yaml`, not by knowgrph's widget properties:
+When `inputs.text_provider_id` is `deerflow`, `inputs.text_endpoint_url` points at an optional DeerFlow gateway. Model selection can then be resolved by that gateway, while Knowgrph still owns widget properties, output keys, validation, and Flow Editor rendering:
 
 | Widget Property | Knowgrph Field | DeerFlow Resolution |
 |---|---|---|
 | `text_model` | `seed-2-0-lite-260228` | Resolved via `config.yaml` models[] entry |
-| `image_model` | `seedream-4-0-250828` | Routed to `image-generation` skill's sandbox script |
-| `video_model` | `seedance-1-0-pro-fast-251015` | Routed to `video-generation` skill's sandbox script |
+| `image_model` | `seedream-4-0-250828` | Resolved by the active image provider/tool adapter |
+| `video_model` | `seedance-1-0-pro-fast-251015` | Resolved by the active video provider/tool adapter |
 
-Switching from BytePlus to OpenAI or any other provider requires changing one line in DeerFlow's `config.yaml` — no knowgrph code changes needed.
+Switching providers must stay a settings/provider-adapter concern. The demo must not hardcode provider-only URLs or create provider-specific Flow Editor schema drift.
 
 ## Flow Graph
 

@@ -6,7 +6,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, bro
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_ce53c914`
+- Semantic key: `kgvx_63e375a4`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -44,6 +44,7 @@ Browser-local tools:
 - none
 
 Local MCP tools:
+- fetch
 - knowgrph.browser_api.run
 - knowgrph.graphrag_pipeline
 - knowgrph.pipeline
@@ -51,6 +52,7 @@ Local MCP tools:
 - knowgrph.ui.launch
 - knowgrph.ui.stop
 - knowgrph.vdeoxpln.list
+- search
 
 ## Workflow
 

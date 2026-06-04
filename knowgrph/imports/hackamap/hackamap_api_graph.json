@@ -1,0 +1,2524 @@
+{
+  "nodes": [
+    {
+      "id": "Event:evt-001",
+      "type": "problem",
+      "label": "IBM x UNSA Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-002",
+      "type": "problem",
+      "label": "MY AI Video Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-003",
+      "type": "problem",
+      "label": "TinyFish Web Agent Hackathon (Singapore) — winners showcase",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-004",
+      "type": "problem",
+      "label": "GitLab AI Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-005",
+      "type": "problem",
+      "label": "AI filmmaking hackathon @ SXSW",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-006",
+      "type": "problem",
+      "label": "Hack AI 2026 (project gallery / winners)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-007",
+      "type": "problem",
+      "label": "Codex Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-008",
+      "type": "problem",
+      "label": "Codex Hackathon (APAC)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-009",
+      "type": "problem",
+      "label": "Multimodal Frontier Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-010",
+      "type": "problem",
+      "label": "Hack For Humanity 2026 (project gallery / winners)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-011",
+      "type": "problem",
+      "label": "Hack For Humanity 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-012",
+      "type": "problem",
+      "label": "DeveloperWeek 2026 Hackathon (project gallery / winners)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-013",
+      "type": "problem",
+      "label": "DeveloperWeek 2026 Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-014",
+      "type": "problem",
+      "label": "TreeHacks 2026 (project gallery / winners)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-015",
+      "type": "problem",
+      "label": "TreeHacks 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-016",
+      "type": "problem",
+      "label": "2026 Daily Games Hackathon (winners announcement)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-017",
+      "type": "problem",
+      "label": "The Reddit Daily Games Hackathon (project gallery / winners)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-018",
+      "type": "problem",
+      "label": "The Reddit Daily Games Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-019",
+      "type": "problem",
+      "label": "Hack&Roll 2026 (project gallery / winners)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-020",
+      "type": "problem",
+      "label": "Hack&Roll 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-021",
+      "type": "problem",
+      "label": "Casper Hackathon 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-022",
+      "type": "problem",
+      "label": "Google DeepMind SG Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-023",
+      "type": "problem",
+      "label": "Cursor x Anthropic Hackathon Malaysia",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-024",
+      "type": "problem",
+      "label": "Sui Bootcamp Indonesia Mini Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-025",
+      "type": "problem",
+      "label": "UKSAEI Hackathon 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-026",
+      "type": "problem",
+      "label": "Cursor x Anthropic Hackathon Malaysia (project gallery)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-027",
+      "type": "problem",
+      "label": "xAI Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-028",
+      "type": "problem",
+      "label": "Cardano Summit 2025 Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-029",
+      "type": "problem",
+      "label": "Cursor Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-030",
+      "type": "problem",
+      "label": "Community Shaper 2025: Hackathon Beta",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-031",
+      "type": "problem",
+      "label": "BI-OJK Hackathon 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-032",
+      "type": "problem",
+      "label": "HackitRx Singapore 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-033",
+      "type": "problem",
+      "label": "ETHShenzhen Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-034",
+      "type": "problem",
+      "label": "Global AI Gateway Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-035",
+      "type": "problem",
+      "label": "OpenAI Open Model Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-036",
+      "type": "problem",
+      "label": "LifeHack 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-037",
+      "type": "problem",
+      "label": "MCP Hackathon (story)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-038",
+      "type": "problem",
+      "label": "Azure AI Developer Hackathon (winners)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-039",
+      "type": "problem",
+      "label": "Product Hunt x bolt.new Hackathon (Phoenix)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-040",
+      "type": "problem",
+      "label": "Bitcoin City Hackathon (Bitcoin Indonesia)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-041",
+      "type": "problem",
+      "label": "Hack&Roll 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-042",
+      "type": "problem",
+      "label": "GenAI for Finance Hackathon 2024",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-043",
+      "type": "problem",
+      "label": "Hack&Roll 2024",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-044",
+      "type": "problem",
+      "label": "MY Streamlit Hack",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-045",
+      "type": "problem",
+      "label": "KL Mini Hack",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-046",
+      "type": "problem",
+      "label": "Product Hunt Global Hackathon (winners newsletter)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-047",
+      "type": "problem",
+      "label": "Temasek–SUTD Generative AI Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-048",
+      "type": "problem",
+      "label": "GovTech x OpenAI Hackathon (recap)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-049",
+      "type": "problem",
+      "label": "GovTech x OpenAI Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-050",
+      "type": "problem",
+      "label": "Product Hunt Makers Festival (hackathon)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-051",
+      "type": "problem",
+      "label": "Generative AI Hackathon (mentioned)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-052",
+      "type": "problem",
+      "label": "Hack&Roll 2023",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-053",
+      "type": "problem",
+      "label": "Hack for Good 2023",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-054",
+      "type": "problem",
+      "label": "YouthxHack Total Defence Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-055",
+      "type": "problem",
+      "label": "NUS Fintech Month Hackathon 2023 (Round 1:Ideation)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-056",
+      "type": "problem",
+      "label": ".HACKathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-057",
+      "type": "problem",
+      "label": "FOSSASIA UNESCO Open Science and Data Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-058",
+      "type": "problem",
+      "label": "FOSSASIA Hackathon with UNESCO",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-059",
+      "type": "problem",
+      "label": "AWS AI Hackathon Hong Kong",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-060",
+      "type": "problem",
+      "label": "MiniMax 2025 AI Hackathon in Hong Kong",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-061",
+      "type": "problem",
+      "label": "Hack4HK",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-062",
+      "type": "problem",
+      "label": "Smart City Hackathon Hong Kong 2018",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-063",
+      "type": "problem",
+      "label": "AI Hackathon with Google Cloud (Japan)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-065",
+      "type": "problem",
+      "label": "Junction Tokyo 2018",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-066",
+      "type": "problem",
+      "label": "I’M-POSSIBLE Hackathon — Japan-Israel Online Disability Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-067",
+      "type": "problem",
+      "label": "SeoulHacks",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-068",
+      "type": "problem",
+      "label": "Students@AI Seoul Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-069",
+      "type": "problem",
+      "label": "Seoul Tech Impact 2024",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-071",
+      "type": "problem",
+      "label": "IndiaAI Impact Gen-AI Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-072",
+      "type": "problem",
+      "label": "HackIndia",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-073",
+      "type": "problem",
+      "label": "India Solar Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-074",
+      "type": "problem",
+      "label": "IC Hack 22",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-075",
+      "type": "problem",
+      "label": "Elite Coding Cup India",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-076",
+      "type": "problem",
+      "label": "Garuda Hacks 6.0",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-077",
+      "type": "problem",
+      "label": "Garuda Hacks 4.0",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-078",
+      "type": "problem",
+      "label": "Komodo Hacks 1.0",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-079",
+      "type": "problem",
+      "label": "HackIdea",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-080",
+      "type": "problem",
+      "label": "Bitcoin City Hackathon - by Bitcoin Indonesia",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-081",
+      "type": "problem",
+      "label": "Build with AI: Gemini Hackathon with Google DeepMind",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-082",
+      "type": "problem",
+      "label": "MATLAB HACKATHON (MH) UTM 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-083",
+      "type": "problem",
+      "label": "YME Hackathon 2021",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-085",
+      "type": "problem",
+      "label": "DISH 2019",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-086",
+      "type": "problem",
+      "label": "HackBangPH",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-087",
+      "type": "problem",
+      "label": "LotusHacks x HackHarvard x GenAI Fund Vietnam Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-088",
+      "type": "problem",
+      "label": "Vietnam Smart Energy Hackathon 2019",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-089",
+      "type": "problem",
+      "label": "FOSSASIA UNESCO Hackathon Vietnam 2018",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-090",
+      "type": "problem",
+      "label": "Hackathon Vietnam 2014 - Hanoi",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-091",
+      "type": "problem",
+      "label": "Hackathon Vietnam 2014 - Ho Chi Minh City",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-092",
+      "type": "problem",
+      "label": "Smart Energy Hackathon (Bangkok) 2017",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-093",
+      "type": "problem",
+      "label": "Smart Energy Hackathon (Bangkok) 2018",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-094",
+      "type": "problem",
+      "label": "Seafood Trackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-095",
+      "type": "problem",
+      "label": "UNIHACK 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-096",
+      "type": "problem",
+      "label": "Presence Platform Hackathon (Japan 2024)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-097",
+      "type": "problem",
+      "label": "Presence Platform Hackathon (Seoul 2024)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-098",
+      "type": "problem",
+      "label": "Xircus (Draper Hackathon @ Manila)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-099",
+      "type": "problem",
+      "label": "Hack4Good 2024",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-100",
+      "type": "problem",
+      "label": "NUS Datathon 2024: Singlife",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-101",
+      "type": "problem",
+      "label": "YouthxHack 2024",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-102",
+      "type": "problem",
+      "label": "CloudHacks 2024",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-103",
+      "type": "problem",
+      "label": "DIVE 2024 (Data Insights and Visualization Event 2024)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-104",
+      "type": "problem",
+      "label": "Garuda Hacks 5.0",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-105",
+      "type": "problem",
+      "label": "IATA ONE Record Hackathon – hosted by Cathay Cargo & CHAMP Cargosystems",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-106",
+      "type": "problem",
+      "label": "BUHack",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-107",
+      "type": "problem",
+      "label": "RWA Demo Day",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-108",
+      "type": "problem",
+      "label": "Elastic Forge The Future Singapore",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-109",
+      "type": "problem",
+      "label": "PINUS HACK 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-110",
+      "type": "problem",
+      "label": "SCDS Techfest 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-111",
+      "type": "problem",
+      "label": "NTU Beyond Binary Techathon 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-112",
+      "type": "problem",
+      "label": "RHDevs - Inter-Hall Hackathon 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-113",
+      "type": "problem",
+      "label": "Build for Impact 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-114",
+      "type": "problem",
+      "label": "1st International Prosolve 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-115",
+      "type": "problem",
+      "label": "PayHack 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-116",
+      "type": "problem",
+      "label": "Zoohackathon 2019 - Kota Kinabalu",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-117",
+      "type": "problem",
+      "label": "Make for the Planet Borneo",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-118",
+      "type": "problem",
+      "label": "Indonesia Maju HackFest 2020",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-119",
+      "type": "problem",
+      "label": "BSJ FOBISIA Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-120",
+      "type": "problem",
+      "label": "#HACKGOV 2015",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-121",
+      "type": "problem",
+      "label": "Kelas Desain Pengalaman Pengguna 2021",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-122",
+      "type": "problem",
+      "label": "Hackathon Bojonegoro",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-123",
+      "type": "problem",
+      "label": "Android Hackathon x Slash 2025",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-124",
+      "type": "problem",
+      "label": "IATA ONE Record Hackathon – hosted by ICCS",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-125",
+      "type": "problem",
+      "label": "HackDevs",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-126",
+      "type": "problem",
+      "label": "Celebrate Ubuntu Hackathon - Beijing",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-127",
+      "type": "problem",
+      "label": "HackPKU2016",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-128",
+      "type": "problem",
+      "label": "JUNCTIONxTsinghua 2018",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-129",
+      "type": "problem",
+      "label": "Uber Hackathon - Improving Cities with Uber API 为城市喝彩",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-130",
+      "type": "problem",
+      "label": "TechCrunch Shanghai 2016 Hackathon",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-131",
+      "type": "problem",
+      "label": "Hyperledger BlockChain Hackathon Shanghai 2017",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-132",
+      "type": "problem",
+      "label": "hack.init() 2017",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-133",
+      "type": "problem",
+      "label": "HackNYU @ NYUSH",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-134",
+      "type": "problem",
+      "label": "Hack the Pearl",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-135",
+      "type": "problem",
+      "label": "OpenClaw Global Unhackathon (Hong Kong)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-136",
+      "type": "problem",
+      "label": "OpenClaw Meet-up (HKU CAMO)",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-137",
+      "type": "problem",
+      "label": "January Capital — Builders Session with Codex x OpenClaw x OpenAI Multimodal APIs",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-138",
+      "type": "problem",
+      "label": "OpenClaw Singapore - Finance Edition",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-139",
+      "type": "problem",
+      "label": "OpenClaw Meetup JKT #2",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-140",
+      "type": "problem",
+      "label": "Student Life Track Hackathon 2026",
+      "cluster": "Event"
+    },
+    {
+      "id": "Event:evt-141",
+      "type": "problem",
+      "label": "Tech For Good 2026 - Initial Organizer Submissions",
+      "cluster": "Event"
+    },
+    {
+      "id": "Demo:demo-001",
+      "type": "solution",
+      "label": "AI prototypes",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-002",
+      "type": "solution",
+      "label": "text-to-video",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-003",
+      "type": "solution",
+      "label": "winner showcase",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-004",
+      "type": "solution",
+      "label": "AI agents for SDLC",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-005",
+      "type": "solution",
+      "label": "AI filmmaking tool testing",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-006",
+      "type": "solution",
+      "label": "winner project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-007",
+      "type": "solution",
+      "label": "rapid prototyping",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-008",
+      "type": "solution",
+      "label": "agentic coding",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-009",
+      "type": "solution",
+      "label": "multimodal hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-010",
+      "type": "solution",
+      "label": "winner project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-011",
+      "type": "solution",
+      "label": "social-good prototypes",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-012",
+      "type": "solution",
+      "label": "demo video",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-013",
+      "type": "solution",
+      "label": "winner project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-014",
+      "type": "solution",
+      "label": "challenge tracks",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-015",
+      "type": "solution",
+      "label": "winner project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-016",
+      "type": "solution",
+      "label": "hackathon program",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-017",
+      "type": "solution",
+      "label": "winners announcement",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-018",
+      "type": "solution",
+      "label": "winner project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-019",
+      "type": "solution",
+      "label": "daily games",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-020",
+      "type": "solution",
+      "label": "winner project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-021",
+      "type": "solution",
+      "label": "student hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-022",
+      "type": "solution",
+      "label": "hackathon roundup",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-023",
+      "type": "solution",
+      "label": "3D terrain flythrough",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-024",
+      "type": "solution",
+      "label": "AI hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-025",
+      "type": "solution",
+      "label": "mini hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-026",
+      "type": "solution",
+      "label": "pitch deck submission",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-027",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-028",
+      "type": "solution",
+      "label": "in-person hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-029",
+      "type": "solution",
+      "label": "hackathon program",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-030",
+      "type": "solution",
+      "label": "hackathon program",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-031",
+      "type": "solution",
+      "label": "24h hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-032",
+      "type": "solution",
+      "label": "project slides",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-033",
+      "type": "solution",
+      "label": "hackathon program",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-034",
+      "type": "solution",
+      "label": "health-tech prototypes",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-035",
+      "type": "solution",
+      "label": "winner announcement",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-036",
+      "type": "solution",
+      "label": "AI Gateway",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-037",
+      "type": "solution",
+      "label": "open-model hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-038",
+      "type": "solution",
+      "label": "social-good prototypes",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-039",
+      "type": "solution",
+      "label": "voice email assistant demo",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-040",
+      "type": "solution",
+      "label": "winner announcement",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-041",
+      "type": "solution",
+      "label": "hackathon submissions thread",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-042",
+      "type": "solution",
+      "label": "Bitcoin City visualization",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-043",
+      "type": "solution",
+      "label": "student hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-044",
+      "type": "solution",
+      "label": "hackathon program",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-045",
+      "type": "solution",
+      "label": "student hackathon",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-046",
+      "type": "solution",
+      "label": "Streamlit hosted demos",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-047",
+      "type": "solution",
+      "label": "project demos",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-048",
+      "type": "solution",
+      "label": "winners list",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-049",
+      "type": "solution",
+      "label": "19 GenAI prototypes",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-050",
+      "type": "solution",
+      "label": "recap video",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-051",
+      "type": "solution",
+      "label": "prototype demos",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-052",
+      "type": "solution",
+      "label": "online hackathon program",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-053",
+      "type": "solution",
+      "label": "AGI.Chat (open-source demo)",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-054",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-055",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-056",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-057",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-058",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-059",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-060",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-061",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-062",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-063",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-064",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-065",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-067",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-068",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-069",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-070",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-071",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-073",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-074",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-075",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-076",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-077",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-078",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-079",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-080",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-081",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-082",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-083",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-084",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-085",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-087",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-088",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-089",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-090",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-091",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-092",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-093",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-094",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-095",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-096",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-097",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-098",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-099",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-100",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-101",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-102",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-103",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-104",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-105",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-106",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-107",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-108",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-109",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-110",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-111",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-112",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-113",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-114",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-115",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-116",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-117",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-118",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-119",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-120",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-121",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-122",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-123",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-124",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-125",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-126",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-127",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-128",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-129",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-130",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-131",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-132",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-133",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-134",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-135",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-136",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-137",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-138",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-139",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-140",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-141",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-142",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    },
+    {
+      "id": "Demo:demo-143",
+      "type": "solution",
+      "label": "project gallery",
+      "cluster": "Demo"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Event:evt-001",
+      "target": "Demo:demo-001",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-002",
+      "target": "Demo:demo-002",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-003",
+      "target": "Demo:demo-003",
+      "type": "has_demo",
+      "strength": 0.56
+    },
+    {
+      "source": "Event:evt-004",
+      "target": "Demo:demo-004",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-005",
+      "target": "Demo:demo-005",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-006",
+      "target": "Demo:demo-006",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-007",
+      "target": "Demo:demo-007",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-007",
+      "target": "Demo:demo-012",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-008",
+      "target": "Demo:demo-008",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-009",
+      "target": "Demo:demo-009",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-010",
+      "target": "Demo:demo-010",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-011",
+      "target": "Demo:demo-011",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-012",
+      "target": "Demo:demo-013",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-013",
+      "target": "Demo:demo-014",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-014",
+      "target": "Demo:demo-015",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-015",
+      "target": "Demo:demo-016",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-016",
+      "target": "Demo:demo-017",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-017",
+      "target": "Demo:demo-018",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-018",
+      "target": "Demo:demo-019",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-019",
+      "target": "Demo:demo-020",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-020",
+      "target": "Demo:demo-021",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-021",
+      "target": "Demo:demo-022",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-022",
+      "target": "Demo:demo-023",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-023",
+      "target": "Demo:demo-024",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-023",
+      "target": "Demo:demo-028",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-024",
+      "target": "Demo:demo-025",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-025",
+      "target": "Demo:demo-026",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-026",
+      "target": "Demo:demo-027",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-027",
+      "target": "Demo:demo-029",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-028",
+      "target": "Demo:demo-030",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-029",
+      "target": "Demo:demo-031",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-030",
+      "target": "Demo:demo-032",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-031",
+      "target": "Demo:demo-033",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-032",
+      "target": "Demo:demo-034",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-033",
+      "target": "Demo:demo-035",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-034",
+      "target": "Demo:demo-036",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-035",
+      "target": "Demo:demo-037",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-036",
+      "target": "Demo:demo-038",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-037",
+      "target": "Demo:demo-039",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-038",
+      "target": "Demo:demo-040",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-039",
+      "target": "Demo:demo-041",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-040",
+      "target": "Demo:demo-042",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-041",
+      "target": "Demo:demo-043",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-042",
+      "target": "Demo:demo-044",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-043",
+      "target": "Demo:demo-045",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-044",
+      "target": "Demo:demo-046",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-045",
+      "target": "Demo:demo-047",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-046",
+      "target": "Demo:demo-048",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-047",
+      "target": "Demo:demo-049",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-048",
+      "target": "Demo:demo-050",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-049",
+      "target": "Demo:demo-051",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-050",
+      "target": "Demo:demo-052",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-051",
+      "target": "Demo:demo-053",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-052",
+      "target": "Demo:demo-054",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-053",
+      "target": "Demo:demo-055",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-054",
+      "target": "Demo:demo-056",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-055",
+      "target": "Demo:demo-057",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-056",
+      "target": "Demo:demo-058",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-057",
+      "target": "Demo:demo-059",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-058",
+      "target": "Demo:demo-060",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-059",
+      "target": "Demo:demo-061",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-060",
+      "target": "Demo:demo-062",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-061",
+      "target": "Demo:demo-063",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-062",
+      "target": "Demo:demo-064",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-063",
+      "target": "Demo:demo-065",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-065",
+      "target": "Demo:demo-067",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-066",
+      "target": "Demo:demo-068",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-067",
+      "target": "Demo:demo-069",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-068",
+      "target": "Demo:demo-070",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-069",
+      "target": "Demo:demo-071",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-071",
+      "target": "Demo:demo-073",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-072",
+      "target": "Demo:demo-074",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-073",
+      "target": "Demo:demo-075",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-074",
+      "target": "Demo:demo-076",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-075",
+      "target": "Demo:demo-077",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-076",
+      "target": "Demo:demo-078",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-077",
+      "target": "Demo:demo-079",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-078",
+      "target": "Demo:demo-080",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-079",
+      "target": "Demo:demo-081",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-080",
+      "target": "Demo:demo-082",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-081",
+      "target": "Demo:demo-083",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-082",
+      "target": "Demo:demo-084",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-083",
+      "target": "Demo:demo-085",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-085",
+      "target": "Demo:demo-087",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-086",
+      "target": "Demo:demo-088",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-087",
+      "target": "Demo:demo-089",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-088",
+      "target": "Demo:demo-090",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-089",
+      "target": "Demo:demo-091",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-090",
+      "target": "Demo:demo-092",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-091",
+      "target": "Demo:demo-093",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-092",
+      "target": "Demo:demo-094",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-093",
+      "target": "Demo:demo-095",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-094",
+      "target": "Demo:demo-096",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-095",
+      "target": "Demo:demo-097",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-096",
+      "target": "Demo:demo-098",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-097",
+      "target": "Demo:demo-099",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-098",
+      "target": "Demo:demo-100",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-099",
+      "target": "Demo:demo-101",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-100",
+      "target": "Demo:demo-102",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-101",
+      "target": "Demo:demo-103",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-102",
+      "target": "Demo:demo-104",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-103",
+      "target": "Demo:demo-105",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-104",
+      "target": "Demo:demo-106",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-105",
+      "target": "Demo:demo-107",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-106",
+      "target": "Demo:demo-108",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-107",
+      "target": "Demo:demo-109",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-108",
+      "target": "Demo:demo-110",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-109",
+      "target": "Demo:demo-111",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-110",
+      "target": "Demo:demo-112",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-111",
+      "target": "Demo:demo-113",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-112",
+      "target": "Demo:demo-114",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-113",
+      "target": "Demo:demo-115",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-114",
+      "target": "Demo:demo-116",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-115",
+      "target": "Demo:demo-117",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-116",
+      "target": "Demo:demo-118",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-117",
+      "target": "Demo:demo-119",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-118",
+      "target": "Demo:demo-120",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-119",
+      "target": "Demo:demo-121",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-120",
+      "target": "Demo:demo-122",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-121",
+      "target": "Demo:demo-123",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-122",
+      "target": "Demo:demo-124",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-123",
+      "target": "Demo:demo-125",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-124",
+      "target": "Demo:demo-126",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-125",
+      "target": "Demo:demo-127",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-126",
+      "target": "Demo:demo-128",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-127",
+      "target": "Demo:demo-129",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-128",
+      "target": "Demo:demo-130",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-129",
+      "target": "Demo:demo-131",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-130",
+      "target": "Demo:demo-132",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-131",
+      "target": "Demo:demo-133",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-132",
+      "target": "Demo:demo-134",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-133",
+      "target": "Demo:demo-135",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-134",
+      "target": "Demo:demo-136",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-135",
+      "target": "Demo:demo-137",
+      "type": "has_demo",
+      "strength": 0.44
+    },
+    {
+      "source": "Event:evt-136",
+      "target": "Demo:demo-138",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-137",
+      "target": "Demo:demo-139",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-138",
+      "target": "Demo:demo-140",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-139",
+      "target": "Demo:demo-141",
+      "type": "has_demo",
+      "strength": 0.38
+    },
+    {
+      "source": "Event:evt-140",
+      "target": "Demo:demo-142",
+      "type": "has_demo",
+      "strength": 0.41
+    },
+    {
+      "source": "Event:evt-141",
+      "target": "Demo:demo-143",
+      "type": "has_demo",
+      "strength": 0.41
+    }
+  ],
+  "meta": {
+    "source": "hackamap_api_graph.json",
+    "graph_source": "knowgrph-hackamap.json",
+    "graph_content_signature": "7300b7d5dd7c30bfdad0fe6e10957ffe15825c555974d560de9ec1f765e26bb3",
+    "content_signature": "d06599a3acedab0d69da5fff526cf7386f797f66d0d949ed34c58ffc65a398bd",
+    "total_problems": 138,
+    "total_solutions": 140,
+    "node_count": 278,
+    "edge_count": 140
+  }
+}

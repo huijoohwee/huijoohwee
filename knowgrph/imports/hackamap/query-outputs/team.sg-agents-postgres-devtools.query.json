@@ -1,0 +1,41 @@
+[
+  {
+    "_file": "team.md",
+    "_row": 4,
+    "id": "team-004",
+    "Team": "@cursor_ai",
+    "Type": null,
+    "URL": null,
+    "Demos": [
+      "demo-031"
+    ],
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": null
+  },
+  {
+    "_file": "team.md",
+    "_row": 41,
+    "id": "team-041",
+    "Team": "Cursor",
+    "Type": "company",
+    "URL": "https://cursor.com/",
+    "Demos": [
+      "demo-024",
+      "demo-027",
+      "demo-028"
+    ],
+    "Source Type": [
+      "media",
+      "event-recap",
+      "devpost",
+      "project-gallery",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": null
+  }
+]

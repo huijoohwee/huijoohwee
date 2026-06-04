@@ -1,0 +1,256 @@
+[
+  {
+    "_file": "demos.md",
+    "_row": 45,
+    "id": "demo-045",
+    "event_id": "evt-043",
+    "Pain Point": "students need accessible, local hackathons to build and demo projects; participants want an in-person venue and judging",
+    "Solution": "24-hour student hackathon with open-ended builds; submissions and project gallery on Devpost",
+    "Product": [
+      "student hackathon",
+      "project submissions",
+      "project gallery"
+    ],
+    "Team": [
+      "NUS Hackers",
+      "participants"
+    ],
+    "Tech Stack": [
+      "Devpost"
+    ],
+    "Demo URL": "https://hacknroll2024.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 70,
+    "id": "demo-071",
+    "event_id": "evt-069",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Seoul Tech Impact"
+    ],
+    "Tech Stack": [
+      "Beginner Friendly",
+      "Social Good"
+    ],
+    "Demo URL": "https://seoul-tech-impact-2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "registration",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 95,
+    "id": "demo-098",
+    "event_id": "evt-096",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Meta"
+    ],
+    "Tech Stack": [
+      "AR/VR"
+    ],
+    "Demo URL": "https://presence-platform-japan-2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 96,
+    "id": "demo-099",
+    "event_id": "evt-097",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Meta"
+    ],
+    "Tech Stack": [
+      "AR/VR"
+    ],
+    "Demo URL": "https://presence-platform-seoul-2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 98,
+    "id": "demo-101",
+    "event_id": "evt-099",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "National University of Singapore"
+    ],
+    "Tech Stack": [
+      "Beginner Friendly",
+      "Social Good"
+    ],
+    "Demo URL": "https://hack4good-2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 99,
+    "id": "demo-102",
+    "event_id": "evt-100",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "NUS Statistics and Data Science Society"
+    ],
+    "Tech Stack": [
+      "Beginner Friendly"
+    ],
+    "Demo URL": "https://nus-datathon-2024-cat-b.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 100,
+    "id": "demo-103",
+    "event_id": "evt-101",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Cyber Youth Singapore"
+    ],
+    "Tech Stack": [
+      "Beginner Friendly",
+      "Open Ended",
+      "Social Good"
+    ],
+    "Demo URL": "https://youthxhack2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 101,
+    "id": "demo-104",
+    "event_id": "evt-102",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Cloudhacks"
+    ],
+    "Tech Stack": [
+      "Beginner Friendly",
+      "Open Ended"
+    ],
+    "Demo URL": "https://cloudhacks-2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 102,
+    "id": "demo-105",
+    "event_id": "evt-103",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "busan"
+    ],
+    "Tech Stack": [
+      "Databases",
+      "DevOps",
+      "Enterprise"
+    ],
+    "Demo URL": "https://dive2024inbusan.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  }
+]

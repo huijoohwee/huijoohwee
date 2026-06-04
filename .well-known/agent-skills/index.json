@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-skills.dev/schemas/skills-index.v0.2.json",
-  "updated_at": "2026-05-23",
+  "updated_at": "2026-06-04",
   "skills": [
     {
       "name": "knowgrph-agent-ready",
@@ -110,24 +110,26 @@
       "type": "markdown",
       "description": "Expose local UI launch, pipeline, GraphRAG, superagent, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
-      "sha256": "23da8281deb4aec98549eb150ae31c57ed65b8d2e1957e274656cfaf303305ad",
+      "sha256": "9e02fa207ca53f66d1d852f4e7aa66b96ad4ce7537707e3fd36c736bc02135ce",
       "vdeoxpln": {
         "id": "knowgrph-mcp-local",
         "title": "Knowgrph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_ce53c914",
+        "semanticKey": "kgvx_63e375a4",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
+            "fetch",
             "knowgrph.browser_api.run",
             "knowgrph.graphrag_pipeline",
             "knowgrph.pipeline",
             "knowgrph.superagent.run",
             "knowgrph.ui.launch",
             "knowgrph.ui.stop",
-            "knowgrph.vdeoxpln.list"
+            "knowgrph.vdeoxpln.list",
+            "search"
           ]
         },
         "publish": [
@@ -169,13 +171,13 @@
       "type": "markdown",
       "description": "Discover, read, inspect, and route published Source Files and shared documents through the canonical storage and document-structure owners.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-source-files.md",
-      "sha256": "8af3434a18a2b59b6b91a7a786850c893d45e2115704932c2a342eef111d1ed9",
+      "sha256": "a78bb3da32a17c2934dfa623ce8d785fec16c44ad0ec8366444c61a85b43ebdb",
       "vdeoxpln": {
         "id": "knowgrph-source-files",
         "title": "Knowgrph Source Files",
         "scope": "read-only-published",
         "mutation": "read-only",
-        "semanticKey": "kgvx_38804667",
+        "semanticKey": "kgvx_79a9fb63",
         "tools": {
           "published": [
             "inspect_shared_document_structure",
@@ -187,7 +189,9 @@
             "inspect_local_source_files_snapshot"
           ],
           "local": [
-            "knowgrph.vdeoxpln.list"
+            "fetch",
+            "knowgrph.vdeoxpln.list",
+            "search"
           ]
         },
         "publish": [

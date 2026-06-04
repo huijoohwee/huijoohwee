@@ -1,0 +1,1285 @@
+[
+  {
+    "_file": "demos.md",
+    "_row": 2,
+    "id": "demo-002",
+    "event_id": "evt-002",
+    "Pain Point": "content creators lack cinematic video production tools; high barrier to media production",
+    "Solution": "AI-generated video from text and image input",
+    "Product": [
+      "text-to-video",
+      "image-to-video",
+      "cinematic output"
+    ],
+    "Team": [
+      "Building with AI community",
+      "local MY creators"
+    ],
+    "Tech Stack": [
+      "Seedance model",
+      "ModelArk"
+    ],
+    "Demo URL": "https://x.com/BytePlusGlobal/status/2039621356195586166",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "marketing"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 3,
+    "id": "demo-003",
+    "event_id": "evt-003",
+    "Pain Point": "builders need a high-signal venue to ship autonomous web agents; winners need public recognition and links to demos/projects",
+    "Solution": "in-person hackathon with a hard constraint (must require autonomous web agents) and awards for top projects",
+    "Product": [
+      "winner showcase",
+      "autonomous web-agent demos",
+      "143 projects (reported)"
+    ],
+    "Team": [
+      "TinyFish",
+      "Acacia AI Society",
+      "NUS",
+      "350+ hackers (reported)"
+    ],
+    "Tech Stack": [
+      "TinyFish web agents",
+      "OpenAI (powered by, mentioned)"
+    ],
+    "Demo URL": "https://www.linkedin.com/posts/tinyfish-ai_we-just-hosted-singapores-largest-web-agent-activity-7444832567515811841-EqvM; https://lnkd.in/g52ftBkm; https://lnkd.in/gKJ5hhZu; https://lnkd.in/gMKstPsh; https://lnkd.in/gbnrajW9; https://lnkd.in/g7FyRCDn; https://lnkd.in/gDeJvw6P",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "linkedin",
+      "winners-showcase",
+      "demo-links"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 4,
+    "id": "demo-004",
+    "event_id": "evt-004",
+    "Pain Point": "teams need to operationalize AI beyond code generation; orgs want agents for planning/security/compliance/deployments",
+    "Solution": "hackathon encouraging teams to build workflow agents inside GitLab; prizes and deadline",
+    "Product": [
+      "AI agents for SDLC",
+      "workflow automation"
+    ],
+    "Team": [
+      "Devpost",
+      "GitLab"
+    ],
+    "Tech Stack": [
+      "GitLab workflows"
+    ],
+    "Demo URL": "https://x.com/devpost/status/2020965804687446360",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 5,
+    "id": "demo-005",
+    "event_id": "evt-005",
+    "Pain Point": "filmmakers/creators need fast ways to produce short films; teams need rapid feedback on AI filmmaking tools under tight time constraints",
+    "Solution": "AI filmmaking hackathon format enabling teams to create films in <3 hours using an AI tool",
+    "Product": [
+      "AI filmmaking tool testing",
+      "rapid short-film creation"
+    ],
+    "Team": [
+      "SXSW community",
+      "KoyalAI",
+      "100+ filmmakers"
+    ],
+    "Tech Stack": [
+      "KoyalAI"
+    ],
+    "Demo URL": "https://x.com/meh_agarwal/status/2033596708513341710",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "community",
+      "event-recap"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 7,
+    "id": "demo-007",
+    "event_id": "evt-007",
+    "Pain Point": "builders need in-person hackathons to quickly prototype with Codex and iOS XR stacks",
+    "Solution": "post-hackathon winner shoutout; highlights rapid ARKit prototyping with Codex",
+    "Product": [
+      "rapid prototyping",
+      "ARKit experience"
+    ],
+    "Team": [
+      "Codex hackathon participants",
+      "OpenAI community"
+    ],
+    "Tech Stack": [
+      "Codex",
+      "ARKit (mentioned)"
+    ],
+    "Demo URL": "https://x.com/romainhuet/status/2028586504407470503",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "community",
+      "event-recap"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 8,
+    "id": "demo-008",
+    "event_id": "evt-008",
+    "Pain Point": "APAC developers need hands-on access to Codex; teams need a venue to build and demo Codex projects quickly",
+    "Solution": "in-person hackathon in Singapore with Codex; winners showcased their projects",
+    "Product": [
+      "agentic coding",
+      "project demos",
+      "winner showcase"
+    ],
+    "Team": [
+      "OpenAI Developers",
+      "100+ developers (participants)"
+    ],
+    "Tech Stack": [
+      "Codex"
+    ],
+    "Demo URL": "https://x.com/OpenAIDevs/status/2028588617095057902",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "event-recap"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 9,
+    "id": "demo-009",
+    "event_id": "evt-009",
+    "Pain Point": "most AI apps don’t use the full multimodal stack; builders lack access to a complete multimodal toolchain for experiments",
+    "Solution": "hackathon providing access to multiple multimodal models so teams can build end-to-end multimodal apps",
+    "Product": [
+      "multimodal hackathon",
+      "model access",
+      "rapid prototyping"
+    ],
+    "Team": [
+      "Y Combinator",
+      "Google DeepMind"
+    ],
+    "Tech Stack": [
+      "Gemini 3.1",
+      "Lyria",
+      "NanoBanana 2"
+    ],
+    "Demo URL": "https://x.com/ycombinator/status/2028564751882871056",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 12,
+    "id": "demo-012",
+    "event_id": "evt-007",
+    "Pain Point": "hackathon participants need quick ways to share demos and artifacts; teams need community visibility for hackathon builds",
+    "Solution": "short demo/video sneak peek from an in-person Codex hackathon",
+    "Product": [
+      "demo video",
+      "hackathon showcase"
+    ],
+    "Team": [
+      "OpenAI Codex hackathon participants"
+    ],
+    "Tech Stack": [
+      "Codex"
+    ],
+    "Demo URL": "https://x.com/agrimsingh/status/2027736501241700461",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "community",
+      "demo"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 14,
+    "id": "demo-014",
+    "event_id": "evt-013",
+    "Pain Point": "developers need a hybrid (online + in-person) venue to ship and demo projects with sponsors; teams need clear challenges and prize incentives",
+    "Solution": "challenge-driven hackathon with online phase and in-person finals; submit demo video and project page",
+    "Product": [
+      "challenge tracks",
+      "project submissions",
+      "demo video"
+    ],
+    "Team": [
+      "DevNetwork",
+      "DeveloperWeek community"
+    ],
+    "Tech Stack": [
+      "Devpost",
+      "(various sponsor APIs)"
+    ],
+    "Demo URL": "https://developerweek-2026-hackathon.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 17,
+    "id": "demo-017",
+    "event_id": "evt-016",
+    "Pain Point": "virtual hackathons need a transparent winners announcement and links to demo posts; developers need recognition + discoverability for winning demos",
+    "Solution": "publish a winners announcement post with links to winning demo posts and the project gallery",
+    "Product": [
+      "winners announcement",
+      "demo post links",
+      "project gallery links"
+    ],
+    "Team": [
+      "r/Devvit (Reddit)",
+      "Reddit Daily Games Hackathon judges",
+      "GameMaker"
+    ],
+    "Tech Stack": [
+      "Reddit Devvit platform",
+      "Devpost (project gallery)"
+    ],
+    "Demo URL": "https://www.reddit.com/r/Devvit/comments/1rffubl/announcing_the_reddit_daily_games_hackathon/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "reddit",
+      "winners-announcement"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 18,
+    "id": "demo-018",
+    "event_id": "evt-017",
+    "Pain Point": "virtual hackathons need a canonical page to browse winning demos; participants want direct links to demo-ready projects",
+    "Solution": "publish Devpost gallery with winner ribbons and links to project demo pages",
+    "Product": [
+      "winner project gallery",
+      "demo pages"
+    ],
+    "Team": [
+      "Reddit",
+      "GameMaker",
+      "hackathon participants"
+    ],
+    "Tech Stack": [
+      "Devpost"
+    ],
+    "Demo URL": "https://redditdailygames2026.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project-gallery",
+      "winners"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 19,
+    "id": "demo-019",
+    "event_id": "evt-018",
+    "Pain Point": "developers need a structured venue to build and demo interactive daily games on Reddit; teams need clear submission artifacts (app listing + demo post)",
+    "Solution": "virtual hackathon on Reddit Devvit platform; submit app listing and demo post for judging",
+    "Product": [
+      "daily games",
+      "demo posts",
+      "project gallery"
+    ],
+    "Team": [
+      "Reddit",
+      "GameMaker"
+    ],
+    "Tech Stack": [
+      "Devvit Web",
+      "(React/Phaser/three.js or game engines mentioned)"
+    ],
+    "Demo URL": "https://redditdailygames2026.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 22,
+    "id": "demo-022",
+    "event_id": "evt-021",
+    "Pain Point": "builders need timely discovery of hackathon opportunities; teams need a centralized shortlist of upcoming hackathons",
+    "Solution": "curation post listing multiple hackathons with dates and links to register",
+    "Product": [
+      "hackathon roundup",
+      "registration links"
+    ],
+    "Team": [
+      "TinTinLand"
+    ],
+    "Tech Stack": [
+      "Web3 ecosystems (Casper/Solana/Arbitrum mentioned)"
+    ],
+    "Demo URL": "https://x.com/OurTinTinLand/status/1993995697256058967",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "x.com",
+      "community",
+      "curation"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 23,
+    "id": "demo-023",
+    "event_id": "evt-022",
+    "Pain Point": "builders need a venue to prototype and demo AI ideas in-person; hackathon teams want post-event visibility (repo + live demo)",
+    "Solution": "project-demo recap post highlighting a hackathon build; shares repo + longer live demo",
+    "Product": [
+      "3D terrain flythrough",
+      "Gemini tour guide",
+      "topo-map to 3D mesh pipeline"
+    ],
+    "Team": [
+      "ruban sk",
+      "Google DeepMind SG hackathon participants"
+    ],
+    "Tech Stack": [
+      "Gemini (Live API mentioned)",
+      "Three.js",
+      "AWS terrain tiles",
+      "fal (Nano Banana Pro mentioned)"
+    ],
+    "Demo URL": "https://www.linkedin.com/feed/update/urn:li:activity:7417460624286330881/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "linkedin",
+      "project-demo"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 24,
+    "id": "demo-024",
+    "event_id": "evt-023",
+    "Pain Point": "teams want access to frontier AI tools for rapid prototyping; builders need a local venue to ship AI projects quickly",
+    "Solution": "24-hour AI hackathon recap; highlights scale (projects built in one weekend)",
+    "Product": [
+      "AI hackathon",
+      "project showcase/recap"
+    ],
+    "Team": [
+      "Cursor",
+      "Anthropic",
+      "Malaysia hackathon participants"
+    ],
+    "Tech Stack": [
+      "Cursor",
+      "Anthropic (implied)"
+    ],
+    "Demo URL": "https://x.com/therakyatpost/status/2001218375389769766",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "media",
+      "event-recap"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 25,
+    "id": "demo-025",
+    "event_id": "evt-024",
+    "Pain Point": "builders want structured bootcamps + hackathons to ship blockchain projects; teams need recognition and visibility for winners",
+    "Solution": "mini hackathon results recap for Sui Bootcamp Indonesia (Jakarta)",
+    "Product": [
+      "mini hackathon",
+      "bootcamp project results"
+    ],
+    "Team": [
+      "Sui Malaysia",
+      "Sui Indonesia",
+      "builders (participants)"
+    ],
+    "Tech Stack": [
+      "Sui",
+      "Move"
+    ],
+    "Demo URL": "https://x.com/SuiCommunity_MY/status/2000233825423749530",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "community",
+      "event-recap"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 28,
+    "id": "demo-028",
+    "event_id": "evt-023",
+    "Pain Point": "builders want a local venue to ship AI projects quickly; teams need incentives + credits to prototype with Cursor/Claude",
+    "Solution": "24-hour in-person hackathon with sponsor tracks and prize categories; submit projects on Devpost",
+    "Product": [
+      "in-person hackathon",
+      "sponsor tracks",
+      "project submissions"
+    ],
+    "Team": [
+      "Cursor",
+      "Anthropic",
+      "community partners",
+      "participants"
+    ],
+    "Tech Stack": [
+      "Cursor",
+      "Anthropic API",
+      "Convex",
+      "Vercel",
+      "TiDB",
+      "ElevenLabs",
+      "LeanMCP (tracks mentioned)"
+    ],
+    "Demo URL": "https://cursor-hack-my.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 29,
+    "id": "demo-029",
+    "event_id": "evt-027",
+    "Pain Point": "hardcore product builders need a fast way to prototype with frontier models; limited access to upcoming models/APIs outside special programs",
+    "Solution": "time-boxed hackathon with exclusive early access to upcoming models and platform APIs",
+    "Product": [
+      "hackathon program",
+      "early model/API access",
+      "rapid prototyping (24h)"
+    ],
+    "Team": [
+      "xAI"
+    ],
+    "Tech Stack": [
+      "Grok models",
+      "X APIs"
+    ],
+    "Demo URL": "https://x.com/xai/status/1987696575314104339",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 30,
+    "id": "demo-030",
+    "event_id": "evt-028",
+    "Pain Point": "builders need clear timelines and a venue to showcase demos after a hackathon; teams want global visibility and prizes",
+    "Solution": "hybrid hackathon (online + Berlin) with a showcase day and prize pool",
+    "Product": [
+      "hackathon program",
+      "project showcase day"
+    ],
+    "Team": [
+      "Cardano Foundation",
+      "sponsor engineers/mentors"
+    ],
+    "Tech Stack": [
+      "Cardano ecosystem (implied)"
+    ],
+    "Demo URL": "https://www.reddit.com/r/cardano/comments/1nr0sfe/build_the_future_at_the_cardano_summit_hackathon/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "reddit",
+      "announcement"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 31,
+    "id": "demo-031",
+    "event_id": "evt-029",
+    "Pain Point": "builders need a fast, high-signal way to ship projects in 24 hours; teams want credits/cash incentives to prototype rapidly",
+    "Solution": "24-hour hackathon format with cash + tool credits to ship projects (Cursor hackathon)",
+    "Product": [
+      "24h hackathon",
+      "project shipping"
+    ],
+    "Team": [
+      "@cursor_ai",
+      "hackathon organizers",
+      "participants"
+    ],
+    "Tech Stack": [
+      "Cursor",
+      "AI dev tools (mentioned in post)"
+    ],
+    "Demo URL": "https://x.com/gabrielchua/status/1975949011409412425",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 32,
+    "id": "demo-032",
+    "event_id": "evt-030",
+    "Pain Point": "youth innovators need a structured program to go from ideation to prototype and launch; teams need prompts and a live demo/pitch artifact",
+    "Solution": "design-thinking hackathon with workshops; requires slides and intro video (pitch or live demo)",
+    "Product": [
+      "project slides",
+      "short intro video",
+      "prototype demo"
+    ],
+    "Team": [
+      "CNHK",
+      "Community Shaper participants"
+    ],
+    "Tech Stack": [
+      "AI + emerging tech (unspecified)"
+    ],
+    "Demo URL": "https://cs-2025-hackathon-beta.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 33,
+    "id": "demo-033",
+    "event_id": "evt-031",
+    "Pain Point": "Indonesia needs innovation in digital finance and economic digitization; teams need a pathway from selection to final showcase",
+    "Solution": "national hackathon program selecting finalists and progressing toward a final showcase",
+    "Product": [
+      "hackathon program",
+      "finalist selection"
+    ],
+    "Team": [
+      "Bank Indonesia",
+      "OJK Indonesia"
+    ],
+    "Tech Stack": [
+      "fintech (unspecified)"
+    ],
+    "Demo URL": "https://x.com/bank_indonesia/status/1964290193348772338",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "government"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 34,
+    "id": "demo-034",
+    "event_id": "evt-032",
+    "Pain Point": "healthcare teams face burnout and rising care costs; builders need a structured venue to prototype health-tech solutions with clinical input",
+    "Solution": "in-person healthcare hackathon with kickoff, video pitch submission, demo day pitching, and finals",
+    "Product": [
+      "health-tech prototypes",
+      "demo day pitching",
+      "video pitch submissions"
+    ],
+    "Team": [
+      "Pharmaceutical Society of Singapore",
+      "hackathon participants (2-5 per team)"
+    ],
+    "Tech Stack": [
+      "Cogniss (no-code platform, mentioned)",
+      "AWS (scaling support, mentioned)"
+    ],
+    "Demo URL": "https://hackitrx.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 35,
+    "id": "demo-035",
+    "event_id": "evt-033",
+    "Pain Point": "hackathon participants need visibility and clear results after judging; teams want public winner lists and links to projects",
+    "Solution": "publish hackathon winner announcement thread/list after a 2-day in-person hackathon",
+    "Product": [
+      "winner announcement",
+      "project list"
+    ],
+    "Team": [
+      "OpenBuild",
+      "ETHShenzhen participants"
+    ],
+    "Tech Stack": [
+      "Ethereum (implied)"
+    ],
+    "Demo URL": "https://x.com/OpenBuildxyz/status/1963547236585148902",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 36,
+    "id": "demo-036",
+    "event_id": "evt-034",
+    "Pain Point": "teams want a vendor-neutral way to build and ship AI agents; builders need incentives/credits to test agent ideas quickly",
+    "Solution": "online hackathon encouraging builders to submit agents built with a hosted AI gateway; prizes in AI credits",
+    "Product": [
+      "AI Gateway",
+      "hackathon challenge",
+      "agent submissions"
+    ],
+    "Team": [
+      "Vercel"
+    ],
+    "Tech Stack": [
+      "Vercel",
+      "AI Gateway"
+    ],
+    "Demo URL": "https://x.com/vercel/status/1959307873143665060",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 37,
+    "id": "demo-037",
+    "event_id": "evt-035",
+    "Pain Point": "builders want open(-weight) frontier-scale models to fine-tune and agentify; lack of structured events to showcase open-model builds",
+    "Solution": "hackathon centered on building with open(-weight) reasoning models; prizes and deadline-driven build sprint",
+    "Product": [
+      "open-model hackathon",
+      "fine-tuning",
+      "agentification"
+    ],
+    "Team": [
+      "Devpost",
+      "OpenAI"
+    ],
+    "Tech Stack": [
+      "gpt-oss-120b",
+      "gpt-oss-20b"
+    ],
+    "Demo URL": "https://x.com/devpost/status/1952806091022319670",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 39,
+    "id": "demo-039",
+    "event_id": "evt-037",
+    "Pain Point": "founders need credible distribution and validation for early demos; hackathon teams want pathways to accelerators",
+    "Solution": "build and demo at a hackathon; winner prize includes accelerator interview; validate demand via landing page",
+    "Product": [
+      "voice email assistant demo",
+      "landing page validation"
+    ],
+    "Team": [
+      "April team",
+      "MCP Hackathon participants",
+      "YC (accelerator)"
+    ],
+    "Tech Stack": [
+      "AI assistant (unspecified)"
+    ],
+    "Demo URL": "https://www.producthunt.com/p/april-yc-s25/from-hackathon-to-yc",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "producthunt",
+      "story"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 40,
+    "id": "demo-040",
+    "event_id": "evt-038",
+    "Pain Point": "devs need examples and recognition after hackathons conclude; winners need visibility for projects",
+    "Solution": "announce winners and link to their projects after the hackathon wraps",
+    "Product": [
+      "winner announcement",
+      "project links"
+    ],
+    "Team": [
+      "Azure",
+      "GitHub Copilot",
+      "Devpost",
+      "hackathon winners"
+    ],
+    "Tech Stack": [
+      "Azure",
+      "GitHub Copilot"
+    ],
+    "Demo URL": "https://x.com/devpost/status/1915951678274097425",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "announcement",
+      "marketing"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 41,
+    "id": "demo-041",
+    "event_id": "evt-039",
+    "Pain Point": "makers need a lightweight format to ship and share demos quickly; hackathon participants want a place to submit and vote on projects",
+    "Solution": "small in-person hackathon; participants submit projects in a Product Hunt thread and vote",
+    "Product": [
+      "hackathon submissions thread",
+      "community voting"
+    ],
+    "Team": [
+      "Product Hunt community",
+      "bolt.new"
+    ],
+    "Tech Stack": [
+      "bolt.new credits (mentioned)"
+    ],
+    "Demo URL": "https://www.producthunt.com/p/bolt-new/product-hunt-x-bolt-march-2025-hackathon-submissions",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "producthunt",
+      "community-post"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 44,
+    "id": "demo-044",
+    "event_id": "evt-042",
+    "Pain Point": "startups and developers need a venue to explore GenAI use cases in finance; teams need a demo day to present MVPs to judges",
+    "Solution": "GenAI hackathon with registration and a scheduled Demo Day for participants",
+    "Product": [
+      "hackathon program",
+      "demo day"
+    ],
+    "Team": [
+      "AWS",
+      "Singapore FinTech Association",
+      "MongoDB",
+      "Mission Plus",
+      "Nvidia",
+      "Tenity"
+    ],
+    "Tech Stack": [
+      "GenAI (unspecified)"
+    ],
+    "Demo URL": "https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "linkedin",
+      "announcement"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 47,
+    "id": "demo-047",
+    "event_id": "evt-045",
+    "Pain Point": "local web3 builders need hands-on experience and an IRL pitch venue; teams need a hybrid online-to-IRL workflow to ship demos",
+    "Solution": "week-long hackathon: hack online, then gather IRL for final judging and pitching",
+    "Product": [
+      "project demos",
+      "IRL pitches",
+      "winner announcement"
+    ],
+    "Team": [
+      "ETH KL",
+      "cypherX",
+      "participants"
+    ],
+    "Tech Stack": [
+      "web3 (various)"
+    ],
+    "Demo URL": "https://cny-hack-kuala-lumpur.devpost.com/",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 48,
+    "id": "demo-048",
+    "event_id": "evt-046",
+    "Pain Point": "global hackathon winners need a canonical public announcement; makers want a quick summary of category and grand prize winners",
+    "Solution": "newsletter-style winners announcement summarizing category winners and grand prize winners",
+    "Product": [
+      "winners list",
+      "category winners",
+      "grand prize winners"
+    ],
+    "Team": [
+      "Product Hunt",
+      "global makers"
+    ],
+    "Tech Stack": [
+      "Product Hunt newsletter"
+    ],
+    "Demo URL": "https://www.producthunt.com/newsletters/archive/508-winners-of-the-ph-global-hackathon",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "producthunt",
+      "newsletter",
+      "winners-announcement"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 49,
+    "id": "demo-049",
+    "event_id": "evt-047",
+    "Pain Point": "enterprises need rapid ways to test GenAI for internal workflows; teams need a structured sprint to build working prototypes",
+    "Solution": "five-day hackathon pairing staff with students to build GenAI prototypes for real problem statements",
+    "Product": [
+      "19 GenAI prototypes",
+      "rapid experimentation format"
+    ],
+    "Team": [
+      "Temasek",
+      "SUTD students",
+      "Temasek staff"
+    ],
+    "Tech Stack": [
+      "GenAI (unspecified)"
+    ],
+    "Demo URL": "https://www.linkedin.com/posts/sutd_5-days-19-problem-statements-33-temasek-activity-7194169234426380289-L2gM",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "linkedin",
+      "event-recap"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 50,
+    "id": "demo-050",
+    "event_id": "evt-048",
+    "Pain Point": "hackathon organizers need a public recap to recognize winners and show outcomes; participants need post-event visibility to continue building",
+    "Solution": "post-hackathon recap highlighting winners and outcomes; emphasizes continuing projects beyond the hackathon",
+    "Product": [
+      "recap video",
+      "winner recognition",
+      "API credits for teams"
+    ],
+    "Team": [
+      "GovTech Singapore",
+      "OpenAI",
+      "top 3 teams (winners)"
+    ],
+    "Tech Stack": [
+      "OpenAI APIs (credits mentioned)"
+    ],
+    "Demo URL": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7269228880446590977-2hAs",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "linkedin",
+      "event-recap"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 51,
+    "id": "demo-051",
+    "event_id": "evt-049",
+    "Pain Point": "public sector teams need a safe, time-boxed environment to prototype AI-for-public-good use cases; builders need a stage + incentives to demo prototypes",
+    "Solution": "one-day in-person hackathon with judging; winning teams receive API credits to continue building",
+    "Product": [
+      "prototype demos",
+      "API credits for winners"
+    ],
+    "Team": [
+      "GovTech Singapore",
+      "OpenAI",
+      "hackathon participants"
+    ],
+    "Tech Stack": [
+      "GPT-4o Realtime (mentioned)",
+      "o1 reasoning model (mentioned)"
+    ],
+    "Demo URL": "https://www.linkedin.com/posts/govtech-singapore_govtechopenaihackathon-techevent-hackathon-activity-7264875053362610177-Fxf5",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "linkedin",
+      "announcement"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 52,
+    "id": "demo-052",
+    "event_id": "evt-050",
+    "Pain Point": "makers need time-boxed formats to build and launch quickly; communities need inclusive online hackathons for makers of all disciplines",
+    "Solution": "virtual makers festival/hackathon encouraging makers to build and launch; offers prizes and partners",
+    "Product": [
+      "online hackathon program",
+      "prizes"
+    ],
+    "Team": [
+      "Product Hunt",
+      "partners (TechCrunch/Webflow, mentioned)"
+    ],
+    "Tech Stack": [
+      "no-code + code (inclusive)"
+    ],
+    "Demo URL": "https://www.producthunt.com/stories/our-makers-festival-hackathon-is-here",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "producthunt",
+      "story"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 53,
+    "id": "demo-053",
+    "event_id": "evt-051",
+    "Pain Point": "hackathon prototypes often lack distribution after the event; builders want a place to showcase hackathon-made demos",
+    "Solution": "publish an open-source demo built during a hackathon on a discovery platform",
+    "Product": [
+      "AGI.Chat (open-source demo)"
+    ],
+    "Team": [
+      "AGI.Chat makers"
+    ],
+    "Tech Stack": [
+      "Cohere LLMs (mentioned)"
+    ],
+    "Demo URL": "https://www.producthunt.com/products/agi-chat",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "producthunt",
+      "product-page"
+    ],
+    "Confidence": "low",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 85,
+    "id": "demo-088",
+    "event_id": "evt-086",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": null,
+    "Tech Stack": [
+      "Productivity",
+      "Lifehacks",
+      "COVID-19"
+    ],
+    "Demo URL": "https://hackbangph.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 95,
+    "id": "demo-098",
+    "event_id": "evt-096",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Meta"
+    ],
+    "Tech Stack": [
+      "AR/VR"
+    ],
+    "Demo URL": "https://presence-platform-japan-2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 96,
+    "id": "demo-099",
+    "event_id": "evt-097",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "Meta"
+    ],
+    "Tech Stack": [
+      "AR/VR"
+    ],
+    "Demo URL": "https://presence-platform-seoul-2024.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 104,
+    "id": "demo-107",
+    "event_id": "evt-105",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "IATA",
+      "Cathay Cargo",
+      "CHAMP Cargosystems"
+    ],
+    "Tech Stack": [
+      "ONE Record",
+      "aviation logistics",
+      "APIs",
+      "AR/VR",
+      "Education",
+      "Low/No Code"
+    ],
+    "Demo URL": "https://onerecord-hkg.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "demos.md",
+    "_row": 131,
+    "id": "demo-134",
+    "event_id": "evt-132",
+    "Pain Point": null,
+    "Solution": null,
+    "Product": [
+      "project gallery"
+    ],
+    "Team": [
+      "hack.init()"
+    ],
+    "Tech Stack": [
+      "youth hackathon",
+      "Artificial Intelligence",
+      "Hardware",
+      "IoT",
+      "AR/VR",
+      "Web Development"
+    ],
+    "Demo URL": "https://hackinit.devpost.com/project-gallery",
+    "Repo URL": null,
+    "Video URL": null,
+    "Award": null,
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  }
+]

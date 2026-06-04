@@ -683,7 +683,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 5}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      monthly_agent_requests: {key: monthly_agent_requests, type: number, value: 10000}
+      monthly_agent_requests: {key: monthly_agent_requests, type: number, value: 888}
       retry_rate: {key: retry_rate, type: string, value: "tracked as risk, not baked into quoted platform fee"}
       size: {key: size, type: object, value: {"width":320,"height":190}}
       tags: {key: tags, type: array, value: ["hypothesis"]}
@@ -751,7 +751,7 @@ flow:
       label: {key: label, type: string, value: "Revenue Drivers"}
       position: {key: position, type: object, value: {"x":80,"y":990}}
       handles: {key: handles, type: object, value: {"source":["monthly_active_users","paid_conversion_rate","subscription_price_usd","marketplace_gmv_usd","agent_token_take_rate","support_refund_rate"]}}
-      agent_token_take_rate: {key: agent_token_take_rate, type: number, value: 50000}
+      agent_token_take_rate: {key: agent_token_take_rate, type: number, value: 5}
       driver_group: {key: driver_group, type: string, value: "revenue"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"monthly_active_users":"revenue_driver_signal","paid_conversion_rate":"revenue_driver_signal","subscription_price_usd":"revenue_driver_signal","marketplace_gmv_usd":"revenue_driver_signal","agent_token_take_rate":"revenue_driver_signal","support_refund_rate":"revenue_driver_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:revenue_drivers"}
@@ -761,7 +761,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 8}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       marketplace_gmv_usd: {key: marketplace_gmv_usd, type: number, value: 10000}
-      monthly_active_users: {key: monthly_active_users, type: number, value: 250000}
+      monthly_active_users: {key: monthly_active_users, type: number, value: 25}
       paid_conversion_rate: {key: paid_conversion_rate, type: number, value: 3000}
       size: {key: size, type: object, value: {"width":320,"height":250}}
       subscription_price_usd: {key: subscription_price_usd, type: number, value: 19}

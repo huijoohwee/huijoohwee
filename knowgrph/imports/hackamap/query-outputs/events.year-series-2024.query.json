@@ -1,0 +1,528 @@
+[
+  {
+    "_file": "events.md",
+    "_row": 42,
+    "id": "evt-042",
+    "Event": "GenAI for Finance Hackathon 2024",
+    "Organizer": [
+      "AWS",
+      "Singapore FinTech Association",
+      "MongoDB",
+      "Mission Plus",
+      "Nvidia",
+      "Tenity"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2024-06-04",
+    "Date End": "2024-06-04",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "GenAI (unspecified)"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://www.linkedin.com/posts/jerome-li-4386b7a4_genai-for-finance-hackathon-registrations-activity-7184093490073542658-9t7j"
+    ],
+    "Source Type": [
+      "linkedin",
+      "announcement"
+    ],
+    "Confidence": "medium",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 43,
+    "id": "evt-043",
+    "Event": "Hack&Roll 2024",
+    "Organizer": [
+      "NUS Hackers",
+      "participants"
+    ],
+    "Format": "in-person",
+    "Location": "Singapore",
+    "Date Start": "2024-01-20",
+    "Date End": "2024-01-21",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Devpost"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hacknroll2024.devpost.com/"
+    ],
+    "Source Type": [
+      "devpost",
+      "event-page"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 61,
+    "id": "evt-061",
+    "Event": "Hack4HK",
+    "Organizer": [
+      "Hack4HK"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2024-12-12",
+    "Date End": "2025-01-05",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Low/No Code",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hack4hk-23258.devpost.com/",
+      "https://hack4hk-23258.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 63,
+    "id": "evt-063",
+    "Event": "AI Hackathon with Google Cloud (Japan)",
+    "Organizer": [
+      "Google"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2024-08-01",
+    "Date End": "2024-09-23",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Machine Learning/AI",
+      "Enterprise"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://googlecloudjapanaihackathon.devpost.com/",
+      "https://googlecloudjapanaihackathon.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 68,
+    "id": "evt-069",
+    "Event": "Seoul Tech Impact 2024",
+    "Organizer": [
+      "Seoul Tech Impact"
+    ],
+    "Format": "in-person",
+    "Location": "Pangyo, South Korea",
+    "Date Start": "2024-09-07",
+    "Date End": "2024-09-08",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://seoul-tech-impact-2024.devpost.com/",
+      "https://www.seoultechimpact.com/register",
+      "https://seoul-tech-impact-2024.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "registration",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 73,
+    "id": "evt-075",
+    "Event": "Elite Coding Cup India",
+    "Organizer": [
+      "india"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2024-08-16",
+    "Date End": "2024-08-18",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Blockchain",
+      "Machine Learning/AI",
+      "Web"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://coding-cup.devpost.com/",
+      "https://coding-cup.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 77,
+    "id": "evt-079",
+    "Event": "HackIdea",
+    "Organizer": [
+      "TPM"
+    ],
+    "Format": "in-person",
+    "Location": "The Sultan Convention Center, Palembang, Indonesia",
+    "Date Start": "2023-12-29",
+    "Date End": "2024-01-03",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Cybersecurity",
+      "E-commerce/Retail",
+      "Mobile"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hackidea.devpost.com/",
+      "https://hackidea.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 93,
+    "id": "evt-096",
+    "Event": "Presence Platform Hackathon (Japan 2024)",
+    "Organizer": [
+      "Meta"
+    ],
+    "Format": "in-person",
+    "Location": "Meta Japan Office, Tokyo, Japan",
+    "Date Start": "2024-07-09",
+    "Date End": "2024-07-11",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "AR/VR"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://presence-platform-japan-2024.devpost.com/",
+      "https://presence-platform-japan-2024.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 94,
+    "id": "evt-097",
+    "Event": "Presence Platform Hackathon (Seoul 2024)",
+    "Organizer": [
+      "Meta"
+    ],
+    "Format": "in-person",
+    "Location": "Meta South Korea Office (Seoul), South Korea",
+    "Date Start": "2024-07-16",
+    "Date End": "2024-07-18",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "AR/VR"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://presence-platform-seoul-2024.devpost.com/",
+      "https://presence-platform-seoul-2024.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 96,
+    "id": "evt-099",
+    "Event": "Hack4Good 2024",
+    "Organizer": [
+      "National University of Singapore"
+    ],
+    "Format": "online",
+    "Location": "Online",
+    "Date Start": "2024-01-27",
+    "Date End": "2024-02-10",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hack4good-2024.devpost.com/",
+      "https://hack4good-2024.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 97,
+    "id": "evt-100",
+    "Event": "NUS Datathon 2024: Singlife",
+    "Organizer": [
+      "NUS Statistics and Data Science Society"
+    ],
+    "Format": "hybrid",
+    "Location": "Singapore / Online",
+    "Date Start": "2024-01-25",
+    "Date End": "2024-01-30",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://nus-datathon-2024-cat-b.devpost.com/",
+      "https://nus-datathon-2024-cat-b.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 98,
+    "id": "evt-101",
+    "Event": "YouthxHack 2024",
+    "Organizer": [
+      "Cyber Youth Singapore"
+    ],
+    "Format": "in-person",
+    "Location": "Temasek Polytechnic, Singapore",
+    "Date Start": "2024-08-31",
+    "Date End": "2024-09-03",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Open Ended",
+      "Social Good"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://youthxhack2024.devpost.com/",
+      "https://youthxhack2024.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 99,
+    "id": "evt-102",
+    "Event": "CloudHacks 2024",
+    "Organizer": [
+      "Cloudhacks"
+    ],
+    "Format": "in-person",
+    "Location": "Bishan Community Club, Singapore",
+    "Date Start": "2024-06-22",
+    "Date End": "2024-06-23",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Open Ended"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://cloudhacks-2024.devpost.com/",
+      "https://cloudhacks-2024.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 100,
+    "id": "evt-103",
+    "Event": "DIVE 2024 (Data Insights and Visualization Event 2024)",
+    "Organizer": [
+      "busan"
+    ],
+    "Format": "in-person",
+    "Location": "Bexco, Busan, South Korea",
+    "Date Start": "2024-10-04",
+    "Date End": "2024-10-06",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Databases",
+      "DevOps",
+      "Enterprise"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://dive2024inbusan.devpost.com/",
+      "https://dive2024inbusan.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 101,
+    "id": "evt-104",
+    "Event": "Garuda Hacks 5.0",
+    "Organizer": [
+      "Garuda Hacks"
+    ],
+    "Format": "in-person",
+    "Location": "Universitas Multimedia Nusantara, Tangerang, Indonesia",
+    "Date Start": "2024-07-11",
+    "Date End": "2024-07-13",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Beginner Friendly",
+      "Social Good",
+      "Machine Learning/AI"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://gh5.devpost.com/",
+      "https://gh5.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 121,
+    "id": "evt-124",
+    "Event": "IATA ONE Record Hackathon – hosted by ICCS",
+    "Organizer": [
+      "ICCS",
+      "IATA"
+    ],
+    "Format": "in-person",
+    "Location": "Shenzhen Virtual University Park (SZVUP), Shenzhen, China",
+    "Date Start": "2024-03-16",
+    "Date End": "2024-03-17",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Enterprise",
+      "IoT",
+      "Machine Learning/AI",
+      "aviation logistics",
+      "APIs"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://onerecord-szx.devpost.com/",
+      "https://onerecord-szx.devpost.com/details/dates",
+      "https://onerecord-szx.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  },
+  {
+    "_file": "events.md",
+    "_row": 122,
+    "id": "evt-125",
+    "Event": "HackDevs",
+    "Organizer": [
+      "BASIS Int'l School Shenzhen"
+    ],
+    "Format": "online",
+    "Location": "Online (BISZ Developers' Club)",
+    "Date Start": "2024-03-18",
+    "Date End": "2024-03-19",
+    "Theme": null,
+    "Prize Pool": null,
+    "Tech Focus": [
+      "Open Ended",
+      "Quantum"
+    ],
+    "Eligibility": null,
+    "URL": [
+      "https://hackdevs.devpost.com/",
+      "https://hackdevs.devpost.com/details/dates",
+      "https://hackdevs.devpost.com/project-gallery"
+    ],
+    "Source Type": [
+      "devpost",
+      "details/dates",
+      "project_gallery"
+    ],
+    "Confidence": "high",
+    "Extracted At": "2026-04-04"
+  }
+]
