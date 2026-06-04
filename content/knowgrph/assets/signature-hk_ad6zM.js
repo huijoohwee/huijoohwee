@@ -1,1 +1,0 @@
-import{ov as n}from"./index-CAFFyFSM.js";const t=r=>r==null?"":typeof r=="boolean"?r?"1":"0":typeof r=="number"?Number.isFinite(r)?String(r):"":String(r),i=r=>r.map(t).join("|"),e=r=>n(i(r));export{e as h};

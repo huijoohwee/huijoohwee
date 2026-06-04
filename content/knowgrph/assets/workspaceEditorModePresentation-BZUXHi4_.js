@@ -1,0 +1,1 @@
+import{du as E,io as _}from"./index-Ds3lF5be.js";const e={table:E.tableViewLabel,multiDimTable:E.titleDefault,kanban:E.kanbanViewLabel},t={...e,geospatial:E.geospatialViewLabel},l=_.map(a=>({value:a,label:t[a]}));function o(a){return e[a]}export{l as W,o as g};
