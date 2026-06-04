@@ -1,1 +1,0 @@
-import{R as o}from"./react-D1l5gsU-.js";import{pS as r,pY as p}from"./index-Ds3lF5be.js";function m(t,l){const[a,c]=o.useState(()=>r(t,l)),e=o.useCallback(n=>{c(u=>{const s=typeof n=="function"?n(u):n;return p(t,s),s})},[t]),i=o.useCallback(()=>{e(n=>!n)},[e]);return{pinned:a,setPinned:e,togglePinned:i}}export{m as u};

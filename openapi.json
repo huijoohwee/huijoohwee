@@ -44,6 +44,29 @@
           }
         }
       }
+    },
+    "/api/payments/commerce/solana-pay/settle": {
+      "post": {
+        "operationId": "settleKnowgrphSolanaPayCheckoutSession",
+        "summary": "Settle an agentic commerce checkout session from a verified Solana Pay transaction signature.",
+        "x-payment-info": {
+          "intent": "settlement",
+          "method": "solana_pay",
+          "amount": "dynamic",
+          "currency": "request.currency"
+        },
+        "responses": {
+          "200": {
+            "description": "Solana Pay session settled"
+          },
+          "409": {
+            "description": "Solana Pay transaction is not confirmed yet"
+          },
+          "422": {
+            "description": "Solana Pay transaction does not match the session"
+          }
+        }
+      }
     }
   }
 }

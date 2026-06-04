@@ -18,6 +18,7 @@ source_truth:
 template_status: "publish-side reusable template; no Prod or Cloudflare deploy claim"
 deployed_api_claim: false
 live_route_validation_required_before_claim: true
+mcp_structured_response_contract: "literal MCP structuredContent may land here through shared chat validation without KGC retry"
 
 external_inspiration:
   - name: "bytedance/deer-flow"
@@ -152,6 +153,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MainPanel OpenAI route feeds the template SuperAgent gateway."}
       "integration:mainPanelEntry": {key: "integration:mainPanelEntry", type: string, value: "integrations"}
       "integration:openTab": {key: "integration:openTab", type: string, value: "chat"}
       "integration:providerId": {key: "integration:providerId", type: string, value: "openai"}
@@ -174,6 +176,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MainPanel BytePlus ModelArk route feeds the template SuperAgent gateway."}
       "integration:mainPanelEntry": {key: "integration:mainPanelEntry", type: string, value: "integrations"}
       "integration:openTab": {key: "integration:openTab", type: string, value: "chat"}
       "integration:providerId": {key: "integration:providerId", type: string, value: "byteplus-modelark"}
@@ -196,6 +199,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MainPanel Agnes AI API route feeds the template SuperAgent gateway."}
       "integration:mainPanelEntry": {key: "integration:mainPanelEntry", type: string, value: "integrations"}
       "integration:openTab": {key: "integration:openTab", type: string, value: "chat"}
       "integration:providerId": {key: "integration:providerId", type: string, value: "agnes-ai"}
@@ -218,6 +222,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MainPanel MiroMind API route feeds the template SuperAgent gateway."}
       "integration:mainPanelEntry": {key: "integration:mainPanelEntry", type: string, value: "integrations"}
       "integration:openTab": {key: "integration:openTab", type: string, value: "chat"}
       "integration:providerId": {key: "integration:providerId", type: string, value: "miromind"}
@@ -240,6 +245,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MainPanel Qwen API route feeds the template SuperAgent gateway."}
       "integration:mainPanelEntry": {key: "integration:mainPanelEntry", type: string, value: "integrations"}
       "integration:openTab": {key: "integration:openTab", type: string, value: "chat"}
       "integration:providerId": {key: "integration:providerId", type: string, value: "qwen"}
@@ -262,6 +268,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 5}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Long-horizon SuperAgent template keeps research, code, and create tasks on shared Knowgrph owners."}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "agent"}
       "agent:capabilities": {key: "agent:capabilities", type: object, value: ["research","code","create"]}
       "agent:taskLevels": {key: "agent:taskLevels", type: object, value: ["quick_triage","bounded_compile","deep_research","parallel_build"]}
@@ -283,6 +290,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source input anchors the template source text or upstream result."}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "input"}
       input_text: {key: input_text, type: textarea, value: "Replace this value with source text, an upstream result, or a user prompt."}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
@@ -302,6 +310,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute node emits text, image, and chart outputs through semantic ports."}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "compute"}
       output: {key: output, type: string, value: "Computed summary placeholder."}
       imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Crect%20x=%2256%22%20y=%2280%22%20width=%22168%22%20height=%2280%22%20rx=%2212%22%20fill=%22%23e0f2fe%22%20stroke=%22%230ea5e9%22/%3E%3Ctext%20x=%2280%22%20y=%22128%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3EInput%3C/text%3E%3Crect%20x=%22312%22%20y=%2280%22%20width=%22168%22%20height=%2280%22%20rx=%2212%22%20fill=%22%23dcfce7%22%20stroke=%22%2322c55e%22/%3E%3Ctext%20x=%22344%22%20y=%22128%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3ECompute%3C/text%3E%3Crect%20x=%22184%22%20y=%22224%22%20width=%22256%22%20height=%2272%22%20rx=%2212%22%20fill=%22%23fff7ed%22%20stroke=%22%23f59e0b%22/%3E%3Ctext%20x=%22224%22%20y=%22268%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3ERich%20Media%20Outputs%3C/text%3E%3Cpath%20d=%22M224%20120H312%22%20stroke=%22%2364748b%22%20stroke-width=%224%22%20marker-end=%22url(%23arrow)%22/%3E%3Cpath%20d=%22M396%20160C380%20198%20352%20218%20312%20224%22%20stroke=%22%2364748b%22%20stroke-width=%224%22%20fill=%22none%22%20marker-end=%22url(%23arrow)%22/%3E%3Cdefs%3E%3Cmarker%20id=%22arrow%22%20viewBox=%220%200%2010%2010%22%20refX=%229%22%20refY=%225%22%20markerWidth=%226%22%20markerHeight=%226%22%20orient=%22auto-start-reverse%22%3E%3Cpath%20d=%22M0%200l10%205-10%205z%22%20fill=%22%2364748b%22/%3E%3C/marker%3E%3C/defs%3E%3C/svg%3E"}
@@ -335,6 +344,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel renders the output field."}
       output:
         key: output
         type: textarea
@@ -360,6 +370,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel renders the imageUrl field."}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
       imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Ccircle%20cx=%22210%22%20cy=%22180%22%20r=%2274%22%20fill=%22%23dbeafe%22%20stroke=%22%2338bdf8%22/%3E%3Ccircle%20cx=%22380%22%20cy=%22180%22%20r=%2274%22%20fill=%22%23dcfce7%22%20stroke=%22%2322c55e%22/%3E%3Cpath%20d=%22M284%20180H306%22%20stroke=%22%2364748b%22%20stroke-width=%224%22/%3E%3Ctext%20x=%22165%22%20y=%22186%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3EText%3C/text%3E%3Ctext%20x=%22338%22%20y=%22186%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3EChart%3C/text%3E%3C/svg%3E"}
       "visual:height": {key: "visual:height", type: number, value: 268}
@@ -381,6 +392,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel renders the outputSrcDoc field."}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       output: {key: output, type: string, value: "Helper text only. outputSrcDoc owns chart rendering."}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.bar{height:18px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0 42%,#e2e8f0 42% 100%)}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class="wrap"><h1 class="title">Chart output placeholder</h1><div class="bar"></div><p class="note">Use outputSrcDoc for inline charts.</p></main></body></html>'}
@@ -409,6 +421,12 @@ inspectable Knowgrph document. It demonstrates a reusable `2D Renderer: Flow
 Editor` starting point: source input becomes a typed compute node, semantic
 ports carry text, image, and chart outputs, and the generated artifacts render
 through native Rich Media Panels.
+
+The same field and edge contract is the publish-side landing shape for
+FloatingPanel Chat literal MCP structured responses. Widgets, Rich Media
+Panels, Cards, media fields, safe inline compute, and authored edges must write
+through Editor Workspace and render through shared Flow Editor/Rich Media Panel
+owners without synthetic KGC backfill or renderer-local graph patches.
 
 The same document mirrors the research-agent demo's long-horizon SuperAgent
 envelope: MainPanel provider integrations feed a shared harness, the harness
@@ -639,7 +657,9 @@ edges, code files, or Rich Media Panel outputs.
 8. Confirm the chart panel has an iframe `srcdoc` preview.
 9. Confirm `superagent_harness_demo` and `main_panel_integrations_demo` add no
    second renderer, parser, provider adapter, or graph apply owner.
-10. Confirm the document still makes no deployed API or Cloudflare route claim.
+10. Confirm MCP structured responses project through `output`, `imageUrl`, `outputSrcDoc`,
+    semantic handles, and shared workspace apply owners without synthetic KGC backfill.
+11. Confirm the document still makes no deployed API or Cloudflare route claim.
 
 ## How To Inspect In Knowgrph
 
@@ -653,38 +673,3 @@ edges, code files, or Rich Media Panel outputs.
 6. Verify the three Rich Media Panels render Text, Image, and Chart outputs.
 7. Replace node labels, values, socket names, and compute output only after the
    parser smoke stays warning-free.
-
-## KGC Reading Layer
-
-@node:input:source_input Source input anchors the template source text or upstream result.
-
-@node:integration:integration_openai MainPanel OpenAI route feeds the template SuperAgent gateway.
-
-@node:integration:integration_byteplus MainPanel BytePlus ModelArk route feeds the template SuperAgent gateway.
-
-@node:integration:integration_agnes MainPanel Agnes AI API route feeds the template SuperAgent gateway.
-
-@node:integration:integration_miromind MainPanel MiroMind API route feeds the template SuperAgent gateway.
-
-@node:integration:integration_qwen MainPanel Qwen API route feeds the template SuperAgent gateway.
-
-@node:agent:kgcf_superagent_template Long-horizon SuperAgent template keeps research, code, and create tasks on shared Knowgrph owners.
-
-@node:compute:compute_summary Compute node emits text, image, and chart outputs through semantic ports.
-
-@node:rich_media:panel_text_output Text Rich Media Panel renders the `output` field.
-
-@node:rich_media:panel_image_output Image Rich Media Panel renders the `imageUrl` field.
-
-@node:rich_media:panel_chart_output Chart Rich Media Panel renders the `outputSrcDoc` field.
-
-@edge:integration integration_openai -> kgcf_superagent_template
-@edge:integration integration_byteplus -> kgcf_superagent_template
-@edge:integration integration_agnes -> kgcf_superagent_template
-@edge:integration integration_miromind -> kgcf_superagent_template
-@edge:integration integration_qwen -> kgcf_superagent_template
-@edge:agent_task kgcf_superagent_template -> compute_summary
-@edge:text source_input -> compute_summary
-@edge:text compute_summary -> panel_text_output
-@edge:image compute_summary -> panel_image_output
-@edge:chart compute_summary -> panel_chart_output

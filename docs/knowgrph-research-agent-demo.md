@@ -11,6 +11,9 @@ implementation_contract: "docs/documents/knowgrph-research-agent-prd-tad.md"
 source_truth:
   - "canvas/src/features/research-agent/researchThesisContract.ts"
   - "canvas/src/features/research-agent/researchThesisTypes.ts"
+  - "canvas/src/features/swarm-prediction/swarmPredictionEngine.ts"
+  - "canvas/src/features/swarm-prediction/swarmPredictionWidget.ts"
+  - "canvas/src/features/swarm-prediction/swarmPredictionRender.ts"
   - "canvas/src/features/agent-ready/mainPanelSuperAgentIntegrationContract.ts"
   - "canvas/src/features/agent-ready/localMainPanelChatCanvasPipelineInspection.ts"
   - "cloudflare/workers/knowgrph-research/index.ts"
@@ -24,6 +27,10 @@ external_inspiration:
     source_url: "https://github.com/bytedance/deer-flow"
     use: "conceptual reference for long-horizon harness patterns only"
     copy_policy: "forbid copied code, copied architecture, provider-specific renderer forks, or downstream alias stacks"
+  - name: "666ghj/MiroFish"
+    source_url: "https://github.com/666ghj/MiroFish"
+    use: "conceptual reference for multi-agent swarm prediction and world-simulation patterns only"
+    copy_policy: "forbid copied code, copied prompts, copied fixtures, copied architecture, or external-project naming inside runtime owners"
 
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
@@ -41,6 +48,8 @@ kgWorkflowManagerModeEnabled: true
     agent: "#14b8a6"
     runtime_surface: "#0f766e"
     subagent: "#7c3aed"
+    swarm_prediction: "#0f766e"
+    world_state: "#0891b2"
     claim: "#22c55e"
     assumption: "#f59e0b"
     risk: "#ef4444"
@@ -68,6 +77,11 @@ socket_types:
   agent_runtime_surface_signal: {color: "#0f766e", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [agent_runtime_surface_signal]}
   agent_subagent_signal: {color: "#7c3aed", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [agent_subagent_signal]}
   agent_review_signal: {color: "#64748b", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [agent_review_signal]}
+  swarm_seed_signal: {color: "#0f766e", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [swarm_seed_signal]}
+  swarm_prediction_report_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [swarm_prediction_report_signal]}
+  swarm_world_image_signal: {color: "#38bdf8", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [swarm_world_image_signal]}
+  swarm_prediction_chart_html: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [swarm_prediction_chart_html]}
+  swarm_event_log_signal: {color: "#0891b2", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [swarm_event_log_signal]}
 
 research_thesis_demo:
   schema_version: "research-thesis-spec/v1"
@@ -120,9 +134,43 @@ superagent_harness_demo:
     text: "panel_text_research_brief.output"
     image: "panel_image_evidence_map.imageUrl"
     chart: "panel_chart_guardrails.outputSrcDoc"
+    swarm_report: "panel_swarm_text_report.output"
+    swarm_world_image: "panel_swarm_world_image.imageUrl"
+    swarm_prediction_chart: "panel_swarm_prediction_chart.outputSrcDoc"
   review_gate:
     apply_owner: "canvas/src/features/chat/chatKgcCanvasApply.ts"
     accepted_candidates_only: true
+
+swarm_prediction_demo:
+  schema_version: "knowgrph-swarm-prediction/v1"
+  run_id: "kgsp_run_research_agent_demo_20260604"
+  scenario_id: "kgsp_scenario_sme_launch_world"
+  source_node_id: "swarm_prediction_world"
+  mode: "offline-deterministic-bounded"
+  active_graph_mutated: false
+  copy_policy: "MiroFish-inspired concepts only; no copied code, prompts, fixtures, architecture, or runtime naming"
+  native_owners:
+    - "docs/documents/knowgrph-swarm-prediction-engine-prd-tad.md"
+    - "canvas/src/features/swarm-prediction/swarmPredictionEngine.ts"
+    - "canvas/src/features/swarm-prediction/swarmPredictionWidget.ts"
+    - "canvas/src/features/swarm-prediction/swarmPredictionRender.ts"
+    - "canvas/src/components/FlowEditorCanvas/runtime/useFlowEditorWorkflowActions.ts"
+  world_model:
+    seed_source: "reviewed research thesis signals"
+    agent_population: ["founder_operator", "risk_reviewer", "market_scout", "unit_economics_reviewer"]
+    intervention_plan: ["cache-source-extraction", "stale-evidence-review-tightening"]
+    state_schema: ["tick", "meanBelief", "consensus", "confidence", "volatility", "predictionScore"]
+  bounds:
+    max_agents: 8
+    max_ticks: 6
+    max_interventions: 2
+    deterministic_seed: "kgra-swarm-demo"
+  outputs:
+    text: "panel_swarm_text_report.output"
+    image: "panel_swarm_world_image.imageUrl"
+    chart: "panel_swarm_prediction_chart.outputSrcDoc"
+    event_log: "swarm_prediction_world.eventLogJson"
+    metrics: "swarm_prediction_world.metricsJson"
 
 main_panel_integrations_demo:
   schema_version: "knowgrph-mainpanel-superagent-integrations-demo/v1"
@@ -161,6 +209,9 @@ workflow_sections:
   - id: wf_rich_media_outputs
     title: "Render review outputs as Rich Media Panels"
     nodes: [panel_text_research_brief, panel_image_evidence_map, panel_chart_guardrails]
+  - id: wf_swarm_prediction_world
+    title: "Run deterministic swarm prediction and world simulation"
+    nodes: [swarm_prediction_world, panel_swarm_text_report, panel_swarm_world_image, panel_swarm_prediction_chart]
 
 flow:
   direction: {key: direction, type: string, value: "LR"}
@@ -186,6 +237,7 @@ flow:
       "integration:providerId": {key: "integration:providerId", type: string, value: "openai"}
       "integration:providerLabel": {key: "integration:providerLabel", type: string, value: "OpenAI"}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "integration"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "OpenAI is available through MainPanel Integrations and the shared chat gateway."}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
@@ -208,6 +260,7 @@ flow:
       "integration:providerId": {key: "integration:providerId", type: string, value: "byteplus-modelark"}
       "integration:providerLabel": {key: "integration:providerLabel", type: string, value: "BytePlus ModelArk"}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "integration"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "BytePlus ModelArk is available through MainPanel Integrations and the shared chat gateway."}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
@@ -230,6 +283,7 @@ flow:
       "integration:providerId": {key: "integration:providerId", type: string, value: "agnes-ai"}
       "integration:providerLabel": {key: "integration:providerLabel", type: string, value: "Agnes AI API"}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "integration"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Agnes AI is available through MainPanel Integrations and the shared chat gateway."}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
@@ -252,6 +306,7 @@ flow:
       "integration:providerId": {key: "integration:providerId", type: string, value: "miromind"}
       "integration:providerLabel": {key: "integration:providerLabel", type: string, value: "MiroMind API"}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "integration"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MiroMind is available through MainPanel Integrations and the shared chat gateway."}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
@@ -274,6 +329,7 @@ flow:
       "integration:providerId": {key: "integration:providerId", type: string, value: "qwen"}
       "integration:providerLabel": {key: "integration:providerLabel", type: string, value: "Qwen API"}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "integration"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Qwen API is available through MainPanel Integrations and the shared chat gateway."}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
@@ -296,6 +352,7 @@ flow:
       "integration:providerId": {key: "integration:providerId", type: string, value: "google-cloud"}
       "integration:providerLabel": {key: "integration:providerLabel", type: string, value: "Google Cloud Vertex AI"}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "integration"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Google Cloud Vertex AI is available through MainPanel Integrations and the shared chat gateway."}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
@@ -305,15 +362,16 @@ flow:
       type: {key: type, type: string, value: "agent"}
       label: {key: label, type: string, value: "Long-Horizon SuperAgent Harness"}
       position: {key: position, type: object, value: {"x":-380,"y":-720}}
-      handles: {key: handles, type: object, value: {"target":["integration_provider_signal_in"],"source":["agent_runtime_surface_signal_out","agent_review_signal_out"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"integration_provider_signal_in":"integration_provider_signal"},"out":{"agent_runtime_surface_signal_out":"agent_runtime_surface_signal","agent_review_signal_out":"agent_review_signal"}}}
+      handles: {key: handles, type: object, value: {"target":["integration_provider_signal_in"],"source":["agent_runtime_surface_signal_out","agent_review_signal_out","swarm_seed_signal_out"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"integration_provider_signal_in":"integration_provider_signal"},"out":{"agent_runtime_surface_signal_out":"agent_runtime_surface_signal","agent_review_signal_out":"agent_review_signal","swarm_seed_signal_out":"swarm_seed_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:kgra_superagent_harness"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 13}
+      "graph:degree": {key: "graph:degree", type: number, value: 14}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 6}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 7}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 8}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "agent"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Long-horizon SuperAgent harness coordinates research, code, create, and swarm simulation task slices through shared Knowgrph owners."}
       "kgSuperAgent:messageGateway": {key: "kgSuperAgent:messageGateway", type: string, value: "MainPanel Integrations/MCP -> FloatingPanel Chat -> knowgrph.superagent.run"}
       "kgSuperAgent:runId": {key: "kgSuperAgent:runId", type: string, value: "kgra_superagent_run_20260604"}
       "kgSuperAgent:taskCapabilities": {key: "kgSuperAgent:taskCapabilities", type: string, value: "research, code, create"}
@@ -603,6 +661,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "open_question"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "What disconfirming evidence would invalidate the thesis before execution or capital commitment?"}
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_399716083"}
       "research:claimType": {key: "research:claimType", type: string, value: "open_question"}
       "research:confidence": {key: "research:confidence", type: string, value: "low"}
@@ -625,6 +684,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "risk"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "The thesis weakens if source evidence is incomplete, stale, or contradicted by later operating metrics."}
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_3506683371"}
       "research:claimType": {key: "research:claimType", type: string, value: "risk"}
       "research:confidence": {key: "research:confidence", type: string, value: "low"}
@@ -646,6 +706,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "source"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source ref kgra_source_697725692 anchors the founder interview evidence window."}
       "research:contentHash": {key: "research:contentHash", type: string, value: "sha256:e36d9e66521d213875b56bd0fafd7cfa24eeeedd1711429bbc0358f4112d9246"}
       "research:locator": {key: "research:locator", type: string, value: "line:1-1"}
       "research:sourceId": {key: "research:sourceId", type: string, value: "kgra_source_697725692"}
@@ -667,6 +728,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "source"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source ref kgra_source_3376275288 anchors the unit-economics evidence window."}
       "research:contentHash": {key: "research:contentHash", type: string, value: "sha256:7ce0f0fc66f19fe76caaf6650fac5172ecf7ec22182d44cd424e1b5325022210"}
       "research:locator": {key: "research:locator", type: string, value: "line:1-1"}
       "research:sourceId": {key: "research:sourceId", type: string, value: "kgra_source_3376275288"}
@@ -710,6 +772,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "claim"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Founders want confidence tags, contradiction flags, and a monitoring checklist before committing budget."}
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_2303438352"}
       "research:claimType": {key: "research:claimType", type: string, value: "fact"}
       "research:confidence": {key: "research:confidence", type: string, value: "medium"}
@@ -733,6 +796,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "claim"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Gross margin depends on bounded model calls, cached source extraction, and review-first graph commits."}
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_830553302"}
       "research:claimType": {key: "research:claimType", type: string, value: "fact"}
       "research:confidence": {key: "research:confidence", type: string, value: "medium"}
@@ -754,6 +818,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "source"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source ref kgra_source_4110639131 anchors the market-entry evidence window."}
       "research:contentHash": {key: "research:contentHash", type: string, value: "sha256:e214b9cf624eb8a5c477d5d55ca5626da4ac04dffeff5d05b6928cce9c4b590e"}
       "research:locator": {key: "research:locator", type: string, value: "line:1-1"}
       "research:sourceId": {key: "research:sourceId", type: string, value: "kgra_source_4110639131"}
@@ -777,6 +842,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "claim"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "SMEs entering Singapore need market sizing, compliance checks, localization planning, and evidence-backed launch sequencing."}
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_43612152"}
       "research:claimType": {key: "research:claimType", type: string, value: "fact"}
       "research:confidence": {key: "research:confidence", type: string, value: "medium"}
@@ -797,6 +863,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel renders the staged research brief."}
       output:
         key: output
         type: textarea
@@ -829,6 +896,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "assumption"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "The investable vertical SaaS thesis remains a candidate assumption until review."}
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_3894056773"}
       "research:claimType": {key: "research:claimType", type: string, value: "assumption"}
       "research:confidence": {key: "research:confidence", type: string, value: "medium"}
@@ -850,6 +918,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Crect%20x=%2240%22%20y=%2252%22%20width=%22170%22%20height=%2272%22%20rx=%2212%22%20fill=%22%23e0f2fe%22%20stroke=%22%230ea5e9%22/%3E%3Ctext%20x=%2258%22%20y=%2292%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3ESource%20refs%3C/text%3E%3Crect%20x=%22278%22%20y=%2252%22%20width=%22170%22%20height=%2272%22%20rx=%2212%22%20fill=%22%23dcfce7%22%20stroke=%22%2322c55e%22/%3E%3Ctext%20x=%22306%22%20y=%2292%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3ETyped%20claims%3C/text%3E%3Crect%20x=%22162%22%20y=%22210%22%20width=%22270%22%20height=%2278%22%20rx=%2212%22%20fill=%22%23fff7ed%22%20stroke=%22%23f59e0b%22/%3E%3Ctext%20x=%22192%22%20y=%22255%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3EReview%20gate%20before%20KGC%3C/text%3E%3Cpath%20d=%22M210%2088H278%22%20stroke=%22%2364748b%22%20stroke-width=%224%22%20marker-end=%22url(%23arrow)%22/%3E%3Cpath%20d=%22M363%20124C350%20162%20330%20188%20304%20210%22%20stroke=%22%2364748b%22%20stroke-width=%224%22%20fill=%22none%22%20marker-end=%22url(%23arrow)%22/%3E%3Cdefs%3E%3Cmarker%20id=%22arrow%22%20viewBox=%220%200%2010%2010%22%20refX=%229%22%20refY=%225%22%20markerWidth=%226%22%20markerHeight=%226%22%20orient=%22auto-start-reverse%22%3E%3Cpath%20d=%22M0%200l10%205-10%205z%22%20fill=%22%2364748b%22/%3E%3C/marker%3E%3C/defs%3E%3C/svg%3E"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel renders the evidence-to-thesis map."}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
       "visual:height": {key: "visual:height", type: number, value: 268}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
@@ -890,6 +959,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel renders guardrail counts from outputSrcDoc."}
       output: {key: output, type: textarea, value: "Guardrail chart fallback copy; outputSrcDoc owns the rendered chart."}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: "<!doctype html><html><head><meta charset=\"utf-8\"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.row{display:grid;grid-template-columns:150px 1fr 40px;gap:10px;align-items:center;margin:10px 0}.track{height:18px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar{height:100%;background:#14b8a6}.bar.warn{background:#f59e0b}.bar.risk{background:#ef4444}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class=\"wrap\"><h1 class=\"title\">Research agent guardrail chart</h1><div class=\"row\"><span>Source hashes</span><span class=\"track\"><span class=\"bar\" style=\"display:block;width:100%\"></span></span><strong>3</strong></div><div class=\"row\"><span>Claims staged</span><span class=\"track\"><span class=\"bar\" style=\"display:block;width:75%\"></span></span><strong>3</strong></div><div class=\"row\"><span>Open risks</span><span class=\"track\"><span class=\"bar risk\" style=\"display:block;width:25%\"></span></span><strong>1</strong></div><div class=\"row\"><span>Review gate</span><span class=\"track\"><span class=\"bar warn\" style=\"display:block;width:50%\"></span></span><strong>on</strong></div><p class=\"note\">Staged graph remains separate until review acceptance.</p></main></body></html>"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
@@ -900,6 +970,183 @@ flow:
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
       "visual:zIndex": {key: "visual:zIndex", type: number, value: 5}
+    - id: {key: id, type: string, value: "swarm_prediction_world"}
+      type: {key: type, type: string, value: "SwarmPrediction"}
+      label: {key: label, type: string, value: "Swarm Prediction World Simulation"}
+      position: {key: position, type: object, value: {"x":1900,"y":360}}
+      handles: {key: handles, type: object, value: {"target":["seedSignalsJson_in","agentPopulationJson_in","interventionsJson_in"],"source":["output","imageUrl","outputSrcDoc","eventLogJson","metricsJson"]}}
+      agentPopulationJson:
+        key: agentPopulationJson
+        type: textarea
+        value: |
+          [
+            {"label":"Founder Operator","cohort":"operator","initialBelief":0.22,"confidence":0.62,"influence":0.56,"riskTolerance":0.48},
+            {"label":"Risk Reviewer","cohort":"risk","initialBelief":-0.18,"confidence":0.74,"influence":0.44,"riskTolerance":0.22},
+            {"label":"Market Scout","cohort":"market","initialBelief":0.12,"confidence":0.58,"influence":0.68,"riskTolerance":0.64},
+            {"label":"Unit Economics Reviewer","cohort":"economics","initialBelief":0.08,"confidence":0.66,"influence":0.52,"riskTolerance":0.36}
+          ]
+
+      confidenceScore: {key: confidenceScore, type: number, value: 0.639}
+      eventLogJson:
+        key: eventLogJson
+        type: textarea
+        value: |
+          [
+            {"tick":0,"kind":"world_initialized","label":"4 agents initialized from 3 seed signals"},
+            {"tick":2,"kind":"intervention_applied","label":"Cache source extraction before rerun"},
+            {"tick":4,"kind":"intervention_applied","label":"Tighten review gate on stale evidence"},
+            {"tick":6,"kind":"forecast_recorded","label":"Prediction score 0.641 with consensus 0.873"}
+          ]
+
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"seedSignalsJson_in":"swarm_seed_signal","agentPopulationJson_in":"swarm_seed_signal","interventionsJson_in":"swarm_seed_signal"},"out":{"output":"swarm_prediction_report_signal","imageUrl":"swarm_world_image_signal","outputSrcDoc":"swarm_prediction_chart_html","eventLogJson":"swarm_event_log_signal","metricsJson":"swarm_event_log_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "swarmPrediction"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 4}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Ccircle%20cx=%22140%22%20cy=%22120%22%20r=%2252%22%20fill=%22%23ccfbf1%22%20stroke=%22%230f766e%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22100%22%20y=%22126%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EOperator%3C/text%3E%3Ccircle%20cx=%22320%22%20cy=%2290%22%20r=%2252%22%20fill=%22%23e0f2fe%22%20stroke=%22%230891b2%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22282%22%20y=%2296%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EMarket%3C/text%3E%3Ccircle%20cx=%22492%22%20cy=%22132%22%20r=%2252%22%20fill=%22%23fee2e2%22%20stroke=%22%23ef4444%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22458%22%20y=%22138%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3ERisk%3C/text%3E%3Crect%20x=%22204%22%20y=%22228%22%20width=%22230%22%20height=%2258%22%20rx=%2210%22%20fill=%22%23fff7ed%22%20stroke=%22%23f59e0b%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22230%22%20y=%22264%22%20font-family=%22system-ui%22%20font-size=%2216%22%20fill=%22%230f172a%22%3EWorld%20state%20score%200.641%3C/text%3E%3Cpath%20d=%22M183%20145C230%20182%20258%20208%20278%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M331%20142C326%20178%20322%20204%20320%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M461%20167C422%20198%20390%20218%20358%20232%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3C/svg%3E"}
+      interventionsJson:
+        key: interventionsJson
+        type: textarea
+        value: |
+          [
+            {"tick":2,"label":"Cache source extraction before rerun","effect":0.16,"targetCohort":"economics"},
+            {"tick":4,"label":"Tighten review gate on stale evidence","effect":-0.12,"targetCohort":"risk"}
+          ]
+
+      "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "swarm_prediction"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "SwarmPrediction runs a bounded deterministic world simulation from reviewed thesis signals."}
+      metricsJson:
+        key: metricsJson
+        type: textarea
+        value: |
+          {"agentCount":4,"tickCount":6,"eventCount":30,"meanBelief":0.224,"consensus":0.873,"confidence":0.639,"volatility":0.018,"predictionScore":0.641,"stopReason":"tick_limit"}
+
+      output:
+        key: output
+        type: textarea
+        value: |
+          # Swarm prediction report
+
+          Prediction score: 0.641
+          Confidence: 0.639
+          Consensus: 0.873
+          Stop reason: tick_limit
+
+          The simulated world keeps the thesis favorable but not automatic. Operator and market agents converge around source-backed demand, while the risk cohort stays cautious until stale-evidence checks are refreshed.
+
+      outputSrcDoc:
+        key: outputSrcDoc
+        type: textarea
+        value: |
+          <!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.metric{display:grid;grid-template-columns:150px 1fr 50px;gap:10px;align-items:center;margin:10px 0}.track{height:18px;background:#e2e8f0;border-radius:999px;overflow:hidden}.score{display:block;height:100%;background:#0f766e}.conf{display:block;height:100%;background:#0891b2}.risk{display:block;height:100%;background:#f59e0b}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class="wrap"><h1 class="title">Swarm prediction world simulation</h1><div class="metric"><span>Prediction</span><span class="track"><span class="score" style="width:64.1%"></span></span><strong>0.641</strong></div><div class="metric"><span>Confidence</span><span class="track"><span class="conf" style="width:63.9%"></span></span><strong>0.639</strong></div><div class="metric"><span>Consensus</span><span class="track"><span class="score" style="width:87.3%"></span></span><strong>0.873</strong></div><div class="metric"><span>Volatility</span><span class="track"><span class="risk" style="width:18%"></span></span><strong>0.018</strong></div><p class="note">Seed signals, agent population, interventions, event log, and world metrics remain replayable outputs. Active graph mutation remains review-gated.</p></main></body></html>
+
+      predictionScore: {key: predictionScore, type: number, value: 0.641}
+      randomSeed: {key: randomSeed, type: text, value: "kgra-swarm-demo"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      scenarioTitle: {key: scenarioTitle, type: text, value: "Singapore SME launch thesis world simulation"}
+      seedSignalsJson:
+        key: seedSignalsJson
+        type: textarea
+        value: |
+          [
+            {"label":"Fragmented launch research creates demand for evidence-backed planning","valence":0.58,"weight":0.8,"sourceRef":"claim_market_need"},
+            {"label":"Bounded model calls and cache reuse support margin discipline","valence":0.42,"weight":0.7,"sourceRef":"claim_unit_economics"},
+            {"label":"Stale or incomplete evidence can invalidate the thesis","valence":-0.36,"weight":0.9,"sourceRef":"risk_stale_evidence"}
+          ]
+
+      ticks: {key: ticks, type: number, value: 6}
+      "visual:height": {key: "visual:height", type: number, value: 268}
+      "visual:importance": {key: "visual:importance", type: number, value: 26}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 17}
+      "visual:width": {key: "visual:width", type: number, value: 440}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 5}
+    - id: {key: id, type: string, value: "panel_swarm_text_report"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Panel - Swarm Report"}
+      position: {key: position, type: object, value: {"x":2280,"y":360}}
+      handles: {key: handles, type: object, value: {"target":["output"],"source":["output"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"output":"swarm_prediction_report_signal"},"out":{"output":"swarm_prediction_report_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel renders the swarm prediction report."}
+      output:
+        key: output
+        type: textarea
+        value: |
+          ### Swarm report
+
+          - Four role-scoped agents simulate the thesis world.
+          - Seed signals come from reviewed claims and risks.
+          - Interventions adjust economics and risk cohorts.
+          - Prediction, confidence, consensus, and volatility remain replayable.
+
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:height": {key: "visual:height", type: number, value: 203}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:width": {key: "visual:width", type: number, value: 360}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 6}
+    - id: {key: id, type: string, value: "panel_swarm_world_image"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Panel - Swarm World Map"}
+      position: {key: position, type: object, value: {"x":2280,"y":600}}
+      handles: {key: handles, type: object, value: {"target":["imageUrl"],"source":["imageUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageUrl":"swarm_world_image_signal"},"out":{"imageUrl":"swarm_world_image_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Ccircle%20cx=%22140%22%20cy=%22120%22%20r=%2252%22%20fill=%22%23ccfbf1%22%20stroke=%22%230f766e%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22100%22%20y=%22126%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EOperator%3C/text%3E%3Ccircle%20cx=%22320%22%20cy=%2290%22%20r=%2252%22%20fill=%22%23e0f2fe%22%20stroke=%22%230891b2%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22282%22%20y=%2296%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EMarket%3C/text%3E%3Ccircle%20cx=%22492%22%20cy=%22132%22%20r=%2252%22%20fill=%22%23fee2e2%22%20stroke=%22%23ef4444%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22458%22%20y=%22138%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3ERisk%3C/text%3E%3Crect%20x=%22204%22%20y=%22228%22%20width=%22230%22%20height=%2258%22%20rx=%2210%22%20fill=%22%23fff7ed%22%20stroke=%22%23f59e0b%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22230%22%20y=%22264%22%20font-family=%22system-ui%22%20font-size=%2216%22%20fill=%22%230f172a%22%3EWorld%20state%20score%200.641%3C/text%3E%3Cpath%20d=%22M183%20145C230%20182%20258%20208%20278%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M331%20142C326%20178%20322%20204%20320%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M461%20167C422%20198%20390%20218%20358%20232%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3C/svg%3E"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel renders the swarm world-state map."}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      "visual:height": {key: "visual:height", type: number, value: 268}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:width": {key: "visual:width", type: number, value: 439}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 6}
+    - id: {key: id, type: string, value: "panel_swarm_prediction_chart"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Panel - Swarm Prediction Chart"}
+      position: {key: position, type: object, value: {"x":2280,"y":120}}
+      handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"swarm_prediction_chart_html"},"out":{"outputSrcDoc":"swarm_prediction_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel renders the swarm prediction metrics from outputSrcDoc."}
+      output: {key: output, type: textarea, value: "Swarm prediction chart fallback copy; outputSrcDoc owns the rendered chart."}
+      outputSrcDoc:
+        key: outputSrcDoc
+        type: textarea
+        value: |
+          <!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.metric{display:grid;grid-template-columns:150px 1fr 50px;gap:10px;align-items:center;margin:10px 0}.track{height:18px;background:#e2e8f0;border-radius:999px;overflow:hidden}.score{display:block;height:100%;background:#0f766e}.conf{display:block;height:100%;background:#0891b2}.risk{display:block;height:100%;background:#f59e0b}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class="wrap"><h1 class="title">Swarm prediction world simulation</h1><div class="metric"><span>Prediction</span><span class="track"><span class="score" style="width:64.1%"></span></span><strong>0.641</strong></div><div class="metric"><span>Confidence</span><span class="track"><span class="conf" style="width:63.9%"></span></span><strong>0.639</strong></div><div class="metric"><span>Consensus</span><span class="track"><span class="score" style="width:87.3%"></span></span><strong>0.873</strong></div><div class="metric"><span>Volatility</span><span class="track"><span class="risk" style="width:18%"></span></span><strong>0.018</strong></div><p class="note">Seed signals, agent population, interventions, event log, and world metrics remain replayable outputs. Active graph mutation remains review-gated.</p></main></body></html>
+
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      "visual:height": {key: "visual:height", type: number, value: 203}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:width": {key: "visual:width", type: number, value: 360}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 6}
   edges:
     - {"id":"edge_openai_to_superagent","source":"integration_openai","sourceHandle":"integration_provider_signal_out","target":"kgra_superagent_harness","targetHandle":"integration_provider_signal_in","label":"chat gateway","type":"integration_provider_signal"}
     - {"id":"edge_byteplus_to_superagent","source":"integration_byteplus","sourceHandle":"integration_provider_signal_out","target":"kgra_superagent_harness","targetHandle":"integration_provider_signal_in","label":"modelark gateway","type":"integration_provider_signal"}
@@ -914,6 +1161,7 @@ flow:
     - {"id":"edge_superagent_to_runtime_tools","source":"kgra_superagent_harness","sourceHandle":"agent_runtime_surface_signal_out","target":"kgra_runtime_tools","targetHandle":"agent_runtime_surface_signal_in","label":"tools","type":"agent_runtime_surface_signal"}
     - {"id":"edge_superagent_to_runtime_skills","source":"kgra_superagent_harness","sourceHandle":"agent_runtime_surface_signal_out","target":"kgra_runtime_skills","targetHandle":"agent_runtime_surface_signal_in","label":"skills","type":"agent_runtime_surface_signal"}
     - {"id":"edge_superagent_to_runtime_subagents","source":"kgra_superagent_harness","sourceHandle":"agent_runtime_surface_signal_out","target":"kgra_runtime_subagents","targetHandle":"agent_runtime_surface_signal_in","label":"subagents","type":"agent_runtime_surface_signal"}
+    - {"id":"edge_superagent_to_swarm_prediction","source":"kgra_superagent_harness","sourceHandle":"swarm_seed_signal_out","target":"swarm_prediction_world","targetHandle":"seedSignalsJson_in","label":"seed world simulation","type":"swarm_seed_signal"}
     - {"id":"edge_runtime_subagents_to_source_scout","source":"kgra_runtime_subagents","sourceHandle":"agent_subagent_signal_out","target":"kgra_subagent_source_scout","targetHandle":"agent_subagent_signal_in","label":"source research","type":"agent_subagent_signal"}
     - {"id":"edge_runtime_subagents_to_thesis_compiler","source":"kgra_runtime_subagents","sourceHandle":"agent_subagent_signal_out","target":"kgra_subagent_thesis_compiler","targetHandle":"agent_subagent_signal_in","label":"compile thesis","type":"agent_subagent_signal"}
     - {"id":"edge_runtime_subagents_to_code_worker","source":"kgra_runtime_subagents","sourceHandle":"agent_subagent_signal_out","target":"kgra_subagent_code_worker","targetHandle":"agent_subagent_signal_in","label":"code task","type":"agent_subagent_signal"}
@@ -932,6 +1180,9 @@ flow:
     - {"id":"edge_founder_review_to_text_panel","source":"claim_founder_review","sourceHandle":"rich_media_text_signal_out","target":"panel_text_research_brief","targetHandle":"output","label":"text output","type":"rich_media_text_signal"}
     - {"id":"edge_market_claim_to_image_panel","source":"claim_market_need","sourceHandle":"rich_media_image_signal_out","target":"panel_image_evidence_map","targetHandle":"imageUrl","label":"image output","type":"rich_media_image_signal"}
     - {"id":"edge_monitoring_to_chart_panel","source":"monitoring_spec","sourceHandle":"rich_media_chart_html_out","target":"panel_chart_guardrails","targetHandle":"outputSrcDoc","label":"chart outputSrcDoc","type":"rich_media_chart_html"}
+    - {"id":"edge_swarm_prediction_to_text_panel","source":"swarm_prediction_world","sourceHandle":"output","target":"panel_swarm_text_report","targetHandle":"output","label":"swarm report","type":"swarm_prediction_report_signal"}
+    - {"id":"edge_swarm_prediction_to_image_panel","source":"swarm_prediction_world","sourceHandle":"imageUrl","target":"panel_swarm_world_image","targetHandle":"imageUrl","label":"world map","type":"swarm_world_image_signal"}
+    - {"id":"edge_swarm_prediction_to_chart_panel","source":"swarm_prediction_world","sourceHandle":"outputSrcDoc","target":"panel_swarm_prediction_chart","targetHandle":"outputSrcDoc","label":"prediction chart","type":"swarm_prediction_chart_html"}
 ---
 
 # Knowgrph Research Agent Demo - Review-First Thesis Graph
@@ -948,6 +1199,13 @@ The same document now demonstrates a Knowgrph-native long-horizon SuperAgent
 harness: a lead run researches sources, delegates bounded code and artifact
 work, writes outputs through shared owners, and creates Text, Image, and Chart
 Rich Media Panels without bypassing review.
+
+It also demonstrates a deterministic swarm-prediction world simulation. The
+SuperAgent harness emits reviewed thesis signals into a `SwarmPrediction` node;
+role-scoped agents, intervention ticks, event logs, world metrics, and
+prediction outputs remain replayable artifacts instead of active graph
+mutation. The swarm output fans out to Text, Image, and Chart Rich Media Panels
+through typed Flow Editor sockets.
 
 The MainPanel Integrations lane is represented as first-class Flow Editor
 nodes for OpenAI, BytePlus ModelArk, Agnes AI, MiroMind, and Qwen. Those
@@ -976,8 +1234,9 @@ are explicitly run.
 | Commit owner | `canvas/src/features/chat/chatKgcCanvasApply.ts` |
 | Rich media outputs | Text, Image, Chart |
 | Harness extension | Knowgrph-native long-horizon SuperAgent demo |
+| Swarm prediction extension | Offline deterministic world simulation with bounded agents, ticks, interventions, event log, and metrics |
 | MainPanel provider lane | OpenAI, BytePlus ModelArk, Agnes AI, MiroMind, Qwen |
-| Inspiration boundary | `bytedance/deer-flow` concepts only; no copied code or architecture |
+| Inspiration boundary | `bytedance/deer-flow` and `666ghj/MiroFish` concepts only; no copied code, prompts, fixtures, architecture, or runtime naming |
 
 ## SuperAgent Harness Extension
 
@@ -1036,7 +1295,51 @@ conceptual input only and routes every concrete output through Knowgrph owners.
   "artifact_outputs": {
     "text": "panel_text_research_brief.output",
     "image": "panel_image_evidence_map.imageUrl",
-    "chart": "panel_chart_guardrails.outputSrcDoc"
+    "chart": "panel_chart_guardrails.outputSrcDoc",
+    "swarm_report": "panel_swarm_text_report.output",
+    "swarm_world_image": "panel_swarm_world_image.imageUrl",
+    "swarm_prediction_chart": "panel_swarm_prediction_chart.outputSrcDoc"
+  },
+  "active_graph_mutated": false
+}
+```
+
+## Swarm Prediction World Simulation
+
+The swarm section turns reviewed research signals into a bounded world model.
+It uses the repo-native `SwarmPrediction` widget and shared semantic-keyed
+engine outputs. It does not copy MiroFish code, prompts, fixtures, architecture,
+or runtime names, and it does not introduce a second graph renderer or apply
+owner.
+
+| World input | Demo value |
+| Seed signals | Market need, unit-economics discipline, and stale-evidence risk from the staged thesis graph. |
+| Agent population | Founder Operator, Risk Reviewer, Market Scout, and Unit Economics Reviewer. |
+| Interventions | Cache source extraction at tick 2; tighten stale-evidence review at tick 4. |
+| Bounds | `max_agents=8`, `ticks=6`, `max_interventions=2`, deterministic seed `kgra-swarm-demo`. |
+| Outputs | Markdown report, SVG world map, HTML prediction chart, event log JSON, and metrics JSON. |
+| Review status | `active_graph_mutated=false`; prediction artifacts stay inspectable until review accepts them. |
+
+| Metric | Demo value |
+| Prediction score | `0.641` |
+| Confidence | `0.639` |
+| Consensus | `0.873` |
+| Volatility | `0.018` |
+| Stop reason | `tick_limit` |
+
+```json
+{
+  "schema_version": "knowgrph-swarm-prediction/v1",
+  "scenario_id": "kgsp_scenario_sme_launch_world",
+  "mode": "offline-deterministic-bounded",
+  "source_node_id": "swarm_prediction_world",
+  "seed_source": "reviewed research thesis signals",
+  "outputs": {
+    "text": "panel_swarm_text_report.output",
+    "image": "panel_swarm_world_image.imageUrl",
+    "chart": "panel_swarm_prediction_chart.outputSrcDoc",
+    "event_log": "swarm_prediction_world.eventLogJson",
+    "metrics": "swarm_prediction_world.metricsJson"
   },
   "active_graph_mutated": false
 }
@@ -1048,13 +1351,16 @@ conceptual input only and routes every concrete output through Knowgrph owners.
 | Research | Source scout and thesis compiler read selected Source Files and queryable corpus refs. | `researchThesisContract.ts` source refs and evidence ledger |
 | Code | Code worker prepares bounded implementation notes, patches, or runnable snippets only when the reviewed task requires them. | Source Files or existing repo owners, never generated downstream mirrors |
 | Create | Artifact builder emits Text, Image, and Chart panel payloads. | `richMediaRun.ts` and Rich Media Panel fields |
+| Simulate | SwarmPrediction runs bounded multi-agent prediction from reviewed thesis signals. | `swarmPredictionEngine.ts`, `swarmPredictionWidget.ts`, and `swarmPredictionRender.ts` |
 | Review | Review gate records accepted, rejected, and deferred candidates before graph apply. | `chatKgcCanvasApply.ts` after human review |
 
 ## Non-Copy Inspiration Boundary
 
 The external Deer Flow project is referenced because it describes a modern
 long-horizon harness pattern with sandboxes, memory, skills, tools, subagents,
-and message gateways. This demo forbids copied code, copied architecture,
+and message gateways. The external MiroFish project is referenced only as a
+conceptual swarm-prediction and world-simulation inspiration point. This demo
+forbids copied code, copied prompts, copied fixtures, copied architecture,
 provider-specific renderer branches, hardcoded local paths, legacy remapping,
 or downstream alias stacks. Knowgrph remains the source authority.
 
@@ -1168,6 +1474,7 @@ or graph edge becomes authoritative until the review audit records the choice.
 | Estimated cost USD | `0` | Keeps the demo local and provider-neutral. |
 | Source hash reuse | `false` | First run builds extraction summaries; unchanged hashes can be cached. |
 | Harness runtime | `offline-mock-long-horizon` | Demonstrates minutes-to-hours orchestration without a deploy claim. |
+| Swarm runtime | `offline-deterministic-bounded` | Demonstrates replayable prediction and world simulation without provider calls. |
 | Review gate | `accepted_candidates_only` | Prevents graph, code, or artifact output from bypassing review. |
 
 ## Rich Media Panel Outputs
@@ -1176,6 +1483,9 @@ or graph edge becomes authoritative until the review audit records the choice.
 | `panel_text_research_brief` | `output` | Markdown review brief for the staged thesis graph. |
 | `panel_image_evidence_map` | `imageUrl` | Inline SVG evidence map rendered through the Image tab. |
 | `panel_chart_guardrails` | `outputSrcDoc` | HTML chart rendered through the shared Rich Media Panel `srcDoc` path. |
+| `panel_swarm_text_report` | `output` | Markdown swarm prediction report rendered through the Text path. |
+| `panel_swarm_world_image` | `imageUrl` | Inline SVG world-state map rendered through the Image tab. |
+| `panel_swarm_prediction_chart` | `outputSrcDoc` | HTML prediction metrics chart rendered through the shared `srcDoc` path. |
 
 ## How To Inspect In Knowgrph
 
@@ -1187,62 +1497,13 @@ or graph edge becomes authoritative until the review audit records the choice.
 5. Verify the risk node contradicts the thesis assumption node.
 6. Verify the open-question node remains explicit instead of hidden in prose.
 7. Verify the review/audit node points to the existing KGC apply owner.
-8. Verify the three Rich Media Panels render Text, Image, and Chart outputs.
-9. Do not treat this document as proof of a deployed research API route.
-10. Confirm `superagent_harness_demo` remains metadata and does not add a
-   second renderer, parser, provider adapter, or graph apply owner.
-
-## KGC Reading Layer
-
-@node:source:source_market_entry Source ref `kgra_source_4110639131` anchors the market-entry evidence window.
-
-@node:integration:integration_openai OpenAI is available through MainPanel Integrations and the shared chat gateway.
-
-@node:integration:integration_byteplus BytePlus ModelArk is available through MainPanel Integrations and the shared chat gateway.
-
-@node:integration:integration_agnes Agnes AI is available through MainPanel Integrations and the shared chat gateway.
-
-@node:integration:integration_miromind MiroMind is available through MainPanel Integrations and the shared chat gateway.
-
-@node:integration:integration_qwen Qwen API is available through MainPanel Integrations and the shared chat gateway.
-
-@node:source:source_customer_interviews Source ref `kgra_source_697725692` anchors the founder interview evidence window.
-
-@node:source:source_unit_economics Source ref `kgra_source_3376275288` anchors the unit-economics evidence window.
-
-@node:claim:claim_market_need SMEs entering Singapore need market sizing, compliance checks, localization planning, and evidence-backed launch sequencing.
-
-@node:claim:claim_founder_review Founders want confidence tags, contradiction flags, and a monitoring checklist before committing budget.
-
-@node:claim:claim_unit_economics Gross margin depends on bounded model calls, cached source extraction, and review-first graph commits.
-
-@node:assumption:thesis_assumption The investable vertical SaaS thesis remains a candidate assumption until review.
-
-@node:risk:risk_stale_evidence The thesis weakens if source evidence is incomplete, stale, or contradicted by later operating metrics.
-
-@node:open_question:open_question_disconfirming What disconfirming evidence would invalidate the thesis before execution or capital commitment?
-
-@node:rich_media:panel_text_research_brief Text Rich Media Panel renders the staged research brief.
-
-@node:rich_media:panel_image_evidence_map Image Rich Media Panel renders the evidence-to-thesis map.
-
-@node:rich_media:panel_chart_guardrails Chart Rich Media Panel renders guardrail counts from `outputSrcDoc`.
-
-@node:agent:kgra_superagent_harness Long-horizon SuperAgent harness coordinates research, code, and create task slices through shared Knowgrph owners.
-
-@edge:supports source_market_entry -> claim_market_need
-@edge:integration integration_openai -> kgra_superagent_harness
-@edge:integration integration_byteplus -> kgra_superagent_harness
-@edge:integration integration_agnes -> kgra_superagent_harness
-@edge:integration integration_miromind -> kgra_superagent_harness
-@edge:integration integration_qwen -> kgra_superagent_harness
-@edge:integration integration_google_cloud -> kgra_superagent_harness
-@edge:review kgra_superagent_harness -> review_audit
-@edge:supports claim_market_need -> thesis_assumption
-@edge:supports claim_unit_economics -> thesis_assumption
-@edge:contradicts risk_stale_evidence -> thesis_assumption
-@edge:depends_on open_question_disconfirming -> thesis_assumption
-@edge:review review_audit -> kgc_apply_owner
-@edge:rich_media claim_founder_review -> panel_text_research_brief
-@edge:rich_media claim_market_need -> panel_image_evidence_map
-@edge:rich_media monitoring_spec -> panel_chart_guardrails
+8. Verify `kgra_superagent_harness` feeds `swarm_prediction_world` through the
+   `swarm_seed_signal` socket.
+9. Verify `swarm_prediction_world` exposes `output`, `imageUrl`,
+   `outputSrcDoc`, `eventLogJson`, and `metricsJson` without mutating the
+   active graph.
+10. Verify the six Rich Media Panels render research and swarm Text, Image,
+    and Chart outputs.
+11. Do not treat this document as proof of a deployed research API route.
+12. Confirm `superagent_harness_demo` and `swarm_prediction_demo` remain metadata and do not add a
+    second renderer, parser, provider adapter, or graph apply owner.
