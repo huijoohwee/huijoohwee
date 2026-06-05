@@ -1,4 +1,4 @@
----
+b---
 title: "HackaMap — Knowledge Graph"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"

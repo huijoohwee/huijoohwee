@@ -212,6 +212,17 @@ template_flow_demo:
   mode: "local-template"
   output_fields: ["output", "imageUrl", "outputSrcDoc"]
 
+main_panel_integrations_demo:
+  schema_version: "knowgrph-mainpanel-chat-gateway-demo/v1"
+  source_file: "workspace:/docs/knowgrph-missalph-demo.md"
+  main_panel_entries: ["integrations", "mcp"]
+  integration_open_tab: "chat"
+  provider_ids: ["openai", "byteplus-modelark", "agnes-ai", "miromind", "qwen", "google-cloud"]
+  provider_labels: ["OpenAI", "BytePlus ModelArk", "Agnes AI API", "MiroMind API", "Qwen API", "Google Cloud Vertex AI"]
+  message_gateway: "MainPanel Integrations/MCP -> FloatingPanel Chat -> MCP-style structured response -> Markdown frontmatter -> Flow Editor"
+  provider_authority: "Providers may supply structured content, but flow, gitGraph, Gantt, and Rich Media Panels stay on the shared source-driven dataflow path."
+  hardcode_policy: "No provider-specific renderer fork, static panel backfill, demo filename branch, or downstream alias remap."
+
 workflow_sections:
   - id: wf_missalph_input
     title: "Input: declare editable missing alpha query"
@@ -246,6 +257,10 @@ universal_structured_response_demo:
       key: dataflow_path
       type: string
       value: "frontmatter source -> FlowDiagramSource -> TextGeneration inline compute -> RichMediaPanel.outputSrcDoc"
+    provider_gateway:
+      key: provider_gateway
+      type: string
+      value: "MainPanel Integrations, including MiroMind API, reuse the same FloatingPanel Chat structured-response gateway; provider choice never changes the renderer or panel owner."
     output_authority:
       key: output_authority
       type: string
@@ -312,6 +327,9 @@ Mermaid GitGraph, and Mermaid Gantt frontmatter are data inputs. The parser
 derives `FlowDiagramSource -> TextGeneration inline compute -> RichMediaPanel`
 nodes for the diagram records, and computed `outputSrcDoc` panels preserve
 first-class terms from the authored source instead of using static backfill.
+MainPanel providers, including MiroMind API, enter through the shared
+Integrations/MCP -> FloatingPanel Chat gateway and do not own a renderer,
+Timeline path, or document-specific panel template.
 
 This is not a live Cloudflare route proof. Treat it as a local docs-mirror demo
 until deployment and route validation are explicitly run.
@@ -326,6 +344,7 @@ until deployment and route validation are explicitly run.
 | Active graph mutation | `false` before user edits |
 | Rich media outputs | Text (alpha thesis), Image (factor map), Chart (dashboard) |
 | Dynamic owner | `compute_summary.compute` -> parser `flow:compute` -> inline runner -> dataflow panels |
+| Provider gateway | MainPanel Integrations/MCP -> FloatingPanel Chat; MiroMind API is a provider option, not a renderer branch |
 | Default query horizon | parsed from `source_input.input_text` |
 | Default portfolio | parsed from `source_input.input_text` |
 
@@ -349,7 +368,9 @@ until deployment and route validation are explicitly run.
 The demo keeps renderer intent in frontmatter data and keeps render output on
 connected values. Changing the input prompt or diagram source should recompute
 panels through the same dataflow path, without stale templates or
-document-specific parser branches.
+document-specific parser branches. Provider selection, including MiroMind API,
+stays upstream of this path and cannot replace the Markdown/frontmatter canvas
+apply owner.
 
 ## Runnable IPO Contract
 

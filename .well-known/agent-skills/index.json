@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-skills.dev/schemas/skills-index.v0.2.json",
-  "updated_at": "2026-06-04",
+  "updated_at": "2026-06-05",
   "skills": [
     {
       "name": "knowgrph-agent-ready",

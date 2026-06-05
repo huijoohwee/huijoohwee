@@ -1,1 +1,0 @@
-import{at as t}from"./index-CtCfRiSv.js";const n=r=>r==null?"":typeof r=="boolean"?r?"1":"0":typeof r=="number"?Number.isFinite(r)?String(r):"":String(r),i=r=>r.map(n).join("|"),e=r=>t(i(r));export{e as h};
