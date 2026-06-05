@@ -1,1 +1,0 @@
-import{lJ as l,il as e}from"./index-zIRQAAPG.js";l(e.table.text),l(e.table.textSecondary),l("sticky top-0 z-10 px-3 py-2",e.table.headerBg,e.table.cellBorder),l("border-b",e.table.cellBorder,e.table.rowHover),l("px-3 py-2",e.table.textSecondary);

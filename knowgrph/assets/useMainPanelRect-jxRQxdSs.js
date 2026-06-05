@@ -1,1 +1,0 @@
-const t="kg:mainPanelOpen",o="kg:mainPanelOpenReady";function E(n){if(typeof window>"u")return;const e=typeof window.CustomEvent=="function"?window.CustomEvent:CustomEvent;window.dispatchEvent(new e(t,{detail:n}))}export{t as M,o as a,E as e};

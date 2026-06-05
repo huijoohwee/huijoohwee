@@ -213,6 +213,87 @@ workflow_sections:
     title: "Run deterministic swarm prediction and world simulation"
     nodes: [swarm_prediction_world, panel_swarm_text_report, panel_swarm_world_image, panel_swarm_prediction_chart]
 
+universal_structured_response_demo:
+  key: universal_structured_response_demo
+  type: object
+  value:
+    input_surfaces:
+      key: input_surfaces
+      type: array
+      value: [markdown_flow, mermaid_gitgraph, mermaid_gantt]
+    response_shape:
+      key: response_shape
+      type: mcp_structured_response
+      value:
+        root: "response.structuredContent"
+        records: [widgets, cards, panels, media, nodes, edges]
+        render_fields: [output, imageUrl, audioUrl, videoUrl, outputSrcDoc]
+    term_coverage_policy:
+      key: term_coverage_policy
+      type: string
+      value: "Preserve named prompt terms from authored frontmatter and diagram source as first-class node properties and computed Rich Media text; do not switch to prompt-family templates."
+    dataflow_path:
+      key: dataflow_path
+      type: string
+      value: "frontmatter source -> FlowDiagramSource -> TextGeneration inline compute -> RichMediaPanel.outputSrcDoc"
+    output_authority:
+      key: output_authority
+      type: string
+      value: "Connected compute output wins over local panel fallback; static Rich Media backfill is forbidden."
+
+flow_diagrams:
+  key: flow_diagrams
+  type: object
+  value:
+    gitgraph:
+      key: gitgraph
+      type: mermaid_gitgraph
+      title: "Research agent GitGraph parallel lanes"
+      render_on: [flow_editor, storyboard]
+      value: |-
+        gitGraph
+          commit id:"source_input"
+          branch source_scout
+          checkout source_scout
+          commit id:"evidence_review"
+          checkout main
+          branch thesis_compiler
+          checkout thesis_compiler
+          commit id:"claim_compile"
+          checkout main
+          branch code_worker
+          checkout code_worker
+          commit id:"runtime_surface"
+          checkout main
+          branch artifact_builder
+          checkout artifact_builder
+          commit id:"rich_media_outputs"
+          checkout main
+          merge source_scout
+          merge thesis_compiler
+          merge code_worker
+          merge artifact_builder
+          commit id:"review_gate"
+    gantt:
+      key: gantt
+      type: mermaid_gantt
+      title: "Research agent Gantt critical path"
+      render_on: [flow_editor, storyboard, document_view, timeline_view]
+      value: |-
+        gantt
+          title computing flow: research-agent-demo
+          dateFormat YYYY-MM-DD
+          section Intake
+          Source input :done, source_input, 2026-06-05, 1d
+          section Parallel work
+          Source scout :source_scout, after source_input, 2d
+          Thesis compiler :crit, thesis_compiler, after source_input, 2d
+          Code worker :code_worker, after source_input, 2d
+          Artifact builder :artifact_builder, after source_input, 2d
+          section Critical review
+          Review gate :crit, review_gate, after thesis_compiler, 1d
+          Rich Media Panels :panel_outputs, after review_gate, 1d
+
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -776,6 +857,30 @@ flow:
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_2303438352"}
       "research:claimType": {key: "research:claimType", type: string, value: "fact"}
       "research:confidence": {key: "research:confidence", type: string, value: "medium"}
+      compute:
+        key: compute
+        type: javascript
+        value: |-
+          (inputs, context) => {
+            const node = context && context.node ? context.node : {}
+            const props = node.properties && typeof node.properties === 'object' ? node.properties : {}
+            const sourceSignal = String(inputs.source_ref_signal_in || '').trim()
+            const title = String(node.label || props['kgc:readingSummary'] || 'Structured review brief')
+            const summary = String(props['kgc:readingSummary'] || title)
+            const evidenceRefs = String(props['evidence:refs'] || 'unresolved evidence refs')
+            const confidence = String(props['research:confidence'] || 'unscored')
+            const output = [
+              '### Review brief',
+              '',
+              '- Claim: ' + title,
+              '- Summary: ' + summary,
+              '- Evidence refs: ' + evidenceRefs,
+              '- Confidence: ' + confidence,
+              '- Source signal chars: ' + sourceSignal.length,
+              '- KGC apply remains review-gated until acceptance.',
+            ].join('\n')
+            return { rich_media_text_signal_out: output, output }
+          }
       "visual:importance": {key: "visual:importance", type: number, value: 28}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
@@ -846,6 +951,23 @@ flow:
       "research:claimId": {key: "research:claimId", type: string, value: "kgra_claim_43612152"}
       "research:claimType": {key: "research:claimType", type: string, value: "fact"}
       "research:confidence": {key: "research:confidence", type: string, value: "medium"}
+      compute:
+        key: compute
+        type: javascript
+        value: |-
+          (inputs, context) => {
+            const node = context && context.node ? context.node : {}
+            const props = node.properties && typeof node.properties === 'object' ? node.properties : {}
+            const esc = value => String(value == null ? '' : value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]))
+            const sourceSignal = String(inputs.source_ref_signal_in || '').trim()
+            const label = String(node.label || 'Claim')
+            const summary = String(props['kgc:readingSummary'] || label)
+            const evidenceRefs = String(props['evidence:refs'] || 'evidence refs pending')
+            const confidence = String(props['research:confidence'] || 'unscored')
+            const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" fill="#f8fafc"/><rect x="40" y="52" width="190" height="72" rx="12" fill="#e0f2fe" stroke="#0ea5e9"/><text x="58" y="92" font-family="system-ui" font-size="17" fill="#0f172a">' + esc(evidenceRefs) + '</text><rect x="300" y="52" width="260" height="72" rx="12" fill="#dcfce7" stroke="#22c55e"/><text x="318" y="86" font-family="system-ui" font-size="16" fill="#0f172a">' + esc(label).slice(0, 34) + '</text><text x="318" y="108" font-family="system-ui" font-size="13" fill="#166534">confidence: ' + esc(confidence) + '</text><rect x="142" y="210" width="360" height="82" rx="12" fill="#fff7ed" stroke="#f59e0b"/><text x="162" y="244" font-family="system-ui" font-size="15" fill="#0f172a">' + esc(summary).slice(0, 48) + '</text><text x="162" y="270" font-family="system-ui" font-size="13" fill="#92400e">source signal chars: ' + sourceSignal.length + '</text><path d="M230 88H300" stroke="#64748b" stroke-width="4"/><path d="M430 124C400 160 370 188 330 210" stroke="#64748b" stroke-width="4" fill="none"/></svg>'
+            const imageUrl = 'data:image/svg+xml,' + encodeURIComponent(svg)
+            return { rich_media_image_signal_out: imageUrl, imageUrl }
+          }
       "visual:importance": {key: "visual:importance", type: number, value: 28}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
@@ -864,16 +986,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel renders the staged research brief."}
-      output:
-        key: output
-        type: textarea
-        value: |
-          ### Review brief
-
-          - Active graph remains unchanged until reviewer acceptance.
-          - Source hashes and locators travel with each claim.
-          - KGC apply receives accepted candidate deltas only.
-
+      output: {key: output, type: textarea, value: ""}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       "visual:height": {key: "visual:height", type: number, value: 203}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
@@ -917,7 +1030,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Crect%20x=%2240%22%20y=%2252%22%20width=%22170%22%20height=%2272%22%20rx=%2212%22%20fill=%22%23e0f2fe%22%20stroke=%22%230ea5e9%22/%3E%3Ctext%20x=%2258%22%20y=%2292%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3ESource%20refs%3C/text%3E%3Crect%20x=%22278%22%20y=%2252%22%20width=%22170%22%20height=%2272%22%20rx=%2212%22%20fill=%22%23dcfce7%22%20stroke=%22%2322c55e%22/%3E%3Ctext%20x=%22306%22%20y=%2292%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3ETyped%20claims%3C/text%3E%3Crect%20x=%22162%22%20y=%22210%22%20width=%22270%22%20height=%2278%22%20rx=%2212%22%20fill=%22%23fff7ed%22%20stroke=%22%23f59e0b%22/%3E%3Ctext%20x=%22192%22%20y=%22255%22%20font-family=%22system-ui%22%20font-size=%2218%22%20fill=%22%230f172a%22%3EReview%20gate%20before%20KGC%3C/text%3E%3Cpath%20d=%22M210%2088H278%22%20stroke=%22%2364748b%22%20stroke-width=%224%22%20marker-end=%22url(%23arrow)%22/%3E%3Cpath%20d=%22M363%20124C350%20162%20330%20188%20304%20210%22%20stroke=%22%2364748b%22%20stroke-width=%224%22%20fill=%22none%22%20marker-end=%22url(%23arrow)%22/%3E%3Cdefs%3E%3Cmarker%20id=%22arrow%22%20viewBox=%220%200%2010%2010%22%20refX=%229%22%20refY=%225%22%20markerWidth=%226%22%20markerHeight=%226%22%20orient=%22auto-start-reverse%22%3E%3Cpath%20d=%22M0%200l10%205-10%205z%22%20fill=%22%2364748b%22/%3E%3C/marker%3E%3C/defs%3E%3C/svg%3E"}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel renders the evidence-to-thesis map."}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
       "visual:height": {key: "visual:height", type: number, value: 268}
@@ -942,6 +1055,31 @@ flow:
       "kgc:nodeType": {key: "kgc:nodeType", type: string, value: "audit"}
       "research:cadence": {key: "research:cadence", type: string, value: "weekly source refresh; manual disconfirming evidence count"}
       "research:metricIds": {key: "research:metricIds", type: string, value: "kgra_metric_2689250104, kgra_metric_1956522249"}
+      compute:
+        key: compute
+        type: javascript
+        value: |-
+          (inputs, context) => {
+            const props = context && context.node && context.node.properties && typeof context.node.properties === 'object' ? context.node.properties : {}
+            const text = String(inputs.review_audit_signal_in || '')
+            const metricIds = String(props['research:metricIds'] || '').split(',').map(item => item.trim()).filter(Boolean)
+            const cadence = String(props['research:cadence'] || 'review cadence not declared')
+            const count = pattern => Math.max((text.match(pattern) || []).length, 0)
+            const metrics = {
+              'Source hashes': Math.max(metricIds.length, count(/source|hash|evidence/gi), 1),
+              'Claims staged': Math.max(count(/claim|thesis|assumption/gi), metricIds.length, 1),
+              'Open risks': Math.max(count(/risk|stale|question|disconfirm/gi), 1),
+              'Review gate': text || cadence ? 1 : 0,
+            }
+            const esc = value => String(value == null ? '' : value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]))
+            const rows = Object.entries(metrics).map(([label, value]) => {
+              const width = label === 'Review gate' ? (value ? 50 : 10) : Math.max(12, Math.min(100, value * 25))
+              const tone = label === 'Open risks' ? 'risk' : label === 'Review gate' ? 'warn' : ''
+              return '<div class="row"><span>' + esc(label) + '</span><span class="track"><span class="bar ' + tone + '" style="display:block;width:' + width + '%"></span></span><strong>' + esc(label === 'Review gate' ? (value ? 'on' : 'queued') : value) + '</strong></div>'
+            }).join('')
+            const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.row{display:grid;grid-template-columns:150px 1fr 48px;gap:10px;align-items:center;margin:10px 0}.track{height:18px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar{height:100%;background:#14b8a6}.bar.warn{background:#f59e0b}.bar.risk{background:#ef4444}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class="wrap"><h1 class="title">Research agent guardrail chart</h1>' + rows + '<p class="note">Computed from connected review signal and monitoring properties. Cadence: ' + esc(cadence) + '.</p></main></body></html>'
+            return { rich_media_chart_html_out: outputSrcDoc, outputSrcDoc }
+          }
       "visual:importance": {key: "visual:importance", type: number, value: 20}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
@@ -960,9 +1098,9 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel renders guardrail counts from outputSrcDoc."}
-      output: {key: output, type: textarea, value: "Guardrail chart fallback copy; outputSrcDoc owns the rendered chart."}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: "<!doctype html><html><head><meta charset=\"utf-8\"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.row{display:grid;grid-template-columns:150px 1fr 40px;gap:10px;align-items:center;margin:10px 0}.track{height:18px;background:#e2e8f0;border-radius:999px;overflow:hidden}.bar{height:100%;background:#14b8a6}.bar.warn{background:#f59e0b}.bar.risk{background:#ef4444}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class=\"wrap\"><h1 class=\"title\">Research agent guardrail chart</h1><div class=\"row\"><span>Source hashes</span><span class=\"track\"><span class=\"bar\" style=\"display:block;width:100%\"></span></span><strong>3</strong></div><div class=\"row\"><span>Claims staged</span><span class=\"track\"><span class=\"bar\" style=\"display:block;width:75%\"></span></span><strong>3</strong></div><div class=\"row\"><span>Open risks</span><span class=\"track\"><span class=\"bar risk\" style=\"display:block;width:25%\"></span></span><strong>1</strong></div><div class=\"row\"><span>Review gate</span><span class=\"track\"><span class=\"bar warn\" style=\"display:block;width:50%\"></span></span><strong>on</strong></div><p class=\"note\">Staged graph remains separate until review acceptance.</p></main></body></html>"}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
       "visual:height": {key: "visual:height", type: number, value: 203}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
@@ -990,13 +1128,7 @@ flow:
       eventLogJson:
         key: eventLogJson
         type: textarea
-        value: |
-          [
-            {"tick":0,"kind":"world_initialized","label":"4 agents initialized from 3 seed signals"},
-            {"tick":2,"kind":"intervention_applied","label":"Cache source extraction before rerun"},
-            {"tick":4,"kind":"intervention_applied","label":"Tighten review gate on stale evidence"},
-            {"tick":6,"kind":"forecast_recorded","label":"Prediction score 0.641 with consensus 0.873"}
-          ]
+        value: ""
 
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"seedSignalsJson_in":"swarm_seed_signal","agentPopulationJson_in":"swarm_seed_signal","interventionsJson_in":"swarm_seed_signal"},"out":{"output":"swarm_prediction_report_signal","imageUrl":"swarm_world_image_signal","outputSrcDoc":"swarm_prediction_chart_html","eventLogJson":"swarm_event_log_signal","metricsJson":"swarm_event_log_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "swarmPrediction"}
@@ -1006,7 +1138,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Ccircle%20cx=%22140%22%20cy=%22120%22%20r=%2252%22%20fill=%22%23ccfbf1%22%20stroke=%22%230f766e%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22100%22%20y=%22126%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EOperator%3C/text%3E%3Ccircle%20cx=%22320%22%20cy=%2290%22%20r=%2252%22%20fill=%22%23e0f2fe%22%20stroke=%22%230891b2%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22282%22%20y=%2296%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EMarket%3C/text%3E%3Ccircle%20cx=%22492%22%20cy=%22132%22%20r=%2252%22%20fill=%22%23fee2e2%22%20stroke=%22%23ef4444%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22458%22%20y=%22138%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3ERisk%3C/text%3E%3Crect%20x=%22204%22%20y=%22228%22%20width=%22230%22%20height=%2258%22%20rx=%2210%22%20fill=%22%23fff7ed%22%20stroke=%22%23f59e0b%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22230%22%20y=%22264%22%20font-family=%22system-ui%22%20font-size=%2216%22%20fill=%22%230f172a%22%3EWorld%20state%20score%200.641%3C/text%3E%3Cpath%20d=%22M183%20145C230%20182%20258%20208%20278%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M331%20142C326%20178%20322%20204%20320%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M461%20167C422%20198%20390%20218%20358%20232%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3C/svg%3E"}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       interventionsJson:
         key: interventionsJson
         type: textarea
@@ -1021,27 +1153,11 @@ flow:
       metricsJson:
         key: metricsJson
         type: textarea
-        value: |
-          {"agentCount":4,"tickCount":6,"eventCount":30,"meanBelief":0.224,"consensus":0.873,"confidence":0.639,"volatility":0.018,"predictionScore":0.641,"stopReason":"tick_limit"}
+        value: ""
 
-      output:
-        key: output
-        type: textarea
-        value: |
-          # Swarm prediction report
+      output: {key: output, type: textarea, value: ""}
 
-          Prediction score: 0.641
-          Confidence: 0.639
-          Consensus: 0.873
-          Stop reason: tick_limit
-
-          The simulated world keeps the thesis favorable but not automatic. Operator and market agents converge around source-backed demand, while the risk cohort stays cautious until stale-evidence checks are refreshed.
-
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: textarea
-        value: |
-          <!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.metric{display:grid;grid-template-columns:150px 1fr 50px;gap:10px;align-items:center;margin:10px 0}.track{height:18px;background:#e2e8f0;border-radius:999px;overflow:hidden}.score{display:block;height:100%;background:#0f766e}.conf{display:block;height:100%;background:#0891b2}.risk{display:block;height:100%;background:#f59e0b}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class="wrap"><h1 class="title">Swarm prediction world simulation</h1><div class="metric"><span>Prediction</span><span class="track"><span class="score" style="width:64.1%"></span></span><strong>0.641</strong></div><div class="metric"><span>Confidence</span><span class="track"><span class="conf" style="width:63.9%"></span></span><strong>0.639</strong></div><div class="metric"><span>Consensus</span><span class="track"><span class="score" style="width:87.3%"></span></span><strong>0.873</strong></div><div class="metric"><span>Volatility</span><span class="track"><span class="risk" style="width:18%"></span></span><strong>0.018</strong></div><p class="note">Seed signals, agent population, interventions, event log, and world metrics remain replayable outputs. Active graph mutation remains review-gated.</p></main></body></html>
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
 
       predictionScore: {key: predictionScore, type: number, value: 0.641}
       randomSeed: {key: randomSeed, type: text, value: "kgra-swarm-demo"}
@@ -1078,17 +1194,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel renders the swarm prediction report."}
-      output:
-        key: output
-        type: textarea
-        value: |
-          ### Swarm report
-
-          - Four role-scoped agents simulate the thesis world.
-          - Seed signals come from reviewed claims and risks.
-          - Interventions adjust economics and risk cohorts.
-          - Prediction, confidence, consensus, and volatility remain replayable.
-
+      output: {key: output, type: textarea, value: ""}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       "visual:height": {key: "visual:height", type: number, value: 203}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
@@ -1109,7 +1215,7 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20360%22%3E%3Crect%20width=%22640%22%20height=%22360%22%20fill=%22%23f8fafc%22/%3E%3Ccircle%20cx=%22140%22%20cy=%22120%22%20r=%2252%22%20fill=%22%23ccfbf1%22%20stroke=%22%230f766e%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22100%22%20y=%22126%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EOperator%3C/text%3E%3Ccircle%20cx=%22320%22%20cy=%2290%22%20r=%2252%22%20fill=%22%23e0f2fe%22%20stroke=%22%230891b2%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22282%22%20y=%2296%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3EMarket%3C/text%3E%3Ccircle%20cx=%22492%22%20cy=%22132%22%20r=%2252%22%20fill=%22%23fee2e2%22%20stroke=%22%23ef4444%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22458%22%20y=%22138%22%20font-family=%22system-ui%22%20font-size=%2215%22%20fill=%22%230f172a%22%3ERisk%3C/text%3E%3Crect%20x=%22204%22%20y=%22228%22%20width=%22230%22%20height=%2258%22%20rx=%2210%22%20fill=%22%23fff7ed%22%20stroke=%22%23f59e0b%22%20stroke-width=%223%22/%3E%3Ctext%20x=%22230%22%20y=%22264%22%20font-family=%22system-ui%22%20font-size=%2216%22%20fill=%22%230f172a%22%3EWorld%20state%20score%200.641%3C/text%3E%3Cpath%20d=%22M183%20145C230%20182%20258%20208%20278%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M331%20142C326%20178%20322%20204%20320%20228%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3Cpath%20d=%22M461%20167C422%20198%20390%20218%20358%20232%22%20fill=%22none%22%20stroke=%22%2364748b%22%20stroke-width=%223%22/%3E%3C/svg%3E"}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel renders the swarm world-state map."}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
       "visual:height": {key: "visual:height", type: number, value: 268}
@@ -1132,14 +1238,9 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel renders the swarm prediction metrics from outputSrcDoc."}
-      output: {key: output, type: textarea, value: "Swarm prediction chart fallback copy; outputSrcDoc owns the rendered chart."}
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: textarea
-        value: |
-          <!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#0f172a}.wrap{padding:18px}.title{font-size:18px;font-weight:700;margin:0 0 14px}.metric{display:grid;grid-template-columns:150px 1fr 50px;gap:10px;align-items:center;margin:10px 0}.track{height:18px;background:#e2e8f0;border-radius:999px;overflow:hidden}.score{display:block;height:100%;background:#0f766e}.conf{display:block;height:100%;background:#0891b2}.risk{display:block;height:100%;background:#f59e0b}.note{margin-top:14px;font-size:12px;color:#475569}</style></head><body><main class="wrap"><h1 class="title">Swarm prediction world simulation</h1><div class="metric"><span>Prediction</span><span class="track"><span class="score" style="width:64.1%"></span></span><strong>0.641</strong></div><div class="metric"><span>Confidence</span><span class="track"><span class="conf" style="width:63.9%"></span></span><strong>0.639</strong></div><div class="metric"><span>Consensus</span><span class="track"><span class="score" style="width:87.3%"></span></span><strong>0.873</strong></div><div class="metric"><span>Volatility</span><span class="track"><span class="risk" style="width:18%"></span></span><strong>0.018</strong></div><p class="note">Seed signals, agent population, interventions, event log, and world metrics remain replayable outputs. Active graph mutation remains review-gated.</p></main></body></html>
-
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
       "visual:height": {key: "visual:height", type: number, value: 203}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
@@ -1218,6 +1319,13 @@ Flow Editor nodes. The demo therefore proves message gateway, sandbox, memory,
 tools, skills, and subagents through the same ingestion, parser, and canvas
 rendering path as the rest of the graph.
 
+It also demonstrates the neutral structured-response path: Markdown flow,
+Mermaid GitGraph, and Mermaid Gantt frontmatter are data inputs. The parser
+derives `FlowDiagramSource -> TextGeneration inline compute -> RichMediaPanel`
+nodes for diagram records, and computed `outputSrcDoc` panels preserve
+first-class terms from authored source terms such as subagents, review gates,
+and panel outputs instead of using static backfill.
+
 This is not a live Cloudflare route proof. The Dev repo contains the Worker
 source and D1 migration, but this demo must not be read as a deployed
 `/api/research/*` claim until Prod/Cloudflare deployment and route validation
@@ -1237,6 +1345,18 @@ are explicitly run.
 | Swarm prediction extension | Offline deterministic world simulation with bounded agents, ticks, interventions, event log, and metrics |
 | MainPanel provider lane | OpenAI, BytePlus ModelArk, Agnes AI, MiroMind, Qwen |
 | Inspiration boundary | `bytedance/deer-flow` and `666ghj/MiroFish` concepts only; no copied code, prompts, fixtures, architecture, or runtime naming |
+
+## Universal Structured Response Path
+
+| Input surface | Frontmatter owner | Computed output |
+| Markdown flow | `flow.nodes` and `flow.edges` | Connected Rich Media Panel values from inline compute. |
+| GitGraph | `flow_diagrams.gitgraph` with `type: mermaid_gitgraph` | GitGraph Rich Media Panel `outputSrcDoc` with parallel-lane and term coverage. |
+| Gantt | `flow_diagrams.gantt` with `type: mermaid_gantt` | Gantt Rich Media Panel `outputSrcDoc` with critical-path and term coverage. |
+
+The demo keeps renderer intent in frontmatter data and keeps render output on
+connected values. Changing the prompt-shaped graph terms or diagram source
+should recompute panels through the same dataflow path, without stale templates
+or document-specific parser branches.
 
 ## SuperAgent Harness Extension
 

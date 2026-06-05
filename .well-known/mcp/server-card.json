@@ -6,8 +6,7 @@
   "transport": {
     "type": "streamable-http",
     "url": "https://airvio.co/knowgrph/mcp",
-    "stateless": true,
-    "legacySse": false
+    "stateless": true
   },
   "capabilities": {
     "tools": [

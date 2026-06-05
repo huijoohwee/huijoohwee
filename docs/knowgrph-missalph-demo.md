@@ -19,8 +19,8 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Missing alpha query anchors the horizon, portfolio weights, and factor dimensions for the compute flow."}
       input_text: {key: input_text, type: textarea, value: "1–3 month horizon, portfolio: BTC 30% + gold 20% — factor analysis: ETF flow momentum vs spot premium/discount, options skew divergence between the two assets, signal/noise ratio on macro catalyst (FOMC, CPI print) sensitivity; uncover what options desks miss about BTC-gold skew convergence as institutional adoption matures"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Missing alpha query anchors the horizon, portfolio weights, and factor dimensions for the compute flow."}
       placeholder: {key: placeholder, type: string, value: "n-month horizon, portfolio: ASSET X% + ASSET Y% — factor analysis: FACTOR_A, FACTOR_B; uncover what ANALYST_DESK misses about ALPHA_SIGNAL"}
       required: {key: required, type: boolean, value: true}
       schema: {key: schema, type: string, value: "missalph-query/v1"}
@@ -45,13 +45,13 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute node runs the typed compute function over the connected query and emits markdown, SVG data URI, and HTML srcdoc outputs through semantic ports."}
       harness_proof: {key: harness_proof, type: string, value: "harness-proof.json"}
       harness_type: {key: harness_type, type: string, value: "sequential"}
       imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
       inputs_spec: {key: inputs_spec, type: object, value: {"input_text":{"key":"input_text","port":"template_text_signal","required":true,"from":"source_input","parse":{"horizon":"regex","btcWt":"regex","goldWt":"regex","hasFOMC":"boolean","hasCPI":"boolean"}}}}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute node runs the typed compute function over the connected query and emits markdown, SVG data URI, and HTML srcdoc outputs through semantic ports."}
       orch_topology: {key: orch_topology, type: string, value: "single-pass"}
-      output: {key: output, type: markdown, value: "Run compute_summary to derive markdown from source_input.input_text."}
+      output: {key: output, type: markdown, value: ""}
       output_binding_mode: {key: output_binding_mode, type: string, value: "computed-values-to-connected-panels"}
       outputs_spec: {key: outputs_spec, type: object, value: {"output":{"key":"output","port":"template_text_signal","content_type":"markdown","panel":"panel_text_output","fields":["horizon","portfolio","skewGap","convergePct","catalysts","tradeExpression","risk"]},"imageUrl":{"key":"imageUrl","port":"template_image_signal","content_type":"svg_data_uri","panel":"panel_image_output","viewBox":"640x360","kgc_nodes":6,"kgc_edges":6},"outputSrcDoc":{"key":"outputSrcDoc","port":"template_chart_html","content_type":"html_srcdoc","panel":"panel_chart_output","sections":["etf_flow","skew_rr","signal_noise","alpha_box"]}}}
       outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
@@ -103,12 +103,14 @@ flow:
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel renders the connected outputSrcDoc field through iframe srcdoc."}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      output: {key: output, type: textarea, value: "Waiting for connected compute_summary.outputSrcDoc."}
+      output: {key: output, type: textarea, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media"}
+      "visual:height": {key: "visual:height", type: number, value: 327}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:width": {key: "visual:width", type: number, value: 360}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
       "visual:zIndex": {key: "visual:zIndex", type: number, value: 2}
@@ -126,8 +128,8 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel renders the connected imageUrl SVG data URI."}
       imageUrl: {key: imageUrl, type: text, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel renders the connected imageUrl SVG data URI."}
       media_interactive: {key: media_interactive, type: boolean, value: true}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media"}
@@ -152,7 +154,7 @@ flow:
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel renders the connected output markdown field."}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      output: {key: output, type: textarea, value: "Waiting for connected compute_summary.output."}
+      output: {key: output, type: textarea, value: ""}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media"}
       "visual:height": {key: "visual:height", type: number, value: 203}
@@ -220,6 +222,80 @@ workflow_sections:
   - id: wf_missalph_render_outputs
     title: "Output: render live Rich Media Panels"
     nodes: [panel_text_output, panel_image_output, panel_chart_output]
+
+universal_structured_response_demo:
+  key: universal_structured_response_demo
+  type: object
+  value:
+    input_surfaces:
+      key: input_surfaces
+      type: array
+      value: [markdown_flow, mermaid_gitgraph, mermaid_gantt]
+    response_shape:
+      key: response_shape
+      type: mcp_structured_response
+      value:
+        root: "response.structuredContent"
+        records: [widgets, cards, panels, media, nodes, edges]
+        render_fields: [output, imageUrl, audioUrl, videoUrl, outputSrcDoc]
+    term_coverage_policy:
+      key: term_coverage_policy
+      type: string
+      value: "Preserve named prompt terms from authored frontmatter and diagram source as first-class node properties and computed Rich Media text; do not switch to prompt-family templates."
+    dataflow_path:
+      key: dataflow_path
+      type: string
+      value: "frontmatter source -> FlowDiagramSource -> TextGeneration inline compute -> RichMediaPanel.outputSrcDoc"
+    output_authority:
+      key: output_authority
+      type: string
+      value: "Connected compute output wins over local panel fallback; static Rich Media backfill is forbidden."
+
+flow_diagrams:
+  key: flow_diagrams
+  type: object
+  value:
+    gitgraph:
+      key: gitgraph
+      type: mermaid_gitgraph
+      title: "Missing alpha GitGraph dataflow lanes"
+      render_on: [flow_editor, storyboard]
+      value: |-
+        gitGraph
+          commit id:"source_input"
+          branch compute_summary
+          checkout compute_summary
+          commit id:"inline_compute"
+          branch panel_text_output
+          checkout panel_text_output
+          commit id:"text_panel"
+          checkout compute_summary
+          branch panel_image_output
+          checkout panel_image_output
+          commit id:"image_panel"
+          checkout compute_summary
+          branch panel_chart_output
+          checkout panel_chart_output
+          commit id:"chart_panel"
+          checkout main
+          merge compute_summary
+    gantt:
+      key: gantt
+      type: mermaid_gantt
+      title: "Missing alpha Gantt critical path"
+      render_on: [flow_editor, storyboard, document_view, timeline_view]
+      value: |-
+        gantt
+          title computing flow: missalph-demo
+          dateFormat YYYY-MM-DD
+          section Input
+          Source input :done, source_input, 2026-06-05, 1d
+          section Critical path
+          Inline compute :crit, compute_summary, after source_input, 1d
+          Chart panel :crit, panel_chart_output, after compute_summary, 1d
+          section Parallel panels
+          Text panel :panel_text_output, after compute_summary, 1d
+          Image panel :panel_image_output, after compute_summary, 1d
 ---
 
 # Knowgrph Missing Alpha Demo — Dynamic IPO Flow
@@ -228,8 +304,14 @@ This publish-side demo instantiates the `kgc-computing-flow/v1` schema for a
 missing alpha research workflow. It is an input/process/output graph:
 `source_input.input_text` is the editable input, `compute_summary.compute` is
 the document-native process row, and the returned `output`, `imageUrl`, and
-`outputSrcDoc` values flow into three Rich Media Panels. Pre-run output fields
-are placeholders; rendered artifacts are produced from the current input.
+`outputSrcDoc` values flow into three Rich Media Panels. Pre-run panel target
+fields stay empty; rendered artifacts are produced from the current input.
+
+It also demonstrates the neutral structured-response path: Markdown flow,
+Mermaid GitGraph, and Mermaid Gantt frontmatter are data inputs. The parser
+derives `FlowDiagramSource -> TextGeneration inline compute -> RichMediaPanel`
+nodes for the diagram records, and computed `outputSrcDoc` panels preserve
+first-class terms from the authored source instead of using static backfill.
 
 This is not a live Cloudflare route proof. Treat it as a local docs-mirror demo
 until deployment and route validation are explicitly run.
@@ -255,6 +337,19 @@ until deployment and route validation are explicitly run.
 | `compute_summary.output` | `output` | Markdown thesis returned by the compute function. |
 | `compute_summary.imageUrl` | `imageUrl` | SVG data URI returned by the compute function. |
 | `compute_summary.outputSrcDoc` | `outputSrcDoc` | Inline HTML dashboard returned by the compute function. |
+
+## Universal Structured Response Path
+
+| Input surface | Frontmatter owner | Computed output |
+|---|---|---|
+| Markdown flow | `flow.nodes` and `flow.edges` | Connected Rich Media Panel values from inline compute. |
+| GitGraph | `flow_diagrams.gitgraph` with `type: mermaid_gitgraph` | GitGraph Rich Media Panel `outputSrcDoc` with lane and term coverage. |
+| Gantt | `flow_diagrams.gantt` with `type: mermaid_gantt` | Gantt Rich Media Panel `outputSrcDoc` with critical-path and term coverage. |
+
+The demo keeps renderer intent in frontmatter data and keeps render output on
+connected values. Changing the input prompt or diagram source should recompute
+panels through the same dataflow path, without stale templates or
+document-specific parser branches.
 
 ## Runnable IPO Contract
 

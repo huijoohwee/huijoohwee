@@ -181,6 +181,976 @@ index:
       A_MCP -->|"live calls"| MCP_POI
       A_MCP -->|"live calls"| MCP_NEAR
       A_MCP -->|"live calls"| MCP_NAV
+flow:
+  direction: {key: direction, type: string, value: "LR"}
+  nodes:
+    - id: {key: id, type: string, value: "A_CF"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Cloudflare Pages · Stripe"}
+      position: {key: position, type: object, value: {"x":0,"y":-7320}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:A_CF"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "A_DB"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "RxDB — offline-first · version-controlled reports"}
+      position: {key: position, type: object, value: {"x":0,"y":-7080}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:A_DB"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "A_FE"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "React 18 + TS + Vite — canvas + map overlay"}
+      position: {key: position, type: object, value: {"x":0,"y":-6840}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:A_FE"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "A_MCP"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "MCP Connectors — POI · nearby · navigation"}
+      position: {key: position, type: object, value: {"x":0,"y":-6600}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:A_MCP"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "A_SC"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "TOPSIS Engine — Python · NetworkX · DuckDB"}
+      position: {key: position, type: object, value: {"x":0,"y":-6360}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:A_SC"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ASK_DATA"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Ground-truth datasets — site visits to validate C* predictions"}
+      position: {key: position, type: object, value: {"x":0,"y":-6120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ASK_DATA"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ASK_DIST"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Distribution — property consultants · franchise networks · VC portfolio ops"}
+      position: {key: position, type: object, value: {"x":0,"y":-5880}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ASK_DIST"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ASK_DP"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Design partners — F&B / retail operators with live site decisions"}
+      position: {key: position, type: object, value: {"x":0,"y":-5640}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ASK_DP"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ASK_GEO"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Geo API access — maps POI + routing connectors per market"}
+      position: {key: position, type: object, value: {"x":0,"y":-5400}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ASK_GEO"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "B_API"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "API tier — embed scorer in existing tools"}
+      position: {key: position, type: object, value: {"x":0,"y":-5160}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:B_API"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "B_CON"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Advisory — custom weight models per industry vertical"}
+      position: {key: position, type: object, value: {"x":0,"y":-4920}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:B_CON"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "B_REP"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Per-report — pay-per-scored-shortlist"}
+      position: {key: position, type: object, value: {"x":0,"y":-4680}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:B_REP"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "B_SUB"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Workspace subscription — unlimited scoring · saved canvases"}
+      position: {key: position, type: object, value: {"x":0,"y":-4440}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:B_SUB"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "DM_API"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "23 API calls · 5 MCP tools · 8 criteria · 1 ranked output"}
+      position: {key: position, type: object, value: {"x":0,"y":-4200}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:DM_API"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "DM_BPJ"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "🥇 Bukit Panjang  C*=0.82 — zero competition · 16-sec MRT"}
+      position: {key: position, type: object, value: {"x":0,"y":-3960}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:DM_BPJ"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "DM_CBD"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "✗  CBD            C*=0.09 — baseline saturation"}
+      position: {key: position, type: object, value: {"x":0,"y":-3720}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:DM_CBD"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "DM_PGL"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "🥈 Punggol        C*=0.78 — 22 residential POIs · young demo"}
+      position: {key: position, type: object, value: {"x":0,"y":-3480}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:DM_PGL"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "DM_SKG"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "✗  Sengkang       C*=0.22 — 6 cafes incl. 2 Starbucks"}
+      position: {key: position, type: object, value: {"x":0,"y":-3240}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:DM_SKG"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "DM_WDL"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "🥉 Woodlands      C*=0.71 — zero competition · causeway traffic"}
+      position: {key: position, type: object, value: {"x":0,"y":-3000}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:DM_WDL"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "I_AUTO"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Swap weight → all C* scores recompute in seconds"}
+      position: {key: position, type: object, value: {"x":0,"y":-2760}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:I_AUTO"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "I_LIVE"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Live POI density = real competition, not last year's survey"}
+      position: {key: position, type: object, value: {"x":0,"y":-2520}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:I_LIVE"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "I_MCP"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "MCP tools = maps APIs callable in a pipeline, not a browser tab"}
+      position: {key: position, type: object, value: {"x":0,"y":-2280}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:I_MCP"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "I_POS"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "One pipeline. N candidates. One ranked output."}
+      position: {key: position, type: object, value: {"x":0,"y":-2040}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:I_POS"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "I_TOPSIS"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "TOPSIS = transparent, weight-tunable, auditable scoring"}
+      position: {key: position, type: object, value: {"x":0,"y":-1800}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:I_TOPSIS"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ICP_CON"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Management consultant — market entry advisory"}
+      position: {key: position, type: object, value: {"x":0,"y":-1560}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ICP_CON"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ICP_DEV"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Property developer — catchment due diligence"}
+      position: {key: position, type: object, value: {"x":0,"y":-1320}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ICP_DEV"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ICP_FB"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "F&B operator — new outlet / expansion"}
+      position: {key: position, type: object, value: {"x":0,"y":-1080}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ICP_FB"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "ICP_RET"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Retailer / pop-up brand — site shortlisting"}
+      position: {key: position, type: object, value: {"x":0,"y":-840}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:ICP_RET"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "MKT_LATAM"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Latin America — MX BR CO"}
+      position: {key: position, type: object, value: {"x":0,"y":-600}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:MKT_LATAM"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "MKT_MENA"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "MENA — AE SA EG"}
+      position: {key: position, type: object, value: {"x":0,"y":-360}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:MKT_MENA"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 6}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "MKT_SA"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "South Asia — IN BD PK"}
+      position: {key: position, type: object, value: {"x":0,"y":-120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:MKT_SA"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "MKT_SEA"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Southeast Asia — SG MY TH ID PH VN"}
+      position: {key: position, type: object, value: {"x":0,"y":120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:MKT_SEA"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "P_GAP"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Decision-maker flying blind — no unified, live, scored view"}
+      position: {key: position, type: object, value: {"x":0,"y":360}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:P_GAP"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "P_GUT"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Gut-feel site picks — no reproducible scoring model"}
+      position: {key: position, type: object, value: {"x":0,"y":600}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:P_GUT"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "P_SHEET"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Spreadsheet audits — hours of copy-paste per candidate"}
+      position: {key: position, type: object, value: {"x":0,"y":840}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:P_SHEET"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "P_SILO"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Routing + competition + catchment analysed in separate tools"}
+      position: {key: position, type: object, value: {"x":0,"y":1080}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:P_SILO"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "P_STALE"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Stale data — offline reports miss live POI density"}
+      position: {key: position, type: object, value: {"x":0,"y":1320}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:P_STALE"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "POS"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Geo data in · ranked decision out · no analyst required"}
+      position: {key: position, type: object, value: {"x":0,"y":1560}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:POS"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "R_LATER"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Later — rent-index integration · real-time rescore · collab workspace"}
+      position: {key: position, type: object, value: {"x":0,"y":1800}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:R_LATER"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "R_NEXT"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Next — scored map canvas · multi-provider geo adapter · batch candidates"}
+      position: {key: position, type: object, value: {"x":0,"y":2040}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:R_NEXT"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "R_NOW"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Now — MCP pipeline · TOPSIS scorer · Markdown report · Stripe"}
+      position: {key: position, type: object, value: {"x":0,"y":2280}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:R_NOW"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S0"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "① Hook"}
+      position: {key: position, type: object, value: {"x":0,"y":2520}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S0"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S1"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "② Problem — Location Decisions Are Still Spreadsheets"}
+      position: {key: position, type: object, value: {"x":0,"y":2760}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S1"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S1A"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Too manual"}
+      position: {key: position, type: object, value: {"x":0,"y":3000}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S1A"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S1B"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Too opaque"}
+      position: {key: position, type: object, value: {"x":0,"y":3240}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S1B"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 6}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S2"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "③ ICP — Local Market Decision-Makers"}
+      position: {key: position, type: object, value: {"x":0,"y":3480}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S2"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 7}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S2A"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Who"}
+      position: {key: position, type: object, value: {"x":0,"y":3720}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S2A"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -6}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S2B"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Where — fragmented, data-poor markets"}
+      position: {key: position, type: object, value: {"x":0,"y":3960}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S2B"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S2C"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Situation"}
+      position: {key: position, type: object, value: {"x":0,"y":4200}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S2C"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S3"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "④ Insight — APIs Know More Than Any Analyst"}
+      position: {key: position, type: object, value: {"x":0,"y":4440}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S3"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S4"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "⑤ Product — Site Selection Canvas"}
+      position: {key: position, type: object, value: {"x":0,"y":4680}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S4"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 7}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S4A"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Discover — MCP Layer"}
+      position: {key: position, type: object, value: {"x":0,"y":4920}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S4A"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 7}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S4B"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Score — TOPSIS Engine"}
+      position: {key: position, type: object, value: {"x":0,"y":5160}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S4B"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 8}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S4C"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Report Layer"}
+      position: {key: position, type: object, value: {"x":0,"y":5400}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S4C"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -7}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S5"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "⑥ Demo — New Cafe · Singapore · 7 Candidates"}
+      position: {key: position, type: object, value: {"x":0,"y":5640}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S5"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -6}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S6"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "⑦ Architecture"}
+      position: {key: position, type: object, value: {"x":0,"y":5880}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S6"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S7"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "⑧ Business Model"}
+      position: {key: position, type: object, value: {"x":0,"y":6120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S7"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S8"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "⑨ Roadmap"}
+      position: {key: position, type: object, value: {"x":0,"y":6360}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S8"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "S9"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "⑩ The Ask"}
+      position: {key: position, type: object, value: {"x":0,"y":6600}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:S9"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "SIT_CAND"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Has 5–20 candidate locations · no time to survey all"}
+      position: {key: position, type: object, value: {"x":0,"y":6840}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:SIT_CAND"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "SIT_LOOP"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Needs scored shortlist → site visit → final call"}
+      position: {key: position, type: object, value: {"x":0,"y":7080}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:SIT_LOOP"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "TAGLINE"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Map it. Score it. Decide it."}
+      position: {key: position, type: object, value: {"x":0,"y":7320}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:TAGLINE"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "MCP_NAV"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Routing ETA — walking · driving · cycling profiles"}
+      position: {key: position, type: object, value: {"x":380,"y":-240}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:MCP_NAV"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "MCP_NEAR"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Nearby Search — radius · rank_by=popularity"}
+      position: {key: position, type: object, value: {"x":380,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:MCP_NEAR"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "MCP_POI"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "POI Search — keyword · country · density"}
+      position: {key: position, type: object, value: {"x":380,"y":240}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:MCP_POI"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "SC_MAT"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Decision Matrix — m candidates × n criteria"}
+      position: {key: position, type: object, value: {"x":760,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:SC_MAT"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 5}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 4}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 32}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 18.94427190999916}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 2}
+    - id: {key: id, type: string, value: "SC_NORM"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Weighted Normalization — w_j × r_ij"}
+      position: {key: position, type: object, value: {"x":1140,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:SC_NORM"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 3}
+    - id: {key: id, type: string, value: "SC_RANK"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "C* Ranking — D⁻ / (D⁺ + D⁻) per candidate"}
+      position: {key: position, type: object, value: {"x":1520,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:SC_RANK"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 8}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 4}
+    - id: {key: id, type: string, value: "OUT_MAP"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Scored Map Canvas — visual heat overlay"}
+      position: {key: position, type: object, value: {"x":1900,"y":-120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:OUT_MAP"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 5}
+    - id: {key: id, type: string, value: "OUT_RANK"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Ranked Site Report — C* scores + sensitivity"}
+      position: {key: position, type: object, value: {"x":1900,"y":120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:OUT_RANK"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 5}
+    - id: {key: id, type: string, value: "OUT_MD"}
+      type: {key: type, type: string, value: "default"}
+      label: {key: label, type: string, value: "Markdown export — portable · version-controlled"}
+      position: {key: position, type: object, value: {"x":2280,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:OUT_MD"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 6}
+  edges:
+    - {"id":"index-e01-4066605831","source":"ICP_FB","sourceHandle":"output","target":"MCP_POI","targetHandle":"input","label":"\"shortlists candidates\""}
+    - {"id":"index-e02-1983666018","source":"ICP_RET","sourceHandle":"output","target":"MCP_NEAR","targetHandle":"input","label":"\"scopes market\""}
+    - {"id":"index-e03-3024636150","source":"ICP_CON","sourceHandle":"output","target":"OUT_RANK","targetHandle":"input","label":"\"advises on\""}
+    - {"id":"index-e04-2507280472","source":"SIT_CAND","sourceHandle":"output","target":"SC_MAT","targetHandle":"input","label":"\"inputs to\""}
+    - {"id":"index-e05-2080970665","source":"MCP_POI","sourceHandle":"output","target":"SC_MAT","targetHandle":"input","label":"\"poi_density\""}
+    - {"id":"index-e06-678798771","source":"MCP_NEAR","sourceHandle":"output","target":"SC_MAT","targetHandle":"input","label":"\"competition_count\""}
+    - {"id":"index-e07-3100433483","source":"MCP_NAV","sourceHandle":"output","target":"SC_MAT","targetHandle":"input","label":"\"eta_minutes\""}
+    - {"id":"index-e08-3816246444","source":"SC_MAT","sourceHandle":"output","target":"SC_NORM","targetHandle":"input","label":"\"normalize · weight\""}
+    - {"id":"index-e09-1126820267","source":"SC_NORM","sourceHandle":"output","target":"SC_RANK","targetHandle":"input","label":"\"C* per candidate\""}
+    - {"id":"index-e10-1068625777","source":"SC_RANK","sourceHandle":"output","target":"OUT_RANK","targetHandle":"input","label":"\"ranked signal\""}
+    - {"id":"index-e11-995540405","source":"SC_RANK","sourceHandle":"output","target":"OUT_MAP","targetHandle":"input","label":"\"heat scores\""}
+    - {"id":"index-e12-1614676189","source":"OUT_RANK","sourceHandle":"output","target":"OUT_MD","targetHandle":"input","label":"\"export\""}
+    - {"id":"index-e13-2701065364","source":"A_MCP","sourceHandle":"output","target":"MCP_POI","targetHandle":"input","label":"\"live calls\""}
+    - {"id":"index-e14-395334272","source":"A_MCP","sourceHandle":"output","target":"MCP_NEAR","targetHandle":"input","label":"\"live calls\""}
+    - {"id":"index-e15-1514797407","source":"A_MCP","sourceHandle":"output","target":"MCP_NAV","targetHandle":"input","label":"\"live calls\""}
 ---
 
 # Knowgrph
