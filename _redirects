@@ -19,6 +19,7 @@
 /knowgrph/.well-known/* /knowgrph/.well-known/:splat 200
 /knowgrph/apple-touch-icon.png /content/knowgrph/apple-touch-icon.png 200
 /knowgrph/favicon.svg /content/knowgrph/favicon.svg 200
+/knowgrph/knowgrph-chat-stream-sw.js /content/knowgrph/knowgrph-chat-stream-sw.js 200
 /knowgrph/llms.txt /content/knowgrph/llms.txt 200
 /knowgrph/manifest.webmanifest /content/knowgrph/manifest.webmanifest 200
 /knowgrph/settings-flow.json /content/knowgrph/settings-flow.json 200
