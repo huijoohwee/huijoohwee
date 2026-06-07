@@ -6,7 +6,7 @@ Use this skill when: Create file-backed research visual workflows from source ma
 
 - Vdeoxpln id: `knowgrph-research-visual`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_d426c8e4`
+- Semantic key: `kgvx_e0d43017`
 - Scope: `browser-local-ai-assisted`
 - Mutation boundary: `browser-local-user-mediated`
 
@@ -60,7 +60,6 @@ Local MCP tools:
 
 - canvas/src/components/StoryboardCanvas/storyboardModel.ts
 - canvas/src/features/chat/floatingPanelChat/floatingPanelChatSubmitCoordinator.ts
-- canvas/src/features/chat/knowgrphVdeoxplnChatArtifacts.ts
 - canvas/src/features/parsers/default.ts
 - canvas/src/features/source-files/applyComposedGraphFromSourceFiles.ts
 - canvas/src/lib/config.render.ts

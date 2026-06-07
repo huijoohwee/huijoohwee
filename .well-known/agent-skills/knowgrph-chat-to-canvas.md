@@ -6,7 +6,7 @@ Use this skill when: Route AI-assisted graph generation through FloatingPanel Ch
 
 - Vdeoxpln id: `knowgrph-chat-to-canvas`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_27a79174`
+- Semantic key: `kgvx_7ef5b0f5`
 - Scope: `browser-local-ai-assisted`
 - Mutation boundary: `browser-local-user-mediated`
 
@@ -61,7 +61,6 @@ Local MCP tools:
 - canvas/src/features/chat/chatMarkdownValidation.ts
 - canvas/src/features/chat/floatingPanelChat/floatingPanelChatSubmitCoordinator.ts
 - canvas/src/features/chat/floatingPanelChat/floatingPanelChatSubmitRequest.ts
-- canvas/src/features/chat/knowgrphVdeoxplnChatArtifacts.ts
 - canvas/src/features/source-files/applyComposedGraphFromSourceFiles.ts
 - canvas/src/features/workspace-fs/workspaceFs.ts
 - canvas/src/lib/graph/semanticKey.ts

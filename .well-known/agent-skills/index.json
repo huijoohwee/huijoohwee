@@ -48,13 +48,13 @@
       "type": "markdown",
       "description": "Route AI-assisted graph generation through FloatingPanel Chat, KGC validation, Workspace FS, Source Files, and Canvas apply owners.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-chat-to-canvas.md",
-      "sha256": "3d2b2bfb8d284140de3476a580dd320534388288c7ae950493bf32e2ae42f888",
+      "sha256": "bb1bc2679ac714335aac21d3c987b946bad9f994c8fa88b0de75a18b3e41ac33",
       "vdeoxpln": {
         "id": "knowgrph-chat-to-canvas",
         "title": "Knowgrph Chat To Canvas",
         "scope": "browser-local-ai-assisted",
         "mutation": "browser-local-user-mediated",
-        "semanticKey": "kgvx_27a79174",
+        "semanticKey": "kgvx_7ef5b0f5",
         "tools": {
           "published": [],
           "browserLocal": [
@@ -142,13 +142,13 @@
       "type": "markdown",
       "description": "Create file-backed research visual workflows from source material using Knowgrph parsing, Source Files, Storyboard, renderer, and chat owners.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-research-visual.md",
-      "sha256": "abad05ef97c357456d60432adc01bf1a663e582a656a454fd586bdaf8b20b69e",
+      "sha256": "17cfaf8f1afc41b9a59b3e650054415db8f990a212c4447c3bfc57d54bb22147",
       "vdeoxpln": {
         "id": "knowgrph-research-visual",
         "title": "Knowgrph Research Visual",
         "scope": "browser-local-ai-assisted",
         "mutation": "browser-local-user-mediated",
-        "semanticKey": "kgvx_d426c8e4",
+        "semanticKey": "kgvx_e0d43017",
         "tools": {
           "published": [],
           "browserLocal": [
