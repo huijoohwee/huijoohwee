@@ -1,1 +1,0 @@
-import{r as e}from"./react-gVJCSEhj.js";import{al as s,ak as n,am as u}from"./index-CaEj-Jhz.js";function i(t,a){const[r,c]=e.useState(()=>{try{const o=s();return n(o,t,a)}catch{return a}});return e.useEffect(()=>{try{const o=s();u(o,t,r)}catch{}},[t,r]),[r,c]}export{i as u};
