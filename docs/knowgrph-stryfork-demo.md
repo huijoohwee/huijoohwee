@@ -1,3 +1,4 @@
+---
 title: "Knowgrph Stryfork Demo - Runnable Import URL And Local File"
 graphId: "md:knowgrph-stryfork-demo-runnable-import-url-local-file"
 doc_type: "Stryfork Runnable Demo"
@@ -13,6 +14,15 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 kgStrybldrStoryboard: true
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges derived from storytree fork candidates"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 kgYoutubeVideoId: "77FAnT935IE"
 kgYoutubeFormat: "markdown"
 kgWebpageUrl: "https://www.youtube.com/watch?v=77FAnT935IE"
@@ -35,6 +45,7 @@ import_url_contract:
   - "URL import writes and focuses one .strybldr.md document"
   - "Canvas View Mode reports 2D Renderer: Strybldr"
   - "Toolbar Run all opens the Strybldr owner panel and writes a video fallback artifact when external credentials are unavailable"
+---
 
 # Knowgrph Stryfork Demo - Runnable Import URL And Local File
 

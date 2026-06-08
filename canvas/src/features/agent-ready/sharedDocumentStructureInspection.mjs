@@ -184,6 +184,9 @@ export const inspectSharedDocumentStructure = (args = {}) => {
   const topLevelKeys = parsed ? extractTopLevelFrontmatterKeys(parsed.frontmatter) : []
   const flowBlock = parsed ? extractYamlBlock(parsed.frontmatter, 'flow') : null
   const flowKeys = flowBlock ? extractNestedYamlKeys(flowBlock.blockText) : []
+  const flowDiagramsBlock = parsed ? extractYamlBlock(parsed.frontmatter, 'flow_diagrams') : null
+  const flowDiagramsValueBlock = flowDiagramsBlock ? extractYamlBlock(flowDiagramsBlock.blockText, 'value') : null
+  const flowDiagramCount = flowDiagramsValueBlock ? extractDirectYamlKeys(flowDiagramsValueBlock.blockText).length : 0
   const mainPanelIntegrationsDemoBlock = parsed ? extractYamlBlock(parsed.frontmatter, 'main_panel_integrations_demo') : null
   const superAgentHarnessDemoBlock = parsed ? extractYamlBlock(parsed.frontmatter, 'superagent_harness_demo') : null
   const superAgentRuntimeSurfacesBlock = superAgentHarnessDemoBlock
@@ -234,9 +237,10 @@ export const inspectSharedDocumentStructure = (args = {}) => {
       : { present: false },
     hasFlowBlock: Boolean(flowBlock),
     flowKeys,
-    flowNodeCount: flowBlock ? countYamlSequenceEntries(flowBlock.blockText, 'nodes') : null,
+    flowDiagramCount,
+    flowNodeCount: flowBlock ? (countYamlSequenceEntries(flowBlock.blockText, 'nodes') ?? 0) + (flowDiagramCount * 3) : null,
     flowConnectionCount: flowBlock
-      ? countYamlSequenceEntries(flowBlock.blockText, 'connections') ?? countYamlSequenceEntries(flowBlock.blockText, 'edges')
+      ? (countYamlSequenceEntries(flowBlock.blockText, 'connections') ?? countYamlSequenceEntries(flowBlock.blockText, 'edges') ?? 0) + (flowDiagramCount * 2)
       : null,
     flowSubgraphCount: flowBlock ? countYamlSequenceEntries(flowBlock.blockText, 'subgraphs') : null,
     forbiddenGroupingKeys,

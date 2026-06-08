@@ -3,6 +3,11 @@ import {
   buildKnowgrphMcpNoauthSecuritySchemes,
   buildKnowgrphMcpAppsToolMeta,
 } from './mcpAppsReadyContract.mjs'
+import {
+  STRYBORD_MCP_ACTION_TOOL_IDS,
+  STRYBORD_MCP_ACTION_TOOL_META,
+  isStrybordMutatingMcpActionToolId,
+} from '../../../../grph-shared/src/strybord/storyboardStudioOsSsot.ts'
 
 export const KNOWGRPH_AGENT_READY_TOOL_IDS = Object.freeze({
   search: 'search',
@@ -24,6 +29,7 @@ export const KNOWGRPH_AGENT_READY_TOOL_IDS = Object.freeze({
   inspectLocal2dZoomViewport: 'inspect_local_2d_zoom_viewport',
   inspectLocalSourceFilesSnapshot: 'inspect_local_source_files_snapshot',
   inspectAgentSurface: 'inspect_agent_surface',
+  ...STRYBORD_MCP_ACTION_TOOL_IDS,
 })
 
 export const KNOWGRPH_AGENT_READY_WEB_MCP_NAMESPACE = 'knowgrph'
@@ -36,6 +42,53 @@ const buildReadOnlyToolAnnotations = () => Object.freeze({
   idempotentHint: true,
 })
 const READ_ONLY_TOOL_ANNOTATIONS = buildReadOnlyToolAnnotations()
+
+const buildMutatingToolAnnotations = () => Object.freeze({
+  readOnlyHint: false,
+  destructiveHint: true,
+  openWorldHint: false,
+  idempotentHint: true,
+})
+const MUTATING_TOOL_ANNOTATIONS = buildMutatingToolAnnotations()
+
+const buildKnowgrphMcpBearerSecuritySchemes = (scope) => [{
+  type: 'http',
+  scheme: 'bearer',
+  bearerFormat: 'opaque',
+  scopes: scope ? [scope] : [],
+}]
+
+const buildStrybordActionToolContract = (toolId) => {
+  const meta = STRYBORD_MCP_ACTION_TOOL_META[toolId] || {}
+  const isMutating = isStrybordMutatingMcpActionToolId(toolId)
+  return {
+    name: toolId,
+    webName: buildKnowgrphWebMcpToolName(toolId),
+    title: meta.title || toolId,
+    description: meta.description || 'Storyboard Studio OS action tool.',
+    inputSchema: {
+      type: 'object',
+      additionalProperties: true,
+      properties: {
+        runId: { type: 'string' },
+        idempotencyKey: { type: 'string' },
+      },
+    },
+    outputSchema: {
+      type: 'object',
+      additionalProperties: true,
+      required: ['ok', 'apiVersion'],
+      properties: {
+        ok: { type: 'boolean' },
+        apiVersion: { type: 'string' },
+      },
+    },
+    annotations: isMutating ? MUTATING_TOOL_ANNOTATIONS : READ_ONLY_TOOL_ANNOTATIONS,
+    securitySchemes: isMutating
+      ? buildKnowgrphMcpBearerSecuritySchemes(meta.scope)
+      : buildKnowgrphMcpNoauthSecuritySchemes(),
+  }
+}
 
 const SEARCH_OUTPUT_SCHEMA = Object.freeze({
   type: 'object',
@@ -180,6 +233,16 @@ export const buildKnowgrphAgentReadyToolContracts = (args = {}) => {
       },
       annotations: READ_ONLY_TOOL_ANNOTATIONS,
     },
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.startStoryboardRun),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.advanceLane),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.submitResearchQuery),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.proposeBudget),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.requestHumanGate),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.getGateDecision),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.enqueueRender),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.publishAsset),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.settlePayout),
+    buildStrybordActionToolContract(STRYBORD_MCP_ACTION_TOOL_IDS.getRunState),
     ...(includeBrowserOnlyTools
       ? [{
           name: KNOWGRPH_AGENT_READY_TOOL_IDS.inspectLocalSettingsChatReadiness,

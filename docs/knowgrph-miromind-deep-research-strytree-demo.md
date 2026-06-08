@@ -27,6 +27,15 @@ kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
 kgStrybldrStoryboard: true
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges from the selected source graph"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 
 miromind_deep_research_demo:
   schema_version: "knowgrph-miromind-deep-research-strytree/v1"
@@ -572,5 +581,5 @@ contract.
 ## Local Validation
 
 ```bash
-FLOW_DIAGRAM_SAMPLE_PATHS="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-miromind-deep-research-strytree-demo.md" npm --prefix /Users/huijoohwee/Documents/GitHub/knowgrph/canvas run test:ci:unit -- markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels
+FLOW_DIAGRAM_SAMPLE_PATHS="../huijoohwee/docs/knowgrph-miromind-deep-research-strytree-demo.md" npm --prefix ../knowgrph/canvas run test:ci:unit -- markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels
 ```

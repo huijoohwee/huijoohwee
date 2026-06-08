@@ -13,6 +13,15 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges from the selected source graph"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 socket_types:
   idea_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [idea_signal]}
   evidence_signal: {color: "#22c55e", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [evidence_signal]}

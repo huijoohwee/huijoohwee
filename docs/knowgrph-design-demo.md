@@ -12,13 +12,22 @@ kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges from the selected source graph"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 ---
 
 # Knowgrph · Design Renderer Demo
 
 This document is a minimal, reproducible **E2E functional** demo for the Canvas **2D Renderer: Design** editor surface (Phase **0 + 1 + 2**).
 
-It mirrors the style of [knowgrph-video-demo.md](file:///Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-video-demo.md) frontmatter (explicit `kg*` settings), but uses a simpler graph so you can quickly validate:
+It mirrors the style of [knowgrph-video-demo.md](./knowgrph-video-demo.md) frontmatter (explicit `kg*` settings), but uses a simpler graph so you can quickly validate:
 
 - Design renderer is selectable and stable.
 - A first-class **Design** floating-panel view exists (not hidden behind “More”).

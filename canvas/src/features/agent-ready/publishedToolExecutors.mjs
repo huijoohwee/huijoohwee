@@ -7,6 +7,7 @@ export const createPublishedAgentReadyToolExecutors = (args = {}) => {
   const resolveSharedDocumentInput = args.resolveSharedDocumentInput
   const inspectSharedDocumentStructure = args.inspectSharedDocumentStructure
   const buildAgentSurfaceInspection = args.buildAgentSurfaceInspection
+  const callStrybordActionTool = args.callStrybordActionTool
   const normalizeString = (value) => String(value || '').trim()
   const publicBaseUrl = normalizeString(args.publicBaseUrl).replace(/\/+$/, '')
   const normalizeMarkdown = (value) => String(value || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n')
@@ -118,6 +119,12 @@ export const createPublishedAgentReadyToolExecutors = (args = {}) => {
   }
   if (toolNames.inspectAgentSurface && typeof buildAgentSurfaceInspection !== 'function') {
     throw new Error('buildAgentSurfaceInspection is required')
+  }
+  const strybordActionTools = toolNames.strybordActionTools && typeof toolNames.strybordActionTools === 'object'
+    ? toolNames.strybordActionTools
+    : {}
+  if (Object.keys(strybordActionTools).length > 0 && typeof callStrybordActionTool !== 'function') {
+    throw new Error('callStrybordActionTool is required for Strybord action tools')
   }
 
   const readSourceFile = async (input = {}) => {
@@ -343,6 +350,11 @@ export const createPublishedAgentReadyToolExecutors = (args = {}) => {
   if (toolNames.readSharedDocument) executors[toolNames.readSharedDocument] = readSharedDocument
   if (toolNames.inspectSharedDocumentStructure) executors[toolNames.inspectSharedDocumentStructure] = inspectSharedDocument
   if (toolNames.inspectAgentSurface) executors[toolNames.inspectAgentSurface] = async () => buildAgentSurfaceInspection()
+  for (const [actionToolId, publishedToolName] of Object.entries(strybordActionTools)) {
+    if (!publishedToolName) continue
+    executors[publishedToolName] = async (input = {}, context = {}) =>
+      callStrybordActionTool(actionToolId, input, context)
+  }
   return executors
 }
 

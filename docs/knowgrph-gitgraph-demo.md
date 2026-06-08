@@ -6,12 +6,12 @@ date: "2026-06-03"
 lang: "en-US"
 schema: "kgc-computing-flow/v1"
 
-implementation_contract: "/Users/huijoohwee/Documents/GitHub/knowgrph/docs/documents/knowgrph-yaml-mermaid-gitgraph-frontmatter-prd-tad.md"
+implementation_contract: "../knowgrph/docs/documents/knowgrph-yaml-mermaid-gitgraph-frontmatter-prd-tad.md"
 source_truth:
-  - "/Users/huijoohwee/Documents/GitHub/knowgrph/grph-shared/src/markdown/mermaidInput.ts"
-  - "/Users/huijoohwee/Documents/GitHub/knowgrph/canvas/src/lib/parsers/markdownJsonLd.impl.ts"
-  - "/Users/huijoohwee/Documents/GitHub/knowgrph/canvas/src/lib/mermaid/mermaidGitGraph.ts"
-  - "/Users/huijoohwee/Documents/GitHub/knowgrph/canvas/src/components/MermaidGitGraphCanvas.tsx"
+  - "../knowgrph/grph-shared/src/markdown/mermaidInput.ts"
+  - "../knowgrph/canvas/src/lib/parsers/markdownJsonLd.impl.ts"
+  - "../knowgrph/canvas/src/lib/mermaid/mermaidGitGraph.ts"
+  - "../knowgrph/canvas/src/components/MermaidGitGraphCanvas.tsx"
 demo_status: "local published-doc demo; no Cloudflare deploy claim"
 deployed_api_claim: false
 live_route_validation_required_before_claim: true
@@ -23,6 +23,15 @@ kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges from the selected source graph"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 
 mermaid: |
   ---

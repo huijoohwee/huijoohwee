@@ -1,5 +1,5 @@
 ---
-title: "Knowgrph Storyboard Demo"
+title: "Knowgrph Strybord Demo"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "storyboard"
@@ -7,6 +7,26 @@ kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
+kgStrybordDemo: true
+kgStrybordContractVersion: "1.1.0"
+kgStoryboardStudioOsDemo: true
+kgStoryboardStudioOsRuntime:
+  host: "stryfork (AWS MCP host)"
+  canvasOs: "knowgrph Agentic Canvas OS"
+  llmRouter: "Vercel AI Gateway"
+  researchProvider: "Exa live web research"
+  paymentProvider: "Stripe Checkout + Stripe Connect"
+  payoutSplit: "80/20 creator/platform"
+  inspirationPolicy: "pattern-inspired only; copy forbidden"
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges with storyboard lane projection"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -14,216 +34,734 @@ flow:
   computed: {key: computed, type: boolean, value: true}
   snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
-    - id: {key: id, type: string, value: "STORY_ROOT"}
-      type: {key: type, type: string, value: "Story"}
-      label: {key: label, type: string, value: "Creative Review Storyboard"}
-      position: {key: position, type: object, value: {x: -960, y: 0}}
-      stage: {key: stage, type: string, value: "Planning"}
-      summary: {key: summary, type: string, value: "Native in-repo storyboard demo for the 2D Storyboard renderer."}
-      slugline: {key: slugline, type: string, value: "Story Spine - Review Narrative"}
-      action: {key: action, type: string, value: "Root story node groups all review scenes and preserves one native graph source for storyboard projection."}
-      owner: {key: owner, type: string, value: "Production"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["storyboard", "demo", "launch"]}
-      style: {key: style, type: string, value: "Knowgrph Native"}
-    - id: {key: id, type: string, value: "SCENE_01"}
-      type: {key: type, type: string, value: "Scene"}
-      label: {key: label, type: string, value: "Cold Open"}
-      position: {key: position, type: object, value: {x: -640, y: 720}}
-      stage: {key: stage, type: string, value: "Draft"}
-      frame: {key: frame, type: number, value: 1}
-      location: {key: location, type: string, value: "Conference Room"}
-      timeOfDay: {key: timeOfDay, type: string, value: "Monday"}
-      summary: {key: summary, type: string, value: "Open on the user pain point before the product is shown."}
-      action: {key: action, type: string, value: "Designer and client review printed boards on the table while markup accumulates across the surface."}
-      dialogue: {key: dialogue, type: string, value: "CLIENT: \"Just a few small changes.\""}
-      prompt: {key: prompt, type: string, value: "A designer and client sit at a conference table with printed storyboard boards, marked-up notes, pens, and calm office lighting."}
-      style: {key: style, type: string, value: "Doodle"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Director"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["hook", "problem", "wide"]}
-      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80"}
+    - id: {key: id, type: string, value: "cta-001"}
+      type: {key: type, type: string, value: "StoryboardCtaCard"}
+      label: {key: label, type: string, value: "CTA - Open Demo Asset"}
+      position: {key: position, type: object, value: {"x":0,"y":-240}}
+      action: {key: action, type: string, value: "Use one approved CTA node across script, render plan, public publish metadata, checkout, and payout settlement."}
+      audience: {key: audience, type: string, value: "creator-operator"}
+      ctaLabel: {key: ctaLabel, type: string, value: "Unlock or fork this branch"}
+      ctaUrl: {key: ctaUrl, type: string, value: "https://airvio.co/knowgrph"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:cta-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 0}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "CTA"}
+      offerType: {key: offerType, type: string, value: "paid-unlock"}
+      order: {key: order, type: number, value: 1}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:cta:open-demo"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "The end card models monetization: viewers can unlock the generated branch or fork from an approved checkpoint."}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "proof-001"}
+      type: {key: type, type: string, value: "StoryboardProofCard"}
+      label: {key: label, type: string, value: "Proof Pack"}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
+      evidenceLevel: {key: evidenceLevel, type: string, value: "strong"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:proof-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Proof"}
+      order: {key: order, type: number, value: 2}
+      proofType: {key: proofType, type: string, value: "source-backed-claim"}
+      references: {key: references, type: array, value: ["source-001","research-001"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:proof:source-backed-scenes"}
+      sourceIds: {key: sourceIds, type: array, value: ["source-001","research-001"]}
+      status: {key: status, type: string, value: "accepted"}
+      summary: {key: summary, type: string, value: "Approved scenes cite source cards, evidence level, and confidence before render handoff."}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "run-001"}
+      type: {key: type, type: string, value: "StoryboardRun"}
+      label: {key: label, type: string, value: "E2E Storyboard Studio OS Run"}
+      position: {key: position, type: object, value: {"x":0,"y":240}}
+      action: {key: action, type: string, value: "Expose the whole run as a graph node while the D1 row remains authoritative for spend, gates, and payout."}
+      creditSpend: {key: creditSpend, type: number, value: 5}
+      currentLane: {key: currentLane, type: string, value: "Publish"}
+      d1Mirrored: {key: d1Mirrored, type: boolean, value: true}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:run-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      gateDecisions: {key: gateDecisions, type: array, value: [{"gateKind":"budget","state":"approved"},{"gateKind":"proof","state":"approved"},{"gateKind":"publish","state":"approved"}]}
+      "graph:degree": {key: "graph:degree", type: number, value: 4}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 4}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      hostAgent: {key: hostAgent, type: string, value: "stryfork"}
+      iterationCount: {key: iterationCount, type: number, value: 11}
+      lane: {key: lane, type: string, value: "succeeded"}
+      maxIterations: {key: maxIterations, type: number, value: 24}
+      order: {key: order, type: number, value: 5}
+      prompt: {key: prompt, type: string, value: "Storyboard Studio OS run record: Brief → Exa Research → Storyboard → Storytree → Proof → Budget → Render → Publish → Payout."}
+      runId: {key: runId, type: string, value: "strybord-demo-run-001"}
+      runState: {key: runState, type: string, value: "succeeded"}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:run:e2e-video-monetization-demo"}
+      status: {key: status, type: string, value: "succeeded"}
+      summary: {key: summary, type: string, value: "The AWS-hosted stryfork orchestrator drove the knowgrph canvas via authenticated MCP action tools and paused at human budget, proof, and publish gates."}
+      tags: {key: tags, type: array, value: ["run","orchestrator","mcp","vercel-ai-gateway","d1-mirror"]}
+      tokenSpend: {key: tokenSpend, type: number, value: 18450}
+      usdSpend: {key: usdSpend, type: number, value: 12}
+      "visual:importance": {key: "visual:importance", type: number, value: 28}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 18}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "brief-001"}
+      type: {key: type, type: string, value: "StoryboardBrief"}
+      label: {key: label, type: string, value: "Launch Video Brief"}
+      position: {key: position, type: object, value: {"x":380,"y":-120}}
+      action: {key: action, type: string, value: "Normalize the intake into Strybord graph nodes before any research, render, unlock, publish, or payout action is available."}
+      category: {key: category, type: string, value: "creative-tools"}
+      constraints: {key: constraints, type: object, value: {"durationSeconds":45,"tone":"credible","publishGateRequired":true,"forbidCopy":true,"inspirationPolicy":"pattern-only"}}
+      cta: {key: cta, type: string, value: "Unlock or fork the approved video branch"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:brief-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      goal: {key: goal, type: string, value: "Create an E2E Storyboard Studio OS demo for a no-copy, inspiration-aware AI video generation monetization platform."}
+      "graph:degree": {key: "graph:degree", type: number, value: 5}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 4}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Brief"}
+      order: {key: order, type: number, value: 6}
+      persona: {key: persona, type: string, value: "solo-founder"}
+      prompt: {key: prompt, type: string, value: "Plan a concise operator-facing product demo for a Branchly-like story graph pattern without copying product text, code, UI, or assets."}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:brief:launch-video"}
+      sourceUrls: {key: sourceUrls, type: array, value: ["https://airvio.co/knowgrph","knowgrph/docs/documents/knowgrph-strybord-prd-tad.md","knowgrph/docs/documents/knowgrph-strybord-node-schema.md","Strytree"]}
+      status: {key: status, type: string, value: "ready"}
+      summary: {key: summary, type: string, value: "The brief turns inspiration URLs, product docs, monetization constraints, and a target CTA into one storyboard-native planning graph."}
+      tags: {key: tags, type: array, value: ["strybord","brief","source-backed","no-copy","video-monetization"]}
+      "visual:importance": {key: "visual:importance", type: number, value: 32}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 18.94427190999916}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "compliance-001"}
+      type: {key: type, type: string, value: "StoryboardComplianceCheck"}
+      label: {key: label, type: string, value: "Claim Review"}
+      position: {key: position, type: object, value: {"x":380,"y":120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:compliance-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Proof"}
+      order: {key: order, type: number, value: 3}
+      reason: {key: reason, type: string, value: "All public claims reference accepted research or proof cards; external inspirations are pattern-only and forbidden to copy."}
+      result: {key: result, type: string, value: "pass"}
+      reviewPolicy: {key: reviewPolicy, type: string, value: "public-claim-and-no-copy-review"}
+      scope: {key: scope, type: string, value: "full-storyboard"}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:compliance:claim-review"}
+      status: {key: status, type: string, value: "resolved"}
+      summary: {key: summary, type: string, value: "Publish remains blocked until claim review, no-copy review, and proof gate pass."}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 1}
+    - id: {key: id, type: string, value: "approval-proof-001"}
+      type: {key: type, type: string, value: "StoryboardApprovalGate"}
+      label: {key: label, type: string, value: "Proof And Copy-Safety Gate"}
+      position: {key: position, type: object, value: {"x":760,"y":-360}}
+      approvedAt: {key: approvedAt, type: string, value: "2026-06-09T00:00:00.000Z"}
+      approvedBy: {key: approvedBy, type: string, value: "operator"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:approval-proof-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      gateKind: {key: gateKind, type: string, value: "proof"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Proof"}
+      order: {key: order, type: number, value: 4}
+      reason: {key: reason, type: string, value: "Claims, inspiration policy, and no-copy constraints are safe to publish."}
+      required: {key: required, type: boolean, value: true}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:approval:proof"}
+      state: {key: state, type: string, value: "approved"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "Publish and payout remain blocked until this proof gate is approved."}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -5}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 2}
+    - id: {key: id, type: string, value: "source-001"}
+      type: {key: type, type: string, value: "StoryboardSourceCard"}
+      label: {key: label, type: string, value: "Strybord Contract Source"}
+      position: {key: position, type: object, value: {"x":760,"y":-120}}
+      capturedAt: {key: capturedAt, type: string, value: "2026-06-08T00:00:00.000Z"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:source-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Research"}
+      order: {key: order, type: number, value: 7}
+      publisher: {key: publisher, type: string, value: "knowgrph"}
+      references: {key: references, type: array, value: ["knowgrph/docs/documents/knowgrph-strybord-prd-tad.md","knowgrph/docs/documents/knowgrph-strybord-node-schema.md"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:source:prd-tad"}
+      sourceKind: {key: sourceKind, type: string, value: "doc"}
+      sourceUrl: {key: sourceUrl, type: string, value: "knowgrph/docs/documents/knowgrph-strybord-prd-tad.md"}
+      status: {key: status, type: string, value: "active"}
+      summary: {key: summary, type: string, value: "The source contract defines Strybord as Storyboard Studio OS over current Storyboard and Strybldr ownership."}
+      title: {key: title, type: string, value: "Strybord PRD and TAD"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 2}
+    - id: {key: id, type: string, value: "source-inspiration-001"}
+      type: {key: type, type: string, value: "StoryboardSourceCard"}
+      label: {key: label, type: string, value: "Pattern Inspiration - Trae/Vercel Demo"}
+      position: {key: position, type: object, value: {"x":760,"y":120}}
+      capturedAt: {key: capturedAt, type: string, value: "2026-06-09T00:00:00.000Z"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:source-inspiration-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Research"}
+      order: {key: order, type: number, value: 8}
+      publisher: {key: publisher, type: string, value: "third-party"}
+      references: {key: references, type: array, value: ["Strytree"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:source:inspiration:trae-vercel-demo"}
+      sourceKind: {key: sourceKind, type: string, value: "external-demo"}
+      sourceUrl: {key: sourceUrl, type: string, value: "Strytree"}
+      status: {key: status, type: string, value: "active"}
+      summary: {key: summary, type: string, value: "Used only to study product pattern and demo flow; UI, copy, code, and assets are forbidden to copy."}
+      tags: {key: tags, type: array, value: ["inspiration","forbid-copy","pattern-only"]}
+      title: {key: title, type: string, value: "External demo pattern reference"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 2}
+    - id: {key: id, type: string, value: "source-inspiration-002"}
+      type: {key: type, type: string, value: "StoryboardSourceCard"}
+      label: {key: label, type: string, value: "Pattern Inspiration - Branchly Story Graph"}
+      position: {key: position, type: object, value: {"x":760,"y":360}}
+      capturedAt: {key: capturedAt, type: string, value: "2026-06-09T00:00:00.000Z"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:source-inspiration-002"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Research"}
+      order: {key: order, type: number, value: 9}
+      publisher: {key: publisher, type: string, value: "third-party"}
+      references: {key: references, type: array, value: ["Strytree"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:source:inspiration:branchly"}
+      sourceKind: {key: sourceKind, type: string, value: "github-repo"}
+      sourceUrl: {key: sourceUrl, type: string, value: "Strytree"}
+      status: {key: status, type: string, value: "active"}
+      summary: {key: summary, type: string, value: "Used only as a reference for the broad pattern: monetizable branching story graphs with AI-generated video continuations."}
+      tags: {key: tags, type: array, value: ["inspiration","forbid-copy","storytree","monetization"]}
+      title: {key: title, type: string, value: "Branchly public repository concept"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 2}
+    - id: {key: id, type: string, value: "research-001"}
+      type: {key: type, type: string, value: "StoryboardResearchCard"}
+      label: {key: label, type: string, value: "Evidence Must Stay Beside Scenes"}
+      position: {key: position, type: object, value: {"x":1140,"y":-120}}
+      action: {key: action, type: string, value: "Attach this evidence to hook, proof, and publish scenes through graph edges."}
+      claim: {key: claim, type: string, value: "Launch videos are stronger when market proof, claims, and scene planning live in the same graph."}
+      claimType: {key: claimType, type: string, value: "proof"}
+      confidence: {key: confidence, type: number, value: 0.86}
+      evidenceLevel: {key: evidenceLevel, type: string, value: "strong"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:research-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Research"}
       order: {key: order, type: number, value: 10}
-      url: {key: url, type: string, value: "https://airvio.co/knowgrph"}
-    - id: {key: id, type: string, value: "SHOT_01A"}
-      type: {key: type, type: string, value: "Shot"}
-      label: {key: label, type: string, value: "Friction Montage"}
-      position: {key: position, type: object, value: {x: -320, y: 480}}
-      stage: {key: stage, type: string, value: "Draft"}
-      frame: {key: frame, type: number, value: 2}
-      slugline: {key: slugline, type: string, value: "Review Notes - Print Markup Pass"}
-      summary: {key: summary, type: string, value: "Quick cuts show duplicate tools, scattered notes, and timeline drift."}
-      action: {key: action, type: string, value: "Printouts, sticky notes, and disconnected tools stack up faster than the team can reconcile them."}
-      dialogue: {key: dialogue, type: string, value: "DESIGNER: \"We fixed that in the canvas, but the board is already stale.\""}
-      prompt: {key: prompt, type: string, value: "Fast montage of sticky notes, printouts, browser windows, and duplicated timeline updates spreading across a worktable."}
-      style: {key: style, type: string, value: "Paper Cut"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Editor"}
-      priority: {key: priority, type: string, value: "P1"}
-      tags: {key: tags, type: array, value: ["closeup", "workflow", "pain"]}
-      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 20}
-    - id: {key: id, type: string, value: "SCENE_02"}
-      type: {key: type, type: string, value: "Scene"}
-      label: {key: label, type: string, value: "Graph-to-Storyboard Reveal"}
-      position: {key: position, type: object, value: {x: 0, y: 240}}
-      stage: {key: stage, type: string, value: "Review"}
-      frame: {key: frame, type: number, value: 3}
+      references: {key: references, type: array, value: ["knowgrph/docs/documents/knowgrph-strybord-prd-tad.md"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:research:evidence-beside-scenes"}
+      sourceTitle: {key: sourceTitle, type: string, value: "Storyboard Studio OS contract"}
+      sourceUrl: {key: sourceUrl, type: string, value: "knowgrph/docs/documents/knowgrph-strybord-prd-tad.md"}
+      status: {key: status, type: string, value: "accepted"}
+      summary: {key: summary, type: string, value: "The demo shows research as first-class storyboard cards instead of separate notes."}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 3}
+    - id: {key: id, type: string, value: "research-branching-001"}
+      type: {key: type, type: string, value: "StoryboardResearchCard"}
+      label: {key: label, type: string, value: "Pattern - Story Graphs Monetize Continuations"}
+      position: {key: position, type: object, value: {"x":1140,"y":120}}
+      action: {key: action, type: string, value: "Convert the pattern into original Strybord nodes: BranchCandidate, ApprovalGate, RenderArtifact, PublishAsset, and Payout."}
+      claim: {key: claim, type: string, value: "A video platform can monetize each approved branch as a lineage-aware continuation, not only a feed item."}
+      claimType: {key: claimType, type: string, value: "pattern"}
+      confidence: {key: confidence, type: number, value: 0.74}
+      evidenceLevel: {key: evidenceLevel, type: string, value: "medium"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:research-branching-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Research"}
+      order: {key: order, type: number, value: 11}
+      references: {key: references, type: array, value: ["source-inspiration-002","Strytree"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:research:branching-monetization-pattern"}
+      sourceTitle: {key: sourceTitle, type: string, value: "Branching video monetization pattern reference"}
+      sourceUrl: {key: sourceUrl, type: string, value: "Strytree"}
+      status: {key: status, type: string, value: "accepted"}
+      summary: {key: summary, type: string, value: "Strybord adapts the broad branching monetization pattern into a no-copy enterprise/productivity demo workflow with explicit gates and payout math."}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 3}
+    - id: {key: id, type: string, value: "branch-001"}
+      type: {key: type, type: string, value: "StoryboardBranchCandidate"}
+      label: {key: label, type: string, value: "Proof-First Hook"}
+      position: {key: position, type: object, value: {"x":1520,"y":0}}
+      action: {key: action, type: string, value: "Compare hook candidates, inherit approved context, then approve budget and render plan before generating a branch video."}
+      branchId: {key: branchId, type: string, value: "branch-proof-first"}
+      branchKind: {key: branchKind, type: string, value: "hook"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:branch-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 4}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      hypothesis: {key: hypothesis, type: string, value: "Lead with lineage, proof, unlocks, and approval gates to show a monetizable branching-video product without copying any reference product."}
+      lane: {key: lane, type: string, value: "Storytree"}
+      order: {key: order, type: number, value: 12}
+      parentBranchId: {key: parentBranchId, type: string, value: "brief-001"}
+      score: {key: score, type: number, value: 0.91}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:branch:proof-first"}
+      status: {key: status, type: string, value: "selected"}
+      summary: {key: summary, type: string, value: "Selected branch frames Strybord as an orchestrated story-graph commerce workflow, not a one-click media generator."}
+      tags: {key: tags, type: array, value: ["branch","hook","selected"]}
+      "visual:importance": {key: "visual:importance", type: number, value: 28}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 18}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 4}
+    - id: {key: id, type: string, value: "scene-hook-001"}
+      type: {key: type, type: string, value: "StoryboardSceneCard"}
+      label: {key: label, type: string, value: "Hook - From Intent To Board"}
+      position: {key: position, type: object, value: {"x":1900,"y":-120}}
+      action: {key: action, type: string, value: "Brief, source, Exa research, and run cards appear in lanes before any paid render or unlock action can run."}
+      approvalState: {key: approvalState, type: string, value: "approved"}
+      branchId: {key: branchId, type: string, value: "branch-proof-first"}
+      dialogue: {key: dialogue, type: string, value: "OPERATOR: \"Use the pattern, not the pixels. The storyboard is the source of truth.\""}
+      durationSeconds: {key: durationSeconds, type: number, value: 5}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:scene-hook-001"}
+      frame: {key: frame, type: number, value: 1}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
+      lane: {key: lane, type: string, value: "Hook"}
       location: {key: location, type: string, value: "Workspace Canvas"}
-      timeOfDay: {key: timeOfDay, type: string, value: "Live Sync"}
-      summary: {key: summary, type: string, value: "The graph reorganizes into storyboard lanes without a second authoring system."}
-      action: {key: action, type: string, value: "The same source graph snaps into a native storyboard board while lane chips, counts, and card media stay in sync."}
-      dialogue: {key: dialogue, type: string, value: "PM: \"Same graph, same markdown, better review surface.\""}
-      prompt: {key: prompt, type: string, value: "Product interface transitions from graph nodes into a storyboard board with compact lanes, consistent chips, and native media cards."}
-      style: {key: style, type: string, value: "Product UI"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Product"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["reveal", "kanban", "native"]}
-      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 30}
-    - id: {key: id, type: string, value: "SHOT_02A"}
-      type: {key: type, type: string, value: "Shot"}
-      label: {key: label, type: string, value: "Lane Focus"}
-      position: {key: position, type: object, value: {x: 320, y: 0}}
-      stage: {key: stage, type: string, value: "Review"}
-      frame: {key: frame, type: number, value: 4}
-      slugline: {key: slugline, type: string, value: "Selection Sync - Active Source Node"}
-      summary: {key: summary, type: string, value: "Clicking a card highlights the source node and keeps graph/story alignment visible."}
-      action: {key: action, type: string, value: "A selected storyboard card drives the active graph selection while the lane remains compact and readable."}
-      dialogue: {key: dialogue, type: string, value: "REVIEWER: \"Click the board, inspect the node, keep the source honest.\""}
-      prompt: {key: prompt, type: string, value: "Storyboard card selection highlights a connected source node in a graph editor, showing one unified system."}
-      style: {key: style, type: string, value: "Diagram Hybrid"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Product"}
-      priority: {key: priority, type: string, value: "P1"}
-      tags: {key: tags, type: array, value: ["selection", "lane", "sync"]}
-      imageUrl: {key: imageUrl, type: string, value: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 40}
+      order: {key: order, type: number, value: 13}
+      prompt: {key: prompt, type: string, value: "Product workspace view where a no-copy video-platform brief expands into concise storyboard cards with evidence chips and run state."}
+      references: {key: references, type: array, value: ["run-001","knowgrph/docs/documents/knowgrph-strybord-prd-tad.md","source-inspiration-001","source-inspiration-002","https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:scene:hook:intent-to-board"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "A founder enters product intent, inspiration URLs, audience, CTA, and no-copy constraints; Strybord turns them into graph-native planning cards."}
+      tags: {key: tags, type: array, value: ["hook","brief","graph-native"]}
+      timeOfDay: {key: timeOfDay, type: string, value: "Brief Intake"}
+      title: {key: title, type: string, value: "From intent to board"}
+      tone: {key: tone, type: string, value: "credible"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 5}
+    - id: {key: id, type: string, value: "scene-proof-001"}
+      type: {key: type, type: string, value: "StoryboardSceneCard"}
+      label: {key: label, type: string, value: "Proof - Evidence Cards Drive The Script"}
+      position: {key: position, type: object, value: {"x":1900,"y":120}}
+      action: {key: action, type: string, value: "The script highlights source-backed claims, flags no-copy constraints, and leaves weak evidence in review instead of auto-promoting it."}
+      approvalState: {key: approvalState, type: string, value: "approved"}
+      branchId: {key: branchId, type: string, value: "branch-proof-first"}
+      dialogue: {key: dialogue, type: string, value: "REVIEWER: \"Show me the evidence, the lineage, and the copy-safety gate before this becomes public.\""}
+      durationSeconds: {key: durationSeconds, type: number, value: 7}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:scene-proof-001"}
+      frame: {key: frame, type: number, value: 2}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"}
+      lane: {key: lane, type: string, value: ""}
+      order: {key: order, type: number, value: 14}
+      prompt: {key: prompt, type: string, value: "Storyboard lane with Exa research cards connected to scene cards, using evidence, confidence, inspiration-policy, and no-copy metadata."}
+      references: {key: references, type: array, value: ["research-001","research-branching-001","source-inspiration-001","source-inspiration-002","knowgrph/docs/documents/knowgrph-strybord-node-schema.md"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:scene:proof:evidence-cards"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "Exa research, source, and proof cards stay visible beside the scenes they support, including external inspiration records marked pattern-only."}
+      tags: {key: tags, type: array, value: ["proof","research","confidence"]}
+      title: {key: title, type: string, value: "Evidence cards drive the script"}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 5}
+    - id: {key: id, type: string, value: "budget-001"}
+      type: {key: type, type: string, value: "StoryboardBudget"}
+      label: {key: label, type: string, value: "Approved Render Budget"}
+      position: {key: position, type: object, value: {"x":2280,"y":0}}
+      action: {key: action, type: string, value: "Keep spend ceilings in graph metadata and route funding through existing payment ownership."}
+      budgetUsd: {key: budgetUsd, type: number, value: 15}
+      creditBudget: {key: creditBudget, type: number, value: 10}
+      estimatedCredits: {key: estimatedCredits, type: number, value: 5}
+      estimatedUsd: {key: estimatedUsd, type: number, value: 12}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:budget-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Budget"}
+      order: {key: order, type: number, value: 15}
+      packageId: {key: packageId, type: string, value: "demo-render-pack"}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:budget:demo-render-pack"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "Budget is explicit before the render broker can enqueue a job."}
+      tags: {key: tags, type: array, value: ["budget","approval","bounded-spend"]}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 6}
+    - id: {key: id, type: string, value: "approval-render-001"}
+      type: {key: type, type: string, value: "StoryboardApprovalGate"}
+      label: {key: label, type: string, value: "Render Approval Gate"}
+      position: {key: position, type: object, value: {"x":2660,"y":0}}
+      approvedAt: {key: approvedAt, type: string, value: "2026-06-08T00:00:00.000Z"}
+      approvedBy: {key: approvedBy, type: string, value: "operator"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:approval-render-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      gateKind: {key: gateKind, type: string, value: "budget"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Budget"}
+      order: {key: order, type: number, value: 16}
+      reason: {key: reason, type: string, value: "Branch, claim review, no-copy policy, and budget are approved."}
+      required: {key: required, type: boolean, value: true}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:approval:render"}
+      state: {key: state, type: string, value: "approved"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "Paid render actions require this gate to be approved."}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -6}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 7}
+    - id: {key: id, type: string, value: "render-plan-001"}
+      type: {key: type, type: string, value: "StoryboardRenderPlan"}
+      label: {key: label, type: string, value: "Provider-Neutral Render Plan"}
+      position: {key: position, type: object, value: {"x":3040,"y":0}}
+      action: {key: action, type: string, value: "Compile ordered scene cards, references, budget, and approval state into one reviewable handoff."}
+      branchId: {key: branchId, type: string, value: "branch-proof-first"}
+      estimatedCredits: {key: estimatedCredits, type: number, value: 5}
+      estimatedDurationSeconds: {key: estimatedDurationSeconds, type: number, value: 45}
+      estimatedUsd: {key: estimatedUsd, type: number, value: 12}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:render-plan-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Render"}
+      order: {key: order, type: number, value: 17}
+      prompt: {key: prompt, type: string, value: "Produce a 45-second original Strybord explainer using approved evidence, storytree branch lineage, proof gates, CTA, and publish gates. Do not copy external demo UI, text, code, or assets."}
+      providerPolicy: {key: providerPolicy, type: object, value: {"mode":"adapter-neutral","maxRetries":2,"secretsInBrowser":false,"llmRouter":"Vercel AI Gateway","inspirationPolicy":"forbid-copy"}}
+      qualityTarget: {key: qualityTarget, type: string, value: "720p"}
+      references: {key: references, type: array, value: ["run-001","scene-hook-001","scene-proof-001","cta-001","approval-proof-001"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:render-plan:proof-first"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "Approved scenes compile into a neutral handoff before any execution adapter receives a payload."}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 8}
+    - id: {key: id, type: string, value: "render-job-001"}
+      type: {key: type, type: string, value: "StoryboardRenderJob"}
+      label: {key: label, type: string, value: "Render Job Status"}
+      position: {key: position, type: object, value: {"x":3420,"y":0}}
+      action: {key: action, type: string, value: "Show status, retries, token spend, credit spend, and error state as graph metadata."}
+      finishedAt: {key: finishedAt, type: string, value: "2026-06-08T00:01:00.000Z"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:render-job-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      jobId: {key: jobId, type: string, value: "strybord-demo-render-001"}
+      lane: {key: lane, type: string, value: "Render"}
+      maxRetries: {key: maxRetries, type: number, value: 2}
+      order: {key: order, type: number, value: 18}
+      provider: {key: provider, type: string, value: "vercel-ai-gateway-routed-video-adapter"}
+      retryCount: {key: retryCount, type: number, value: 0}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:render-job:demo-001"}
+      startedAt: {key: startedAt, type: string, value: "2026-06-08T00:00:00.000Z"}
+      status: {key: status, type: string, value: "succeeded"}
+      summary: {key: summary, type: string, value: "The render job records observable state, gateway-routed spend, retries, and provider status without exposing adapter secrets or browser-owned credentials."}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 9}
     - id: {key: id, type: string, value: "SCENE_03"}
-      type: {key: type, type: string, value: "Frame"}
-      label: {key: label, type: string, value: "Media-Rich Variant"}
-      position: {key: position, type: object, value: {x: 0, y: -720}}
-      stage: {key: stage, type: string, value: "Approved"}
-      frame: {key: frame, type: number, value: 5}
-      location: {key: location, type: string, value: "Publishing Surface"}
-      timeOfDay: {key: timeOfDay, type: string, value: "Final Review"}
-      summary: {key: summary, type: string, value: "Approved card carries poster art, tags, owner, and publish link in one native board card."}
-      action: {key: action, type: string, value: "The approved frame combines preview video, review metadata, references, and outgoing brief links in a compact native card."}
-      dialogue: {key: dialogue, type: string, value: "MARKETING: \"This one is approved. Ship the brief with the source attached.\""}
-      prompt: {key: prompt, type: string, value: "Final approved product storyboard frame with poster art, compact metadata chips, and a linked launch brief."}
-      style: {key: style, type: string, value: "Launch Polish"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Marketing"}
-      priority: {key: priority, type: string, value: "P0"}
-      tags: {key: tags, type: array, value: ["media", "approved", "publish"]}
+      type: {key: type, type: string, value: "StoryboardRenderArtifact"}
+      label: {key: label, type: string, value: "Playable Render Artifact"}
+      position: {key: position, type: object, value: {"x":3800,"y":0}}
+      action: {key: action, type: string, value: "Keep generated, copied, fallback, and failed states visible instead of treating every media URL as success."}
+      cacheHit: {key: cacheHit, type: boolean, value: false}
+      elapsedMs: {key: elapsedMs, type: number, value: 60000}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:SCENE_03"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Render"}
+      order: {key: order, type: number, value: 19}
+      paidCallCount: {key: paidCallCount, type: number, value: 1}
+      provider: {key: provider, type: string, value: "vercel-ai-gateway-routed-video-adapter"}
+      references: {key: references, type: array, value: ["run-001","render-job-001","budget-001","approval-render-001","approval-proof-001"]}
+      renderUrl: {key: renderUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:artifact:demo-render"}
+      sourceUrl: {key: sourceUrl, type: string, value: "render-job-001"}
+      status: {key: status, type: string, value: "generated"}
+      summary: {key: summary, type: string, value: "The artifact is playable and linked to run, render job, budget, proof, publish, and payout metadata."}
+      thumbnailUrl: {key: thumbnailUrl, type: string, value: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"}
       videoUrl: {key: videoUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
-      order: {key: order, type: number, value: 50}
-      href: {key: href, type: string, value: "https://airvio.co/knowgrph"}
-    - id: {key: id, type: string, value: "SCENE_04"}
-      type: {key: type, type: string, value: "Panel"}
-      label: {key: label, type: string, value: "CTA End Card"}
-      position: {key: position, type: object, value: {x: 320, y: -960}}
-      stage: {key: stage, type: string, value: "Approved"}
-      frame: {key: frame, type: number, value: 6}
-      slugline: {key: slugline, type: string, value: "End Card - Workspace Native Delivery"}
-      summary: {key: summary, type: string, value: "End card closes on a clear call to action for workspace-native production planning."}
-      action: {key: action, type: string, value: "End card lands on a decisive launch message that ties storyboard review back to the shared Knowgrph workspace."}
-      dialogue: {key: dialogue, type: string, value: "NARRATOR: \"Plan, review, and ship from the same native graph workspace.\""}
-      prompt: {key: prompt, type: string, value: "Clean final end card with bold product message, warm accent color, and confident launch composition."}
-      style: {key: style, type: string, value: "Brand Card"}
-      references: {key: references, type: array, value: ["https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"]}
-      owner: {key: owner, type: string, value: "Growth"}
-      priority: {key: priority, type: string, value: "P1"}
-      tags: {key: tags, type: array, value: ["cta", "endcard", "publish"]}
-      image: {key: image, type: string, value: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"}
-      order: {key: order, type: number, value: 60}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 10}
+    - id: {key: id, type: string, value: "publish-asset-001"}
+      type: {key: type, type: string, value: "StoryboardPublishAsset"}
+      label: {key: label, type: string, value: "Strybord Demo Asset"}
+      position: {key: position, type: object, value: {"x":4180,"y":0}}
+      action: {key: action, type: string, value: "Serve only approved public fields while retaining private operator metadata, gateway cost logs, and settlement state in the graph/D1 run record."}
+      ctaLabel: {key: ctaLabel, type: string, value: "Unlock or fork this branch"}
+      ctaUrl: {key: ctaUrl, type: string, value: "https://airvio.co/knowgrph"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:publish-asset-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Publish"}
+      order: {key: order, type: number, value: 21}
+      publicSources: {key: publicSources, type: array, value: [{"title":"Strybord PRD and TAD","url":"knowgrph/docs/documents/knowgrph-strybord-prd-tad.md"},{"title":"Pattern inspirations (no-copy)","url":"Strytree"}]}
+      publicUrl: {key: publicUrl, type: string, value: "https://airvio.co/knowgrph"}
+      references: {key: references, type: array, value: ["SCENE_03","publish-gate-001","cta-001"]}
+      renderUrl: {key: renderUrl, type: string, value: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:publish-asset:demo"}
+      status: {key: status, type: string, value: "published"}
+      summary: {key: summary, type: string, value: "A shareable monetized video asset backed by brief, Exa evidence, branch lineage, budget, proof, render, publish, unlock, and payout nodes."}
+      title: {key: title, type: string, value: "Storyboard Studio OS turns story graphs into approved monetized video branches"}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 11}
+    - id: {key: id, type: string, value: "payout-001"}
+      type: {key: type, type: string, value: "StoryboardPayout"}
+      label: {key: label, type: string, value: "Creator Revenue Share - 80/20"}
+      position: {key: position, type: object, value: {"x":4560,"y":-120}}
+      action: {key: action, type: string, value: "Show payout math as public-safe graph metadata while settlement secrets remain server-owned."}
+      assetId: {key: assetId, type: string, value: "publish-asset-001"}
+      creatorAmountUsd: {key: creatorAmountUsd, type: number, value: 8}
+      creatorShareBps: {key: creatorShareBps, type: number, value: 8000}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:payout-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      grossUsd: {key: grossUsd, type: number, value: 10}
+      idempotencyKey: {key: idempotencyKey, type: string, value: "strybord-demo-payout-001:settle:1"}
+      lane: {key: lane, type: string, value: "settled"}
+      order: {key: order, type: number, value: 22}
+      payoutId: {key: payoutId, type: string, value: "strybord-demo-payout-001"}
+      platformAmountUsd: {key: platformAmountUsd, type: number, value: 2}
+      platformShareBps: {key: platformShareBps, type: number, value: 2000}
+      references: {key: references, type: array, value: ["publish-asset-001","publish-gate-001","approval-proof-001"]}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:payout:demo-80-20"}
+      status: {key: status, type: string, value: "settled"}
+      summary: {key: summary, type: string, value: "A paid unlock settles creator/platform revenue share at the default 80/20 split through Stripe Connect ownership."}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 12}
+    - id: {key: id, type: string, value: "publish-gate-001"}
+      type: {key: type, type: string, value: "StoryboardPublishGate"}
+      label: {key: label, type: string, value: "Publish Gate"}
+      position: {key: position, type: object, value: {"x":4560,"y":120}}
+      action: {key: action, type: string, value: "Filter public metadata before producing a shareable monetized demo asset."}
+      blockedReasons: {key: blockedReasons, type: array, value: []}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:publish-gate-001"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      lane: {key: lane, type: string, value: "Publish"}
+      order: {key: order, type: number, value: 20}
+      publicFieldPolicy: {key: publicFieldPolicy, type: string, value: "strybord-public-demo-fields"}
+      semanticKey: {key: semanticKey, type: string, value: "strybord:publish-gate:demo"}
+      state: {key: state, type: string, value: "approved"}
+      status: {key: status, type: string, value: "approved"}
+      summary: {key: summary, type: string, value: "Publish is explicit and separate from render success; the public asset must pass proof, copy-safety, CTA, and unlock-state checks."}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      "visual:zIndex": {key: "visual:zIndex", type: number, value: 12}
   edges:
-    - {id: "edge:story:scene_01", source: "STORY_ROOT", target: "SCENE_01"}
-    - {id: "edge:story:shot_01a", source: "SCENE_01", target: "SHOT_01A"}
-    - {id: "edge:story:scene_02", source: "STORY_ROOT", target: "SCENE_02"}
-    - {id: "edge:story:shot_02a", source: "SCENE_02", target: "SHOT_02A"}
-    - {id: "edge:story:scene_03", source: "STORY_ROOT", target: "SCENE_03"}
-    - {id: "edge:story:scene_04", source: "STORY_ROOT", target: "SCENE_04"}
+    - {"id":"edge:strybord:run-brief","source":"run-001","sourceHandle":"output","target":"brief-001","targetHandle":"input","label":"orchestrates"}
+    - {"id":"edge:strybord:brief-source","source":"brief-001","sourceHandle":"output","target":"source-001","targetHandle":"input","label":"derived_from"}
+    - {"id":"edge:strybord:brief-inspiration-a","source":"brief-001","sourceHandle":"output","target":"source-inspiration-001","targetHandle":"input","label":"derived_from"}
+    - {"id":"edge:strybord:brief-inspiration-b","source":"brief-001","sourceHandle":"output","target":"source-inspiration-002","targetHandle":"input","label":"derived_from"}
+    - {"id":"edge:strybord:source-research","source":"source-001","sourceHandle":"output","target":"research-001","targetHandle":"input","label":"supports_claim"}
+    - {"id":"edge:strybord:branchly-research","source":"source-inspiration-002","sourceHandle":"output","target":"research-branching-001","targetHandle":"input","label":"supports_claim"}
+    - {"id":"edge:strybord:research-scene","source":"research-001","sourceHandle":"output","target":"scene-proof-001","targetHandle":"input","label":"informs_scene"}
+    - {"id":"edge:strybord:branching-research-scene","source":"research-branching-001","sourceHandle":"output","target":"branch-001","targetHandle":"input","label":"informs_scene"}
+    - {"id":"edge:strybord:brief-branch","source":"brief-001","sourceHandle":"output","target":"branch-001","targetHandle":"input","label":"has_branch"}
+    - {"id":"edge:strybord:branch-hook","source":"branch-001","sourceHandle":"output","target":"scene-hook-001","targetHandle":"input","label":"has_branch"}
+    - {"id":"edge:strybord:branch-proof","source":"branch-001","sourceHandle":"output","target":"scene-proof-001","targetHandle":"input","label":"has_branch"}
+    - {"id":"edge:strybord:proof-compliance","source":"proof-001","sourceHandle":"output","target":"compliance-001","targetHandle":"input","label":"requires_approval"}
+    - {"id":"edge:strybord:run-proof-gate","source":"run-001","sourceHandle":"output","target":"approval-proof-001","targetHandle":"input","label":"records_gate"}
+    - {"id":"edge:strybord:compliance-proof-gate","source":"compliance-001","sourceHandle":"output","target":"approval-proof-001","targetHandle":"input","label":"requires_approval"}
+    - {"id":"edge:strybord:scene-budget","source":"scene-proof-001","sourceHandle":"output","target":"budget-001","targetHandle":"input","label":"has_budget"}
+    - {"id":"edge:strybord:run-budget-gate","source":"run-001","sourceHandle":"output","target":"approval-render-001","targetHandle":"input","label":"records_gate"}
+    - {"id":"edge:strybord:budget-approval","source":"budget-001","sourceHandle":"output","target":"approval-render-001","targetHandle":"input","label":"requires_approval"}
+    - {"id":"edge:strybord:approval-plan","source":"approval-render-001","sourceHandle":"output","target":"render-plan-001","targetHandle":"input","label":"plans_render"}
+    - {"id":"edge:strybord:plan-job","source":"render-plan-001","sourceHandle":"output","target":"render-job-001","targetHandle":"input","label":"runs_job"}
+    - {"id":"edge:strybord:job-artifact","source":"render-job-001","sourceHandle":"output","target":"SCENE_03","targetHandle":"input","label":"produces_artifact"}
+    - {"id":"edge:strybord:artifact-publish","source":"SCENE_03","sourceHandle":"output","target":"publish-asset-001","targetHandle":"input","label":"publishes_asset"}
+    - {"id":"edge:strybord:publish-gate","source":"publish-asset-001","sourceHandle":"output","target":"publish-gate-001","targetHandle":"input","label":"gates_publish"}
+    - {"id":"edge:strybord:run-publish-gate","source":"run-001","sourceHandle":"output","target":"publish-gate-001","targetHandle":"input","label":"records_gate"}
+    - {"id":"edge:strybord:publish-payout","source":"publish-asset-001","sourceHandle":"output","target":"payout-001","targetHandle":"input","label":"settles_payout"}
 ---
-# Knowgrph Storyboard Demo
+# Knowgrph Strybord Demo
 
-Use this document to validate the native `2D Renderer: Storyboard` surface.
+Use this document to validate `strybord` as an E2E Storyboard Studio OS demo on the native `2D Renderer: Storyboard` surface.
+
+The demo is inspired by the broad product pattern behind `Strytree`: AI-generated video branches, story lineage, unlocks, and creator monetization. It explicitly forbids copying their code, copy, layout, media, or product assets. The value here is the original Knowgrph implementation pattern: a graph-native, approval-gated, MCP-orchestrated canvas workflow for video generation monetization.
 
 ## Typed Fixture Contract
 
-- This file is an approved typed validation fixture for storyboard ingest -> parse -> render coverage.
+- This file is an approved typed validation fixture for Strybord ingest -> parse -> storyboard render coverage.
 - The opening YAML frontmatter block remains the first-block machine SSOT for renderer activation and graph-backed storyboard data.
-- Normalized `{key, type, value}` envelopes in `flow.nodes[*]` are intentional here so the typed E2E path stays exercised during regression and manual validation.
-- This document is not the canonical plain-YAML authoring example; canonical authored storyboard docs should still prefer plain YAML for frontmatter and related schema-bearing blocks.
-- Parser warning, repair, or fallback behavior is recovery-only; malformed YAML frontmatter still remains invalid source that must be fixed upstream.
+- Normalized `{key, type, value}` envelopes in `flow.nodes[*]` are intentional so the typed E2E path keeps exercising schema-bearing publish docs.
+- Strybord is demonstrated through current Storyboard and Strybldr owners; this file does not introduce a second runtime, payment stack, render ledger, or publish system.
+- `run-001` demonstrates the `stryfork` AWS MCP host driving knowgrph Agentic Canvas OS through authenticated action tools while Vercel AI Gateway records token/cost telemetry.
+- `source-inspiration-001` and `source-inspiration-002` are pattern-only references. Their presence validates no-copy policy and research provenance, not reuse.
+- Adapter-specific render payloads, secrets, and browser-owned credentials are not stored in the authoring graph.
 
 ## Related Docs
 
 - [Storyboard Demo Index](./knowgrph-storyboard-demo-index.md)
 - [Storyboard Product UI Demo](./knowgrph-storyboard-product-ui-demo.md)
 - [Storyboard Neutral Schema Contract Demo](./knowgrph-storyboard-neutral-schema-contract-demo.md)
+- Dev Strybord PRD/TAD source: `knowgrph/docs/documents/knowgrph-strybord-prd-tad.md`
+- Dev Strybord node-schema source: `knowgrph/docs/documents/knowgrph-strybord-node-schema.md`
+- Dev Strybord implementation-plan source: `knowgrph/docs/documents/knowgrph-strybord-implementation-plan.md`
 
 ## Validation Goals
 
 - Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: storyboard`.
-- Confirm the storyboard surface is repo-owned and native to Knowgrph, not copied from Boords or any vendor storyboard runtime.
-- Confirm existing graph nodes project into storyboard lanes through canonical fields such as `stage`, `status`, `lane`, `phase`, or `track`, without creating a second authoring schema.
-- Confirm scene-like node types such as `Scene`, `Shot`, `Frame`, `Panel`, `Beat`, and `Story` are recognized as storyboard-friendly inputs while structural/root-only nodes stay secondary or are filtered when richer cards exist.
-- `#EF4444:Confirm` the board reuses shared semantic-key infrastructure and does not introduce parallel identity assembly, stale local caches, or per-renderer duplicate graph derivation.
-- Confirm storyboard cards reuse shared chip/theme primitives for lane status, tags, and metadata instead of **`bg#FEF08A:bespoke`** demo-only UI shells.
-- Confirm card ordering follows explicit node properties like `order`, `sequence`, `sceneOrder`, `shotOrder`, `index`, or `rank` before falling back to stable source order.
-- Confirm storyboard cards project native frame/index badges from properties such as `frame`, `frameNumber`, `sceneNumber`, `shotNumber`, or `panelNumber`.
-- Confirm storyboard cards build slugline text from `slugline` directly or from `location` + `timeOfDay` when explicit slugline text is absent.
-- Confirm storyboard cards surface native `Action` and `Dialogue` sections from graph/frontmatter fields instead of demo-only text formatting.
-- Confirm storyboard, workspace Viewer kanban, and Workflow Manager kanban surface shared paragraph-style card content from canonical text fields instead of drifting per-surface card bodies.
-- Confirm storyboard, workspace Viewer kanban, and Workflow Manager kanban allow double-click inline editing on shared card title/body text, committing back to the root markdown-table or graph-node source instead of local card state.
-- Confirm storyboard cards surface a native `Visual Brief` block from shared properties such as `prompt`, `imagePrompt`, and `style`.
-- Confirm storyboard cards surface a compact native `Reference Pack` from shared reference arrays such as `references` or `referenceUrls`.
-- Confirm image, video, and link properties such as `image`, `imageUrl`, `videoUrl`, `media_url`, `src`, `url`, or `href` render as native media-rich storyboard cards without placeholder fixtures.
-- Confirm clicking a storyboard card selects the source node in the active graph store instead of creating a parallel storyboard-only selection state.
-- Confirm the storyboard surface stays source-backed during inline edits: card text commits directly to graph/frontmatter-owned fields with no storyboard-local persistence layer or parallel markdown format.
-- Confirm the shared Viewer `Properties` panel now owns add, duplicate, rename, and delete column CRUD end-to-end so Layout / Properties / Filter / Sort / Group state does not drift after a property mutation.
-- Confirm the storyboard renderer bypasses minimap-only D3 assumptions and does not inherit incompatible minimap behavior from unrelated 2D surfaces.
-- Confirm the board keeps lane/card density compact, uses horizontal lane scrolling, and avoids oversized helper chrome or copied vendor interaction patterns.
+- Confirm canonical Strybord node types project through the shared storyboard model: `StoryboardRun`, `StoryboardBrief`, `StoryboardResearchCard`, `StoryboardSourceCard`, `StoryboardSceneCard`, `StoryboardBranchCandidate`, `StoryboardProofCard`, `StoryboardComplianceCheck`, `StoryboardCtaCard`, `StoryboardBudget`, `StoryboardApprovalGate`, `StoryboardRenderPlan`, `StoryboardRenderJob`, `StoryboardRenderArtifact`, `StoryboardPublishGate`, `StoryboardPublishAsset`, and `StoryboardPayout`.
+- Confirm `status`, approval, evidence, budget, render, and publish values remain card metadata rather than lane labels.
+- Confirm lane fallback remains schema-driven and explicit lanes remain authoritative.
+- Confirm source URLs and references stay visible as provenance, not hidden side data.
+- Confirm branch lineage remains visible through `Storytree` lane cards and graph edges.
+- Confirm inspiration URLs are marked as pattern-only and no-copy, then transformed into original Strybord branch, gate, render, publish, and payout nodes.
+- Confirm paid-generation intent is represented only after budget and approval nodes exist.
+- Confirm publish output is modeled through a proof gate, publish gate, and public-field asset node instead of treating render success as automatic release.
+- Confirm payout output is modeled through `StoryboardPayout` with default 80/20 creator/platform basis points.
+- Confirm the E2E run records `stryfork` orchestration, Vercel AI Gateway token spend, Cloudflare D1 mirroring, and authenticated MCP action-tool flow.
+- `#EF4444:Confirm` the demo reuses shared semantic-key infrastructure and does not introduce parallel identity assembly, local cache divergence, or per-renderer duplicate graph derivation.
 
-## Native Contract
+## Native Strybord Contract
 
 - Frontmatter remains the single authoring owner.
 - `flow.nodes[*]` remains the canonical node source.
-- Storyboard derives view-only lane/card presentation from node labels, types, and properties.
-- Lane grouping prefers `stage`, then other shared lane-like fields.
-- Card content prefers `label`, `summary`-like fields, tags, owner, priority, and media/link URLs already present on the node.
-- Storyboard detail blocks also reuse shared graph properties for frame numbering, slugline, action, dialogue, prompt, style, and references.
+- Storyboard derives view-only lane/card presentation from Strybord node types, labels, and shared properties.
+- `StoryboardRun` maps to `Run`; `StoryboardBrief` maps to `Brief`; research and source cards map to `Research`; branch candidates map to `Storytree`; proof and compliance map to `Proof`; CTA maps to `CTA`; budget and approval gates map to `Budget`; render plans, jobs, and artifacts map to `Render`; publish gates, assets, and payouts map to `Publish`.
+- `status` remains metadata for Strybord nodes and must not become a lane unless an explicit non-status lane field says so.
+- Adapter payloads are compiled downstream from approved graph state; they are not the authoring schema.
+- Credit, checkout, and paid generation state remain under existing payment ownership.
+- Mutating MCP actions are represented by run/gate/job/payout state, but the authoring graph never stores bearer tokens, Connect account secrets, provider API keys, or browser-owned credentials.
 
-## Authoring Notes
+## Shared Renderer Contract
 
-- Use stable scene-like ids such as `SCENE_01`, `SHOT_01A`, or `PANEL_04`.
-- Prefer `stage` for lane grouping when authoring storyboard demos because it reads cleanly as `Draft`, `Review`, and `Approved`.
-- Prefer `order` for deterministic left-to-right narrative sequencing inside each lane.
-- Prefer shared graph properties like `summary`, `owner`, `priority`, `tags`, `url`, `href`, `image`, `imageUrl`, `videoUrl`, `media_url`, `frame`, `slugline`, `location`, `timeOfDay`, `action`, `dialogue`, `prompt`, `style`, and `references` instead of renderer-local custom keys.
-- Prefer canonical text properties such as `summary`, `description`, `content`, `text`, `note`, `notes`, `action`, `dialogue`, and `prompt` when authoring card body copy so storyboard and kanban surfaces project the same paragraph content.
-- Keep storyboard content enhancement-first: edit the graph/frontmatter source, then let the renderer project the board.
+- Card surfaces use the shared Card preview path for image, video, markdown, and source metadata.
+- Widget cards use `canvas:widgetCard` when actions or editable controls are present.
+- Rich media surfaces use `RichMediaPanel` for playable, embedded, markdown, image, video, and `outputSrcDoc` content.
+- Edges remain active graph edges; Storyboard only projects them into lane/card connectors.
+- Semantic identity stays rooted in shared semantic keys, not renderer-specific ids.
 
 ## Expected Lanes
 
-- `Draft` should contain `SCENE_01` and `SHOT_01A`.
-- `Review` should contain `SCENE_02` and `SHOT_02A`.
-- `Approved` should contain `SCENE_03` and `SCENE_04`.
+- `Run` contains `run-001`.
+- `Brief` contains `brief-001`.
+- `Research` contains `source-001`, `source-inspiration-001`, `source-inspiration-002`, `research-001`, and `research-branching-001`.
+- `Storytree` contains `branch-001`.
+- `Hook` contains `scene-hook-001`.
+- `Storyboard` contains `scene-proof-001`.
+- `Proof` contains `proof-001`, `compliance-001`, and `approval-proof-001`.
+- `CTA` contains `cta-001`.
+- `Budget` contains `budget-001` and `approval-render-001`.
+- `Render` contains `render-plan-001`, `render-job-001`, and `SCENE_03`.
+- `Publish` contains `publish-gate-001`, `publish-asset-001`, and `payout-001`.
 
 ## Expected Card Signals
 
-- `SCENE_01` should show frame `1`, a generated slugline from `Conference Room - Monday`, an `Action` block, a `Dialogue` block, a Doodle-style `Visual Brief`, a two-item `Reference Pack`, and an external brief link.
-- `SHOT_01A` should show frame `2`, explicit slugline text, workflow-pain tags, a style chip, and reference thumbnails while staying ordered after `SCENE_01`.
-- `SCENE_02` should validate graph-to-storyboard projection language: native board, shared kanban visual language, no copied vendor shell, plus a product-UI visual brief.
-- `SHOT_02A` should validate card-click selection sync back to the graph node and keep a compact selection-focused storyboard card body.
-- `SCENE_03` should validate video preview support for approved media-rich cards together with references, style, owner, priority, and launch brief metadata.
-- `SCENE_04` should validate approved CTA card rendering with compact chips, explicit end-card dialogue, and a brand-card visual brief.
+- `run-001` shows the E2E orchestration state: `stryfork` host, current lane, max iterations, D1 mirror, token spend, credit spend, and gate decisions.
+- `brief-001` shows the intake goal, persona, CTA, source URLs, no-copy constraints, and ready status as an operator brief.
+- `source-inspiration-001` and `source-inspiration-002` show external inspiration sources as pattern-only references with copy forbidden.
+- `research-001` shows source-backed claim metadata, evidence level, confidence, and accepted status without creating a separate evidence store.
+- `research-branching-001` shows the monetizable story-graph pattern transformed into original Strybord requirements.
+- `branch-001` shows the selected proof-first, lineage-aware hook hypothesis and branch lineage.
+- `scene-hook-001` and `scene-proof-001` show approved storyboard scene cards with visual prompts, references, branch IDs, and scene order.
+- `approval-proof-001`, `budget-001`, and `approval-render-001` show proof/copy-safety and bounded spend gates before render and publish.
+- `render-plan-001`, `render-job-001`, and `SCENE_03` show neutral handoff, Vercel AI Gateway-routed execution metadata, observable job state, and playable artifact state.
+- `publish-gate-001` and `publish-asset-001` show that a public monetized demo asset is gated, filtered, and linked to its render artifact and CTA.
+- `payout-001` shows Stripe Connect-style creator revenue share using an 80/20 split, with settlement secrets remaining server-owned.
 
 ## Demo Intent
 
-- The cold open proves storyboard cards can represent narrative setup.
-- The reveal proves current graph data can become a storyboard board without a second system.
-- The approved cards prove media-rich review planning can stay inside the same Markdown + graph authoring pipeline.
-- The overall demo proves the new storyboard-specific card sections remain graph-derived, kanban-shaped, and fully native in-repo.
+- The Run lane proves an AWS-hosted `stryfork` MCP host can orchestrate Knowgrph without owning secrets or bypassing gates.
+- The Brief lane proves business intent, inspiration URLs, and no-copy constraints can enter the graph as a source-backed storyboard object.
+- The Research and Proof lanes prove live/inspiration evidence stays beside scene planning, while copy-safety remains explicit.
+- The Storytree branch proves variants remain lineage-aware before render spend, supporting a Branchly-inspired monetizable video continuation pattern without copying.
+- The Budget and Render lanes prove paid generation is approval-gated, token/cost-aware, and observable.
+- The Publish lane proves shareable demo assets and 80/20 creator payouts are generated from approved public fields rather than automatic render output.
+- The overall demo proves Strybord is a native graph workflow over existing Storyboard and Strybldr ownership: a real Storyboard Studio OS for video generation monetization, not a copied storyboard app or a parallel video studio.

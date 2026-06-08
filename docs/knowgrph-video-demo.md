@@ -9,6 +9,15 @@ kgCanvasSurfaceMode: "2d"
 kgCanvas2dRenderer: "flowEditor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges from the selected source graph"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 
 $schema: "kgc-pipeline/v1"
 

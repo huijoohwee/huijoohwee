@@ -16,6 +16,15 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 kgStrybldrStoryboard: true
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  edgeModel: "active graph edges derived from storytree lineage"
+  timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 local_file_import_contract:
   - "Toolbar -> Launch -> Import local files"
   - "Select this Markdown document as validation input"
@@ -39,6 +48,14 @@ page text into the repo.
 The external prototype URL, prototype UI strings, and this document's fixture
 payload are forbidden from being hardcoded into repo code, tests, parser
 defaults, generated workspace paths, or implementation docs.
+
+## Shared Renderer Contract
+
+- Strybldr consumes this JSON seed as source payload and projects cards through the shared Storyboard card surface.
+- Image, video, markdown, and source previews route through the shared Card preview path.
+- Rich media outputs remain compatible with `RichMediaPanel` endpoints when a storytree run produces playable or embedded media.
+- Storytree and ForkCompare connectors remain active graph edges derived from lineage and candidate relationships.
+- Semantic identity stays rooted in graph/source semantic keys and authored storytree ids.
 
 ## What The Demo Must Prove
 

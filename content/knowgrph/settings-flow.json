@@ -9383,9 +9383,9 @@
     ],
     "lineRange": "canvas/src/features/settings/registry-three.part3.ts:L310; canvas/src/hooks/store/schemaSlice.ts:L343; canvas/src/hooks/store/store-types/graph-state-canvas-runtime.ts:L114"
   },
-  "three.media.iframeOverlay.poolMax": {
+  "three.media.richMediaOverlay.max": {
     "area": "—",
-    "responsibility": "pool max",
+    "responsibility": "max",
     "notes": "",
     "modules": [
       "canvas/src/features/settings/registry-three.part3.ts",
@@ -9394,7 +9394,7 @@
     ],
     "classes": [],
     "functions": [
-      "setThreeIframeOverlayPoolMax"
+      "setThreeRichMediaOverlayMax"
     ],
     "imports": [
       "zustand"
