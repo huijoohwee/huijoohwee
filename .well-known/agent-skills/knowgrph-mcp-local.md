@@ -1,17 +1,18 @@
 # Knowgrph Local MCP Skill
 
-Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.
+Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_63e375a4`
+- Semantic key: `kgvx_ce25b506`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
 ## Triggers
 
+- agentic canvas os
 - browser api
 - graphrag
 - launch canvas
@@ -30,6 +31,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, bro
 
 ## Outputs
 
+- agentic canvas os dashboard plan
 - local tool result
 - pipeline artifact
 - superagent report
@@ -45,6 +47,7 @@ Browser-local tools:
 
 Local MCP tools:
 - fetch
+- knowgrph.agentic_canvas_os.plan
 - knowgrph.browser_api.run
 - knowgrph.graphrag_pipeline
 - knowgrph.pipeline
@@ -64,6 +67,8 @@ Local MCP tools:
 
 - canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
 - knowgrph_parser/superagent_harness.py
+- mcp/agentic-canvas-os-lanes.js
+- mcp/agentic-canvas-os-runtime.js
 - mcp/local-tool-contract.js
 - mcp/README.md
 - mcp/server.js

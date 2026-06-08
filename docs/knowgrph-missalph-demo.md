@@ -598,48 +598,300 @@ flow:
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 3}
   edges:
-    - {"id":"e_src_as_portfolio","source":"source_input","sourceHandle":"input_portfolio","target":"node_alpha_screener","targetHandle":"input_portfolio","label":"portfolio","type":"alpha_signal_edge"}
-    - {"id":"e_src_as_horizon","source":"source_input","sourceHandle":"input_horizon","target":"node_alpha_screener","targetHandle":"input_horizon","label":"horizon","type":"template_text_signal"}
-    - {"id":"e_src_as_factor_spec","source":"source_input","sourceHandle":"input_factor_spec","target":"node_alpha_screener","targetHandle":"input_factor_spec","label":"factor spec","type":"factor_cluster_edge"}
-    - {"id":"e_src_as_alpha_hypo","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"node_alpha_screener","targetHandle":"input_alpha_hypothesis","label":"alpha hypothesis","type":"alpha_signal_edge"}
-    - {"id":"e_src_as_coverage","source":"source_input","sourceHandle":"input_coverage_scope","target":"node_alpha_screener","targetHandle":"input_coverage_scope","label":"coverage scope","type":"template_text_signal"}
-    - {"id":"e_src_as_benchmark","source":"source_input","sourceHandle":"input_consensus_benchmark","target":"node_alpha_screener","targetHandle":"input_consensus_benchmark","label":"consensus benchmark","type":"template_text_signal"}
-    - {"id":"e_src_sk_pair","source":"source_input","sourceHandle":"input_skew_pair","target":"node_skew_convergence","targetHandle":"input_skew_pair","label":"skew pair","type":"skew_convergence_edge"}
-    - {"id":"e_src_sk_horizon","source":"source_input","sourceHandle":"input_horizon","target":"node_skew_convergence","targetHandle":"input_horizon","label":"horizon","type":"template_text_signal"}
-    - {"id":"e_src_sk_portfolio","source":"source_input","sourceHandle":"input_portfolio","target":"node_skew_convergence","targetHandle":"input_portfolio","label":"portfolio","type":"alpha_signal_edge"}
-    - {"id":"e_src_fc_factor_spec","source":"source_input","sourceHandle":"input_factor_spec","target":"node_factor_cluster","targetHandle":"input_factor_spec","label":"factor spec","type":"factor_cluster_edge"}
-    - {"id":"e_src_fc_portfolio","source":"source_input","sourceHandle":"input_portfolio","target":"node_factor_cluster","targetHandle":"input_portfolio","label":"portfolio","type":"factor_cluster_edge"}
-    - {"id":"e_src_fc_topology_mode","source":"source_input","sourceHandle":"input_graph_topology_mode","target":"node_factor_cluster","targetHandle":"input_graph_topology_mode","label":"topology mode","type":"template_text_signal"}
-    - {"id":"e_src_ms_catalysts","source":"source_input","sourceHandle":"input_macro_catalysts","target":"node_macro_sensitivity","targetHandle":"input_macro_catalysts","label":"macro catalysts","type":"macro_catalyst_edge"}
-    - {"id":"e_src_ms_sn_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"node_macro_sensitivity","targetHandle":"input_signal_noise_threshold","label":"S/N threshold","type":"template_number_signal"}
-    - {"id":"e_src_ms_portfolio","source":"source_input","sourceHandle":"input_portfolio","target":"node_macro_sensitivity","targetHandle":"input_portfolio","label":"portfolio","type":"macro_catalyst_edge"}
-    - {"id":"e_src_mb_coverage","source":"source_input","sourceHandle":"input_coverage_scope","target":"node_miromindai_bridge","targetHandle":"input_coverage_scope","label":"coverage scope","type":"template_text_signal"}
-    - {"id":"e_src_mb_alpha_hypo","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"node_miromindai_bridge","targetHandle":"input_alpha_hypothesis","label":"alpha hypothesis","type":"alpha_signal_edge"}
-    - {"id":"e_src_mb_portfolio","source":"source_input","sourceHandle":"input_portfolio","target":"node_miromindai_bridge","targetHandle":"input_portfolio","label":"portfolio","type":"alpha_signal_edge"}
-    - {"id":"e_src_cs_horizon","source":"source_input","sourceHandle":"input_horizon","target":"compute_summary","targetHandle":"input_horizon","label":"horizon","type":"template_text_signal"}
-    - {"id":"e_src_cs_portfolio","source":"source_input","sourceHandle":"input_portfolio","target":"compute_summary","targetHandle":"input_portfolio","label":"portfolio","type":"alpha_signal_edge"}
-    - {"id":"e_src_cs_factor_spec","source":"source_input","sourceHandle":"input_factor_spec","target":"compute_summary","targetHandle":"input_factor_spec","label":"factor spec","type":"factor_cluster_edge"}
-    - {"id":"e_src_cs_skew_pair","source":"source_input","sourceHandle":"input_skew_pair","target":"compute_summary","targetHandle":"input_skew_pair","label":"skew pair","type":"skew_convergence_edge"}
-    - {"id":"e_src_cs_macro_catalysts","source":"source_input","sourceHandle":"input_macro_catalysts","target":"compute_summary","targetHandle":"input_macro_catalysts","label":"macro catalysts","type":"macro_catalyst_edge"}
-    - {"id":"e_src_cs_alpha_hypothesis","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"compute_summary","targetHandle":"input_alpha_hypothesis","label":"alpha hypothesis","type":"alpha_signal_edge"}
-    - {"id":"e_src_cs_coverage_scope","source":"source_input","sourceHandle":"input_coverage_scope","target":"compute_summary","targetHandle":"input_coverage_scope","label":"coverage scope","type":"template_text_signal"}
-    - {"id":"e_src_cs_signal_noise_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"compute_summary","targetHandle":"input_signal_noise_threshold","label":"S/N threshold","type":"template_number_signal"}
-    - {"id":"e_src_cs_topology_mode","source":"source_input","sourceHandle":"input_graph_topology_mode","target":"compute_summary","targetHandle":"input_graph_topology_mode","label":"graph topology mode","type":"template_text_signal"}
-    - {"id":"e_src_cs_consensus_benchmark","source":"source_input","sourceHandle":"input_consensus_benchmark","target":"compute_summary","targetHandle":"input_consensus_benchmark","label":"consensus benchmark","type":"template_text_signal"}
-    - {"id":"e_src_cs_audience","source":"source_input","sourceHandle":"input_audience","target":"compute_summary","targetHandle":"input_audience","label":"audience","type":"template_text_signal"}
-    - {"id":"e_src_cs_constraints","source":"source_input","sourceHandle":"input_constraints","target":"compute_summary","targetHandle":"input_constraints","label":"constraints","type":"template_text_signal"}
-    - {"id":"e_src_cs_tone","source":"source_input","sourceHandle":"input_tone","target":"compute_summary","targetHandle":"input_tone","label":"tone","type":"template_text_signal"}
-    - {"id":"e_src_cs_metric_label","source":"source_input","sourceHandle":"input_metric_label","target":"compute_summary","targetHandle":"input_metric_label","label":"metric label","type":"template_text_signal"}
-    - {"id":"e_as_to_cs","source":"node_alpha_screener","sourceHandle":"output_alpha_signals","target":"compute_summary","targetHandle":"input_alpha_signals","label":"alpha signals","type":"alpha_signal_edge"}
-    - {"id":"e_sk_to_cs","source":"node_skew_convergence","sourceHandle":"output_skew_data","target":"compute_summary","targetHandle":"input_skew_data","label":"skew data","type":"skew_convergence_edge"}
-    - {"id":"e_fc_to_cs","source":"node_factor_cluster","sourceHandle":"output_factor_topology","target":"compute_summary","targetHandle":"input_factor_topology","label":"factor topology","type":"factor_cluster_edge"}
-    - {"id":"e_ms_to_cs","source":"node_macro_sensitivity","sourceHandle":"output_macro_sensitivity","target":"compute_summary","targetHandle":"input_macro_sensitivity","label":"macro sensitivity","type":"macro_catalyst_edge"}
-    - {"id":"e_mb_to_cs","source":"node_miromindai_bridge","sourceHandle":"output_research_coverage","target":"compute_summary","targetHandle":"input_research_coverage","label":"research coverage","type":"template_text_signal"}
-    - {"id":"e_cs_to_consensus_gap","source":"compute_summary","sourceHandle":"output","target":"panel_consensus_gap","targetHandle":"output","label":"alpha thesis","type":"template_text_signal"}
-    - {"id":"e_cs_to_factor_topology","source":"compute_summary","sourceHandle":"imageUrl","target":"panel_factor_topology","targetHandle":"imageUrl","label":"factor SVG","type":"template_image_signal"}
-    - {"id":"e_cs_to_alpha_map","source":"compute_summary","sourceHandle":"output_alpha_map","target":"panel_alpha_map","targetHandle":"output_alpha_map","label":"alpha map","type":"template_alpha_html"}
-    - {"id":"e_cs_to_skew_chart","source":"compute_summary","sourceHandle":"outputSrcDoc","target":"panel_skew_chart","targetHandle":"outputSrcDoc","label":"skew chart","type":"template_chart_html"}
-    - {"id":"e_cs_to_signal_dist","source":"compute_summary","sourceHandle":"output_skew_chart","target":"panel_skew_chart","targetHandle":"output_skew_chart","label":"signal distribution","type":"template_chart_html"}
+    - id: {key: id, type: string, value: "e_src_as_portfolio"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_portfolio"}
+      target: {key: target, type: string, value: "node_alpha_screener"}
+      targetHandle: {key: targetHandle, type: string, value: "input_portfolio"}
+      label: {key: label, type: string, value: "portfolio"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_src_as_horizon"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_horizon"}
+      target: {key: target, type: string, value: "node_alpha_screener"}
+      targetHandle: {key: targetHandle, type: string, value: "input_horizon"}
+      label: {key: label, type: string, value: "horizon"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_as_factor_spec"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_factor_spec"}
+      target: {key: target, type: string, value: "node_alpha_screener"}
+      targetHandle: {key: targetHandle, type: string, value: "input_factor_spec"}
+      label: {key: label, type: string, value: "factor spec"}
+      type: {key: type, type: string, value: "factor_cluster_edge"}
+    - id: {key: id, type: string, value: "e_src_as_alpha_hypo"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_alpha_hypothesis"}
+      target: {key: target, type: string, value: "node_alpha_screener"}
+      targetHandle: {key: targetHandle, type: string, value: "input_alpha_hypothesis"}
+      label: {key: label, type: string, value: "alpha hypothesis"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_src_as_coverage"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_coverage_scope"}
+      target: {key: target, type: string, value: "node_alpha_screener"}
+      targetHandle: {key: targetHandle, type: string, value: "input_coverage_scope"}
+      label: {key: label, type: string, value: "coverage scope"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_as_benchmark"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_consensus_benchmark"}
+      target: {key: target, type: string, value: "node_alpha_screener"}
+      targetHandle: {key: targetHandle, type: string, value: "input_consensus_benchmark"}
+      label: {key: label, type: string, value: "consensus benchmark"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_sk_pair"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_skew_pair"}
+      target: {key: target, type: string, value: "node_skew_convergence"}
+      targetHandle: {key: targetHandle, type: string, value: "input_skew_pair"}
+      label: {key: label, type: string, value: "skew pair"}
+      type: {key: type, type: string, value: "skew_convergence_edge"}
+    - id: {key: id, type: string, value: "e_src_sk_horizon"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_horizon"}
+      target: {key: target, type: string, value: "node_skew_convergence"}
+      targetHandle: {key: targetHandle, type: string, value: "input_horizon"}
+      label: {key: label, type: string, value: "horizon"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_sk_portfolio"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_portfolio"}
+      target: {key: target, type: string, value: "node_skew_convergence"}
+      targetHandle: {key: targetHandle, type: string, value: "input_portfolio"}
+      label: {key: label, type: string, value: "portfolio"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_src_fc_factor_spec"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_factor_spec"}
+      target: {key: target, type: string, value: "node_factor_cluster"}
+      targetHandle: {key: targetHandle, type: string, value: "input_factor_spec"}
+      label: {key: label, type: string, value: "factor spec"}
+      type: {key: type, type: string, value: "factor_cluster_edge"}
+    - id: {key: id, type: string, value: "e_src_fc_portfolio"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_portfolio"}
+      target: {key: target, type: string, value: "node_factor_cluster"}
+      targetHandle: {key: targetHandle, type: string, value: "input_portfolio"}
+      label: {key: label, type: string, value: "portfolio"}
+      type: {key: type, type: string, value: "factor_cluster_edge"}
+    - id: {key: id, type: string, value: "e_src_fc_topology_mode"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_graph_topology_mode"}
+      target: {key: target, type: string, value: "node_factor_cluster"}
+      targetHandle: {key: targetHandle, type: string, value: "input_graph_topology_mode"}
+      label: {key: label, type: string, value: "topology mode"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_ms_catalysts"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_macro_catalysts"}
+      target: {key: target, type: string, value: "node_macro_sensitivity"}
+      targetHandle: {key: targetHandle, type: string, value: "input_macro_catalysts"}
+      label: {key: label, type: string, value: "macro catalysts"}
+      type: {key: type, type: string, value: "macro_catalyst_edge"}
+    - id: {key: id, type: string, value: "e_src_ms_sn_threshold"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_signal_noise_threshold"}
+      target: {key: target, type: string, value: "node_macro_sensitivity"}
+      targetHandle: {key: targetHandle, type: string, value: "input_signal_noise_threshold"}
+      label: {key: label, type: string, value: "S/N threshold"}
+      type: {key: type, type: string, value: "template_number_signal"}
+    - id: {key: id, type: string, value: "e_src_ms_portfolio"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_portfolio"}
+      target: {key: target, type: string, value: "node_macro_sensitivity"}
+      targetHandle: {key: targetHandle, type: string, value: "input_portfolio"}
+      label: {key: label, type: string, value: "portfolio"}
+      type: {key: type, type: string, value: "macro_catalyst_edge"}
+    - id: {key: id, type: string, value: "e_src_mb_coverage"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_coverage_scope"}
+      target: {key: target, type: string, value: "node_miromindai_bridge"}
+      targetHandle: {key: targetHandle, type: string, value: "input_coverage_scope"}
+      label: {key: label, type: string, value: "coverage scope"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_mb_alpha_hypo"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_alpha_hypothesis"}
+      target: {key: target, type: string, value: "node_miromindai_bridge"}
+      targetHandle: {key: targetHandle, type: string, value: "input_alpha_hypothesis"}
+      label: {key: label, type: string, value: "alpha hypothesis"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_src_mb_portfolio"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_portfolio"}
+      target: {key: target, type: string, value: "node_miromindai_bridge"}
+      targetHandle: {key: targetHandle, type: string, value: "input_portfolio"}
+      label: {key: label, type: string, value: "portfolio"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_src_cs_horizon"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_horizon"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_horizon"}
+      label: {key: label, type: string, value: "horizon"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_portfolio"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_portfolio"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_portfolio"}
+      label: {key: label, type: string, value: "portfolio"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_src_cs_factor_spec"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_factor_spec"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_factor_spec"}
+      label: {key: label, type: string, value: "factor spec"}
+      type: {key: type, type: string, value: "factor_cluster_edge"}
+    - id: {key: id, type: string, value: "e_src_cs_skew_pair"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_skew_pair"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_skew_pair"}
+      label: {key: label, type: string, value: "skew pair"}
+      type: {key: type, type: string, value: "skew_convergence_edge"}
+    - id: {key: id, type: string, value: "e_src_cs_macro_catalysts"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_macro_catalysts"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_macro_catalysts"}
+      label: {key: label, type: string, value: "macro catalysts"}
+      type: {key: type, type: string, value: "macro_catalyst_edge"}
+    - id: {key: id, type: string, value: "e_src_cs_alpha_hypothesis"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_alpha_hypothesis"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_alpha_hypothesis"}
+      label: {key: label, type: string, value: "alpha hypothesis"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_src_cs_coverage_scope"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_coverage_scope"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_coverage_scope"}
+      label: {key: label, type: string, value: "coverage scope"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_signal_noise_threshold"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_signal_noise_threshold"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_signal_noise_threshold"}
+      label: {key: label, type: string, value: "S/N threshold"}
+      type: {key: type, type: string, value: "template_number_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_topology_mode"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_graph_topology_mode"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_graph_topology_mode"}
+      label: {key: label, type: string, value: "graph topology mode"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_consensus_benchmark"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_consensus_benchmark"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_consensus_benchmark"}
+      label: {key: label, type: string, value: "consensus benchmark"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_audience"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_audience"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_audience"}
+      label: {key: label, type: string, value: "audience"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_constraints"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_constraints"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_constraints"}
+      label: {key: label, type: string, value: "constraints"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_tone"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_tone"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_tone"}
+      label: {key: label, type: string, value: "tone"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_src_cs_metric_label"}
+      source: {key: source, type: string, value: "source_input"}
+      sourceHandle: {key: sourceHandle, type: string, value: "input_metric_label"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_metric_label"}
+      label: {key: label, type: string, value: "metric label"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_as_to_cs"}
+      source: {key: source, type: string, value: "node_alpha_screener"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output_alpha_signals"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_alpha_signals"}
+      label: {key: label, type: string, value: "alpha signals"}
+      type: {key: type, type: string, value: "alpha_signal_edge"}
+    - id: {key: id, type: string, value: "e_sk_to_cs"}
+      source: {key: source, type: string, value: "node_skew_convergence"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output_skew_data"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_skew_data"}
+      label: {key: label, type: string, value: "skew data"}
+      type: {key: type, type: string, value: "skew_convergence_edge"}
+    - id: {key: id, type: string, value: "e_fc_to_cs"}
+      source: {key: source, type: string, value: "node_factor_cluster"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output_factor_topology"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_factor_topology"}
+      label: {key: label, type: string, value: "factor topology"}
+      type: {key: type, type: string, value: "factor_cluster_edge"}
+    - id: {key: id, type: string, value: "e_ms_to_cs"}
+      source: {key: source, type: string, value: "node_macro_sensitivity"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output_macro_sensitivity"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_macro_sensitivity"}
+      label: {key: label, type: string, value: "macro sensitivity"}
+      type: {key: type, type: string, value: "macro_catalyst_edge"}
+    - id: {key: id, type: string, value: "e_mb_to_cs"}
+      source: {key: source, type: string, value: "node_miromindai_bridge"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output_research_coverage"}
+      target: {key: target, type: string, value: "compute_summary"}
+      targetHandle: {key: targetHandle, type: string, value: "input_research_coverage"}
+      label: {key: label, type: string, value: "research coverage"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_cs_to_consensus_gap"}
+      source: {key: source, type: string, value: "compute_summary"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "panel_consensus_gap"}
+      targetHandle: {key: targetHandle, type: string, value: "output"}
+      label: {key: label, type: string, value: "alpha thesis"}
+      type: {key: type, type: string, value: "template_text_signal"}
+    - id: {key: id, type: string, value: "e_cs_to_factor_topology"}
+      source: {key: source, type: string, value: "compute_summary"}
+      sourceHandle: {key: sourceHandle, type: string, value: "imageUrl"}
+      target: {key: target, type: string, value: "panel_factor_topology"}
+      targetHandle: {key: targetHandle, type: string, value: "imageUrl"}
+      label: {key: label, type: string, value: "factor SVG"}
+      type: {key: type, type: string, value: "template_image_signal"}
+    - id: {key: id, type: string, value: "e_cs_to_alpha_map"}
+      source: {key: source, type: string, value: "compute_summary"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output_alpha_map"}
+      target: {key: target, type: string, value: "panel_alpha_map"}
+      targetHandle: {key: targetHandle, type: string, value: "output_alpha_map"}
+      label: {key: label, type: string, value: "alpha map"}
+      type: {key: type, type: string, value: "template_alpha_html"}
+    - id: {key: id, type: string, value: "e_cs_to_skew_chart"}
+      source: {key: source, type: string, value: "compute_summary"}
+      sourceHandle: {key: sourceHandle, type: string, value: "outputSrcDoc"}
+      target: {key: target, type: string, value: "panel_skew_chart"}
+      targetHandle: {key: targetHandle, type: string, value: "outputSrcDoc"}
+      label: {key: label, type: string, value: "skew chart"}
+      type: {key: type, type: string, value: "template_chart_html"}
+    - id: {key: id, type: string, value: "e_cs_to_signal_dist"}
+      source: {key: source, type: string, value: "compute_summary"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output_skew_chart"}
+      target: {key: target, type: string, value: "panel_skew_chart"}
+      targetHandle: {key: targetHandle, type: string, value: "output_skew_chart"}
+      label: {key: label, type: string, value: "signal distribution"}
+      type: {key: type, type: string, value: "template_chart_html"}
 ---
 ## Response
 
