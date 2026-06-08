@@ -1,1 +1,0 @@
-import{a$ as E}from"./index-D9mf5ER9.js";const _=E.width,I=Math.round(_*9/16),A=Object.freeze({width:_,height:I});export{_ as R,A as a,I as b};

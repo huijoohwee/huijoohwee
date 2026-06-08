@@ -1,1 +1,0 @@
-import{R as e}from"./react-gVJCSEhj.js";import{bs as o,bt as r,bu as a}from"./index-D9mf5ER9.js";const t=()=>{const s=r();return{revision:Date.now(),entries:s,countsByPath:a()}};function i(){const[s,n]=e.useState(()=>t());return e.useEffect(()=>o(()=>n(t())),[]),s}export{i as u};
