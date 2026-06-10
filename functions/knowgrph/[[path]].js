@@ -3,10 +3,6 @@ import {
   KNOWGRPH_AGENT_READY_TOOL_IDS,
 } from "../../canvas/src/features/agent-ready/knowgrphAgentReadyToolContract.mjs";
 import {
-  STRYBORD_MCP_ACTION_TOOL_IDS,
-  buildStrybordMcpToolPath,
-} from "../../grph-shared/src/strybord/storyboardStudioOsSsot.ts";
-import {
   buildKnowgrphAgentReadyPromptContracts,
   getKnowgrphAgentReadyPrompt,
 } from "../../canvas/src/features/agent-ready/knowgrphAgentReadyPromptContract.mjs";
@@ -613,9 +609,6 @@ const READ_SOURCE_FILE_WEB_TOOL_NAME = findWebMcpToolName(KNOWGRPH_AGENT_READY_T
 const READ_SHARED_DOCUMENT_WEB_TOOL_NAME = findWebMcpToolName(KNOWGRPH_AGENT_READY_TOOL_IDS.readSharedDocument);
 const INSPECT_SHARED_DOCUMENT_STRUCTURE_WEB_TOOL_NAME = findWebMcpToolName(KNOWGRPH_AGENT_READY_TOOL_IDS.inspectSharedDocumentStructure);
 const INSPECT_AGENT_SURFACE_WEB_TOOL_NAME = findWebMcpToolName(KNOWGRPH_AGENT_READY_TOOL_IDS.inspectAgentSurface);
-const STRYBORD_ACTION_WEB_TOOL_NAMES = Object.fromEntries(
-  Object.values(STRYBORD_MCP_ACTION_TOOL_IDS).map((toolId) => [toolId, findWebMcpToolName(toolId)]),
-);
 
 export const webMcpScript = `(() => {
   const root = globalThis;
@@ -994,7 +987,6 @@ export const webMcpScript = `(() => {
       readSharedDocument: ${JSON.stringify(READ_SHARED_DOCUMENT_WEB_TOOL_NAME)},
       inspectSharedDocumentStructure: ${JSON.stringify(INSPECT_SHARED_DOCUMENT_STRUCTURE_WEB_TOOL_NAME)},
       inspectAgentSurface: ${JSON.stringify(INSPECT_AGENT_SURFACE_WEB_TOOL_NAME)},
-      strybordActionTools: ${JSON.stringify(STRYBORD_ACTION_WEB_TOOL_NAMES)},
     },
     defaultWorkspaceId,
     publicBaseUrl: siteOrigin,
@@ -1013,16 +1005,6 @@ export const webMcpScript = `(() => {
       baseUrl: resolveAgentReadyBaseUrl(),
       toolName: ${JSON.stringify(KNOWGRPH_AGENT_READY_TOOL_IDS.inspectAgentSurface)},
     }),
-    callStrybordActionTool: async (toolId, input = {}) => {
-      const response = await fetch(buildStorageRequestUrl(${JSON.stringify(buildStrybordMcpToolPath('__TOOL__'))}.replace("__TOOL__", encodeURIComponent(toolId))), {
-        method: "POST",
-        headers: { "content-type": "application/json", accept: "application/json" },
-        body: JSON.stringify(input),
-      });
-      const payload = await response.json().catch(() => null);
-      if (!response.ok) throw new Error(payload && payload.error ? payload.error : "Strybord action failed with " + response.status);
-      return payload;
-    },
   });
   const tools = toolDefinitions.map((tool) => {
     const execute = toolExecutors[tool.name];
@@ -1066,9 +1048,6 @@ const PUBLISHED_TOOL_NAME_CONFIG = {
   readSharedDocument: KNOWGRPH_AGENT_READY_TOOL_IDS.readSharedDocument,
   inspectSharedDocumentStructure: KNOWGRPH_AGENT_READY_TOOL_IDS.inspectSharedDocumentStructure,
   inspectAgentSurface: KNOWGRPH_AGENT_READY_TOOL_IDS.inspectAgentSurface,
-  strybordActionTools: Object.fromEntries(
-    Object.values(STRYBORD_MCP_ACTION_TOOL_IDS).map((toolId) => [toolId, toolId]),
-  ),
 };
 
 const sha256Hex = async (text) => {
@@ -1187,29 +1166,6 @@ const PUBLISHED_MCP_TOOL_EXECUTORS = createPublishedAgentReadyToolExecutors({
     }),
   inspectSharedDocumentStructure,
   buildAgentSurfaceInspection,
-  callStrybordActionTool: async (toolId, input = {}, context = {}) => {
-    const sourceRequest = context.request;
-    const headers = {
-      "content-type": "application/json",
-      accept: "application/json",
-    };
-    const authorization = sourceRequest && sourceRequest.headers
-      ? sourceRequest.headers.get("authorization")
-      : "";
-    if (authorization) headers.authorization = authorization;
-    const idempotencyKey = String(input?.idempotencyKey || input?.idempotency_key || "").trim();
-    if (idempotencyKey) headers["idempotency-key"] = idempotencyKey;
-    const response = await fetch(`${SITE_ORIGIN}${buildStrybordMcpToolPath(toolId)}`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(input || {}),
-    });
-    const payload = await response.json().catch(() => null);
-    if (!response.ok) {
-      throw new Error(payload?.error || `Strybord action failed with ${response.status}`);
-    }
-    return payload;
-  },
 });
 
 const resolvePublishedDocRequestIdentity = (requestUrl) => {
@@ -1295,9 +1251,8 @@ const executeMcpTool = async (name, args) => {
   if (typeof execute !== "function") {
     throw new Error(`unknown tool: ${name}`);
   }
-  return execute(args, { request: executeMcpTool.currentRequest || null });
+  return execute(args);
 };
-executeMcpTool.currentRequest = null;
 
 const readMcpResource = async (uri) => {
   const normalizedUri = normalizeToolString(uri);
@@ -1367,9 +1322,7 @@ const handleMcpTransport = async (request) => {
       const toolArgs = rpc.params?.arguments && typeof rpc.params.arguments === "object" ? rpc.params.arguments : {};
       if (!toolName) return jsonRpcError(rpc.id, -32602, "Tool name is required");
       try {
-        executeMcpTool.currentRequest = request;
         const result = await executeMcpTool(toolName, toolArgs);
-        executeMcpTool.currentRequest = null;
         return jsonRpcResult(rpc.id, {
           content: [
             {
@@ -1383,7 +1336,6 @@ const handleMcpTransport = async (request) => {
           isError: false,
         });
       } catch (error) {
-        executeMcpTool.currentRequest = null;
         return jsonRpcResult(rpc.id, {
           content: [
             {

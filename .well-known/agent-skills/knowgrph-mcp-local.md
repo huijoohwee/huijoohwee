@@ -1,12 +1,12 @@
 # Knowgrph Local MCP Skill
 
-Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.
+Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, video-remix run planning, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_ce25b506`
+- Semantic key: `kgvx_c06604b5`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -20,6 +20,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Age
 - local mcp
 - run pipeline
 - superagent
+- video remix
 
 ## Inputs
 
@@ -27,6 +28,8 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Age
 - graph data
 - local root
 - pipeline config
+- reference URL
+- source cards
 - workspace file
 
 ## Outputs
@@ -36,6 +39,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Age
 - pipeline artifact
 - superagent report
 - vdeoxpln registry snapshot
+- video remix run manifest
 
 ## Tools
 
@@ -55,12 +59,14 @@ Local MCP tools:
 - knowgrph.ui.launch
 - knowgrph.ui.stop
 - knowgrph.vdeoxpln.list
+- knowgrph.video_remix.run
 - search
 
 ## Workflow
 
 - List local tools from the shared local MCP contract.
 - Run only path-guarded local-root operations.
+- Run video-remix orchestration as an approval-gated local manifest before any paid provider call.
 - Summarize artifacts and registry metadata in the MCP result.
 
 ## Source Owners
@@ -72,6 +78,7 @@ Local MCP tools:
 - mcp/local-tool-contract.js
 - mcp/README.md
 - mcp/server.js
+- mcp/video-remix-runtime.js
 
 ## Artifact Policy
 

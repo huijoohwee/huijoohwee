@@ -1,0 +1,1 @@
+import{bz as E,bA as _}from"./index-BxQbPBQU.js";const e={table:E.tableViewLabel,multiDimTable:E.titleDefault,kanban:E.kanbanViewLabel},t={...e,geospatial:E.geospatialViewLabel},l=_.map(a=>({value:a,label:t[a]}));function A(a){return e[a]}export{l as W,A as g};
