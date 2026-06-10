@@ -1,3 +1,4 @@
+---
 title: "Knowgrph MCP Agentic Canvas OS Demo - Reference Video To Sold Remix"
 graphId: "md:knowgrph-mcp-agentic-canvas-os-demo"
 doc_type: "MCP Agentic Canvas OS Demo"
@@ -12,6 +13,24 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgStorageTarget: "cloudflare"
+kgStorageAccountId: "170e89fdb8679ff2fcc2900e25ed04f4"
+kgStorageWorkspaceId: "kgws:canonical-docs"
+kgStorageDocPath: "huijoohwee/docs/knowgrph-mcp-agentic-canvas-os-demo.md"
+kgStorageDocTarget: "cloudflare-d1"
+kgStorageMediaBucket: "knowgrph-media"
+kgStorageMediaBaseUrl: "https://airvio.co/knowgrph/r2"
+kgStorageMediaKeyScheme: "runs/{runId}/{stageId}/{shotId}.{ext}"
+kgMediaPersistPolicy: "copy-on-generate"
+kgProviderUrlEphemeral: true
+kgMediaDedupeBy: "sha256"
+kgReplayEnabled: true
+kgReplayFromStorageWithoutLlm: true
+kgReplayMediaFields: ["imageAssetUrl", "videoUrl"]
+kgReplayAccessScope: "run-entitled"
 demos: "knowgrph-mcp-agentic-canvas-os-prd-tad"
 source_prd_tad: "huijoohwee.github.io/docs/documents/knowgrph-mcp-agentic-canvas-os-prd-tad.md"
 control_plane_endpoint: "airvio.co/knowgrph/mcp"
@@ -28,10 +47,10 @@ mcp_agentic_canvas_os_demo:
   mode: {key: mode, type: string, value: "dry-run-first; live behind approval tokens"}
   source_truth: {key: source_truth, type: string, value: "parsed frontmatter + typed Run_Manifest; never file-path assumptions"}
   mutation_policy: {key: mutation_policy, type: string, value: "no paid/external action in live mode without a verified per-gate Approval_Token; default dry-run"}
-  tools: {key: tools, type: array, value: ["knowgrph.video_remix.run","knowgrph.video_remix.research","knowgrph.video_remix.storyboard","knowgrph.video_remix.render","knowgrph.video_remix.publish","knowgrph.video_remix.checkout"]}
+  tools: {key: tools, type: array, value: ["knowgrph.video_remix.run","knowgrph.video_remix.storyboard","knowgrph.video_remix.image","knowgrph.video_remix.video","knowgrph.video_remix.checkout"]}
   approval_gates: {key: approval_gates, type: array, value: ["paid-model-call","render-action","payment-action","cloud-deploy","consumer-repo-write","authenticated-browser"]}
   input_fields: {key: input_fields, type: array, value: ["referenceUrl","brief","budgetUsd","mode","approvals"]}
-  output_fields: {key: output_fields, type: array, value: ["state","stages","approvalGates","budgetMeters","evidencePack","storyboard","render","commerce","demoPack"]}
+  output_fields: {key: output_fields, type: array, value: ["state","stages","approvalGates","budgetMeters","storyboard","imageUrl","videoUrl","commerce","demoPack"]}
 flow_diagrams:
   key: flow_diagrams
   type: object
@@ -42,19 +61,23 @@ flow_diagrams:
       value: |-
         gitGraph
           commit id: "import_url" tag: "youtu.be/77FAnT935IE"
-          branch research
-          checkout research
-          commit id: "exa_evidence"
-          commit id: "source_cards"
-          checkout main
           commit id: "storyboard" tag: "kgc-flow"
-          commit id: "render_gate" tag: "approve"
-          branch render
-          checkout render
-          commit id: "r2_assets"
-          commit id: "ledger_events"
+          branch b5_quick_cut
+          checkout b5_quick_cut
+          commit id: "img_seedream_4_0"
+          commit id: "vid_seedance_1_0_fast"
           checkout main
-          commit id: "payment_gate" tag: "approve"
+          branch b25_full_promo
+          checkout b25_full_promo
+          commit id: "img_seedream_4_5"
+          commit id: "vid_seedance_1_5"
+          checkout main
+          branch b50_multi_variant
+          checkout b50_multi_variant
+          commit id: "img_seedream_5_0"
+          commit id: "vid_dreamina_2_0"
+          checkout main
+          commit id: "r2_assets" tag: "replay-no-llm"
           commit id: "stripe_checkout" tag: "sold"
           commit id: "demo_pack" tag: "7/7"
     agentic_canvas_architecture:
@@ -63,22 +86,20 @@ flow_diagrams:
       value: |-
         architecture-beta
           group user(cloud)[User surface]
-          group vercel(cloud)[Vercel]
-          group aws(cloud)[AWS]
           group cloudflare(cloud)[Cloudflare]
-          group providers(cloud)[Live action providers]
-          service web(internet)[Vercel UI] in vercel
-          service api(server)[AWS Agent API] in aws
+          group providers(cloud)[Default provider BytePlus plus Stripe]
+          service web(internet)[Cloudflare UI airvio.co knowgrph] in cloudflare
           service mcp(server)[McpAgent Worker] in cloudflare
+          service gateway(server)[Cloudflare AI Gateway] in cloudflare
           service manifest(database)[Run Manifest DO] in cloudflare
-          service exa(internet)[Exa] in providers
-          service byteplus(server)[BytePlus] in providers
+          service r2(database)[R2 image and video assets] in cloudflare
+          service byteplus(server)[BytePlus seedream and seedance] in providers
           service stripe(database)[Stripe] in providers
-          web:R --> L:api
-          api:R --> L:mcp
+          web:R --> L:mcp
           mcp:B --> T:manifest
-          mcp:R --> L:exa
-          mcp:R --> L:byteplus
+          mcp:R --> L:gateway
+          gateway:R --> L:byteplus
+          mcp:B --> T:r2
           mcp:R --> L:stripe
     agent_run_event_model:
       key: agent_run_event_model
@@ -89,15 +110,17 @@ flow_diagrams:
         tf 02 cmd StartVideoRemixRun
         tf 03 evt RunManifestCreated
         tf 04 pcr DirectorAgent
-        tf 05 cmd RequestEvidencePack
-        tf 06 evt EvidencePackReady
+        tf 05 cmd RequestStoryboard
+        tf 06 evt StoryboardReady
         tf 07 cmd RequestApprovalToken
         tf 08 evt ApprovalGranted
-        tf 09 cmd RenderShots
-        tf 10 evt AssetsRendered
-        tf 11 cmd CreateCheckout
-        tf 12 evt PaymentSessionCreated
-        tf 13 ui DemoPackReady
+        tf 09 cmd GenerateImage
+        tf 10 evt ImageAssetReady
+        tf 11 cmd GenerateVideo
+        tf 12 evt VideoAssetReady
+        tf 13 cmd CreateCheckout
+        tf 14 evt PaymentSessionCreated
+        tf 15 ui DemoPackReady
 modelSelection:
   selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
   scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
@@ -124,11 +147,16 @@ modelSelection:
         - "dreamina-seedance-2-0-fast-260128"
         - "dreamina-seedance-2-0-260128"
 flow:
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
+  computed: {key: computed, type: boolean, value: true}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
     - id: {key: id, type: string, value: "source_input"}
       type: {key: type, type: string, value: "InputWidget"}
       label: {key: label, type: string, value: "Run Brief Input"}
-      position: {key: position, type: object, value: {"x":-380,"y":0}}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
       handles: {key: handles, type: object, value: {"source": ["referenceUrl", "brief", "budgetUsd", "mode", "approvals"]}}
       referenceUrl: {key: referenceUrl, type: string, value: "https://youtu.be/77FAnT935IE"}
       brief: {key: brief, type: textarea, value: "Turn this reference clip into a 30s vertical promo."}
@@ -144,11 +172,11 @@ flow:
     - id: {key: id, type: string, value: "compute_summary"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Compute Run Manifest"}
-      position: {key: position, type: object, value: {"x":0,"y":0}}
-      handles: {key: handles, type: object, value: {"target": ["referenceUrl", "brief", "budgetUsd", "mode", "approvals"], "source": ["output", "imageUrl", "outputSrcDoc"]}}
+      position: {key: position, type: object, value: {"x":380,"y":0}}
+      handles: {key: handles, type: object, value: {"target": ["referenceUrl", "brief", "budgetUsd", "mode", "approvals"], "source": ["output", "imageAssetUrl", "videoUrl", "outputSrcDoc"]}}
       "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn": "compute", "inputs": ["referenceUrl", "brief", "budgetUsd", "mode", "approvals"], "outputs": ["output", "imageUrl", "outputSrcDoc"], "updateBody": false, "sideEffects": [{"field": "run_status", "set": "done"}, {"field": "mcp_agentic_canvas_os_demo.active_graph_mutated", "set": true}, {"field": "mcp_agentic_canvas_os_demo.run_id", "pattern": "kg_acos_run_yyyyMMddHHmm"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField": "run_status", "statusValues": {"idle": "gray", "running": "amber", "done": "green", "error": "red"}, "previewField": "output", "previewMaxChars": 100, "actions": [{"id": "run", "label": "Run", "icon": "play", "primary": true, "trigger": "compute"}, {"id": "reset", "label": "Reset", "icon": "refresh", "trigger": "clearOutputs", "clearFields": ["output", "imageUrl", "outputSrcDoc"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"referenceUrl": "idea_signal", "brief": "idea_signal", "budgetUsd": "evidence_signal", "mode": "idea_signal", "approvals": "approval_signal"}, "out": {"output": "artifact_signal", "imageUrl": "artifact_signal", "outputSrcDoc": "artifact_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"referenceUrl": "idea_signal", "brief": "idea_signal", "budgetUsd": "evidence_signal", "mode": "idea_signal", "approvals": "approval_signal"}, "out": {"output": "artifact_signal", "imageAssetUrl": "artifact_signal", "videoUrl": "artifact_signal", "outputSrcDoc": "artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "demoCompute"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       output:
@@ -196,6 +224,8 @@ flow:
       imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2262%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23f59e0b%22%20text-anchor%3D%22middle%22%3EBLOCKED%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22100%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3Efull%20promo%20-%20~6%20shots%20-%20seedance-1-5-pro-251215%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22132%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EBudget%20cap%20%2425%20-%20estimated%20spend%20%240%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22164%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3E3%20spend%20gate(s)%20awaiting%20approval%20-%207%20cited%20sources%3C%2Ftext%3E%3C%2Fsvg%3E"}
       outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:96px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:64px;text-align:right;color:#0f172a;font-weight:600}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:600}.meter{height:16px;background:#e2e8f0;border-radius:8px;overflow:hidden}.meter span{display:block;height:100%;background:#0ea5e9;border-radius:8px}.note{font-size:12px;color:#64748b;margin:12px 0 0}</style></head><body><main data-kg-acos-remix-panel=\"1\"><div class=\"kpi\"><div><p class=\"label\">State</p><p class=\"value\">BLOCKED</p></div><div><p class=\"label\">Budget cap</p><p class=\"value\">$25</p></div><div><p class=\"label\">Est. spend</p><p class=\"value\">$0</p></div><div><p class=\"label\">Shots</p><p class=\"value\">~6</p></div></div><section class=\"panel\"><h2>Stage pipeline</h2><div class=\"row\"><span class=\"rl\">import_url</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">research</span><span class=\"rt\"><span class=\"rb\" style=\"width:50%;background:#f59e0b\"></span></span><span class=\"rv\">halted</span></div><div class=\"row\"><span class=\"rl\">storyboard</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">render</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">checkout</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">demo_pack</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div></section><section class=\"panel\"><h2>Approval gates</h2><div class=\"chips\"><span class=\"chip\" style=\"background:#fef3c7;color:#92400e\">paid-model-call: required</span><span class=\"chip\" style=\"background:#fef3c7;color:#92400e\">render-action: required</span><span class=\"chip\" style=\"background:#fef3c7;color:#92400e\">payment-action: required</span></div></section><section class=\"panel\"><h2>Budget meter (0% of cap, $25 headroom)</h2><div class=\"meter\"><span style=\"width:0%\"></span></div></section><p class=\"note\">Dry-run by default; live spend halts at the first un-approved gate with zero paid actions. Treatment full promo via seedance-1-5-pro-251215. 7 cited sources.</p></main></body></html>"}
       run_status: {key: run_status, type: string, value: "idle"}
+      imageAssetUrl: {key: imageAssetUrl, type: image_url, value: "https://airvio.co/knowgrph/r2/runs/kg_acos_reference_to_sold_remix_demo/image/shot-1.png"}
+      videoUrl: {key: videoUrl, type: video_url, value: "https://airvio.co/knowgrph/r2/runs/kg_acos_reference_to_sold_remix_demo/video/shot-1.mp4"}
       semanticKey: {key: semanticKey, type: string, value: "acos-demo:compute:run-manifest"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget that turns the run brief into a gated Run_Manifest: stages, approval gates, budget meters, evidence pack, and a 7-section demo pack."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
@@ -247,7 +277,7 @@ flow:
     - id: {key: id, type: string, value: "panel_text_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel - Run Manifest"}
-      position: {key: position, type: object, value: {"x": 380, "y": 240}}
+      position: {key: position, type: object, value: {"x": 760, "y": 240}}
       handles: {key: handles, type: object, value: {"target": ["output"], "source": ["output"]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"output": "artifact_signal"}, "out": {"output": "artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
@@ -257,19 +287,30 @@ flow:
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
     - id: {key: id, type: string, value: "panel_image_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel - Status Card"}
-      position: {key: position, type: object, value: {"x": 380, "y": 0}}
-      handles: {key: handles, type: object, value: {"target": ["imageUrl"], "source": ["imageUrl"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"imageUrl": "artifact_signal"}, "out": {"imageUrl": "artifact_signal"}}}
+      label: {key: label, type: string, value: "Rich Media Panel - Image (seedream)"}
+      position: {key: position, type: object, value: {"x": 760, "y": 0}}
+      handles: {key: handles, type: object, value: {"target": ["imageAssetUrl"], "source": ["imageAssetUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"imageAssetUrl": "artifact_signal"}, "out": {"imageAssetUrl": "artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel receives the imageUrl field."}
-      imageUrl: {key: imageUrl, type: text, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel embeds the R2 imageAssetUrl (seedream) and replays it without calling the model."}
+      imageAssetUrl: {key: imageAssetUrl, type: image_url, value: ""}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
+    - id: {key: id, type: string, value: "panel_video_output"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Panel - Video (seedance)"}
+      position: {key: position, type: object, value: {"x": 760, "y": 480}}
+      handles: {key: handles, type: object, value: {"target": ["videoUrl"], "source": ["videoUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"videoUrl": "artifact_signal"}, "out": {"videoUrl": "artifact_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Video Rich Media Panel embeds the R2 videoUrl and replays it without calling the model."}
+      videoUrl: {key: videoUrl, type: video_url, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
     - id: {key: id, type: string, value: "panel_chart_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel - Run Dashboard"}
-      position: {key: position, type: object, value: {"x": 380, "y": -240}}
+      position: {key: position, type: object, value: {"x": 760, "y": -240}}
       handles: {key: handles, type: object, value: {"target": ["outputSrcDoc"], "source": ["outputSrcDoc"]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"outputSrcDoc": "artifact_signal"}, "out": {"outputSrcDoc": "artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
@@ -277,429 +318,6 @@ flow:
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel receives the outputSrcDoc field."}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
-    - id: {key: id, type: string, value: "flow-diagram-reference_to_remix_gitgraph-source"}
-      type: {key: type, type: string, value: "FlowDiagramSource"}
-      label: {key: label, type: string, value: "gitgraph flow diagram source"}
-      position: {key: position, type: object, value: {"x":0,"y":0}}
-      handles: {key: handles, type: object, value: {"source":["diagramSource"]}}
-      diagramKey: {key: diagramKey, type: string, value: "reference_to_remix_gitgraph"}
-      diagramKind: {key: diagramKind, type: string, value: "gitgraph"}
-      diagramSource:
-        key: diagramSource
-        type: string
-        value: |
-          gitGraph
-            commit id: "import_url" tag: "youtu.be/77FAnT935IE"
-            branch research
-            checkout research
-            commit id: "exa_evidence"
-            commit id: "source_cards"
-            checkout main
-            commit id: "storyboard" tag: "kgc-flow"
-            commit id: "render_gate" tag: "approve"
-            branch render
-            checkout render
-            commit id: "r2_assets"
-            commit id: "ledger_events"
-            checkout main
-            commit id: "payment_gate" tag: "approve"
-            commit id: "stripe_checkout" tag: "sold"
-            commit id: "demo_pack" tag: "7/7"
-      diagramTitle: {key: diagramTitle, type: string, value: "gitgraph flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_gitgraph"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"diagramSource":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:flow-diagram-reference_to_remix_gitgraph-source"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      output:
-        key: output
-        type: string
-        value: |
-          gitGraph
-            commit id: "import_url" tag: "youtu.be/77FAnT935IE"
-            branch research
-            checkout research
-            commit id: "exa_evidence"
-            commit id: "source_cards"
-            checkout main
-            commit id: "storyboard" tag: "kgc-flow"
-            commit id: "render_gate" tag: "approve"
-            branch render
-            checkout render
-            commit id: "r2_assets"
-            commit id: "ledger_events"
-            checkout main
-            commit id: "payment_gate" tag: "approve"
-            commit id: "stripe_checkout" tag: "sold"
-            commit id: "demo_pack" tag: "7/7"
-      render_on: {key: render_on, type: array, value: []}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
-    - id: {key: id, type: string, value: "flow-diagram-reference_to_remix_gitgraph-compute"}
-      type: {key: type, type: string, value: "TextGeneration"}
-      label: {key: label, type: string, value: "gitgraph flow diagram compute"}
-      position: {key: position, type: object, value: {"x":380,"y":0}}
-      handles: {key: handles, type: object, value: {"target":["diagramSource"],"source":["outputSrcDoc"]}}
-      diagramKey: {key: diagramKey, type: string, value: "reference_to_remix_gitgraph"}
-      diagramKind: {key: diagramKind, type: string, value: "gitgraph"}
-      diagramTitle: {key: diagramTitle, type: string, value: "gitgraph flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_gitgraph"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"diagramSource":"flow_diagram_html"},"out":{"outputSrcDoc":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "flowDiagramCompute"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: string
-        value: |
-          <main data-kg-flow-diagram="1" data-kg-flow-diagram-kind="gitgraph"><h1>gitgraph flow diagram</h1><svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 166'><rect width='640' height='166' fill='white'/><text x='14' y='42' font-size='12' fill='currentColor'>main</text><line x1='150' y1='42' x2='610' y2='42' stroke='#2563eb' stroke-width='5'/><circle cx='190' cy='42' r='8' fill='#2563eb'/><text x='14' y='74' font-size='12' fill='currentColor'>research</text><line x1='150' y1='74' x2='610' y2='74' stroke='#84cc16' stroke-width='5'/><circle cx='232' cy='74' r='8' fill='#2563eb'/><text x='14' y='106' font-size='12' fill='currentColor'>render</text><line x1='150' y1='106' x2='610' y2='106' stroke='#84cc16' stroke-width='5'/><circle cx='274' cy='106' r='8' fill='#2563eb'/></svg><p>Parallel branches: research, render. Merges: none.</p><section><h2>First-class terms</h2><p><span>commit id</span> <span>research</span> <span>main</span> <span>render</span> </p></section><section><h2>Parallel lanes</h2><ul><li>research</li><li>render</li></ul><h2>Merge points</h2><ul><li>none declared</li></ul></section><pre data-kg-mermaid-source="1">gitGraph
-            commit id: &quot;import_url&quot; tag: &quot;youtu.be/77FAnT935IE&quot;
-            branch research
-            checkout research
-            commit id: &quot;exa_evidence&quot;
-            commit id: &quot;source_cards&quot;
-            checkout main
-            commit id: &quot;storyboard&quot; tag: &quot;kgc-flow&quot;
-            commit id: &quot;render_gate&quot; tag: &quot;approve&quot;
-            branch render
-            checkout render
-            commit id: &quot;r2_assets&quot;
-            commit id: &quot;ledger_events&quot;
-            checkout main
-            commit id: &quot;payment_gate&quot; tag: &quot;approve&quot;
-            commit id: &quot;stripe_checkout&quot; tag: &quot;sold&quot;
-            commit id: &quot;demo_pack&quot; tag: &quot;7/7&quot;</pre></main>
-      render_on: {key: render_on, type: array, value: []}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
-      compute:
-        key: compute
-        type: string
-        value: |
-          (inputs,context)=>{
-          const p=context&&context.node&&context.node.properties&&typeof context.node.properties=="object"?context.node.properties:{},k=String(p.diagramKind||"mermaid"),t=String(p.diagramTitle||k||"Diagram"),s=String(inputs.diagramSource||"").trim(),e=v=>String(v||"").replace(/[&<>"']/g,c=>c=="&"?"&amp;":c=="<"?"&lt;":c==">"?"&gt;":c=='"'?"&quot;":"&#39;"),ls=s.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-          const pick=(r,n)=>{const o=[];for(let i=0;i<ls.length&&o.length<n;i++){const m=ls[i].match(r);if(m&&m[1])o.push(String(m[1]).replace(/^["']|["']$/g,""))}return o},branches=pick(/^branch\s+([^\s{]+)/i,8),merges=pick(/^merge\s+([^\s{]+)/i,8),critical=ls.filter(l=>/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(l)).slice(0,8),tasks=ls.filter(l=>l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)).slice(0,8);
-          const services=pick(/^service\s+([^\s(]+)/i,12),groups=pick(/^group\s+([^\s(]+)/i,8),events=ls.filter(l=>/\b(?:evt|event)\b/i.test(l)).slice(0,12),commands=ls.filter(l=>/\b(?:cmd|command)\b/i.test(l)).slice(0,12),processors=ls.filter(l=>/\b(?:pcr|processor)\b/i.test(l)).slice(0,8);
-          const tm={},pt=v=>{const x=String(v||"").replace(/^["']|["']$/g,"").trim();if(!x||x.length>80)return;const n=x.toLowerCase();if(!tm[n])tm[n]=x};ls.forEach(l=>{l.replace(/id:"([^"]+)"/g,(_m,x)=>(pt(x),""));l.replace(/\b(?:branch|checkout|switch|merge)\s+([^\s{]+)/gi,(_m,x)=>(pt(x),""));pt(l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)?l.split(":")[0].trim():"")});const terms=Object.values(tm).slice(0,12);
-          const sum=k=="gitgraph"?"Parallel branches: "+(branches.length?branches.join(", "):"main")+". Merges: "+(merges.length?merges.join(", "):"none")+".":k=="gantt"?"Timeline tasks: "+tasks.length+". Critical path tasks: "+(critical.length?critical.map(l=>l.split(":")[0].trim()).join(", "):"none declared")+".":k=="architecture"?"Architecture services: "+(services.length?services.join(", "):"none parsed")+". Groups: "+(groups.length?groups.join(", "):"none parsed")+".":k=="eventmodeling"?"Event model commands: "+commands.length+". Events: "+events.length+". Processors: "+processors.length+".":"Mermaid diagram lines: "+ls.length+".",ts="First-class terms: "+(terms.length?terms.join(", "):"none parsed")+".";
-          const li=(a,z)=>a.length?a.map(x=>"<li>"+e(x)+"</li>").join(""):"<li>"+e(z)+"</li>",txt=(x,y,v)=>"<text x='"+x+"' y='"+y+"' font-size='12' fill='currentColor'>"+e(v)+"</text>";
-          const git=()=>{const lanes=["main"];branches.forEach(b=>{if(!lanes.includes(b))lanes.push(b)});let h=70+lanes.length*32,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/>";lanes.forEach((b,i)=>{const y=42+i*32;svg+=txt(14,y,b)+"<line x1='150' y1='"+y+"' x2='610' y2='"+y+"' stroke='"+(i?"#84cc16":"#2563eb")+"' stroke-width='5'/><circle cx='"+(190+i*42)+"' cy='"+y+"' r='8' fill='#2563eb'/>"});merges.forEach((m,i)=>{svg+="<path d='M"+(250+i*54)+" 42 V"+(42+(lanes.length-1)*32)+"' stroke='#0f766e' stroke-width='3'/>"+txt(260+i*54,28,m)});return svg+"</svg>"};
-          const gant=()=>{const rows=(tasks.length?tasks:critical).slice(0,10);let h=70+Math.max(1,rows.length)*28,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/><line x1='150' y1='36' x2='610' y2='36' stroke='#64748b'/>";rows.forEach((r,i)=>{const name=r.split(":")[0].trim(),crit=/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(r),y=58+i*28,x=170+i*18,w=210+(crit?90:0);svg+=txt(14,y,name)+"<rect x='"+x+"' y='"+(y-14)+"' width='"+w+"' height='18' rx='3' fill='"+(crit?"#ef4444":"#6366f1")+"'/><text x='"+(x+6)+"' y='"+(y-1)+"' font-size='10' fill='white'>"+e(name)+"</text>"});return svg+"</svg>"};
-          const chart=k=="gitgraph"?git():k=="gantt"?gant():"",detail=k=="gitgraph"?"<section><h2>Parallel lanes</h2><ul>"+li(branches,"main")+"</ul><h2>Merge points</h2><ul>"+li(merges,"none declared")+"</ul></section>":k=="gantt"?"<section><h2>Critical path</h2><ul>"+li(critical.map(l=>l.split(":")[0].trim()),"none declared")+"</ul><h2>Tasks</h2><ul>"+li(tasks.map(l=>l.split(":")[0].trim()),"none declared")+"</ul></section>":k=="architecture"?"<section><h2>Services</h2><ul>"+li(services,"none parsed")+"</ul><h2>Groups</h2><ul>"+li(groups,"none parsed")+"</ul></section>":k=="eventmodeling"?"<section><h2>Commands</h2><ul>"+li(commands,"none parsed")+"</ul><h2>Events</h2><ul>"+li(events,"none parsed")+"</ul></section>":"";
-          return{output:"~~~mermaid\n"+s+"\n~~~\n\n"+sum+"\n"+ts,outputSrcDoc:"<main data-kg-flow-diagram=\"1\" data-kg-flow-diagram-kind=\""+e(k)+"\"><h1>"+e(t)+"</h1>"+chart+"<p>"+e(sum)+"</p><section><h2>First-class terms</h2><p>"+(terms.length?terms.map(x=>"<span>"+e(x)+"</span> ").join(""):"<span>none parsed</span>")+"</p></section>"+detail+"<pre data-kg-mermaid-source=\"1\">"+e(s)+"</pre></main>"}
-          }
-    - id: {key: id, type: string, value: "flow-diagram-reference_to_remix_gitgraph-panel"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "gitgraph flow diagram Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":760,"y":0}}
-      handles: {key: handles, type: object, value: {"target":["outputSrcDoc"]}}
-      diagramKey: {key: diagramKey, type: string, value: "reference_to_remix_gitgraph"}
-      diagramKind: {key: diagramKind, type: string, value: "gitgraph"}
-      diagramTitle: {key: diagramTitle, type: string, value: "gitgraph flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_gitgraph"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      media_interactive: {key: media_interactive, type: boolean, value: true}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      render_on: {key: render_on, type: array, value: []}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
-    - id: {key: id, type: string, value: "flow-diagram-agentic_canvas_architecture-source"}
-      type: {key: type, type: string, value: "FlowDiagramSource"}
-      label: {key: label, type: string, value: "architecture flow diagram source"}
-      position: {key: position, type: object, value: {"x":0,"y":280}}
-      handles: {key: handles, type: object, value: {"source":["diagramSource"]}}
-      diagramKey: {key: diagramKey, type: string, value: "agentic_canvas_architecture"}
-      diagramKind: {key: diagramKind, type: string, value: "architecture"}
-      diagramSource:
-        key: diagramSource
-        type: string
-        value: |
-          architecture-beta
-            group user(cloud)[User surface]
-            group vercel(cloud)[Vercel]
-            group aws(cloud)[AWS]
-            group cloudflare(cloud)[Cloudflare]
-            group providers(cloud)[Live action providers]
-            service web(internet)[Vercel UI] in vercel
-            service api(server)[AWS Agent API] in aws
-            service mcp(server)[McpAgent Worker] in cloudflare
-            service manifest(database)[Run Manifest DO] in cloudflare
-            service exa(internet)[Exa] in providers
-            service byteplus(server)[BytePlus] in providers
-            service stripe(database)[Stripe] in providers
-            web:R --> L:api
-            api:R --> L:mcp
-            mcp:B --> T:manifest
-            mcp:R --> L:exa
-            mcp:R --> L:byteplus
-            mcp:R --> L:stripe
-      diagramTitle: {key: diagramTitle, type: string, value: "architecture flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_architecture"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"diagramSource":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:flow-diagram-agentic_canvas_architecture-source"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      output:
-        key: output
-        type: string
-        value: |
-          architecture-beta
-            group user(cloud)[User surface]
-            group vercel(cloud)[Vercel]
-            group aws(cloud)[AWS]
-            group cloudflare(cloud)[Cloudflare]
-            group providers(cloud)[Live action providers]
-            service web(internet)[Vercel UI] in vercel
-            service api(server)[AWS Agent API] in aws
-            service mcp(server)[McpAgent Worker] in cloudflare
-            service manifest(database)[Run Manifest DO] in cloudflare
-            service exa(internet)[Exa] in providers
-            service byteplus(server)[BytePlus] in providers
-            service stripe(database)[Stripe] in providers
-            web:R --> L:api
-            api:R --> L:mcp
-            mcp:B --> T:manifest
-            mcp:R --> L:exa
-            mcp:R --> L:byteplus
-            mcp:R --> L:stripe
-      render_on: {key: render_on, type: array, value: []}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
-    - id: {key: id, type: string, value: "flow-diagram-agentic_canvas_architecture-compute"}
-      type: {key: type, type: string, value: "TextGeneration"}
-      label: {key: label, type: string, value: "architecture flow diagram compute"}
-      position: {key: position, type: object, value: {"x":380,"y":280}}
-      handles: {key: handles, type: object, value: {"target":["diagramSource"],"source":["outputSrcDoc"]}}
-      diagramKey: {key: diagramKey, type: string, value: "agentic_canvas_architecture"}
-      diagramKind: {key: diagramKind, type: string, value: "architecture"}
-      diagramTitle: {key: diagramTitle, type: string, value: "architecture flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_architecture"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"diagramSource":"flow_diagram_html"},"out":{"outputSrcDoc":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "flowDiagramCompute"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: string
-        value: |
-          <main data-kg-flow-diagram="1" data-kg-flow-diagram-kind="architecture"><h1>architecture flow diagram</h1><p>Architecture services: web, api, mcp, manifest, exa, byteplus, stripe. Groups: user, vercel, aws, cloudflare, providers.</p><section><h2>First-class terms</h2><p><span>web</span> <span>api</span> <span>mcp</span> </p></section><section><h2>Services</h2><ul><li>web</li><li>api</li><li>mcp</li><li>manifest</li><li>exa</li><li>byteplus</li><li>stripe</li></ul><h2>Groups</h2><ul><li>user</li><li>vercel</li><li>aws</li><li>cloudflare</li><li>providers</li></ul></section><pre data-kg-mermaid-source="1">architecture-beta
-            group user(cloud)[User surface]
-            group vercel(cloud)[Vercel]
-            group aws(cloud)[AWS]
-            group cloudflare(cloud)[Cloudflare]
-            group providers(cloud)[Live action providers]
-            service web(internet)[Vercel UI] in vercel
-            service api(server)[AWS Agent API] in aws
-            service mcp(server)[McpAgent Worker] in cloudflare
-            service manifest(database)[Run Manifest DO] in cloudflare
-            service exa(internet)[Exa] in providers
-            service byteplus(server)[BytePlus] in providers
-            service stripe(database)[Stripe] in providers
-            web:R --&gt; L:api
-            api:R --&gt; L:mcp
-            mcp:B --&gt; T:manifest
-            mcp:R --&gt; L:exa
-            mcp:R --&gt; L:byteplus
-            mcp:R --&gt; L:stripe</pre></main>
-      render_on: {key: render_on, type: array, value: []}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
-      compute:
-        key: compute
-        type: string
-        value: |
-          (inputs,context)=>{
-          const p=context&&context.node&&context.node.properties&&typeof context.node.properties=="object"?context.node.properties:{},k=String(p.diagramKind||"mermaid"),t=String(p.diagramTitle||k||"Diagram"),s=String(inputs.diagramSource||"").trim(),e=v=>String(v||"").replace(/[&<>"']/g,c=>c=="&"?"&amp;":c=="<"?"&lt;":c==">"?"&gt;":c=='"'?"&quot;":"&#39;"),ls=s.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-          const pick=(r,n)=>{const o=[];for(let i=0;i<ls.length&&o.length<n;i++){const m=ls[i].match(r);if(m&&m[1])o.push(String(m[1]).replace(/^["']|["']$/g,""))}return o},branches=pick(/^branch\s+([^\s{]+)/i,8),merges=pick(/^merge\s+([^\s{]+)/i,8),critical=ls.filter(l=>/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(l)).slice(0,8),tasks=ls.filter(l=>l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)).slice(0,8);
-          const services=pick(/^service\s+([^\s(]+)/i,12),groups=pick(/^group\s+([^\s(]+)/i,8),events=ls.filter(l=>/\b(?:evt|event)\b/i.test(l)).slice(0,12),commands=ls.filter(l=>/\b(?:cmd|command)\b/i.test(l)).slice(0,12),processors=ls.filter(l=>/\b(?:pcr|processor)\b/i.test(l)).slice(0,8);
-          const tm={},pt=v=>{const x=String(v||"").replace(/^["']|["']$/g,"").trim();if(!x||x.length>80)return;const n=x.toLowerCase();if(!tm[n])tm[n]=x};ls.forEach(l=>{l.replace(/id:"([^"]+)"/g,(_m,x)=>(pt(x),""));l.replace(/\b(?:branch|checkout|switch|merge)\s+([^\s{]+)/gi,(_m,x)=>(pt(x),""));pt(l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)?l.split(":")[0].trim():"")});const terms=Object.values(tm).slice(0,12);
-          const sum=k=="gitgraph"?"Parallel branches: "+(branches.length?branches.join(", "):"main")+". Merges: "+(merges.length?merges.join(", "):"none")+".":k=="gantt"?"Timeline tasks: "+tasks.length+". Critical path tasks: "+(critical.length?critical.map(l=>l.split(":")[0].trim()).join(", "):"none declared")+".":k=="architecture"?"Architecture services: "+(services.length?services.join(", "):"none parsed")+". Groups: "+(groups.length?groups.join(", "):"none parsed")+".":k=="eventmodeling"?"Event model commands: "+commands.length+". Events: "+events.length+". Processors: "+processors.length+".":"Mermaid diagram lines: "+ls.length+".",ts="First-class terms: "+(terms.length?terms.join(", "):"none parsed")+".";
-          const li=(a,z)=>a.length?a.map(x=>"<li>"+e(x)+"</li>").join(""):"<li>"+e(z)+"</li>",txt=(x,y,v)=>"<text x='"+x+"' y='"+y+"' font-size='12' fill='currentColor'>"+e(v)+"</text>";
-          const git=()=>{const lanes=["main"];branches.forEach(b=>{if(!lanes.includes(b))lanes.push(b)});let h=70+lanes.length*32,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/>";lanes.forEach((b,i)=>{const y=42+i*32;svg+=txt(14,y,b)+"<line x1='150' y1='"+y+"' x2='610' y2='"+y+"' stroke='"+(i?"#84cc16":"#2563eb")+"' stroke-width='5'/><circle cx='"+(190+i*42)+"' cy='"+y+"' r='8' fill='#2563eb'/>"});merges.forEach((m,i)=>{svg+="<path d='M"+(250+i*54)+" 42 V"+(42+(lanes.length-1)*32)+"' stroke='#0f766e' stroke-width='3'/>"+txt(260+i*54,28,m)});return svg+"</svg>"};
-          const gant=()=>{const rows=(tasks.length?tasks:critical).slice(0,10);let h=70+Math.max(1,rows.length)*28,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/><line x1='150' y1='36' x2='610' y2='36' stroke='#64748b'/>";rows.forEach((r,i)=>{const name=r.split(":")[0].trim(),crit=/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(r),y=58+i*28,x=170+i*18,w=210+(crit?90:0);svg+=txt(14,y,name)+"<rect x='"+x+"' y='"+(y-14)+"' width='"+w+"' height='18' rx='3' fill='"+(crit?"#ef4444":"#6366f1")+"'/><text x='"+(x+6)+"' y='"+(y-1)+"' font-size='10' fill='white'>"+e(name)+"</text>"});return svg+"</svg>"};
-          const chart=k=="gitgraph"?git():k=="gantt"?gant():"",detail=k=="gitgraph"?"<section><h2>Parallel lanes</h2><ul>"+li(branches,"main")+"</ul><h2>Merge points</h2><ul>"+li(merges,"none declared")+"</ul></section>":k=="gantt"?"<section><h2>Critical path</h2><ul>"+li(critical.map(l=>l.split(":")[0].trim()),"none declared")+"</ul><h2>Tasks</h2><ul>"+li(tasks.map(l=>l.split(":")[0].trim()),"none declared")+"</ul></section>":k=="architecture"?"<section><h2>Services</h2><ul>"+li(services,"none parsed")+"</ul><h2>Groups</h2><ul>"+li(groups,"none parsed")+"</ul></section>":k=="eventmodeling"?"<section><h2>Commands</h2><ul>"+li(commands,"none parsed")+"</ul><h2>Events</h2><ul>"+li(events,"none parsed")+"</ul></section>":"";
-          return{output:"~~~mermaid\n"+s+"\n~~~\n\n"+sum+"\n"+ts,outputSrcDoc:"<main data-kg-flow-diagram=\"1\" data-kg-flow-diagram-kind=\""+e(k)+"\"><h1>"+e(t)+"</h1>"+chart+"<p>"+e(sum)+"</p><section><h2>First-class terms</h2><p>"+(terms.length?terms.map(x=>"<span>"+e(x)+"</span> ").join(""):"<span>none parsed</span>")+"</p></section>"+detail+"<pre data-kg-mermaid-source=\"1\">"+e(s)+"</pre></main>"}
-          }
-    - id: {key: id, type: string, value: "flow-diagram-agentic_canvas_architecture-panel"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "architecture flow diagram Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":760,"y":280}}
-      handles: {key: handles, type: object, value: {"target":["outputSrcDoc"]}}
-      diagramKey: {key: diagramKey, type: string, value: "agentic_canvas_architecture"}
-      diagramKind: {key: diagramKind, type: string, value: "architecture"}
-      diagramTitle: {key: diagramTitle, type: string, value: "architecture flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_architecture"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      media_interactive: {key: media_interactive, type: boolean, value: true}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      render_on: {key: render_on, type: array, value: []}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
-    - id: {key: id, type: string, value: "flow-diagram-agent_run_event_model-source"}
-      type: {key: type, type: string, value: "FlowDiagramSource"}
-      label: {key: label, type: string, value: "eventmodeling flow diagram source"}
-      position: {key: position, type: object, value: {"x":0,"y":560}}
-      handles: {key: handles, type: object, value: {"source":["diagramSource"]}}
-      diagramKey: {key: diagramKey, type: string, value: "agent_run_event_model"}
-      diagramKind: {key: diagramKind, type: string, value: "eventmodeling"}
-      diagramSource:
-        key: diagramSource
-        type: string
-        value: |
-          eventmodeling
-          tf 01 ui UserBrief
-          tf 02 cmd StartVideoRemixRun
-          tf 03 evt RunManifestCreated
-          tf 04 pcr DirectorAgent
-          tf 05 cmd RequestEvidencePack
-          tf 06 evt EvidencePackReady
-          tf 07 cmd RequestApprovalToken
-          tf 08 evt ApprovalGranted
-          tf 09 cmd RenderShots
-          tf 10 evt AssetsRendered
-          tf 11 cmd CreateCheckout
-          tf 12 evt PaymentSessionCreated
-          tf 13 ui DemoPackReady
-      diagramTitle: {key: diagramTitle, type: string, value: "eventmodeling flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_eventmodeling"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"diagramSource":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:flow-diagram-agent_run_event_model-source"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      output:
-        key: output
-        type: string
-        value: |
-          eventmodeling
-          tf 01 ui UserBrief
-          tf 02 cmd StartVideoRemixRun
-          tf 03 evt RunManifestCreated
-          tf 04 pcr DirectorAgent
-          tf 05 cmd RequestEvidencePack
-          tf 06 evt EvidencePackReady
-          tf 07 cmd RequestApprovalToken
-          tf 08 evt ApprovalGranted
-          tf 09 cmd RenderShots
-          tf 10 evt AssetsRendered
-          tf 11 cmd CreateCheckout
-          tf 12 evt PaymentSessionCreated
-          tf 13 ui DemoPackReady
-      render_on: {key: render_on, type: array, value: []}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
-    - id: {key: id, type: string, value: "flow-diagram-agent_run_event_model-compute"}
-      type: {key: type, type: string, value: "TextGeneration"}
-      label: {key: label, type: string, value: "eventmodeling flow diagram compute"}
-      position: {key: position, type: object, value: {"x":380,"y":560}}
-      handles: {key: handles, type: object, value: {"target":["diagramSource"],"source":["outputSrcDoc"]}}
-      diagramKey: {key: diagramKey, type: string, value: "agent_run_event_model"}
-      diagramKind: {key: diagramKind, type: string, value: "eventmodeling"}
-      diagramTitle: {key: diagramTitle, type: string, value: "eventmodeling flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_eventmodeling"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"diagramSource":"flow_diagram_html"},"out":{"outputSrcDoc":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "flowDiagramCompute"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: string
-        value: |
-          <main data-kg-flow-diagram="1" data-kg-flow-diagram-kind="eventmodeling"><h1>eventmodeling flow diagram</h1><p>Event model commands: 5. Events: 5. Processors: 1.</p><section><h2>First-class terms</h2><p><span>none parsed</span></p></section><section><h2>Commands</h2><ul><li>tf 02 cmd StartVideoRemixRun</li><li>tf 05 cmd RequestEvidencePack</li><li>tf 07 cmd RequestApprovalToken</li><li>tf 09 cmd RenderShots</li><li>tf 11 cmd CreateCheckout</li></ul><h2>Events</h2><ul><li>tf 03 evt RunManifestCreated</li><li>tf 06 evt EvidencePackReady</li><li>tf 08 evt ApprovalGranted</li><li>tf 10 evt AssetsRendered</li><li>tf 12 evt PaymentSessionCreated</li></ul></section><pre data-kg-mermaid-source="1">eventmodeling
-          tf 01 ui UserBrief
-          tf 02 cmd StartVideoRemixRun
-          tf 03 evt RunManifestCreated
-          tf 04 pcr DirectorAgent
-          tf 05 cmd RequestEvidencePack
-          tf 06 evt EvidencePackReady
-          tf 07 cmd RequestApprovalToken
-          tf 08 evt ApprovalGranted
-          tf 09 cmd RenderShots
-          tf 10 evt AssetsRendered
-          tf 11 cmd CreateCheckout
-          tf 12 evt PaymentSessionCreated
-          tf 13 ui DemoPackReady</pre></main>
-      render_on: {key: render_on, type: array, value: []}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
-      compute:
-        key: compute
-        type: string
-        value: |
-          (inputs,context)=>{
-          const p=context&&context.node&&context.node.properties&&typeof context.node.properties=="object"?context.node.properties:{},k=String(p.diagramKind||"mermaid"),t=String(p.diagramTitle||k||"Diagram"),s=String(inputs.diagramSource||"").trim(),e=v=>String(v||"").replace(/[&<>"']/g,c=>c=="&"?"&amp;":c=="<"?"&lt;":c==">"?"&gt;":c=='"'?"&quot;":"&#39;"),ls=s.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-          const pick=(r,n)=>{const o=[];for(let i=0;i<ls.length&&o.length<n;i++){const m=ls[i].match(r);if(m&&m[1])o.push(String(m[1]).replace(/^["']|["']$/g,""))}return o},branches=pick(/^branch\s+([^\s{]+)/i,8),merges=pick(/^merge\s+([^\s{]+)/i,8),critical=ls.filter(l=>/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(l)).slice(0,8),tasks=ls.filter(l=>l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)).slice(0,8);
-          const services=pick(/^service\s+([^\s(]+)/i,12),groups=pick(/^group\s+([^\s(]+)/i,8),events=ls.filter(l=>/\b(?:evt|event)\b/i.test(l)).slice(0,12),commands=ls.filter(l=>/\b(?:cmd|command)\b/i.test(l)).slice(0,12),processors=ls.filter(l=>/\b(?:pcr|processor)\b/i.test(l)).slice(0,8);
-          const tm={},pt=v=>{const x=String(v||"").replace(/^["']|["']$/g,"").trim();if(!x||x.length>80)return;const n=x.toLowerCase();if(!tm[n])tm[n]=x};ls.forEach(l=>{l.replace(/id:"([^"]+)"/g,(_m,x)=>(pt(x),""));l.replace(/\b(?:branch|checkout|switch|merge)\s+([^\s{]+)/gi,(_m,x)=>(pt(x),""));pt(l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)?l.split(":")[0].trim():"")});const terms=Object.values(tm).slice(0,12);
-          const sum=k=="gitgraph"?"Parallel branches: "+(branches.length?branches.join(", "):"main")+". Merges: "+(merges.length?merges.join(", "):"none")+".":k=="gantt"?"Timeline tasks: "+tasks.length+". Critical path tasks: "+(critical.length?critical.map(l=>l.split(":")[0].trim()).join(", "):"none declared")+".":k=="architecture"?"Architecture services: "+(services.length?services.join(", "):"none parsed")+". Groups: "+(groups.length?groups.join(", "):"none parsed")+".":k=="eventmodeling"?"Event model commands: "+commands.length+". Events: "+events.length+". Processors: "+processors.length+".":"Mermaid diagram lines: "+ls.length+".",ts="First-class terms: "+(terms.length?terms.join(", "):"none parsed")+".";
-          const li=(a,z)=>a.length?a.map(x=>"<li>"+e(x)+"</li>").join(""):"<li>"+e(z)+"</li>",txt=(x,y,v)=>"<text x='"+x+"' y='"+y+"' font-size='12' fill='currentColor'>"+e(v)+"</text>";
-          const git=()=>{const lanes=["main"];branches.forEach(b=>{if(!lanes.includes(b))lanes.push(b)});let h=70+lanes.length*32,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/>";lanes.forEach((b,i)=>{const y=42+i*32;svg+=txt(14,y,b)+"<line x1='150' y1='"+y+"' x2='610' y2='"+y+"' stroke='"+(i?"#84cc16":"#2563eb")+"' stroke-width='5'/><circle cx='"+(190+i*42)+"' cy='"+y+"' r='8' fill='#2563eb'/>"});merges.forEach((m,i)=>{svg+="<path d='M"+(250+i*54)+" 42 V"+(42+(lanes.length-1)*32)+"' stroke='#0f766e' stroke-width='3'/>"+txt(260+i*54,28,m)});return svg+"</svg>"};
-          const gant=()=>{const rows=(tasks.length?tasks:critical).slice(0,10);let h=70+Math.max(1,rows.length)*28,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/><line x1='150' y1='36' x2='610' y2='36' stroke='#64748b'/>";rows.forEach((r,i)=>{const name=r.split(":")[0].trim(),crit=/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(r),y=58+i*28,x=170+i*18,w=210+(crit?90:0);svg+=txt(14,y,name)+"<rect x='"+x+"' y='"+(y-14)+"' width='"+w+"' height='18' rx='3' fill='"+(crit?"#ef4444":"#6366f1")+"'/><text x='"+(x+6)+"' y='"+(y-1)+"' font-size='10' fill='white'>"+e(name)+"</text>"});return svg+"</svg>"};
-          const chart=k=="gitgraph"?git():k=="gantt"?gant():"",detail=k=="gitgraph"?"<section><h2>Parallel lanes</h2><ul>"+li(branches,"main")+"</ul><h2>Merge points</h2><ul>"+li(merges,"none declared")+"</ul></section>":k=="gantt"?"<section><h2>Critical path</h2><ul>"+li(critical.map(l=>l.split(":")[0].trim()),"none declared")+"</ul><h2>Tasks</h2><ul>"+li(tasks.map(l=>l.split(":")[0].trim()),"none declared")+"</ul></section>":k=="architecture"?"<section><h2>Services</h2><ul>"+li(services,"none parsed")+"</ul><h2>Groups</h2><ul>"+li(groups,"none parsed")+"</ul></section>":k=="eventmodeling"?"<section><h2>Commands</h2><ul>"+li(commands,"none parsed")+"</ul><h2>Events</h2><ul>"+li(events,"none parsed")+"</ul></section>":"";
-          return{output:"~~~mermaid\n"+s+"\n~~~\n\n"+sum+"\n"+ts,outputSrcDoc:"<main data-kg-flow-diagram=\"1\" data-kg-flow-diagram-kind=\""+e(k)+"\"><h1>"+e(t)+"</h1>"+chart+"<p>"+e(sum)+"</p><section><h2>First-class terms</h2><p>"+(terms.length?terms.map(x=>"<span>"+e(x)+"</span> ").join(""):"<span>none parsed</span>")+"</p></section>"+detail+"<pre data-kg-mermaid-source=\"1\">"+e(s)+"</pre></main>"}
-          }
-    - id: {key: id, type: string, value: "flow-diagram-agent_run_event_model-panel"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "eventmodeling flow diagram Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":760,"y":560}}
-      handles: {key: handles, type: object, value: {"target":["outputSrcDoc"]}}
-      diagramKey: {key: diagramKey, type: string, value: "agent_run_event_model"}
-      diagramKind: {key: diagramKind, type: string, value: "eventmodeling"}
-      diagramTitle: {key: diagramTitle, type: string, value: "eventmodeling flow diagram"}
-      diagramType: {key: diagramType, type: string, value: "mermaid_eventmodeling"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"flow_diagram_html"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      media_interactive: {key: media_interactive, type: boolean, value: true}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      render_on: {key: render_on, type: array, value: []}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
   edges:
     - {"id": "edge_referenceUrl_to_compute", "source": "source_input", "sourceHandle": "referenceUrl", "target": "compute_summary", "targetHandle": "referenceUrl", "label": "referenceUrl", "type": "idea_signal"}
     - {"id": "edge_brief_to_compute", "source": "source_input", "sourceHandle": "brief", "target": "compute_summary", "targetHandle": "brief", "label": "brief", "type": "idea_signal"}
@@ -707,113 +325,106 @@ flow:
     - {"id": "edge_mode_to_compute", "source": "source_input", "sourceHandle": "mode", "target": "compute_summary", "targetHandle": "mode", "label": "mode", "type": "idea_signal"}
     - {"id": "edge_approvals_to_compute", "source": "source_input", "sourceHandle": "approvals", "target": "compute_summary", "targetHandle": "approvals", "label": "approvals", "type": "approval_signal"}
     - {"id": "edge_compute_to_panel_text_output", "source": "compute_summary", "sourceHandle": "output", "target": "panel_text_output", "targetHandle": "output", "label": "output", "type": "artifact_signal"}
-    - {"id": "edge_compute_to_panel_image_output", "source": "compute_summary", "sourceHandle": "imageUrl", "target": "panel_image_output", "targetHandle": "imageUrl", "label": "imageUrl", "type": "artifact_signal"}
+    - {"id": "edge_compute_to_panel_image_output", "source": "compute_summary", "sourceHandle": "imageAssetUrl", "target": "panel_image_output", "targetHandle": "imageAssetUrl", "label": "imageAssetUrl", "type": "artifact_signal"}
+    - {"id": "edge_compute_to_panel_video_output", "source": "compute_summary", "sourceHandle": "videoUrl", "target": "panel_video_output", "targetHandle": "videoUrl", "label": "videoUrl", "type": "artifact_signal"}
     - {"id": "edge_compute_to_panel_chart_output", "source": "compute_summary", "sourceHandle": "outputSrcDoc", "target": "panel_chart_output", "targetHandle": "outputSrcDoc", "label": "outputSrcDoc", "type": "artifact_signal"}
-    - {"id":"flow-diagram-flow-diagram-reference_to_remix_gitgraph-source-to-flow-diagram-reference_to_remix_gitgraph-compute-1935532471","source":"flow-diagram-reference_to_remix_gitgraph-source","sourceHandle":"diagramSource","target":"flow-diagram-reference_to_remix_gitgraph-compute","targetHandle":"diagramSource","label":"diagram source","type":"flow_diagram_html"}
-    - {"id":"flow-diagram-flow-diagram-reference_to_remix_gitgraph-compute-to-flow-diagram-reference_to_remix_gitgraph-panel-905867698","source":"flow-diagram-reference_to_remix_gitgraph-compute","sourceHandle":"outputSrcDoc","target":"flow-diagram-reference_to_remix_gitgraph-panel","targetHandle":"outputSrcDoc","label":"diagram panel","type":"flow_diagram_html"}
-    - {"id":"flow-diagram-flow-diagram-agentic_canvas_architecture-source-to-flow-diagram-agentic_canvas_architecture-compute-3090287907","source":"flow-diagram-agentic_canvas_architecture-source","sourceHandle":"diagramSource","target":"flow-diagram-agentic_canvas_architecture-compute","targetHandle":"diagramSource","label":"diagram source","type":"flow_diagram_html"}
-    - {"id":"flow-diagram-flow-diagram-agentic_canvas_architecture-compute-to-flow-diagram-agentic_canvas_architecture-panel-742515002","source":"flow-diagram-agentic_canvas_architecture-compute","sourceHandle":"outputSrcDoc","target":"flow-diagram-agentic_canvas_architecture-panel","targetHandle":"outputSrcDoc","label":"diagram panel","type":"flow_diagram_html"}
-    - {"id":"flow-diagram-flow-diagram-agent_run_event_model-source-to-flow-diagram-agent_run_event_model-compute-3973222359","source":"flow-diagram-agent_run_event_model-source","sourceHandle":"diagramSource","target":"flow-diagram-agent_run_event_model-compute","targetHandle":"diagramSource","label":"diagram source","type":"flow_diagram_html"}
-    - {"id":"flow-diagram-flow-diagram-agent_run_event_model-compute-to-flow-diagram-agent_run_event_model-panel-817784318","source":"flow-diagram-agent_run_event_model-compute","sourceHandle":"outputSrcDoc","target":"flow-diagram-agent_run_event_model-panel","targetHandle":"outputSrcDoc","label":"diagram panel","type":"flow_diagram_html"}
+---
 
 # Knowgrph MCP Agentic Canvas OS — Demo
 
 **Demos:** [`knowgrph-mcp-agentic-canvas-os-prd-tad.md`](knowgrph-mcp-agentic-canvas-os-prd-tad.md)
 
 One autonomous agent takes a **reference video URL + a creative brief + a budget
-cap** and drives the full loop — **research → storyboard → render → publish →
-checkout** — ending in a **sold, R2-stored remix**. The whole demo starts from
-a single **Import URL** field (the walkthrough below imports the real clip
-[`youtu.be/77FAnT935IE`](https://youtu.be/77FAnT935IE)). Every model call routes
-through Cloudflare AI Gateway; every spend boundary is gated by a human
-approval token. This page is the operator + judge walkthrough of that flow.
+cap** and drives the full loop — **storyboard → image → video → checkout** —
+ending in a **sold, R2-stored remix** with replayable image and video panels.
+The whole demo starts from a single **Import URL** field (the walkthrough below
+imports the real clip
+[`youtu.be/77FAnT935IE`](https://youtu.be/77FAnT935IE)). The default provider is
+**BytePlus** (chat `agnes/seed`, image `seedream`, video `seedance`); every
+model/media call routes through **Cloudflare AI Gateway** and every spend
+boundary is gated by a human approval token. This page is the operator + judge
+walkthrough of that flow.
 
 ## Current status
 
-- **Truthful state today:** the control plane, local contracts, and thin AWS /
-  AgentCore / web tiers are already strong enough to support a high-ROI live
-  path. The immediate product-ready seam is the in-session frontend flow:
-  same-origin `POST /api/auth/session` -> same-origin `POST /api/run` ->
-  approval re-submit with `approvals[]` -> embedded `doc-view` canvas.
-- **Immediate live-product-ready target:** frontend mints its own
-  `Auth_Token`, submits same-origin `POST /api/run`, then re-submits the same
-  run with updated `approvals[]` after each user decision. AWS remains the
-  fallback/proof path rather than the default browser route.
-- **Sample-native target next:** the AgentCore wrapper is then aligned to the
-  current `agentcore-cli` project conventions (`dev`, `deploy`, `invoke`,
-  generated `agentcore/` config layout). That migration is additive and follows
-  the first live product proof.
+- **Truthful state today:** the Cloudflare control plane (Workers `McpAgent` +
+  Pages + R2 + AI Gateway) and local contracts already support a high-ROI live
+  path. The product runs entirely on **Cloudflare**: `airvio.co/knowgrph` serves
+  the UI and the `doc-view` canvas; `airvio.co/knowgrph/mcp` serves the agent
+  tools.
+- **Default provider:** **BytePlus** (via the BytePlus API key) is the default
+  model/media provider for chat, image, and video, routed through **Cloudflare
+  AI Gateway** for cache, token counting, fallback, and unified billing.
+- **Immediate live-product-ready target:** the in-session flow mints its own
+  `Auth_Token`, submits the run, then re-submits the same run with updated
+  `approvals[]` after each user decision, and embeds the run-scoped `doc-view`
+  canvas plus the image/video Rich Media Panels.
 
 ## At a glance
 
-| **Hero tool** | `knowgrph.video_remix.run` (+ 5 stage tools) over MCP Streamable HTTP |
+| **Hero tool** | `knowgrph.video_remix.run` (+ stage tools) over MCP Streamable HTTP |
 | **Control plane** | Cloudflare Workers `McpAgent` (Agents SDK) at `airvio.co/knowgrph/mcp` — holds all model keys |
-| **Product tiers** | **Vercel (primary)** — UI + Agent-API serverless functions · **AWS (fallback)** — Lambda Agent-API — both **hold no model keys** |
-| **Repos** | `knowgrph` monorepo (control plane + contract SSOT) ↔ `agentic-canvas-os` (realized product split: keyless Vercel UI + AWS Agent-API) over MCP |
+| **Product surface** | Cloudflare Pages/Workers at `airvio.co/knowgrph` — UI, `doc-view` canvas, R2 media |
+| **Default provider** | **BytePlus** (BytePlus API key): chat `agnes/seed`, image `seedream`, video `seedance` |
+| **Model routing** | All model/media calls via **Cloudflare AI Gateway** (cache, token count, fallback, unified billing) |
+| **Media + payment** | BytePlus image/video → R2 assets · Stripe checkout/payout |
 | **Publish chain** | Dev `knowgrph` → Prod mirror `huijoohwee/content/knowgrph` → Cloudflare `airvio.co/knowgrph` (operator-gated) |
-| **Model routing** | All calls via Cloudflare AI Gateway (cache, token count, fallback, unified billing) |
-| **Providers** | Exa (research) · BytePlus/ModelArk (reasoning + media) · Stripe (checkout/payout) |
-| **Safety** | Dry-run by default; 6 approval gates; single-use 15-min Approval_Tokens; budget meters |
+| **Safety** | Dry-run by default; approval gates; single-use 15-min Approval_Tokens; budget meters |
 | **Default behavior** | Live mode **without** approvals halts at the first spend gate with **zero** paid actions |
 
 ## The hero flow
 
 ```mermaid
 flowchart LR
-  url["Import URL: youtu.be/77FAnT935IE + brief + budget"] --> ingest[Vercel Agent-API primary: auth + validate]
-  ingest --> research[Research · Exa via AI Gateway]
-  research --> evidence[(Evidence_Pack: 3..50 cited sources)]
-  evidence --> story[Storyboard · BytePlus via AI Gateway]
+  url["Import URL: youtu.be/77FAnT935IE + brief + budget"] --> ingest[Cloudflare McpAgent: auth + validate]
+  ingest --> story[Storyboard · BytePlus chat via Cloudflare AI Gateway]
   story --> kgc[(Kgc_Document: kgc-computing-flow/v1, 1 node per shot)]
   kgc --> gate{Approval_Gate verified?}
   gate -->|"no token"| blocked[Dry-run plan artifact · state: blocked · zero spend]
-  gate -->|"verified token"| render[Render · BytePlus/Strytree queue]
-  render --> r2[(R2 asset + Credit_Ledger event)]
+  gate -->|"verified token"| image[Image · BytePlus seedream via AI Gateway]
+  image --> video[Video · BytePlus seedance via AI Gateway]
+  video --> r2[(R2 image + video assets + Credit_Ledger event)]
   r2 --> sell[Stripe checkout + gated payout]
   sell --> manifest[(Run_Manifest + 7-section Demo_Pack)]
-  kgc -.->|"embed via doc-view iframe"| canvas[/"Live knowgrph canvas in-product (airvio.co/knowgrph doc-view, scoped to runId)"/]
-  manifest --> ui[Vercel UI: embedded canvas + asset + receipt + manifest]
+  kgc -.->|"embed via doc-view iframe"| canvas[/"Live knowgrph canvas (airvio.co/knowgrph doc-view, scoped to runId)"/]
+  r2 -.->|"embed image panel"| imgpanel[/"Rich Media Panel: image (R2 iframe, replay, no LLM)"/]
+  r2 -.->|"embed video panel"| vidpanel[/"Rich Media Panel: video (R2 iframe, replay, no LLM)"/]
+  manifest --> ui[Cloudflare UI: canvas + image panel + video panel + receipt + manifest]
   canvas --> ui
+  imgpanel --> ui
+  vidpanel --> ui
 ```
 
 ```mermaid
 sequenceDiagram
   actor User
-  participant Web as Vercel Web
-  participant API as Vercel Agent-API (primary)
-  participant AWS as AWS Agent-API (fallback)
+  participant Web as Cloudflare UI (airvio.co/knowgrph)
   participant Mcp as McpAgent (Cloudflare)
   participant Dir as Director Workflow
   participant Gate as HITL Gate
-  participant H as Stage Harness (Exa/BytePlus/Stripe via AI Gateway)
+  participant BP as BytePlus via Cloudflare AI Gateway
+  participant R2 as Cloudflare R2 + Stripe
   User->>Web: referenceUrl + brief + budget
-  Web->>API: POST /api/auth/session + POST /api/run
-  alt primary available
-    API->>API: verify Auth_Token -> Caller_Identity (401 if invalid)
-    API->>Mcp: forward knowgrph.video_remix.run (Streamable HTTP)
-  else primary transport error or 5xx
-    Web->>AWS: retry POST /auth/session + /run
-    AWS->>AWS: verify Auth_Token -> Caller_Identity (401 if invalid)
-    AWS->>Mcp: forward knowgrph.video_remix.run (Streamable HTTP)
-  end
+  Web->>Mcp: POST auth/session + forward knowgrph.video_remix.run (Streamable HTTP)
+  Mcp->>Mcp: verify Auth_Token -> Caller_Identity (401 if invalid)
   Mcp->>Dir: start run (mode=live)
-  loop each stage research->storyboard->render->publish->checkout
+  loop each stage storyboard->image->video->checkout
     Dir->>Gate: spend boundary? request Approval_Gate
     alt no verified, unexpired, unconsumed token
       Gate-->>Dir: approval_required
       Dir->>Dir: resolve stage to dry-run plan artifact (zero spend)
     else verified token
       Gate-->>Dir: approved (token marked consumed, single-use)
-      Dir->>H: execute stage
-      H-->>Dir: result or typed degraded error
+      Dir->>BP: storyboard (chat) / image (seedream) / video (seedance)
+      BP-->>Dir: result or typed degraded error
+      Dir->>R2: store image + video assets; create Stripe session
     end
     Dir->>Mcp: persist Run_Manifest (<=2s)
   end
   Dir-->>Mcp: terminal Run_Manifest + Demo_Pack
-  Mcp-->>API: result
-  API-->>Web: Run_Manifest
-  Web->>Web: iframe airvio.co/knowgrph/doc-view?run=<runId>[&doc=<docId>]
-  Web-->>User: live Kgc_Document canvas (one node per shot)
+  Mcp-->>Web: Run_Manifest (image + video R2 URLs)
+  Web->>Web: iframe doc-view canvas + iframe R2 image + iframe R2 video (replay, no LLM)
+  Web-->>User: canvas + image panel + video panel
 ```
 
 ## Live demo script (operator)
@@ -821,22 +432,19 @@ sequenceDiagram
 > Endpoints are environment-driven (no hardcoded URLs). The deploy is
 > operator-gated behind the `cloud-deploy` Approval_Token — see the
 > [deploy runbook](../../knowgrph/docs/knowgrph-acos-deploy-runbook.md).
-> Default browser path = same-origin Vercel `/api/*`. `<AWS_FALLBACK_API>` is the
-> deployed AWS fallback Agent-API base URL used for direct operator proof and
-> fallback verification.
+> All routes are served by **Cloudflare** under `airvio.co/knowgrph` (UI +
+> `doc-view`) and `airvio.co/knowgrph/mcp` (agent tools).
 
 ### 0. Open a session
 
 ```
-POST /api/auth/session                   ->  { token }   # primary/default Vercel path
-# direct fallback / operator proof:
-POST <AWS_FALLBACK_API>/auth/session     ->  { token }
+POST airvio.co/knowgrph/mcp/auth/session     ->  { token }   # Cloudflare McpAgent
 ```
 
 ### 1. Submit the run — and prove it fails safe (AC-1)
 
 ```
-POST /api/run
+POST airvio.co/knowgrph/mcp   (tools/call knowgrph.video_remix.run)
 Authorization: Bearer <token>
 { "referenceUrl": "https://youtu.be/77FAnT935IE",
   "brief": "Turn this reference clip into a 30s vertical promo.",
@@ -844,142 +452,340 @@ Authorization: Bearer <token>
   "approvals": [] }
 ```
 
-**Expected (no approvals):** `state: "blocked"`, `approvalGates.length >= 5`,
-`budgetMeters.estimatedCostUsd == 0`, and **zero** Stripe/BytePlus/Exa/deploy
-calls logged. The agent shows the planned stages + budget upfront and stops at
-the first spend boundary. *This is the headline safety demo.*
+**Expected (no approvals):** `state: "blocked"`, `approvalGates.length >= 3`,
+`budgetMeters.estimatedCostUsd == 0`, and **zero** BytePlus/Stripe calls logged.
+The agent shows the planned stages + budget upfront and stops at the first spend
+boundary. *This is the headline safety demo.*
 
 ### 2. Approve gates and run the full loop
 
 Approve each spend gate, then **re-submit the same run with updated
-`approvals[]`**. This is the immediate high-ROI product path because the
-backend already accepts `approvals[]`; it does **not** require a separate
-browser `/approvals` route. The Director now executes:
+`approvals[]`**. The backend already accepts `approvals[]`. The Director now
+executes against **BytePlus via Cloudflare AI Gateway**:
 
-1. **Research** — Exa via AI Gateway → an Evidence_Pack of 3–50 cited
-   Source_Cards (every downstream claim references a `sourceId`; weak signal
-   < 3 sources halts before storyboard, never fabricates).
-2. **Storyboard** — BytePlus chat via AI Gateway → a `kgc-computing-flow/v1`
-   canvas doc with **exactly one node per planned shot**, rendered live
-   in-product by **embedding the knowgrph `doc-view` iframe after MCP-backed
-   orchestration** (the Vercel UI frames the `airvio.co/knowgrph` doc-view
-   scoped to this `runId`; reasoning failure falls back to a valid single-node
-   plan). agentic-canvas-os never reimplements the renderer — knowgrph owns the
-   canvas engine, the product embeds it.
-3. **Render** — dispatch per shot through the BytePlus/Strytree queue → one
-   R2 asset reference + one Credit_Ledger event per shot (keyless / over-budget
-   routes to a deterministic zero-spend mock provider).
-4. **Publish + Checkout** — Stripe checkout session created only when
-   `payment-action` is approved; payout settles only after explicit approval.
+1. **Storyboard** — BytePlus chat (`agnes/seed`) via Cloudflare AI Gateway → a
+   `kgc-computing-flow/v1` canvas doc with **exactly one node per planned shot**,
+   rendered live by **embedding the knowgrph `doc-view` iframe** (the
+   `airvio.co/knowgrph` doc-view scoped to this `runId`; reasoning failure falls
+   back to a valid single-node plan). knowgrph owns the canvas engine; the UI
+   embeds it.
+2. **Image** — BytePlus **`seedream`** via Cloudflare AI Gateway → one R2 image
+   asset per shot, surfaced in the **Image Rich Media Panel**.
+3. **Video** — BytePlus **`seedance`** via Cloudflare AI Gateway → one R2 video
+   asset per shot, surfaced in the **Video Rich Media Panel** (keyless /
+   over-budget routes to a deterministic zero-spend mock provider). Each
+   completed asset writes one Credit_Ledger event.
+4. **Checkout** — Stripe checkout session created only when `payment-action` is
+   approved; payout settles only after explicit approval.
 
-### 2b. Same URL, three budgets — one import, branching outcomes
+Once assets exist in R2, the image and video panels **replay from their R2 URLs
+via `<iframe>` with zero further LLM/model calls** (see Rich Media Panels below).
+
+### 2b. Same URL, three budgets, six media sub-branches
 
 Keep the imported reference fixed at
 [`youtu.be/77FAnT935IE`](https://youtu.be/77FAnT935IE) and vary **only** the
 `budgetUsd` dial. The Director reasons about cost-vs-quality and auto-selects the
-model tier and shot count to fit each cap — same input, three paid treatments.
-This is the on-demand monetization motion: *import once, pick your tier, pay &
-generate.*
+model tier per cap — **three budget branches**, each fanning into an **image
+(`seedream`)** and a **video (`seedance`)** sub-branch: **six media sub-branches
+total**, all BytePlus via Cloudflare AI Gateway.
+
+```mermaid
+flowchart LR
+  src["Import URL<br/>youtu.be/77FAnT935IE"] --> b5["$5 · quick cut"]
+  src --> b25["$25 · full promo"]
+  src --> b50["$50 · multi-variant"]
+  b5 --> i5["image · seedream-4-0-250828"]
+  b5 --> v5["video · seedance-1-0-pro-fast-251015"]
+  b25 --> i25["image · seedream-4-5-251128"]
+  b25 --> v25["video · seedance-1-5-pro-251215"]
+  b50 --> i50["image · seedream-5-0-260128"]
+  b50 --> v50["video · dreamina-seedance-2-0-260128"]
+  i5 & v5 & i25 & v25 & i50 & v50 --> r2[(R2 assets · replayable via iframe · no LLM)]
+```
 
 ```
-POST /api/run                   # same referenceUrl + brief, different budget
+POST airvio.co/knowgrph/mcp   # same referenceUrl + brief, different budget
 { "referenceUrl": "https://youtu.be/77FAnT935IE", "brief": "...", "budgetUsd": 5.00,  "approvals": [...] }
 { "referenceUrl": "https://youtu.be/77FAnT935IE", "brief": "...", "budgetUsd": 25.00, "approvals": [...] }
 { "referenceUrl": "https://youtu.be/77FAnT935IE", "brief": "...", "budgetUsd": 50.00, "approvals": [...] }
 ```
 
-| Budget dial | Agent-chosen treatment | Model tier (from `modelSelection`) | Shots |
-| **$5 — quick cut** | Fast single-pass vertical | `seedance-1-0-pro-fast-251015` | ~3 |
-| **$25 — full promo** | Full storyboard, standard render | `seedance-1-5-pro-251215` | ~6 |
-| **$50 — multi-variant** | Pro multi-variant fan-out | `dreamina-seedance-2-0-260128` | ~6 × variants |
+| Budget branch | Image sub-branch (`seedream`) | Video sub-branch (`seedance`) | Shots |
+| **$5 — quick cut** | `seedream-4-0-250828` | `seedance-1-0-pro-fast-251015` | ~3 |
+| **$25 — full promo** | `seedream-4-5-251128` | `seedance-1-5-pro-251215` | ~6 |
+| **$50 — multi-variant** | `seedream-5-0-260128` | `dreamina-seedance-2-0-260128` | ~6 × variants |
 
 Each branch reports a **real per-remix cost** reconciled from the Credit_Ledger
-(±0.01 USD) and a Stripe session sized to its tier. The triptych — one
-recognizable source clip, three agent-chosen outputs, three real costs —
-demonstrates **Autonomy & Decision-Making** (the agent picks treatments to honor
-the cap) and the TCO / token-economics thesis in a single frame. Over-budget or
-keyless branches route to the deterministic zero-spend mock provider, so the
-comparison is reproducible offline.
+(±0.01 USD) and a Stripe session sized to its tier. The triptych — one source
+clip, three budget branches, six BytePlus image/video sub-branches, three real
+costs — demonstrates **Autonomy & Decision-Making** (the agent picks the
+image+video model per cap) and the TCO / token-economics thesis in one frame.
+Over-budget or keyless branches route to the deterministic zero-spend mock
+provider, so the comparison is reproducible offline.
 
 ### 3. Read back the evidence
 
 ```
-POST /api/run response      ->  current Run_Manifest rendered in-session (immediate path)
-GET <AWS_FALLBACK_API>/health ->  200 within 5s (fallback liveness, discloses nothing sensitive)
+tools/call response          ->  current Run_Manifest rendered in-session (immediate path)
+GET airvio.co/knowgrph/mcp/health ->  200 within 5s (liveness, discloses nothing sensitive)
 ```
 
-> **Read-back note:** `GET <AWS_FALLBACK_API>/runs/{id}` is now implemented in the AWS
-> Agent-API as a durable manifest read-back path when `ARTIFACT_BUCKET` is
-> configured and the same browser session owns the run. Treat the remaining gap
-> as **deployed proof**, not local implementation: the live environment still
-> needs one captured end-to-end run showing persisted read-back from the hosted
-> frontend.
+> **Read-back note:** `GET airvio.co/knowgrph/mcp/runs/{id}` is the durable
+> manifest read-back path (Workers durable storage / R2) when the same session
+> owns the run. The remaining gap is **deployed proof**: capture one live
+> end-to-end run showing persisted read-back plus replayed image/video panels.
 
-### 4. One-command reachability gate (AC-7)
+### 4. One-command reachability gate (AC-8)
 
 ```
-AGENT_API_URL=<AWS_FALLBACK_API> MCP_ENDPOINT=https://airvio.co/knowgrph/mcp \
-FRONTEND_URL=<vercel-url> npm run runtime:verify
+MCP_ENDPOINT=https://airvio.co/knowgrph/mcp \
+FRONTEND_URL=https://airvio.co/knowgrph npm run runtime:verify
 ```
 
-Probes all three `/health`/reachability surfaces (5s-bounded) and emits a
-sample `demoPack.urls[]`. Also wired as CI: `.github/workflows/runtime-gate.yml`
-runs `runtime:test` + `runtime:verify` on a deploy trigger (endpoints from repo
+Probes the `/health`/reachability surfaces (5s-bounded) and emits a sample
+`demoPack.urls[]`. Also wired as CI: `.github/workflows/runtime-gate.yml` runs
+`runtime:test` + `runtime:verify` on a deploy trigger (endpoints from repo
 Variables / dispatch inputs — no hardcode).
+
+## Rich Media Panels — image and video (replay without LLM)
+
+The run surfaces media as **two distinct Rich Media Panels** on the canvas — one
+for the BytePlus **image** (`seedream`) and one for the BytePlus **video**
+(`seedance`). Both are backed by **Cloudflare R2** asset URLs written during the
+run; once written, the panels **replay purely by embedding the R2 URL in an
+`<iframe>`/media tag — no model, AI Gateway, or LLM call is made on replay**.
+This keeps re-viewing free and instant, and makes the demo reproducible.
+
+| Panel | Source field | BytePlus model | Replay element | Calls LLM on replay? |
+|---|---|---|---|---|
+| **Image Rich Media Panel** | `imageAssetUrl` (R2) | `seedream` | `<iframe>` / `<img>` | **No** |
+| **Video Rich Media Panel** | `videoUrl` (R2) | `seedance` | `<iframe>` / `<video controls>` | **No** |
+| Run Dashboard panel | `outputSrcDoc` | — | `<iframe srcdoc>` | No |
+| Canvas (doc-view) | run-scoped doc-view | — | `<iframe>` | No |
+
+R2 key scheme: `runs/{runId}/{stageId}/{shotId}.{ext}` served under
+`https://airvio.co/knowgrph/r2` (bucket `knowgrph-media`, account
+`170e89fdb8679ff2fcc2900e25ed04f4`).
+
+**Image panel embed (replay):**
+
+```html
+<!-- Rich Media Panel: image — replays the durable R2 asset, no LLM -->
+<iframe
+  class="rmp rmp--image"
+  src="https://airvio.co/knowgrph/r2/runs/<runId>/image/shot-1.png"
+  title="seedream image — run <runId>"
+  sandbox="allow-scripts allow-same-origin"
+  referrerpolicy="no-referrer"
+  loading="lazy"></iframe>
+```
+
+**Video panel embed (replay):**
+
+```html
+<!-- Rich Media Panel: video — replays the durable R2 asset, no LLM -->
+<iframe
+  class="rmp rmp--video"
+  src="https://airvio.co/knowgrph/r2/runs/<runId>/video/shot-1.mp4"
+  title="seedance video — run <runId>"
+  sandbox="allow-scripts allow-same-origin"
+  referrerpolicy="no-referrer"
+  loading="lazy"></iframe>
+<!-- or, for native controls without an extra document: -->
+<video class="rmp rmp--video" controls preload="metadata"
+  src="https://airvio.co/knowgrph/r2/runs/<runId>/video/shot-1.mp4"></video>
+```
+
+Replay rule: generation (a paid BytePlus call behind an Approval_Token) happens
+**once** per shot and writes the R2 asset + a Credit_Ledger event. Every
+subsequent view — re-opening the panel, sharing the run, a judge re-watching —
+reads the **static R2 URL** through the iframe and spends **nothing**. The
+Image and Video panels are independent nodes, so a run can show the still frame
+and the motion clip side by side.
+
+### Auto-save, Cloudflare persistence, and user replay
+
+**Persist-on-generate (why we copy to R2).** BytePlus ModelArk returns media on
+ephemeral URLs — the
+[image API](https://docs.byteplus.com/en/docs/ModelArk/1666945) returns a
+short-lived URL (or `b64_json`), and the
+[video API](https://docs.byteplus.com/en/docs/ModelArk/Video_Generation_API) is
+an **async task** (create → poll → temporary result URL). Those provider URLs
+expire (~24h), so they are never stored as the artifact. The moment a stage
+succeeds the control plane **copies the bytes into Cloudflare R2** and records
+only the durable R2 URL in the Run_Manifest + Credit_Ledger
+(`kgMediaPersistPolicy: "copy-on-generate"`, `kgProviderUrlEphemeral: true`).
+Image: request `b64_json` and `PUT` to R2; video: on task `succeeded`, stream
+the result to R2. Objects are content-addressed (`kgMediaDedupeBy: "sha256"`) so
+an identical re-run reuses the existing object — zero extra spend.
+
+**Auto-save.** The canvas auto-saves as the run progresses and the user edits —
+debounced (`kgAutoSaveDebounceMs: 1500`), triggered on node edits, run
+completion, approvals, and each asset-ready event (`kgAutoSaveOn`). Saves split
+by artifact type (`kgStorageTarget: "cloudflare"`, account
+`170e89fdb8679ff2fcc2900e25ed04f4`): the **document/manifest → D1**
+(`kgws:canonical-docs`, holding only R2 URLs + metadata, never blobs); the
+**media bytes → R2** bucket `knowgrph-media`, keyed
+`runs/{runId}/{stageId}/{shotId}.{ext}` and served under
+`https://airvio.co/knowgrph/r2`. Saves are idempotent (keyed by `runId` +
+content hash) and guarded by an `updatedAt`/revision check so a background
+autosave never clobbers a concurrent manual edit.
+
+**User replay (no LLM).** Because the manifest plus the durable R2 URLs are
+persisted, **any entitled user can re-open the saved run and replay** the Image
+and Video panels (`kgReplayEnabled: true`,
+`kgReplayMediaFields: ["imageAssetUrl", "videoUrl"]`) straight from R2 with **no
+model/LLM call** (`kgReplayFromStorageWithoutLlm: true`). Replay access is
+**run-scoped** (`kgReplayAccessScope: "run-entitled"`): the R2 route honors the
+same entitlement as `GET /runs/{id}` (signed/short-TTL URL or a Worker check) —
+the bucket is not public. Re-watching, sharing the link, or returning later all
+read the saved R2 URLs over R2's zero-egress path — zero new spend.
 
 ## Acceptance criteria — live evidence
 
 | AC | What the demo shows | `/goal` condition |
-| **AC-1** Live run, gated | Step 1: no approvals → halts, zero spend | `state "blocked", approvalGates>=5, estimatedCostUsd==0, no paid call logged` |
-| **AC-2** Research sourced | Evidence_Pack with cited sources | `evidencePack.sources>=3 and every claim.sourceCardIds non-empty` |
-| **AC-3** Storyboard on canvas | KGC shot-plan doc on the canvas | `parses kgc-computing-flow/v1 and flow.nodes==planned shots` |
-| **AC-4** Render reuses pipeline | R2 asset + ledger id per shot | `asset URL under knowgrph media bucket + credit-ledger event id` |
-| **AC-5** Sale + payout gated | Stripe session; payout only post-approval | `session id; settle_payout only if payment-action approved` |
-| **AC-6** Failure bounded | Injected tool failure → bounded retry / fail closed | `retryCount>=1 then complete or blocked, never exceeding maxIterations` |
-| **AC-7** Deployed live | Reachable Vercel frontend, working same-origin `/api/*` primary path, and AWS fallback `/health` in the demo pack | `demoPack.urls has a reachable frontend URL + AWS /health 200, and the primary product path succeeds through same-origin /api routes` |
+| **AC-1** Live run, gated | Step 1: no approvals → halts, zero spend | `state "blocked", approvalGates>=3, estimatedCostUsd==0, no paid call logged` |
+| **AC-2** Storyboard on canvas | KGC shot-plan doc on the canvas | `parses kgc-computing-flow/v1 and flow.nodes==planned shots` |
+| **AC-3** Image generated | BytePlus `seedream` R2 image per shot in the Image panel | `imageUrl under knowgrph R2 bucket + credit-ledger event id` |
+| **AC-4** Video generated | BytePlus `seedance` R2 video per shot in the Video panel | `videoUrl under knowgrph R2 bucket + credit-ledger event id` |
+| **AC-5** Replay without LLM | Re-open image/video panels; zero new model calls | `panel iframe src is the R2 URL; no AI Gateway call logged on replay` |
+| **AC-6** Sale + payout gated | Stripe session; payout only post-approval | `session id; settle_payout only if payment-action approved` |
+| **AC-7** Failure bounded | Injected tool failure → bounded retry / fail closed | `retryCount>=1 then complete or blocked, never exceeding maxIterations` |
+| **AC-8** Deployed live | Reachable Cloudflare UI + `airvio.co/knowgrph/mcp/health` 200 in the demo pack | `demoPack.urls has a reachable airvio.co/knowgrph URL + mcp /health 200` |
 
 ## Judging-dimension map
 
 | Dimension | Live evidence in this demo |
-| Agent Overview | Director + 4 stage harnesses behind one `knowgrph.video_remix.run` tool |
-| Autonomy & Decision-Making | Agents SDK `AgentWorkflow` agentic loop; weak-signal halt; budget-cap halt |
-| Actions & Tool Use | Exa search, BytePlus reasoning/media, knowgrph canvas (embedded in-product via `doc-view` iframe after MCP-backed orchestration), BytePlus render, Stripe checkout — all via Cloudflare AI Gateway |
-| Orchestration | Strict stage ordering + fan-out render queue + durable Run_Manifest persistence |
-| Human-in-the-Loop | 6 approval gates; single-use 15-min Approval_Tokens; auth never substitutes for approval |
+| Agent Overview | Director + stage harnesses behind one `knowgrph.video_remix.run` tool |
+| Autonomy & Decision-Making | Agents SDK `AgentWorkflow` agentic loop; per-budget image+video model selection; budget-cap halt |
+| Actions & Tool Use | BytePlus chat/image/video, knowgrph canvas (embedded via `doc-view` iframe), Stripe checkout — all via Cloudflare AI Gateway |
+| Orchestration | Strict stage ordering + per-shot image/video fan-out + durable Run_Manifest persistence |
+| Human-in-the-Loop | Approval gates; single-use 15-min Approval_Tokens; auth never substitutes for approval |
 | Failure Handling | Bounded exponential-backoff retry, fail-closed `blocked` with a failure record; degraded provider error |
-| Demo & Presentation | 7-section Demo_Pack with reachable URLs, citations, the agent's shot plan shown live on the embedded knowgrph canvas, rendered asset, Stripe session |
+| Demo & Presentation | Demo_Pack with reachable URLs, the shot plan on the embedded canvas, and replayable image + video Rich Media Panels (R2, no LLM) |
 
 ## Spend isolation & safety (what judges can verify)
 
-- **Stack boundary (R11):** AWS and Vercel hold **no** model provider keys, never
-  call paid models directly, and never bypass an approval gate. Enforced by
-  static secret-scan smoke tests across all tiers.
+- **Stack boundary (R11):** the Cloudflare control plane holds the BytePlus +
+  Stripe keys; model/media calls route only through Cloudflare AI Gateway, and
+  no paid action bypasses an approval gate. Enforced by static secret-scan smoke
+  tests.
 - **Auth ≠ approval (R15.9):** a valid Auth_Token gates *access*; it never
   authorizes spend — every paid action still requires a fresh Approval_Token.
-- **Token economics:** every model call emits a Cost_Log via AI Gateway; the
-  Director aggregates into Budget_Meters; the Credit_Ledger reconciles within
-  ±0.01 USD or flags a discrepancy (both records preserved).
+- **Token economics:** every BytePlus call emits a Cost_Log via Cloudflare AI
+  Gateway; the Director aggregates into Budget_Meters; the Credit_Ledger
+  reconciles within ±0.01 USD or flags a discrepancy (both records preserved).
+- **Replay is free:** image/video panels replay from static R2 URLs via iframe;
+  no model/AI-Gateway call is made on replay, so re-watching never spends.
 - **Fail closed:** un-configured deploys return HTTP 501 rather than making an
-  accidental live call; live clients activate only when their credentials are
-  present (`KNOWGRPH_LIVE_CLIENTS` / `EXA_API_KEY` / endpoint vars).
-- **Canvas embed isolation:** the in-product canvas frames the
-  `airvio.co/knowgrph` doc-view across an origin boundary, so the doc-view route
-  must allow framing only from the Vercel origin (`frame-ancestors`) and must
-  scope the embedded doc to the authenticated `runId`. The intended deployed
-  policy is that the embedded canvas honors the same entitlement boundary as the
-  authenticated run-readback path; treat this as a required runtime guarantee to
-  prove, not as a claim already established by this doc alone.
+  accidental live call; the BytePlus client activates only when its key is
+  present (`KNOWGRPH_LIVE_CLIENTS` includes `byteplus`).
+- **Canvas embed isolation:** the in-product canvas and the R2 media panels frame
+  `airvio.co/knowgrph` content; the routes allow framing only from the
+  `airvio.co` origin (`frame-ancestors`) and scope each asset to the
+  authenticated `runId` — the same entitlement boundary as the run-readback
+  path. Treat this as a required runtime guarantee to prove.
+
+## MainPanel Integrations — BytePlus API Key (default)
+
+The MainPanel Integrations surface configures the **default model/media
+provider**: **BytePlus**, authorized by the **BytePlus API key** and routed
+through **Cloudflare AI Gateway**. One key powers all three modalities — chat
+(`agnes/seed`), image (`seedream`), and video (`seedance`).
+
+### What the BytePlus key does (default provider)
+
+The **BytePlus API key** is the default credential for the whole pipeline. It is:
+
+- **Held server-side in the Cloudflare control plane only** (a Worker secret via
+  `wrangler secret put BYTEPLUS_API_KEY`); never in the UI bundle, never logged
+  (R11/R15.7).
+- The single key behind **chat, image, and video** — selected per the
+  `modelSelection` frontmatter (`agnes/seed` for text, `seedream` for image,
+  `seedance` for video).
+- Routed through **Cloudflare AI Gateway**, which emits the `Cost_Log` the
+  Director aggregates into `Budget_Meters` and reconciles against the
+  Credit_Ledger (±0.01 USD).
+
+```
+knowgrph McpAgent (Cloudflare) ──BYTEPLUS_API_KEY──▶ Cloudflare AI Gateway ──▶ BytePlus
+   stage: storyboard  → agnes/seed (chat)
+   stage: image       → seedream  → R2 image asset
+   stage: video       → seedance  → R2 video asset
+   stage: checkout    → Stripe (payment-action gate)
+```
+
+### Provider routing — which call produces each output
+
+| Output | Stage / BytePlus model | Routed through | Persisted to | Credential | Gate |
+|---|---|---|---|---|---|
+| Storyboard (canvas doc) | `…storyboard` · `agnes/seed` | Cloudflare AI Gateway | D1 manifest | `BYTEPLUS_API_KEY` | paid-model-call |
+| Image | `…image` · `seedream` ([API](https://docs.byteplus.com/en/docs/ModelArk/1666945)) | Cloudflare AI Gateway | **R2** (copy-on-generate) | `BYTEPLUS_API_KEY` | render-action |
+| Video | `…video` · `seedance` ([API](https://docs.byteplus.com/en/docs/ModelArk/Video_Generation_API)) | Cloudflare AI Gateway | **R2** (copy-on-generate) | `BYTEPLUS_API_KEY` | render-action |
+| Stripe checkout/payout | `…checkout` | knowgrph payment worker | D1 manifest | `STRIPE_*` | payment-action |
+
+The image API returns `b64_json`/a short-lived URL; the video API is async
+(create task → poll → temporary URL). Both provider URLs expire, so the control
+plane **copies the bytes into R2 on success** and stores only the durable R2 URL
+(see Auto-save, Cloudflare persistence, and user replay above).
+
+### Operator setup (one-time, Cloudflare control plane)
+
+```bash
+# BytePlus is the default provider; one key for chat + image + video.
+wrangler secret put BYTEPLUS_API_KEY        --config cloudflare/workers/knowgrph-mcp/wrangler.toml
+wrangler secret put STRIPE_SECRET_KEY       --config cloudflare/workers/knowgrph-mcp/wrangler.toml
+wrangler secret put STRIPE_WEBHOOK_SECRET   --config cloudflare/workers/knowgrph-mcp/wrangler.toml
+# Create the R2 media bucket (account 170e89fdb8679ff2fcc2900e25ed04f4) and bind it.
+wrangler r2 bucket create knowgrph-media
+# In wrangler.toml: [[r2_buckets]] binding = "MEDIA_BUCKET", bucket_name = "knowgrph-media"
+# Map a custom domain so assets serve under https://airvio.co/knowgrph/r2/*
+```
+
+Then set, in the Worker env (`wrangler.toml` `[vars]` or dashboard):
+
+1. `KNOWGRPH_LIVE_CLIENTS = byteplus,stripe` — else the harnesses fall back to
+   the deterministic **zero-spend mock**, which is exactly why no real image/
+   video/payment appears.
+2. `AI_GATEWAY_ID` — the Cloudflare AI Gateway the BytePlus calls route through.
+3. `MEDIA_BUCKET` R2 binding + `MEDIA_BASE_URL = https://airvio.co/knowgrph/r2`
+   (durable asset URLs; the control plane copies BytePlus output here on
+   generate).
+4. `MCP_ENDPOINT = https://airvio.co/knowgrph/mcp` (self/forwarder reference).
+5. Redeploy: `npm run mcp:worker:deploy`. Confirm
+   `GET airvio.co/knowgrph/mcp/health` → 200.
+
+### Troubleshooting "unable to generate"
+
+| Symptom | Root cause | Fix |
+|---|---|---|
+| **No image (`seedream`)** | `BYTEPLUS_API_KEY` unset or `byteplus` missing from `KNOWGRPH_LIVE_CLIENTS` → mock fallback; or `render-action` gate unapproved → `blocked`. | Set the key + `KNOWGRPH_LIVE_CLIENTS=byteplus,stripe`; approve `render-action` and re-submit `approvals[]`. |
+| **No video (`seedance`)** | Same key/gate cause for the async video task; or polling never reached `succeeded`. | Same fix; on `succeeded` the bytes are copied to R2 and `videoUrl` returns in the Run_Manifest for the Video panel. |
+| **Asset shows then 404s later** | The manifest stored the **ephemeral BytePlus URL** instead of the R2 copy. | Ensure copy-on-generate is enabled (`kgMediaPersistPolicy: "copy-on-generate"`); the manifest must hold the `airvio.co/knowgrph/r2/...` URL, never the provider URL. |
+| **No Stripe payment** | No live Stripe key, or `payment-action` unapproved (auth ≠ approval). | Set `STRIPE_SECRET_KEY`/`STRIPE_WEBHOOK_SECRET`; approve `payment-action`; ensure the webhook matches the created session. |
+| **Cloudflare AI Gateway not running** | `AI_GATEWAY_ID` unset, or the BytePlus key not bound to the gateway. | Set `AI_GATEWAY_ID`; confirm the BytePlus key is configured for that gateway in the Cloudflare dashboard. |
+
+**Mental model:** generation is a paid BytePlus call behind an Approval_Token. A
+missing key or an unapproved gate yields the intended fail-safe — a zero-spend
+mock or a `blocked` Run_Manifest — which reads as "nothing generated" but is
+correct safety behavior. Once an asset exists in R2, the image/video panels
+**replay via iframe with no further BytePlus/AI-Gateway call**.
 
 ## Immediate remediation checklist
 
 - **Docs first:** keep the demo truthful about what is already live, what is
   in-session only, and what is a next seam.
-- **Web next:** mint the auth session in-browser, then convert approval clicks
-  into re-submitted `approvals[]` on `POST /run`.
-- **AWS next:** supply `MCP_ENDPOINT` and CORS-ready response headers from the
-  deploy path so the browser can reach the live forwarder directly.
-- **AgentCore after live proof:** keep AgentCore as the additive AWS MCP surface,
-  then align it with the current sample-native CLI workflow.
+- **MainPanel Integrations first:** set `BYTEPLUS_API_KEY` (+ `STRIPE_*`) as
+  Cloudflare Worker secrets and `KNOWGRPH_LIVE_CLIENTS=byteplus,stripe` +
+  `AI_GATEWAY_ID` in the Worker env (see
+  [MainPanel Integrations](#mainpanel-integrations--byteplus-api-key-default)).
+  BytePlus is the default provider for chat, image, and video.
+- **Canvas + panels next:** confirm the `doc-view` canvas and the image/video
+  Rich Media Panels embed via iframe from `airvio.co/knowgrph` and replay R2
+  assets with no further model call.
+- **Live proof:** capture one end-to-end run (storyboard → image → video →
+  checkout) with the image/video panels replaying from R2.
 
 ## Reproduce locally (network-free, no credentials)
 
@@ -992,10 +798,10 @@ npm run runtime:test     # full suite: unit + property-based + smoke, determinis
 
 This exercises the approval-gate invariant, the live-without-approvals halt,
 dry-run zero-spend, the Kgc_Document round-trip, ledger/budget reconciliation,
-bounded-retry fail-closed, the Demo_Pack assembler, and the Agent-API
-auth/authorization logic — all with mocked providers. The same harnesses accept
-live drop-in clients (Exa / BytePlus / Strytree / Stripe) when credentials are
-wired, with the deterministic mocks as the test default.
+bounded-retry fail-closed, the Demo_Pack assembler, and the auth/authorization
+logic — all with mocked providers. The same harnesses accept the live BytePlus /
+Stripe clients when credentials are wired, with the deterministic mocks as the
+test default.
 
 ## Demo pack (7 sections)
 
@@ -1004,10 +810,10 @@ each section marked `verified` only when its URL/artifact is reachable:
 
 ```
 Demo_Pack {
-  urls: [{ url, kind }]            // >=1 frontend + >=1 Agent_Api endpoint
-                                   //   kinds: "frontend" | "agent_api" | "canvas"
-                                   //   canvas: airvio.co/knowgrph doc-view, runId-scoped;
-                                   //   verified only when the embedded Kgc_Document canvas is reachable
+  urls: [{ url, kind }]            // kinds: "frontend" | "mcp" | "canvas" | "image" | "video"
+                                   //   canvas: airvio.co/knowgrph doc-view, runId-scoped
+                                   //   image/video: R2 asset URLs, replayable via iframe (no LLM)
+                                   //   verified only when each URL is reachable + run-scoped
   sections: [                      // one per dimension, non-empty
     Agent Overview, Autonomy & Decision-Making, Actions & Tool Use,
     Orchestration, Human-in-the-Loop, Failure Handling, Demo & Presentation
@@ -1015,59 +821,47 @@ Demo_Pack {
 }
 ```
 
-The `canvas` URL is the live, runId-scoped knowgrph canvas doc-view embedded in
-the product. It counts as a verified artifact only when the deployed doc-view
-route is reachable and proven to enforce the intended run-scoped entitlement
-boundary, so the embedded canvas backs the **Actions & Tool Use** and
-**Demo & Presentation** sections with a real URL.
+The `canvas`, `image`, and `video` URLs are live, runId-scoped artifacts embedded
+in the product. Each counts as verified only when its `airvio.co/knowgrph` route
+is reachable and run-scoped, so the embedded canvas plus the replayable image and
+video panels back the **Actions & Tool Use** and **Demo & Presentation** sections
+with real URLs.
 
 ## Topology & publish chain
 
-The demo runs over two cooperating surfaces: the **`knowgrph` control plane**
-(holds all model keys, owns every paid action) and **`agentic-canvas-os`** (the
-user-reachable product tier — Vercel frontend + Vercel Agent-API primary, with
-AWS Agent-API as fallback — that holds no keys and forwards every spend-bearing
-call to knowgrph over MCP).
+Everything runs on **Cloudflare**: the **`knowgrph` control plane** (Workers
+`McpAgent` — holds the BytePlus + Stripe keys, owns every paid action) and the
+**product surface** at `airvio.co/knowgrph` (Pages/Workers UI, `doc-view` canvas,
+and R2-served image/video assets). The UI authenticates the caller, forwards
+`knowgrph.video_remix.run` over MCP, and embeds the canvas + media panels — it
+holds no keys itself.
 
-### MCP connection (`knowgrph` ↔ `agentic-canvas-os`)
+### MCP connection (UI ↔ knowgrph control plane)
 
 ```mermaid
 flowchart LR
-  acos["agentic-canvas-os<br/>(Vercel UI + Agent-API · primary; AWS Lambda · fallback · no model keys)"]
-  kg["knowgrph control plane<br/>(McpAgent on Cloudflare Workers · holds all keys)"]
-  acos -->|"MCP Streamable HTTP · knowgrph.video_remix.run"| kg
-  kg -->|"Run_Manifest + Demo_Pack"| acos
-  kg -.->|"embedded Kgc_Document canvas (doc-view at airvio.co/knowgrph, runId-scoped)"| acos
+  ui["Cloudflare UI (airvio.co/knowgrph)<br/>doc-view canvas + image/video panels · no keys"]
+  kg["knowgrph control plane<br/>(McpAgent on Cloudflare Workers · holds BytePlus + Stripe keys)"]
+  ui -->|"MCP Streamable HTTP · knowgrph.video_remix.run"| kg
+  kg -->|"Run_Manifest + Demo_Pack (image/video R2 URLs)"| ui
+  kg -.->|"embedded canvas + R2 image/video (airvio.co/knowgrph, runId-scoped)"| ui
 ```
 
-- The product authenticates the caller through the primary same-origin Vercel
-  Agent-API routes, then forwards `knowgrph.video_remix.run` to the `McpAgent`
-  at
-  **`airvio.co/knowgrph/mcp`** over MCP Streamable HTTP.
-- The browser retries against the AWS Agent-API only when the primary Vercel
-  path is unavailable or returns `5xx`; AWS is the fallback/proof surface, not
-  the default browser route.
-- **Canvas is consumed, not rebuilt:** the storyboard stage emits a
-  `Kgc_Document` (`kgc-computing-flow/v1`); agentic-canvas-os embeds the live
-  knowgrph canvas doc-view (scoped to the `runId`) inside the Vercel UI rather
-  than reimplementing the renderer. knowgrph owns the canvas engine; the product
-  is the OS shell around it.
+- The UI authenticates the caller, then forwards `knowgrph.video_remix.run` to
+  the `McpAgent` at **`airvio.co/knowgrph/mcp`** over MCP Streamable HTTP.
+- The browser embeds the run-scoped `doc-view` canvas and the R2 image/video
+  panels from `airvio.co/knowgrph`; replays read static R2 URLs with no model
+  call.
+- **Canvas + media are consumed, not rebuilt:** the storyboard stage emits a
+  `Kgc_Document` (`kgc-computing-flow/v1`) and the image/video stages write R2
+  assets; the UI embeds them via iframe rather than reimplementing the renderer
+  or re-generating media. knowgrph owns the engine + the BytePlus/Stripe keys.
 - Auth gates *access*; it never substitutes for an Approval_Token at a spend
-  boundary. All model spend stays inside knowgrph, routed through Cloudflare AI
-  Gateway.
-- **Packaging:** the connector contracts are authored and proven in the
-  **`knowgrph` monorepo** (control plane + shared contracts + reference product
-  tiers in one repo), which stays the SSOT. The **`agentic-canvas-os` repo is now
-  realized** as the product split: a keyless product where **Vercel is the
-  primary/default host** (UI + Agent-API serverless functions) and **AWS Lambda
-  is the fallback host** (the frontend fails over to it only on a primary 5xx /
-  transport error). Both hosts share one platform-neutral Agent-API core that
-  (a) forwards `knowgrph.video_remix.run` to `airvio.co/knowgrph/mcp` over a
-  keyless MCP Streamable HTTP client and (b) lets the UI embed the run-scoped
-  knowgrph canvas doc-view. It holds **no model keys** and calls no paid model
-  directly. The product tier mirrors only the minimal seams it needs (the MCP
-  forward + the canvas doc-view URL scheme) and keeps them in step with the
-  knowgrph SSOT. See
+  boundary. All BytePlus/Stripe spend stays inside knowgrph, routed through
+  Cloudflare AI Gateway.
+- **Packaging:** the connector contracts live in the **`knowgrph` monorepo**
+  (control plane + UI + shared contracts), the SSOT, all deployed to Cloudflare.
+  See
   [`knowgrph/docs/knowgrph-acos-topology-decision.md`](../../knowgrph/docs/knowgrph-acos-topology-decision.md).
 
 ### Dev → Prod → Cloudflare
@@ -1086,6 +880,8 @@ Prod (artifact mirror)  /Users/huijoohwee/Documents/GitHub/huijoohwee/content/kn
         │  npm run pages:deploy-cloudflare   (operator-gated)
         ▼
 Cloudflare (live)       airvio.co · airvio.co/knowgrph · airvio.co/knowgrph/mcp
+                        Cloudflare AI Gateway routes knowgrph's BytePlus + Stripe calls
+                        (BYTEPLUS_API_KEY + STRIPE_* are Cloudflare Worker secrets)
 ```
 
 Implementation, tests, and docs land in Dev first; no route-specific fixes are
