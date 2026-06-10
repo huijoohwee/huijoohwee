@@ -110,11 +110,11 @@ flow:
       input_execution_risk_score: {key: input_execution_risk_score, type: number, value: 44}
       input_forecast_years: {key: input_forecast_years, type: number, value: 5}
       input_format: {key: input_format, type: string, value: "structured markdown decision memo with scenarios"}
-      input_initial_revenue: {key: input_initial_revenue, type: number, value: 420000}
-      input_investment_amount: {key: input_investment_amount, type: number, value: 250000}
+      input_initial_revenue: {key: input_initial_revenue, type: number, value: 42}
+      input_investment_amount: {key: input_investment_amount, type: number, value: 25000000}
       input_market_risk_score: {key: input_market_risk_score, type: number, value: 38}
       input_metric_label: {key: input_metric_label, type: string, value: "minimum acceptable risk-adjusted NPV"}
-      input_metric_target: {key: input_metric_target, type: number, value: 350000}
+      input_metric_target: {key: input_metric_target, type: number, value: 35}
       input_operating_margin_pct: {key: input_operating_margin_pct, type: number, value: 18}
       input_probability_success_pct: {key: input_probability_success_pct, type: number, value: 62}
       input_query: {key: input_query, type: textarea, value: "Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence."}
@@ -126,7 +126,6 @@ flow:
       input_tone: {key: input_tone, type: string, value: "direct"}
       input_working_capital_pct_revenue: {key: input_working_capital_pct_revenue, type: number, value: 4}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Reusable universal investment-decision source widget with neutral request, context, audience, constraints, evidence, DCF assumptions, and decision-quality scores."}
-      semanticKey: {key: semanticKey, type: string, value: "computing-flow:source:decision-input"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
@@ -140,57 +139,68 @@ flow:
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_query":"template_text_signal","input_context":"template_text_signal","input_audience":"template_text_signal","input_format":"template_text_signal","input_constraints":"template_text_signal","input_evidence":"template_text_signal","input_tone":"template_text_signal","input_metric_label":"template_text_signal","input_metric_target":"template_number_signal","input_investment_amount":"template_number_signal","input_forecast_years":"template_number_signal","input_initial_revenue":"template_number_signal","input_revenue_growth_pct":"template_number_signal","input_operating_margin_pct":"template_number_signal","input_tax_rate_pct":"template_number_signal","input_discount_rate_pct":"template_number_signal","input_terminal_growth_pct":"template_number_signal","input_terminal_multiple":"template_number_signal","input_capex_pct_revenue":"template_number_signal","input_working_capital_pct_revenue":"template_number_signal","input_probability_success_pct":"template_number_signal","input_strategic_fit_score":"template_number_signal","input_execution_risk_score":"template_number_signal","input_market_risk_score":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "templateCompute"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%230f172a%22%20text-anchor%3D%22middle%22%3ENO-GO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20-%2425%2C127%20vs%20%24350%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2043%2F100%20-%20confidence%2079%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20-%24101%2C577%20-%20Upside%20%24123%2C861%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      "graph:degree": {key: "graph:degree", type: number, value: 27}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 24}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23f59e0b%22%20text-anchor%3D%22middle%22%3ECONDITIONAL%20GO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20%2415%2C053%20vs%20%2435%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2069%2F100%20-%20confidence%2082%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20%24106%20-%20Upside%20%2436%2C094%3C%2Ftext%3E%3C%2Fsvg%3E"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for universal go-no-go scoring, DCF scenarios, risk-adjusted NPV, SVG summary, and Recharts rich-media decision panels."}
       output:
         key: output
         type: markdown
         value: |
-          ## NO-GO
+          ## CONDITIONAL GO
+          
           Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence.
-          The current economics, downside resilience, or risk profile do not justify commitment yet.
-          **Decision score:** 43/100
-          **Decision confidence:** 79/100
-          **minimum acceptable risk-adjusted NPV:** $350,000
-          **Base risk-adjusted NPV:** -$25,127
-          **Downside risk-adjusted NPV:** -$101,577
+          
+          **Decision score:** 69/100
+          **Decision confidence:** 82/100
+          **minimum acceptable risk-adjusted NPV:** $35,000
+          **Base risk-adjusted NPV:** $15,053
+          **Downside risk-adjusted NPV:** $106
+          
           ### Structured verdict
-          - Recommendation: NO-GO
-          - Economics score: 0/100
-          - Resilience score: 41/100
+          - Recommendation: CONDITIONAL GO
+          - Economics score: 46/100
+          - Resilience score: 100/100
           - Strategic fit score: 68/100
           - Evidence score: 100/100
           - Risk pressure: 41/100
+          
           ### DCF base case
-          - Initial investment: $250,000
+          - Initial investment: $25
           - Forecast years: 5
-          - Initial revenue: $420,000
+          - Initial revenue: $42,000
           - Revenue growth: 14%
           - Operating margin: 18%
           - Discount rate: 12%
           - Terminal multiple: 7x
+          
           ### Scenario stress
-          - Downside: -$101,577 at 50%
-          - Base: -$25,127 at 62%
-          - Upside: $123,861 at 70%
+          - Downside: $106 at 37%
+          - Base: $15,053 at 62%
+          - Upside: $36,094 at 71%
+          
           ### Conditions to clear
-          - Rework the downside case until risk-adjusted NPV stays above zero.
-          - Preserve the current evidence trail and close the remaining unknowns.
-          - Maintain current risk controls and monitor market and execution drift.
+          - Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.
+          
           ### Next diligence
           - Validate demand, pricing, margin, capex, and working-capital assumptions.
-          - Confirm the initiative still clears the hurdle under delay, weaker adoption, or cost creep.
+          - Confirm the initiative clears the hurdle under delay, weaker adoption, or cost creep.
           - Replace weak assumptions with observed evidence before irreversible spend.
+          
           **Audience:** sponsor, operator, reviewer
           **Format:** structured markdown decision memo with scenarios
           **Tone:** direct
           **Context:** Use the same decision flow for any initiative where time, capital, engineering effort, or operating resources are being committed.
           **Constraints:** Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable.
           **Evidence:** Replace with the strongest facts, unknowns, dependencies, diligence notes, operating assumptions, and file or project specific evidence.
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chart{height:260px}.panel h2{margin:0 0 10px;font-size:13px}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:12px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\" data-kg-recharts=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">NO-GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">-$25,127</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$350,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">43/100</p></div></div><div id=\"decisionChartRoot\" class=\"grid\"></div><p class=\"note\">Universal, neutral decision-support dashboard. Current raw target: 350000 target. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Rework the downside case until risk-adjusted NPV stays above zero.</li><li>Preserve the current evidence trail and close the remaining unknowns.</li><li>Maintain current risk controls and monitor market and execution drift.</li></ul></main><script type=\"module\">import React from\"https://esm.sh/react@18?bundle\";import { createRoot } from\"https://esm.sh/react-dom@18/client?bundle\";import { ResponsiveContainer,BarChart,Bar,Cell,CartesianGrid,XAxis,YAxis,Tooltip,ReferenceLine,RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar } from\"https://esm.sh/recharts@3?bundle&deps=react@18,react-dom@18\";const payload={\"decision\":\"NO-GO\",\"title\":\"NO-GO - -$25,127 base risk-adjusted NPV\",\"metricLabel\":\"minimum acceptable risk-adjusted NPV\",\"metricTarget\":350000,\"decisionScore\":43,\"confidenceScore\":79,\"scenarios\":[{\"label\":\"Downside\",\"npv\":-101577},{\"label\":\"Base\",\"npv\":-25127},{\"label\":\"Upside\",\"npv\":123861}],\"pillars\":[{\"label\":\"Economics\",\"value\":0},{\"label\":\"Resilience\",\"value\":41},{\"label\":\"Strategic fit\",\"value\":68},{\"label\":\"Evidence\",\"value\":100}],\"conditions\":[\"Rework the downside case until risk-adjusted NPV stays above zero.\",\"Preserve the current evidence trail and close the remaining unknowns.\",\"Maintain current risk controls and monitor market and execution drift.\"]};const root=document.getElementById(\"decisionChartRoot\");if(root){const h=React.createElement,scenarioData=payload.scenarios.map((item,index)=>({label:item.label,npv:item.npv,fill:[\"#ef4444\",\"#0ea5e9\",\"#22c55e\"][index]||\"#0ea5e9\"})),pillarData=payload.pillars.map(item=>({label:item.label,value:item.value})),scenarioCells=scenarioData.map((item,index)=>h(Cell,{key:\"s-\"+index,fill:item.fill}));const app=h(React.Fragment,null,h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Scenario stress\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(BarChart,{data:scenarioData,margin:{top:12,right:12,left:0,bottom:20}},h(CartesianGrid,{stroke:\"#e2e8f0\",vertical:false}),h(XAxis,{dataKey:\"label\",tick:{fill:\"#475569\",fontSize:11}}),h(YAxis,{tick:{fill:\"#475569\",fontSize:11},tickFormatter:value=>\"$\"+Number(value).toLocaleString(\"en-US\")}),h(Tooltip,{formatter:value=>[\"$\"+Number(value).toLocaleString(\"en-US\"),payload.metricLabel]}),h(ReferenceLine,{y:payload.metricTarget,stroke:\"#f59e0b\",strokeDasharray:\"6 4\"}),h(Bar,{dataKey:\"npv\",name:payload.metricLabel,radius:[8,8,0,0]},scenarioCells))))),h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Decision pillars\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(RadarChart,{data:pillarData,outerRadius:\"72%\"},h(PolarGrid,{stroke:\"#cbd5e1\"}),h(PolarAngleAxis,{dataKey:\"label\",tick:{fill:\"#334155\",fontSize:11}}),h(PolarRadiusAxis,{angle:30,domain:[0,100],tickCount:6}),h(Tooltip,{formatter:value=>[value,\"score\"]}),h(Radar,{dataKey:\"value\",name:\"Decision pillars\",stroke:\"#0ea5e9\",fill:\"rgba(14,165,233,0.18)\",fillOpacity:1}))))));createRoot(root).render(app)}</script></body></html>"}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:90px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:96px;text-align:right;color:#0f172a;font-weight:600}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:8px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">CONDITIONAL GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">$15,053</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$35,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">69/100</p></div></div><section class=\"panel\"><h2>Scenario stress (risk-adjusted NPV)</h2><div class=\"row\"><span class=\"rl\">Downside</span><span class=\"rt\"><span class=\"rb\" style=\"width:0%;background:#ef4444\"></span></span><span class=\"rv\">$106</span></div><div class=\"row\"><span class=\"rl\">Base</span><span class=\"rt\"><span class=\"rb\" style=\"width:42%;background:#0ea5e9\"></span></span><span class=\"rv\">$15,053</span></div><div class=\"row\"><span class=\"rl\">Upside</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#22c55e\"></span></span><span class=\"rv\">$36,094</span></div></section><section class=\"panel\"><h2>Decision pillars</h2><div class=\"row\"><span class=\"rl\">Economics</span><span class=\"rt\"><span class=\"rb\" style=\"width:46%;background:#0ea5e9\"></span></span><span class=\"rv\">46/100</span></div><div class=\"row\"><span class=\"rl\">Resilience</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div><div class=\"row\"><span class=\"rl\">Strategic fit</span><span class=\"rt\"><span class=\"rb\" style=\"width:68%;background:#0ea5e9\"></span></span><span class=\"rv\">68/100</span></div><div class=\"row\"><span class=\"rl\">Evidence</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div></section><p class=\"note\">Universal, neutral decision-support dashboard. Current raw target: 35 target. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.</li></ul></main></body></html>"}
       run_status: {key: run_status, type: string, value: "idle"}
       semanticKey: {key: semanticKey, type: string, value: "computing-flow:compute:decision-summary"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 120}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 30.784609690826528}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
       compute:
@@ -198,203 +208,88 @@ flow:
         type: string
         value: |
           inputs => {
-            const read = key => String(inputs?.[key] ?? "").trim()
-            const readNumber = (key, fallback, min, max) => {
-              const parsed = Number(read(key))
-              const safe = Number.isFinite(parsed) ? parsed : fallback
-              const lower = Number.isFinite(min) ? Math.max(min, safe) : safe
-              return Number.isFinite(max) ? Math.min(max, lower) : lower
-            }
-            const clamp = (value, min, max) => Math.max(min, Math.min(max, value))
-            const escapeHtml = value => String(value || "").replace(/[&<>"']/g, ch => {
-              if (ch === "&") return "&amp;"
-              if (ch === "<") return "&lt;"
-              if (ch === ">") return "&gt;"
-              if (ch.charCodeAt(0) === 34) return "&quot;"
-              return "&#39;"
-            })
-            const money = value => {
-              const amount = Math.round(Number(value) || 0)
-              return (amount < 0 ? "-" : "") + "$" + Math.abs(amount).toLocaleString("en-US")
-            }
-            const percent = value => Math.round((Number(value) || 0) * 10) / 10 + "%"
-            const query = read("input_query")
-            const context = read("input_context")
-            const audience = read("input_audience")
-            const format = read("input_format")
-            const constraints = read("input_constraints")
-            const evidence = read("input_evidence")
-            const tone = read("input_tone")
-            const metricLabel = read("input_metric_label") || "minimum acceptable risk-adjusted NPV"
-            const metricTarget = readNumber("input_metric_target", 350000, 1, null)
-            const investment = readNumber("input_investment_amount", 250000, 0, null)
-            const forecastYears = Math.round(readNumber("input_forecast_years", 5, 1, 15))
-            const initialRevenue = readNumber("input_initial_revenue", 420000, 0, null)
-            const revenueGrowthPct = readNumber("input_revenue_growth_pct", 14, -80, 200)
-            const operatingMarginPct = readNumber("input_operating_margin_pct", 18, -100, 100)
-            const taxRatePct = readNumber("input_tax_rate_pct", 20, 0, 60)
-            const discountRatePct = readNumber("input_discount_rate_pct", 12, 0.1, 80)
-            const terminalGrowthPct = readNumber("input_terminal_growth_pct", 3, -20, 20)
-            const terminalMultiple = readNumber("input_terminal_multiple", 7, 0, 50)
-            const capexPctRevenue = readNumber("input_capex_pct_revenue", 6, 0, 100)
-            const workingCapitalPctRevenue = readNumber("input_working_capital_pct_revenue", 4, 0, 100)
-            const probabilitySuccessPct = readNumber("input_probability_success_pct", 62, 0, 100)
-            const strategicFitScore = readNumber("input_strategic_fit_score", 68, 0, 100)
-            const executionRiskScore = readNumber("input_execution_risk_score", 44, 0, 100)
-            const marketRiskScore = readNumber("input_market_risk_score", 38, 0, 100)
-            const discountRate = discountRatePct / 100
-            const terminalGrowth = terminalGrowthPct / 100
-            const evidenceSignals = [query, context, evidence, constraints].filter(Boolean).length
-            const scenarioModel = (label, revenueFactor, marginDelta, probabilityDelta) => {
-              const rows = []
-              let revenue = initialRevenue * revenueFactor
-              let pvTotal = 0
-              for (let year = 1; year <= forecastYears; year += 1) {
-                if (year > 1) revenue = revenue * (1 + revenueGrowthPct / 100)
-                const operatingMargin = clamp(operatingMarginPct + marginDelta, -100, 100)
-                const operatingProfit = revenue * operatingMargin / 100
-                const tax = Math.max(0, operatingProfit) * taxRatePct / 100
-                const capex = revenue * capexPctRevenue / 100
-                const workingCapital = revenue * workingCapitalPctRevenue / 100
-                const freeCashFlow = operatingProfit - tax - capex - workingCapital
-                const discountedFreeCashFlow = freeCashFlow / Math.pow(1 + discountRate, year)
-                pvTotal += discountedFreeCashFlow
-                rows.push({ year, revenue, freeCashFlow, discountedFreeCashFlow })
-              }
-              const terminalBase = rows.length ? rows[rows.length - 1].freeCashFlow : 0
-              const terminalValueByMultiple = terminalBase * terminalMultiple
-              const terminalValueByGrowth = discountRate > terminalGrowth
-                ? terminalBase * (1 + terminalGrowth) / (discountRate - terminalGrowth)
-                : terminalValueByMultiple
-              const terminalValue = terminalMultiple > 0 ? terminalValueByMultiple : terminalValueByGrowth
-              const terminalPv = terminalValue / Math.pow(1 + discountRate, forecastYears)
-              const baseNpv = pvTotal + terminalPv - investment
-              const probabilityPct = clamp(probabilitySuccessPct + probabilityDelta, 5, 95)
-              const riskAdjustedNpv = baseNpv * (probabilityPct / 100)
-              return { label, baseNpv, riskAdjustedNpv, probabilityPct, rows }
-            }
-            const downside = scenarioModel("Downside", 0.82, -4, -12)
-            const base = scenarioModel("Base", 1, 0, 0)
-            const upside = scenarioModel("Upside", 1.18, 4, 8)
-            const scenarios = [downside, base, upside]
-            const riskPressure = clamp((executionRiskScore * 0.55) + (marketRiskScore * 0.45), 0, 100)
-            const economicsScore = clamp(50 + ((base.riskAdjustedNpv - metricTarget) / Math.max(metricTarget, 1) * 55), 0, 100)
-            const resilienceScore = clamp(50 + (downside.riskAdjustedNpv / Math.max(metricTarget, 1) * 30), 0, 100)
-            const evidenceScore = clamp((evidenceSignals * 18) + (evidence ? 18 : 0) + (constraints ? 10 : 0), 0, 100)
-            const confidenceScore = Math.round(clamp((evidenceScore * 0.45) + (base.probabilityPct * 0.55), 0, 100))
-            const decisionScore = Math.round((economicsScore * 0.38) + (resilienceScore * 0.22) + (strategicFitScore * 0.2) + (evidenceScore * 0.2))
-            const hardStop = downside.riskAdjustedNpv < 0 && riskPressure > 65
-            const decision = hardStop
-              ? "NO-GO"
-              : base.riskAdjustedNpv >= metricTarget && downside.riskAdjustedNpv >= 0 && decisionScore >= 70
-                ? "GO"
-                : base.riskAdjustedNpv >= metricTarget * 0.55 && decisionScore >= 55
-                  ? "CONDITIONAL GO"
-                  : "NO-GO"
-            const rationale = decision === "GO"
-              ? "The base case clears the target, the downside case stays investable, and the blended score supports commitment."
-              : decision === "CONDITIONAL GO"
-                ? "The initiative shows promise but still needs evidence, risk reduction, or economics improvement before full commitment."
-                : "The current economics, downside resilience, or risk profile do not justify commitment yet."
-            const conditions = [
-              downside.riskAdjustedNpv < 0
-                ? "Rework the downside case until risk-adjusted NPV stays above zero."
-                : "Keep downside protection above zero risk-adjusted NPV before scaling commitment.",
-              evidenceSignals < 3
-                ? "Add stronger evidence and decision-specific facts before irreversible spend."
-                : "Preserve the current evidence trail and close the remaining unknowns.",
-              riskPressure > 55
-                ? "Reduce execution or market risk before approving full rollout."
-                : "Maintain current risk controls and monitor market and execution drift."
-            ]
-            const output = [
-              "## " + decision,
-              "",
-              query || "Structured universal investment decision.",
-              "",
-              rationale,
-              "",
-              "**Decision score:** " + decisionScore + "/100",
-              "**Decision confidence:** " + confidenceScore + "/100",
-              "**" + metricLabel + ":** " + money(metricTarget),
-              "**Base risk-adjusted NPV:** " + money(base.riskAdjustedNpv),
-              "**Downside risk-adjusted NPV:** " + money(downside.riskAdjustedNpv),
-              "",
-              "### Structured verdict",
-              "- Recommendation: " + decision,
-              "- Economics score: " + Math.round(economicsScore) + "/100",
-              "- Resilience score: " + Math.round(resilienceScore) + "/100",
-              "- Strategic fit score: " + Math.round(strategicFitScore) + "/100",
-              "- Evidence score: " + Math.round(evidenceScore) + "/100",
-              "- Risk pressure: " + Math.round(riskPressure) + "/100",
-              "",
-              "### DCF base case",
-              "- Initial investment: " + money(investment),
-              "- Forecast years: " + forecastYears,
-              "- Initial revenue: " + money(initialRevenue),
-              "- Revenue growth: " + percent(revenueGrowthPct),
-              "- Operating margin: " + percent(operatingMarginPct),
-              "- Discount rate: " + percent(discountRatePct),
-              "- Terminal multiple: " + terminalMultiple + "x",
-              "",
-              "### Scenario stress",
-              "- Downside: " + money(downside.riskAdjustedNpv) + " at " + percent(downside.probabilityPct),
-              "- Base: " + money(base.riskAdjustedNpv) + " at " + percent(base.probabilityPct),
-              "- Upside: " + money(upside.riskAdjustedNpv) + " at " + percent(upside.probabilityPct),
-              "",
-              "### Conditions to clear",
-              ...conditions.map(item => "- " + item),
-              "",
-              "### Next diligence",
-              "- Validate demand, pricing, margin, capex, and working-capital assumptions.",
-              "- Confirm the initiative still clears the hurdle under delay, weaker adoption, or cost creep.",
-              evidence
-                ? "- Replace weak assumptions with observed evidence before irreversible spend."
-                : "- Add actual evidence before irreversible spend.",
-              "",
-              audience ? "**Audience:** " + audience : "",
-              format ? "**Format:** " + format : "",
-              tone ? "**Tone:** " + tone : "",
-              context ? "**Context:** " + context : "",
-              constraints ? "**Constraints:** " + constraints : "",
-              evidence ? "**Evidence:** " + evidence : ""
-            ].filter(Boolean).join("\n")
-            const title = decision + " - " + money(base.riskAdjustedNpv) + " base risk-adjusted NPV"
-            const svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 220\">" +
-              "<rect width=\"640\" height=\"220\" fill=\"#f8fafc\"/>" +
-              "<text x=\"320\" y=\"66\" font-family=\"system-ui\" font-size=\"26\" font-weight=\"700\" fill=\"#0f172a\" text-anchor=\"middle\">" + escapeHtml(decision) + "</text>" +
-              "<text x=\"320\" y=\"104\" font-family=\"system-ui\" font-size=\"14\" fill=\"#475569\" text-anchor=\"middle\">Base risk-adjusted NPV " + escapeHtml(money(base.riskAdjustedNpv)) + " vs " + escapeHtml(money(metricTarget)) + "</text>" +
-              "<text x=\"320\" y=\"136\" font-family=\"system-ui\" font-size=\"13\" fill=\"#64748b\" text-anchor=\"middle\">Decision score " + decisionScore + "/100 - confidence " + confidenceScore + "/100</text>" +
-              "<text x=\"320\" y=\"168\" font-family=\"system-ui\" font-size=\"12\" fill=\"#64748b\" text-anchor=\"middle\">Downside " + escapeHtml(money(downside.riskAdjustedNpv)) + " - Upside " + escapeHtml(money(upside.riskAdjustedNpv)) + "</text>" +
-              "</svg>"
-            const imageUrl = "data:image/svg+xml," + encodeURIComponent(svg)
-            const chartPayload = JSON.stringify({
-              decision,
-              title,
-              metricLabel,
-              metricTarget,
-              decisionScore,
-              confidenceScore,
-              scenarios: scenarios.map(item => ({
-                label: item.label,
-                npv: Math.round(item.riskAdjustedNpv)
-              })),
-              pillars: [
-                { label: "Economics", value: Math.round(economicsScore) },
-                { label: "Resilience", value: Math.round(resilienceScore) },
-                { label: "Strategic fit", value: Math.round(strategicFitScore) },
-                { label: "Evidence", value: Math.round(evidenceScore) }
-              ],
-              conditions
-            }).replace(/</g, "\\u003c")
-            const imToken = String.fromCharCode(105,109,112,111,114,116)
-            const docToken = ["doc","ument"].join("")
-            const outputSrcDoc = "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">" +
-              "<style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chart{height:260px}.panel h2{margin:0 0 10px;font-size:13px}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:12px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style>" +
-              "</head><body><main data-kg-investment-decision-panel=\"1\" data-kg-recharts=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">" + escapeHtml(decision) + "</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">" + escapeHtml(money(base.riskAdjustedNpv)) + "</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">" + escapeHtml(money(metricTarget)) + "</p></div><div><p class=\"label\">Score</p><p class=\"value\">" + decisionScore + "/100</p></div></div><div id=\"decisionChartRoot\" class=\"grid\"></div>" +
-              "<p class=\"note\">Universal, neutral decision-support dashboard. Current raw target: " + escapeHtml(String(metricTarget)) + " target. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\">" + conditions.map(item => "<li>" + escapeHtml(item) + "</li>").join("") + "</ul>" +
-              "</main><script type=\"module\">" + imToken + " React from\"https://esm.sh/react@18?bundle\";" + imToken + " { createRoot } from\"https://esm.sh/react-dom@18/client?bundle\";" + imToken + " { ResponsiveContainer,BarChart,Bar,Cell,CartesianGrid,XAxis,YAxis,Tooltip,ReferenceLine,RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar } from\"https://esm.sh/recharts@3?bundle&deps=react@18,react-dom@18\";const payload=" + chartPayload + ";const root=" + docToken + ".getElementById(\"decisionChartRoot\");if(root){const h=React.createElement,scenarioData=payload.scenarios.map((item,index)=>({label:item.label,npv:item.npv,fill:[\"#ef4444\",\"#0ea5e9\",\"#22c55e\"][index]||\"#0ea5e9\"})),pillarData=payload.pillars.map(item=>({label:item.label,value:item.value})),scenarioCells=scenarioData.map((item,index)=>h(Cell,{key:\"s-\"+index,fill:item.fill}));const app=h(React.Fragment,null,h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Scenario stress\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(BarChart,{data:scenarioData,margin:{top:12,right:12,left:0,bottom:20}},h(CartesianGrid,{stroke:\"#e2e8f0\",vertical:false}),h(XAxis,{dataKey:\"label\",tick:{fill:\"#475569\",fontSize:11}}),h(YAxis,{tick:{fill:\"#475569\",fontSize:11},tickFormatter:value=>\"$\"+Number(value).toLocaleString(\"en-US\")}),h(Tooltip,{formatter:value=>[\"$\"+Number(value).toLocaleString(\"en-US\"),payload.metricLabel]}),h(ReferenceLine,{y:payload.metricTarget,stroke:\"#f59e0b\",strokeDasharray:\"6 4\"}),h(Bar,{dataKey:\"npv\",name:payload.metricLabel,radius:[8,8,0,0]},scenarioCells))))),h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Decision pillars\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(RadarChart,{data:pillarData,outerRadius:\"72%\"},h(PolarGrid,{stroke:\"#cbd5e1\"}),h(PolarAngleAxis,{dataKey:\"label\",tick:{fill:\"#334155\",fontSize:11}}),h(PolarRadiusAxis,{angle:30,domain:[0,100],tickCount:6}),h(Tooltip,{formatter:value=>[value,\"score\"]}),h(Radar,{dataKey:\"value\",name:\"Decision pillars\",stroke:\"#0ea5e9\",fill:\"rgba(14,165,233,0.18)\",fillOpacity:1}))))));createRoot(root).render(app)}</" + "script></body></html>"
-            return { output, imageUrl, outputSrcDoc }
+          const rn = (k,d) => { const v = Number(inputs && inputs[k]); return Number.isFinite(v) ? v : d; };
+          const rs = (k,d) => { const v = String((inputs && inputs[k]) || '').trim(); return v || d; };
+          const inv = rn('input_investment_amount', 250000);
+          const yrs = Math.max(1, Math.min(20, rn('input_forecast_years', 5)));
+          const rev0 = rn('input_initial_revenue', 42) * 1000;
+          const g = rn('input_revenue_growth_pct', 14) / 100;
+          const om = rn('input_operating_margin_pct', 18) / 100;
+          const tx = rn('input_tax_rate_pct', 20) / 100;
+          const dr = rn('input_discount_rate_pct', 12) / 100;
+          const tg = rn('input_terminal_growth_pct', 3) / 100;
+          const tm = rn('input_terminal_multiple', 7);
+          const cx = rn('input_capex_pct_revenue', 6) / 100;
+          const wc = rn('input_working_capital_pct_revenue', 4) / 100;
+          const ps = rn('input_probability_success_pct', 62) / 100;
+          const sf = rn('input_strategic_fit_score', 68);
+          const er = rn('input_execution_risk_score', 44);
+          const mr = rn('input_market_risk_score', 38);
+          const mt = rn('input_metric_target', 35);
+          const ml = rs('input_metric_label', 'minimum acceptable risk-adjusted NPV');
+          const query = rs('input_query', '');
+          const cxt = rs('input_context', '');
+          const audience = rs('input_audience', '');
+          const fmt = rs('input_format', '');
+          const constraints = rs('input_constraints', '');
+          const evidence = rs('input_evidence', '');
+          const tone = rs('input_tone', '');
+          const dcf = (gm, omm, dro) => {
+          let pv = 0; let revY = rev0;
+          for (let y = 1; y <= yrs; y++) {
+          revY *= (1 + g * gm);
+          const fcf = revY * (om * omm) * (1 - tx) - revY * cx - revY * wc;
+          pv += fcf / Math.pow(1 + dr + dro, y);
+          }
+          const termRev = revY * (1 + tg);
+          const termFcf = termRev * (om * omm) * (1 - tx) - termRev * cx - termRev * wc;
+          const tv = tm > 0 ? termFcf * tm : termFcf / Math.max(0.001, dr + dro - tg);
+          return Math.round(pv + tv / Math.pow(1 + dr + dro, yrs) - inv);
+          };
+          const npvBase = dcf(1, 1, 0);
+          const npvDown = dcf(0.6, 0.7, 0.04);
+          const npvUp = dcf(1.3, 1.2, -0.02);
+          const raBase = Math.round(npvBase * ps);
+          const raDown = Math.round(npvDown * (ps * 0.6));
+          const raUp = Math.round(npvUp * Math.min(0.99, ps * 1.15));
+          const thr = mt * 1000;
+          const econ = raBase >= thr ? 100 : raBase >= 0 ? Math.round((raBase / thr) * 60 + 20) : 0;
+          const resil = raDown >= 0 ? 100 : Math.max(0, Math.round(100 + (raDown / (inv || 1)) * 100));
+          const riskP = Math.round((er + mr) / 2);
+          const evid = evidence.length > 40 ? 100 : evidence.length > 10 ? 60 : evidence.length > 0 ? 30 : 0;
+          const dec = Math.round(econ * 0.35 + resil * 0.15 + sf * 0.2 + evid * 0.15 + (100 - riskP) * 0.15);
+          const conf = Math.min(100, Math.round(50 + ps * 30 + Math.min(20, evidence.length / 10)));
+          const verdict = dec >= 70 && raBase >= thr ? 'GO' : dec >= 45 && raBase >= -thr * 0.5 ? 'CONDITIONAL GO' : 'NO-GO';
+          const money = (n) => { const s = '$' + Math.round(Math.abs(n)).toLocaleString('en-US'); return n < 0 ? '-' + s : s; };
+          const esc = (v) => String(v || '').replace(/[&<>"']/g, c => c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c === '"' ? '&quot;' : '&#39;');
+          const cond = [];
+          if (raBase < thr) cond.push('Rework the downside case until risk-adjusted NPV clears the ' + ml + ' threshold.');
+          if (resil < 50) cond.push('Stress-test the downside scenario; base resilience is below the acceptable floor.');
+          if (evid < 60) cond.push('Strengthen the evidence base before committing irreversible spend.');
+          if (riskP > 55) cond.push('Reduce execution and market risk exposure before proceeding.');
+          if (cond.length === 0) cond.push('Maintain current risk controls and monitor market and execution drift.');
+          const pillars = [['Economics', econ], ['Resilience', resil], ['Strategic fit', sf], ['Evidence', evid]];
+          const scen = [['Downside', raDown, '#ef4444'], ['Base', raBase, '#0ea5e9'], ['Upside', raUp, '#22c55e']];
+          const lines = ['## ' + verdict, '', query, '', '**Decision score:** ' + dec + '/100', '**Decision confidence:** ' + conf + '/100', '**' + ml + ':** ' + money(thr), '**Base risk-adjusted NPV:** ' + money(raBase), '**Downside risk-adjusted NPV:** ' + money(raDown), '', '### Structured verdict', '- Recommendation: ' + verdict, '- Economics score: ' + econ + '/100', '- Resilience score: ' + resil + '/100', '- Strategic fit score: ' + sf + '/100', '- Evidence score: ' + evid + '/100', '- Risk pressure: ' + riskP + '/100', '', '### DCF base case', '- Initial investment: ' + money(inv), '- Forecast years: ' + yrs, '- Initial revenue: ' + money(rev0), '- Revenue growth: ' + Math.round(g * 100) + '%', '- Operating margin: ' + Math.round(om * 100) + '%', '- Discount rate: ' + Math.round(dr * 100) + '%', '- Terminal multiple: ' + tm + 'x', '', '### Scenario stress', '- Downside: ' + money(raDown) + ' at ' + Math.round(ps * 60) + '%', '- Base: ' + money(raBase) + ' at ' + Math.round(ps * 100) + '%', '- Upside: ' + money(raUp) + ' at ' + Math.round(Math.min(99, ps * 115)) + '%', '', '### Conditions to clear'];
+          for (let i = 0; i < cond.length; i++) lines.push('- ' + cond[i]);
+          lines.push('', '### Next diligence', '- Validate demand, pricing, margin, capex, and working-capital assumptions.', '- Confirm the initiative clears the hurdle under delay, weaker adoption, or cost creep.', '- Replace weak assumptions with observed evidence before irreversible spend.', '', '**Audience:** ' + audience, '**Format:** ' + fmt, '**Tone:** ' + tone);
+          if (cxt) lines.push('**Context:** ' + cxt);
+          if (constraints) lines.push('**Constraints:** ' + constraints);
+          if (evidence) lines.push('**Evidence:** ' + evidence);
+          const output = lines.join('\n');
+          const vc = verdict === 'GO' ? '#22c55e' : verdict === 'CONDITIONAL GO' ? '#f59e0b' : '#ef4444';
+          const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220"><rect width="640" height="220" fill="#f8fafc"/><text x="320" y="66" font-family="system-ui" font-size="26" font-weight="700" fill="' + vc + '" text-anchor="middle">' + esc(verdict) + '</text><text x="320" y="104" font-family="system-ui" font-size="14" fill="#475569" text-anchor="middle">Base risk-adjusted NPV ' + esc(money(raBase)) + ' vs ' + esc(money(thr)) + '</text><text x="320" y="136" font-family="system-ui" font-size="13" fill="#64748b" text-anchor="middle">Decision score ' + dec + '/100 - confidence ' + conf + '/100</text><text x="320" y="168" font-family="system-ui" font-size="12" fill="#64748b" text-anchor="middle">Downside ' + esc(money(raDown)) + ' - Upside ' + esc(money(raUp)) + '</text></svg>';
+          const imageUrl = 'data:image/svg+xml,' + encodeURIComponent(svg);
+          const maxAbs = Math.max(1, Math.abs(raDown), Math.abs(raBase), Math.abs(raUp));
+          let bars = '';
+          for (let i = 0; i < scen.length; i++) { const w = Math.round((Math.abs(scen[i][1]) / maxAbs) * 100); bars += '<div class="row"><span class="rl">' + esc(scen[i][0]) + '</span><span class="rt"><span class="rb" style="width:' + w + '%;background:' + scen[i][2] + '"></span></span><span class="rv">' + esc(money(scen[i][1])) + '</span></div>'; }
+          let pbar = '';
+          for (let i = 0; i < pillars.length; i++) { const w = Math.max(0, Math.min(100, pillars[i][1])); pbar += '<div class="row"><span class="rl">' + esc(pillars[i][0]) + '</span><span class="rt"><span class="rb" style="width:' + w + '%;background:#0ea5e9"></span></span><span class="rv">' + pillars[i][1] + '/100</span></div>'; }
+          let cli = '';
+          for (let i = 0; i < cond.length; i++) cli += '<li>' + esc(cond[i]) + '</li>';
+          const css = 'body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:90px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:96px;text-align:right;color:#0f172a;font-weight:600}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:8px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}';
+          const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>' + css + '</style></head><body><main data-kg-investment-decision-panel="1"><div class="kpi"><div><p class="label">Decision</p><p class="value">' + esc(verdict) + '</p></div><div><p class="label">Base NPV</p><p class="value">' + esc(money(raBase)) + '</p></div><div><p class="label">Threshold</p><p class="value">' + esc(money(thr)) + '</p></div><div><p class="label">Score</p><p class="value">' + dec + '/100</p></div></div><section class="panel"><h2>Scenario stress (risk-adjusted NPV)</h2>' + bars + '</section><section class="panel"><h2>Decision pillars</h2>' + pbar + '</section><p class="note">Universal, neutral decision-support dashboard. Current raw target: ' + mt + ' target. Replace placeholders and assumptions before acting.</p><ul class="conditions">' + cli + '</ul></main></body></html>';
+          return { output: output, imageUrl: imageUrl, outputSrcDoc: outputSrcDoc };
           }
     - id: {key: id, type: string, value: "panel_text_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
@@ -456,6 +351,188 @@ flow:
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+    - id: {key: id, type: string, value: "flow-diagram-template_gitgraph-source"}
+      type: {key: type, type: string, value: "FlowDiagramSource"}
+      label: {key: label, type: string, value: "gitgraph flow diagram source"}
+      position: {key: position, type: object, value: {"x":1180,"y":-240}}
+      handles: {key: handles, type: object, value: {"source":["diagramSource"]}}
+      diagramKey: {key: diagramKey, type: string, value: "template_gitgraph"}
+      diagramKind: {key: diagramKind, type: string, value: "gitgraph"}
+      diagramSource:
+        key: diagramSource
+        type: string
+        value: |
+          gitGraph
+            commit id: "source_input" tag: "decision intake"
+            branch intake_contract
+            checkout intake_contract
+            commit id: "input_query" tag: "initiative"
+            commit id: "input_context" tag: "scope"
+            commit id: "input_evidence" tag: "evidence"
+            checkout main
+            branch economics_contract
+            checkout economics_contract
+            commit id: "input_investment_amount"
+            commit id: "input_initial_revenue"
+            commit id: "input_revenue_growth_pct"
+            commit id: "input_discount_rate_pct"
+            commit id: "input_metric_target"
+            checkout main
+            branch decision_quality
+            checkout decision_quality
+            commit id: "input_constraints"
+            commit id: "input_audience"
+            commit id: "input_format"
+            commit id: "input_tone"
+            checkout main
+            branch risk_contract
+            checkout risk_contract
+            commit id: "input_probability_success_pct"
+            commit id: "input_strategic_fit_score"
+            commit id: "input_execution_risk_score"
+            commit id: "input_market_risk_score"
+            checkout main
+            merge intake_contract id: "merge_intake_contract"
+            merge economics_contract id: "merge_economics_contract"
+            merge decision_quality id: "merge_decision_quality"
+            merge risk_contract id: "merge_risk_contract"
+            commit id: "compute_summary" tag: "go no-go decision" type: HIGHLIGHT
+            branch rich_media_panels
+            checkout rich_media_panels
+            commit id: "panel_text_output"
+            commit id: "panel_image_output"
+            commit id: "panel_chart_output"
+            checkout main
+            merge rich_media_panels id: "merge_rich_media_panels"
+            commit id: "run_body_tokens" tag: "response"
+          
+      diagramTitle: {key: diagramTitle, type: string, value: "gitgraph flow diagram"}
+      diagramType: {key: diagramType, type: string, value: "mermaid_gitgraph"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{},"out":{"diagramSource":"flow_diagram_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:flow-diagram-template_gitgraph-source"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      output:
+        key: output
+        type: string
+        value: |
+          gitGraph
+            commit id: "source_input" tag: "decision intake"
+            branch intake_contract
+            checkout intake_contract
+            commit id: "input_query" tag: "initiative"
+            commit id: "input_context" tag: "scope"
+            commit id: "input_evidence" tag: "evidence"
+            checkout main
+            branch economics_contract
+            checkout economics_contract
+            commit id: "input_investment_amount"
+            commit id: "input_initial_revenue"
+            commit id: "input_revenue_growth_pct"
+            commit id: "input_discount_rate_pct"
+            commit id: "input_metric_target"
+            checkout main
+            branch decision_quality
+            checkout decision_quality
+            commit id: "input_constraints"
+            commit id: "input_audience"
+            commit id: "input_format"
+            commit id: "input_tone"
+            checkout main
+            branch risk_contract
+            checkout risk_contract
+            commit id: "input_probability_success_pct"
+            commit id: "input_strategic_fit_score"
+            commit id: "input_execution_risk_score"
+            commit id: "input_market_risk_score"
+            checkout main
+            merge intake_contract id: "merge_intake_contract"
+            merge economics_contract id: "merge_economics_contract"
+            merge decision_quality id: "merge_decision_quality"
+            merge risk_contract id: "merge_risk_contract"
+            commit id: "compute_summary" tag: "go no-go decision" type: HIGHLIGHT
+            branch rich_media_panels
+            checkout rich_media_panels
+            commit id: "panel_text_output"
+            commit id: "panel_image_output"
+            commit id: "panel_chart_output"
+            checkout main
+            merge rich_media_panels id: "merge_rich_media_panels"
+            commit id: "run_body_tokens" tag: "response"
+          
+      render_on: {key: render_on, type: array, value: []}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+    - id: {key: id, type: string, value: "flow-diagram-template_gitgraph-compute"}
+      type: {key: type, type: string, value: "TextGeneration"}
+      label: {key: label, type: string, value: "gitgraph flow diagram compute"}
+      position: {key: position, type: object, value: {"x":1560,"y":-240}}
+      handles: {key: handles, type: object, value: {"target":["diagramSource"],"source":["outputSrcDoc"]}}
+      diagramKey: {key: diagramKey, type: string, value: "template_gitgraph"}
+      diagramKind: {key: diagramKind, type: string, value: "gitgraph"}
+      diagramTitle: {key: diagramTitle, type: string, value: "gitgraph flow diagram"}
+      diagramType: {key: diagramType, type: string, value: "mermaid_gitgraph"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"diagramSource":"flow_diagram_html"},"out":{"outputSrcDoc":"flow_diagram_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:flow-diagram-template_gitgraph-compute"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      output: {key: output, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      render_on: {key: render_on, type: array, value: []}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      compute:
+        key: compute
+        type: string
+        value: |
+          (inputs,context)=>{
+          const p=context&&context.node&&context.node.properties&&typeof context.node.properties=="object"?context.node.properties:{},k=String(p.diagramKind||"mermaid"),t=String(p.diagramTitle||k||"Diagram"),s=String(inputs.diagramSource||"").trim(),e=v=>String(v||"").replace(/[&<>"']/g,c=>c=="&"?"&amp;":c=="<"?"&lt;":c==">"?"&gt;":c=='"'?"&quot;":"&#39;"),ls=s.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+          const pick=(r,n)=>{const o=[];for(let i=0;i<ls.length&&o.length<n;i++){const m=ls[i].match(r);if(m&&m[1])o.push(String(m[1]).replace(/^["']|["']$/g,""))}return o},branches=pick(/^branch\s+([^\s{]+)/i,8),merges=pick(/^merge\s+([^\s{]+)/i,8),critical=ls.filter(l=>/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(l)).slice(0,8),tasks=ls.filter(l=>l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)).slice(0,8);
+          const services=pick(/^service\s+([^\s(]+)/i,12),groups=pick(/^group\s+([^\s(]+)/i,8),events=ls.filter(l=>/\b(?:evt|event)\b/i.test(l)).slice(0,12),commands=ls.filter(l=>/\b(?:cmd|command)\b/i.test(l)).slice(0,12),processors=ls.filter(l=>/\b(?:pcr|processor)\b/i.test(l)).slice(0,8);
+          const tm={},pt=v=>{const x=String(v||"").replace(/^["']|["']$/g,"").trim();if(!x||x.length>80)return;const n=x.toLowerCase();if(!tm[n])tm[n]=x};ls.forEach(l=>{l.replace(/id:"([^"]+)"/g,(_m,x)=>(pt(x),""));l.replace(/\b(?:branch|checkout|switch|merge)\s+([^\s{]+)/gi,(_m,x)=>(pt(x),""));pt(l.includes(":")&&!/^title\b|^dateFormat\b|^section\b/i.test(l)?l.split(":")[0].trim():"")});const terms=Object.values(tm).slice(0,12);
+          const sum=k=="gitgraph"?"Parallel branches: "+(branches.length?branches.join(", "):"main")+". Merges: "+(merges.length?merges.join(", "):"none")+".":k=="gantt"?"Timeline tasks: "+tasks.length+". Critical path tasks: "+(critical.length?critical.map(l=>l.split(":")[0].trim()).join(", "):"none declared")+".":k=="architecture"?"Architecture services: "+(services.length?services.join(", "):"none parsed")+". Groups: "+(groups.length?groups.join(", "):"none parsed")+".":k=="eventmodeling"?"Event model commands: "+commands.length+". Events: "+events.length+". Processors: "+processors.length+".":"Mermaid diagram lines: "+ls.length+".",ts="First-class terms: "+(terms.length?terms.join(", "):"none parsed")+".";
+          const li=(a,z)=>a.length?a.map(x=>"<li>"+e(x)+"</li>").join(""):"<li>"+e(z)+"</li>",txt=(x,y,v)=>"<text x='"+x+"' y='"+y+"' font-size='12' fill='currentColor'>"+e(v)+"</text>";
+          const git=()=>{const lanes=["main"];branches.forEach(b=>{if(!lanes.includes(b))lanes.push(b)});let h=70+lanes.length*32,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/>";lanes.forEach((b,i)=>{const y=42+i*32;svg+=txt(14,y,b)+"<line x1='150' y1='"+y+"' x2='610' y2='"+y+"' stroke='"+(i?"#84cc16":"#2563eb")+"' stroke-width='5'/><circle cx='"+(190+i*42)+"' cy='"+y+"' r='8' fill='#2563eb'/>"});merges.forEach((m,i)=>{svg+="<path d='M"+(250+i*54)+" 42 V"+(42+(lanes.length-1)*32)+"' stroke='#0f766e' stroke-width='3'/>"+txt(260+i*54,28,m)});return svg+"</svg>"};
+          const gant=()=>{const rows=(tasks.length?tasks:critical).slice(0,10);let h=70+Math.max(1,rows.length)*28,svg="<svg data-kg-flow-diagram-chart='1' viewBox='0 0 640 "+h+"'><rect width='640' height='"+h+"' fill='white'/><line x1='150' y1='36' x2='610' y2='36' stroke='#64748b'/>";rows.forEach((r,i)=>{const name=r.split(":")[0].trim(),crit=/(^|[:,\s])crit(ical)?([,\s]|$)/i.test(r),y=58+i*28,x=170+i*18,w=210+(crit?90:0);svg+=txt(14,y,name)+"<rect x='"+x+"' y='"+(y-14)+"' width='"+w+"' height='18' rx='3' fill='"+(crit?"#ef4444":"#6366f1")+"'/><text x='"+(x+6)+"' y='"+(y-1)+"' font-size='10' fill='white'>"+e(name)+"</text>"});return svg+"</svg>"};
+          const chart=k=="gitgraph"?git():k=="gantt"?gant():"",detail=k=="gitgraph"?"<section><h2>Parallel lanes</h2><ul>"+li(branches,"main")+"</ul><h2>Merge points</h2><ul>"+li(merges,"none declared")+"</ul></section>":k=="gantt"?"<section><h2>Critical path</h2><ul>"+li(critical.map(l=>l.split(":")[0].trim()),"none declared")+"</ul><h2>Tasks</h2><ul>"+li(tasks.map(l=>l.split(":")[0].trim()),"none declared")+"</ul></section>":k=="architecture"?"<section><h2>Services</h2><ul>"+li(services,"none parsed")+"</ul><h2>Groups</h2><ul>"+li(groups,"none parsed")+"</ul></section>":k=="eventmodeling"?"<section><h2>Commands</h2><ul>"+li(commands,"none parsed")+"</ul><h2>Events</h2><ul>"+li(events,"none parsed")+"</ul></section>":"";
+          return{output:"~~~mermaid\n"+s+"\n~~~\n\n"+sum+"\n"+ts,outputSrcDoc:"<main data-kg-flow-diagram=\"1\" data-kg-flow-diagram-kind=\""+e(k)+"\"><h1>"+e(t)+"</h1>"+chart+"<p>"+e(sum)+"</p><section><h2>First-class terms</h2><p>"+(terms.length?terms.map(x=>"<span>"+e(x)+"</span> ").join(""):"<span>none parsed</span>")+"</p></section>"+detail+"<pre data-kg-mermaid-source=\"1\">"+e(s)+"</pre></main>"}
+          }
+    - id: {key: id, type: string, value: "flow-diagram-template_gitgraph-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "gitgraph flow diagram Rich Media Panel"}
+      position: {key: position, type: object, value: {"x":1940,"y":-240}}
+      handles: {key: handles, type: object, value: {"target":["outputSrcDoc"]}}
+      diagramKey: {key: diagramKey, type: string, value: "template_gitgraph"}
+      diagramKind: {key: diagramKind, type: string, value: "gitgraph"}
+      diagramTitle: {key: diagramTitle, type: string, value: "gitgraph flow diagram"}
+      diagramType: {key: diagramType, type: string, value: "mermaid_gitgraph"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"flow_diagram_html"},"out":{}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      render_on: {key: render_on, type: array, value: []}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
   edges:
     - {"id":"edge_input_query_to_compute","source":"source_input","sourceHandle":"input_query","target":"compute_summary","targetHandle":"input_query","label":"input_query","type":"template_text_signal"}
     - {"id":"edge_input_context_to_compute","source":"source_input","sourceHandle":"input_context","target":"compute_summary","targetHandle":"input_context","label":"input_context","type":"template_text_signal"}
@@ -484,6 +561,8 @@ flow:
     - {"id":"edge_compute_to_text_panel","source":"compute_summary","sourceHandle":"output","target":"panel_text_output","targetHandle":"output","label":"text output","type":"template_text_signal"}
     - {"id":"edge_compute_to_image_panel","source":"compute_summary","sourceHandle":"imageUrl","target":"panel_image_output","targetHandle":"imageUrl","label":"image output","type":"template_image_signal"}
     - {"id":"edge_compute_to_chart_panel","source":"compute_summary","sourceHandle":"outputSrcDoc","target":"panel_chart_output","targetHandle":"outputSrcDoc","label":"chart output","type":"template_chart_html"}
+    - {"id":"flow-diagram-flow-diagram-template_gitgraph-source-to-flow-diagram-template_gitgraph-compute-2469748475","source":"flow-diagram-template_gitgraph-source","sourceHandle":"diagramSource","target":"flow-diagram-template_gitgraph-compute","targetHandle":"diagramSource","label":"diagram source","type":"flow_diagram_html"}
+    - {"id":"flow-diagram-flow-diagram-template_gitgraph-compute-to-flow-diagram-template_gitgraph-panel-1157783108","source":"flow-diagram-template_gitgraph-compute","sourceHandle":"outputSrcDoc","target":"flow-diagram-template_gitgraph-panel","targetHandle":"outputSrcDoc","label":"diagram panel","type":"flow_diagram_html"}
 ---
 ## Response
 
