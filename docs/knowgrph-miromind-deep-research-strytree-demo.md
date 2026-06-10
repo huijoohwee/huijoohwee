@@ -281,6 +281,31 @@ flow:
       animated: {key: animated, type: boolean, value: true}
   subgraphs:
     - {id: sg-structured-response, kind: subgraph, label: "Structured Response Dataflow", memberNodeIds: [structured_response_source, structured_response_compute, structured_response_panel], parentId: null}
+modelSelection:
+  selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
+  scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
+  groups:
+    text:
+      global: "agnes-2.0-flash"               # group-global default; override per node via options.model
+      options:
+        - "agnes-2.0-flash"
+        - "seed-2-0-mini-260215"
+        - "seed-2-0-lite-260228"
+        - "seed-2-0-pro-260328"
+        - "seed-1-8-251228"
+    image:
+      global: "seedream-4-0-250828"
+      options:
+        - "seedream-4-0-250828"
+        - "seedream-4-5-251128"
+        - "seedream-5-0-260128"
+    video:
+      global: "seedance-1-0-pro-fast-251015"
+      options:
+        - "seedance-1-0-pro-fast-251015"
+        - "seedance-1-5-pro-251215"
+        - "dreamina-seedance-2-0-fast-260128"
+        - "dreamina-seedance-2-0-260128"
 ---
 
 # Knowgrph MiroMind Deep Research Strytree Demo

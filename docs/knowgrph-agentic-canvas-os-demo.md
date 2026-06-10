@@ -8,6 +8,10 @@ schema: "kgc-computing-flow/v1"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRendererCapability:
+  supportedRenderers: ["flowEditor", "Storyboard", "Strybldr"]
+  selectionModel: "projected-data"          # renderers project this set; they do not branch on it
+  edgeProjectionInvariance: "identical-across-supportedRenderers"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
@@ -22,6 +26,32 @@ kgSharedRendererContract:
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
+  rendererAgnosticEdges: "edges project identically for every supportedRenderer; no renderer-specific edge path"
+modelSelection:
+  selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
+  scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
+  groups:
+    text:
+      global: "agnes-2.0-flash"               # group-global default; override per node via options.model
+      options:
+        - "agnes-2.0-flash"
+        - "seed-2-0-mini-260215"
+        - "seed-2-0-lite-260228"
+        - "seed-2-0-pro-260328"
+        - "seed-1-8-251228"
+    image:
+      global: "seedream-4-0-250828"
+      options:
+        - "seedream-4-0-250828"
+        - "seedream-4-5-251128"
+        - "seedream-5-0-260128"
+    video:
+      global: "seedance-1-0-pro-fast-251015"
+      options:
+        - "seedance-1-0-pro-fast-251015"
+        - "seedance-1-5-pro-251215"
+        - "dreamina-seedance-2-0-fast-260128"
+        - "dreamina-seedance-2-0-260128"
 socket_types:
   idea_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [idea_signal]}
   evidence_signal: {color: "#22c55e", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [evidence_signal]}
