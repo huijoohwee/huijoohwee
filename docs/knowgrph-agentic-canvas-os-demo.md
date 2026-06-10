@@ -97,22 +97,20 @@ flow_diagrams:
       value: |-
         architecture-beta
           group user(cloud)[Operator]
-          group vercel(cloud)[Vercel Frontend]
-          group aws(cloud)[AWS Agent API]
           group cloudflare(cloud)[Cloudflare Control Plane]
-          group providers(cloud)[Provider Actions]
-          service workspace(internet)[Source Files UI] in vercel
-          service api(server)[Agent API] in aws
+          group providers(cloud)[Default provider BytePlus plus Stripe]
+          service workspace(internet)[Canvas UI airvio.co knowgrph] in cloudflare
           service mcp(server)[MCP Agent Worker] in cloudflare
-          service manifest(database)[Run Manifest] in cloudflare
-          service exa(internet)[Exa Research] in providers
-          service byteplus(server)[BytePlus Media] in providers
+          service gateway(server)[Cloudflare AI Gateway] in cloudflare
+          service manifest(database)[Run Manifest D1] in cloudflare
+          service r2(database)[R2 image and video assets] in cloudflare
+          service byteplus(server)[BytePlus seedream and seedance] in providers
           service stripe(database)[Stripe Checkout] in providers
-          workspace:R --> L:api
-          api:R --> L:mcp
+          workspace:R --> L:mcp
+          mcp:R --> L:gateway
+          gateway:R --> L:byteplus
           mcp:B --> T:manifest
-          mcp:R --> L:exa
-          mcp:R --> L:byteplus
+          mcp:B --> T:r2
           mcp:R --> L:stripe
     agent_run_event_model:
       key: agent_run_event_model
@@ -130,6 +128,9 @@ flow_diagrams:
         tf 09 cmd GenerateAudioScript
         tf 10 cmd GenerateVideoPlan
         tf 11 evt RichMediaPanelsReady
+        tf 12 cmd PersistAssetsToR2
+        tf 13 evt AssetsPersisted
+        tf 14 ui ReplayFromStorageNoLlm
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -537,3 +538,45 @@ flow:
 
 - Run/Run All uses local inline compute, so the demo is runnable without API keys.
 - Live web retrieval, browser-auth capture, paid media generation, publishing, and payment actions remain approval-gated.
+
+## Architecture, storage, and replay (Cloudflare + BytePlus + Stripe)
+
+This demo runs **entirely on Cloudflare** — **Vercel and AWS are forbidden** in
+this architecture:
+
+- **Control plane:** Cloudflare Workers `McpAgent` at `airvio.co/knowgrph/mcp`;
+  the canvas UI + `doc-view` are served from `airvio.co/knowgrph` (Pages).
+- **Default provider:** **BytePlus** for chat (`agnes/seed`), image (`seedream`),
+  and video (`seedance`), routed through **Cloudflare AI Gateway** (cache, token
+  count, fallback, unified billing). **Stripe** handles checkout/payout.
+- **No Vercel, no AWS, no Exa** — the control plane holds all keys; the product
+  surface holds none.
+
+### Image and video as distinct Rich Media Panels
+
+The flow exposes **separate** `image_output_panel` and `video_output_panel`
+RichMediaPanel nodes (alongside text and audio). The image panel embeds the
+`seedream` asset; the video panel embeds the `seedance` asset — each is its own
+canvas node, so a run shows the still frame and the motion clip side by side.
+
+### Media storage, access, and auto-save
+
+- **Persist-on-generate:** BytePlus media URLs are ephemeral, so on success the
+  control plane **copies the bytes into Cloudflare R2** and records only the
+  durable R2 URL. The document/manifest auto-saves to **D1**; media bytes to
+  **R2** (`runs/{runId}/{stageId}/{shotId}.{ext}` under
+  `https://airvio.co/knowgrph/r2`).
+- **Auto-save:** debounced, triggered on node edits, run completion, approvals,
+  and each asset-ready event; saves are idempotent (keyed by `runId` + content
+  hash) and revision-guarded.
+- **Run-scoped access:** R2 assets and the `doc-view` canvas are served only to
+  the entitled run (signed/short-TTL URL or a Worker entitlement check); the
+  bucket is not public.
+
+### Replay without calling the LLM
+
+Once an asset exists in R2, the Image and Video panels **replay purely by
+embedding the R2 URL in an `<iframe>`/media tag — no BytePlus, AI Gateway, or
+LLM call is made on replay**. Re-opening a panel, sharing the run, or returning
+later all read the saved R2 URLs over R2's zero-egress path, so re-viewing is
+free and the demo is reproducible.
