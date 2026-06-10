@@ -197,6 +197,31 @@ flow:
     - {"id":"edge_compute_to_text_panel","source":"compute_summary","sourceHandle":"output","target":"panel_text_output","targetHandle":"output","label":"text output","type":"template_text_signal"}
     - {"id":"edge_compute_to_image_panel","source":"compute_summary","sourceHandle":"imageUrl","target":"panel_image_output","targetHandle":"imageUrl","label":"image output","type":"template_image_signal"}
     - {"id":"edge_compute_to_chart_panel","source":"compute_summary","sourceHandle":"outputSrcDoc","target":"panel_chart_output","targetHandle":"outputSrcDoc","label":"chart output","type":"template_chart_html"}
+modelSelection:
+  selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
+  scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
+  groups:
+    text:
+      global: "agnes-2.0-flash"               # group-global default; override per node via options.model
+      options:
+        - "agnes-2.0-flash"
+        - "seed-2-0-mini-260215"
+        - "seed-2-0-lite-260228"
+        - "seed-2-0-pro-260328"
+        - "seed-1-8-251228"
+    image:
+      global: "seedream-4-0-250828"
+      options:
+        - "seedream-4-0-250828"
+        - "seedream-4-5-251128"
+        - "seedream-5-0-260128"
+    video:
+      global: "seedance-1-0-pro-fast-251015"
+      options:
+        - "seedance-1-0-pro-fast-251015"
+        - "seedance-1-5-pro-251215"
+        - "dreamina-seedance-2-0-fast-260128"
+        - "dreamina-seedance-2-0-260128"
 ---
 
 title: "Knowgrph Universal Go No-Go Investment Decision Flow Template"

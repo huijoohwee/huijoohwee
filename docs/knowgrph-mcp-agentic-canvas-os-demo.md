@@ -99,6 +99,31 @@ flow_diagrams:
         tf 11 cmd CreateCheckout
         tf 12 evt PaymentSessionCreated
         tf 13 ui DemoPackReady
+modelSelection:
+  selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
+  scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
+  groups:
+    text:
+      global: "agnes-2.0-flash"               # group-global default; override per node via options.model
+      options:
+        - "agnes-2.0-flash"
+        - "seed-2-0-mini-260215"
+        - "seed-2-0-lite-260228"
+        - "seed-2-0-pro-260328"
+        - "seed-1-8-251228"
+    image:
+      global: "seedream-4-0-250828"
+      options:
+        - "seedream-4-0-250828"
+        - "seedream-4-5-251128"
+        - "seedream-5-0-260128"
+    video:
+      global: "seedance-1-0-pro-fast-251015"
+      options:
+        - "seedance-1-0-pro-fast-251015"
+        - "seedance-1-5-pro-251215"
+        - "dreamina-seedance-2-0-fast-260128"
+        - "dreamina-seedance-2-0-260128"
 ---
 
 # Knowgrph MCP Agentic Canvas OS — Demo
@@ -110,6 +135,20 @@ cap** and drives the full loop — **research → storyboard → render → publ
 checkout** — ending in a **sold, R2-stored remix**. Every model call routes
 through Cloudflare AI Gateway; every spend boundary is gated by a human
 approval token. This page is the operator + judge walkthrough of that flow.
+
+## Current status
+
+- **Truthful state today:** the control plane, local contracts, and thin AWS /
+  AgentCore / web tiers are already strong enough to support a high-ROI live
+  path, but the immediate product-ready seam is the in-session frontend flow,
+  not yet the full `POST /run` + `/approvals` + `/runs/{id}` browser story.
+- **Immediate live-product-ready target:** frontend mints its own
+  `Auth_Token`, submits `POST /run`, then re-submits the same run with updated
+  `approvals[]` after each user decision.
+- **Sample-native target next:** the AgentCore wrapper is then aligned to the
+  current `agentcore-cli` project conventions (`dev`, `deploy`, `invoke`,
+  generated `agentcore/` config layout). That migration is additive and follows
+  the first live product proof.
 
 ## At a glance
 
@@ -203,8 +242,10 @@ the first spend boundary. *This is the headline safety demo.*
 
 ### 2. Approve gates and run the full loop
 
-Approve each spend gate (issues a single-use, 15-minute Approval_Token), then
-re-submit with the approvals. The Director now executes:
+Approve each spend gate, then **re-submit the same run with updated
+`approvals[]`**. This is the immediate high-ROI product path because the
+backend already accepts `approvals[]`; it does **not** require a separate
+browser `/approvals` route. The Director now executes:
 
 1. **Research** — Exa via AI Gateway → an Evidence_Pack of 3–50 cited
    Source_Cards (every downstream claim references a `sourceId`; weak signal
@@ -221,9 +262,16 @@ re-submit with the approvals. The Director now executes:
 ### 3. Read back the evidence
 
 ```
-GET <AGENT_API>/runs/{id}   ->  persisted terminal Run_Manifest + 7-section Demo_Pack
+POST /run response          ->  current Run_Manifest rendered in-session (immediate path)
 GET <AGENT_API>/health      ->  200 within 5s (open liveness, discloses nothing sensitive)
 ```
+
+> **Read-back note:** `GET <AGENT_API>/runs/{id}` is now implemented in the AWS
+> Agent-API as a durable manifest read-back path when `ARTIFACT_BUCKET` is
+> configured and the same browser session owns the run. Treat the remaining gap
+> as **deployed proof**, not local implementation: the live environment still
+> needs one captured end-to-end run showing persisted read-back from the hosted
+> frontend.
 
 ### 4. One-command reachability gate (AC-7)
 
@@ -274,6 +322,17 @@ Variables / dispatch inputs — no hardcode).
 - **Fail closed:** un-configured deploys return HTTP 501 rather than making an
   accidental live call; live clients activate only when their credentials are
   present (`KNOWGRPH_LIVE_CLIENTS` / `EXA_API_KEY` / endpoint vars).
+
+## Immediate remediation checklist
+
+- **Docs first:** keep the demo truthful about what is already live, what is
+  in-session only, and what is a next seam.
+- **Web next:** mint the auth session in-browser, then convert approval clicks
+  into re-submitted `approvals[]` on `POST /run`.
+- **AWS next:** supply `MCP_ENDPOINT` and CORS-ready response headers from the
+  deploy path so the browser can reach the live forwarder directly.
+- **AgentCore after live proof:** keep AgentCore as the additive AWS MCP surface,
+  then align it with the current sample-native CLI workflow.
 
 ## Reproduce locally (network-free, no credentials)
 

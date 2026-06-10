@@ -1293,6 +1293,31 @@ flow:
     - {"id":"edge_swarm_prediction_to_text_panel","source":"swarm_prediction_world","sourceHandle":"output","target":"panel_swarm_text_report","targetHandle":"output","label":"swarm report","type":"swarm_prediction_report_signal"}
     - {"id":"edge_swarm_prediction_to_image_panel","source":"swarm_prediction_world","sourceHandle":"imageUrl","target":"panel_swarm_world_image","targetHandle":"imageUrl","label":"world map","type":"swarm_world_image_signal"}
     - {"id":"edge_swarm_prediction_to_chart_panel","source":"swarm_prediction_world","sourceHandle":"outputSrcDoc","target":"panel_swarm_prediction_chart","targetHandle":"outputSrcDoc","label":"prediction chart","type":"swarm_prediction_chart_html"}
+modelSelection:
+  selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
+  scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
+  groups:
+    text:
+      global: "agnes-2.0-flash"               # group-global default; override per node via options.model
+      options:
+        - "agnes-2.0-flash"
+        - "seed-2-0-mini-260215"
+        - "seed-2-0-lite-260228"
+        - "seed-2-0-pro-260328"
+        - "seed-1-8-251228"
+    image:
+      global: "seedream-4-0-250828"
+      options:
+        - "seedream-4-0-250828"
+        - "seedream-4-5-251128"
+        - "seedream-5-0-260128"
+    video:
+      global: "seedance-1-0-pro-fast-251015"
+      options:
+        - "seedance-1-0-pro-fast-251015"
+        - "seedance-1-5-pro-251215"
+        - "dreamina-seedance-2-0-fast-260128"
+        - "dreamina-seedance-2-0-260128"
 ---
 
 # Knowgrph Research Agent Demo - Review-First Thesis Graph
