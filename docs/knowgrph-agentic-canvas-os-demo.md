@@ -61,6 +61,45 @@ flow_diagrams:
           commit id: "video_plan"
           checkout main
           merge artifacts id: "rich_media_panels"
+    agentic_canvas_architecture:
+      key: agentic_canvas_architecture
+      type: mermaid_architecture
+      value: |-
+        architecture-beta
+          group user(cloud)[Operator]
+          group vercel(cloud)[Vercel Frontend]
+          group aws(cloud)[AWS Agent API]
+          group cloudflare(cloud)[Cloudflare Control Plane]
+          group providers(cloud)[Provider Actions]
+          service workspace(internet)[Source Files UI] in vercel
+          service api(server)[Agent API] in aws
+          service mcp(server)[MCP Agent Worker] in cloudflare
+          service manifest(database)[Run Manifest] in cloudflare
+          service exa(internet)[Exa Research] in providers
+          service byteplus(server)[BytePlus Media] in providers
+          service stripe(database)[Stripe Checkout] in providers
+          workspace:R --> L:api
+          api:R --> L:mcp
+          mcp:B --> T:manifest
+          mcp:R --> L:exa
+          mcp:R --> L:byteplus
+          mcp:R --> L:stripe
+    agent_run_event_model:
+      key: agent_run_event_model
+      type: mermaid_eventmodeling
+      value: |-
+        eventmodeling
+        tf 01 ui IdeaSubmitted
+        tf 02 cmd RunMarketRadar
+        tf 03 evt EvidencePackReady
+        tf 04 pcr ArtifactBriefAgent
+        tf 05 cmd RequestApproval
+        tf 06 evt ApprovalGranted
+        tf 07 cmd GenerateTextArtifact
+        tf 08 cmd GenerateImagePrompt
+        tf 09 cmd GenerateAudioScript
+        tf 10 cmd GenerateVideoPlan
+        tf 11 evt RichMediaPanelsReady
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -114,12 +153,13 @@ flow:
         type: string
         value: |
           Market Radar Report
-          
+
           Idea and scope: Validate a lightweight agentic productivity product for solo founders that turns market signals into launch artifacts. | solo founder, creator, indie hacker | x,producthunt,reddit,linkedin,xiaohongshu,tiktok,instagram | 8
-          
+
           Evidence plan: capture 8 source cards across launch, social, and community surfaces. Grade every source A/B/C, mark blocked evidence, and keep demand claims unsupported until primary source cards exist.
-          
+
           Decision: proceed to artifact brief only after review.
+
       "visual:importance": {key: "visual:importance", type: number, value: 36}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 19.79795897113271}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
@@ -175,14 +215,15 @@ flow:
         type: string
         value: |
           Artifact Brief
-          
+
           Source basis: Market Radar Report
-          
+
           Idea and scope: Validate a lightweight agentic productivity product for solo founders that turns market signals into launch artifacts. | solo founder, creator, indie hacker | x,producthunt,reddit,linkedin,xiaohongshu,tiktok,instagram | 8
-          
+
           Evidence plan: capture 8 source cards across launch, social,
-          
+
           Generate four draft artifacts: concise launch copy, hero image prompt, thirty-second audio script, and short demo video plan. Keep each artifact tied to source-backed claims and mark it draft until reviewed.
+
       "visual:importance": {key: "visual:importance", type: number, value: 40}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 20.583005244258363}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
@@ -218,14 +259,15 @@ flow:
         type: string
         value: |
           Launch Copy
-          
+
           Knowgrph Agentic Canvas OS turns scattered market signals into a source-backed pipeline: validate the idea, approve the claim graph, then generate text, image, audio, and video launch artifacts.
-          
+
           Basis: Artifact Brief
-          
+
           Source basis: Market Radar Report
-          
+
           Idea and scope: Validate a lightweight agentic productivity product for solo founders that turns market signals into launch artifacts. | solo founder, creator, indie hac
+
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
@@ -252,8 +294,9 @@ flow:
         type: string
         value: |
           Hero Image Prompt
-          
+
           A clean operator dashboard on a wide canvas: idea input, market radar source cards, A/B/C evidence badges, human approval gate, and four generated artifact lanes. Polished SaaS interface, crisp typography, source-backed claim graph, no decorative blobs.
+
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
@@ -280,8 +323,9 @@ flow:
         type: string
         value: |
           Audio Script
-          
+
           Scattered market signals slow down every launch. Knowgrph Agentic Canvas OS turns those signals into source cards, claim graphs, approval gates, and ready-to-review launch artifacts. Validate first, generate second, ship with evidence.
+
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
@@ -308,7 +352,7 @@ flow:
         type: string
         value: |
           Video Plan
-          
+
           Scene 1: founder enters product idea. Scene 2: Market Radar gathers source cards and grades evidence. Scene 3: approval gate blocks unsupported or paid actions. Scene 4: artifact brief fans out into text, image, audio, and video branches. Scene 5: demo pack shows review-ready outputs.
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
