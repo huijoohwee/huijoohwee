@@ -1,4 +1,3 @@
----
 title: "Knowgrph MCP Agentic Canvas OS Demo - Reference Video To Sold Remix"
 graphId: "md:knowgrph-mcp-agentic-canvas-os-demo"
 doc_type: "MCP Agentic Canvas OS Demo"
@@ -14,6 +13,10 @@ kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
 kgAutoSaveEnabled: true
+kgBottomPanelOpen: true
+kgBottomPanelTab: "eventModeling"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "eventModeling"
 kgAutoSaveDebounceMs: 1500
 kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
 kgStorageTarget: "cloudflare"
@@ -31,6 +34,7 @@ kgReplayEnabled: true
 kgReplayFromStorageWithoutLlm: true
 kgReplayMediaFields: ["imageAssetUrl", "videoUrl"]
 kgReplayAccessScope: "run-entitled"
+kgForbidPlatform: ["vercel", "aws"]
 demos: "knowgrph-mcp-agentic-canvas-os-prd-tad"
 source_prd_tad: "huijoohwee.github.io/docs/documents/knowgrph-mcp-agentic-canvas-os-prd-tad.md"
 control_plane_endpoint: "airvio.co/knowgrph/mcp"
@@ -83,6 +87,11 @@ flow_diagrams:
     agentic_canvas_architecture:
       key: agentic_canvas_architecture
       type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      forbidPlatform: ["vercel", "aws"]
       value: |-
         architecture-beta
           group user(cloud)[User surface]
@@ -104,6 +113,10 @@ flow_diagrams:
     agent_run_event_model:
       key: agent_run_event_model
       type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
       value: |-
         eventmodeling
         tf 01 ui UserBrief
@@ -328,7 +341,6 @@ flow:
     - {"id": "edge_compute_to_panel_image_output", "source": "compute_summary", "sourceHandle": "imageAssetUrl", "target": "panel_image_output", "targetHandle": "imageAssetUrl", "label": "imageAssetUrl", "type": "artifact_signal"}
     - {"id": "edge_compute_to_panel_video_output", "source": "compute_summary", "sourceHandle": "videoUrl", "target": "panel_video_output", "targetHandle": "videoUrl", "label": "videoUrl", "type": "artifact_signal"}
     - {"id": "edge_compute_to_panel_chart_output", "source": "compute_summary", "sourceHandle": "outputSrcDoc", "target": "panel_chart_output", "targetHandle": "outputSrcDoc", "label": "outputSrcDoc", "type": "artifact_signal"}
----
 
 # Knowgrph MCP Agentic Canvas OS — Demo
 
@@ -558,7 +570,6 @@ run; once written, the panels **replay purely by embedding the R2 URL in an
 This keeps re-viewing free and instant, and makes the demo reproducible.
 
 | Panel | Source field | BytePlus model | Replay element | Calls LLM on replay? |
-|---|---|---|---|---|
 | **Image Rich Media Panel** | `imageAssetUrl` (R2) | `seedream` | `<iframe>` / `<img>` | **No** |
 | **Video Rich Media Panel** | `videoUrl` (R2) | `seedance` | `<iframe>` / `<video controls>` | **No** |
 | Run Dashboard panel | `outputSrcDoc` | — | `<iframe srcdoc>` | No |
@@ -719,7 +730,6 @@ knowgrph McpAgent (Cloudflare) ──BYTEPLUS_API_KEY──▶ Cloudflare AI Gat
 ### Provider routing — which call produces each output
 
 | Output | Stage / BytePlus model | Routed through | Persisted to | Credential | Gate |
-|---|---|---|---|---|---|
 | Storyboard (canvas doc) | `…storyboard` · `agnes/seed` | Cloudflare AI Gateway | D1 manifest | `BYTEPLUS_API_KEY` | paid-model-call |
 | Image | `…image` · `seedream` ([API](https://docs.byteplus.com/en/docs/ModelArk/1666945)) | Cloudflare AI Gateway | **R2** (copy-on-generate) | `BYTEPLUS_API_KEY` | render-action |
 | Video | `…video` · `seedance` ([API](https://docs.byteplus.com/en/docs/ModelArk/Video_Generation_API)) | Cloudflare AI Gateway | **R2** (copy-on-generate) | `BYTEPLUS_API_KEY` | render-action |
@@ -759,7 +769,6 @@ Then set, in the Worker env (`wrangler.toml` `[vars]` or dashboard):
 ### Troubleshooting "unable to generate"
 
 | Symptom | Root cause | Fix |
-|---|---|---|
 | **No image (`seedream`)** | `BYTEPLUS_API_KEY` unset or `byteplus` missing from `KNOWGRPH_LIVE_CLIENTS` → mock fallback; or `render-action` gate unapproved → `blocked`. | Set the key + `KNOWGRPH_LIVE_CLIENTS=byteplus,stripe`; approve `render-action` and re-submit `approvals[]`. |
 | **No video (`seedance`)** | Same key/gate cause for the async video task; or polling never reached `succeeded`. | Same fix; on `succeeded` the bytes are copied to R2 and `videoUrl` returns in the Run_Manifest for the Video panel. |
 | **Asset shows then 404s later** | The manifest stored the **ephemeral BytePlus URL** instead of the R2 copy. | Ensure copy-on-generate is enabled (`kgMediaPersistPolicy: "copy-on-generate"`); the manifest must hold the `airvio.co/knowgrph/r2/...` URL, never the provider URL. |
