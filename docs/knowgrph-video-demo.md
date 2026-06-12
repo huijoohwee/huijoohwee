@@ -6,9 +6,20 @@ date: "2026-05-01"
 lang: en-US
 
 kgCanvasSurfaceMode: "2d"
+kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "flowEditor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
+kgMultiDimTableModeEnabled: false
+kgDocumentStructureBaselineLock: false
+kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgBottomPanelOpen: true
+kgBottomPanelTab: "gitGraph"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "gitGraph"
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
@@ -20,6 +31,7 @@ kgSharedRendererContract:
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 
 $schema: "kgc-pipeline/v1"
+schema: "kgc-computing-flow/v1"
 
 inputs:
   text_provider_id: "deerflow"
@@ -184,13 +196,174 @@ mermaid: |
     class w-text-script,w-img-scene,w-video-scene widget
     class p-text-script,p-img-scene,p-video-scene panel
 
+flow_diagrams:
+  key: flow_diagrams
+  type: object
+  value:
+    video_pipeline_flowchart:
+      key: video_pipeline_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          source_input["Scene Brief Input\n(vibe · location · theme · script · duration)"]
+          scene_brief_compute["Scene Brief Compute\n(inline · no LLM)"]
+          w_text_script["Text Script Widget\n(TextGeneration)"]
+          w_img_scene["Image Widget\n(seedream)"]
+          w_video_scene["Video Widget\n(seedance)"]
+          p_text["Text Panel\n(RichMediaPanel)"]
+          p_img["Image Panel\n(R2 · seedream)"]
+          p_video["Video Panel\n(R2 · seedance)"]
+          source_input -->|"scene brief"| scene_brief_compute
+          scene_brief_compute -->|"prompt"| w_text_script
+          w_text_script -->|"text_out"| p_text
+          w_text_script -->|"image_prompt"| w_img_scene
+          w_img_scene -->|"imageUrl"| p_img
+          w_img_scene -->|"imageUrl"| w_video_scene
+          w_video_scene -->|"videoUrl"| p_video
+    video_gitgraph:
+      key: video_gitgraph
+      type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        gitGraph
+          commit id: "source_input" tag: "scene brief"
+          branch scene_brief
+          checkout scene_brief
+          commit id: "scene_brief_compute"
+          checkout main
+          branch text_lane
+          checkout text_lane
+          commit id: "w_text_script"
+          commit id: "p_text_script"
+          checkout main
+          branch image_lane
+          checkout image_lane
+          commit id: "w_img_scene"
+          commit id: "p_img_scene"
+          checkout main
+          branch video_lane
+          checkout video_lane
+          commit id: "w_video_scene"
+          commit id: "p_video_scene"
+          checkout main
+          merge scene_brief
+          merge text_lane
+          merge image_lane
+          merge video_lane id: "rich_media_outputs"
+    video_architecture:
+      key: video_architecture
+      type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      forbidPlatform: ["vercel", "aws"]
+      value: |-
+        architecture-beta
+          group operator(cloud)[Operator]
+          group cloudflare(cloud)[Cloudflare Control Plane]
+          group providers(cloud)[Default provider BytePlus plus Stripe]
+          service canvas(internet)[Canvas UI airvio.co knowgrph] in cloudflare
+          service mcp(server)[MCP Agent Worker] in cloudflare
+          service gateway(server)[Cloudflare AI Gateway] in cloudflare
+          service r2(database)[R2 image and video assets] in cloudflare
+          service byteplus(server)[BytePlus seedream and seedance] in providers
+          canvas:R --> L:mcp
+          mcp:R --> L:gateway
+          gateway:R --> L:byteplus
+          mcp:B --> T:r2
+    video_event_model:
+      key: video_event_model
+      type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
+      value: |-
+        eventmodeling
+        tf 01 ui SceneBriefSubmitted
+        tf 02 cmd RunSceneBriefCompute
+        tf 03 evt BriefComputeReady
+        tf 04 cmd GenerateTextScript
+        tf 05 evt TextScriptReady
+        tf 06 cmd GenerateSceneImage
+        tf 07 evt ImageAssetReady
+        tf 08 cmd GenerateVideo
+        tf 09 evt VideoAssetReady
+        tf 10 cmd PersistToR2
+        tf 11 evt AssetsPersisted
+        tf 12 ui ReplayFromR2NoLlm
 flow:
   direction: {key: direction, type: string, value: LR}
   edgeType: {key: edgeType, type: string, value: bezier}
   snapToGrid: {key: snapToGrid, type: boolean, value: true}
   computed: {key: computed, type: boolean, value: true}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
 
   nodes:
+    - id: {key: id, type: string, value: "source_input"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "Scene Brief Input"}
+      position: {key: position, type: object, value: {"x":-360,"y":0}}
+      handles: {key: handles, type: object, value: {"source":["vibe","location_name","theme","script","duration_label"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"vibe","previewMaxChars":80,"onEdit":{"trigger":"runDownstream","targets":["scene_brief_compute"]},"actions":[{"id":"edit","label":"Edit","icon":"pencil","trigger":"openFieldEditor","targetField":"vibe"},{"id":"run","label":"Run","icon":"play","trigger":"runDownstream","targets":["scene_brief_compute"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"vibe":"template_text_signal","location_name":"template_text_signal","theme":"template_text_signal","script":"template_text_signal","duration_label":"template_text_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "sceneBriefInput"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runnable entry widget: scene brief inputs for vibe, location, theme, script, and duration."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      vibe: {key: vibe, type: string, value: "Wild West mesa — ghost mustang stampede at dusk"}
+      location_name: {key: location_name, type: string, value: "US mesa, Caribbean island, SG Marina Bay"}
+      theme: {key: theme, type: string, value: "multiverse portal opens at the horizon"}
+      script: {key: script, type: textarea, value: "Three children each launch RoboDrone X1. As the drone clears its world's horizon, reality folds into a private multiverse."}
+      duration_label: {key: duration_label, type: string, value: "30 seconds, 9:16 vertical"}
+      "visual:importance": {key: "visual:importance", type: number, value: 32}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "scene_brief_compute"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Scene Brief Compute"}
+      position: {key: position, type: object, value: {"x":-60,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["vibe","location_name","theme","script","duration_label"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["vibe","location_name","theme","script","duration_label"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"scene_brief_compute.output","field":"output"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"output","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["output","imageUrl","outputSrcDoc"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"vibe":"template_text_signal","location_name":"template_text_signal","theme":"template_text_signal","script":"template_text_signal","duration_label":"template_text_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "sceneBriefCompute"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Inline compute: builds a structured scene brief, SVG preview, and HTML dashboard from scene inputs without calling any LLM."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      run_status: {key: run_status, type: string, value: "idle"}
+      output: {key: output, type: markdown, value: "Scene brief is ready to run."}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      "visual:importance": {key: "visual:importance", type: number, value: 40}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      compute:
+        key: compute
+        type: string
+        value: |
+          inputs => {
+            const rs = k => String(inputs?.[k] ?? '').trim()
+            const vibe = rs('vibe') || 'Wild West mesa'
+            const loc = rs('location_name') || 'Three worlds'
+            const theme = rs('theme') || 'multiverse portal'
+            const script = rs('script') || ''
+            const dur = rs('duration_label') || '30s'
+            const esc = v => String(v||'').replace(/[&<>"']/g, c => c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
+            const output = ['## Scene Brief: Three Skies', '', '- Vibe: ' + vibe, '- Locations: ' + loc, '- Theme: ' + theme, '- Duration: ' + dur, '', '### Script', script || '(enter script in source input)', '', '### Pipeline', 'Source Input → Scene Brief Compute → Text Script Widget → Image Widget → Video Widget → Rich Media Panels'].join('\n')
+            const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200"><rect width="640" height="200" fill="#0f172a"/><text x="320" y="52" font-family="system-ui" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">Three Skies — Scene Brief</text><text x="320" y="90" font-family="system-ui" font-size="13" fill="#94a3b8" text-anchor="middle">' + esc(vibe) + '</text><text x="320" y="120" font-family="system-ui" font-size="12" fill="#64748b" text-anchor="middle">' + esc(loc) + '</text><text x="320" y="150" font-family="system-ui" font-size="11" fill="#475569" text-anchor="middle">' + esc(dur) + ' · ' + esc(theme) + '</text></svg>'
+            const imageUrl = 'data:image/svg+xml,' + encodeURIComponent(svg)
+            const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#0f172a;color:#e2e8f0}h1{font-size:18px;margin:0 0 12px}p{font-size:13px;color:#94a3b8;margin:4px 0}</style></head><body><h1>Scene Brief: Three Skies</h1><p><b>Vibe:</b> ' + esc(vibe) + '</p><p><b>Locations:</b> ' + esc(loc) + '</p><p><b>Theme:</b> ' + esc(theme) + '</p><p><b>Duration:</b> ' + esc(dur) + '</p></body></html>'
+            return { output, imageUrl, outputSrcDoc }
+          }
     - id: {key: id, type: string, value: "w-text-script"}
       type: {key: type, type: string, value: "TextGeneration"}
       label: {key: label, type: string, value: "Text Script Widget"}
@@ -282,12 +455,19 @@ flow:
       media_interactive: {key: media_interactive, type: boolean, value: true}
 
   edges:
+    - {id: e-entry-vibe, source: source_input, sourceHandle: vibe, target: scene_brief_compute, targetHandle: vibe, label: "vibe", animated: true}
+    - {id: e-entry-loc, source: source_input, sourceHandle: location_name, target: scene_brief_compute, targetHandle: location_name, label: "location_name", animated: true}
+    - {id: e-entry-theme, source: source_input, sourceHandle: theme, target: scene_brief_compute, targetHandle: theme, label: "theme", animated: true}
+    - {id: e-entry-script, source: source_input, sourceHandle: script, target: scene_brief_compute, targetHandle: script, label: "script", animated: true}
+    - {id: e-entry-dur, source: source_input, sourceHandle: duration_label, target: scene_brief_compute, targetHandle: duration_label, label: "duration_label", animated: true}
+    - {id: e-brief-text, source: scene_brief_compute, sourceHandle: output, target: p-text-script, targetHandle: output, label: "scene brief → text panel", animated: true}
     - {id: e-text-script, source: w-text-script, sourceHandle: text_out, target: p-text-script, targetHandle: output, label: "text_out → output", animated: true}
     - {id: e-text-script-srcdoc, source: w-text-script, sourceHandle: outputSrcDoc, target: p-text-script, targetHandle: outputSrcDoc, label: "outputSrcDoc → outputSrcDoc", animated: true}
     - {id: e-scene-image, source: w-img-scene, sourceHandle: imageUrl, target: p-img-scene, targetHandle: imageUrl, label: "imageUrl → imageUrl", animated: true}
     - {id: e-scene-to-video-ref, source: w-img-scene, sourceHandle: imageUrl, target: w-video-scene, targetHandle: reference_image, label: "imageUrl → reference_image", animated: true}
     - {id: e-video, source: w-video-scene, sourceHandle: videoUrl, target: p-video-scene, targetHandle: videoUrl, label: "videoUrl → videoUrl", animated: true}
 
+---
 director_brief:
   title: "Three Skies"
   runtime: "30 seconds"
@@ -417,14 +597,12 @@ modelSelection:
         - "seedance-1-5-pro-251215"
         - "dreamina-seedance-2-0-fast-260128"
         - "dreamina-seedance-2-0-260128"
----
 
 # Video Demo — Three Skies (RoboDrone X1 · Frontier · Tempest · RoboTown)
 
 Director brief, storyboard spec, and shot list for the 30-second three-locale multiverse reel.  
 Pipeline: `{{inputs.text_model}}` → `{{inputs.image_model}}` → `{{inputs.video_model}}`
 
----
 
 ## Inputs
 
@@ -440,7 +618,6 @@ Prompt contract:
 Script: {{inputs.script}}
 ```
 
----
 
 ## Director Brief
 
@@ -452,7 +629,6 @@ Script: {{inputs.script}}
 
 **Conceptual spine:** Three children in three worlds each launch the same RoboDrone X1. The moment each drone clears its horizon — mesa rim, storm wall, city skyline — reality folds into a private multiverse. The parent on the ground sees the sky. The child in the sky enters another world. The recursive reveal: every world was always a node on a canvas. *The brief was always building them.*
 
----
 
 ## Storyboard — Shot-by-Shot
 
@@ -465,7 +641,6 @@ Script: {{inputs.script}}
 **VFX:** Ghost mustang particle mane trails; inverted frontier town composite; canyon arch light beams; mesa rim horizon fold transition  
 **Image prompt seed:** `{{director_brief.shots[0].image_prompt}}`
 
----
 
 ### S02 · 10–20s · Caribbean · Island Tempest · PIERCE — The Mermaid Queen Commands
 
@@ -476,7 +651,6 @@ Script: {{inputs.script}}
 **VFX:** Rain wall punch-through dynamic; mermaid queen bioluminescent scale shader; coral spire cathedral; lightning bolt composites with scale reflection  
 **Image prompt seed:** `{{director_brief.shots[1].image_prompt}}`
 
----
 
 ### S03 · 20–27s · SG · Marina Bay Sands / RoboTown · ASCEND — The Merlion Becomes a Sentinel
 
@@ -487,7 +661,6 @@ Script: {{inputs.script}}
 **VFX:** Merlion stone-to-chrome morph; tower sensor array extension; drone corridor network; neural grid bay pulse animation; command apex glow  
 **Image prompt seed:** `{{director_brief.shots[2].image_prompt}}`
 
----
 
 ### S04 · 27–29s · Canvas Reveal · REVERSE ZOOM — Three Worlds, One Brief
 
@@ -497,7 +670,6 @@ Script: {{inputs.script}}
 **Score:** Silence  
 **VFX:** Full CG canvas; three locale nodes with locale-colour halos; bezier edges; cursor animation; parent silhouettes; canvas pulse
 
----
 
 ### S05 · 29–30s · CTA · HOLD — Text Materialises
 
@@ -506,7 +678,6 @@ Script: {{inputs.script}}
 **Camera:** Static hold CG · subtle parallax 0.05m/s  
 **Score:** Warm resolution chord
 
----
 
 ## Pipeline
 
@@ -514,7 +685,6 @@ Script: {{inputs.script}}
 
 The `director_brief.shots` list is the frontmatter SSOT for derived shot Text, Image, Video, Rich Media Panel, and typed Edge nodes. S01–S03 are the hero locale row for the Flow Editor Balanced 16:9 layout; S04–S05 are the canvas reveal and CTA row. Toolbar Run all writes widget outputs into existing nodes only; it must not rewrite Balanced widget positions, Rich Media Panel layout, or edge topology.
 
----
 
 ## SuperAgent Harness Boundary
 
@@ -586,7 +756,6 @@ Each sub-agent operates in an isolated context with independent tool execution, 
 ### Harness Capabilities Used
 
 | Capability | Purpose | Runtime owner | Output |
-|---|---|---|---|
 | Research | Gather locale context, cultural references, visual inspiration | Native tool lane or optional provider gateway | Structured prompt JSON |
 | Image reference | Resolve reference image context before generation | Shared tool/provider adapter | Reference image URLs |
 | Image generation | Generate scene keyframes from structured prompts | Shared image tool/provider adapter | `imageUrl` |
@@ -598,7 +767,6 @@ Each sub-agent operates in an isolated context with independent tool execution, 
 When `inputs.text_provider_id` is `deerflow`, `inputs.text_endpoint_url` points at an optional DeerFlow gateway. Model selection can then be resolved by that gateway, while Knowgrph still owns widget properties, output keys, validation, and Flow Editor rendering:
 
 | Widget Property | Knowgrph Field | DeerFlow Resolution |
-|---|---|---|
 | `text_model` | `seed-2-0-lite-260228` | Resolved via `config.yaml` models[] entry |
 | `image_model` | `seedream-4-0-250828` | Resolved by the active image provider/tool adapter |
 | `video_model` | `seedance-1-0-pro-fast-251015` | Resolved by the active video provider/tool adapter |

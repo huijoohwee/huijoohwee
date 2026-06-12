@@ -12,6 +12,11 @@ kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
+schema: "kgc-computing-flow/v1"
+kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
@@ -396,6 +401,62 @@ flow:
   targetResolution: {key: targetResolution, type: string, value: "1920x1080"}
 
   nodes:
+    - id: {key: id, type: string, value: "source_input"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "Demo Brief Input"}
+      position: {key: position, type: object, value: {"x":-360,"y":250}}
+      handles: {key: handles, type: object, value: {"source":["demo_name","product_name","core_offer","theme","setting"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"demo_name","previewMaxChars":80,"onEdit":{"trigger":"runDownstream","targets":["demo_brief_compute"]},"actions":[{"id":"edit","label":"Edit","icon":"pencil","trigger":"openFieldEditor","targetField":"demo_name"},{"id":"run","label":"Run","icon":"play","trigger":"runDownstream","targets":["demo_brief_compute"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"demo_name":"template_text_signal","product_name":"template_text_signal","core_offer":"template_text_signal","theme":"template_text_signal","setting":"template_text_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "demoBriefInput"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runnable entry widget: demo brief inputs for SuperAgent harness demo."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      demo_name: {key: demo_name, type: string, value: "OpenClaw Ralphthon SuperAgent Harness"}
+      product_name: {key: product_name, type: string, value: "Knowgrph Agentic Canvas OS"}
+      core_offer: {key: core_offer, type: string, value: "autonomous loop: goal → plan → agents → harness judge → output"}
+      theme: {key: theme, type: string, value: "live SuperAgent harness demonstration"}
+      setting: {key: setting, type: string, value: "Ralphthon coding marathon, live stage"}
+      "visual:importance": {key: "visual:importance", type: number, value: 32}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "demo_brief_compute"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Demo Brief Compute"}
+      position: {key: position, type: object, value: {"x":-60,"y":250}}
+      handles: {key: handles, type: object, value: {"target":["demo_name","product_name","core_offer","theme","setting"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["demo_name","product_name","core_offer","theme","setting"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"demo_brief_compute.output","field":"output"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"output","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["output","imageUrl","outputSrcDoc"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"demo_name":"template_text_signal","product_name":"template_text_signal","core_offer":"template_text_signal","theme":"template_text_signal","setting":"template_text_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "demoBriefCompute"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Inline compute: builds a structured SuperAgent demo brief without calling any LLM."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      run_status: {key: run_status, type: string, value: "idle"}
+      output: {key: output, type: markdown, value: "Demo brief is ready to run."}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      "visual:importance": {key: "visual:importance", type: number, value: 40}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      compute:
+        key: compute
+        type: string
+        value: |
+          inputs => {
+            const rs = k => String(inputs?.[k] ?? '').trim()
+            const name = rs('demo_name') || 'SuperAgent Harness'
+            const product = rs('product_name') || 'Knowgrph Agentic Canvas OS'
+            const offer = rs('core_offer') || 'autonomous loop'
+            const theme = rs('theme') || 'live demonstration'
+            const setting = rs('setting') || 'stage demo'
+            const esc = v => String(v||'').replace(/[&<>"']/g, c => c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
+            const output = ['## Demo Brief: ' + name, '', '- Product: ' + product, '- Core offer: ' + offer, '- Theme: ' + theme, '- Setting: ' + setting, '', '### Pipeline', 'Source Input → Demo Brief Compute → Goal Brief → Text Script → Image Keyframe → Video Clip → Rich Media Panel'].join('\n')
+            const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180"><rect width="640" height="180" fill="#0f172a"/><text x="320" y="50" font-family="system-ui" font-size="20" font-weight="700" fill="#e2e8f0" text-anchor="middle">' + esc(name) + '</text><text x="320" y="86" font-family="system-ui" font-size="13" fill="#94a3b8" text-anchor="middle">' + esc(offer) + '</text><text x="320" y="116" font-family="system-ui" font-size="12" fill="#64748b" text-anchor="middle">' + esc(theme) + ' · ' + esc(setting) + '</text></svg>'
+            const imageUrl = 'data:image/svg+xml,' + encodeURIComponent(svg)
+            const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#0f172a;color:#e2e8f0}h1{font-size:18px;margin:0 0 8px}p{font-size:13px;color:#94a3b8;margin:4px 0}</style></head><body><h1>' + esc(name) + '</h1><p><b>Product:</b> ' + esc(product) + '</p><p><b>Offer:</b> ' + esc(offer) + '</p><p><b>Theme:</b> ' + esc(theme) + '</p></body></html>'
+            return { output, imageUrl, outputSrcDoc }
+          }
     - id: {key: id, type: string, value: "w-goal-brief"}
       type: {key: type, type: string, value: "TextGeneration"}
       label: {key: label, type: string, value: "Goal Brief - OpenClaw Ralphthon"}
@@ -504,6 +565,12 @@ flow:
       panel_tabs: {key: panel_tabs, type: array, value: ["text", "image", "video", "judge"]}
 
   edges:
+    - {id: e-entry-name, source: source_input, sourceHandle: demo_name, target: demo_brief_compute, targetHandle: demo_name, label: "demo_name", animated: true}
+    - {id: e-entry-product, source: source_input, sourceHandle: product_name, target: demo_brief_compute, targetHandle: product_name, label: "product_name", animated: true}
+    - {id: e-entry-offer, source: source_input, sourceHandle: core_offer, target: demo_brief_compute, targetHandle: core_offer, label: "core_offer", animated: true}
+    - {id: e-entry-theme, source: source_input, sourceHandle: theme, target: demo_brief_compute, targetHandle: theme, label: "theme", animated: true}
+    - {id: e-entry-setting, source: source_input, sourceHandle: setting, target: demo_brief_compute, targetHandle: setting, label: "setting", animated: true}
+    - {id: e-brief-panel, source: demo_brief_compute, sourceHandle: output, target: p-rich-media, targetHandle: output, label: "demo brief → rich media", animated: true}
     - {id: e-goal-to-text, source: w-goal-brief, sourceHandle: brief, target: w-text-script, targetHandle: brief, label: "brief", animated: true}
     - {id: e-text-to-image, source: w-text-script, sourceHandle: image_prompt, target: w-image-keyframe, targetHandle: image_prompt, label: "image_prompt", animated: true}
     - {id: e-image-to-video, source: w-image-keyframe, sourceHandle: imageUrl, target: w-video-clip, targetHandle: reference_image, label: "imageUrl -> reference_image", animated: true}

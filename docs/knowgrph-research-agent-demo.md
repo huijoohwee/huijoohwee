@@ -40,6 +40,13 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgBottomPanelOpen: true
+kgBottomPanelTab: "eventModeling"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "eventModeling"
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
@@ -257,6 +264,10 @@ flow_diagrams:
     gitgraph:
       key: gitgraph
       type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
       title: "Research agent GitGraph parallel lanes"
       render_on: [flow_editor, storyboard]
       value: |-
@@ -286,6 +297,10 @@ flow_diagrams:
     gantt:
       key: gantt
       type: mermaid_gantt
+      floatingPanelView: "gantt"
+      floatingPanelOpen: true
+      bottomPanelTab: "gantt"
+      bottomPanelOpen: true
       title: "Research agent Gantt critical path"
       render_on: [flow_editor, storyboard, document_view, timeline_view]
       value: |-
@@ -302,6 +317,91 @@ flow_diagrams:
           section Critical review
           Review gate :crit, review_gate, after thesis_compiler, 1d
           Rich Media Panels :panel_outputs, after review_gate, 1d
+    research_pipeline_flowchart:
+      key: research_pipeline_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          source_input["Research Brief\n(thesis · evidence_budget · review_mode)"]
+          review_brief_compute["Review Brief Compute\n(inline · no LLM)"]
+          integrations["Provider Integrations\n(OpenAI · BytePlus · Agnes · Miromind · Qwen · Vertex)"]
+          kgra_superagent["KGra SuperAgent\n(long-horizon harness)"]
+          review_audit["Review-First Audit\n(claim approval gate)"]
+          source_scout["Source Scout\n(evidence crawl)"]
+          thesis_compiler["Thesis Compiler\n(claim graph)"]
+          code_worker["Code Worker\n(runtime surface)"]
+          artifact_builder["Artifact Builder\n(outputs)"]
+          review_gate{"Review Gate\n(human approval)"}
+          panel_text["Text Panel\n(RichMediaPanel)"]
+          panel_chart["Chart Panel\n(RichMediaPanel)"]
+          panel_claim["Claim Panel\n(RichMediaPanel)"]
+          source_input -->|"source_ref_signal"| review_brief_compute
+          review_brief_compute -->|"thesis"| kgra_superagent
+          integrations -->|"integration_provider_signal"| kgra_superagent
+          kgra_superagent -->|"agent_review_signal"| review_audit
+          review_audit -->|"source_ref_signal"| source_scout
+          review_audit -->|"rich_media_text_signal"| thesis_compiler
+          source_scout -->|"parallel"| thesis_compiler
+          thesis_compiler -->|"parallel"| code_worker
+          thesis_compiler -->|"parallel"| artifact_builder
+          source_scout & thesis_compiler & code_worker & artifact_builder -->|"merge"| review_gate
+          review_gate -->|"approved"| panel_text
+          review_gate -->|"approved"| panel_chart
+          review_gate -->|"approved"| panel_claim
+    research_architecture:
+      key: research_architecture
+      type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      forbidPlatform: ["vercel", "aws"]
+      value: |-
+        architecture-beta
+          group operator(cloud)[Operator]
+          group cloudflare(cloud)[Cloudflare Control Plane]
+          group providers(cloud)[Default provider BytePlus plus Agnes]
+          service canvas(internet)[Canvas UI airvio.co knowgrph] in cloudflare
+          service research_worker(server)[Research Worker Cloudflare] in cloudflare
+          service gateway(server)[Cloudflare AI Gateway] in cloudflare
+          service d1(database)[D1 Thesis and Claims Store] in cloudflare
+          service byteplus(server)[BytePlus agnes and seed] in providers
+          service agnes(server)[Agnes research model] in providers
+          canvas:R --> L:research_worker
+          research_worker:R --> L:gateway
+          gateway:R --> L:byteplus
+          gateway:R --> L:agnes
+          research_worker:B --> T:d1
+    research_event_model:
+      key: research_event_model
+      type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
+      value: |-
+        eventmodeling
+        tf 01 ui ResearchBriefSubmitted
+        tf 02 cmd StartReviewFirstThesisRun
+        tf 03 evt RunManifestCreated
+        tf 04 pcr KgraSupeerAgentHarness
+        tf 05 cmd CrawlSourceEvidence
+        tf 06 evt EvidencePackReady
+        tf 07 cmd RequestClaimApproval
+        tf 08 evt ClaimApprovalGranted
+        tf 09 cmd CompileThesisGraph
+        tf 10 evt ThesisGraphReady
+        tf 11 cmd RunCodeWorker
+        tf 12 evt RuntimeSurfaceReady
+        tf 13 cmd BuildArtifacts
+        tf 14 evt ArtifactsReady
+        tf 15 cmd PersistThesisToD1
+        tf 16 evt ThesisPersistedToD1
+        tf 17 ui ReplayResearchFromCache
 
 flow:
   direction: {key: direction, type: string, value: "LR"}
@@ -310,6 +410,58 @@ flow:
   computed: {key: computed, type: boolean, value: true}
   snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
+    - id: {key: id, type: string, value: "source_input"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "Research Brief Input"}
+      position: {key: position, type: object, value: {"x":-1100,"y":0}}
+      handles: {key: handles, type: object, value: {"source":["thesis_topic","evidence_budget","review_mode"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"thesis_topic","previewMaxChars":96,"onEdit":{"trigger":"runDownstream","targets":["review_brief_compute"]},"actions":[{"id":"edit","label":"Edit","icon":"pencil","trigger":"openFieldEditor","targetField":"thesis_topic"},{"id":"run","label":"Run","icon":"play","trigger":"runDownstream","targets":["review_brief_compute"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"thesis_topic":"source_ref_signal","evidence_budget":"source_ref_signal","review_mode":"source_ref_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "researchBriefInput"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runnable entry widget: research brief inputs for thesis topic, evidence budget, and review mode."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      thesis_topic: {key: thesis_topic, type: textarea, value: "Validate demand for a lightweight agentic productivity tool for solo founders that turns market signals into launch artifacts."}
+      evidence_budget: {key: evidence_budget, type: number, value: 8}
+      review_mode: {key: review_mode, type: string, value: "review-first"}
+      "visual:importance": {key: "visual:importance", type: number, value: 32}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "review_brief_compute"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Review Brief Compute"}
+      position: {key: position, type: object, value: {"x":-820,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["thesis_topic","evidence_budget","review_mode"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["thesis_topic","evidence_budget","review_mode"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"review_brief_compute.output","field":"output"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"output","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["output","imageUrl","outputSrcDoc"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"thesis_topic":"source_ref_signal","evidence_budget":"source_ref_signal","review_mode":"source_ref_signal"},"out":{"output":"rich_media_text_signal","imageUrl":"rich_media_text_signal","outputSrcDoc":"rich_media_text_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "reviewBriefCompute"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Inline compute: builds a review-first research brief from thesis topic, evidence budget, and review mode — no LLM call."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      run_status: {key: run_status, type: string, value: "idle"}
+      output: {key: output, type: markdown, value: "Review brief is ready to run."}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      "visual:importance": {key: "visual:importance", type: number, value: 40}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      compute:
+        key: compute
+        type: string
+        value: |
+          inputs => {
+            const rs = k => String(inputs?.[k] ?? '').trim()
+            const topic = rs('thesis_topic') || 'Validate agentic productivity demand'
+            const budget = Number(inputs?.evidence_budget) || 8
+            const mode = rs('review_mode') || 'review-first'
+            const esc = v => String(v||'').replace(/[&<>"']/g, c => c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
+            const output = ['## Research Brief (' + mode + ')', '', '**Thesis:** ' + topic, '**Evidence budget:** ' + budget + ' source cards', '**Mode:** ' + mode, '', '### Review contract', '- All claims must reference a source card before committing to the graph.', '- Evidence graded A/B/C; ungraded claims blocked from KGC apply.', '- Human review gate required before any paid model call or repo write.'].join('\n')
+            const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180"><rect width="640" height="180" fill="#f8fafc"/><text x="320" y="48" font-family="system-ui" font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">Research Brief</text><text x="320" y="82" font-family="system-ui" font-size="12" fill="#475569" text-anchor="middle">' + esc(topic.slice(0,80)) + '</text><text x="320" y="112" font-family="system-ui" font-size="12" fill="#64748b" text-anchor="middle">Budget: ' + budget + ' source cards · Mode: ' + esc(mode) + '</text></svg>'
+            const imageUrl = 'data:image/svg+xml,' + encodeURIComponent(svg)
+            const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}h1{font-size:16px;margin:0 0 8px}p{font-size:13px;color:#475569;margin:4px 0}</style></head><body><h1>Research Brief</h1><p>' + esc(topic) + '</p><p><b>Budget:</b> ' + budget + ' cards · <b>Mode:</b> ' + esc(mode) + '</p></body></html>'
+            return { output, imageUrl, outputSrcDoc }
+          }
     - id: {key: id, type: string, value: "integration_openai"}
       type: {key: type, type: string, value: "integration"}
       label: {key: label, type: string, value: "OpenAI"}
@@ -1258,6 +1410,9 @@ flow:
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
       "visual:zIndex": {key: "visual:zIndex", type: number, value: 6}
   edges:
+    - {"id":"edge_entry_topic","source":"source_input","sourceHandle":"thesis_topic","target":"review_brief_compute","targetHandle":"thesis_topic","label":"thesis_topic","type":"source_ref_signal"}
+    - {"id":"edge_entry_budget","source":"source_input","sourceHandle":"evidence_budget","target":"review_brief_compute","targetHandle":"evidence_budget","label":"evidence_budget","type":"source_ref_signal"}
+    - {"id":"edge_entry_mode","source":"source_input","sourceHandle":"review_mode","target":"review_brief_compute","targetHandle":"review_mode","label":"review_mode","type":"source_ref_signal"}
     - {"id":"edge_openai_to_superagent","source":"integration_openai","sourceHandle":"integration_provider_signal_out","target":"kgra_superagent_harness","targetHandle":"integration_provider_signal_in","label":"chat gateway","type":"integration_provider_signal"}
     - {"id":"edge_byteplus_to_superagent","source":"integration_byteplus","sourceHandle":"integration_provider_signal_out","target":"kgra_superagent_harness","targetHandle":"integration_provider_signal_in","label":"modelark gateway","type":"integration_provider_signal"}
     - {"id":"edge_agnes_to_superagent","source":"integration_agnes","sourceHandle":"integration_provider_signal_out","target":"kgra_superagent_harness","targetHandle":"integration_provider_signal_in","label":"agent gateway","type":"integration_provider_signal"}

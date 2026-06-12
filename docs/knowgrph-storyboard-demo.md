@@ -25,7 +25,7 @@ flow:
       input_forecast_years: {key: input_forecast_years, type: number, value: 5}
       input_format: {key: input_format, type: string, value: "structured markdown decision memo with scenarios"}
       input_initial_revenue: {key: input_initial_revenue, type: number, value: 420000}
-      input_investment_amount: {key: input_investment_amount, type: number, value: 25}
+      input_investment_amount: {key: input_investment_amount, type: number, value: 25000}
       input_market_risk_score: {key: input_market_risk_score, type: number, value: 38}
       input_metric_label: {key: input_metric_label, type: string, value: "minimum acceptable risk-adjusted NPV"}
       input_metric_target: {key: input_metric_target, type: number, value: 350000}
@@ -57,54 +57,9 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 24}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%230f172a%22%20text-anchor%3D%22middle%22%3ENO-GO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20-%2425%2C127%20vs%20%24350%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2043%2F100%20%C2%B7%20confidence%2079%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20-%24101%2C577%20%C2%B7%20Upside%20%24123%2C861%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for universal go-no-go scoring, DCF scenarios, risk-adjusted NPV, SVG summary, and Recharts rich-media decision panels."}
-      output:
-        key: output
-        type: markdown
-        value: |
-          ## NO-GO
-          Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence.
-          The current economics, downside resilience, or risk profile do not justify commitment yet.
-          **Decision score:** 43/100
-          **Decision confidence:** 79/100
-          **minimum acceptable risk-adjusted NPV:** $350,000
-          **Base risk-adjusted NPV:** -$25,127
-          **Downside risk-adjusted NPV:** -$101,577
-          ### Structured verdict
-          - Recommendation: NO-GO
-          - Economics score: 0/100
-          - Resilience score: 41/100
-          - Strategic fit score: 68/100
-          - Evidence score: 100/100
-          - Risk pressure: 41/100
-          ### DCF base case
-          - Initial investment: $250,000
-          - Forecast years: 5
-          - Initial revenue: $420,000
-          - Revenue growth: 14%
-          - Operating margin: 18%
-          - Discount rate: 12%
-          - Terminal multiple: 7x
-          ### Scenario stress
-          - Downside: -$101,577 at 50%
-          - Base: -$25,127 at 62%
-          - Upside: $123,861 at 70%
-          ### Conditions to clear
-          - Rework the downside case until risk-adjusted NPV stays above zero.
-          - Preserve the current evidence trail and close the remaining unknowns.
-          - Maintain current risk controls and monitor market and execution drift.
-          ### Next diligence
-          - Validate demand, pricing, margin, capex, and working-capital assumptions.
-          - Confirm the initiative still clears the hurdle under delay, weaker adoption, or cost creep.
-          - Replace weak assumptions with observed evidence before irreversible spend.
-          **Audience:** sponsor, operator, reviewer
-          **Format:** structured markdown decision memo with scenarios
-          **Tone:** direct
-          **Context:** Use the same decision flow for any initiative where time, capital, engineering effort, or operating resources are being committed.
-          **Constraints:** Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable.
-          **Evidence:** Replace with the strongest facts, unknowns, dependencies, diligence notes, operating assumptions, and file or project specific evidence.
-          
+      output: {key: output, type: markdown, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chart{height:260px}.panel h2{margin:0 0 10px;font-size:13px}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:12px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\" data-kg-recharts=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">NO-GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">-$25,127</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$350,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">43/100</p></div></div><div id=\"decisionChartRoot\" class=\"grid\"></div><p class=\"note\">Universal, neutral decision-support dashboard. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Rework the downside case until risk-adjusted NPV stays above zero.</li><li>Preserve the current evidence trail and close the remaining unknowns.</li><li>Maintain current risk controls and monitor market and execution drift.</li></ul></main><script type=\"module\">import React from\"https://esm.sh/react@18?bundle\";import { createRoot } from\"https://esm.sh/react-dom@18/client?bundle\";import { ResponsiveContainer,BarChart,Bar,Cell,CartesianGrid,XAxis,YAxis,Tooltip,ReferenceLine,RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar } from\"https://esm.sh/recharts@3?bundle&deps=react@18,react-dom@18\";const payload={\"decision\":\"NO-GO\",\"title\":\"NO-GO - -$25,127 base risk-adjusted NPV\",\"metricLabel\":\"minimum acceptable risk-adjusted NPV\",\"metricTarget\":350000,\"decisionScore\":43,\"confidenceScore\":79,\"scenarios\":[{\"label\":\"Downside\",\"npv\":-101577},{\"label\":\"Base\",\"npv\":-25127},{\"label\":\"Upside\",\"npv\":123861}],\"pillars\":[{\"label\":\"Economics\",\"value\":0},{\"label\":\"Resilience\",\"value\":41},{\"label\":\"Strategic fit\",\"value\":68},{\"label\":\"Evidence\",\"value\":100}],\"conditions\":[\"Rework the downside case until risk-adjusted NPV stays above zero.\",\"Preserve the current evidence trail and close the remaining unknowns.\",\"Maintain current risk controls and monitor market and execution drift.\"]};const root=document.getElementById(\"decisionChartRoot\");if(root){const h=React.createElement,scenarioData=payload.scenarios.map((item,index)=>({label:item.label,npv:item.npv,fill:[\"#ef4444\",\"#0ea5e9\",\"#22c55e\"][index]||\"#0ea5e9\"})),pillarData=payload.pillars.map(item=>({label:item.label,value:item.value})),scenarioCells=scenarioData.map((item,index)=>h(Cell,{key:\"s-\"+index,fill:item.fill}));const app=h(React.Fragment,null,h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Scenario stress\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(BarChart,{data:scenarioData,margin:{top:12,right:12,left:0,bottom:20}},h(CartesianGrid,{stroke:\"#e2e8f0\",vertical:false}),h(XAxis,{dataKey:\"label\",tick:{fill:\"#475569\",fontSize:11}}),h(YAxis,{tick:{fill:\"#475569\",fontSize:11},tickFormatter:value=>\"$\"+Number(value).toLocaleString(\"en-US\")}),h(Tooltip,{formatter:value=>[\"$\"+Number(value).toLocaleString(\"en-US\"),payload.metricLabel]}),h(ReferenceLine,{y:payload.metricTarget,stroke:\"#f59e0b\",strokeDasharray:\"6 4\"}),h(Bar,{dataKey:\"npv\",name:payload.metricLabel,radius:[8,8,0,0]},scenarioCells))))),h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Decision pillars\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(RadarChart,{data:pillarData,outerRadius:\"72%\"},h(PolarGrid,{stroke:\"#cbd5e1\"}),h(PolarAngleAxis,{dataKey:\"label\",tick:{fill:\"#334155\",fontSize:11}}),h(PolarRadiusAxis,{angle:30,domain:[0,100],tickCount:6}),h(Tooltip,{formatter:value=>[value,\"score\"]}),h(Radar,{dataKey:\"value\",name:\"Decision pillars\",stroke:\"#0ea5e9\",fill:\"rgba(14,165,233,0.18)\",fillOpacity:1}))))));createRoot(root).render(app)}</script></body></html>"}
       run_status: {key: run_status, type: string, value: "idle"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
@@ -238,10 +193,14 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgBottomPanelOpen: true
+kgBottomPanelTab: "eventModeling"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "eventModeling"
 kgSharedRendererContract:
-  version: "shared-renderer-contract/v1"
-  semanticIdentity: "buildScopedGraphSemanticKey"
-  cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
   edgeModel: "active graph edges with typed sourceHandle and targetHandle"
@@ -266,6 +225,10 @@ flow_diagrams:
     template_gitgraph:
       key: template_gitgraph
       type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
       value: |-
         gitGraph
           commit id: "source_input" tag: "decision intake"
@@ -310,6 +273,70 @@ flow_diagrams:
           checkout main
           merge rich_media_panels id: "merge_rich_media_panels"
           commit id: "run_body_tokens" tag: "response"
+    storyboard_architecture:
+      key: storyboard_architecture
+      type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      forbidPlatform: ["vercel", "aws"]
+      value: |-
+        architecture-beta
+          group operator(cloud)[Operator]
+          group cloudflare(cloud)[Cloudflare Control Plane]
+          group providers(cloud)[Default provider BytePlus plus Stripe]
+          service canvas(internet)[Canvas UI airvio.co knowgrph] in cloudflare
+          service mcp(server)[MCP Agent Worker] in cloudflare
+          service gateway(server)[Cloudflare AI Gateway] in cloudflare
+          service d1(database)[D1 Run Manifest] in cloudflare
+          service r2(database)[R2 outputs] in cloudflare
+          service byteplus(server)[BytePlus seedream and seedance] in providers
+          service stripe(database)[Stripe Checkout] in providers
+          canvas:R --> L:mcp
+          mcp:R --> L:gateway
+          gateway:R --> L:byteplus
+          mcp:B --> T:d1
+          mcp:B --> T:r2
+          mcp:R --> L:stripe
+    storyboard_event_model:
+      key: storyboard_event_model
+      type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
+      value: |-
+        eventmodeling
+        tf 01 ui IdeaSubmitted
+        tf 02 cmd RunDecisionFlow
+        tf 03 evt InputsValidated
+        tf 04 pcr ComputeAgent
+        tf 05 cmd RequestApproval
+        tf 06 evt ApprovalGranted
+        tf 07 cmd GenerateDecisionOutput
+        tf 08 evt OutputReady
+        tf 09 cmd PersistResultToD1
+        tf 10 evt ResultPersisted
+        tf 11 ui ReplayFromCache
+    storyboard_pipeline_flowchart:
+      key: storyboard_pipeline_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          source_input["Source Input\n(idea + evidence + DCF assumptions)"]
+          compute_summary["Compute Summary\n(go/no-go · DCF · NPV · risk)"]
+          panel_text["Text Output\n(markdown verdict)"]
+          panel_image["Image Output\n(SVG summary)"]
+          panel_chart["Chart Output\n(decision dashboard)"]
+          source_input -->|"24 typed ports"| compute_summary
+          compute_summary -->|"output"| panel_text
+          compute_summary -->|"imageUrl"| panel_image
+          compute_summary -->|"outputSrcDoc"| panel_chart
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -364,53 +391,9 @@ flow:
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_query":"template_text_signal","input_context":"template_text_signal","input_audience":"template_text_signal","input_format":"template_text_signal","input_constraints":"template_text_signal","input_evidence":"template_text_signal","input_tone":"template_text_signal","input_metric_label":"template_text_signal","input_metric_target":"template_number_signal","input_investment_amount":"template_number_signal","input_forecast_years":"template_number_signal","input_initial_revenue":"template_number_signal","input_revenue_growth_pct":"template_number_signal","input_operating_margin_pct":"template_number_signal","input_tax_rate_pct":"template_number_signal","input_discount_rate_pct":"template_number_signal","input_terminal_growth_pct":"template_number_signal","input_terminal_multiple":"template_number_signal","input_capex_pct_revenue":"template_number_signal","input_working_capital_pct_revenue":"template_number_signal","input_probability_success_pct":"template_number_signal","input_strategic_fit_score":"template_number_signal","input_execution_risk_score":"template_number_signal","input_market_risk_score":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "templateCompute"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%230f172a%22%20text-anchor%3D%22middle%22%3ENO-GO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20-%2425%2C127%20vs%20%24350%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2043%2F100%20%C2%B7%20confidence%2079%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20-%24101%2C577%20%C2%B7%20Upside%20%24123%2C861%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for universal go-no-go scoring, DCF scenarios, risk-adjusted NPV, SVG summary, and Recharts rich-media decision panels."}
-      output:
-        key: output
-        type: markdown
-        value: |
-          ## NO-GO
-          Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence.
-          The current economics, downside resilience, or risk profile do not justify commitment yet.
-          **Decision score:** 43/100
-          **Decision confidence:** 79/100
-          **minimum acceptable risk-adjusted NPV:** $350,000
-          **Base risk-adjusted NPV:** -$25,127
-          **Downside risk-adjusted NPV:** -$101,577
-          ### Structured verdict
-          - Recommendation: NO-GO
-          - Economics score: 0/100
-          - Resilience score: 41/100
-          - Strategic fit score: 68/100
-          - Evidence score: 100/100
-          - Risk pressure: 41/100
-          ### DCF base case
-          - Initial investment: $250,000
-          - Forecast years: 5
-          - Initial revenue: $420,000
-          - Revenue growth: 14%
-          - Operating margin: 18%
-          - Discount rate: 12%
-          - Terminal multiple: 7x
-          ### Scenario stress
-          - Downside: -$101,577 at 50%
-          - Base: -$25,127 at 62%
-          - Upside: $123,861 at 70%
-          ### Conditions to clear
-          - Rework the downside case until risk-adjusted NPV stays above zero.
-          - Preserve the current evidence trail and close the remaining unknowns.
-          - Maintain current risk controls and monitor market and execution drift.
-          ### Next diligence
-          - Validate demand, pricing, margin, capex, and working-capital assumptions.
-          - Confirm the initiative still clears the hurdle under delay, weaker adoption, or cost creep.
-          - Replace weak assumptions with observed evidence before irreversible spend.
-          **Audience:** sponsor, operator, reviewer
-          **Format:** structured markdown decision memo with scenarios
-          **Tone:** direct
-          **Context:** Use the same decision flow for any initiative where time, capital, engineering effort, or operating resources are being committed.
-          **Constraints:** Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable.
-          **Evidence:** Replace with the strongest facts, unknowns, dependencies, diligence notes, operating assumptions, and file or project specific evidence.
+      output: {key: output, type: markdown, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.chart{height:260px}.panel h2{margin:0 0 10px;font-size:13px}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:12px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\" data-kg-recharts=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">NO-GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">-$25,127</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$350,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">43/100</p></div></div><div id=\"decisionChartRoot\" class=\"grid\"></div><p class=\"note\">Universal, neutral decision-support dashboard. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Rework the downside case until risk-adjusted NPV stays above zero.</li><li>Preserve the current evidence trail and close the remaining unknowns.</li><li>Maintain current risk controls and monitor market and execution drift.</li></ul></main><script type=\"module\">import React from\"https://esm.sh/react@18?bundle\";import { createRoot } from\"https://esm.sh/react-dom@18/client?bundle\";import { ResponsiveContainer,BarChart,Bar,Cell,CartesianGrid,XAxis,YAxis,Tooltip,ReferenceLine,RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar } from\"https://esm.sh/recharts@3?bundle&deps=react@18,react-dom@18\";const payload={\"decision\":\"NO-GO\",\"title\":\"NO-GO - -$25,127 base risk-adjusted NPV\",\"metricLabel\":\"minimum acceptable risk-adjusted NPV\",\"metricTarget\":350000,\"decisionScore\":43,\"confidenceScore\":79,\"scenarios\":[{\"label\":\"Downside\",\"npv\":-101577},{\"label\":\"Base\",\"npv\":-25127},{\"label\":\"Upside\",\"npv\":123861}],\"pillars\":[{\"label\":\"Economics\",\"value\":0},{\"label\":\"Resilience\",\"value\":41},{\"label\":\"Strategic fit\",\"value\":68},{\"label\":\"Evidence\",\"value\":100}],\"conditions\":[\"Rework the downside case until risk-adjusted NPV stays above zero.\",\"Preserve the current evidence trail and close the remaining unknowns.\",\"Maintain current risk controls and monitor market and execution drift.\"]};const root=document.getElementById(\"decisionChartRoot\");if(root){const h=React.createElement,scenarioData=payload.scenarios.map((item,index)=>({label:item.label,npv:item.npv,fill:[\"#ef4444\",\"#0ea5e9\",\"#22c55e\"][index]||\"#0ea5e9\"})),pillarData=payload.pillars.map(item=>({label:item.label,value:item.value})),scenarioCells=scenarioData.map((item,index)=>h(Cell,{key:\"s-\"+index,fill:item.fill}));const app=h(React.Fragment,null,h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Scenario stress\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(BarChart,{data:scenarioData,margin:{top:12,right:12,left:0,bottom:20}},h(CartesianGrid,{stroke:\"#e2e8f0\",vertical:false}),h(XAxis,{dataKey:\"label\",tick:{fill:\"#475569\",fontSize:11}}),h(YAxis,{tick:{fill:\"#475569\",fontSize:11},tickFormatter:value=>\"$\"+Number(value).toLocaleString(\"en-US\")}),h(Tooltip,{formatter:value=>[\"$\"+Number(value).toLocaleString(\"en-US\"),payload.metricLabel]}),h(ReferenceLine,{y:payload.metricTarget,stroke:\"#f59e0b\",strokeDasharray:\"6 4\"}),h(Bar,{dataKey:\"npv\",name:payload.metricLabel,radius:[8,8,0,0]},scenarioCells))))),h(\"section\",{className:\"panel\"},h(\"h2\",null,\"Decision pillars\"),h(\"div\",{className:\"chart\"},h(ResponsiveContainer,{width:\"100%\",height:\"100%\"},h(RadarChart,{data:pillarData,outerRadius:\"72%\"},h(PolarGrid,{stroke:\"#cbd5e1\"}),h(PolarAngleAxis,{dataKey:\"label\",tick:{fill:\"#334155\",fontSize:11}}),h(PolarRadiusAxis,{angle:30,domain:[0,100],tickCount:6}),h(Tooltip,{formatter:value=>[value,\"score\"]}),h(Radar,{dataKey:\"value\",name:\"Decision pillars\",stroke:\"#0ea5e9\",fill:\"rgba(14,165,233,0.18)\",fillOpacity:1}))))));createRoot(root).render(app)}</script></body></html>"}
       run_status: {key: run_status, type: string, value: "idle"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}

@@ -7,6 +7,10 @@ kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
+kgBottomPanelOpen: true
+kgBottomPanelTab: "gantt"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "gantt"
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
@@ -57,6 +61,10 @@ flow_diagrams:
   gantt_timeline:
     key: gantt_timeline
     type: mermaid_gantt
+    floatingPanelView: "gantt"
+    floatingPanelOpen: true
+    bottomPanelTab: "gantt"
+    bottomPanelOpen: true
     title: Gantt-Timeline HH:mm markers
     value: |-
       gantt

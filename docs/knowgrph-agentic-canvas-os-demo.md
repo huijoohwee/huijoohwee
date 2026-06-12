@@ -96,6 +96,10 @@ flow_diagrams:
     market_to_artifact_gitgraph:
       key: market_to_artifact_gitgraph
       type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
       value: |-
         gitGraph
           commit id: "idea_input" tag: "idea"
@@ -163,6 +167,38 @@ flow_diagrams:
         tf 12 cmd PersistAssetsToR2
         tf 13 evt AssetsPersisted
         tf 14 ui ReplayFromStorageNoLlm
+    agentic_pipeline_flowchart:
+      key: agentic_pipeline_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          idea_input["Idea Input\n(idea · target_user · platform_scope · evidence_budget · artifact_goal)"]
+          market_radar["Market Radar\n(source-card plan · A/B/C grading)"]
+          approval_gate{"Approval Gate\n(human review)"}
+          artifact_brief["Artifact Brief\n(4-lane brief)"]
+          text_generator["Text Artifact\n(launch copy)"]
+          image_generator["Image Artifact\n(hero image prompt)"]
+          audio_generator["Audio Artifact\n(narration script)"]
+          video_generator["Video Artifact\n(storyboard plan)"]
+          text_output_panel["Text Panel\n(RichMediaPanel)"]
+          image_output_panel["Image Panel\n(R2 · seedream)"]
+          audio_output_panel["Audio Panel\n(RichMediaPanel)"]
+          video_output_panel["Video Panel\n(R2 · seedance)"]
+          idea_input -->|"idea_signal × 5"| market_radar
+          market_radar -->|"evidence_signal"| approval_gate
+          approval_gate -->|"approval_signal"| artifact_brief
+          artifact_brief -->|"artifact_signal"| text_generator
+          artifact_brief -->|"artifact_signal"| image_generator
+          artifact_brief -->|"artifact_signal"| audio_generator
+          artifact_brief -->|"artifact_signal"| video_generator
+          text_generator -->|"text_out"| text_output_panel
+          image_generator -->|"imageAssetUrl"| image_output_panel
+          audio_generator -->|"text_out"| audio_output_panel
+          video_generator -->|"videoUrl"| video_output_panel
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}

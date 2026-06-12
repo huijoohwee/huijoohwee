@@ -13,6 +13,13 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgBottomPanelOpen: true
+kgBottomPanelTab: "eventModeling"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "eventModeling"
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
@@ -68,6 +75,144 @@ workflow_sections:
     title: "Render ranked decision drivers and chart payload"
     nodes: [decision_ranking, tco_chart_panel, value_loop_chart_panel]
 
+flow_diagrams:
+  key: flow_diagrams
+  type: object
+  value:
+    tco_pipeline_flowchart:
+      key: tco_pipeline_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          workload_drivers["Workload Drivers\n(MAU · agent requests)"]
+          shared_platform_drivers["Platform Drivers\n(subscription · model fee · hosting)"]
+          token_exposure_drivers["Token Exposure\n(onchain · gas · volatility)"]
+          revenue_drivers["Revenue Drivers\n(conversion · price · GMV · take-rate)"]
+          tco_calculators["Stack TCO Calculators\n(Fetch · elizaOS · Virtuals)"]
+          revenue_calculator["Revenue Calculator\n(gross · net · per-request)"]
+          tco_calculator["TCO Calculator\n(ranked decision drivers)"]
+          web3_engines["Web3 Economics Engines\n(prediction · yield · payment · liquidity · infra)"]
+          closed_value_loop["Closed Value Loop\n(health score · journey)"]
+          decision_ranking["Decision Ranking\n(GO · CONDITIONAL GO · NO-GO)"]
+          tco_chart_panel["TCO Chart Panel\n(RichMediaPanel)"]
+          value_loop_chart_panel["Value Loop Panel\n(RichMediaPanel)"]
+          tco_source_input["TCO Source Input\n(InputWidget)"]
+          tco_compute["TCO Compute\n(inline DCF verdict)"]
+          workload_drivers -->|"demand_driver_signal"| tco_calculators
+          workload_drivers -->|"demand_driver_signal"| revenue_calculator
+          shared_platform_drivers -->|"platform_cost_signal"| tco_calculators
+          token_exposure_drivers -->|"token_risk_signal"| tco_calculators
+          revenue_drivers -->|"revenue_driver_signal"| revenue_calculator
+          revenue_calculator -->|"revenue_metric_signal"| tco_calculator
+          tco_calculators -->|"stack_tco_metric"| tco_calculator
+          tco_calculator -->|"decision_driver_signal"| decision_ranking
+          tco_calculator -->|"rich_media_chart_html"| tco_chart_panel
+          web3_engines -->|"closed_loop_signal"| closed_value_loop
+          closed_value_loop -->|"rich_media_chart_html"| value_loop_chart_panel
+          tco_source_input -->|"typed ports × 6"| tco_compute
+          tco_compute -->|"outputSrcDoc"| tco_chart_panel
+    tco_gitgraph:
+      key: tco_gitgraph
+      type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        gitGraph
+          commit id: "tco_source_input" tag: "driver intake"
+          branch demand_platform_token
+          checkout demand_platform_token
+          commit id: "workload_drivers"
+          commit id: "shared_platform_drivers"
+          commit id: "token_exposure_drivers"
+          checkout main
+          branch revenue_contract
+          checkout revenue_contract
+          commit id: "revenue_drivers"
+          commit id: "revenue_calculator"
+          checkout main
+          branch stack_tco
+          checkout stack_tco
+          commit id: "fetch_agentverse_tco"
+          commit id: "elizaos_ai16z_tco"
+          commit id: "virtuals_game_tco"
+          checkout main
+          merge demand_platform_token id: "merge_drivers"
+          merge revenue_contract id: "merge_revenue"
+          merge stack_tco id: "merge_stacks"
+          commit id: "tco_calculator" tag: "ranked decision" type: HIGHLIGHT
+          branch web3_economics
+          checkout web3_economics
+          commit id: "prediction_engine"
+          commit id: "yield_engine"
+          commit id: "payment_engine"
+          commit id: "liquidity_exchange_engine"
+          commit id: "infrastructure_engine"
+          commit id: "closed_value_loop"
+          checkout main
+          merge web3_economics id: "merge_web3"
+          commit id: "decision_ranking" tag: "GO/NO-GO"
+          branch rich_media_panels
+          checkout rich_media_panels
+          commit id: "tco_chart_panel"
+          commit id: "value_loop_chart_panel"
+          checkout main
+          merge rich_media_panels id: "merge_panels"
+    tco_architecture:
+      key: tco_architecture
+      type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      forbidPlatform: ["vercel", "aws"]
+      value: |-
+        architecture-beta
+          group operator(cloud)[Operator]
+          group cloudflare(cloud)[Cloudflare Control Plane]
+          group providers(cloud)[Default provider BytePlus plus Stripe]
+          service canvas(internet)[Canvas UI airvio.co knowgrph] in cloudflare
+          service mcp(server)[MCP Agent Worker] in cloudflare
+          service gateway(server)[Cloudflare AI Gateway] in cloudflare
+          service d1(database)[D1 Run Manifest and TCO cache] in cloudflare
+          service r2(database)[R2 chart and media assets] in cloudflare
+          service byteplus(server)[BytePlus agnes and seed] in providers
+          service stripe(database)[Stripe usage billing] in providers
+          canvas:R --> L:mcp
+          mcp:R --> L:gateway
+          gateway:R --> L:byteplus
+          mcp:B --> T:d1
+          mcp:B --> T:r2
+          mcp:R --> L:stripe
+    tco_event_model:
+      key: tco_event_model
+      type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
+      value: |-
+        eventmodeling
+        tf 01 ui DriverIntakeSubmitted
+        tf 02 cmd RunStackTcoCalculation
+        tf 03 evt StackCostsReady
+        tf 04 cmd RunRevenueCalculation
+        tf 05 evt RevenueMetricsReady
+        tf 06 cmd RunTcoDecisionRanking
+        tf 07 evt DecisionRankingReady
+        tf 08 pcr Web3EconomicsAgent
+        tf 09 cmd EvaluateClosedValueLoop
+        tf 10 evt ClosedLoopHealthReady
+        tf 11 cmd RenderDecisionCharts
+        tf 12 evt ChartsRenderedToPanel
+        tf 13 cmd PersistTcoRunToD1
+        tf 14 evt TcoRunPersisted
+        tf 15 ui ReplayTcoFromCache
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -75,6 +220,81 @@ flow:
   computed: {key: computed, type: boolean, value: true}
   snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
+    - id: {key: id, type: string, value: "tco_source_input"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "TCO Source Input"}
+      position: {key: position, type: object, value: {"x":-360,"y":0}}
+      handles: {key: handles, type: object, value: {"source":["monthly_active_users","monthly_agent_requests","paid_conversion_rate","agent_token_take_rate","model_provider_fee_usd","platform_subscription_usd"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"tco_scenario","previewMaxChars":80,"onEdit":{"trigger":"runDownstream","targets":["tco_compute"]},"actions":[{"id":"edit","label":"Edit","icon":"pencil","trigger":"openFieldEditor","targetField":"tco_scenario"},{"id":"run","label":"Run","icon":"play","trigger":"runDownstream","targets":["tco_compute"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"monthly_active_users":"demand_driver_signal","monthly_agent_requests":"demand_driver_signal","paid_conversion_rate":"revenue_driver_signal","agent_token_take_rate":"revenue_driver_signal","model_provider_fee_usd":"platform_cost_signal","platform_subscription_usd":"platform_cost_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "tcoSourceInput"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runnable entry widget: TCO scenario inputs for demand, revenue, and cost driver ports."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      monthly_active_users: {key: monthly_active_users, type: number, value: 5000}
+      monthly_agent_requests: {key: monthly_agent_requests, type: number, value: 120000}
+      paid_conversion_rate: {key: paid_conversion_rate, type: number, value: 0.08}
+      agent_token_take_rate: {key: agent_token_take_rate, type: number, value: 0.05}
+      model_provider_fee_usd: {key: model_provider_fee_usd, type: number, value: 0.003}
+      platform_subscription_usd: {key: platform_subscription_usd, type: number, value: 25}
+      tco_scenario: {key: tco_scenario, type: string, value: "Fetch Agentverse Premium baseline — 5k MAU, 120k agent calls/month"}
+      "visual:importance": {key: "visual:importance", type: number, value: 32}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "tco_compute"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "TCO Summary Compute"}
+      position: {key: position, type: object, value: {"x":-60,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["monthly_active_users","monthly_agent_requests","paid_conversion_rate","agent_token_take_rate","model_provider_fee_usd","platform_subscription_usd"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["monthly_active_users","monthly_agent_requests","paid_conversion_rate","agent_token_take_rate","model_provider_fee_usd","platform_subscription_usd"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"tco_compute.output","field":"output"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"output","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["output","imageUrl","outputSrcDoc"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"monthly_active_users":"demand_driver_signal","monthly_agent_requests":"demand_driver_signal","paid_conversion_rate":"revenue_driver_signal","agent_token_take_rate":"revenue_driver_signal","model_provider_fee_usd":"platform_cost_signal","platform_subscription_usd":"platform_cost_signal"},"out":{"output":"rich_media_chart_html","imageUrl":"rich_media_chart_html","outputSrcDoc":"rich_media_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "tcoCompute"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Inline compute: derives monthly revenue, TCO, net margin, and decision verdict from typed cost-driver ports without calling any LLM."}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      run_status: {key: run_status, type: string, value: "idle"}
+      output: {key: output, type: markdown, value: "TCO summary is ready to run."}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      semanticKey: {key: semanticKey, type: string, value: "tco-demo:compute:tco-summary"}
+      "visual:importance": {key: "visual:importance", type: number, value: 40}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      compute:
+        key: compute
+        type: string
+        value: |
+          inputs => {
+            const rn = (k, d) => { const v = Number(inputs && inputs[k]); return Number.isFinite(v) ? v : d; }
+            const mau = rn('monthly_active_users', 5000)
+            const req = rn('monthly_agent_requests', 120000)
+            const cvr = rn('paid_conversion_rate', 0.08)
+            const tkr = rn('agent_token_take_rate', 0.05)
+            const mf = rn('model_provider_fee_usd', 0.003)
+            const sub = rn('platform_subscription_usd', 25)
+            const monthlyRev = Math.round(mau * cvr * 12 * tkr * 100) / 100
+            const tco = Math.round((req * mf + sub * 12) * 100) / 100
+            const netMargin = Math.round((monthlyRev - tco) * 100) / 100
+            const verdict = netMargin > 0 ? 'VIABLE' : netMargin > -tco * 0.2 ? 'MARGINAL' : 'UNVIABLE'
+            const esc = v => String(v||'').replace(/[&<>"']/g, c => c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
+            const output = [
+              '## ' + verdict + ' — Token Economics TCO Summary',
+              '',
+              '- Monthly revenue (annualised): $' + monthlyRev.toLocaleString('en-US'),
+              '- Annual TCO (model + platform): $' + tco.toLocaleString('en-US'),
+              '- Net margin: $' + netMargin.toLocaleString('en-US'),
+              '- MAU: ' + mau.toLocaleString('en-US'),
+              '- Agent requests/month: ' + req.toLocaleString('en-US'),
+              '- Model provider fee: $' + mf + '/call',
+              '- Paid conversion rate: ' + (cvr * 100).toFixed(1) + '%',
+            ].join('\n')
+            const vc = netMargin > 0 ? '#22c55e' : netMargin > -tco * 0.2 ? '#f59e0b' : '#ef4444'
+            const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200"><rect width="640" height="200" fill="#f8fafc"/><text x="320" y="56" font-family="system-ui" font-size="24" font-weight="700" fill="' + esc(vc) + '" text-anchor="middle">' + esc(verdict) + '</text><text x="320" y="94" font-family="system-ui" font-size="13" fill="#475569" text-anchor="middle">Revenue $' + esc(String(monthlyRev.toLocaleString('en-US'))) + ' | TCO $' + esc(String(tco.toLocaleString('en-US'))) + ' | Net $' + esc(String(netMargin.toLocaleString('en-US'))) + '</text><text x="320" y="128" font-family="system-ui" font-size="12" fill="#64748b" text-anchor="middle">' + esc(mau.toLocaleString('en-US')) + ' MAU · ' + esc(req.toLocaleString('en-US')) + ' req/month · $' + esc(String(mf)) + '/call</text></svg>'
+            const imageUrl = 'data:image/svg+xml,' + encodeURIComponent(svg)
+            const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.kpi div{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:10px}.label{font-size:11px;color:#64748b;text-transform:uppercase}.value{font-size:15px;font-weight:700}</style></head><body><div class="kpi"><div><p class="label">Revenue</p><p class="value">$' + esc(String(monthlyRev.toLocaleString('en-US'))) + '</p></div><div><p class="label">TCO</p><p class="value">$' + esc(String(tco.toLocaleString('en-US'))) + '</p></div><div><p class="label">Net Margin</p><p class="value">$' + esc(String(netMargin.toLocaleString('en-US'))) + '</p></div></div><p style="font-size:12px;color:#64748b">' + esc(verdict) + ' — ' + esc(mau.toLocaleString('en-US')) + ' MAU · ' + esc(req.toLocaleString('en-US')) + ' req/month</p></body></html>'
+            return { output, imageUrl, outputSrcDoc }
+          }
     - id: {key: id, type: string, value: "agent_token_take_rate"}
       type: {key: type, type: string, value: "lever"}
       label: {key: label, type: string, value: "Agent Token Take Rate"}
@@ -1485,6 +1705,14 @@ flow:
     - {"id":"e-tokenized-decision","source":"tco_calculator","sourceHandle":"tokenized_distribution_driver","target":"decision_ranking","targetHandle":"tokenized_distribution_driver","label":"tokenized_distribution_driver","type":"decision_driver_signal"}
     - {"id":"e-calculator-chart","source":"tco_calculator","sourceHandle":"outputSrcDoc","target":"tco_chart_panel","targetHandle":"outputSrcDoc","label":"outputSrcDoc","type":"rich_media_chart_html"}
     - {"id":"e-value-loop-chart","source":"closed_value_loop","sourceHandle":"outputSrcDoc","target":"value_loop_chart_panel","targetHandle":"outputSrcDoc","label":"outputSrcDoc","type":"rich_media_chart_html"}
+    - {"id":"e-tco-entry-mau","source":"tco_source_input","sourceHandle":"monthly_active_users","target":"tco_compute","targetHandle":"monthly_active_users","label":"monthly_active_users","type":"demand_driver_signal"}
+    - {"id":"e-tco-entry-req","source":"tco_source_input","sourceHandle":"monthly_agent_requests","target":"tco_compute","targetHandle":"monthly_agent_requests","label":"monthly_agent_requests","type":"demand_driver_signal"}
+    - {"id":"e-tco-entry-cvr","source":"tco_source_input","sourceHandle":"paid_conversion_rate","target":"tco_compute","targetHandle":"paid_conversion_rate","label":"paid_conversion_rate","type":"revenue_driver_signal"}
+    - {"id":"e-tco-entry-tkr","source":"tco_source_input","sourceHandle":"agent_token_take_rate","target":"tco_compute","targetHandle":"agent_token_take_rate","label":"agent_token_take_rate","type":"revenue_driver_signal"}
+    - {"id":"e-tco-entry-mf","source":"tco_source_input","sourceHandle":"model_provider_fee_usd","target":"tco_compute","targetHandle":"model_provider_fee_usd","label":"model_provider_fee_usd","type":"platform_cost_signal"}
+    - {"id":"e-tco-entry-sub","source":"tco_source_input","sourceHandle":"platform_subscription_usd","target":"tco_compute","targetHandle":"platform_subscription_usd","label":"platform_subscription_usd","type":"platform_cost_signal"}
+    - {"id":"e-tco-compute-chart","source":"tco_compute","sourceHandle":"outputSrcDoc","target":"tco_chart_panel","targetHandle":"outputSrcDoc","label":"tco summary → chart panel","type":"rich_media_chart_html"}
+---
 node_types:
   - metric
   - lever
@@ -1542,7 +1770,6 @@ modelSelection:
         - "seedance-1-5-pro-251215"
         - "dreamina-seedance-2-0-fast-260128"
         - "dreamina-seedance-2-0-260128"
----
 
 # Knowgrph Token Economics Model Demo - Flow Editor
 
@@ -1578,7 +1805,6 @@ sourceHandle == targetHandle == edge label
 Widget port interpretation stays uniform across the canvas:
 
 | Port Site | Driver Meaning |
-|---|---|
 | `handles.source` on driver widgets | Emits editable assumptions such as workload, platform, token, revenue, and Web3 journey drivers. |
 | `handles.target` on calculator and engine widgets | Consumes the exact same driver key emitted upstream; no widget-local alias is introduced. |
 | `handles.source` on calculator and engine widgets | Emits computed cost, revenue, risk, value-loop, or decision drivers for downstream widgets. |
@@ -1596,7 +1822,6 @@ This keeps the graph neutral and inspectable:
 Driver-handle families:
 
 | Driver Family | Flow Editor Port Role | Port Handles |
-|---|---|---|
 | Demand | Workload meters that fan out to stack, revenue, and infrastructure widgets. | `monthly_agent_requests`, `avg_tool_calls_per_request`, `avg_tokens_per_request`, `retry_rate` |
 | Platform | Cash-cost, runtime, provider, external API, and operator meters. | `platform_subscription_usd`, `platform_unit_call_cost_usd`, `managed_hosting_required`, `hosting_or_cloud_runtime_usd`, `model_provider_fee_usd`, `social_api_rpc_data_api_fees`, `ops_hours` |
 | Token | On-chain launch, gas, token setup, and volatility exposure. | `onchain_token_launch_required`, `token_setup_exposure`, `onchain_gas_and_token_fees`, `token_price_volatility` |
@@ -1609,7 +1834,6 @@ Driver-handle families:
 | Render Payload | Chart payload handle for Rich Media Panel widgets. | `outputSrcDoc` |
 
 | Widget | Input Port Handles | Output Port Handles | Purpose |
-|---|---|---|---|
 | `workload_drivers` | n/a | `monthly_agent_requests`, `avg_tool_calls_per_request`, `avg_tokens_per_request`, `retry_rate` | Demand-side cost drivers shared by every stack. |
 | `shared_platform_drivers` | n/a | `platform_subscription_usd`, `platform_unit_call_cost_usd`, `managed_hosting_required`, `hosting_or_cloud_runtime_usd`, `model_provider_fee_usd`, `social_api_rpc_data_api_fees`, `ops_hours` | Platform, runtime, provider, API, and ops meters that can hit any stack. |
 | `token_exposure_drivers` | n/a | `onchain_token_launch_required`, `token_setup_exposure`, `onchain_gas_and_token_fees`, `token_price_volatility` | Web3-specific token and gas exposure. |
@@ -1649,7 +1873,6 @@ Renderer checks:
 The document reuses the existing FloatingPanel Renderer palette keys instead of inventing stack-specific colors.
 
 | Flow Segment | Socket Type | Palette Role | Handle Meaning |
-|---|---|---|---|
 | Demand drivers | `demand_driver_signal` | `hypothesis` | Workload assumptions that should be tested. |
 | Platform costs | `platform_cost_signal` | `execution` | Cash-cost meters and operational meters. |
 | Token exposure | `token_risk_signal` | `alert` | Token, gas, quota, volatility, and launch risks. |
@@ -1860,7 +2083,6 @@ The Flow Editor calculator emits these values from the frontmatter ports, so cha
 Closed journey engine baseline:
 
 | Engine | Main Driver Ports | Computed Output Ports | Baseline Readout |
-|---|---|---|---|
 | Prediction Engine | `prediction_accuracy_rate`, `wallet_activation_rate`, `monthly_active_users`, `paid_conversion_rate` | `predicted_intent_quality_score`, `conversion_uplift_rate`, `demand_forecast_index` | Intent quality and demand forecast rise only when prediction and wallet activation both improve. |
 | Yield Engine | `net_revenue_usd`, `yield_share_rate`, `predicted_intent_quality_score` | `user_value_yield_usd`, `protocol_yield_score`, `retention_value_index` | User-retained value is tied to net revenue, not token price alone. |
 | Payment Engine | `payment_success_rate`, `payment_fee_rate`, `user_value_yield_usd` | `settled_payment_volume_usd`, `payment_fee_cost_usd`, `payment_value_capture_usd` | Payment value capture stays visible after fee drag. |
@@ -1877,7 +2099,6 @@ Agentverse is the lowest-friction hosted comparison when the goal is a Web3 agen
 Cost profile:
 
 | Component | Public Signal | TCO Impact |
-|---|---|---|
 | Basic plan | Free tier lists 8 hosted agents, 8 local agents, 60K seconds computation time, 10K processed messages, and 5MB storage | Baseline demo can fit if one request maps to one processed message and compute remains modest. |
 | Premium plan | $25/month with 25 hosted agents, 25 local agents, 500K seconds computation time, 1M processed messages, and 100MB storage | Predictable small-team plan; 12-month subscription cost is $300 before model/API/FET costs. |
 | Enterprise | Custom | Use only when quotas, support, or team constraints exceed Premium. |
@@ -1905,7 +2126,6 @@ elizaOS is the lowest-lock-in framework comparison. It is useful when the key TC
 Cost profile:
 
 | Component | Public Signal | TCO Impact |
-|---|---|---|
 | Framework | elizaOS docs position it as an open TypeScript framework with local, Docker, Eliza Cloud, or own-infrastructure deployment | Framework license cost is $0; real cost moves to hosting, model providers, plugins, and operations. |
 | Cloud deployment | Eliza Cloud deploys with `elizaos login` and `elizaos deploy`; docs say each deployment gets a dedicated EC2 t4g.small ARM server, HTTPS, health monitoring, and logs | Managed convenience is high, but docs refer to account credits rather than publishing a simple monthly price in the deploy guide. |
 | Model providers | elizaOS uses plugins for providers such as OpenAI, Anthropic, Google GenAI, OpenRouter, and local Ollama | Cost can be near zero for local dev with Ollama, or unbounded if hosted model calls loop. |
@@ -1932,7 +2152,6 @@ Virtuals is the clearest match when the agent itself is part of an on-chain crea
 Cost profile:
 
 | Component | Public Signal | TCO Impact |
-|---|---|---|
 | GAME SDK free tier | GAME docs say the SDK is free with default limits of 10 GAME requests per 5 minutes and 10 X requests per 15 minutes | Good for prototyping; not enough for sustained production load. |
 | GAME paid tier | GAME docs publish $0.003 per API call for the pay-as-you-go upgrade | 10,000 calls/month = $30/month before other providers. |
 | Prototype agent launch | Virtuals Genesis docs describe a 100 VIRTUAL setup cost for a prototype bonding curve and 42K VIRTUAL needed for graduation | Token-denominated setup creates market-price exposure. |
@@ -1971,7 +2190,6 @@ This is a high-signal comparison row for buyer TCO, but it is not a direct subst
 ## Scenario Matrix
 
 | Scenario | Fetch.ai / Agentverse | elizaOS / AI16Z | Virtuals / GAME |
-|---|---|---|---|
 | Cheapest local prototype | Good with local agents and mailbox | Best with local Docker/Ollama | Good only if staying in free GAME limits |
 | Cheapest managed prototype | Best if Basic quotas fit | Unknown until cloud credits/pricing are checked | $0 SDK until limits, then $0.003/call |
 | Predictable small production | Premium at $25/month plus usage | Self-host if ops are available; cloud if credits are acceptable | $30/month per 10k calls plus token/gas costs |

@@ -13,8 +13,14 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgBottomPanelOpen: true
+kgBottomPanelTab: "gitGraph"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "gitGraph"
 kgSharedRendererContract:
-  version: shared-renderer-contract/v1
   semanticIdentity: buildScopedGraphSemanticKey
   cardPreview: CardMediaPreview + CardMarkdownPreview
   widgetCard: canvas:widgetCard
@@ -54,6 +60,10 @@ flow_diagrams:
     missalpha_graph:
       key: missalpha_graph
       type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input[Alpha discovery source]

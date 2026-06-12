@@ -1,3 +1,4 @@
+---
 title: "Knowgrph MCP Agentic Canvas OS Demo - Reference Video To Sold Remix"
 graphId: "md:knowgrph-mcp-agentic-canvas-os-demo"
 doc_type: "MCP Agentic Canvas OS Demo"
@@ -62,6 +63,10 @@ flow_diagrams:
     reference_to_remix_gitgraph:
       key: reference_to_remix_gitgraph
       type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
       value: |-
         gitGraph
           commit id: "import_url" tag: "youtu.be/77FAnT935IE"
@@ -159,6 +164,28 @@ modelSelection:
         - "seedance-1-5-pro-251215"
         - "dreamina-seedance-2-0-fast-260128"
         - "dreamina-seedance-2-0-260128"
+    mcp_pipeline_flowchart:
+      key: mcp_pipeline_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          source_input["Run Brief Input\n(referenceUrl · brief · budgetUsd · mode · approvals)"]
+          compute_summary["Compute Run Manifest\n(BLOCKED / DRY-RUN / SOLD)"]
+          approval_gate{"Approval Gates\n(paid-model-call · render · payment)"}
+          panel_text["Run Manifest Panel\n(RichMediaPanel · text)"]
+          panel_image["Image Panel\n(R2 · seedream)"]
+          panel_video["Video Panel\n(R2 · seedance)"]
+          panel_chart["Dashboard Panel\n(RichMediaPanel · HTML)"]
+          source_input -->|"idea_signal + budget"| compute_summary
+          compute_summary -->|"dry-run state"| approval_gate
+          approval_gate -->|"all gates verified"| panel_text
+          approval_gate -->|"imageAssetUrl"| panel_image
+          approval_gate -->|"videoUrl"| panel_video
+          approval_gate -->|"outputSrcDoc"| panel_chart
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -341,6 +368,7 @@ flow:
     - {"id": "edge_compute_to_panel_image_output", "source": "compute_summary", "sourceHandle": "imageAssetUrl", "target": "panel_image_output", "targetHandle": "imageAssetUrl", "label": "imageAssetUrl", "type": "artifact_signal"}
     - {"id": "edge_compute_to_panel_video_output", "source": "compute_summary", "sourceHandle": "videoUrl", "target": "panel_video_output", "targetHandle": "videoUrl", "label": "videoUrl", "type": "artifact_signal"}
     - {"id": "edge_compute_to_panel_chart_output", "source": "compute_summary", "sourceHandle": "outputSrcDoc", "target": "panel_chart_output", "targetHandle": "outputSrcDoc", "label": "outputSrcDoc", "type": "artifact_signal"}
+---
 
 # Knowgrph MCP Agentic Canvas OS — Demo
 

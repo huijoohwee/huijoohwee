@@ -26,6 +26,13 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgBottomPanelOpen: true
+kgBottomPanelTab: "eventModeling"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "eventModeling"
 kgStrybldrStoryboard: true
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
@@ -96,6 +103,10 @@ flow_diagrams:
     gitgraph:
       key: gitgraph
       type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
       title: "Strytree deep-research GitGraph branches"
       render_on: [strybldr, flow_editor, storyboard]
       value: |-
@@ -122,6 +133,10 @@ flow_diagrams:
     gantt:
       key: gantt
       type: mermaid_gantt
+      floatingPanelView: "gantt"
+      floatingPanelOpen: true
+      bottomPanelTab: "gantt"
+      bottomPanelOpen: true
       title: "Strytree deep-research Gantt critical path"
       render_on: [strybldr, flow_editor, storyboard, document_view, timeline_view]
       value: |-
@@ -138,6 +153,68 @@ flow_diagrams:
           section Review
           Review gate :crit, review_gate, after structured_tool_result, 1d
           Rich Media Panels :panel_outputs, after review_gate, 1d
+    miromind_architecture:
+      key: miromind_architecture
+      type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      forbidPlatform: ["vercel", "aws"]
+      value: |-
+        architecture-beta
+          group operator(cloud)[Operator]
+          group cloudflare(cloud)[Cloudflare Control Plane]
+          group providers(cloud)[Default provider BytePlus plus Stripe]
+          service canvas(internet)[Canvas UI airvio.co knowgrph] in cloudflare
+          service miromind(server)[Miromind Research Agent] in cloudflare
+          service gateway(server)[Cloudflare AI Gateway] in cloudflare
+          service d1(database)[D1 Thesis and Evidence Store] in cloudflare
+          service byteplus(server)[BytePlus agnes and seed] in providers
+          canvas:R --> L:miromind
+          miromind:R --> L:gateway
+          gateway:R --> L:byteplus
+          miromind:B --> T:d1
+    miromind_event_model:
+      key: miromind_event_model
+      type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
+      value: |-
+        eventmodeling
+        tf 01 ui StoryTreeSourceReview
+        tf 02 cmd StartMiromindResearch
+        tf 03 evt RunManifestCreated
+        tf 04 pcr MiromindResearchAgent
+        tf 05 cmd CrawlStructuredEvidence
+        tf 06 evt EvidencePackReady
+        tf 07 cmd CompileStoryTreeSnapshot
+        tf 08 evt StoryTreeSnapshotReady
+        tf 09 cmd RequestForkCompare
+        tf 10 evt ForkCompareScored
+        tf 11 cmd PersistToD1
+        tf 12 evt PersistedToD1
+        tf 13 ui ReplayStoryTreeFromCache
+    miromind_pipeline_flowchart:
+      key: miromind_pipeline_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          storytree_source["StoryTree Source\n(reference review)"]
+          miromind_research["Miromind Research\n(structured tool result · evidence pack)"]
+          strybldr_artifact["Strybldr Artifact\n(snapshot · fork compare)"]
+          review_gate{"Review Gate\n(human approval)"}
+          panel_outputs["Rich Media Panels\n(text · chart · claim)"]
+          storytree_source -->|"source_ref_signal"| miromind_research
+          miromind_research -->|"parallel"| strybldr_artifact
+          strybldr_artifact -->|"merge"| review_gate
+          review_gate -->|"approved"| panel_outputs
 
 flow:
   direction: {key: direction, type: string, value: "LR"}
