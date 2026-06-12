@@ -167,10 +167,6 @@ modelSelection:
     mcp_pipeline_flowchart:
       key: mcp_pipeline_flowchart
       type: mermaid_flowchart
-      floatingPanelView: "gitGraph"
-      floatingPanelOpen: true
-      bottomPanelTab: "gitGraph"
-      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input["Run Brief Input\n(referenceUrl · brief · budgetUsd · mode · approvals)"]

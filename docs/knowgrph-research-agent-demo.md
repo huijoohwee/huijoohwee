@@ -320,10 +320,6 @@ flow_diagrams:
     research_pipeline_flowchart:
       key: research_pipeline_flowchart
       type: mermaid_flowchart
-      floatingPanelView: "gitGraph"
-      floatingPanelOpen: true
-      bottomPanelTab: "gitGraph"
-      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input["Research Brief\n(thesis · evidence_budget · review_mode)"]

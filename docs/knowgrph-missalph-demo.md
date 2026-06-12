@@ -60,10 +60,6 @@ flow_diagrams:
     missalpha_graph:
       key: missalpha_graph
       type: mermaid_flowchart
-      floatingPanelView: "gitGraph"
-      floatingPanelOpen: true
-      bottomPanelTab: "gitGraph"
-      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input[Alpha discovery source]

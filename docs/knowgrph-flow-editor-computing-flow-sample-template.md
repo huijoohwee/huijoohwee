@@ -730,10 +730,6 @@ flow_diagrams:
     template_flowchart:
       key: template_flowchart
       type: mermaid_flowchart
-      floatingPanelView: "gitGraph"
-      floatingPanelOpen: true
-      bottomPanelTab: "gitGraph"
-      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input["Source Input\n(idea + evidence + DCF assumptions)"]
