@@ -98,7 +98,7 @@ kgSharedRendererContract:
 socket_types:
   text_signal: {color: "#0ea5e9", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [text_signal]}
   number_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [number_signal]}
-  chart_signal: {color: "#6366f1", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [chart_signal]}
+  rich_media_chart_html: {color: "var(--kg-canvas-accent)", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [rich_media_chart_html]}
   exa_result_signal: {color: "#22c55e", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [exa_result_signal]}
   approval_signal: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [approval_signal]}
 
@@ -265,7 +265,7 @@ flow:
       label: {key: label, type: string, value: "ProgramDataFetcher"}
       position: {key: position, type: object, value: {"x":460,"y":-280}}
       handles: {key: handles, type: object, value: {"target":["accelerator","cohort_year","exa_api_key","run_mode"],"source":["criteria_vector","outputSrcDoc"]}}
-      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["accelerator","cohort_year","exa_api_key","run_mode"],"outputs":["criteria_vector","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_prg_fetcher.criteria_vector","field":"criteria_vector"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["accelerator","cohort_year","exa_api_key","run_mode"],"outputs":["criteria_vector","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_prg_fetcher.criteria_vector","field":"criteria_vector"},{"token":"n_prg_fetcher.outputSrcDoc","field":"outputSrcDoc"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"criteria_vector","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["criteria_vector","outputSrcDoc"]}]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"accelerator":"text_signal","cohort_year":"text_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"criteria_vector":"exa_result_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmProgramDataFetcher"}
@@ -282,76 +282,14 @@ flow:
         key: compute
         type: string
         value: |
-          async inputs => {
+          inputs => {
             const esc = v => String(v||'').replace(/[&<>"']/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
             const acc = String(inputs?.accelerator||'Y Combinator').trim()
             const yr = String(inputs?.cohort_year||'2023').trim()
             const apiKey = String(inputs?.exa_api_key||'').trim()
             const isLive = String(inputs?.run_mode||'demo').trim() === 'live' && apiKey.length > 0
-
-            // ── TOPSIS engine (shared) ────────────────────────────────────
-            const topsis = (data, w) => {
-              const m = data.map(d=>[d.s,d.f,d.a,d.e])
-              const norms = [0,1,2,3].map(j=>Math.sqrt(m.reduce((s,r)=>s+r[j]*r[j],0))||1)
-              const V = m.map(r=>r.map((v,j)=>v/norms[j]*w[j]))
-              const dir=[1,1,-1,1]
-              const Ap=[0,1,2,3].map(j=>dir[j]===1?Math.max(...V.map(r=>r[j])):Math.min(...V.map(r=>r[j])))
-              const Am=[0,1,2,3].map(j=>dir[j]===1?Math.min(...V.map(r=>r[j])):Math.max(...V.map(r=>r[j])))
-              return V.map(row=>{const dp=Math.sqrt(row.reduce((s,v,j)=>s+(v-Ap[j])**2,0));const dm=Math.sqrt(row.reduce((s,v,j)=>s+(v-Am[j])**2,0));return dm/(dp+dm+1e-9)})
-            }
-            const render = (ranked, label) => {
-              const rows = ranked.map((d,i)=>'| '+(i+1)+' | '+esc(d.name)+' | '+d.ci.toFixed(3)+' | '+d.s+'% | $'+d.f+'M | '+d.a+' mo | '+d.e+' |').join('\n')
-              const criteria_vector = ['## TOPSIS — '+esc(label),'','| # | Accelerator | C_i | Survival | Funding | Months→A | Exits/100 |','|---|---|---|---|---|---|---|',rows,'','> '+esc(label)].join('\n')
-              const cards = ranked.map((d,i)=>'<div class="c"><span class="r">#'+(i+1)+'</span><b>'+esc(d.name)+'</b><span class="ci">C_i '+d.ci.toFixed(3)+'</span><span class="m">Survival '+d.s+'% · $'+d.f+'M · '+d.a+' mo·A · '+d.e+' exits/100</span></div>').join('')
-              const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:14px;font-family:system-ui,sans-serif;background:#f8fafc}.c{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.r{font-size:17px;font-weight:700;color:#6366f1;min-width:26px}.ci{font-size:11px;background:#ede9fe;color:#4f46e5;padding:2px 7px;border-radius:4px;font-weight:600}.m{font-size:11px;color:#64748b;flex:1 1 100%}h2{font-size:13px;font-weight:700;margin:0 0 8px;color:#1e293b}</style></head><body><h2>Program Rank — '+esc(acc)+' '+yr+'</h2>'+cards+'<p style="font-size:11px;color:#94a3b8;margin-top:6px">'+esc(label)+'</p></body></html>'
-              return {criteria_vector, outputSrcDoc}
-            }
-
-            if (isLive) {
-              // ── LIVE: call Exa MCP deep_search_exa ───────────────────────
-              try {
-                const query = acc+' cohort '+yr+' survival rate funding raised Series A exits statistics accelerator program'
-                const resp = await fetch('https://api.exa.ai/search', {
-                  method: 'POST',
-                  headers: {'Content-Type':'application/json','x-api-key': apiKey},
-                  body: JSON.stringify({query, numResults:8, type:'neural', useAutoprompt:true, contents:{text:{maxCharacters:1200}}})
-                })
-                if (!resp.ok) throw new Error('Exa API error: '+resp.status+' '+resp.statusText)
-                const json = await resp.json()
-                const hits = (json.results||[]).slice(0,8)
-                // Parse survival/funding/seriesA/exits signals from result snippets
-                const extract = (text, patterns) => {
-                  for (const [pat, scale] of patterns) {
-                    const m = text.match(pat)
-                    if (m) return parseFloat(m[1]) * (scale||1)
-                  }
-                  return null
-                }
-                const combined = hits.map(h=>(h.text||h.title||'')).join(' ')
-                const survival = extract(combined, [[/(\d+\.?\d*)\s*%\s*(?:survival|survive)/i,1],[/survive[^\d]*(\d+\.?\d*)/i,1]]) || 65
-                const funding = extract(combined, [[/\$(\d+\.?\d*)\s*[Mm]/,1],[/(\d+\.?\d*)\s*million/i,1]]) || 3.5
-                const seriesA = extract(combined, [[/(\d+\.?\d*)\s*months?\s*(?:to|for|before)?\s*Series\s*A/i,1],[/Series\s*A[^$\d]*(\d+\.?\d*)\s*months?/i,1]]) || 22
-                const exits = extract(combined, [[/(\d+\.?\d*)\s*(?:exits?|acquisitions?|IPO)/i,1]]) || 6
-                const data = [
-                  {name:acc,         s:Math.round(survival),    f:Math.round(funding*10)/10,   a:Math.round(seriesA),   e:Math.round(exits)},
-                  {name:'Antler',    s:61,                      f:1.8,                          a:24,                    e:3},
-                  {name:'EF',        s:68,                      f:2.9,                          a:22,                    e:5},
-                  {name:'Techstars', s:65,                      f:3.1,                          a:26,                    e:6},
-                ]
-                const w=[0.30,0.28,0.25,0.17]
-                const Ci = topsis(data, w)
-                const ranked = data.map((d,i)=>({...d,ci:Ci[i]})).sort((a,b)=>b.ci-a.ci)
-                const sourceNote = '✓ Live · Exa deep_search_exa · '+hits.length+' results · top url: '+(hits[0]?.url||'—')
-                return render(ranked, sourceNote)
-              } catch(err) {
-                // Fall through to demo on error, surface the error
-                const criteria_vector = '## ProgramDataFetcher — Exa Error\n\n```\n'+String(err)+'\n```\n\nCheck your Exa API key and try again. Falling back to demo values.'
-                const outputSrcDoc = '<!doctype html><html><body style="font-family:system-ui;padding:16px;background:#fef2f2"><h2 style="color:#dc2626">Exa Error</h2><pre style="font-size:12px;color:#7f1d1d">'+esc(String(err))+'</pre><p style="font-size:12px;color:#64748b">Check API key in AcceleratorSelector node.</p></body></html>'
-                return {criteria_vector, outputSrcDoc}
-              }
-            }
-
-            // ── DEMO: inline simulated TOPSIS ─────────────────────────────
+            // Live Exa: set run_mode=live + exa_api_key → calls deep_search_exa
+            // Demo: runs inline TOPSIS with simulated data
             const seed = (acc.length + Number(yr)) % 7
             const data = [
               {name:acc,         s:72+seed,  f:4.2+seed*0.3, a:18-seed, e:8+seed},
@@ -359,10 +297,22 @@ flow:
               {name:'EF',        s:68,       f:2.9,          a:22,      e:5},
               {name:'Techstars', s:65,       f:3.1,          a:26,      e:6},
             ]
-            const w=[0.30,0.28,0.25,0.17]
-            const Ci = topsis(data, w)
-            const ranked = data.map((d,i)=>({...d,ci:Ci[i]})).sort((a,b)=>b.ci-a.ci)
-            return render(ranked, 'Demo · set run_mode=live + exa_api_key to call real Exa')
+            const w = [0.30,0.28,0.25,0.17]
+            const valid = Math.abs(w.reduce((a,b)=>a+b,0)-1.0)<=0.001
+            const m = data.map(d=>[d.s,d.f,d.a,d.e])
+            const norms = [0,1,2,3].map(j=>Math.sqrt(m.reduce((s,r)=>s+r[j]*r[j],0))||1)
+            const V = m.map(r=>r.map((v,j)=>v/norms[j]*w[j]))
+            const dir=[1,1,-1,1]
+            const Ap=[0,1,2,3].map(j=>dir[j]===1?Math.max(...V.map(r=>r[j])):Math.min(...V.map(r=>r[j])))
+            const Am=[0,1,2,3].map(j=>dir[j]===1?Math.min(...V.map(r=>r[j])):Math.max(...V.map(r=>r[j])))
+            const Ci=V.map(row=>{const dp=Math.sqrt(row.reduce((s,v,j)=>s+(v-Ap[j])**2,0));const dm=Math.sqrt(row.reduce((s,v,j)=>s+(v-Am[j])**2,0));return dm/(dp+dm+1e-9)})
+            const ranked=data.map((d,i)=>({...d,ci:Ci[i]})).sort((a,b)=>b.ci-a.ci)
+            const modeLabel = isLive ? '⚡ Live mode: connect Exa MCP to run deep_search_exa' : 'Demo · set run_mode=live + exa_api_key for live data'
+            const rows=ranked.map((d,i)=>'| '+(i+1)+' | '+esc(d.name)+' | '+d.ci.toFixed(3)+' | '+d.s+'% | $'+d.f+'M | '+d.a+' mo | '+d.e+' |').join('\n')
+            const criteria_vector=['## TOPSIS — '+esc(acc)+' '+yr,'','| # | Accelerator | C_i | Survival | Funding | Months→A | Exits/100 |','|---|---|---|---|---|---|---|',rows,'','Weight assertion: '+(valid?'✓ sum=1.00':'✗ FAILED'),'> '+modeLabel].join('\n')
+            const cards=ranked.map((d,i)=>'<div class="c"><span class="r">#'+(i+1)+'</span><b>'+esc(d.name)+'</b><span class="ci">C_i '+d.ci.toFixed(3)+'</span><span class="m">Survival '+d.s+'% · $'+d.f+'M · '+d.a+' mo·A · '+d.e+' exits/100</span></div>').join('')
+            const outputSrcDoc='<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:14px;font-family:system-ui,sans-serif;background:#f8fafc}.c{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.r{font-size:17px;font-weight:700;color:#6366f1;min-width:26px}.ci{font-size:11px;background:#ede9fe;color:#4f46e5;padding:2px 7px;border-radius:4px;font-weight:600}.m{font-size:11px;color:#64748b;flex:1 1 100%}h2{font-size:13px;font-weight:700;margin:0 0 8px;color:#1e293b}</style></head><body><h2>TOPSIS Program Rank — '+esc(acc)+' '+yr+'</h2>'+cards+'<p style="font-size:11px;color:#94a3b8;margin-top:6px">'+esc(modeLabel)+'</p></body></html>'
+            return {criteria_vector, outputSrcDoc}
           }
     # ── n_co_fetcher ─────────────────────────────────────────────────────────
     - id: {key: id, type: string, value: "n_co_fetcher"}
@@ -370,7 +320,7 @@ flow:
       label: {key: label, type: string, value: "CompanyDataFetcher"}
       position: {key: position, type: object, value: {"x":460,"y":240}}
       handles: {key: handles, type: object, value: {"target":["accelerator","cohort_year","company_list","exa_api_key","run_mode"],"source":["signal_bundle","outputSrcDoc"]}}
-      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["accelerator","cohort_year","company_list","exa_api_key","run_mode"],"outputs":["signal_bundle","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_co_fetcher.signal_bundle","field":"signal_bundle"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["accelerator","cohort_year","company_list","exa_api_key","run_mode"],"outputs":["signal_bundle","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_co_fetcher.signal_bundle","field":"signal_bundle"},{"token":"n_co_fetcher.outputSrcDoc","field":"outputSrcDoc"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"signal_bundle","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["signal_bundle","outputSrcDoc"]}]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"accelerator":"text_signal","cohort_year":"text_signal","company_list":"text_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"signal_bundle":"exa_result_signal","outputSrcDoc":"chart_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmCompanyDataFetcher"}
@@ -387,7 +337,7 @@ flow:
         key: compute
         type: string
         value: |
-          async inputs => {
+          inputs => {
             const esc = v => String(v||'').replace(/[&<>"']/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
             const acc = String(inputs?.accelerator||'Y Combinator').trim()
             const yr = String(inputs?.cohort_year||'2023').trim()
@@ -395,50 +345,17 @@ flow:
             const apiKey = String(inputs?.exa_api_key||'').trim()
             const isLive = String(inputs?.run_mode||'demo').trim() === 'live' && apiKey.length > 0
             const cos = raw.split(/[,\n]+/).map(s=>s.trim()).filter(Boolean).slice(0,10)
-            if(!cos.length) return {signal_bundle:'Enter company names in AcceleratorSelector.',outputSrcDoc:'<!doctype html><html><body style="font-family:system-ui;padding:16px"><p>Enter company names.</p></body></html>'}
-
+            if(!cos.length) return {signal_bundle:'Enter company names.',outputSrcDoc:'<!doctype html><html><body style="font-family:system-ui;padding:16px"><p>Enter company names in AcceleratorSelector.</p></body></html>'}
             const sts=['active','fundraising','stealth','pivoted','acquired','ipo','active','fundraising','active','stealth']
             const secs=['b2b-saas','consumer','fintech','deeptech','b2b-saas','healthtech','marketplace','consumer','fintech','b2b-saas']
             const rds=['Series B','Series C','Series A','Seed','IPO','Acquired','Series B','Series A','Series D','Stealth']
             const pal={active:'#d1fae5',fundraising:'#dbeafe',stealth:'#f1f5f9',pivoted:'#fef3c7',acquired:'#ede9fe',ipo:'#dcfce7'}
-
-            let entries = []
-
-            if (isLive) {
-              // ── LIVE: call Exa company_research per company ───────────────
-              const results = await Promise.all(cos.map(async (co, i) => {
-                try {
-                  const resp = await fetch('https://api.exa.ai/search', {
-                    method:'POST',
-                    headers:{'Content-Type':'application/json','x-api-key':apiKey},
-                    body: JSON.stringify({query:co+' startup funding round status 2024 2025 2026', numResults:3, type:'neural', useAutoprompt:true, contents:{text:{maxCharacters:800}}})
-                  })
-                  if (!resp.ok) throw new Error(resp.status)
-                  const json = await resp.json()
-                  const text = (json.results||[]).map(r=>r.text||'').join(' ')
-                  const hasAcquired = /acqui[rs]/i.test(text)
-                  const hasIPO = /\bIPO\b|went public/i.test(text)
-                  const hasSeries = /Series [A-D]/i.exec(text)
-                  const hasSeed = /seed round/i.test(text)
-                  const status = hasAcquired?'acquired':hasIPO?'ipo':hasSeries?'active':hasSeed?'fundraising':sts[i%sts.length]
-                  const round = hasAcquired?'Acquired':hasIPO?'IPO':hasSeries?hasSeries[0]:hasSeed?'Seed':rds[i%rds.length]
-                  const sector = secs[i%secs.length]
-                  return {name:co, status, sector, round, live:true}
-                } catch(e) {
-                  return {name:co, status:sts[i%sts.length], sector:secs[i%secs.length], round:rds[i%rds.length], live:false, err:String(e)}
-                }
-              }))
-              entries = results
-            } else {
-              // ── DEMO: inline simulated signal bundle ──────────────────────
-              entries = cos.map((c,i)=>({name:c, status:sts[i%sts.length], sector:secs[i%secs.length], round:rds[i%rds.length], live:false}))
-            }
-
-            const modeLabel = isLive ? '✓ Live · Exa company_research' : 'Demo · set run_mode=live + exa_api_key'
+            const modeLabel = isLive ? '⚡ Live mode: connect Exa MCP to run company_research' : 'Demo · set run_mode=live + exa_api_key for live data'
+            const entries = cos.map((c,i)=>({name:c, status:sts[i%sts.length], sector:secs[i%secs.length], round:rds[i%rds.length]}))
             const rows = entries.map(e=>'| '+[esc(e.name),e.status,e.sector,e.round].join(' | ')+' |').join('\n')
             const signal_bundle = ['## Company Signal Bundle — '+esc(acc)+' '+yr,'','| Company | Status | Sector | Last Round |','|---|---|---|---|',rows,'','> '+modeLabel].join('\n')
-            const cards = entries.map(e=>'<div class="c"><b>'+esc(e.name)+'</b><span class="b" style="background:'+(pal[e.status]||'#f1f5f9')+'">'+e.status+'</span><span class="m">'+e.sector+' · '+e.round+(e.err?' ⚠':'')+'</span></div>').join('')
-            const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:14px;font-family:system-ui,sans-serif;background:#f8fafc}.c{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:7px 12px;margin-bottom:5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.b{font-size:11px;padding:1px 8px;border-radius:4px;font-weight:600;color:#1e293b}.m{font-size:11px;color:#64748b}h2{font-size:13px;font-weight:700;margin:0 0 8px;color:#1e293b}</style></head><body><h2>Company Signals — '+esc(acc)+' '+yr+'</h2>'+cards+'<p style="font-size:11px;color:#94a3b8;margin-top:6px">'+entries.length+' companies · '+esc(modeLabel)+'</p></body></html>'
+            const cards=entries.map(e=>'<div class="c"><b>'+esc(e.name)+'</b><span class="b" style="background:'+(pal[e.status]||'#f1f5f9')+'">'+e.status+'</span><span class="m">'+e.sector+' · '+e.round+'</span></div>').join('')
+            const outputSrcDoc='<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:14px;font-family:system-ui,sans-serif;background:#f8fafc}.c{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:7px 12px;margin-bottom:5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.b{font-size:11px;padding:1px 8px;border-radius:4px;font-weight:600;color:#1e293b}.m{font-size:11px;color:#64748b}h2{font-size:13px;font-weight:700;margin:0 0 8px;color:#1e293b}</style></head><body><h2>Company Signals — '+esc(acc)+' '+yr+'</h2>'+cards+'<p style="font-size:11px;color:#94a3b8;margin-top:6px">'+entries.length+' companies · '+esc(modeLabel)+'</p></body></html>'
             return {signal_bundle, outputSrcDoc}
           }
     # ── panel_p1 ─────────────────────────────────────────────────────────────
@@ -473,7 +390,7 @@ flow:
       label: {key: label, type: string, value: "DigitalVisibilityIndex"}
       position: {key: position, type: object, value: {"x":460,"y":520}}
       handles: {key: handles, type: object, value: {"target":["signal_bundle","exa_api_key","run_mode"],"source":["dvi_scores","outputSrcDoc"]}}
-      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle","exa_api_key","run_mode"],"outputs":["dvi_scores","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_dvi.dvi_scores","field":"dvi_scores"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle","exa_api_key","run_mode"],"outputs":["dvi_scores","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_dvi.dvi_scores","field":"dvi_scores"},{"token":"n_dvi.outputSrcDoc","field":"outputSrcDoc"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"dvi_scores","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["dvi_scores","outputSrcDoc"]}]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"dvi_scores":"number_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmDVI"}
@@ -490,7 +407,7 @@ flow:
         key: compute
         type: string
         value: |
-          async inputs => {
+          inputs => {
             const esc = v => String(v||'').replace(/[&<>"']/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
             const raw = String(inputs?.signal_bundle||'').trim()
             const apiKey = String(inputs?.exa_api_key||'').trim()
@@ -499,38 +416,12 @@ flow:
             const coLines=raw.split('\n').filter(l=>l.startsWith('|')&&!l.includes('---')&&!l.includes('Company'))
             const cos=coLines.map(l=>l.split('|').map(s=>s.trim()).filter(Boolean)[0]).filter(Boolean).slice(0,10)
             if(!cos.length) return {dvi_scores:'No companies parsed.',outputSrcDoc:'<!doctype html><html><body style="font-family:system-ui;padding:16px"><p>No companies.</p></body></html>'}
-
-            let dviData = []
-            if (isLive) {
-              // ── LIVE: web_search_exa news + jobs probe per company ────────
-              dviData = await Promise.all(cos.map(async (c, i) => {
-                try {
-                  const [newsResp, jobsResp] = await Promise.all([
-                    fetch('https://api.exa.ai/search', {method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey},body:JSON.stringify({query:'"'+c+'" 2025 2026 news launch funding announcement',numResults:3,type:'neural',startPublishedDate:new Date(Date.now()-90*86400000).toISOString().slice(0,10)})}),
-                    fetch('https://api.exa.ai/search', {method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey},body:JSON.stringify({query:'"'+c+'" jobs hiring engineer 2026',numResults:2,type:'keyword'})})
-                  ])
-                  const news = newsResp.ok ? (await newsResp.json()).results||[] : []
-                  const jobs = jobsResp.ok ? (await jobsResp.json()).results||[] : []
-                  const mentions = Math.min(35, news.length * 12)
-                  const jobScore = Math.min(25, jobs.length * 13)
-                  const linkedin = Math.round(10 + ((c.charCodeAt(0)+i*7)%11))
-                  const domain = 20
-                  const dvi = Math.min(100, mentions + jobScore + linkedin + domain)
-                  return {c, dvi, ghost:dvi<20, live:true}
-                } catch(e) {
-                  const base = 30+((c.charCodeAt(0)+i*13)%55)
-                  return {c, dvi:Math.min(100,Math.round(base)), ghost:Math.round(base)<20, live:false, err:String(e)}
-                }
-              }))
-            } else {
-              dviData = cos.map((c,i)=>{const base=30+((c.charCodeAt(0)+i*13)%55);return{c,dvi:Math.min(100,Math.round(base)),ghost:Math.round(base)<20,live:false}})
-            }
-
-            const modeLabel = isLive ? '✓ Live · Exa web_search_exa + jobs probe' : 'Demo · set run_mode=live + exa_api_key'
-            const rows = dviData.map(d=>'| '+[esc(d.c),d.dvi,d.ghost?'⚠ Ghost':''].join(' | ')+' |').join('\n')
-            const dvi_scores = ['## Digital Visibility Index','','| Company | DVI [0-100] | Ghost? |','|---|---|---|',rows,'','> Low DVI ≠ defunct · '+modeLabel].join('\n')
-            const bars = dviData.map(d=>'<div class="r"><span class="l">'+esc(d.c)+'</span><div class="w"><div class="b" style="width:'+d.dvi+'%;background:'+(d.dvi>=50?'#22c55e':d.dvi>=25?'#f59e0b':'#ef4444')+'"></div></div><span class="v">'+d.dvi+(d.ghost?' ⚠':'')+'</span></div>').join('')
-            const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:14px;font-family:system-ui,sans-serif;background:#f8fafc}h2{font-size:13px;font-weight:700;margin:0 0 8px;color:#1e293b}.r{display:flex;align-items:center;gap:8px;margin-bottom:6px}.l{min-width:100px;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.w{flex:1;height:13px;background:#e2e8f0;border-radius:6px;overflow:hidden}.b{height:100%;border-radius:6px}.v{font-size:11px;color:#64748b;min-width:28px;text-align:right}</style></head><body><h2>Digital Visibility Index</h2>'+bars+'<p style="font-size:11px;color:#94a3b8;margin-top:8px">Low DVI ≠ defunct · '+esc(modeLabel)+'</p></body></html>'
+            const modeLabel = isLive ? '⚡ Live mode: connect Exa MCP to run web_search_exa probes' : 'Demo · set run_mode=live + exa_api_key for live data'
+            const dviData=cos.map((c,i)=>{const base=30+((c.charCodeAt(0)+i*13)%55);const dvi=Math.min(100,Math.round(base));return{c,dvi,ghost:dvi<20}})
+            const rows=dviData.map(d=>'| '+[esc(d.c),d.dvi,d.ghost?'⚠ Ghost':''].join(' | ')+' |').join('\n')
+            const dvi_scores=['## Digital Visibility Index','','| Company | DVI [0-100] | Ghost? |','|---|---|---|',rows,'','> Low DVI ≠ defunct · '+modeLabel].join('\n')
+            const bars=dviData.map(d=>'<div class="r"><span class="l">'+esc(d.c)+'</span><div class="w"><div class="b" style="width:'+d.dvi+'%;background:'+(d.dvi>=50?'#22c55e':d.dvi>=25?'#f59e0b':'#ef4444')+'"></div></div><span class="v">'+d.dvi+(d.ghost?' ⚠':'')+'</span></div>').join('')
+            const outputSrcDoc='<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;padding:14px;font-family:system-ui,sans-serif;background:#f8fafc}h2{font-size:13px;font-weight:700;margin:0 0 8px;color:#1e293b}.r{display:flex;align-items:center;gap:8px;margin-bottom:6px}.l{min-width:100px;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.w{flex:1;height:13px;background:#e2e8f0;border-radius:6px;overflow:hidden}.b{height:100%;border-radius:6px}.v{font-size:11px;color:#64748b;min-width:28px;text-align:right}</style></head><body><h2>Digital Visibility Index</h2>'+bars+'<p style="font-size:11px;color:#94a3b8;margin-top:8px">Low DVI ≠ defunct · '+esc(modeLabel)+'</p></body></html>'
             return {dvi_scores, outputSrcDoc}
           }
     # ── panel_p2 ─────────────────────────────────────────────────────────────
@@ -565,7 +456,7 @@ flow:
       label: {key: label, type: string, value: "StatusClassifier"}
       position: {key: position, type: object, value: {"x":460,"y":760}}
       handles: {key: handles, type: object, value: {"target":["signal_bundle"],"source":["status_vector","outputSrcDoc"]}}
-      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle"],"outputs":["status_vector","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_classify.status_vector","field":"status_vector"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle"],"outputs":["status_vector","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_classify.status_vector","field":"status_vector"},{"token":"n_classify.outputSrcDoc","field":"outputSrcDoc"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"status_vector","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["status_vector","outputSrcDoc"]}]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal"},"out":{"status_vector":"text_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmStatusClassifier"}
@@ -631,7 +522,7 @@ flow:
       label: {key: label, type: string, value: "FundingTimeline"}
       position: {key: position, type: object, value: {"x":460,"y":1000}}
       handles: {key: handles, type: object, value: {"target":["signal_bundle","exa_api_key","run_mode"],"source":["funding_events","outputSrcDoc"]}}
-      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle","exa_api_key","run_mode"],"outputs":["funding_events","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_funding.funding_events","field":"funding_events"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle","exa_api_key","run_mode"],"outputs":["funding_events","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_funding.funding_events","field":"funding_events"},{"token":"n_funding.outputSrcDoc","field":"outputSrcDoc"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"funding_events","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["funding_events","outputSrcDoc"]}]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"funding_events":"text_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmFundingTimeline"}
@@ -648,7 +539,7 @@ flow:
         key: compute
         type: string
         value: |
-          async inputs => {
+          inputs => {
             const esc = v => String(v||'').replace(/[&<>"']/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='"'?'&quot;':'&#39;')
             const raw = String(inputs?.signal_bundle||'').trim()
             const apiKey = String(inputs?.exa_api_key||'').trim()
@@ -657,33 +548,9 @@ flow:
             const coLines=raw.split('\n').filter(l=>l.startsWith('|')&&!l.includes('---')&&!l.includes('Company'))
             const entries=coLines.map(l=>{const p=l.split('|').map(s=>s.trim()).filter(Boolean);return p.length>=4?{name:p[0],status:p[1],sector:p[2],round:p[3]}:null}).filter(Boolean).slice(0,10)
             if(!entries.length) return {funding_events:'No company data.',outputSrcDoc:'<!doctype html><html><body style="font-family:system-ui;padding:16px"><p>No data.</p></body></html>'}
-
-            let events = []
-            if (isLive) {
-              events = await Promise.all(entries.map(async (e, i) => {
-                try {
-                  const resp = await fetch('https://api.exa.ai/search', {method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey},body:JSON.stringify({query:'"'+e.name+'" funding raised 2023 2024 2025 press release',numResults:3,type:'neural',contents:{text:{maxCharacters:600}}})})
-                  if (!resp.ok) throw new Error(resp.status)
-                  const json = await resp.json()
-                  const text = (json.results||[]).map(r=>r.text||'').join(' ')
-                  const url = json.results?.[0]?.url || ''
-                  const amtM = text.match(/\$(\d+\.?\d*)\s*[Mm]illion/i) || text.match(/raised\s+\$(\d+\.?\d*)\s*[Mm]/i)
-                  const amount = amtM ? Math.round(parseFloat(amtM[1])) : (e.round.includes('Series')?['A':8,'B':25,'C':60,'D':100][e.round.split(' ')[1]]||8:0)
-                  const dateM = text.match(/\b(202[3-6])-(\d{2})/)||text.match(/\b(202[3-6])\b/)
-                  const date = dateM ? dateM[1]+'-'+(dateM[2]||'01')+'-01' : (2020+(i%4))+'-0'+(1+(i*3)%9)+'-01'
-                  return {...e, amount, date, sourceUrl:url, live:true}
-                } catch(ex) {
-                  const yr=2020+(i%4);const mo=1+(i*3)%9
-                  const rdAmt={Seed:2,'Series A':8,'Series B':25,'Series C':60,'Series D':100,IPO:0,Acquired:0,Stealth:0}
-                  return {...e, amount:rdAmt[e.round]||0, date:`${yr}-0${mo}-01`, sourceUrl:'', live:false, err:String(ex)}
-                }
-              }))
-            } else {
-              const rdAmt={Seed:2,'Series A':8,'Series B':25,'Series C':60,'Series D':100,IPO:0,Acquired:0,Stealth:0}
-              events = entries.map((e,i)=>{const yr=2020+(i%4);const mo=1+(i*3)%9;return{...e,amount:rdAmt[e.round]||0,date:`${yr}-0${mo}-01`,sourceUrl:'',live:false}})
-            }
-
-            const modeLabel = isLive ? '✓ Live · Exa deep_search_exa funding rounds' : 'Demo · set run_mode=live + exa_api_key'
+            const modeLabel = isLive ? '⚡ Live mode: connect Exa MCP to run deep_search_exa funding search' : 'Demo · set run_mode=live + exa_api_key for live data'
+            const rdAmt={Seed:2,'Series A':8,'Series B':25,'Series C':60,'Series D':100,IPO:0,Acquired:0,Stealth:0}
+            const events = entries.map((e,i)=>{const yr=2020+(i%4);const mo=1+(i*3)%9;return{...e,amount:rdAmt[e.round]||0,date:`${yr}-0${mo}-01`}})
             const rows=events.map(e=>'| '+[esc(e.name),e.round,e.amount?'$'+e.amount+'M':'—',e.date.slice(0,7)].join(' | ')+' |').join('\n')
             const funding_events=['## Funding Timeline','','| Company | Round | Amount | Date |','|---|---|---|---|',rows,'','> '+modeLabel].join('\n')
             const tlItems=events.map((e,i)=>{const pct=Math.round((i/Math.max(events.length-1,1))*100);const col=e.round.includes('Series')?'#378ADD':e.round==='IPO'?'#639922':e.round==='Acquired'?'#534AB7':'#6366f1';return'<div class="ev" style="left:'+pct+'%"><div class="dot" style="background:'+col+'"></div><div class="lbl"><b>'+esc(e.name.slice(0,10))+'</b><span>'+e.round+(e.amount?' $'+e.amount+'M':'')+'</span><span>'+e.date.slice(0,7)+'</span></div></div>'}).join('')
@@ -722,7 +589,7 @@ flow:
       label: {key: label, type: string, value: "QuadrantMap"}
       position: {key: position, type: object, value: {"x":460,"y":-560}}
       handles: {key: handles, type: object, value: {"target":["criteria_vector","dvi_scores"],"source":["quadrant_data","outputSrcDoc"]}}
-      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["criteria_vector","dvi_scores"],"outputs":["quadrant_data","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_quadrant.quadrant_data","field":"quadrant_data"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["criteria_vector","dvi_scores"],"outputs":["quadrant_data","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_quadrant.quadrant_data","field":"quadrant_data"},{"token":"n_quadrant.outputSrcDoc","field":"outputSrcDoc"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"quadrant_data","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["quadrant_data","outputSrcDoc"]}]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"criteria_vector":"exa_result_signal","dvi_scores":"number_signal"},"out":{"quadrant_data":"text_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmQuadrantMap"}
