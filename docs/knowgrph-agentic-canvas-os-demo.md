@@ -17,6 +17,29 @@ kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
 kgDocumentStructureBaselineLock: false
 kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgBottomPanelOpen: true
+kgBottomPanelTab: "eventModeling"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "eventModeling"
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
+kgStorageTarget: "cloudflare"
+kgStorageAccountId: "170e89fdb8679ff2fcc2900e25ed04f4"
+kgStorageWorkspaceId: "kgws:canonical-docs"
+kgStorageDocPath: "huijoohwee/docs/knowgrph-agentic-canvas-os-demo.md"
+kgStorageDocTarget: "cloudflare-d1"
+kgStorageMediaBucket: "knowgrph-media"
+kgStorageMediaBaseUrl: "https://airvio.co/knowgrph/r2"
+kgStorageMediaKeyScheme: "runs/{runId}/{stageId}/{shotId}.{ext}"
+kgMediaPersistPolicy: "copy-on-generate"
+kgProviderUrlEphemeral: true
+kgMediaDedupeBy: "sha256"
+kgReplayEnabled: true
+kgReplayFromStorageWithoutLlm: true
+kgReplayMediaFields: ["imageAssetUrl", "videoUrl"]
+kgReplayAccessScope: "run-entitled"
+kgForbidPlatform: ["vercel", "aws"]
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
@@ -94,6 +117,11 @@ flow_diagrams:
     agentic_canvas_architecture:
       key: agentic_canvas_architecture
       type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      forbidPlatform: ["vercel", "aws"]
       value: |-
         architecture-beta
           group user(cloud)[Operator]
@@ -115,6 +143,10 @@ flow_diagrams:
     agent_run_event_model:
       key: agent_run_event_model
       type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
       value: |-
         eventmodeling
         tf 01 ui IdeaSubmitted
@@ -412,20 +444,21 @@ flow:
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
     - id: {key: id, type: string, value: "image_output_panel"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Image Output Panel"}
+      label: {key: label, type: string, value: "Image Output Panel (seedream)"}
       position: {key: position, type: object, value: {"x":1460,"y":-100}}
-      handles: {key: handles, type: object, value: {"target":["output","outputSrcDoc"],"source":["output","outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"output":"artifact_signal","outputSrcDoc":"artifact_signal"},"out":{"output":"artifact_signal","outputSrcDoc":"artifact_signal"}}}
+      handles: {key: handles, type: object, value: {"target":["imageAssetUrl"],"source":["imageAssetUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageAssetUrl":"artifact_signal"},"out":{"imageAssetUrl":"artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 2}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel that renders connected image prompt output."}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Distinct Image Rich Media Panel — embeds R2 imageAssetUrl (seedream). Replays without calling BytePlus or any LLM; re-view reads the durable R2 URL only."}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      media_type: {key: media_type, type: string, value: "image"}
+      replayWithoutLlm: {key: replayWithoutLlm, type: boolean, value: true}
+      imageAssetUrl: {key: imageAssetUrl, type: image_url, value: "https://airvio.co/knowgrph/r2/runs/kg_aos_market_to_rich_media_demo/image/shot-1.png"}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
@@ -452,20 +485,21 @@ flow:
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "video_output_panel"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Video Output Panel"}
+      label: {key: label, type: string, value: "Video Output Panel (seedance)"}
       position: {key: position, type: object, value: {"x":1460,"y":300}}
-      handles: {key: handles, type: object, value: {"target":["output","outputSrcDoc"],"source":["output","outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"output":"artifact_signal","outputSrcDoc":"artifact_signal"},"out":{"output":"artifact_signal","outputSrcDoc":"artifact_signal"}}}
+      handles: {key: handles, type: object, value: {"target":["videoUrl"],"source":["videoUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"videoUrl":"artifact_signal"},"out":{"videoUrl":"artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 2}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel that renders connected video storyboard output."}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Distinct Video Rich Media Panel — embeds R2 videoUrl (seedance). Replays without calling BytePlus or any LLM; re-view reads the durable R2 URL only."}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      media_type: {key: media_type, type: string, value: "video"}
+      replayWithoutLlm: {key: replayWithoutLlm, type: boolean, value: true}
+      videoUrl: {key: videoUrl, type: video_url, value: "https://airvio.co/knowgrph/r2/runs/kg_aos_market_to_rich_media_demo/video/shot-1.mp4"}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
@@ -485,12 +519,10 @@ flow:
     - {"id":"edge_brief_to_video","source":"artifact_brief","sourceHandle":"text_out","target":"video_generator","targetHandle":"prompt_in","label":"brief to video","type":"artifact_signal"}
     - {"id":"edge_text_to_panel_output","source":"text_generator","sourceHandle":"text_out","target":"text_output_panel","targetHandle":"output","label":"text output","type":"artifact_signal"}
     - {"id":"edge_text_to_panel_srcdoc","source":"text_generator","sourceHandle":"outputSrcDoc","target":"text_output_panel","targetHandle":"outputSrcDoc","label":"text panel preview","type":"artifact_signal"}
-    - {"id":"edge_image_to_panel_output","source":"image_generator","sourceHandle":"text_out","target":"image_output_panel","targetHandle":"output","label":"image output","type":"artifact_signal"}
-    - {"id":"edge_image_to_panel_srcdoc","source":"image_generator","sourceHandle":"outputSrcDoc","target":"image_output_panel","targetHandle":"outputSrcDoc","label":"image panel preview","type":"artifact_signal"}
+    - {"id":"edge_image_to_panel_output","source":"image_generator","sourceHandle":"text_out","target":"image_output_panel","targetHandle":"imageAssetUrl","label":"image asset url","type":"artifact_signal"}
+    - {"id":"edge_video_to_panel_output","source":"video_generator","sourceHandle":"text_out","target":"video_output_panel","targetHandle":"videoUrl","label":"video url","type":"artifact_signal"}
     - {"id":"edge_audio_to_panel_output","source":"audio_generator","sourceHandle":"text_out","target":"audio_output_panel","targetHandle":"output","label":"audio output","type":"artifact_signal"}
     - {"id":"edge_audio_to_panel_srcdoc","source":"audio_generator","sourceHandle":"outputSrcDoc","target":"audio_output_panel","targetHandle":"outputSrcDoc","label":"audio panel preview","type":"artifact_signal"}
-    - {"id":"edge_video_to_panel_output","source":"video_generator","sourceHandle":"text_out","target":"video_output_panel","targetHandle":"output","label":"video output","type":"artifact_signal"}
-    - {"id":"edge_video_to_panel_srcdoc","source":"video_generator","sourceHandle":"outputSrcDoc","target":"video_output_panel","targetHandle":"outputSrcDoc","label":"video panel preview","type":"artifact_signal"}
 ---
 
 ## Response
