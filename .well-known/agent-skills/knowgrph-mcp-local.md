@@ -6,7 +6,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Age
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_c06604b5`
+- Semantic key: `kgvx_e33cf0c2`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -51,7 +51,6 @@ Browser-local tools:
 
 Local MCP tools:
 - fetch
-- knowgrph.agentic_canvas_os.plan
 - knowgrph.browser_api.run
 - knowgrph.graphrag_pipeline
 - knowgrph.pipeline
@@ -73,8 +72,8 @@ Local MCP tools:
 
 - canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
 - knowgrph_parser/superagent_harness.py
-- mcp/agentic-canvas-os-lanes.js
-- mcp/agentic-canvas-os-runtime.js
+- mcp/director-lanes.js
+- mcp/director-workflow.js
 - mcp/local-tool-contract.js
 - mcp/README.md
 - mcp/server.js

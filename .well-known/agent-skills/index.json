@@ -110,19 +110,18 @@
       "type": "markdown",
       "description": "Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, video-remix run planning, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
-      "sha256": "ccb4aff426e6a86170413e63bac38fe55b9fb05b8ca421e2e5dd02b6d82e1f34",
+      "sha256": "674aab36c3dce171afd401c012d58c405d8c067601ec9510f5b542032a28689d",
       "vdeoxpln": {
         "id": "knowgrph-mcp-local",
         "title": "Knowgrph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_c06604b5",
+        "semanticKey": "kgvx_e33cf0c2",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
             "fetch",
-            "knowgrph.agentic_canvas_os.plan",
             "knowgrph.browser_api.run",
             "knowgrph.graphrag_pipeline",
             "knowgrph.pipeline",
