@@ -267,7 +267,7 @@ flow:
       handles: {key: handles, type: object, value: {"target":["accelerator","cohort_year","exa_api_key","run_mode"],"source":["criteria_vector","outputSrcDoc"]}}
       "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["accelerator","cohort_year","exa_api_key","run_mode"],"outputs":["criteria_vector","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_prg_fetcher.criteria_vector","field":"criteria_vector"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"criteria_vector","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["criteria_vector","outputSrcDoc"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"accelerator":"text_signal","cohort_year":"text_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"criteria_vector":"exa_result_signal","outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"accelerator":"text_signal","cohort_year":"text_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"criteria_vector":"exa_result_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmProgramDataFetcher"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "run_mode=live → calls deep_search_exa via Exa MCP and runs TOPSIS. run_mode=demo → inline simulated TOPSIS."}
@@ -447,14 +447,24 @@ flow:
       label: {key: label, type: string, value: "Panel 1 — TOPSIS Rank"}
       position: {key: position, type: object, value: {"x":900,"y":-280}}
       handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"chart_signal"},"out":{"outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"rich_media_chart_html"},"out":{"outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 1 — TOPSIS AcceleratorROI rank from ProgramDataFetcher."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 1 — TOPSIS Rank — receives outputSrcDoc from upstream ComputeWidget."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      output: {key: output, type: textarea, value: "Panel 1 — TOPSIS Rank. Run ProgramDataFetcher to populate."}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: "<!doctype html><html><body style=\"font-family:system-ui;padding:16px\"><h2>Panel 1 — TOPSIS Rank</h2><p>Run ProgramDataFetcher to populate.</p></body></html>"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      size: {key: size, type: object, value: {"width":420,"height":260}}
+      tags: {key: tags, type: array, value: ["idea"]}
+      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-canvas-accent)"}
       "visual:importance": {key: "visual:importance", type: number, value: 28}
+      "visual:stroke": {key: "visual:stroke", type: string, value: "#9CA3AF"}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
     # ── n_dvi ────────────────────────────────────────────────────────────────
@@ -465,7 +475,7 @@ flow:
       handles: {key: handles, type: object, value: {"target":["signal_bundle","exa_api_key","run_mode"],"source":["dvi_scores","outputSrcDoc"]}}
       "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle","exa_api_key","run_mode"],"outputs":["dvi_scores","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_dvi.dvi_scores","field":"dvi_scores"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"dvi_scores","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["dvi_scores","outputSrcDoc"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"dvi_scores":"number_signal","outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"dvi_scores":"number_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmDVI"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "run_mode=live → web_search_exa + linkedin_search + crawling. run_mode=demo → deterministic DVI."}
@@ -529,14 +539,24 @@ flow:
       label: {key: label, type: string, value: "Panel 2 — Digital Visibility Index"}
       position: {key: position, type: object, value: {"x":900,"y":520}}
       handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"chart_signal"},"out":{"outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"rich_media_chart_html"},"out":{"outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 2 — DVI bar chart from DigitalVisibilityIndex."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 2 — Digital Visibility Index — receives outputSrcDoc from upstream ComputeWidget."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      output: {key: output, type: textarea, value: "Panel 2 — Digital Visibility Index. Run DVI to populate."}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: "<!doctype html><html><body style=\"font-family:system-ui;padding:16px\"><h2>Panel 2 — DVI</h2><p>Run CompanyDataFetcher + DVI to populate.</p></body></html>"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      size: {key: size, type: object, value: {"width":420,"height":260}}
+      tags: {key: tags, type: array, value: ["idea"]}
+      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-canvas-accent)"}
       "visual:importance": {key: "visual:importance", type: number, value: 28}
+      "visual:stroke": {key: "visual:stroke", type: string, value: "#9CA3AF"}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 4}
     # ── n_classify ───────────────────────────────────────────────────────────
@@ -547,7 +567,7 @@ flow:
       handles: {key: handles, type: object, value: {"target":["signal_bundle"],"source":["status_vector","outputSrcDoc"]}}
       "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle"],"outputs":["status_vector","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_classify.status_vector","field":"status_vector"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"status_vector","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["status_vector","outputSrcDoc"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal"},"out":{"status_vector":"text_signal","outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal"},"out":{"status_vector":"text_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmStatusClassifier"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MECE status donut from signal bundle. defunct = crawl_404 AND founders_departed only."}
@@ -585,14 +605,24 @@ flow:
       label: {key: label, type: string, value: "Panel 3 — Status Donut"}
       position: {key: position, type: object, value: {"x":900,"y":760}}
       handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"chart_signal"},"out":{"outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"rich_media_chart_html"},"out":{"outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 3 — Status donut from StatusClassifier."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 3 — Status Donut — receives outputSrcDoc from upstream ComputeWidget."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      output: {key: output, type: textarea, value: "Panel 3 — Status Donut. Run StatusClassifier to populate."}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: "<!doctype html><html><body style=\"font-family:system-ui;padding:16px\"><h2>Panel 3 — Status Donut</h2><p>Run CompanyDataFetcher + StatusClassifier to populate.</p></body></html>"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      size: {key: size, type: object, value: {"width":420,"height":260}}
+      tags: {key: tags, type: array, value: ["idea"]}
+      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-canvas-accent)"}
       "visual:importance": {key: "visual:importance", type: number, value: 26}
+      "visual:stroke": {key: "visual:stroke", type: string, value: "#9CA3AF"}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 6}
     # ── n_funding ────────────────────────────────────────────────────────────
@@ -603,7 +633,7 @@ flow:
       handles: {key: handles, type: object, value: {"target":["signal_bundle","exa_api_key","run_mode"],"source":["funding_events","outputSrcDoc"]}}
       "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["signal_bundle","exa_api_key","run_mode"],"outputs":["funding_events","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_funding.funding_events","field":"funding_events"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"funding_events","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["funding_events","outputSrcDoc"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"funding_events":"text_signal","outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"signal_bundle":"exa_result_signal","exa_api_key":"text_signal","run_mode":"text_signal"},"out":{"funding_events":"text_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmFundingTimeline"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "run_mode=live → deep_search_exa funding rounds. run_mode=demo → deterministic timeline."}
@@ -666,14 +696,24 @@ flow:
       label: {key: label, type: string, value: "Panel 4 — Funding Timeline"}
       position: {key: position, type: object, value: {"x":900,"y":1000}}
       handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"chart_signal"},"out":{"outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"rich_media_chart_html"},"out":{"outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 4 — Funding timeline from FundingTimeline compute."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 4 — Funding Timeline — receives outputSrcDoc from upstream ComputeWidget."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      output: {key: output, type: textarea, value: "Panel 4 — Funding Timeline. Run FundingTimeline to populate."}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: "<!doctype html><html><body style=\"font-family:system-ui;padding:16px\"><h2>Panel 4 — Funding Timeline</h2><p>Run CompanyDataFetcher + FundingTimeline to populate.</p></body></html>"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      size: {key: size, type: object, value: {"width":420,"height":260}}
+      tags: {key: tags, type: array, value: ["idea"]}
+      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-canvas-accent)"}
       "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:stroke": {key: "visual:stroke", type: string, value: "#9CA3AF"}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 8}
     # ── n_quadrant ───────────────────────────────────────────────────────────
@@ -684,7 +724,7 @@ flow:
       handles: {key: handles, type: object, value: {"target":["criteria_vector","dvi_scores"],"source":["quadrant_data","outputSrcDoc"]}}
       "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["criteria_vector","dvi_scores"],"outputs":["quadrant_data","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"n_quadrant.quadrant_data","field":"quadrant_data"}],"sideEffects":[{"field":"run_status","set":"done"}]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"quadrant_data","previewMaxChars":120,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["quadrant_data","outputSrcDoc"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"criteria_vector":"exa_result_signal","dvi_scores":"number_signal"},"out":{"quadrant_data":"text_signal","outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"criteria_vector":"exa_result_signal","dvi_scores":"number_signal"},"out":{"quadrant_data":"text_signal","outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "gtmQuadrantMap"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "SVG scatter plot: TOPSIS C_i (x) × DVI (y). Ghost ≠ defunct."}
@@ -732,14 +772,24 @@ flow:
       label: {key: label, type: string, value: "Panel 5 — Quadrant Map"}
       position: {key: position, type: object, value: {"x":900,"y":-560}}
       handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"chart_signal"},"out":{"outputSrcDoc":"chart_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"rich_media_chart_html"},"out":{"outputSrcDoc":"rich_media_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 5 — Quadrant scatter from QuadrantMap."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Panel 5 — Quadrant Map — receives outputSrcDoc from upstream ComputeWidget."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       media_interactive: {key: media_interactive, type: boolean, value: true}
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
-      "visual:importance": {key: "visual:importance", type: number, value: 28}
+      output: {key: output, type: textarea, value: "Panel 5 — Quadrant Map. Run QuadrantMap to populate."}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: "<!doctype html><html><body style=\"font-family:system-ui;padding:16px\"><h2>Panel 5 — Quadrant Map</h2><p>Run ProgramDataFetcher + DVI + QuadrantMap to populate.</p></body></html>"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      size: {key: size, type: object, value: {"width":420,"height":260}}
+      tags: {key: tags, type: array, value: ["idea"]}
+      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-canvas-accent)"}
+      "visual:importance": {key: "visual:importance", type: number, value: 30}
+      "visual:stroke": {key: "visual:stroke", type: string, value: "#9CA3AF"}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
   edges:
@@ -751,20 +801,20 @@ flow:
     - {"id":"e_input_acc_co","source":"n_input","sourceHandle":"accelerator","target":"n_co_fetcher","targetHandle":"accelerator"}
     - {"id":"e_input_key_co","source":"n_input","sourceHandle":"exa_api_key","target":"n_co_fetcher","targetHandle":"exa_api_key"}
     - {"id":"e_input_mode_co","source":"n_input","sourceHandle":"run_mode","target":"n_co_fetcher","targetHandle":"run_mode"}
-    - {"id":"e_prg_p1","source":"n_prg_fetcher","sourceHandle":"outputSrcDoc","target":"panel_p1","targetHandle":"outputSrcDoc"}
+    - {"id":"e_prg_p1","source":"n_prg_fetcher","sourceHandle":"outputSrcDoc","target":"panel_p1","targetHandle":"outputSrcDoc","label":"TOPSIS rank cards","type":"rich_media_chart_html"}
     - {"id":"e_co_dvi","source":"n_co_fetcher","sourceHandle":"signal_bundle","target":"n_dvi","targetHandle":"signal_bundle"}
     - {"id":"e_input_key_dvi","source":"n_input","sourceHandle":"exa_api_key","target":"n_dvi","targetHandle":"exa_api_key"}
     - {"id":"e_input_mode_dvi","source":"n_input","sourceHandle":"run_mode","target":"n_dvi","targetHandle":"run_mode"}
-    - {"id":"e_dvi_p2","source":"n_dvi","sourceHandle":"outputSrcDoc","target":"panel_p2","targetHandle":"outputSrcDoc"}
+    - {"id":"e_dvi_p2","source":"n_dvi","sourceHandle":"outputSrcDoc","target":"panel_p2","targetHandle":"outputSrcDoc","label":"DVI bar chart","type":"rich_media_chart_html"}
     - {"id":"e_co_classify","source":"n_co_fetcher","sourceHandle":"signal_bundle","target":"n_classify","targetHandle":"signal_bundle"}
-    - {"id":"e_classify_p3","source":"n_classify","sourceHandle":"outputSrcDoc","target":"panel_p3","targetHandle":"outputSrcDoc"}
+    - {"id":"e_classify_p3","source":"n_classify","sourceHandle":"outputSrcDoc","target":"panel_p3","targetHandle":"outputSrcDoc","label":"status donut","type":"rich_media_chart_html"}
     - {"id":"e_co_funding","source":"n_co_fetcher","sourceHandle":"signal_bundle","target":"n_funding","targetHandle":"signal_bundle"}
     - {"id":"e_input_key_funding","source":"n_input","sourceHandle":"exa_api_key","target":"n_funding","targetHandle":"exa_api_key"}
     - {"id":"e_input_mode_funding","source":"n_input","sourceHandle":"run_mode","target":"n_funding","targetHandle":"run_mode"}
-    - {"id":"e_funding_p4","source":"n_funding","sourceHandle":"outputSrcDoc","target":"panel_p4","targetHandle":"outputSrcDoc"}
+    - {"id":"e_funding_p4","source":"n_funding","sourceHandle":"outputSrcDoc","target":"panel_p4","targetHandle":"outputSrcDoc","label":"funding timeline","type":"rich_media_chart_html"}
     - {"id":"e_prg_quad","source":"n_prg_fetcher","sourceHandle":"criteria_vector","target":"n_quadrant","targetHandle":"criteria_vector"}
     - {"id":"e_dvi_quad","source":"n_dvi","sourceHandle":"dvi_scores","target":"n_quadrant","targetHandle":"dvi_scores"}
-    - {"id":"e_quad_p5","source":"n_quadrant","sourceHandle":"outputSrcDoc","target":"panel_p5","targetHandle":"outputSrcDoc"}
+    - {"id":"e_quad_p5","source":"n_quadrant","sourceHandle":"outputSrcDoc","target":"panel_p5","targetHandle":"outputSrcDoc","label":"quadrant scatter","type":"rich_media_chart_html"}
 ---
 
 
