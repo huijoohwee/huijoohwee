@@ -62,60 +62,10 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 24}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%2322c55e%22%20text-anchor%3D%22middle%22%3EGO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20%2418%2C656%2C065%20vs%20%24350%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2087%2F100%20-%20confidence%2082%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20%24142%2C888%20-%20Upside%20%2444%2C710%2C343%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for universal go-no-go scoring, DCF scenarios, risk-adjusted NPV, SVG summary, and Recharts rich-media decision panels."}
-      output:
-        key: output
-        type: markdown
-        value: |
-          ## GO
-          
-          Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence.
-          
-          **Decision score:** 87/100
-          **Decision confidence:** 82/100
-          **minimum acceptable risk-adjusted NPV:** $350,000
-          **Base risk-adjusted NPV:** $18,656,065
-          **Downside risk-adjusted NPV:** $142,888
-          
-          ### Structured verdict
-          - Recommendation: GO
-          - Economics score: 100/100
-          - Resilience score: 100/100
-          - Strategic fit score: 68/100
-          - Evidence score: 100/100
-          - Risk pressure: 41/100
-          
-          ### DCF base case
-          - Initial investment: $150
-          - Forecast years: 5
-          - Initial revenue: $52,000,000
-          - Revenue growth: 14%
-          - Operating margin: 18%
-          - Discount rate: 12%
-          - Terminal multiple: 7x
-          
-          ### Scenario stress
-          - Downside: $142,888 at 37%
-          - Base: $18,656,065 at 62%
-          - Upside: $44,710,343 at 71%
-          
-          ### Conditions to clear
-          - Maintain current risk controls and monitor market and execution drift.
-          
-          ### Next diligence
-          - Validate demand, pricing, margin, capex, and working-capital assumptions.
-          - Confirm the initiative clears the hurdle under delay, weaker adoption, or cost creep.
-          - Replace weak assumptions with observed evidence before irreversible spend.
-          
-          **Audience:** sponsor, operator, reviewer
-          **Format:** structured markdown decision memo with scenarios
-          **Tone:** direct
-          **Context:** Use the same decision flow for any initiative where time, capital, engineering effort, or operating resources are being committed.
-          **Constraints:** Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable.
-          **Evidence:** Replace with the strongest facts, unknowns, dependencies, diligence notes, operating assumptions, and file or project specific evidence.
-          
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:90px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:96px;text-align:right;color:#0f172a;font-weight:600}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:8px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">$18,656,065</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$350,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">87/100</p></div></div><section class=\"panel\"><h2>Scenario stress (risk-adjusted NPV)</h2><div class=\"row\"><span class=\"rl\">Downside</span><span class=\"rt\"><span class=\"rb\" style=\"width:0%;background:#ef4444\"></span></span><span class=\"rv\">$142,888</span></div><div class=\"row\"><span class=\"rl\">Base</span><span class=\"rt\"><span class=\"rb\" style=\"width:42%;background:#0ea5e9\"></span></span><span class=\"rv\">$18,656,065</span></div><div class=\"row\"><span class=\"rl\">Upside</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#22c55e\"></span></span><span class=\"rv\">$44,710,343</span></div></section><section class=\"panel\"><h2>Decision pillars</h2><div class=\"row\"><span class=\"rl\">Economics</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div><div class=\"row\"><span class=\"rl\">Resilience</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div><div class=\"row\"><span class=\"rl\">Strategic fit</span><span class=\"rt\"><span class=\"rb\" style=\"width:68%;background:#0ea5e9\"></span></span><span class=\"rv\">68/100</span></div><div class=\"row\"><span class=\"rl\">Evidence</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div></section><p class=\"note\">Universal, neutral decision-support dashboard. Current raw target: 350000 target. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Maintain current risk controls and monitor market and execution drift.</li></ul></main></body></html>"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       run_status: {key: run_status, type: string, value: "idle"}
       semanticKey: {key: semanticKey, type: string, value: "computing-flow:compute:decision-summary"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
@@ -364,59 +314,10 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 24}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23f59e0b%22%20text-anchor%3D%22middle%22%3ECONDITIONAL%20GO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20-%244%2C316%20vs%20%24350%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2047%2F100%20-%20confidence%2082%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20-%2491%2C845%20-%20Upside%20%24182%2C873%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for universal go-no-go scoring, DCF scenarios, risk-adjusted NPV, SVG summary, and Recharts rich-media decision panels."}
-      output:
-        key: output
-        type: markdown
-        value: |
-          ## CONDITIONAL GO
-          
-          Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence.
-          
-          **Decision score:** 47/100
-          **Decision confidence:** 82/100
-          **minimum acceptable risk-adjusted NPV:** $350,000
-          **Base risk-adjusted NPV:** -$4,316
-          **Downside risk-adjusted NPV:** -$91,845
-          
-          ### Structured verdict
-          - Recommendation: CONDITIONAL GO
-          - Economics score: 0/100
-          - Resilience score: 63/100
-          - Strategic fit score: 68/100
-          - Evidence score: 100/100
-          - Risk pressure: 41/100
-          
-          ### DCF base case
-          - Initial investment: $250,000
-          - Forecast years: 5
-          - Initial revenue: $420,000
-          - Revenue growth: 14%
-          - Operating margin: 18%
-          - Discount rate: 12%
-          - Terminal multiple: 7x
-          
-          ### Scenario stress
-          - Downside: -$91,845 at 37%
-          - Base: -$4,316 at 62%
-          - Upside: $182,873 at 71%
-          
-          ### Conditions to clear
-          - Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.
-          
-          ### Next diligence
-          - Validate demand, pricing, margin, capex, and working-capital assumptions.
-          - Confirm the initiative clears the hurdle under delay, weaker adoption, or cost creep.
-          - Replace weak assumptions with observed evidence before irreversible spend.
-          
-          **Audience:** sponsor, operator, reviewer
-          **Format:** structured markdown decision memo with scenarios
-          **Tone:** direct
-          **Context:** Use the same decision flow for any initiative where time, capital, engineering effort, or operating resources are being committed.
-          **Constraints:** Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable.
-          **Evidence:** Replace with the strongest facts, unknowns, dependencies, diligence notes, operating assumptions, and file or project specific evidence.
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:90px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:96px;text-align:right;color:#0f172a;font-weight:600}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:8px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">CONDITIONAL GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">-$4,316</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$350,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">47/100</p></div></div><section class=\"panel\"><h2>Scenario stress (risk-adjusted NPV)</h2><div class=\"row\"><span class=\"rl\">Downside</span><span class=\"rt\"><span class=\"rb\" style=\"width:0%;background:#ef4444\"></span></span><span class=\"rv\">-$91,845</span></div><div class=\"row\"><span class=\"rl\">Base</span><span class=\"rt\"><span class=\"rb\" style=\"width:2%;background:#0ea5e9\"></span></span><span class=\"rv\">-$4,316</span></div><div class=\"row\"><span class=\"rl\">Upside</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#22c55e\"></span></span><span class=\"rv\">$182,873</span></div></section><section class=\"panel\"><h2>Decision pillars</h2><div class=\"row\"><span class=\"rl\">Economics</span><span class=\"rt\"><span class=\"rb\" style=\"width:46%;background:#0ea5e9\"></span></span><span class=\"rv\">0/100</span></div><div class=\"row\"><span class=\"rl\">Resilience</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div><div class=\"row\"><span class=\"rl\">Strategic fit</span><span class=\"rt\"><span class=\"rb\" style=\"width:68%;background:#0ea5e9\"></span></span><span class=\"rv\">68/100</span></div><div class=\"row\"><span class=\"rl\">Evidence</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div></section><p class=\"note\">Universal, neutral decision-support dashboard. Current raw target: 350000 target. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.</li></ul></main></body></html>"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       run_status: {key: run_status, type: string, value: "idle"}
       semanticKey: {key: semanticKey, type: string, value: "computing-flow:compute:decision-summary"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
@@ -665,60 +566,10 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 24}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23f59e0b%22%20text-anchor%3D%22middle%22%3ECONDITIONAL%20GO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20-%244%2C316%20vs%20%24350%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2047%2F100%20-%20confidence%2082%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20-%2491%2C845%20-%20Upside%20%24182%2C873%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for universal go-no-go scoring, DCF scenarios, risk-adjusted NPV, SVG summary, and Recharts rich-media decision panels."}
-      output:
-        key: output
-        type: markdown
-        value: |
-          ## CONDITIONAL GO
-          
-          Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence.
-          
-          **Decision score:** 47/100
-          **Decision confidence:** 82/100
-          **minimum acceptable risk-adjusted NPV:** $350,000
-          **Base risk-adjusted NPV:** -$4,316
-          **Downside risk-adjusted NPV:** -$91,845
-          
-          ### Structured verdict
-          - Recommendation: CONDITIONAL GO
-          - Economics score: 0/100
-          - Resilience score: 63/100
-          - Strategic fit score: 68/100
-          - Evidence score: 100/100
-          - Risk pressure: 41/100
-          
-          ### DCF base case
-          - Initial investment: $250,000
-          - Forecast years: 5
-          - Initial revenue: $420,000
-          - Revenue growth: 14%
-          - Operating margin: 18%
-          - Discount rate: 12%
-          - Terminal multiple: 7x
-          
-          ### Scenario stress
-          - Downside: -$91,845 at 37%
-          - Base: -$4,316 at 62%
-          - Upside: $182,873 at 71%
-          
-          ### Conditions to clear
-          - Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.
-          
-          ### Next diligence
-          - Validate demand, pricing, margin, capex, and working-capital assumptions.
-          - Confirm the initiative clears the hurdle under delay, weaker adoption, or cost creep.
-          - Replace weak assumptions with observed evidence before irreversible spend.
-          
-          **Audience:** sponsor, operator, reviewer
-          **Format:** structured markdown decision memo with scenarios
-          **Tone:** direct
-          **Context:** Use the same decision flow for any initiative where time, capital, engineering effort, or operating resources are being committed.
-          **Constraints:** Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable.
-          **Evidence:** Replace with the strongest facts, unknowns, dependencies, diligence notes, operating assumptions, and file or project specific evidence.
-          
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:90px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:96px;text-align:right;color:#0f172a;font-weight:600}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:8px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">CONDITIONAL GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">-$4,316</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$350,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">47/100</p></div></div><section class=\"panel\"><h2>Scenario stress (risk-adjusted NPV)</h2><div class=\"row\"><span class=\"rl\">Downside</span><span class=\"rt\"><span class=\"rb\" style=\"width:50%;background:#ef4444\"></span></span><span class=\"rv\">-$91,845</span></div><div class=\"row\"><span class=\"rl\">Base</span><span class=\"rt\"><span class=\"rb\" style=\"width:2%;background:#0ea5e9\"></span></span><span class=\"rv\">-$4,316</span></div><div class=\"row\"><span class=\"rl\">Upside</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#22c55e\"></span></span><span class=\"rv\">$182,873</span></div></section><section class=\"panel\"><h2>Decision pillars</h2><div class=\"row\"><span class=\"rl\">Economics</span><span class=\"rt\"><span class=\"rb\" style=\"width:0%;background:#0ea5e9\"></span></span><span class=\"rv\">0/100</span></div><div class=\"row\"><span class=\"rl\">Resilience</span><span class=\"rt\"><span class=\"rb\" style=\"width:63%;background:#0ea5e9\"></span></span><span class=\"rv\">63/100</span></div><div class=\"row\"><span class=\"rl\">Strategic fit</span><span class=\"rt\"><span class=\"rb\" style=\"width:68%;background:#0ea5e9\"></span></span><span class=\"rv\">68/100</span></div><div class=\"row\"><span class=\"rl\">Evidence</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div></section><p class=\"note\">Universal, neutral decision-support dashboard. Current raw target: 350000 target. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.</li></ul></main></body></html>"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       run_status: {key: run_status, type: string, value: "idle"}
       semanticKey: {key: semanticKey, type: string, value: "computing-flow:compute:decision-summary"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
@@ -1118,60 +969,10 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 24}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2266%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23f59e0b%22%20text-anchor%3D%22middle%22%3ECONDITIONAL%20GO%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22104%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3EBase%20risk-adjusted%20NPV%20-%244%2C316%20vs%20%24350%2C000%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22136%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDecision%20score%2047%2F100%20-%20confidence%2082%2F100%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22168%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EDownside%20-%2491%2C845%20-%20Upside%20%24182%2C873%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      imageUrl: {key: imageUrl, type: text, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for universal go-no-go scoring, DCF scenarios, risk-adjusted NPV, SVG summary, and Recharts rich-media decision panels."}
-      output:
-        key: output
-        type: markdown
-        value: |
-          ## CONDITIONAL GO
-          
-          Decide whether to GO, CONDITIONAL GO, or NO-GO on any project, file, workflow, asset, initiative, or capital allocation using structured economics, scenario stress, and neutral risk evidence.
-          
-          **Decision score:** 47/100
-          **Decision confidence:** 82/100
-          **minimum acceptable risk-adjusted NPV:** $35,000
-          **Base risk-adjusted NPV:** -$4,316
-          **Downside risk-adjusted NPV:** -$91,845
-          
-          ### Structured verdict
-          - Recommendation: CONDITIONAL GO
-          - Economics score: 0/100
-          - Resilience score: 63/100
-          - Strategic fit score: 68/100
-          - Evidence score: 100/100
-          - Risk pressure: 41/100
-          
-          ### DCF base case
-          - Initial investment: $25
-          - Forecast years: 5
-          - Initial revenue: $420,000
-          - Revenue growth: 14%
-          - Operating margin: 18%
-          - Discount rate: 12%
-          - Terminal multiple: 7x
-          
-          ### Scenario stress
-          - Downside: -$91,845 at 37%
-          - Base: -$4,316 at 62%
-          - Upside: $182,873 at 71%
-          
-          ### Conditions to clear
-          - Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.
-          
-          ### Next diligence
-          - Validate demand, pricing, margin, capex, and working-capital assumptions.
-          - Confirm the initiative clears the hurdle under delay, weaker adoption, or cost creep.
-          - Replace weak assumptions with observed evidence before irreversible spend.
-          
-          **Audience:** sponsor, operator, reviewer
-          **Format:** structured markdown decision memo with scenarios
-          **Tone:** direct
-          **Context:** Use the same decision flow for any initiative where time, capital, engineering effort, or operating resources are being committed.
-          **Constraints:** Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable.
-          **Evidence:** Replace with the strongest facts, unknowns, dependencies, diligence notes, operating assumptions, and file or project specific evidence.
-          
-      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:90px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:96px;text-align:right;color:#0f172a;font-weight:600}.note{font-size:12px;color:#64748b;margin:12px 0 0}.conditions{margin:8px 0 0;padding-left:18px;color:#334155;font-size:12px;line-height:1.5}</style></head><body><main data-kg-investment-decision-panel=\"1\"><div class=\"kpi\"><div><p class=\"label\">Decision</p><p class=\"value\">CONDITIONAL GO</p></div><div><p class=\"label\">Base NPV</p><p class=\"value\">-$4,316</p></div><div><p class=\"label\">Threshold</p><p class=\"value\">$350,000</p></div><div><p class=\"label\">Score</p><p class=\"value\">47/100</p></div></div><section class=\"panel\"><h2>Scenario stress (risk-adjusted NPV)</h2><div class=\"row\"><span class=\"rl\">Downside</span><span class=\"rt\"><span class=\"rb\" style=\"width:0%;background:#ef4444\"></span></span><span class=\"rv\">-$91,845</span></div><div class=\"row\"><span class=\"rl\">Base</span><span class=\"rt\"><span class=\"rb\" style=\"width:2%;background:#0ea5e9\"></span></span><span class=\"rv\">-$4,316</span></div><div class=\"row\"><span class=\"rl\">Upside</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#22c55e\"></span></span><span class=\"rv\">$182,873</span></div></section><section class=\"panel\"><h2>Decision pillars</h2><div class=\"row\"><span class=\"rl\">Economics</span><span class=\"rt\"><span class=\"rb\" style=\"width:46%;background:#0ea5e9\"></span></span><span class=\"rv\">0/100</span></div><div class=\"row\"><span class=\"rl\">Resilience</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div><div class=\"row\"><span class=\"rl\">Strategic fit</span><span class=\"rt\"><span class=\"rb\" style=\"width:68%;background:#0ea5e9\"></span></span><span class=\"rv\">68/100</span></div><div class=\"row\"><span class=\"rl\">Evidence</span><span class=\"rt\"><span class=\"rb\" style=\"width:100%;background:#0ea5e9\"></span></span><span class=\"rv\">100/100</span></div></section><p class=\"note\">Universal, neutral decision-support dashboard. Current raw target: 35 target. Replace placeholders and assumptions before acting.</p><ul class=\"conditions\"><li>Rework the downside case until risk-adjusted NPV clears the minimum acceptable risk-adjusted NPV threshold.</li></ul></main></body></html>"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       run_status: {key: run_status, type: string, value: "idle"}
       semanticKey: {key: semanticKey, type: string, value: "computing-flow:compute:decision-summary"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
