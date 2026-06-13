@@ -360,6 +360,30 @@ Opening this file directly should render through Strybldr. The seed below is the
   "runId": "strybldr-videodb-recreate-77FAnT935IE",
   "createdAtMs": 1780110851619,
   "notes": "Validation input for recreating 77FAnT935IE on the knowgrph canvas through VideoDB API and MCP paths. Source-specific literals belong only in this external input file.",
+  "workflow": {
+    "stages": [
+      "Source",
+      "Storyboard",
+      "Elements",
+      "Runtime",
+      "Review",
+      "Publish"
+    ],
+    "fork": {
+      "id": "workflow-fork-rest-or-mcp",
+      "label": "Operator-approved REST or MCP fork",
+      "policy": "Fork only after Source, Storyboard, and Elements cards are approved; both branches rejoin at Review and Publish.",
+      "branches": [
+        "videodb-rest-path",
+        "videodb-mcp-path"
+      ]
+    },
+    "publish": {
+      "id": "workflow-local-publish-packet",
+      "label": "Local publish packet",
+      "policy": "Write local packet fields only; live provider IDs and URLs remain blank until returned by an operator-approved run."
+    }
+  },
   "sources": [
     {
       "sourceUnitId": "validation-input-import-url-source",
@@ -495,6 +519,32 @@ Opening this file directly should render through Strybldr. The seed below is the
       "summary": "Operator approval chooses either MainPanel Integrations REST rows or MainPanel MCP videodb-director tools; both paths use the same approved card sequence.",
       "action": "Run generate or upload, poll with get_async_response, then index, search, stream, and retrieve transcript only from live VideoDB responses.",
       "prompt": "Show one VideoDB execution lane branching into REST and MCP paths that rejoin at the local publish packet."
+    },
+    {
+      "id": "sensenova-media-output-card",
+      "sourceUnitId": "sensenova-api-contract",
+      "label": "SenseNova media outputs",
+      "confidence": 0.9,
+      "sourceBox": null,
+      "evidenceKind": "runtime-plan",
+      "provider": "sensenova",
+      "order": 4.2,
+      "summary": "SenseNova text, image, and video outputs are readiness-gated inputs to the VideoDB upload, index, search, stream, and publish packet path.",
+      "action": "Keep generated text, image URLs, and video URLs blank until returned by a live operator-approved SenseNova run.",
+      "prompt": "Render the SenseNova Text, Image, and Video outputs as a single readiness-gated media lane that feeds VideoDB."
+    },
+    {
+      "id": "workflow-fork-rest-mcp-card",
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "label": "Workflow fork: REST or MCP",
+      "confidence": 0.91,
+      "sourceBox": null,
+      "evidenceKind": "runtime-plan",
+      "provider": "knowgrph",
+      "order": 4.4,
+      "summary": "The approved storyboard sequence forks into VideoDB REST and VideoDB Director MCP lanes, then rejoins at review search and local publish packet creation.",
+      "action": "Expose the fork as one operator approval decision; do not run both live branches unless the operator explicitly selects both.",
+      "prompt": "Show a neutral fork card with REST and MCP branches that converge before publish."
     },
     {
       "id": "videodb-character-clips-card",
@@ -638,6 +688,56 @@ Opening this file directly should render through Strybldr. The seed below is the
       "summary": "Generated video is indexed with POST /video/{id}/index/, searched with POST /video/{id}/search/, streamed with POST /video/{id}/stream/, then recorded in a local knowgrph publish packet.",
       "action": "Accept only live stream/download URLs and local operator-authored publish packet paths.",
       "prompt": "Close with a local publish packet and visible operator approval gate."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-source-to-storyboard",
+      "source": "validation-input-source-card",
+      "target": "videodb-recreate-storyboard-card",
+      "label": "source_to_storyboard"
+    },
+    {
+      "id": "edge-storyboard-to-elements",
+      "source": "videodb-recreate-storyboard-card",
+      "target": "validation-input-setup-card",
+      "label": "storyboard_to_elements"
+    },
+    {
+      "id": "edge-elements-to-sensenova",
+      "source": "validation-input-product-card",
+      "target": "sensenova-media-output-card",
+      "label": "elements_to_sensenova"
+    },
+    {
+      "id": "edge-sensenova-to-videodb",
+      "source": "sensenova-media-output-card",
+      "target": "videodb-recreate-api-mcp-execution-card",
+      "label": "sensenova_to_videodb"
+    },
+    {
+      "id": "edge-execution-to-fork",
+      "source": "videodb-recreate-api-mcp-execution-card",
+      "target": "workflow-fork-rest-mcp-card",
+      "label": "operator_fork"
+    },
+    {
+      "id": "edge-fork-to-character-clips",
+      "source": "workflow-fork-rest-mcp-card",
+      "target": "videodb-character-clips-card",
+      "label": "fork_to_character_clips"
+    },
+    {
+      "id": "edge-character-clips-to-review",
+      "source": "videodb-character-clips-card",
+      "target": "videodb-recreate-review-card",
+      "label": "clips_to_review"
+    },
+    {
+      "id": "edge-review-to-publish",
+      "source": "videodb-recreate-review-card",
+      "target": "videodb-recreate-publish-card",
+      "label": "review_to_publish"
     }
   ]
 }
