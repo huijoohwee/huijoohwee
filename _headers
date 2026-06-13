@@ -156,6 +156,9 @@
 /.well-known/agent-skills/knowgrph-mcp-local.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
+/.well-known/agent-skills/knowgrph-memory-layer.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
 /.well-known/agent-skills/knowgrph-research-visual.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600

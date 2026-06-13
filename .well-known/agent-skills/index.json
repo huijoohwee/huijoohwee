@@ -139,6 +139,34 @@
       }
     },
     {
+      "name": "knowgrph-memory-layer",
+      "type": "markdown",
+      "description": "Persist, retrieve, and inject explicitly scoped agent memories through a provider-neutral local harness with Mem0-ready runtime boundaries.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-memory-layer.md",
+      "sha256": "af38fa54a747786adb69b33754d1214aa4f3d5e360d3ae5f61298e1a1f735f0c",
+      "vdeoxpln": {
+        "id": "knowgrph-memory-layer",
+        "title": "Knowgrph Memory Layer",
+        "scope": "local-stdio-and-browser-local",
+        "mutation": "local-scoped-memory",
+        "semanticKey": "kgvx_cf87b331",
+        "tools": {
+          "published": [],
+          "browserLocal": [],
+          "local": [
+            "knowgrph.memory.add",
+            "knowgrph.memory.assemble_prompt",
+            "knowgrph.memory.search",
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "local-mcp-docs",
+          "mainpanel-mcp"
+        ]
+      }
+    },
+    {
       "name": "knowgrph-research-visual",
       "type": "markdown",
       "description": "Create file-backed research visual workflows from source material using Knowgrph parsing, Source Files, Storyboard, renderer, and chat owners.",

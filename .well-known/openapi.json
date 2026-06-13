@@ -392,6 +392,16 @@
         }
       }
     },
+    "/knowgrph/.well-known/agent-skills/knowgrph-memory-layer.md": {
+      "get": {
+        "summary": "Read the knowgrph-memory-layer agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-memory-layer"
+          }
+        }
+      }
+    },
     "/knowgrph/.well-known/agent-skills/knowgrph-research-visual.md": {
       "get": {
         "summary": "Read the knowgrph-research-visual agent skill markdown",
