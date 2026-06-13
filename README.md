@@ -1,16 +1,16 @@
 # Agentic Canvas
 
-**Tagline:** The canvas that runs document like a program
+**Tagline:** The canvas that recreates any video — and runs the document like a program
 
 Knowgrph is an **AI/LLM-agent-native, markdown-based, self-runnable agentic
-widget canvas**. A Knowgrph document is plain Markdown with a typed YAML
-frontmatter flow: nodes are **widgets** (input, compute, rich-media panels),
-edges are typed **sockets**, and the whole document renders as an interactive
-canvas that an agent — or a human — can **run, gate, persist, and replay**.
+widget canvas**. Drop in a YouTube URL, pick a favorite video, and Knowgrph
+builds a storyboard, runs SenseNova text/image/video generation, hands the
+output to VideoDB, and produces a local playable animatic — all without leaving
+a single Markdown document.
 
 The same file is three things at once:
 
-- a **human-readable Markdown doc** (read it in any editor or on the web),
+- a **human-readable Markdown doc** (open it in any editor or on the web),
 - a **typed widget graph** (`kgc-computing-flow/v1` frontmatter — nodes, edges,
   sockets, run actions), and
 - a **runnable agent program** (compute nodes, approval gates, budget meters,
@@ -19,6 +19,70 @@ The same file is three things at once:
 Knowgrph is provider-neutral and project-agnostic: it operates on any brief,
 canvas graph, tool schema, or media provider without assuming a particular
 vendor, document, or domain.
+
+## Strybldr Demo — Recreate a Favorite Video
+
+The canonical demo proves the full E2E pipeline by importing one YouTube URL and
+recreating it as a knowgrph Strybldr canvas workflow.
+
+**Source:** [`Seedance 2.0 is on Artlist`](https://www.youtube.com/watch?v=77FAnT935IE) — a 60-second Artlist creator demo.
+
+**Validation input:** `docs/knowgrph-strybldr-demo.md`
+
+### What the demo proves
+
+| Stage | What happens |
+| --- | --- |
+| Import URL | `Toolbar → Launch → Import URL`, select Strybldr renderer, paste the YouTube URL |
+| Source card | One neutral corpus source unit is written for the video; no transcript text is copied |
+| Storyboard | A sibling `.strybldr.md` opens with Source, Storyboard, Elements, Runtime, Review, and Publish cards |
+| Canvas view | Toolbar reports `Canvas View Mode: 2D Renderer: Strybldr` |
+| SenseNova Text | MainPanel Integrations exposes `SenseChat-5`, `SenseChat-Turbo`, `SenseChat-Vision-5` via host-only JWT |
+| SenseNova Image | MainPanel Integrations exposes `artist-xl` and `senseNova-img-enhance` |
+| SenseNova Video | MainPanel Integrations exposes `SenseAnim` and `SenseAnim-Pro` via a 36 × 10s async circuit-breaker |
+| VideoDB REST | `MainPanel Integrations` → upload/generate → async poll → spoken-word index → search → stream |
+| VideoDB MCP | `MainPanel MCP` → `videodb-director` (uvx) → same E2E pipeline via MCP tools |
+| Character clips | Subject timeline ranges feed `video.generate_stream(timeline=...)` for per-subject review clips |
+| Local animatic | Without live credentials, `Toolbar Run all` writes a playable `strybldr-video-*.md` with `paidCallCount: 0` |
+| Guard | Missing credentials keep external calls readiness-gated; no fabricated IDs, URLs, or transcript text |
+
+### Run it (no credentials required)
+
+1. Open Knowgrph locally.
+2. `Toolbar → Launch → Import URL`.
+3. Select **Strybldr** as the renderer.
+4. Paste `https://www.youtube.com/watch?v=77FAnT935IE`.
+5. Click toolbar **Run all**.
+6. A `strybldr-video-*.md` artifact is written with an embedded playable animatic and `paidCallCount: 0`.
+
+To run with live SenseNova and VideoDB credentials, set host environment keys
+`SENSENOVA_API_KEY` and `VIDEODB_API_KEY`, approve each generation card, then
+choose the REST or MCP execution path in MainPanel.
+
+### Credential policy
+
+| Key | Where it lives | Never in |
+| --- | --- | --- |
+| `VIDEODB_API_KEY` | Host environment only | Browser storage, repo source |
+| `SENSENOVA_API_KEY` | Host environment only; signing stays server-side | Browser storage, repo source |
+
+### E2E pipeline shape
+
+```
+Import URL (77FAnT935IE)
+  └─ Strybldr storyboard cards
+       ├─ SenseNova Text → Image → Video
+       │    └─ VideoDB upload → async poll → index → search → stream
+       │         └─ Character clips (subject timeline ranges)
+       │              └─ Local publish packet
+       └─ VideoDB MCP (videodb-director)
+            └─ Same sequence via MCP tools → Local publish packet
+```
+
+Without live credentials every branch falls back to a generated local knowgrph
+animatic from approved cards, with no external publish claim.
+
+---
 
 ## What "self-runnable agentic widget canvas" means
 
@@ -86,7 +150,7 @@ flow:
 | Cloudflare AI Gateway | All model/media calls (chat, image, video) route here for cache, token count, fallback, and unified billing. |
 
 Baseline runs are provable **offline with deterministic mock providers**; real
-providers (e.g. BytePlus/ModelArk for chat, `seedream` image, `seedance` video)
+providers (SenseNova for chat/image/video, VideoDB for upload/index/stream)
 activate only when their keys are wired and the matching gate is approved.
 
 ## Repository Role
@@ -237,13 +301,15 @@ Feature-specific planning belongs in canonical docs instead of the root README:
 
 | Feature | Docs |
 | --- | --- |
-| Agentic Canvas OS demo | `docs/documents/knowgrph-mcp-agentic-canvas-os-prd-tad.md` |
-| AI provider layer (MiroMindAI) | `docs/documents/knowgrph-api-reference/knowgrph-miromind-api-prd-tad.md` |
-| MCP | `docs/documents/knowgrph-mcp/` and `mcp/README.md` |
-| Storage sync | `docs/documents/knowgrph-storage-sync-document.companion.md` |
-| Strybldr | `docs/documents/knowgrph-strybldr-prd-tad.md` |
+| Strybldr demo (recreate favorite video) | `docs/knowgrph-strybldr-demo.md` |
 | Strybldr | `docs/documents/knowgrph-strybldr-prd-tad.md` |
 | Strytree | `docs/documents/knowgrph-strytree-prd-tad.md` |
+| SenseNova AI API | `docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md` |
+| VideoDB MCP | `docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md` |
+| MCP | `docs/documents/knowgrph-mcp/` and `mcp/README.md` |
+| Agentic Canvas OS demo | `docs/documents/knowgrph-mcp-agentic-canvas-os-prd-tad.md` |
+| AI provider layer (MiroMindAI) | `docs/documents/knowgrph-api-reference/knowgrph-miromind-api-prd-tad.md` |
+| Storage sync | `docs/documents/knowgrph-storage-sync-document.companion.md` |
 | Repo hygiene | `docs/documents/knowgrph-repo-hygiene-document.md` |
 | Payment readiness | `docs/documents/knowgrph-mainpanel-commerce-prd-tad.md` |
 

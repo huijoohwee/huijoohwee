@@ -7,8 +7,8 @@ lang: en-US
 implementation_contract: "docs/documents/knowgrph-strybldr-prd-tad.md"
 validation_input_forbid_hardcode_in_repo: true
 deployed_api_claim: false
-videodb_credential_policy: "operator-supplied at runtime via MainPanel Integrations or host VIDEODB_API_KEY; never hardcoded"
-sensenova_credential_policy: "SENSENOVA_ACCESS_KEY_ID and SENSENOVA_SECRET_ACCESS_KEY in host environment only; JWT derived at request time; never stored in browser or repo"
+videodb_credential_policy: "Server Managed Key uses host VIDEODB_API_KEY; never hardcoded, browser-stored, or repo-stored"
+sensenova_credential_policy: "Server Managed Key uses host SENSENOVA_API_KEY; JWT/proxy auth derived server-side at request time; never stored in browser or repo"
 videodb_workflow_status: "VideoDB API + MCP workflow integrated into full SenseNova Text, Image, Video to VideoDB E2E pipeline"
 sensenova_workflow_status: "SenseNova API Text, Image, Video generation feeds VideoDB upload, index, search, stream, and local publish packet workflow; uncredentialed demo runs generate a local knowgrph animatic"
 local_animatic_status: "Toolbar Run all and Strybldr Generate Video create a generated, playable, zero-paid-call local animatic from approved cards when live credentials are unavailable"
@@ -59,7 +59,7 @@ videodb_runtime_contract:
   - "MainPanel Integrations owns videodb.api_key and VideoDB API reference rows"
   - "Imported 77FAnT935IE source -> knowgrph storyboard cards -> VideoDB API/MCP generation -> async poll -> spoken-word index -> review search -> stream -> local publish packet"
   - "The recreation uses source metadata, thumbnail, generated-caption availability, and operator-authored paraphrased beats only; it does not copy transcript text"
-  - "Missing videodb.api_key, VIDEODB_API_KEY, or live runtime IDs keeps external provider calls readiness-gated while still generating a local knowgrph animatic; no fabricated job IDs or URLs"
+  - "Missing server-managed VIDEODB_API_KEY or live runtime IDs keeps external provider calls readiness-gated while still generating a local knowgrph animatic; no fabricated job IDs or URLs"
   - "No Prod, Cloudflare, or external publication claim exists until the operator explicitly authorizes it"
 videodb_mcp_contract:
   - "VideoDB Director MCP is surfaced in MainPanel MCP"
@@ -140,7 +140,7 @@ videodb_inputs:
   poll_interval_ms: 10000
 sensenova_runtime_contract:
   - "SenseNova API is surfaced in MainPanel Integrations as a text, image, and video provider"
-  - "Auth: HMAC-SHA256 signed JWT from SENSENOVA_ACCESS_KEY_ID and SENSENOVA_SECRET_ACCESS_KEY; raw keys never in browser or repo"
+  - "Auth: Server Managed Key from SENSENOVA_API_KEY; signing/proxy auth stays server-side and raw keys never enter browser or repo"
   - "Text: SenseChat-5, SenseChat-Turbo, and SenseChat-Vision-5 through the shared streaming chat path"
   - "Image: artist-xl and senseNova-img-enhance through the shared image generation path"
   - "Video: SenseAnim and SenseAnim-Pro through a bounded async 36x10s circuit-breaker"
@@ -150,10 +150,8 @@ sensenova_runtime_contract:
 sensenova_inputs:
   provider_id: "sensenova"
   base_url: "https://api.sensenova.cn"
-  access_key_env: "SENSENOVA_ACCESS_KEY_ID"
-  secret_key_env: "SENSENOVA_SECRET_ACCESS_KEY"
-  access_key_placeholder: "${SENSENOVA_ACCESS_KEY_ID}"
-  secret_key_placeholder: "${SENSENOVA_SECRET_ACCESS_KEY}"
+  api_key_env: "SENSENOVA_API_KEY"
+  api_key_placeholder: "${SENSENOVA_API_KEY}"
   auth_method: "HMAC-SHA256 signed JWT"
   platform_url: "https://platform.sensenova.cn"
   default_text_model: "SenseChat-5"
@@ -317,7 +315,7 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 
 ### SenseNova API Lane (Text, Image, Video)
 
-1. Confirm MainPanel Integrations exposes SenseNova API readiness with host-only `SENSENOVA_ACCESS_KEY_ID` and `SENSENOVA_SECRET_ACCESS_KEY` placeholders.
+1. Confirm MainPanel Integrations exposes SenseNova API readiness with the host-only Server Managed Key `SENSENOVA_API_KEY` placeholder.
 2. Confirm the text lane lists `SenseChat-5`, `SenseChat-Turbo`, and `SenseChat-Vision-5`.
 3. Confirm the image lane lists `artist-xl` and `senseNova-img-enhance`.
 4. Confirm the video lane lists `SenseAnim` and `SenseAnim-Pro` with a 36 x 10s async circuit-breaker.
@@ -325,7 +323,7 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 
 ### VideoDB API + MCP Recreate 77FAnT935IE Lane
 
-1. Confirm MainPanel Integrations exposes VideoDB REST rows including `videodb.api_key`, `videodb.ai.generate_video`, `videodb.async_response.get`, `videodb.index.spoken_word`, `videodb.video.search`, and `videodb.video.stream`.
+1. Confirm MainPanel Integrations exposes VideoDB REST rows including server-managed `videodb.api_key = VIDEODB_API_KEY`, `videodb.ai.generate_video`, `videodb.async_response.get`, `videodb.index.spoken_word`, `videodb.video.search`, and `videodb.video.stream`.
 2. Confirm MainPanel MCP exposes `VideoDB Director MCP` with `videodb-director`, `uvx videodb-director-mcp --api-key=${VIDEODB_API_KEY}`, Python 3.12+, tool groups, and the 36 x 10s circuit-breaker.
 3. Confirm MainPanel Integrations exposes `videodb.video.character_clips` and `videodb.video.character_clips.schema` for subject timeline clips.
 4. Confirm SenseNova `videoUrl` can feed the VideoDB upload, index, search, stream, transcript, character-clips, and local publish packet path.
@@ -345,7 +343,7 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 | Transcript policy | do not copy transcript text into this document |
 | Paid calls required for import | 0 |
 | VideoDB base URL | `https://api.videodb.io` |
-| VideoDB auth | `x-access-token` via `videodb.api_key` or host `VIDEODB_API_KEY`, blank by default |
+| VideoDB auth | `x-access-token` via server-managed host `VIDEODB_API_KEY`; MainPanel displays the env-key name, not the key value |
 | VideoDB REST endpoints | `POST /video/{id}/generate/video`, `GET /async-response/{id}`, `POST /video/{id}/index/`, `POST /video/{id}/search/`, `POST /video/{id}/stream/` |
 | VideoDB character clips | `video.generate_stream(timeline=subject_timeline_ranges)`; subject clip URLs blank until returned live |
 | VideoDB live output policy | no generation job ID, video ID, stream URL, download URL, transcript text, or publish packet path is fabricated |
