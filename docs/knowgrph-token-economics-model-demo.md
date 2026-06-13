@@ -82,6 +82,10 @@ flow_diagrams:
     tco_pipeline_flowchart:
       key: tco_pipeline_flowchart
       type: mermaid_flowchart
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
       value: |-
         flowchart LR
           workload_drivers["Workload Drivers\n(MAU · agent requests)"]

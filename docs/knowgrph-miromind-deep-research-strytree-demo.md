@@ -200,6 +200,10 @@ flow_diagrams:
     miromind_pipeline_flowchart:
       key: miromind_pipeline_flowchart
       type: mermaid_flowchart
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
       value: |-
         flowchart LR
           storytree_source["StoryTree Source\n(reference review)"]

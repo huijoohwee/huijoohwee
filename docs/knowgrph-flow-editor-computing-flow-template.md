@@ -32,6 +32,10 @@ flow_diagrams:
     template_gitgraph:
       key: template_gitgraph
       type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
       value: |-
         gitGraph
           commit id: "source_input" tag: "KTV inputs"

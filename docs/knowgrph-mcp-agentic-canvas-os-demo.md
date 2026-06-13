@@ -167,6 +167,10 @@ modelSelection:
     mcp_pipeline_flowchart:
       key: mcp_pipeline_flowchart
       type: mermaid_flowchart
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input["Run Brief Input\n(referenceUrl · brief · budgetUsd · mode · approvals)"]

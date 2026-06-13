@@ -322,9 +322,9 @@ flow_diagrams:
     storyboard_pipeline_flowchart:
       key: storyboard_pipeline_flowchart
       type: mermaid_flowchart
-      floatingPanelView: "gitGraph"
+      floatingPanelView: "flowchart"
       floatingPanelOpen: true
-      bottomPanelTab: "gitGraph"
+      bottomPanelTab: "flowchart"
       bottomPanelOpen: true
       value: |-
         flowchart LR

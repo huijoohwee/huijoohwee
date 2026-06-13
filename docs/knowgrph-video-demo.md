@@ -203,6 +203,10 @@ flow_diagrams:
     video_pipeline_flowchart:
       key: video_pipeline_flowchart
       type: mermaid_flowchart
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input["Scene Brief Input\n(vibe · location · theme · script · duration)"]

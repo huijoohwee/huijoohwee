@@ -170,6 +170,10 @@ flow_diagrams:
     agentic_pipeline_flowchart:
       key: agentic_pipeline_flowchart
       type: mermaid_flowchart
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
       value: |-
         flowchart LR
           idea_input["Idea Input\n(idea · target_user · platform_scope · evidence_budget · artifact_goal)"]

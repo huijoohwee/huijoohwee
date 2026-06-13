@@ -320,6 +320,10 @@ flow_diagrams:
     research_pipeline_flowchart:
       key: research_pipeline_flowchart
       type: mermaid_flowchart
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
       value: |-
         flowchart LR
           source_input["Research Brief\n(thesis · evidence_budget · review_mode)"]
@@ -1504,12 +1508,14 @@ Flow Editor nodes. The demo therefore proves message gateway, sandbox, memory,
 tools, skills, and subagents through the same ingestion, parser, and canvas
 rendering path as the rest of the graph.
 
-It also demonstrates the neutral structured-response path: Markdown flow,
-Mermaid GitGraph, and Mermaid Gantt frontmatter are data inputs. The parser
-derives `FlowDiagramSource -> TextGeneration inline compute -> RichMediaPanel`
-nodes for diagram records, and computed `outputSrcDoc` panels preserve
-first-class terms from authored source terms such as subagents, review gates,
-and panel outputs instead of using static backfill.
+It also demonstrates the neutral structured-response path: Markdown flow and
+typed Mermaid frontmatter are data inputs. The parser keeps GitGraph,
+Flowchart, Architecture, and EventModeling diagram records on their shared
+`flow_diagrams` routing keys so the existing FloatingPanel row-list and
+BottomPanel chart surfaces render the diagram source directly. Rich Media Panel
+nodes remain connected output widgets, and computed `outputSrcDoc` panels
+preserve first-class terms from authored source terms such as subagents, review
+gates, and panel outputs instead of using static backfill.
 
 This is not a live Cloudflare route proof. The Dev repo contains the Worker
 source and D1 migration, but this demo must not be read as a deployed
@@ -1535,8 +1541,11 @@ are explicitly run.
 
 | Input surface | Frontmatter owner | Computed output |
 | Markdown flow | `flow.nodes` and `flow.edges` | Connected Rich Media Panel values from inline compute. |
-| GitGraph | `flow_diagrams.gitgraph` with `type: mermaid_gitgraph` | GitGraph Rich Media Panel `outputSrcDoc` with parallel-lane and term coverage. |
-| Gantt | `flow_diagrams.gantt` with `type: mermaid_gantt` | Gantt Rich Media Panel `outputSrcDoc` with critical-path and term coverage. |
+| GitGraph | `flow_diagrams.gitgraph` with `type: mermaid_gitgraph` | FloatingPanel row list and BottomPanel GitGraph chart. |
+| Flowchart | `flow_diagrams.flowchart` with `type: mermaid_flowchart` | FloatingPanel row list and BottomPanel Flowchart chart. |
+| Architecture | `flow_diagrams.architecture` with `type: mermaid_architecture` | FloatingPanel row list and BottomPanel Architecture chart. |
+| EventModeling | `flow_diagrams.event_model` with `type: mermaid_eventmodeling` | FloatingPanel row list and BottomPanel EventModeling chart. |
+| Gantt | `flow_diagrams.gantt` with `type: mermaid_gantt` | FloatingPanel row list and BottomPanel Gantt chart. |
 
 The demo keeps renderer intent in frontmatter data and keeps render output on
 connected values. Changing the prompt-shaped graph terms or diagram source
