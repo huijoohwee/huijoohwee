@@ -368,6 +368,34 @@ flow:
     - {"id": "edge_compute_to_panel_image_output", "source": "compute_summary", "sourceHandle": "imageAssetUrl", "target": "panel_image_output", "targetHandle": "imageAssetUrl", "label": "imageAssetUrl", "type": "artifact_signal"}
     - {"id": "edge_compute_to_panel_video_output", "source": "compute_summary", "sourceHandle": "videoUrl", "target": "panel_video_output", "targetHandle": "videoUrl", "label": "videoUrl", "type": "artifact_signal"}
     - {"id": "edge_compute_to_panel_chart_output", "source": "compute_summary", "sourceHandle": "outputSrcDoc", "target": "panel_chart_output", "targetHandle": "outputSrcDoc", "label": "outputSrcDoc", "type": "artifact_signal"}
+kgParserRoutingContract:
+  version: "knowgrph-parser-routing/v1"
+  parserLogic: "opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases"
+  routingKeys:
+    surface: "kgCanvasSurfaceMode"
+    renderMode: "kgCanvasRenderMode"
+    renderer: "kgCanvas2dRenderer"
+    semanticMode: "kgDocumentSemanticMode"
+    frontmatterMode: "kgFrontmatterModeEnabled"
+    flowGraph: "flow"
+    flowNodes: "flow.nodes"
+    flowEdges: "flow.edges"
+    mermaidBlocks: "flow_diagrams"
+    strybldrStoryboard: "kgStrybldrStoryboard"
+  diagramKinds:
+    - "mermaid_flowchart"
+    - "mermaid_gitgraph"
+    - "mermaid_architecture"
+    - "mermaid_eventmodeling"
+    - "mermaid_gantt"
+    - "frontmatter_flow"
+    - "strybldr_storyboard"
+  surfaces:
+    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
+    - "BottomPanel/FloatingPanel Mermaid panels"
+  edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
+  forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
 
 # Knowgrph MCP Agentic Canvas OS — Demo

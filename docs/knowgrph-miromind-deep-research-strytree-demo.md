@@ -20,7 +20,7 @@ validation_input_forbid_hardcode_in_repo: true
 storytree_product: "strytree"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "strybldr"
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
@@ -56,7 +56,7 @@ miromind_deep_research_demo:
   input_surfaces:
     - "FloatingPanel Chat"
     - "Markdown YAML frontmatter"
-    - "Strybldr renderer"
+    - "Storyboard renderer"
     - "FlowDiagramSource"
   outputs:
     markdown_flow: "flow.nodes + flow.edges"
@@ -108,7 +108,7 @@ flow_diagrams:
       bottomPanelTab: "gitGraph"
       bottomPanelOpen: true
       title: "Strytree deep-research GitGraph branches"
-      render_on: [strybldr, flow_editor, storyboard]
+      render_on: [storyboard, flow_editor]
       value: |-
         gitGraph
           commit id:"storytree_source"
@@ -138,7 +138,7 @@ flow_diagrams:
       bottomPanelTab: "gantt"
       bottomPanelOpen: true
       title: "Strytree deep-research Gantt critical path"
-      render_on: [strybldr, flow_editor, storyboard, document_view, timeline_view]
+      render_on: [storyboard, flow_editor, document_view, timeline_view]
       value: |-
         gantt
           title computing flow: miromind-deep-research-strytree
@@ -383,6 +383,34 @@ modelSelection:
         - "seedance-1-5-pro-251215"
         - "dreamina-seedance-2-0-fast-260128"
         - "dreamina-seedance-2-0-260128"
+kgParserRoutingContract:
+  version: "knowgrph-parser-routing/v1"
+  parserLogic: "opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases"
+  routingKeys:
+    surface: "kgCanvasSurfaceMode"
+    renderMode: "kgCanvasRenderMode"
+    renderer: "kgCanvas2dRenderer"
+    semanticMode: "kgDocumentSemanticMode"
+    frontmatterMode: "kgFrontmatterModeEnabled"
+    flowGraph: "flow"
+    flowNodes: "flow.nodes"
+    flowEdges: "flow.edges"
+    mermaidBlocks: "flow_diagrams"
+    strybldrStoryboard: "kgStrybldrStoryboard"
+  diagramKinds:
+    - "mermaid_flowchart"
+    - "mermaid_gitgraph"
+    - "mermaid_architecture"
+    - "mermaid_eventmodeling"
+    - "mermaid_gantt"
+    - "frontmatter_flow"
+    - "strybldr_storyboard"
+  surfaces:
+    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
+    - "BottomPanel/FloatingPanel Mermaid panels"
+  edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
+  forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
 
 # Knowgrph MiroMind Deep Research Strytree Demo
@@ -398,7 +426,7 @@ response source, inline compute, and a connected Rich Media Panel render target.
 |---|---|
 | FloatingPanel Chat | A provider response can arrive as `response.structuredContent` data rather than UI prose. |
 | Markdown frontmatter | `flow_diagrams`, `flow.nodes`, and `flow.edges` are the source of truth. |
-| Strybldr renderer | `storytree_product: "strytree"` and `kgCanvas2dRenderer: "strybldr"` select the storytree surface. |
+| Storyboard renderer | `storytree_product: "strytree"` and `kgCanvas2dRenderer: "storyboard"` select the storytree surface. |
 | Dynamic panels | GitGraph, Gantt, and structured response panels derive `outputSrcDoc` from inline compute. |
 | Review gate | The document makes no live API, Prod, or Cloudflare deploy claim. |
 

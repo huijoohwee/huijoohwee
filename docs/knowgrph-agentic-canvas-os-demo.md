@@ -559,6 +559,34 @@ flow:
     - {"id":"edge_video_to_panel_output","source":"video_generator","sourceHandle":"text_out","target":"video_output_panel","targetHandle":"videoUrl","label":"video url","type":"artifact_signal"}
     - {"id":"edge_audio_to_panel_output","source":"audio_generator","sourceHandle":"text_out","target":"audio_output_panel","targetHandle":"output","label":"audio output","type":"artifact_signal"}
     - {"id":"edge_audio_to_panel_srcdoc","source":"audio_generator","sourceHandle":"outputSrcDoc","target":"audio_output_panel","targetHandle":"outputSrcDoc","label":"audio panel preview","type":"artifact_signal"}
+kgParserRoutingContract:
+  version: "knowgrph-parser-routing/v1"
+  parserLogic: "opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases"
+  routingKeys:
+    surface: "kgCanvasSurfaceMode"
+    renderMode: "kgCanvasRenderMode"
+    renderer: "kgCanvas2dRenderer"
+    semanticMode: "kgDocumentSemanticMode"
+    frontmatterMode: "kgFrontmatterModeEnabled"
+    flowGraph: "flow"
+    flowNodes: "flow.nodes"
+    flowEdges: "flow.edges"
+    mermaidBlocks: "flow_diagrams"
+    strybldrStoryboard: "kgStrybldrStoryboard"
+  diagramKinds:
+    - "mermaid_flowchart"
+    - "mermaid_gitgraph"
+    - "mermaid_architecture"
+    - "mermaid_eventmodeling"
+    - "mermaid_gantt"
+    - "frontmatter_flow"
+    - "strybldr_storyboard"
+  surfaces:
+    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
+    - "BottomPanel/FloatingPanel Mermaid panels"
+  edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
+  forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
 
 ## Response
