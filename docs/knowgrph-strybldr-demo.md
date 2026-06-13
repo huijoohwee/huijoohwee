@@ -1,532 +1,673 @@
 ---
-title: "Knowgrph Strybldr Demo - 100% PRD/TAD E2E"
-graphId: "md:knowgrph-strybldr-demo-v1"
-doc_type: "Storybldr Demo - PRD/TAD E2E Validation"
-date: "2026-05-30"
+title: "Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E"
+graphId: "md:knowgrph-strybldr-sensenova-videodb-e2e"
+doc_type: "Strybldr E2E Demo - SenseNova Text + Image + Video + VideoDB API + MCP"
+date: "2026-06-13"
 lang: en-US
-implementation_contract: "/Users/huijoohwee/Documents/GitHub/knowgrph/docs/documents/knowgrph-strybldr-prd-tad.md"
-
-kgStrybldrStoryboard: true
+implementation_contract: "docs/documents/knowgrph-strybldr-prd-tad.md"
+validation_input_forbid_hardcode_in_repo: true
+deployed_api_claim: false
+videodb_credential_policy: "operator-supplied at runtime via MainPanel Integrations or host VIDEODB_API_KEY; never hardcoded"
+sensenova_credential_policy: "SENSENOVA_ACCESS_KEY_ID and SENSENOVA_SECRET_ACCESS_KEY in host environment only; JWT derived at request time; never stored in browser or repo"
+videodb_workflow_status: "VideoDB API + MCP workflow integrated into full SenseNova Text, Image, Video to VideoDB E2E pipeline"
+sensenova_workflow_status: "SenseNova API Text, Image, Video generation feeds VideoDB upload, index, search, stream, and local publish packet workflow; uncredentialed demo runs generate a local knowgrph animatic"
+local_animatic_status: "Toolbar Run all and Strybldr Generate Video create a generated, playable, zero-paid-call local animatic from approved cards when live credentials are unavailable"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "storybldr"
+kgCanvas2dRenderer: "strybldr"
+kgRendererCompatibility:
+  - "2D Renderer: Strybldr"
+  - "2D Renderer: Storyboard"
+  - "2D Renderer: Flow Editor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
-
-demo_flow:
-  - "Toolbar -> Launch -> Import Image"
-  - "test-validation-input-external: /Users/huijoohwee/Documents/GitHub/huijoohwee/image"
-  - "test-validation-input-forbid-hardcode-in-repo: true"
-  - "Floating Panel -> Storybldr -> Analyze locally"
-  - "Toolbar -> Canvas View Mode -> 2D Renderer: Storybldr"
-  - "User updates Source / Storyboard / Elements cards"
-  - "Floating Panel -> Storybldr -> Generate Video"
-prd_tad_acceptance:
-  - "PRD-STB-E01 image import"
-  - "PRD-STB-E02 local detection first"
-  - "PRD-STB-E03 editable storyboard"
-  - "PRD-STB-E04 bounded video handoff"
-  - "PRD-STB-E05 observability and economics"
-validation_images_count: 12
-validation_total_bytes: 26944659
-expected_canvas_cards: 36
-expected_canvas_lanes:
-  - "Source"
-  - "Storyboard"
-  - "Elements"
-expected_video_artifact: "storybldr-video-*.md or storybldr-video-fallback-*.md"
-modelSelection:
-  selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
-  scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
-  groups:
-    text:
-      global: "agnes-2.0-flash"               # group-global default; override per node via options.model
-      options:
-        - "agnes-2.0-flash"
-        - "seed-2-0-mini-260215"
-        - "seed-2-0-lite-260228"
-        - "seed-2-0-pro-260328"
-        - "seed-1-8-251228"
-    image:
-      global: "seedream-4-0-250828"
-      options:
-        - "seedream-4-0-250828"
-        - "seedream-4-5-251128"
-        - "seedream-5-0-260128"
-    video:
-      global: "seedance-1-0-pro-fast-251015"
-      options:
-        - "seedance-1-0-pro-fast-251015"
-        - "seedance-1-5-pro-251215"
-        - "dreamina-seedance-2-0-fast-260128"
-        - "dreamina-seedance-2-0-260128"
+kgStrybldrStoryboard: true
+kgBottomPanelOpen: true
+kgBottomPanelTab: "flowEditor"
+kgFloatingPanelOpen: true
+kgFloatingPanelView: "strybldr"
+kgSharedRendererContract:
+  version: "shared-renderer-contract/v1"
+  semanticIdentity: "buildScopedGraphSemanticKey"
+  cardPreview: "CardMediaPreview + CardMarkdownPreview"
+  edgeModel: "active graph edges derive from the 77FAnT935IE source, approved storyboard cards, and VideoDB runtime handoff cards"
+  rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
+kgYoutubeVideoId: "77FAnT935IE"
+kgYoutubeFormat: "markdown"
+kgWebpageUrl: "https://www.youtube.com/watch?v=77FAnT935IE"
+source_kind: "import-url-youtube"
+source_provider: "YouTube"
+source_title: "Seedance 2.0 is on Artlist"
+source_author: "Artlist"
+source_oembed_url: "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D77FAnT935IE&format=json"
+import_url_contract:
+  - "Toolbar -> Launch -> Import URL"
+  - "Renderer selection -> Strybldr"
+  - "URL import writes one neutral corpus source unit for 77FAnT935IE"
+  - "URL import writes and focuses one .strybldr.md document"
+  - "Canvas View Mode reports 2D Renderer: Strybldr"
+  - "Toolbar Run all opens the Strybldr owner panel and writes a generated local animatic when VideoDB or SenseNova credentials are unavailable"
+local_file_import_contract:
+  - "Toolbar -> Launch -> Import local files"
+  - "Select this Markdown document as validation input"
+  - "Local import recognizes the Strybldr frontmatter and storyboard payload"
+  - "Canvas View Mode reports 2D Renderer: Strybldr"
+  - "Source, Storyboard, Elements, Runtime, Review, and Publish cards are visible"
+videodb_runtime_contract:
+  - "MainPanel Integrations owns videodb.api_key and VideoDB API reference rows"
+  - "Imported 77FAnT935IE source -> knowgrph storyboard cards -> VideoDB API/MCP generation -> async poll -> spoken-word index -> review search -> stream -> local publish packet"
+  - "The recreation uses source metadata, thumbnail, generated-caption availability, and operator-authored paraphrased beats only; it does not copy transcript text"
+  - "Missing videodb.api_key, VIDEODB_API_KEY, or live runtime IDs keeps external provider calls readiness-gated while still generating a local knowgrph animatic; no fabricated job IDs or URLs"
+  - "No Prod, Cloudflare, or external publication claim exists until the operator explicitly authorizes it"
+videodb_mcp_contract:
+  - "VideoDB Director MCP is surfaced in MainPanel MCP"
+  - "MCP server key: videodb-director; launcher: uvx videodb-director-mcp --api-key=${VIDEODB_API_KEY}"
+  - "VIDEODB_API_KEY lives in host environment only; never in browser storage or repo source"
+  - "Async MCP tools follow the 36x10s circuit-breaker"
+  - "AI-generation MCP tools require human confirmation before execution"
+  - "MCP path and REST path converge on the same Strybldr publish packet schema: source_url, storyboard_cards, video_id, stream_url, videodb_stream_url, search_results, transcript_text, approval_state"
+  - "implementation_contract: docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md"
+videodb_recreate_77FAnT935IE_contract:
+  source_url: "https://www.youtube.com/watch?v=77FAnT935IE"
+  source_title: "Seedance 2.0 is on Artlist"
+  source_policy: "Use imported metadata, thumbnail, generated-caption availability, and operator-authored paraphrased beats only; do not copy transcript text"
+  canvas_goal: "Recreate the source as a knowgrph Strybldr canvas workflow with Source, Storyboard, Elements, Runtime, Review, and Publish cards"
+  rest_path: "MainPanel Integrations -> videodb.health -> generate_video/upload_video -> async poll -> index_spoken_word -> search_video -> stream_video"
+  mcp_path: "MainPanel MCP -> videodb-director -> generate_video/upload_video -> get_async_response -> index_video -> search_videos -> stream_video -> get_transcript"
+  prompt_policy: "Operator approves each prompt card before paid VideoDB calls; missing credentials writes readiness/fallback cards only"
+  publish_packet_schema: ["source_url", "storyboard_cards", "video_id", "stream_url", "videodb_stream_url", "search_results", "transcript_text", "approval_state"]
+videodb_character_clips_contract:
+  upstream_reference: "https://docs.videodb.io/examples-and-tutorials/video-rag/character-clips.md"
+  sdk_primitive: "video.generate_stream(timeline=subject_timeline_ranges)"
+  source_policy: "Use knowgrph subject labels and approved timeline ranges derived from storyboard beats, search results, or operator edits; do not copy external tutorial data or transcript text"
+  live_path: "VideoDB upload/import URL -> index/search if needed -> subject timeline packet -> video.generate_stream(timeline=subject_timeline_ranges) -> per-subject clip URL"
+  local_path: "Missing VideoDB credential keeps clip URLs blank and renders the same subject timeline packet as local animatic chapter clips"
+  output_policy: "clip URLs remain blank until returned by a live VideoDB SDK response; no stream URL is fabricated"
+  subjects:
+    creator_setup:
+      timeline: [[0, 12]]
+      clip: ""
+    action_example:
+      timeline: [[12, 28]]
+      clip: ""
+    sci_fi_interruption:
+      timeline: [[28, 44]]
+      clip: ""
+    product_close:
+      timeline: [[44, 60]]
+      clip: ""
+videodb_mcp_inputs:
+  server_key: "videodb-director"
+  uvx_command: "uvx videodb-director-mcp"
+  pipx_command: "pipx run videodb-director-mcp"
+  api_key_env: "VIDEODB_API_KEY"
+  api_key_placeholder: "${VIDEODB_API_KEY}"
+  api_base_url: "https://api.videodb.io"
+  mcp_docs_url: "https://docs.videodb.io/pages/build-with-agents/mcp-server.md"
+  poll_max_iterations: 36
+  poll_interval_ms: 10000
+  require_confirmation_for_generation: true
+  tools_core: ["upload_video", "get_collection", "list_collections", "create_collection", "get_async_response", "check_health"]
+  tools_search: ["search_videos", "search_collection", "search_by_scene"]
+  tools_index: ["index_video", "index_scene"]
+  tools_stream: ["stream_video", "get_transcript"]
+  tools_ai: ["generate_video", "generate_audio", "generate_text", "dub_video", "translate_video"]
+videodb_inputs:
+  base_url: "https://api.videodb.io"
+  api_key: ""
+  collection_id: ""
+  content_brief_path: ""
+  video_prompt: ""
+  target_label: "knowgrph_publish_packet"
+  generation_job_id: ""
+  video_id: ""
+  index_job_id: ""
+  stream_url: ""
+  videodb_stream_url: ""
+  download_url: ""
+  publish_packet_path: ""
+  subject_clip_urls:
+    creator_setup: ""
+    action_example: ""
+    sci_fi_interruption: ""
+    product_close: ""
+  search_query: "creator asks for AI video directions, action example, sci-fi example, product close"
+  stream_format: "mp4"
+  stream_quality: "medium"
+  poll_max_iterations: 36
+  poll_interval_ms: 10000
+sensenova_runtime_contract:
+  - "SenseNova API is surfaced in MainPanel Integrations as a text, image, and video provider"
+  - "Auth: HMAC-SHA256 signed JWT from SENSENOVA_ACCESS_KEY_ID and SENSENOVA_SECRET_ACCESS_KEY; raw keys never in browser or repo"
+  - "Text: SenseChat-5, SenseChat-Turbo, and SenseChat-Vision-5 through the shared streaming chat path"
+  - "Image: artist-xl and senseNova-img-enhance through the shared image generation path"
+  - "Video: SenseAnim and SenseAnim-Pro through a bounded async 36x10s circuit-breaker"
+  - "SenseNova Text, Image, Video outputs feed VideoDB upload, index, search, stream, and local publish packet lanes"
+  - "Missing SenseNova or VideoDB credentials keeps external provider calls readiness-gated and falls back to a generated local knowgrph animatic; no fabricated SenseNova output, VideoDB IDs, stream URLs, or transcript text"
+  - "No Prod, Cloudflare, or external publication claim exists until the operator explicitly authorizes it"
+sensenova_inputs:
+  provider_id: "sensenova"
+  base_url: "https://api.sensenova.cn"
+  access_key_env: "SENSENOVA_ACCESS_KEY_ID"
+  secret_key_env: "SENSENOVA_SECRET_ACCESS_KEY"
+  access_key_placeholder: "${SENSENOVA_ACCESS_KEY_ID}"
+  secret_key_placeholder: "${SENSENOVA_SECRET_ACCESS_KEY}"
+  auth_method: "HMAC-SHA256 signed JWT"
+  platform_url: "https://platform.sensenova.cn"
+  default_text_model: "SenseChat-5"
+  default_image_model: "artist-xl"
+  default_video_model: "SenseAnim"
+  text_model_options: ["SenseChat-5", "SenseChat-Turbo", "SenseChat-Vision-5"]
+  image_model_options: ["artist-xl", "senseNova-img-enhance"]
+  video_model_options: ["SenseAnim", "SenseAnim-Pro"]
+  poll_max_iterations: 36
+  poll_interval_ms: 10000
+local_animatic_inputs:
+  provider: "knowgrph-local-animatic"
+  model: "strybldr-local-animatic-v1"
+  status: "generated"
+  paid_call_count: 0
+  source: "approved Strybldr cards from this imported 77FAnT935IE workflow"
+  chapter_clips_source: "videodb_character_clips_contract.subjects with blank live clip URLs"
+  output: "strybldr-video-*.md with embedded srcdoc animatic, chapter clips, and source provenance links"
+flow_diagrams:
+  key: flow_diagrams
+  type: object
+  value:
+    videodb_recreate_gitgraph:
+      key: videodb_recreate_gitgraph
+      type: mermaid_gitgraph
+      floatingPanelView: "gitGraph"
+      floatingPanelOpen: true
+      bottomPanelTab: "gitGraph"
+      bottomPanelOpen: true
+      value: |-
+        gitGraph
+          commit id: "source_77FAnT935IE" tag: "source"
+          branch storyboard
+          checkout storyboard
+          commit id: "approved_beats"
+          branch videodb_api
+          checkout videodb_api
+          commit id: "rest_handoff"
+          checkout storyboard
+          branch videodb_mcp
+          checkout videodb_mcp
+          commit id: "mcp_handoff"
+          checkout main
+          merge storyboard id: "canvas_ready"
+    videodb_recreate_architecture:
+      key: videodb_recreate_architecture
+      type: mermaid_architecture
+      floatingPanelView: "architecture"
+      floatingPanelOpen: true
+      bottomPanelTab: "architecture"
+      bottomPanelOpen: true
+      value: |-
+        architecture-beta
+          group operator(cloud)[Operator Workspace]
+          group canvas(cloud)[Knowgrph Canvas]
+          group runtime(cloud)[VideoDB Runtime]
+          service source(internet)[77FAnT935IE Source] in operator
+          service storyboard(server)[Strybldr Storyboard] in canvas
+          service rest(server)[MainPanel Integrations REST Path] in runtime
+          service mcp(server)[MainPanel MCP Director Path] in runtime
+          service packet(database)[Local Publish Packet] in canvas
+          source:R --> L:storyboard
+          storyboard:R --> L:rest
+          storyboard:R --> L:mcp
+          rest:B --> T:packet
+          mcp:B --> T:packet
+    videodb_recreate_event_model:
+      key: videodb_recreate_event_model
+      type: mermaid_eventmodeling
+      floatingPanelView: "eventModeling"
+      floatingPanelOpen: true
+      bottomPanelTab: "eventModeling"
+      bottomPanelOpen: true
+      value: |-
+        eventmodeling
+        tf 01 ui SourceUrlImported
+        tf 02 cmd ParseStrybldrFrontmatter
+        tf 03 evt StoryboardCardsReady
+        tf 04 cmd RequestOperatorApproval
+        tf 05 evt VideoDbCredentialMissing
+        tf 06 cmd DispatchRestOrMcpRun
+        tf 07 evt AsyncPollCompleted
+        tf 08 cmd SearchAndStreamReview
+        tf 09 evt LocalPublishPacketWritten
+    videodb_recreate_flowchart:
+      key: videodb_recreate_flowchart
+      type: mermaid_flowchart
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          source["77FAnT935IE source"]
+          parser["Import URL parser"]
+          storyboard["Strybldr storyboard cards"]
+          approval{"Operator approval"}
+          rest["VideoDB REST path"]
+          mcp["VideoDB MCP path"]
+          review["Search and stream review"]
+          packet["Local publish packet"]
+          source --> parser
+          parser --> storyboard
+          storyboard --> approval
+          rest --> review
+          mcp --> review
+          review --> packet
 ---
 
-# Knowgrph Strybldr Demo
+# Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E
 
-This document demos the completed Strybldr path from `/Users/huijoohwee/Documents/GitHub/knowgrph/docs/documents/knowgrph-strybldr-prd-tad.md`:
+This document is the validation input for one runnable E2E workflow:
 
-`Toolbar -> Launch -> Import Image` -> select external validation images -> `Storybldr -> Analyze locally` -> review individual element cards in `2D Renderer: Storybldr` -> user edits cards -> `Storybldr -> Generate Video`.
+<https://www.youtube.com/watch?v=77FAnT935IE>
 
-It is intentionally a demo fixture, runbook, and parser-ready seed. The validation image directory is external test input only; application runtime must derive behavior from selected files, corpus source units, parsed frontmatter, transient image-file registry entries, and Storybldr graph cards instead of hardcoded paths, file names, or demo IDs.
+The source URL, video ID, title, and thumbnail are allowed here because this file is external validation input. Runtime code, tests, parser logic, import defaults, generated workspace names, credentials, generated text, generated image URLs, generated video URLs, VideoDB IDs, stream URLs, and transcript text must not hardcode them.
 
-## Demo Contract
+## What The Demo Must Prove
 
-- Import path: `Launch -> Import Image`.
-- Test validation input: `/Users/huijoohwee/Documents/GitHub/huijoohwee/image`.
-- Hardcode rule: that validation path and its image filenames are allowed only in this external demo document, not in `/Users/huijoohwee/Documents/GitHub/knowgrph` implementation code.
-- Image selection: multi-select all 12 PNG files, or select one image for a smaller smoke.
-- Expected generated workspace artifact: one run-level `.storybldr.md` artifact plus imported image source files.
-- Expected reverse engineering: `Storybldr -> Analyze locally` calls the local DETR owner first and projects detected elements into editable Storybldr cards; Human geometry is privacy-safe and identity-free.
-- Expected renderer: `2D Renderer: Storybldr`, which reuses the shared Storyboard surface.
-- Expected floating panel: `Storybldr`.
-- Expected lanes on canvas: `Source`, `Storyboard`, and `Elements`.
-- Expected user update: card title, summary, action, prompt, order, and source-backed element fields remain editable before generation.
-- Expected economics: base demo costs zero paid calls; `Generate Video` uses configured BytePlus only when active credentials are present and otherwise writes a structured fallback artifact.
+| Stage | Required behavior | Shared owner |
+| --- | --- | --- |
+| Trigger | User opens `Toolbar -> Launch -> Import URL` or imports this local Markdown file. | `LaunchDropdown.impl.tsx` |
+| Source | The only authored media source is `77FAnT935IE`. | `urlImport.ts`, `youtubeEntryText.ts` |
+| Project | The imported URL or local file opens as a Strybldr storyboard document. | `strybldrStoryboard.ts`, shared Storyboard renderer |
+| Render | The workflow is visible in `2D Renderer: Strybldr`, `2D Renderer: Storyboard`, and `2D Renderer: Flow Editor`. | shared renderer projection |
+| SenseNova Text | MainPanel Integrations exposes SenseNova text generation through the shared chat path. | SenseNova API settings owner |
+| SenseNova Image | MainPanel Integrations exposes SenseNova image generation through the shared image path. | SenseNova image settings owner |
+| SenseNova Video | MainPanel Integrations exposes SenseNova video generation through a bounded async path. | SenseNova video settings owner |
+| VideoDB REST | MainPanel Integrations owns the API path: upload or generate, async poll, index, search, stream. | `videodbSsot.ts`, `SettingsView.tsx` |
+| VideoDB MCP | MainPanel MCP owns the `videodb-director` agent path; same E2E pipeline via MCP tools. | `videodbMcpApiDocs.ts` (planned), `settingsMcpDocEntries.ts` |
+| VideoDB Character Clips | Subject timeline ranges feed `video.generate_stream(timeline=subject_timeline_ranges)` for per-subject review clips when live VideoDB credentials are approved. | `videodbSsot.ts`, Strybldr publish packet |
+| Local Generate Video | Without live credentials, Strybldr generates a playable local animatic from approved cards with `paidCallCount: 0`. | `StrybldrFloatingPanelView.tsx`, `strybldrStoryboard.ts` |
+| E2E Pipeline | SenseNova text output, image URL, video URL, and VideoDB stream URL land in the Strybldr local publish packet when live credentials are approved. | Strybldr + FloatingPanel Chat owners |
+| Guard | Missing SenseNova or VideoDB credentials leaves external calls readiness-gated but local video generation runnable; no fabricated text, image URL, video URL, IDs, stream URLs, or transcript text. | SenseNova API + VideoDB API/MCP contracts |
 
-## Manual Runbook
+## Manual E2E Runbook
 
-1. Open Knowgrph at `/knowgrph/`.
+### Import URL
+
+1. Open Knowgrph locally.
 2. Open `Toolbar -> Launch`.
-3. Click `Import Image`.
-4. In the file picker, open `/Users/huijoohwee/Documents/GitHub/huijoohwee/image`.
-5. Select the 12 files listed in the manifest below.
-6. Confirm the import summary reports imported image inputs and that a `.storybldr.md` artifact is active.
-7. Confirm the active canvas switches to `Canvas View Mode -> 2D Renderer: Storybldr`.
-8. Confirm the floating panel opens to `Storybldr`.
-9. Click `Analyze locally`.
-10. Confirm local element cards are added or the fallback source-metadata cards remain usable if no local detections pass threshold.
-11. Confirm image-derived cards are visible in `Source`, `Storyboard`, and `Elements`.
-12. Edit at least one card title, summary, action, or prompt; this is the user-update gate before spend.
-13. Click `Generate Video`.
-14. Confirm either a BytePlus run starts through the shared owner or a `storybldr-video-fallback-*.md` artifact is written with approved cards, compiled prompt, provider, elapsed time, paid-call count, cache state, and error reason.
+3. Choose `Import URL`.
+4. Select `Strybldr` as the renderer.
+5. Paste `https://www.youtube.com/watch?v=77FAnT935IE`.
+6. Confirm a YouTube Markdown source file is created.
+7. Confirm a sibling `.strybldr.md` storyboard document is created and focused.
+8. Confirm the canvas toolbar shows `Canvas View Mode: 2D Renderer: Strybldr`.
+9. Confirm the Storyboard surface shows Source, Storyboard, Elements, Runtime, Review, and Publish cards for this source only.
+10. Click toolbar `Run all`.
+11. Confirm a `strybldr-video-*.md` artifact is created with `status: "generated"`, `provider: "knowgrph-local-animatic"`, `model: "strybldr-local-animatic-v1"`, `paidCallCount: 0`, and an embedded playable animatic.
 
-## Acceptance Checklist
+### Import Local File
 
-| PRD/TAD gate | Evidence to collect | Owner proof |
-|---|---|---|
-| PRD-STB-E01 `Import Image` | Launch menu shows `Import Image`; import creates source units and a `.storybldr.md` file. | `LaunchDropdown.impl.tsx`, `workspaceActionBridge.ts`, `useWorkspaceFileActions/importActions.ts`. |
-| PRD-STB-E02 local detection first | `Analyze locally` is available; DETR evidence uses `local-object-detection`; Human geometry disables identity/demographic outputs. | `strybldrLocalVision.ts`; `@huggingface/transformers`; `Xenova/detr-resnet-50`; `@vladmandic/human`. |
-| PRD-STB-E03 editable storyboard | Storybldr canvas shows `Source`, `Storyboard`, and `Elements`; cards retain source-unit IDs, boxes, confidence, provider, and evidence kind. | `strybldrStoryboard.ts`, parser registry, shared Storyboard renderer. |
-| PRD-STB-E04 bounded video handoff | `Generate Video` compiles approved card text from the active graph and writes `storybldr-video-*.md` or fallback Markdown. | `StorybldrFloatingPanelView.tsx`, `buildStrybldrVideoHandoffFromGraphData`, `generateRunVideoWithBytePlus`. |
-| PRD-STB-E05 observability/economics | Artifact frontmatter includes provider, elapsedMs, paidCallCount, cacheHit, status, and errorReason when relevant. | `buildStrybldrVideoHandoffMarkdown`. |
-| No hardcoded validation input in repo | `rg` for the external validation path and image basename returns no matches inside `/Users/huijoohwee/Documents/GitHub/knowgrph`. | Runtime derives from selected files and source units, not this demo manifest. |
+1. Open Knowgrph locally.
+2. Open `Toolbar -> Launch`.
+3. Choose `Import local files`.
+4. Select this Markdown document.
+5. Confirm the imported file is focused in Source Files.
+6. Confirm the canvas toolbar shows `Canvas View Mode: 2D Renderer: Strybldr`.
+7. Confirm no unrelated non-target workflow content appears.
 
-## 100% Implementation Coverage Map
+### SenseNova API Lane (Text, Image, Video)
 
-| Contract item | Demo state | Runtime owner |
-|---|---|---|
-| Combined PRD/TAD is the implementation contract | This file points to `knowgrph-strybldr-prd-tad.md` and exercises every PRD story. | `docs/documents/knowgrph-strybldr-prd-tad.md`. |
-| Import one or more images | Runbook imports 12 external PNGs through `Launch -> Import Image`. | `handleImportLocalImages`. |
-| Generate Strybldr Markdown artifact | Import creates run-level `.storybldr.md`; this file also contains a direct-open seed for smoke validation. | `buildStrybldrStoryboardDocument`, `serializeStrybldrStoryboardMarkdown`. |
-| Reverse engineer to individual elements | Local analysis uses DETR to emit element cards with label, confidence, source box, provider, and evidence kind. | `runStrybldrDetrObjectDetection`. |
-| Privacy-safe human geometry | Human is available as a local harness with face descriptor, emotion, liveness, demographic inference, and embeddings disabled/unused. | `runStrybldrHumanGeometry`. |
-| Optional ModelArk visual grounding | Not automatic; paid grounding remains explicit and bounded. | Type contract supports `modelark-visual-grounding`; current demo keeps paid grounding at 0. |
-| User update before spend | Runbook requires editing a card before `Generate Video`; the seed below is a post-user-update direct-open state. | Shared Storyboard card model plus active graph data. |
-| Generate video or fallback | `Generate Video` compiles only approved graph cards and writes a generated or fallback handoff artifact. | `buildStrybldrVideoHandoffFromGraphData`, `buildStrybldrVideoHandoffMarkdown`, `generateRunVideoWithBytePlus`. |
-| TCO/token economics | Base import/storyboard path uses local/source metadata and paid calls stay 0 unless BytePlus is active. | Storybldr panel provider gate and handoff metadata. |
-| No duplicate workspace/import owner | Launch delegates to workspace bridge and local import owners. | `importLocalImages`, Source Files, corpus source units. |
+1. Confirm MainPanel Integrations exposes SenseNova API readiness with host-only `SENSENOVA_ACCESS_KEY_ID` and `SENSENOVA_SECRET_ACCESS_KEY` placeholders.
+2. Confirm the text lane lists `SenseChat-5`, `SenseChat-Turbo`, and `SenseChat-Vision-5`.
+3. Confirm the image lane lists `artist-xl` and `senseNova-img-enhance`.
+4. Confirm the video lane lists `SenseAnim` and `SenseAnim-Pro` with a 36 x 10s async circuit-breaker.
+5. With no SenseNova credentials, click toolbar `Run all` and confirm no SenseNova text, `imageUrl`, `videoUrl`, or signed JWT is fabricated; the local generated animatic remains runnable from approved cards.
 
-## Test Validation Input - Forbid Hardcode In Repo
+### VideoDB API + MCP Recreate 77FAnT935IE Lane
 
-The path `/Users/huijoohwee/Documents/GitHub/huijoohwee/image` is the current smoke input for this external demo document. It must not become a product default, fixture branch, filename guard, provider condition, or parser rule inside `/Users/huijoohwee/Documents/GitHub/knowgrph`.
+1. Confirm MainPanel Integrations exposes VideoDB REST rows including `videodb.api_key`, `videodb.ai.generate_video`, `videodb.async_response.get`, `videodb.index.spoken_word`, `videodb.video.search`, and `videodb.video.stream`.
+2. Confirm MainPanel MCP exposes `VideoDB Director MCP` with `videodb-director`, `uvx videodb-director-mcp --api-key=${VIDEODB_API_KEY}`, Python 3.12+, tool groups, and the 36 x 10s circuit-breaker.
+3. Confirm MainPanel Integrations exposes `videodb.video.character_clips` and `videodb.video.character_clips.schema` for subject timeline clips.
+4. Confirm SenseNova `videoUrl` can feed the VideoDB upload, index, search, stream, transcript, character-clips, and local publish packet path.
+5. With no VideoDB credential, click toolbar `Run all` and confirm the local generated animatic is written without generated IDs, stream URLs, character clip URLs, copied transcript text, or external publish claims.
+6. For an operator-approved live run only, set host SenseNova and VideoDB credentials, approve the generation cards, then run the REST path or MCP path.
 
-Repo hardcode scan:
+## Current Source Evidence
 
-```bash
-rg -n "/Users/huijoohwee/Documents/GitHub/huijoohwee/image|客家先民南迁图|knowgrph-strybldr-demo|strybldr-demo-hakka" \
-  /Users/huijoohwee/Documents/GitHub/knowgrph \
-  --glob '!canvas/node_modules/**' --glob '!node_modules/**' --glob '!canvas/dist/**'
-```
+| Evidence | Value |
+| --- | --- |
+| Provider | YouTube |
+| Video ID | `77FAnT935IE` |
+| oEmbed title | `Seedance 2.0 is on Artlist` |
+| oEmbed author | `Artlist` |
+| oEmbed thumbnail | `https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg` |
+| Transcript availability | generated English captions available |
+| Transcript policy | do not copy transcript text into this document |
+| Paid calls required for import | 0 |
+| VideoDB base URL | `https://api.videodb.io` |
+| VideoDB auth | `x-access-token` via `videodb.api_key` or host `VIDEODB_API_KEY`, blank by default |
+| VideoDB REST endpoints | `POST /video/{id}/generate/video`, `GET /async-response/{id}`, `POST /video/{id}/index/`, `POST /video/{id}/search/`, `POST /video/{id}/stream/` |
+| VideoDB character clips | `video.generate_stream(timeline=subject_timeline_ranges)`; subject clip URLs blank until returned live |
+| VideoDB live output policy | no generation job ID, video ID, stream URL, download URL, transcript text, or publish packet path is fabricated |
+| VideoDB MCP server | `videodb-director-mcp` via `uvx`; `VIDEODB_API_KEY` in host env only; never in browser storage |
+| Local generated video | `knowgrph-local-animatic` via Strybldr approved cards; `paidCallCount: 0`; no external provider IDs |
 
-Expected result: no matches. If this scan finds implementation matches, the demo has leaked into product code and the implementation is not PRD/TAD-compliant.
+## Direct-Open Strybldr Seed
 
-## Validation Image Manifest
-
-| # | Image | Dimensions | Bytes | SHA-256 prefix |
-|---:|---|---:|---:|---|
-| 01 | `../image/客家先民南迁图-张德光-01.png` | 857x1526 | 1480452 | `f4c894630e7576c0` |
-| 02 | `../image/客家先民南迁图-张德光-02.png` | 854x1523 | 2356089 | `216fa4a68100c4dd` |
-| 03 | `../image/客家先民南迁图-张德光-03.png` | 854x1523 | 2386401 | `1a0492c4a5b9b953` |
-| 04 | `../image/客家先民南迁图-张德光-04.png` | 854x1523 | 2294129 | `47706c3e0cd6ff84` |
-| 05 | `../image/客家先民南迁图-张德光-05.png` | 854x1523 | 2346029 | `e679dc0d13f4016b` |
-| 06 | `../image/客家先民南迁图-张德光-06.png` | 854x1523 | 2421893 | `1f1ca72b7f5c9c08` |
-| 07 | `../image/客家先民南迁图-张德光-07.png` | 854x1523 | 2419950 | `b4fa969b173d7807` |
-| 08 | `../image/客家先民南迁图-张德光-08.png` | 854x1523 | 2375752 | `91fb51d18b695bfb` |
-| 09 | `../image/客家先民南迁图-张德光-09.png` | 854x1523 | 2430827 | `c9fe4579d7729b1d` |
-| 10 | `../image/客家先民南迁图-张德光-10.png` | 854x1523 | 2485719 | `447cfc1d9ad26e80` |
-| 11 | `../image/客家先民南迁图-张德光-11.png` | 854x1523 | 2414905 | `dde0ab0f3bd8e93e` |
-| 12 | `../image/客家先民南迁图-张德光-12.png` | 857x1526 | 1532513 | `87629c0eb3e18335` |
-
-## Visual Input Preview
-
-![Image 01](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-01.png)
-![Image 02](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-02.png)
-![Image 03](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-03.png)
-![Image 04](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-04.png)
-![Image 05](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-05.png)
-![Image 06](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-06.png)
-![Image 07](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-07.png)
-![Image 08](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-08.png)
-![Image 09](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-09.png)
-![Image 10](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-10.png)
-![Image 11](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-11.png)
-![Image 12](/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-12.png)
-
-## Direct-Open Seed Semantics
-
-The fenced Strybldr payload below is a parser-ready direct-open snapshot for demos where the user opens this Markdown file instead of repeating the import flow. It represents the state after import, reverse engineering, and a user update pass:
-
-- `sources` mirror the imported image source-unit shape.
-- `elements` are individual editable Storybldr cards.
-- `evidenceKind: "user-edit"` marks the approved post-edit state for video handoff.
-- `sourceBox` keeps element geometry available for Storyboard/Elements cards.
-- `mediaUrl` uses `/__codebase_asset` so Viewer and Canvas render the images without hardcoding app logic.
-
-The real E2E validation remains the UI path through `Launch -> Import Image`; this seed exists to make the acceptance state inspectable, parseable, and smoke-testable from a single Markdown file.
-
-## Parser-Ready Storybldr Seed
-
-Opening this document directly should still activate Storybldr mode because the frontmatter and fenced payload are valid Strybldr storyboard input.
+Opening this file directly should render through Strybldr. The seed below is the static validation artifact used to prove the same Storyboard projection and hardcode guard.
 
 ```json strybldr-storyboard
 {
   "version": 1,
-  "runId": "strybldr-demo-hakka-migration-20260529",
-  "createdAtMs": 1780069200000,
-  "notes": "Demo seed for Launch -> Import Image -> Storybldr validation. The element cards represent an approved post-user-update state; the live import path can replace them with local DETR/Human evidence.",
+  "runId": "strybldr-videodb-recreate-77FAnT935IE",
+  "createdAtMs": 1780110851619,
+  "notes": "Validation input for recreating 77FAnT935IE on the knowgrph canvas through VideoDB API and MCP paths. Source-specific literals belong only in this external input file.",
   "sources": [
     {
-      "sourceUnitId": "strybldr-demo-image-01",
-      "workspacePath": "/客家先民南迁图-张德光-01.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-01.png",
-      "originalName": "客家先民南迁图-张德光-01.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 1480452,
-      "textHash": "sha256:f4c894630e7576c0",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-01.png"
+      "sourceUnitId": "validation-input-import-url-source",
+      "workspacePath": "docs/import-url-source.md",
+      "relativePath": "import-url-source.md",
+      "originalName": "import-url-source.md",
+      "mediaKind": "video",
+      "mimeHint": "text/markdown",
+      "byteSize": 0,
+      "textHash": "validation-input",
+      "mediaUrl": "https://www.youtube.com/watch?v=77FAnT935IE"
     },
     {
-      "sourceUnitId": "strybldr-demo-image-02",
-      "workspacePath": "/客家先民南迁图-张德光-02.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-02.png",
-      "originalName": "客家先民南迁图-张德光-02.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2356089,
-      "textHash": "sha256:216fa4a68100c4dd",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-02.png"
+      "sourceUnitId": "videodb-mcp-contract",
+      "workspacePath": "docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md",
+      "relativePath": "knowgrph-videodb-mcp-prd-tad.md",
+      "originalName": "VideoDB MCP PRD/TAD implementation contract",
+      "mediaKind": "doc",
+      "mimeHint": "text/markdown",
+      "byteSize": 0,
+      "textHash": "videodb-mcp-contract",
+      "mediaUrl": "docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md"
     },
     {
-      "sourceUnitId": "strybldr-demo-image-03",
-      "workspacePath": "/客家先民南迁图-张德光-03.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-03.png",
-      "originalName": "客家先民南迁图-张德光-03.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2386401,
-      "textHash": "sha256:1a0492c4a5b9b953",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-03.png"
+      "sourceUnitId": "videodb-api-reference-contract",
+      "workspacePath": "docs/documents/knowgrph-api-reference/knowgrph-videodb-api-reference.md",
+      "relativePath": "knowgrph-videodb-api-reference.md",
+      "originalName": "VideoDB API reference implementation contract",
+      "mediaKind": "doc",
+      "mimeHint": "text/markdown",
+      "byteSize": 0,
+      "textHash": "videodb-api-reference-contract",
+      "mediaUrl": "docs/documents/knowgrph-api-reference/knowgrph-videodb-api-reference.md"
     },
     {
-      "sourceUnitId": "strybldr-demo-image-04",
-      "workspacePath": "/客家先民南迁图-张德光-04.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-04.png",
-      "originalName": "客家先民南迁图-张德光-04.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2294129,
-      "textHash": "sha256:47706c3e0cd6ff84",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-04.png"
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "workspacePath": "docs/knowgrph-strybldr-demo.md#videodb-recreate-77FAnT935IE",
+      "relativePath": "knowgrph-strybldr-demo.md",
+      "originalName": "VideoDB API and MCP recreate 77FAnT935IE workflow",
+      "mediaKind": "video",
+      "mimeHint": "text/markdown",
+      "byteSize": 0,
+      "textHash": "videodb-recreate-77FAnT935IE",
+      "mediaUrl": "https://www.youtube.com/watch?v=77FAnT935IE"
     },
     {
-      "sourceUnitId": "strybldr-demo-image-05",
-      "workspacePath": "/客家先民南迁图-张德光-05.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-05.png",
-      "originalName": "客家先民南迁图-张德光-05.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2346029,
-      "textHash": "sha256:e679dc0d13f4016b",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-05.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-06",
-      "workspacePath": "/客家先民南迁图-张德光-06.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-06.png",
-      "originalName": "客家先民南迁图-张德光-06.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2421893,
-      "textHash": "sha256:1f1ca72b7f5c9c08",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-06.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-07",
-      "workspacePath": "/客家先民南迁图-张德光-07.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-07.png",
-      "originalName": "客家先民南迁图-张德光-07.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2419950,
-      "textHash": "sha256:b4fa969b173d7807",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-07.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-08",
-      "workspacePath": "/客家先民南迁图-张德光-08.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-08.png",
-      "originalName": "客家先民南迁图-张德光-08.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2375752,
-      "textHash": "sha256:91fb51d18b695bfb",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-08.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-09",
-      "workspacePath": "/客家先民南迁图-张德光-09.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-09.png",
-      "originalName": "客家先民南迁图-张德光-09.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2430827,
-      "textHash": "sha256:c9fe4579d7729b1d",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-09.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-10",
-      "workspacePath": "/客家先民南迁图-张德光-10.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-10.png",
-      "originalName": "客家先民南迁图-张德光-10.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2485719,
-      "textHash": "sha256:447cfc1d9ad26e80",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-10.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-11",
-      "workspacePath": "/客家先民南迁图-张德光-11.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-11.png",
-      "originalName": "客家先民南迁图-张德光-11.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 2414905,
-      "textHash": "sha256:dde0ab0f3bd8e93e",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-11.png"
-    },
-    {
-      "sourceUnitId": "strybldr-demo-image-12",
-      "workspacePath": "/客家先民南迁图-张德光-12.png.source.md",
-      "relativePath": "../image/客家先民南迁图-张德光-12.png",
-      "originalName": "客家先民南迁图-张德光-12.png",
-      "mediaKind": "image",
-      "mimeHint": "image/png",
-      "byteSize": 1532513,
-      "textHash": "sha256:87629c0eb3e18335",
-      "mediaUrl": "/__codebase_asset?path=huijoohwee/image/客家先民南迁图-张德光-12.png"
+      "sourceUnitId": "sensenova-api-contract",
+      "workspacePath": "docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md",
+      "relativePath": "knowgrph-sensenova-api-prd-tad.md",
+      "originalName": "SenseNova AI API PRD/TAD implementation contract",
+      "mediaKind": "doc",
+      "mimeHint": "text/markdown",
+      "byteSize": 0,
+      "textHash": "sensenova-api-contract",
+      "mediaUrl": "docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md"
     }
   ],
   "elements": [
     {
-      "id": "strybldr-demo-el-01",
-      "sourceUnitId": "strybldr-demo-image-01",
-      "label": "Panel 01 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
+      "id": "sensenova-api-readiness-card",
+      "sourceUnitId": "sensenova-api-contract",
+      "label": "SenseNova API readiness",
+      "confidence": 1,
+      "sourceBox": null,
+      "evidenceKind": "source-metadata",
+      "provider": "fallback",
+      "order": 0,
+      "summary": "MainPanel Integrations SenseNova API: host-only JWT credentials, text models, image models, video models, and bounded async video polling.",
+      "action": "Keep SenseNova access keys in host environment only and keep generated text, imageUrl, and videoUrl blank until returned by a live operator-approved run.",
+      "prompt": "Show the SenseNova Text, Image, Video provider card as a readiness-gated source card that feeds the VideoDB upload, index, search, stream, and publish packet path."
+    },
+    {
+      "id": "videodb-mcp-readiness-card",
+      "sourceUnitId": "videodb-mcp-contract",
+      "label": "VideoDB Director MCP readiness",
+      "confidence": 1,
+      "sourceBox": null,
+      "evidenceKind": "source-metadata",
       "provider": "fallback",
       "order": 1,
-      "summary": "Use imported image 01 as the opening visual reference.",
-      "action": "Run local detection, then update this card with visible subjects, route markers, captions, and composition details.",
-      "prompt": "Reverse engineer image 01 into a concise video beat while preserving source composition and provenance."
+      "summary": "MainPanel MCP VideoDB Director section: server key videodb-director, uvx launcher, VIDEODB_API_KEY placeholder, tool groups (core/search/index/stream/AI), 36x10s circuit-breaker, confirmation required for generation tools.",
+      "action": "Keep VIDEODB_API_KEY in host environment only; never in browser storage or repo source.",
+      "prompt": "Show the VideoDB Director MCP configuration card with launcher config, tool groups, and circuit-breaker note as a readiness-gated source card."
     },
     {
-      "id": "strybldr-demo-el-02",
-      "sourceUnitId": "strybldr-demo-image-02",
-      "label": "Panel 02 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
+      "id": "videodb-api-reference-readiness-card",
+      "sourceUnitId": "videodb-api-reference-contract",
+      "label": "VideoDB API readiness",
+      "confidence": 1,
+      "sourceBox": null,
+      "evidenceKind": "source-metadata",
       "provider": "fallback",
+      "order": 1,
+      "summary": "MainPanel Integrations owns the REST rows needed to recreate the source: health, generate_video, async poll, spoken-word index, search, stream, and transcription.",
+      "action": "Keep REST settings blank until the operator supplies credentials and approves a live run.",
+      "prompt": "Render the REST-side VideoDB API checklist as the companion to the MCP readiness card."
+    },
+    {
+      "id": "videodb-recreate-source-setup-card",
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "label": "Recreate source setup",
+      "confidence": 0.9,
+      "sourceBox": null,
+      "evidenceKind": "source-metadata",
+      "provider": "knowgrph",
       "order": 2,
-      "summary": "Use imported image 02 as the second storyboard reference.",
-      "action": "Confirm local detections and refine the card into one motion-ready scene beat.",
-      "prompt": "Reverse engineer image 02 into a concise video beat while preserving source composition and provenance."
+      "summary": "The source metadata identifies a short Artlist demo about using Seedance 2.0 for AI video directions.",
+      "action": "Use source metadata, thumbnail, and paraphrased beat notes as the recreation anchor; do not copy transcript text.",
+      "prompt": "Open with a creator preparing a compact AI-video request on a knowgrph canvas."
     },
     {
-      "id": "strybldr-demo-el-03",
-      "sourceUnitId": "strybldr-demo-image-03",
-      "label": "Panel 03 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
+      "id": "videodb-recreate-storyboard-card",
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "label": "Recreate storyboard beats",
+      "confidence": 0.88,
+      "sourceBox": null,
       "evidenceKind": "user-edit",
-      "provider": "fallback",
+      "provider": "knowgrph",
       "order": 3,
-      "summary": "Use imported image 03 as the third storyboard reference.",
-      "action": "Identify the main visible elements and convert them into editable storyboard card text.",
-      "prompt": "Reverse engineer image 03 into a concise video beat while preserving source composition and provenance."
+      "summary": "The recreation keeps four editable beats: creator setup, stylized action example, sci-fi interruption example, and product-value close.",
+      "action": "Keep each beat as an editable Strybldr card before VideoDB generation.",
+      "prompt": "Build four concise source-aligned storyboard beats that evoke the source structure without copying the source transcript."
     },
     {
-      "id": "strybldr-demo-el-04",
-      "sourceUnitId": "strybldr-demo-image-04",
-      "label": "Panel 04 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
+      "id": "videodb-recreate-api-mcp-execution-card",
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "label": "REST or MCP execution",
+      "confidence": 0.93,
+      "sourceBox": null,
+      "evidenceKind": "runtime-handoff",
+      "provider": "videodb",
       "order": 4,
-      "summary": "Use imported image 04 as the fourth storyboard reference.",
-      "action": "Preserve visual order and update the card after detector evidence is reviewed.",
-      "prompt": "Reverse engineer image 04 into a concise video beat while preserving source composition and provenance."
+      "summary": "Operator approval chooses either MainPanel Integrations REST rows or MainPanel MCP videodb-director tools; both paths use the same approved card sequence.",
+      "action": "Run generate or upload, poll with get_async_response, then index, search, stream, and retrieve transcript only from live VideoDB responses.",
+      "prompt": "Show one VideoDB execution lane branching into REST and MCP paths that rejoin at the local publish packet."
     },
     {
-      "id": "strybldr-demo-el-05",
-      "sourceUnitId": "strybldr-demo-image-05",
-      "label": "Panel 05 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
+      "id": "videodb-character-clips-card",
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "label": "VideoDB character clips",
+      "confidence": 0.9,
+      "sourceBox": null,
+      "evidenceKind": "runtime-plan",
+      "provider": "videodb",
       "order": 5,
-      "summary": "Use imported image 05 as the fifth storyboard reference.",
-      "action": "Turn visual evidence into a clear action note before video handoff.",
-      "prompt": "Reverse engineer image 05 into a concise video beat while preserving source composition and provenance."
+      "summary": "Approved Strybldr beats map into knowgrph subject timelines, then a live VideoDB run calls video.generate_stream(timeline=subject_timeline_ranges) for per-subject review clips.",
+      "action": "Keep subject clip URLs blank until returned live; without credentials, render the same subject timeline packet as local animatic chapter clips.",
+      "prompt": "Render a subject-clips lane with creator setup, action example, sci-fi interruption, and product close chapter clips."
     },
     {
-      "id": "strybldr-demo-el-06",
-      "sourceUnitId": "strybldr-demo-image-06",
-      "label": "Panel 06 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
+      "id": "videodb-recreate-review-card",
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "label": "Review search and stream",
+      "confidence": 0.9,
+      "sourceBox": null,
+      "evidenceKind": "runtime-review",
+      "provider": "videodb",
+      "order": 5,
+      "summary": "Spoken-word search checks the generated asset for source-aligned concepts before the stream URL is accepted into the canvas review lane.",
+      "action": "Search for creator setup, action example, sci-fi example, and product close; reject the run if live search results do not support the approved cards.",
+      "prompt": "Render the review lane as search result cards feeding a guarded stream preview."
+    },
+    {
+      "id": "videodb-recreate-publish-card",
+      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
+      "label": "Local publish packet",
+      "confidence": 0.92,
+      "sourceBox": null,
+      "evidenceKind": "runtime-publish",
+      "provider": "knowgrph",
       "order": 6,
-      "summary": "Use imported image 06 as the sixth storyboard reference.",
-      "action": "Edit the card to reflect detected foreground, midground, and background elements.",
-      "prompt": "Reverse engineer image 06 into a concise video beat while preserving source composition and provenance."
+      "summary": "The final output is a local knowgrph publish packet containing source URL, approved storyboard cards, VideoDB response values, review evidence, and approval state.",
+      "action": "Write a local packet only; do not claim Cloudflare, public publish, or external deployment without explicit operator instruction.",
+      "prompt": "Close the recreation workflow with a local publish packet card and visible operator gate."
     },
     {
-      "id": "strybldr-demo-el-07",
-      "sourceUnitId": "strybldr-demo-image-07",
-      "label": "Panel 07 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
+      "id": "validation-input-source-card",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "Imported URL source",
+      "confidence": 1,
+      "sourceBox": null,
+      "evidenceKind": "source-metadata",
       "provider": "fallback",
       "order": 7,
-      "summary": "Use imported image 07 as the seventh storyboard reference.",
-      "action": "Confirm detections and preserve the source-image relationship on every card.",
-      "prompt": "Reverse engineer image 07 into a concise video beat while preserving source composition and provenance."
+      "summary": "Source metadata identifies a YouTube video by Artlist with generated captions available.",
+      "action": "Keep URL, title, author, video ID, and thumbnail as source evidence.",
+      "prompt": "Use the imported URL metadata as the provenance anchor for this story fork."
     },
     {
-      "id": "strybldr-demo-el-08",
-      "sourceUnitId": "strybldr-demo-image-08",
-      "label": "Panel 08 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
+      "id": "validation-input-setup-card",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "Creative request setup",
+      "confidence": 0.86,
+      "sourceBox": null,
       "evidenceKind": "user-edit",
       "provider": "fallback",
       "order": 8,
-      "summary": "Use imported image 08 as the eighth storyboard reference.",
-      "action": "Refine the card into a motion-ready beat before generation.",
-      "prompt": "Reverse engineer image 08 into a concise video beat while preserving source composition and provenance."
+      "summary": "The transcript frames a creator asking for specific AI video directions.",
+      "action": "Convert the setup into one concise opening storyboard card.",
+      "prompt": "Show a creator shaping a video concept through clear, specific requests."
     },
     {
-      "id": "strybldr-demo-el-09",
-      "sourceUnitId": "strybldr-demo-image-09",
-      "label": "Panel 09 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
+      "id": "validation-input-action-branch",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "Action branch",
+      "confidence": 0.82,
+      "sourceBox": null,
       "evidenceKind": "user-edit",
       "provider": "fallback",
       "order": 9,
-      "summary": "Use imported image 09 as the ninth storyboard reference.",
-      "action": "Use the card to capture updated user intent after visual evidence review.",
-      "prompt": "Reverse engineer image 09 into a concise video beat while preserving source composition and provenance."
+      "summary": "One story direction uses an action-crime tone with stylized tension.",
+      "action": "Keep this as an independent beat that can be approved or removed before generation.",
+      "prompt": "Storyboard an action beat with stylized tension and dry humor."
     },
     {
-      "id": "strybldr-demo-el-10",
-      "sourceUnitId": "strybldr-demo-image-10",
-      "label": "Panel 10 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
+      "id": "validation-input-sci-fi-branch",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "Sci-fi branch",
+      "confidence": 0.78,
+      "sourceBox": null,
       "evidenceKind": "user-edit",
       "provider": "fallback",
       "order": 10,
-      "summary": "Use imported image 10 as the tenth storyboard reference.",
-      "action": "Keep the beat editable and source-backed before any video provider call.",
-      "prompt": "Reverse engineer image 10 into a concise video beat while preserving source composition and provenance."
+      "summary": "A second direction introduces a contrasting sci-fi interruption.",
+      "action": "Keep this branch independent from the action beat.",
+      "prompt": "Storyboard a sudden sci-fi interruption that contrasts with an ordinary setting."
     },
     {
-      "id": "strybldr-demo-el-11",
-      "sourceUnitId": "strybldr-demo-image-11",
-      "label": "Panel 11 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
+      "id": "validation-input-product-card",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "Product CTA",
+      "confidence": 0.9,
+      "sourceBox": null,
       "evidenceKind": "user-edit",
       "provider": "fallback",
       "order": 11,
-      "summary": "Use imported image 11 as the eleventh storyboard reference.",
-      "action": "Review local evidence and revise the card for continuity with neighboring panels.",
-      "prompt": "Reverse engineer image 11 into a concise video beat while preserving source composition and provenance."
+      "summary": "The ending positions Artlist and Seedance 2.0 as tools for AI video creation.",
+      "action": "Keep product messaging separate from narrative beats for approval.",
+      "prompt": "Close with a clear product-card beat after the story examples."
     },
     {
-      "id": "strybldr-demo-el-12",
-      "sourceUnitId": "strybldr-demo-image-12",
-      "label": "Panel 12 storyboard beat",
-      "confidence": 0.1,
-      "sourceBox": {"xmin": 0, "ymin": 0, "xmax": 1, "ymax": 1, "unit": "percentage"},
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
+      "id": "validation-videodb-brief-card",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "VideoDB brief intake",
+      "confidence": 1,
+      "sourceBox": null,
+      "evidenceKind": "runtime-plan",
+      "provider": "knowgrph",
       "order": 12,
-      "summary": "Use imported image 12 as the closing storyboard reference.",
-      "action": "Finalize the edited card sequence before generating or writing the video handoff artifact.",
-      "prompt": "Reverse engineer image 12 into a concise video beat while preserving source composition and provenance."
+      "summary": "A local knowgrph brief supplies the VideoDB generation prompt, review query, and publish-packet context.",
+      "action": "Keep the brief as local source truth and require operator-supplied VideoDB credentials before live calls.",
+      "prompt": "Show the Strybldr board adding a VideoDB generation lane from a local knowgrph brief."
+    },
+    {
+      "id": "validation-videodb-generate-card",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "VideoDB generation and poll",
+      "confidence": 0.92,
+      "sourceBox": null,
+      "evidenceKind": "runtime-handoff",
+      "provider": "videodb",
+      "order": 13,
+      "summary": "VideoDB generation uses POST /video/{id}/generate/video and GET /async-response/{id}; job IDs remain blank until returned live.",
+      "action": "Poll with the shared 36 x 10s circuit-breaker and report failure on exhaustion.",
+      "prompt": "Storyboard a readiness-gated API handoff that never fabricates a job ID."
+    },
+    {
+      "id": "validation-videodb-review-card",
+      "sourceUnitId": "validation-input-import-url-source",
+      "label": "VideoDB review and publish packet",
+      "confidence": 0.94,
+      "sourceBox": null,
+      "evidenceKind": "runtime-review",
+      "provider": "videodb",
+      "order": 14,
+      "summary": "Generated video is indexed with POST /video/{id}/index/, searched with POST /video/{id}/search/, streamed with POST /video/{id}/stream/, then recorded in a local knowgrph publish packet.",
+      "action": "Accept only live stream/download URLs and local operator-authored publish packet paths.",
+      "prompt": "Close with a local publish packet and visible operator approval gate."
     }
   ]
 }
 ```
 
-## Generate Video Handoff Smoke
+## Validation Commands
 
-After the user edits Storybldr cards, `Generate Video` must compile the active graph, not detached prompt text. The expected generated or fallback artifact is written at workspace root with this shape:
-
-```yaml
----
-kgStrybldrVideoHandoff: true
-status: "fallback"
-provider: "byteplus-modelark"
-elapsedMs: 0
-paidCallCount: 0
-cacheHit: false
-errorReason: "BytePlus ModelArk is not the active provider."
----
+```bash
+KNOWGRPH_FORBID_HARDCODE_INPUT="/path/to/knowgrph-strybldr-demo.md" npm --prefix canvas run test:ci:unit -- policy.forbidHardcodedYouTubeUrlLiteral
+node --preserve-symlinks --preserve-symlinks-main ../node_modules/tsx/dist/cli.cjs src/__tests__/videodbMainPanelIntegrations.test.ts
+node --preserve-symlinks --preserve-symlinks-main ../node_modules/tsx/dist/cli.cjs src/__tests__/mainPanelMcpVideodb.test.tsx
+node --preserve-symlinks --preserve-symlinks-main ../node_modules/tsx/dist/cli.cjs src/__tests__/strybldrConsolidatedWorkflow.test.ts
+npm --prefix canvas run test:ci:unit -- strybldr.markdown.consolidatedDemoRoutesPanelsAndStoryboardRenderers
 ```
 
-Expected compiled prompt prefix:
+## Acceptance Checklist
 
-```text
-Create one short video from the approved Storybldr storyboard cards below.
-Use only these approved card fields and references; do not invent extra source images or hidden context.
-Preserve source composition, element positions, and card order. Keep motion concise and demo-ready.
-```
+- [x] The demo targets only `https://www.youtube.com/watch?v=77FAnT935IE`.
+- [x] The direct-open seed uses the canonical `strybldr` renderer.
+- [x] SenseNova Text, Image, Video lanes feed the VideoDB REST/MCP paths through one approved card sequence and one publish packet schema.
+- [x] `Run all` and `Generate Video` are runnable without live credentials by writing a local generated animatic artifact.
+- [x] Runtime values are blank by default and operator-gated.
+- [x] The document contains no copied transcript text, fabricated SenseNova outputs, fabricated VideoDB IDs, or external publish claim.
 
-Acceptance signal:
+## Guardrails
 
-- If BytePlus ModelArk is active with valid credentials, the artifact status is `generated` and includes `renderUrl` / `sourceUrl` when returned.
-- If BytePlus is inactive, missing credentials, or the provider fails, the artifact status is `fallback` and still includes approved cards, compiled prompt, elapsed time, paid-call count, cache state, provider, and error reason.
-- Paid call count stays `0` until the user explicitly clicks `Generate Video` with BytePlus active.
-- The compiled prompt must include the edited card text from the active graph.
-
-## Runtime Notes
-
-- The authored seed above is only a direct-open demo. The main validation remains the UI path through `Launch -> Import Image`.
-- Multi-image import should create one run-level `.storybldr.md` artifact and source-backed cards for the selected images.
-- The Storybldr panel must read the active graph, not detached prompt text, when compiling `Generate Video`.
-- A failed or unconfigured provider should still produce a useful fallback Markdown artifact with approved cards, elapsed time, provider name, paid-call count, and error reason.
-- Any validation-specific path or filename in this document is external demo input and must remain absent from the Knowgrph implementation repo.
+- Do not hardcode the source URL, video ID, thumbnail URL, SenseNova API keys, VideoDB API keys, collection IDs, job IDs, video IDs, generated text, image URLs, video URLs, stream URLs, transcript text, download URLs, or publish packet paths in product code.
+- Do not run paid SenseNova or VideoDB generation during import.
+- Do not copy transcript text into this file.
+- Do not add validation sources unrelated to the SenseNova API + VideoDB API + MCP E2E workflow.
+- Do not deploy to Prod or Cloudflare from this workflow without explicit operator instruction.
