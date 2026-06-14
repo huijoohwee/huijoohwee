@@ -1,4 +1,3 @@
----
 title: "Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E"
 graphId: "md:knowgrph-strybldr-sensenova-videodb-e2e"
 doc_type: "Strybldr E2E Demo - SenseNova Text + Image + Video + VideoDB API + MCP"
@@ -463,7 +462,6 @@ kgParserRoutingContract:
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
----
 
 # Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E
 
@@ -476,7 +474,6 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 ## What The Demo Must Prove
 
 | Stage | Required behavior | Shared owner |
-| --- | --- | --- |
 | Trigger | User opens `Toolbar -> Launch -> Import URL` or imports this local Markdown file. | `LaunchDropdown.impl.tsx` |
 | Source | The only authored media source is `77FAnT935IE`. | `urlImport.ts`, `youtubeEntryText.ts` |
 | Project | The imported URL or local file opens as a Strybldr storyboard document. | `strybldrStoryboard.ts`, shared Storyboard renderer |
@@ -539,7 +536,6 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 ## Current Source Evidence
 
 | Evidence | Value |
-| --- | --- |
 | Provider | YouTube |
 | Video ID | `77FAnT935IE` |
 | oEmbed title | `Seedance 2.0 is on Artlist` |
