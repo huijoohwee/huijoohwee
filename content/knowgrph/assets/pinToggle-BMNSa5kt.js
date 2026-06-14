@@ -1,1 +1,0 @@
-import{U as t}from"./settings-mcp-docs-CD21P5ZP.js";import{c as n}from"./index-ELPkPSYP.js";function e(o){return o?n("App-toolbar__btn",t.button.activeBg,t.icon.active):"App-toolbar__btn"}export{e as g};
