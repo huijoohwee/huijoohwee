@@ -84,22 +84,33 @@ flow:
       type: {key: type, type: string, value: "InputWidget"}
       label: {key: label, type: string, value: "Source Input"}
       position: {key: position, type: object, value: {"x":0,"y":0}}
-      input_query: {key: input_query, type: textarea, value: "Universal Go No-Go Investment Decision Flow Template"}
-      input_context: {key: input_context, type: textarea, value: "Use only supplied source text or connected upstream output."}
-      input_audience: {key: input_audience, type: string, value: "research reviewer, creators"}
-      input_format: {key: input_format, type: string, value: "concise markdown response"}
-      input_constraints: {key: input_constraints, type: textarea, value: "State uncertainty; avoid unsupported claims; keep the answer MECE."}
-      input_evidence: {key: input_evidence, type: textarea, value: ""}
-      input_tone: {key: input_tone, type: string, value: "direct"}
-      input_metric_label: {key: input_metric_label, type: string, value: "words"}
-      input_metric_target: {key: input_metric_target, type: number, value: 500}
       handles: {key: handles, type: object, value: {"source":["input_query","input_context","input_audience","input_format","input_constraints","input_evidence","input_tone","input_metric_label","input_metric_target"]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"input_query","previewMaxChars":80,"onEdit":{"trigger":"runDownstream","targets":["compute_summary"]},"actions":[{"id":"edit","label":"Edit","icon":"pencil","trigger":"openFieldEditor","targetField":"input_query"},{"id":"run","label":"Run","icon":"play","trigger":"runDownstream","targets":["compute_summary"]}]}}
+      evidenceKind: {key: evidenceKind, type: string, value: "user-edit"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"input_query":"template_text_signal","input_context":"template_text_signal","input_audience":"template_text_signal","input_format":"template_text_signal","input_constraints":"template_text_signal","input_evidence":"template_text_signal","input_tone":"template_text_signal","input_metric_label":"template_text_signal","input_metric_target":"template_number_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "templateInput"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 9}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 9}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      input_audience: {key: input_audience, type: string, value: "research reviewer, creators"}
+      input_constraints: {key: input_constraints, type: textarea, value: "State uncertainty; avoid unsupported claims; keep the answer MECE."}
+      input_context: {key: input_context, type: textarea, value: "Use only supplied source text or connected upstream output."}
+      input_evidence: {key: input_evidence, type: textarea, value: ""}
+      input_format: {key: input_format, type: string, value: "concise markdown response"}
+      input_metric_label: {key: input_metric_label, type: string, value: "words"}
+      input_metric_target: {key: input_metric_target, type: number, value: 500}
+      input_query: {key: input_query, type: textarea, value: "Universal Go No-Go Investment Decision Flow Template"}
+      input_tone: {key: input_tone, type: string, value: "direct"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Reusable source widget with granular query, context, audience, format, constraints, evidence, tone, metric label, and metric target inputs."}
+      strybldrCamera: {key: strybldrCamera, type: object, value: {"angle":"right-side","level":"low-angle","shot":"medium","note":"","orbitX":0.25,"orbitY":0.5}}
+      strybldrUserApprovedAtMs: {key: strybldrUserApprovedAtMs, type: number, value: 1781443336372}
       "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      "visual:importance": {key: "visual:importance", type: number, value: 48}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 22}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "compute_summary"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Compute Summary Outputs"}
@@ -110,12 +121,20 @@ flow:
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_query":"template_text_signal","input_context":"template_text_signal","input_audience":"template_text_signal","input_format":"template_text_signal","input_constraints":"template_text_signal","input_evidence":"template_text_signal","input_tone":"template_text_signal","input_metric_label":"template_text_signal","input_metric_target":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "templateCompute"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      output: {key: output, type: markdown, value: ""}
+      "graph:degree": {key: "graph:degree", type: number, value: 12}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 9}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for granular inputs and text, image, and outputSrcDoc outputs."}
+      output: {key: output, type: markdown, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
       run_status: {key: run_status, type: string, value: "idle"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget with semantic ports for granular inputs and text, image, and outputSrcDoc outputs."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 60}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 23.856406460551018}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
       compute:
         key: compute
         type: string
@@ -174,10 +193,14 @@ flow:
       label: {key: label, type: string, value: "Rich Media Panel - Text Output"}
       position: {key: position, type: object, value: {"x":760,"y":240}}
       handles: {key: handles, type: object, value: {"target":["output"],"source":["output"]}}
-      "flow:portTypes": {key: flow:portTypes, type: object, value: {"in":{"output":"template_text_signal"},"out":{"output":"template_text_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"output":"template_text_signal"},"out":{"output":"template_text_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: kgc:readingSummary, type: string, value: "Text Rich Media Panel receives the output field."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel receives the output field."}
       output: {key: output, type: textarea, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
@@ -189,11 +212,15 @@ flow:
       label: {key: label, type: string, value: "Rich Media Panel - Image Output"}
       position: {key: position, type: object, value: {"x":760,"y":0}}
       handles: {key: handles, type: object, value: {"target":["imageUrl"],"source":["imageUrl"]}}
-      "flow:portTypes": {key: flow:portTypes, type: object, value: {"in":{"imageUrl":"template_image_signal"},"out":{"imageUrl":"template_image_signal"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageUrl":"template_image_signal"},"out":{"imageUrl":"template_image_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: kgc:readingSummary, type: string, value: "Image Rich Media Panel receives the imageUrl field."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       imageUrl: {key: imageUrl, type: text, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel receives the imageUrl field."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
@@ -204,10 +231,14 @@ flow:
       label: {key: label, type: string, value: "Rich Media Panel - Chart Output"}
       position: {key: position, type: object, value: {"x":760,"y":-240}}
       handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
-      "flow:portTypes": {key: flow:portTypes, type: object, value: {"in":{"outputSrcDoc":"template_chart_html"},"out":{"outputSrcDoc":"template_chart_html"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"template_chart_html"},"out":{"outputSrcDoc":"template_chart_html"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: kgc:readingSummary, type: string, value: "Chart Rich Media Panel receives the outputSrcDoc field."}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel receives the outputSrcDoc field."}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
@@ -215,90 +246,18 @@ flow:
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
   edges:
-    - id: {key: id, type: string, value: "edge_input_query_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_query"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_query"}
-      label: {key: label, type: string, value: "input_query"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_context_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_context"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_context"}
-      label: {key: label, type: string, value: "input_context"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_audience_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_audience"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_audience"}
-      label: {key: label, type: string, value: "input_audience"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_format_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_format"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_format"}
-      label: {key: label, type: string, value: "input_format"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_constraints_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_constraints"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_constraints"}
-      label: {key: label, type: string, value: "input_constraints"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_evidence_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_evidence"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_evidence"}
-      label: {key: label, type: string, value: "input_evidence"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_tone_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_tone"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_tone"}
-      label: {key: label, type: string, value: "input_tone"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_metric_label_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_metric_label"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_metric_label"}
-      label: {key: label, type: string, value: "input_metric_label"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_input_metric_target_to_compute"}
-      source: {key: source, type: string, value: "source_input"}
-      sourceHandle: {key: sourceHandle, type: string, value: "input_metric_target"}
-      target: {key: target, type: string, value: "compute_summary"}
-      targetHandle: {key: targetHandle, type: string, value: "input_metric_target"}
-      label: {key: label, type: string, value: "input_metric_target"}
-      type: {key: type, type: string, value: "template_number_signal"}
-    - id: {key: id, type: string, value: "edge_compute_to_text_panel"}
-      source: {key: source, type: string, value: "compute_summary"}
-      sourceHandle: {key: sourceHandle, type: string, value: "output"}
-      target: {key: target, type: string, value: "panel_text_output"}
-      targetHandle: {key: targetHandle, type: string, value: "output"}
-      label: {key: label, type: string, value: "text output"}
-      type: {key: type, type: string, value: "template_text_signal"}
-    - id: {key: id, type: string, value: "edge_compute_to_image_panel"}
-      source: {key: source, type: string, value: "compute_summary"}
-      sourceHandle: {key: sourceHandle, type: string, value: "imageUrl"}
-      target: {key: target, type: string, value: "panel_image_output"}
-      targetHandle: {key: targetHandle, type: string, value: "imageUrl"}
-      label: {key: label, type: string, value: "image output"}
-      type: {key: type, type: string, value: "template_image_signal"}
-    - id: {key: id, type: string, value: "edge_compute_to_chart_panel"}
-      source: {key: source, type: string, value: "compute_summary"}
-      sourceHandle: {key: sourceHandle, type: string, value: "outputSrcDoc"}
-      target: {key: target, type: string, value: "panel_chart_output"}
-      targetHandle: {key: targetHandle, type: string, value: "outputSrcDoc"}
-      label: {key: label, type: string, value: "chart output"}
-      type: {key: type, type: string, value: "template_chart_html"}
+    - {"id":"edge_input_query_to_compute","source":"source_input","sourceHandle":"input_query","target":"compute_summary","targetHandle":"input_query","label":"input_query","type":"template_text_signal"}
+    - {"id":"edge_input_context_to_compute","source":"source_input","sourceHandle":"input_context","target":"compute_summary","targetHandle":"input_context","label":"input_context","type":"template_text_signal"}
+    - {"id":"edge_input_audience_to_compute","source":"source_input","sourceHandle":"input_audience","target":"compute_summary","targetHandle":"input_audience","label":"input_audience","type":"template_text_signal"}
+    - {"id":"edge_input_format_to_compute","source":"source_input","sourceHandle":"input_format","target":"compute_summary","targetHandle":"input_format","label":"input_format","type":"template_text_signal"}
+    - {"id":"edge_input_constraints_to_compute","source":"source_input","sourceHandle":"input_constraints","target":"compute_summary","targetHandle":"input_constraints","label":"input_constraints","type":"template_text_signal"}
+    - {"id":"edge_input_evidence_to_compute","source":"source_input","sourceHandle":"input_evidence","target":"compute_summary","targetHandle":"input_evidence","label":"input_evidence","type":"template_text_signal"}
+    - {"id":"edge_input_tone_to_compute","source":"source_input","sourceHandle":"input_tone","target":"compute_summary","targetHandle":"input_tone","label":"input_tone","type":"template_text_signal"}
+    - {"id":"edge_input_metric_label_to_compute","source":"source_input","sourceHandle":"input_metric_label","target":"compute_summary","targetHandle":"input_metric_label","label":"input_metric_label","type":"template_text_signal"}
+    - {"id":"edge_input_metric_target_to_compute","source":"source_input","sourceHandle":"input_metric_target","target":"compute_summary","targetHandle":"input_metric_target","label":"input_metric_target","type":"template_number_signal"}
+    - {"id":"edge_compute_to_text_panel","source":"compute_summary","sourceHandle":"output","target":"panel_text_output","targetHandle":"output","label":"text output","type":"template_text_signal"}
+    - {"id":"edge_compute_to_image_panel","source":"compute_summary","sourceHandle":"imageUrl","target":"panel_image_output","targetHandle":"imageUrl","label":"image output","type":"template_image_signal"}
+    - {"id":"edge_compute_to_chart_panel","source":"compute_summary","sourceHandle":"outputSrcDoc","target":"panel_chart_output","targetHandle":"outputSrcDoc","label":"chart output","type":"template_chart_html"}
 ---
 ## Response
 

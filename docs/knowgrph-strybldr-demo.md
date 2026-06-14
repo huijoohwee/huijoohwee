@@ -33,6 +33,15 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   edgeModel: "active graph edges derive from the 77FAnT935IE source, approved storyboard cards, and VideoDB runtime handoff cards"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
+kgStrybldrCameraContract:
+  owner: "canvas/src/lib/camera/orbitSphere.ts"
+  panel: "FloatingPanel -> Camera"
+  graphField: "strybldrCamera"
+  degreeGrid:
+    longitude: [0, 45, 90, 135, 180, 225, 270, 315]
+    latitude: [-90, -45, 0, 45, 90]
+  persistedFields: ["angle", "level", "shot", "note", "orbitX", "orbitY"]
+  geometryPolicy: "Shared 3D orbit vector drives draggable handle, active meridian/latitude, SVG ray polygon, and selected Wide/Medium/Close-up frame alignment; renderers must not fork 2D-only camera math."
 kgYoutubeVideoId: "77FAnT935IE"
 kgYoutubeFormat: "markdown"
 kgWebpageUrl: "https://www.youtube.com/watch?v=77FAnT935IE"
@@ -472,6 +481,7 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 | Source | The only authored media source is `77FAnT935IE`. | `urlImport.ts`, `youtubeEntryText.ts` |
 | Project | The imported URL or local file opens as a Strybldr storyboard document. | `strybldrStoryboard.ts`, shared Storyboard renderer |
 | Render | The workflow is visible in `2D Renderer: Storyboard` and `2D Renderer: Flow Editor`. | shared renderer projection |
+| Camera | `FloatingPanel -> Camera` renders the selected card preview in the Wide/Medium/Close-up SVG frame and persists `strybldrCamera` from shared 3D degree-grid orbit geometry. | `orbitSphere.ts`, `StrybldrCameraPanel.tsx` |
 | SenseNova Text | MainPanel Integrations exposes SenseNova text generation through the shared chat path. | SenseNova API settings owner |
 | SenseNova Image | MainPanel Integrations exposes SenseNova image generation through the shared image path. | SenseNova image settings owner |
 | SenseNova Video | MainPanel Integrations exposes SenseNova video generation through a bounded async path. | SenseNova video settings owner |
@@ -495,8 +505,9 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 7. Confirm a sibling `.strybldr.md` storyboard document is created and focused.
 8. Confirm the canvas toolbar shows `Canvas View Mode: 2D Renderer: Storyboard`.
 9. Confirm the Storyboard surface shows Source, Storyboard, Elements, Runtime, Review, and Publish cards for this source only.
-10. Click toolbar `Run all`.
-11. Confirm a `strybldr-video-*.md` artifact is created with `status: "generated"`, `provider: "knowgrph-local-animatic"`, `model: "strybldr-local-animatic-v1"`, `paidCallCount: 0`, and an embedded playable animatic.
+10. Open `FloatingPanel -> Camera`, select a card, and confirm Front/Eye Level/Medium maps to meridian `0`, latitude `0`, a centered frame ray, and a medium SVG frame; then switch to a diagonal state such as Right Side/Low Angle and confirm the handle, ray polygon, active meridian, and active latitude move together.
+11. Click toolbar `Run all`.
+12. Confirm a `strybldr-video-*.md` artifact is created with `status: "generated"`, `provider: "knowgrph-local-animatic"`, `model: "strybldr-local-animatic-v1"`, `paidCallCount: 0`, and an embedded playable animatic.
 
 ### Import Local File
 

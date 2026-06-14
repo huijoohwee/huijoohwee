@@ -235,13 +235,13 @@
       "type": "markdown",
       "description": "Turn image or media source units into editable Storyboard cards and bounded media handoff artifacts through Strybldr and shared renderer owners.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-strybldr.md",
-      "sha256": "ced1fb97fb0a8f882e63c0e37fa86e28040ea9614fd83a39866c51dac1e8060e",
+      "sha256": "1fdd0c118ae8ab786b8df01abb933c972b0b4a699cadec2e9fac2af147329de8",
       "vdeoxpln": {
         "id": "knowgrph-strybldr",
         "title": "Knowgrph Strybldr",
         "scope": "browser-local-source-backed",
         "mutation": "browser-local-user-mediated",
-        "semanticKey": "kgvx_557e0e61",
+        "semanticKey": "kgvx_0d4e3f41",
         "tools": {
           "published": [],
           "browserLocal": [

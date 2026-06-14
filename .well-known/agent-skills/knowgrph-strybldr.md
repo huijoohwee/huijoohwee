@@ -6,7 +6,7 @@ Use this skill when: Turn image or media source units into editable Storyboard c
 
 - Vdeoxpln id: `knowgrph-strybldr`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_557e0e61`
+- Semantic key: `kgvx_0d4e3f41`
 - Scope: `browser-local-source-backed`
 - Mutation boundary: `browser-local-user-mediated`
 
@@ -27,8 +27,8 @@ Use this skill when: Turn image or media source units into editable Storyboard c
 
 ## Outputs
 
+- camera-aware media handoff prompt
 - canvas snapshot
-- media handoff prompt
 - Storyboard graph cards
 - Strybldr Markdown
 
@@ -49,6 +49,7 @@ Local MCP tools:
 
 - Import media through existing workspace/source owners.
 - Build Strybldr cards with source-unit provenance.
+- Persist Camera reframe settings on selected graph cards.
 - Render through the shared Storyboard surface.
 - Compile bounded media handoff only after user approval.
 
@@ -71,6 +72,7 @@ Local MCP tools:
 - sourceUnitId
 - strybldrRunId
 - graphSemanticKey
+- strybldrCamera
 
 ## AI Policy
 
