@@ -1,0 +1,1 @@
+import{bb as E,bc as _}from"./settings-mcp-docs-T3odcQkL.js";const e={table:E.tableViewLabel,multiDimTable:E.titleDefault,kanban:E.kanbanViewLabel},t={...e,geospatial:E.geospatialViewLabel},b=_.map(a=>({value:a,label:t[a]}));function l(a){return e[a]}export{b as W,l as g};
