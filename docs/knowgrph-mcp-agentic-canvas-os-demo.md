@@ -197,45 +197,54 @@ flow:
       type: {key: type, type: string, value: "InputWidget"}
       label: {key: label, type: string, value: "Run Brief Input"}
       position: {key: position, type: object, value: {"x":0,"y":0}}
-      handles: {key: handles, type: object, value: {"source": ["referenceUrl", "brief", "budgetUsd", "mode", "approvals"]}}
-      referenceUrl: {key: referenceUrl, type: string, value: "https://youtu.be/77FAnT935IE"}
-      brief: {key: brief, type: textarea, value: "Turn this reference clip into a 30s vertical promo."}
-      budgetUsd: {key: budgetUsd, type: number, value: 25}
-      mode: {key: mode, type: string, value: "live"}
+      handles: {key: handles, type: object, value: {"source":["referenceUrl","brief","budgetUsd","mode","approvals"]}}
       approvals: {key: approvals, type: array, value: []}
-      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField": "referenceUrl", "previewMaxChars": 80, "onEdit": {"trigger": "runDownstream", "targets": ["compute_summary"]}, "actions": [{"id": "edit", "label": "Edit", "icon": "pencil", "trigger": "openFieldEditor", "targetField": "brief"}, {"id": "run", "label": "Run", "icon": "play", "trigger": "runDownstream", "targets": ["compute_summary"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out": {"referenceUrl": "idea_signal", "brief": "idea_signal", "budgetUsd": "evidence_signal", "mode": "idea_signal", "approvals": "approval_signal"}}}
+      brief: {key: brief, type: textarea, value: "Turn this reference clip into a 30s vertical promo. "}
+      budgetUsd: {key: budgetUsd, type: number, value: 25}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"referenceUrl","previewMaxChars":80,"onEdit":{"trigger":"runDownstream","targets":["compute_summary"]},"actions":[{"id":"edit","label":"Edit","icon":"pencil","trigger":"openFieldEditor","targetField":"brief"},{"id":"run","label":"Run","icon":"play","trigger":"runDownstream","targets":["compute_summary"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"referenceUrl":"idea_signal","brief":"idea_signal","budgetUsd":"evidence_signal","mode":"idea_signal","approvals":"approval_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "demoInput"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Reusable run-brief source widget: reference URL, creative brief, budget cap, mode, and approval tokens for the video-remix agent loop."}
+      mode: {key: mode, type: string, value: "live"}
+      referenceUrl: {key: referenceUrl, type: string, value: "https://youtu.be/77FAnT935IE"}
       "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "compute_summary"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Compute Run Manifest"}
       position: {key: position, type: object, value: {"x":380,"y":0}}
-      handles: {key: handles, type: object, value: {"target": ["referenceUrl", "brief", "budgetUsd", "mode", "approvals"], "source": ["output", "imageAssetUrl", "videoUrl", "outputSrcDoc"]}}
-      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn": "compute", "inputs": ["referenceUrl", "brief", "budgetUsd", "mode", "approvals"], "outputs": ["output", "imageUrl", "outputSrcDoc"], "updateBody": false, "sideEffects": [{"field": "run_status", "set": "done"}, {"field": "mcp_agentic_canvas_os_demo.active_graph_mutated", "set": true}, {"field": "mcp_agentic_canvas_os_demo.run_id", "pattern": "kg_acos_run_yyyyMMddHHmm"}]}}
-      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField": "run_status", "statusValues": {"idle": "gray", "running": "amber", "done": "green", "error": "red"}, "previewField": "output", "previewMaxChars": 100, "actions": [{"id": "run", "label": "Run", "icon": "play", "primary": true, "trigger": "compute"}, {"id": "reset", "label": "Reset", "icon": "refresh", "trigger": "clearOutputs", "clearFields": ["output", "imageUrl", "outputSrcDoc"]}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"referenceUrl": "idea_signal", "brief": "idea_signal", "budgetUsd": "evidence_signal", "mode": "idea_signal", "approvals": "approval_signal"}, "out": {"output": "artifact_signal", "imageAssetUrl": "artifact_signal", "videoUrl": "artifact_signal", "outputSrcDoc": "artifact_signal"}}}
+      handles: {key: handles, type: object, value: {"target":["referenceUrl","brief","budgetUsd","mode","approvals"],"source":["output","imageAssetUrl","videoUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["referenceUrl","brief","budgetUsd","mode","approvals"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":false,"sideEffects":[{"field":"run_status","set":"done"},{"field":"mcp_agentic_canvas_os_demo.active_graph_mutated","set":true},{"field":"mcp_agentic_canvas_os_demo.run_id","pattern":"kg_acos_run_yyyyMMddHHmm"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"idle":"gray","running":"amber","done":"green","error":"red"},"previewField":"output","previewMaxChars":100,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"},{"id":"reset","label":"Reset","icon":"refresh","trigger":"clearOutputs","clearFields":["output","imageUrl","outputSrcDoc"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"referenceUrl":"idea_signal","brief":"idea_signal","budgetUsd":"evidence_signal","mode":"idea_signal","approvals":"approval_signal"},"out":{"output":"artifact_signal","imageAssetUrl":"artifact_signal","videoUrl":"artifact_signal","outputSrcDoc":"artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "demoCompute"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 9}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 5}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 4}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageAssetUrl: {key: imageAssetUrl, type: image_url, value: "https://airvio.co/knowgrph/r2/runs/kg_acos_reference_to_sold_remix_demo/image/shot-1.png"}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2262%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23f59e0b%22%20text-anchor%3D%22middle%22%3EBLOCKED%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22100%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3Efull%20promo%20-%20~6%20shots%20-%20seedance-1-5-pro-251215%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22132%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EBudget%20cap%20%2425%20-%20estimated%20spend%20%240%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22164%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3E3%20spend%20gate(s)%20awaiting%20approval%20-%207%20cited%20sources%3C%2Ftext%3E%3C%2Fsvg%3E"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget that turns the run brief into a gated Run_Manifest: stages, approval gates, budget meters, evidence pack, and a 7-section demo pack."}
       output:
         key: output
         type: markdown
         value: |
           ## BLOCKED - reference-to-sold remix
-
+          
           Turn this reference clip into a 30s vertical promo.
-
+          
           **Reference:** https://youtu.be/77FAnT935IE
           **Mode:** live
           **Budget cap:** $25
           **Treatment:** full promo (seedance-1-5-pro-251215, ~6 shots)
           **Estimated reconciled spend:** $0
           **State:** BLOCKED
-
+          
           Live run halted at the first spend gate with zero paid actions. Approve the spend gates and re-submit the same run to proceed.
-
+          
           ### Stages
           - import_url: planned
           - research: halted
@@ -243,32 +252,34 @@ flow:
           - render: planned
           - checkout: planned
           - demo_pack: planned
-
+          
           ### Approval gates
           - paid-model-call: required
           - render-action: required
           - payment-action: required
-
+          
           ### Evidence pack
           - Cited sources: 7
           - Weak-signal floor: 3 sources (halts before storyboard if unmet)
-
+          
           ### Budget meters
           - Cap: $25
           - Estimated spend: $0
           - Headroom: $25
-
+          
           ### Demo pack
           - Sections: Agent Overview, Autonomy, Actions & Tool Use, Orchestration, Human-in-the-Loop, Failure Handling, Demo & Presentation
           - Verified only when each URL or artifact is reachable.
-      imageUrl: {key: imageUrl, type: svg_data_uri, value: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20220%22%3E%3Crect%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%23f8fafc%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2262%22%20font-family%3D%22system-ui%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23f59e0b%22%20text-anchor%3D%22middle%22%3EBLOCKED%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22100%22%20font-family%3D%22system-ui%22%20font-size%3D%2214%22%20fill%3D%22%23475569%22%20text-anchor%3D%22middle%22%3Efull%20promo%20-%20~6%20shots%20-%20seedance-1-5-pro-251215%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22132%22%20font-family%3D%22system-ui%22%20font-size%3D%2213%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EBudget%20cap%20%2425%20-%20estimated%20spend%20%240%3C%2Ftext%3E%3Ctext%20x%3D%22320%22%20y%3D%22164%22%20font-family%3D%22system-ui%22%20font-size%3D%2212%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3E3%20spend%20gate(s)%20awaiting%20approval%20-%207%20cited%20sources%3C%2Ftext%3E%3C%2Fsvg%3E"}
+          
       outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a}.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.kpi div,.panel{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px}.panel{margin-bottom:12px}.label{margin:0 0 4px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.value{margin:0;font-size:15px;font-weight:700}.panel h2{margin:0 0 10px;font-size:13px}.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}.rl{width:96px;color:#475569}.rt{flex:1;height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden}.rb{display:block;height:100%;border-radius:7px}.rv{width:64px;text-align:right;color:#0f172a;font-weight:600}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:600}.meter{height:16px;background:#e2e8f0;border-radius:8px;overflow:hidden}.meter span{display:block;height:100%;background:#0ea5e9;border-radius:8px}.note{font-size:12px;color:#64748b;margin:12px 0 0}</style></head><body><main data-kg-acos-remix-panel=\"1\"><div class=\"kpi\"><div><p class=\"label\">State</p><p class=\"value\">BLOCKED</p></div><div><p class=\"label\">Budget cap</p><p class=\"value\">$25</p></div><div><p class=\"label\">Est. spend</p><p class=\"value\">$0</p></div><div><p class=\"label\">Shots</p><p class=\"value\">~6</p></div></div><section class=\"panel\"><h2>Stage pipeline</h2><div class=\"row\"><span class=\"rl\">import_url</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">research</span><span class=\"rt\"><span class=\"rb\" style=\"width:50%;background:#f59e0b\"></span></span><span class=\"rv\">halted</span></div><div class=\"row\"><span class=\"rl\">storyboard</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">render</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">checkout</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div><div class=\"row\"><span class=\"rl\">demo_pack</span><span class=\"rt\"><span class=\"rb\" style=\"width:12%;background:#cbd5e1\"></span></span><span class=\"rv\">planned</span></div></section><section class=\"panel\"><h2>Approval gates</h2><div class=\"chips\"><span class=\"chip\" style=\"background:#fef3c7;color:#92400e\">paid-model-call: required</span><span class=\"chip\" style=\"background:#fef3c7;color:#92400e\">render-action: required</span><span class=\"chip\" style=\"background:#fef3c7;color:#92400e\">payment-action: required</span></div></section><section class=\"panel\"><h2>Budget meter (0% of cap, $25 headroom)</h2><div class=\"meter\"><span style=\"width:0%\"></span></div></section><p class=\"note\">Dry-run by default; live spend halts at the first un-approved gate with zero paid actions. Treatment full promo via seedance-1-5-pro-251215. 7 cited sources.</p></main></body></html>"}
       run_status: {key: run_status, type: string, value: "idle"}
-      imageAssetUrl: {key: imageAssetUrl, type: image_url, value: "https://airvio.co/knowgrph/r2/runs/kg_acos_reference_to_sold_remix_demo/image/shot-1.png"}
-      videoUrl: {key: videoUrl, type: video_url, value: "https://airvio.co/knowgrph/r2/runs/kg_acos_reference_to_sold_remix_demo/video/shot-1.mp4"}
       semanticKey: {key: semanticKey, type: string, value: "acos-demo:compute:run-manifest"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Compute widget that turns the run brief into a gated Run_Manifest: stages, approval gates, budget meters, evidence pack, and a 7-section demo pack."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      videoUrl: {key: videoUrl, type: video_url, value: "https://airvio.co/knowgrph/r2/runs/kg_acos_reference_to_sold_remix_demo/video/shot-1.mp4"}
+      "visual:importance": {key: "visual:importance", type: number, value: 48}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 22}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
       compute:
         key: compute
         type: string
@@ -317,57 +328,89 @@ flow:
     - id: {key: id, type: string, value: "panel_text_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel - Run Manifest"}
-      position: {key: position, type: object, value: {"x": 760, "y": 240}}
-      handles: {key: handles, type: object, value: {"target": ["output"], "source": ["output"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"output": "artifact_signal"}, "out": {"output": "artifact_signal"}}}
+      position: {key: position, type: object, value: {"x":760,"y":240}}
+      handles: {key: handles, type: object, value: {"target":["output"],"source":["output"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"output":"artifact_signal"},"out":{"output":"artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Text Rich Media Panel receives the output field."}
       output: {key: output, type: textarea, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
     - id: {key: id, type: string, value: "panel_image_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel - Image (seedream)"}
-      position: {key: position, type: object, value: {"x": 760, "y": 0}}
-      handles: {key: handles, type: object, value: {"target": ["imageAssetUrl"], "source": ["imageAssetUrl"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"imageAssetUrl": "artifact_signal"}, "out": {"imageAssetUrl": "artifact_signal"}}}
+      position: {key: position, type: object, value: {"x":760,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["imageAssetUrl"],"source":["imageAssetUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageAssetUrl":"artifact_signal"},"out":{"imageAssetUrl":"artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageAssetUrl: {key: imageAssetUrl, type: string, value: ""}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image Rich Media Panel embeds the R2 imageAssetUrl (seedream) and replays it without calling the model."}
-      imageAssetUrl: {key: imageAssetUrl, type: image_url, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "panel_video_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel - Video (seedance)"}
-      position: {key: position, type: object, value: {"x": 760, "y": 480}}
-      handles: {key: handles, type: object, value: {"target": ["videoUrl"], "source": ["videoUrl"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"videoUrl": "artifact_signal"}, "out": {"videoUrl": "artifact_signal"}}}
+      position: {key: position, type: object, value: {"x":760,"y":480}}
+      handles: {key: handles, type: object, value: {"target":["videoUrl"],"source":["videoUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"videoUrl":"artifact_signal"},"out":{"videoUrl":"artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Video Rich Media Panel embeds the R2 videoUrl and replays it without calling the model."}
-      videoUrl: {key: videoUrl, type: video_url, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
+      videoUrl: {key: videoUrl, type: text, value: ""}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
     - id: {key: id, type: string, value: "panel_chart_output"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel - Run Dashboard"}
-      position: {key: position, type: object, value: {"x": 760, "y": -240}}
-      handles: {key: handles, type: object, value: {"target": ["outputSrcDoc"], "source": ["outputSrcDoc"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in": {"outputSrcDoc": "artifact_signal"}, "out": {"outputSrcDoc": "artifact_signal"}}}
+      position: {key: position, type: object, value: {"x":760,"y":-240}}
+      handles: {key: handles, type: object, value: {"target":["outputSrcDoc"],"source":["outputSrcDoc"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"artifact_signal"},"out":{"outputSrcDoc":"artifact_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel receives the outputSrcDoc field."}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
   edges:
-    - {"id": "edge_referenceUrl_to_compute", "source": "source_input", "sourceHandle": "referenceUrl", "target": "compute_summary", "targetHandle": "referenceUrl", "label": "referenceUrl", "type": "idea_signal"}
-    - {"id": "edge_brief_to_compute", "source": "source_input", "sourceHandle": "brief", "target": "compute_summary", "targetHandle": "brief", "label": "brief", "type": "idea_signal"}
-    - {"id": "edge_budgetUsd_to_compute", "source": "source_input", "sourceHandle": "budgetUsd", "target": "compute_summary", "targetHandle": "budgetUsd", "label": "budgetUsd", "type": "evidence_signal"}
-    - {"id": "edge_mode_to_compute", "source": "source_input", "sourceHandle": "mode", "target": "compute_summary", "targetHandle": "mode", "label": "mode", "type": "idea_signal"}
-    - {"id": "edge_approvals_to_compute", "source": "source_input", "sourceHandle": "approvals", "target": "compute_summary", "targetHandle": "approvals", "label": "approvals", "type": "approval_signal"}
-    - {"id": "edge_compute_to_panel_text_output", "source": "compute_summary", "sourceHandle": "output", "target": "panel_text_output", "targetHandle": "output", "label": "output", "type": "artifact_signal"}
-    - {"id": "edge_compute_to_panel_image_output", "source": "compute_summary", "sourceHandle": "imageAssetUrl", "target": "panel_image_output", "targetHandle": "imageAssetUrl", "label": "imageAssetUrl", "type": "artifact_signal"}
-    - {"id": "edge_compute_to_panel_video_output", "source": "compute_summary", "sourceHandle": "videoUrl", "target": "panel_video_output", "targetHandle": "videoUrl", "label": "videoUrl", "type": "artifact_signal"}
-    - {"id": "edge_compute_to_panel_chart_output", "source": "compute_summary", "sourceHandle": "outputSrcDoc", "target": "panel_chart_output", "targetHandle": "outputSrcDoc", "label": "outputSrcDoc", "type": "artifact_signal"}
+    - {"id":"edge_referenceUrl_to_compute","source":"source_input","sourceHandle":"referenceUrl","target":"compute_summary","targetHandle":"referenceUrl","label":"referenceUrl","type":"idea_signal"}
+    - {"id":"edge_brief_to_compute","source":"source_input","sourceHandle":"brief","target":"compute_summary","targetHandle":"brief","label":"brief","type":"idea_signal"}
+    - {"id":"edge_budgetUsd_to_compute","source":"source_input","sourceHandle":"budgetUsd","target":"compute_summary","targetHandle":"budgetUsd","label":"budgetUsd","type":"evidence_signal"}
+    - {"id":"edge_mode_to_compute","source":"source_input","sourceHandle":"mode","target":"compute_summary","targetHandle":"mode","label":"mode","type":"idea_signal"}
+    - {"id":"edge_approvals_to_compute","source":"source_input","sourceHandle":"approvals","target":"compute_summary","targetHandle":"approvals","label":"approvals","type":"approval_signal"}
+    - {"id":"edge_compute_to_panel_text_output","source":"compute_summary","sourceHandle":"output","target":"panel_text_output","targetHandle":"output","label":"output","type":"artifact_signal"}
+    - {"id":"edge_compute_to_panel_image_output","source":"compute_summary","sourceHandle":"imageAssetUrl","target":"panel_image_output","targetHandle":"imageAssetUrl","label":"imageAssetUrl","type":"artifact_signal"}
+    - {"id":"edge_compute_to_panel_video_output","source":"compute_summary","sourceHandle":"videoUrl","target":"panel_video_output","targetHandle":"videoUrl","label":"videoUrl","type":"artifact_signal"}
+    - {"id":"edge_compute_to_panel_chart_output","source":"compute_summary","sourceHandle":"outputSrcDoc","target":"panel_chart_output","targetHandle":"outputSrcDoc","label":"outputSrcDoc","type":"artifact_signal"}
 kgParserRoutingContract:
   version: "knowgrph-parser-routing/v1"
   parserLogic: "opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases"

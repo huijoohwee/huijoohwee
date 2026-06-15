@@ -17,6 +17,8 @@ content/singapoly/test.js
 content/singapoly/test2.js
 content/singabldr/test.js
 content/singabldr/test2.js
+docs_/
+video/
 
 # Singabldr: NEVER commit secrets (local-only convenience files)
 content/singabldr/user-secrets.json

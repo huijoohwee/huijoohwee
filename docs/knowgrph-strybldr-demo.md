@@ -941,6 +941,16 @@ Opening this file directly should render through Strybldr. The seed below is the
       "target": "videodb-recreate-publish-card",
       "label": "review_to_publish"
     }
+  ],
+  "cards": [
+    {
+      "nodeId": "strybldr:source:3379367779",
+      "action": "Review the source evidence into editable storyboard elements. 123 <video src=\"https://www.youtube.com/watch?v=77FAnT935IE\" poster=\"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg\" controls></video>"
+    },
+    {
+      "nodeId": "strybldr:frame:1457097024",
+      "action": "Review element cards, revise prompts, then send the approved sequence to video generation. 567 ![thumbnail](/__video_frame?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D77FAnT935IE&time=0&format=png)"
+    }
   ]
 }
 ```
