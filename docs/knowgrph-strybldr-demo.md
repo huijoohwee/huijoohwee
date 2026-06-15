@@ -467,7 +467,7 @@ kgParserRoutingContract:
 
 This document is the validation input for one runnable E2E workflow:
 
-<https://www.youtube.com/watch?v=77FAnT935IE>
+[sd20](https://www.youtube.com/watch?v=77FAnT935IE)
 
 The source URL, video ID, title, and thumbnail are allowed here because this file is external validation input. Runtime code, tests, parser logic, import defaults, generated workspace names, credentials, generated text, generated image URLs, generated video URLs, VideoDB IDs, stream URLs, and transcript text must not hardcode them.
 
@@ -945,11 +945,33 @@ Opening this file directly should render through Strybldr. The seed below is the
   "cards": [
     {
       "nodeId": "strybldr:source:3379367779",
-      "action": "Review the source evidence into editable storyboard elements. 123 <video src=\"https://www.youtube.com/watch?v=77FAnT935IE\" poster=\"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg\" controls></video>"
+      "action": "Review the source evidence into editable storyboard elements. <video src=\"https://www.youtube.com/watch?v=77FAnT935IE\" poster=\"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg\" title=\"sd20\" controls></video>",
+      "output": "123"
     },
     {
       "nodeId": "strybldr:frame:1457097024",
-      "action": "Review element cards, revise prompts, then send the approved sequence to video generation. 567 ![thumbnail](/__video_frame?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D77FAnT935IE&time=0&format=png)"
+      "action": "Review element cards, revise prompts, then send the approved sequence to video generation."
+    },
+    {
+      "nodeId": "strybldr:source:1842337348",
+      "action": "Review the source evidence into editable storyboard elements."
+    },
+    {
+      "nodeId": "strybldr:frame:2394967648",
+      "summary": "Frame-level storyboard card generated from the imported source."
+    },
+    {
+      "nodeId": "workflow-fork-rest-mcp-card",
+      "action": "Expose the fork as one operator approval decision; do not run both live branches unless the operator explicitly selects both."
+    },
+    {
+      "nodeId": "strybldr:source:3449270236",
+      "action": "Review the source evidence into editable storyboard elements."
+    },
+    {
+      "nodeId": "strybldr:source:4137906559",
+      "summary": "Imported document source unit: SenseNova AI API PRD/TAD implementation contract.",
+      "action": "Review the source evidence into editable storyboard elements."
     }
   ]
 }
