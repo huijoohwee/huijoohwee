@@ -40,7 +40,7 @@ kgStrybldrCameraContract:
   degreeGrid:
     longitude: "[0, 45, 90, 135, 180, 225, 270, 315]"
     latitude: "[-90, -45, 0, 45, 90]"
-  persistedFields: "[\"angle\", \"level\", \"shot\", \"note\", \"orbitX\", \"orbitY\"]"
+  persistedFields: "[\"angle\",\"level\",\"shot\",\"note\",\"orbitX\",\"orbitY\"]"
   geometryPolicy: "Shared 3D orbit vector drives draggable handle, active meridian/latitude, SVG ray polygon, and selected Wide/Medium/Close-up frame alignment; renderers must not fork 2D-only camera math."
 kgYoutubeVideoId: "77FAnT935IE"
 kgYoutubeFormat: "markdown"
@@ -85,7 +85,7 @@ videodb_recreate_77FAnT935IE_contract:
   rest_path: "MainPanel Integrations -> videodb.health -> generate_video/upload_video -> async poll -> index_spoken_word -> search_video -> stream_video"
   mcp_path: "MainPanel MCP -> videodb-director -> generate_video/upload_video -> get_async_response -> index_video -> search_videos -> stream_video -> get_transcript"
   prompt_policy: "Operator approves each prompt card before paid VideoDB calls; missing credentials writes readiness/fallback cards only"
-  publish_packet_schema: "[\"source_url\", \"storyboard_cards\", \"video_id\", \"stream_url\", \"videodb_stream_url\", \"search_results\", \"transcript_text\", \"approval_state\"]"
+  publish_packet_schema: "[\"source_url\",\"storyboard_cards\",\"video_id\",\"stream_url\",\"videodb_stream_url\",\"search_results\",\"transcript_text\",\"approval_state\"]"
 videodb_character_clips_contract:
   upstream_reference: "https://docs.videodb.io/examples-and-tutorials/video-rag/character-clips.md"
   sdk_primitive: "video.generate_stream(timeline=subject_timeline_ranges)"
@@ -117,11 +117,11 @@ videodb_mcp_inputs:
   poll_max_iterations: "36"
   poll_interval_ms: "10000"
   require_confirmation_for_generation: "true"
-  tools_core: "[\"upload_video\", \"get_collection\", \"list_collections\", \"create_collection\", \"get_async_response\", \"check_health\"]"
-  tools_search: "[\"search_videos\", \"search_collection\", \"search_by_scene\"]"
-  tools_index: "[\"index_video\", \"index_scene\"]"
-  tools_stream: "[\"stream_video\", \"get_transcript\"]"
-  tools_ai: "[\"generate_video\", \"generate_audio\", \"generate_text\", \"dub_video\", \"translate_video\"]"
+  tools_core: "[\"upload_video\",\"get_collection\",\"list_collections\",\"create_collection\",\"get_async_response\",\"check_health\"]"
+  tools_search: "[\"search_videos\",\"search_collection\",\"search_by_scene\"]"
+  tools_index: "[\"index_video\",\"index_scene\"]"
+  tools_stream: "[\"stream_video\",\"get_transcript\"]"
+  tools_ai: "[\"generate_video\",\"generate_audio\",\"generate_text\",\"dub_video\",\"translate_video\"]"
 videodb_inputs:
   base_url: "https://api.videodb.io"
   api_key: ""
@@ -165,9 +165,9 @@ sensenova_inputs:
   default_text_model: "SenseChat-5"
   default_image_model: "artist-xl"
   default_video_model: "SenseAnim"
-  text_model_options: "[\"SenseChat-5\", \"SenseChat-Turbo\", \"SenseChat-Vision-5\"]"
-  image_model_options: "[\"artist-xl\", \"senseNova-img-enhance\"]"
-  video_model_options: "[\"SenseAnim\", \"SenseAnim-Pro\"]"
+  text_model_options: "[\"SenseChat-5\",\"SenseChat-Turbo\",\"SenseChat-Vision-5\"]"
+  image_model_options: "[\"artist-xl\",\"senseNova-img-enhance\"]"
+  video_model_options: "[\"SenseAnim\",\"SenseAnim-Pro\"]"
   poll_max_iterations: "36"
   poll_interval_ms: "10000"
 local_animatic_inputs:
@@ -218,7 +218,7 @@ flow:
       properties:
         lane: "Fork"
         forkId: "workflow-fork-rest-or-mcp"
-        branches: "[\"videodb-rest-path\", \"videodb-mcp-path\"]"
+        branches: "[\"videodb-rest-path\",\"videodb-mcp-path\"]"
         kgc:readingSummary: "Operator approval selects VideoDB REST, VideoDB MCP, or an explicitly approved dual run before review."
     - "id: strybldr_flow_rest"
       type: "RuntimeWidget"
@@ -249,8 +249,8 @@ flow:
       label: "Strybldr rich media review"
       position: "{x: 2160, y: -280}"
       handles:
-        target: "[\"outputSrcDoc\", \"imageUrl\", \"videoUrl\"]"
-        source: "[\"outputSrcDoc\", \"imageUrl\", \"videoUrl\"]"
+        target: "[\"outputSrcDoc\",\"imageUrl\",\"videoUrl\"]"
+        source: "[\"outputSrcDoc\",\"imageUrl\",\"videoUrl\"]"
       properties:
         lane: "Review"
         flow:widgetFormId: "richMediaPanel"
