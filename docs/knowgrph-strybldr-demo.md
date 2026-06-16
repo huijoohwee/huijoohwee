@@ -179,173 +179,171 @@ local_animatic_inputs:
   chapter_clips_source: "videodb_character_clips_contract.subjects with blank live clip URLs"
   output: "strybldr-video-*.md with embedded srcdoc animatic, chapter clips, and source provenance links"
 flow:
-  direction: "LR"
-  edgeType: "smoothstep"
-  balancedViewportPreset: "widgetFrontmatter"
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
   nodes:
-    - id: "strybldr_flow_source"
-      type: "InputWidget"
-      label: "77FAnT935IE source"
-      position: "{x: 0, y: 0}"
+    - id: {key: id, type: string, value: "strybldr_flow_source"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "77FAnT935IE source"}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
       properties:
-        lane: "Source"
-        "kgc:readingSummary": "Imported source metadata and policy anchor for the 77FAnT935IE Strybldr recreation workflow."
-    - id: "strybldr_flow_storyboard"
-      type: "StoryboardWidget"
-      label: "Approved storyboard"
-      position: "{x: 360, y: 0}"
+        lane: {key: lane, type: string, value: "Source"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Imported source metadata and policy anchor for the 77FAnT935IE Strybldr recreation workflow."}
+    - id: {key: id, type: string, value: "strybldr_flow_storyboard"}
+      type: {key: type, type: string, value: "StoryboardWidget"}
+      label: {key: label, type: string, value: "Approved storyboard"}
+      position: {key: position, type: object, value: {"x":360,"y":0}}
       properties:
-        lane: "Storyboard"
-        "kgc:readingSummary": "Operator-approved storyboard beats used by SenseNova, VideoDB REST, and VideoDB MCP paths."
-    - id: "strybldr_flow_elements"
-      type: "ElementsWidget"
-      label: "Editable elements"
-      position: "{x: 720, y: 0}"
+        lane: {key: lane, type: string, value: "Storyboard"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Operator-approved storyboard beats used by SenseNova, VideoDB REST, and VideoDB MCP paths."}
+    - id: {key: id, type: string, value: "strybldr_flow_elements"}
+      type: {key: type, type: string, value: "ElementsWidget"}
+      label: {key: label, type: string, value: "Editable elements"}
+      position: {key: position, type: object, value: {"x":720,"y":0}}
       properties:
-        lane: "Elements"
-        "kgc:readingSummary": "Editable source-backed element cards for setup, action branch, sci-fi branch, product close, and character clips."
-    - id: "strybldr_flow_sensenova"
-      type: "RuntimeWidget"
-      label: "SenseNova media outputs"
-      position: "{x: 1080, y: -140}"
+        lane: {key: lane, type: string, value: "Elements"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Editable source-backed element cards for setup, action branch, sci-fi branch, product close, and character clips."}
+    - id: {key: id, type: string, value: "strybldr_flow_sensenova"}
+      type: {key: type, type: string, value: "RuntimeWidget"}
+      label: {key: label, type: string, value: "SenseNova media outputs"}
+      position: {key: position, type: object, value: {"x":1080,"y":-140}}
       properties:
-        lane: "Runtime"
-        "kgc:readingSummary": "Readiness-gated SenseNova text, image, and video outputs that feed the VideoDB upload/index/search/stream path."
-    - id: "strybldr_flow_fork"
-      type: "DecisionWidget"
-      label: "Workflow fork: REST or MCP"
-      position: "{x: 1080, y: 140}"
+        lane: {key: lane, type: string, value: "Runtime"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Readiness-gated SenseNova text, image, and video outputs that feed the VideoDB upload/index/search/stream path."}
+    - id: {key: id, type: string, value: "strybldr_flow_fork"}
+      type: {key: type, type: string, value: "DecisionWidget"}
+      label: {key: label, type: string, value: "Workflow fork: REST or MCP"}
+      position: {key: position, type: object, value: {"x":1080,"y":140}}
       properties:
-        lane: "Fork"
-        forkId: "workflow-fork-rest-or-mcp"
-        branches: "[\"videodb-rest-path\",\"videodb-mcp-path\"]"
-        "kgc:readingSummary": "Operator approval selects VideoDB REST, VideoDB MCP, or an explicitly approved dual run before review."
-    - id: "strybldr_flow_rest"
-      type: "RuntimeWidget"
-      label: "VideoDB REST path"
-      position: "{x: 1440, y: -120}"
+        lane: {key: lane, type: string, value: "Fork"}
+        forkId: {key: forkId, type: string, value: "workflow-fork-rest-or-mcp"}
+        branches: {key: branches, type: array, value: ["videodb-rest-path","videodb-mcp-path"]}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Operator approval selects VideoDB REST, VideoDB MCP, or an explicitly approved dual run before review."}
+    - id: {key: id, type: string, value: "strybldr_flow_rest"}
+      type: {key: type, type: string, value: "RuntimeWidget"}
+      label: {key: label, type: string, value: "VideoDB REST path"}
+      position: {key: position, type: object, value: {"x":1440,"y":-120}}
       properties:
-        lane: "Runtime"
-        "kgc:readingSummary": "MainPanel Integrations VideoDB API path: upload or generate, async poll, index, search, stream."
-    - id: "strybldr_flow_mcp"
-      type: "RuntimeWidget"
-      label: "VideoDB MCP path"
-      position: "{x: 1440, y: 120}"
+        lane: {key: lane, type: string, value: "Runtime"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MainPanel Integrations VideoDB API path: upload or generate, async poll, index, search, stream."}
+    - id: {key: id, type: string, value: "strybldr_flow_mcp"}
+      type: {key: type, type: string, value: "RuntimeWidget"}
+      label: {key: label, type: string, value: "VideoDB MCP path"}
+      position: {key: position, type: object, value: {"x":1440,"y":120}}
       properties:
-        lane: "Runtime"
-        "kgc:readingSummary": "MainPanel MCP VideoDB Director tool path using the same readiness, polling, and approval boundaries as REST."
-    - id: "strybldr_flow_review"
-      type: "ReviewWidget"
-      label: "Review search and stream"
-      position: "{x: 1800, y: 0}"
+        lane: {key: lane, type: string, value: "Runtime"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "MainPanel MCP VideoDB Director tool path using the same readiness, polling, and approval boundaries as REST."}
+    - id: {key: id, type: string, value: "strybldr_flow_review"}
+      type: {key: type, type: string, value: "ReviewWidget"}
+      label: {key: label, type: string, value: "Review search and stream"}
+      position: {key: position, type: object, value: {"x":1800,"y":0}}
       properties:
-        lane: "Review"
-        imageUrl: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"
-        videoUrl: ''
-        outputSrcDoc: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"
-        "kgc:readingSummary": "Search, stream, transcript, and character-clip review evidence remain blank until returned by live VideoDB responses."
-    - id: "strybldr_flow_rich_media_panel"
-      type: "RichMediaPanel"
-      label: "Strybldr rich media review"
-      position: "{x: 2160, y: -280}"
-      handles:
-        target: "[\"outputSrcDoc\",\"imageUrl\",\"videoUrl\"]"
-        source: "[\"outputSrcDoc\",\"imageUrl\",\"videoUrl\"]"
+        lane: {key: lane, type: string, value: "Review"}
+        imageUrl: {key: imageUrl, type: text, value: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"}
+        videoUrl: {key: videoUrl, type: text, value: ""}
+        outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Search, stream, transcript, and character-clip review evidence remain blank until returned by live VideoDB responses."}
+    - id: {key: id, type: string, value: "strybldr_flow_rich_media_panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Strybldr rich media review"}
+      position: {key: position, type: object, value: {"x":2160,"y":-280}}
+      handles: {key: handles, type: object, value: {"target":["outputSrcDoc","imageUrl","videoUrl"],"source":["outputSrcDoc","imageUrl","videoUrl"]}}
       properties:
-        lane: "Review"
-        "flow:widgetFormId": "richMediaPanel"
-        richMediaActiveTab: "html"
-        outputSrcDoc: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"
-        imageUrl: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"
-        videoUrl: ''
-        "kgc:readingSummary": "Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."
-    - id: "strybldr_flow_publish"
-      type: "PublishWidget"
-      label: "Local publish packet"
-      position: "{x: 2160, y: 0}"
+        lane: {key: lane, type: string, value: "Review"}
+        "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+        richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "html"}
+        outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"}
+        imageUrl: {key: imageUrl, type: text, value: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"}
+        videoUrl: {key: videoUrl, type: text, value: ""}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."}
+    - id: {key: id, type: string, value: "strybldr_flow_publish"}
+      type: {key: type, type: string, value: "PublishWidget"}
+      label: {key: label, type: string, value: "Local publish packet"}
+      position: {key: position, type: object, value: {"x":2160,"y":0}}
       properties:
-        lane: "Publish"
-        publishId: "workflow-local-publish-packet"
-        "kgc:readingSummary": "Local publish packet stores source URL, approved storyboard cards, live response values when present, and approval state."
+        lane: {key: lane, type: string, value: "Publish"}
+        publishId: {key: publishId, type: string, value: "workflow-local-publish-packet"}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Local publish packet stores source URL, approved storyboard cards, live response values when present, and approval state."}
   edges:
-    - id: "strybldr-flow-edge-source-storyboard"
-      source: "strybldr_flow_source"
-      sourceHandle: "output"
-      target: "strybldr_flow_storyboard"
-      targetHandle: "input"
-      label: "source_to_storyboard"
-    - id: "strybldr-flow-edge-storyboard-elements"
-      source: "strybldr_flow_storyboard"
-      sourceHandle: "output"
-      target: "strybldr_flow_elements"
-      targetHandle: "input"
-      label: "storyboard_to_elements"
-    - id: "strybldr-flow-edge-elements-sensenova"
-      source: "strybldr_flow_elements"
-      sourceHandle: "output"
-      target: "strybldr_flow_sensenova"
-      targetHandle: "input"
-      label: "elements_to_sensenova"
-    - id: "strybldr-flow-edge-elements-fork"
-      source: "strybldr_flow_elements"
-      sourceHandle: "output"
-      target: "strybldr_flow_fork"
-      targetHandle: "input"
-      label: "operator_fork"
-    - id: "strybldr-flow-edge-sensenova-rest"
-      source: "strybldr_flow_sensenova"
-      sourceHandle: "output"
-      target: "strybldr_flow_rest"
-      targetHandle: "input"
-      label: "sensenova_to_videodb_rest"
-    - id: "strybldr-flow-edge-fork-rest"
-      source: "strybldr_flow_fork"
-      sourceHandle: "rest"
-      target: "strybldr_flow_rest"
-      targetHandle: "input"
-      label: "fork_to_rest"
-    - id: "strybldr-flow-edge-fork-mcp"
-      source: "strybldr_flow_fork"
-      sourceHandle: "mcp"
-      target: "strybldr_flow_mcp"
-      targetHandle: "input"
-      label: "fork_to_mcp"
-    - id: "strybldr-flow-edge-rest-review"
-      source: "strybldr_flow_rest"
-      sourceHandle: "output"
-      target: "strybldr_flow_review"
-      targetHandle: "input"
-      label: "rest_to_review"
-    - id: "strybldr-flow-edge-mcp-review"
-      source: "strybldr_flow_mcp"
-      sourceHandle: "output"
-      target: "strybldr_flow_review"
-      targetHandle: "input"
-      label: "mcp_to_review"
-    - id: "strybldr-flow-edge-review-rich-html"
-      source: "strybldr_flow_review"
-      sourceHandle: "outputSrcDoc"
-      target: "strybldr_flow_rich_media_panel"
-      targetHandle: "outputSrcDoc"
-      label: "review_html_to_rich_media"
-    - id: "strybldr-flow-edge-review-rich-image"
-      source: "strybldr_flow_review"
-      sourceHandle: "imageUrl"
-      target: "strybldr_flow_rich_media_panel"
-      targetHandle: "imageUrl"
-      label: "review_image_to_rich_media"
-    - id: "strybldr-flow-edge-review-rich-video"
-      source: "strybldr_flow_review"
-      sourceHandle: "videoUrl"
-      target: "strybldr_flow_rich_media_panel"
-      targetHandle: "videoUrl"
-      label: "review_video_to_rich_media"
-    - id: "strybldr-flow-edge-review-publish"
-      source: "strybldr_flow_review"
-      sourceHandle: "output"
-      target: "strybldr_flow_publish"
-      targetHandle: "input"
-      label: "review_to_publish"
+    - id: {key: id, type: string, value: "strybldr-flow-edge-source-storyboard"}
+      source: {key: source, type: string, value: "strybldr_flow_source"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_storyboard"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "source_to_storyboard"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-storyboard-elements"}
+      source: {key: source, type: string, value: "strybldr_flow_storyboard"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_elements"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "storyboard_to_elements"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-elements-sensenova"}
+      source: {key: source, type: string, value: "strybldr_flow_elements"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_sensenova"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "elements_to_sensenova"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-elements-fork"}
+      source: {key: source, type: string, value: "strybldr_flow_elements"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_fork"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "operator_fork"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-sensenova-rest"}
+      source: {key: source, type: string, value: "strybldr_flow_sensenova"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_rest"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "sensenova_to_videodb_rest"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-fork-rest"}
+      source: {key: source, type: string, value: "strybldr_flow_fork"}
+      sourceHandle: {key: sourceHandle, type: string, value: "rest"}
+      target: {key: target, type: string, value: "strybldr_flow_rest"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "fork_to_rest"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-fork-mcp"}
+      source: {key: source, type: string, value: "strybldr_flow_fork"}
+      sourceHandle: {key: sourceHandle, type: string, value: "mcp"}
+      target: {key: target, type: string, value: "strybldr_flow_mcp"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "fork_to_mcp"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-rest-review"}
+      source: {key: source, type: string, value: "strybldr_flow_rest"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_review"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "rest_to_review"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-mcp-review"}
+      source: {key: source, type: string, value: "strybldr_flow_mcp"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_review"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "mcp_to_review"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-review-rich-html"}
+      source: {key: source, type: string, value: "strybldr_flow_review"}
+      sourceHandle: {key: sourceHandle, type: string, value: "outputSrcDoc"}
+      target: {key: target, type: string, value: "strybldr_flow_rich_media_panel"}
+      targetHandle: {key: targetHandle, type: string, value: "outputSrcDoc"}
+      label: {key: label, type: string, value: "review_html_to_rich_media"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-review-rich-image"}
+      source: {key: source, type: string, value: "strybldr_flow_review"}
+      sourceHandle: {key: sourceHandle, type: string, value: "imageUrl"}
+      target: {key: target, type: string, value: "strybldr_flow_rich_media_panel"}
+      targetHandle: {key: targetHandle, type: string, value: "imageUrl"}
+      label: {key: label, type: string, value: "review_image_to_rich_media"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-review-rich-video"}
+      source: {key: source, type: string, value: "strybldr_flow_review"}
+      sourceHandle: {key: sourceHandle, type: string, value: "videoUrl"}
+      target: {key: target, type: string, value: "strybldr_flow_rich_media_panel"}
+      targetHandle: {key: targetHandle, type: string, value: "videoUrl"}
+      label: {key: label, type: string, value: "review_video_to_rich_media"}
+    - id: {key: id, type: string, value: "strybldr-flow-edge-review-publish"}
+      source: {key: source, type: string, value: "strybldr_flow_review"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "strybldr_flow_publish"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "review_to_publish"}
 flow_diagrams:
   key: "flow_diagrams"
   type: "object"
