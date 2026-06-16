@@ -1,3 +1,4 @@
+---
 title: "Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E"
 graphId: "md:knowgrph-strybldr-sensenova-videodb-e2e"
 doc_type: "Strybldr E2E Demo - SenseNova Text + Image + Video + VideoDB API + MCP"
@@ -462,6 +463,8 @@ kgParserRoutingContract:
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
+kgWebpageView: "markdown"
+---
 
 # Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E
 
