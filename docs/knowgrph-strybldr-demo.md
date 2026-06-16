@@ -96,16 +96,16 @@ videodb_character_clips_contract:
   subjects:
     creator_setup:
       timeline: "0, 12"
-      clip: ""
+      clip: ''
     action_example:
       timeline: "12, 28"
-      clip: ""
+      clip: ''
     sci_fi_interruption:
       timeline: "28, 44"
-      clip: ""
+      clip: ''
     product_close:
       timeline: "44, 60"
-      clip: ""
+      clip: ''
 videodb_mcp_inputs:
   server_key: "videodb-director"
   uvx_command: "uvx videodb-director-mcp"
@@ -124,23 +124,23 @@ videodb_mcp_inputs:
   tools_ai: "[\"generate_video\",\"generate_audio\",\"generate_text\",\"dub_video\",\"translate_video\"]"
 videodb_inputs:
   base_url: "https://api.videodb.io"
-  api_key: ""
-  collection_id: ""
-  content_brief_path: ""
-  video_prompt: ""
+  api_key: ''
+  collection_id: ''
+  content_brief_path: ''
+  video_prompt: ''
   target_label: "knowgrph_publish_packet"
-  generation_job_id: ""
-  video_id: ""
-  index_job_id: ""
-  stream_url: ""
-  videodb_stream_url: ""
-  download_url: ""
-  publish_packet_path: ""
+  generation_job_id: ''
+  video_id: ''
+  index_job_id: ''
+  stream_url: ''
+  videodb_stream_url: ''
+  download_url: ''
+  publish_packet_path: ''
   subject_clip_urls:
-    creator_setup: ""
-    action_example: ""
-    sci_fi_interruption: ""
-    product_close: ""
+    creator_setup: ''
+    action_example: ''
+    sci_fi_interruption: ''
+    product_close: ''
   search_query: "creator asks for AI video directions, action example, sci-fi example, product close"
   stream_format: "mp4"
   stream_quality: "medium"
@@ -241,7 +241,7 @@ flow:
       properties:
         lane: "Review"
         imageUrl: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"
-        videoUrl: ""
+        videoUrl: ''
         outputSrcDoc: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"
         kgc:readingSummary: "Search, stream, transcript, and character-clip review evidence remain blank until returned by live VideoDB responses."
     - "id: strybldr_flow_rich_media_panel"
@@ -257,7 +257,7 @@ flow:
         richMediaActiveTab: "html"
         outputSrcDoc: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"
         imageUrl: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"
-        videoUrl: ""
+        videoUrl: ''
         kgc:readingSummary: "Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."
     - "id: strybldr_flow_publish"
       type: "PublishWidget"
@@ -464,6 +464,335 @@ kgParserRoutingContract:
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 kgWebpageView: "markdown"
+strybldr_storyboard:
+  version: "1"
+  runId: "strybldr-videodb-recreate-77FAnT935IE"
+  createdAtMs: "1780110851619"
+  notes: "Validation input for recreating 77FAnT935IE on the knowgrph canvas through VideoDB API and MCP paths. Source-specific literals belong only in this external input file."
+  workflow:
+    stages:
+      - "stages: Source"
+      - "stages: Storyboard"
+      - "stages: Elements"
+      - "stages: Runtime"
+      - "stages: Review"
+      - "stages: Publish"
+    fork:
+      id: "workflow-fork-rest-or-mcp"
+      label: "Operator-approved REST or MCP fork"
+      policy: "Fork only after Source, Storyboard, and Elements cards are approved; both branches rejoin at Review and Publish."
+      branches:
+        - "branches: videodb-rest-path"
+        - "branches: videodb-mcp-path"
+    publish:
+      id: "workflow-local-publish-packet"
+      label: "Local publish packet"
+      policy: "Write local packet fields only; live provider IDs and URLs remain blank until returned by an operator-approved run."
+  sources:
+    - "sourceUnitId: validation-input-import-url-source"
+      workspacePath: "docs/import-url-source.md"
+      relativePath: "import-url-source.md"
+      originalName: "import-url-source.md"
+      mediaKind: "video"
+      mimeHint: "text/markdown"
+      byteSize: "0"
+      textHash: "validation-input"
+      mediaUrl: "https://www.youtube.com/watch?v=77FAnT935IE"
+    - "sourceUnitId: videodb-mcp-contract"
+      workspacePath: "docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md"
+      relativePath: "knowgrph-videodb-mcp-prd-tad.md"
+      originalName: "VideoDB MCP PRD/TAD implementation contract"
+      mediaKind: "doc"
+      mimeHint: "text/markdown"
+      byteSize: "0"
+      textHash: "videodb-mcp-contract"
+      mediaUrl: "docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md"
+    - "sourceUnitId: videodb-api-reference-contract"
+      workspacePath: "docs/documents/knowgrph-api-reference/knowgrph-videodb-api-reference.md"
+      relativePath: "knowgrph-videodb-api-reference.md"
+      originalName: "VideoDB API reference implementation contract"
+      mediaKind: "doc"
+      mimeHint: "text/markdown"
+      byteSize: "0"
+      textHash: "videodb-api-reference-contract"
+      mediaUrl: "docs/documents/knowgrph-api-reference/knowgrph-videodb-api-reference.md"
+    - "sourceUnitId: videodb-recreate-77FAnT935IE-source"
+      workspacePath: "docs/knowgrph-strybldr-demo.md#videodb-recreate-77FAnT935IE"
+      relativePath: "knowgrph-strybldr-demo.md"
+      originalName: "VideoDB API and MCP recreate 77FAnT935IE workflow"
+      mediaKind: "video"
+      mimeHint: "text/markdown"
+      byteSize: "0"
+      textHash: "videodb-recreate-77FAnT935IE"
+      mediaUrl: "https://www.youtube.com/watch?v=77FAnT935IE"
+    - "sourceUnitId: sensenova-api-contract"
+      workspacePath: "docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md"
+      relativePath: "knowgrph-sensenova-api-prd-tad.md"
+      originalName: "SenseNova AI API PRD/TAD implementation contract"
+      mediaKind: "doc"
+      mimeHint: "text/markdown"
+      byteSize: "0"
+      textHash: "sensenova-api-contract"
+      mediaUrl: "docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md"
+  elements:
+    - "id: sensenova-api-readiness-card"
+      sourceUnitId: "sensenova-api-contract"
+      label: "SenseNova API readiness"
+      confidence: "1"
+      sourceBox: "null"
+      evidenceKind: "source-metadata"
+      provider: "fallback"
+      order: "0"
+      summary: "MainPanel Integrations SenseNova API: host-only JWT credentials, text models, image models, video models, and bounded async video polling."
+      action: "Keep SenseNova access keys in host environment only and keep generated text, imageUrl, and videoUrl blank until returned by a live operator-approved run."
+      prompt: "Show the SenseNova Text, Image, Video provider card as a readiness-gated source card that feeds the VideoDB upload, index, search, stream, and publish packet path."
+    - "id: videodb-mcp-readiness-card"
+      sourceUnitId: "videodb-mcp-contract"
+      label: "VideoDB Director MCP readiness"
+      confidence: "1"
+      sourceBox: "null"
+      evidenceKind: "source-metadata"
+      provider: "fallback"
+      order: "1"
+      summary: "MainPanel MCP VideoDB Director section: server key videodb-director, uvx launcher, VIDEODB_API_KEY placeholder, tool groups (core/search/index/stream/AI), 36x10s circuit-breaker, confirmation required for generation tools."
+      action: "Keep VIDEODB_API_KEY in host environment only; never in browser storage or repo source."
+      prompt: "Show the VideoDB Director MCP configuration card with launcher config, tool groups, and circuit-breaker note as a readiness-gated source card."
+    - "id: videodb-api-reference-readiness-card"
+      sourceUnitId: "videodb-api-reference-contract"
+      label: "VideoDB API readiness"
+      confidence: "1"
+      sourceBox: "null"
+      evidenceKind: "source-metadata"
+      provider: "fallback"
+      order: "1"
+      summary: "MainPanel Integrations owns the REST rows needed to recreate the source: health, generate_video, async poll, spoken-word index, search, stream, and transcription."
+      action: "Keep REST settings blank until the operator supplies credentials and approves a live run."
+      prompt: "Render the REST-side VideoDB API checklist as the companion to the MCP readiness card."
+    - "id: videodb-recreate-source-setup-card"
+      sourceUnitId: "videodb-recreate-77FAnT935IE-source"
+      label: "Recreate source setup"
+      confidence: "0.9"
+      sourceBox: "null"
+      evidenceKind: "source-metadata"
+      provider: "knowgrph"
+      order: "2"
+      summary: "The source metadata identifies a short Artlist demo about using Seedance 2.0 for AI video directions."
+      action: "Use source metadata, thumbnail, and paraphrased beat notes as the recreation anchor; do not copy transcript text."
+      prompt: "Open with a creator preparing a compact AI-video request on a knowgrph canvas."
+    - "id: videodb-recreate-storyboard-card"
+      sourceUnitId: "videodb-recreate-77FAnT935IE-source"
+      label: "Recreate storyboard beats"
+      confidence: "0.88"
+      sourceBox: "null"
+      evidenceKind: "user-edit"
+      provider: "knowgrph"
+      order: "3"
+      summary: "The recreation keeps four editable beats: creator setup, stylized action example, sci-fi interruption example, and product-value close."
+      action: "Keep each beat as an editable Strybldr card before VideoDB generation."
+      prompt: "Build four concise source-aligned storyboard beats that evoke the source structure without copying the source transcript."
+    - "id: videodb-recreate-api-mcp-execution-card"
+      sourceUnitId: "videodb-recreate-77FAnT935IE-source"
+      label: "REST or MCP execution"
+      confidence: "0.93"
+      sourceBox: "null"
+      evidenceKind: "runtime-handoff"
+      provider: "videodb"
+      order: "4"
+      summary: "Operator approval chooses either MainPanel Integrations REST rows or MainPanel MCP videodb-director tools; both paths use the same approved card sequence."
+      action: "Run generate or upload, poll with get_async_response, then index, search, stream, and retrieve transcript only from live VideoDB responses."
+      prompt: "Show one VideoDB execution lane branching into REST and MCP paths that rejoin at the local publish packet."
+    - "id: sensenova-media-output-card"
+      sourceUnitId: "sensenova-api-contract"
+      label: "SenseNova media outputs"
+      confidence: "0.9"
+      sourceBox: "null"
+      evidenceKind: "runtime-plan"
+      provider: "sensenova"
+      order: "4.2"
+      summary: "SenseNova text, image, and video outputs are readiness-gated inputs to the VideoDB upload, index, search, stream, and publish packet path."
+      action: "Keep generated text, image URLs, and video URLs blank until returned by a live operator-approved SenseNova run."
+      prompt: "Render the SenseNova Text, Image, and Video outputs as a single readiness-gated media lane that feeds VideoDB."
+    - "id: workflow-fork-rest-mcp-card"
+      sourceUnitId: "videodb-recreate-77FAnT935IE-source"
+      label: "Workflow fork: REST or MCP"
+      confidence: "0.91"
+      sourceBox: "null"
+      evidenceKind: "runtime-plan"
+      provider: "knowgrph"
+      order: "4.4"
+      summary: "The approved storyboard sequence forks into VideoDB REST and VideoDB Director MCP lanes, then rejoins at review search and local publish packet creation."
+      action: "Expose the fork as one operator approval decision; do not run both live branches unless the operator explicitly selects both."
+      prompt: "Show a neutral fork card with REST and MCP branches that converge before publish."
+    - "id: videodb-character-clips-card"
+      sourceUnitId: "videodb-recreate-77FAnT935IE-source"
+      label: "VideoDB character clips"
+      confidence: "0.9"
+      sourceBox: "null"
+      evidenceKind: "runtime-plan"
+      provider: "videodb"
+      order: "5"
+      summary: "Approved Strybldr beats map into knowgrph subject timelines, then a live VideoDB run calls video.generate_stream(timeline=subject_timeline_ranges) for per-subject review clips."
+      action: "Keep subject clip URLs blank until returned live; without credentials, render the same subject timeline packet as local animatic chapter clips."
+      prompt: "Render a subject-clips lane with creator setup, action example, sci-fi interruption, and product close chapter clips."
+    - "id: videodb-recreate-review-card"
+      sourceUnitId: "videodb-recreate-77FAnT935IE-source"
+      label: "Review search and stream"
+      confidence: "0.9"
+      sourceBox: "null"
+      evidenceKind: "runtime-review"
+      provider: "videodb"
+      order: "5"
+      summary: "Spoken-word search checks the generated asset for source-aligned concepts before the stream URL is accepted into the canvas review lane."
+      action: "Search for creator setup, action example, sci-fi example, and product close; reject the run if live search results do not support the approved cards."
+      prompt: "Render the review lane as search result cards feeding a guarded stream preview."
+    - "id: videodb-recreate-publish-card"
+      sourceUnitId: "videodb-recreate-77FAnT935IE-source"
+      label: "Local publish packet"
+      confidence: "0.92"
+      sourceBox: "null"
+      evidenceKind: "runtime-publish"
+      provider: "knowgrph"
+      order: "6"
+      summary: "The final output is a local knowgrph publish packet containing source URL, approved storyboard cards, VideoDB response values, review evidence, and approval state."
+      action: "Write a local packet only; do not claim Cloudflare, public publish, or external deployment without explicit operator instruction."
+      prompt: "Close the recreation workflow with a local publish packet card and visible operator gate."
+    - "id: validation-input-source-card"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "Imported URL source"
+      confidence: "1"
+      sourceBox: "null"
+      evidenceKind: "source-metadata"
+      provider: "fallback"
+      order: "7"
+      summary: "Source metadata identifies a YouTube video by Artlist with generated captions available."
+      action: "Keep URL, title, author, video ID, and thumbnail as source evidence."
+      prompt: "Use the imported URL metadata as the provenance anchor for this story fork."
+    - "id: validation-input-setup-card"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "Creative request setup"
+      confidence: "0.86"
+      sourceBox: "null"
+      evidenceKind: "user-edit"
+      provider: "fallback"
+      order: "8"
+      summary: "The transcript frames a creator asking for specific AI video directions."
+      action: "Convert the setup into one concise opening storyboard card."
+      prompt: "Show a creator shaping a video concept through clear, specific requests."
+    - "id: validation-input-action-branch"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "Action branch"
+      confidence: "0.82"
+      sourceBox: "null"
+      evidenceKind: "user-edit"
+      provider: "fallback"
+      order: "9"
+      summary: "One story direction uses an action-crime tone with stylized tension."
+      action: "Keep this as an independent beat that can be approved or removed before generation."
+      prompt: "Storyboard an action beat with stylized tension and dry humor."
+    - "id: validation-input-sci-fi-branch"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "Sci-fi branch"
+      confidence: "0.78"
+      sourceBox: "null"
+      evidenceKind: "user-edit"
+      provider: "fallback"
+      order: "10"
+      summary: "A second direction introduces a contrasting sci-fi interruption."
+      action: "Keep this branch independent from the action beat."
+      prompt: "Storyboard a sudden sci-fi interruption that contrasts with an ordinary setting."
+    - "id: validation-input-product-card"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "Product CTA"
+      confidence: "0.9"
+      sourceBox: "null"
+      evidenceKind: "user-edit"
+      provider: "fallback"
+      order: "11"
+      summary: "The ending positions Artlist and Seedance 2.0 as tools for AI video creation."
+      action: "Keep product messaging separate from narrative beats for approval."
+      prompt: "Close with a clear product-card beat after the story examples."
+    - "id: validation-videodb-brief-card"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "VideoDB brief intake"
+      confidence: "1"
+      sourceBox: "null"
+      evidenceKind: "runtime-plan"
+      provider: "knowgrph"
+      order: "12"
+      summary: "A local knowgrph brief supplies the VideoDB generation prompt, review query, and publish-packet context."
+      action: "Keep the brief as local source truth and require operator-supplied VideoDB credentials before live calls."
+      prompt: "Show the Strybldr board adding a VideoDB generation lane from a local knowgrph brief."
+    - "id: validation-videodb-generate-card"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "VideoDB generation and poll"
+      confidence: "0.92"
+      sourceBox: "null"
+      evidenceKind: "runtime-handoff"
+      provider: "videodb"
+      order: "13"
+      summary: "VideoDB generation uses POST /video/{id}/generate/video and GET /async-response/{id}; job IDs remain blank until returned live."
+      action: "Poll with the shared 36 x 10s circuit-breaker and report failure on exhaustion."
+      prompt: "Storyboard a readiness-gated API handoff that never fabricates a job ID."
+    - "id: validation-videodb-review-card"
+      sourceUnitId: "validation-input-import-url-source"
+      label: "VideoDB review and publish packet"
+      confidence: "0.94"
+      sourceBox: "null"
+      evidenceKind: "runtime-review"
+      provider: "videodb"
+      order: "14"
+      summary: "Generated video is indexed with POST /video/{id}/index/, searched with POST /video/{id}/search/, streamed with POST /video/{id}/stream/, then recorded in a local knowgrph publish packet."
+      action: "Accept only live stream/download URLs and local operator-authored publish packet paths."
+      prompt: "Close with a local publish packet and visible operator approval gate."
+  edges:
+    - "id: edge-source-to-storyboard"
+      source: "validation-input-source-card"
+      target: "videodb-recreate-storyboard-card"
+      label: "source_to_storyboard"
+    - "id: edge-storyboard-to-elements"
+      source: "videodb-recreate-storyboard-card"
+      target: "validation-input-setup-card"
+      label: "storyboard_to_elements"
+    - "id: edge-elements-to-sensenova"
+      source: "validation-input-product-card"
+      target: "sensenova-media-output-card"
+      label: "elements_to_sensenova"
+    - "id: edge-sensenova-to-videodb"
+      source: "sensenova-media-output-card"
+      target: "videodb-recreate-api-mcp-execution-card"
+      label: "sensenova_to_videodb"
+    - "id: edge-execution-to-fork"
+      source: "videodb-recreate-api-mcp-execution-card"
+      target: "workflow-fork-rest-mcp-card"
+      label: "operator_fork"
+    - "id: edge-fork-to-character-clips"
+      source: "workflow-fork-rest-mcp-card"
+      target: "videodb-character-clips-card"
+      label: "fork_to_character_clips"
+    - "id: edge-character-clips-to-review"
+      source: "videodb-character-clips-card"
+      target: "videodb-recreate-review-card"
+      label: "clips_to_review"
+    - "id: edge-review-to-publish"
+      source: "videodb-recreate-review-card"
+      target: "videodb-recreate-publish-card"
+      label: "review_to_publish"
+  cards:
+    - "nodeId: strybldr:source:3379367779"
+      action: "Review the #Storyboardelement source evidence into editable storyboard elements. <video src=\"https://www.youtube.com/watch?v=77FAnT935IE\" poster=\"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg\" title=\"sd20\" controls></video>"
+    - "nodeId: strybldr:frame:1457097024"
+      action: "Review element cards, revise prompts, then send the approved sequence to video generation."
+    - "nodeId: strybldr:source:1842337348"
+      action: "Review the source evidence into editable storyboard elements."
+    - "nodeId: strybldr:frame:2394967648"
+      summary: "Frame-level storyboard card generated from the imported source."
+    - "nodeId: workflow-fork-rest-mcp-card"
+      action: "Expose the fork as one operator approval decision; do not run both live branches unless the operator explicitly selects both."
+    - "nodeId: strybldr:source:3449270236"
+      action: "Review the source evidence into editable storyboard elements."
+    - "nodeId: strybldr:source:4137906559"
+      summary: "Imported document source unit: SenseNova AI API PRD/TAD implementation contract."
+      action: "Review the source evidence into editable storyboard elements."
 ---
 
 # Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E
@@ -557,428 +886,8 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 
 ## Direct-Open Strybldr Seed
 
-Opening this file directly should render through Strybldr. The seed below is the static validation artifact used to prove the same Storyboard projection and hardcode guard.
+Opening this file directly renders through Strybldr from the `strybldr_storyboard` YAML frontmatter payload. The Markdown body remains human runbook and validation context only.
 
-```json strybldr-storyboard
-{
-  "version": 1,
-  "runId": "strybldr-videodb-recreate-77FAnT935IE",
-  "createdAtMs": 1780110851619,
-  "notes": "Validation input for recreating 77FAnT935IE on the knowgrph canvas through VideoDB API and MCP paths. Source-specific literals belong only in this external input file.",
-  "workflow": {
-    "stages": [
-      "Source",
-      "Storyboard",
-      "Elements",
-      "Runtime",
-      "Review",
-      "Publish"
-    ],
-    "fork": {
-      "id": "workflow-fork-rest-or-mcp",
-      "label": "Operator-approved REST or MCP fork",
-      "policy": "Fork only after Source, Storyboard, and Elements cards are approved; both branches rejoin at Review and Publish.",
-      "branches": [
-        "videodb-rest-path",
-        "videodb-mcp-path"
-      ]
-    },
-    "publish": {
-      "id": "workflow-local-publish-packet",
-      "label": "Local publish packet",
-      "policy": "Write local packet fields only; live provider IDs and URLs remain blank until returned by an operator-approved run."
-    }
-  },
-  "sources": [
-    {
-      "sourceUnitId": "validation-input-import-url-source",
-      "workspacePath": "docs/import-url-source.md",
-      "relativePath": "import-url-source.md",
-      "originalName": "import-url-source.md",
-      "mediaKind": "video",
-      "mimeHint": "text/markdown",
-      "byteSize": 0,
-      "textHash": "validation-input",
-      "mediaUrl": "https://www.youtube.com/watch?v=77FAnT935IE"
-    },
-    {
-      "sourceUnitId": "videodb-mcp-contract",
-      "workspacePath": "docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md",
-      "relativePath": "knowgrph-videodb-mcp-prd-tad.md",
-      "originalName": "VideoDB MCP PRD/TAD implementation contract",
-      "mediaKind": "doc",
-      "mimeHint": "text/markdown",
-      "byteSize": 0,
-      "textHash": "videodb-mcp-contract",
-      "mediaUrl": "docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md"
-    },
-    {
-      "sourceUnitId": "videodb-api-reference-contract",
-      "workspacePath": "docs/documents/knowgrph-api-reference/knowgrph-videodb-api-reference.md",
-      "relativePath": "knowgrph-videodb-api-reference.md",
-      "originalName": "VideoDB API reference implementation contract",
-      "mediaKind": "doc",
-      "mimeHint": "text/markdown",
-      "byteSize": 0,
-      "textHash": "videodb-api-reference-contract",
-      "mediaUrl": "docs/documents/knowgrph-api-reference/knowgrph-videodb-api-reference.md"
-    },
-    {
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "workspacePath": "docs/knowgrph-strybldr-demo.md#videodb-recreate-77FAnT935IE",
-      "relativePath": "knowgrph-strybldr-demo.md",
-      "originalName": "VideoDB API and MCP recreate 77FAnT935IE workflow",
-      "mediaKind": "video",
-      "mimeHint": "text/markdown",
-      "byteSize": 0,
-      "textHash": "videodb-recreate-77FAnT935IE",
-      "mediaUrl": "https://www.youtube.com/watch?v=77FAnT935IE"
-    },
-    {
-      "sourceUnitId": "sensenova-api-contract",
-      "workspacePath": "docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md",
-      "relativePath": "knowgrph-sensenova-api-prd-tad.md",
-      "originalName": "SenseNova AI API PRD/TAD implementation contract",
-      "mediaKind": "doc",
-      "mimeHint": "text/markdown",
-      "byteSize": 0,
-      "textHash": "sensenova-api-contract",
-      "mediaUrl": "docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md"
-    }
-  ],
-  "elements": [
-    {
-      "id": "sensenova-api-readiness-card",
-      "sourceUnitId": "sensenova-api-contract",
-      "label": "SenseNova API readiness",
-      "confidence": 1,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 0,
-      "summary": "MainPanel Integrations SenseNova API: host-only JWT credentials, text models, image models, video models, and bounded async video polling.",
-      "action": "Keep SenseNova access keys in host environment only and keep generated text, imageUrl, and videoUrl blank until returned by a live operator-approved run.",
-      "prompt": "Show the SenseNova Text, Image, Video provider card as a readiness-gated source card that feeds the VideoDB upload, index, search, stream, and publish packet path."
-    },
-    {
-      "id": "videodb-mcp-readiness-card",
-      "sourceUnitId": "videodb-mcp-contract",
-      "label": "VideoDB Director MCP readiness",
-      "confidence": 1,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 1,
-      "summary": "MainPanel MCP VideoDB Director section: server key videodb-director, uvx launcher, VIDEODB_API_KEY placeholder, tool groups (core/search/index/stream/AI), 36x10s circuit-breaker, confirmation required for generation tools.",
-      "action": "Keep VIDEODB_API_KEY in host environment only; never in browser storage or repo source.",
-      "prompt": "Show the VideoDB Director MCP configuration card with launcher config, tool groups, and circuit-breaker note as a readiness-gated source card."
-    },
-    {
-      "id": "videodb-api-reference-readiness-card",
-      "sourceUnitId": "videodb-api-reference-contract",
-      "label": "VideoDB API readiness",
-      "confidence": 1,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 1,
-      "summary": "MainPanel Integrations owns the REST rows needed to recreate the source: health, generate_video, async poll, spoken-word index, search, stream, and transcription.",
-      "action": "Keep REST settings blank until the operator supplies credentials and approves a live run.",
-      "prompt": "Render the REST-side VideoDB API checklist as the companion to the MCP readiness card."
-    },
-    {
-      "id": "videodb-recreate-source-setup-card",
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "label": "Recreate source setup",
-      "confidence": 0.9,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "knowgrph",
-      "order": 2,
-      "summary": "The source metadata identifies a short Artlist demo about using Seedance 2.0 for AI video directions.",
-      "action": "Use source metadata, thumbnail, and paraphrased beat notes as the recreation anchor; do not copy transcript text.",
-      "prompt": "Open with a creator preparing a compact AI-video request on a knowgrph canvas."
-    },
-    {
-      "id": "videodb-recreate-storyboard-card",
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "label": "Recreate storyboard beats",
-      "confidence": 0.88,
-      "sourceBox": null,
-      "evidenceKind": "user-edit",
-      "provider": "knowgrph",
-      "order": 3,
-      "summary": "The recreation keeps four editable beats: creator setup, stylized action example, sci-fi interruption example, and product-value close.",
-      "action": "Keep each beat as an editable Strybldr card before VideoDB generation.",
-      "prompt": "Build four concise source-aligned storyboard beats that evoke the source structure without copying the source transcript."
-    },
-    {
-      "id": "videodb-recreate-api-mcp-execution-card",
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "label": "REST or MCP execution",
-      "confidence": 0.93,
-      "sourceBox": null,
-      "evidenceKind": "runtime-handoff",
-      "provider": "videodb",
-      "order": 4,
-      "summary": "Operator approval chooses either MainPanel Integrations REST rows or MainPanel MCP videodb-director tools; both paths use the same approved card sequence.",
-      "action": "Run generate or upload, poll with get_async_response, then index, search, stream, and retrieve transcript only from live VideoDB responses.",
-      "prompt": "Show one VideoDB execution lane branching into REST and MCP paths that rejoin at the local publish packet."
-    },
-    {
-      "id": "sensenova-media-output-card",
-      "sourceUnitId": "sensenova-api-contract",
-      "label": "SenseNova media outputs",
-      "confidence": 0.9,
-      "sourceBox": null,
-      "evidenceKind": "runtime-plan",
-      "provider": "sensenova",
-      "order": 4.2,
-      "summary": "SenseNova text, image, and video outputs are readiness-gated inputs to the VideoDB upload, index, search, stream, and publish packet path.",
-      "action": "Keep generated text, image URLs, and video URLs blank until returned by a live operator-approved SenseNova run.",
-      "prompt": "Render the SenseNova Text, Image, and Video outputs as a single readiness-gated media lane that feeds VideoDB."
-    },
-    {
-      "id": "workflow-fork-rest-mcp-card",
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "label": "Workflow fork: REST or MCP",
-      "confidence": 0.91,
-      "sourceBox": null,
-      "evidenceKind": "runtime-plan",
-      "provider": "knowgrph",
-      "order": 4.4,
-      "summary": "The approved storyboard sequence forks into VideoDB REST and VideoDB Director MCP lanes, then rejoins at review search and local publish packet creation.",
-      "action": "Expose the fork as one operator approval decision; do not run both live branches unless the operator explicitly selects both.",
-      "prompt": "Show a neutral fork card with REST and MCP branches that converge before publish."
-    },
-    {
-      "id": "videodb-character-clips-card",
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "label": "VideoDB character clips",
-      "confidence": 0.9,
-      "sourceBox": null,
-      "evidenceKind": "runtime-plan",
-      "provider": "videodb",
-      "order": 5,
-      "summary": "Approved Strybldr beats map into knowgrph subject timelines, then a live VideoDB run calls video.generate_stream(timeline=subject_timeline_ranges) for per-subject review clips.",
-      "action": "Keep subject clip URLs blank until returned live; without credentials, render the same subject timeline packet as local animatic chapter clips.",
-      "prompt": "Render a subject-clips lane with creator setup, action example, sci-fi interruption, and product close chapter clips."
-    },
-    {
-      "id": "videodb-recreate-review-card",
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "label": "Review search and stream",
-      "confidence": 0.9,
-      "sourceBox": null,
-      "evidenceKind": "runtime-review",
-      "provider": "videodb",
-      "order": 5,
-      "summary": "Spoken-word search checks the generated asset for source-aligned concepts before the stream URL is accepted into the canvas review lane.",
-      "action": "Search for creator setup, action example, sci-fi example, and product close; reject the run if live search results do not support the approved cards.",
-      "prompt": "Render the review lane as search result cards feeding a guarded stream preview."
-    },
-    {
-      "id": "videodb-recreate-publish-card",
-      "sourceUnitId": "videodb-recreate-77FAnT935IE-source",
-      "label": "Local publish packet",
-      "confidence": 0.92,
-      "sourceBox": null,
-      "evidenceKind": "runtime-publish",
-      "provider": "knowgrph",
-      "order": 6,
-      "summary": "The final output is a local knowgrph publish packet containing source URL, approved storyboard cards, VideoDB response values, review evidence, and approval state.",
-      "action": "Write a local packet only; do not claim Cloudflare, public publish, or external deployment without explicit operator instruction.",
-      "prompt": "Close the recreation workflow with a local publish packet card and visible operator gate."
-    },
-    {
-      "id": "validation-input-source-card",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "Imported URL source",
-      "confidence": 1,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 7,
-      "summary": "Source metadata identifies a YouTube video by Artlist with generated captions available.",
-      "action": "Keep URL, title, author, video ID, and thumbnail as source evidence.",
-      "prompt": "Use the imported URL metadata as the provenance anchor for this story fork."
-    },
-    {
-      "id": "validation-input-setup-card",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "Creative request setup",
-      "confidence": 0.86,
-      "sourceBox": null,
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 8,
-      "summary": "The transcript frames a creator asking for specific AI video directions.",
-      "action": "Convert the setup into one concise opening storyboard card.",
-      "prompt": "Show a creator shaping a video concept through clear, specific requests."
-    },
-    {
-      "id": "validation-input-action-branch",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "Action branch",
-      "confidence": 0.82,
-      "sourceBox": null,
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 9,
-      "summary": "One story direction uses an action-crime tone with stylized tension.",
-      "action": "Keep this as an independent beat that can be approved or removed before generation.",
-      "prompt": "Storyboard an action beat with stylized tension and dry humor."
-    },
-    {
-      "id": "validation-input-sci-fi-branch",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "Sci-fi branch",
-      "confidence": 0.78,
-      "sourceBox": null,
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 10,
-      "summary": "A second direction introduces a contrasting sci-fi interruption.",
-      "action": "Keep this branch independent from the action beat.",
-      "prompt": "Storyboard a sudden sci-fi interruption that contrasts with an ordinary setting."
-    },
-    {
-      "id": "validation-input-product-card",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "Product CTA",
-      "confidence": 0.9,
-      "sourceBox": null,
-      "evidenceKind": "user-edit",
-      "provider": "fallback",
-      "order": 11,
-      "summary": "The ending positions Artlist and Seedance 2.0 as tools for AI video creation.",
-      "action": "Keep product messaging separate from narrative beats for approval.",
-      "prompt": "Close with a clear product-card beat after the story examples."
-    },
-    {
-      "id": "validation-videodb-brief-card",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "VideoDB brief intake",
-      "confidence": 1,
-      "sourceBox": null,
-      "evidenceKind": "runtime-plan",
-      "provider": "knowgrph",
-      "order": 12,
-      "summary": "A local knowgrph brief supplies the VideoDB generation prompt, review query, and publish-packet context.",
-      "action": "Keep the brief as local source truth and require operator-supplied VideoDB credentials before live calls.",
-      "prompt": "Show the Strybldr board adding a VideoDB generation lane from a local knowgrph brief."
-    },
-    {
-      "id": "validation-videodb-generate-card",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "VideoDB generation and poll",
-      "confidence": 0.92,
-      "sourceBox": null,
-      "evidenceKind": "runtime-handoff",
-      "provider": "videodb",
-      "order": 13,
-      "summary": "VideoDB generation uses POST /video/{id}/generate/video and GET /async-response/{id}; job IDs remain blank until returned live.",
-      "action": "Poll with the shared 36 x 10s circuit-breaker and report failure on exhaustion.",
-      "prompt": "Storyboard a readiness-gated API handoff that never fabricates a job ID."
-    },
-    {
-      "id": "validation-videodb-review-card",
-      "sourceUnitId": "validation-input-import-url-source",
-      "label": "VideoDB review and publish packet",
-      "confidence": 0.94,
-      "sourceBox": null,
-      "evidenceKind": "runtime-review",
-      "provider": "videodb",
-      "order": 14,
-      "summary": "Generated video is indexed with POST /video/{id}/index/, searched with POST /video/{id}/search/, streamed with POST /video/{id}/stream/, then recorded in a local knowgrph publish packet.",
-      "action": "Accept only live stream/download URLs and local operator-authored publish packet paths.",
-      "prompt": "Close with a local publish packet and visible operator approval gate."
-    }
-  ],
-  "edges": [
-    {
-      "id": "edge-source-to-storyboard",
-      "source": "validation-input-source-card",
-      "target": "videodb-recreate-storyboard-card",
-      "label": "source_to_storyboard"
-    },
-    {
-      "id": "edge-storyboard-to-elements",
-      "source": "videodb-recreate-storyboard-card",
-      "target": "validation-input-setup-card",
-      "label": "storyboard_to_elements"
-    },
-    {
-      "id": "edge-elements-to-sensenova",
-      "source": "validation-input-product-card",
-      "target": "sensenova-media-output-card",
-      "label": "elements_to_sensenova"
-    },
-    {
-      "id": "edge-sensenova-to-videodb",
-      "source": "sensenova-media-output-card",
-      "target": "videodb-recreate-api-mcp-execution-card",
-      "label": "sensenova_to_videodb"
-    },
-    {
-      "id": "edge-execution-to-fork",
-      "source": "videodb-recreate-api-mcp-execution-card",
-      "target": "workflow-fork-rest-mcp-card",
-      "label": "operator_fork"
-    },
-    {
-      "id": "edge-fork-to-character-clips",
-      "source": "workflow-fork-rest-mcp-card",
-      "target": "videodb-character-clips-card",
-      "label": "fork_to_character_clips"
-    },
-    {
-      "id": "edge-character-clips-to-review",
-      "source": "videodb-character-clips-card",
-      "target": "videodb-recreate-review-card",
-      "label": "clips_to_review"
-    },
-    {
-      "id": "edge-review-to-publish",
-      "source": "videodb-recreate-review-card",
-      "target": "videodb-recreate-publish-card",
-      "label": "review_to_publish"
-    }
-  ],
-  "cards": [
-    {
-      "nodeId": "strybldr:source:3379367779",
-      "action": "Review the source evidence into editable storyboard elements. <video src=\"https://www.youtube.com/watch?v=77FAnT935IE\" poster=\"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg\" title=\"sd20\" controls></video>",
-      "output": "123"
-    },
-    {
-      "nodeId": "strybldr:frame:1457097024",
-      "action": "Review element cards, revise prompts, then send the approved sequence to video generation."
-    },
-    {
-      "nodeId": "strybldr:source:1842337348",
-      "action": "Review the source evidence into editable storyboard elements."
-    },
-    {
-      "nodeId": "strybldr:frame:2394967648",
-      "summary": "Frame-level storyboard card generated from the imported source."
-    },
-    {
-      "nodeId": "workflow-fork-rest-mcp-card",
-      "action": "Expose the fork as one operator approval decision; do not run both live branches unless the operator explicitly selects both."
-    },
-    {
-      "nodeId": "strybldr:source:3449270236",
-      "action": "Review the source evidence into editable storyboard elements."
-    },
-    {
-      "nodeId": "strybldr:source:4137906559",
-      "summary": "Imported document source unit: SenseNova AI API PRD/TAD implementation contract.",
-      "action": "Review the source evidence into editable storyboard elements."
-    }
-  ]
-}
-```
 
 ## Validation Commands
 
