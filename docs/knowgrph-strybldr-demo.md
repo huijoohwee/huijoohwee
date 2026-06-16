@@ -3,10 +3,10 @@ title: "Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E"
 graphId: "md:knowgrph-strybldr-sensenova-videodb-e2e"
 doc_type: "Strybldr E2E Demo - SenseNova Text + Image + Video + VideoDB API + MCP"
 date: "2026-06-13"
-lang: en-US
+lang: "en-US"
 implementation_contract: "docs/documents/knowgrph-strybldr-prd-tad.md"
-validation_input_forbid_hardcode_in_repo: true
-deployed_api_claim: false
+validation_input_forbid_hardcode_in_repo: "true"
+deployed_api_claim: "false"
 videodb_credential_policy: "Server Managed Key uses host VIDEODB_API_KEY; never hardcoded, browser-stored, or repo-stored"
 sensenova_credential_policy: "Server Managed Key uses host SENSENOVA_API_KEY; JWT/proxy auth derived server-side at request time; never stored in browser or repo"
 videodb_workflow_status: "VideoDB API + MCP workflow integrated into full SenseNova Text, Image, Video to VideoDB E2E pipeline"
@@ -19,13 +19,13 @@ kgRendererCompatibility:
   - "2D Renderer: Storyboard"
   - "2D Renderer: Flow Editor"
 kgDocumentSemanticMode: "document"
-kgFrontmatterModeEnabled: true
-kgMultiDimTableModeEnabled: false
-kgDocumentStructureBaselineLock: false
-kgStrybldrStoryboard: true
-kgBottomPanelOpen: true
+kgFrontmatterModeEnabled: "true"
+kgMultiDimTableModeEnabled: "false"
+kgDocumentStructureBaselineLock: "false"
+kgStrybldrStoryboard: "true"
+kgBottomPanelOpen: "true"
 kgBottomPanelTab: "flowEditor"
-kgFloatingPanelOpen: true
+kgFloatingPanelOpen: "true"
 kgFloatingPanelView: "strybldr"
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
@@ -38,9 +38,9 @@ kgStrybldrCameraContract:
   panel: "FloatingPanel -> Camera"
   graphField: "strybldrCamera"
   degreeGrid:
-    longitude: [0, 45, 90, 135, 180, 225, 270, 315]
-    latitude: [-90, -45, 0, 45, 90]
-  persistedFields: ["angle", "level", "shot", "note", "orbitX", "orbitY"]
+    longitude: "[0, 45, 90, 135, 180, 225, 270, 315]"
+    latitude: "[-90, -45, 0, 45, 90]"
+  persistedFields: "[\"angle\", \"level\", \"shot\", \"note\", \"orbitX\", \"orbitY\"]"
   geometryPolicy: "Shared 3D orbit vector drives draggable handle, active meridian/latitude, SVG ray polygon, and selected Wide/Medium/Close-up frame alignment; renderers must not fork 2D-only camera math."
 kgYoutubeVideoId: "77FAnT935IE"
 kgYoutubeFormat: "markdown"
@@ -51,30 +51,30 @@ source_title: "Seedance 2.0 is on Artlist"
 source_author: "Artlist"
 source_oembed_url: "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D77FAnT935IE&format=json"
 import_url_contract:
-  - "Toolbar -> Launch -> Import URL"
-  - "Renderer selection -> Strybldr"
-  - "URL import writes one neutral corpus source unit for 77FAnT935IE"
-  - "URL import writes and focuses one .strybldr.md document"
+  - "import_url_contract: Toolbar -> Launch -> Import URL"
+  - "import_url_contract: Renderer selection -> Strybldr"
+  - "import_url_contract: URL import writes one neutral corpus source unit for 77FAnT935IE"
+  - "import_url_contract: URL import writes and focuses one .strybldr.md document"
   - "Canvas View Mode reports 2D Renderer: Storyboard"
-  - "Toolbar Run all opens the Strybldr owner panel and writes a generated local animatic when VideoDB or SenseNova credentials are unavailable"
+  - "import_url_contract: Toolbar Run all opens the Strybldr owner panel and writes a generated local animatic when VideoDB or SenseNova credentials are unavailable"
 local_file_import_contract:
-  - "Toolbar -> Launch -> Import local files"
-  - "Select this Markdown document as validation input"
-  - "Local import recognizes the Strybldr frontmatter and storyboard payload"
+  - "local_file_import_contract: Toolbar -> Launch -> Import local files"
+  - "local_file_import_contract: Select this Markdown document as validation input"
+  - "local_file_import_contract: Local import recognizes the Strybldr frontmatter and storyboard payload"
   - "Canvas View Mode reports 2D Renderer: Storyboard"
-  - "Source, Storyboard, Elements, Runtime, Review, and Publish cards are visible"
+  - "local_file_import_contract: Source, Storyboard, Elements, Runtime, Review, and Publish cards are visible"
 videodb_runtime_contract:
-  - "MainPanel Integrations owns videodb.api_key and VideoDB API reference rows"
-  - "Imported 77FAnT935IE source -> knowgrph storyboard cards -> VideoDB API/MCP generation -> async poll -> spoken-word index -> review search -> stream -> local publish packet"
-  - "The recreation uses source metadata, thumbnail, generated-caption availability, and operator-authored paraphrased beats only; it does not copy transcript text"
-  - "Missing server-managed VIDEODB_API_KEY or live runtime IDs keeps external provider calls readiness-gated while still generating a local knowgrph animatic; no fabricated job IDs or URLs"
-  - "No Prod, Cloudflare, or external publication claim exists until the operator explicitly authorizes it"
+  - "videodb_runtime_contract: MainPanel Integrations owns videodb.api_key and VideoDB API reference rows"
+  - "videodb_runtime_contract: Imported 77FAnT935IE source -> knowgrph storyboard cards -> VideoDB API/MCP generation -> async poll -> spoken-word index -> review search -> stream -> local publish packet"
+  - "videodb_runtime_contract: The recreation uses source metadata, thumbnail, generated-caption availability, and operator-authored paraphrased beats only; it does not copy transcript text"
+  - "videodb_runtime_contract: Missing server-managed VIDEODB_API_KEY or live runtime IDs keeps external provider calls readiness-gated while still generating a local knowgrph animatic; no fabricated job IDs or URLs"
+  - "videodb_runtime_contract: No Prod, Cloudflare, or external publication claim exists until the operator explicitly authorizes it"
 videodb_mcp_contract:
-  - "VideoDB Director MCP is surfaced in MainPanel MCP"
+  - "videodb_mcp_contract: VideoDB Director MCP is surfaced in MainPanel MCP"
   - "MCP server key: videodb-director; launcher: uvx videodb-director-mcp --api-key=${VIDEODB_API_KEY}"
-  - "VIDEODB_API_KEY lives in host environment only; never in browser storage or repo source"
-  - "Async MCP tools follow the 36x10s circuit-breaker"
-  - "AI-generation MCP tools require human confirmation before execution"
+  - "videodb_mcp_contract: VIDEODB_API_KEY lives in host environment only; never in browser storage or repo source"
+  - "videodb_mcp_contract: Async MCP tools follow the 36x10s circuit-breaker"
+  - "videodb_mcp_contract: AI-generation MCP tools require human confirmation before execution"
   - "MCP path and REST path converge on the same Strybldr publish packet schema: source_url, storyboard_cards, video_id, stream_url, videodb_stream_url, search_results, transcript_text, approval_state"
   - "implementation_contract: docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md"
 videodb_recreate_77FAnT935IE_contract:
@@ -85,7 +85,7 @@ videodb_recreate_77FAnT935IE_contract:
   rest_path: "MainPanel Integrations -> videodb.health -> generate_video/upload_video -> async poll -> index_spoken_word -> search_video -> stream_video"
   mcp_path: "MainPanel MCP -> videodb-director -> generate_video/upload_video -> get_async_response -> index_video -> search_videos -> stream_video -> get_transcript"
   prompt_policy: "Operator approves each prompt card before paid VideoDB calls; missing credentials writes readiness/fallback cards only"
-  publish_packet_schema: ["source_url", "storyboard_cards", "video_id", "stream_url", "videodb_stream_url", "search_results", "transcript_text", "approval_state"]
+  publish_packet_schema: "[\"source_url\", \"storyboard_cards\", \"video_id\", \"stream_url\", \"videodb_stream_url\", \"search_results\", \"transcript_text\", \"approval_state\"]"
 videodb_character_clips_contract:
   upstream_reference: "https://docs.videodb.io/examples-and-tutorials/video-rag/character-clips.md"
   sdk_primitive: "video.generate_stream(timeline=subject_timeline_ranges)"
@@ -95,16 +95,16 @@ videodb_character_clips_contract:
   output_policy: "clip URLs remain blank until returned by a live VideoDB SDK response; no stream URL is fabricated"
   subjects:
     creator_setup:
-      timeline: [[0, 12]]
+      timeline: "0, 12"
       clip: ""
     action_example:
-      timeline: [[12, 28]]
+      timeline: "12, 28"
       clip: ""
     sci_fi_interruption:
-      timeline: [[28, 44]]
+      timeline: "28, 44"
       clip: ""
     product_close:
-      timeline: [[44, 60]]
+      timeline: "44, 60"
       clip: ""
 videodb_mcp_inputs:
   server_key: "videodb-director"
@@ -114,14 +114,14 @@ videodb_mcp_inputs:
   api_key_placeholder: "${VIDEODB_API_KEY}"
   api_base_url: "https://api.videodb.io"
   mcp_docs_url: "https://docs.videodb.io/pages/build-with-agents/mcp-server.md"
-  poll_max_iterations: 36
-  poll_interval_ms: 10000
-  require_confirmation_for_generation: true
-  tools_core: ["upload_video", "get_collection", "list_collections", "create_collection", "get_async_response", "check_health"]
-  tools_search: ["search_videos", "search_collection", "search_by_scene"]
-  tools_index: ["index_video", "index_scene"]
-  tools_stream: ["stream_video", "get_transcript"]
-  tools_ai: ["generate_video", "generate_audio", "generate_text", "dub_video", "translate_video"]
+  poll_max_iterations: "36"
+  poll_interval_ms: "10000"
+  require_confirmation_for_generation: "true"
+  tools_core: "[\"upload_video\", \"get_collection\", \"list_collections\", \"create_collection\", \"get_async_response\", \"check_health\"]"
+  tools_search: "[\"search_videos\", \"search_collection\", \"search_by_scene\"]"
+  tools_index: "[\"index_video\", \"index_scene\"]"
+  tools_stream: "[\"stream_video\", \"get_transcript\"]"
+  tools_ai: "[\"generate_video\", \"generate_audio\", \"generate_text\", \"dub_video\", \"translate_video\"]"
 videodb_inputs:
   base_url: "https://api.videodb.io"
   api_key: ""
@@ -144,17 +144,17 @@ videodb_inputs:
   search_query: "creator asks for AI video directions, action example, sci-fi example, product close"
   stream_format: "mp4"
   stream_quality: "medium"
-  poll_max_iterations: 36
-  poll_interval_ms: 10000
+  poll_max_iterations: "36"
+  poll_interval_ms: "10000"
 sensenova_runtime_contract:
-  - "SenseNova API is surfaced in MainPanel Integrations as a text, image, and video provider"
+  - "sensenova_runtime_contract: SenseNova API is surfaced in MainPanel Integrations as a text, image, and video provider"
   - "Auth: Server Managed Key from SENSENOVA_API_KEY; signing/proxy auth stays server-side and raw keys never enter browser or repo"
   - "Text: SenseChat-5, SenseChat-Turbo, and SenseChat-Vision-5 through the shared streaming chat path"
   - "Image: artist-xl and senseNova-img-enhance through the shared image generation path"
   - "Video: SenseAnim and SenseAnim-Pro through a bounded async 36x10s circuit-breaker"
-  - "SenseNova Text, Image, Video outputs feed VideoDB upload, index, search, stream, and local publish packet lanes"
-  - "Missing SenseNova or VideoDB credentials keeps external provider calls readiness-gated and falls back to a generated local knowgrph animatic; no fabricated SenseNova output, VideoDB IDs, stream URLs, or transcript text"
-  - "No Prod, Cloudflare, or external publication claim exists until the operator explicitly authorizes it"
+  - "sensenova_runtime_contract: SenseNova Text, Image, Video outputs feed VideoDB upload, index, search, stream, and local publish packet lanes"
+  - "sensenova_runtime_contract: Missing SenseNova or VideoDB credentials keeps external provider calls readiness-gated and falls back to a generated local knowgrph animatic; no fabricated SenseNova output, VideoDB IDs, stream URLs, or transcript text"
+  - "sensenova_runtime_contract: No Prod, Cloudflare, or external publication claim exists until the operator explicitly authorizes it"
 sensenova_inputs:
   provider_id: "sensenova"
   base_url: "https://api.sensenova.cn"
@@ -165,199 +165,199 @@ sensenova_inputs:
   default_text_model: "SenseChat-5"
   default_image_model: "artist-xl"
   default_video_model: "SenseAnim"
-  text_model_options: ["SenseChat-5", "SenseChat-Turbo", "SenseChat-Vision-5"]
-  image_model_options: ["artist-xl", "senseNova-img-enhance"]
-  video_model_options: ["SenseAnim", "SenseAnim-Pro"]
-  poll_max_iterations: 36
-  poll_interval_ms: 10000
+  text_model_options: "[\"SenseChat-5\", \"SenseChat-Turbo\", \"SenseChat-Vision-5\"]"
+  image_model_options: "[\"artist-xl\", \"senseNova-img-enhance\"]"
+  video_model_options: "[\"SenseAnim\", \"SenseAnim-Pro\"]"
+  poll_max_iterations: "36"
+  poll_interval_ms: "10000"
 local_animatic_inputs:
   provider: "knowgrph-local-animatic"
   model: "strybldr-local-animatic-v1"
   status: "generated"
-  paid_call_count: 0
+  paid_call_count: "0"
   source: "approved Strybldr cards from this imported 77FAnT935IE workflow"
   chapter_clips_source: "videodb_character_clips_contract.subjects with blank live clip URLs"
   output: "strybldr-video-*.md with embedded srcdoc animatic, chapter clips, and source provenance links"
 flow:
-  direction: LR
-  edgeType: smoothstep
-  balancedViewportPreset: widgetFrontmatter
+  direction: "LR"
+  edgeType: "smoothstep"
+  balancedViewportPreset: "widgetFrontmatter"
   nodes:
-    - id: strybldr_flow_source
-      type: InputWidget
+    - "id: strybldr_flow_source"
+      type: "InputWidget"
       label: "77FAnT935IE source"
-      position: {x: 0, y: 0}
+      position: "{x: 0, y: 0}"
       properties:
         lane: "Source"
-        "kgc:readingSummary": "Imported source metadata and policy anchor for the 77FAnT935IE Strybldr recreation workflow."
-    - id: strybldr_flow_storyboard
-      type: StoryboardWidget
+        kgc:readingSummary: "Imported source metadata and policy anchor for the 77FAnT935IE Strybldr recreation workflow."
+    - "id: strybldr_flow_storyboard"
+      type: "StoryboardWidget"
       label: "Approved storyboard"
-      position: {x: 360, y: 0}
+      position: "{x: 360, y: 0}"
       properties:
         lane: "Storyboard"
-        "kgc:readingSummary": "Operator-approved storyboard beats used by SenseNova, VideoDB REST, and VideoDB MCP paths."
-    - id: strybldr_flow_elements
-      type: ElementsWidget
+        kgc:readingSummary: "Operator-approved storyboard beats used by SenseNova, VideoDB REST, and VideoDB MCP paths."
+    - "id: strybldr_flow_elements"
+      type: "ElementsWidget"
       label: "Editable elements"
-      position: {x: 720, y: 0}
+      position: "{x: 720, y: 0}"
       properties:
         lane: "Elements"
-        "kgc:readingSummary": "Editable source-backed element cards for setup, action branch, sci-fi branch, product close, and character clips."
-    - id: strybldr_flow_sensenova
-      type: RuntimeWidget
+        kgc:readingSummary: "Editable source-backed element cards for setup, action branch, sci-fi branch, product close, and character clips."
+    - "id: strybldr_flow_sensenova"
+      type: "RuntimeWidget"
       label: "SenseNova media outputs"
-      position: {x: 1080, y: -140}
+      position: "{x: 1080, y: -140}"
       properties:
         lane: "Runtime"
-        "kgc:readingSummary": "Readiness-gated SenseNova text, image, and video outputs that feed the VideoDB upload/index/search/stream path."
-    - id: strybldr_flow_fork
-      type: DecisionWidget
+        kgc:readingSummary: "Readiness-gated SenseNova text, image, and video outputs that feed the VideoDB upload/index/search/stream path."
+    - "id: strybldr_flow_fork"
+      type: "DecisionWidget"
       label: "Workflow fork: REST or MCP"
-      position: {x: 1080, y: 140}
+      position: "{x: 1080, y: 140}"
       properties:
         lane: "Fork"
         forkId: "workflow-fork-rest-or-mcp"
-        branches: ["videodb-rest-path", "videodb-mcp-path"]
-        "kgc:readingSummary": "Operator approval selects VideoDB REST, VideoDB MCP, or an explicitly approved dual run before review."
-    - id: strybldr_flow_rest
-      type: RuntimeWidget
+        branches: "[\"videodb-rest-path\", \"videodb-mcp-path\"]"
+        kgc:readingSummary: "Operator approval selects VideoDB REST, VideoDB MCP, or an explicitly approved dual run before review."
+    - "id: strybldr_flow_rest"
+      type: "RuntimeWidget"
       label: "VideoDB REST path"
-      position: {x: 1440, y: -120}
+      position: "{x: 1440, y: -120}"
       properties:
         lane: "Runtime"
-        "kgc:readingSummary": "MainPanel Integrations VideoDB API path: upload or generate, async poll, index, search, stream."
-    - id: strybldr_flow_mcp
-      type: RuntimeWidget
+        kgc:readingSummary: "MainPanel Integrations VideoDB API path: upload or generate, async poll, index, search, stream."
+    - "id: strybldr_flow_mcp"
+      type: "RuntimeWidget"
       label: "VideoDB MCP path"
-      position: {x: 1440, y: 120}
+      position: "{x: 1440, y: 120}"
       properties:
         lane: "Runtime"
-        "kgc:readingSummary": "MainPanel MCP VideoDB Director tool path using the same readiness, polling, and approval boundaries as REST."
-    - id: strybldr_flow_review
-      type: ReviewWidget
+        kgc:readingSummary: "MainPanel MCP VideoDB Director tool path using the same readiness, polling, and approval boundaries as REST."
+    - "id: strybldr_flow_review"
+      type: "ReviewWidget"
       label: "Review search and stream"
-      position: {x: 1800, y: 0}
+      position: "{x: 1800, y: 0}"
       properties:
         lane: "Review"
         imageUrl: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"
         videoUrl: ""
         outputSrcDoc: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"
-        "kgc:readingSummary": "Search, stream, transcript, and character-clip review evidence remain blank until returned by live VideoDB responses."
-    - id: strybldr_flow_rich_media_panel
-      type: RichMediaPanel
+        kgc:readingSummary: "Search, stream, transcript, and character-clip review evidence remain blank until returned by live VideoDB responses."
+    - "id: strybldr_flow_rich_media_panel"
+      type: "RichMediaPanel"
       label: "Strybldr rich media review"
-      position: {x: 2160, y: -280}
+      position: "{x: 2160, y: -280}"
       handles:
-        target: ["outputSrcDoc", "imageUrl", "videoUrl"]
-        source: ["outputSrcDoc", "imageUrl", "videoUrl"]
+        target: "[\"outputSrcDoc\", \"imageUrl\", \"videoUrl\"]"
+        source: "[\"outputSrcDoc\", \"imageUrl\", \"videoUrl\"]"
       properties:
         lane: "Review"
-        "flow:widgetFormId": "richMediaPanel"
+        flow:widgetFormId: "richMediaPanel"
         richMediaActiveTab: "html"
         outputSrcDoc: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"
         imageUrl: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"
         videoUrl: ""
-        "kgc:readingSummary": "Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."
-    - id: strybldr_flow_publish
-      type: PublishWidget
+        kgc:readingSummary: "Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."
+    - "id: strybldr_flow_publish"
+      type: "PublishWidget"
       label: "Local publish packet"
-      position: {x: 2160, y: 0}
+      position: "{x: 2160, y: 0}"
       properties:
         lane: "Publish"
         publishId: "workflow-local-publish-packet"
-        "kgc:readingSummary": "Local publish packet stores source URL, approved storyboard cards, live response values when present, and approval state."
+        kgc:readingSummary: "Local publish packet stores source URL, approved storyboard cards, live response values when present, and approval state."
   edges:
-    - id: strybldr-flow-edge-source-storyboard
-      source: strybldr_flow_source
-      sourceHandle: output
-      target: strybldr_flow_storyboard
-      targetHandle: input
-      label: source_to_storyboard
-    - id: strybldr-flow-edge-storyboard-elements
-      source: strybldr_flow_storyboard
-      sourceHandle: output
-      target: strybldr_flow_elements
-      targetHandle: input
-      label: storyboard_to_elements
-    - id: strybldr-flow-edge-elements-sensenova
-      source: strybldr_flow_elements
-      sourceHandle: output
-      target: strybldr_flow_sensenova
-      targetHandle: input
-      label: elements_to_sensenova
-    - id: strybldr-flow-edge-elements-fork
-      source: strybldr_flow_elements
-      sourceHandle: output
-      target: strybldr_flow_fork
-      targetHandle: input
-      label: operator_fork
-    - id: strybldr-flow-edge-sensenova-rest
-      source: strybldr_flow_sensenova
-      sourceHandle: output
-      target: strybldr_flow_rest
-      targetHandle: input
-      label: sensenova_to_videodb_rest
-    - id: strybldr-flow-edge-fork-rest
-      source: strybldr_flow_fork
-      sourceHandle: rest
-      target: strybldr_flow_rest
-      targetHandle: input
-      label: fork_to_rest
-    - id: strybldr-flow-edge-fork-mcp
-      source: strybldr_flow_fork
-      sourceHandle: mcp
-      target: strybldr_flow_mcp
-      targetHandle: input
-      label: fork_to_mcp
-    - id: strybldr-flow-edge-rest-review
-      source: strybldr_flow_rest
-      sourceHandle: output
-      target: strybldr_flow_review
-      targetHandle: input
-      label: rest_to_review
-    - id: strybldr-flow-edge-mcp-review
-      source: strybldr_flow_mcp
-      sourceHandle: output
-      target: strybldr_flow_review
-      targetHandle: input
-      label: mcp_to_review
-    - id: strybldr-flow-edge-review-rich-html
-      source: strybldr_flow_review
-      sourceHandle: outputSrcDoc
-      target: strybldr_flow_rich_media_panel
-      targetHandle: outputSrcDoc
-      label: review_html_to_rich_media
-    - id: strybldr-flow-edge-review-rich-image
-      source: strybldr_flow_review
-      sourceHandle: imageUrl
-      target: strybldr_flow_rich_media_panel
-      targetHandle: imageUrl
-      label: review_image_to_rich_media
-    - id: strybldr-flow-edge-review-rich-video
-      source: strybldr_flow_review
-      sourceHandle: videoUrl
-      target: strybldr_flow_rich_media_panel
-      targetHandle: videoUrl
-      label: review_video_to_rich_media
-    - id: strybldr-flow-edge-review-publish
-      source: strybldr_flow_review
-      sourceHandle: output
-      target: strybldr_flow_publish
-      targetHandle: input
-      label: review_to_publish
+    - "id: strybldr-flow-edge-source-storyboard"
+      source: "strybldr_flow_source"
+      sourceHandle: "output"
+      target: "strybldr_flow_storyboard"
+      targetHandle: "input"
+      label: "source_to_storyboard"
+    - "id: strybldr-flow-edge-storyboard-elements"
+      source: "strybldr_flow_storyboard"
+      sourceHandle: "output"
+      target: "strybldr_flow_elements"
+      targetHandle: "input"
+      label: "storyboard_to_elements"
+    - "id: strybldr-flow-edge-elements-sensenova"
+      source: "strybldr_flow_elements"
+      sourceHandle: "output"
+      target: "strybldr_flow_sensenova"
+      targetHandle: "input"
+      label: "elements_to_sensenova"
+    - "id: strybldr-flow-edge-elements-fork"
+      source: "strybldr_flow_elements"
+      sourceHandle: "output"
+      target: "strybldr_flow_fork"
+      targetHandle: "input"
+      label: "operator_fork"
+    - "id: strybldr-flow-edge-sensenova-rest"
+      source: "strybldr_flow_sensenova"
+      sourceHandle: "output"
+      target: "strybldr_flow_rest"
+      targetHandle: "input"
+      label: "sensenova_to_videodb_rest"
+    - "id: strybldr-flow-edge-fork-rest"
+      source: "strybldr_flow_fork"
+      sourceHandle: "rest"
+      target: "strybldr_flow_rest"
+      targetHandle: "input"
+      label: "fork_to_rest"
+    - "id: strybldr-flow-edge-fork-mcp"
+      source: "strybldr_flow_fork"
+      sourceHandle: "mcp"
+      target: "strybldr_flow_mcp"
+      targetHandle: "input"
+      label: "fork_to_mcp"
+    - "id: strybldr-flow-edge-rest-review"
+      source: "strybldr_flow_rest"
+      sourceHandle: "output"
+      target: "strybldr_flow_review"
+      targetHandle: "input"
+      label: "rest_to_review"
+    - "id: strybldr-flow-edge-mcp-review"
+      source: "strybldr_flow_mcp"
+      sourceHandle: "output"
+      target: "strybldr_flow_review"
+      targetHandle: "input"
+      label: "mcp_to_review"
+    - "id: strybldr-flow-edge-review-rich-html"
+      source: "strybldr_flow_review"
+      sourceHandle: "outputSrcDoc"
+      target: "strybldr_flow_rich_media_panel"
+      targetHandle: "outputSrcDoc"
+      label: "review_html_to_rich_media"
+    - "id: strybldr-flow-edge-review-rich-image"
+      source: "strybldr_flow_review"
+      sourceHandle: "imageUrl"
+      target: "strybldr_flow_rich_media_panel"
+      targetHandle: "imageUrl"
+      label: "review_image_to_rich_media"
+    - "id: strybldr-flow-edge-review-rich-video"
+      source: "strybldr_flow_review"
+      sourceHandle: "videoUrl"
+      target: "strybldr_flow_rich_media_panel"
+      targetHandle: "videoUrl"
+      label: "review_video_to_rich_media"
+    - "id: strybldr-flow-edge-review-publish"
+      source: "strybldr_flow_review"
+      sourceHandle: "output"
+      target: "strybldr_flow_publish"
+      targetHandle: "input"
+      label: "review_to_publish"
 flow_diagrams:
-  key: flow_diagrams
-  type: object
+  key: "flow_diagrams"
+  type: "object"
   value:
     videodb_recreate_gitgraph:
-      key: videodb_recreate_gitgraph
-      type: mermaid_gitgraph
+      key: "videodb_recreate_gitgraph"
+      type: "mermaid_gitgraph"
       floatingPanelView: "gitGraph"
-      floatingPanelOpen: true
+      floatingPanelOpen: "true"
       bottomPanelTab: "gitGraph"
-      bottomPanelOpen: true
-      value: |-
+      bottomPanelOpen: "true"
+      value: "|-"
         gitGraph
           commit id: "source_77FAnT935IE" tag: "source"
           branch storyboard
@@ -373,13 +373,13 @@ flow_diagrams:
           checkout main
           merge storyboard id: "canvas_ready"
     videodb_recreate_architecture:
-      key: videodb_recreate_architecture
-      type: mermaid_architecture
+      key: "videodb_recreate_architecture"
+      type: "mermaid_architecture"
       floatingPanelView: "architecture"
-      floatingPanelOpen: true
+      floatingPanelOpen: "true"
       bottomPanelTab: "architecture"
-      bottomPanelOpen: true
-      value: |-
+      bottomPanelOpen: "true"
+      value: "|-"
         architecture-beta
           group operator(cloud)[Operator Workspace]
           group canvas(cloud)[Knowgrph Canvas]
@@ -389,19 +389,19 @@ flow_diagrams:
           service rest(server)[MainPanel Integrations REST Path] in runtime
           service mcp(server)[MainPanel MCP Director Path] in runtime
           service packet(database)[Local Publish Packet] in canvas
-          source:R --> L:storyboard
-          storyboard:R --> L:rest
-          storyboard:R --> L:mcp
-          rest:B --> T:packet
-          mcp:B --> T:packet
+          source: "R --> L:storyboard"
+          storyboard: "R --> L:rest"
+          storyboard: "R --> L:mcp"
+          rest: "B --> T:packet"
+          mcp: "B --> T:packet"
     videodb_recreate_event_model:
-      key: videodb_recreate_event_model
-      type: mermaid_eventmodeling
+      key: "videodb_recreate_event_model"
+      type: "mermaid_eventmodeling"
       floatingPanelView: "eventModeling"
-      floatingPanelOpen: true
+      floatingPanelOpen: "true"
       bottomPanelTab: "eventModeling"
-      bottomPanelOpen: true
-      value: |-
+      bottomPanelOpen: "true"
+      value: "|-"
         eventmodeling
         tf 01 ui SourceUrlImported
         tf 02 cmd ParseStrybldrFrontmatter
@@ -413,13 +413,13 @@ flow_diagrams:
         tf 08 cmd SearchAndStreamReview
         tf 09 evt LocalPublishPacketWritten
     videodb_recreate_flowchart:
-      key: videodb_recreate_flowchart
-      type: mermaid_flowchart
+      key: "videodb_recreate_flowchart"
+      type: "mermaid_flowchart"
       floatingPanelView: "flowchart"
-      floatingPanelOpen: true
+      floatingPanelOpen: "true"
       bottomPanelTab: "flowchart"
-      bottomPanelOpen: true
-      value: |-
+      bottomPanelOpen: "true"
+      value: "|-"
         flowchart LR
           source["77FAnT935IE source"]
           parser["Import URL parser"]
@@ -450,17 +450,17 @@ kgParserRoutingContract:
     mermaidBlocks: "flow_diagrams"
     strybldrStoryboard: "kgStrybldrStoryboard"
   diagramKinds:
-    - "mermaid_flowchart"
-    - "mermaid_gitgraph"
-    - "mermaid_architecture"
-    - "mermaid_eventmodeling"
-    - "mermaid_gantt"
-    - "frontmatter_flow"
-    - "strybldr_storyboard"
+    - "diagramKinds: mermaid_flowchart"
+    - "diagramKinds: mermaid_gitgraph"
+    - "diagramKinds: mermaid_architecture"
+    - "diagramKinds: mermaid_eventmodeling"
+    - "diagramKinds: mermaid_gantt"
+    - "diagramKinds: frontmatter_flow"
+    - "diagramKinds: strybldr_storyboard"
   surfaces:
     - "2D Renderer: Flow Editor"
     - "2D Renderer: Storyboard"
-    - "BottomPanel/FloatingPanel Mermaid panels"
+    - "surfaces: BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 kgWebpageView: "markdown"
