@@ -497,6 +497,8 @@ strybldr_storyboard:
       order: 8
     - nodeId: strybldr:source:3725310941
       action: Review the source evidence into editable storyboard elements.
+    - nodeId: starter-runtime-gate-card
+      action: Generate locally first; require human approval before VideoDB, SenseNova, or other paid provider calls.
 ---
 
 # Knowgrph Strybldr Starter Template
