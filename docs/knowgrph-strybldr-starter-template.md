@@ -13,13 +13,13 @@ kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
-kgFrontmatterModeEnabled: true
-kgMultiDimTableModeEnabled: false
-kgDocumentStructureBaselineLock: false
-kgStrybldrStoryboard: true
-kgBottomPanelOpen: true
+kgFrontmatterModeEnabled: "true"
+kgMultiDimTableModeEnabled: "false"
+kgDocumentStructureBaselineLock: "false"
+kgStrybldrStoryboard: "true"
+kgBottomPanelOpen: "true"
 kgBottomPanelTab: "flowEditor"
-kgFloatingPanelOpen: true
+kgFloatingPanelOpen: "true"
 kgFloatingPanelView: "strybldr"
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
@@ -36,7 +36,7 @@ runtime_defaults:
   provider: "knowgrph-local-animatic"
   model: "strybldr-local-animatic-v1"
   status: "draft"
-  paid_call_count: 0
+  paid_call_count: "0"
   video_id: ""
   generation_job_id: ""
   index_job_id: ""
@@ -57,13 +57,13 @@ local_animatic_inputs:
   provider: "knowgrph-local-animatic"
   model: "strybldr-local-animatic-v1"
   status: "ready"
-  paid_call_count: 0
+  paid_call_count: "0"
   source: "approved Strybldr cards from this starter document"
   output: "strybldr-video-*.md with embedded srcdoc animatic and source provenance links"
 socket_types:
-  strybldr_text_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [strybldr_text_signal]}
-  strybldr_media_signal: {color: "#38bdf8", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [strybldr_media_signal]}
-  strybldr_packet_signal: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [strybldr_packet_signal]}
+  strybldr_text_signal: "{color: \"#14b8a6\", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [strybldr_text_signal]}"
+  strybldr_media_signal: "{color: \"#38bdf8\", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [strybldr_media_signal]}"
+  strybldr_packet_signal: "{color: \"#f59e0b\", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [strybldr_packet_signal]}"
 flow:
   nodes:
     - id: {key: id, type: string, value: "strybldr:source:3725310941"}
@@ -329,18 +329,18 @@ flow:
       lane: {key: lane, type: string, value: "Source"}
       order: {key: order, type: number, value: 7}
   edges:
-    - {"id":"strybldr:edge:2908212329","source":"strybldr:source:3725310941","target":"strybldr:frame:3595615238","label":"frames"}
-    - {"id":"strybldr:edge:2976418985","source":"strybldr:frame:3595615238","target":"starter-source-brief-card","label":"containsElement"}
-    - {"id":"strybldr:edge:3745157328","source":"strybldr:frame:3595615238","target":"starter-storyboard-beats-card","label":"containsElement"}
-    - {"id":"strybldr:edge:963297330","source":"strybldr:frame:3595615238","target":"starter-elements-card","label":"containsElement"}
-    - {"id":"strybldr:edge:846179949","source":"strybldr:frame:3595615238","target":"starter-runtime-gate-card","label":"containsElement"}
-    - {"id":"strybldr:edge:2092723780","source":"strybldr:frame:3595615238","target":"starter-review-packet-card","label":"containsElement"}
-    - {"id":"strybldr:edge:1614941333","source":"strybldr:frame:3595615238","target":"starter-local-publish-packet-card","label":"containsElement"}
-    - {"id":"edge-starter-source-storyboard","source":"starter-source-brief-card","target":"starter-storyboard-beats-card","label":"source_to_storyboard"}
-    - {"id":"edge-starter-storyboard-elements","source":"starter-storyboard-beats-card","target":"starter-elements-card","label":"storyboard_to_elements"}
-    - {"id":"edge-starter-elements-runtime","source":"starter-elements-card","target":"starter-runtime-gate-card","label":"elements_to_runtime"}
-    - {"id":"edge-starter-runtime-review","source":"starter-runtime-gate-card","target":"starter-review-packet-card","label":"runtime_to_review"}
-    - {"id":"edge-starter-review-publish","source":"starter-review-packet-card","target":"starter-local-publish-packet-card","label":"review_to_publish"}
+    - "{\"id\": \"strybldr:edge:2908212329\",\"source\":\"strybldr:source:3725310941\",\"target\":\"strybldr:frame:3595615238\",\"label\":\"frames\"}"
+    - "{\"id\": \"strybldr:edge:2976418985\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-source-brief-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:3745157328\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-storyboard-beats-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:963297330\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-elements-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:846179949\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-runtime-gate-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:2092723780\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-review-packet-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:1614941333\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-local-publish-packet-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"edge-starter-source-storyboard\",\"source\":\"starter-source-brief-card\",\"target\":\"starter-storyboard-beats-card\",\"label\":\"source_to_storyboard\"}"
+    - "{\"id\": \"edge-starter-storyboard-elements\",\"source\":\"starter-storyboard-beats-card\",\"target\":\"starter-elements-card\",\"label\":\"storyboard_to_elements\"}"
+    - "{\"id\": \"edge-starter-elements-runtime\",\"source\":\"starter-elements-card\",\"target\":\"starter-runtime-gate-card\",\"label\":\"elements_to_runtime\"}"
+    - "{\"id\": \"edge-starter-runtime-review\",\"source\":\"starter-runtime-gate-card\",\"target\":\"starter-review-packet-card\",\"label\":\"runtime_to_review\"}"
+    - "{\"id\": \"edge-starter-review-publish\",\"source\":\"starter-review-packet-card\",\"target\":\"starter-local-publish-packet-card\",\"label\":\"review_to_publish\"}"
 kgParserRoutingContract:
   version: "knowgrph-parser-routing/v1"
   parserLogic: "Opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases."
@@ -355,8 +355,8 @@ kgParserRoutingContract:
     flowEdges: "flow.edges"
     strybldrStoryboard: "kgStrybldrStoryboard"
   diagramKinds:
-    - "frontmatter_flow"
-    - "strybldr_storyboard"
+    - "diagramKinds: frontmatter_flow"
+    - "diagramKinds: strybldr_storyboard"
   surfaces:
     - "2D Renderer: Storyboard"
     - "FloatingPanel: Strybldr"
@@ -370,12 +370,12 @@ strybldr_storyboard:
   notes: Neutral starter payload for local-first Strybldr authoring. Replace source fields with operator-owned inputs before live provider calls.
   workflow:
     stages:
-      - Source
-      - Storyboard
-      - Elements
-      - Runtime
-      - Review
-      - Publish
+      - 'stages: Source'
+      - 'stages: Storyboard'
+      - 'stages: Elements'
+      - 'stages: Runtime'
+      - 'stages: Review'
+      - 'stages: Publish'
     publish:
       id: starter-local-publish-packet
       label: Local publish packet
@@ -395,7 +395,7 @@ strybldr_storyboard:
       sourceUnitId: strybldr-starter-source
       label: Source brief
       confidence: 1
-      sourceBox: null
+      sourceBox: 'null'
       evidenceKind: source-metadata
       provider: knowgrph
       order: 1
@@ -406,7 +406,7 @@ strybldr_storyboard:
       sourceUnitId: strybldr-starter-source
       label: Storyboard beats
       confidence: 1
-      sourceBox: null
+      sourceBox: 'null'
       evidenceKind: user-edit
       provider: knowgrph
       order: 2
@@ -417,7 +417,7 @@ strybldr_storyboard:
       sourceUnitId: strybldr-starter-source
       label: Reusable elements
       confidence: 1
-      sourceBox: null
+      sourceBox: 'null'
       evidenceKind: user-edit
       provider: knowgrph
       order: 3
@@ -428,7 +428,7 @@ strybldr_storyboard:
       sourceUnitId: strybldr-starter-source
       label: Runtime gate
       confidence: 1
-      sourceBox: null
+      sourceBox: 'null'
       evidenceKind: runtime-plan
       provider: knowgrph-local-animatic
       order: 4
@@ -439,7 +439,7 @@ strybldr_storyboard:
       sourceUnitId: strybldr-starter-source
       label: Review packet
       confidence: 1
-      sourceBox: null
+      sourceBox: 'null'
       evidenceKind: runtime-review
       provider: knowgrph
       order: 5
@@ -450,7 +450,7 @@ strybldr_storyboard:
       sourceUnitId: strybldr-starter-source
       label: Local publish packet
       confidence: 1
-      sourceBox: null
+      sourceBox: 'null'
       evidenceKind: runtime-publish
       provider: knowgrph
       order: 6
@@ -461,13 +461,13 @@ strybldr_storyboard:
       sourceUnitId: strybldr-starter-source
       label: New storyboard card
       confidence: 1
-      sourceBox: null
+      sourceBox: 'null'
       evidenceKind: user-edit
       provider: human
       order: 8
-      prompt: null
-      action: null
-      summary: null
+      prompt: 'null'
+      action: 'null'
+      summary: 'null'
   edges:
     - id: edge-starter-source-storyboard
       source: starter-source-brief-card

@@ -1,4 +1,222 @@
 ---
+flow:
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
+  nodes:
+    - id: {key: id, type: string, value: "strybldr_flow_source"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "77FAnT935IE source"}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_source"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Imported source metadata and policy anchor for the 77FAnT935IE Strybldr recreation workflow."}}
+      lane: {key: lane, type: string, value: "Inputwidget"}
+      order: {key: order, type: number, value: 1}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Source"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Imported source metadata and policy anchor for the 77FAnT935IE Strybldr recreation workflow."}}}
+      stage: {key: stage, type: string, value: "Inputwidget"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "strybldr_flow_storyboard"}
+      type: {key: type, type: string, value: "StoryboardWidget"}
+      label: {key: label, type: string, value: "Approved storyboard"}
+      position: {key: position, type: object, value: {"x":360,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_storyboard"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Operator-approved storyboard beats used by SenseNova, VideoDB REST, and VideoDB MCP paths."}}
+      lane: {key: lane, type: string, value: "Elementswidget"}
+      order: {key: order, type: number, value: 2}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Storyboard"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Operator-approved storyboard beats used by SenseNova, VideoDB REST, and VideoDB MCP paths."}}}
+      stage: {key: stage, type: string, value: "Elementswidget"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "strybldr_flow_elements"}
+      type: {key: type, type: string, value: "ElementsWidget"}
+      label: {key: label, type: string, value: "Editable elements"}
+      position: {key: position, type: object, value: {"x":720,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_elements"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Editable source-backed element cards for setup, action branch, sci-fi branch, product close, and character clips."}}
+      lane: {key: lane, type: string, value: "Elementswidget"}
+      order: {key: order, type: number, value: 3}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Elements"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Editable source-backed element cards for setup, action branch, sci-fi branch, product close, and character clips."}}}
+      stage: {key: stage, type: string, value: "Elementswidget"}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "strybldr_flow_sensenova"}
+      type: {key: type, type: string, value: "RuntimeWidget"}
+      label: {key: label, type: string, value: "SenseNova media outputs"}
+      position: {key: position, type: object, value: {"x":1080,"y":-140}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_sensenova"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Readiness-gated SenseNova text, image, and video outputs that feed the VideoDB upload/index/search/stream path."}}
+      lane: {key: lane, type: string, value: "Runtimewidget"}
+      order: {key: order, type: number, value: 4}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Runtime"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Readiness-gated SenseNova text, image, and video outputs that feed the VideoDB upload/index/search/stream path."}}}
+      stage: {key: stage, type: string, value: "Runtimewidget"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+    - id: {key: id, type: string, value: "strybldr_flow_fork"}
+      type: {key: type, type: string, value: "DecisionWidget"}
+      label: {key: label, type: string, value: "Workflow fork: REST or MCP"}
+      position: {key: position, type: object, value: {"x":1080,"y":140}}
+      branches: {key: branches, type: object, value: {"key":"branches","type":"array","value":["videodb-rest-path","videodb-mcp-path"]}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_fork"}
+      forkId: {key: forkId, type: object, value: {"key":"forkId","type":"string","value":"workflow-fork-rest-or-mcp"}}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Operator approval selects VideoDB REST, VideoDB MCP, or an explicitly approved dual run before review."}}
+      lane: {key: lane, type: string, value: "Decisionwidget"}
+      order: {key: order, type: number, value: 7}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Fork"},"forkId":{"key":"forkId","type":"string","value":"workflow-fork-rest-or-mcp"},"branches":{"key":"branches","type":"array","value":["videodb-rest-path","videodb-mcp-path"]},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Operator approval selects VideoDB REST, VideoDB MCP, or an explicitly approved dual run before review."}}}
+      stage: {key: stage, type: string, value: "Decisionwidget"}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "strybldr_flow_rest"}
+      type: {key: type, type: string, value: "RuntimeWidget"}
+      label: {key: label, type: string, value: "VideoDB REST path"}
+      position: {key: position, type: object, value: {"x":1440,"y":-120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_rest"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"MainPanel Integrations VideoDB API path: upload or generate, async poll, index, search, stream."}}
+      lane: {key: lane, type: object, value: {"key":"lane","type":"string","value":"Runtime"}}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Runtime"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"MainPanel Integrations VideoDB API path: upload or generate, async poll, index, search, stream."}}}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+    - id: {key: id, type: string, value: "strybldr_flow_mcp"}
+      type: {key: type, type: string, value: "RuntimeWidget"}
+      label: {key: label, type: string, value: "VideoDB MCP path"}
+      position: {key: position, type: object, value: {"x":1440,"y":120}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_mcp"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"MainPanel MCP VideoDB Director tool path using the same readiness, polling, and approval boundaries as REST."}}
+      lane: {key: lane, type: object, value: {"key":"lane","type":"string","value":"Runtime"}}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Runtime"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"MainPanel MCP VideoDB Director tool path using the same readiness, polling, and approval boundaries as REST."}}}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 4}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "strybldr_flow_review"}
+      type: {key: type, type: string, value: "ReviewWidget"}
+      label: {key: label, type: string, value: "Review search and stream"}
+      position: {key: position, type: object, value: {"x":1800,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_review"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 6}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 4}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: object, value: {"key":"imageUrl","type":"text","value":"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"}}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Search, stream, transcript, and character-clip review evidence remain blank until returned by live VideoDB responses."}}
+      lane: {key: lane, type: string, value: "Reviewwidget"}
+      order: {key: order, type: number, value: 8}
+      outputSrcDoc: {key: outputSrcDoc, type: object, value: {"key":"outputSrcDoc","type":"html_srcdoc","value":"<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"}}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Review"},"imageUrl":{"key":"imageUrl","type":"text","value":"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"},"videoUrl":{"key":"videoUrl","type":"text","value":""},"outputSrcDoc":{"key":"outputSrcDoc","type":"html_srcdoc","value":"<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Search, stream, transcript, and character-clip review evidence remain blank until returned by live VideoDB responses."}}}
+      stage: {key: stage, type: string, value: "Reviewwidget"}
+      videoUrl: {key: videoUrl, type: object, value: {"key":"videoUrl","type":"text","value":""}}
+      "visual:importance": {key: "visual:importance", type: number, value: 36}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 19.79795897113271}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 5}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "strybldr_flow_rich_media_panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Strybldr rich media review"}
+      position: {key: position, type: object, value: {"x":2160,"y":-280}}
+      handles: {key: handles, type: object, value: {"target":["outputSrcDoc","imageUrl","videoUrl"],"source":["outputSrcDoc","imageUrl","videoUrl"]}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: object, value: {"key":"flow:widgetFormId","type":"string","value":"richMediaPanel"}}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 3}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: text, value: {"key":"imageUrl","type":"text","value":"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"}}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."}}
+      lane: {key: lane, type: string, value: "Richmediapanel"}
+      order: {key: order, type: number, value: 9}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: {"key":"outputSrcDoc","type":"html_srcdoc","value":"<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"}}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Review"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"richMediaPanel"},"richMediaActiveTab":{"key":"richMediaActiveTab","type":"string","value":"html"},"outputSrcDoc":{"key":"outputSrcDoc","type":"html_srcdoc","value":"<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"},"imageUrl":{"key":"imageUrl","type":"text","value":"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"},"videoUrl":{"key":"videoUrl","type":"text","value":""},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."}}}
+      richMediaActiveTab: {key: richMediaActiveTab, type: object, value: {"key":"richMediaActiveTab","type":"string","value":"html"}}
+      stage: {key: stage, type: string, value: "Richmediapanel"}
+      videoUrl: {key: videoUrl, type: text, value: {"key":"videoUrl","type":"text","value":""}}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+    - id: {key: id, type: string, value: "strybldr_flow_publish"}
+      type: {key: type, type: string, value: "PublishWidget"}
+      label: {key: label, type: string, value: "Local publish packet"}
+      position: {key: position, type: object, value: {"x":2160,"y":0}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:strybldr_flow_publish"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Local publish packet stores source URL, approved storyboard cards, live response values when present, and approval state."}}
+      lane: {key: lane, type: string, value: "Publishwidget"}
+      order: {key: order, type: number, value: 10}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Publish"},"publishId":{"key":"publishId","type":"string","value":"workflow-local-publish-packet"},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Local publish packet stores source URL, approved storyboard cards, live response values when present, and approval state."}}}
+      publishId: {key: publishId, type: object, value: {"key":"publishId","type":"string","value":"workflow-local-publish-packet"}}
+      stage: {key: stage, type: string, value: "Publishwidget"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+  edges:
+    - {"id":"strybldr-flow-edge-source-storyboard","source":"strybldr_flow_source","sourceHandle":"output","target":"strybldr_flow_storyboard","targetHandle":"input","label":"source_to_storyboard"}
+    - {"id":"strybldr-flow-edge-storyboard-elements","source":"strybldr_flow_storyboard","sourceHandle":"output","target":"strybldr_flow_elements","targetHandle":"input","label":"storyboard_to_elements"}
+    - {"id":"strybldr-flow-edge-elements-sensenova","source":"strybldr_flow_elements","sourceHandle":"output","target":"strybldr_flow_sensenova","targetHandle":"input","label":"elements_to_sensenova"}
+    - {"id":"strybldr-flow-edge-elements-fork","source":"strybldr_flow_elements","sourceHandle":"output","target":"strybldr_flow_fork","targetHandle":"input","label":"operator_fork"}
+    - {"id":"strybldr-flow-edge-sensenova-rest","source":"strybldr_flow_sensenova","sourceHandle":"output","target":"strybldr_flow_rest","targetHandle":"input","label":"sensenova_to_videodb_rest"}
+    - {"id":"strybldr-flow-edge-fork-rest","source":"strybldr_flow_fork","sourceHandle":"rest","target":"strybldr_flow_rest","targetHandle":"input","label":"fork_to_rest"}
+    - {"id":"strybldr-flow-edge-fork-mcp","source":"strybldr_flow_fork","sourceHandle":"mcp","target":"strybldr_flow_mcp","targetHandle":"input","label":"fork_to_mcp"}
+    - {"id":"strybldr-flow-edge-rest-review","source":"strybldr_flow_rest","sourceHandle":"output","target":"strybldr_flow_review","targetHandle":"input","label":"rest_to_review"}
+    - {"id":"strybldr-flow-edge-mcp-review","source":"strybldr_flow_mcp","sourceHandle":"output","target":"strybldr_flow_review","targetHandle":"input","label":"mcp_to_review"}
+    - {"id":"strybldr-flow-edge-review-rich-html","source":"strybldr_flow_review","sourceHandle":"outputSrcDoc","target":"strybldr_flow_rich_media_panel","targetHandle":"outputSrcDoc","label":"review_html_to_rich_media"}
+    - {"id":"strybldr-flow-edge-review-rich-image","source":"strybldr_flow_review","sourceHandle":"imageUrl","target":"strybldr_flow_rich_media_panel","targetHandle":"imageUrl","label":"review_image_to_rich_media"}
+    - {"id":"strybldr-flow-edge-review-rich-video","source":"strybldr_flow_review","sourceHandle":"videoUrl","target":"strybldr_flow_rich_media_panel","targetHandle":"videoUrl","label":"review_video_to_rich_media"}
+    - {"id":"strybldr-flow-edge-review-publish","source":"strybldr_flow_review","sourceHandle":"output","target":"strybldr_flow_publish","targetHandle":"input","label":"review_to_publish"}
+---
+
 title: "Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E"
 graphId: "md:knowgrph-strybldr-sensenova-videodb-e2e"
 doc_type: "Strybldr E2E Demo - SenseNova Text + Image + Video + VideoDB API + MCP"
@@ -791,7 +1009,6 @@ strybldr_storyboard:
     - nodeId: "strybldr:source:4137906559"
       summary: "Imported document source unit: SenseNova AI API PRD/TAD implementation contract."
       action: "Review the source evidence into editable storyboard elements."
----
 
 # Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E
 
@@ -804,7 +1021,6 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 ## What The Demo Must Prove
 
 | Stage | Required behavior | Shared owner |
-|---|---|---|
 | Trigger | User opens `Toolbar -> Launch -> Import URL` or imports this local Markdown file. | `LaunchDropdown.impl.tsx` |
 | Source | The only authored media source is `77FAnT935IE`. | `urlImport.ts`, `youtubeEntryText.ts` |
 | Project | The imported URL or local file opens as a Strybldr storyboard document. | `strybldrStoryboard.ts`, shared Storyboard renderer |
@@ -867,7 +1083,6 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 ## Current Source Evidence
 
 | Evidence | Value |
-|---|---|
 | Provider | YouTube |
 | Video ID | `77FAnT935IE` |
 | oEmbed title | `Seedance 2.0 is on Artlist` |
