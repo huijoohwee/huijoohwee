@@ -462,12 +462,12 @@ strybldr_storyboard:
       label: review_to_publish
   cards:
     - nodeId: strybldr:source:3725310941
-      chatModel: seedream-4-0-250828
-      action: 1920 年代南洋风光
-      prompt: 1920 年代南洋风光
       output: |-
         Generated Strybldr image handoff. Artifact: /strybldr-image-mqjf8g0n.md Media: /api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png Image: http://localhost:5178/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgxNzgzMjk1NTkxfQ Prompt: 1920 年代南洋风光 ![strybldr-starter-source.png](http://localhost:5178/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgxNzgzMzUxMjIxfQ)
         ![strybldr-starter-source.png](http://localhost:5178/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgxNzgzMzUxMjIxfQ)
+      action: 1920 年代南洋风光
+      prompt: 1920 年代南洋风光
+      chatModel: seedream-4-0-250828
       imageUrl: http://localhost:5178/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgxNzgzMjk1NTkxfQ
       mediaKind: image
       mediaUrl: http://localhost:5178/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgxNzgzMjk1NTkxfQ
