@@ -1,1 +1,0 @@
-import{U as t}from"./settings-mcp-docs-CoOb-kli.js";import{c as n}from"./index-Ca6hXnOA.js";function e(o){return o?n("App-toolbar__btn",t.button.activeBg,t.icon.active):"App-toolbar__btn"}export{e as g};
