@@ -22,8 +22,26 @@ local_file_import_contract:
   - "Local import recognizes the Strybldr storyboard payload"
   - "Canvas View Mode reports XR Mode"
   - "Strybldr shows Source, Storyboard, Elements, Storytree, and Explainer Video lanes"
+  - "AI Showrunner dry-run brief is runnable through local MCP start_run with zero paid calls"
+  - "AI Showrunner artifacts include run state, cost log, narration manifest, and artifact manifest"
   - "Rich Media Panel cards expose text, image, and video tabs for the explainer-video artifact"
   - "Toolbar Run all writes a structured handoff or fallback artifact through existing owners"
+aiShowrunnerRuntimeContract:
+  schema: "knowgrph-showrunner-brief/v1"
+  localMcpTool: "knowgrph.showrunner.start_run"
+  mode: "dry-run"
+  paidCallCount: 0
+  sourceTruth:
+    - "canvas/src/features/ai-showrunner"
+    - "mcp/showrunner-runtime.js"
+    - "mcp/local-tool-contract.js"
+    - "canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs"
+  artifactPaths:
+    - "showrunner/briefs/<run_id>/brief.md"
+    - "showrunner/runs/<run_id>/state.json"
+    - "showrunner/runs/<run_id>/cost-log.jsonl"
+    - "showrunner/runs/<run_id>/narration-manifest.md"
+    - "showrunner/runs/<run_id>/manifest.md"
 modelSelection:
   selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
   scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
@@ -151,6 +169,17 @@ route names, demo filenames, provider keys, or mirror-only patches.
       "byteSize": 0,
       "textHash": "vdeoxpln-visual-renderer",
       "mediaUrl": "canvas/src/features/strybldr/strybldrStoryboard.ts"
+    },
+    {
+      "sourceUnitId": "vdeoxpln-showrunner-owner",
+      "workspacePath": "canvas/src/features/ai-showrunner/showrunnerOrchestrator.ts",
+      "relativePath": "showrunnerOrchestrator.ts",
+      "originalName": "AI Showrunner orchestration owner",
+      "mediaKind": "code",
+      "mimeHint": "text/typescript",
+      "byteSize": 0,
+      "textHash": "vdeoxpln-ai-showrunner",
+      "mediaUrl": "canvas/src/features/ai-showrunner/showrunnerOrchestrator.ts"
     }
   ],
   "elements": [
@@ -231,6 +260,19 @@ route names, demo filenames, provider keys, or mirror-only patches.
       "summary": "Run all compiles approved cards into a provider-safe handoff with fallback state.",
       "action": "Expose cost, attempts, fallback, source references, and approved card order.",
       "prompt": "Compile only approved card fields into a concise video or visual explanation handoff."
+    },
+    {
+      "id": "vdeoxpln-element-ai-showrunner",
+      "sourceUnitId": "vdeoxpln-showrunner-owner",
+      "label": "AI Showrunner dry-run",
+      "confidence": 0.96,
+      "sourceBox": null,
+      "evidenceKind": "source-metadata",
+      "provider": "fallback",
+      "order": 7,
+      "summary": "A frontmatter-first Creative_Brief starts a provider-neutral dry-run pipeline and writes the same artifact structure as a live run with paid_call_count=0.",
+      "action": "Run knowgrph.showrunner.start_run with the embedded brief and inspect state, cost log, narration manifest, and artifact manifest.",
+      "prompt": "Show the brief, role pipeline, token budget, append-only state, and dry-run artifacts as a runnable Showrunner capability."
     }
   ],
   "explainerVideo": {
@@ -408,6 +450,24 @@ route names, demo filenames, provider keys, or mirror-only patches.
         "ownAssetIds": ["validation", "drift-check"]
       },
       {
+        "nodeId": "vdeoxpln_demo_ai_showrunner",
+        "parentNodeId": "vdeoxpln_demo_handoff",
+        "title": "AI Showrunner Dry-Run",
+        "synopsis": "A Creative_Brief drives researcher, scriptwriter, director, and narrator_router roles while the local MCP dry-run writes state, cost, narration, and manifest artifacts with zero paid calls.",
+        "prompt": "Demonstrate start_run, run_status, token budget accounting, append-only state, and narrator voice-map gap handling.",
+        "authorName": "Knowgrph",
+        "status": "active",
+        "duration": "00:17",
+        "ageDays": 0,
+        "isFreeWindow": true,
+        "isProtected": false,
+        "unlockPriceCredits": 0,
+        "likes": 83,
+        "impressions": 415,
+        "paidUnlocks": 0,
+        "ownAssetIds": ["ai-showrunner", "dry-run", "mcp", "artifact-manifest"]
+      },
+      {
         "nodeId": "vdeoxpln_demo_publish",
         "parentNodeId": "vdeoxpln_demo_qa",
         "title": "Published Proof Surface",
@@ -466,6 +526,64 @@ route names, demo filenames, provider keys, or mirror-only patches.
 }
 ```
 
+## Runnable AI Showrunner Dry-Run
+
+Use this section to prove the AI Showrunner capability without a provider call.
+The embedded Creative_Brief is a valid `knowgrph-showrunner-brief/v1` document.
+The local MCP payload below runs it in dry-run mode and should return a
+`run_id`, `run_status=complete`, `paid_call_count=0`, and a manifest path.
+
+```yaml knowgrph-showrunner-brief
+---
+schema: "knowgrph-showrunner-brief/v1"
+run_type: "podcast"
+title: "Vdeoxpln AI Showrunner Demo"
+run_id: "vdeoxpln-ai-showrunner-demo"
+token_budget: 1200
+max_retries: 2
+max_memory_tokens: 300
+dry_run: true
+agent_pipeline: ["researcher","scriptwriter","director","narrator_router"]
+agent_roles:
+  - role: "researcher"
+  - role: "scriptwriter"
+  - role: "director"
+  - role: "narrator_router"
+narrator_voice_map:
+  - speaker: "host"
+    voice_endpoint_env_key: "SHOWRUNNER_HOST_VOICE_URL"
+acceptance_criteria:
+  - "research_pack entry is appended before scriptwriter runs"
+  - "script_draft conforms to knowgrph-script/v1"
+  - "narration-manifest.md is written before any TTS call"
+  - "paid_call_count remains 0 in dry-run mode"
+---
+
+# Vdeoxpln AI Showrunner Demo
+
+Run a provider-neutral podcast pipeline that explains how vdeoxpln turns an
+abstract capability registry into source-backed visual workflows, review gates,
+and artifact manifests.
+```
+
+```json mcp-call
+{
+  "tool": "knowgrph.showrunner.start_run",
+  "arguments": {
+    "dry_run": true,
+    "brief_markdown": "---\nschema: \"knowgrph-showrunner-brief/v1\"\nrun_type: \"podcast\"\ntitle: \"Vdeoxpln AI Showrunner Demo\"\nrun_id: \"vdeoxpln-ai-showrunner-demo\"\ntoken_budget: 1200\nmax_retries: 2\nmax_memory_tokens: 300\ndry_run: true\nagent_pipeline: [\"researcher\",\"scriptwriter\",\"director\",\"narrator_router\"]\nagent_roles:\n  - role: \"researcher\"\n  - role: \"scriptwriter\"\n  - role: \"director\"\n  - role: \"narrator_router\"\nnarrator_voice_map:\n  - speaker: \"host\"\n    voice_endpoint_env_key: \"SHOWRUNNER_HOST_VOICE_URL\"\nacceptance_criteria:\n  - \"research_pack entry is appended before scriptwriter runs\"\n  - \"script_draft conforms to knowgrph-script/v1\"\n  - \"narration-manifest.md is written before any TTS call\"\n  - \"paid_call_count remains 0 in dry-run mode\"\n---\n\n# Vdeoxpln AI Showrunner Demo\n\nRun a provider-neutral podcast pipeline that explains how vdeoxpln turns an abstract capability registry into source-backed visual workflows, review gates, and artifact manifests.\n"
+  }
+}
+```
+
+Expected local MCP artifact shape:
+
+- `showrunner/briefs/<run_id>/brief.md`
+- `showrunner/runs/<run_id>/state.json`
+- `showrunner/runs/<run_id>/cost-log.jsonl`
+- `showrunner/runs/<run_id>/narration-manifest.md`
+- `showrunner/runs/<run_id>/manifest.md`
+
 ## Expected Inspection Result
 
 After import, the parsed graph should expose:
@@ -478,8 +596,10 @@ After import, the parsed graph should expose:
 - one Elements lane for registry, router, source artifact, exact layer, visual tree, and handoff cards
 - one Storytree lane with parent-derived edges, protected branch access state, budget projections, dropped-branch audit visibility, and inherited assets
 - one Explainer Video lane with Rich Media Panel cards for text, image, and video
+- one AI Showrunner branch showing the dry-run role pipeline, token budget, artifact manifest, and zero paid calls
 - one Run all handoff that uses only approved card fields and source references
 
 The repo must treat this file as external validation input. Runtime code and
 tests may read it by caller-supplied path, but must not copy its node ids,
-titles, prompts, source hashes, or story payload into implementation fixtures.
+titles, prompts, source hashes, showrunner brief, MCP payload, or story payload
+into implementation fixtures.

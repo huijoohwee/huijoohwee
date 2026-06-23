@@ -44,6 +44,37 @@
       }
     },
     {
+      "name": "knowgrph-ai-showrunner",
+      "type": "markdown",
+      "description": "Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Flow Editor owners.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-ai-showrunner.md",
+      "sha256": "4bf20c88a1b50d2aa9fbdd22bcc2ec160fcb9711d01f7353e1b29e82cf110926",
+      "vdeoxpln": {
+        "id": "knowgrph-ai-showrunner",
+        "title": "Knowgrph AI Showrunner",
+        "scope": "local-stdio-and-browser-local",
+        "mutation": "local-approval-gated",
+        "semanticKey": "kgvx_7e480fd7",
+        "tools": {
+          "published": [],
+          "browserLocal": [],
+          "local": [
+            "knowgrph.showrunner.approve_stage",
+            "knowgrph.showrunner.get_artifact",
+            "knowgrph.showrunner.post_choice",
+            "knowgrph.showrunner.run_status",
+            "knowgrph.showrunner.start_run",
+            "knowgrph.showrunner.submit_critique",
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "local-mcp-docs",
+          "mainpanel-mcp"
+        ]
+      }
+    },
+    {
       "name": "knowgrph-chat-to-canvas",
       "type": "markdown",
       "description": "Route AI-assisted graph generation through FloatingPanel Chat, KGC validation, Workspace FS, Source Files, and Canvas apply owners.",

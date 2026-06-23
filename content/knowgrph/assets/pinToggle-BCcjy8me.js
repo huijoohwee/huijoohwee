@@ -1,0 +1,1 @@
+import{U as t}from"./settings-mcp-docs-CXOj9s05.js";import{c as n}from"./index-C0bOj_gr.js";function e(o){return o?n("App-toolbar__btn",t.button.activeBg,t.icon.active):"App-toolbar__btn"}export{e as g};
