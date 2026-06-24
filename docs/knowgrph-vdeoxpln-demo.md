@@ -8,24 +8,25 @@ implementation_contract: "docs/documents/knowgrph-vdeoxpln-prd-tad.md"
 source_truth: "canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs"
 validation_input_forbid_hardcode_in_repo: true
 copyhardcode_forbid: true
-kgCanvasSurfaceMode: "xr"
-kgCanvasRenderMode: "3d"
-kgCanvas3dMode: "xr"
+kgCanvasSurfaceMode: "2d"
+kgCanvasRenderMode: "2d"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
-kgStrybldrStoryboard: true
 local_file_import_contract:
   - "Toolbar -> Launch -> Import local files"
   - "Select this Markdown document as validation input"
-  - "Local import recognizes the Strybldr storyboard payload"
-  - "Canvas View Mode reports XR Mode"
-  - "Strybldr shows Source, Storyboard, Elements, Storytree, and Explainer Video lanes"
+  - "Local import opens the 2D Flow Editor renderer"
+  - "Canvas View Mode reports Flow Editor"
   - "AI Showrunner dry-run brief is runnable through local MCP start_run with zero paid calls"
   - "AI Showrunner artifacts include run state, cost log, narration manifest, and artifact manifest"
-  - "Rich Media Panel cards expose text, image, and video tabs for the explainer-video artifact"
-  - "Toolbar Run all writes a structured handoff or fallback artifact through existing owners"
+  - "Flow Editor exposes an HTML Video Renderer node with a complete HTML/CSS/data Render_Spec"
+  - "HTML Video Renderer uses engine_hint=canvas-2d for browser-native MP4 smoke rendering without a system FFmpeg install"
+  - "Run all writes a video/mp4 artifact and manifest through shared rich-media output owners"
+  - "Rich Media Panel exposes the video tab for the generated HTML-to-MP4 artifact"
+  - "Design FloatingPanel Video exposes workspace files, compositions, assets, timeline lanes, and Render MP4"
+  - "Design BottomPanel Timeline exposes source-derived design video tracks instead of the generic empty Mermaid prompt"
 aiShowrunnerRuntimeContract:
   schema: "knowgrph-showrunner-brief/v1"
   localMcpTool: "knowgrph.showrunner.start_run"
@@ -42,6 +43,146 @@ aiShowrunnerRuntimeContract:
     - "showrunner/runs/<run_id>/cost-log.jsonl"
     - "showrunner/runs/<run_id>/narration-manifest.md"
     - "showrunner/runs/<run_id>/manifest.md"
+htmlVideoRendererRuntimeContract:
+  schema: "knowgrph-html-video-renderer/v1"
+  nodeTypeId: "HtmlVideoRenderer"
+  formId: "htmlVideoRenderer"
+  localMcpTool: "knowgrph.html_video.render"
+  recommendedDevProdEngine: "canvas-2d"
+  noSystemFfmpegRequired: true
+  outputMimeType: "video/mp4"
+  sourceTruth:
+    - "canvas/src/features/html-video-renderer/htmlVideoRendererSsot.ts"
+    - "canvas/src/features/html-video-renderer/htmlVideoRendererSpec.ts"
+    - "canvas/src/features/html-video-renderer/htmlVideoEngineRegistry.ts"
+    - "canvas/src/features/html-video-renderer/htmlVideoFlowNode.ts"
+    - "canvas/src/features/html-video-renderer/engines/canvas2dAdapter.ts"
+    - "canvas/src/features/chat/richMediaRun.ts"
+  renderSpec:
+    html: "properties.html"
+    css: "properties.css"
+    data: "properties.data_json"
+    durationMs: "properties.duration_ms"
+    fps: "properties.fps"
+    width: "properties.width"
+    height: "properties.height"
+    engineHint: "properties.engine_hint"
+  acceptance:
+    - "engine adapters are independent loadable modules"
+    - "no hardcoded fallback engine is used when the selected engine is missing"
+    - "canvas-2d produces a real MP4 in browser runtimes without installing ffmpeg"
+    - "headless-browser remains available for operator-provided FFmpeg runtimes"
+designAgentVideoWorkspaceContract:
+  schema: "knowgrph-design-agent-video/v1"
+  floatingPanel:
+    - "Workspace files"
+    - "Compositions"
+    - "Assets"
+    - "Timeline lanes"
+    - "Render MP4"
+  bottomPanel:
+    tab: "timeline"
+    view: "designTimeline"
+    trackSource: "active Design graph through designAgentVideoSpec"
+  artifactShape:
+    - "semantic HTML with data-composition-id"
+    - "per-track data-start data-duration data-track-index markers"
+    - "virtual workspace files"
+    - "composition rows"
+    - "source-derived assets"
+    - "timeline lanes and ticks"
+kgCanvas2dRenderer: "flowEditor"
+kgWorkflowManagerModeEnabled: true
+socket_types:
+  html_video_spec: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [html_video_spec]}
+  html_video_artifact: {color: "#0ea5e9", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [html_video_artifact]}
+flow:
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
+  computed: {key: computed, type: boolean, value: true}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
+  nodes:
+    - id: {key: id, type: string, value: "html_video_source_spec"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "Programmatic Video Render Spec"}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
+      handles: {key: handles, type: object, value: {"source":["html","css","data_json"]}}
+      css: {key: css, type: css, value: "main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:22px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}header{display:grid;gap:8px}.eyebrow{margin:0;color:#0f766e;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}h1{margin:0;font-size:28px;line-height:1.05;letter-spacing:0}p{margin:0}.lede{max-width:560px;color:#475569;font-size:14px;line-height:1.5}section{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}article{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;border:1px solid #cbd5e1;background:#ffffff;border-radius:8px;padding:12px;min-width:0}strong{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111827;color:#f8fafc;font-size:13px}span{font-size:13px;font-weight:650;color:#1f2937}footer{border-top:1px solid #cbd5e1;padding-top:10px;color:#64748b;font-size:12px}"}
+      data_json: {key: data_json, type: json, value: "{\"title\":\"HTML to MP4 for coding agents\",\"engine\":\"canvas-2d\",\"muxer\":\"mediabunny\",\"rasterizer\":\"html2canvas\",\"output\":\"video/mp4\",\"composition\":{\"id\":\"knowgrph-vdeoxpln-demo\",\"durationMs\":1800,\"fps\":6,\"width\":1280,\"height\":720},\"workspaceFiles\":[{\"path\":\"agent-design-video/index.html\",\"kind\":\"html\",\"role\":\"composition\"},{\"path\":\"agent-design-video/styles.css\",\"kind\":\"css\",\"role\":\"style\"},{\"path\":\"agent-design-video/data.json\",\"kind\":\"json\",\"role\":\"data\"},{\"path\":\"agent-design-video/manifest.json\",\"kind\":\"json\",\"role\":\"manifest\"}],\"timelineTracks\":[{\"id\":\"render-spec\",\"label\":\"Render Spec\",\"trackIndex\":0,\"startMs\":0,\"durationMs\":600},{\"id\":\"engine\",\"label\":\"Runtime Engine\",\"trackIndex\":1,\"startMs\":600,\"durationMs\":600},{\"id\":\"artifact\",\"label\":\"MP4 Artifact\",\"trackIndex\":2,\"startMs\":1200,\"durationMs\":600}],\"timelineLanes\":[{\"id\":\"lane:composition\",\"label\":\"Compositions\",\"tracks\":[\"render-spec\",\"engine\",\"artifact\"]}],\"steps\":[\"validate Render_Spec\",\"select runtime engine\",\"persist MP4 artifact\"]}"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"html":"html_video_spec","css":"html_video_spec","data_json":"html_video_spec"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "htmlVideoRenderSpecInput"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      html: {key: html, type: html, value: "<main data-composition-id=\"knowgrph-vdeoxpln-demo\" data-start=\"0\" data-duration=\"1.800\" aria-label=\"Agent HTML video render\"><header><p class=\"eyebrow\">Knowgrph HTML Video Renderer</p><h1>HTML to MP4 for coding agents</h1><p class=\"lede\">Turn semantic HTML, CSS, and JSON data into a real MP4 through a runtime-selected engine.</p></header><section aria-label=\"Render timeline\"><article data-start=\"0.000\" data-duration=\"0.600\" data-track-index=\"0\"><strong>1</strong><span>Validate Render_Spec</span></article><article data-start=\"0.600\" data-duration=\"0.600\" data-track-index=\"1\"><strong>2</strong><span>Select pluggable engine</span></article><article data-start=\"1.200\" data-duration=\"0.600\" data-track-index=\"2\"><strong>3</strong><span>Persist video/mp4 artifact</span></article></section><footer><p>engine_hint: canvas-2d · no system ffmpeg install</p></footer></main>"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source-owned HTML, CSS, and JSON data for the HTML Video Renderer node."}
+      "visual:importance": {key: "visual:importance", type: number, value: 24}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "html_video_renderer_node"}
+      type: {key: type, type: string, value: "HtmlVideoRenderer"}
+      label: {key: label, type: string, value: "HTML Video Renderer Widget"}
+      position: {key: position, type: object, value: {"x":420,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["html_in","css_in","data_json_in"],"source":["videoUrl","outputPath","renderJobId"]}}
+      css: {key: css, type: textarea, value: "main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:22px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}header{display:grid;gap:8px}.eyebrow{margin:0;color:#0f766e;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}h1{margin:0;font-size:28px;line-height:1.05;letter-spacing:0}p{margin:0}.lede{max-width:560px;color:#475569;font-size:14px;line-height:1.5}section{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}article{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;border:1px solid #cbd5e1;background:#ffffff;border-radius:8px;padding:12px;min-width:0}strong{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111827;color:#f8fafc;font-size:13px}span{font-size:13px;font-weight:650;color:#1f2937}footer{border-top:1px solid #cbd5e1;padding-top:10px;color:#64748b;font-size:12px}"}
+      data_json: {key: data_json, type: textarea, value: "{\"title\":\"HTML to MP4 for coding agents\",\"engine\":\"canvas-2d\",\"muxer\":\"mediabunny\",\"rasterizer\":\"html2canvas\",\"output\":\"video/mp4\",\"composition\":{\"id\":\"knowgrph-vdeoxpln-demo\",\"durationMs\":1800,\"fps\":6,\"width\":1280,\"height\":720},\"workspaceFiles\":[{\"path\":\"agent-design-video/index.html\",\"kind\":\"html\",\"role\":\"composition\"},{\"path\":\"agent-design-video/styles.css\",\"kind\":\"css\",\"role\":\"style\"},{\"path\":\"agent-design-video/data.json\",\"kind\":\"json\",\"role\":\"data\"},{\"path\":\"agent-design-video/manifest.json\",\"kind\":\"json\",\"role\":\"manifest\"}],\"timelineTracks\":[{\"id\":\"render-spec\",\"label\":\"Render Spec\",\"trackIndex\":0,\"startMs\":0,\"durationMs\":600},{\"id\":\"engine\",\"label\":\"Runtime Engine\",\"trackIndex\":1,\"startMs\":600,\"durationMs\":600},{\"id\":\"artifact\",\"label\":\"MP4 Artifact\",\"trackIndex\":2,\"startMs\":1200,\"durationMs\":600}],\"timelineLanes\":[{\"id\":\"lane:composition\",\"label\":\"Compositions\",\"tracks\":[\"render-spec\",\"engine\",\"artifact\"]}],\"steps\":[\"validate Render_Spec\",\"select runtime engine\",\"persist MP4 artifact\"]}"}
+      duration_ms: {key: duration_ms, type: number, value: 1800}
+      engine_hint: {key: engine_hint, type: text, value: "canvas-2d"}
+      engineId: {key: engineId, type: string, value: "canvas-2d"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"html_in":"html_video_spec","css_in":"html_video_spec","data_json_in":"html_video_spec"},"out":{"videoUrl":"html_video_artifact","outputPath":"html_video_artifact","renderJobId":"html_video_artifact"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "htmlVideoRenderer"}
+      fps: {key: fps, type: number, value: 6}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 4}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 3}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      height: {key: height, type: number, value: 720}
+      html: {key: html, type: textarea, value: "<main data-composition-id=\"knowgrph-vdeoxpln-demo\" data-start=\"0\" data-duration=\"1.800\" aria-label=\"Agent HTML video render\"><header><p class=\"eyebrow\">Knowgrph HTML Video Renderer</p><h1>HTML to MP4 for coding agents</h1><p class=\"lede\">Turn semantic HTML, CSS, and JSON data into a real MP4 through a runtime-selected engine.</p></header><section aria-label=\"Render timeline\"><article data-start=\"0.000\" data-duration=\"0.600\" data-track-index=\"0\"><strong>1</strong><span>Validate Render_Spec</span></article><article data-start=\"0.600\" data-duration=\"0.600\" data-track-index=\"1\"><strong>2</strong><span>Select pluggable engine</span></article><article data-start=\"1.200\" data-duration=\"0.600\" data-track-index=\"2\"><strong>3</strong><span>Persist video/mp4 artifact</span></article></section><footer><p>engine_hint: canvas-2d · no system ffmpeg install</p></footer></main>"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runtime-selected HTML-to-MP4 renderer. The canvas-2d engine path is browser-native and does not require a system FFmpeg install."}
+      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-23T12:44:34.211Z"}
+      outputManifestPath: {key: outputManifestPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget-video-output.md"}
+      outputMimeType: {key: outputMimeType, type: string, value: "video/mp4"}
+      outputModel: {key: outputModel, type: string, value: "canvas-2d"}
+      outputPath: {key: outputPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
+      outputSavedName: {key: outputSavedName, type: string, value: "knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
+      renderJobId: {key: renderJobId, type: string, value: "1d5ece65"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      videoUrl: {key: videoUrl, type: string, value: "blob:http://localhost:5173/1b61fb8f-dde4-450d-baba-2c11010e30ff"}
+      "visual:importance": {key: "visual:importance", type: number, value: 28}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 18}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      width: {key: width, type: number, value: 1280}
+    - id: {key: id, type: string, value: "html_video_mp4_panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rendered MP4 Artifact"}
+      position: {key: position, type: object, value: {"x":860,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["videoUrl"],"source":["videoUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"videoUrl":"html_video_artifact"},"out":{"videoUrl":"html_video_artifact"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel receives the video/mp4 artifact emitted by the HTML Video Renderer node."}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      "visual:height": {key: "visual:height", type: number, value: 197}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:width": {key: "visual:width", type: number, value: 348}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+  edges:
+    - {"id":"flow-e01","source":"html_video_source_spec","sourceHandle":"html","target":"html_video_renderer_node","targetHandle":"html_in"}
+    - {"id":"flow-e02","source":"html_video_source_spec","sourceHandle":"css","target":"html_video_renderer_node","targetHandle":"css_in"}
+    - {"id":"flow-e03","source":"html_video_source_spec","sourceHandle":"data_json","target":"html_video_renderer_node","targetHandle":"data_json_in"}
+    - {"id":"flow-e04","source":"html_video_renderer_node","sourceHandle":"videoUrl","target":"html_video_mp4_panel","targetHandle":"videoUrl"}
 modelSelection:
   selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
   scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
@@ -80,7 +221,6 @@ kgParserRoutingContract:
     flowNodes: "flow.nodes"
     flowEdges: "flow.edges"
     mermaidBlocks: "flow_diagrams"
-    strybldrStoryboard: "kgStrybldrStoryboard"
   diagramKinds:
     - "mermaid_flowchart"
     - "mermaid_gitgraph"
@@ -88,441 +228,93 @@ kgParserRoutingContract:
     - "mermaid_eventmodeling"
     - "mermaid_gantt"
     - "frontmatter_flow"
-    - "strybldr_storyboard"
   surfaces:
     - "2D Renderer: Flow Editor"
-    - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
-  forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
 
 # Knowgrph Vdeoxpln Demo - Interactive Visual Explanation
 
 This validation input turns the vdeoxpln contract into an inspectable visual
-explanation. Import it into Knowgrph to verify that abstract workflow concepts
-become source-backed cards, parent-derived tree edges, credit-aware branch
-states, and a bounded media handoff without relying on copied reference strings,
-route names, demo filenames, provider keys, or mirror-only patches.
+explanation. Import it into Knowgrph to verify that semantic HTML, CSS, and
+data become a real MP4 through shared Flow Editor and Rich Media owners without
+relying on copied reference strings, route names, demo filenames, provider keys,
+or mirror-only patches.
 
 ## What The Demo Must Prove
 
 | Stage | Required behavior | Shared owner |
 |---|---|---|
 | Import | The Markdown file is imported as a workspace document. | `workspaceFs.ts` |
-| Parse | The `strybldr-storyboard` fence becomes graph data through the Strybldr parser. | `strybldrStoryboard.ts` |
-| Source | Contract, registry, chat, and renderer owners appear as source-backed cards. | Source Files owners |
-| Visualize | The vdeoxpln workflow appears as editable storyboard and storytree lanes. | shared Storyboard surface |
-| Interact | Tree cards expose parent-derived edges, access state, credit projections, and inherited assets. | `buildStrybldrGraphData()` |
-| Execute | Toolbar Run all compiles approved cards into a provider-safe handoff or fallback artifact. | `StrybldrFloatingPanelView.tsx` |
+| Parse | Frontmatter `flow.nodes` and `flow.edges` become runnable graph data. | frontmatter Flow Editor parser |
+| Source | Contract, registry, chat, and renderer owners remain source-backed records. | Source Files owners |
+| Visualize | The vdeoxpln workflow appears as editable Flow Editor widgets and Rich Media panels. | shared Flow Editor surface |
+| Interact | The Render_Spec source feeds the HTML Video Renderer through explicit flow edges. | Flow Editor dataflow owners |
+| Render MP4 | The Flow Editor `HtmlVideoRenderer` node turns semantic HTML, CSS, and data into a real `video/mp4` artifact through `engine_hint=canvas-2d`. | `html-video-renderer/*` + `richMediaRun.ts` |
+| Execute | Toolbar Run all runs the flow and publishes the output to the downstream Rich Media Panel. | `flowEditorWorkflowRunAction.ts` |
 | Guard | Repo code consumes this document by input path and must not copy this payload into fixtures or runtime branches. | policy tests |
 
-## Runnable Vdeoxpln Visual Seed
+## Runnable Programmatic HTML-to-MP4 Demo
 
-```json strybldr-storyboard
+This document includes a frontmatter Flow Editor graph with three runnable
+nodes:
+
+1. `Programmatic Video Render Spec` provides semantic HTML, CSS, and JSON data.
+2. `HTML Video Renderer Widget` consumes the Render_Spec and sets
+   `engine_hint` to `canvas-2d`.
+3. `Rendered MP4 Artifact` receives the emitted `videoUrl` in a Rich Media
+   Panel video tab.
+
+The `canvas-2d` engine is the no-install Dev/Prod smoke path. It renders in the
+browser runtime with `html2canvas`, WebCodecs, and Mediabunny; it does not
+require a system `ffmpeg` binary. The `headless-browser` adapter remains an
+independent runtime option for operators who deliberately register an FFmpeg
+runtime.
+
+Run path:
+
+- Import this Markdown file through `Toolbar -> Launch -> Import local files`.
+- Switch to the Flow Editor surface if it is not already selected.
+- Run `HTML Video Renderer Widget`, or run the whole flow from Toolbar Run all.
+- Verify that the downstream Rich Media Panel has a playable `video/mp4`
+  artifact and that the render manifest records the selected
+  `engineHint=canvas-2d`.
+- Confirm the source document remains free of generated blob URLs, run IDs, and
+  output paths; those fields are runtime artifacts, not validation input.
+
+The embedded Render_Spec is intentionally small and deterministic:
+
+```json html-video-render-spec
 {
-  "version": 1,
-  "runId": "vdeoxpln-visual-explanation-demo",
-  "createdAtMs": 1780246800000,
-  "notes": "Neutral validation input for explaining vdeoxpln as source-backed dynamic visual artifacts.",
-  "sources": [
-    {
-      "sourceUnitId": "vdeoxpln-contract-doc",
-      "workspacePath": "docs/documents/knowgrph-vdeoxpln-prd-tad.md",
-      "relativePath": "knowgrph-vdeoxpln-prd-tad.md",
-      "originalName": "Vdeoxpln PRD/TAD",
-      "mediaKind": "doc",
-      "mimeHint": "text/markdown",
-      "byteSize": 0,
-      "textHash": "vdeoxpln-contract",
-      "mediaUrl": "docs/documents/knowgrph-vdeoxpln-prd-tad.md"
-    },
-    {
-      "sourceUnitId": "vdeoxpln-registry-owner",
-      "workspacePath": "canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs",
-      "relativePath": "knowgrphVdeoxplnContract.mjs",
-      "originalName": "Canonical vdeoxpln registry",
-      "mediaKind": "code",
-      "mimeHint": "text/javascript",
-      "byteSize": 0,
-      "textHash": "vdeoxpln-registry",
-      "mediaUrl": "canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs"
-    },
-    {
-      "sourceUnitId": "vdeoxpln-chat-owner",
-      "workspacePath": "canvas/src/features/chat/knowgrphVdeoxplnChatArtifacts.ts",
-      "relativePath": "knowgrphVdeoxplnChatArtifacts.ts",
-      "originalName": "Vdeoxpln chat artifact owner",
-      "mediaKind": "code",
-      "mimeHint": "text/typescript",
-      "byteSize": 0,
-      "textHash": "vdeoxpln-chat-artifacts",
-      "mediaUrl": "canvas/src/features/chat/knowgrphVdeoxplnChatArtifacts.ts"
-    },
-    {
-      "sourceUnitId": "vdeoxpln-renderer-owner",
-      "workspacePath": "canvas/src/features/strybldr/strybldrStoryboard.ts",
-      "relativePath": "strybldrStoryboard.ts",
-      "originalName": "Strybldr visual renderer owner",
-      "mediaKind": "code",
-      "mimeHint": "text/typescript",
-      "byteSize": 0,
-      "textHash": "vdeoxpln-visual-renderer",
-      "mediaUrl": "canvas/src/features/strybldr/strybldrStoryboard.ts"
-    },
-    {
-      "sourceUnitId": "vdeoxpln-showrunner-owner",
-      "workspacePath": "canvas/src/features/ai-showrunner/showrunnerOrchestrator.ts",
-      "relativePath": "showrunnerOrchestrator.ts",
-      "originalName": "AI Showrunner orchestration owner",
-      "mediaKind": "code",
-      "mimeHint": "text/typescript",
-      "byteSize": 0,
-      "textHash": "vdeoxpln-ai-showrunner",
-      "mediaUrl": "canvas/src/features/ai-showrunner/showrunnerOrchestrator.ts"
-    }
-  ],
-  "elements": [
-    {
-      "id": "vdeoxpln-element-registry",
-      "sourceUnitId": "vdeoxpln-registry-owner",
-      "label": "Canonical registry",
-      "confidence": 1,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 1,
-      "summary": "One normalized contract names packs, triggers, owners, tools, artifacts, AI policy, and validation.",
-      "action": "Treat the registry as the only vdeoxpln identity source.",
-      "prompt": "Show how a single registry fans out into local, browser, and published discovery surfaces."
-    },
-    {
-      "id": "vdeoxpln-element-router",
-      "sourceUnitId": "vdeoxpln-registry-owner",
-      "label": "Neutral router",
-      "confidence": 1,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 2,
-      "summary": "Skill selection uses intent, content type, requested outputs, and current state instead of route or filename matches.",
-      "action": "Keep route, URL, and absolute path values as ignored context.",
-      "prompt": "Animate selection from neutral request signals into one selected pack and a bounded stage plan."
-    },
-    {
-      "id": "vdeoxpln-element-source-artifact",
-      "sourceUnitId": "vdeoxpln-chat-owner",
-      "label": "Source-backed artifact",
-      "confidence": 0.98,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 3,
-      "summary": "Material outputs are persisted as workspace or Source Files artifacts before Canvas apply.",
-      "action": "Record run manifests beside generated KGC workspace artifacts.",
-      "prompt": "Show artifact cards moving through Workspace FS, Source Files, validation, and Canvas apply."
-    },
-    {
-      "id": "vdeoxpln-element-exact-layer",
-      "sourceUnitId": "vdeoxpln-contract-doc",
-      "label": "Exact layer boundary",
-      "confidence": 0.97,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 4,
-      "summary": "Exact graph, schema, formula, route, and provenance work stays deterministic.",
-      "action": "Separate exact layers from optional drafting or cinematic support.",
-      "prompt": "Highlight exact deterministic layers before any optional provider-assisted scene support."
-    },
-    {
-      "id": "vdeoxpln-element-visual-tree",
-      "sourceUnitId": "vdeoxpln-renderer-owner",
-      "label": "Interactive explanation tree",
-      "confidence": 0.96,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 5,
-      "summary": "Parent-derived tree cards make workflow forks, locked states, and audit-only branches inspectable.",
-      "action": "Render the tree through Strybldr and shared Storyboard owners.",
-      "prompt": "Create a dynamic visual explanation where each branch is an inspectable workflow decision."
-    },
-    {
-      "id": "vdeoxpln-element-handoff",
-      "sourceUnitId": "vdeoxpln-renderer-owner",
-      "label": "Bounded handoff",
-      "confidence": 0.95,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 6,
-      "summary": "Run all compiles approved cards into a provider-safe handoff with fallback state.",
-      "action": "Expose cost, attempts, fallback, source references, and approved card order.",
-      "prompt": "Compile only approved card fields into a concise video or visual explanation handoff."
-    },
-    {
-      "id": "vdeoxpln-element-ai-showrunner",
-      "sourceUnitId": "vdeoxpln-showrunner-owner",
-      "label": "AI Showrunner dry-run",
-      "confidence": 0.96,
-      "sourceBox": null,
-      "evidenceKind": "source-metadata",
-      "provider": "fallback",
-      "order": 7,
-      "summary": "A frontmatter-first Creative_Brief starts a provider-neutral dry-run pipeline and writes the same artifact structure as a live run with paid_call_count=0.",
-      "action": "Run knowgrph.showrunner.start_run with the embedded brief and inspect state, cost log, narration manifest, and artifact manifest.",
-      "prompt": "Show the brief, role pipeline, token budget, append-only state, and dry-run artifacts as a runnable Showrunner capability."
-    }
-  ],
-  "explainerVideo": {
-    "mode": "xr",
-    "title": "Text Artifact Explainer Video",
-    "summary": "A source-backed text artifact becomes an inspectable XR storyboard with synchronized text, image, and video evidence panels.",
-    "transcriptMarkdown": "## Visual Argument\nVdeoxpln become visible when the source contract, router, exact layer, dynamic visual plan, handoff, and validation gates are placed on one timed path.\n\n1. Read the canonical contract.\n2. Select by neutral intent and current state.\n3. Persist exact artifacts before optional media work.\n4. Review text, image, and video panels in XR Mode.\n5. Run only approved cards through the bounded handoff.",
-    "storyboardPrompt": "Create a concise explainer video from the approved text artifact, exact owner cards, tree branches, and Rich Media Panel evidence.",
-    "referenceImageUrl": "https://media.example.invalid/vdeoxpln-explainer-frame.svg",
-    "videoUrl": "https://media.example.invalid/vdeoxpln-explainer-video.mp4",
-    "panels": [
-      {
-        "panelId": "vdeoxpln_demo_rich_text",
-        "title": "Explainer Script Panel",
-        "activeTab": "text",
-        "sourceNodeId": "vdeoxpln-contract-doc",
-        "output": "## Script\nStart with the source contract, show how neutral routing selects a pack, then animate deterministic artifacts into an XR storyboard before any optional video step.",
-        "summary": "Inspectable script text generated from the source-backed vdeoxpln contract.",
-        "prompt": "Keep the narration tied to source owners, exact layers, and visible validation gates."
-      },
-      {
-        "panelId": "vdeoxpln_demo_rich_image",
-        "title": "Key Frame Panel",
-        "activeTab": "image",
-        "sourceNodeId": "vdeoxpln-renderer-owner",
-        "imageUrl": "https://media.example.invalid/vdeoxpln-explainer-frame.svg",
-        "summary": "Renderer-neutral key frame for the explainer-video plan.",
-        "prompt": "Use the key frame only as visual support for the source-backed storyboard."
-      },
-      {
-        "panelId": "vdeoxpln_demo_rich_video",
-        "title": "Explainer Video Panel",
-        "activeTab": "video",
-        "sourceNodeId": "vdeoxpln-renderer-owner",
-        "videoUrl": "https://media.example.invalid/vdeoxpln-explainer-video.mp4",
-        "summary": "Playable video slot for the approved explainer handoff or fallback artifact.",
-        "prompt": "Render or review the approved video artifact without inventing hidden sources."
-      }
-    ]
+  "html": "<main data-composition-id=\"knowgrph-vdeoxpln-demo\" data-start=\"0\" data-duration=\"1.800\" aria-label=\"Agent HTML video render\"><header><p class=\"eyebrow\">Knowgrph HTML Video Renderer</p><h1>HTML to MP4 for coding agents</h1><p class=\"lede\">Turn semantic HTML, CSS, and JSON data into a real MP4 through a runtime-selected engine.</p></header><section aria-label=\"Render timeline\"><article data-start=\"0.000\" data-duration=\"0.600\" data-track-index=\"0\"><strong>1</strong><span>Validate Render_Spec</span></article><article data-start=\"0.600\" data-duration=\"0.600\" data-track-index=\"1\"><strong>2</strong><span>Select pluggable engine</span></article><article data-start=\"1.200\" data-duration=\"0.600\" data-track-index=\"2\"><strong>3</strong><span>Persist video/mp4 artifact</span></article></section><footer><p>engine_hint: canvas-2d · no system ffmpeg install</p></footer></main>",
+  "css": "main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:22px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}header{display:grid;gap:8px}.eyebrow{margin:0;color:#0f766e;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}h1{margin:0;font-size:28px;line-height:1.05;letter-spacing:0}p{margin:0}.lede{max-width:560px;color:#475569;font-size:14px;line-height:1.5}section{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}article{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;border:1px solid #cbd5e1;background:#ffffff;border-radius:8px;padding:12px;min-width:0}strong{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111827;color:#f8fafc;font-size:13px}span{font-size:13px;font-weight:650;color:#1f2937}footer{border-top:1px solid #cbd5e1;padding-top:10px;color:#64748b;font-size:12px}",
+  "data": {
+    "title": "HTML to MP4 for coding agents",
+    "engine": "canvas-2d",
+    "muxer": "mediabunny",
+    "rasterizer": "html2canvas",
+    "output": "video/mp4",
+    "composition": {"id": "knowgrph-vdeoxpln-demo", "durationMs": 1800, "fps": 6, "width": 1280, "height": 720},
+    "workspaceFiles": [
+      {"path": "agent-design-video/index.html", "kind": "html", "role": "composition"},
+      {"path": "agent-design-video/styles.css", "kind": "css", "role": "style"},
+      {"path": "agent-design-video/data.json", "kind": "json", "role": "data"},
+      {"path": "agent-design-video/manifest.json", "kind": "json", "role": "manifest"}
+    ],
+    "timelineTracks": [
+      {"id": "render-spec", "label": "Render Spec", "trackIndex": 0, "startMs": 0, "durationMs": 600},
+      {"id": "engine", "label": "Runtime Engine", "trackIndex": 1, "startMs": 600, "durationMs": 600},
+      {"id": "artifact", "label": "MP4 Artifact", "trackIndex": 2, "startMs": 1200, "durationMs": 600}
+    ],
+    "timelineLanes": [{"id": "lane:composition", "label": "Compositions", "tracks": ["render-spec", "engine", "artifact"]}],
+    "steps": ["validate Render_Spec", "select runtime engine", "persist MP4 artifact"]
   },
-  "storytree": {
-    "storyId": "vdeoxpln-visual-explanation-tree",
-    "title": "Vdeoxpln Visual Explanation Tree",
-    "synopsis": "A neutral tree showing how source-backed vdeoxpln turn abstract workflow ideas into inspectable dynamic visuals.",
-    "tokenBalance": 18,
-    "activeBranchCount": 8,
-    "totalLikes": 512,
-    "generationCostCredits": 5,
-    "unlockCurrency": "credits",
-    "nodes": [
-      {
-        "nodeId": "vdeoxpln_demo_registry",
-        "parentNodeId": null,
-        "title": "Registry Source",
-        "synopsis": "The canonical registry provides pack ids, owners, tools, artifact policy, AI policy, and validation.",
-        "prompt": "Start with one source-owned registry feeding every local and published vdeoxpln surface.",
-        "authorName": "Knowgrph",
-        "status": "hot",
-        "duration": "00:12",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 126,
-        "impressions": 630,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["contract", "registry"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_discovery",
-        "parentNodeId": "vdeoxpln_demo_registry",
-        "title": "Discovery Surfaces",
-        "synopsis": "Local MCP, browser inspection, MainPanel cards, and published agent skills read the same normalized pack metadata.",
-        "prompt": "Show one registry projecting to multiple read-only discovery surfaces.",
-        "authorName": "Knowgrph",
-        "status": "active",
-        "duration": "00:11",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 78,
-        "impressions": 420,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["local-mcp", "browser-inspect", "published-metadata"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_router",
-        "parentNodeId": "vdeoxpln_demo_registry",
-        "title": "Neutral Router",
-        "synopsis": "Intent, content type, requested outputs, and current state select the pack; routes and file names are ignored.",
-        "prompt": "Visualize request signals being ranked into a selected pack and stage plan.",
-        "authorName": "Knowgrph",
-        "status": "active",
-        "duration": "00:14",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 91,
-        "impressions": 455,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["intent", "state-signals", "semantic-run-key"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_exact_layer",
-        "parentNodeId": "vdeoxpln_demo_router",
-        "title": "Exact Layer First",
-        "synopsis": "Graph topology, schema, labels, source provenance, and route metadata are deterministic before any optional model help.",
-        "prompt": "Demonstrate exact graph and provenance layers locking before optional visual enrichment.",
-        "authorName": "Knowgrph",
-        "status": "hot",
-        "duration": "00:16",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 88,
-        "impressions": 352,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["exact-layer", "provenance", "semantic-key"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_dynamic_visual",
-        "parentNodeId": "vdeoxpln_demo_exact_layer",
-        "title": "Dynamic Visual Plan",
-        "synopsis": "The abstract workflow becomes a timed visual model with cards, tree edges, motion notes, and exact-vs-optional boundaries.",
-        "prompt": "Turn the exact workflow into an inspectable dynamic visual plan with clear card order.",
-        "authorName": "Knowgrph",
-        "status": "locked",
-        "duration": "00:18",
-        "ageDays": 0,
-        "isFreeWindow": false,
-        "isProtected": true,
-        "unlockPriceCredits": 7,
-        "likes": 52,
-        "impressions": 260,
-        "paidUnlocks": 5,
-        "ownAssetIds": ["visual-plan", "motion-notes"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_handoff",
-        "parentNodeId": "vdeoxpln_demo_dynamic_visual",
-        "title": "Approved Handoff",
-        "synopsis": "Run all compiles approved cards, source references, cost fields, max attempts, and fallback state into one structured handoff.",
-        "prompt": "Build a concise handoff only from approved source-backed cards and visible policy fields.",
-        "authorName": "Knowgrph",
-        "status": "active",
-        "duration": "00:15",
-        "ageDays": 0,
-        "isFreeWindow": false,
-        "isProtected": true,
-        "unlockPriceCredits": 6,
-        "likes": 45,
-        "impressions": 210,
-        "paidUnlocks": 4,
-        "ownAssetIds": ["handoff", "fallback"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_qa",
-        "parentNodeId": "vdeoxpln_demo_handoff",
-        "title": "QA Proof",
-        "synopsis": "Validation checks source truth, owner existence, semantic keys, artifact state, and publish projection before release.",
-        "prompt": "Show validation gates catching drift, duplicates, stale aliases, and route-only selection.",
-        "authorName": "Knowgrph",
-        "status": "active",
-        "duration": "00:13",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 64,
-        "impressions": 320,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["validation", "drift-check"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_ai_showrunner",
-        "parentNodeId": "vdeoxpln_demo_handoff",
-        "title": "AI Showrunner Dry-Run",
-        "synopsis": "A Creative_Brief drives researcher, scriptwriter, director, and narrator_router roles while the local MCP dry-run writes state, cost, narration, and manifest artifacts with zero paid calls.",
-        "prompt": "Demonstrate start_run, run_status, token budget accounting, append-only state, and narrator voice-map gap handling.",
-        "authorName": "Knowgrph",
-        "status": "active",
-        "duration": "00:17",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 83,
-        "impressions": 415,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["ai-showrunner", "dry-run", "mcp", "artifact-manifest"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_publish",
-        "parentNodeId": "vdeoxpln_demo_qa",
-        "title": "Published Proof Surface",
-        "synopsis": "After build and sync, published read-only metadata mirrors the Dev source registry.",
-        "prompt": "Close with the generated public proof surface matching the registry hash.",
-        "authorName": "Knowgrph",
-        "status": "active",
-        "duration": "00:12",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 37,
-        "impressions": 185,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["publish", "agent-skills"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_route_only_refusal",
-        "parentNodeId": "vdeoxpln_demo_router",
-        "title": "Route-Only Refusal",
-        "synopsis": "A route name, absolute path, or demo filename without neutral intent is declined instead of backfilled.",
-        "prompt": "Show the router refusing a route-only input and explaining the missing capability signal.",
-        "authorName": "Knowgrph",
-        "status": "dropped",
-        "duration": "00:09",
-        "ageDays": 0,
-        "isFreeWindow": true,
-        "isProtected": false,
-        "unlockPriceCredits": 0,
-        "likes": 12,
-        "impressions": 190,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["guardrail"]
-      },
-      {
-        "nodeId": "vdeoxpln_demo_budget_hold",
-        "parentNodeId": "vdeoxpln_demo_dynamic_visual",
-        "title": "Budget Hold",
-        "synopsis": "A protected optional refinement stays visible for review but cannot run until the credit quote is approved.",
-        "prompt": "Represent optional enrichment as a locked branch with explicit credit projection and fallback state.",
-        "authorName": "Knowgrph",
-        "status": "draft",
-        "duration": "00:10",
-        "ageDays": 0,
-        "isFreeWindow": false,
-        "isProtected": true,
-        "unlockPriceCredits": 22,
-        "likes": 19,
-        "impressions": 95,
-        "paidUnlocks": 0,
-        "ownAssetIds": ["budget", "review-hold"]
-      }
-    ]
-  }
+  "durationMs": 1800,
+  "fps": 6,
+  "width": 1280,
+  "height": 720,
+  "engineHint": "canvas-2d"
 }
 ```
 
@@ -588,18 +380,17 @@ Expected local MCP artifact shape:
 
 After import, the parsed graph should expose:
 
-- `kgCanvasSurfaceMode=xr`
-- `kgCanvasRenderMode=3d`
-- `kgCanvas3dMode=xr`
-- one Source lane containing the contract and owner references
-- one Storyboard lane generated from the source units
-- one Elements lane for registry, router, source artifact, exact layer, visual tree, and handoff cards
-- one Storytree lane with parent-derived edges, protected branch access state, budget projections, dropped-branch audit visibility, and inherited assets
-- one Explainer Video lane with Rich Media Panel cards for text, image, and video
+- `kgCanvasSurfaceMode=2d`
+- `kgCanvasRenderMode=2d`
+- `kgCanvas2dRenderer=flowEditor`
+- one frontmatter Flow Editor graph containing the Render_Spec source, HTML Video Renderer, and Rich Media Panel
 - one AI Showrunner branch showing the dry-run role pipeline, token budget, artifact manifest, and zero paid calls
-- one Run all handoff that uses only approved card fields and source references
+- one Flow Editor HTML Video Renderer branch with `HtmlVideoRenderer -> RichMediaPanel`, `engine_hint=canvas-2d`, and a real `video/mp4` artifact
+- one Design FloatingPanel Video workspace showing files, compositions, assets, timeline lanes, and the same runtime-registered Render MP4 action
+- one Design BottomPanel Timeline view showing source-derived design video tracks when `kgCanvas2dRenderer=design` and the bottom tab is Timeline
+- one Run all execution path that uses source-owned flow edges and publishes only the generated MP4 artifact
 
 The repo must treat this file as external validation input. Runtime code and
 tests may read it by caller-supplied path, but must not copy its node ids,
-titles, prompts, source hashes, showrunner brief, MCP payload, or story payload
-into implementation fixtures.
+titles, prompts, source hashes, showrunner brief, MCP payload, HTML video
+Render_Spec, or output payload into implementation fixtures.
