@@ -144,7 +144,7 @@ flow:
       height: {key: height, type: number, value: 720}
       html: {key: html, type: textarea, value: "<main data-composition-id=\"knowgrph-vdeoxpln-demo\" data-start=\"0\" data-duration=\"1.800\" aria-label=\"Agent HTML video render\"><header><p class=\"eyebrow\">Knowgrph HTML Video Renderer</p><h1>HTML to MP4 for coding agents</h1><p class=\"lede\">Turn semantic HTML, CSS, and JSON data into a real MP4 through a runtime-selected engine.</p></header><section aria-label=\"Render timeline\"><article data-start=\"0.000\" data-duration=\"0.600\" data-track-index=\"0\"><strong>1</strong><span>Validate Render_Spec</span></article><article data-start=\"0.600\" data-duration=\"0.600\" data-track-index=\"1\"><strong>2</strong><span>Select pluggable engine</span></article><article data-start=\"1.200\" data-duration=\"0.600\" data-track-index=\"2\"><strong>3</strong><span>Persist video/mp4 artifact</span></article></section><footer><p>engine_hint: canvas-2d · no system ffmpeg install</p></footer></main>"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runtime-selected HTML-to-MP4 renderer. The canvas-2d engine path is browser-native and does not require a system FFmpeg install."}
-      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-23T12:44:34.211Z"}
+      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-24T07:00:18.775Z"}
       outputManifestPath: {key: outputManifestPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget-video-output.md"}
       outputMimeType: {key: outputMimeType, type: string, value: "video/mp4"}
       outputModel: {key: outputModel, type: string, value: "canvas-2d"}
@@ -152,7 +152,7 @@ flow:
       outputSavedName: {key: outputSavedName, type: string, value: "knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
       renderJobId: {key: renderJobId, type: string, value: "1d5ece65"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      videoUrl: {key: videoUrl, type: string, value: "blob:http://localhost:5173/1b61fb8f-dde4-450d-baba-2c11010e30ff"}
+      videoUrl: {key: videoUrl, type: string, value: "blob:http://localhost:5173/5d319a12-fb5f-436d-a8c4-98064872a5f4"}
       "visual:importance": {key: "visual:importance", type: number, value: 28}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 18}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
@@ -163,6 +163,7 @@ flow:
       label: {key: label, type: string, value: "Rendered MP4 Artifact"}
       position: {key: position, type: object, value: {"x":860,"y":0}}
       handles: {key: handles, type: object, value: {"target":["videoUrl"],"source":["videoUrl"]}}
+      engineId: {key: engineId, type: string, value: "canvas-2d"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"videoUrl":"html_video_artifact"},"out":{"videoUrl":"html_video_artifact"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
@@ -171,7 +172,15 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel receives the video/mp4 artifact emitted by the HTML Video Renderer node."}
+      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-24T07:00:18.775Z"}
+      outputManifestPath: {key: outputManifestPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget-video-output.md"}
+      outputMimeType: {key: outputMimeType, type: string, value: "video/mp4"}
+      outputModel: {key: outputModel, type: string, value: "canvas-2d"}
+      outputPath: {key: outputPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
+      outputSavedName: {key: outputSavedName, type: string, value: "knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
+      renderJobId: {key: renderJobId, type: string, value: "1d5ece65"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      videoUrl: {key: videoUrl, type: text, value: "blob:http://localhost:5173/5d319a12-fb5f-436d-a8c4-98064872a5f4"}
       "visual:height": {key: "visual:height", type: number, value: 197}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
