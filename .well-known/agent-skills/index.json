@@ -137,6 +137,32 @@
       }
     },
     {
+      "name": "knowgrph-html-video-renderer",
+      "type": "markdown",
+      "description": "Render HTML, CSS, and data documents to MP4 video artifacts through a runtime-selected pluggable engine and the existing rich media output owner.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-html-video-renderer.md",
+      "sha256": "2f51d62d01fdaf5493cab423d73afa886fe466f56a1dfa034a2476ba4ca6dd37",
+      "vdeoxpln": {
+        "id": "knowgrph-html-video-renderer",
+        "title": "Knowgrph HTML Video Renderer",
+        "scope": "local-stdio-and-browser-local",
+        "mutation": "local-approval-gated",
+        "semanticKey": "kgvx_6c382ebe",
+        "tools": {
+          "published": [],
+          "browserLocal": [],
+          "local": [
+            "knowgrph.html_video.render",
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "local-mcp-docs",
+          "mainpanel-mcp"
+        ]
+      }
+    },
+    {
       "name": "knowgrph-mcp-local",
       "type": "markdown",
       "description": "Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, video-remix run planning, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.",

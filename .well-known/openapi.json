@@ -392,6 +392,16 @@
         }
       }
     },
+    "/knowgrph/.well-known/agent-skills/knowgrph-html-video-renderer.md": {
+      "get": {
+        "summary": "Read the knowgrph-html-video-renderer agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-html-video-renderer"
+          }
+        }
+      }
+    },
     "/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md": {
       "get": {
         "summary": "Read the knowgrph-mcp-local agent skill markdown",

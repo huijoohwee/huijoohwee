@@ -156,6 +156,9 @@
 /.well-known/agent-skills/knowgrph-commerce-readiness.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
+/.well-known/agent-skills/knowgrph-html-video-renderer.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
 /.well-known/agent-skills/knowgrph-mcp-local.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
