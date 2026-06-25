@@ -144,7 +144,9 @@ flow:
       height: {key: height, type: number, value: 720}
       html: {key: html, type: textarea, value: "<main data-composition-id=\"knowgrph-vdeoxpln-demo\" data-start=\"0\" data-duration=\"1.800\" aria-label=\"Agent HTML video render\"><header><p class=\"eyebrow\">Knowgrph HTML Video Renderer</p><h1>HTML to MP4 for coding agents</h1><p class=\"lede\">Turn semantic HTML, CSS, and JSON data into a real MP4 through a runtime-selected engine.</p></header><section aria-label=\"Render timeline\"><article data-start=\"0.000\" data-duration=\"0.600\" data-track-index=\"0\"><strong>1</strong><span>Validate Render_Spec</span></article><article data-start=\"0.600\" data-duration=\"0.600\" data-track-index=\"1\"><strong>2</strong><span>Select pluggable engine</span></article><article data-start=\"1.200\" data-duration=\"0.600\" data-track-index=\"2\"><strong>3</strong><span>Persist video/mp4 artifact</span></article></section><footer><p>engine_hint: canvas-2d · no system ffmpeg install</p></footer></main>"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runtime-selected HTML-to-MP4 renderer. The canvas-2d engine path is browser-native and does not require a system FFmpeg install."}
-      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-24T07:00:18.775Z"}
+      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-25T02:24:24.046Z"}
+      outputLoading: {key: outputLoading, type: boolean, value: true}
+      outputLoadingKind: {key: outputLoadingKind, type: string, value: "video"}
       outputManifestPath: {key: outputManifestPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget-video-output.md"}
       outputMimeType: {key: outputMimeType, type: string, value: "video/mp4"}
       outputModel: {key: outputModel, type: string, value: "canvas-2d"}
