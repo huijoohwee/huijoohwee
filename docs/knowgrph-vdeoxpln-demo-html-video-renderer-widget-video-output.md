@@ -4,12 +4,12 @@
 | --- | --- |
 | kind | video |
 | artifactPath | ./knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4 |
-| mimeType | video/mp4 |
+| mimeType | video/mp4; codecs="avc1.42e01e" |
 | model | canvas-2d |
 | engineId | canvas-2d |
-| renderJobId | 1d5ece65 |
-| durationMs | 1800 |
-| fps | 6 |
+| renderJobId | 0f79237f |
+| durationMs | 6000 |
+| fps | 24 |
 | width | 1280 |
 | height | 720 |
 
