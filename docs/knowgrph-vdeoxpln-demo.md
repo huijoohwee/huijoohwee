@@ -176,11 +176,19 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel receives the video/mp4 artifact emitted by the HTML Video Renderer node."}
+      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-26T04:10:07.630Z"}
+      outputManifestPath: {key: outputManifestPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget-video-output.md"}
+      outputMimeType: {key: outputMimeType, type: string, value: "video/mp4; codecs=\"avc1.42e01e\""}
+      outputModel: {key: outputModel, type: string, value: "canvas-2d"}
+      outputPath: {key: outputPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
+      outputSavedName: {key: outputSavedName, type: string, value: "knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
+      renderJobId: {key: renderJobId, type: string, value: "0f79237f"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      "visual:height": {key: "visual:height", type: number, value: 324}
+      videoUrl: {key: videoUrl, type: text, value: "blob:http://localhost:5174/c5caf57d-71e9-4fe9-89f2-4a0facc6843d"}
+      "visual:height": {key: "visual:height", type: number, value: 431}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:width": {key: "visual:width", type: number, value: 576}
+      "visual:width": {key: "visual:width", type: number, value: 767}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
   edges:
