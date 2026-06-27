@@ -93,15 +93,8 @@ flow:
       summary: {key: summary, type: string, value: "Imported document source unit: Strybldr starter source."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Strybldr Starter Source"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
     - id: {key: id, type: string, value: "strybldr:frame:3595615238"}
       type: {key: type, type: string, value: "StoryboardFrame"}
       label: {key: label, type: string, value: "Strybldr Starter Source Frame"}
@@ -129,15 +122,8 @@ flow:
       summary: {key: summary, type: string, value: "Frame-level storyboard card generated from the imported source."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Strybldr Starter Source Frame"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 40}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 20.583005244258363}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
     - id: {key: id, type: string, value: "starter-source-brief-card"}
       type: {key: type, type: string, value: "StoryboardElement"}
       label: {key: label, type: string, value: "Source brief"}
@@ -145,8 +131,6 @@ flow:
       byteSize: {key: byteSize, type: number, value: 0}
       confidence: {key: confidence, type: number, value: 1}
       evidenceKind: {key: evidenceKind, type: string, value: "source-metadata"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
       "graph:degree": {key: "graph:degree", type: number, value: 2}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
@@ -160,7 +144,7 @@ flow:
       provider: {key: provider, type: string, value: "knowgrph"}
       references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
       renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
+      sourceBox: {key: sourceBox, type: string, value: null}
       sourceUrl: {key: sourceUrl, type: string, value: null}
       strybldrElementId: {key: strybldrElementId, type: string, value: "starter-source-brief-card"}
       strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
@@ -168,15 +152,8 @@ flow:
       summary: {key: summary, type: string, value: "Capture the operator-owned source URL, title, author, constraints, and notes."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Source brief"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
     - id: {key: id, type: string, value: "starter-storyboard-beats-card"}
       type: {key: type, type: string, value: "StoryboardElement"}
       label: {key: label, type: string, value: "Storyboard beats"}
@@ -184,8 +161,6 @@ flow:
       byteSize: {key: byteSize, type: number, value: 0}
       confidence: {key: confidence, type: number, value: 1}
       evidenceKind: {key: evidenceKind, type: string, value: "user-edit"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
       "graph:degree": {key: "graph:degree", type: number, value: 3}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
@@ -199,7 +174,7 @@ flow:
       provider: {key: provider, type: string, value: "knowgrph"}
       references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
       renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
+      sourceBox: {key: sourceBox, type: string, value: null}
       sourceUrl: {key: sourceUrl, type: string, value: null}
       strybldrElementId: {key: strybldrElementId, type: string, value: "starter-storyboard-beats-card"}
       strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
@@ -207,15 +182,8 @@ flow:
       summary: {key: summary, type: string, value: "Draft setup, turn, proof, and close beats as editable cards."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Storyboard beats"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
     - id: {key: id, type: string, value: "starter-elements-card"}
       type: {key: type, type: string, value: "StoryboardElement"}
       label: {key: label, type: string, value: "Reusable elements"}
@@ -223,8 +191,6 @@ flow:
       byteSize: {key: byteSize, type: number, value: 0}
       confidence: {key: confidence, type: number, value: 1}
       evidenceKind: {key: evidenceKind, type: string, value: "user-edit"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
       "graph:degree": {key: "graph:degree", type: number, value: 3}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
@@ -238,7 +204,7 @@ flow:
       provider: {key: provider, type: string, value: "knowgrph"}
       references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
       renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
+      sourceBox: {key: sourceBox, type: string, value: null}
       sourceUrl: {key: sourceUrl, type: string, value: null}
       strybldrElementId: {key: strybldrElementId, type: string, value: "starter-elements-card"}
       strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
@@ -246,15 +212,8 @@ flow:
       summary: {key: summary, type: string, value: "List reusable characters, locations, props, evidence cards, UI states, or shots."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Reusable elements"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
     - id: {key: id, type: string, value: "starter-runtime-gate-card"}
       type: {key: type, type: string, value: "StoryboardElement"}
       label: {key: label, type: string, value: "Runtime gate"}
@@ -262,8 +221,6 @@ flow:
       byteSize: {key: byteSize, type: number, value: 0}
       confidence: {key: confidence, type: number, value: 1}
       evidenceKind: {key: evidenceKind, type: string, value: "runtime-plan"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
       "graph:degree": {key: "graph:degree", type: number, value: 3}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
@@ -277,7 +234,7 @@ flow:
       provider: {key: provider, type: string, value: "knowgrph-local-animatic"}
       references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
       renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
+      sourceBox: {key: sourceBox, type: string, value: null}
       sourceUrl: {key: sourceUrl, type: string, value: null}
       strybldrElementId: {key: strybldrElementId, type: string, value: "starter-runtime-gate-card"}
       strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
@@ -285,15 +242,8 @@ flow:
       summary: {key: summary, type: string, value: "Default runtime is local animatic generation with zero paid calls and blank live provider fields."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Runtime gate"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
     - id: {key: id, type: string, value: "starter-review-packet-card"}
       type: {key: type, type: string, value: "StoryboardElement"}
       label: {key: label, type: string, value: "Review packet"}
@@ -301,8 +251,6 @@ flow:
       byteSize: {key: byteSize, type: number, value: 0}
       confidence: {key: confidence, type: number, value: 1}
       evidenceKind: {key: evidenceKind, type: string, value: "runtime-review"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
       "graph:degree": {key: "graph:degree", type: number, value: 3}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
@@ -316,7 +264,7 @@ flow:
       provider: {key: provider, type: string, value: "knowgrph"}
       references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
       renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
+      sourceBox: {key: sourceBox, type: string, value: null}
       sourceUrl: {key: sourceUrl, type: string, value: null}
       strybldrElementId: {key: strybldrElementId, type: string, value: "starter-review-packet-card"}
       strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
@@ -324,15 +272,8 @@ flow:
       summary: {key: summary, type: string, value: "Review provenance, approval state, cost, provider evidence, and local playback."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Review packet"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
     - id: {key: id, type: string, value: "starter-local-publish-packet-card"}
       type: {key: type, type: string, value: "StoryboardElement"}
       label: {key: label, type: string, value: "Local publish packet"}
@@ -340,8 +281,6 @@ flow:
       byteSize: {key: byteSize, type: number, value: 0}
       confidence: {key: confidence, type: number, value: 1}
       evidenceKind: {key: evidenceKind, type: string, value: "runtime-publish"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
       "graph:degree": {key: "graph:degree", type: number, value: 2}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
@@ -355,7 +294,7 @@ flow:
       provider: {key: provider, type: string, value: "knowgrph"}
       references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
       renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
+      sourceBox: {key: sourceBox, type: string, value: null}
       sourceUrl: {key: sourceUrl, type: string, value: null}
       strybldrElementId: {key: strybldrElementId, type: string, value: "starter-local-publish-packet-card"}
       strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
@@ -363,62 +302,21 @@ flow:
       summary: {key: summary, type: string, value: "Final output is a local packet path and approval state, not a public deployment claim."}
       thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
       title: {key: title, type: string, value: "Local publish packet"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 162}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 288}
-    - id: {key: id, type: string, value: "n1"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "strybldr-starter-source.png"}
-      position: {key: position, type: object, value: {"x":1122,"y":1346}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      image: {key: image, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM1OTE5fQ"}
-      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM1OTE5fQ"}
-      media: {key: media, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM1OTE5fQ"}
-      media_kind: {key: media_kind, type: string, value: "image"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM1OTE5fQ"}
-      mediaKind: {key: mediaKind, type: string, value: "image"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:017d1e965528642fd2358db7acddd8d1bbb8f8d1112fe12c69d89b885aab0b06"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM1OTE5fQ"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
-    - id: {key: id, type: string, value: "n2"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "buddydrone.jpg"}
-      position: {key: position, type: object, value: {"x":1222.6067006909554,"y":1311.3555877999274}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      image: {key: image, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM5Njg1fQ"}
-      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM5Njg1fQ"}
-      media: {key: media, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM5Njg1fQ"}
-      media_kind: {key: media_kind, type: string, value: "image"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM5Njg1fQ"}
-      mediaKind: {key: mediaKind, type: string, value: "image"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:730fe6850f0fc26f74a39bfffd1e828c47fbb7086ea09c8118445ef7b943ce96"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTM5OTM5Njg1fQ"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
   edges:
-    - {"id":"strybldr:edge:2908212329","source":"strybldr:source:3725310941","target":"strybldr:frame:3595615238","label":"frames"}
-    - {"id":"strybldr:edge:2976418985","source":"strybldr:frame:3595615238","target":"starter-source-brief-card","label":"containsElement"}
-    - {"id":"strybldr:edge:3745157328","source":"strybldr:frame:3595615238","target":"starter-storyboard-beats-card","label":"containsElement"}
-    - {"id":"strybldr:edge:963297330","source":"strybldr:frame:3595615238","target":"starter-elements-card","label":"containsElement"}
-    - {"id":"strybldr:edge:846179949","source":"strybldr:frame:3595615238","target":"starter-runtime-gate-card","label":"containsElement"}
-    - {"id":"strybldr:edge:2092723780","source":"strybldr:frame:3595615238","target":"starter-review-packet-card","label":"containsElement"}
-    - {"id":"strybldr:edge:1614941333","source":"strybldr:frame:3595615238","target":"starter-local-publish-packet-card","label":"containsElement"}
-    - {"id":"edge-starter-source-storyboard","source":"starter-source-brief-card","target":"starter-storyboard-beats-card","label":"source_to_storyboard"}
-    - {"id":"edge-starter-storyboard-elements","source":"starter-storyboard-beats-card","target":"starter-elements-card","label":"storyboard_to_elements"}
-    - {"id":"edge-starter-elements-runtime","source":"starter-elements-card","target":"starter-runtime-gate-card","label":"elements_to_runtime"}
-    - {"id":"edge-starter-runtime-review","source":"starter-runtime-gate-card","target":"starter-review-packet-card","label":"runtime_to_review"}
-    - {"id":"edge-starter-review-publish","source":"starter-review-packet-card","target":"starter-local-publish-packet-card","label":"review_to_publish"}
+    - "{\"id\": \"strybldr:edge:2908212329\",\"source\":\"strybldr:source:3725310941\",\"target\":\"strybldr:frame:3595615238\",\"label\":\"frames\"}"
+    - "{\"id\": \"strybldr:edge:2976418985\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-source-brief-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:3745157328\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-storyboard-beats-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:963297330\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-elements-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:846179949\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-runtime-gate-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:2092723780\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-review-packet-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"strybldr:edge:1614941333\",\"source\":\"strybldr:frame:3595615238\",\"target\":\"starter-local-publish-packet-card\",\"label\":\"containsElement\"}"
+    - "{\"id\": \"edge-starter-source-storyboard\",\"source\":\"starter-source-brief-card\",\"target\":\"starter-storyboard-beats-card\",\"label\":\"source_to_storyboard\"}"
+    - "{\"id\": \"edge-starter-storyboard-elements\",\"source\":\"starter-storyboard-beats-card\",\"target\":\"starter-elements-card\",\"label\":\"storyboard_to_elements\"}"
+    - "{\"id\": \"edge-starter-elements-runtime\",\"source\":\"starter-elements-card\",\"target\":\"starter-runtime-gate-card\",\"label\":\"elements_to_runtime\"}"
+    - "{\"id\": \"edge-starter-runtime-review\",\"source\":\"starter-runtime-gate-card\",\"target\":\"starter-review-packet-card\",\"label\":\"runtime_to_review\"}"
+    - "{\"id\": \"edge-starter-review-publish\",\"source\":\"starter-review-packet-card\",\"target\":\"starter-local-publish-packet-card\",\"label\":\"review_to_publish\"}"
 kgParserRoutingContract:
   version: "knowgrph-parser-routing/v1"
   parserLogic: "Opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases."
@@ -477,7 +375,6 @@ strybldr_storyboard:
       evidenceKind: source-metadata
       provider: knowgrph
       order: 1
-      lane: Elements
       prompt: Summarize the source promise without copying transcript text or provider-generated output.
       action: Fill source fields before approving storyboard cards.
       summary: Capture the operator-owned source URL, title, author, constraints, and notes.
@@ -489,7 +386,6 @@ strybldr_storyboard:
       evidenceKind: user-edit
       provider: knowgrph
       order: 2
-      lane: Elements
       prompt: Create four concise storyboard beats from the operator notes.
       action: Approve only paraphrased, source-backed beats.
       summary: Draft setup, turn, proof, and close beats as editable cards.
@@ -501,7 +397,6 @@ strybldr_storyboard:
       evidenceKind: user-edit
       provider: knowgrph
       order: 3
-      lane: Elements
       prompt: Convert approved beats into reusable elements and style constraints.
       action: Keep generated media URLs blank until real outputs exist.
       summary: List reusable characters, locations, props, evidence cards, UI states, or shots.
@@ -513,7 +408,6 @@ strybldr_storyboard:
       evidenceKind: runtime-plan
       provider: knowgrph-local-animatic
       order: 4
-      lane: Runtime
       prompt: Render the local animatic handoff and keep live IDs empty until returned by an approved run.
       action: Generate locally first; require human approval before VideoDB, SenseNova, or other paid provider calls.
       summary: Default runtime is local animatic generation with zero paid calls and blank live provider fields.
@@ -575,7 +469,7 @@ The template is intentionally neutral. Fill in source fields, approve cards, and
 1. Open this Markdown file in Knowgrph.
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
 3. Edit `Source brief`, `Storyboard beats`, and `Reusable elements`.
-4. Approve the @storyboard cards before any paid or mutating provider call.
+4. Approve the storyboard cards before any paid or mutating provider call.
 5. Run local generation first and confirm `paid_call_count: 0`.
 6. Review the local packet before changing `publish_scope`.
 
