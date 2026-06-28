@@ -66,156 +66,41 @@ socket_types:
   strybldr_packet_signal: "{color: \"#f59e0b\", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [strybldr_packet_signal]}"
 flow:
   nodes:
-    - id: {key: id, type: string, value: "strybldr:source:3725310941"}
-      type: {key: type, type: string, value: "StrybldrImageSource"}
-      label: {key: label, type: string, value: "Strybldr Starter Source"}
-      action: {key: action, type: string, value: "Review the source evidence into editable storyboard elements."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 1}
-      evidenceKind: {key: evidenceKind, type: string, value: "source-metadata"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      lane: {key: lane, type: string, value: "Source"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 0}
-      prompt: {key: prompt, type: string, value: "Use Strybldr starter source as the reference source."}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: object, value: {"xmin":0,"ymin":0,"xmax":1,"ymax":1,"unit":"percentage"}}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "strybldr:source:3725310941"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Imported document source unit: Strybldr starter source."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Strybldr Starter Source"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
-    - id: {key: id, type: string, value: "strybldr:frame:3595615238"}
-      type: {key: type, type: string, value: "StoryboardFrame"}
-      label: {key: label, type: string, value: "Strybldr Starter Source Frame"}
-      action: {key: action, type: string, value: "Review element cards, revise prompts, then send the approved sequence to video generation."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 0.5}
-      evidenceKind: {key: evidenceKind, type: string, value: "source-metadata"}
-      "graph:degree": {key: "graph:degree", type: number, value: 7}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 6}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      lane: {key: lane, type: string, value: "Storyboard"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 1}
-      prompt: {key: prompt, type: string, value: "Create a short video storyboard beat from Strybldr starter source."}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: object, value: {"xmin":0,"ymin":0,"xmax":1,"ymax":1,"unit":"percentage"}}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "strybldr:frame:3595615238"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Frame-level storyboard card generated from the imported source."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Strybldr Starter Source Frame"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 40}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 20.583005244258363}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
-    - id: {key: id, type: string, value: "starter-source-brief-card"}
-      type: {key: type, type: string, value: "StoryboardElement"}
-      label: {key: label, type: string, value: "Source brief"}
-      action: {key: action, type: string, value: "Fill source fields before approving storyboard cards."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 1}
-      evidenceKind: {key: evidenceKind, type: string, value: "source-metadata"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
+    - id: {key: id, type: string, value: "n1"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "1920s_Singapore_Malaya_202606190937.jpeg"}
+      position: {key: position, type: object, value: {"x":-1016.5196456327037,"y":-19.962335838306927}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "graph:degree": {key: "graph:degree", type: number, value: 2}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      lane: {key: lane, type: string, value: "Elements"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 1}
-      prompt: {key: prompt, type: string, value: "Summarize the source promise without copying transcript text or provider-generated output."}
-      provider: {key: provider, type: string, value: "knowgrph"}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "starter-source-brief-card"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Capture the operator-owned source URL, title, author, constraints, and notes."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Source brief"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 20}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
-    - id: {key: id, type: string, value: "starter-storyboard-beats-card"}
-      type: {key: type, type: string, value: "StoryboardElement"}
-      label: {key: label, type: string, value: "Storyboard beats"}
-      action: {key: action, type: string, value: "Approve only paraphrased, source-backed beats."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 1}
-      evidenceKind: {key: evidenceKind, type: string, value: "user-edit"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
+      image: {key: image, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTE2MTA3fQ"}
+      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTE2MTA3fQ"}
+      media: {key: media, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTE2MTA3fQ"}
+      media_kind: {key: media_kind, type: string, value: "image"}
+      media_url: {key: media_url, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTE2MTA3fQ"}
+      mediaKind: {key: mediaKind, type: string, value: "image"}
+      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:170a76238422bb27f5919405cee76d55a665fdb44e0933684872ca745bafbb93"}
+      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTE2MTA3fQ"}
+      output: {key: output, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+    - id: {key: id, type: string, value: "n2"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "港岛仿生局.mp4"}
+      position: {key: position, type: object, value: {"x":-1001.000963425867,"y":-286.214331270617}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "graph:degree": {key: "graph:degree", type: number, value: 3}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      lane: {key: lane, type: string, value: "Elements"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 2}
-      prompt: {key: prompt, type: string, value: "Create four concise storyboard beats from the operator notes."}
-      provider: {key: provider, type: string, value: "knowgrph"}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "starter-storyboard-beats-card"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Draft setup, turn, proof, and close beats as editable cards."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Storyboard beats"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
+      media: {key: media, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTIxNzgwfQ"}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      media_kind: {key: media_kind, type: string, value: "video"}
+      media_url: {key: media_url, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTIxNzgwfQ"}
+      mediaKind: {key: mediaKind, type: string, value: "video"}
+      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:bb371a0f5fbda012cd58566d44e081e5a7aafd3803e9c35c6ec5678f2e5f19c6"}
+      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTIxNzgwfQ"}
+      output: {key: output, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      video: {key: video, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTIxNzgwfQ"}
+      videoUrl: {key: videoUrl, type: string, value: "http://localhost:5173/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjQ3OTIxNzgwfQ"}
     - id: {key: id, type: string, value: "starter-elements-card"}
       type: {key: type, type: string, value: "StoryboardElement"}
       label: {key: label, type: string, value: "Reusable elements"}
@@ -225,10 +110,6 @@ flow:
       evidenceKind: {key: evidenceKind, type: string, value: "user-edit"}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "graph:degree": {key: "graph:degree", type: number, value: 3}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       lane: {key: lane, type: string, value: "Elements"}
       mediaKind: {key: mediaKind, type: string, value: "doc"}
       mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
@@ -249,194 +130,11 @@ flow:
       "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
       "visual:height": {key: "visual:height", type: number, value: 203}
       "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
       "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
       "visual:shape": {key: "visual:shape", type: string, value: "rect"}
       "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
       "visual:width": {key: "visual:width", type: number, value: 360}
-    - id: {key: id, type: string, value: "starter-runtime-gate-card"}
-      type: {key: type, type: string, value: "StoryboardElement"}
-      label: {key: label, type: string, value: "Runtime gate"}
-      action: {key: action, type: string, value: "Generate locally first; require human approval before VideoDB, SenseNova, or other paid provider calls."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 1}
-      evidenceKind: {key: evidenceKind, type: string, value: "runtime-plan"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "graph:degree": {key: "graph:degree", type: number, value: 3}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      lane: {key: lane, type: string, value: "Runtime"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 4}
-      prompt: {key: prompt, type: string, value: "Render the local animatic handoff and keep live IDs empty until returned by an approved run."}
-      provider: {key: provider, type: string, value: "knowgrph-local-animatic"}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "starter-runtime-gate-card"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Default runtime is local animatic generation with zero paid calls and blank live provider fields."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Runtime gate"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
-    - id: {key: id, type: string, value: "starter-review-packet-card"}
-      type: {key: type, type: string, value: "StoryboardElement"}
-      label: {key: label, type: string, value: "Review packet"}
-      action: {key: action, type: string, value: "Reject fabricated provider IDs, stream URLs, transcripts, or generated asset URLs."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 1}
-      evidenceKind: {key: evidenceKind, type: string, value: "runtime-review"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "graph:degree": {key: "graph:degree", type: number, value: 3}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      lane: {key: lane, type: string, value: "Review"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 5}
-      prompt: {key: prompt, type: string, value: "Prepare a review packet that separates local evidence from live provider evidence."}
-      provider: {key: provider, type: string, value: "knowgrph"}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "starter-review-packet-card"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Review provenance, approval state, cost, provider evidence, and local playback."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Review packet"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
-    - id: {key: id, type: string, value: "starter-local-publish-packet-card"}
-      type: {key: type, type: string, value: "StoryboardElement"}
-      label: {key: label, type: string, value: "Local publish packet"}
-      action: {key: action, type: string, value: "Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 1}
-      evidenceKind: {key: evidenceKind, type: string, value: "runtime-publish"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "graph:degree": {key: "graph:degree", type: number, value: 2}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      lane: {key: lane, type: string, value: "Publish"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 6}
-      prompt: {key: prompt, type: string, value: "Close the workflow with a local-only packet and a visible publish gate."}
-      provider: {key: provider, type: string, value: "knowgrph"}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "starter-local-publish-packet-card"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Final output is a local packet path and approval state, not a public deployment claim."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Local publish packet"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:importance": {key: "visual:importance", type: number, value: 20}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
-    - id: {key: id, type: string, value: "n1"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "港岛仿生局.mp4"}
-      position: {key: position, type: object, value: {"x":-1475.5679483416495,"y":-168.12753155268578}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      media: {key: media, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
-      media_interactive: {key: media_interactive, type: boolean, value: true}
-      media_kind: {key: media_kind, type: string, value: "video"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
-      mediaKind: {key: mediaKind, type: string, value: "video"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:bb371a0f5fbda012cd58566d44e081e5a7aafd3803e9c35c6ec5678f2e5f19c6"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      video: {key: video, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
-      videoUrl: {key: videoUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
-    - id: {key: id, type: string, value: "n2"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "strybldr-starter-source.png"}
-      position: {key: position, type: object, value: {"x":-1491.6934168078662,"y":-228.5166156650021}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      image: {key: image, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
-      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
-      media: {key: media, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
-      media_kind: {key: media_kind, type: string, value: "image"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
-      mediaKind: {key: mediaKind, type: string, value: "image"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:017d1e965528642fd2358db7acddd8d1bbb8f8d1112fe12c69d89b885aab0b06"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
-    - id: {key: id, type: string, value: "n3"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "1920s_Singapore_Malaya_202606190937.jpeg"}
-      position: {key: position, type: object, value: {"x":-1407.179336659818,"y":-195.1307601995892}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      image: {key: image, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
-      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
-      media: {key: media, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
-      media_kind: {key: media_kind, type: string, value: "image"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
-      mediaKind: {key: mediaKind, type: string, value: "image"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:170a76238422bb27f5919405cee76d55a665fdb44e0933684872ca745bafbb93"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
-      output: {key: output, type: string, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
   edges:
-    - {"id":"strybldr:edge:2908212329","source":"strybldr:source:3725310941","target":"strybldr:frame:3595615238","label":"frames"}
-    - {"id":"strybldr:edge:2976418985","source":"strybldr:frame:3595615238","target":"starter-source-brief-card","label":"containsElement"}
-    - {"id":"strybldr:edge:3745157328","source":"strybldr:frame:3595615238","target":"starter-storyboard-beats-card","label":"containsElement"}
-    - {"id":"strybldr:edge:963297330","source":"strybldr:frame:3595615238","target":"starter-elements-card","label":"containsElement"}
-    - {"id":"strybldr:edge:846179949","source":"strybldr:frame:3595615238","target":"starter-runtime-gate-card","label":"containsElement"}
-    - {"id":"strybldr:edge:2092723780","source":"strybldr:frame:3595615238","target":"starter-review-packet-card","label":"containsElement"}
-    - {"id":"strybldr:edge:1614941333","source":"strybldr:frame:3595615238","target":"starter-local-publish-packet-card","label":"containsElement"}
-    - {"id":"edge-starter-source-storyboard","source":"starter-source-brief-card","target":"starter-storyboard-beats-card","label":"source_to_storyboard"}
-    - {"id":"edge-starter-storyboard-elements","source":"starter-storyboard-beats-card","target":"starter-elements-card","label":"storyboard_to_elements"}
-    - {"id":"edge-starter-elements-runtime","source":"starter-elements-card","target":"starter-runtime-gate-card","label":"elements_to_runtime"}
-    - {"id":"edge-starter-runtime-review","source":"starter-runtime-gate-card","target":"starter-review-packet-card","label":"runtime_to_review"}
-    - {"id":"edge-starter-review-publish","source":"starter-review-packet-card","target":"starter-local-publish-packet-card","label":"review_to_publish"}
 kgParserRoutingContract:
   version: "knowgrph-parser-routing/v1"
   parserLogic: "Opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases."
@@ -606,4 +304,6 @@ The template is intentionally neutral. Fill in source fields, approve cards, and
 - Do not hardcode source-specific media IDs, provider IDs, stream URLs, transcripts, credentials, or generated asset URLs in repo code or tests.
 - Do not remap stale renderer names or add downstream compatibility aliases.
 - Do not deploy this starter to Prod or Cloudflare from this document alone.
+- Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
+from this document alone.
 - Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
