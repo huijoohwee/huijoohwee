@@ -374,54 +374,56 @@ flow:
       "visual:width": {key: "visual:width", type: number, value: 360}
     - id: {key: id, type: string, value: "n1"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "buddydrone.jpg"}
-      position: {key: position, type: object, value: {"x":-536.6162849202652,"y":-652.0763451041981}}
+      label: {key: label, type: string, value: "港岛仿生局.mp4"}
+      position: {key: position, type: object, value: {"x":-1475.5679483416495,"y":-168.12753155268578}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      image: {key: image, type: string, value: "http://localhost:5176/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTYyNjcxNDU3fQ"}
-      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5176/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTYyNjcxNDU3fQ"}
-      media: {key: media, type: string, value: "http://localhost:5176/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTYyNjcxNDU3fQ"}
+      media: {key: media, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
+      media_interactive: {key: media_interactive, type: boolean, value: true}
+      media_kind: {key: media_kind, type: string, value: "video"}
+      media_url: {key: media_url, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
+      mediaKind: {key: mediaKind, type: string, value: "video"}
+      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:bb371a0f5fbda012cd58566d44e081e5a7aafd3803e9c35c6ec5678f2e5f19c6"}
+      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
+      output: {key: output, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      video: {key: video, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
+      videoUrl: {key: videoUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjEzMDQ5fQ"}
+    - id: {key: id, type: string, value: "n2"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "strybldr-starter-source.png"}
+      position: {key: position, type: object, value: {"x":-1491.6934168078662,"y":-228.5166156650021}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      image: {key: image, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
+      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
+      media: {key: media, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
       media_kind: {key: media_kind, type: string, value: "image"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5176/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTYyNjcxNDU3fQ"}
+      media_url: {key: media_url, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
       mediaKind: {key: mediaKind, type: string, value: "image"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:730fe6850f0fc26f74a39bfffd1e828c47fbb7086ea09c8118445ef7b943ce96"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5176/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgyNTYyNjcxNDU3fQ"}
+      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:017d1e965528642fd2358db7acddd8d1bbb8f8d1112fe12c69d89b885aab0b06"}
+      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyNjI0NjE3NjUyfQ"}
       output: {key: output, type: string, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
-    - id: {key: id, type: string, value: "starter-storyboard-beats-card"}
-      type: {key: type, type: string, value: "StoryboardElement"}
-      label: {key: label, type: string, value: "Storyboard beats"}
-      action: {key: action, type: string, value: "Approve only paraphrased, source-backed beats."}
-      byteSize: {key: byteSize, type: number, value: 0}
-      confidence: {key: confidence, type: number, value: 1}
-      evidenceKind: {key: evidenceKind, type: string, value: "user-edit"}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "storyboardElement"}
+    - id: {key: id, type: string, value: "n3"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "1920s_Singapore_Malaya_202606190937.jpeg"}
+      position: {key: position, type: object, value: {"x":-1407.179336659818,"y":-195.1307601995892}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      lane: {key: lane, type: string, value: "Elements"}
-      mediaKind: {key: mediaKind, type: string, value: "doc"}
-      mediaUrl: {key: mediaUrl, type: string, value: "Strybldr starter source"}
-      mimeHint: {key: mimeHint, type: string, value: "text/markdown"}
-      order: {key: order, type: number, value: 2}
-      prompt: {key: prompt, type: string, value: "Create four concise storyboard beats from the operator notes."}
-      provider: {key: provider, type: string, value: "knowgrph"}
-      references: {key: references, type: array, value: ["docs/knowgrph-strybldr-starter-template.md"]}
-      renderUrl: {key: renderUrl, type: string, value: null}
-      sourceBox: {key: sourceBox, type: string, value: "null"}
-      sourceUrl: {key: sourceUrl, type: string, value: null}
-      strybldrElementId: {key: strybldrElementId, type: string, value: "starter-storyboard-beats-card"}
-      strybldrRunId: {key: strybldrRunId, type: string, value: "strybldr-starter-template"}
-      strybldrSourceUnitId: {key: strybldrSourceUnitId, type: string, value: "strybldr-starter-source"}
-      summary: {key: summary, type: string, value: "Draft setup, turn, proof, and close beats as editable cards."}
-      thumbnailUrl: {key: thumbnailUrl, type: string, value: null}
-      title: {key: title, type: string, value: "Storyboard beats"}
-      "visual:fill": {key: "visual:fill", type: string, value: "var(--kg-panel-bg)"}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:hideLabel": {key: "visual:hideLabel", type: boolean, value: true}
-      "visual:preserveBody": {key: "visual:preserveBody", type: boolean, value: true}
-      "visual:shape": {key: "visual:shape", type: string, value: "rect"}
-      "visual:stroke": {key: "visual:stroke", type: string, value: "var(--kg-border)"}
-      "visual:width": {key: "visual:width", type: number, value: 360}
+      image: {key: image, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
+      imageUrl: {key: imageUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
+      media: {key: media, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
+      media_kind: {key: media_kind, type: string, value: "image"}
+      media_url: {key: media_url, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
+      mediaKind: {key: mediaKind, type: string, value: "image"}
+      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:170a76238422bb27f5919405cee76d55a665fdb44e0933684872ca745bafbb93"}
+      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5175/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgyNjI0NjIxMjY4fQ"}
+      output: {key: output, type: string, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
   edges:
     - {"id":"strybldr:edge:2908212329","source":"strybldr:source:3725310941","target":"strybldr:frame:3595615238","label":"frames"}
     - {"id":"strybldr:edge:2976418985","source":"strybldr:frame:3595615238","target":"starter-source-brief-card","label":"containsElement"}
@@ -604,109 +606,4 @@ The template is intentionally neutral. Fill in source fields, approve cards, and
 - Do not hardcode source-specific media IDs, provider IDs, stream URLs, transcripts, credentials, or generated asset URLs in repo code or tests.
 - Do not remap stale renderer names or add downstream compatibility aliases.
 - Do not deploy this starter to Prod or Cloudflare from this document alone.
-- Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
-r-source-brief-card
-      target: starter-storyboard-beats-card
-      label: source_to_storyboard
-    - id: edge-starter-storyboard-elements
-      source: starter-storyboard-beats-card
-      target: starter-elements-card
-      label: storyboard_to_elements
-    - id: edge-starter-elements-runtime
-      source: starter-elements-card
-      target: starter-runtime-gate-card
-      label: elements_to_runtime
-    - id: edge-starter-runtime-review
-      source: starter-runtime-gate-card
-      target: starter-review-packet-card
-      label: runtime_to_review
-    - id: edge-starter-review-publish
-      source: starter-review-packet-card
-      target: starter-local-publish-packet-card
-      label: review_to_publish
----
-
-# Knowgrph Strybldr Starter Template
-
-This is the minimum viable runnable Strybldr seed for a new source. It opens on the shared `storyboard` renderer, shows Source, Storyboard, Elements, Runtime, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards.
-
-The template is intentionally neutral. Fill in source fields, approve cards, and only then connect live providers. Runtime IDs, stream URLs, transcript text, generated media URLs, and deployment claims remain blank until returned by an operator-approved live run.
-
-## Use
-
-1. Open this Markdown file in Knowgrph.
-2. Confirm Canvas View reports `2D Renderer: Storyboard`.
-3. Edit `Source brief`, `Storyboard beats`, and `Reusable elements`.
-4. Approve the storyboard cards before any paid or mutating provider call.
-5. Run local generation first and confirm `paid_call_count: 0`.
-6. Review the local packet before changing `publish_scope`.
-
-## Acceptance Checklist
-
-- [ ] Source URL and source notes are operator supplied.
-- [ ] Storyboard beats are paraphrased and approved.
-- [ ] Live provider fields stay blank until real responses return them.
-- [ ] Local animatic generation works without `VIDEODB_API_KEY` or `SENSENOVA_API_KEY`.
-- [ ] Publish scope remains `local-only` unless the operator explicitly authorizes Prod or Cloudflare.
-
-## Guardrails
-
-- Do not hardcode source-specific media IDs, provider IDs, stream URLs, transcripts, credentials, or generated asset URLs in repo code or tests.
-- Do not remap stale renderer names or add downstream compatibility aliases.
-- Do not deploy this starter to Prod or Cloudflare from this document alone.
-- Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
-ap stale renderer names or add downstream compatibility aliases.
-- Do not deploy this starter to Prod or Cloudflare from this document alone.
-- Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
-r-source-brief-card
-      target: starter-storyboard-beats-card
-      label: source_to_storyboard
-    - id: edge-starter-storyboard-elements
-      source: starter-storyboard-beats-card
-      target: starter-elements-card
-      label: storyboard_to_elements
-    - id: edge-starter-elements-runtime
-      source: starter-elements-card
-      target: starter-runtime-gate-card
-      label: elements_to_runtime
-    - id: edge-starter-runtime-review
-      source: starter-runtime-gate-card
-      target: starter-review-packet-card
-      label: runtime_to_review
-    - id: edge-starter-review-publish
-      source: starter-review-packet-card
-      target: starter-local-publish-packet-card
-      label: review_to_publish
----
-
-# Knowgrph Strybldr Starter Template
-
-This is the minimum viable runnable Strybldr seed for a new source. It opens on the shared `storyboard` renderer, shows Source, Storyboard, Elements, Runtime, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards.
-
-The template is intentionally neutral. Fill in source fields, approve cards, and only then connect live providers. Runtime IDs, stream URLs, transcript text, generated media URLs, and deployment claims remain blank until returned by an operator-approved live run.
-
-## Use
-
-1. Open this Markdown file in Knowgrph.
-2. Confirm Canvas View reports `2D Renderer: Storyboard`.
-3. Edit `Source brief`, `Storyboard beats`, and `Reusable elements`.
-4. Approve the storyboard cards before any paid or mutating provider call.
-5. Run local generation first and confirm `paid_call_count: 0`.
-6. Review the local packet before changing `publish_scope`.
-
-## Acceptance Checklist
-
-- [ ] Source URL and source notes are operator supplied.
-- [ ] Storyboard beats are paraphrased and approved.
-- [ ] Live provider fields stay blank until real responses return them.
-- [ ] Local animatic generation works without `VIDEODB_API_KEY` or `SENSENOVA_API_KEY`.
-- [ ] Publish scope remains `local-only` unless the operator explicitly authorizes Prod or Cloudflare.
-
-## Guardrails
-
-- Do not hardcode source-specific media IDs, provider IDs, stream URLs, transcripts, credentials, or generated asset URLs in repo code or tests.
-- Do not remap stale renderer names or add downstream compatibility aliases.
-- Do not deploy this starter to Prod or Cloudflare from this document alone.
-- Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
-udflare from this document alone.
 - Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
