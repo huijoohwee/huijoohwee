@@ -315,6 +315,33 @@
           "mainpanel-mcp"
         ]
       }
+    },
+    {
+      "name": "knowgrph-visual-annotation-engine",
+      "type": "markdown",
+      "description": "Run browser-local image and video-frame annotation into LLM-ready structured JSON materialised through the existing rich-media artifact owner.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-visual-annotation-engine.md",
+      "sha256": "f1f066c1dbcd5584f0bf0d56c9d52e730c58b5c445e2baf8a8af53cb1268905a",
+      "vdeoxpln": {
+        "id": "knowgrph-visual-annotation-engine",
+        "title": "Knowgrph Visual Annotation Engine",
+        "scope": "browser-local",
+        "mutation": "local-approval-gated",
+        "semanticKey": "kgvx_a9ae389c",
+        "tools": {
+          "published": [],
+          "browserLocal": [],
+          "local": [
+            "knowgrph.annotate.image",
+            "knowgrph.annotate.video_frame",
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "local-mcp-docs",
+          "mainpanel-mcp"
+        ]
+      }
     }
   ]
 }
