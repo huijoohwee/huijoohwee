@@ -321,13 +321,13 @@
       "type": "markdown",
       "description": "Reason over operator-supplied video sources through native knowgrph ingestion, parsing, annotation, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-video-agent.md",
-      "sha256": "81531afb602517f1f0e356dcc56fa62f66d8212548240437ccd1bb57c7432fed",
+      "sha256": "fbef2035b17407d35268e3e502957b27170b26f12a1b1b253624affc12bbb69c",
       "vdeoxpln": {
         "id": "knowgrph-video-agent",
         "title": "Knowgrph Video Agent",
         "scope": "browser-local-and-local-stdio",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_4cdee5bd",
+        "semanticKey": "kgvx_790793bb",
         "tools": {
           "published": [],
           "browserLocal": [],

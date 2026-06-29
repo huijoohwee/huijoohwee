@@ -6,7 +6,7 @@ Use this skill when: Reason over operator-supplied video sources through native 
 
 - Vdeoxpln id: `knowgrph-video-agent`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_4cdee5bd`
+- Semantic key: `kgvx_790793bb`
 - Scope: `browser-local-and-local-stdio`
 - Mutation boundary: `local-approval-gated`
 
@@ -34,6 +34,7 @@ Use this skill when: Reason over operator-supplied video sources through native 
 - edit plan
 - inline stream preview
 - moment search index
+- reasoning artifact manifest
 - render spec
 - source manifest
 - timeline manifest
@@ -57,7 +58,7 @@ Local MCP tools:
 
 - Ingest an operator-supplied video source without embedding a provider runtime dependency.
 - Parse source metadata, frame annotations, transcript windows, and searchable moments through existing source and annotation owners.
-- Plan search, edit, compilation, and generation stages as typed data rather than copied external code.
+- Plan search, edit, compilation, and generation stages as typed reasoning artifacts rather than copied external code.
 - Compile a source-owned HTML/CSS/data Render_Spec for the selected timeline.
 - Stream a video/mp4 artifact or outputSrcDoc preview through the shared Rich Media Panel output owner.
 
@@ -68,6 +69,7 @@ Local MCP tools:
 - canvas/src/features/html-video-renderer/htmlVideoFlowNode.ts
 - canvas/src/features/html-video-renderer/htmlVideoRendererSsot.ts
 - canvas/src/features/source-files
+- canvas/src/features/video-agent
 - canvas/src/features/visual-annotation-engine/annotationFlowNode.ts
 - canvas/src/features/visual-annotation-engine/annotationSerializers.ts
 - canvas/src/lib/graph/semanticKey.ts
@@ -79,6 +81,7 @@ Local MCP tools:
 - Semantic-key inputs:
 - sourceUrl
 - capabilities
+- reasoningArtifacts
 - renderSpecHash
 - streamOutput
 
@@ -94,6 +97,7 @@ Local MCP tools:
 - htmlVideoRenderer
 - mcpLocalToolContract
 - vdeoxpln:check
+- videoAgentPipeline
 - visualAnnotationEngine
 
 ## Guardrails
