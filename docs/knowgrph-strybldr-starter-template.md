@@ -90,9 +90,9 @@ kgParserRoutingContract:
   edgePolicy: "Explicit flow.edges are source-owned SSOT; renderers project visible connectors only."
 kgWebpageView: "markdown"
 strybldr_storyboard:
-  version: "1"
+  version: '1'
   runId: strybldr-starter-template
-  createdAtMs: "1781577600000"
+  createdAtMs: '1781577600000'
   notes: Neutral starter payload for local-first Strybldr authoring. Replace source fields with operator-owned inputs before live provider calls.
   workflow:
     stages:
@@ -113,9 +113,9 @@ strybldr_storyboard:
       originalName: Strybldr starter source
       mediaKind: doc
       mimeHint: text/markdown
-      byteSize: "0"
+      byteSize: '0'
       textHash: strybldr-starter-template
-      mediaUrl: ""
+      mediaUrl: ''
   elements:
     - id: starter-source-brief-card
       sourceUnitId: strybldr-starter-source
@@ -183,6 +183,10 @@ strybldr_storyboard:
       prompt: Close the workflow with a local-only packet and a visible publish gate.
       action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
       summary: Final output is a local packet path and approval state, not a public deployment claim.
+  cards:
+    - nodeId: strybldr:source:3725310941
+      mediaKind: image
+      mediaUrl: https://example.com/storyboard-live-route-image.jpg
 ---
 
 # Knowgrph Strybldr Starter Template

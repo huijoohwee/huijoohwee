@@ -21,6 +21,8 @@ local_file_import_contract:
   - "Canvas View Mode reports Flow Editor"
   - "AI Showrunner dry-run brief is runnable through local MCP start_run with zero paid calls"
   - "AI Showrunner artifacts include run state, cost log, narration manifest, and artifact manifest"
+  - "Flow Editor exposes a dependency-free video-agent Render_Spec for the YouTube test URL https://youtu.be/8NkwH29Ou1o"
+  - "The video-agent graph demonstrates ingest, parse, search, edit, compile, generate, and stream stages without copying Director or depending on VideoDB"
   - "Flow Editor exposes an HTML Video Renderer node with a complete animated HTML/CSS/data Render_Spec"
   - "HTML Video Renderer uses engine_hint=canvas-2d for browser-native MP4 smoke rendering without a system FFmpeg install"
   - "Run all writes a video/mp4 artifact and manifest through shared rich-media output owners when the selected runtime can encode video"
@@ -78,6 +80,37 @@ htmlVideoRendererRuntimeContract:
     - "canvas-2d produces a real MP4 in browser runtimes without installing ffmpeg"
     - "headless-browser remains available for operator-provided FFmpeg runtimes"
     - "unsupported browser encoders publish a runnable HTML preview through outputSrcDoc instead of leaving the panel empty"
+videoAgentRuntimeContract:
+  schema: "knowgrph-video-agent/v1"
+  inspiration: "video-db/Director-style video-agent orchestration"
+  dependencyPolicy:
+    - "no copied Director code"
+    - "no VideoDB runtime dependency"
+    - "no external API key requirement"
+    - "test URL is source-owned validation input only"
+  testUrl: "https://youtu.be/8NkwH29Ou1o"
+  sourceId: "youtube:8NkwH29Ou1o"
+  capabilities:
+    - "ingest"
+    - "parse"
+    - "search"
+    - "edit"
+    - "compile"
+    - "generate"
+    - "stream"
+  agentStages:
+    - "source_intake"
+    - "video_parser"
+    - "moment_searcher"
+    - "edit_planner"
+    - "timeline_compiler"
+    - "generation_router"
+    - "stream_publisher"
+  outputBoundary:
+    - "HTML/CSS/data Render_Spec is the source-owned program"
+    - "video/mp4, outputSrcDoc, renderJobId, and manifests are runtime outputs"
+    - "RichMediaPanel receives streamable artifact output through explicit Flow Editor edges"
+    - "source document stores no generated blob URLs, output paths, or run identifiers"
 visualAnnotationRuntimeContract:
   schema: "knowgrph-annotation/v1"
   nodeTypeId: "AnnotationEngine"
@@ -158,16 +191,16 @@ flow:
   nodes:
     - id: {key: id, type: string, value: "html_video_source_spec"}
       type: {key: type, type: string, value: "InputWidget"}
-      label: {key: label, type: string, value: "Programmatic Video Render Spec"}
+      label: {key: label, type: string, value: "Programmatic Video Agent Render Spec"}
       position: {key: position, type: object, value: {"x":0,"y":0}}
       handles: {key: handles, type: object, value: {"source":["html","css","data_json"]}}
       css:
         key: css
         type: css
         value: |
-          main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:18px;font-family:Inter,system-ui,sans-serif;background:#0b1020;color:#f8fafc;overflow:hidden}p,h1,h2{margin:0}.hero{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;animation:kgSceneIn .5s ease-out both}.eyebrow{color:#6cf3c0;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:30px;line-height:1.02;letter-spacing:0}.lede{max-width:620px;color:#cbd5e1;font-size:13px;line-height:1.45}.chip{border:1px solid #334155;background:#111827;color:#e2e8f0;border-radius:8px;padding:8px 10px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace}.stage{display:grid;grid-template-columns:1.35fr .9fr;gap:12px;min-height:0}.browser,.director{min-width:0;border:1px solid #334155;border-radius:8px;background:#111827;box-shadow:0 18px 40px rgba(0,0,0,.28);overflow:hidden;animation:kgLift .8s cubic-bezier(.16,1,.3,1) both}.browser{animation-delay:.12s}.bar{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #334155;background:#0f172a}.dot{width:8px;height:8px;border-radius:50%;background:#f97316;box-shadow:14px 0 #facc15,28px 0 #22c55e}.url{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badge{font-size:11px;color:#6cf3c0}.site{display:grid;grid-template-columns:1fr auto;gap:12px;padding:16px}.site h2{font-size:20px}.site p{color:#cbd5e1;font-size:12px;line-height:1.45}.capture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.capture-grid li{list-style:none;border:1px solid #475569;border-radius:8px;padding:10px;background:#1f2937;animation:kgCard .7s ease-out both}.capture-grid li:nth-child(2){animation-delay:.2s}.capture-grid li:nth-child(3){animation-delay:.4s}.preview{width:96px;min-height:118px;border:1px solid #475569;border-radius:8px;background:#f8fafc;color:#0f172a;padding:10px;animation:kgScan 2.4s ease-in-out infinite}.preview strong{display:block;font-size:13px}.preview span{display:block;margin-top:28px;height:8px;border-radius:999px;background:#14b8a6}.director{display:grid;grid-template-rows:auto 1fr}.director header{padding:12px;border-bottom:1px solid #334155}.director h2{font-size:18px}.steps{display:grid;gap:8px;padding:12px}.steps li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;border:1px solid #334155;border-radius:8px;padding:9px;background:#0f172a;transform:translateX(18px);opacity:.15;animation:kgStep .65s ease-out both}.steps li:nth-child(1){animation-delay:.15s}.steps li:nth-child(2){animation-delay:.42s}.steps li:nth-child(3){animation-delay:.7s}.steps li:nth-child(4){animation-delay:.98s}.num{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#6cf3c0;color:#052e2b;font-weight:800;font-size:12px}.steps span{font-size:12px;color:#e2e8f0}.timeline{display:grid;gap:8px;border-top:1px solid #334155;padding-top:10px}.rail{height:8px;border-radius:999px;background:#1f2937;overflow:hidden}.rail::before{content:"";display:block;height:100%;width:100%;background:#6cf3c0;transform-origin:left;animation:kgProgress 6s linear infinite}.ticks{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.ticks li{list-style:none;color:#94a3b8;font-size:11px}.ticks strong{display:block;color:#f8fafc;font-size:12px}.pulse{animation:kgPulse 1.3s ease-in-out infinite}@keyframes kgSceneIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}@keyframes kgLift{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes kgCard{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes kgStep{to{opacity:1;transform:translateX(0)}}@keyframes kgScan{0%,100%{box-shadow:inset 0 0 0 0 rgba(20,184,166,.0)}50%{box-shadow:inset 0 -56px 0 rgba(20,184,166,.18)}}@keyframes kgProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes kgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+          main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:18px;font-family:Inter,system-ui,sans-serif;background:#07111f;color:#f8fafc;overflow:hidden}p,h1,h2,h3{margin:0}.hero{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}.eyebrow{color:#5eead4;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:30px;line-height:1.05;letter-spacing:0}.lede{max-width:740px;color:#cbd5e1;font-size:13px;line-height:1.45}.chip{border:1px solid #334155;background:#0f172a;color:#e2e8f0;border-radius:8px;padding:8px 10px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace}.stage{display:grid;grid-template-columns:1.08fr 1fr;gap:12px;min-height:0}.source,.reasoning,.stream{min-width:0;border:1px solid #334155;border-radius:8px;background:#0f172a;box-shadow:0 18px 40px rgba(0,0,0,.28);overflow:hidden}.source{display:grid;grid-template-rows:auto 1fr}.bar{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #334155;background:#111827}.dot{width:8px;height:8px;border-radius:50%;background:#06b6d4;box-shadow:14px 0 #22c55e,28px 0 #f59e0b}.url{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badge{font-size:11px;color:#5eead4}.video-card{display:grid;gap:12px;padding:14px}.thumbnail{position:relative;aspect-ratio:16/9;border:1px solid #334155;border-radius:8px;background:linear-gradient(135deg,#123456,#0b1220 55%,#0f766e);overflow:hidden}.thumbnail::before{content:"";position:absolute;inset:14% 18%;border:2px solid rgba(94,234,212,.72);border-radius:8px}.thumbnail::after{content:"";position:absolute;left:12%;right:12%;bottom:16%;height:6px;border-radius:999px;background:#5eead4;transform-origin:left;animation:kgProgress 7s linear infinite}.video-card h2{font-size:20px}.video-card p{color:#cbd5e1;font-size:12px;line-height:1.45}.tasks{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.tasks li{list-style:none;border:1px solid #334155;border-radius:8px;padding:8px;background:#111827;color:#e2e8f0;font-size:11px;text-align:center}.reasoning{display:grid;grid-template-rows:auto 1fr}.reasoning header{padding:12px;border-bottom:1px solid #334155}.reasoning h2{font-size:18px}.agents{display:grid;gap:8px;padding:12px}.agents li{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;border:1px solid #334155;border-radius:8px;padding:9px;background:#0b1220;transform:translateX(18px);opacity:.18;animation:kgStep .7s ease-out both}.agents li:nth-child(1){animation-delay:.1s}.agents li:nth-child(2){animation-delay:.28s}.agents li:nth-child(3){animation-delay:.46s}.agents li:nth-child(4){animation-delay:.64s}.agents li:nth-child(5){animation-delay:.82s}.agents li:nth-child(6){animation-delay:1s}.num{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#5eead4;color:#042f2e;font-weight:800;font-size:12px}.agents span{font-size:12px;color:#e2e8f0}.agents output{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#93c5fd}.timeline{display:grid;gap:8px;border-top:1px solid #334155;padding-top:10px}.rail{height:8px;border-radius:999px;background:#1f2937;overflow:hidden}.rail::before{content:"";display:block;height:100%;width:100%;background:#5eead4;transform-origin:left;animation:kgProgress 7s linear infinite}.ticks{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.ticks li{list-style:none;color:#94a3b8;font-size:10px}.ticks strong{display:block;color:#f8fafc;font-size:11px}.stream{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;padding:10px}.stream strong{font-size:13px}.stream p{color:#cbd5e1;font-size:12px;line-height:1.4}@keyframes kgStep{to{opacity:1;transform:translateX(0)}}@keyframes kgProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
           
-      data_json: {key: data_json, type: json, value: "{\"title\":\"URL to MP4 Agent Demo\",\"engine\":\"canvas-2d\",\"rasterizer\":\"html2canvas\",\"output\":\"video/mp4\",\"referencePattern\":\"url-to-video composition workflow\",\"composition\":{\"id\":\"knowgrph-vdeoxpln-url-to-video-demo\",\"durationMs\":6000,\"fps\":24,\"width\":1280,\"height\":720},\"sourceCapture\":{\"url\":\"https://airvio.co/knowgrph\",\"viewports\":[{\"id\":\"desktop\",\"width\":1440,\"height\":900},{\"id\":\"tablet\",\"width\":1024,\"height\":768},{\"id\":\"mobile\",\"width\":390,\"height\":844}],\"extract\":[\"brand tokens\",\"layout hierarchy\",\"copy hooks\",\"motion cues\"]},\"workspaceFiles\":[{\"path\":\"url-to-video/index.html\",\"kind\":\"html\",\"role\":\"composition\"},{\"path\":\"url-to-video/styles.css\",\"kind\":\"css\",\"role\":\"style\"},{\"path\":\"url-to-video/data.json\",\"kind\":\"json\",\"role\":\"data\"},{\"path\":\"url-to-video/storyboard.md\",\"kind\":\"markdown\",\"role\":\"storyboard\"},{\"path\":\"url-to-video/manifest.json\",\"kind\":\"json\",\"role\":\"manifest\"}],\"timelineTracks\":[{\"id\":\"capture\",\"label\":\"Capture URL\",\"trackIndex\":0,\"startMs\":0,\"durationMs\":1200},{\"id\":\"extract\",\"label\":\"Extract identity\",\"trackIndex\":1,\"startMs\":1200,\"durationMs\":1200},{\"id\":\"storyboard\",\"label\":\"Storyboard scenes\",\"trackIndex\":2,\"startMs\":2400,\"durationMs\":1200},{\"id\":\"compose\",\"label\":\"Animate HTML\",\"trackIndex\":3,\"startMs\":3600,\"durationMs\":1200},{\"id\":\"artifact\",\"label\":\"Persist MP4\",\"trackIndex\":4,\"startMs\":4800,\"durationMs\":1200}],\"timelineLanes\":[{\"id\":\"lane:capture\",\"label\":\"Source capture\",\"tracks\":[\"capture\",\"extract\"]},{\"id\":\"lane:render\",\"label\":\"Composition render\",\"tracks\":[\"storyboard\",\"compose\",\"artifact\"]}],\"animation\":{\"driver\":\"css-keyframes\",\"targets\":[\".hero\",\".browser\",\".capture-grid li\",\".steps li\",\".rail\",\".preview\"],\"keyframes\":[\"kgSceneIn\",\"kgLift\",\"kgCard\",\"kgStep\",\"kgProgress\",\"kgScan\",\"kgPulse\"]},\"steps\":[\"ingest URL source\",\"parse brand and layout signals\",\"compose seekable HTML timeline\",\"render or preview artifact\"]}"}
+      data_json: {key: data_json, type: json, value: "{\"title\":\"Knowgrph Video Agent Demo\",\"engine\":\"canvas-2d\",\"rasterizer\":\"html2canvas\",\"output\":\"video/mp4\",\"referencePattern\":\"Director-inspired video agent workflow; no copied code and no external dependency\",\"composition\":{\"id\":\"knowgrph-video-agent-youtube-demo\",\"durationMs\":7000,\"fps\":24,\"width\":1280,\"height\":720},\"sourceVideo\":{\"url\":\"https://youtu.be/8NkwH29Ou1o\",\"sourceId\":\"youtube:8NkwH29Ou1o\",\"ingestMode\":\"operator-supplied-test-url\",\"externalDependency\":false},\"agentIntent\":\"reason through complex video tasks: search, editing, compilation, generation, and streaming\",\"capabilities\":[\"ingest\",\"parse\",\"search\",\"edit\",\"compile\",\"generate\",\"stream\"],\"agents\":[{\"id\":\"source_intake\",\"role\":\"ingest\",\"output\":\"source key and media manifest\"},{\"id\":\"video_parser\",\"role\":\"parse\",\"output\":\"transcript, frame labels, annotation tasks\"},{\"id\":\"moment_searcher\",\"role\":\"search\",\"output\":\"ranked evidence windows\"},{\"id\":\"edit_planner\",\"role\":\"edit\",\"output\":\"clip ranges, overlays, subtitles, pacing\"},{\"id\":\"timeline_compiler\",\"role\":\"compile\",\"output\":\"timeline manifest and render spec\"},{\"id\":\"generation_router\",\"role\":\"generate\",\"output\":\"generated overlay or narration placeholders\"},{\"id\":\"stream_publisher\",\"role\":\"stream\",\"output\":\"videoUrl or outputSrcDoc rich-media payload\"}],\"workspaceFiles\":[{\"path\":\"video-agent/source.json\",\"kind\":\"json\",\"role\":\"source-manifest\"},{\"path\":\"video-agent/moments.json\",\"kind\":\"json\",\"role\":\"search-index\"},{\"path\":\"video-agent/timeline.json\",\"kind\":\"json\",\"role\":\"edit-plan\"},{\"path\":\"video-agent/render.html\",\"kind\":\"html\",\"role\":\"composition\"},{\"path\":\"video-agent/stream-manifest.json\",\"kind\":\"json\",\"role\":\"stream-output\"}],\"timelineTracks\":[{\"id\":\"ingest\",\"label\":\"Ingest test URL\",\"trackIndex\":0,\"startMs\":0,\"durationMs\":900},{\"id\":\"parse\",\"label\":\"Parse multimodal context\",\"trackIndex\":1,\"startMs\":900,\"durationMs\":1100},{\"id\":\"search\",\"label\":\"Search relevant moments\",\"trackIndex\":2,\"startMs\":2000,\"durationMs\":1000},{\"id\":\"edit\",\"label\":\"Plan clips and overlays\",\"trackIndex\":3,\"startMs\":3000,\"durationMs\":1200},{\"id\":\"compile\",\"label\":\"Compile timeline\",\"trackIndex\":4,\"startMs\":4200,\"durationMs\":1200},{\"id\":\"generate\",\"label\":\"Generate assets\",\"trackIndex\":5,\"startMs\":5400,\"durationMs\":1000},{\"id\":\"stream\",\"label\":\"Publish stream\",\"trackIndex\":6,\"startMs\":6400,\"durationMs\":600}],\"streaming\":{\"primary\":\"video/mp4\",\"fallback\":\"outputSrcDoc\",\"panel\":\"RichMediaPanel\"},\"safeguards\":[\"no copied Director code\",\"no VideoDB runtime dependency\",\"no API key requirement\",\"source document stores no generated blob URLs\"]}"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"html":"html_video_spec","css":"html_video_spec","data_json":"html_video_spec"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "htmlVideoRenderSpecInput"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
@@ -175,25 +208,25 @@ flow:
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      html: {key: html, type: html, value: "<main data-composition-id=\"knowgrph-vdeoxpln-url-to-video-demo\" data-start=\"0\" data-duration=\"6.000\" aria-label=\"URL to video HTML render\"><header class=\"hero\"><section><p class=\"eyebrow\">Knowgrph URL to video pipeline</p><h1>Source page to MP4 composition</h1><p class=\"lede\">Ingest a URL, parse brand and layout signals, build a seekable HTML timeline, then publish a renderable artifact through the Rich Media Panel.</p></section><p class=\"chip\">engine_hint=canvas-2d</p></header><section class=\"stage\" aria-label=\"URL capture and composition\"><article class=\"browser\" data-start=\"0.000\" data-duration=\"3.600\" data-track-index=\"0\"><header class=\"bar\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"url\">https://airvio.co/knowgrph</span><span class=\"badge\">captured</span></header><section class=\"site\"><section><h2>Capture the source</h2><p>Brand tokens, hierarchy, copy hooks, and layout rhythm become structured timeline data.</p><ol class=\"capture-grid\"><li>Desktop hero</li><li>Tablet flow</li><li>Mobile crop</li></ol></section><aside class=\"preview\" aria-label=\"Source preview\"><strong>Knowgrph</strong><span class=\"pulse\"></span></aside></section></article><article class=\"director\" data-start=\"2.000\" data-duration=\"3.400\" data-track-index=\"1\"><header><p class=\"eyebrow\">Storyboard compiler</p><h2>HTML, CSS, data, artifact</h2></header><ol class=\"steps\"><li><strong class=\"num\">1</strong><span>Ingest URL source</span></li><li><strong class=\"num\">2</strong><span>Parse visual semantics</span></li><li><strong class=\"num\">3</strong><span>Animate seekable HTML</span></li><li><strong class=\"num\">4</strong><span>Render MP4 or inline preview</span></li></ol></article></section><footer class=\"timeline\" aria-label=\"Render timeline\"><section class=\"rail\" aria-label=\"Render progress\"></section><ol class=\"ticks\"><li><strong>0.0s</strong>capture</li><li><strong>1.2s</strong>extract</li><li><strong>2.4s</strong>storyboard</li><li><strong>3.6s</strong>compose</li><li><strong>4.8s</strong>artifact</li></ol></footer></main>"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source-owned HTML, CSS, and JSON data for the HTML Video Renderer node."}
+      html: {key: html, type: html, value: "<main data-composition-id=\"knowgrph-video-agent-youtube-demo\" data-start=\"0\" data-duration=\"7.000\" aria-label=\"Knowgrph video agent render\"><header class=\"hero\"><section><p class=\"eyebrow\">Knowgrph video agent</p><h1>Reason through video, then stream the result</h1><p class=\"lede\">A Director-inspired, dependency-free knowgrph graph ingests the operator supplied YouTube test URL, parses source context, searches moments, plans edits, compiles a timeline, generates overlays, and streams the result through Rich Media output.</p></section><p class=\"chip\">test-url=https://youtu.be/8NkwH29Ou1o</p></header><section class=\"stage\" aria-label=\"Video agent orchestration\"><article class=\"source\" data-start=\"0.000\" data-duration=\"2.000\" data-track-index=\"0\"><header class=\"bar\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"url\">https://youtu.be/8NkwH29Ou1o</span><span class=\"badge\">ingested</span></header><section class=\"video-card\"><figure><section class=\"thumbnail\" aria-label=\"Parsed video frame preview\"></section><figcaption>Source video reference is treated as validation input; no Director, VideoDB, API key, or copied external runtime is required.</figcaption></figure><h2>Search, edit, compile, generate</h2><p>The graph records source metadata, frame tasks, annotation targets, timeline decisions, and stream-ready artifact routes as typed data.</p><ol class=\"tasks\"><li>search</li><li>edit</li><li>compile</li><li>generate</li><li>stream</li></ol></section></article><article class=\"reasoning\" data-start=\"1.200\" data-duration=\"4.800\" data-track-index=\"1\"><header><p class=\"eyebrow\">Agent plan</p><h2>Modular orchestration without external dependency</h2></header><ol class=\"agents\"><li><strong class=\"num\">1</strong><span>Ingest video URL and normalize source key</span><output>source</output></li><li><strong class=\"num\">2</strong><span>Parse transcript, frames, labels, and searchable moments</span><output>parse</output></li><li><strong class=\"num\">3</strong><span>Search for task-relevant shots and evidence windows</span><output>search</output></li><li><strong class=\"num\">4</strong><span>Edit clips, overlays, subtitles, and pacing decisions</span><output>edit</output></li><li><strong class=\"num\">5</strong><span>Compile a timeline manifest with generation placeholders</span><output>compile</output></li><li><strong class=\"num\">6</strong><span>Stream MP4 or inline preview through Rich Media output</span><output>stream</output></li></ol></article></section><footer class=\"timeline\" aria-label=\"Video agent timeline\"><section class=\"rail\" aria-label=\"Stream progress\"></section><ol class=\"ticks\"><li><strong>0.0s</strong>ingest</li><li><strong>1.0s</strong>parse</li><li><strong>2.0s</strong>search</li><li><strong>3.0s</strong>edit</li><li><strong>4.2s</strong>compile</li><li><strong>5.4s</strong>generate</li><li><strong>6.4s</strong>stream</li></ol><section class=\"stream\" aria-label=\"Stream output contract\"><strong>Output</strong><p>Rich Media Panel receives a playable video artifact when encoding is available, or an inline srcdoc preview from the same Render_Spec when browser encoding is unavailable.</p></section></footer></main>"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source-owned HTML, CSS, and JSON data for a dependency-free video-agent renderer over the YouTube test URL."}
       "visual:importance": {key: "visual:importance", type: number, value: 24}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16.928203230275507}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "html_video_renderer_node"}
       type: {key: type, type: string, value: "HtmlVideoRenderer"}
-      label: {key: label, type: string, value: "HTML Video Renderer Widget"}
+      label: {key: label, type: string, value: "Video Agent HTML Stream Renderer"}
       position: {key: position, type: object, value: {"x":420,"y":0}}
       handles: {key: handles, type: object, value: {"target":["html_in","css_in","data_json_in"],"source":["videoUrl","outputSrcDoc","outputPath","renderJobId"]}}
       css:
         key: css
         type: textarea
         value: |
-          main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:18px;font-family:Inter,system-ui,sans-serif;background:#0b1020;color:#f8fafc;overflow:hidden}p,h1,h2{margin:0}.hero{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;animation:kgSceneIn .5s ease-out both}.eyebrow{color:#6cf3c0;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:30px;line-height:1.02;letter-spacing:0}.lede{max-width:620px;color:#cbd5e1;font-size:13px;line-height:1.45}.chip{border:1px solid #334155;background:#111827;color:#e2e8f0;border-radius:8px;padding:8px 10px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace}.stage{display:grid;grid-template-columns:1.35fr .9fr;gap:12px;min-height:0}.browser,.director{min-width:0;border:1px solid #334155;border-radius:8px;background:#111827;box-shadow:0 18px 40px rgba(0,0,0,.28);overflow:hidden;animation:kgLift .8s cubic-bezier(.16,1,.3,1) both}.browser{animation-delay:.12s}.bar{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #334155;background:#0f172a}.dot{width:8px;height:8px;border-radius:50%;background:#f97316;box-shadow:14px 0 #facc15,28px 0 #22c55e}.url{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badge{font-size:11px;color:#6cf3c0}.site{display:grid;grid-template-columns:1fr auto;gap:12px;padding:16px}.site h2{font-size:20px}.site p{color:#cbd5e1;font-size:12px;line-height:1.45}.capture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.capture-grid li{list-style:none;border:1px solid #475569;border-radius:8px;padding:10px;background:#1f2937;animation:kgCard .7s ease-out both}.capture-grid li:nth-child(2){animation-delay:.2s}.capture-grid li:nth-child(3){animation-delay:.4s}.preview{width:96px;min-height:118px;border:1px solid #475569;border-radius:8px;background:#f8fafc;color:#0f172a;padding:10px;animation:kgScan 2.4s ease-in-out infinite}.preview strong{display:block;font-size:13px}.preview span{display:block;margin-top:28px;height:8px;border-radius:999px;background:#14b8a6}.director{display:grid;grid-template-rows:auto 1fr}.director header{padding:12px;border-bottom:1px solid #334155}.director h2{font-size:18px}.steps{display:grid;gap:8px;padding:12px}.steps li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;border:1px solid #334155;border-radius:8px;padding:9px;background:#0f172a;transform:translateX(18px);opacity:.15;animation:kgStep .65s ease-out both}.steps li:nth-child(1){animation-delay:.15s}.steps li:nth-child(2){animation-delay:.42s}.steps li:nth-child(3){animation-delay:.7s}.steps li:nth-child(4){animation-delay:.98s}.num{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#6cf3c0;color:#052e2b;font-weight:800;font-size:12px}.steps span{font-size:12px;color:#e2e8f0}.timeline{display:grid;gap:8px;border-top:1px solid #334155;padding-top:10px}.rail{height:8px;border-radius:999px;background:#1f2937;overflow:hidden}.rail::before{content:"";display:block;height:100%;width:100%;background:#6cf3c0;transform-origin:left;animation:kgProgress 6s linear infinite}.ticks{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.ticks li{list-style:none;color:#94a3b8;font-size:11px}.ticks strong{display:block;color:#f8fafc;font-size:12px}.pulse{animation:kgPulse 1.3s ease-in-out infinite}@keyframes kgSceneIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}@keyframes kgLift{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes kgCard{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes kgStep{to{opacity:1;transform:translateX(0)}}@keyframes kgScan{0%,100%{box-shadow:inset 0 0 0 0 rgba(20,184,166,.0)}50%{box-shadow:inset 0 -56px 0 rgba(20,184,166,.18)}}@keyframes kgProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes kgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+          main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:18px;font-family:Inter,system-ui,sans-serif;background:#07111f;color:#f8fafc;overflow:hidden}p,h1,h2,h3{margin:0}.hero{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}.eyebrow{color:#5eead4;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:30px;line-height:1.05;letter-spacing:0}.lede{max-width:740px;color:#cbd5e1;font-size:13px;line-height:1.45}.chip{border:1px solid #334155;background:#0f172a;color:#e2e8f0;border-radius:8px;padding:8px 10px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace}.stage{display:grid;grid-template-columns:1.08fr 1fr;gap:12px;min-height:0}.source,.reasoning,.stream{min-width:0;border:1px solid #334155;border-radius:8px;background:#0f172a;box-shadow:0 18px 40px rgba(0,0,0,.28);overflow:hidden}.source{display:grid;grid-template-rows:auto 1fr}.bar{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #334155;background:#111827}.dot{width:8px;height:8px;border-radius:50%;background:#06b6d4;box-shadow:14px 0 #22c55e,28px 0 #f59e0b}.url{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badge{font-size:11px;color:#5eead4}.video-card{display:grid;gap:12px;padding:14px}.thumbnail{position:relative;aspect-ratio:16/9;border:1px solid #334155;border-radius:8px;background:linear-gradient(135deg,#123456,#0b1220 55%,#0f766e);overflow:hidden}.thumbnail::before{content:"";position:absolute;inset:14% 18%;border:2px solid rgba(94,234,212,.72);border-radius:8px}.thumbnail::after{content:"";position:absolute;left:12%;right:12%;bottom:16%;height:6px;border-radius:999px;background:#5eead4;transform-origin:left;animation:kgProgress 7s linear infinite}.video-card h2{font-size:20px}.video-card p{color:#cbd5e1;font-size:12px;line-height:1.45}.tasks{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.tasks li{list-style:none;border:1px solid #334155;border-radius:8px;padding:8px;background:#111827;color:#e2e8f0;font-size:11px;text-align:center}.reasoning{display:grid;grid-template-rows:auto 1fr}.reasoning header{padding:12px;border-bottom:1px solid #334155}.reasoning h2{font-size:18px}.agents{display:grid;gap:8px;padding:12px}.agents li{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;border:1px solid #334155;border-radius:8px;padding:9px;background:#0b1220;transform:translateX(18px);opacity:.18;animation:kgStep .7s ease-out both}.agents li:nth-child(1){animation-delay:.1s}.agents li:nth-child(2){animation-delay:.28s}.agents li:nth-child(3){animation-delay:.46s}.agents li:nth-child(4){animation-delay:.64s}.agents li:nth-child(5){animation-delay:.82s}.agents li:nth-child(6){animation-delay:1s}.num{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#5eead4;color:#042f2e;font-weight:800;font-size:12px}.agents span{font-size:12px;color:#e2e8f0}.agents output{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#93c5fd}.timeline{display:grid;gap:8px;border-top:1px solid #334155;padding-top:10px}.rail{height:8px;border-radius:999px;background:#1f2937;overflow:hidden}.rail::before{content:"";display:block;height:100%;width:100%;background:#5eead4;transform-origin:left;animation:kgProgress 7s linear infinite}.ticks{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.ticks li{list-style:none;color:#94a3b8;font-size:10px}.ticks strong{display:block;color:#f8fafc;font-size:11px}.stream{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;padding:10px}.stream strong{font-size:13px}.stream p{color:#cbd5e1;font-size:12px;line-height:1.4}@keyframes kgStep{to{opacity:1;transform:translateX(0)}}@keyframes kgProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
           
-      data_json: {key: data_json, type: textarea, value: "{\"title\":\"URL to MP4 Agent Demo\",\"engine\":\"canvas-2d\",\"rasterizer\":\"html2canvas\",\"output\":\"video/mp4\",\"referencePattern\":\"url-to-video composition workflow\",\"composition\":{\"id\":\"knowgrph-vdeoxpln-url-to-video-demo\",\"durationMs\":6000,\"fps\":24,\"width\":1280,\"height\":720},\"sourceCapture\":{\"url\":\"https://airvio.co/knowgrph\",\"viewports\":[{\"id\":\"desktop\",\"width\":1440,\"height\":900},{\"id\":\"tablet\",\"width\":1024,\"height\":768},{\"id\":\"mobile\",\"width\":390,\"height\":844}],\"extract\":[\"brand tokens\",\"layout hierarchy\",\"copy hooks\",\"motion cues\"]},\"workspaceFiles\":[{\"path\":\"url-to-video/index.html\",\"kind\":\"html\",\"role\":\"composition\"},{\"path\":\"url-to-video/styles.css\",\"kind\":\"css\",\"role\":\"style\"},{\"path\":\"url-to-video/data.json\",\"kind\":\"json\",\"role\":\"data\"},{\"path\":\"url-to-video/storyboard.md\",\"kind\":\"markdown\",\"role\":\"storyboard\"},{\"path\":\"url-to-video/manifest.json\",\"kind\":\"json\",\"role\":\"manifest\"}],\"timelineTracks\":[{\"id\":\"capture\",\"label\":\"Capture URL\",\"trackIndex\":0,\"startMs\":0,\"durationMs\":1200},{\"id\":\"extract\",\"label\":\"Extract identity\",\"trackIndex\":1,\"startMs\":1200,\"durationMs\":1200},{\"id\":\"storyboard\",\"label\":\"Storyboard scenes\",\"trackIndex\":2,\"startMs\":2400,\"durationMs\":1200},{\"id\":\"compose\",\"label\":\"Animate HTML\",\"trackIndex\":3,\"startMs\":3600,\"durationMs\":1200},{\"id\":\"artifact\",\"label\":\"Persist MP4\",\"trackIndex\":4,\"startMs\":4800,\"durationMs\":1200}],\"timelineLanes\":[{\"id\":\"lane:capture\",\"label\":\"Source capture\",\"tracks\":[\"capture\",\"extract\"]},{\"id\":\"lane:render\",\"label\":\"Composition render\",\"tracks\":[\"storyboard\",\"compose\",\"artifact\"]}],\"animation\":{\"driver\":\"css-keyframes\",\"targets\":[\".hero\",\".browser\",\".capture-grid li\",\".steps li\",\".rail\",\".preview\"],\"keyframes\":[\"kgSceneIn\",\"kgLift\",\"kgCard\",\"kgStep\",\"kgProgress\",\"kgScan\",\"kgPulse\"]},\"steps\":[\"ingest URL source\",\"parse brand and layout signals\",\"compose seekable HTML timeline\",\"render or preview artifact\"]}"}
-      duration_ms: {key: duration_ms, type: number, value: 6000}
+      data_json: {key: data_json, type: textarea, value: "{\"title\":\"Knowgrph Video Agent Demo\",\"engine\":\"canvas-2d\",\"rasterizer\":\"html2canvas\",\"output\":\"video/mp4\",\"referencePattern\":\"Director-inspired video agent workflow; no copied code and no external dependency\",\"composition\":{\"id\":\"knowgrph-video-agent-youtube-demo\",\"durationMs\":7000,\"fps\":24,\"width\":1280,\"height\":720},\"sourceVideo\":{\"url\":\"https://youtu.be/8NkwH29Ou1o\",\"sourceId\":\"youtube:8NkwH29Ou1o\",\"ingestMode\":\"operator-supplied-test-url\",\"externalDependency\":false},\"agentIntent\":\"reason through complex video tasks: search, editing, compilation, generation, and streaming\",\"capabilities\":[\"ingest\",\"parse\",\"search\",\"edit\",\"compile\",\"generate\",\"stream\"],\"agents\":[{\"id\":\"source_intake\",\"role\":\"ingest\",\"output\":\"source key and media manifest\"},{\"id\":\"video_parser\",\"role\":\"parse\",\"output\":\"transcript, frame labels, annotation tasks\"},{\"id\":\"moment_searcher\",\"role\":\"search\",\"output\":\"ranked evidence windows\"},{\"id\":\"edit_planner\",\"role\":\"edit\",\"output\":\"clip ranges, overlays, subtitles, pacing\"},{\"id\":\"timeline_compiler\",\"role\":\"compile\",\"output\":\"timeline manifest and render spec\"},{\"id\":\"generation_router\",\"role\":\"generate\",\"output\":\"generated overlay or narration placeholders\"},{\"id\":\"stream_publisher\",\"role\":\"stream\",\"output\":\"videoUrl or outputSrcDoc rich-media payload\"}],\"workspaceFiles\":[{\"path\":\"video-agent/source.json\",\"kind\":\"json\",\"role\":\"source-manifest\"},{\"path\":\"video-agent/moments.json\",\"kind\":\"json\",\"role\":\"search-index\"},{\"path\":\"video-agent/timeline.json\",\"kind\":\"json\",\"role\":\"edit-plan\"},{\"path\":\"video-agent/render.html\",\"kind\":\"html\",\"role\":\"composition\"},{\"path\":\"video-agent/stream-manifest.json\",\"kind\":\"json\",\"role\":\"stream-output\"}],\"timelineTracks\":[{\"id\":\"ingest\",\"label\":\"Ingest test URL\",\"trackIndex\":0,\"startMs\":0,\"durationMs\":900},{\"id\":\"parse\",\"label\":\"Parse multimodal context\",\"trackIndex\":1,\"startMs\":900,\"durationMs\":1100},{\"id\":\"search\",\"label\":\"Search relevant moments\",\"trackIndex\":2,\"startMs\":2000,\"durationMs\":1000},{\"id\":\"edit\",\"label\":\"Plan clips and overlays\",\"trackIndex\":3,\"startMs\":3000,\"durationMs\":1200},{\"id\":\"compile\",\"label\":\"Compile timeline\",\"trackIndex\":4,\"startMs\":4200,\"durationMs\":1200},{\"id\":\"generate\",\"label\":\"Generate assets\",\"trackIndex\":5,\"startMs\":5400,\"durationMs\":1000},{\"id\":\"stream\",\"label\":\"Publish stream\",\"trackIndex\":6,\"startMs\":6400,\"durationMs\":600}],\"streaming\":{\"primary\":\"video/mp4\",\"fallback\":\"outputSrcDoc\",\"panel\":\"RichMediaPanel\"},\"safeguards\":[\"no copied Director code\",\"no VideoDB runtime dependency\",\"no API key requirement\",\"source document stores no generated blob URLs\"]}"}
+      duration_ms: {key: duration_ms, type: number, value: 7000}
       engine_hint: {key: engine_hint, type: text, value: "canvas-2d"}
       engineId: {key: engineId, type: string, value: "canvas-2d"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"html_in":"html_video_spec","css_in":"html_video_spec","data_json_in":"html_video_spec"},"out":{"videoUrl":"html_video_artifact","outputSrcDoc":"html_video_artifact","outputPath":"html_video_artifact","renderJobId":"html_video_artifact"}}}
@@ -205,8 +238,8 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       height: {key: height, type: number, value: 720}
-      html: {key: html, type: textarea, value: "<main data-composition-id=\"knowgrph-vdeoxpln-url-to-video-demo\" data-start=\"0\" data-duration=\"6.000\" aria-label=\"URL to video HTML render\"><header class=\"hero\"><section><p class=\"eyebrow\">Knowgrph URL to video pipeline</p><h1>Source page to MP4 composition</h1><p class=\"lede\">Ingest a URL, parse brand and layout signals, build a seekable HTML timeline, then publish a renderable artifact through the Rich Media Panel.</p></section><p class=\"chip\">engine_hint=canvas-2d</p></header><section class=\"stage\" aria-label=\"URL capture and composition\"><article class=\"browser\" data-start=\"0.000\" data-duration=\"3.600\" data-track-index=\"0\"><header class=\"bar\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"url\">https://airvio.co/knowgrph</span><span class=\"badge\">captured</span></header><section class=\"site\"><section><h2>Capture the source</h2><p>Brand tokens, hierarchy, copy hooks, and layout rhythm become structured timeline data.</p><ol class=\"capture-grid\"><li>Desktop hero</li><li>Tablet flow</li><li>Mobile crop</li></ol></section><aside class=\"preview\" aria-label=\"Source preview\"><strong>Knowgrph</strong><span class=\"pulse\"></span></aside></section></article><article class=\"director\" data-start=\"2.000\" data-duration=\"3.400\" data-track-index=\"1\"><header><p class=\"eyebrow\">Storyboard compiler</p><h2>HTML, CSS, data, artifact</h2></header><ol class=\"steps\"><li><strong class=\"num\">1</strong><span>Ingest URL source</span></li><li><strong class=\"num\">2</strong><span>Parse visual semantics</span></li><li><strong class=\"num\">3</strong><span>Animate seekable HTML</span></li><li><strong class=\"num\">4</strong><span>Render MP4 or inline preview</span></li></ol></article></section><footer class=\"timeline\" aria-label=\"Render timeline\"><section class=\"rail\" aria-label=\"Render progress\"></section><ol class=\"ticks\"><li><strong>0.0s</strong>capture</li><li><strong>1.2s</strong>extract</li><li><strong>2.4s</strong>storyboard</li><li><strong>3.6s</strong>compose</li><li><strong>4.8s</strong>artifact</li></ol></footer></main>"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runtime-selected HTML-to-MP4 renderer. The canvas-2d engine path is browser-native and does not require a system FFmpeg install."}
+      html: {key: html, type: textarea, value: "<main data-composition-id=\"knowgrph-video-agent-youtube-demo\" data-start=\"0\" data-duration=\"7.000\" aria-label=\"Knowgrph video agent render\"><header class=\"hero\"><section><p class=\"eyebrow\">Knowgrph video agent</p><h1>Reason through video, then stream the result</h1><p class=\"lede\">A Director-inspired, dependency-free knowgrph graph ingests the operator supplied YouTube test URL, parses source context, searches moments, plans edits, compiles a timeline, generates overlays, and streams the result through Rich Media output.</p></section><p class=\"chip\">test-url=https://youtu.be/8NkwH29Ou1o</p></header><section class=\"stage\" aria-label=\"Video agent orchestration\"><article class=\"source\" data-start=\"0.000\" data-duration=\"2.000\" data-track-index=\"0\"><header class=\"bar\"><span class=\"dot\" aria-hidden=\"true\"></span><span class=\"url\">https://youtu.be/8NkwH29Ou1o</span><span class=\"badge\">ingested</span></header><section class=\"video-card\"><figure><section class=\"thumbnail\" aria-label=\"Parsed video frame preview\"></section><figcaption>Source video reference is treated as validation input; no Director, VideoDB, API key, or copied external runtime is required.</figcaption></figure><h2>Search, edit, compile, generate</h2><p>The graph records source metadata, frame tasks, annotation targets, timeline decisions, and stream-ready artifact routes as typed data.</p><ol class=\"tasks\"><li>search</li><li>edit</li><li>compile</li><li>generate</li><li>stream</li></ol></section></article><article class=\"reasoning\" data-start=\"1.200\" data-duration=\"4.800\" data-track-index=\"1\"><header><p class=\"eyebrow\">Agent plan</p><h2>Modular orchestration without external dependency</h2></header><ol class=\"agents\"><li><strong class=\"num\">1</strong><span>Ingest video URL and normalize source key</span><output>source</output></li><li><strong class=\"num\">2</strong><span>Parse transcript, frames, labels, and searchable moments</span><output>parse</output></li><li><strong class=\"num\">3</strong><span>Search for task-relevant shots and evidence windows</span><output>search</output></li><li><strong class=\"num\">4</strong><span>Edit clips, overlays, subtitles, and pacing decisions</span><output>edit</output></li><li><strong class=\"num\">5</strong><span>Compile a timeline manifest with generation placeholders</span><output>compile</output></li><li><strong class=\"num\">6</strong><span>Stream MP4 or inline preview through Rich Media output</span><output>stream</output></li></ol></article></section><footer class=\"timeline\" aria-label=\"Video agent timeline\"><section class=\"rail\" aria-label=\"Stream progress\"></section><ol class=\"ticks\"><li><strong>0.0s</strong>ingest</li><li><strong>1.0s</strong>parse</li><li><strong>2.0s</strong>search</li><li><strong>3.0s</strong>edit</li><li><strong>4.2s</strong>compile</li><li><strong>5.4s</strong>generate</li><li><strong>6.4s</strong>stream</li></ol><section class=\"stream\" aria-label=\"Stream output contract\"><strong>Output</strong><p>Rich Media Panel receives a playable video artifact when encoding is available, or an inline srcdoc preview from the same Render_Spec when browser encoding is unavailable.</p></section></footer></main>"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Runtime-selected HTML-to-MP4 renderer for the video-agent stream. The canvas-2d engine path is browser-native and does not require a system FFmpeg install."}
       "visual:importance": {key: "visual:importance", type: number, value: 28}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 18}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
@@ -226,22 +259,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel receives the video/mp4 artifact emitted by the HTML Video Renderer node."}
-      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-26T09:13:22.241Z"}
-      outputManifestPath: {key: outputManifestPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget-video-output.md"}
-      outputMimeType: {key: outputMimeType, type: string, value: "video/mp4; codecs=\"avc1.42e01e\""}
-      outputModel: {key: outputModel, type: string, value: "canvas-2d"}
-      outputPath: {key: outputPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
-      outputSavedName: {key: outputSavedName, type: string, value: "knowgrph-vdeoxpln-demo-html-video-renderer-widget.mp4"}
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: textarea
-        value: |
-          <!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:transparent;}body{display:grid;place-items:center;--kg-render-duration-ms:6000;--kg-render-fps:24;--kg-html-video-preview-scale:1;--kg-html-video-preview-width:1280px;--kg-html-video-preview-height:720px;}main{width:100%;height:100%;box-sizing:border-box;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:18px;font-family:Inter,system-ui,sans-serif;background:#0b1020;color:#f8fafc;overflow:hidden}p,h1,h2{margin:0}.hero{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;animation:kgSceneIn .5s ease-out both}.eyebrow{color:#6cf3c0;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:30px;line-height:1.02;letter-spacing:0}.lede{max-width:620px;color:#cbd5e1;font-size:13px;line-height:1.45}.chip{border:1px solid #334155;background:#111827;color:#e2e8f0;border-radius:8px;padding:8px 10px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace}.stage{display:grid;grid-template-columns:1.35fr .9fr;gap:12px;min-height:0}.browser,.director{min-width:0;border:1px solid #334155;border-radius:8px;background:#111827;box-shadow:0 18px 40px rgba(0,0,0,.28);overflow:hidden;animation:kgLift .8s cubic-bezier(.16,1,.3,1) both}.browser{animation-delay:.12s}.bar{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #334155;background:#0f172a}.dot{width:8px;height:8px;border-radius:50%;background:#f97316;box-shadow:14px 0 #facc15,28px 0 #22c55e}.url{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badge{font-size:11px;color:#6cf3c0}.site{display:grid;grid-template-columns:1fr auto;gap:12px;padding:16px}.site h2{font-size:20px}.site p{color:#cbd5e1;font-size:12px;line-height:1.45}.capture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.capture-grid li{list-style:none;border:1px solid #475569;border-radius:8px;padding:10px;background:#1f2937;animation:kgCard .7s ease-out both}.capture-grid li:nth-child(2){animation-delay:.2s}.capture-grid li:nth-child(3){animation-delay:.4s}.preview{width:96px;min-height:118px;border:1px solid #475569;border-radius:8px;background:#f8fafc;color:#0f172a;padding:10px;animation:kgScan 2.4s ease-in-out infinite}.preview strong{display:block;font-size:13px}.preview span{display:block;margin-top:28px;height:8px;border-radius:999px;background:#14b8a6}.director{display:grid;grid-template-rows:auto 1fr}.director header{padding:12px;border-bottom:1px solid #334155}.director h2{font-size:18px}.steps{display:grid;gap:8px;padding:12px}.steps li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;border:1px solid #334155;border-radius:8px;padding:9px;background:#0f172a;transform:translateX(18px);opacity:.15;animation:kgStep .65s ease-out both}.steps li:nth-child(1){animation-delay:.15s}.steps li:nth-child(2){animation-delay:.42s}.steps li:nth-child(3){animation-delay:.7s}.steps li:nth-child(4){animation-delay:.98s}.num{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#6cf3c0;color:#052e2b;font-weight:800;font-size:12px}.steps span{font-size:12px;color:#e2e8f0}.timeline{display:grid;gap:8px;border-top:1px solid #334155;padding-top:10px}.rail{height:8px;border-radius:999px;background:#1f2937;overflow:hidden}.rail::before{content:"";display:block;height:100%;width:100%;background:#6cf3c0;transform-origin:left;animation:kgProgress 6s linear infinite}.ticks{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.ticks li{list-style:none;color:#94a3b8;font-size:11px}.ticks strong{display:block;color:#f8fafc;font-size:12px}.pulse{animation:kgPulse 1.3s ease-in-out infinite}@keyframes kgSceneIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}@keyframes kgLift{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes kgCard{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes kgStep{to{opacity:1;transform:translateX(0)}}@keyframes kgScan{0%,100%{box-shadow:inset 0 0 0 0 rgba(20,184,166,.0)}50%{box-shadow:inset 0 -56px 0 rgba(20,184,166,.18)}}@keyframes kgProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes kgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-          figure[data-kg-html-video-preview-frame]{position:relative;display:block;width:100%;height:auto;max-width:100%;max-height:100%;margin:0;overflow:hidden;background:transparent;aspect-ratio:1280/720;}section[data-kg-html-video-preview-stage]{position:absolute;left:0;top:0;width:1280px;height:720px;overflow:hidden;transform-origin:0 0;transform:scale(var(--kg-html-video-preview-scale,1));}</style></head><body><figure data-kg-html-video-preview-frame aria-label="HTML video preview frame"><section data-kg-html-video-preview-stage><main data-composition-id="knowgrph-vdeoxpln-url-to-video-demo" data-start="0" data-duration="6.000" aria-label="URL to video HTML render"><header class="hero"><section><p class="eyebrow">Knowgrph URL to video pipeline</p><h1>Source page to MP4 composition</h1><p class="lede">Ingest a URL, parse brand and layout signals, build a seekable HTML timeline, then publish a renderable artifact through the Rich Media Panel.</p></section><p class="chip">engine_hint=canvas-2d</p></header><section class="stage" aria-label="URL capture and composition"><article class="browser" data-start="0.000" data-duration="3.600" data-track-index="0"><header class="bar"><span class="dot" aria-hidden="true"></span><span class="url">https://airvio.co/knowgrph</span><span class="badge">captured</span></header><section class="site"><section><h2>Capture the source</h2><p>Brand tokens, hierarchy, copy hooks, and layout rhythm become structured timeline data.</p><ol class="capture-grid"><li>Desktop hero</li><li>Tablet flow</li><li>Mobile crop</li></ol></section><aside class="preview" aria-label="Source preview"><strong>Knowgrph</strong><span class="pulse"></span></aside></section></article><article class="director" data-start="2.000" data-duration="3.400" data-track-index="1"><header><p class="eyebrow">Storyboard compiler</p><h2>HTML, CSS, data, artifact</h2></header><ol class="steps"><li><strong class="num">1</strong><span>Ingest URL source</span></li><li><strong class="num">2</strong><span>Parse visual semantics</span></li><li><strong class="num">3</strong><span>Animate seekable HTML</span></li><li><strong class="num">4</strong><span>Render MP4 or inline preview</span></li></ol></article></section><footer class="timeline" aria-label="Render timeline"><section class="rail" aria-label="Render progress"></section><ol class="ticks"><li><strong>0.0s</strong>capture</li><li><strong>1.2s</strong>extract</li><li><strong>2.4s</strong>storyboard</li><li><strong>3.6s</strong>compose</li><li><strong>4.8s</strong>artifact</li></ol></footer></main></section></figure><script type="application/json" id="knowgrph-html-video-data">{"title":"URL to MP4 Agent Demo","engine":"canvas-2d","rasterizer":"html2canvas","output":"video/mp4","referencePattern":"url-to-video composition workflow","composition":{"id":"knowgrph-vdeoxpln-url-to-video-demo","durationMs":6000,"fps":24,"width":1280,"height":720},"sourceCapture":{"url":"https://airvio.co/knowgrph","viewports":[{"id":"desktop","width":1440,"height":900},{"id":"tablet","width":1024,"height":768},{"id":"mobile","width":390,"height":844}],"extract":["brand tokens","layout hierarchy","copy hooks","motion cues"]},"workspaceFiles":[{"path":"url-to-video/index.html","kind":"html","role":"composition"},{"path":"url-to-video/styles.css","kind":"css","role":"style"},{"path":"url-to-video/data.json","kind":"json","role":"data"},{"path":"url-to-video/storyboard.md","kind":"markdown","role":"storyboard"},{"path":"url-to-video/manifest.json","kind":"json","role":"manifest"}],"timelineTracks":[{"id":"capture","label":"Capture URL","trackIndex":0,"startMs":0,"durationMs":1200},{"id":"extract","label":"Extract identity","trackIndex":1,"startMs":1200,"durationMs":1200},{"id":"storyboard","label":"Storyboard scenes","trackIndex":2,"startMs":2400,"durationMs":1200},{"id":"compose","label":"Animate HTML","trackIndex":3,"startMs":3600,"durationMs":1200},{"id":"artifact","label":"Persist MP4","trackIndex":4,"startMs":4800,"durationMs":1200}],"timelineLanes":[{"id":"lane:capture","label":"Source capture","tracks":["capture","extract"]},{"id":"lane:render","label":"Composition render","tracks":["storyboard","compose","artifact"]}],"animation":{"driver":"css-keyframes","targets":[".hero",".browser",".capture-grid li",".steps li",".rail",".preview"],"keyframes":["kgSceneIn","kgLift","kgCard","kgStep","kgProgress","kgScan","kgPulse"]},"steps":["ingest URL source","parse brand and layout signals","compose seekable HTML timeline","render or preview artifact"]}</script><script>(function(){var frame=document.querySelector("[data-kg-html-video-preview-frame]");var stage=document.querySelector("[data-kg-html-video-preview-stage]");var dataScript=document.getElementById("knowgrph-html-video-data");var sourceWidth=1280;var sourceHeight=720;var durationMs=6000;var raf=0;function readData(){try{return dataScript&&dataScript.textContent?JSON.parse(dataScript.textContent):{};}catch(e){return {};}}function fit(){raf=0;if(!frame||!stage)return;var host=document.body||document.documentElement;var bounds=host.getBoundingClientRect();var width=Math.max(1,bounds.width||host.clientWidth||sourceWidth);var height=Math.max(1,bounds.height||host.clientHeight||sourceHeight);var frameWidth=Math.min(width,height*sourceWidth/sourceHeight);var frameHeight=frameWidth*sourceHeight/sourceWidth;if(frameHeight>height){frameHeight=height;frameWidth=frameHeight*sourceWidth/sourceHeight;}var scale=frameWidth/sourceWidth;frame.style.width=frameWidth+"px";frame.style.height=frameHeight+"px";stage.style.setProperty("--kg-html-video-preview-scale",String(scale));stage.style.setProperty("--kg-html-video-preview-width",sourceWidth+"px");stage.style.setProperty("--kg-html-video-preview-height",sourceHeight+"px");}function schedule(){if(raf)return;raf=requestAnimationFrame(fit);}function syncCssAnimations(seconds){if(!stage)return;var nodes=[stage].concat(Array.prototype.slice.call(stage.querySelectorAll("*")));for(var i=0;i<nodes.length;i+=1){var node=nodes[i];try{var computed=window.getComputedStyle(node);if(!computed||computed.animationName==="none")continue;node.style.animationDelay="-"+Math.max(0,seconds)+"s";node.style.animationPlayState="paused";}catch(e){}}}var transportRaf=0;function cancelTransportPlayback(){if(transportRaf){cancelAnimationFrame(transportRaf);transportRaf=0;}}function startTransportPlayback(startTimeMs,playbackRate){cancelTransportPlayback();var baseTimeMs=Number.isFinite(Number(startTimeMs))?Math.max(0,Number(startTimeMs)):0;var rate=Number.isFinite(Number(playbackRate))&&Number(playbackRate)>0?Number(playbackRate):1;var baseNow=performance.now();function tick(now){var nextTimeMs=Math.min(durationMs,baseTimeMs+Math.max(0,now-baseNow)*rate);window.__knowgrphRenderFrame(nextTimeMs);if(nextTimeMs>=durationMs){transportRaf=0;return;}transportRaf=requestAnimationFrame(tick);}transportRaf=requestAnimationFrame(tick);}window.__KNOWGRPH_TIMELINE_TRANSPORT_NATIVE_LOOP__=true;window.__KNOWGRPH_HTML_VIDEO_DATA__=readData();window.__KNOWGRPH_RENDER_TIME_MS__=0;window.__knowgrphRenderFrame=async function(timeMs){var safeTimeMs=Number.isFinite(Number(timeMs))?Math.max(0,Math.min(durationMs,Number(timeMs))):0;var seconds=safeTimeMs/1000;window.__KNOWGRPH_RENDER_TIME_MS__=safeTimeMs;document.documentElement.style.setProperty("--kg-render-time-ms",String(safeTimeMs));document.documentElement.style.setProperty("--kg-render-time-s",String(seconds));document.documentElement.style.setProperty("--kg-render-progress",String(durationMs>0?safeTimeMs/durationMs:0));try{if(typeof window.__hyperframesSeek==="function")window.__hyperframesSeek(seconds,{timeMs:safeTimeMs,data:window.__KNOWGRPH_HTML_VIDEO_DATA__});}catch(e){}try{if(Array.isArray(window.__timelines)){window.__timelines.forEach(function(timeline){if(timeline&&typeof timeline.seek==="function")timeline.seek(seconds,false);else if(timeline&&typeof timeline.time==="function")timeline.time(seconds);});}}catch(e){}syncCssAnimations(seconds);try{window.dispatchEvent(new CustomEvent("knowgrph:render-frame",{detail:{timeMs:safeTimeMs,seconds:seconds,data:window.__KNOWGRPH_HTML_VIDEO_DATA__}}));}catch(e){}await new Promise(function(resolve){requestAnimationFrame(function(){requestAnimationFrame(resolve);});});};window.__knowgrphRenderFrame(0);window.addEventListener("message",function(event){var payload=event&&event.data;if(!payload||typeof payload!=="object"||payload.type!=="knowgrph:timeline-transport-frame")return;var timeMs=Number.isFinite(Number(payload.timeMs))?Number(payload.timeMs):0;window.__knowgrphRenderFrame(timeMs);if(payload.playing){startTransportPlayback(timeMs,payload.playbackRate);}else{cancelTransportPlayback();}});try{if(window.ResizeObserver&&frame){var ro=new ResizeObserver(schedule);ro.observe(frame);}}catch(e){}window.addEventListener("load",schedule,{passive:true});window.addEventListener("resize",schedule,{passive:true});schedule();setTimeout(schedule,80);setTimeout(schedule,280);})();</script></body></html>
-          
-      renderJobId: {key: renderJobId, type: string, value: "0f79237f"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      videoUrl: {key: videoUrl, type: text, value: "blob:http://localhost:5173/3b3a9bf7-5365-4e7b-9058-18b059d30a04"}
       "visual:height": {key: "visual:height", type: number, value: 472}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
@@ -252,20 +270,20 @@ flow:
       type: {key: type, type: string, value: "InputWidget"}
       label: {key: label, type: string, value: "FloatingPanel Media Source"}
       position: {key: position, type: object, value: {"x":0,"y":420}}
-      handles: {key: handles, type: object, value: {"source":["image_asset_url","video_asset_url","image_tasks","video_tasks","frame_timestamp_ms"]}}
-      assetCatalog: {key: assetCatalog, type: json, value: "{\"schema\":\"knowgrph-media-ingestion/v1\",\"surface\":\"FloatingPanel Media\",\"assets\":[{\"id\":\"media:image:demo\",\"assetType\":\"image\",\"assetUrl\":\"workspace://media/demo-image\",\"roles\":[\"preview\",\"annotation-source\",\"bounding-box-overlay-source\"]},{\"id\":\"media:video:demo\",\"assetType\":\"video\",\"assetUrl\":\"workspace://media/demo-video\",\"roles\":[\"preview\",\"video-frame-annotation-source\"]}],\"parseOutputs\":[\"mime family\",\"asset type\",\"semantic source key\",\"preview role\",\"annotation task set\"],\"renderOutputs\":[\"media preview\",\"annotation JSON\",\"image bounding-box overlay\",\"LLM-ready payload\"]}"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"image_asset_url":"visual_media_asset","video_asset_url":"visual_media_asset","image_tasks":"annotation_json","video_tasks":"annotation_json","frame_timestamp_ms":"annotation_json"}}}
+      handles: {key: handles, type: object, value: {"source":["image_asset_url","video_frame_asset_url","image_tasks","video_tasks","frame_timestamp_ms"]}}
+      assetCatalog: {key: assetCatalog, type: json, value: "{\"schema\":\"knowgrph-media-ingestion/v1\",\"surface\":\"FloatingPanel Media\",\"assets\":[{\"id\":\"media:image:demo\",\"assetType\":\"image\",\"assetUrl\":\"/image/knowgrph/video-frame/frame-c0a158fe-t0.png\",\"roles\":[\"preview\",\"annotation-source\",\"bounding-box-overlay-source\"]},{\"id\":\"media:video-frame:demo\",\"assetType\":\"video_frame\",\"assetUrl\":\"/image/knowgrph/video-frame/frame-c0a158fe-t0.png\",\"frameTimestampMs\":1200,\"roles\":[\"preview\",\"video-frame-annotation-source\",\"bounding-box-overlay-source\"]}],\"parseOutputs\":[\"mime family\",\"asset type\",\"semantic source key\",\"preview role\",\"annotation task set\"],\"renderOutputs\":[\"media preview\",\"annotation JSON\",\"image bounding-box overlay\",\"video-frame bounding-box overlay\",\"LLM-ready payload\"]}"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"image_asset_url":"visual_media_asset","video_frame_asset_url":"visual_media_asset","image_tasks":"annotation_json","video_tasks":"annotation_json","frame_timestamp_ms":"annotation_json"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "mediaIngestionSource"}
       frame_timestamp_ms: {key: frame_timestamp_ms, type: number, value: 1200}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 6}
+      "graph:degree": {key: "graph:degree", type: number, value: 5}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 6}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 5}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      image_asset_url: {key: image_asset_url, type: string, value: "workspace://media/demo-image"}
+      image_asset_url: {key: image_asset_url, type: string, value: "/image/knowgrph/video-frame/frame-c0a158fe-t0.png"}
       image_tasks: {key: image_tasks, type: string, value: "caption,object_detection,dense_region_caption"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "FloatingPanel Media source describes image/video assets and parsed annotation task inputs without generated runtime artifacts."}
-      video_asset_url: {key: video_asset_url, type: string, value: "workspace://media/demo-video"}
+      video_frame_asset_url: {key: video_frame_asset_url, type: string, value: "/image/knowgrph/video-frame/frame-c0a158fe-t0.png"}
       video_tasks: {key: video_tasks, type: string, value: "caption,object_detection"}
       "visual:importance": {key: "visual:importance", type: number, value: 22}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 16}
@@ -275,10 +293,10 @@ flow:
       type: {key: type, type: string, value: "AnnotationEngine"}
       label: {key: label, type: string, value: "Image Annotation Engine"}
       position: {key: position, type: object, value: {"x":420,"y":360}}
-      handles: {key: handles, type: object, value: {"target":["asset_url","tasks"],"source":["annotation_json","annotationId","outputPath"]}}
+      handles: {key: handles, type: object, value: {"target":["asset_url","tasks"],"source":["annotation_json","outputSrcDoc","annotationId","outputPath"]}}
       asset_type: {key: asset_type, type: string, value: "image"}
-      asset_url: {key: asset_url, type: string, value: "workspace://media/demo-image"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"asset_url":"visual_media_asset","tasks":"annotation_json"},"out":{"annotation_json":"annotation_json","annotationId":"annotation_json","outputPath":"annotation_json"}}}
+      asset_url: {key: asset_url, type: string, value: "/image/knowgrph/video-frame/frame-c0a158fe-t0.png"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"asset_url":"visual_media_asset","tasks":"annotation_json"},"out":{"annotation_json":"annotation_json","outputSrcDoc":"rich_media_inline_html","annotationId":"annotation_json","outputPath":"annotation_json"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "annotationEngine"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       "graph:degree": {key: "graph:degree", type: number, value: 3}
@@ -296,16 +314,16 @@ flow:
       type: {key: type, type: string, value: "AnnotationEngine"}
       label: {key: label, type: string, value: "Video Frame Annotation Engine"}
       position: {key: position, type: object, value: {"x":420,"y":580}}
-      handles: {key: handles, type: object, value: {"target":["asset_url","tasks","frame_timestamp_ms"],"source":["annotation_json","annotationId","outputPath"]}}
+      handles: {key: handles, type: object, value: {"target":["asset_url","tasks","frame_timestamp_ms"],"source":["annotation_json","outputSrcDoc","annotationId","outputPath"]}}
       asset_type: {key: asset_type, type: string, value: "video_frame"}
-      asset_url: {key: asset_url, type: string, value: "workspace://media/demo-video"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"asset_url":"visual_media_asset","tasks":"annotation_json","frame_timestamp_ms":"annotation_json"},"out":{"annotation_json":"annotation_json","annotationId":"annotation_json","outputPath":"annotation_json"}}}
+      asset_url: {key: asset_url, type: string, value: "/image/knowgrph/video-frame/frame-c0a158fe-t0.png"}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"asset_url":"visual_media_asset","tasks":"annotation_json","frame_timestamp_ms":"annotation_json"},"out":{"annotation_json":"annotation_json","outputSrcDoc":"rich_media_inline_html","annotationId":"annotation_json","outputPath":"annotation_json"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "annotationEngine"}
       frame_timestamp_ms: {key: frame_timestamp_ms, type: number, value: 1200}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 4}
+      "graph:degree": {key: "graph:degree", type: number, value: 5}
       "graph:inDegree": {key: "graph:inDegree", type: number, value: 3}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Video frame annotation reuses the same AnnotationEngine contract and records frame_timestamp_ms as runtime input."}
       model_hint: {key: model_hint, type: string, value: ""}
@@ -318,118 +336,22 @@ flow:
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "FloatingPanel Media Annotation Outputs"}
       position: {key: position, type: object, value: {"x":860,"y":470}}
-      handles: {key: handles, type: object, value: {"target":["imageAnnotationJson","videoFrameAnnotationJson","mediaPreview"],"source":["annotation_json","mediaUrl"]}}
+      handles: {key: handles, type: object, value: {"target":["imageAnnotationJson","videoFrameAnnotationJson","outputSrcDoc"],"source":["annotation_json","mediaUrl"]}}
       annotationBoxFormat: {key: annotationBoxFormat, type: string, value: "xywh"}
       annotationCoordinateSpace: {key: annotationCoordinateSpace, type: string, value: "normalized-0-to-1"}
-      annotationId: {key: annotationId, type: string, value: "07a89c6d"}
       annotationOverlayEnabled: {key: annotationOverlayEnabled, type: boolean, value: true}
-      annotationOverlaySource: {key: annotationOverlaySource, type: string, value: "imageAnnotationJson"}
+      annotationOverlaySource: {key: annotationOverlaySource, type: string, value: "runtime-outputSrcDoc"}
       annotationSchemaVersion: {key: annotationSchemaVersion, type: string, value: "knowgrph-annotation/v1"}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageAnnotationJson":"annotation_json","videoFrameAnnotationJson":"annotation_json","mediaPreview":"visual_media_asset"},"out":{"annotation_json":"annotation_json","mediaUrl":"visual_media_asset"}}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageAnnotationJson":"annotation_json","videoFrameAnnotationJson":"annotation_json","outputSrcDoc":"rich_media_inline_html"},"out":{"annotation_json":"annotation_json","mediaUrl":"visual_media_asset"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "FloatingPanel Media receives image/video previews plus annotation JSON and projects image object_detection results as labelled normalized bounding boxes without storing generated runtime output in the validation input."}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 3}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "FloatingPanel Media projects runtime image or video-frame object_detection results as labelled normalized bounding boxes over the resolvable source media without storing generated output in this document."}
       kind: {key: kind, type: string, value: "annotation"}
-      lastRunAt: {key: lastRunAt, type: string, value: "2026-06-29T03:47:12.867Z"}
-      output:
-        key: output
-        type: textarea
-        value: |
-          ## Caption
-          
-          Runtime-local video frame annotation for demo video at 1200ms.
-          
-          ## Detected Objects
-          - video frame
-          
-          ## Annotation JSON
-          
-          ```json
-          {
-            "ok": true,
-            "annotationId": "07a89c6d",
-            "assetUrl": "workspace://media/demo-video",
-            "assetType": "video_frame",
-            "modelId": "microsoft/Florence-2-base",
-            "tasks": {
-              "caption": {
-                "text": "Runtime-local video frame annotation for demo video at 1200ms."
-              },
-              "object_detection": {
-                "objects": [
-                  {
-                    "label": "video frame",
-                    "bbox": [
-                      0.08,
-                      0.08,
-                      0.84,
-                      0.84
-                    ],
-                    "confidence": 0.51
-                  }
-                ]
-              }
-            },
-            "processedAt": "2026-06-29T03:47:12.797Z",
-            "durationMs": 1,
-            "schemaVersion": "knowgrph-annotation/v1",
-            "frameTimestampMs": 1200,
-            "outputPath": "/docs/knowgrph-vdeoxpln-demo-video-frame-annotation-engine.json",
-            "outputManifestPath": "/docs/knowgrph-vdeoxpln-demo-video-frame-annotation-engine-annotation-output.md",
-            "outputStorageUrl": null
-          }
-          ```
-      outputMimeType: {key: outputMimeType, type: string, value: "text/markdown; charset=utf-8"}
-      outputModel: {key: outputModel, type: string, value: "microsoft/Florence-2-base"}
-      outputPath: {key: outputPath, type: string, value: "/docs/knowgrph-vdeoxpln-demo-video-frame-annotation-engine.json"}
-      outputSavedName: {key: outputSavedName, type: string, value: "knowgrph-vdeoxpln-demo-video-frame-annotation-engine.json"}
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: textarea
-        value: |
-          <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Video Frame Annotation Engine</title><style>html{color-scheme:dark light}body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:rgba(255, 255, 255, 0.95);color:#111827}main{max-width:980px;margin:0 auto;padding:16px}a{color:#3b82f6}pre,code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;overflow:auto;color:#0f172a}code{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:1px 4px;color:#0f172a}table{border-collapse:collapse;width:100%}th,td{border:1px solid #e5e7eb;padding:6px 8px;vertical-align:top}blockquote{border-left:3px solid #e5e7eb;margin:0;padding:0 0 0 12px;color:#4b5563}hr{border:0;border-top:1px solid #e5e7eb;margin:16px 0}img,video{max-width:100%;height:auto}</style></head><body><main><section data-kg-rich-media-markdown-srcdoc="1"><h2>Caption</h2>
-          <p>Runtime-local video frame annotation for demo video at 1200ms.</p>
-          <h2>Detected Objects</h2>
-          <ul>
-          <li>video frame</li>
-          </ul>
-          <h2>Annotation JSON</h2>
-          <pre><code class="language-json">{
-            &quot;ok&quot;: true,
-            &quot;annotationId&quot;: &quot;07a89c6d&quot;,
-            &quot;assetUrl&quot;: &quot;workspace://media/demo-video&quot;,
-            &quot;assetType&quot;: &quot;video_frame&quot;,
-            &quot;modelId&quot;: &quot;microsoft/Florence-2-base&quot;,
-            &quot;tasks&quot;: {
-              &quot;caption&quot;: {
-                &quot;text&quot;: &quot;Runtime-local video frame annotation for demo video at 1200ms.&quot;
-              },
-              &quot;object_detection&quot;: {
-                &quot;objects&quot;: [
-                  {
-                    &quot;label&quot;: &quot;video frame&quot;,
-                    &quot;bbox&quot;: [
-                      0.08,
-                      0.08,
-                      0.84,
-                      0.84
-                    ],
-                    &quot;confidence&quot;: 0.51
-                  }
-                ]
-              }
-            },
-            &quot;processedAt&quot;: &quot;2026-06-29T03:47:12.797Z&quot;,
-            &quot;durationMs&quot;: 1,
-            &quot;schemaVersion&quot;: &quot;knowgrph-annotation/v1&quot;,
-            &quot;frameTimestampMs&quot;: 1200,
-            &quot;outputPath&quot;: &quot;/docs/knowgrph-vdeoxpln-demo-video-frame-annotation-engine.json&quot;,
-            &quot;outputManifestPath&quot;: &quot;/docs/knowgrph-vdeoxpln-demo-video-frame-annotation-engine-annotation-output.md&quot;,
-            &quot;outputStorageUrl&quot;: null
-          }
-          </code></pre>
-          </section></main></body></html>
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "auto"}
       "visual:height": {key: "visual:height", type: number, value: 500}
       "visual:importance": {key: "visual:importance", type: number, value: 18}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15}
@@ -444,12 +366,12 @@ flow:
     - {"id":"flow-e05","source":"html_video_renderer_node","sourceHandle":"outputSrcDoc","target":"html_video_mp4_panel","targetHandle":"outputSrcDoc"}
     - {"id":"flow-e06","source":"floating_media_ingestion_source","sourceHandle":"image_asset_url","target":"image_annotation_engine_node","targetHandle":"asset_url"}
     - {"id":"flow-e07","source":"floating_media_ingestion_source","sourceHandle":"image_tasks","target":"image_annotation_engine_node","targetHandle":"tasks"}
-    - {"id":"flow-e08","source":"floating_media_ingestion_source","sourceHandle":"video_asset_url","target":"video_frame_annotation_engine_node","targetHandle":"asset_url"}
+    - {"id":"flow-e08","source":"floating_media_ingestion_source","sourceHandle":"video_frame_asset_url","target":"video_frame_annotation_engine_node","targetHandle":"asset_url"}
     - {"id":"flow-e09","source":"floating_media_ingestion_source","sourceHandle":"video_tasks","target":"video_frame_annotation_engine_node","targetHandle":"tasks"}
     - {"id":"flow-e10","source":"floating_media_ingestion_source","sourceHandle":"frame_timestamp_ms","target":"video_frame_annotation_engine_node","targetHandle":"frame_timestamp_ms"}
     - {"id":"flow-e11","source":"image_annotation_engine_node","sourceHandle":"annotation_json","target":"floating_panel_media_annotation_panel","targetHandle":"imageAnnotationJson"}
     - {"id":"flow-e12","source":"video_frame_annotation_engine_node","sourceHandle":"annotation_json","target":"floating_panel_media_annotation_panel","targetHandle":"videoFrameAnnotationJson"}
-    - {"id":"flow-e13","source":"floating_media_ingestion_source","sourceHandle":"image_asset_url","target":"floating_panel_media_annotation_panel","targetHandle":"mediaPreview"}
+    - {"id":"flow-e13","source":"video_frame_annotation_engine_node","sourceHandle":"outputSrcDoc","target":"floating_panel_media_annotation_panel","targetHandle":"outputSrcDoc"}
 modelSelection:
   selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
   scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
@@ -526,16 +448,24 @@ or mirror-only patches.
 | Execute | Toolbar Run all runs the flow and publishes the output to the downstream Rich Media Panel. | `flowEditorWorkflowRunAction.ts` |
 | Guard | Repo code consumes this document by input path and must not copy this payload into fixtures or runtime branches. | policy tests |
 
-## Runnable Programmatic HTML-to-MP4 Demo
+## Runnable Video Agent HTML-to-MP4 Demo
 
 This document includes a frontmatter Flow Editor graph with three runnable
 nodes:
 
-1. `Programmatic Video Render Spec` provides semantic HTML, CSS, and JSON data.
-2. `HTML Video Renderer Widget` consumes the Render_Spec and sets
+1. `Programmatic Video Agent Render Spec` provides semantic HTML, CSS, and JSON
+   data for the YouTube test URL `https://youtu.be/8NkwH29Ou1o`.
+2. `Video Agent HTML Stream Renderer` consumes the Render_Spec and sets
    `engine_hint` to `canvas-2d`.
 3. `Rendered MP4 Artifact` receives the emitted `videoUrl` in a Rich Media
    Panel video tab.
+
+The video-agent branch is inspired by Director-style video-agent orchestration:
+the source graph models ingest, parse, search, edit, compile, generate, and
+stream stages as typed Render_Spec data. It does not copy Director code, import
+VideoDB, require external service credentials, or treat the YouTube URL as a
+runtime dependency. The URL is validation input; runtime owners decide how to
+resolve, annotate, render, or stream it.
 
 The `canvas-2d` engine is the no-install Dev/Prod smoke path. It rasterizes
 HTML with `html2canvas` and uses browser-native recording capabilities when the
@@ -549,7 +479,8 @@ Run path:
 
 - Import this Markdown file through `Toolbar -> Launch -> Import local files`.
 - Switch to the Flow Editor surface if it is not already selected.
-- Run `HTML Video Renderer Widget`, or run the whole flow from Toolbar Run all.
+- Run `Video Agent HTML Stream Renderer`, or run the whole flow from Toolbar
+  Run all.
 - Verify that the downstream Rich Media Panel has either a playable `video/mp4`
   artifact or the inline HTML preview generated from the same Render_Spec, and
   that the render manifest records the selected `engineHint=canvas-2d` when an
@@ -559,10 +490,11 @@ Run path:
 
 The embedded Render_Spec is source-owned in frontmatter under
 `flow.nodes[].{html,css,data_json,duration_ms,fps,width,height,engine_hint}`.
-It models a URL-to-video pipeline with source capture, identity extraction,
-storyboard compilation, seekable CSS keyframes, timeline lanes, and artifact
-publication. Do not duplicate the payload into fixture files; tests must ingest
-this document by path.
+It models a video-agent pipeline with source intake, multimodal parsing, moment
+search, edit planning, timeline compilation, generated overlay placeholders,
+seekable CSS keyframes, timeline lanes, and stream artifact publication. Do not
+duplicate the payload into fixture files; tests must ingest this document by
+path.
 
 ## Runnable FloatingPanel Media Annotation Demo
 
@@ -575,13 +507,14 @@ image/video ingestion, parsing, annotation, and rendering:
    `asset_type=image`.
 3. `Video Frame Annotation Engine` consumes the video asset, task set, and
    `frame_timestamp_ms` with `asset_type=video_frame`.
-4. `FloatingPanel Media Annotation Outputs` receives media previews plus
-   annotation JSON through explicit Flow Editor edges, then projects image
-   `object_detection` results as labelled bounding boxes over the image preview.
+4. `FloatingPanel Media Annotation Outputs` receives annotation JSON through
+   explicit Flow Editor edges. The runtime projection owns the source media and
+   labelled `object_detection` boxes as one atomic `outputSrcDoc` render channel.
 
 The branch is intentionally runtime-ready but source-neutral. The validation
-input stores stable `workspace://media/...` asset references, task names, and
-frame timestamp only. It does not store generated blob URLs, output paths,
+input stores a document-relative, browser-resolvable media reference, task
+names, and frame timestamp only. It does not store generated blob URLs, output
+paths,
 annotation ids, model cache state, or worker progress. At runtime, the
 Annotation Engine must build ids through the shared semantic-key helper and
 route successful JSON through `writeRichMediaWidgetRunOutputArtifact`. The Dev
@@ -684,8 +617,10 @@ After import, the parsed graph should expose:
 - `kgCanvasRenderMode=2d`
 - `kgCanvas2dRenderer=flowEditor`
 - one frontmatter Flow Editor graph containing the Render_Spec source, HTML Video Renderer, and Rich Media Panel
+- one dependency-free `knowgrph-video-agent/v1` branch for test URL `https://youtu.be/8NkwH29Ou1o`
+- one video-agent Render_Spec with ingest, parse, search, edit, compile, generate, and stream stages
 - one AI Showrunner branch showing the dry-run role pipeline, token budget, artifact manifest, and zero paid calls
-- one Flow Editor HTML Video Renderer branch with `HtmlVideoRenderer -> RichMediaPanel`, `engine_hint=canvas-2d`, and a real `video/mp4` artifact
+- one Flow Editor HTML Video Renderer branch with `HtmlVideoRenderer -> RichMediaPanel`, `engine_hint=canvas-2d`, and a real `video/mp4` artifact or inline stream preview
 - one FloatingPanel Media branch with `InputWidget -> AnnotationEngine -> RichMediaPanel` for both image annotation and video-frame annotation
 - one Annotation Engine result path using `knowgrph-annotation/v1`, sorted task semantic-key inputs, and the shared rich-media artifact writer
 - one image annotation projection reading normalized object-detection boxes from `tasks.object_detection.objects[]` and rendering labelled overlays in FloatingPanel Media
@@ -696,5 +631,6 @@ After import, the parsed graph should expose:
 The repo must treat this file as external validation input. Runtime code and
 tests may read it by caller-supplied path, but must not copy its node ids,
 titles, prompts, source hashes, showrunner brief, MCP payload, HTML video
-Render_Spec, media asset references, annotation task sets, Annotation_Spec
-payloads, or output payload into implementation fixtures.
+Render_Spec, video-agent stages, test URL, media asset references, annotation
+task sets, Annotation_Spec payloads, or output payload into implementation
+fixtures.
