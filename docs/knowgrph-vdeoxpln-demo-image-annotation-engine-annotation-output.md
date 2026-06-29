@@ -6,9 +6,9 @@
 | artifactPath | ./knowgrph-vdeoxpln-demo-image-annotation-engine.json |
 | mimeType | application/json |
 | model | microsoft/Florence-2-base |
-| sourceUrl | workspace://media/demo-image |
-| annotationId | 059ea06e |
-| assetUrl | workspace://media/demo-image |
+| sourceUrl | /image/knowgrph/video-frame/frame-c0a158fe-t0.png |
+| annotationId | 71576eb4 |
+| assetUrl | /image/knowgrph/video-frame/frame-c0a158fe-t0.png |
 | modelId | microsoft/Florence-2-base |
 | sortedTasks | caption,dense_region_caption,object_detection |
 
