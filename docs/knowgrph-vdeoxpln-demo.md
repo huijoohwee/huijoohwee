@@ -42,6 +42,7 @@ local_file_import_contract:
   - "Run all writes a video/mp4 artifact and manifest through shared rich-media output owners when the selected runtime can encode video"
   - "Run all publishes the same parsed HTML/CSS/data as an inline preview when the browser lacks MediaRecorder, canvas captureStream, or WebCodecs"
   - "Video agent frame-by-frame bounding-box analysis is visible in both the streamed Rich Media preview and a separate Rich Media analysis panel"
+  - "Video agent frame boxes load into a native visual annotation dataset that supports deterministic split, merge, save, and frame-ordered zone counting"
   - "BottomPanel Timeline FBF clips show frame-by-frame image thumbnails synchronized with video-agent bounding-box tracks"
   - "Toolbar -> Launch -> Import URL exposes user-configurable video-agent validation document path and test URL set controls"
   - "Rich Media Panel exposes the generated HTML-to-MP4 artifact or inline preview without stale runtime state in this source document"
@@ -149,8 +150,16 @@ videoAgentRuntimeContract:
     - "search evidence windows"
     - "edit decision plan"
     - "compiled timeline manifest"
+    - "visual annotation dataset artifact"
+    - "real-time zone counting timeline"
     - "generation placeholder manifest"
     - "instant stream manifest"
+  datasetOperations:
+    - "load"
+    - "split"
+    - "merge"
+    - "save"
+    - "count_zones"
   streamPanels:
     - "Rendered MP4 Artifact"
     - "Video Agent Frame Analysis"
@@ -163,8 +172,10 @@ videoAgentRuntimeContract:
     - {frameIndex: 4, timestampMs: 5600, label: "tracked subject", bbox: [0.31, 0.18, 0.29, 0.34], confidence: 0.90}
   sourceTruth:
     - "canvas/src/features/video-agent/videoAgentPipeline.ts"
+    - "canvas/src/features/video-agent/videoAgentDatasetRuntime.ts"
     - "canvas/src/features/html-video-renderer/htmlVideoRendererSpec.ts"
     - "canvas/src/features/html-video-renderer/htmlVideoFlowNode.ts"
+    - "canvas/src/features/visual-annotation-engine/annotationDataset.ts"
     - "canvas/src/features/visual-annotation-engine/annotationFlowNode.ts"
     - "canvas/src/features/chat/richMediaRun.ts"
     - "canvas/src/lib/graph/semanticKey.ts"
@@ -173,6 +184,7 @@ videoAgentRuntimeContract:
     - "video/mp4, outputSrcDoc, renderJobId, and manifests are runtime outputs"
     - "RichMediaPanel receives streamable artifact output through explicit Flow Editor edges"
     - "frame-by-frame bounding boxes are routed to multiple RichMediaPanel surfaces as visible overlays"
+    - "visualDataset, datasetSplitSummary, savedDatasetArtifact, and zoneCounting are Render_Spec data outputs derived from frameBoundingBoxes"
     - "BottomPanel Timeline FBF lane renders frame-by-frame-image thumbnails from /__video_frame source-frame evidence derived from the runtime source URL"
     - "source document stores no generated blob URLs, output paths, or run identifiers"
 visualAnnotationRuntimeContract:
@@ -191,6 +203,7 @@ visualAnnotationRuntimeContract:
     - "modelHint overrides KNOWGRPH_ANNOTATION_MODEL only when it resolves to ANNOTATION_MODEL_IDS"
     - "image and video-frame annotation outputs use buildScopedGraphSemanticKey with assetUrl, modelId, and sortedTasks"
     - "annotation JSON is routed through writeRichMediaWidgetRunOutputArtifact; no parallel storage or canvas-apply path is introduced"
+    - "annotation datasets load from Annotation_Result or frame-box arrays, then split, merge, save, and count zones through annotationDataset.ts"
   boundingBoxProjection:
     sourcePath: "tasks.object_detection.objects"
     boxFormat: "[x, y, width, height]"
@@ -214,6 +227,7 @@ visualAnnotationRuntimeContract:
       - "rendered preview artifact"
   sourceTruth:
     - "canvas/src/features/visual-annotation-engine/annotationEngineSsot.ts"
+    - "canvas/src/features/visual-annotation-engine/annotationDataset.ts"
     - "canvas/src/features/visual-annotation-engine/annotationSpec.ts"
     - "canvas/src/features/visual-annotation-engine/annotationOrchestrator.ts"
     - "canvas/src/features/visual-annotation-engine/annotationSerializers.ts"

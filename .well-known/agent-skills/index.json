@@ -319,15 +319,15 @@
     {
       "name": "knowgrph-video-agent",
       "type": "markdown",
-      "description": "Reason over operator-supplied video sources through native knowgrph ingestion, parsing, annotation, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.",
+      "description": "Reason over operator-supplied video sources through native knowgrph ingestion, parsing, annotation, dataset operations, zone counting, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-video-agent.md",
-      "sha256": "fbef2035b17407d35268e3e502957b27170b26f12a1b1b253624affc12bbb69c",
+      "sha256": "acdea45ff8936e8b35c0bde592e4f0af4edb383852e554fc36ab2fbfe1b044d5",
       "vdeoxpln": {
         "id": "knowgrph-video-agent",
         "title": "Knowgrph Video Agent",
         "scope": "browser-local-and-local-stdio",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_790793bb",
+        "semanticKey": "kgvx_098382a2",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -347,15 +347,15 @@
     {
       "name": "knowgrph-visual-annotation-engine",
       "type": "markdown",
-      "description": "Run browser-local image and video-frame annotation into LLM-ready structured JSON materialised through the existing rich-media artifact owner.",
+      "description": "Run browser-local image and video-frame annotation into LLM-ready structured JSON plus native visual datasets materialised through existing artifact owners.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-visual-annotation-engine.md",
-      "sha256": "f1f066c1dbcd5584f0bf0d56c9d52e730c58b5c445e2baf8a8af53cb1268905a",
+      "sha256": "2970391df84fe07e3f371ab5bddf0a00bc7c4af251bd8234c31a7a22cd8486bc",
       "vdeoxpln": {
         "id": "knowgrph-visual-annotation-engine",
         "title": "Knowgrph Visual Annotation Engine",
         "scope": "browser-local",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_a9ae389c",
+        "semanticKey": "kgvx_2076672d",
         "tools": {
           "published": [],
           "browserLocal": [],

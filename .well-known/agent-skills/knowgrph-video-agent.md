@@ -1,12 +1,12 @@
 # Knowgrph Video Agent Skill
 
-Use this skill when: Reason over operator-supplied video sources through native knowgrph ingestion, parsing, annotation, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.
+Use this skill when: Reason over operator-supplied video sources through native knowgrph ingestion, parsing, annotation, dataset operations, zone counting, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-video-agent`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_790793bb`
+- Semantic key: `kgvx_098382a2`
 - Scope: `browser-local-and-local-stdio`
 - Mutation boundary: `local-approval-gated`
 
@@ -19,6 +19,8 @@ Use this skill when: Reason over operator-supplied video sources through native 
 - video generation
 - video reasoning
 - video search
+- visual dataset
+- zone counting
 
 ## Inputs
 
@@ -39,6 +41,8 @@ Use this skill when: Reason over operator-supplied video sources through native 
 - source manifest
 - timeline manifest
 - video/mp4 artifact
+- visual annotation dataset
+- zone counting timeline
 
 ## Tools
 
@@ -58,6 +62,7 @@ Local MCP tools:
 
 - Ingest an operator-supplied video source without embedding a provider runtime dependency.
 - Parse source metadata, frame annotations, transcript windows, and searchable moments through existing source and annotation owners.
+- Load frame annotations into native visual dataset operators for deterministic split, merge, save, and frame-ordered zone counting.
 - Plan search, edit, compilation, and generation stages as typed reasoning artifacts rather than copied external code.
 - Compile a source-owned HTML/CSS/data Render_Spec for the selected timeline.
 - Stream a video/mp4 artifact or outputSrcDoc preview through the shared Rich Media Panel output owner.
@@ -70,6 +75,8 @@ Local MCP tools:
 - canvas/src/features/html-video-renderer/htmlVideoRendererSsot.ts
 - canvas/src/features/source-files
 - canvas/src/features/video-agent
+- canvas/src/features/video-agent/videoAgentDatasetRuntime.ts
+- canvas/src/features/visual-annotation-engine/annotationDataset.ts
 - canvas/src/features/visual-annotation-engine/annotationFlowNode.ts
 - canvas/src/features/visual-annotation-engine/annotationSerializers.ts
 - canvas/src/lib/graph/semanticKey.ts
@@ -82,6 +89,8 @@ Local MCP tools:
 - sourceUrl
 - capabilities
 - reasoningArtifacts
+- visualDataset
+- zoneCounting
 - renderSpecHash
 - streamOutput
 
@@ -90,7 +99,7 @@ Local MCP tools:
 - Mode: `optional-via-local-tools`
 - Max attempts: `1`
 - Token budget: `operator-configured`
-- Fallback: Return structured source, annotation, or render errors without invoking external video-agent services.
+- Fallback: Return structured source, annotation, dataset, zone counting, or render errors without invoking external video-agent services.
 
 ## Validation
 
@@ -98,6 +107,7 @@ Local MCP tools:
 - mcpLocalToolContract
 - vdeoxpln:check
 - videoAgentPipeline
+- visualAnnotationDataset
 - visualAnnotationEngine
 
 ## Guardrails

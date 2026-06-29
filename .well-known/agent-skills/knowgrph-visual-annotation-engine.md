@@ -1,12 +1,12 @@
 # Knowgrph Visual Annotation Engine Skill
 
-Use this skill when: Run browser-local image and video-frame annotation into LLM-ready structured JSON materialised through the existing rich-media artifact owner.
+Use this skill when: Run browser-local image and video-frame annotation into LLM-ready structured JSON plus native visual datasets materialised through existing artifact owners.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-visual-annotation-engine`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_a9ae389c`
+- Semantic key: `kgvx_2076672d`
 - Scope: `browser-local`
 - Mutation boundary: `local-approval-gated`
 
@@ -14,12 +14,14 @@ Use this skill when: Run browser-local image and video-frame annotation into LLM
 
 - annotate image
 - annotate video
+- annotation dataset
 - florence2
 - image caption
 - llm-ready annotation
 - object detection
 - semantic labels
 - visual annotation
+- zone counting
 
 ## Inputs
 
@@ -35,6 +37,8 @@ Use this skill when: Run browser-local image and video-frame annotation into LLM
 - annotation result json
 - llm-ready payload
 - markdown summary
+- visual annotation dataset
+- zone counting timeline
 
 ## Tools
 
@@ -55,6 +59,7 @@ Local MCP tools:
 - Resolve model identifier from modelHint, KNOWGRPH_ANNOTATION_MODEL, or the registered default.
 - Dispatch through the Annotation_Worker boundary; Dev emits dependency-free heuristic annotations while model adapters remain runtime-owned.
 - Build annotationId with buildScopedGraphSemanticKey using assetUrl, modelId, and sorted tasks.
+- Load Annotation_Result or frame-box arrays into the native dataset owner for split, merge, save, and frame-ordered zone counting.
 - Route JSON output through writeRichMediaWidgetRunOutputArtifact exactly once.
 - Return annotationId, assetUrl, modelId, tasks, outputPath, and outputManifestPath.
 
@@ -63,6 +68,7 @@ Local MCP tools:
 - canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
 - canvas/src/features/chat/richMediaRun.ts
 - canvas/src/features/source-files
+- canvas/src/features/visual-annotation-engine/annotationDataset.ts
 - canvas/src/features/visual-annotation-engine/annotationEngineSsot.ts
 - canvas/src/features/visual-annotation-engine/annotationFlowNode.ts
 - canvas/src/features/visual-annotation-engine/annotationMcpTools.ts
@@ -83,6 +89,8 @@ Local MCP tools:
 - assetUrl
 - modelId
 - sortedTasks
+- visualDataset
+- zoneCounting
 
 ## AI Policy
 
@@ -95,6 +103,7 @@ Local MCP tools:
 
 - mcpLocalToolContract
 - vdeoxpln:check
+- visualAnnotationDataset
 - visualAnnotationEngine
 
 ## Guardrails
