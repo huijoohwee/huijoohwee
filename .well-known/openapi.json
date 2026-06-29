@@ -452,6 +452,16 @@
         }
       }
     },
+    "/knowgrph/.well-known/agent-skills/knowgrph-video-agent.md": {
+      "get": {
+        "summary": "Read the knowgrph-video-agent agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-video-agent"
+          }
+        }
+      }
+    },
     "/knowgrph/.well-known/agent-skills/knowgrph-visual-annotation-engine.md": {
       "get": {
         "summary": "Read the knowgrph-visual-annotation-engine agent skill markdown",
