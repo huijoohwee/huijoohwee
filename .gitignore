@@ -19,9 +19,11 @@ content/singabldr/test.js
 content/singabldr/test2.js
 docs_/
 video/
+image/knowgrph/video-frame/
 
 # Singabldr: NEVER commit secrets (local-only convenience files)
 content/singabldr/user-secrets.json
 content/singabldr/user-secrets.local.json
 content/singabldr/.env.local
 content/singabldr/LLM_KEYS.md
+
