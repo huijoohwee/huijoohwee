@@ -1,4 +1,3 @@
----
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "bezier"}
@@ -332,7 +331,6 @@ flow:
     - {"id":"doc:md:workspace-readme-hasBlock-blk:md:workspace-readme:p:1:1-0","source":"doc:md:workspace-readme","sourceHandle":"output","target":"blk:md:workspace-readme:p:1:1","targetHandle":"input","label":"hasBlock"}
     - {"id":"doc:md:workspace-readme-hasBlock-blk:md:workspace-readme:p:11:3-2","source":"doc:md:workspace-readme","sourceHandle":"output","target":"blk:md:workspace-readme:p:11:3","targetHandle":"input","label":"hasBlock"}
     - {"id":"doc:md:workspace-readme-hasBlock-blk:md:workspace-readme:p:9:2-1","source":"doc:md:workspace-readme","sourceHandle":"output","target":"blk:md:workspace-readme:p:9:2","targetHandle":"input","label":"hasBlock"}
----
 
 <!doctype html>
 <html lang="en">

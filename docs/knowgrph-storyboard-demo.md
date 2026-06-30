@@ -15,6 +15,10 @@ flow:
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"input_query":"template_text_signal","input_context":"template_text_signal","input_audience":"template_text_signal","input_format":"template_text_signal","input_constraints":"template_text_signal","input_evidence":"template_text_signal","input_tone":"template_text_signal","input_metric_label":"template_text_signal","input_metric_target":"template_number_signal","input_investment_amount":"template_number_signal","input_forecast_years":"template_number_signal","input_initial_revenue":"template_number_signal","input_revenue_growth_pct":"template_number_signal","input_operating_margin_pct":"template_number_signal","input_tax_rate_pct":"template_number_signal","input_discount_rate_pct":"template_number_signal","input_terminal_growth_pct":"template_number_signal","input_terminal_multiple":"template_number_signal","input_capex_pct_revenue":"template_number_signal","input_working_capital_pct_revenue":"template_number_signal","input_probability_success_pct":"template_number_signal","input_strategic_fit_score":"template_number_signal","input_execution_risk_score":"template_number_signal","input_market_risk_score":"template_number_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "templateInput"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 24}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 24}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       input_audience: {key: input_audience, type: string, value: "sponsor, operator, reviewer"}
       input_capex_pct_revenue: {key: input_capex_pct_revenue, type: number, value: 6}
       input_constraints: {key: input_constraints, type: textarea, value: "Use supplied assumptions only; surface uncertainty; do not imply guaranteed returns; keep the decision neutral and auditable."}
@@ -41,6 +45,8 @@ flow:
       input_working_capital_pct_revenue: {key: input_working_capital_pct_revenue, type: number, value: 4}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Reusable universal investment-decision source widget with neutral request, context, audience, constraints, evidence, DCF assumptions, and decision-quality scores."}
       "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      "visual:importance": {key: "visual:importance", type: number, value: 108}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 29.595917942265423}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "compute_summary"}
@@ -120,8 +126,10 @@ flow:
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Chart Rich Media Panel receives the outputSrcDoc field."}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       "template:nodeType": {key: "template:nodeType", type: string, value: "rich_media_panel"}
+      "visual:height": {key: "visual:height", type: number, value: 564}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:width": {key: "visual:width", type: number, value: 1003}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
   edges:
