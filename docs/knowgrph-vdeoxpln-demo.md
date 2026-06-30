@@ -184,6 +184,8 @@ videoAgentRuntimeContract:
   sourceTruth:
     - "canvas/src/features/video-agent/videoAgentPipeline.ts"
     - "canvas/src/features/video-agent/videoAgentDatasetRuntime.ts"
+    - "canvas/src/features/video-agent/videoAgentDatasetProjection.ts"
+    - "canvas/src/features/video-agent/VideoAgentValidationImportControls.tsx"
     - "canvas/src/features/html-video-renderer/htmlVideoRendererSpec.ts"
     - "canvas/src/features/html-video-renderer/htmlVideoFlowNode.ts"
     - "canvas/src/features/visual-annotation-engine/annotationDataset.ts"
@@ -596,6 +598,8 @@ or mirror-only patches.
 | Render MP4 | The Flow Editor `HtmlVideoRenderer` node turns semantic HTML, CSS, and data into a real `video/mp4` artifact through `engine_hint=canvas-2d`. | `html-video-renderer/*` + `richMediaRun.ts` |
 | Ingest Media | FloatingPanel Media receives source-owned image and video asset references without generated blob URLs in the validation input. | Rich Media / Media catalog owners |
 | Annotate | `AnnotationEngine` nodes validate image and video-frame Annotation_Spec inputs and emit LLM-ready JSON. | `visual-annotation-engine/*` |
+| Dataset | Frame annotations load once, split deterministically, merge without duplicate samples, and serialize as a saved dataset artifact. | `annotationDataset.ts` + `videoAgentDatasetRuntime.ts` |
+| Count Zones | Each frame updates per-zone and cumulative counts on the shared render-frame clock. | `videoAgentDatasetProjection.ts` + Rich Media timeline bridge |
 | Render Annotation | Annotation JSON, semantic ids, media previews, and image object-detection bounding boxes flow into the FloatingPanel Media Rich Media target through explicit edges. | `richMediaRun.ts` + Flow Editor dataflow |
 | Project Bounding Boxes | The image preview projects `tasks.object_detection.objects[].bbox` from normalized `[x,y,width,height]` coordinates into its fitted media rectangle with labels and optional confidence. | FloatingPanel Media annotation overlay owner |
 | Execute | Toolbar Run all runs the flow and publishes the output to the downstream Rich Media Panel. | `flowEditorWorkflowRunAction.ts` |
@@ -614,6 +618,14 @@ nodes:
    `engine_hint` to `canvas-2d`.
 3. `Rendered MP4 Artifact` receives the emitted `videoUrl` in a Rich Media
    Panel video tab.
+
+For the executable URL path, open Flow Editor's video-agent validation import
+controls, enter the operator-supplied URL set, and choose `Import set`. Imports
+run sequentially through the shared workspace bridge so concurrent writes
+cannot overwrite one another. Each imported URL materializes three distinct
+Rich Media routes: stream output, frame analysis, and dataset/zone counts. The
+dataset panel reads the already-computed visual dataset artifacts and follows
+the same `knowgrph:render-frame` clock; it does not recalculate annotations.
 
 The video-agent branch is inspired by Roboflow/supervision-style visual
 annotation workflows at the product-pattern level only: the source graph models
