@@ -1,1 +1,0 @@
-import{U as e}from"./settings-mcp-docs-C_1YGRwD.js";import{c as r}from"./index-Dt920QHY.js";r(e.table.text),r(e.table.textSecondary),r("sticky top-0 z-10 px-3 py-2",e.table.headerBg,e.table.cellBorder),r("border-b",e.table.cellBorder,e.table.rowHover),r("px-3 py-2",e.table.textSecondary);
