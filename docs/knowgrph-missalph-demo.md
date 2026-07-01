@@ -71,350 +71,75 @@ flow_diagrams:
           panel_alpha_map[knowledge-graph canvas]
           source_input --> compute_summary --> panel_alpha_map
 flow:
-  direction:
-    key: direction
-    type: string
-    value: LR
-  edgeType:
-    key: edgeType
-    type: string
-    value: smoothstep
-  balancedViewportPreset:
-    key: balancedViewportPreset
-    type: string
-    value: widgetFrontmatter
-  computed:
-    key: computed
-    type: boolean
-    value: true
-  snapToGrid:
-    key: snapToGrid
-    type: boolean
-    value: true
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
+  computed: {key: computed, type: boolean, value: true}
+  snapToGrid: {key: snapToGrid, type: boolean, value: true}
   nodes:
-    - id:
-        key: id
-        type: string
-        value: source_input
-      type:
-        key: type
-        type: string
-        value: InputWidget
-      label:
-        key: label
-        type: string
-        value: Alpha Discovery Source
-      position:
-        key: position
-        type: object
-        value:
-          x: 0
-          "y": 0
-      input_horizon:
-        key: input_horizon
-        type: string
-        value: 12 to 36 month investment horizon
-      input_portfolio:
-        key: input_portfolio
-        type: string
-        value: 80% BTC / 20% gold strategic allocation with optional convexity overlay
-      input_factor_spec:
-        key: input_factor_spec
-        type: textarea
-        value: ETF flow momentum, spot premium, options skew, macro sensitivity, adoption regime, and desk risk appetite.
-      input_skew_pair:
-        key: input_skew_pair
-        type: string
-        value: BTC 25-delta risk reversal versus gold 25-delta risk reversal
-      input_macro_catalysts:
-        key: input_macro_catalysts
-        type: textarea
-        value: FOMC path, CPI surprises, real-yield shocks, liquidity cycle shifts, and ETF flow persistence.
-      input_alpha_hypothesis:
-        key: input_alpha_hypothesis
-        type: textarea
-        value: Consensus still treats BTC skew as isolated crypto beta while institutional flow makes BTC tails converge toward gold macro-hedge behaviour.
-      input_coverage_scope:
-        key: input_coverage_scope
-        type: string
-        value: BTC, XAU, spot, ETF flows, listed options, OTC skew, macro-event windows
-      input_signal_noise_threshold:
-        key: input_signal_noise_threshold
-        type: number
-        value: 0.62
-      input_graph_topology_mode:
-        key: input_graph_topology_mode
-        type: string
-        value: factor triangle with adoption-regime overlay
-      input_consensus_benchmark:
-        key: input_consensus_benchmark
-        type: textarea
-        value: "Desk baseline: gold remains the cleaner macro hedge; BTC convexity deserves persistent idiosyncratic discount."
-      input_audience:
-        key: input_audience
-        type: string
-        value: portfolio manager, options strategist, investment committee
-      input_constraints:
-        key: input_constraints
-        type: textarea
-        value: Use supplied factors only; avoid live-market claims; mark uncertainty; keep sizing bounded and auditable.
-      input_tone:
-        key: input_tone
-        type: string
-        value: direct, neutral, evidence-led
-      input_metric_label:
-        key: input_metric_label
-        type: string
-        value: missing alpha score
-      handles:
-        key: handles
-        type: object
-        value:
-          source:
-            - input_horizon
-            - input_portfolio
-            - input_factor_spec
-            - input_skew_pair
-            - input_macro_catalysts
-            - input_alpha_hypothesis
-            - input_coverage_scope
-            - input_signal_noise_threshold
-            - input_graph_topology_mode
-            - input_consensus_benchmark
-            - input_audience
-            - input_constraints
-            - input_tone
-            - input_metric_label
-      canvas:widgetCard:
-        key: canvas:widgetCard
-        type: object
-        value:
-          previewField: input_alpha_hypothesis
-          previewMaxChars: 110
-          onEdit:
-            trigger: runDownstream
-            targets:
-              - compute_summary
-          actions:
-            - id: edit
-              label: Edit
-              icon: pencil
-              trigger: openFieldEditor
-              targetField: input_alpha_hypothesis
-            - id: run
-              label: Run
-              icon: play
-              trigger: runDownstream
-              targets:
-                - compute_summary
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          out:
-            input_horizon: template_text_signal
-            input_portfolio: template_text_signal
-            input_factor_spec: template_text_signal
-            input_skew_pair: template_text_signal
-            input_macro_catalysts: template_text_signal
-            input_alpha_hypothesis: template_text_signal
-            input_coverage_scope: template_text_signal
-            input_signal_noise_threshold: template_number_signal
-            input_graph_topology_mode: template_text_signal
-            input_consensus_benchmark: template_text_signal
-            input_audience: template_text_signal
-            input_constraints: template_text_signal
-            input_tone: template_text_signal
-            input_metric_label: template_text_signal
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Alpha discovery source for BTC-gold missing-alpha analysis with horizon, portfolio, factor, skew, macro, benchmark, audience, and constraint fields.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:source:alpha-discovery
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: input
-    - id:
-        key: id
-        type: string
-        value: compute_summary
-      type:
-        key: type
-        type: string
-        value: ComputeWidget
-      label:
-        key: label
-        type: string
-        value: Compute Summary
-      position:
-        key: position
-        type: object
-        value:
-          x: 420
-          "y": -240
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - input_horizon
-            - input_portfolio
-            - input_factor_spec
-            - input_skew_pair
-            - input_macro_catalysts
-            - input_alpha_hypothesis
-            - input_coverage_scope
-            - input_signal_noise_threshold
-            - input_graph_topology_mode
-            - input_consensus_benchmark
-            - input_audience
-            - input_constraints
-            - input_tone
-            - input_metric_label
-          source:
-            - output
-            - imageUrl
-            - outputSrcDoc
-      canvas:runAction:
-        key: canvas:runAction
-        type: object
-        value:
-          fn: compute
-          inputs:
-            - input_horizon
-            - input_portfolio
-            - input_factor_spec
-            - input_skew_pair
-            - input_macro_catalysts
-            - input_alpha_hypothesis
-            - input_coverage_scope
-            - input_signal_noise_threshold
-            - input_graph_topology_mode
-            - input_consensus_benchmark
-            - input_audience
-            - input_constraints
-            - input_tone
-            - input_metric_label
-          outputs:
-            - output
-            - imageUrl
-            - outputSrcDoc
-          updateBody: true
-          bodyTokens:
-            - token: compute_summary.output
-              field: output
-            - token: compute_summary.imageUrl
-              field: imageUrl
-            - token: compute_summary.outputSrcDoc
-              field: outputSrcDoc
-            - token: source_input.input_horizon
-              field: input_horizon
-            - token: source_input.input_portfolio
-              field: input_portfolio
-            - token: source_input.input_factor_spec
-              field: input_factor_spec
-            - token: source_input.input_skew_pair
-              field: input_skew_pair
-            - token: source_input.input_macro_catalysts
-              field: input_macro_catalysts
-            - token: source_input.input_alpha_hypothesis
-              field: input_alpha_hypothesis
-            - token: source_input.input_coverage_scope
-              field: input_coverage_scope
-            - token: source_input.input_signal_noise_threshold
-              field: input_signal_noise_threshold
-            - token: source_input.input_graph_topology_mode
-              field: input_graph_topology_mode
-            - token: source_input.input_consensus_benchmark
-              field: input_consensus_benchmark
-            - token: source_input.input_audience
-              field: input_audience
-            - token: source_input.input_constraints
-              field: input_constraints
-            - token: source_input.input_tone
-              field: input_tone
-            - token: source_input.input_metric_label
-              field: input_metric_label
-      canvas:widgetCard:
-        key: canvas:widgetCard
-        type: object
-        value:
-          statusField: run_status
-          previewField: output
-          previewMaxChars: 110
-          actions:
-            - id: run
-              label: Run
-              icon: play
-              primary: true
-              trigger: compute
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            input_horizon: template_text_signal
-            input_portfolio: template_text_signal
-            input_factor_spec: template_text_signal
-            input_skew_pair: template_text_signal
-            input_macro_catalysts: template_text_signal
-            input_alpha_hypothesis: template_text_signal
-            input_coverage_scope: template_text_signal
-            input_signal_noise_threshold: template_number_signal
-            input_graph_topology_mode: template_text_signal
-            input_consensus_benchmark: template_text_signal
-            input_audience: template_text_signal
-            input_constraints: template_text_signal
-            input_tone: template_text_signal
-            input_metric_label: template_text_signal
-          out:
-            output: template_text_signal
-            imageUrl: template_image_signal
-            outputSrcDoc: template_chart_html
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      output:
-        key: output
-        type: markdown
-        value: ""
-      imageUrl:
-        key: imageUrl
-        type: svg_data_uri
-        value: ""
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: html_srcdoc
-        value: ""
-      run_status:
-        key: run_status
-        type: string
-        value: idle
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Synthesises alpha signals into a neutral missing-alpha score, decision memo, SVG preview, and rich media source artifact.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:compute:compute_summary
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: compute
+    - id: {key: id, type: string, value: "source_input"}
+      type: {key: type, type: string, value: "InputWidget"}
+      label: {key: label, type: string, value: "Alpha Discovery Source"}
+      position: {key: position, type: object, value: {"x":0,"y":0}}
+      handles: {key: handles, type: object, value: {"source":["input_horizon","input_portfolio","input_factor_spec","input_skew_pair","input_macro_catalysts","input_alpha_hypothesis","input_coverage_scope","input_signal_noise_threshold","input_graph_topology_mode","input_consensus_benchmark","input_audience","input_constraints","input_tone","input_metric_label"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"input_alpha_hypothesis","previewMaxChars":110,"onEdit":{"trigger":"runDownstream","targets":["compute_summary"]},"actions":[{"id":"edit","label":"Edit","icon":"pencil","trigger":"openFieldEditor","targetField":"input_alpha_hypothesis"},{"id":"run","label":"Run","icon":"play","trigger":"runDownstream","targets":["compute_summary"]}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"input_horizon":"template_text_signal","input_portfolio":"template_text_signal","input_factor_spec":"template_text_signal","input_skew_pair":"template_text_signal","input_macro_catalysts":"template_text_signal","input_alpha_hypothesis":"template_text_signal","input_coverage_scope":"template_text_signal","input_signal_noise_threshold":"template_number_signal","input_graph_topology_mode":"template_text_signal","input_consensus_benchmark":"template_text_signal","input_audience":"template_text_signal","input_constraints":"template_text_signal","input_tone":"template_text_signal","input_metric_label":"template_text_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:source_input"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 24}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 24}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      input_alpha_hypothesis: {key: input_alpha_hypothesis, type: textarea, value: "Consensus still treats BTC skew as isolated crypto beta while institutional flow makes BTC tails converge toward gold macro-hedge behaviour."}
+      input_audience: {key: input_audience, type: string, value: "portfolio manager, options strategist, investment committee"}
+      input_consensus_benchmark: {key: input_consensus_benchmark, type: textarea, value: "Desk baseline: gold remains the cleaner macro hedge; BTC convexity deserves persistent idiosyncratic discount."}
+      input_constraints: {key: input_constraints, type: textarea, value: "Use supplied factors only; avoid live-market claims; mark uncertainty; keep sizing bounded and auditable."}
+      input_coverage_scope: {key: input_coverage_scope, type: string, value: "BTC, XAU, spot, ETF flows, listed options, OTC skew, macro-event windows"}
+      input_factor_spec: {key: input_factor_spec, type: textarea, value: "ETF flow momentum, spot premium, options skew, macro sensitivity, adoption regime, and desk risk appetite."}
+      input_graph_topology_mode: {key: input_graph_topology_mode, type: string, value: "factor triangle with adoption-regime overlay"}
+      input_horizon: {key: input_horizon, type: string, value: "12 to 36 month investment horizon"}
+      input_macro_catalysts: {key: input_macro_catalysts, type: textarea, value: "FOMC path, CPI surprises, real-yield shocks, liquidity cycle shifts, and ETF flow persistence."}
+      input_metric_label: {key: input_metric_label, type: string, value: "missing alpha score"}
+      input_portfolio: {key: input_portfolio, type: string, value: "80% BTC / 20% gold strategic allocation with optional convexity overlay"}
+      input_signal_noise_threshold: {key: input_signal_noise_threshold, type: number, value: 0.62}
+      input_skew_pair: {key: input_skew_pair, type: string, value: "BTC 25-delta risk reversal versus gold 25-delta risk reversal"}
+      input_tone: {key: input_tone, type: string, value: "direct, neutral, evidence-led"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Alpha discovery source for BTC-gold missing-alpha analysis with horizon, portfolio, factor, skew, macro, benchmark, audience, and constraint fields."}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:source:alpha-discovery"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "input"}
+      "visual:importance": {key: "visual:importance", type: number, value: 108}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 29.595917942265423}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "compute_summary"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Compute Summary"}
+      position: {key: position, type: object, value: {"x":420,"y":-240}}
+      handles: {key: handles, type: object, value: {"target":["input_horizon","input_portfolio","input_factor_spec","input_skew_pair","input_macro_catalysts","input_alpha_hypothesis","input_coverage_scope","input_signal_noise_threshold","input_graph_topology_mode","input_consensus_benchmark","input_audience","input_constraints","input_tone","input_metric_label"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["input_horizon","input_portfolio","input_factor_spec","input_skew_pair","input_macro_catalysts","input_alpha_hypothesis","input_coverage_scope","input_signal_noise_threshold","input_graph_topology_mode","input_consensus_benchmark","input_audience","input_constraints","input_tone","input_metric_label"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":true,"bodyTokens":[{"token":"compute_summary.output","field":"output"},{"token":"compute_summary.imageUrl","field":"imageUrl"},{"token":"compute_summary.outputSrcDoc","field":"outputSrcDoc"},{"token":"source_input.input_horizon","field":"input_horizon"},{"token":"source_input.input_portfolio","field":"input_portfolio"},{"token":"source_input.input_factor_spec","field":"input_factor_spec"},{"token":"source_input.input_skew_pair","field":"input_skew_pair"},{"token":"source_input.input_macro_catalysts","field":"input_macro_catalysts"},{"token":"source_input.input_alpha_hypothesis","field":"input_alpha_hypothesis"},{"token":"source_input.input_coverage_scope","field":"input_coverage_scope"},{"token":"source_input.input_signal_noise_threshold","field":"input_signal_noise_threshold"},{"token":"source_input.input_graph_topology_mode","field":"input_graph_topology_mode"},{"token":"source_input.input_consensus_benchmark","field":"input_consensus_benchmark"},{"token":"source_input.input_audience","field":"input_audience"},{"token":"source_input.input_constraints","field":"input_constraints"},{"token":"source_input.input_tone","field":"input_tone"},{"token":"source_input.input_metric_label","field":"input_metric_label"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":110,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_horizon":"template_text_signal","input_portfolio":"template_text_signal","input_factor_spec":"template_text_signal","input_skew_pair":"template_text_signal","input_macro_catalysts":"template_text_signal","input_alpha_hypothesis":"template_text_signal","input_coverage_scope":"template_text_signal","input_signal_noise_threshold":"template_number_signal","input_graph_topology_mode":"template_text_signal","input_consensus_benchmark":"template_text_signal","input_audience":"template_text_signal","input_constraints":"template_text_signal","input_tone":"template_text_signal","input_metric_label":"template_text_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:compute_summary"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 17}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 14}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 3}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Synthesises alpha signals into a neutral missing-alpha score, decision memo, SVG preview, and rich media source artifact."}
+      output: {key: output, type: markdown, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      run_status: {key: run_status, type: string, value: "idle"}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:compute:compute_summary"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 80}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 26.492422502470642}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
       compute:
         key: compute
         type: string
-        value: |-
+        value: |
           inputs => {
             const read = key => String(inputs?.[key] ?? "").trim()
             const readNumber = (key, fallback) => {
@@ -458,115 +183,35 @@ flow:
             const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Inter,Arial,sans-serif;margin:0;padding:24px;background:#f8fafc;color:#0f172a}.bar{height:16px;background:#22c55e;width:' + confidence + '%;max-width:100%;border-radius:4px}.panel{border:1px solid #cbd5e1;border-radius:8px;padding:16px;background:white}</style></head><body><div class="panel"><h1>Synthesises alpha signals</h1><div class="bar"></div><p>Score: ' + confidence + '/100</p><p>' + escapeHtml(hypothesis) + '</p></div></body></html>'
             return { output, imageUrl, outputSrcDoc }
           }
-    - id:
-        key: id
-        type: string
-        value: compute_flow_spot
-      type:
-        key: type
-        type: string
-        value: ComputeWidget
-      label:
-        key: label
-        type: string
-        value: Flow Spot Dislocation
-      position:
-        key: position
-        type: object
-        value:
-          x: 780
-          "y": -90
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          source:
-            - output
-            - imageUrl
-            - outputSrcDoc
-      canvas:runAction:
-        key: canvas:runAction
-        type: object
-        value:
-          fn: compute
-          inputs:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          outputs:
-            - output
-            - imageUrl
-            - outputSrcDoc
-          updateBody: false
-          bodyTokens:
-            - token: compute_flow_spot.output
-              field: output
-            - token: compute_flow_spot.imageUrl
-              field: imageUrl
-            - token: compute_flow_spot.outputSrcDoc
-              field: outputSrcDoc
-      canvas:widgetCard:
-        key: canvas:widgetCard
-        type: object
-        value:
-          statusField: run_status
-          previewField: output
-          previewMaxChars: 110
-          actions:
-            - id: run
-              label: Run
-              icon: play
-              primary: true
-              trigger: compute
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            input_alpha_hypothesis: template_text_signal
-            input_signal_noise_threshold: template_number_signal
-          out:
-            output: template_text_signal
-            imageUrl: template_image_signal
-            outputSrcDoc: template_chart_html
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      output:
-        key: output
-        type: markdown
-        value: ""
-      imageUrl:
-        key: imageUrl
-        type: svg_data_uri
-        value: ""
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: html_srcdoc
-        value: ""
-      run_status:
-        key: run_status
-        type: string
-        value: idle
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Computes ETF flow and spot premium dislocation for the BTC-gold factor graph.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:compute:compute_flow_spot
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: compute
+    - id: {key: id, type: string, value: "compute_flow_spot"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Flow Spot Dislocation"}
+      position: {key: position, type: object, value: {"x":780,"y":-90}}
+      handles: {key: handles, type: object, value: {"target":["input_alpha_hypothesis","input_signal_noise_threshold"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["input_alpha_hypothesis","input_signal_noise_threshold"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":false,"bodyTokens":[{"token":"compute_flow_spot.output","field":"output"},{"token":"compute_flow_spot.imageUrl","field":"imageUrl"},{"token":"compute_flow_spot.outputSrcDoc","field":"outputSrcDoc"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":110,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_alpha_hypothesis":"template_text_signal","input_signal_noise_threshold":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:compute_flow_spot"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Computes ETF flow and spot premium dislocation for the BTC-gold factor graph."}
+      output: {key: output, type: markdown, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      run_status: {key: run_status, type: string, value: "idle"}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:compute:compute_flow_spot"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
       compute:
         key: compute
         type: string
-        value: |-
+        value: |
           inputs => {
             const read = key => String(inputs?.[key] ?? "").trim()
             const readNumber = (key, fallback) => {
@@ -610,115 +255,35 @@ flow:
             const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Inter,Arial,sans-serif;margin:0;padding:24px;background:#f8fafc;color:#0f172a}.bar{height:16px;background:#22c55e;width:' + confidence + '%;max-width:100%;border-radius:4px}.panel{border:1px solid #cbd5e1;border-radius:8px;padding:16px;background:white}</style></head><body><div class="panel"><h1>ETF flow versus spot premium</h1><div class="bar"></div><p>Score: ' + confidence + '/100</p><p>' + escapeHtml(hypothesis) + '</p></div></body></html>'
             return { output, imageUrl, outputSrcDoc }
           }
-    - id:
-        key: id
-        type: string
-        value: compute_skew_convergence
-      type:
-        key: type
-        type: string
-        value: ComputeWidget
-      label:
-        key: label
-        type: string
-        value: Skew Convergence
-      position:
-        key: position
-        type: object
-        value:
-          x: 420
-          "y": 60
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          source:
-            - output
-            - imageUrl
-            - outputSrcDoc
-      canvas:runAction:
-        key: canvas:runAction
-        type: object
-        value:
-          fn: compute
-          inputs:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          outputs:
-            - output
-            - imageUrl
-            - outputSrcDoc
-          updateBody: false
-          bodyTokens:
-            - token: compute_skew_convergence.output
-              field: output
-            - token: compute_skew_convergence.imageUrl
-              field: imageUrl
-            - token: compute_skew_convergence.outputSrcDoc
-              field: outputSrcDoc
-      canvas:widgetCard:
-        key: canvas:widgetCard
-        type: object
-        value:
-          statusField: run_status
-          previewField: output
-          previewMaxChars: 110
-          actions:
-            - id: run
-              label: Run
-              icon: play
-              primary: true
-              trigger: compute
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            input_alpha_hypothesis: template_text_signal
-            input_signal_noise_threshold: template_number_signal
-          out:
-            output: template_text_signal
-            imageUrl: template_image_signal
-            outputSrcDoc: template_chart_html
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      output:
-        key: output
-        type: markdown
-        value: ""
-      imageUrl:
-        key: imageUrl
-        type: svg_data_uri
-        value: ""
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: html_srcdoc
-        value: ""
-      run_status:
-        key: run_status
-        type: string
-        value: idle
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Computes BTC-gold skew convergence pressure from the typed source hypothesis and skew pair.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:compute:compute_skew_convergence
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: compute
+    - id: {key: id, type: string, value: "compute_skew_convergence"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Skew Convergence"}
+      position: {key: position, type: object, value: {"x":420,"y":60}}
+      handles: {key: handles, type: object, value: {"target":["input_alpha_hypothesis","input_signal_noise_threshold"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["input_alpha_hypothesis","input_signal_noise_threshold"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":false,"bodyTokens":[{"token":"compute_skew_convergence.output","field":"output"},{"token":"compute_skew_convergence.imageUrl","field":"imageUrl"},{"token":"compute_skew_convergence.outputSrcDoc","field":"outputSrcDoc"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":110,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_alpha_hypothesis":"template_text_signal","input_signal_noise_threshold":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:compute_skew_convergence"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Computes BTC-gold skew convergence pressure from the typed source hypothesis and skew pair."}
+      output: {key: output, type: markdown, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      run_status: {key: run_status, type: string, value: "idle"}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:compute:compute_skew_convergence"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
       compute:
         key: compute
         type: string
-        value: |-
+        value: |
           inputs => {
             const read = key => String(inputs?.[key] ?? "").trim()
             const readNumber = (key, fallback) => {
@@ -762,115 +327,35 @@ flow:
             const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Inter,Arial,sans-serif;margin:0;padding:24px;background:#f8fafc;color:#0f172a}.bar{height:16px;background:#22c55e;width:' + confidence + '%;max-width:100%;border-radius:4px}.panel{border:1px solid #cbd5e1;border-radius:8px;padding:16px;background:white}</style></head><body><div class="panel"><h1>BTC-gold skew convergence</h1><div class="bar"></div><p>Score: ' + confidence + '/100</p><p>' + escapeHtml(hypothesis) + '</p></div></body></html>'
             return { output, imageUrl, outputSrcDoc }
           }
-    - id:
-        key: id
-        type: string
-        value: compute_macro_mispricing
-      type:
-        key: type
-        type: string
-        value: ComputeWidget
-      label:
-        key: label
-        type: string
-        value: Macro Mispricing
-      position:
-        key: position
-        type: object
-        value:
-          x: 780
-          "y": 210
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          source:
-            - output
-            - imageUrl
-            - outputSrcDoc
-      canvas:runAction:
-        key: canvas:runAction
-        type: object
-        value:
-          fn: compute
-          inputs:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          outputs:
-            - output
-            - imageUrl
-            - outputSrcDoc
-          updateBody: false
-          bodyTokens:
-            - token: compute_macro_mispricing.output
-              field: output
-            - token: compute_macro_mispricing.imageUrl
-              field: imageUrl
-            - token: compute_macro_mispricing.outputSrcDoc
-              field: outputSrcDoc
-      canvas:widgetCard:
-        key: canvas:widgetCard
-        type: object
-        value:
-          statusField: run_status
-          previewField: output
-          previewMaxChars: 110
-          actions:
-            - id: run
-              label: Run
-              icon: play
-              primary: true
-              trigger: compute
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            input_alpha_hypothesis: template_text_signal
-            input_signal_noise_threshold: template_number_signal
-          out:
-            output: template_text_signal
-            imageUrl: template_image_signal
-            outputSrcDoc: template_chart_html
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      output:
-        key: output
-        type: markdown
-        value: ""
-      imageUrl:
-        key: imageUrl
-        type: svg_data_uri
-        value: ""
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: html_srcdoc
-        value: ""
-      run_status:
-        key: run_status
-        type: string
-        value: idle
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Computes macro catalyst mispricing using the same typed source contract and signal threshold.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:compute:compute_macro_mispricing
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: compute
+    - id: {key: id, type: string, value: "compute_macro_mispricing"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Macro Mispricing"}
+      position: {key: position, type: object, value: {"x":780,"y":210}}
+      handles: {key: handles, type: object, value: {"target":["input_alpha_hypothesis","input_signal_noise_threshold"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["input_alpha_hypothesis","input_signal_noise_threshold"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":false,"bodyTokens":[{"token":"compute_macro_mispricing.output","field":"output"},{"token":"compute_macro_mispricing.imageUrl","field":"imageUrl"},{"token":"compute_macro_mispricing.outputSrcDoc","field":"outputSrcDoc"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":110,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_alpha_hypothesis":"template_text_signal","input_signal_noise_threshold":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:compute_macro_mispricing"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Computes macro catalyst mispricing using the same typed source contract and signal threshold."}
+      output: {key: output, type: markdown, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      run_status: {key: run_status, type: string, value: "idle"}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:compute:compute_macro_mispricing"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
       compute:
         key: compute
         type: string
-        value: |-
+        value: |
           inputs => {
             const read = key => String(inputs?.[key] ?? "").trim()
             const readNumber = (key, fallback) => {
@@ -914,115 +399,35 @@ flow:
             const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Inter,Arial,sans-serif;margin:0;padding:24px;background:#f8fafc;color:#0f172a}.bar{height:16px;background:#22c55e;width:' + confidence + '%;max-width:100%;border-radius:4px}.panel{border:1px solid #cbd5e1;border-radius:8px;padding:16px;background:white}</style></head><body><div class="panel"><h1>Macro catalyst mispricing</h1><div class="bar"></div><p>Score: ' + confidence + '/100</p><p>' + escapeHtml(hypothesis) + '</p></div></body></html>'
             return { output, imageUrl, outputSrcDoc }
           }
-    - id:
-        key: id
-        type: string
-        value: compute_adoption_regime
-      type:
-        key: type
-        type: string
-        value: ComputeWidget
-      label:
-        key: label
-        type: string
-        value: Adoption Regime
-      position:
-        key: position
-        type: object
-        value:
-          x: 420
-          "y": 360
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          source:
-            - output
-            - imageUrl
-            - outputSrcDoc
-      canvas:runAction:
-        key: canvas:runAction
-        type: object
-        value:
-          fn: compute
-          inputs:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          outputs:
-            - output
-            - imageUrl
-            - outputSrcDoc
-          updateBody: false
-          bodyTokens:
-            - token: compute_adoption_regime.output
-              field: output
-            - token: compute_adoption_regime.imageUrl
-              field: imageUrl
-            - token: compute_adoption_regime.outputSrcDoc
-              field: outputSrcDoc
-      canvas:widgetCard:
-        key: canvas:widgetCard
-        type: object
-        value:
-          statusField: run_status
-          previewField: output
-          previewMaxChars: 110
-          actions:
-            - id: run
-              label: Run
-              icon: play
-              primary: true
-              trigger: compute
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            input_alpha_hypothesis: template_text_signal
-            input_signal_noise_threshold: template_number_signal
-          out:
-            output: template_text_signal
-            imageUrl: template_image_signal
-            outputSrcDoc: template_chart_html
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      output:
-        key: output
-        type: markdown
-        value: ""
-      imageUrl:
-        key: imageUrl
-        type: svg_data_uri
-        value: ""
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: html_srcdoc
-        value: ""
-      run_status:
-        key: run_status
-        type: string
-        value: idle
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Computes adoption-regime interpretation without mutating source truth or renderer state.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:compute:compute_adoption_regime
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: compute
+    - id: {key: id, type: string, value: "compute_adoption_regime"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Adoption Regime"}
+      position: {key: position, type: object, value: {"x":420,"y":360}}
+      handles: {key: handles, type: object, value: {"target":["input_alpha_hypothesis","input_signal_noise_threshold"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["input_alpha_hypothesis","input_signal_noise_threshold"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":false,"bodyTokens":[{"token":"compute_adoption_regime.output","field":"output"},{"token":"compute_adoption_regime.imageUrl","field":"imageUrl"},{"token":"compute_adoption_regime.outputSrcDoc","field":"outputSrcDoc"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":110,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_alpha_hypothesis":"template_text_signal","input_signal_noise_threshold":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:compute_adoption_regime"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Computes adoption-regime interpretation without mutating source truth or renderer state."}
+      output: {key: output, type: markdown, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      run_status: {key: run_status, type: string, value: "idle"}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:compute:compute_adoption_regime"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
       compute:
         key: compute
         type: string
-        value: |-
+        value: |
           inputs => {
             const read = key => String(inputs?.[key] ?? "").trim()
             const readNumber = (key, fallback) => {
@@ -1066,115 +471,35 @@ flow:
             const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Inter,Arial,sans-serif;margin:0;padding:24px;background:#f8fafc;color:#0f172a}.bar{height:16px;background:#22c55e;width:' + confidence + '%;max-width:100%;border-radius:4px}.panel{border:1px solid #cbd5e1;border-radius:8px;padding:16px;background:white}</style></head><body><div class="panel"><h1>Adoption regime shift</h1><div class="bar"></div><p>Score: ' + confidence + '/100</p><p>' + escapeHtml(hypothesis) + '</p></div></body></html>'
             return { output, imageUrl, outputSrcDoc }
           }
-    - id:
-        key: id
-        type: string
-        value: compute_risk_brakes
-      type:
-        key: type
-        type: string
-        value: ComputeWidget
-      label:
-        key: label
-        type: string
-        value: Risk Brakes
-      position:
-        key: position
-        type: object
-        value:
-          x: 780
-          "y": 510
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          source:
-            - output
-            - imageUrl
-            - outputSrcDoc
-      canvas:runAction:
-        key: canvas:runAction
-        type: object
-        value:
-          fn: compute
-          inputs:
-            - input_alpha_hypothesis
-            - input_signal_noise_threshold
-          outputs:
-            - output
-            - imageUrl
-            - outputSrcDoc
-          updateBody: false
-          bodyTokens:
-            - token: compute_risk_brakes.output
-              field: output
-            - token: compute_risk_brakes.imageUrl
-              field: imageUrl
-            - token: compute_risk_brakes.outputSrcDoc
-              field: outputSrcDoc
-      canvas:widgetCard:
-        key: canvas:widgetCard
-        type: object
-        value:
-          statusField: run_status
-          previewField: output
-          previewMaxChars: 110
-          actions:
-            - id: run
-              label: Run
-              icon: play
-              primary: true
-              trigger: compute
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            input_alpha_hypothesis: template_text_signal
-            input_signal_noise_threshold: template_number_signal
-          out:
-            output: template_text_signal
-            imageUrl: template_image_signal
-            outputSrcDoc: template_chart_html
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      output:
-        key: output
-        type: markdown
-        value: ""
-      imageUrl:
-        key: imageUrl
-        type: svg_data_uri
-        value: ""
-      outputSrcDoc:
-        key: outputSrcDoc
-        type: html_srcdoc
-        value: ""
-      run_status:
-        key: run_status
-        type: string
-        value: idle
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Computes risk brakes and go/no-go guardrails for the shared Flow Editor run path.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:compute:compute_risk_brakes
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: compute
+    - id: {key: id, type: string, value: "compute_risk_brakes"}
+      type: {key: type, type: string, value: "ComputeWidget"}
+      label: {key: label, type: string, value: "Risk Brakes"}
+      position: {key: position, type: object, value: {"x":780,"y":510}}
+      handles: {key: handles, type: object, value: {"target":["input_alpha_hypothesis","input_signal_noise_threshold"],"source":["output","imageUrl","outputSrcDoc"]}}
+      "canvas:runAction": {key: "canvas:runAction", type: object, value: {"fn":"compute","inputs":["input_alpha_hypothesis","input_signal_noise_threshold"],"outputs":["output","imageUrl","outputSrcDoc"],"updateBody":false,"bodyTokens":[{"token":"compute_risk_brakes.output","field":"output"},{"token":"compute_risk_brakes.imageUrl","field":"imageUrl"},{"token":"compute_risk_brakes.outputSrcDoc","field":"outputSrcDoc"}]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":110,"actions":[{"id":"run","label":"Run","icon":"play","primary":true,"trigger":"compute"}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"input_alpha_hypothesis":"template_text_signal","input_signal_noise_threshold":"template_number_signal"},"out":{"output":"template_text_signal","imageUrl":"template_image_signal","outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:compute_risk_brakes"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Computes risk brakes and go/no-go guardrails for the shared Flow Editor run path."}
+      output: {key: output, type: markdown, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
+      run_status: {key: run_status, type: string, value: "idle"}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:compute:compute_risk_brakes"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "compute"}
+      "visual:importance": {key: "visual:importance", type: number, value: 20}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
       compute:
         key: compute
         type: string
-        value: |-
+        value: |
           inputs => {
             const read = key => String(inputs?.[key] ?? "").trim()
             const readNumber = (key, fallback) => {
@@ -1218,901 +543,85 @@ flow:
             const outputSrcDoc = '<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Inter,Arial,sans-serif;margin:0;padding:24px;background:#f8fafc;color:#0f172a}.bar{height:16px;background:#22c55e;width:' + confidence + '%;max-width:100%;border-radius:4px}.panel{border:1px solid #cbd5e1;border-radius:8px;padding:16px;background:white}</style></head><body><div class="panel"><h1>Risk brake map</h1><div class="bar"></div><p>Score: ' + confidence + '/100</p><p>' + escapeHtml(hypothesis) + '</p></div></body></html>'
             return { output, imageUrl, outputSrcDoc }
           }
-    - id:
-        key: id
-        type: string
-        value: panel_text_output
-      type:
-        key: type
-        type: string
-        value: RichMediaPanel
-      label:
-        key: label
-        type: string
-        value: Rich Media Text Output
-      position:
-        key: position
-        type: object
-        value:
-          x: 1180
-          "y": -80
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - output
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Markdown panel connected to compute_summary.output for shared cards and widgets.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:panel:panel_text_output
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: rich-media-panel
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            output: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: panel_image_output
-      type:
-        key: type
-        type: string
-        value: RichMediaPanel
-      label:
-        key: label
-        type: string
-        value: Rich Media Image Output
-      position:
-        key: position
-        type: object
-        value:
-          x: 1180
-          "y": 100
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - imageUrl
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Image panel connected to compute_summary.imageUrl for shared rich media rendering.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:panel:panel_image_output
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: rich-media-panel
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            imageUrl: template_image_signal
-    - id:
-        key: id
-        type: string
-        value: panel_alpha_map
-      type:
-        key: type
-        type: string
-        value: RichMediaPanel
-      label:
-        key: label
-        type: string
-        value: Rich Media Alpha Map
-      position:
-        key: position
-        type: object
-        value:
-          x: 1180
-          "y": 280
-      handles:
-        key: handles
-        type: object
-        value:
-          target:
-            - outputSrcDoc
-      frontmatter:primitive:
-        key: frontmatter:primitive
-        type: string
-        value: node
-      kgc:readingSummary:
-        key: kgc:readingSummary
-        type: string
-        value: Rich media knowledge-graph canvas panel connected to outputSrcDoc for the shared renderer contract.
-      semanticKey:
-        key: semanticKey
-        type: string
-        value: missalpha:panel:panel_alpha_map
-      template:nodeType:
-        key: template:nodeType
-        type: string
-        value: rich-media-panel
-      flow:portTypes:
-        key: flow:portTypes
-        type: object
-        value:
-          in:
-            outputSrcDoc: template_chart_html
+    - id: {key: id, type: string, value: "panel_text_output"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Text Output"}
+      position: {key: position, type: object, value: {"x":1180,"y":-80}}
+      handles: {key: handles, type: object, value: {"target":["output"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"output":"template_text_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Markdown panel connected to compute_summary.output for shared cards and widgets."}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:panel:panel_text_output"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "rich-media-panel"}
+      "visual:height": {key: "visual:height", type: number, value: 712}
+      "visual:width": {key: "visual:width", type: number, value: 1265}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
+    - id: {key: id, type: string, value: "panel_image_output"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Image Output"}
+      position: {key: position, type: object, value: {"x":1180,"y":100}}
+      handles: {key: handles, type: object, value: {"target":["imageUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageUrl":"template_image_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Image panel connected to compute_summary.imageUrl for shared rich media rendering."}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:panel:panel_image_output"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "rich-media-panel"}
+      "visual:height": {key: "visual:height", type: number, value: 394}
+      "visual:width": {key: "visual:width", type: number, value: 700}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "panel_alpha_map"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "Rich Media Alpha Map"}
+      position: {key: position, type: object, value: {"x":1180,"y":280}}
+      handles: {key: handles, type: object, value: {"target":["outputSrcDoc"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"outputSrcDoc":"template_chart_html"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich media knowledge-graph canvas panel connected to outputSrcDoc for the shared renderer contract."}
+      semanticKey: {key: semanticKey, type: string, value: "missalpha:panel:panel_alpha_map"}
+      "template:nodeType": {key: "template:nodeType", type: string, value: "rich-media-panel"}
+      "visual:height": {key: "visual:height", type: number, value: 608}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:width": {key: "visual:width", type: number, value: 1081}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
   edges:
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_horizon
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_horizon
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_horizon
-      label:
-        key: label
-        type: string
-        value: input_horizon
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_portfolio
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_portfolio
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_portfolio
-      label:
-        key: label
-        type: string
-        value: input_portfolio
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_factor_spec
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_factor_spec
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_factor_spec
-      label:
-        key: label
-        type: string
-        value: input_factor_spec
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_skew_pair
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_skew_pair
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_skew_pair
-      label:
-        key: label
-        type: string
-        value: input_skew_pair
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_macro_catalysts
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_macro_catalysts
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_macro_catalysts
-      label:
-        key: label
-        type: string
-        value: input_macro_catalysts
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_alpha_hypothesis
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_alpha_hypothesis
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_alpha_hypothesis
-      label:
-        key: label
-        type: string
-        value: input_alpha_hypothesis
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_coverage_scope
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_coverage_scope
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_coverage_scope
-      label:
-        key: label
-        type: string
-        value: input_coverage_scope
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_signal_noise_threshold
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_signal_noise_threshold
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_signal_noise_threshold
-      label:
-        key: label
-        type: string
-        value: input_signal_noise_threshold
-      type:
-        key: type
-        type: string
-        value: template_number_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_graph_topology_mode
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_graph_topology_mode
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_graph_topology_mode
-      label:
-        key: label
-        type: string
-        value: input_graph_topology_mode
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_consensus_benchmark
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_consensus_benchmark
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_consensus_benchmark
-      label:
-        key: label
-        type: string
-        value: input_consensus_benchmark
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_audience
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_audience
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_audience
-      label:
-        key: label
-        type: string
-        value: input_audience
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_constraints
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_constraints
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_constraints
-      label:
-        key: label
-        type: string
-        value: input_constraints
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_tone
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_tone
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_tone
-      label:
-        key: label
-        type: string
-        value: input_tone
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_summary_input_metric_label
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_metric_label
-      target:
-        key: target
-        type: string
-        value: compute_summary
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_metric_label
-      label:
-        key: label
-        type: string
-        value: input_metric_label
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_flow_spot_hypothesis
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_alpha_hypothesis
-      target:
-        key: target
-        type: string
-        value: compute_flow_spot
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_alpha_hypothesis
-      label:
-        key: label
-        type: string
-        value: input_alpha_hypothesis
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_flow_spot_threshold
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_signal_noise_threshold
-      target:
-        key: target
-        type: string
-        value: compute_flow_spot
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_signal_noise_threshold
-      label:
-        key: label
-        type: string
-        value: input_signal_noise_threshold
-      type:
-        key: type
-        type: string
-        value: template_number_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_skew_convergence_hypothesis
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_alpha_hypothesis
-      target:
-        key: target
-        type: string
-        value: compute_skew_convergence
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_alpha_hypothesis
-      label:
-        key: label
-        type: string
-        value: input_alpha_hypothesis
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_skew_convergence_threshold
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_signal_noise_threshold
-      target:
-        key: target
-        type: string
-        value: compute_skew_convergence
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_signal_noise_threshold
-      label:
-        key: label
-        type: string
-        value: input_signal_noise_threshold
-      type:
-        key: type
-        type: string
-        value: template_number_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_macro_mispricing_hypothesis
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_alpha_hypothesis
-      target:
-        key: target
-        type: string
-        value: compute_macro_mispricing
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_alpha_hypothesis
-      label:
-        key: label
-        type: string
-        value: input_alpha_hypothesis
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_macro_mispricing_threshold
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_signal_noise_threshold
-      target:
-        key: target
-        type: string
-        value: compute_macro_mispricing
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_signal_noise_threshold
-      label:
-        key: label
-        type: string
-        value: input_signal_noise_threshold
-      type:
-        key: type
-        type: string
-        value: template_number_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_adoption_regime_hypothesis
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_alpha_hypothesis
-      target:
-        key: target
-        type: string
-        value: compute_adoption_regime
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_alpha_hypothesis
-      label:
-        key: label
-        type: string
-        value: input_alpha_hypothesis
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_adoption_regime_threshold
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_signal_noise_threshold
-      target:
-        key: target
-        type: string
-        value: compute_adoption_regime
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_signal_noise_threshold
-      label:
-        key: label
-        type: string
-        value: input_signal_noise_threshold
-      type:
-        key: type
-        type: string
-        value: template_number_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_risk_brakes_hypothesis
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_alpha_hypothesis
-      target:
-        key: target
-        type: string
-        value: compute_risk_brakes
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_alpha_hypothesis
-      label:
-        key: label
-        type: string
-        value: input_alpha_hypothesis
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_source_compute_risk_brakes_threshold
-      source:
-        key: source
-        type: string
-        value: source_input
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: input_signal_noise_threshold
-      target:
-        key: target
-        type: string
-        value: compute_risk_brakes
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: input_signal_noise_threshold
-      label:
-        key: label
-        type: string
-        value: input_signal_noise_threshold
-      type:
-        key: type
-        type: string
-        value: template_number_signal
-    - id:
-        key: id
-        type: string
-        value: edge_summary_text_panel
-      source:
-        key: source
-        type: string
-        value: compute_summary
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: output
-      target:
-        key: target
-        type: string
-        value: panel_text_output
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: output
-      label:
-        key: label
-        type: string
-        value: output
-      type:
-        key: type
-        type: string
-        value: template_text_signal
-    - id:
-        key: id
-        type: string
-        value: edge_summary_image_panel
-      source:
-        key: source
-        type: string
-        value: compute_summary
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: imageUrl
-      target:
-        key: target
-        type: string
-        value: panel_image_output
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: imageUrl
-      label:
-        key: label
-        type: string
-        value: imageUrl
-      type:
-        key: type
-        type: string
-        value: template_image_signal
-    - id:
-        key: id
-        type: string
-        value: edge_summary_alpha_map_panel
-      source:
-        key: source
-        type: string
-        value: compute_summary
-      sourceHandle:
-        key: sourceHandle
-        type: string
-        value: outputSrcDoc
-      target:
-        key: target
-        type: string
-        value: panel_alpha_map
-      targetHandle:
-        key: targetHandle
-        type: string
-        value: outputSrcDoc
-      label:
-        key: label
-        type: string
-        value: outputSrcDoc
-      type:
-        key: type
-        type: string
-        value: template_chart_html
+    - {"id":"edge_source_compute_summary_input_horizon","source":"source_input","sourceHandle":"input_horizon","target":"compute_summary","targetHandle":"input_horizon","label":"input_horizon","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_portfolio","source":"source_input","sourceHandle":"input_portfolio","target":"compute_summary","targetHandle":"input_portfolio","label":"input_portfolio","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_factor_spec","source":"source_input","sourceHandle":"input_factor_spec","target":"compute_summary","targetHandle":"input_factor_spec","label":"input_factor_spec","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_skew_pair","source":"source_input","sourceHandle":"input_skew_pair","target":"compute_summary","targetHandle":"input_skew_pair","label":"input_skew_pair","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_macro_catalysts","source":"source_input","sourceHandle":"input_macro_catalysts","target":"compute_summary","targetHandle":"input_macro_catalysts","label":"input_macro_catalysts","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_alpha_hypothesis","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"compute_summary","targetHandle":"input_alpha_hypothesis","label":"input_alpha_hypothesis","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_coverage_scope","source":"source_input","sourceHandle":"input_coverage_scope","target":"compute_summary","targetHandle":"input_coverage_scope","label":"input_coverage_scope","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_signal_noise_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"compute_summary","targetHandle":"input_signal_noise_threshold","label":"input_signal_noise_threshold","type":"template_number_signal"}
+    - {"id":"edge_source_compute_summary_input_graph_topology_mode","source":"source_input","sourceHandle":"input_graph_topology_mode","target":"compute_summary","targetHandle":"input_graph_topology_mode","label":"input_graph_topology_mode","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_consensus_benchmark","source":"source_input","sourceHandle":"input_consensus_benchmark","target":"compute_summary","targetHandle":"input_consensus_benchmark","label":"input_consensus_benchmark","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_audience","source":"source_input","sourceHandle":"input_audience","target":"compute_summary","targetHandle":"input_audience","label":"input_audience","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_constraints","source":"source_input","sourceHandle":"input_constraints","target":"compute_summary","targetHandle":"input_constraints","label":"input_constraints","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_tone","source":"source_input","sourceHandle":"input_tone","target":"compute_summary","targetHandle":"input_tone","label":"input_tone","type":"template_text_signal"}
+    - {"id":"edge_source_compute_summary_input_metric_label","source":"source_input","sourceHandle":"input_metric_label","target":"compute_summary","targetHandle":"input_metric_label","label":"input_metric_label","type":"template_text_signal"}
+    - {"id":"edge_source_compute_flow_spot_hypothesis","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"compute_flow_spot","targetHandle":"input_alpha_hypothesis","label":"input_alpha_hypothesis","type":"template_text_signal"}
+    - {"id":"edge_source_compute_flow_spot_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"compute_flow_spot","targetHandle":"input_signal_noise_threshold","label":"input_signal_noise_threshold","type":"template_number_signal"}
+    - {"id":"edge_source_compute_skew_convergence_hypothesis","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"compute_skew_convergence","targetHandle":"input_alpha_hypothesis","label":"input_alpha_hypothesis","type":"template_text_signal"}
+    - {"id":"edge_source_compute_skew_convergence_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"compute_skew_convergence","targetHandle":"input_signal_noise_threshold","label":"input_signal_noise_threshold","type":"template_number_signal"}
+    - {"id":"edge_source_compute_macro_mispricing_hypothesis","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"compute_macro_mispricing","targetHandle":"input_alpha_hypothesis","label":"input_alpha_hypothesis","type":"template_text_signal"}
+    - {"id":"edge_source_compute_macro_mispricing_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"compute_macro_mispricing","targetHandle":"input_signal_noise_threshold","label":"input_signal_noise_threshold","type":"template_number_signal"}
+    - {"id":"edge_source_compute_adoption_regime_hypothesis","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"compute_adoption_regime","targetHandle":"input_alpha_hypothesis","label":"input_alpha_hypothesis","type":"template_text_signal"}
+    - {"id":"edge_source_compute_adoption_regime_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"compute_adoption_regime","targetHandle":"input_signal_noise_threshold","label":"input_signal_noise_threshold","type":"template_number_signal"}
+    - {"id":"edge_source_compute_risk_brakes_hypothesis","source":"source_input","sourceHandle":"input_alpha_hypothesis","target":"compute_risk_brakes","targetHandle":"input_alpha_hypothesis","label":"input_alpha_hypothesis","type":"template_text_signal"}
+    - {"id":"edge_source_compute_risk_brakes_threshold","source":"source_input","sourceHandle":"input_signal_noise_threshold","target":"compute_risk_brakes","targetHandle":"input_signal_noise_threshold","label":"input_signal_noise_threshold","type":"template_number_signal"}
+    - {"id":"edge_summary_text_panel","source":"compute_summary","sourceHandle":"output","target":"panel_text_output","targetHandle":"output","label":"output","type":"template_text_signal"}
+    - {"id":"edge_summary_image_panel","source":"compute_summary","sourceHandle":"imageUrl","target":"panel_image_output","targetHandle":"imageUrl","label":"imageUrl","type":"template_image_signal"}
+    - {"id":"edge_summary_alpha_map_panel","source":"compute_summary","sourceHandle":"outputSrcDoc","target":"panel_alpha_map","targetHandle":"outputSrcDoc","label":"outputSrcDoc","type":"template_chart_html"}
 modelSelection:
   selectionModel: "projected-data"            # renderers project these typed option groups as dropdowns; they do not branch on them
   scope: "local-overrides-global"             # a node-local options.model overrides the matching group's global default
