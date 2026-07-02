@@ -18,6 +18,7 @@ kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 kgStrybldrStoryboard: true
 kgBottomPanelOpen: true
+kgBottomPanelTab: "timeline"
 kgFloatingPanelOpen: true
 kgFloatingPanelView: "strybldr"
 kgSharedRendererContract:
@@ -91,6 +92,26 @@ kgParserRoutingContract:
     - "FloatingPanel: Camera"
   edgePolicy: "Explicit flow.edges are source-owned SSOT; renderers project visible connectors only."
 kgWebpageView: "markdown"
+flow_diagrams:
+  key: "flow_diagrams"
+  type: "object"
+  value:
+    starter_flowchart:
+      key: "starter_flowchart"
+      type: "mermaid_flowchart"
+      floatingPanelView: "flowchart"
+      floatingPanelOpen: true
+      bottomPanelTab: "flowchart"
+      bottomPanelOpen: true
+      value: |-
+        flowchart LR
+          source["Source URL and operator notes"]
+          storyboard["Paraphrased storyboard beats"]
+          elements["Reusable elements"]
+          runtime["Local animatic runtime gate"]
+          review["Review packet"]
+          publish["Local publish packet"]
+          source --> storyboard --> elements --> runtime --> review --> publish
 strybldr_storyboard:
   version: '1'
   runId: strybldr-starter-template
@@ -126,6 +147,7 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: source-metadata
       provider: knowgrph
+      lane: Source
       order: 1
       prompt: Summarize the source promise without copying transcript text or provider-generated output.
       action: Fill source fields before approving storyboard cards.
@@ -137,6 +159,7 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: user-edit
       provider: knowgrph
+      lane: Storyboard
       order: 2
       prompt: Create four concise storyboard beats from the operator notes.
       action: Approve only paraphrased, source-backed beats.
@@ -148,6 +171,7 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: user-edit
       provider: knowgrph
+      lane: Elements
       order: 3
       prompt: Convert approved beats into reusable elements and style constraints.
       action: Keep generated media URLs blank until real outputs exist.
@@ -159,6 +183,7 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-plan
       provider: knowgrph-local-animatic
+      lane: Runtime
       order: 4
       prompt: Render the local animatic handoff and keep live IDs empty until returned by an approved run.
       action: Generate locally first; require human approval before VideoDB, SenseNova, or other paid provider calls.
@@ -170,6 +195,7 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-review
       provider: knowgrph
+      lane: Review
       order: 5
       prompt: Prepare a review packet that separates local evidence from live provider evidence.
       action: Reject fabricated provider IDs, stream URLs, transcripts, or generated asset URLs.
@@ -181,20 +207,11 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-publish
       provider: knowgrph
+      lane: Publish
       order: 6
       prompt: Close the workflow with a local-only packet and a visible publish gate.
       action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
       summary: Final output is a local packet path and approval state, not a public deployment claim.
-  cards:
-    - nodeId: strybldr:source:3725310941
-      mediaKind: image
-      mediaUrl: https://example.com/storyboard-live-route-image.jpg
-    - nodeId: strybldr:frame:3595615238
-      mediaKind: image
-      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyODk4NDY1MTE0fQ
-    - nodeId: starter-runtime-gate-card
-      mediaKind: image
-      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-3b2fe39beaef6787/image/airvio_-3b2fe39beaef6787.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0zYjJmZTM5YmVhZWY2Nzg3IiwiZXhwaXJlc0F0IjoxNzgyOTA1MjU3MTQ1fQ
 ---
 
 # Knowgrph Strybldr Starter Template
