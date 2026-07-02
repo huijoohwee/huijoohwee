@@ -46,9 +46,9 @@
     {
       "name": "knowgrph-ai-showrunner",
       "type": "markdown",
-      "description": "Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Flow Editor owners.",
+      "description": "Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Storyboard Widget owners.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-ai-showrunner.md",
-      "sha256": "4bf20c88a1b50d2aa9fbdd22bcc2ec160fcb9711d01f7353e1b29e82cf110926",
+      "sha256": "d93d25f274d85f63a84333e80f96587e21a8eaf7c4278fe3d6143904f6f2ce8c",
       "vdeoxpln": {
         "id": "knowgrph-ai-showrunner",
         "title": "Knowgrph AI Showrunner",
@@ -141,13 +141,13 @@
       "type": "markdown",
       "description": "Render HTML, CSS, and data documents to MP4 video artifacts through a runtime-selected pluggable engine and the existing rich media output owner.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-html-video-renderer.md",
-      "sha256": "2f51d62d01fdaf5493cab423d73afa886fe466f56a1dfa034a2476ba4ca6dd37",
+      "sha256": "da7c40d1c3f7ae2e88ead8bdf521b8a3eb2680f05a4ab7643d06f94499e7f7d1",
       "vdeoxpln": {
         "id": "knowgrph-html-video-renderer",
         "title": "Knowgrph HTML Video Renderer",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_6c382ebe",
+        "semanticKey": "kgvx_8dde8e02",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -349,13 +349,13 @@
       "type": "markdown",
       "description": "Run browser-local image and video-frame annotation into LLM-ready structured JSON plus native visual datasets materialised through existing artifact owners.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-visual-annotation-engine.md",
-      "sha256": "2970391df84fe07e3f371ab5bddf0a00bc7c4af251bd8234c31a7a22cd8486bc",
+      "sha256": "e5b7a3e0052235828c6ae31ec999014aeffadb9ef92b8915911aa7c5db80ebc0",
       "vdeoxpln": {
         "id": "knowgrph-visual-annotation-engine",
         "title": "Knowgrph Visual Annotation Engine",
         "scope": "browser-local",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_2076672d",
+        "semanticKey": "kgvx_f3255bd1",
         "tools": {
           "published": [],
           "browserLocal": [],

@@ -6,7 +6,7 @@ Use this skill when: Run browser-local image and video-frame annotation into LLM
 
 - Vdeoxpln id: `knowgrph-visual-annotation-engine`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_2076672d`
+- Semantic key: `kgvx_f3255bd1`
 - Scope: `browser-local`
 - Mutation boundary: `local-approval-gated`
 
@@ -76,7 +76,7 @@ Local MCP tools:
 - canvas/src/features/visual-annotation-engine/annotationSerializers.ts
 - canvas/src/features/visual-annotation-engine/annotationWidget.ts
 - canvas/src/features/visual-annotation-engine/annotationWorker.ts
-- canvas/src/lib/config.flow-editor.ts
+- canvas/src/lib/config.storyboard-widget.ts
 - canvas/src/lib/graph/semanticKey.ts
 - mcp/local-tool-contract.js
 

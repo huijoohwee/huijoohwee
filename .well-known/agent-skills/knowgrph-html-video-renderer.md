@@ -6,7 +6,7 @@ Use this skill when: Render HTML, CSS, and data documents to MP4 video artifacts
 
 - Vdeoxpln id: `knowgrph-html-video-renderer`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_6c382ebe`
+- Semantic key: `kgvx_8dde8e02`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-approval-gated`
 
@@ -64,7 +64,7 @@ Local MCP tools:
 - canvas/src/features/html-video-renderer/htmlVideoRenderJob.ts
 - canvas/src/features/html-video-renderer/htmlVideoWidget.ts
 - canvas/src/features/source-files
-- canvas/src/lib/config.flow-editor.ts
+- canvas/src/lib/config.storyboard-widget.ts
 - canvas/src/lib/graph/semanticKey.ts
 - mcp/local-tool-contract.js
 - mcp/server.js

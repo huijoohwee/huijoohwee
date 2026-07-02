@@ -1,6 +1,6 @@
 # Knowgrph AI Showrunner Skill
 
-Use this skill when: Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Flow Editor owners.
+Use this skill when: Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Storyboard Widget owners.
 
 ## Contract
 
