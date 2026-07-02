@@ -17,6 +17,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -1315,7 +1317,7 @@ flowchart LR
   end
   MCP --> PY["TOPSIS Engine\nPython · NetworkX · DuckDB"]
   PY --> RANK["C* ranked signal"]
-  RANK --> FC["Flow Editor Canvas\nReact 18 + TS + Vite"]
+  RANK --> FC["Storyboard Canvas\nReact 18 + TS + Vite"]
   FC --> MAP["Scored Map\nheat overlay"]
   FC --> RPT["Ranked Report\nMarkdown export"]
 ```

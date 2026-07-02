@@ -18,7 +18,6 @@ kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 kgStrybldrStoryboard: true
 kgBottomPanelOpen: true
-kgBottomPanelTab: "flowEditor"
 kgFloatingPanelOpen: true
 kgFloatingPanelView: "strybldr"
 kgSharedRendererContract:
@@ -26,6 +25,9 @@ kgSharedRendererContract:
   semanticIdentity: "buildScopedGraphSemanticKey"
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
+  richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges derive from this frontmatter-owned starter graph"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 credential_policy:
@@ -187,6 +189,12 @@ strybldr_storyboard:
     - nodeId: strybldr:source:3725310941
       mediaKind: image
       mediaUrl: https://example.com/storyboard-live-route-image.jpg
+    - nodeId: strybldr:frame:3595615238
+      mediaKind: image
+      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgyODk4NDY1MTE0fQ
+    - nodeId: starter-runtime-gate-card
+      mediaKind: image
+      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-3b2fe39beaef6787/image/airvio_-3b2fe39beaef6787.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0zYjJmZTM5YmVhZWY2Nzg3IiwiZXhwaXJlc0F0IjoxNzgyOTA1MjU3MTQ1fQ
 ---
 
 # Knowgrph Strybldr Starter Template

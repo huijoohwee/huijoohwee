@@ -1,13 +1,13 @@
 ---
-title: "Knowgrph Token Economics Model Demo - Flow Editor Cost Driver Ports"
-doc_type: "Flow Editor TCO Demo"
+title: "Knowgrph Token Economics Model Demo - Storyboard Cost Driver Ports"
+doc_type: "Storyboard TCO Demo"
 date: "2026-05-29"
 lang: "en-US"
 schema: "kgc-computing-flow/v1"
 
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
@@ -26,6 +26,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -1262,7 +1264,7 @@ flow:
             const best = scored.reduce((acc, row) => row[2] > acc[2] ? row : acc, scored[0]);
             const costBars = rows.map(row => `<section class="bar-row"><strong>${row[0]}</strong><span class="bar"><i style="width:${Math.max(4, Math.round((row[1] / maxCost) * 100))}%;background:${row[2]}"></i></span><b>$${row[1]}/mo</b></section>`).join('');
             const marginBars = scored.map(row => `<section class="bar-row"><strong>${row[0]}</strong><span class="bar"><i style="width:${Math.max(4, Math.min(100, Math.round(((row[2] + maxCost) / Math.max(1, net + maxCost)) * 100)))}%;background:${row[3]}"></i></span><b>$${row[2]}/mo</b></section>`).join('');
-            const html = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font:14px system-ui,Arial,sans-serif;background:#f8fafc;color:#111827}.wrap{padding:18px}h1{font-size:18px;margin:0 0 12px}h2{font-size:13px;margin:14px 0 8px;color:#374151}.bar-row{display:grid;grid-template-columns:150px 1fr 82px;gap:10px;align-items:center;margin:8px 0}.bar{height:16px;border-radius:5px;background:#e5e7eb;overflow:hidden}.bar i{display:block;height:100%}.kpi{display:flex;gap:10px;flex-wrap:wrap}.kpi b{background:white;border:1px solid #e5e7eb;border-radius:6px;padding:6px 8px}p{margin:10px 0 0;color:#4b5563}</style></head><body><main class="wrap"><h1>Revenue and TCO simulation</h1><section class="kpi"><b>Gross $${gross}/mo</b><b>Net $${net}/mo</b><b>Best margin ${best[0]}</b></section><h2>Monthly cost</h2>${costBars}<h2>Net margin after cost</h2>${marginBars}<p>Every bar is fed by a typed Flow Editor port; token, gas, ops, and quota risk remain separate driver handles.</p></main></body></html>`;
+            const html = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font:14px system-ui,Arial,sans-serif;background:#f8fafc;color:#111827}.wrap{padding:18px}h1{font-size:18px;margin:0 0 12px}h2{font-size:13px;margin:14px 0 8px;color:#374151}.bar-row{display:grid;grid-template-columns:150px 1fr 82px;gap:10px;align-items:center;margin:8px 0}.bar{height:16px;border-radius:5px;background:#e5e7eb;overflow:hidden}.bar i{display:block;height:100%}.kpi{display:flex;gap:10px;flex-wrap:wrap}.kpi b{background:white;border:1px solid #e5e7eb;border-radius:6px;padding:6px 8px}p{margin:10px 0 0;color:#4b5563}</style></head><body><main class="wrap"><h1>Revenue and TCO simulation</h1><section class="kpi"><b>Gross $${gross}/mo</b><b>Net $${net}/mo</b><b>Best margin ${best[0]}</b></section><h2>Monthly cost</h2>${costBars}<h2>Net margin after cost</h2>${marginBars}<p>Every bar is fed by a typed Storyboard Widget port; token, gas, ops, and quota risk remain separate driver handles.</p></main></body></html>`;
             return {
               lowest_cash_tco_driver: 'elizaOS self-host cash floor when operator time is available',
               highest_margin_driver: `${best[0]} net margin $${best[2]}/mo`,
@@ -1735,7 +1737,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
@@ -1799,11 +1801,11 @@ modelSelection:
         - "dreamina-seedance-2-0-fast-260128"
         - "dreamina-seedance-2-0-260128"
 
-# Knowgrph Token Economics Model Demo - Flow Editor
+# Knowgrph Token Economics Model Demo - Storyboard
 
 ## Scope
 
-This demo compares the total cost of ownership (TCO) for three Web3 AI agent stacks as a native `2D Renderer: Flow Editor` cost-driver graph:
+This demo compares the total cost of ownership (TCO) for three Web3 AI agent stacks as a native `2D Renderer: Storyboard` cost-driver graph:
 
 1. Virtuals Protocol / GAME
 2. Fetch.ai / Agentverse
@@ -1813,17 +1815,17 @@ Market-cap lists are not perfectly aligned. CoinGecko's AI Agents category curre
 
 Not investment advice. Prices, quotas, token requirements, and product terms change. Treat this as an executable TCO model template, not a live quote.
 
-## Flow Editor Runtime Contract
+## Storyboard Widget Runtime Contract
 
-The frontmatter `flow:` block is the source of truth for this demo. Each widget exposes port handles named after a cost driver, risk driver, TCO metric, revenue metric, value-loop metric, rendered report payload, or decision driver. The Flow Editor should render those handles as connectable widget ports, and each normal edge must keep one canonical driver key across `sourceHandle`, `targetHandle`, and `label`.
+The frontmatter `flow:` block is the source of truth for this demo. Each widget exposes port handles named after a cost driver, risk driver, TCO metric, revenue metric, value-loop metric, rendered report payload, or decision driver. The Storyboard Widget should render those handles as connectable widget ports, and each normal edge must keep one canonical driver key across `sourceHandle`, `targetHandle`, and `label`.
 
 In this document, "cost driver" is intentionally broad: anything that changes monthly cost, token exposure, revenue offset, margin, break-even posture, infrastructure value, or rendered decision output is modeled as a driver handle. The handle itself is the semantic key used by ingestion, parsing, workflow computation, edge rendering, and Rich Media Panel output.
 
-The normalized `{key,type,value}` frontmatter shape is part of the E2E fixture contract. Flow Editor must map each row by the wrapper `key` and normalized schema path, not by the declaration container name. For example, the `Revenue Drivers` widget exposes `agent_token_take_rate` as one inline-editable KTV row with the output port handle attached to that row. A second non-inline `agent_token_take_rate` row is invalid because it splits the editable value from the functional port.
+The normalized `{key,type,value}` frontmatter shape is part of the E2E fixture contract. Storyboard Widget must map each row by the wrapper `key` and normalized schema path, not by the declaration container name. For example, the `Revenue Drivers` widget exposes `agent_token_take_rate` as one inline-editable KTV row with the output port handle attached to that row. A second non-inline `agent_token_take_rate` row is invalid because it splits the editable value from the functional port.
 
 ## Cost-Driver Port-Handle Contract
 
-The Flow Editor canvas should read each visible handle as an economic driver, not as a generic UI socket. A valid driver edge follows this identity rule:
+The Storyboard Widget canvas should read each visible handle as an economic driver, not as a generic UI socket. A valid driver edge follows this identity rule:
 
 ```text
 source node driver handle -> target node driver handle
@@ -1849,7 +1851,7 @@ This keeps the graph neutral and inspectable:
 
 Driver-handle families:
 
-| Driver Family | Flow Editor Port Role | Port Handles |
+| Driver Family | Storyboard Widget Port Role | Port Handles |
 | Demand | Workload meters that fan out to stack, revenue, and infrastructure widgets. | `monthly_agent_requests`, `avg_tool_calls_per_request`, `avg_tokens_per_request`, `retry_rate` |
 | Platform | Cash-cost, runtime, provider, external API, and operator meters. | `platform_subscription_usd`, `platform_unit_call_cost_usd`, `managed_hosting_required`, `hosting_or_cloud_runtime_usd`, `model_provider_fee_usd`, `social_api_rpc_data_api_fees`, `ops_hours` |
 | Token | On-chain launch, gas, token setup, and volatility exposure. | `onchain_token_launch_required`, `token_setup_exposure`, `onchain_gas_and_token_fees`, `token_price_volatility` |
@@ -1884,7 +1886,7 @@ Driver-handle families:
 
 Renderer checks:
 
-- `kgCanvas2dRenderer` is `flowEditor`.
+- `kgCanvas2dRenderer` is `storyboard`.
 - `flow.nodes[*].handles.target` defines the visible input handles.
 - `flow.nodes[*].handles.source` defines the visible output handles.
 - `flow.costDriverPortModel.driverFamilies` is the semantic allowlist for those visible handles.
@@ -1896,7 +1898,7 @@ Renderer checks:
 - `socket_types` color every handle and edge by shared renderer palette role: hypothesis for demand/prediction, execution for platform/yield/infrastructure, alert for token risk, pivot for stack TCO/liquidity/closed-loop decisions, and the canvas accent for revenue/payment/chart payloads.
 - `workflow_sections` keeps the MainPanel Workflow Manager view aligned with the same graph contract: ingest drivers, calculate stack costs, simulate margin, evaluate the five-engine Web3 value loop, and render decisions.
 
-## Flow Editor Palette And Workflow
+## Storyboard Widget Palette And Workflow
 
 The document reuses the existing FloatingPanel Renderer palette keys instead of inventing stack-specific colors.
 
@@ -2100,7 +2102,7 @@ This demo uses a normalized baseline:
 
 ## Dynamic Simulation Baseline
 
-The Flow Editor calculator emits these values from the frontmatter ports, so changing any driver handle updates the chart payload and decision handles.
+The Storyboard calculator emits these values from the frontmatter ports, so changing any driver handle updates the chart payload and decision handles.
 
 | Stack | Computed Monthly TCO | Net Revenue Input | Simulated Net Margin | Driver Notes |
 |---|---:|---:|---:|---|
@@ -2271,11 +2273,11 @@ tokenized demo = Virtuals GAME + separate token setup and per-call meters
 - Token-denominated costs stay token-denominated; no fixed USD conversion is embedded.
 - Every widget port handle corresponds to a named cost, revenue, risk, metric, decision, or rendered-report driver.
 - Widget type, side, and position do not remap a port handle; the handle id is the cost-driver key.
-- Normal Flow Editor edges preserve driver identity with matching `sourceHandle`, `targetHandle`, and `label`.
+- Normal frontmatter-flow edges preserve driver identity with matching `sourceHandle`, `targetHandle`, and `label`.
 - Matching field/port schema paths render as one editable KTV row with the functional port handle on that row; duplicate read-only rows for the same key are forbidden.
 - `Revenue Drivers -> agent_token_take_rate` renders as an inline-editable output-port row, not as a separate value row plus a separate port row.
-- Computing-flow propagation uses shared Flow Editor dataflow helpers so edits to driver rows recompute Rich Media Panel outputs without renderer-local recalculation or filename-specific branches.
+- Computing-flow propagation uses shared shared frontmatter-flow dataflow helpers so edits to driver rows recompute Rich Media Panel outputs without renderer-local recalculation or filename-specific branches.
 - `socket_types` and node tags reuse the renderer palette roles exposed by the FloatingPanel Renderer settings.
 - `workflow_sections` mirrors the MainPanel Workflow Manager execution path from driver ingestion through chart rendering.
-- The five Web3 economics engines are first-class Flow Editor widgets, not prose-only rows.
+- The five Web3 economics engines are first-class Storyboard widgets, not prose-only rows.
 - The closed user journey value loop emits both decision drivers and a Rich Media Panel chart payload.

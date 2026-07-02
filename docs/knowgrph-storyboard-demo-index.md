@@ -13,6 +13,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -176,7 +178,9 @@ Use this document to validate the native `2D Renderer: Storyboard` surface.
 
 ## Validation Goals
 
-- Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: storyboard`.
+- Confirm the renderer activates from frontmatter via `kgCanvas2dRenderer: "storyboard"`.
+- Confirm `2D Renderer: Storyboard` owns both display variants: `Card` remains the default card presentation, and `Widget` reuses the same shared renderer utilities with widget-only UI differences.
+- Confirm Storyboard `Cards`, `Widgets`, and `Rich Media Panels` render from the same source graph, semantic key, pan/drag/zoom contract, and edge model without a Flow Editor renderer fork.
 - Confirm the storyboard surface is repo-owned and native to Knowgrph, not copied from Boords or any vendor storyboard runtime.
 - Confirm existing graph nodes project into storyboard lanes through canonical fields such as `stage`, `status`, `lane`, `phase`, or `track`, without creating a second authoring schema.
 - Confirm scene-like node types such as `Scene`, `Shot`, `Frame`, `Panel`, `Beat`, and `Story` are recognized as storyboard-friendly inputs while structural/root-only nodes stay secondary or are filtered when richer cards exist.
@@ -205,6 +209,8 @@ Use this document to validate the native `2D Renderer: Storyboard` surface.
 - Lane grouping prefers `stage`, then other shared lane-like fields.
 - Card content prefers `label`, `summary`-like fields, tags, owner, priority, and media/link URLs already present on the node.
 - Storyboard detail blocks also reuse shared graph properties for frame numbering, slugline, action, dialogue, prompt, style, and references.
+- `Card` is the default Storyboard Display variant; `Widget` is the same Storyboard renderer surface with widget-form UI, not a separate Flow Editor renderer.
+- Rich Media Panels remain first-class Storyboard surfaces for image, video, HTML/srcdoc, audio, and generated output nodes.
 
 ## Authoring Notes
 

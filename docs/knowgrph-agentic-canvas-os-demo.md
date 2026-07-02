@@ -7,9 +7,9 @@ lang: "en-US"
 schema: "kgc-computing-flow/v1"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgCanvas2dRendererCapability:
-  supportedRenderers: ["flowEditor", "Storyboard", "Strybldr"]
+  supportedRenderers: ["storyboard"]
   selectionModel: "projected-data"          # renderers project this set; they do not branch on it
   edgeProjectionInvariance: "identical-across-supportedRenderers"
 kgDocumentSemanticMode: "document"
@@ -46,6 +46,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -582,7 +584,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"

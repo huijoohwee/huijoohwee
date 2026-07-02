@@ -55,7 +55,7 @@ mcp_tools:
 # ── canvas config ─────────────────────────────────────────────────────────────
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
@@ -94,6 +94,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -302,7 +304,7 @@ flow_diagrams:
 
 ## Running This Demo
 
-### Step 1 — Open in Knowgrph Flow Editor
+### Step 1 - Open in Knowgrph Storyboard
 
 Load this file into the Knowgrph canvas. The frontmatter defines all nodes, edges, and inline compute logic. No external build step required.
 

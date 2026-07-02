@@ -7,7 +7,7 @@ lang: "en-US"
 schema: "kgc-computing-flow/v1"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
@@ -434,7 +434,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"

@@ -1,10 +1,15 @@
 ---
 title: Knowgrph Storyboard Product UI Demo
+schema: "kgc-computing-flow/v1"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
+kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 kgSharedRendererContract:
@@ -13,6 +18,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -286,7 +293,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
@@ -315,7 +322,9 @@ This fixture uses normalized `{key, type, value}` envelopes inside `flow.nodes[*
 
 ## Validation Goals
 
-- Confirm the storyboard renderer activates from frontmatter through `kgCanvas2dRenderer: storyboard`.
+- Confirm the storyboard renderer activates from frontmatter through `kgCanvas2dRenderer: "storyboard"`.
+- Confirm Storyboard Display `Card` and `Widget` are UI variants of `2D Renderer: Storyboard`, with shared source graph, edge, pan, drag, zoom, and Rich Media Panel behavior.
+- Confirm `Cards`, `Widgets`, and `Rich Media Panels` stay visually balanced and source-backed during selection, inline edit, and media preview flows.
 - Confirm the runtime supports neutral alias fields such as `group`, `bucket`, `category`, `step`, `sequenceNumber`, `ordinal`, `position`, `task`, `workflow`, `instructions`, `narration`, `speakerLine`, `voiceOver`, `brief`, `visualBrief`, `artDirection`, `theme`, `variant`, `preset`, `assets`, `assetRefs`, `refs`, `referenceLinks`, `documentUrl`, and `briefUrl`.
 - Confirm alias-backed cards still render the same native sections: frame badge, slugline, `Summary`, `Action`, `Dialogue`, `Visual Brief`, `Reference Pack`, tags, metadata, and source link.
 - Confirm `context` + `state` compose slugline text when no explicit `slugline` is authored.

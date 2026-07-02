@@ -17,6 +17,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -1242,7 +1244,7 @@ Client-first. The browser handles parsing, rendering, and canvas orchestration. 
 
 ```mermaid
 flowchart LR
-  MD[Markdown brief] --> FC[Flow Editor Canvas]
+  MD[Markdown brief] --> FC[Storyboard Canvas]
   FC --> SA["Knowgrph SuperAgent Harness\nmessage gateway · memory · tools · sandbox"]
   SA -->|"shared provider adapters"| LLM["Multi-provider LLM\nOpenAI · Claude · Gemini · BytePlus"]
   SA -->|"image tool/provider"| IMG["Image outputs\nimageUrl"]
@@ -1255,11 +1257,11 @@ flowchart LR
 
 ### SuperAgent and DeerFlow Boundary
 
-Knowgrph's canvas provides the **visual pipeline**: nodes, edges, panels, variant switching, and shared Rich Media Panel previews. The native SuperAgent harness provides bounded long-horizon coordination for research, tools, memory, subagents, sandboxed workspace artifacts, and verification. DeerFlow can inform concepts or serve as an optional gateway provider, but it must not replace Knowgrph's markdown/frontmatter, Flow Editor, or Rich Media Panel owners.
+Knowgrph's canvas provides the **visual pipeline**: nodes, edges, panels, variant switching, and shared Rich Media Panel previews. The native SuperAgent harness provides bounded long-horizon coordination for research, tools, memory, subagents, sandboxed workspace artifacts, and verification. DeerFlow can inform concepts or serve as an optional gateway provider, but it must not replace Knowgrph's markdown/frontmatter, Storyboard Widget, or Rich Media Panel owners.
 
 | Canvas concern | Knowgrph owner | Optional provider/inspiration |
 |---|---|---|
-| Pipeline layout | Flow Editor DAG | — |
+| Pipeline layout | Storyboard Widget DAG | — |
 | Variant switching | Brief layer swap | — |
 | Artifact rendering | Rich Media Panel | — |
 | Prompt engineering | SuperAgent planner/tool lane | Optional DeerFlow gateway |
@@ -1300,7 +1302,7 @@ Shell: ~248 KB gzip. Monaco, Mermaid, Three.js lazy-loaded.
 
 ## Roadmap
 
-**Now** — brief→video pipeline, native SuperAgent harness (research + tools + sandbox), Flow Editor Canvas, Stripe gating
+**Now** — brief→video pipeline, native SuperAgent harness (research + tools + sandbox), Storyboard Canvas, Stripe gating
 **Next** — batch variant generation via role-scoped subagents, eval harness, scene template library, MCP server
 **Later** — mobile-first brief editor (form UI over Markdown), real-time collaboration, plugin system
 

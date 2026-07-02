@@ -7,7 +7,7 @@ lang: en-US
 
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
@@ -23,6 +23,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -202,8 +204,8 @@ widget_bundle:
       aspectRatio: "16:9"
       targetResolution: "1920x1080"
     behavior:
-      drag_pan_zoom_owner: flowEditor-frontmatter-only
-      rich_media_overlay_handlers: flowEditor-frontmatter-only
+      drag_pan_zoom_owner: storyboard-frontmatter-flow
+      rich_media_overlay_handlers: storyboard-frontmatter-flow
       forbid_cross_renderer_proxy: true
 
 canvas:
@@ -626,7 +628,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"

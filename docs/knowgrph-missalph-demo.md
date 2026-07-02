@@ -7,7 +7,7 @@ lang: en-US
 schema: kgc-computing-flow/v1
 kgCanvasSurfaceMode: 2d
 kgCanvasRenderMode: 2d
-kgCanvas2dRenderer: flowEditor
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: document
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
@@ -25,6 +25,8 @@ kgSharedRendererContract:
   cardPreview: CardMediaPreview + CardMarkdownPreview
   widgetCard: canvas:widgetCard
   richMediaPanel: RichMediaPanel
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: active graph edges with typed sourceHandle and targetHandle
   timelineSurface: TimelineTransportControls + shared bottom-panel surface
   rendererPolicy: frontmatter and source payloads own data; renderers project view state only
@@ -486,7 +488,7 @@ flow:
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       imageUrl: {key: imageUrl, type: svg_data_uri, value: ""}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Computes risk brakes and go/no-go guardrails for the shared Flow Editor run path."}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Computes risk brakes and go/no-go guardrails for the shared Storyboard run path."}
       output: {key: output, type: markdown, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: ""}
       run_status: {key: run_status, type: string, value: "idle"}
@@ -524,7 +526,7 @@ flow:
             const output = [
               "## " + decision + ": Risk brake map",
               "",
-              "### Computes risk brakes and go/no-go guardrails for the shared Flow Editor run path.",
+              "### Computes risk brakes and go/no-go guardrails for the shared Storyboard run path.",
               "- Portfolio: " + portfolio,
               "- Horizon: " + (read("input_horizon") || "12 to 36 months"),
               "- Metric: " + (read("input_metric_label") || "missing alpha score") + " " + confidence + "/100",
@@ -670,7 +672,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"

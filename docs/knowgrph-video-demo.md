@@ -7,7 +7,7 @@ lang: en-US
 
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: false
@@ -26,6 +26,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -78,8 +80,8 @@ widget_bundle:
       direction: LR
       edgeType: bezier
     behavior:
-      drag_pan_zoom_owner: flowEditor-frontmatter-only
-      rich_media_overlay_handlers: flowEditor-frontmatter-only
+      drag_pan_zoom_owner: storyboard-frontmatter-flow
+      rich_media_overlay_handlers: storyboard-frontmatter-flow
       forbid_cross_renderer_proxy: true
 
 canvas:
@@ -490,7 +492,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
@@ -711,18 +713,18 @@ Script: {{inputs.script}}
 
 `W01` generates dual-layer structured prompts per locale (parent trust + child multiverse adventure), `W02` creates the hero reference frame (S02 — Caribbean mermaid queen selected as hero frame for highest visual drama and colour contrast), `W03` generates the final video from that reference.
 
-The `director_brief.shots` list is the frontmatter SSOT for derived shot Text, Image, Video, Rich Media Panel, and typed Edge nodes. S01–S03 are the hero locale row for the Flow Editor Balanced 16:9 layout; S04–S05 are the canvas reveal and CTA row. Toolbar Run all writes widget outputs into existing nodes only; it must not rewrite Balanced widget positions, Rich Media Panel layout, or edge topology.
+The `director_brief.shots` list is the frontmatter SSOT for derived shot Text, Image, Video, Rich Media Panel, and typed Edge nodes. S01–S03 are the hero locale row for the Storyboard Widget Balanced 16:9 layout; S04–S05 are the canvas reveal and CTA row. Toolbar Run all writes widget outputs into existing nodes only; it must not rewrite Balanced widget positions, Rich Media Panel layout, or edge topology.
 
 
 ## SuperAgent Harness Boundary
 
-The `inputs.text_provider_id: "deerflow"` field selects the optional DeerFlow gateway provider for text generation. Long-horizon orchestration remains Knowgrph-native: the Flow Editor delegates generation requests through shared dispatchers, provider adapters, markdown/frontmatter parsing, and Rich Media Panel output fields. DeerFlow may provide gateway responses or conceptual inspiration for research, skills, and sandboxed work, but it is not a copied runtime stack and it does not become the parser, renderer, memory, or graph-apply owner.
+The `inputs.text_provider_id: "deerflow"` field selects the optional DeerFlow gateway provider for text generation. Long-horizon orchestration remains Knowgrph-native: the Storyboard runtime delegates generation requests through shared dispatchers, provider adapters, markdown/frontmatter parsing, and Rich Media Panel output fields. DeerFlow may provide gateway responses or conceptual inspiration for research, skills, and sandboxed work, but it is not a copied runtime stack and it does not become the parser, renderer, memory, or graph-apply owner.
 
 ### Agent Orchestration Flow
 
 ```mermaid
 sequenceDiagram
-    participant Canvas as Flow Editor Canvas
+    participant Canvas as Storyboard Canvas
     participant Dispatch as Generation Dispatcher
     participant Agent as Native SuperAgent Harness
     participant Research as Research Tool
@@ -792,14 +794,14 @@ Each sub-agent operates in an isolated context with independent tool execution, 
 
 ### Provider Configuration
 
-When `inputs.text_provider_id` is `deerflow`, `inputs.text_endpoint_url` points at an optional DeerFlow gateway. Model selection can then be resolved by that gateway, while Knowgrph still owns widget properties, output keys, validation, and Flow Editor rendering:
+When `inputs.text_provider_id` is `deerflow`, `inputs.text_endpoint_url` points at an optional DeerFlow gateway. Model selection can then be resolved by that gateway, while Knowgrph still owns widget properties, output keys, validation, and Storyboard widget rendering:
 
 | Widget Property | Knowgrph Field | DeerFlow Resolution |
 | `text_model` | `seed-2-0-lite-260228` | Resolved via `config.yaml` models[] entry |
 | `image_model` | `seedream-4-0-250828` | Resolved by the active image provider/tool adapter |
 | `video_model` | `seedance-1-0-pro-fast-251015` | Resolved by the active video provider/tool adapter |
 
-Switching providers must stay a settings/provider-adapter concern. The demo must not hardcode provider-only URLs or create provider-specific Flow Editor schema drift.
+Switching providers must stay a settings/provider-adapter concern. The demo must not hardcode provider-only URLs or create provider-specific Storyboard widget schema drift.
 
 ## Flow Graph
 

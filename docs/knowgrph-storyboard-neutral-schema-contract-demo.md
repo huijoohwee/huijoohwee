@@ -1,10 +1,15 @@
 ---
 title: Knowgrph Storyboard Neutral Schema Contract Demo
+schema: "kgc-computing-flow/v1"
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
+kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
 kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 kgSharedRendererContract:
@@ -13,6 +18,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -134,7 +141,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
@@ -163,7 +170,9 @@ This fixture keeps `flow.nodes[*]` in normalized `{key, type, value}` form so pa
 
 ## Validation Goals
 
-- Confirm the storyboard renderer activates from `kgCanvas2dRenderer: storyboard`.
+- Confirm the storyboard renderer activates from `kgCanvas2dRenderer: "storyboard"`.
+- Confirm `2D Renderer: Storyboard` presents the same source nodes as `Cards` by default and as `Widgets` when Storyboard Display is switched to Widget.
+- Confirm Rich Media Panels stay connected to the same Storyboard graph and edge handles instead of becoming detached preview fixtures.
 - Confirm minimal neutral alias fields project into the same native storyboard card layout without any renderer-specific schema fork.
 - Confirm `group`, `category`, and `bucket` all resolve to lane grouping.
 - Confirm `step`, `sequenceNumber`, and `position` all resolve to the frame/index badge.

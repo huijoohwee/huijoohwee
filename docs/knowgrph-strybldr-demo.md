@@ -153,10 +153,10 @@ flow:
       "flow:widgetFormId": {key: "flow:widgetFormId", type: object, value: {"key":"flow:widgetFormId","type":"string","value":"richMediaPanel"}}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       imageUrl: {key: imageUrl, type: text, value: {"key":"imageUrl","type":"text","value":"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"}}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."}}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: object, value: {"key":"kgc:readingSummary","type":"string","value":"Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit frontmatter-flow edges."}}
       lane: {key: lane, type: object, value: {"key":"lane","type":"string","value":"Review"}}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: {"key":"outputSrcDoc","type":"html_srcdoc","value":"<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"}}
-      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Review"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"richMediaPanel"},"richMediaActiveTab":{"key":"richMediaActiveTab","type":"string","value":"html"},"outputSrcDoc":{"key":"outputSrcDoc","type":"html_srcdoc","value":"<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"},"imageUrl":{"key":"imageUrl","type":"text","value":"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"},"videoUrl":{"key":"videoUrl","type":"text","value":""},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."}}}
+      properties: {key: properties, type: object, value: {"lane":{"key":"lane","type":"string","value":"Review"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"richMediaPanel"},"richMediaActiveTab":{"key":"richMediaActiveTab","type":"string","value":"html"},"outputSrcDoc":{"key":"outputSrcDoc","type":"html_srcdoc","value":"<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"},"imageUrl":{"key":"imageUrl","type":"text","value":"https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"},"videoUrl":{"key":"videoUrl","type":"text","value":""},"kgc:readingSummary":{"key":"kgc:readingSummary","type":"string","value":"Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit frontmatter-flow edges."}}}
       richMediaActiveTab: {key: richMediaActiveTab, type: object, value: {"key":"richMediaActiveTab","type":"string","value":"html"}}
       videoUrl: {key: videoUrl, type: text, value: {"key":"videoUrl","type":"text","value":""}}
       "visual:height": {key: "visual:height", type: number, value: 588}
@@ -198,6 +198,7 @@ flow:
 ---
 
 title: "Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E"
+schema: "kgc-computing-flow/v1"
 graphId: "md:knowgrph-strybldr-sensenova-videodb-e2e"
 doc_type: "Strybldr E2E Demo - SenseNova Text + Image + Video + VideoDB API + MCP"
 date: "2026-06-13"
@@ -215,17 +216,21 @@ kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "storyboard"
 kgRendererCompatibility:
   - "2D Renderer: Storyboard"
-  - "2D Renderer: Flow Editor"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: "true"
+kgWorkflowManagerModeEnabled: true
+kgAutoSaveEnabled: true
+kgAutoSaveDebounceMs: 1500
+kgAutoSaveOn: ["nodeEdit", "runComplete", "approval", "assetReady"]
 kgMultiDimTableModeEnabled: "false"
 kgDocumentStructureBaselineLock: "false"
 kgStrybldrStoryboard: "true"
 kgBottomPanelOpen: "true"
-kgBottomPanelTab: "flowEditor"
 kgFloatingPanelOpen: "true"
 kgFloatingPanelView: "strybldr"
 kgSharedRendererContract:
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
@@ -454,7 +459,7 @@ flow:
         outputSrcDoc: {key: outputSrcDoc, type: html_srcdoc, value: "<!doctype html><html><body style=\"margin:0;padding:16px;font-family:system-ui,sans-serif;background:#f8fafc;color:#0f172a\"><main data-kg-strybldr-rich-media-panel=\"1\"><h2 style=\"margin:0 0 8px;font-size:18px\">Strybldr review packet</h2><p style=\"margin:0 0 12px;color:#475569\">Source-backed local preview for 77FAnT935IE. Live SenseNova and VideoDB values stay blank until operator-approved credentials return them.</p><ul style=\"margin:0;padding-left:18px;line-height:1.5\"><li>Source metadata and thumbnail are the only external media used in this local panel.</li><li>REST and MCP branches converge before review and publish.</li><li>No VideoDB IDs, stream URLs, transcript text, or deployment claims are fabricated.</li></ul></main></body></html>"}
         imageUrl: {key: imageUrl, type: text, value: "https://i.ytimg.com/vi/77FAnT935IE/hqdefault.jpg"}
         videoUrl: {key: videoUrl, type: text, value: ""}
-        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit Flow Editor edges."}
+        "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Rich Media Panel consumes the source-backed review summary, thumbnail, and blank live video handle through explicit frontmatter-flow edges."}
     - id: {key: id, type: string, value: "strybldr_flow_publish"}
       type: {key: type, type: string, value: "PublishWidget"}
       label: {key: label, type: string, value: "Local publish packet"}
@@ -654,7 +659,6 @@ kgParserRoutingContract:
     - "diagramKinds: frontmatter_flow"
     - "diagramKinds: strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
     - "2D Renderer: Storyboard"
     - "surfaces: BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
@@ -1005,7 +1009,7 @@ The source URL, video ID, title, and thumbnail are allowed here because this fil
 | Trigger | User opens `Toolbar -> Launch -> Import URL` or imports this local Markdown file. | `LaunchDropdown.impl.tsx` |
 | Source | The only authored media source is `77FAnT935IE`. | `urlImport.ts`, `youtubeEntryText.ts` |
 | Project | The imported URL or local file opens as a Strybldr storyboard document. | `strybldrStoryboard.ts`, shared Storyboard renderer |
-| Render | The workflow is visible in `2D Renderer: Storyboard` and `2D Renderer: Flow Editor`. | shared renderer projection |
+| Render | The workflow is visible in `2D Renderer: Storyboard` Card and Widget display. | shared renderer projection |
 | Camera | `FloatingPanel -> Camera` renders the selected card preview in the Wide/Medium/Close-up SVG frame and persists `strybldrCamera` from shared 3D degree-grid orbit geometry. | `orbitSphere.ts`, `StrybldrCameraPanel.tsx` |
 | SenseNova Text | MainPanel Integrations exposes SenseNova text generation through the shared chat path. | SenseNova API settings owner |
 | SenseNova Image | MainPanel Integrations exposes SenseNova image generation through the shared image path. | SenseNova image settings owner |

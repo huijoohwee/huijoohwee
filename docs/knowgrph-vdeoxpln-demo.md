@@ -22,7 +22,7 @@ kgDocumentStructureBaselineLock: false
 canvasWorkspacePreset:
   canvasSurfaceMode: "2d"
   canvasRenderMode: "2d"
-  canvas2dRenderer: "flowEditor"
+  canvas2dRenderer: "storyboard"
   documentSemanticMode: "document"
   frontmatterModeEnabled: true
   multiDimTableModeEnabled: false
@@ -31,13 +31,13 @@ canvasWorkspacePreset:
 local_file_import_contract:
   - "Toolbar -> Launch -> Import local files"
   - "Select this Markdown document as validation input"
-  - "Local import opens the 2D Flow Editor renderer"
-  - "Canvas View Mode reports Flow Editor"
+  - "Local import opens the 2D Storyboard renderer"
+  - "Canvas View Mode reports Storyboard"
   - "AI Showrunner dry-run brief is runnable through local MCP start_run with zero paid calls"
   - "AI Showrunner artifacts include run state, cost log, narration manifest, and artifact manifest"
-  - "Flow Editor exposes a dependency-free video-agent Render_Spec for the YouTube test URL set while the primary rendered validation URL remains https://youtu.be/8NkwH29Ou1o"
+  - "Storyboard Widget exposes a dependency-free video-agent Render_Spec for the YouTube test URL set while the primary rendered validation URL remains https://youtu.be/8NkwH29Ou1o"
   - "The video-agent graph demonstrates ingest, parse, annotate, dataset load/split/merge/save, real-time zone counting, search, edit, compile, generate, and stream stages without copying external code or depending on Roboflow/supervision"
-  - "Flow Editor exposes an HTML Video Renderer node with a complete animated HTML/CSS/data Render_Spec"
+  - "Storyboard Widget exposes an HTML Video Renderer node with a complete animated HTML/CSS/data Render_Spec"
   - "HTML Video Renderer uses engine_hint=canvas-2d for browser-native MP4 smoke rendering without a system FFmpeg install"
   - "Run all writes a video/mp4 artifact and manifest through shared rich-media output owners when the selected runtime can encode video"
   - "Run all publishes the same parsed HTML/CSS/data as an inline preview when the browser lacks MediaRecorder, canvas captureStream, or WebCodecs"
@@ -195,7 +195,7 @@ videoAgentRuntimeContract:
   outputBoundary:
     - "HTML/CSS/data Render_Spec is the source-owned program"
     - "video/mp4, outputSrcDoc, renderJobId, and manifests are runtime outputs"
-    - "RichMediaPanel receives streamable artifact output through explicit Flow Editor edges"
+    - "RichMediaPanel receives streamable artifact output through explicit frontmatter-flow edges"
     - "frame-by-frame bounding boxes are routed to multiple RichMediaPanel surfaces as visible overlays"
     - "frameByFrameSamples expose sample ids, annotation counts, per-frame zone counts, and cumulative zone counts derived from frameBoundingBoxes"
     - "richMediaPanels expose stream, frame-analysis, and floatingpanel-annotation routes from the same Render_Spec timeline clock"
@@ -268,7 +268,7 @@ designAgentVideoWorkspaceContract:
     - "composition rows"
     - "source-derived assets"
     - "timeline lanes and ticks"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgWorkflowManagerModeEnabled: true
 socket_types:
   html_video_spec: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [html_video_spec]}
@@ -573,7 +573,7 @@ kgParserRoutingContract:
     - "mermaid_gantt"
     - "frontmatter_flow"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
 ---
@@ -582,7 +582,7 @@ kgParserRoutingContract:
 
 This validation input turns the vdeoxpln contract into an inspectable visual
 explanation. Import it into Knowgrph to verify that semantic HTML, CSS, and
-data become a real MP4 through shared Flow Editor and Rich Media owners without
+data become a real MP4 through shared Storyboard Widget and Rich Media owners without
 relying on copied reference strings, route names, demo filenames, provider keys,
 or mirror-only patches.
 
@@ -591,23 +591,23 @@ or mirror-only patches.
 | Stage | Required behavior | Shared owner |
 |---|---|---|
 | Import | The Markdown file is imported as a workspace document. | `workspaceFs.ts` |
-| Parse | Frontmatter `flow.nodes` and `flow.edges` become runnable graph data. | frontmatter Flow Editor parser |
+| Parse | Frontmatter `flow.nodes` and `flow.edges` become runnable graph data. | frontmatter-flow parser |
 | Source | Contract, registry, chat, and renderer owners remain source-backed records. | Source Files owners |
-| Visualize | The vdeoxpln workflow appears as editable Flow Editor widgets and Rich Media panels. | shared Flow Editor surface |
-| Interact | The Render_Spec source feeds the HTML Video Renderer through explicit flow edges. | Flow Editor dataflow owners |
-| Render MP4 | The Flow Editor `HtmlVideoRenderer` node turns semantic HTML, CSS, and data into a real `video/mp4` artifact through `engine_hint=canvas-2d`. | `html-video-renderer/*` + `richMediaRun.ts` |
+| Visualize | The vdeoxpln workflow appears as editable Storyboard widgets and Rich Media panels. | shared Storyboard widget surface |
+| Interact | The Render_Spec source feeds the HTML Video Renderer through explicit flow edges. | shared frontmatter-flow dataflow owners |
+| Render MP4 | The Storyboard Widget `HtmlVideoRenderer` node turns semantic HTML, CSS, and data into a real `video/mp4` artifact through `engine_hint=canvas-2d`. | `html-video-renderer/*` + `richMediaRun.ts` |
 | Ingest Media | FloatingPanel Media receives source-owned image and video asset references without generated blob URLs in the validation input. | Rich Media / Media catalog owners |
 | Annotate | `AnnotationEngine` nodes validate image and video-frame Annotation_Spec inputs and emit LLM-ready JSON. | `visual-annotation-engine/*` |
 | Dataset | Frame annotations load once, split deterministically, merge without duplicate samples, and serialize as a saved dataset artifact. | `annotationDataset.ts` + `videoAgentDatasetRuntime.ts` |
 | Count Zones | Each frame updates per-zone and cumulative counts on the shared render-frame clock. | `videoAgentDatasetProjection.ts` + Rich Media timeline bridge |
-| Render Annotation | Annotation JSON, semantic ids, media previews, and image object-detection bounding boxes flow into the FloatingPanel Media Rich Media target through explicit edges. | `richMediaRun.ts` + Flow Editor dataflow |
+| Render Annotation | Annotation JSON, semantic ids, media previews, and image object-detection bounding boxes flow into the FloatingPanel Media Rich Media target through explicit edges. | `richMediaRun.ts` + shared frontmatter-flow dataflow |
 | Project Bounding Boxes | The image preview projects `tasks.object_detection.objects[].bbox` from normalized `[x,y,width,height]` coordinates into its fitted media rectangle with labels and optional confidence. | FloatingPanel Media annotation overlay owner |
-| Execute | Toolbar Run all runs the flow and publishes the output to the downstream Rich Media Panel. | `flowEditorWorkflowRunAction.ts` |
+| Execute | Toolbar Run all runs the flow and publishes the output to the downstream Rich Media Panel. | Storyboard workflow run action |
 | Guard | Repo code consumes this document by input path and must not copy this payload into fixtures or runtime branches. | policy tests |
 
 ## Runnable Video Agent HTML-to-MP4 Demo
 
-This document includes a frontmatter Flow Editor graph with three runnable
+This document includes a frontmatter-flow graph with three runnable
 nodes:
 
 1. `Programmatic Video Agent Render Spec` provides semantic HTML, CSS, and JSON
@@ -619,7 +619,7 @@ nodes:
 3. `Rendered MP4 Artifact` receives the emitted `videoUrl` in a Rich Media
    Panel video tab.
 
-For the executable URL path, open Flow Editor's video-agent validation import
+For the executable URL path, open Storyboard Widget video-agent validation import
 controls, enter the operator-supplied URL set, and choose `Import set`. Imports
 run sequentially through the shared workspace bridge so concurrent writes
 cannot overwrite one another. Each imported URL materializes three distinct
@@ -647,7 +647,7 @@ runtime.
 Run path:
 
 - Import this Markdown file through `Toolbar -> Launch -> Import local files`.
-- Switch to the Flow Editor surface if it is not already selected.
+- Switch to the Storyboard widget surface if it is not already selected.
 - Run `Video Agent HTML Stream Renderer`, or run the whole flow from Toolbar
   Run all.
 - Verify that the downstream Rich Media Panel has either a playable `video/mp4`
@@ -677,7 +677,7 @@ image/video ingestion, parsing, annotation, and rendering:
 3. `Video Frame Annotation Engine` consumes the video asset, task set, and
    `frame_timestamp_ms` with `asset_type=video_frame`.
 4. `FloatingPanel Media Annotation Outputs` receives annotation JSON through
-   explicit Flow Editor edges. The runtime projection owns the source media and
+   explicit frontmatter-flow edges. The runtime projection owns the source media and
    labelled `object_detection` boxes as one atomic `outputSrcDoc` render channel.
 
 The branch is intentionally runtime-ready but source-neutral. The validation
@@ -784,13 +784,13 @@ After import, the parsed graph should expose:
 
 - `kgCanvasSurfaceMode=2d`
 - `kgCanvasRenderMode=2d`
-- `kgCanvas2dRenderer=flowEditor`
-- one frontmatter Flow Editor graph containing the Render_Spec source, HTML Video Renderer, and Rich Media Panel
+- `kgCanvas2dRenderer=storyboard`
+- one frontmatter-flow graph containing the Render_Spec source, HTML Video Renderer, and Rich Media Panel
 - one dependency-free `knowgrph-video-agent/v1` branch for the test URL set
   (`https://youtu.be/8NkwH29Ou1o`, `https://youtu.be/77FAnT935IE`)
 - one video-agent Render_Spec with ingest, parse, search, edit, compile, generate, and stream stages
 - one AI Showrunner branch showing the dry-run role pipeline, token budget, artifact manifest, and zero paid calls
-- one Flow Editor HTML Video Renderer branch with `HtmlVideoRenderer -> RichMediaPanel`, `engine_hint=canvas-2d`, and a real `video/mp4` artifact or inline stream preview
+- one Storyboard Widget HTML Video Renderer branch with `HtmlVideoRenderer -> RichMediaPanel`, `engine_hint=canvas-2d`, and a real `video/mp4` artifact or inline stream preview
 - one FloatingPanel Media branch with `InputWidget -> AnnotationEngine -> RichMediaPanel` for both image annotation and video-frame annotation
 - one Annotation Engine result path using `knowgrph-annotation/v1`, sorted task semantic-key inputs, and the shared rich-media artifact writer
 - one image annotation projection reading normalized object-detection boxes from `tasks.object_detection.objects[]` and rendering labelled overlays in FloatingPanel Media

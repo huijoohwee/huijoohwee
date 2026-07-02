@@ -34,7 +34,7 @@ external_inspiration:
 
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
-kgCanvas2dRenderer: "flowEditor"
+kgCanvas2dRenderer: "storyboard"
 kgDocumentSemanticMode: "document"
 kgFrontmatterModeEnabled: true
 kgMultiDimTableModeEnabled: true
@@ -53,6 +53,8 @@ kgSharedRendererContract:
   cardPreview: "CardMediaPreview + CardMarkdownPreview"
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
+  storyboardDisplay: "2D Renderer: Storyboard Card (default) and Widget variants"
+  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
@@ -170,7 +172,7 @@ swarm_prediction_demo:
     - "canvas/src/features/swarm-prediction/swarmPredictionEngine.ts"
     - "canvas/src/features/swarm-prediction/swarmPredictionWidget.ts"
     - "canvas/src/features/swarm-prediction/swarmPredictionRender.ts"
-    - "canvas/src/components/FlowEditorCanvas/runtime/useFlowEditorWorkflowActions.ts"
+    - "Storyboard workflow run actions"
   world_model:
     seed_source: "reviewed research thesis signals"
     agent_population: ["founder_operator", "risk_reviewer", "market_scout", "unit_economics_reviewer"]
@@ -195,7 +197,7 @@ main_panel_integrations_demo:
   integration_open_tab: "chat"
   ingestion_surface: "docs-mirror Source Files selection"
   parsing_surface: "Markdown YAML frontmatter Flow parser"
-  canvas_2d_renderer: "flowEditor"
+  canvas_2d_renderer: "storyboard"
   message_gateway: "MainPanel Integrations/MCP, FloatingPanel Chat, and knowgrph.superagent.run local MCP"
   provider_ids: ["openai", "byteplus-modelark", "agnes-ai", "miromind", "qwen", "google-cloud"]
   provider_labels: ["OpenAI", "BytePlus ModelArk", "Agnes AI API", "MiroMind API", "Qwen API", "Google Cloud Vertex AI"]
@@ -208,7 +210,7 @@ workflow_sections:
     title: "Route MainPanel provider integrations into the SuperAgent gateway"
     nodes: [integration_openai, integration_byteplus, integration_agnes, integration_miromind, integration_qwen, integration_google_cloud, kgra_superagent_harness]
   - id: wf_superagent_runtime_surfaces
-    title: "Expose runtime surfaces as typed Flow Editor nodes"
+    title: "Expose runtime surfaces as typed Storyboard Widget nodes"
     nodes: [kgra_runtime_message_gateway, kgra_runtime_sandbox, kgra_runtime_memory, kgra_runtime_tools, kgra_runtime_skills, kgra_runtime_subagents]
   - id: wf_superagent_subagents
     title: "Delegate bounded work through neutral subagent nodes"
@@ -1496,7 +1498,7 @@ kgParserRoutingContract:
     - "frontmatter_flow"
     - "strybldr_storyboard"
   surfaces:
-    - "2D Renderer: Flow Editor"
+    - "2D Renderer: Storyboard"
     - "2D Renderer: Storyboard"
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
@@ -1523,16 +1525,16 @@ SuperAgent harness emits reviewed thesis signals into a `SwarmPrediction` node;
 role-scoped agents, intervention ticks, event logs, world metrics, and
 prediction outputs remain replayable artifacts instead of active graph
 mutation. The swarm output fans out to Text, Image, and Chart Rich Media Panels
-through typed Flow Editor sockets.
+through typed Storyboard Widget sockets.
 
-The MainPanel Integrations lane is represented as first-class Flow Editor
+The MainPanel Integrations lane is represented as first-class Storyboard Widget
 nodes for OpenAI, BytePlus ModelArk, Agnes AI, MiroMind, and Qwen. Those
 provider nodes feed the shared SuperAgent gateway and do not introduce
 provider-specific renderer branches, local path assumptions, or downstream
 alias remaps.
 
 Runtime surfaces and delegated subagents are also represented as first-class
-Flow Editor nodes. The demo therefore proves message gateway, sandbox, memory,
+Storyboard Widget nodes. The demo therefore proves message gateway, sandbox, memory,
 tools, skills, and subagents through the same ingestion, parser, and canvas
 rendering path as the rest of the graph.
 
@@ -1584,7 +1586,7 @@ or document-specific parser branches.
 
 The harness extension keeps the existing review-first research graph as the
 source of truth while adding a reusable long-horizon execution envelope. It is
-not a DeerFlow clone and it does not introduce a second Flow Editor renderer,
+not a DeerFlow clone and it does not introduce a second 2D renderer,
 graph parser, or apply path. The demo treats external SuperAgent ideas as
 conceptual input only and routes every concrete output through Knowgrph owners.
 
@@ -1832,7 +1834,7 @@ or graph edge becomes authoritative until the review audit records the choice.
 ## How To Inspect In Knowgrph
 
 1. Open this Source File in Knowgrph.
-2. Use 2D mode with `2D Renderer: Flow Editor`.
+2. Use 2D mode with `2D Renderer: Storyboard`.
 3. Verify OpenAI, BytePlus ModelArk, Agnes AI, MiroMind, and Qwen integration
    nodes feed the shared SuperAgent harness node.
 4. Verify source nodes feed sourced claim nodes through evidence edges.
