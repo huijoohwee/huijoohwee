@@ -94,14 +94,32 @@ kgParserRoutingContract:
 kgWebpageView: "markdown"
 kgVideoSequenceSources:
   - id: "operator_source_video"
-    originalName: ""
-    relativePath: ""
+    originalName: "港岛仿生局.mp4"
+    relativePath: "港岛仿生局.mp4"
     importMode: "url"
-    sourceUrl: ""
+    sourceUrl: "http://localhost:5173/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzMDg4MTk5NjM0fQ"
     mimeHint: "video/mp4"
-    byteSize: 0
-    durationSeconds: 0
-    frameRate: 0
+    byteSize: 6790608
+    durationSeconds: 15.09297052154195
+    frameRate: 24
+  - id: "clip_563143532"
+    originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    importMode: "url"
+    sourceUrl: "http://localhost:5173/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMDg5MTYwNDkxfQ"
+    mimeHint: "video/mp4"
+    byteSize: 3778691
+    durationSeconds: 51.754666666666665
+    frameRate: 24
+  - id: "clip_4240989936"
+    originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    importMode: "url"
+    sourceUrl: "http://localhost:5173/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMDkwMzA1OTUwfQ"
+    mimeHint: "video/mp4"
+    byteSize: 3778691
+    durationSeconds: 51.754666666666665
+    frameRate: 24
 kgVideoSequenceTimeline: true
 flow_diagrams:
   key: "flow_diagrams"
@@ -116,7 +134,7 @@ flow_diagrams:
           dateFormat HH:mm
           axisFormat %H:%M
           section Source video
-          Source video : operator_source_video, kgpos_0, 1m
+          Source video : clip_4240989936, kgsrc_0_0_863, kgpos_0, 0.863m
     starter_flowchart:
       key: "starter_flowchart"
       type: "mermaid_flowchart"
@@ -236,7 +254,13 @@ strybldr_storyboard:
   cards:
     - nodeId: strybldr:source:operator
       mediaKind: image
-      mediaUrl: ""
+      mediaUrl: ''
+    - nodeId: starter-storyboard-beats-card
+      mediaKind: image
+      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgzMDkxMzI2NjA3fQ
+    - nodeId: strybldr:frame:3595615238
+      mediaKind: image
+      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgzMDkxMzMwOTIzfQ
 ---
 
 # Knowgrph Strybldr Starter Template
