@@ -92,10 +92,31 @@ kgParserRoutingContract:
     - "FloatingPanel: Camera"
   edgePolicy: "Explicit flow.edges are source-owned SSOT; renderers project visible connectors only."
 kgWebpageView: "markdown"
+kgVideoSequenceSources:
+  - id: "operator_source_video"
+    originalName: ""
+    relativePath: ""
+    importMode: "url"
+    sourceUrl: ""
+    mimeHint: "video/mp4"
+    byteSize: 0
+    durationSeconds: 0
+    frameRate: 0
+kgVideoSequenceTimeline: true
 flow_diagrams:
   key: "flow_diagrams"
   type: "object"
   value:
+    video_sequence:
+      key: video_sequence
+      type: mermaid_gantt
+      value: |-
+        gantt
+          title Video Sequence
+          dateFormat HH:mm
+          axisFormat %H:%M
+          section Source video
+          Source video : operator_source_video, kgpos_0, 1m
     starter_flowchart:
       key: "starter_flowchart"
       type: "mermaid_flowchart"
@@ -212,6 +233,10 @@ strybldr_storyboard:
       prompt: Close the workflow with a local-only packet and a visible publish gate.
       action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
       summary: Final output is a local packet path and approval state, not a public deployment claim.
+  cards:
+    - nodeId: strybldr:source:operator
+      mediaKind: image
+      mediaUrl: ""
 ---
 
 # Knowgrph Strybldr Starter Template
