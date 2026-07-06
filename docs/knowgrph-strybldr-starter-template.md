@@ -94,31 +94,22 @@ kgParserRoutingContract:
 kgWebpageView: "markdown"
 kgVideoSequenceSources:
   - id: "operator_source_video"
+    originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    importMode: "url"
+    sourceUrl: "http://localhost:5175/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMjE0NDQyMzE4fQ"
+    mimeHint: "video/mp4"
+    byteSize: 3778691
+    durationSeconds: 51.754666666666665
+    frameRate: 24
+  - id: "clip_748627097"
     originalName: "港岛仿生局.mp4"
     relativePath: "港岛仿生局.mp4"
     importMode: "url"
-    sourceUrl: "http://localhost:5173/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzMDg4MTk5NjM0fQ"
+    sourceUrl: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzMjE0NDQyMzE5fQ"
     mimeHint: "video/mp4"
     byteSize: 6790608
     durationSeconds: 15.09297052154195
-    frameRate: 24
-  - id: "clip_563143532"
-    originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
-    relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
-    importMode: "url"
-    sourceUrl: "http://localhost:5173/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMDg5MTYwNDkxfQ"
-    mimeHint: "video/mp4"
-    byteSize: 3778691
-    durationSeconds: 51.754666666666665
-    frameRate: 24
-  - id: "clip_4240989936"
-    originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
-    relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
-    importMode: "url"
-    sourceUrl: "http://localhost:5173/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMDkwMzA1OTUwfQ"
-    mimeHint: "video/mp4"
-    byteSize: 3778691
-    durationSeconds: 51.754666666666665
     frameRate: 24
 kgVideoSequenceTimeline: true
 flow_diagrams:
@@ -134,7 +125,8 @@ flow_diagrams:
           dateFormat HH:mm
           axisFormat %H:%M
           section Source video
-          Source video : clip_4240989936, kgsrc_0_0_863, kgpos_0, 0.863m
+          Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4 : operator_source_video, kgsrc_0_51_755, kgpos_0, 0.863m
+          港岛仿生局.mp4 : clip_748627097, kgsrc_0_15_093, kgpos_0_397, 0.252m
     starter_flowchart:
       key: "starter_flowchart"
       type: "mermaid_flowchart"
@@ -252,22 +244,28 @@ strybldr_storyboard:
       action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
       summary: Final output is a local packet path and approval state, not a public deployment claim.
   cards:
-    - nodeId: strybldr:source:operator
-      mediaKind: image
-      mediaUrl: ''
     - nodeId: starter-storyboard-beats-card
       mediaKind: image
-      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgzMDkxMzI2NjA3fQ
-    - nodeId: strybldr:frame:3595615238
+      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgzMjE0NDQyMzE5fQ
+    - nodeId: starter-elements-card
       mediaKind: image
-      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgzMDkxMzMwOTIzfQ
+      mediaUrl: data:image/webp;base64,UklGRr4IAABXRUJQVlA4WAoAAAAgAAAAnwAAWQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgg0AYAAHAoAJ0BKqAAWgA+eTiWR6Sjoiqps5vJUA8JYwDBEBhYOdHOFD6u7td+mmeVR8ABwmNfMgzyRjRwUJKWdiDz/KGcD4PS/9hJkb3pT0+nKPRflHJOUxZb5gtEXEnQIIUM5xVPGlW6j1UiEPMjovND1PSxvoIjzkvGIvC7Yx+nd5NV6Oz0mAxp61QzoqAVQtYl4VWx4ZDKjLVx+EVMRFuvxV30WLi64b22GZxlnRhl+AIAw3qb+bUimgZzGacYb/Ao43jv9927j3lOnzZ6PRypD0VYy98856H36wi9uWZEiaIHcEA2ANuaw6UYG31xzVLhL/12fXD2UkcFzV+5dGGf0BqikxlfcsHWHqOosIbh9Sz1ugw/Jb1M3vxCGkeFFnJ9gUurqJTdZM0di3KW/E1u0xbvHp3OROP33jy5FzfCZIiu9brub1kunFdDbKKQAP712mRLlPZ2uCL+If69jO3NooLmdmauEY7dytHjr0Dzj1Q29HVnv9d/zF1aKTLxoDMZohmCL0zYXE9PVzFNi/bJctnE39DZ/0Nm/jbXHZmIgea8e5pX00iPG9byyAXuKVPTDbUUO1YxbrcTt3zPuRpR9z80PsgjUAwNe3JPf4QflT2HmddSGAAOZrzYDrVJNFPVxQZbN3mK/TgD+X3EUNMgjQDqmP0AhcfUdhLTbpZOksv96hj23CLcC79DqT2n9J/NCeK2bBpRXs4pC8jwj9z+EJ9s6/eelCkXnaFFziJ6blun4nQ3KaqhROu+PMU+NJJcnvOhfy3h5EganCif9zvK9mdH8+hb8TI19ATCVNbon8iHUV2cNx4m2rW1PzO+3sT9UZJ406ezPWhnXQFMqEufBXJyjbMV04r0sWd3N6neL1XVd2HEvOcQKGsKDNtsXziKC93DX2FrSJt8KpHyeWrC8hLj/KdjKA0vbJWNCjuM4Bas43+lctxcw0mnHthz1UWGP5rE5yfuruXI4tZ1NWpkAk+A5MRzta4bcnwxRiMgYF+AFKqiIwfrcInRBiGaeKfWmf/KJXZMONTtmZmMpieHRYGq3F2noWD7AR+cLDqIDDxHEONZYwb1RPucDaFV95fyIpMH3jCO9EYo+IV/VlesaeRBvsRU5u1TpJ6dfIAp36LX7XLdLgyUyOWjigNauiJpdkHwJVko1zFYne52PDYYicsCocs/f4FeistpgF01DOAzScj+E8GV9dL+g5mK1g4lYjhEZLjMQQEOvc7T5/QY1Bu05IjGJBVkgBCgnOXwMIFIYgwmDSlEitGQt1Faif5jb9DvzQaagqBH60k2+DeEtINbRUwTgWbT1DeHuNU60mN/lCIaBBVFY4mcDBLUWwC+6Ar+29i+dRCYX46ySQS7LJ80PiMztyawbYfpwSaBVSxHlOlKvN3g5i+9McuIHKSHkf7IT0qylvs/mjLIWrEi7Kf/dQziNmghNvlNojfb+PfRCKRqN2u+d5y30r3c2ffhz8JzXiU9Lxdk7DSbQktyygXz319vbTur0mcFMyDAuMqtXiCMgruTq3u18saLagjrGOKp+QN4K/oIBA6DB4T/32+aE4ipaG/wUcKJsKiFj2NG2kFRBFeHwUVFacMF+bOUDI9ERuFTsInot2Yq1qAM1MgOgDgiUyLd5B89NPNd2hG7wMxdzuAasi7Ln59vmk4KcoGGdDfMbCi9/VHVciFtwe6f1xvkjeYSrve6jOCyF79+6cfGTaCU50r+OiIiI2W+u0/0bdT6juw5dsGPsl8FXXkMOiiCFzm3SJFNUnteEXk/WgEmSw6YsMzaLHKmm7cW3XOtSl2A2fq5pjMaBLZleoEjoUjOSSMuwCLUbGDOwILlOjSiU9SjYZqCJMCwiT+O5obL/mtbPesQFdVMCaabyi1AL1GCQmFmDlzYg51znTBniGEDN3q34l5GZcq61iFa1aIeNUAwrodCMzqsKdyTok7XKCFMOlkxLZdcE4rNXhQDtRBxxJt/yd0EM+p13Ak0M+iGrMal+78mANL9G3BP3UHQ63IN21QsLrSitbwwqWkXfYUOx+a9Cbr+03nNui65T8cC0ohYlTt7XJ0HxHye2vqLjdbb9mq1jmw7OLDmbtdIlwzlmmHK8JcMH33NeCYuS3femV/5f+K9kG/dS5r1A9J1ca6d6VG9ULL+dLjFetW+zCTH97vLqbmAFBfXXJZMtNA4PIi+plEXjjRpaoJD0fgXL39MwgVX1x1kxyPyf0OFkVllOdbLVPLj8sdOWLPFgutdaechsBjsdBURS6yb9DM8AS+OOhuE+5EXC56U2RxEFk/69KC5Wb4m/jdZVBWn+sa5xgj72e+XSDwRrY2wAAA=
+    - nodeId: strybldr:frame:3595615238
+      mediaKind: video
+      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMzQxNzMyNDE3fQ
+    - nodeId: strybldr:source:3725310941
+      mediaKind: image
+      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgzMzM1ODExNTg3fQ
+    - nodeId: starter-source-brief-card
+      mediaKind: image
+      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzMzM2Mzg2Mjk4fQ
 ---
 
 # Knowgrph Strybldr Starter Template
 
-This is the minimum viable runnable Strybldr seed for a new source. It opens on the shared `storyboard` renderer, shows Source, Storyboard, Elements, Runtime, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards.
+This is the minimum viable runnable Strybldr seed for a new source. It opens on the shared storyboard renderer, shows Source, Storyboard, Elements, `bg#FBCFE8:Runtime`, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards.
 
-The template is intentionally neutral. Fill in source fields, approve cards, and only then connect live providers. Runtime IDs, stream URLs, transcript text, generated media URLs, and deployment claims remain blank until returned by an operator-approved live run.
+The template is intentionally neutral. Fill in source fields, approve cards, and only then connect live providers. Runtime IDs, stream URLs, transcript text, generated `bg#FEF08A:media` URLs, and deployment claims remain blank until returned by an operator-approved live run.
 
 ## Use
 

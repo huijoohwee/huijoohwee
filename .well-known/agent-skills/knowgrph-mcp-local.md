@@ -1,12 +1,12 @@
 # Knowgrph Local MCP Skill
 
-Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, video-remix run planning, browser bridge, and vdeoxpln inspection tools through the stdio MCP server.
+Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, video-remix run planning, browser bridge, SEA-LION sidecar, and vdeoxpln inspection tools through the stdio MCP server.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_e33cf0c2`
+- Semantic key: `kgvx_db12ae64`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -19,6 +19,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Age
 - list vdeoxpln
 - local mcp
 - run pipeline
+- sealion sidecar
 - superagent
 - video remix
 
@@ -30,6 +31,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Age
 - pipeline config
 - reference URL
 - source cards
+- Southeast Asian language text
 - workspace file
 
 ## Outputs
@@ -37,6 +39,7 @@ Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Age
 - agentic canvas os dashboard plan
 - local tool result
 - pipeline artifact
+- SEA-LION sidecar result
 - superagent report
 - vdeoxpln registry snapshot
 - video remix run manifest
@@ -59,6 +62,9 @@ Local MCP tools:
 - knowgrph.ui.stop
 - knowgrph.vdeoxpln.list
 - knowgrph.video_remix.run
+- sealion.detect_language_variant
+- sealion.safety_check
+- sealion.translate_localize
 - search
 
 ## Workflow
@@ -66,6 +72,7 @@ Local MCP tools:
 - List local tools from the shared local MCP contract.
 - Run only path-guarded local-root operations.
 - Run video-remix orchestration as an approval-gated local manifest before any paid provider call.
+- Forward SEA-LION regional language, localization, and safety calls to the hosted sidecar with server-owned auth.
 - Summarize artifacts and registry metadata in the MCP result.
 
 ## Source Owners
