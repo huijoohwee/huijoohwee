@@ -21,6 +21,8 @@ docs_/
 video/
 image/knowgrph/video-frame/
 image/video-frame/
+*.spz
+*.ply
 
 # Singabldr: NEVER commit secrets (local-only convenience files)
 content/singabldr/user-secrets.json
