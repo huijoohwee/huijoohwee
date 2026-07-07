@@ -40,10 +40,31 @@ template_flow_demo:
   mode: {key: mode, type: string, value: "universal-go-no-go-investment-template"}
   input_fields: {key: input_fields, type: array, value: ["input_query","input_context","input_audience","input_format","input_constraints","input_evidence","input_tone","input_metric_label","input_metric_target","input_investment_amount","input_forecast_years","input_initial_revenue","input_revenue_growth_pct","input_operating_margin_pct","input_tax_rate_pct","input_discount_rate_pct","input_terminal_growth_pct","input_terminal_multiple","input_capex_pct_revenue","input_working_capital_pct_revenue","input_probability_success_pct","input_strategic_fit_score","input_execution_risk_score","input_market_risk_score"]}
   output_fields: {key: output_fields, type: array, value: ["output","imageUrl","outputSrcDoc"]}
+kgVideoSequenceTimeline: true
+kgVideoSequenceSources:
+  - id: "clip_1907994077"
+    originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
+    importMode: "url"
+    sourceUrl: "http://localhost:5179/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzNDMwNDU3NTE5fQ"
+    mimeHint: "video/mp4"
+    byteSize: 3778691
+    durationSeconds: 51.754666666666665
+    frameRate: 24
 flow_diagrams:
   key: flow_diagrams
   type: object
   value:
+    video_media_timeline:
+      key: "video_media_timeline"
+      type: mermaid_gantt
+      value: |-
+        gantt
+          title Video Sequence
+          dateFormat HH:mm
+          axisFormat %H:%M
+          section Source video
+          Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4 : clip_1907994077, kgsrc_0_51_755, kgpos_0, 0.863m
     template_gitgraph:
       key: template_gitgraph
       type: mermaid_gitgraph

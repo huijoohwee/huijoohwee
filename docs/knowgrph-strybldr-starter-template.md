@@ -6,7 +6,7 @@ date: "2026-06-16"
 lang: "en-US"
 schema: "kgc-strybldr-starter/v1"
 implementation_contract: "docs/documents/knowgrph-strybldr-prd-tad.md"
-template_policy: "Minimum viable runnable Strybldr seed; source payload owns graph data; runtime outputs stay blank until operator-approved live calls return them."
+template_policy: "Minimum viable runnable Strybldr seed for video-agent E2E ideation, invocation, and generation; source payload owns graph data; runtime outputs stay blank until operator-approved live calls return them."
 validation_input_forbid_hardcode_in_repo: "true"
 deployed_api_claim: "false"
 kgCanvasSurfaceMode: "2d"
@@ -52,7 +52,7 @@ starter_inputs:
   source_title: "Untitled source"
   source_author: ""
   source_policy: "Use operator-owned source notes, metadata, and approved paraphrased beats only. Do not copy transcript text."
-  target_brief: "Create a concise source-backed Strybldr storyboard and a local animatic packet before any live provider call."
+  target_brief: "Create a concise source-backed video-agent ideation brief, invocation plan, generation storyboard, and local animatic packet before any live provider call."
   approval_state: "draft"
   publish_scope: "local-only"
   publish_policy: "No Prod, Cloudflare, external publication, fabricated provider IDs, stream URLs, or transcript text."
@@ -61,8 +61,85 @@ local_animatic_inputs:
   model: "strybldr-local-animatic-v1"
   status: "ready"
   paid_call_count: 0
-  source: "approved Strybldr cards from this starter document"
+  source: "approved Strybldr cards plus Agentic OS /, #, @ invocations from this starter document"
   output: "strybldr-video-*.md with embedded srcdoc animatic and source provenance links"
+agentic_os_video_agent_pipeline:
+  version: "agentic-video-agent-pipeline/v1"
+  status: "spec-complete"
+  autonomy_mode: "local-dry-run-first"
+  source_docs:
+    - "../agentic-os-docs/MEMORY.md"
+    - "../agentic-os-docs/AGENTS.md"
+    - "../agentic-os-docs/DICTIONARY-COMMAND.md"
+    - "../agentic-os-docs/DICTIONARY-SEMANTIC.md"
+    - "../agentic-os-docs/DICTIONARY-BINDING.md"
+    - "../agentic-os-docs/HARNESS-CONTRACTS.md"
+    - "../agentic-os-docs/RUNTIME-READINESS.md"
+  invocation_routes:
+    slash:
+      - "/memory.seed"
+      - "/source.normalize"
+      - "/harness.define"
+      - "/mcp.capabilities"
+      - "/cost.audit"
+      - "/canvas.project"
+      - "/runtime-ready.check"
+      - "/validation.run"
+      - "/deploy.guard"
+    semantic:
+      - "#frontmatter"
+      - "#harness"
+      - "#token-economics"
+      - "#vcc"
+      - "#runtime-ready"
+      - "#canvas"
+      - "#approval-gate"
+      - "#dev-only"
+      - "#no-hardcode"
+    binding:
+      - "@source.frontmatter"
+      - "@source.body"
+      - "@local-harness"
+      - "@runtime-proof"
+      - "@cost-log"
+      - "@mcp-gateway"
+      - "@canvas"
+      - "@approval-gate"
+      - "@operator"
+      - "@dev-only"
+  stages:
+    - id: "video-agent-ideation"
+      lane: "Ideation"
+      command: "/memory.seed"
+      bindings: ["@source.frontmatter", "@source.body", "@operator"]
+      semantics: ["#frontmatter", "#vcc", "#no-hardcode"]
+      output: "source-backed idea brief and storyboard hypotheses"
+      paid_call_count: 0
+    - id: "video-agent-invocation"
+      lane: "Invocation"
+      command: "/harness.define"
+      bindings: ["@local-harness", "@cost-log", "@mcp-gateway"]
+      semantics: ["#harness", "#token-economics", "#approval-gate"]
+      output: "typed invocation plan with bounds, gates, and cost fields"
+      paid_call_count: 0
+    - id: "video-agent-generation"
+      lane: "Generation"
+      command: "/canvas.project"
+      bindings: ["@canvas", "@runtime-proof", "@approval-gate"]
+      semantics: ["#canvas", "#runtime-ready", "#dev-only"]
+      output: "local animatic packet by default; live provider result only after approval"
+      paid_call_count: 0
+  gates:
+    live_provider_calls: "blocked until @operator approves @approval-gate"
+    prod_mirror: "blocked by /deploy.guard and @dev-only"
+    cloudflare: "blocked by /deploy.guard and @dev-only"
+  runtime_outputs:
+    idea_brief_path: ""
+    invocation_manifest_path: ""
+    local_animatic_packet_path: ""
+    live_video_url: ""
+    provider_job_id: ""
+    runtime_proof_path: ""
 socket_types:
   strybldr_text_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [strybldr_text_signal]}
   strybldr_media_signal: {color: "#38bdf8", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [strybldr_media_signal]}
@@ -92,41 +169,27 @@ kgParserRoutingContract:
     - "FloatingPanel: Camera"
   edgePolicy: "Explicit flow.edges are source-owned SSOT; renderers project visible connectors only."
 kgWebpageView: "markdown"
-kgVideoSequenceSources:
-  - id: "operator_source_video"
-    originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
-    relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
-    importMode: "url"
-    sourceUrl: "http://localhost:5175/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMjE0NDQyMzE4fQ"
-    mimeHint: "video/mp4"
-    byteSize: 3778691
-    durationSeconds: 51.754666666666665
-    frameRate: 24
-  - id: "clip_748627097"
-    originalName: "港岛仿生局.mp4"
-    relativePath: "港岛仿生局.mp4"
-    importMode: "url"
-    sourceUrl: "http://localhost:5175/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzMjE0NDQyMzE5fQ"
-    mimeHint: "video/mp4"
-    byteSize: 6790608
-    durationSeconds: 15.09297052154195
-    frameRate: 24
+kgVideoSequenceSources: []
 kgVideoSequenceTimeline: true
 flow_diagrams:
   key: "flow_diagrams"
   type: "object"
   value:
-    video_sequence:
-      key: video_sequence
+    video_agent_workflow:
+      key: video_agent_workflow
       type: mermaid_gantt
+      floatingPanelView: "gantt"
+      bottomPanelTab: "gantt"
       value: |-
         gantt
-          title Video Sequence
+          title Video-Agent E2E Pipeline
           dateFormat HH:mm
           axisFormat %H:%M
-          section Source video
-          Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4 : operator_source_video, kgsrc_0_51_755, kgpos_0, 0.863m
-          港岛仿生局.mp4 : clip_748627097, kgsrc_0_15_093, kgpos_0_397, 0.252m
+          section Agentic OS
+          Ideation : video_agent_ideation, 00:00, 0.167m
+          Invocation : video_agent_invocation, after video_agent_ideation, 0.167m
+          Generation dry-run : video_agent_generation, after video_agent_invocation, 0.167m
+          Runtime proof : video_agent_runtime_proof, after video_agent_generation, 0.167m
     starter_flowchart:
       key: "starter_flowchart"
       type: "mermaid_flowchart"
@@ -137,12 +200,13 @@ flow_diagrams:
       value: |-
         flowchart LR
           source["Source URL and operator notes"]
-          storyboard["Paraphrased storyboard beats"]
-          elements["Reusable elements"]
-          runtime["Local animatic runtime gate"]
+          ideation["/memory.seed ideation @source.body"]
+          invocation["/harness.define invocation #harness"]
+          generation["/canvas.project generation @canvas"]
+          runtime["/runtime-ready.check local runtime gate"]
           review["Review packet"]
           publish["Local publish packet"]
-          source --> storyboard --> elements --> runtime --> review --> publish
+          source --> ideation --> invocation --> generation --> runtime --> review --> publish
 strybldr_storyboard:
   version: '1'
   runId: strybldr-starter-template
@@ -151,6 +215,9 @@ strybldr_storyboard:
   workflow:
     stages:
       - Source
+      - Ideation
+      - Invocation
+      - Generation
       - Storyboard
       - Elements
       - Runtime
@@ -183,6 +250,42 @@ strybldr_storyboard:
       prompt: Summarize the source promise without copying transcript text or provider-generated output.
       action: Fill source fields before approving storyboard cards.
       summary: Capture the operator-owned source URL, title, author, constraints, and notes.
+    - id: video-agent-ideation-card
+      sourceUnitId: strybldr-starter-source
+      label: Video-agent ideation
+      confidence: 1
+      sourceBox: null
+      evidenceKind: agentic-os-invocation
+      provider: knowgrph
+      lane: Ideation
+      order: 2
+      prompt: "Run /memory.seed #frontmatter #vcc @source.frontmatter @source.body to derive a source-backed idea brief."
+      action: Keep ideas paraphrased, source-backed, and zero-spend until the operator approves generation.
+      summary: Autonomous ideation turns the source brief into candidate shots, narrative beats, and reuse constraints.
+    - id: video-agent-invocation-card
+      sourceUnitId: strybldr-starter-source
+      label: Video-agent invocation
+      confidence: 1
+      sourceBox: null
+      evidenceKind: agentic-os-invocation
+      provider: knowgrph
+      lane: Invocation
+      order: 3
+      prompt: "Run /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway."
+      action: Produce a typed invocation plan with max iteration, cost ledger, approval gates, and fallback behavior.
+      summary: Invocation binds commands, semantics, and runtime surfaces before any model or media call can run.
+    - id: video-agent-generation-card
+      sourceUnitId: strybldr-starter-source
+      label: Video-agent generation
+      confidence: 1
+      sourceBox: null
+      evidenceKind: runtime-plan
+      provider: knowgrph-local-animatic
+      lane: Generation
+      order: 4
+      prompt: "Run /canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate."
+      action: Generate a local animatic packet first; require @operator approval before live video provider calls.
+      summary: Generation projects approved story cards into Canvas and emits local proof with paid_call_count remaining zero.
     - id: starter-storyboard-beats-card
       sourceUnitId: strybldr-starter-source
       label: Storyboard beats
@@ -191,7 +294,7 @@ strybldr_storyboard:
       evidenceKind: user-edit
       provider: knowgrph
       lane: Storyboard
-      order: 2
+      order: 5
       prompt: Create four concise storyboard beats from the operator notes.
       action: Approve only paraphrased, source-backed beats.
       summary: Draft setup, turn, proof, and close beats as editable cards.
@@ -203,7 +306,7 @@ strybldr_storyboard:
       evidenceKind: user-edit
       provider: knowgrph
       lane: Elements
-      order: 3
+      order: 6
       prompt: Convert approved beats into reusable elements and style constraints.
       action: Keep generated media URLs blank until real outputs exist.
       summary: List reusable characters, locations, props, evidence cards, UI states, or shots.
@@ -215,7 +318,7 @@ strybldr_storyboard:
       evidenceKind: runtime-plan
       provider: knowgrph-local-animatic
       lane: Runtime
-      order: 4
+      order: 7
       prompt: Render the local animatic handoff and keep live IDs empty until returned by an approved run.
       action: Generate locally first; require human approval before VideoDB, SenseNova, or other paid provider calls.
       summary: Default runtime is local animatic generation with zero paid calls and blank live provider fields.
@@ -227,7 +330,7 @@ strybldr_storyboard:
       evidenceKind: runtime-review
       provider: knowgrph
       lane: Review
-      order: 5
+      order: 8
       prompt: Prepare a review packet that separates local evidence from live provider evidence.
       action: Reject fabricated provider IDs, stream URLs, transcripts, or generated asset URLs.
       summary: Review provenance, approval state, cost, provider evidence, and local playback.
@@ -239,47 +342,62 @@ strybldr_storyboard:
       evidenceKind: runtime-publish
       provider: knowgrph
       lane: Publish
-      order: 6
+      order: 9
       prompt: Close the workflow with a local-only packet and a visible publish gate.
       action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
       summary: Final output is a local packet path and approval state, not a public deployment claim.
-  cards:
-    - nodeId: starter-storyboard-beats-card
-      mediaKind: image
-      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgzMjE0NDQyMzE5fQ
-    - nodeId: starter-elements-card
-      mediaKind: image
-      mediaUrl: data:image/webp;base64,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
-    - nodeId: strybldr:frame:3595615238
-      mediaKind: video
-      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzMzQxNzMyNDE3fQ
-    - nodeId: strybldr:source:3725310941
-      mediaKind: image
-      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-017d1e965528642f/image/strybldr-starter-source-017d1e965528642f.png?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wMTdkMWU5NjU1Mjg2NDJmIiwiZXhwaXJlc0F0IjoxNzgzMzM1ODExNTg3fQ
-    - nodeId: starter-source-brief-card
-      mediaKind: image
-      mediaUrl: http://localhost:5175/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzMzM2Mzg2Mjk4fQ
+  cards: []
 ---
 
 # Knowgrph Strybldr Starter Template
 
-This is the minimum viable runnable Strybldr seed for a new source. It opens on the shared storyboard renderer, shows Source, Storyboard, Elements, `bg#FBCFE8:Runtime`, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards.
+This is the /prd-tad.create minimum viable runnable Strybldr seed for a video-agent E2E demo. It opens on the shared storyboard renderer, shows Source, Ideation, Invocation, Generation, Storyboard, Elements, `bg#FBCFE8:Runtime`, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards. /memory.seed #canvas @canvas
 
 The template is intentionally neutral. Fill in source fields, approve cards, and only then connect live providers. Runtime IDs, stream URLs, transcript text, generated `bg#FEF08A:media` URLs, and deployment claims remain blank until returned by an operator-approved live run.
+
+## Video-Agent E2E Demo
+
+This starter demonstrates the autonomous video-agent loop as source-backed stages, not as a separate parser or provider panel.
+
+| Stage | Invocation | Output | Gate |
+|---|---|---|---|
+| Ideation | /memory.seed #frontmatter #vcc @source.frontmatter @source.body | Candidate shots, narrative beats, reuse constraints | Zero paid calls |
+| Invocation | /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway | Typed run manifest, cost fields, fallback paths, max iteration | Missing approval blocks before spend |
+| Generation | /canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate | Local animatic packet and visible Storyboard proof | Live video provider calls require @operator |
+| Validation | /validation.run #vcc #dev-only @runtime-proof @dev-only | Focused proof lines and deploy-boundary status | No Prod or Cloudflare mutation |
+| Deploy guard | /deploy.guard #approval-gate #dev-only @operator @dev-only | Explicitly gated release status | Stop before Prod/Cloudflare unless instructed |
+
+## Autonomous Invocation Script
+
+```yaml
+video_agent_e2e:
+  source: "@source.frontmatter + @source.body"
+  ideation: "/memory.seed #frontmatter #vcc @source.frontmatter @source.body"
+  invocation: "/harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway"
+  generation: "/canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate"
+  validation: "/validation.run #vcc #dev-only @runtime-proof @dev-only"
+  deploy_guard: "/deploy.guard #approval-gate #dev-only @operator @dev-only"
+  default_result: "local animatic packet; paid_call_count remains 0"
+  live_result: "blank until @operator approves @approval-gate and a provider returns evidence"
+```
 
 ## Use
 
 1. Open this Markdown file in Knowgrph.
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
-3. Edit `Source brief`, `Storyboard beats`, and `Reusable elements`.
-4. Approve the storyboard cards before any paid or mutating provider call.
+3. Edit `Source brief`, `Video-agent ideation`, `Video-agent invocation`, and `Video-agent generation`.
+4. Approve `Storyboard beats` and `Reusable elements` before any paid or mutating provider call.
 5. Run local generation first and confirm `paid_call_count: 0`.
-6. Review the local packet before changing `publish_scope`.
+6. Run /validation.run #vcc @runtime-proof and review the local packet before changing `publish_scope`.
+7. Keep /deploy.guard #dev-only @dev-only active unless the operator explicitly authorizes Prod or Cloudflare.
 
 ## Acceptance Checklist
 
 - [ ] Source URL and source notes are operator supplied.
+- [ ] Ideation uses /memory.seed with @source.frontmatter and @source.body.
+- [ ] Invocation uses /harness.define, /mcp.capabilities, and /cost.audit with #harness and @local-harness.
 - [ ] Storyboard beats are paraphrased and approved.
+- [ ] Generation uses /canvas.project and /runtime-ready.check before any live provider call.
 - [ ] Live provider fields stay blank until real responses return them.
 - [ ] Local animatic generation works without `VIDEODB_API_KEY` or `SENSENOVA_API_KEY`.
 - [ ] Publish scope remains `local-only` unless the operator explicitly authorizes Prod or Cloudflare.
@@ -289,4 +407,5 @@ The template is intentionally neutral. Fill in source fields, approve cards, and
 - Do not hardcode source-specific media IDs, provider IDs, stream URLs, transcripts, credentials, or generated asset URLs in repo code or tests.
 - Do not remap stale renderer names or add downstream compatibility aliases.
 - Do not deploy this starter to Prod or Cloudflare from this document alone.
+- Do not promote this demo from `spec-complete` to `runtime-ready` without surfaced @runtime-proof from /validation.run.
 - Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.

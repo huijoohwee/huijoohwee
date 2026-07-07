@@ -23,6 +23,9 @@ This folder is the local documentation control surface for making `knowgrph` a r
 |---|---|---|
 | `MEMORY.md` | Local memory seed | Source of truth for `/`, `#`, `@`, runtime gates, and deploy boundaries. |
 | `AGENTS.md` | Agent instructions | Rules for editing this folder. |
+| `DICTIONARY-COMMAND.md` | Slash dictionary | `/` command-route intents, bindings, filters, and VCC signals. |
+| `DICTIONARY-SEMANTIC.md` | Hash dictionary | `#` semantic filters for routing, proof, cost, and cleanup. |
+| `DICTIONARY-BINDING.md` | At dictionary | `@` actor, source, runtime, proof, and boundary bindings. |
 | `PRD-TAD.md` | Combined product and architecture contract | What `knowgrph` must provide and how the runtime is shaped. |
 | `RUNTIME-READINESS.md` | Readiness matrix | Tracks spec-complete to runtime-ready gates by capability. |
 | `HARNESS-CONTRACTS.md` | Harness contract catalog | Typed AI harness contracts, cost logs, fallback paths, and loop bounds. |
