@@ -83,11 +83,15 @@ probe_tree_runtime:
     current_node_id: "care_source"
     context_text: "Synthetic or operator-redacted care-plan coach intake; ask for missing context, language, caregiver handoff, or safety boundary."
     option_count: 3
+    token_budget: 1200
   proof:
     generate_mutates_graph: false
     select_writes_type_probe_node: true
     select_edge_type: "branches-to"
+    select_frontmatter_flow_canvas_sync: true
     evolve_writes_memory_exemplar: true
+    evolve_reports_incomplete_parent_path: true
+    token_budget_ceiling_enforced: true
     native_checkpointer_datastore: false
     paid_call_count: 0
 starter_inputs:
@@ -206,13 +210,17 @@ runtime_proof:
   focused_checks:
     - "docs.careAgentDemo.runtimeReady"
     - "mcp.probeTree.runtime"
+    - "probeTree.select.frontmatterFlowCanvasSync"
     - "markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
   validation_commands:
     - "npm --prefix canvas run test:ci:unit -- docs.careAgentDemo.runtimeReady"
     - "node --test mcp/__tests__/probe-tree-runtime.test.mjs"
+    - "npm --prefix canvas run test:ci:unit -- probeTree.select.frontmatterFlowCanvasSync"
     - "FLOW_DIAGRAM_SAMPLE_PATHS=../../huijoohwee/docs/knowgrph-care-agent-demo.md npm --prefix canvas run test:ci:unit -- markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
   parsed_frontmatter_flow: true
   computed_frontmatter_flow: true
+  probe_tree_canvas_sync_verified: true
+  probe_tree_token_budget_verified: true
   dictionary_routes_verified: true
   semantic_html_verified: true
   zero_cost_local_harness_verified: true
@@ -318,7 +326,7 @@ flow:
     - id: {key: id, type: string, value: "care_normalize"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Normalize Source"}
-      position: {key: position, type: object, value: {"x":340,"y":0}}
+      position: {key: position, type: object, value: {"x":-82.66666666666663,"y":44.5}}
       handles: {key: handles, type: object, value: {"target":["redactedCarePlan"],"source":["normalizedSummary","safetyBoundary"]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"care_source_signal_in":"care_source_signal"},"out":{"care_task_signal_out":"care_task_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:care_normalize"}
@@ -332,8 +340,10 @@ flow:
       lane: {key: lane, type: string, value: "Source"}
       normalizedSummary: {key: normalizedSummary, type: string, value: ""}
       safetyBoundary: {key: safetyBoundary, type: string, value: "No diagnosis, dosage change, emergency triage, or PHI persistence."}
+      "visual:height": {key: "visual:height", type: number, value: 203}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
+      "visual:width": {key: "visual:width", type: number, value: 360}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "care_tasks"}
@@ -438,6 +448,7 @@ flow:
               <p>Emergency, diagnosis, and medication-dose questions stop here and route to clinician or emergency guidance.</p>
             </section>
           </article>
+
       runtimeProof: {key: runtimeProof, type: string, value: ""}
       "visual:height": {key: "visual:height", type: number, value: 324}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
@@ -677,8 +688,8 @@ care_agent_local_harness:
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
 3. Replace the synthetic care-plan note with operator-redacted source content only.
 4. Run `/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body`.
-5. Run `knowgrph.probe.generate` with `thread_root_id=care-agent-demo`, `current_node_id=care_source`, and the redacted context; optionally configure `KNOWGRPH_PROBE_TREE_MODEL` for Ollama-backed local generation.
-6. Run `knowgrph.probe.select` for the user-selected option, then `knowgrph.probe.evolve` after the branch resolves.
+5. Run `knowgrph.probe.generate` with `thread_root_id=care-agent-demo`, `current_node_id=care_source`, `token_budget=1200`, and the redacted context; optionally configure `KNOWGRPH_PROBE_TREE_MODEL` for Ollama-backed local generation.
+6. Run `knowgrph.probe.select` for the user-selected option, then run `knowgrph.probe.evolve` after the branch resolves; keep the parent checkpoint materialized in `data/probe-tree` or treat any returned incomplete-path status as a validation blocker.
 7. Run `/harness.define /cost.audit #harness #token-economics @local-harness @cost-log`.
 8. Run `/canvas.project #canvas @canvas @runtime-proof` and review the Storyboard plus Rich Media panel.
 9. Run `/validation.run #vcc @runtime-proof @dev-only`.
@@ -690,8 +701,11 @@ care_agent_local_harness:
 - [ ] Source content is synthetic or operator-redacted.
 - [ ] `/`, `#`, and `@` tokens match the Agentic OS dictionaries.
 - [ ] Probe-tree tools are registered in local MCP and `probe.generate` does not mutate graph state.
+- [ ] `probe.generate` enforces `token_budget` before local model invocation.
 - [ ] `probe.select` writes one `type: probe` markdown node with a `branches-to` edge under `data/probe-tree`.
+- [ ] `probe.select` output parses through frontmatter-flow for existing Canvas/sync projection.
 - [ ] `probe.evolve` writes one scoped memory exemplar without adding a second checkpoint datastore.
+- [ ] `probe.evolve` scores the complete traversed path or reports missing parent checkpoints.
 - [ ] Harness fields include schemas, fallback, max iteration, circuit breaker, and cost log.
 - [ ] Local dry-run cost fields remain exact zero.
 - [ ] Storyboard and Rich Media projection use existing shared Canvas owners.
