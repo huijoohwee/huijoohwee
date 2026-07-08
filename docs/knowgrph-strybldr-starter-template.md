@@ -351,7 +351,7 @@ strybldr_storyboard:
 
 # Knowgrph Strybldr Starter Template
 
-This is the /prd-tad.create minimum viable runnable Strybldr seed for a video-agent E2E demo. It opens on the shared storyboard renderer, shows Source, Ideation, Invocation, Generation, Storyboard, Elements, `bg#FBCFE8:Runtime`, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards. /memory.seed #canvas @canvas
+This is the /prd-tad.create minimum viable runnable ![1920s_Singapore_Malaya_202606190937.jpeg](http://localhost:5180/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgzNDc0OTU2MTkwfQ) Strybldr seed for a video-agent E2E demo. It opens on the shared storyboard renderer, shows Source, Ideation, Invocation, Generation, Storyboard, Elements, Runtime, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards. /memory.seed #canvas @canvas
 
 The template is intentionally neutral. Fill in source fields, approve cards, and only then connect live providers. Runtime IDs, stream URLs, transcript text, generated `bg#FEF08A:media` URLs, and deployment claims remain blank until returned by an operator-approved live run.
 
