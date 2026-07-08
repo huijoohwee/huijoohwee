@@ -46,7 +46,7 @@ kgVideoSequenceSources:
     originalName: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
     relativePath: "Seedance_2.0_is_on_Artlist-77FAnT935IE.mp4"
     importMode: "url"
-    sourceUrl: "http://localhost:5179/api/storage/media/airvio/runs/upload-5a525a6bbe2322b4/video/seedance_2.0_is_on_artlist-77fant935ie-5a525a6bbe2322b4.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC01YTUyNWE2YmJlMjMyMmI0IiwiZXhwaXJlc0F0IjoxNzgzNDMwNDU3NTE5fQ"
+    sourceUrl: ""
     mimeHint: "video/mp4"
     byteSize: 3778691
     durationSeconds: 51.754666666666665

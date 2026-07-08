@@ -1,4 +1,5 @@
 ---
+
 title: "Knowgrph MissAlpha Dashboard Demo"
 graphId: "md:knowgrph-missalph-dashboard-demo"
 doc_type: "Dashboard Renderer Demo"
@@ -41,7 +42,15 @@ dashboard_pipeline:
     - "no copied third-party dashboard markup"
     - "no fixed chart screenshot"
     - "no fixture backfill"
+socket_types:
+  SignalFlow: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [SignalFlow]}
+  ProcessLink: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [ProcessLink]}
+  RiskLink: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [RiskLink]}
+  OutputLink: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [OutputLink]}
+  MediaLink: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [MediaLink]}
+  ValidationLink: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [ValidationLink]}
 flow:
+  balancedViewportPreset: {key: "balancedViewportPreset", type: string, value: "widgetFrontmatter"}
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
   computed: {key: computed, type: boolean, value: false}
@@ -240,7 +249,6 @@ kgParserRoutingContract:
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
-
 # Knowgrph MissAlpha Dashboard Demo
 
 This demo is frontmatter-first. It is intended to exercise the local E2E path: published Markdown source file -> typed frontmatter flow parse -> active GraphData -> 2D Dashboard renderer -> shared Grid display control.

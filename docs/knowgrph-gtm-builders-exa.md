@@ -1,4 +1,5 @@
 ---
+
 title: "Knowgrph GTM Builders - AcceleratorROI Scorer + EcosystemPulse Dashboard"
 graphId: "md:knowgrph-gtm-builders-exa"
 doc_type: "GTM Builders Exa Demo"
@@ -98,6 +99,7 @@ kgSharedRendererContract:
 
 # ── socket types ──────────────────────────────────────────────────────────────
 socket_types:
+  chart_signal: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [chart_signal]}
   text_signal: {color: "#0ea5e9", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [text_signal]}
   number_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [number_signal]}
   rich_media_chart_html: {color: "var(--kg-canvas-accent)", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [rich_media_chart_html]}
@@ -685,8 +687,6 @@ flow:
     - {"id":"e_dvi_quad","source":"n_dvi","sourceHandle":"dvi_scores","target":"n_quadrant","targetHandle":"dvi_scores"}
     - {"id":"e_quad_p5","source":"n_quadrant","sourceHandle":"outputSrcDoc","target":"panel_p5","targetHandle":"outputSrcDoc","label":"quadrant scatter","type":"rich_media_chart_html"}
 ---
-
-
 # AcceleratorROI Scorer + EcosystemPulse Dashboard
 
 > TOPSIS-ranked accelerator intelligence · cohort survival · pivot detection · `Low-score ≠ dead`

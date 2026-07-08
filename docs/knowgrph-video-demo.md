@@ -1,4 +1,5 @@
 ---
+
 title: "Knowgrph · Video Demo — Three Skies (RoboDrone X1 · Frontier · Tempest · RoboTown)"
 graphId: "md:knowgrph-video-robodrone-demo-v1"
 doc_type: "Video Script — Director Brief"
@@ -302,6 +303,10 @@ flow_diagrams:
         tf 10 cmd PersistToR2
         tf 11 evt AssetsPersisted
         tf 12 ui ReplayFromR2NoLlm
+socket_types:
+  template_text_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_text_signal]}
+  template_image_signal: {color: "#38bdf8", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_image_signal]}
+  template_chart_html: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [template_chart_html]}
 flow:
   direction: {key: direction, type: string, value: LR}
   edgeType: {key: edgeType, type: string, value: bezier}
@@ -372,7 +377,7 @@ flow:
       phase: {key: phase, type: string, value: "generate"}
       actor: {key: actor, type: array, value: ["user", "AI"]}
       handles: {key: handles, type: object, value: {target: ["prompt_in"], source: ["text_out", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoScript"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoScript"}
       chatProvider: {key: chatProvider, type: string, value: "{{inputs.text_provider_id}}"}
       chatAuthMode: {key: chatAuthMode, type: string, value: "serverManaged"}
       chatEndpointUrl: {key: chatEndpointUrl, type: string, value: "{{inputs.text_endpoint_url}}"}
@@ -388,7 +393,7 @@ flow:
       phase: {key: phase, type: string, value: "render"}
       actor: {key: actor, type: array, value: ["system", "user"]}
       handles: {key: handles, type: object, value: {target: ["output", "outputSrcDoc"], source: ["output", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       output: {key: output, type: string, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
@@ -397,7 +402,7 @@ flow:
     - id: {key: id, type: string, value: "w-img-scene"}
       type: {key: type, type: string, value: "ImageGeneration"}
       label: {key: label, type: string, value: "Image Widget — Scene Reference"}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "imageGeneration"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
       model: {key: model, type: select, value: "{{inputs.image_model}}"}
       prompt: {key: prompt, type: textarea, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.label}}; {{inputs.theme}}. Script: {{inputs.script}}. Hero frame: CARIBBEAN locale — girl on turquoise island beach launching RoboDrone X1 into storm, mermaid queen rising from churning sea below, coral spire cathedral lit by lightning, 9:16 vertical."}
       size: {key: size, type: select, value: "2K"}
@@ -420,7 +425,7 @@ flow:
       phase: {key: phase, type: string, value: "render"}
       actor: {key: actor, type: array, value: ["system", "user"]}
       handles: {key: handles, type: object, value: {target: ["imageUrl", "outputSrcDoc"], source: ["imageUrl", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
       imageUrl: {key: imageUrl, type: string, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}
@@ -432,7 +437,7 @@ flow:
       phase: {key: phase, type: string, value: "generate"}
       actor: {key: actor, type: array, value: ["user", "AI"]}
       handles: {key: handles, type: object, value: {target: ["reference_image"], source: ["videoUrl"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "videoGeneration"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
       model: {key: model, type: select, value: "{{inputs.video_model}}"}
       prompt: {key: prompt, type: string, value: "{{inputs.vibe}}, {{inputs.duration_label}}; {{inputs.location.name}}; {{inputs.theme}}. Script: {{inputs.script}}"}
       ratio: {key: ratio, type: select, value: "9:16"}
@@ -450,7 +455,7 @@ flow:
       phase: {key: phase, type: string, value: "render"}
       actor: {key: actor, type: array, value: ["system", "user"]}
       handles: {key: handles, type: object, value: {target: ["videoUrl", "outputSrcDoc"], source: ["videoUrl", "outputSrcDoc"]}}
-      "flow:widgetFormId": {key: flow:widgetFormId, type: string, value: "richMediaPanel"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
       videoUrl: {key: videoUrl, type: string, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: string, value: ""}

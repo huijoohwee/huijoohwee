@@ -1,4 +1,5 @@
 ---
+
 title: "Knowgrph Ralphthon Video Demo - OpenClaw SuperAgent Harness"
 graphId: "md:knowgrph-ralphthon-openclaw-superagent-demo-v1"
 doc_type: "Video Demo - Rich Media Canvas Harness Brief"
@@ -394,7 +395,12 @@ mermaid: |
     class w-harness-judge judge
     class p-rich-media panel
 
+socket_types:
+  template_text_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_text_signal]}
+  template_image_signal: {color: "#38bdf8", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_image_signal]}
+  template_chart_html: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [template_chart_html]}
 flow:
+  balancedViewportPreset: {key: "balancedViewportPreset", type: string, value: "widgetFrontmatter"}
   direction: {key: direction, type: string, value: LR}
   edgeType: {key: edgeType, type: string, value: bezier}
   snapToGrid: {key: snapToGrid, type: boolean, value: true}
@@ -634,7 +640,6 @@ kgParserRoutingContract:
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
-
 # Ralphthon Video Demo - OpenClaw SuperAgent Harness
 
 ## Typed Fixture Contract

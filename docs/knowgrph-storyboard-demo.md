@@ -1,4 +1,10 @@
 ---
+
+socket_types:
+  template_text_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_text_signal]}
+  template_number_signal: {color: "#84cc16", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_number_signal]}
+  template_image_signal: {color: "#38bdf8", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_image_signal]}
+  template_chart_html: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [template_chart_html]}
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -214,7 +220,6 @@ kgParserRoutingContract:
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
-
 title: "Knowgrph Universal Go No-Go Investment Decision Flow Template"
 graphId: "doc:knowgrph-storyboard-widget-computing-flow-template"
 doc_type: "Computing Flow Template"

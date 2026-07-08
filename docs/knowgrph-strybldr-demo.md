@@ -1,5 +1,7 @@
----
+
 flow:
+  computed: {key: "computed", type: boolean, value: true}
+  snapToGrid: {key: "snapToGrid", type: boolean, value: true}
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
   balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
@@ -195,8 +197,6 @@ flow:
     - {"id":"strybldr-flow-edge-review-rich-image","source":"strybldr_flow_review","sourceHandle":"imageUrl","target":"strybldr_flow_rich_media_panel","targetHandle":"imageUrl","label":"review_image_to_rich_media"}
     - {"id":"strybldr-flow-edge-review-rich-video","source":"strybldr_flow_review","sourceHandle":"videoUrl","target":"strybldr_flow_rich_media_panel","targetHandle":"videoUrl","label":"review_video_to_rich_media"}
     - {"id":"strybldr-flow-edge-review-publish","source":"strybldr_flow_review","sourceHandle":"output","target":"strybldr_flow_publish","targetHandle":"input","label":"review_to_publish"}
----
-
 title: "Knowgrph Strybldr Demo - SenseNova + VideoDB API + MCP E2E"
 schema: "kgc-computing-flow/v1"
 graphId: "md:knowgrph-strybldr-sensenova-videodb-e2e"

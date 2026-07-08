@@ -1,45 +1,60 @@
 # Knowgrph Local MCP Skill
 
-Use this skill when: Expose local UI launch, pipeline, GraphRAG, superagent, Agentic Canvas OS planning, video-remix run planning, browser bridge, SEA-LION sidecar, and vdeoxpln inspection tools through the stdio MCP server.
+Use this skill when: Expose Knowgrph-owned local Source Files, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_db12ae64`
+- Semantic key: `kgvx_cb3aa0eb`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
 ## Triggers
 
-- agentic canvas os
 - browser api
 - graphrag
+- html video
 - launch canvas
 - list vdeoxpln
 - local mcp
+- memory layer
+- os status
+- probe tree
 - run pipeline
 - sealion sidecar
+- showrunner
 - superagent
 - video remix
+- visual annotation
 
 ## Inputs
 
+- annotation asset
 - browser API runtime
+- creative brief
 - graph data
 - local root
+- memory scope
 - pipeline config
+- probe branch
 - reference URL
+- render spec
 - source cards
 - Southeast Asian language text
 - workspace file
 
 ## Outputs
 
-- agentic canvas os dashboard plan
+- annotation result
 - local tool result
+- memory result
+- OS status snapshot
 - pipeline artifact
+- probe checkpoint
+- render manifest
 - SEA-LION sidecar result
+- showrunner artifact
 - superagent report
 - vdeoxpln registry snapshot
 - video remix run manifest
@@ -54,9 +69,25 @@ Browser-local tools:
 
 Local MCP tools:
 - fetch
+- knowgrph.annotate.image
+- knowgrph.annotate.video_frame
 - knowgrph.browser_api.run
 - knowgrph.graphrag_pipeline
+- knowgrph.html_video.render
+- knowgrph.memory.add
+- knowgrph.memory.assemble_prompt
+- knowgrph.memory.search
+- knowgrph.os.status
 - knowgrph.pipeline
+- knowgrph.probe.evolve
+- knowgrph.probe.generate
+- knowgrph.probe.select
+- knowgrph.showrunner.approve_stage
+- knowgrph.showrunner.get_artifact
+- knowgrph.showrunner.post_choice
+- knowgrph.showrunner.run_status
+- knowgrph.showrunner.start_run
+- knowgrph.showrunner.submit_critique
 - knowgrph.superagent.run
 - knowgrph.ui.launch
 - knowgrph.ui.stop

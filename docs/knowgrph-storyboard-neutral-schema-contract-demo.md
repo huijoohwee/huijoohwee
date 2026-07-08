@@ -1,4 +1,5 @@
 ---
+
 title: Knowgrph Storyboard Neutral Schema Contract Demo
 schema: "kgc-computing-flow/v1"
 kgCanvasSurfaceMode: "2d"
@@ -24,6 +25,7 @@ kgSharedRendererContract:
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 flow:
+  balancedViewportPreset: {key: "balancedViewportPreset", type: string, value: "widgetFrontmatter"}
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
   snapToGrid: {key: snapToGrid, type: boolean, value: true}
@@ -147,7 +149,6 @@ kgParserRoutingContract:
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
 ---
-
 # Knowgrph Storyboard Neutral Schema Contract Demo
 
 Use this document to validate the neutral alias contract for the native `2D Renderer: Storyboard` surface.

@@ -22,43 +22,47 @@ kgSharedRendererContract:
   edgeModel: "active graph edges from the selected source graph"
   timelineSurface: "TimelineTransportControls + shared bottom-panel surface"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
+socket_types:
+  gantt_timeline_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [gantt_timeline_signal]}
 flow:
-  direction: LR
-  edgeType: smoothstep
-  balancedViewportPreset: widgetFrontmatter
+  direction: {key: "direction", type: string, value: "LR"}
+  edgeType: {key: "edgeType", type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: "balancedViewportPreset", type: string, value: "widgetFrontmatter"}
+  computed: {key: "computed", type: boolean, value: true}
+  snapToGrid: {key: "snapToGrid", type: boolean, value: true}
   nodes:
-    - id: GANTT_TIMELINE_SOURCE
-      type: FlowDiagramSource
-      label: HH:mm Gantt source
-      position: {x: 0, y: 0}
-    - id: GANTT_TIMELINE_CANVAS
-      type: MermaidGanttTimeline
-      label: "Canvas 2D Renderer: Gantt-timeline"
-      position: {x: 380, y: -120}
-    - id: GANTT_TIMELINE_BOTTOM_PANEL
-      type: BottomPanel
-      label: BottomPanel Gantt-Timeline
-      position: {x: 380, y: 120}
-    - id: GANTT_TIMELINE_FLOATING_PANEL
-      type: FloatingPanel
-      label: FloatingPanel Gantt-Timeline
-      position: {x: 760, y: 0}
+    - id: {key: "id", type: string, value: "GANTT_TIMELINE_SOURCE"}
+      type: {key: "type", type: string, value: "FlowDiagramSource"}
+      label: {key: "label", type: string, value: "HH:mm Gantt source"}
+      position: {key: "position", type: object, value: {"x":0,"y":0}}
+      handles: {key: "handles", type: object, value: {"source":["output"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"out":{"output":"gantt_timeline_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "GANTT_TIMELINE_CANVAS"}
+      type: {key: "type", type: string, value: "MermaidGanttTimeline"}
+      label: {key: "label", type: string, value: "Canvas 2D Renderer: Gantt-timeline"}
+      position: {key: "position", type: object, value: {"x":380,"y":-120}}
+      handles: {key: "handles", type: object, value: {"target":["input"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"input":"gantt_timeline_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "GANTT_TIMELINE_BOTTOM_PANEL"}
+      type: {key: "type", type: string, value: "BottomPanel"}
+      label: {key: "label", type: string, value: "BottomPanel Gantt-Timeline"}
+      position: {key: "position", type: object, value: {"x":380,"y":120}}
+      handles: {key: "handles", type: object, value: {"target":["input"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"input":"gantt_timeline_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "GANTT_TIMELINE_FLOATING_PANEL"}
+      type: {key: "type", type: string, value: "FloatingPanel"}
+      label: {key: "label", type: string, value: "FloatingPanel Gantt-Timeline"}
+      position: {key: "position", type: object, value: {"x":760,"y":0}}
+      handles: {key: "handles", type: object, value: {"target":["input"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"input":"gantt_timeline_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
   edges:
-    - id: edge:gantt_timeline:source_canvas
-      source: GANTT_TIMELINE_SOURCE
-      sourceHandle: output
-      target: GANTT_TIMELINE_CANVAS
-      targetHandle: input
-    - id: edge:gantt_timeline:source_bottom
-      source: GANTT_TIMELINE_SOURCE
-      sourceHandle: output
-      target: GANTT_TIMELINE_BOTTOM_PANEL
-      targetHandle: input
-    - id: edge:gantt_timeline:source_floating
-      source: GANTT_TIMELINE_SOURCE
-      sourceHandle: output
-      target: GANTT_TIMELINE_FLOATING_PANEL
-      targetHandle: input
+    - {"id":"edge:gantt_timeline:source_canvas","source":"GANTT_TIMELINE_SOURCE","sourceHandle":"output","target":"GANTT_TIMELINE_CANVAS","targetHandle":"input","type":"gantt_timeline_signal"}
+    - {"id":"edge:gantt_timeline:source_bottom","source":"GANTT_TIMELINE_SOURCE","sourceHandle":"output","target":"GANTT_TIMELINE_BOTTOM_PANEL","targetHandle":"input","type":"gantt_timeline_signal"}
+    - {"id":"edge:gantt_timeline:source_floating","source":"GANTT_TIMELINE_SOURCE","sourceHandle":"output","target":"GANTT_TIMELINE_FLOATING_PANEL","targetHandle":"input","type":"gantt_timeline_signal"}
 flow_diagrams:
   gantt_timeline:
     key: gantt_timeline

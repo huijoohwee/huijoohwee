@@ -1,0 +1,1 @@
+import{v as c}from"./index-DVkhnfu5.js";const l=n=>{const r=c(n),s=new Set,o=[];for(const a of r){const t=String(a??"").replace(/\s+/g," ").trim();if(!t)continue;const e=t.toLowerCase();s.has(e)||(s.add(e),o.push(t))}return o};export{l as s};

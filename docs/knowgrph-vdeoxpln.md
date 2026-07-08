@@ -1,4 +1,5 @@
 ---
+
 title: "Knowgrph Vdeoxpln - Interactive Visual Explanation"
 graphId: "md:knowgrph-vdeoxpln-interactive-explanation"
 doc_type: "Knowgrph Vdeoxpln Visual Explainer"
@@ -47,211 +48,280 @@ workflow_sections:
     title: "Publish and verify without mirror-only edits"
     nodes: [run_manifest, validation, cloudflare]
 
+socket_types:
+  deterministic: {color: "#16a34a", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [deterministic]}
+  publish: {color: "#f59e0b", edgeWidthPx: 3, handleStrokeWidthPx: 3, accepts: [publish]}
+  inspect: {color: "#2563eb", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [inspect]}
+  ai_assist: {color: "#9333ea", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [ai_assist]}
+  vdeoxpln_flow_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [vdeoxpln_flow_signal]}
 flow:
-  direction: LR
-  edgeType: smoothstep
-  snapToGrid: true
-  computed: true
-  aspectRatio: "16:9"
-  targetResolution: "1920x1080"
+  direction: {key: "direction", type: string, value: "LR"}
+  edgeType: {key: "edgeType", type: string, value: "smoothstep"}
+  computed: {key: "computed", type: boolean, value: true}
+  snapToGrid: {key: "snapToGrid", type: boolean, value: true}
+  aspectRatio: {key: "aspectRatio", type: string, value: "16:9"}
+  targetResolution: {key: "targetResolution", type: string, value: "1920x1080"}
+  balancedViewportPreset: {key: "balancedViewportPreset", type: string, value: "widgetFrontmatter"}
   nodes:
-    - id: reference_boundary
-      type: ConceptCard
-      label: "Concept-only Inspiration Boundary"
-      position: {x: 40, y: 40}
-      size: {width: 320, height: 150}
-      tags: [source]
-      summary: "Use manifest-governed, file-backed, exact-vs-AI product patterns only. Do not copy external implementation artifacts, names, routes, or examples."
-      inspect: "Reference source is a directional product pattern, not a code or schema dependency."
-    - id: registry
-      type: ContractCard
-      label: "Canonical Vdeoxpln Registry"
-      position: {x: 430, y: 40}
-      size: {width: 340, height: 170}
-      tags: [contract]
-      owner: "canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs"
-      summary: "One normalized source lists ids, triggers, owners, tools, artifact policy, AI policy, validation, and publish projection."
-    - id: pages_agent_skills
-      type: InspectCard
-      label: "Pages Agent Skills"
-      position: {x: 850, y: -120}
-      size: {width: 320, height: 140}
-      tags: [route]
-      route: "https://airvio.co/knowgrph/.well-known/agent-skills/index.json"
-      summary: "Read-only published discovery generated from the registry."
-    - id: local_mcp
-      type: ToolCard
-      label: "Local MCP Tool"
-      position: {x: 850, y: 60}
-      size: {width: 320, height: 140}
-      tags: [route]
-      tool: "knowgrph.vdeoxpln.list"
-      summary: "Local stdio inspection and neutral routing preview."
-    - id: browser_webmcp
-      type: ToolCard
-      label: "Browser WebMCP"
-      position: {x: 850, y: 240}
-      size: {width: 320, height: 140}
-      tags: [route]
-      summary: "Browser-local inspection tools expose current app state without claiming deployed mutation."
-    - id: mainpanel_cards
-      type: UiCard
-      label: "MainPanel Capability Cards"
-      position: {x: 850, y: 420}
-      size: {width: 320, height: 140}
-      tags: [route]
-      summary: "MCP and Integrations views read generated registry metadata."
-    - id: user_intent
-      type: InputCard
-      label: "Neutral User Intent"
-      position: {x: 1240, y: 80}
-      size: {width: 320, height: 150}
-      tags: [source]
-      summary: "Graph, document, renderer, research, commerce, MCP, or import goal."
-      forbidden: "Do not select from route names, file names, absolute paths, demo ids, or provider keys."
-    - id: neutral_router
-      type: RouterCard
-      label: "Vdeoxpln Router"
-      position: {x: 1620, y: 80}
-      size: {width: 340, height: 160}
-      tags: [contract]
-      owner: "buildKnowgrphVdeoxplnRoutingPlan()"
-      summary: "Ranks packs using trigger metadata, content type, requested outputs, and current workspace state."
-    - id: selected_pack
-      type: DecisionCard
-      label: "Selected Pack + Stage Plan"
-      position: {x: 2020, y: 80}
-      size: {width: 340, height: 170}
-      tags: [contract]
-      summary: "Emits semantic run key, execution stages, artifact policy, AI policy, owners, and validation hooks."
-    - id: floating_chat
-      type: HarnessCard
-      label: "FloatingPanel Chat Harness"
-      position: {x: 2440, y: -120}
-      size: {width: 340, height: 150}
-      tags: [ai]
-      owner: "floatingPanelChatSubmitCoordinator.ts"
-      summary: "AI-mediated packs use typed request construction, bounded retries, provider settings, and cost-visible state."
-    - id: workspace_fs
-      type: ArtifactCard
-      label: "Workspace FS Artifact"
-      position: {x: 2440, y: 80}
-      size: {width: 340, height: 150}
-      tags: [artifact]
-      owner: "workspaceFs.ts"
-      summary: "Material outputs become inspectable workspace documents instead of chat-only state."
-    - id: source_files
-      type: ArtifactCard
-      label: "Source Files Compose"
-      position: {x: 2840, y: 80}
-      size: {width: 340, height: 150}
-      tags: [artifact]
-      owner: "applyComposedGraphFromSourceFiles.ts"
-      summary: "Source-backed graph material uses existing signatures to avoid duplicate recomputation."
-    - id: kgc_validation
-      type: VerifyCard
-      label: "KGC Validation"
-      position: {x: 3240, y: -120}
-      size: {width: 340, height: 150}
-      tags: [verify]
-      owner: "chatMarkdownValidation.ts"
-      summary: "Structured KGC Markdown must validate before Canvas apply."
-    - id: canvas_apply
-      type: ApplyCard
-      label: "Canvas Apply"
-      position: {x: 3240, y: 80}
-      size: {width: 340, height: 150}
-      tags: [artifact]
-      owner: "chatKgcCanvasApply.ts"
-      summary: "Validated graph output enters Canvas through the existing apply bridge."
-    - id: text_artifact
-      type: ArtifactCard
-      label: "Text Artifact"
-      position: {x: 2440, y: 520}
-      size: {width: 340, height: 150}
-      tags: [artifact]
-      owner: "workspaceFs.ts"
-      summary: "The abstract vdeoxpln explanation is persisted as source-backed text before it becomes media."
-    - id: rich_text_panel
-      type: RichMediaPanel
-      label: "Explainer Script"
-      position: {x: 2840, y: 520}
-      size: {width: 340, height: 190}
-      tags: [artifact]
-      richMediaActiveTab: "text"
-      freezeConnectedOutput: true
-      output: "## Explainer Script\nRead the canonical contract, select a pack from neutral signals, persist exact artifacts, then review XR text, image, and video panels before any optional media generation."
-      summary: "Text tab for inspecting the generated script artifact."
-    - id: rich_image_panel
-      type: RichMediaPanel
-      label: "Key Frame"
-      position: {x: 3240, y: 520}
-      size: {width: 340, height: 190}
-      tags: [artifact]
-      richMediaActiveTab: "image"
-      freezeConnectedOutput: true
-      imageUrl: "https://media.example.invalid/vdeoxpln-xr-key-frame.svg"
-      summary: "Image tab for the reviewable key frame."
-    - id: rich_video_panel
-      type: RichMediaPanel
-      label: "Explainer Video"
-      position: {x: 3640, y: 520}
-      size: {width: 340, height: 190}
-      tags: [artifact]
-      richMediaActiveTab: "video"
-      freezeConnectedOutput: true
-      videoUrl: "https://media.example.invalid/vdeoxpln-xr-explainer.mp4"
-      summary: "Video tab for the approved render or fallback artifact."
-    - id: run_manifest
-      type: ManifestCard
-      label: "Run Manifest"
-      position: {x: 2840, y: 300}
-      size: {width: 340, height: 160}
-      tags: [artifact]
-      owner: "knowgrphVdeoxplnChatArtifacts.ts"
-      summary: "KGC companion manifest records pack id, semantic run key, status, provider/model/cost fields, and apply result."
-    - id: validation
-      type: VerifyCard
-      label: "Focused Validation"
-      position: {x: 3640, y: 80}
-      size: {width: 340, height: 160}
-      tags: [verify]
-      commands: "vdeoxpln:check, focused unit slices, pages:check-sync, agent-ready:check"
-      summary: "Checks fail on duplicate ids, stale aliases, missing owners, route-only routing, and publish drift."
-    - id: cloudflare
-      type: PublishCard
-      label: "Cloudflare Proof Surface"
-      position: {x: 4040, y: 80}
-      size: {width: 340, height: 160}
-      tags: [route]
-      route: "https://airvio.co/knowgrph"
-      summary: "Live read-only discovery mirrors Dev source truth after build, sync, and deploy."
+    - id: {key: "id", type: string, value: "reference_boundary"}
+      type: {key: "type", type: string, value: "ConceptCard"}
+      label: {key: "label", type: string, value: "Concept-only Inspiration Boundary"}
+      position: {key: "position", type: object, value: {"x":40,"y":40}}
+      size: {key: "size", type: object, value: {"width":320,"height":150}}
+      tags: {key: "tags", type: array, value: ["source"]}
+      summary: {key: "summary", type: string, value: "Use manifest-governed, file-backed, exact-vs-AI product patterns only. Do not copy external implementation artifacts, names, routes, or examples."}
+      inspect: {key: "inspect", type: string, value: "Reference source is a directional product pattern, not a code or schema dependency."}
+      handles: {key: "handles", type: object, value: {"source":["out"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "registry"}
+      type: {key: "type", type: string, value: "ContractCard"}
+      label: {key: "label", type: string, value: "Canonical Vdeoxpln Registry"}
+      position: {key: "position", type: object, value: {"x":430,"y":40}}
+      size: {key: "size", type: object, value: {"width":340,"height":170}}
+      tags: {key: "tags", type: array, value: ["contract"]}
+      owner: {key: "owner", type: string, value: "canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs"}
+      summary: {key: "summary", type: string, value: "One normalized source lists ids, triggers, owners, tools, artifact policy, AI policy, validation, and publish projection."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "pages_agent_skills"}
+      type: {key: "type", type: string, value: "InspectCard"}
+      label: {key: "label", type: string, value: "Pages Agent Skills"}
+      position: {key: "position", type: object, value: {"x":850,"y":-120}}
+      size: {key: "size", type: object, value: {"width":320,"height":140}}
+      tags: {key: "tags", type: array, value: ["route"]}
+      route: {key: "route", type: string, value: "https://airvio.co/knowgrph/.well-known/agent-skills/index.json"}
+      summary: {key: "summary", type: string, value: "Read-only published discovery generated from the registry."}
+      handles: {key: "handles", type: object, value: {"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "local_mcp"}
+      type: {key: "type", type: string, value: "ToolCard"}
+      label: {key: "label", type: string, value: "Local MCP Tool"}
+      position: {key: "position", type: object, value: {"x":850,"y":60}}
+      size: {key: "size", type: object, value: {"width":320,"height":140}}
+      tags: {key: "tags", type: array, value: ["route"]}
+      tool: {key: "tool", type: string, value: "knowgrph.vdeoxpln.list"}
+      summary: {key: "summary", type: string, value: "Local stdio inspection and neutral routing preview."}
+      handles: {key: "handles", type: object, value: {"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "browser_webmcp"}
+      type: {key: "type", type: string, value: "ToolCard"}
+      label: {key: "label", type: string, value: "Browser WebMCP"}
+      position: {key: "position", type: object, value: {"x":850,"y":240}}
+      size: {key: "size", type: object, value: {"width":320,"height":140}}
+      tags: {key: "tags", type: array, value: ["route"]}
+      summary: {key: "summary", type: string, value: "Browser-local inspection tools expose current app state without claiming deployed mutation."}
+      handles: {key: "handles", type: object, value: {"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "mainpanel_cards"}
+      type: {key: "type", type: string, value: "UiCard"}
+      label: {key: "label", type: string, value: "MainPanel Capability Cards"}
+      position: {key: "position", type: object, value: {"x":850,"y":420}}
+      size: {key: "size", type: object, value: {"width":320,"height":140}}
+      tags: {key: "tags", type: array, value: ["route"]}
+      summary: {key: "summary", type: string, value: "MCP and Integrations views read generated registry metadata."}
+      handles: {key: "handles", type: object, value: {"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "user_intent"}
+      type: {key: "type", type: string, value: "InputCard"}
+      label: {key: "label", type: string, value: "Neutral User Intent"}
+      position: {key: "position", type: object, value: {"x":1240,"y":80}}
+      size: {key: "size", type: object, value: {"width":320,"height":150}}
+      tags: {key: "tags", type: array, value: ["source"]}
+      summary: {key: "summary", type: string, value: "Graph, document, renderer, research, commerce, MCP, or import goal."}
+      forbidden: {key: "forbidden", type: string, value: "Do not select from route names, file names, absolute paths, demo ids, or provider keys."}
+      handles: {key: "handles", type: object, value: {"source":["out"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "neutral_router"}
+      type: {key: "type", type: string, value: "RouterCard"}
+      label: {key: "label", type: string, value: "Vdeoxpln Router"}
+      position: {key: "position", type: object, value: {"x":1620,"y":80}}
+      size: {key: "size", type: object, value: {"width":340,"height":160}}
+      tags: {key: "tags", type: array, value: ["contract"]}
+      owner: {key: "owner", type: string, value: "buildKnowgrphVdeoxplnRoutingPlan()"}
+      summary: {key: "summary", type: string, value: "Ranks packs using trigger metadata, content type, requested outputs, and current workspace state."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "selected_pack"}
+      type: {key: "type", type: string, value: "DecisionCard"}
+      label: {key: "label", type: string, value: "Selected Pack + Stage Plan"}
+      position: {key: "position", type: object, value: {"x":2020,"y":80}}
+      size: {key: "size", type: object, value: {"width":340,"height":170}}
+      tags: {key: "tags", type: array, value: ["contract"]}
+      summary: {key: "summary", type: string, value: "Emits semantic run key, execution stages, artifact policy, AI policy, owners, and validation hooks."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "floating_chat"}
+      type: {key: "type", type: string, value: "HarnessCard"}
+      label: {key: "label", type: string, value: "FloatingPanel Chat Harness"}
+      position: {key: "position", type: object, value: {"x":2440,"y":-120}}
+      size: {key: "size", type: object, value: {"width":340,"height":150}}
+      tags: {key: "tags", type: array, value: ["ai"]}
+      owner: {key: "owner", type: string, value: "floatingPanelChatSubmitCoordinator.ts"}
+      summary: {key: "summary", type: string, value: "AI-mediated packs use typed request construction, bounded retries, provider settings, and cost-visible state."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "workspace_fs"}
+      type: {key: "type", type: string, value: "ArtifactCard"}
+      label: {key: "label", type: string, value: "Workspace FS Artifact"}
+      position: {key: "position", type: object, value: {"x":2440,"y":80}}
+      size: {key: "size", type: object, value: {"width":340,"height":150}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      owner: {key: "owner", type: string, value: "workspaceFs.ts"}
+      summary: {key: "summary", type: string, value: "Material outputs become inspectable workspace documents instead of chat-only state."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "source_files"}
+      type: {key: "type", type: string, value: "ArtifactCard"}
+      label: {key: "label", type: string, value: "Source Files Compose"}
+      position: {key: "position", type: object, value: {"x":2840,"y":80}}
+      size: {key: "size", type: object, value: {"width":340,"height":150}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      owner: {key: "owner", type: string, value: "applyComposedGraphFromSourceFiles.ts"}
+      summary: {key: "summary", type: string, value: "Source-backed graph material uses existing signatures to avoid duplicate recomputation."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "kgc_validation"}
+      type: {key: "type", type: string, value: "VerifyCard"}
+      label: {key: "label", type: string, value: "KGC Validation"}
+      position: {key: "position", type: object, value: {"x":3240,"y":-120}}
+      size: {key: "size", type: object, value: {"width":340,"height":150}}
+      tags: {key: "tags", type: array, value: ["verify"]}
+      owner: {key: "owner", type: string, value: "chatMarkdownValidation.ts"}
+      summary: {key: "summary", type: string, value: "Structured KGC Markdown must validate before Canvas apply."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "canvas_apply"}
+      type: {key: "type", type: string, value: "ApplyCard"}
+      label: {key: "label", type: string, value: "Canvas Apply"}
+      position: {key: "position", type: object, value: {"x":3240,"y":80}}
+      size: {key: "size", type: object, value: {"width":340,"height":150}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      owner: {key: "owner", type: string, value: "chatKgcCanvasApply.ts"}
+      summary: {key: "summary", type: string, value: "Validated graph output enters Canvas through the existing apply bridge."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "text_artifact"}
+      type: {key: "type", type: string, value: "ArtifactCard"}
+      label: {key: "label", type: string, value: "Text Artifact"}
+      position: {key: "position", type: object, value: {"x":2440,"y":520}}
+      size: {key: "size", type: object, value: {"width":340,"height":150}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      owner: {key: "owner", type: string, value: "workspaceFs.ts"}
+      summary: {key: "summary", type: string, value: "The abstract vdeoxpln explanation is persisted as source-backed text before it becomes media."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "rich_text_panel"}
+      type: {key: "type", type: string, value: "RichMediaPanel"}
+      label: {key: "label", type: string, value: "Explainer Script"}
+      position: {key: "position", type: object, value: {"x":2840,"y":520}}
+      size: {key: "size", type: object, value: {"width":340,"height":190}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      richMediaActiveTab: {key: "richMediaActiveTab", type: string, value: "text"}
+      freezeConnectedOutput: {key: "freezeConnectedOutput", type: boolean, value: true}
+      output: {key: "output", type: string, value: "## Explainer Script\nRead the canonical contract, select a pack from neutral signals, persist exact artifacts, then review XR text, image, and video panels before any optional media generation."}
+      summary: {key: "summary", type: string, value: "Text tab for inspecting the generated script artifact."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "rich_image_panel"}
+      type: {key: "type", type: string, value: "RichMediaPanel"}
+      label: {key: "label", type: string, value: "Key Frame"}
+      position: {key: "position", type: object, value: {"x":3240,"y":520}}
+      size: {key: "size", type: object, value: {"width":340,"height":190}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      richMediaActiveTab: {key: "richMediaActiveTab", type: string, value: "image"}
+      freezeConnectedOutput: {key: "freezeConnectedOutput", type: boolean, value: true}
+      imageUrl: {key: "imageUrl", type: string, value: "https://media.example.invalid/vdeoxpln-xr-key-frame.svg"}
+      summary: {key: "summary", type: string, value: "Image tab for the reviewable key frame."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "rich_video_panel"}
+      type: {key: "type", type: string, value: "RichMediaPanel"}
+      label: {key: "label", type: string, value: "Explainer Video"}
+      position: {key: "position", type: object, value: {"x":3640,"y":520}}
+      size: {key: "size", type: object, value: {"width":340,"height":190}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      richMediaActiveTab: {key: "richMediaActiveTab", type: string, value: "video"}
+      freezeConnectedOutput: {key: "freezeConnectedOutput", type: boolean, value: true}
+      videoUrl: {key: "videoUrl", type: string, value: "https://media.example.invalid/vdeoxpln-xr-explainer.mp4"}
+      summary: {key: "summary", type: string, value: "Video tab for the approved render or fallback artifact."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "run_manifest"}
+      type: {key: "type", type: string, value: "ManifestCard"}
+      label: {key: "label", type: string, value: "Run Manifest"}
+      position: {key: "position", type: object, value: {"x":2840,"y":300}}
+      size: {key: "size", type: object, value: {"width":340,"height":160}}
+      tags: {key: "tags", type: array, value: ["artifact"]}
+      owner: {key: "owner", type: string, value: "knowgrphVdeoxplnChatArtifacts.ts"}
+      summary: {key: "summary", type: string, value: "KGC companion manifest records pack id, semantic run key, status, provider/model/cost fields, and apply result."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "validation"}
+      type: {key: "type", type: string, value: "VerifyCard"}
+      label: {key: "label", type: string, value: "Focused Validation"}
+      position: {key: "position", type: object, value: {"x":3640,"y":80}}
+      size: {key: "size", type: object, value: {"width":340,"height":160}}
+      tags: {key: "tags", type: array, value: ["verify"]}
+      commands: {key: "commands", type: string, value: "vdeoxpln:check, focused unit slices, pages:check-sync, agent-ready:check"}
+      summary: {key: "summary", type: string, value: "Checks fail on duplicate ids, stale aliases, missing owners, route-only routing, and publish drift."}
+      handles: {key: "handles", type: object, value: {"source":["out"],"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"},"out":{"out":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
+    - id: {key: "id", type: string, value: "cloudflare"}
+      type: {key: "type", type: string, value: "PublishCard"}
+      label: {key: "label", type: string, value: "Cloudflare Proof Surface"}
+      position: {key: "position", type: object, value: {"x":4040,"y":80}}
+      size: {key: "size", type: object, value: {"width":340,"height":160}}
+      tags: {key: "tags", type: array, value: ["route"]}
+      route: {key: "route", type: string, value: "https://airvio.co/knowgrph"}
+      summary: {key: "summary", type: string, value: "Live read-only discovery mirrors Dev source truth after build, sync, and deploy."}
+      handles: {key: "handles", type: object, value: {"target":["in"]}}
+      flow:portTypes: {key: "flow:portTypes", type: object, value: {"in":{"in":"vdeoxpln_flow_signal"}}}
+      frontmatter:primitive: {key: "frontmatter:primitive", type: string, value: "node"}
   edges:
-    - {id: e-boundary-registry, source: reference_boundary, sourceHandle: out, target: registry, targetHandle: in, label: "conceptual pattern only", type: deterministic, animated: true}
-    - {id: e-registry-pages, source: registry, sourceHandle: out, target: pages_agent_skills, targetHandle: in, label: "generated metadata", type: publish, animated: true}
-    - {id: e-registry-mcp, source: registry, sourceHandle: out, target: local_mcp, targetHandle: in, label: "tool contract", type: inspect, animated: true}
-    - {id: e-registry-webmcp, source: registry, sourceHandle: out, target: browser_webmcp, targetHandle: in, label: "browser-local scope", type: inspect, animated: true}
-    - {id: e-registry-mainpanel, source: registry, sourceHandle: out, target: mainpanel_cards, targetHandle: in, label: "capability cards", type: inspect, animated: true}
-    - {id: e-intent-router, source: user_intent, sourceHandle: out, target: neutral_router, targetHandle: in, label: "intent + state", type: deterministic, animated: true}
-    - {id: e-registry-router, source: registry, sourceHandle: out, target: neutral_router, targetHandle: in, label: "triggers + policies", type: deterministic, animated: true}
-    - {id: e-router-pack, source: neutral_router, sourceHandle: out, target: selected_pack, targetHandle: in, label: "semantic run key", type: deterministic, animated: true}
-    - {id: e-pack-chat, source: selected_pack, sourceHandle: out, target: floating_chat, targetHandle: in, label: "AI-assisted stage", type: ai_assist, animated: true}
-    - {id: e-pack-workspace, source: selected_pack, sourceHandle: out, target: workspace_fs, targetHandle: in, label: "material artifact", type: deterministic, animated: true}
-    - {id: e-chat-workspace, source: floating_chat, sourceHandle: out, target: workspace_fs, targetHandle: in, label: "draft/final output", type: ai_assist, animated: true}
-    - {id: e-workspace-source-files, source: workspace_fs, sourceHandle: out, target: source_files, targetHandle: in, label: "source-backed compose", type: deterministic, animated: true}
-    - {id: e-source-kgc, source: source_files, sourceHandle: out, target: kgc_validation, targetHandle: in, label: "KGC candidate", type: deterministic, animated: true}
-    - {id: e-kgc-canvas, source: kgc_validation, sourceHandle: out, target: canvas_apply, targetHandle: in, label: "validated graph", type: deterministic, animated: true}
-    - {id: e-pack-text-artifact, source: selected_pack, sourceHandle: out, target: text_artifact, targetHandle: in, label: "text artifact", type: deterministic, animated: true}
-    - {id: e-text-rich-text, source: text_artifact, sourceHandle: out, target: rich_text_panel, targetHandle: in, label: "script", type: deterministic, animated: true}
-    - {id: e-rich-text-image, source: rich_text_panel, sourceHandle: out, target: rich_image_panel, targetHandle: in, label: "key frame", type: deterministic, animated: true}
-    - {id: e-rich-image-video, source: rich_image_panel, sourceHandle: out, target: rich_video_panel, targetHandle: in, label: "video slot", type: deterministic, animated: true}
-    - {id: e-rich-video-validation, source: rich_video_panel, sourceHandle: out, target: validation, targetHandle: in, label: "reviewable media", type: deterministic, animated: true}
-    - {id: e-workspace-manifest, source: workspace_fs, sourceHandle: out, target: run_manifest, targetHandle: in, label: "companion manifest", type: deterministic, animated: true}
-    - {id: e-canvas-validation, source: canvas_apply, sourceHandle: out, target: validation, targetHandle: in, label: "apply result", type: deterministic, animated: true}
-    - {id: e-manifest-validation, source: run_manifest, sourceHandle: out, target: validation, targetHandle: in, label: "status + cost fields", type: deterministic, animated: true}
-    - {id: e-validation-cloudflare, source: validation, sourceHandle: out, target: cloudflare, targetHandle: in, label: "build -> sync -> deploy", type: publish, animated: true}
+    - {"id":"e-boundary-registry","source":"reference_boundary","sourceHandle":"out","target":"registry","targetHandle":"in","label":"conceptual pattern only","type":"deterministic","animated":true}
+    - {"id":"e-registry-pages","source":"registry","sourceHandle":"out","target":"pages_agent_skills","targetHandle":"in","label":"generated metadata","type":"publish","animated":true}
+    - {"id":"e-registry-mcp","source":"registry","sourceHandle":"out","target":"local_mcp","targetHandle":"in","label":"tool contract","type":"inspect","animated":true}
+    - {"id":"e-registry-webmcp","source":"registry","sourceHandle":"out","target":"browser_webmcp","targetHandle":"in","label":"browser-local scope","type":"inspect","animated":true}
+    - {"id":"e-registry-mainpanel","source":"registry","sourceHandle":"out","target":"mainpanel_cards","targetHandle":"in","label":"capability cards","type":"inspect","animated":true}
+    - {"id":"e-intent-router","source":"user_intent","sourceHandle":"out","target":"neutral_router","targetHandle":"in","label":"intent + state","type":"deterministic","animated":true}
+    - {"id":"e-registry-router","source":"registry","sourceHandle":"out","target":"neutral_router","targetHandle":"in","label":"triggers + policies","type":"deterministic","animated":true}
+    - {"id":"e-router-pack","source":"neutral_router","sourceHandle":"out","target":"selected_pack","targetHandle":"in","label":"semantic run key","type":"deterministic","animated":true}
+    - {"id":"e-pack-chat","source":"selected_pack","sourceHandle":"out","target":"floating_chat","targetHandle":"in","label":"AI-assisted stage","type":"ai_assist","animated":true}
+    - {"id":"e-pack-workspace","source":"selected_pack","sourceHandle":"out","target":"workspace_fs","targetHandle":"in","label":"material artifact","type":"deterministic","animated":true}
+    - {"id":"e-chat-workspace","source":"floating_chat","sourceHandle":"out","target":"workspace_fs","targetHandle":"in","label":"draft/final output","type":"ai_assist","animated":true}
+    - {"id":"e-workspace-source-files","source":"workspace_fs","sourceHandle":"out","target":"source_files","targetHandle":"in","label":"source-backed compose","type":"deterministic","animated":true}
+    - {"id":"e-source-kgc","source":"source_files","sourceHandle":"out","target":"kgc_validation","targetHandle":"in","label":"KGC candidate","type":"deterministic","animated":true}
+    - {"id":"e-kgc-canvas","source":"kgc_validation","sourceHandle":"out","target":"canvas_apply","targetHandle":"in","label":"validated graph","type":"deterministic","animated":true}
+    - {"id":"e-pack-text-artifact","source":"selected_pack","sourceHandle":"out","target":"text_artifact","targetHandle":"in","label":"text artifact","type":"deterministic","animated":true}
+    - {"id":"e-text-rich-text","source":"text_artifact","sourceHandle":"out","target":"rich_text_panel","targetHandle":"in","label":"script","type":"deterministic","animated":true}
+    - {"id":"e-rich-text-image","source":"rich_text_panel","sourceHandle":"out","target":"rich_image_panel","targetHandle":"in","label":"key frame","type":"deterministic","animated":true}
+    - {"id":"e-rich-image-video","source":"rich_image_panel","sourceHandle":"out","target":"rich_video_panel","targetHandle":"in","label":"video slot","type":"deterministic","animated":true}
+    - {"id":"e-rich-video-validation","source":"rich_video_panel","sourceHandle":"out","target":"validation","targetHandle":"in","label":"reviewable media","type":"deterministic","animated":true}
+    - {"id":"e-workspace-manifest","source":"workspace_fs","sourceHandle":"out","target":"run_manifest","targetHandle":"in","label":"companion manifest","type":"deterministic","animated":true}
+    - {"id":"e-canvas-validation","source":"canvas_apply","sourceHandle":"out","target":"validation","targetHandle":"in","label":"apply result","type":"deterministic","animated":true}
+    - {"id":"e-manifest-validation","source":"run_manifest","sourceHandle":"out","target":"validation","targetHandle":"in","label":"status + cost fields","type":"deterministic","animated":true}
+    - {"id":"e-validation-cloudflare","source":"validation","sourceHandle":"out","target":"cloudflare","targetHandle":"in","label":"build -> sync -> deploy","type":"publish","animated":true}
 ---
-
 # Knowgrph Vdeoxpln - Interactive Visual Explanation
 
 This document turns the vdeoxpln contract into an inspectable visual artifact.

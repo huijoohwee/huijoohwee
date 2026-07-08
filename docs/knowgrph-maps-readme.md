@@ -1,4 +1,5 @@
 ---
+
 title: "Knowgrph — Map it. Score it. Decide it."
 id: md:knowgrph-readme-v4
 author: joohwee
@@ -193,6 +194,10 @@ index:
       A_MCP -->|"live calls"| MCP_NEAR
       A_MCP -->|"live calls"| MCP_NAV
 flow:
+  edgeType: {key: "edgeType", type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: "balancedViewportPreset", type: string, value: "widgetFrontmatter"}
+  computed: {key: "computed", type: boolean, value: true}
+  snapToGrid: {key: "snapToGrid", type: boolean, value: true}
   direction: {key: direction, type: string, value: "LR"}
   nodes:
     - id: {key: id, type: string, value: "A_CF"}
@@ -1163,7 +1168,6 @@ flow:
     - {"id":"index-e14-395334272","source":"A_MCP","sourceHandle":"output","target":"MCP_NEAR","targetHandle":"input","label":"\"live calls\""}
     - {"id":"index-e15-1514797407","source":"A_MCP","sourceHandle":"output","target":"MCP_NAV","targetHandle":"input","label":"\"live calls\""}
 ---
-
 # Knowgrph
 
 **Candidates in. Ranked decisions out.** A knowledge graph canvas that calls live map APIs via MCP tools, scores every candidate location through a TOPSIS multi-criteria engine, and delivers a portable, auditable site selection report — in minutes, not weeks.

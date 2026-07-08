@@ -1,4 +1,5 @@
 ---
+
 title: "Knowgrph — Write it. See it. Ship it."
 id: md:knowgrph-readme-v3
 author: joohwee
@@ -177,6 +178,10 @@ index:
       W_VID -->|"videoUrl"| W_PANEL
       A_BP -->|"completions · generations · renders"| W_TEXT
 flow:
+  edgeType: {key: "edgeType", type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: "balancedViewportPreset", type: string, value: "widgetFrontmatter"}
+  computed: {key: "computed", type: boolean, value: true}
+  snapToGrid: {key: "snapToGrid", type: boolean, value: true}
   direction: {key: direction, type: string, value: "LR"}
   nodes:
     - id: {key: id, type: string, value: "A_BP"}
@@ -1092,7 +1097,6 @@ flow:
     - {"id":"index-e11-2689692277","source":"W_VID","sourceHandle":"output","target":"W_PANEL","targetHandle":"input","label":"\"videoUrl\""}
     - {"id":"index-e12-1056658522","source":"A_BP","sourceHandle":"output","target":"W_TEXT","targetHandle":"input","label":"\"completions · generations · renders\""}
 ---
-
 # Knowgrph
 
 ## Authoring Contract
