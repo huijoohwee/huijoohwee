@@ -1,1 +1,0 @@
-import{R as _}from"./keyTypeValueRow-B04F5ynt.js";import{cM as S,cN as A,cO as L,cP as E}from"./settings-mcp-docs-C14fH0Fh.js";const O=S,R=L,s=`${A} overflow-hidden`,T=E,U=_;export{R as K,U as R,s as a,T as b,O as c};
