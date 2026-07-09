@@ -165,20 +165,21 @@
     {
       "name": "knowgrph-mcp-local",
       "type": "markdown",
-      "description": "Expose Knowgrph-owned local Source Files, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
+      "description": "Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
-      "sha256": "0ffb288b6656097239da5971597f3e763fce4ae3307575f64f6745156309c478",
+      "sha256": "55ba4adb30ceb3d054b9de81cadbe0ce22fd81b816b6729ea7a553354d2b9067",
       "vdeoxpln": {
         "id": "knowgrph-mcp-local",
         "title": "Knowgrph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_cb3aa0eb",
+        "semanticKey": "kgvx_de0f028f",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
             "fetch",
+            "knowgrph.agentic_canvas_os.docs.invoke",
             "knowgrph.annotate.image",
             "knowgrph.annotate.video_frame",
             "knowgrph.browser_api.run",

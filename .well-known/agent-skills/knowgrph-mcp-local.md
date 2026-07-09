@@ -1,17 +1,21 @@
 # Knowgrph Local MCP Skill
 
-Use this skill when: Expose Knowgrph-owned local Source Files, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.
+Use this skill when: Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_cb3aa0eb`
+- Semantic key: `kgvx_de0f028f`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
 ## Triggers
 
+- @
+- /
+- #
+- agentic canvas os docs
 - browser api
 - graphrag
 - html video
@@ -30,6 +34,7 @@ Use this skill when: Expose Knowgrph-owned local Source Files, UI, pipeline, Sup
 
 ## Inputs
 
+- agentic canvas os invocation token
 - annotation asset
 - browser API runtime
 - creative brief
@@ -46,6 +51,7 @@ Use this skill when: Expose Knowgrph-owned local Source Files, UI, pipeline, Sup
 
 ## Outputs
 
+- Agentic Canvas OS docs invocation result
 - annotation result
 - local tool result
 - memory result
@@ -69,6 +75,7 @@ Browser-local tools:
 
 Local MCP tools:
 - fetch
+- knowgrph.agentic_canvas_os.docs.invoke
 - knowgrph.annotate.image
 - knowgrph.annotate.video_frame
 - knowgrph.browser_api.run
@@ -103,6 +110,7 @@ Local MCP tools:
 - List local tools from the shared local MCP contract.
 - Run only path-guarded local-root operations.
 - Run video-remix orchestration as an approval-gated local manifest before any paid provider call.
+- Resolve Agentic Canvas OS /, #, and @ docs invocations from the sibling docs SSOT.
 - Forward SEA-LION regional language, localization, and safety calls to the hosted sidecar with server-owned auth.
 - Summarize artifacts and registry metadata in the MCP result.
 
@@ -110,6 +118,7 @@ Local MCP tools:
 
 - canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
 - knowgrph_parser/superagent_harness.py
+- mcp/agentic-canvas-os-docs-runtime.js
 - mcp/director-lanes.js
 - mcp/director-workflow.js
 - mcp/local-tool-contract.js
