@@ -5,7 +5,7 @@ doc_type: "Care Agent Demo"
 date: "2026-07-07"
 lang: "en-US"
 schema: "kgc-care-agent-demo/v1"
-implementation_contract: "../agentic-os-docs/PRD-TAD.md"
+implementation_contract: "../../agentic-canvas-os/docs/PRD-TAD.md"
 template_policy: "Minimum viable runnable care-agent seed for local-first patient engagement ideation, harness definition, Canvas projection, and validation; authored source payload owns graph data; local runtime proof is surfaced in runtime_proof; live outputs remain blank until operator-approved returned evidence exists."
 validation_input_forbid_hardcode_in_repo: "true"
 deployed_api_claim: "false"
@@ -58,6 +58,15 @@ runtime_defaults:
   runtime_proof_path: ""
   provider_job_id: ""
   live_result_url: ""
+run_ready_demo:
+  id: "care-agent"
+  env_selector: "VITE_KNOWGRPH_RUN_READY_DEMO=care-agent"
+  command: "npm run demo:care-agent -- --port <free-port>"
+  source_root: "huijoohwee/docs"
+  source_path: "../huijoohwee/docs/knowgrph-care-agent-demo.md"
+  validation_seed_path: "/knowgrph-care-agent-demo.md"
+  clean_canvas_recommended: true
+  source_backed: true
 probe_tree_runtime:
   version: "knowgrph-probe-tree/v0.1"
   status: "runtime-ready"
@@ -86,11 +95,17 @@ probe_tree_runtime:
     token_budget: 1200
   proof:
     generate_mutates_graph: false
+    explicit_zero_recall_verified: true
     select_writes_type_probe_node: true
     select_edge_type: "branches-to"
     select_frontmatter_flow_canvas_sync: true
+    select_cost_log_verified: true
     evolve_writes_memory_exemplar: true
     evolve_reports_incomplete_parent_path: true
+    evolve_cost_log_verified: true
+    process_descriptors_non_idempotent: true
+    semantic_frontmatter_keys_verified: true
+    clean_room_generate_select_evolve_verified: true
     token_budget_ceiling_enforced: true
     native_checkpointer_datastore: false
     paid_call_count: 0
@@ -106,13 +121,13 @@ agentic_os_care_agent_pipeline:
   status: "runtime-ready"
   autonomy_mode: "local-dry-run-first"
   source_docs:
-    - "../agentic-os-docs/MEMORY.md"
-    - "../agentic-os-docs/AGENTS.md"
-    - "../agentic-os-docs/DICTIONARY-COMMAND.md"
-    - "../agentic-os-docs/DICTIONARY-SEMANTIC.md"
-    - "../agentic-os-docs/DICTIONARY-BINDING.md"
-    - "../agentic-os-docs/HARNESS-CONTRACTS.md"
-    - "../agentic-os-docs/RUNTIME-READINESS.md"
+    - "../../agentic-canvas-os/docs/MEMORY.md"
+    - "../../agentic-canvas-os/docs/AGENTS.md"
+    - "../../agentic-canvas-os/docs/DICTIONARY-COMMAND.md"
+    - "../../agentic-canvas-os/docs/DICTIONARY-SEMANTIC.md"
+    - "../../agentic-canvas-os/docs/DICTIONARY-BINDING.md"
+    - "../../agentic-canvas-os/docs/HARNESS-CONTRACTS.md"
+    - "../../agentic-canvas-os/docs/RUNTIME-READINESS.md"
     - "../../huijoohwee.github.io/guidelines/prd-tad-guidelines.md"
   invocation_routes:
     slash:
@@ -209,11 +224,13 @@ runtime_proof:
   validation_cwd: "knowgrph repo root"
   focused_checks:
     - "docs.careAgentDemo.runtimeReady"
+    - "docs.careAgentDemo.runReadyMode"
     - "mcp.probeTree.runtime"
     - "probeTree.select.frontmatterFlowCanvasSync"
     - "markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
   validation_commands:
     - "npm --prefix canvas run test:ci:unit -- docs.careAgentDemo.runtimeReady"
+    - "npm --prefix canvas run test:ci:unit -- docs.careAgentDemo.runReadyMode"
     - "node --test mcp/__tests__/probe-tree-runtime.test.mjs"
     - "npm --prefix canvas run test:ci:unit -- probeTree.select.frontmatterFlowCanvasSync"
     - "FLOW_DIAGRAM_SAMPLE_PATHS=../../huijoohwee/docs/knowgrph-care-agent-demo.md npm --prefix canvas run test:ci:unit -- markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
@@ -221,6 +238,11 @@ runtime_proof:
   computed_frontmatter_flow: true
   probe_tree_canvas_sync_verified: true
   probe_tree_token_budget_verified: true
+  probe_tree_zero_recall_verified: true
+  probe_tree_cost_logs_verified: true
+  probe_tree_non_idempotent_descriptors_verified: true
+  probe_tree_semantic_frontmatter_keys_verified: true
+  probe_tree_clean_room_smoke_verified: true
   dictionary_routes_verified: true
   semantic_html_verified: true
   zero_cost_local_harness_verified: true
@@ -305,20 +327,87 @@ flow:
     - id: {key: id, type: string, value: "care_source"}
       type: {key: type, type: string, value: "InputWidget"}
       label: {key: label, type: string, value: "Care Source"}
-      position: {key: position, type: object, value: {"x":0,"y":0}}
+      position: {key: position, type: object, value: {"x":-522.8889524019576,"y":-836.9403955453596}}
       handles: {key: handles, type: object, value: {"source":["redactedCarePlan","language","literacyLevel"]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{},"out":{"care_source_signal_out":"care_source_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:care_source"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 2}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image: {key: image, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials."}
       lane: {key: lane, type: string, value: "Source"}
       language: {key: language, type: string, value: "multilingual"}
+      lastRunAt: {key: lastRunAt, type: string, value: "2026-07-08T13:32:01.439Z"}
       literacyLevel: {key: literacyLevel, type: string, value: "plain-language"}
+      media: {key: media, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      media_kind: {key: media_kind, type: string, value: "image"}
+      media_url: {key: media_url, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      mediaKind: {key: mediaKind, type: string, value: "image"}
+      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      output:
+        key: output
+        type: string
+        value: |
+          # Care Source
+
+          Run-ready card output generated from the selected InputWidget node without a provider call.
+
+          | Field | Source-backed value |
+          | --- | --- |
+          | lane | Source |
+          | summary | check my hand, numb...<br>![空武.jpg](http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ) |
+          | output | # Care Source<br>Run-ready card output generated from the selected InputWidget node without a provider call.<br>\| Field \| Source-backed value \|<br>\| --- \| --- \|<br>\| lane \| Source \|<br>\| summary \| check my hand, numb...<br>![空武.jpg](http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ) \|<br>\| output \| # Care Source<br>Run-ready card output generated from the selected InputWidget node without a provider call.<br>\\| Field \\| Source-backed value \\|<br>\\| --- \\| --- \\|<br>\\| lane \\| Source \\|<br>\\| summary \\| check my hand, numb...<br>![空武.jpg](http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ) \\|<br>\\| kgc:readingSummary \\| Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. \\| \|<br>\| kgc:readingSummary \| Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. \| |
+          | kgc:readingSummary | Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. |
+
+      outputMimeType: {key: outputMimeType, type: string, value: "text/markdown; charset=utf-8"}
+      outputModel: {key: outputModel, type: string, value: "source-backed-card-run"}
+      outputSrcDoc:
+        key: outputSrcDoc
+        type: string
+        value: |
+          <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Care Source</title><style>html{color-scheme:dark light}body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:rgba(255, 255, 255, 0.95);color:#111827}main{max-width:980px;margin:0 auto;padding:16px}a{color:#3b82f6}pre,code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;overflow:auto;color:#0f172a}code{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:1px 4px;color:#0f172a}table{border-collapse:collapse;width:100%}th,td{border:1px solid #e5e7eb;padding:6px 8px;vertical-align:top}blockquote{border-left:3px solid #e5e7eb;margin:0;padding:0 0 0 12px;color:#4b5563}hr{border:0;border-top:1px solid #e5e7eb;margin:16px 0}img,video{max-width:100%;height:auto}</style></head><body><main><section data-kg-rich-media-markdown-srcdoc="1"><h1>Care Source</h1>
+          <p>Run-ready card output generated from the selected InputWidget node without a provider call.</p>
+          <table>
+          <thead>
+          <tr>
+          <th>Field</th>
+          <th>Source-backed value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>lane</td>
+          <td>Source</td>
+          </tr>
+          <tr>
+          <td>summary</td>
+          <td>check my hand, numb...&lt;br&gt;<img src="http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ" alt="空武.jpg"></td>
+          </tr>
+          <tr>
+          <td>output</td>
+          <td># Care Source&lt;br&gt;Run-ready card output generated from the selected InputWidget node without a provider call.&lt;br&gt;| Field | Source-backed value |&lt;br&gt;| --- | --- |&lt;br&gt;| lane | Source |&lt;br&gt;| summary | check my hand, numb...&lt;br&gt;<img src="http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ" alt="空武.jpg"> |&lt;br&gt;| output | # Care Source&lt;br&gt;Run-ready card output generated from the selected InputWidget node without a provider call.&lt;br&gt;| Field | Source-backed value |&lt;br&gt;| --- | --- |&lt;br&gt;| lane | Source |&lt;br&gt;| summary | check my hand, numb...&lt;br&gt;<img src="http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ" alt="空武.jpg"> |&lt;br&gt;| kgc:readingSummary | Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. | |&lt;br&gt;| kgc:readingSummary | Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. |</td>
+          </tr>
+          <tr>
+          <td>kgc:readingSummary</td>
+          <td>Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials.</td>
+          </tr>
+          </tbody>
+          </table>
+          </section></main></body></html>
+
       redactedCarePlan: {key: redactedCarePlan, type: string, value: "Synthetic care-plan note: take a morning walk if cleared, track symptoms, prepare questions for the next visit, and ask a clinician about medication uncertainty."}
+      summary:
+        key: summary
+        type: string
+        value: |
+          check my hand, numb...
+
+          ![空武.jpg](http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ)
+
+      thumbnailUrl: {key: thumbnailUrl, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
@@ -326,7 +415,7 @@ flow:
     - id: {key: id, type: string, value: "care_normalize"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Normalize Source"}
-      position: {key: position, type: object, value: {"x":-82.66666666666663,"y":44.5}}
+      position: {key: position, type: object, value: {"x":-14.067901234567785,"y":116.40046296296296}}
       handles: {key: handles, type: object, value: {"target":["redactedCarePlan"],"source":["normalizedSummary","safetyBoundary"]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"care_source_signal_in":"care_source_signal"},"out":{"care_task_signal_out":"care_task_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:care_normalize"}
@@ -349,13 +438,13 @@ flow:
     - id: {key: id, type: string, value: "care_tasks"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Care Task Cards"}
-      position: {key: position, type: object, value: {"x":680,"y":0}}
+      position: {key: position, type: object, value: {"x":409.9320987654322,"y":-150.59953703703704}}
       handles: {key: handles, type: object, value: {"target":["normalizedSummary","language"],"source":["taskCards","teachBackQuestions"]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"care_task_signal_in":"care_task_signal"},"out":{"care_task_signal_out":"care_task_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:care_tasks"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 2}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:degree": {key: "graph:degree", type: number, value: 3}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       invocation: {key: invocation, type: string, value: "/memory.seed /prd-tad.create #ttv #vcc @source.body @operator"}
@@ -370,7 +459,7 @@ flow:
     - id: {key: id, type: string, value: "care_probe"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Probe Tree Branches"}
-      position: {key: position, type: object, value: {"x":1020,"y":0}}
+      position: {key: position, type: object, value: {"x":833.9320987654322,"y":-150.59953703703704}}
       handles: {key: handles, type: object, value: {"target":["taskCards","teachBackQuestions"],"source":["probeOptions","checkpointPolicy"]}}
       checkpointPolicy: {key: checkpointPolicy, type: string, value: "Markdown graph store is the only persistent checkpoint source; no native checkpointer datastore."}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"care_task_signal_in":"care_task_signal"},"out":{"care_task_signal_out":"care_task_signal"}}}
@@ -392,7 +481,7 @@ flow:
     - id: {key: id, type: string, value: "care_harness"}
       type: {key: type, type: string, value: "ComputeWidget"}
       label: {key: label, type: string, value: "Harness Contract"}
-      position: {key: position, type: object, value: {"x":1360,"y":0}}
+      position: {key: position, type: object, value: {"x":1257.9320987654323,"y":-150.59953703703704}}
       handles: {key: handles, type: object, value: {"target":["taskCards","probeOptions"],"source":["manifest","costLog","blockedReasons"]}}
       blockedReasons: {key: blockedReasons, type: array, value: ["clinical_decision_without_clinician","phi_upload_without_redaction","missing_operator_approval_for_live_call"]}
       costLog: {key: costLog, type: object, value: {"model":"local-dry-run","prompt_tokens":0,"completion_tokens":0,"cache_hits":0,"estimated_cost_usd":0}}
@@ -414,7 +503,7 @@ flow:
     - id: {key: id, type: string, value: "care_canvas"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Patient Coach Panel"}
-      position: {key: position, type: object, value: {"x":1700,"y":0}}
+      position: {key: position, type: object, value: {"x":-113.94238535767022,"y":-682.3836865764334}}
       handles: {key: handles, type: object, value: {"target":["manifest","taskCards"],"source":["outputSrcDoc","runtimeProof"]}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"care_proof_signal_in":"care_proof_signal"},"out":{"care_proof_signal_out":"care_proof_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
@@ -426,29 +515,58 @@ flow:
       invocation: {key: invocation, type: string, value: "/canvas.project #canvas #runtime-ready @canvas @runtime-proof"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Semantic HTML Rich Media panel for care-agent proof surfaces. It uses article, header, section, heading, paragraph, and list elements instead of generic containers."}
       lane: {key: lane, type: string, value: "Canvas"}
+      output:
+        key: output
+        type: textarea
+        value: |
+          # Care Source
+
+          Run-ready card output generated from the selected InputWidget node without a provider call.
+
+          | Field | Source-backed value |
+          | --- | --- |
+          | lane | Source |
+          | summary | check my hand, numb...<br>![空武.jpg](http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ) |
+          | output | # Care Source<br>Run-ready card output generated from the selected InputWidget node without a provider call.<br>\| Field \| Source-backed value \|<br>\| --- \| --- \|<br>\| lane \| Source \|<br>\| summary \| check my hand, numb...<br>![空武.jpg](http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ) \|<br>\| output \| # Care Source<br>Run-ready card output generated from the selected InputWidget node without a provider call.<br>\\| Field \\| Source-backed value \\|<br>\\| --- \\| --- \\|<br>\\| lane \\| Source \\|<br>\\| summary \\| check my hand, numb...<br>![空武.jpg](http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ) \\|<br>\\| kgc:readingSummary \\| Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. \\| \|<br>\| kgc:readingSummary \| Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. \| |
+          | kgc:readingSummary | Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. |
+
+      outputMimeType: {key: outputMimeType, type: string, value: "text/markdown; charset=utf-8"}
+      outputModel: {key: outputModel, type: string, value: "source-backed-card-run"}
       outputSrcDoc:
         key: outputSrcDoc
         type: textarea
         value: |
-          <article aria-labelledby="care-agent-panel-title">
-            <header>
-              <h1 id="care-agent-panel-title">Care Plan Coach</h1>
-              <p>Local dry-run panel for plain-language task cards, teach-back prompts, caregiver handoff, and safety escalation.</p>
-            </header>
-            <section aria-labelledby="next-steps-heading">
-              <h2 id="next-steps-heading">Next Steps</h2>
-              <ol>
-                <li>Review the redacted care-plan note.</li>
-                <li>Confirm what the patient understood.</li>
-                <li>Prepare questions for a clinician when instructions conflict.</li>
-              </ol>
-            </section>
-            <section aria-labelledby="safety-heading">
-              <h2 id="safety-heading">Safety Boundary</h2>
-              <p>Emergency, diagnosis, and medication-dose questions stop here and route to clinician or emergency guidance.</p>
-            </section>
-          </article>
+          <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Care Source</title><style>html{color-scheme:dark light}body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:rgba(255, 255, 255, 0.95);color:#111827}main{max-width:980px;margin:0 auto;padding:16px}a{color:#3b82f6}pre,code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;overflow:auto;color:#0f172a}code{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:1px 4px;color:#0f172a}table{border-collapse:collapse;width:100%}th,td{border:1px solid #e5e7eb;padding:6px 8px;vertical-align:top}blockquote{border-left:3px solid #e5e7eb;margin:0;padding:0 0 0 12px;color:#4b5563}hr{border:0;border-top:1px solid #e5e7eb;margin:16px 0}img,video{max-width:100%;height:auto}</style></head><body><main><section data-kg-rich-media-markdown-srcdoc="1"><h1>Care Source</h1>
+          <p>Run-ready card output generated from the selected InputWidget node without a provider call.</p>
+          <table>
+          <thead>
+          <tr>
+          <th>Field</th>
+          <th>Source-backed value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>lane</td>
+          <td>Source</td>
+          </tr>
+          <tr>
+          <td>summary</td>
+          <td>check my hand, numb...&lt;br&gt;<img src="http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ" alt="空武.jpg"></td>
+          </tr>
+          <tr>
+          <td>output</td>
+          <td># Care Source&lt;br&gt;Run-ready card output generated from the selected InputWidget node without a provider call.&lt;br&gt;| Field | Source-backed value |&lt;br&gt;| --- | --- |&lt;br&gt;| lane | Source |&lt;br&gt;| summary | check my hand, numb...&lt;br&gt;<img src="http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ" alt="空武.jpg"> |&lt;br&gt;| output | # Care Source&lt;br&gt;Run-ready card output generated from the selected InputWidget node without a provider call.&lt;br&gt;| Field | Source-backed value |&lt;br&gt;| --- | --- |&lt;br&gt;| lane | Source |&lt;br&gt;| summary | check my hand, numb...&lt;br&gt;<img src="http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ" alt="空武.jpg"> |&lt;br&gt;| kgc:readingSummary | Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. | |&lt;br&gt;| kgc:readingSummary | Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials. |</td>
+          </tr>
+          <tr>
+          <td>kgc:readingSummary</td>
+          <td>Source-owned redacted care-plan intake. It carries synthetic or operator-redacted notes only and rejects PHI or credentials.</td>
+          </tr>
+          </tbody>
+          </table>
+          </section></main></body></html>
 
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       runtimeProof: {key: runtimeProof, type: string, value: ""}
       "visual:height": {key: "visual:height", type: number, value: 324}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
@@ -459,7 +577,7 @@ flow:
     - id: {key: id, type: string, value: "care_validation"}
       type: {key: type, type: string, value: "ReviewWidget"}
       label: {key: label, type: string, value: "Validation Gate"}
-      position: {key: position, type: object, value: {"x":2040,"y":0}}
+      position: {key: position, type: object, value: {"x":1595.7829194413932,"y":-661.3772091354265}}
       handles: {key: handles, type: object, value: {"target":["runtimeProof","costLog"],"source":["validationStatus","deployBoundary"]}}
       deployBoundary: {key: deployBoundary, type: string, value: "Dev-only; no Prod mirror or Cloudflare deploy without explicit operator instruction."}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"care_proof_signal_in":"care_proof_signal"},"out":{}}}
@@ -477,6 +595,37 @@ flow:
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 6}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+    - id: {key: id, type: string, value: "care_source-media-panel"}
+      type: {key: type, type: string, value: "RichMediaPanel"}
+      label: {key: label, type: string, value: "空武.jpg"}
+      position: {key: position, type: object, value: {"x":-779.2079874414642,"y":-119.87324393358875}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
+      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      image: {key: image, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      imageUrl: {key: imageUrl, type: text, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      media: {key: media, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      media_kind: {key: media_kind, type: string, value: "image"}
+      media_url: {key: media_url, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      mediaKind: {key: mediaKind, type: string, value: "image"}
+      mediaSource: {key: mediaSource, type: string, value: "storyboard-card-media-drop"}
+      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:088c7665f3bdba063c925453157c5694d4db12f5c8b34e872bc7a1960a821216"}
+      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      storyboardCanvasRichMediaPanel: {key: storyboardCanvasRichMediaPanel, type: boolean, value: true}
+      storyboardCardMediaSourceKind: {key: storyboardCardMediaSourceKind, type: string, value: "image"}
+      storyboardCardMediaTargetId: {key: storyboardCardMediaTargetId, type: string, value: "care_source"}
+      thumbnailUrl: {key: thumbnailUrl, type: string, value: "http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
   edges:
     - {"id":"edge_source_normalize","source":"care_source","sourceHandle":"care_source_signal_out","target":"care_normalize","targetHandle":"care_source_signal_in","type":"care_source_signal"}
     - {"id":"edge_normalize_tasks","source":"care_normalize","sourceHandle":"care_task_signal_out","target":"care_tasks","targetHandle":"care_task_signal_in","type":"care_task_signal"}
@@ -484,146 +633,151 @@ flow:
     - {"id":"edge_probe_harness","source":"care_probe","sourceHandle":"care_task_signal_out","target":"care_harness","targetHandle":"care_task_signal_in","type":"care_task_signal"}
     - {"id":"edge_harness_canvas","source":"care_harness","sourceHandle":"care_proof_signal_out","target":"care_canvas","targetHandle":"care_proof_signal_in","type":"care_proof_signal"}
     - {"id":"edge_canvas_validation","source":"care_canvas","sourceHandle":"care_proof_signal_out","target":"care_validation","targetHandle":"care_proof_signal_in","type":"care_proof_signal"}
+    - {"id":"e1","source":"care_source-media-panel","sourceHandle":"imageUrl","target":"care_source","targetHandle":"mediaUrl","label":"linksTo"}
+    - {"id":"e2","source":"care_source","sourceHandle":"redactedCarePlan","target":"care_tasks","targetHandle":"normalizedSummary","label":"linksTo"}
 strybldr_storyboard:
-  version: "1"
-  runId: "care-agent-demo"
-  createdAtMs: "1783468800000"
-  notes: "Neutral care-agent payload for local-first patient engagement. Use synthetic or redacted source fields before any live provider call."
+  version: '1'
+  runId: care-agent-demo
+  createdAtMs: '1783468800000'
+  notes: Neutral care-agent payload for local-first patient engagement. Use synthetic or redacted source fields before any live provider call.
   workflow:
     stages:
-      - "Source"
-      - "Ideation"
-      - "Probe"
-      - "Harness"
-      - "Canvas"
-      - "Safety"
-      - "Cost"
-      - "Validation"
-      - "Publish"
+      - Source
+      - Ideation
+      - Probe
+      - Harness
+      - Canvas
+      - Safety
+      - Cost
+      - Validation
+      - Publish
     publish:
-      id: "care-agent-local-publish-packet"
-      label: "Local publish packet"
-      policy: "Write local packet fields only; do not claim Prod, Cloudflare, provider IDs, patient outcomes, or live evidence without explicit operator approval and returned proof."
+      id: care-agent-local-publish-packet
+      label: Local publish packet
+      policy: Write local packet fields only; do not claim Prod, Cloudflare, provider IDs, patient outcomes, or live evidence without explicit operator approval and returned proof.
   sources:
-    - sourceUnitId: "care-agent-demo-source"
-      workspacePath: "docs/knowgrph-care-agent-demo.md"
-      relativePath: "knowgrph-care-agent-demo.md"
-      originalName: "Care agent demo source"
-      mediaKind: "doc"
-      mimeHint: "text/markdown"
-      byteSize: "0"
-      textHash: "care-agent-demo"
-      mediaUrl: ""
+    - sourceUnitId: care-agent-demo-source
+      workspacePath: docs/knowgrph-care-agent-demo.md
+      relativePath: knowgrph-care-agent-demo.md
+      originalName: Care agent demo source
+      mediaKind: doc
+      mimeHint: text/markdown
+      byteSize: '0'
+      textHash: care-agent-demo
+      mediaUrl: ''
   elements:
-    - id: "care-source-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Care source"
+    - id: care-source-card
+      sourceUnitId: care-agent-demo-source
+      label: Care source
       confidence: 1
       sourceBox: null
-      evidenceKind: "source-metadata"
-      provider: "knowgrph"
-      lane: "Source"
+      evidenceKind: source-metadata
+      provider: knowgrph
+      lane: Source
       order: 1
-      prompt: "Run /source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body."
-      action: "Keep source notes synthetic or redacted; reject PHI, credentials, and provider-owned secrets."
-      summary: "Source intake owns the care-plan context and safety boundary before any agent step runs."
-    - id: "care-ideation-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Care-plan ideation"
+      prompt: 'Run /source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body.'
+      action: Keep source notes synthetic or redacted; reject PHI, credentials, and provider-owned secrets.
+      summary: Source intake owns the care-plan context and safety boundary before any agent step runs.
+    - id: care-ideation-card
+      sourceUnitId: care-agent-demo-source
+      label: Care-plan ideation
       confidence: 1
       sourceBox: null
-      evidenceKind: "agentic-os-invocation"
-      provider: "knowgrph"
-      lane: "Ideation"
+      evidenceKind: agentic-os-invocation
+      provider: knowgrph
+      lane: Ideation
       order: 2
-      prompt: "Run /memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator."
-      action: "Produce the smallest patient-engagement workflow with clear time-to-value and VCC checks."
-      summary: "Ideation turns redacted care notes into task cards, teach-back prompts, and caregiver handoff scope."
-    - id: "care-harness-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Care harness"
+      prompt: 'Run /memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator.'
+      action: Produce the smallest patient-engagement workflow with clear time-to-value and VCC checks.
+      summary: Ideation turns redacted care notes into task cards, teach-back prompts, and caregiver handoff scope.
+    - id: care-harness-card
+      sourceUnitId: care-agent-demo-source
+      label: Care harness
       confidence: 1
       sourceBox: null
-      evidenceKind: "runtime-plan"
-      provider: "knowgrph-local-care-dry-run"
-      lane: "Harness"
+      evidenceKind: runtime-plan
+      provider: knowgrph-local-care-dry-run
+      lane: Harness
       order: 3
-      prompt: "Run /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway."
-      action: "Define typed input, output, fallback, cost log, max iteration, and approval gates."
-      summary: "Harness definition blocks unsafe clinical, PHI, paid, mutating, and deployment paths by default."
-    - id: "care-probe-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Probe-tree branching"
+      prompt: 'Run /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway.'
+      action: Define typed input, output, fallback, cost log, max iteration, and approval gates.
+      summary: Harness definition blocks unsafe clinical, PHI, paid, mutating, and deployment paths by default.
+    - id: care-probe-card
+      sourceUnitId: care-agent-demo-source
+      label: Probe-tree branching
       confidence: 1
       sourceBox: null
-      evidenceKind: "probe-tree-runtime"
-      provider: "knowgrph-local-probe-tree"
-      lane: "Probe"
+      evidenceKind: probe-tree-runtime
+      provider: knowgrph-local-probe-tree
+      lane: Probe
       order: 4
-      prompt: "Run knowgrph.probe.generate, select one option, then evolve after resolution."
-      action: "Persist user-selected clarification paths as type: probe markdown nodes with branches-to edges."
-      summary: "Probe-tree runtime turns vague care-plan intake into a bounded branch path and local memory exemplar."
-    - id: "care-canvas-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Canvas projection"
+      prompt: Run knowgrph.probe.generate, select one option, then evolve after resolution.
+      action: 'Persist user-selected clarification paths as type: probe markdown nodes with branches-to edges.'
+      summary: Probe-tree runtime turns vague care-plan intake into a bounded branch path and local memory exemplar.
+    - id: care-canvas-card
+      sourceUnitId: care-agent-demo-source
+      label: Canvas projection
       confidence: 1
       sourceBox: null
-      evidenceKind: "canvas-proof-plan"
-      provider: "knowgrph"
-      lane: "Canvas"
+      evidenceKind: canvas-proof-plan
+      provider: knowgrph
+      lane: Canvas
       order: 5
-      prompt: "Run /canvas.project #canvas #runtime-ready @canvas @runtime-proof."
-      action: "Project source-backed cards and semantic HTML panel through existing Canvas owners."
-      summary: "Canvas projection uses Storyboard and Rich Media surfaces without renderer forks or dashboard-only state."
-    - id: "care-safety-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Safety gate"
+      prompt: 'Run /canvas.project #canvas #runtime-ready @canvas @runtime-proof.'
+      action: Project source-backed cards and semantic HTML panel through existing Canvas owners.
+      summary: Canvas projection uses Storyboard and Rich Media surfaces without renderer forks or dashboard-only state.
+    - id: care-safety-card
+      sourceUnitId: care-agent-demo-source
+      label: Safety gate
       confidence: 1
       sourceBox: null
-      evidenceKind: "safety-boundary"
-      provider: "knowgrph"
-      lane: "Safety"
+      evidenceKind: safety-boundary
+      provider: knowgrph
+      lane: Safety
       order: 6
-      prompt: "Check clinical decision, emergency, medication-dose, conflicting-instruction, and PHI upload gates."
-      action: "Route high-risk requests to clinician or emergency guidance and stop the agent loop."
-      summary: "Safety gate keeps the demo as a coach and explanation aid, not a medical decision system."
-    - id: "care-cost-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Cost audit"
+      prompt: Check clinical decision, emergency, medication-dose, conflicting-instruction, and PHI upload gates.
+      action: Route high-risk requests to clinician or emergency guidance and stop the agent loop.
+      summary: Safety gate keeps the demo as a coach and explanation aid, not a medical decision system.
+    - id: care-cost-card
+      sourceUnitId: care-agent-demo-source
+      label: Cost audit
       confidence: 1
       sourceBox: null
-      evidenceKind: "cost-ledger"
-      provider: "knowgrph-local-care-dry-run"
-      lane: "Cost"
+      evidenceKind: cost-ledger
+      provider: knowgrph-local-care-dry-run
+      lane: Cost
       order: 7
-      prompt: "Run /cost.audit #token-economics #tco #foss @cost-log @operator."
-      action: "Keep local proof zero-cost and compare any proposed live dependency against FOSS or existing-owner alternatives."
-      summary: "Cost audit reports token, cache, TCO, and budget fields before any paid call can run."
-    - id: "care-validation-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Validation"
+      prompt: 'Run /cost.audit #token-economics #tco #foss @cost-log @operator.'
+      action: Keep local proof zero-cost and compare any proposed live dependency against FOSS or existing-owner alternatives.
+      summary: Cost audit reports token, cache, TCO, and budget fields before any paid call can run.
+    - id: care-validation-card
+      sourceUnitId: care-agent-demo-source
+      label: Validation
       confidence: 1
       sourceBox: null
-      evidenceKind: "runtime-review"
-      provider: "knowgrph"
-      lane: "Validation"
+      evidenceKind: runtime-review
+      provider: knowgrph
+      lane: Validation
       order: 8
-      prompt: "Run /validation.run #vcc #no-hardcode @runtime-proof @dev-only."
-      action: "Require focused parse, route, schema, cost, safety, approval, and deploy-boundary evidence."
-      summary: "Validation can promote the doc only after surfaced proof; prose alone keeps it spec-complete."
-    - id: "care-publish-card"
-      sourceUnitId: "care-agent-demo-source"
-      label: "Publish gate"
+      prompt: 'Run /validation.run #vcc #no-hardcode @runtime-proof @dev-only.'
+      action: Require focused parse, route, schema, cost, safety, approval, and deploy-boundary evidence.
+      summary: Validation can promote the doc only after surfaced proof; prose alone keeps it spec-complete.
+    - id: care-publish-card
+      sourceUnitId: care-agent-demo-source
+      label: Publish gate
       confidence: 1
       sourceBox: null
-      evidenceKind: "runtime-publish"
-      provider: "knowgrph"
-      lane: "Publish"
+      evidenceKind: runtime-publish
+      provider: knowgrph
+      lane: Publish
       order: 9
-      prompt: "Run /deploy.guard #dev-only #approval-gate @operator @dev-only."
-      action: "Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare."
-      summary: "Publish gate records local packet readiness and blocks mirror or deploy mutation by default."
-  cards: []
+      prompt: 'Run /deploy.guard #dev-only #approval-gate @operator @dev-only.'
+      action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
+      summary: Publish gate records local packet readiness and blocks mirror or deploy mutation by default.
+  cards:
+    - nodeId: care_source
+      mediaKind: image
+      mediaUrl: http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ
 ---
 
 # Knowgrph Care Agent Demo
@@ -660,9 +814,10 @@ care_agent_local_harness:
   source: "@source.frontmatter + @source.body"
   normalize: "/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body"
   ideation: "/memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator"
-  probe_generate: "knowgrph.probe.generate thread_root_id=care-agent-demo current_node_id=care_source k=3"
-  probe_select: "knowgrph.probe.select writes type: probe markdown node and branches-to edge"
-  probe_evolve: "knowgrph.probe.evolve scores resolved path and writes scoped memory exemplar"
+  probe_generate: "knowgrph.probe.generate thread_root_id=care-agent-demo current_node_id=care_source k=3 recall_top_k=0 token_budget=1200"
+  probe_select: "knowgrph.probe.select writes a fresh type: probe markdown node, branches-to edge, checkpoint metadata, and local-zero cost_log"
+  probe_evolve: "knowgrph.probe.evolve scores the resolved path, reports incomplete parents, writes a scoped memory exemplar, and returns local-zero cost_log"
+  probe_mutation_semantics: "probe.select and probe.evolve are non-idempotent process tools; host retry behavior must not duplicate branches or silently rewrite scores"
   harness: "/harness.define /mcp.capabilities #harness @local-harness @mcp-gateway"
   cost: "/cost.audit #token-economics #tco @cost-log @operator"
   canvas: "/canvas.project #canvas #runtime-ready @canvas @runtime-proof"
@@ -684,12 +839,12 @@ care_agent_local_harness:
 
 ## Use
 
-1. Open this Markdown file in Knowgrph.
+1. From a clean local canvas, run `npm run demo:care-agent -- --port <free-port>`.
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
 3. Replace the synthetic care-plan note with operator-redacted source content only.
 4. Run `/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body`.
-5. Run `knowgrph.probe.generate` with `thread_root_id=care-agent-demo`, `current_node_id=care_source`, `token_budget=1200`, and the redacted context; optionally configure `KNOWGRPH_PROBE_TREE_MODEL` for Ollama-backed local generation.
-6. Run `knowgrph.probe.select` for the user-selected option, then run `knowgrph.probe.evolve` after the branch resolves; keep the parent checkpoint materialized in `data/probe-tree` or treat any returned incomplete-path status as a validation blocker.
+5. Run `knowgrph.probe.generate` with `thread_root_id=care-agent-demo`, `current_node_id=care_source`, `recall_top_k=0`, `token_budget=1200`, and the redacted context; optionally configure `KNOWGRPH_PROBE_TREE_MODEL` for Ollama-backed local generation.
+6. Run `knowgrph.probe.select` for the user-selected option, then run `knowgrph.probe.evolve` after the branch resolves; keep the parent checkpoint materialized in `data/probe-tree`, require local-zero `cost_log` in both responses, and treat any returned incomplete-path status as a validation blocker.
 7. Run `/harness.define /cost.audit #harness #token-economics @local-harness @cost-log`.
 8. Run `/canvas.project #canvas @canvas @runtime-proof` and review the Storyboard plus Rich Media panel.
 9. Run `/validation.run #vcc @runtime-proof @dev-only`.
@@ -697,22 +852,28 @@ care_agent_local_harness:
 
 ## Acceptance Checklist
 
-- [ ] Frontmatter parses from byte zero without repair fallback.
-- [ ] Source content is synthetic or operator-redacted.
-- [ ] `/`, `#`, and `@` tokens match the Agentic OS dictionaries.
-- [ ] Probe-tree tools are registered in local MCP and `probe.generate` does not mutate graph state.
-- [ ] `probe.generate` enforces `token_budget` before local model invocation.
-- [ ] `probe.select` writes one `type: probe` markdown node with a `branches-to` edge under `data/probe-tree`.
-- [ ] `probe.select` output parses through frontmatter-flow for existing Canvas/sync projection.
-- [ ] `probe.evolve` writes one scoped memory exemplar without adding a second checkpoint datastore.
-- [ ] `probe.evolve` scores the complete traversed path or reports missing parent checkpoints.
-- [ ] Harness fields include schemas, fallback, max iteration, circuit breaker, and cost log.
-- [ ] Local dry-run cost fields remain exact zero.
-- [ ] Storyboard and Rich Media projection use existing shared Canvas owners.
-- [ ] Rich Media HTML uses semantic elements and no generic container markup.
-- [ ] Safety gate blocks clinical decisions, PHI upload, and medication-dose changes.
-- [ ] Runtime-ready status is withheld until focused proof is surfaced.
-- [ ] Publish scope remains `local-only` unless the operator explicitly authorizes Prod or Cloudflare.
+- [x] Frontmatter parses from byte zero without repair fallback.
+- [x] Clean-canvas demo mode loads this sibling docs source through `VITE_KNOWGRPH_RUN_READY_DEMO=care-agent`.
+- [x] Source content is synthetic or operator-redacted.
+- [x] `/`, `#`, and `@` tokens match the Agentic OS dictionaries.
+- [x] Probe-tree tools are registered in local MCP and `probe.generate` does not mutate graph state.
+- [x] `probe.generate` enforces `token_budget` before local model invocation.
+- [x] `probe.generate` honors `recall_top_k=0` against a seeded memory store.
+- [x] `probe.select` writes one fresh `type: probe` markdown node with a `branches-to` edge under `data/probe-tree`.
+- [x] `probe.select` output parses through frontmatter-flow for existing Canvas/sync projection.
+- [x] `probe.select` returns a local-zero `cost_log`.
+- [x] `probe.evolve` writes one scoped memory exemplar without adding a second checkpoint datastore.
+- [x] `probe.evolve` scores the complete traversed path or reports missing parent checkpoints.
+- [x] `probe.evolve` returns a local-zero `cost_log`.
+- [x] Probe markdown parsing preserves semantic hyphen and dot frontmatter keys.
+- [x] `probe.select` and `probe.evolve` are advertised as non-idempotent process tools.
+- [x] Harness fields include schemas, fallback, max iteration, circuit breaker, and cost log.
+- [x] Local dry-run cost fields remain exact zero.
+- [x] Storyboard and Rich Media projection use existing shared Canvas owners.
+- [x] Rich Media HTML uses semantic elements and no generic container markup.
+- [x] Safety gate blocks clinical decisions, PHI upload, and medication-dose changes.
+- [x] Runtime-ready status is backed by focused proof.
+- [x] Publish scope remains `local-only` unless the operator explicitly authorizes Prod or Cloudflare.
 
 ## Guardrails
 
@@ -721,3 +882,4 @@ care_agent_local_harness:
 - Do not backfill runtime-ready claims from prose, screenshots, or stale local state.
 - Do not deploy this demo to Prod or Cloudflare from this document alone.
 - Keep frontmatter as the source-owned graph and body prose as the human workflow.
+w.

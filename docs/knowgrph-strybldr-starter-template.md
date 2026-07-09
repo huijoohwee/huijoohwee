@@ -68,13 +68,13 @@ agentic_os_video_agent_pipeline:
   status: "spec-complete"
   autonomy_mode: "local-dry-run-first"
   source_docs:
-    - "../agentic-os-docs/MEMORY.md"
-    - "../agentic-os-docs/AGENTS.md"
-    - "../agentic-os-docs/DICTIONARY-COMMAND.md"
-    - "../agentic-os-docs/DICTIONARY-SEMANTIC.md"
-    - "../agentic-os-docs/DICTIONARY-BINDING.md"
-    - "../agentic-os-docs/HARNESS-CONTRACTS.md"
-    - "../agentic-os-docs/RUNTIME-READINESS.md"
+    - "../../agentic-canvas-os/docs/MEMORY.md"
+    - "../../agentic-canvas-os/docs/AGENTS.md"
+    - "../../agentic-canvas-os/docs/DICTIONARY-COMMAND.md"
+    - "../../agentic-canvas-os/docs/DICTIONARY-SEMANTIC.md"
+    - "../../agentic-canvas-os/docs/DICTIONARY-BINDING.md"
+    - "../../agentic-canvas-os/docs/HARNESS-CONTRACTS.md"
+    - "../../agentic-canvas-os/docs/RUNTIME-READINESS.md"
   invocation_routes:
     slash:
       - "/memory.seed"
@@ -452,7 +452,7 @@ strybldr_storyboard:
       provider: knowgrph
       lane: Ideation
       order: 2
-      prompt: "Run /memory.seed #frontmatter #vcc @source.frontmatter @source.body to derive a source-backed idea brief."
+      prompt: 'Run /memory.seed #frontmatter #vcc @source.frontmatter @source.body to derive a source-backed idea brief.'
       action: Keep ideas paraphrased, source-backed, and zero-spend until the operator approves generation.
       summary: Autonomous ideation turns the source brief into candidate shots, narrative beats, and reuse constraints.
     - id: video-agent-invocation-card
@@ -464,7 +464,7 @@ strybldr_storyboard:
       provider: knowgrph
       lane: Invocation
       order: 3
-      prompt: "Run /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway."
+      prompt: 'Run /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway.'
       action: Produce a typed invocation plan with max iteration, cost ledger, approval gates, and fallback behavior.
       summary: Invocation binds commands, semantics, and runtime surfaces before any model or media call can run.
     - id: video-agent-generation-card
@@ -476,7 +476,7 @@ strybldr_storyboard:
       provider: knowgrph-local-animatic
       lane: Generation
       order: 4
-      prompt: "Run /canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate."
+      prompt: 'Run /canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate.'
       action: Generate a local animatic packet first; require @operator approval before live video provider calls.
       summary: Generation projects approved story cards into Canvas and emits local proof with paid_call_count remaining zero.
     - id: starter-storyboard-beats-card
