@@ -6,7 +6,7 @@ date: "2026-06-16"
 lang: "en-US"
 schema: "kgc-strybldr-starter/v1"
 implementation_contract: "docs/documents/knowgrph-strybldr-prd-tad.md"
-template_policy: "Minimum viable runnable Strybldr seed for video-agent E2E ideation, invocation, and generation; source payload owns graph data; runtime outputs stay blank until operator-approved live calls return them."
+template_policy: "Minimum viable runnable Strybldr seed for short-drama video-agent E2E scriptwriting, storyboarding, generation, editing, and proof; source payload owns graph data; runtime outputs stay blank until operator-approved live calls return them."
 validation_input_forbid_hardcode_in_repo: "true"
 deployed_api_claim: "false"
 kgCanvasSurfaceMode: "2d"
@@ -18,9 +18,9 @@ kgMultiDimTableModeEnabled: false
 kgDocumentStructureBaselineLock: false
 kgStrybldrStoryboard: true
 kgBottomPanelOpen: true
-kgBottomPanelTab: "timeline"
+kgBottomPanelTab: "gantt"
 kgFloatingPanelOpen: true
-kgFloatingPanelView: "strybldr"
+kgFloatingPanelView: "gantt"
 kgSharedRendererContract:
   version: "shared-renderer-contract/v1"
   semanticIdentity: "buildScopedGraphSemanticKey"
@@ -52,7 +52,10 @@ starter_inputs:
   source_title: "Untitled source"
   source_author: ""
   source_policy: "Use operator-owned source notes, metadata, and approved paraphrased beats only. Do not copy transcript text."
-  target_brief: "Create a concise source-backed video-agent ideation brief, invocation plan, generation storyboard, and local animatic packet before any live provider call."
+  target_brief: "Leverage video generation capabilities to build an Agent that autonomously handles the entire short drama creation pipeline from scriptwriting and storyboarding to video generation, editing, and review."
+  challenge_mode: "short-drama-creation-agent"
+  narrative_quality_policy: "Demonstrate narrative ability through premise clarity, scene logic, shot continuity, character consistency, pacing, and edit-ready review evidence."
+  token_budget_policy: "Maximize approved output quality per token; reuse frontmatter and source summaries, cache typed manifests, stop duplicate branches, and fail before paid calls on budget breach."
   approval_state: "draft"
   publish_scope: "local-only"
   publish_policy: "No Prod, Cloudflare, external publication, fabricated provider IDs, stream URLs, or transcript text."
@@ -61,12 +64,18 @@ local_animatic_inputs:
   model: "strybldr-local-animatic-v1"
   status: "ready"
   paid_call_count: 0
-  source: "approved Strybldr cards plus Agentic OS /, #, @ invocations from this starter document"
+  source: "approved short-drama Strybldr cards plus Agentic OS /, #, @ invocations from this starter document"
   output: "strybldr-video-*.md with embedded srcdoc animatic and source provenance links"
 agentic_os_video_agent_pipeline:
   version: "agentic-video-agent-pipeline/v1"
   status: "spec-complete"
-  autonomy_mode: "local-dry-run-first"
+  autonomy_mode: "agent-directed-local-dry-run-first"
+  challenge_brief:
+    objective: "Autonomously plan and execute a short-drama creation workflow while keeping spend, proof, and deploy gates explicit."
+    production_steps: ["scriptwriting", "storyboarding", "video_generation", "editing", "review_packet"]
+    multimodal_outputs: ["script_outline", "storyboard_cards", "generation_manifest", "edit_decision_list", "runtime_proof"]
+    quality_metric: "highest approved narrative clarity, visual continuity, and edit readiness under the bounded token budget"
+    token_budget: "bounded by /cost.audit and @cost-log; prefer cached source summaries, reusable scene manifests, and local dry-runs over re-computation"
   source_docs:
     - "../../agentic-canvas-os/docs/MEMORY.md"
     - "../../agentic-canvas-os/docs/AGENTS.md"
@@ -82,6 +91,8 @@ agentic_os_video_agent_pipeline:
       - "/harness.define"
       - "/mcp.capabilities"
       - "/cost.audit"
+      - "/superagent.run"
+      - "/tool.route"
       - "/canvas.project"
       - "/runtime-ready.check"
       - "/validation.run"
@@ -91,8 +102,12 @@ agentic_os_video_agent_pipeline:
       - "#harness"
       - "#token-economics"
       - "#vcc"
+      - "#tool-gateway"
+      - "#tool-routing"
+      - "#long-horizon-harness"
       - "#runtime-ready"
       - "#canvas"
+      - "#human-in-loop"
       - "#approval-gate"
       - "#dev-only"
       - "#no-hardcode"
@@ -103,40 +118,65 @@ agentic_os_video_agent_pipeline:
       - "@runtime-proof"
       - "@cost-log"
       - "@mcp-gateway"
+      - "@tool-provider"
+      - "@tool-policy"
+      - "@orchestration-graph"
+      - "@sandbox-workspace"
+      - "@message-gateway"
+      - "@human-review"
       - "@canvas"
       - "@approval-gate"
       - "@operator"
       - "@dev-only"
   stages:
     - id: "video-agent-ideation"
-      lane: "Ideation"
+      lane: "Scriptwriting"
       command: "/memory.seed"
       bindings: ["@source.frontmatter", "@source.body", "@operator"]
       semantics: ["#frontmatter", "#vcc", "#no-hardcode"]
-      output: "source-backed idea brief and storyboard hypotheses"
+      output: "source-backed short-drama premise, logline, scene outline, and script beats"
+      paid_call_count: 0
+    - id: "video-agent-storyboarding"
+      lane: "Storyboard"
+      command: "/canvas.project"
+      bindings: ["@canvas", "@source.frontmatter", "@source.body"]
+      semantics: ["#canvas", "#frontmatter", "#runtime-ready"]
+      output: "editable storyboard cards, shot continuity notes, reusable elements, and local review gates"
       paid_call_count: 0
     - id: "video-agent-invocation"
       lane: "Invocation"
       command: "/harness.define"
-      bindings: ["@local-harness", "@cost-log", "@mcp-gateway"]
-      semantics: ["#harness", "#token-economics", "#approval-gate"]
-      output: "typed invocation plan with bounds, gates, and cost fields"
+      bindings: ["@local-harness", "@cost-log", "@mcp-gateway", "@orchestration-graph", "@message-gateway"]
+      semantics: ["#harness", "#token-economics", "#long-horizon-harness", "#approval-gate"]
+      output: "typed autonomous-agent invocation plan with bounds, gates, tool routes, and cost fields"
       paid_call_count: 0
     - id: "video-agent-generation"
       lane: "Generation"
-      command: "/canvas.project"
-      bindings: ["@canvas", "@runtime-proof", "@approval-gate"]
-      semantics: ["#canvas", "#runtime-ready", "#dev-only"]
-      output: "local animatic packet by default; live provider result only after approval"
+      command: "/tool.route"
+      bindings: ["@tool-provider", "@tool-policy", "@cost-log", "@approval-gate", "@runtime-proof"]
+      semantics: ["#tool-gateway", "#tool-routing", "#token-economics", "#approval-gate"]
+      output: "local animatic packet by default; live video generation result only after approval and returned evidence"
+      paid_call_count: 0
+    - id: "video-agent-editing"
+      lane: "Editing"
+      command: "/runtime-ready.check"
+      bindings: ["@local-harness", "@runtime-proof", "@cost-log", "@human-review"]
+      semantics: ["#runtime-ready", "#vcc", "#human-in-loop", "#token-economics"]
+      output: "edit decision list, pacing notes, timeline proof, and review packet without redundant generation calls"
       paid_call_count: 0
   gates:
     live_provider_calls: "blocked until @operator approves @approval-gate"
+    token_budget: "blocked by /cost.audit when projected spend, cache miss rate, or repeated calls exceed the run budget"
+    editing_recompute: "blocked unless the edit cannot be expressed through existing storyboard, manifest, or timeline data"
     prod_mirror: "blocked by /deploy.guard and @dev-only"
     cloudflare: "blocked by /deploy.guard and @dev-only"
   runtime_outputs:
+    script_outline_path: ""
+    storyboard_manifest_path: ""
     idea_brief_path: ""
     invocation_manifest_path: ""
     local_animatic_packet_path: ""
+    edit_decision_list_path: ""
     live_video_url: ""
     provider_job_id: ""
     runtime_proof_path: ""
@@ -358,9 +398,11 @@ kgParserRoutingContract:
     - "strybldr_storyboard"
   surfaces:
     - "2D Renderer: Storyboard"
-    - "FloatingPanel: Strybldr"
+    - "FloatingPanel: Gantt-Timeline"
+    - "BottomPanel: Gantt-Timeline"
     - "FloatingPanel: Camera"
   edgePolicy: "Explicit flow.edges are source-owned SSOT; renderers project visible connectors only."
+  timelinePolicy: "Gantt-Timeline rows derive from strybldr_storyboard.elements; do not maintain a separate static mermaid_gantt workflow copy."
 kgWebpageView: "markdown"
 kgVideoSequenceSources: []
 kgVideoSequenceTimeline: true
@@ -368,21 +410,6 @@ flow_diagrams:
   key: "flow_diagrams"
   type: "object"
   value:
-    video_agent_workflow:
-      key: video_agent_workflow
-      type: mermaid_gantt
-      floatingPanelView: "gantt"
-      bottomPanelTab: "gantt"
-      value: |-
-        gantt
-          title Video-Agent E2E Pipeline
-          dateFormat HH:mm
-          axisFormat %H:%M
-          section Agentic OS
-          Ideation : video_agent_ideation, 00:00, 0.167m
-          Invocation : video_agent_invocation, after video_agent_ideation, 0.167m
-          Generation dry-run : video_agent_generation, after video_agent_invocation, 0.167m
-          Runtime proof : video_agent_runtime_proof, after video_agent_generation, 0.167m
     starter_flowchart:
       key: "starter_flowchart"
       type: "mermaid_flowchart"
@@ -393,25 +420,28 @@ flow_diagrams:
       value: |-
         flowchart LR
           source["Source URL and operator notes"]
-          ideation["/memory.seed ideation @source.body"]
+          script["/memory.seed scriptwriting @source.body"]
+          storyboard["/canvas.project storyboarding @canvas"]
           invocation["/harness.define invocation #harness"]
-          generation["/canvas.project generation @canvas"]
+          generation["/tool.route generation @tool-policy"]
+          editing["/runtime-ready.check editing @runtime-proof"]
           runtime["/runtime-ready.check local runtime gate"]
           review["Review packet"]
           publish["Local publish packet"]
-          source --> ideation --> invocation --> generation --> runtime --> review --> publish
+          source --> script --> storyboard --> invocation --> generation --> editing --> runtime --> review --> publish
 strybldr_storyboard:
   version: '1'
   runId: strybldr-starter-template
   createdAtMs: '1781577600000'
-  notes: Neutral starter payload for local-first Strybldr authoring. Replace source fields with operator-owned inputs before live provider calls.
+  notes: Neutral starter payload for local-first short-drama Strybldr authoring. Replace source fields with operator-owned inputs before live provider calls.
   workflow:
     stages:
       - Source
-      - Ideation
+      - Scriptwriting
+      - Storyboard
       - Invocation
       - Generation
-      - Storyboard
+      - Editing
       - Elements
       - Runtime
       - Review
@@ -440,45 +470,21 @@ strybldr_storyboard:
       provider: knowgrph
       lane: Source
       order: 1
-      prompt: Summarize the source promise without copying transcript text or provider-generated output.
-      action: Fill source fields before approving storyboard cards.
-      summary: Capture the operator-owned source URL, title, author, constraints, and notes.
+      prompt: Summarize the short-drama source promise without copying transcript text or provider-generated output.
+      action: Fill source fields before approving script, storyboard, generation, or editing cards.
+      summary: Capture the operator-owned source URL, title, author, premise constraints, style notes, and token budget.
     - id: video-agent-ideation-card
       sourceUnitId: strybldr-starter-source
-      label: Video-agent ideation
+      label: Short-drama scriptwriting
       confidence: 1
       sourceBox: null
       evidenceKind: agentic-os-invocation
       provider: knowgrph
-      lane: Ideation
+      lane: Scriptwriting
       order: 2
-      prompt: 'Run /memory.seed #frontmatter #vcc @source.frontmatter @source.body to derive a source-backed idea brief.'
-      action: Keep ideas paraphrased, source-backed, and zero-spend until the operator approves generation.
-      summary: Autonomous ideation turns the source brief into candidate shots, narrative beats, and reuse constraints.
-    - id: video-agent-invocation-card
-      sourceUnitId: strybldr-starter-source
-      label: Video-agent invocation
-      confidence: 1
-      sourceBox: null
-      evidenceKind: agentic-os-invocation
-      provider: knowgrph
-      lane: Invocation
-      order: 3
-      prompt: 'Run /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway.'
-      action: Produce a typed invocation plan with max iteration, cost ledger, approval gates, and fallback behavior.
-      summary: Invocation binds commands, semantics, and runtime surfaces before any model or media call can run.
-    - id: video-agent-generation-card
-      sourceUnitId: strybldr-starter-source
-      label: Video-agent generation
-      confidence: 1
-      sourceBox: null
-      evidenceKind: runtime-plan
-      provider: knowgrph-local-animatic
-      lane: Generation
-      order: 4
-      prompt: 'Run /canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate.'
-      action: Generate a local animatic packet first; require @operator approval before live video provider calls.
-      summary: Generation projects approved story cards into Canvas and emits local proof with paid_call_count remaining zero.
+      prompt: 'Run /memory.seed #frontmatter #vcc @source.frontmatter @source.body to derive a source-backed short-drama premise, logline, scene outline, and script beats.'
+      action: Keep scriptwriting paraphrased, source-backed, and zero-spend until the operator approves generation.
+      summary: Autonomous scriptwriting turns the source brief into narrative beats, scene intent, character continuity, and reuse constraints.
     - id: starter-storyboard-beats-card
       sourceUnitId: strybldr-starter-source
       label: Storyboard beats
@@ -487,10 +493,34 @@ strybldr_storyboard:
       evidenceKind: user-edit
       provider: knowgrph
       lane: Storyboard
+      order: 3
+      prompt: Create four concise short-drama storyboard beats from the approved script and operator notes.
+      action: Approve only paraphrased, source-backed beats with shot intent, camera notes, and continuity constraints.
+      summary: Draft setup, escalation, reversal, and close beats as editable cards before generation.
+    - id: video-agent-invocation-card
+      sourceUnitId: strybldr-starter-source
+      label: Video-agent invocation
+      confidence: 1
+      sourceBox: null
+      evidenceKind: agentic-os-invocation
+      provider: knowgrph
+      lane: Invocation
+      order: 4
+      prompt: 'Run /superagent.run /harness.define /mcp.capabilities /cost.audit #harness #token-economics #long-horizon-harness @local-harness @cost-log @mcp-gateway @orchestration-graph @message-gateway.'
+      action: Produce a typed autonomous-agent invocation plan with max iteration, cost ledger, approval gates, tool routes, and fallback behavior.
+      summary: Invocation binds commands, semantics, orchestration state, and runtime surfaces before any model or media call can run.
+    - id: video-agent-generation-card
+      sourceUnitId: strybldr-starter-source
+      label: Video-agent generation
+      confidence: 1
+      sourceBox: null
+      evidenceKind: runtime-plan
+      provider: knowgrph-local-animatic
+      lane: Generation
       order: 5
-      prompt: Create four concise storyboard beats from the operator notes.
-      action: Approve only paraphrased, source-backed beats.
-      summary: Draft setup, turn, proof, and close beats as editable cards.
+      prompt: 'Prepare /tool.route /canvas.project /runtime-ready.check #tool-routing #canvas #runtime-ready @tool-policy @canvas @runtime-proof @approval-gate.'
+      action: Generate a local animatic packet first; require @operator approval before live video provider calls.
+      summary: Generation projects approved story cards into Canvas and emits local proof with paid_call_count remaining zero.
     - id: starter-elements-card
       sourceUnitId: strybldr-starter-source
       label: Reusable elements
@@ -502,7 +532,19 @@ strybldr_storyboard:
       order: 6
       prompt: Convert approved beats into reusable elements and style constraints.
       action: Keep generated media URLs blank until real outputs exist.
-      summary: List reusable characters, locations, props, evidence cards, UI states, or shots.
+      summary: List reusable characters, locations, props, evidence cards, style constraints, sound cues, UI states, or shots.
+    - id: starter-editing-plan-card
+      sourceUnitId: strybldr-starter-source
+      label: Editing plan
+      confidence: 1
+      sourceBox: null
+      evidenceKind: runtime-plan
+      provider: knowgrph
+      lane: Editing
+      order: 7
+      prompt: Turn approved generated or local clips into a concise edit decision list with pacing, scene order, transitions, and audio notes.
+      action: Reuse approved clips, manifests, and timeline data; do not re-run generation when timeline edits are enough.
+      summary: Editing owns shot order, trims, continuity checks, soundtrack notes, and final review packet inputs.
     - id: starter-runtime-gate-card
       sourceUnitId: strybldr-starter-source
       label: Runtime gate
@@ -511,10 +553,10 @@ strybldr_storyboard:
       evidenceKind: runtime-plan
       provider: knowgrph-local-animatic
       lane: Runtime
-      order: 7
-      prompt: Render the local animatic handoff and keep live IDs empty until returned by an approved run.
+      order: 8
+      prompt: Render the local animatic or editing handoff and keep live IDs empty until returned by an approved run.
       action: Generate locally first; require human approval before VideoDB, SenseNova, or other paid provider calls.
-      summary: Default runtime is local animatic generation with zero paid calls and blank live provider fields.
+      summary: Default runtime is local animatic and edit-packet generation with zero paid calls and blank live provider fields.
     - id: starter-review-packet-card
       sourceUnitId: strybldr-starter-source
       label: Review packet
@@ -523,10 +565,10 @@ strybldr_storyboard:
       evidenceKind: runtime-review
       provider: knowgrph
       lane: Review
-      order: 8
+      order: 9
       prompt: Prepare a review packet that separates local evidence from live provider evidence.
       action: Reject fabricated provider IDs, stream URLs, transcripts, or generated asset URLs.
-      summary: Review provenance, approval state, cost, provider evidence, and local playback.
+      summary: Review narrative quality, multimodal orchestration, provenance, approval state, cost, provider evidence, and local playback.
     - id: starter-local-publish-packet-card
       sourceUnitId: strybldr-starter-source
       label: Local publish packet
@@ -535,28 +577,31 @@ strybldr_storyboard:
       evidenceKind: runtime-publish
       provider: knowgrph
       lane: Publish
-      order: 9
+      order: 10
       prompt: Close the workflow with a local-only packet and a visible publish gate.
       action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
       summary: Final output is a local packet path and approval state, not a public deployment claim.
-  cards: []
 ---
 
 # Knowgrph Strybldr Starter Template
 
-This is the /prd-tad.create minimum viable runnable Strybldr seed for a video-agent E2E demo. It opens on the shared storyboard renderer, shows Source, Ideation, Invocation, Generation, Storyboard, Elements, Runtime, Review, and Publish cards, and can produce a local zero-paid-call animatic from approved cards. /memory.seed #canvas @canvas
+This is the /prd-tad.create minimum viable runnable Strybldr seed for a short-drama video-agent E2E demo. It opens on the shared storyboard renderer, shows Source, Scriptwriting, Storyboard, Invocation, Generation, Editing, Elements, Runtime, Review, and Publish cards, and can produce a local zero-paid-call animatic or edit packet from approved cards. /memory.seed #canvas @canvas
 
 The template is intentionally neutral. Fill in source fields, approve cards, and only then connect live providers. Runtime IDs, stream URLs, transcript text, generated `bg#FEF08A:media` URLs, and deployment claims remain blank until returned by an operator-approved live run.
 
 ## Video-Agent E2E Demo
 
-This starter demonstrates the autonomous video-agent loop as source-backed stages, not as a separate parser or provider panel.
+This starter demonstrates an autonomous short-drama creation loop as source-backed stages, not as a separate parser, provider panel, or hardcoded demo. The Agent should demonstrate narrative ability and multimodal orchestration while maximizing approved output quality under a limited token budget.
+
+Gantt-Timeline rows derive from `strybldr_storyboard.elements`, so Canvas cards, FloatingPanel Gantt-Timeline, and BottomPanel Gantt-Timeline share one workflow sequence.
 
 | Stage | Invocation | Output | Gate |
 |---|---|---|---|
-| Ideation | /memory.seed #frontmatter #vcc @source.frontmatter @source.body | Candidate shots, narrative beats, reuse constraints | Zero paid calls |
-| Invocation | /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway | Typed run manifest, cost fields, fallback paths, max iteration | Missing approval blocks before spend |
-| Generation | /canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate | Local animatic packet and visible Storyboard proof | Live video provider calls require @operator |
+| Scriptwriting | /memory.seed #frontmatter #vcc @source.frontmatter @source.body | Premise, logline, scene outline, script beats, continuity notes | Zero paid calls |
+| Storyboard | /canvas.project #canvas #frontmatter @source.frontmatter @source.body @canvas | Editable beat cards, shot plan, reusable elements, source proof | Source-backed cards only |
+| Invocation | /superagent.run /harness.define /mcp.capabilities /cost.audit #harness #token-economics #long-horizon-harness @local-harness @cost-log @mcp-gateway @orchestration-graph @message-gateway | Typed agent run manifest, cost fields, fallback paths, max iteration, tool routes | Missing approval blocks before spend |
+| Generation | /tool.route /canvas.project /runtime-ready.check #tool-routing #canvas #runtime-ready @tool-policy @canvas @runtime-proof @approval-gate | Local animatic packet and visible Storyboard proof by default | Live video provider calls require @operator |
+| Editing | /runtime-ready.check #runtime-ready #vcc #token-economics @runtime-proof @cost-log @human-review | Edit decision list, timeline proof, pacing notes, review packet inputs | Reuse before regeneration |
 | Validation | /validation.run #vcc #dev-only @runtime-proof @dev-only | Focused proof lines and deploy-boundary status | No Prod or Cloudflare mutation |
 | Deploy guard | /deploy.guard #approval-gate #dev-only @operator @dev-only | Explicitly gated release status | Stop before Prod/Cloudflare unless instructed |
 
@@ -565,12 +610,15 @@ This starter demonstrates the autonomous video-agent loop as source-backed stage
 ```yaml
 video_agent_e2e:
   source: "@source.frontmatter + @source.body"
-  ideation: "/memory.seed #frontmatter #vcc @source.frontmatter @source.body"
-  invocation: "/harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway"
-  generation: "/canvas.project /runtime-ready.check #canvas #runtime-ready @canvas @runtime-proof @approval-gate"
+  objective: "short-drama scriptwriting -> storyboarding -> video generation -> editing -> review"
+  scriptwriting: "/memory.seed #frontmatter #vcc @source.frontmatter @source.body"
+  storyboarding: "/canvas.project #canvas #frontmatter @source.frontmatter @source.body @canvas"
+  invocation: "/superagent.run /harness.define /mcp.capabilities /cost.audit #harness #token-economics #long-horizon-harness @local-harness @cost-log @mcp-gateway @orchestration-graph @message-gateway"
+  generation: "/tool.route /canvas.project /runtime-ready.check #tool-routing #canvas #runtime-ready @tool-policy @canvas @runtime-proof @approval-gate"
+  editing: "/runtime-ready.check #runtime-ready #vcc #token-economics @runtime-proof @cost-log @human-review"
   validation: "/validation.run #vcc #dev-only @runtime-proof @dev-only"
   deploy_guard: "/deploy.guard #approval-gate #dev-only @operator @dev-only"
-  default_result: "local animatic packet; paid_call_count remains 0"
+  default_result: "local animatic or edit packet; paid_call_count remains 0"
   live_result: "blank until @operator approves @approval-gate and a provider returns evidence"
 ```
 
@@ -578,19 +626,22 @@ video_agent_e2e:
 
 1. Open this Markdown file in Knowgrph.
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
-3. Edit `Source brief`, `Video-agent ideation`, `Video-agent invocation`, and `Video-agent generation`.
-4. Approve `Storyboard beats` and `Reusable elements` before any paid or mutating provider call.
-5. Run local generation first and confirm `paid_call_count: 0`.
-6. Run /validation.run #vcc @runtime-proof and review the local packet before changing `publish_scope`.
-7. Keep /deploy.guard #dev-only @dev-only active unless the operator explicitly authorizes Prod or Cloudflare.
+3. Edit `Source brief`, `Short-drama scriptwriting`, `Storyboard beats`, `Video-agent invocation`, `Video-agent generation`, and `Editing plan`.
+4. Approve `Reusable elements` before any paid or mutating provider call.
+5. Run local generation or editing first and confirm `paid_call_count: 0`.
+6. Run /cost.audit #token-economics @cost-log before any live video-generation route.
+7. Run /validation.run #vcc @runtime-proof and review the local packet before changing `publish_scope`.
+8. Keep /deploy.guard #dev-only @dev-only active unless the operator explicitly authorizes Prod or Cloudflare.
 
 ## Acceptance Checklist
 
 - [ ] Source URL and source notes are operator supplied.
-- [ ] Ideation uses /memory.seed with @source.frontmatter and @source.body.
-- [ ] Invocation uses /harness.define, /mcp.capabilities, and /cost.audit with #harness and @local-harness.
-- [ ] Storyboard beats are paraphrased and approved.
-- [ ] Generation uses /canvas.project and /runtime-ready.check before any live provider call.
+- [ ] Scriptwriting uses /memory.seed with @source.frontmatter and @source.body.
+- [ ] Storyboard beats are paraphrased, approved, and tied to shot intent.
+- [ ] Invocation uses /superagent.run, /harness.define, /mcp.capabilities, and /cost.audit with #harness and @local-harness.
+- [ ] Generation uses /tool.route, /canvas.project, and /runtime-ready.check before any live provider call.
+- [ ] Editing emits an edit decision list or local timeline proof before regeneration.
+- [ ] Token budget, cache hits, fallback paths, and approval gates are visible in @cost-log or @runtime-proof.
 - [ ] Live provider fields stay blank until real responses return them.
 - [ ] Local animatic generation works without `VIDEODB_API_KEY` or `SENSENOVA_API_KEY`.
 - [ ] Publish scope remains `local-only` unless the operator explicitly authorizes Prod or Cloudflare.
@@ -599,6 +650,7 @@ video_agent_e2e:
 
 - Do not hardcode source-specific media IDs, provider IDs, stream URLs, transcripts, credentials, or generated asset URLs in repo code or tests.
 - Do not remap stale renderer names or add downstream compatibility aliases.
+- Do not re-run generation for edit-only changes unless /cost.audit and @operator approval pass.
 - Do not deploy this starter to Prod or Cloudflare from this document alone.
 - Do not promote this demo from `spec-complete` to `runtime-ready` without surfaced @runtime-proof from /validation.run.
 - Keep this file byte-zero YAML frontmatter plus a closing fence so shared frontmatter readers can parse it.
