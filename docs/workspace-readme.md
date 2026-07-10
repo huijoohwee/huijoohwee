@@ -163,13 +163,6 @@ runtime_pipeline:
       semantics: ["#approval-gate", "#dev-only"]
       output: "local-only boundary unless Dev -> Prod -> Cloudflare is explicitly opened"
       paid_call_count: 0
----
-
-# Knowgrph Workspace README
-
-## Flow Snapshot
-
-```yaml
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -684,7 +677,9 @@ flow:
     - {"id":"e2","source":"n4","sourceHandle":"audioUrl","target":"workspace-publish","targetHandle":"workspace_signal_in","label":"linksTo"}
     - {"id":"e4","source":"n2","sourceHandle":"output","target":"workspace-publish","targetHandle":"workspace_signal_in","label":"linksTo"}
     - {"id":"e5","source":"n3","sourceHandle":"imageUrl","target":"workspace-source","targetHandle":"mediaUrl","label":"linksTo"}
-```
+---
+
+# Knowgrph Workspace README
 
 This README is the local workspace contract for the current Knowgrph lane. It replaces the previous generated Vite HTML capture with source-owned Markdown and YAML frontmatter that can be parsed, diffed, and audited.
 
