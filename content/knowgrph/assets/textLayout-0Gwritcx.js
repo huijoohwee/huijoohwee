@@ -1,1 +1,0 @@
-const _="kg-truncate",I="kg-truncate-chip",n="kg-inline-chip-label-15ch",E="kg-inline-chip-shell-15ch",c="kg-inline-media-chip-shell-15ch",e="inline-flex min-w-0 flex-wrap items-center gap-1",L="py-0 leading-5";export{E as U,c as a,L as b,n as c,_ as d,I as e,e as f};
