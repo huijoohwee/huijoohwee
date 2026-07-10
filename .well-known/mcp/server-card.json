@@ -644,10 +644,20 @@
       ]
     }
   },
+  "surfaceRoles": {
+    "publicReadMcpUrl": "https://airvio.co/knowgrph/mcp",
+    "publicReadMcpScope": "Canonical public install and discovery endpoint for read-only retrieval, prompt discovery, resource discovery, and inspection.",
+    "controlPlaneMcpUrl": "https://airvio.co/knowgrph/control-plane/mcp",
+    "controlPlaneMcpScope": "Approval-gated orchestration endpoint for control-plane tools and spend-bearing workflows where deployed.",
+    "remoteGrammarInvokePublic": false,
+    "remoteGrammarInvokeToolName": "knowgrph.agentic_canvas_os.docs.invoke",
+    "remoteGrammarInvokeStatus": "planned-public-enhancement"
+  },
   "links": {
     "apiCatalog": "https://airvio.co/knowgrph/.well-known/api-catalog",
     "skills": "https://airvio.co/knowgrph/.well-known/agent-skills/index.json",
     "status": "https://airvio.co/knowgrph/health",
-    "agentCard": "https://airvio.co/.well-known/agent-card.json"
+    "agentCard": "https://airvio.co/.well-known/agent-card.json",
+    "controlPlaneMcp": "https://airvio.co/knowgrph/control-plane/mcp"
   }
 }
