@@ -644,6 +644,7 @@ video_agent_e2e:
 - [ ] Token budget, cache hits, fallback paths, and approval gates are visible in @cost-log or @runtime-proof.
 - [ ] Live provider fields stay blank until real responses return them.
 - [ ] Local animatic generation works without `VIDEODB_API_KEY` or `SENSENOVA_API_KEY`.
+- [ ] Rich Media Panel text, iframe, image, audio, and video outputs select one active shared content surface and use the same Storyboard Widget frame chrome, title typography, compact Card read/edit surface, and single vertical scroll owner; iframe-owned `srcdoc` content stays inside a responsive Card-bounded viewport and scrolls through its semantic root surface, while Card/Widget/Rich Media resize persists one world-space aspect-ratio size across canvas zoom without default-size snap-back, renderer-local markdown-preview, nested-overflow, ghost sizing, validation, or header variants. Every Rich Media Panel identity, including an empty pre-output panel, retains its own HTML overlay owner. Overlay ownership partitions those node IDs and incident edges before native 2D scene construction, so the native renderer cannot paint a backing glyph, label, or port rail for the same visual owner.
 - [ ] Publish scope remains `local-only` unless the operator explicitly authorizes Prod or Cloudflare.
 
 ## Guardrails

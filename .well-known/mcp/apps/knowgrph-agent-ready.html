@@ -23,6 +23,7 @@
     .status { font-size: 12px; color: color-mix(in srgb, CanvasText 66%, transparent); }
     .readiness { border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 6px; padding: 10px; background: color-mix(in srgb, Canvas 96%, CanvasText 4%); font-size: 12px; }
     .readiness strong { display: block; font-size: 13px; margin-bottom: 3px; }
+    .readiness ol { display: grid; gap: 6px; margin: 8px 0 0; padding-left: 18px; }
     .readiness ul { display: grid; gap: 4px; margin: 8px 0 0; padding: 0; list-style: none; }
     .check { min-width: 0; overflow-wrap: anywhere; }
     .check.ok { color: color-mix(in srgb, CanvasText 74%, #0f766e 26%); }
@@ -50,6 +51,16 @@
         <dt>Status</dt><dd id="status" class="status">Initializing MCP Apps host bridge.</dd>
       </dl>
     </section>
+    <section aria-label="Fastest path">
+  <section id="onboarding" class="readiness">
+    <strong>Fastest Path</strong>
+    <ol>
+      <li>Install https://airvio.co/knowgrph/mcp.</li>
+      <li>Add https://airvio.co/knowgrph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.</li>
+      <li>Use the source-side <code>README.md</code> quick start or <code>docs/documents/knowgrph-superagent-harness.md</code> before hosted setup.</li>
+    </ol>
+  </section>
+</section>
     <section aria-label="MCP Apps server readiness">
       <section id="readiness" class="readiness">Waiting for structured server-readiness data.</section>
     </section>
@@ -59,9 +70,10 @@
   </main>
   <script>
   (() => {
-    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-06-05","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26"};
+    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-06-05","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26","onboarding":{"publicReadMcpUrl":"https://airvio.co/knowgrph/mcp","controlPlaneMcpUrl":"https://airvio.co/knowgrph/control-plane/mcp","controlPlaneCondition":"Add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.","cheapestProofPath":"Use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md in the knowgrph repo before hosted setup.","steps":[{"order":1,"label":"Install public MCP first","action":"Install https://airvio.co/knowgrph/mcp."},{"order":2,"label":"Add control plane only when session-capable","action":"Add https://airvio.co/knowgrph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup."},{"order":3,"label":"Use the cheapest proof path before hosted setup","action":"Run the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md first."}]}};
     const statusEl = document.getElementById('status');
     const hostEl = document.getElementById('host');
+    const onboardingEl = document.getElementById('onboarding');
     const readinessEl = document.getElementById('readiness');
     const structuredEl = document.getElementById('structured');
     let nextId = 1;
@@ -137,6 +149,19 @@
       parent.appendChild(element);
       return element;
     };
+    const renderOnboarding = (payload) => {
+  onboardingEl.replaceChildren();
+  const onboarding = payload && payload.onboarding && typeof payload.onboarding === 'object' ? payload.onboarding : boot.onboarding;
+  appendText(onboardingEl, 'strong', 'Fastest Path');
+  const list = document.createElement('ol');
+  const steps = Array.isArray(onboarding && onboarding.steps) && onboarding.steps.length ? onboarding.steps : [
+    { action: onboarding && onboarding.publicReadMcpUrl ? 'Install ' + onboarding.publicReadMcpUrl + '.' : 'Install the public MCP endpoint first.' },
+    { action: onboarding && onboarding.controlPlaneMcpUrl ? 'Add ' + onboarding.controlPlaneMcpUrl + ' only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.' : 'Add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.' },
+    { action: onboarding && onboarding.cheapestProofPath ? onboarding.cheapestProofPath : 'Use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md before hosted setup.' },
+  ];
+  for (const step of steps) appendText(list, 'li', step && step.action ? String(step.action) : 'Follow the fastest onboarding path.');
+  onboardingEl.appendChild(list);
+};
     const renderReadiness = (payload) => {
       readinessEl.replaceChildren();
       const readiness = payload && payload.mcpAppsServerReadiness;
@@ -172,6 +197,7 @@
       const payload = state.result && typeof state.result === 'object'
         ? (state.result.structuredContent || state.result)
         : state.result;
+      renderOnboarding(payload);
       renderReadiness(payload);
       structuredEl.textContent = payload
         ? JSON.stringify(payload, null, 2)
