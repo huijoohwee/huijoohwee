@@ -1,4 +1,3 @@
----
 
 socket_types:
   template_text_signal: {color: "#14b8a6", edgeWidthPx: 2, handleStrokeWidthPx: 2, accepts: [template_text_signal]}
@@ -219,7 +218,6 @@ kgParserRoutingContract:
     - "BottomPanel/FloatingPanel Mermaid panels"
   edgePolicy: "explicit graphData.edges, flow.edges, workflow.edges, and diagram edges are source-owned SSOT; renderers project visible connectors only"
   forkPolicy: "fork, branch, candidate, and publish metadata remain authored source fields and surface through parsed graph edges without downstream remapping"
----
 title: "Knowgrph Universal Go No-Go Investment Decision Flow Template"
 graphId: "doc:knowgrph-storyboard-widget-computing-flow-template"
 doc_type: "Computing Flow Template"

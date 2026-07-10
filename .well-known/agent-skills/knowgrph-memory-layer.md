@@ -1,26 +1,31 @@
 # Knowgrph Memory Layer Skill
 
-Use this skill when: Persist, retrieve, and inject explicitly scoped agent memories through a provider-neutral local harness with Mem0-ready runtime boundaries.
+Use this skill when: Persist, retrieve, inject, extract, and materialize explicitly scoped agent memories through a provider-neutral local harness with source-owned Markdown outputs.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-memory-layer`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_cf87b331`
+- Semantic key: `kgvx_46485834`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-scoped-memory`
 
 ## Triggers
 
 - cross-session context
+- harness replay
 - long-term memory
 - mem0
 - memory layer
 - personalization
+- procedural memory
+- profile markdown
 - prompt memory
+- user model
 
 ## Inputs
 
+- harness output dir
 - memory query
 - runtime scope
 - user or agent message
@@ -30,7 +35,9 @@ Use this skill when: Persist, retrieve, and inject explicitly scoped agent memor
 - bounded prompt context
 - memory cost log
 - memory write result
+- procedural KGC markdown
 - ranked memory results
+- USER_MODEL markdown
 
 ## Tools
 
@@ -43,6 +50,8 @@ Browser-local tools:
 Local MCP tools:
 - knowgrph.memory.add
 - knowgrph.memory.assemble_prompt
+- knowgrph.memory.extract_procedural
+- knowgrph.memory.materialize_user_model
 - knowgrph.memory.search
 - knowgrph.vdeoxpln.list
 
@@ -51,6 +60,8 @@ Local MCP tools:
 - Require explicit runtime scope.
 - Add/search through the configured harness.
 - Inject only top-ranked memories within token budget.
+- Extract completed harness runs into reusable KGC procedural-memory documents.
+- Materialize scoped memories into deterministic USER_MODEL markdown when a source-owned profile is needed.
 
 ## Source Owners
 

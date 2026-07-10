@@ -167,13 +167,13 @@
       "type": "markdown",
       "description": "Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
-      "sha256": "542234ac13930dfb2eabf9a1e4838149304eacc5a9c1f78c594762a7d9b6560e",
+      "sha256": "edbe4e9209be2f57c46c5303e5d417aa0a85719667635a38320d9140334ebcd6",
       "vdeoxpln": {
         "id": "knowgrph-mcp-local",
         "title": "Knowgrph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_8a24d9b2",
+        "semanticKey": "kgvx_d89abe40",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -187,6 +187,8 @@
             "knowgrph.html_video.render",
             "knowgrph.memory.add",
             "knowgrph.memory.assemble_prompt",
+            "knowgrph.memory.extract_procedural",
+            "knowgrph.memory.materialize_user_model",
             "knowgrph.memory.search",
             "knowgrph.os.status",
             "knowgrph.pipeline",
@@ -220,21 +222,23 @@
     {
       "name": "knowgrph-memory-layer",
       "type": "markdown",
-      "description": "Persist, retrieve, and inject explicitly scoped agent memories through a provider-neutral local harness with Mem0-ready runtime boundaries.",
+      "description": "Persist, retrieve, inject, extract, and materialize explicitly scoped agent memories through a provider-neutral local harness with source-owned Markdown outputs.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-memory-layer.md",
-      "sha256": "af38fa54a747786adb69b33754d1214aa4f3d5e360d3ae5f61298e1a1f735f0c",
+      "sha256": "d50a754f36de29bacea157f993a894e2c06c1bdb362a35a42ee1291fef3a3421",
       "vdeoxpln": {
         "id": "knowgrph-memory-layer",
         "title": "Knowgrph Memory Layer",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-scoped-memory",
-        "semanticKey": "kgvx_cf87b331",
+        "semanticKey": "kgvx_46485834",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
             "knowgrph.memory.add",
             "knowgrph.memory.assemble_prompt",
+            "knowgrph.memory.extract_procedural",
+            "knowgrph.memory.materialize_user_model",
             "knowgrph.memory.search",
             "knowgrph.vdeoxpln.list"
           ]
