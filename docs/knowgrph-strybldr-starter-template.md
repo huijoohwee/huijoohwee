@@ -468,8 +468,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: source-metadata
       provider: knowgrph
-      lane: Source
       order: 1
+      lane: Source
       prompt: Summarize the short-drama source promise without copying transcript text or provider-generated output.
       action: Fill source fields before approving script, storyboard, generation, or editing cards.
       summary: Capture the operator-owned source URL, title, author, premise constraints, style notes, and token budget.
@@ -480,8 +480,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: agentic-os-invocation
       provider: knowgrph
-      lane: Scriptwriting
       order: 2
+      lane: Scriptwriting
       prompt: 'Run /memory.seed #frontmatter #vcc @source.frontmatter @source.body to derive a source-backed short-drama premise, logline, scene outline, and script beats.'
       action: Keep scriptwriting paraphrased, source-backed, and zero-spend until the operator approves generation.
       summary: Autonomous scriptwriting turns the source brief into narrative beats, scene intent, character continuity, and reuse constraints.
@@ -492,8 +492,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: user-edit
       provider: knowgrph
-      lane: Storyboard
       order: 3
+      lane: Storyboard
       prompt: Create four concise short-drama storyboard beats from the approved script and operator notes.
       action: Approve only paraphrased, source-backed beats with shot intent, camera notes, and continuity constraints.
       summary: Draft setup, escalation, reversal, and close beats as editable cards before generation.
@@ -504,8 +504,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: agentic-os-invocation
       provider: knowgrph
-      lane: Invocation
       order: 4
+      lane: Invocation
       prompt: 'Run /superagent.run /harness.define /mcp.capabilities /cost.audit #harness #token-economics #long-horizon-harness @local-harness @cost-log @mcp-gateway @orchestration-graph @message-gateway.'
       action: Produce a typed autonomous-agent invocation plan with max iteration, cost ledger, approval gates, tool routes, and fallback behavior.
       summary: Invocation binds commands, semantics, orchestration state, and runtime surfaces before any model or media call can run.
@@ -516,8 +516,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-plan
       provider: knowgrph-local-animatic
-      lane: Generation
       order: 5
+      lane: Generation
       prompt: 'Prepare /tool.route /canvas.project /runtime-ready.check #tool-routing #canvas #runtime-ready @tool-policy @canvas @runtime-proof @approval-gate.'
       action: Generate a local animatic packet first; require @operator approval before live video provider calls.
       summary: Generation projects approved story cards into Canvas and emits local proof with paid_call_count remaining zero.
@@ -528,8 +528,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: user-edit
       provider: knowgrph
-      lane: Elements
       order: 6
+      lane: Elements
       prompt: Convert approved beats into reusable elements and style constraints.
       action: Keep generated media URLs blank until real outputs exist.
       summary: List reusable characters, locations, props, evidence cards, style constraints, sound cues, UI states, or shots.
@@ -540,8 +540,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-plan
       provider: knowgrph
-      lane: Editing
       order: 7
+      lane: Editing
       prompt: Turn approved generated or local clips into a concise edit decision list with pacing, scene order, transitions, and audio notes.
       action: Reuse approved clips, manifests, and timeline data; do not re-run generation when timeline edits are enough.
       summary: Editing owns shot order, trims, continuity checks, soundtrack notes, and final review packet inputs.
@@ -552,8 +552,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-plan
       provider: knowgrph-local-animatic
-      lane: Runtime
       order: 8
+      lane: Runtime
       prompt: Render the local animatic or editing handoff and keep live IDs empty until returned by an approved run.
       action: Generate locally first; require human approval before VideoDB, SenseNova, or other paid provider calls.
       summary: Default runtime is local animatic and edit-packet generation with zero paid calls and blank live provider fields.
@@ -564,8 +564,8 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-review
       provider: knowgrph
-      lane: Review
       order: 9
+      lane: Review
       prompt: Prepare a review packet that separates local evidence from live provider evidence.
       action: Reject fabricated provider IDs, stream URLs, transcripts, or generated asset URLs.
       summary: Review narrative quality, multimodal orchestration, provenance, approval state, cost, provider evidence, and local playback.
@@ -576,11 +576,74 @@ strybldr_storyboard:
       sourceBox: null
       evidenceKind: runtime-publish
       provider: knowgrph
-      lane: Publish
       order: 10
+      lane: Publish
       prompt: Close the workflow with a local-only packet and a visible publish gate.
       action: Keep publish scope local-only until the operator explicitly authorizes Prod or Cloudflare.
       summary: Final output is a local packet path and approval state, not a public deployment claim.
+    - id: n1
+      sourceUnitId: strybldr-starter-source
+      label: Live route image
+      confidence: 1
+      sourceBox: null
+      evidenceKind: user-edit
+      provider: human
+      order: 11
+      lane: null
+      prompt: null
+      action: null
+      summary: null
+    - id: n2
+      sourceUnitId: strybldr-starter-source
+      label: Live route image
+      confidence: 1
+      sourceBox: null
+      evidenceKind: user-edit
+      provider: human
+      order: 12
+      lane: null
+      prompt: null
+      action: null
+      summary: null
+    - id: n3
+      sourceUnitId: strybldr-starter-source
+      label: Live route image
+      confidence: 1
+      sourceBox: null
+      evidenceKind: user-edit
+      provider: human
+      order: 13
+  cards:
+    - nodeId: n1
+      title: Live route image
+      type: RichMediaPanel
+      imageUrl: https://example.com/storyboard-live-route-image.jpg
+      mediaKind: image
+      mediaUrl: https://example.com/storyboard-live-route-image.jpg
+      order: 11
+    - nodeId: n2
+      title: Live route image
+      type: RichMediaPanel
+      imageUrl: https://example.com/storyboard-live-route-image.jpg
+      mediaKind: image
+      mediaUrl: https://example.com/storyboard-live-route-image.jpg
+      order: 12
+    - nodeId: n3
+      title: Live route image
+      type: RichMediaPanel
+      order: 13
+      imageUrl: https://example.com/storyboard-live-route-image.jpg
+      mediaKind: image
+      mediaUrl: https://example.com/storyboard-live-route-image.jpg
+  edges:
+    - id: e1
+      source: n2
+      target: starter-storyboard-beats-card
+      label: linksTo
+    - id: e2
+      source: n3
+      target: starter-storyboard-beats-card
+      label: linksTo
 ---
 
 # Knowgrph Strybldr Starter Template
