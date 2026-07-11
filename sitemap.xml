@@ -9,7 +9,31 @@
     <lastmod>2026-06-05</lastmod>
   </url>
   <url>
-    <loc>https://airvio.co/.well-known/mcp/server-card.json</loc>
+    <loc>https://airvio.co/llms.txt</loc>
+    <lastmod>2026-06-05</lastmod>
+  </url>
+  <url>
+    <loc>https://airvio.co/api/storage/source-files</loc>
+    <lastmod>2026-06-05</lastmod>
+  </url>
+  <url>
+    <loc>https://airvio.co/api/storage/llms.txt</loc>
+    <lastmod>2026-06-05</lastmod>
+  </url>
+  <url>
+    <loc>https://airvio.co/api/storage/content-manifest.json</loc>
+    <lastmod>2026-06-05</lastmod>
+  </url>
+  <url>
+    <loc>https://airvio.co/knowgrph/.well-known/openapi.json</loc>
+    <lastmod>2026-06-05</lastmod>
+  </url>
+  <url>
+    <loc>https://airvio.co/.well-known/agent-card.json</loc>
+    <lastmod>2026-06-05</lastmod>
+  </url>
+  <url>
+    <loc>https://airvio.co/knowgrph/.well-known/mcp/server-card.json</loc>
     <lastmod>2026-06-05</lastmod>
   </url>
 </urlset>

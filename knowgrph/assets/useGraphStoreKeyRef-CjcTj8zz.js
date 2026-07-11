@@ -1,0 +1,1 @@
+import{r as s}from"./react-BQOKVxhn.js";import{u}from"./settings-mcp-docs-C5qzJ7oc.js";function a(r){const t=s.useRef(u.getState()[r]);return s.useEffect(()=>u.subscribe(e=>e[r],e=>{t.current=e}),[r]),t}export{a as u};

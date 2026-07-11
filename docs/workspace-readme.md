@@ -179,8 +179,8 @@ flow:
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{},"out":{"workspace_signal_out":"workspace_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:workspace-source"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 3}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 2}
+      "graph:degree": {key: "graph:degree", type: number, value: 2}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       lane: {key: lane, type: string, value: "Source"}
@@ -200,7 +200,7 @@ flow:
     - id: {key: id, type: string, value: "workspace-runtime"}
       type: {key: type, type: string, value: "RuntimeGateWidget"}
       label: {key: label, type: string, value: "Runtime Gate"}
-      position: {key: position, type: object, value: {"x":1046.3158570580717,"y":-1529.4416854863607}}
+      position: {key: position, type: object, value: {"x":827.5208912823775,"y":-2486.5137640789203}}
       handles: {key: handles, type: object, value: {"target":["workspace_signal_in"],"source":["workspace_signal_out"]}}
       command: {key: command, type: string, value: "/runtime-ready.check"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"workspace_signal_in":"workspace_signal"},"out":{"workspace_signal_out":"workspace_signal"}}}
@@ -247,8 +247,8 @@ flow:
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"workspace_signal_in":"workspace_signal"},"out":{}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:workspace-publish"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 3}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 3}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
       "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
       "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
       lane: {key: lane, type: string, value: "Publish"}
@@ -259,7 +259,7 @@ flow:
     - id: {key: id, type: string, value: "n1"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":866.3358136058862,"y":-424.6050687830433}}
+      position: {key: position, type: object, value: {"x":1190.746550034281,"y":-2078.3863599146093}}
       audioUrl: {key: audioUrl, type: text, value: ""}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
@@ -284,108 +284,6 @@ flow:
       "visual:width": {key: "visual:width", type: number, value: 1367}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: -1}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
-    - id: {key: id, type: string, value: "n2"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-6019.469091169779,"y":-7556.549801777599}}
-      audioUrl: {key: audioUrl, type: text, value: ""}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: ""}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
-      videoUrl: {key: videoUrl, type: text, value: ""}
-      "visual:height": {key: "visual:height", type: number, value: 1419}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:width": {key: "visual:width", type: number, value: 2524}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
-    - id: {key: id, type: string, value: "n4"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-2502.2074074699353,"y":-3357.5142447921644}}
-      audioUrl: {key: audioUrl, type: text, value: ""}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: ""}
-      media: {key: media, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-0cd83d944a6ca782/video/flower-0cd83d944a6ca782.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wY2Q4M2Q5NDRhNmNhNzgyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      media_interactive: {key: media_interactive, type: boolean, value: true}
-      media_kind: {key: media_kind, type: string, value: "video"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-0cd83d944a6ca782/video/flower-0cd83d944a6ca782.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wY2Q4M2Q5NDRhNmNhNzgyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      mediaKind: {key: mediaKind, type: string, value: "video"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-0cd83d944a6ca782/video/flower-0cd83d944a6ca782.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wY2Q4M2Q5NDRhNmNhNzgyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      video: {key: video, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-0cd83d944a6ca782/video/flower-0cd83d944a6ca782.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wY2Q4M2Q5NDRhNmNhNzgyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      videoUrl: {key: videoUrl, type: text, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-0cd83d944a6ca782/video/flower-0cd83d944a6ca782.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wY2Q4M2Q5NDRhNmNhNzgyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      "visual:height": {key: "visual:height", type: number, value: 516}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:width": {key: "visual:width", type: number, value: 917}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -4}
-    - id: {key: id, type: string, value: "n5"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-411.1288931328992,"y":-1676.5796248730235}}
-      audioUrl: {key: audioUrl, type: text, value: ""}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 0}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: ""}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
-      videoUrl: {key: videoUrl, type: text, value: ""}
-      "visual:height": {key: "visual:height", type: number, value: 722}
-      "visual:width": {key: "visual:width", type: number, value: 1280}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
-    - id: {key: id, type: string, value: "n6"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":12.515745883503975,"y":-764.7077700993786}}
-      audioUrl: {key: audioUrl, type: text, value: ""}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 0}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: ""}
-      media: {key: media, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      media_interactive: {key: media_interactive, type: boolean, value: true}
-      media_kind: {key: media_kind, type: string, value: "video"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      mediaKind: {key: mediaKind, type: string, value: "video"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:bb371a0f5fbda012cd58566d44e081e5a7aafd3803e9c35c6ec5678f2e5f19c6"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      video: {key: video, type: string, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      videoUrl: {key: videoUrl, type: text, value: "http://localhost:5179/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNTgzNzg2ODAzfQ"}
-      "visual:height": {key: "visual:height", type: number, value: 617}
-      "visual:width": {key: "visual:width", type: number, value: 1097}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -3}
     - id: {key: id, type: string, value: "workspace-source-media-panel"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "buddydrone.jpg"}
@@ -542,7 +440,7 @@ flow:
     - id: {key: id, type: string, value: "n10"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-2084.129780628411,"y":-4824.4153061138595}}
+      position: {key: position, type: object, value: {"x":641.9883390114882,"y":-261.7778854118371}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       freezeConnectedOutput: {key: freezeConnectedOutput, type: boolean, value: true}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
@@ -594,55 +492,6 @@ flow:
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
       "visual:yIndex": {key: "visual:yIndex", type: number, value: -7}
-    - id: {key: id, type: string, value: "n3"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "港岛仿生局.mp4"}
-      position: {key: position, type: object, value: {"x":-2603.946354170258,"y":-1679.4617338318171}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 1}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 1}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      media: {key: media, type: string, value: "http://localhost:5172/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNjcyNDEzODc2fQ"}
-      media_interactive: {key: media_interactive, type: boolean, value: true}
-      media_kind: {key: media_kind, type: string, value: "video"}
-      media_url: {key: media_url, type: string, value: "http://localhost:5172/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNjcyNDEzODc2fQ"}
-      mediaKind: {key: mediaKind, type: string, value: "video"}
-      mediaSourceKey: {key: mediaSourceKey, type: string, value: "sha256:bb371a0f5fbda012cd58566d44e081e5a7aafd3803e9c35c6ec5678f2e5f19c6"}
-      mediaUrl: {key: mediaUrl, type: string, value: "http://localhost:5172/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNjcyNDEzODc2fQ"}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
-      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
-      video: {key: video, type: string, value: "http://localhost:5172/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNjcyNDEzODc2fQ"}
-      videoUrl: {key: videoUrl, type: text, value: "http://localhost:5172/api/storage/media/airvio/runs/upload-bb371a0f5fbda012/video/video-bb371a0f5fbda012.mp4?kg_media_token=eyJydW5JZCI6InVwbG9hZC1iYjM3MWEwZjVmYmRhMDEyIiwiZXhwaXJlc0F0IjoxNzgzNjcyNDEzODc2fQ"}
-      "visual:height": {key: "visual:height", type: number, value: 689}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
-      "visual:width": {key: "visual:width", type: number, value: 1225}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: -2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -6}
-    - id: {key: id, type: string, value: "n11"}
-      type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":192.07989001376922,"y":-1212.925089212405}}
-      audioUrl: {key: audioUrl, type: text, value: ""}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
-      "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      "graph:degree": {key: "graph:degree", type: number, value: 0}
-      "graph:inDegree": {key: "graph:inDegree", type: number, value: 0}
-      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
-      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
-      imageUrl: {key: imageUrl, type: text, value: ""}
-      output: {key: output, type: textarea, value: ""}
-      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
-      videoUrl: {key: videoUrl, type: text, value: ""}
-      "visual:height": {key: "visual:height", type: number, value: 203}
-      "visual:width": {key: "visual:width", type: number, value: 360}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: -1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -10}
     - id: {key: id, type: string, value: "n12"}
       type: {key: type, type: string, value: "WorkspaceSourceWidget"}
       label: {key: label, type: string, value: "Source Copy"}
@@ -674,9 +523,6 @@ flow:
     - {"id":"edge_workspace_runtime_to_publish","source":"workspace-runtime","sourceHandle":"workspace_signal_out","target":"workspace-publish","targetHandle":"workspace_signal_in","type":"workspace_signal"}
     - {"id":"e1","source":"workspace-source-media-panel","sourceHandle":"imageUrl","target":"workspace-source","targetHandle":"mediaUrl","label":"linksTo"}
     - {"id":"e3","source":"workspace-runtime-media-panel","sourceHandle":"imageUrl","target":"workspace-runtime","targetHandle":"mediaUrl","label":"linksTo"}
-    - {"id":"e2","source":"n4","sourceHandle":"audioUrl","target":"workspace-publish","targetHandle":"workspace_signal_in","label":"linksTo"}
-    - {"id":"e4","source":"n2","sourceHandle":"output","target":"workspace-publish","targetHandle":"workspace_signal_in","label":"linksTo"}
-    - {"id":"e5","source":"n3","sourceHandle":"imageUrl","target":"workspace-source","targetHandle":"mediaUrl","label":"linksTo"}
 ---
 
 # Knowgrph Workspace README

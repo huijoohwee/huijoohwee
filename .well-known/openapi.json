@@ -71,6 +71,16 @@
         }
       }
     },
+    "/api/storage/content-manifest.json": {
+      "get": {
+        "summary": "Read the Markdown-first published content manifest",
+        "responses": {
+          "200": {
+            "description": "Editor Workspace source paths with canonical HTML and Markdown projections"
+          }
+        }
+      }
+    },
     "/api/storage/source-files": {
       "get": {
         "summary": "List published Source Files",
