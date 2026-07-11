@@ -613,6 +613,18 @@ strybldr_storyboard:
       evidenceKind: user-edit
       provider: human
       order: 13
+      lane: null
+      prompt: null
+      action: null
+      summary: null
+    - id: n4
+      sourceUnitId: strybldr-starter-source
+      label: Live route image
+      confidence: 1
+      sourceBox: null
+      evidenceKind: user-edit
+      provider: human
+      order: 14
   cards:
     - nodeId: n1
       title: Live route image
@@ -631,7 +643,14 @@ strybldr_storyboard:
     - nodeId: n3
       title: Live route image
       type: RichMediaPanel
+      imageUrl: https://example.com/storyboard-live-route-image.jpg
+      mediaKind: image
+      mediaUrl: https://example.com/storyboard-live-route-image.jpg
       order: 13
+    - nodeId: n4
+      title: Live route image
+      type: RichMediaPanel
+      order: 14
       imageUrl: https://example.com/storyboard-live-route-image.jpg
       mediaKind: image
       mediaUrl: https://example.com/storyboard-live-route-image.jpg
@@ -642,6 +661,10 @@ strybldr_storyboard:
       label: linksTo
     - id: e2
       source: n3
+      target: starter-storyboard-beats-card
+      label: linksTo
+    - id: e3
+      source: n4
       target: starter-storyboard-beats-card
       label: linksTo
 ---
