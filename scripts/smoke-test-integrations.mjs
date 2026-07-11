@@ -58,6 +58,27 @@ async function run() {
   const miromindPayload = JSON.parse(await resMiroMindMissingKey.text());
   assert.equal(miromindPayload.ok, false);
   assert.match(miromindPayload.error, /MiroMind API key/);
+
+  const reqAiGatewayMissingKey = new Request('https://example.com/__chat_proxy/v1/responses', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-kg-chat-provider': 'openai',
+      'x-kg-ai-gateway-route': 'dynamic/draft',
+    },
+    body: JSON.stringify({
+      model: 'gpt-5-nano',
+      input: [{ role: 'user', content: 'hello' }],
+      stream: false,
+    }),
+  });
+  const resAiGatewayMissingKey = await chatProxyOnRequest(makeContext(reqAiGatewayMissingKey, {
+    KNOWGRPH_CHAT_PROXY_AI_GATEWAY_BASE_URL: 'https://api.cloudflare.com/client/v4/accounts/test-account/ai',
+  }));
+  assert.equal(resAiGatewayMissingKey.status, 401);
+  const aiGatewayPayload = JSON.parse(await resAiGatewayMissingKey.text());
+  assert.equal(aiGatewayPayload.ok, false);
+  assert.match(aiGatewayPayload.error, /AI Gateway token/);
 }
 
 run()

@@ -1,4 +1,6 @@
 const OPENAI_HOST = 'api.openai.com';
+const AI_GATEWAY_HOST = 'gateway.ai.cloudflare.com';
+const CLOUDFLARE_API_HOST = 'api.cloudflare.com';
 const MIROMIND_HOST = 'api.miromind.ai';
 const AGNES_HOST = 'apihub.agnes-ai.com';
 const BYTEPLUS_AP_SOUTHEAST_HOST = 'ark.ap-southeast.bytepluses.com';
@@ -27,6 +29,7 @@ const parseAllowedHosts = (
   env,
   {
     includeOpenAi = false,
+    includeAiGateway = false,
     includeMiroMind = false,
     includeAgnes = false,
     includeBytePlus = false,
@@ -37,6 +40,10 @@ const parseAllowedHosts = (
   const out = primary.size ? primary : fallback;
   const base = out.size ? out : new Set([...LOCAL_HOSTS]);
   if (includeOpenAi) base.add(OPENAI_HOST);
+  if (includeAiGateway) {
+    base.add(AI_GATEWAY_HOST);
+    base.add(CLOUDFLARE_API_HOST);
+  }
   if (includeMiroMind) base.add(MIROMIND_HOST);
   if (includeAgnes) base.add(AGNES_HOST);
   if (includeBytePlus) {
@@ -191,6 +198,8 @@ const proxyUpstream = async ({
 
 export {
   OPENAI_HOST,
+  AI_GATEWAY_HOST,
+  CLOUDFLARE_API_HOST,
   MIROMIND_HOST,
   AGNES_HOST,
   BYTEPLUS_AP_SOUTHEAST_HOST,

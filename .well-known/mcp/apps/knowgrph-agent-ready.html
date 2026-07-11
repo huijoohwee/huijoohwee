@@ -52,15 +52,32 @@
       </dl>
     </section>
     <section aria-label="Fastest path">
-      <section id="onboarding" class="readiness">
-        <strong>Fastest Path</strong>
-        <ol>
-          <li>Install https://airvio.co/knowgrph/mcp.</li>
-          <li>Add https://airvio.co/knowgrph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.</li>
-          <li>Use the source-side <code>README.md</code> quick start or <code>docs/documents/knowgrph-superagent-harness.md</code> before hosted setup.</li>
-        </ol>
-      </section>
-    </section>
+  <section id="onboarding" class="readiness">
+    <strong>Fastest Path</strong>
+    <p>Map intent. Orchestrate agents. Prove outcomes.</p>
+    <p>A source-backed canvas where / routes work, # sets meaning, and @ binds context.</p>
+    <p>Live grammar executes through knowgrph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.</p>
+    <ol>
+      <li>Map intent: install https://airvio.co/knowgrph/mcp first for public discovery, retrieval, and inspection.</li>
+      <li>Orchestrate agents: add https://airvio.co/knowgrph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke.</li>
+      <li>Prove outcomes: for zero-spend evaluation, use the source-side <code>README.md</code> quick start or <code>docs/documents/knowgrph-superagent-harness.md</code> first.</li>
+    </ol>
+  </section>
+</section>
+    <section aria-label="Promotion recovery">
+  <section id="promotion-recovery" class="readiness">
+    <strong>Promotion Recovery</strong>
+    <p>Retry mirroring only for already-saved local artifacts. Do not regenerate, revalidate, or reapply Canvas.</p>
+    <p>Command template: #promotion.retry &lt;path...&gt;</p>
+    <ul>
+      <li>Scope: mirror-saved-local-artifacts-only</li>
+      <li>Exact command source: browser-local finalize inspection after a real mirroring failure</li>
+      <li>Insert mode: append</li>
+      <li>GitHub before storage: true</li>
+    </ul>
+    <p>This published card shows the command template only. The exact runnable path-bearing command appears after a real mirroring failure in the browser-local finalize inspection, finalize ledger, and warning toast.</p>
+  </section>
+</section>
     <section aria-label="MCP Apps server readiness">
       <section id="readiness" class="readiness">Waiting for structured server-readiness data.</section>
     </section>
@@ -70,7 +87,7 @@
   </main>
   <script>
   (() => {
-    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-06-05","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26","onboarding":{"publicReadMcpUrl":"https://airvio.co/knowgrph/mcp","controlPlaneMcpUrl":"https://airvio.co/knowgrph/control-plane/mcp","cheapestProofPath":"Use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md before hosted setup."}};
+    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-06-05","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26","onboarding":{"promise":"Map intent. Orchestrate agents. Prove outcomes.","grammarSummary":"A source-backed canvas where / routes work, # sets meaning, and @ binds context.","publicReadMcpUrl":"https://airvio.co/knowgrph/mcp","controlPlaneMcpUrl":"https://airvio.co/knowgrph/control-plane/mcp","controlPlaneCondition":"Add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.","grammarToolName":"knowgrph.agentic_canvas_os.docs.invoke","grammarExamples":["/mcp.capabilities","#mcp","@mcp-gateway"],"grammarExecutionBoundary":"Keep install on the public discovery endpoint and execute live grammar on the approval-gated control plane.","cheapestProofPath":"Use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md in the knowgrph repo before hosted setup.","steps":[{"order":1,"label":"Map intent","action":"Map intent: install https://airvio.co/knowgrph/mcp first for public discovery, retrieval, and inspection."},{"order":2,"label":"Orchestrate agents","action":"Orchestrate agents: add https://airvio.co/knowgrph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke."},{"order":3,"label":"Prove outcomes","action":"Prove outcomes: for zero-spend evaluation, run the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md first."}]},"promotionRecovery":{"availability":"template-only-published-contract","scope":"mirror-saved-local-artifacts-only","commandTemplate":"#promotion.retry \u003cpath...>","exactCommandSource":"browser-local finalize inspection after a real mirroring failure","reusesSavedLocalArtifacts":true,"rerunsValidation":false,"reappliesCanvas":false,"githubBeforeStorage":true,"insertionMode":"append","surfaces":["published-operator-card","final-assistant-ledger","browser-local-finalize-inspection","warning-toast","toast-insert-action"],"note":"This published card shows the command template only. The exact runnable path-bearing command appears after a real mirroring failure in the browser-local finalize inspection, finalize ledger, and warning toast."}};
     const statusEl = document.getElementById('status');
     const hostEl = document.getElementById('host');
     const onboardingEl = document.getElementById('onboarding');
@@ -150,24 +167,27 @@
       return element;
     };
     const renderOnboarding = (payload) => {
-      onboardingEl.replaceChildren();
-      const onboarding = payload && payload.onboarding && typeof payload.onboarding === 'object'
-        ? payload.onboarding
-        : boot.onboarding;
-      appendText(onboardingEl, 'strong', 'Fastest Path');
-      const list = document.createElement('ol');
-      const steps = Array.isArray(onboarding && onboarding.steps) && onboarding.steps.length
-        ? onboarding.steps
-        : [
-          { action: onboarding && onboarding.publicReadMcpUrl ? 'Install ' + onboarding.publicReadMcpUrl + '.' : 'Install the public MCP endpoint first.' },
-          { action: onboarding && onboarding.controlPlaneMcpUrl ? 'Add ' + onboarding.controlPlaneMcpUrl + ' only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.' : 'Add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.' },
-          { action: onboarding && onboarding.cheapestProofPath ? onboarding.cheapestProofPath : 'Use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md before hosted setup.' },
-        ];
-      for (const step of steps) {
-        appendText(list, 'li', step && step.action ? String(step.action) : 'Follow the fastest onboarding path.');
-      }
-      onboardingEl.appendChild(list);
-    };
+  onboardingEl.replaceChildren();
+  const onboarding = payload && payload.onboarding && typeof payload.onboarding === 'object' ? payload.onboarding : boot.onboarding;
+  appendText(onboardingEl, 'strong', 'Fastest Path');
+  appendText(onboardingEl, 'p', onboarding && onboarding.promise ? String(onboarding.promise) : 'Map intent. Orchestrate agents. Prove outcomes.');
+  appendText(onboardingEl, 'p', onboarding && onboarding.grammarSummary ? String(onboarding.grammarSummary) : 'A source-backed canvas where / routes work, # sets meaning, and @ binds context.');
+  appendText(
+    onboardingEl,
+    'p',
+    onboarding && onboarding.grammarToolName
+      ? 'Live grammar executes through ' + String(onboarding.grammarToolName) + ' on the control plane. Try ' + (Array.isArray(onboarding.grammarExamples) && onboarding.grammarExamples.length ? onboarding.grammarExamples.join(', ') : '/mcp.capabilities, #mcp, @mcp-gateway') + '.'
+      : 'Live grammar executes through knowgrph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.',
+  );
+  const list = document.createElement('ol');
+  const steps = Array.isArray(onboarding && onboarding.steps) && onboarding.steps.length ? onboarding.steps : [
+    { action: onboarding && onboarding.publicReadMcpUrl ? 'Map intent: install ' + onboarding.publicReadMcpUrl + ' first for public discovery, retrieval, and inspection.' : 'Map intent: install the public MCP endpoint first for discovery, retrieval, and inspection.' },
+    { action: onboarding && onboarding.controlPlaneMcpUrl ? 'Orchestrate agents: add ' + onboarding.controlPlaneMcpUrl + ' only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke.' : 'Orchestrate agents: add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke.' },
+    { action: 'Prove outcomes: for zero-spend evaluation, use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md first.' },
+  ];
+  for (const step of steps) appendText(list, 'li', step && step.action ? String(step.action) : 'Follow the fastest onboarding path.');
+  onboardingEl.appendChild(list);
+};
     const renderReadiness = (payload) => {
       readinessEl.replaceChildren();
       const readiness = payload && payload.mcpAppsServerReadiness;

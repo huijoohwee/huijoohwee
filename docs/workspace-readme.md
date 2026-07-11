@@ -173,7 +173,7 @@ flow:
     - id: {key: id, type: string, value: "workspace-source"}
       type: {key: type, type: string, value: "WorkspaceSourceWidget"}
       label: {key: label, type: string, value: "Source"}
-      position: {key: position, type: object, value: {"x":330.61790341314304,"y":-2110.702924375296}}
+      position: {key: position, type: object, value: {"x":-31.491652021089635,"y":-2095.9894002636197}}
       handles: {key: handles, type: object, value: {"source":["workspace_signal_out"]}}
       command: {key: command, type: string, value: "/source.normalize"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{},"out":{"workspace_signal_out":"workspace_signal"}}}
@@ -190,7 +190,7 @@ flow:
         value: |
           I and
           ![buddydrone.jpg](http://localhost:5181/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzNTk3NDg4Njk2fQ) can ... #storyboard .. /soul.load #runtime, is it better in #storyboard
-
+          
       "visual:height": {key: "visual:height", type: number, value: 758}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
@@ -200,7 +200,7 @@ flow:
     - id: {key: id, type: string, value: "workspace-runtime"}
       type: {key: type, type: string, value: "RuntimeGateWidget"}
       label: {key: label, type: string, value: "Runtime Gate"}
-      position: {key: position, type: object, value: {"x":747.9595539194524,"y":-2326.2956936664214}}
+      position: {key: position, type: object, value: {"x":1046.3158570580717,"y":-1529.4416854863607}}
       handles: {key: handles, type: object, value: {"target":["workspace_signal_in"],"source":["workspace_signal_out"]}}
       command: {key: command, type: string, value: "/runtime-ready.check"}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"workspace_signal_in":"workspace_signal"},"out":{"workspace_signal_out":"workspace_signal"}}}
@@ -222,15 +222,15 @@ flow:
         type: string
         value: |
           I, 567
-
+          
           ![buddydrone.jpg](http://localhost:5177/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzNjg1NTE3NTM0fQ)
-
+          
           , 123
-
+          
           ![1920s_Singapore_Malaya_202606190937.jpeg](http://localhost:5177/api/storage/media/airvio/runs/upload-170a76238422bb27/image/1920s_singapore_malaya_202606190937-170a76238422bb27.jpeg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0xNzBhNzYyMzg0MjJiYjI3IiwiZXhwaXJlc0F0IjoxNzgzNjQ1OTkzNzQ5fQ)
-
+          
           589 and ![buddydrone.jpg](http://localhost:5181/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzNTk5Nzk1Njc4fQ) can 123 see that #storyboard is as #source interesting as /cost.audit
-
+          
       thumbnailUrl: {key: thumbnailUrl, type: string, value: "http://localhost:5177/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzNjg1NTE3NTM0fQ"}
       "visual:height": {key: "visual:height", type: number, value: 356}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
@@ -287,7 +287,7 @@ flow:
     - id: {key: id, type: string, value: "n2"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-4229.503638908473,"y":-6655.717515345438}}
+      position: {key: position, type: object, value: {"x":-6019.469091169779,"y":-7556.549801777599}}
       audioUrl: {key: audioUrl, type: text, value: ""}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
@@ -340,7 +340,7 @@ flow:
     - id: {key: id, type: string, value: "n5"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-896.9368391127987,"y":-900.5706738679983}}
+      position: {key: position, type: object, value: {"x":-411.1288931328992,"y":-1676.5796248730235}}
       audioUrl: {key: audioUrl, type: text, value: ""}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
@@ -420,7 +420,7 @@ flow:
     - id: {key: id, type: string, value: "n7"}
       type: {key: type, type: string, value: "TextGeneration"}
       label: {key: label, type: string, value: "Text Widget"}
-      position: {key: position, type: object, value: {"x":2241.1481403289563,"y":-1622.2397972973777}}
+      position: {key: position, type: object, value: {"x":2339.1341899576832,"y":-2687.4928346756546}}
       chatAuthMode: {key: chatAuthMode, type: text, value: "serverManaged"}
       chatEndpointUrl: {key: chatEndpointUrl, type: text, value: "https://ark.ap-southeast.bytepluses.com/api/v3/chat/completions"}
       chatFrequencyPenalty: {key: chatFrequencyPenalty, type: number, value: 0}
@@ -542,7 +542,7 @@ flow:
     - id: {key: id, type: string, value: "n10"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-1981.7513866710415,"y":-4132.960662430232}}
+      position: {key: position, type: object, value: {"x":-2084.129780628411,"y":-4824.4153061138595}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       freezeConnectedOutput: {key: freezeConnectedOutput, type: boolean, value: true}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
@@ -555,9 +555,9 @@ flow:
         type: textarea
         value: |
           i can see
-
+          
           ![空武.jpg](http://localhost:5172/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNjY3MTcyOTkzfQ)
-
+          
       richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
       "visual:height": {key: "visual:height", type: number, value: 625}
       "visual:width": {key: "visual:width", type: number, value: 1111}
@@ -626,7 +626,7 @@ flow:
     - id: {key: id, type: string, value: "n11"}
       type: {key: type, type: string, value: "RichMediaPanel"}
       label: {key: label, type: string, value: "Rich Media Panel"}
-      position: {key: position, type: object, value: {"x":-264.7722565265383,"y":-1990.5625788679163}}
+      position: {key: position, type: object, value: {"x":192.07989001376922,"y":-1212.925089212405}}
       audioUrl: {key: audioUrl, type: text, value: ""}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "flow:widgetTypeId": {key: "flow:widgetTypeId", type: string, value: "default"}
@@ -663,7 +663,7 @@ flow:
         value: |
           I and
           ![buddydrone.jpg](http://localhost:5181/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzNTk3NDg4Njk2fQ) can ... #storyboard .. /soul.load #runtime, is it better in #storyboard
-
+          
       title: {key: title, type: string, value: "Source Copy"}
       "visual:importance": {key: "visual:importance", type: number, value: 16}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
