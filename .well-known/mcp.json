@@ -649,6 +649,8 @@
     "publicReadMcpScope": "Canonical public install and discovery endpoint for read-only retrieval, prompt discovery, resource discovery, and inspection.",
     "controlPlaneMcpUrl": "https://airvio.co/knowgrph/control-plane/mcp",
     "controlPlaneMcpScope": "Approval-gated orchestration endpoint for control-plane tools, remote Agentic Canvas OS docs invocation, and spend-bearing workflows where deployed.",
+    "hostedGrammarDefaultPath": "app-owned-forwarder",
+    "hostedGrammarDefaultScope": "Hosted app builders should keep /mcp for discovery and route live /, #, @ through an app-owned forwarder unless the host proves MCP session support.",
     "remoteGrammarInvokePublic": true,
     "remoteGrammarInvokeToolName": "knowgrph.agentic_canvas_os.docs.invoke",
     "remoteGrammarInvokeStatus": "live-control-plane"

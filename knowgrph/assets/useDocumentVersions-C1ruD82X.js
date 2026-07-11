@@ -1,0 +1,1 @@
+import{R as s}from"./react-BQOKVxhn.js";import{_ as o,$ as r,a0 as a}from"./settings-mcp-docs-BIidD60K.js";const t=()=>{const e=r();return{revision:Date.now(),entries:e,countsByPath:a()}};function i(){const[e,n]=s.useState(()=>t());return s.useEffect(()=>o(()=>n(t())),[]),e}export{i as u};
