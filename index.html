@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Knowgrph</title>
 
-    <!--
-      Root entrypoint for airvio.co
-      We redirect to the canonical Cloudflare Pages app path to avoid duplicating the full engine HTML
-      (which would otherwise drift and break relative asset/script paths).
-    -->
-    <meta http-equiv="refresh" content="0; url=/knowgrph/" />
     <link rel="canonical" href="/knowgrph/" vite-ignore />
   </head>
   <body>
-    <noscript>
-      <a href="/knowgrph/">Open Knowgrph</a>
-    </noscript>
+    <main aria-labelledby="knowgrph-static-fallback-title">
+      <h1 id="knowgrph-static-fallback-title">Knowgrph Live Canvas</h1>
+      <p>The interactive Knowgrph app is available at the canonical Cloudflare Pages path.</p>
+      <a href="/knowgrph/">Enter Knowgrph</a>
+    </main>
   </body>
 </html>
