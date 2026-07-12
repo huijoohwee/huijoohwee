@@ -5,8 +5,8 @@ doc_type: "Workspace README"
 date: "2026-07-09"
 lang: "en-US"
 schema: "kgc-workspace-readme/v1"
-source_reference: "docs/knowgrph-strybldr-starter-template.md"
-implementation_contract: "../../knowgrph/docs/documents/knowgrph-strybldr-prd-tad.md"
+source_reference: "docs/knowgrph-agentic-video-canvas-demo.md"
+implementation_contract: "../../knowgrph/docs/documents/knowgrph-agentic-os-video-agent-prd-tad.companion.md"
 validation_input_forbid_hardcode_in_repo: "true"
 deployed_api_claim: "false"
 publish_scope: "local-only"
@@ -95,7 +95,7 @@ runtime_pipeline:
   version: "workspace-runtime-pipeline/v1"
   status: "spec-complete"
   source_docs:
-    - "docs/knowgrph-strybldr-starter-template.md"
+    - "docs/knowgrph-agentic-video-canvas-demo.md"
     - "../../knowgrph/README.md"
     - "../../knowgrph/canvas/src/features/chat/chatStoryboardTemplateContract.ts"
     - "../../knowgrph/canvas/src/features/chat/chatStoryboardTemplateProjection.ts"
@@ -540,7 +540,7 @@ Do not deploy to Prod or Cloudflare from this document. Open that lane only afte
 
 ## Source Contract
 
-The source reference is `docs/knowgrph-strybldr-starter-template.md`. That template is a minimum viable, maximum-value Strybldr seed for short-drama video-agent work: scriptwriting, storyboarding, generation, editing, validation, and local proof before any live provider call.
+The source reference is `docs/knowgrph-agentic-video-canvas-demo.md`. That default video-agent seed keeps the imported script as a `workspace:` reference, exposes the editable `/`, `@`, and `#` invocation grammar, and projects provider-returned text, image, audio, and video artifacts through Cards, Widgets, Rich Media Panels, and compact Timeline lanes only after approval.
 
 The active runtime shape is frontmatter-first:
 
