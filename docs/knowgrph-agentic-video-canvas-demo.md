@@ -235,6 +235,8 @@ The executable prompt is owned by `workspace:/agentic-canvas-os/docs/PROMPT-PRES
 
 When **Video Agent** is selected and **Load preset** is pressed, the centralized catalog supplies the `/video-agent`, `#thinking.type.enabled`, `#token-cap.medium`, output, provider, and canonical script-reference grammar. The `@video-generation-demo-script` binding and `workspace:` link remain authored source. The shared composer displays the Markdown source reference as one `@filename.md` source-binding chip, keeps the underlying Markdown reference verbatim, and never classifies it as generated media.
 
+Before graph parsing, **Load preset** rematerializes this canonical document over a drifted runtime `/docs/knowgrph-agentic-video-canvas-demo.md` mirror. Generated runtime projections persist only as typed sibling artifacts and cannot replace the authored text, image, and video stage graph across local ports.
+
 FloatingPanel Chat projects the same authored `/`, `@`, and `#` grammar as inline chips in both its textbox and chronological thread without changing the raw prompt. The visual chips yield pointer ownership to the textarea and snap interior clicks to the chip end, so subsequent typing appends after the token and range edits continue to mutate the mapped raw prompt rather than flattening projected tokens. While a run is active, Chat shows one real-time assistant tail and Editor Workspace follows the same streamed workspace draft to its current tail; projected UI markup is never written back into this source document.
 
 ## 2. Shared execution path
