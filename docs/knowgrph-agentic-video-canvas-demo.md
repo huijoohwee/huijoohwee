@@ -35,11 +35,15 @@ kgSharedRendererContract:
   rendererPolicy: "Typed source and runtime records own data; shared renderers only project that state."
 agentic_video_contract:
   version: "knowgrph-agentic-video/v1"
+  prompt_preset_source: "workspace:/agentic-canvas-os/docs/PROMPT-PRESETS.md#video-agent"
   route: "/video-agent"
   source_binding_token: "@video-generation-demo-script"
   provider: {default: "byteplus-modelark", options: ["byteplus-modelark", "openai"]}
   specification: {default: "low", options: ["low", "medium", "high"]}
+  thinking: {default: "enabled", token: "#thinking.type.enabled", options: ["enabled", "disabled", "auto"]}
+  token_cap: {default: "medium", token: "#token-cap.medium", options: {low: {reasoning_effort: "low", max_completion_tokens: 4096}, medium: {reasoning_effort: "medium", max_completion_tokens: 16384}, high: {reasoning_effort: "high", max_completion_tokens: 32768}}}
   outputs: ["text", "image", "audio", "video"]
+  text_package_sheets: ["Character sheet", "Scene sheet", "Dialogue sheet", "Visual asset sheet", "Audio sheet", "Timing sheet", "Metadata sheet", "Prompt sheet"]
   audio_languages: ["zh-CN", "yue-HK", "en-US"]
   subtitle_languages: ["zh-CN", "en-US"]
   approval_policy: "Entering an available credential and pressing Send on the loaded preset is the explicit Run all approval. Fail before provider spend when credentials, entitlement, budget, or a required capability is unavailable."
@@ -47,9 +51,13 @@ agentic_video_contract:
   projection_policy: "Reuse each persisted typed artifact across Canvas Cards, Widgets, Rich Media Panels, and BottomPanel Timeline lanes."
 inputs:
   video_generation_demo_script: "workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md"
-  default_invocation: "/video-agent @video-generation-demo-script @provider.byteplus @text @image @audio @video #spec.low [AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)"
+  prompt_preset_id: "video-agent"
   provider: "byteplus-modelark"
   specification: "low"
+  thinking_type: "enabled"
+  token_cap: "medium"
+  reasoning_effort: "medium"
+  max_completion_tokens: 16384
   output_kinds: ["text", "image", "audio", "video"]
   duration_seconds: 45
   aspect_ratio: "16:9"
@@ -65,8 +73,8 @@ runtime_harness:
     executor: "Run registered videoScript, imageGeneration, and videoGeneration stages plus the native agent-first composition path."
     observer: "Record stage state, model, token use, cache hits, estimated cost, persisted artifact identity, and typed failure."
     consumer: "Project read-back artifacts through shared Card, Widget, Rich Media, and Timeline owners."
-  input_schema: ["source_ref", "invocation", "provider", "specification", "output_kinds", "approval", "budget"]
-  output_schema: ["run_manifest", "text_artifact", "image_manifest", "master_video", "audio_track", "subtitle_manifest", "timeline_manifest", "cost_log"]
+  input_schema: ["source_ref", "invocation", "provider", "specification", "thinking_type", "token_cap", "output_kinds", "approval", "budget"]
+  output_schema: ["run_manifest", "structured_text_package", "image_manifest", "master_video", "audio_track", "subtitle_manifest", "timeline_manifest", "cost_log"]
   stage_order: ["source", "text", "image", "video+audio", "persist", "read-back", "project", "review"]
   max_attempts_per_stage: 2
   circuit_breaker: "Stop after the second failed attempt, approval denial, entitlement failure, budget breach, malformed output, persistence failure, or read-back identity mismatch."
@@ -108,19 +116,22 @@ flow:
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "agenticVideoSource"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
       source_ref: {key: source_ref, type: markdown, value: "[AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)"}
-      invocation: {key: invocation, type: textarea, value: "/video-agent @video-generation-demo-script @provider.byteplus @text @image @audio @video #spec.low"}
+      invocation: {key: invocation, type: textarea, value: "/video-agent @video-generation-demo-script @provider.byteplus @text @image @audio @video #spec.low #thinking.type.enabled #token-cap.medium"}
       run_status: {key: run_status, type: string, value: "ready"}
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "The raw / # @ request and canonical workspace source remain visible and editable."}
     - id: {key: id, type: string, value: "video_text_generation"}
       type: {key: type, type: string, value: "TextGeneration"}
-      label: {key: label, type: string, value: "Text · shot plan, prompts, narration, subtitles"}
+      label: {key: label, type: string, value: "Text · eight-sheet production package"}
       position: {key: position, type: object, value: {"x":400,"y":-300}}
       handles: {key: handles, type: object, value: {"target":["prompt_in"],"source":["text_out","outputSrcDoc"]}}
       "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":180}}
       "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"prompt_in":"video_agent_invocation_signal"},"out":{"text_out":"generated_text_signal","outputSrcDoc":"generated_text_surface_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoScript"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      prompt: {key: prompt, type: textarea, value: "Use @video-generation-demo-script and its workspace source to produce the eight-shot 45-second Hong Kong live-action plan, generation prompts, Chinese/Cantonese/English narration, and synchronized Chinese/English subtitles. Preserve the supplied continuity and timing; return no fabricated media URLs."}
+      prompt: {key: prompt, type: textarea, value: "Use @video-generation-demo-script and its workspace source to produce one structured Markdown package with exactly these eight named sections: Character sheet, Scene sheet, Dialogue sheet, Visual asset sheet, Audio sheet, Timing sheet, Metadata sheet, and Prompt sheet. Cover the complete eight-shot 45-second Hong Kong live-action plan, source-consistent generation prompts, Chinese/Cantonese/English narration, and synchronized Chinese/English subtitles. Preserve supplied continuity and timing; return no fabricated media URLs."}
+      chatThinkingType: {key: chatThinkingType, type: string, value: "enabled"}
+      chatReasoningEffort: {key: chatReasoningEffort, type: string, value: "medium"}
+      chatMaxCompletionTokens: {key: chatMaxCompletionTokens, type: number, value: 16384}
       output: {key: output, type: markdown, value: ""}
       outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
       outputPath: {key: outputPath, type: string, value: ""}
@@ -220,13 +231,9 @@ This is Knowgrph's default source-backed video-agent loading document. It starts
 
 ## 1. Source-bound invocation
 
-```text
-/video-agent @video-generation-demo-script @provider.byteplus @text @image @audio @video #spec.low [AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)
+The executable prompt is owned by `workspace:/agentic-canvas-os/docs/PROMPT-PRESETS.md#video-agent`. This Canvas document owns only the authored graph, video-script binding, runtime settings, and blank output surfaces; it does not copy the centralized prompt text.
 
-Build a 45-second, 16:9 Hong Kong live-action drama sequence from the referenced eight-shot script. Generate a structured text package, source-consistent image keyframes, Chinese/Cantonese/English narration, synchronized Chinese/English subtitles, and a playable master video. Persist returned artifacts, read them back, and project the same typed identities into Canvas Cards, Widgets, Rich Media Panels, and BottomPanel Timeline video/FBF/audio lanes. Stop when approval, credentials, entitlement, budget, persistence, read-back, or a required capability is unavailable.
-```
-
-The `@video-generation-demo-script` binding and `workspace:` link are both authored source. The shared composer displays the Markdown source reference as one `@filename.md` source-binding chip, keeps the underlying Markdown reference verbatim, and never classifies it as generated media.
+When **Video Agent** is selected and **Load preset** is pressed, the centralized catalog supplies the `/video-agent`, `#thinking.type.enabled`, `#token-cap.medium`, output, provider, and canonical script-reference grammar. The `@video-generation-demo-script` binding and `workspace:` link remain authored source. The shared composer displays the Markdown source reference as one `@filename.md` source-binding chip, keeps the underlying Markdown reference verbatim, and never classifies it as generated media.
 
 FloatingPanel Chat projects the same authored `/`, `@`, and `#` grammar as inline chips in both its textbox and chronological thread without changing the raw prompt. The visual chips yield pointer ownership to the textarea and snap interior clicks to the chip end, so subsequent typing appends after the token and range edits continue to mutate the mapped raw prompt rather than flattening projected tokens. While a run is active, Chat shows one real-time assistant tail and Editor Workspace follows the same streamed workspace draft to its current tail; projected UI markup is never written back into this source document.
 
@@ -235,14 +242,14 @@ FloatingPanel Chat projects the same authored `/`, `@`, and `#` grammar as inlin
 | Stage | Shared owner | Observable result | Fail-closed guard |
 | --- | --- | --- | --- |
 | Activate | FloatingPanel preset interceptor + workspace seed owner | This document and its referenced script become the active Canvas source | No generic chat request for a recognized preset invocation |
-| Text | `TextGeneration` / `videoScript` | Shot plan, prompts, narration, subtitle manifest | Stop on malformed or empty output |
+| Text | `TextGeneration` / `videoScript` | Character, Scene, Dialogue, Visual asset, Audio, Timing, Metadata, and Prompt sheets | Stop on malformed, empty, or incomplete eight-sheet output |
 | Image | `ImageGeneration` / `imageGeneration` | Persisted keyframes and manifest | Stop on provider, upload, or read-back failure |
 | Video + audio | `VideoGeneration` / `videoGeneration` with `generate_audio: true` | Persisted playable master whose identity also feeds the audio-track surface | Stop on entitlement, polling, composition, verification, or read-back failure |
 | Project | Shared Card, Widget, Rich Media, Timeline, Media registry, and Source Files owners | The same durable identities remain visible, downloadable, and `@`-invocable after graph refresh and reload | No surface-local URL copy, panel-local registry, or historical backfill |
 
 Dev proof includes a deterministic zero-spend provider harness that returns non-empty Markdown, PNG, and MP4 payloads through the production generation helpers, fake D1/R2 storage worker, shared Media registry, Source Files merge, and Card/Widget/Rich Media projection. Sequential stages retain the input, text output, both media binaries, and both editable manifests; zero-byte historical Markdown is deliberately not materialized or backfilled.
 
-Loading the preset itself performs zero model calls. After entering an available BYOK credential, **Send** is the explicit approval boundary: it activates this source, applies the invocation provider to the shared generation runtime, and requests the same registered **Run all** owner used by the Canvas. A Chat-triggered run replaces its initiating assistant bubble with structured Run-all progress and terminal status instead of emitting the global Run-all progress toast. The visible exchange adopts bounded activation/parsing/settled graph-history keys by message identity, so a canvas revision cannot clear the bubble or disconnect later progress. Provider calls remain credential-, entitlement-, capability-, and budget-gated.
+Loading the preset itself performs zero model calls. After entering an available BYOK credential, **Send** is the explicit approval boundary: it activates this source, applies the invocation provider, thinking type, reasoning effort, and completion-token cap to the shared generation runtime, and requests the same registered **Run all** owner used by the Canvas. A Chat-triggered run replaces its initiating assistant bubble with structured Run-all progress and terminal status instead of emitting the global Run-all progress toast. The visible exchange adopts bounded activation/parsing/settled graph-history keys by message identity, so a canvas revision cannot clear the bubble or disconnect later progress. Provider calls remain credential-, entitlement-, capability-, and budget-gated.
 
 ## 3. Artifact and replay proof
 
