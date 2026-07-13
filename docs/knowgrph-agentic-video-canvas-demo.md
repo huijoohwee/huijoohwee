@@ -2,13 +2,15 @@
 title: "Knowgrph Agentic Video Canvas Demo"
 graphId: "md:knowgrph-agentic-video-canvas-demo"
 doc_type: "Agentic Video Generation Demo"
-date: "2026-07-12"
+date: "2026-07-13"
 lang: "zh-Hans"
 schema: "kgc-agentic-video-canvas/v1"
+runtime_status: "runtime-ready-in-dev"
+publish_scope: "local-only"
+live_provider_run_proven: false
 implementation_contract: "../../knowgrph/docs/documents/knowgrph-agentic-os-video-agent-prd-tad.companion.md"
-template_policy: "Default, source-backed video-agent demonstration. The selected Markdown script owns creative context; provider-returned artifacts own all generated media; no generated URL, job id, transcript, or media fixture is authored here."
-validation_input_forbid_hardcode_in_repo: "true"
-deployed_api_claim: "false"
+template_policy: "Default source-backed video-agent launcher. The referenced Markdown owns creative context; runtime providers own generated text and media; no generated URL, job id, transcript, credential, or fixture is authored here."
+validation_input_forbid_hardcode_in_repo: true
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
 kgCanvas2dRenderer: "storyboard"
@@ -29,61 +31,66 @@ kgSharedRendererContract:
   widgetCard: "canvas:widgetCard"
   richMediaPanel: "RichMediaPanel"
   storyboardDisplay: "2D Renderer: Storyboard Card and Widget variants"
-  storyboardSurfaces: ["Cards", "Widgets", "Rich Media Panels"]
-  edgeModel: "active graph edges derive from this frontmatter-owned demo"
   timelineSurface: "BottomPanel Timeline video/FBF/audio transport"
-  rendererPolicy: "source payloads and provider-returned artifacts own data; renderers project view state only"
+  rendererPolicy: "Typed source and runtime records own data; shared renderers only project that state."
 agentic_video_contract:
   version: "knowgrph-agentic-video/v1"
   route: "/video-agent"
-  provider:
-    default: "byteplus-modelark"
-    options: ["byteplus-modelark", "openai"]
-  specification:
-    default: "low"
-    options: ["low", "medium", "high"]
+  source_binding_token: "@video-generation-demo-script"
+  provider: {default: "byteplus-modelark", options: ["byteplus-modelark", "openai"]}
+  specification: {default: "low", options: ["low", "medium", "high"]}
   outputs: ["text", "image", "audio", "video"]
-  source_binding: "Markdown source references are inserted with @ and remain canonical workspace: links while the composer projects the existing inline chip."
   audio_languages: ["zh-CN", "yue-HK", "en-US"]
   subtitle_languages: ["zh-CN", "en-US"]
-  approval_policy: "Stop before a provider call when approval, credentials, or required provider capability is missing."
-  persistence_policy: "Persist returned artifacts through existing Cloudflare storage utilities only after a successful provider response."
-  projection_policy: "Use the same typed persisted artifacts in Canvas Cards, Widgets, Rich Media Panels, and BottomPanel Timeline video/FBF/audio lanes."
+  approval_policy: "Entering an available credential and pressing Send on the loaded preset is the explicit Run all approval. Fail before provider spend when credentials, entitlement, budget, or a required capability is unavailable."
+  persistence_policy: "Persist provider-returned bytes and manifests through the existing Cloudflare storage utilities, read back the durable identity, then project it."
+  projection_policy: "Reuse each persisted typed artifact across Canvas Cards, Widgets, Rich Media Panels, and BottomPanel Timeline lanes."
 inputs:
-  video_generation_demo_script: "workspace:/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md"
-  default_invocation: "/video-agent @provider.byteplus @text @image @audio @video #spec.low"
+  video_generation_demo_script: "workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md"
+  default_invocation: "/video-agent @video-generation-demo-script @provider.byteplus @text @image @audio @video #spec.low [AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)"
   provider: "byteplus-modelark"
   specification: "low"
   output_kinds: ["text", "image", "audio", "video"]
-  audio_languages: ["Chinese", "Cantonese", "English"]
-  subtitle_languages: ["Chinese", "English"]
   duration_seconds: 45
   aspect_ratio: "16:9"
-  run_mode: "approval-gated"
-  source_policy: "The imported script is source context, not a generated artifact. Keep its workspace reference in the prompt and preserve provenance in the final artifact manifest."
-  generated_artifact_policy: "Keep text, image, audio, and video fields blank until the configured provider returns a typed result."
+  target_resolution: "4K"
+  target_fps: 30
+  shot_count: 8
+  run_mode: "send-approved-run-all"
+  source_policy: "The Markdown script is bounded source context, not a generated artifact; keep its workspace reference verbatim."
+runtime_harness:
+  version: "agentic-video-canvas-harness/v1"
+  roles:
+    dispatcher: "Resolve / # @, source binding, selected provider, approval, capability, and budget before execution."
+    executor: "Run registered videoScript, imageGeneration, and videoGeneration stages plus the native agent-first composition path."
+    observer: "Record stage state, model, token use, cache hits, estimated cost, persisted artifact identity, and typed failure."
+    consumer: "Project read-back artifacts through shared Card, Widget, Rich Media, and Timeline owners."
+  input_schema: ["source_ref", "invocation", "provider", "specification", "output_kinds", "approval", "budget"]
+  output_schema: ["run_manifest", "text_artifact", "image_manifest", "master_video", "audio_track", "subtitle_manifest", "timeline_manifest", "cost_log"]
+  stage_order: ["source", "text", "image", "video+audio", "persist", "read-back", "project", "review"]
+  max_attempts_per_stage: 2
+  circuit_breaker: "Stop after the second failed attempt, approval denial, entitlement failure, budget breach, malformed output, persistence failure, or read-back identity mismatch."
+  cost_log_fields: ["model", "prompt_tokens", "completion_tokens", "cache_hits", "estimated_cost_usd"]
+  fallback: "Return the blocking stage and retry action; preserve blank outputs and never synthesize media."
+runtime_artifact_contract:
+  text: {status: "blank-until-return", persisted_by: "existing Cloudflare artifact utilities", identity: "workspace text artifact", targets: ["Canvas Card", "Text Widget", "Rich Media Panel"]}
+  image: {status: "blank-until-return", persisted_by: "existing Cloudflare artifact utilities", identity: "R2 object plus workspace manifest", targets: ["Canvas Card", "Image Widget", "Rich Media Panel"]}
+  audio: {status: "blank-until-media-probe", persisted_by: "existing Cloudflare artifact utilities", identity: "media-probed audio track in the persisted master MP4", targets: ["Canvas Card", "Audio Rich Media Panel", "BottomPanel Timeline audio lane"]}
+  video: {status: "blank-until-return", persisted_by: "existing Cloudflare artifact utilities", identity: "R2 master MP4 plus workspace manifest", targets: ["Canvas Card", "Video Widget", "Rich Media Panel", "BottomPanel Timeline video and FBF lanes"]}
+replay_contract:
+  root: "video-runs/<run-id>/"
+  manifest: "manifest.json"
+  required_records: ["input.json", "runtime.jsonl", "text.md", "images.json", "subtitles.json", "audio.json", "master.mp4", "timeline.json"]
+  proof_rule: "A run is complete only after persisted bytes read back with the same run id, content identity, media kind, and Canvas projection identity."
 modelSelection:
   selectionModel: "projected-data"
   scope: "local-overrides-global"
   groups:
-    provider:
-      global: "byteplus-modelark"
-      options: ["byteplus-modelark", "openai"]
-    specification:
-      global: "low"
-      options: ["low", "medium", "high"]
-    text:
-      global: "runtime-selected"
-      options: ["runtime-selected"]
-    image:
-      global: "runtime-selected"
-      options: ["runtime-selected"]
-    audio:
-      global: "runtime-selected"
-      options: ["runtime-selected"]
-    video:
-      global: "runtime-selected"
-      options: ["runtime-selected"]
+    provider: {global: "byteplus-modelark", options: ["byteplus-modelark", "openai"]}
+    specification: {global: "low", options: ["low", "medium", "high"]}
+    text: {global: "runtime-selected", options: ["runtime-selected"]}
+    image: {global: "runtime-selected", options: ["runtime-selected"]}
+    video: {global: "runtime-selected", options: ["runtime-selected"]}
 flow:
   direction: {key: direction, type: string, value: "LR"}
   edgeType: {key: edgeType, type: string, value: "smoothstep"}
@@ -95,201 +102,166 @@ flow:
       type: {key: type, type: string, value: "InputWidget"}
       label: {key: label, type: string, value: "@ Video-generation demo script"}
       position: {key: position, type: object, value: {"x":0,"y":0}}
-      handles: {key: handles, type: object, value: {"source":["video_generation_demo_script","invocation","provider","specification","output_kinds"]}}
-      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"invocation","previewMaxChars":140,"actions":[{"id":"edit","label":"Edit prompt","icon":"pencil","trigger":"openFieldEditor","targetField":"invocation"}]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"video_generation_demo_script":"source_reference_signal","invocation":"video_agent_invocation_signal","provider":"provider_signal","specification":"specification_signal","output_kinds":"output_selection_signal"}}}
+      handles: {key: handles, type: object, value: {"source":["source_ref","invocation"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"previewField":"invocation","previewMaxChars":180,"actions":[{"id":"edit","label":"Edit prompt","icon":"pencil","trigger":"openFieldEditor","targetField":"invocation"}]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"out":{"source_ref":"source_reference_signal","invocation":"video_agent_invocation_signal"}}}
       "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "agenticVideoSource"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      video_generation_demo_script: {key: video_generation_demo_script, type: markdown, value: "[AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)"}
-      invocation: {key: invocation, type: textarea, value: "/video-agent @provider.byteplus @text @image @audio @video #spec.low"}
-      provider: {key: provider, type: string, value: "byteplus-modelark"}
-      specification: {key: specification, type: string, value: "low"}
-      output_kinds: {key: output_kinds, type: array, value: ["text", "image", "audio", "video"]}
-      run_status: {key: run_status, type: string, value: "ready-for-chat"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Use @ to insert the imported script as the existing inline Markdown chip, then hand the editable / # @ prompt to FloatingPanel Chat."}
-      "visual:importance": {key: "visual:importance", type: number, value: 30}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 0}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      source_ref: {key: source_ref, type: markdown, value: "[AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)"}
+      invocation: {key: invocation, type: textarea, value: "/video-agent @video-generation-demo-script @provider.byteplus @text @image @audio @video #spec.low"}
+      run_status: {key: run_status, type: string, value: "ready"}
+      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "The raw / # @ request and canonical workspace source remain visible and editable."}
     - id: {key: id, type: string, value: "video_text_generation"}
       type: {key: type, type: string, value: "TextGeneration"}
-      label: {key: label, type: string, value: "Text widget · storyboard, prompts, subtitles"}
-      position: {key: position, type: object, value: {"x":420,"y":-360}}
-      handles: {key: handles, type: object, value: {"target":["video_generation_demo_script","invocation","provider","specification"],"source":["textArtifact","subtitleManifest"]}}
-      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"awaiting-approval":"amber","complete":"green","error":"red"},"previewField":"textArtifact","previewMaxChars":140}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"video_generation_demo_script":"source_reference_signal","invocation":"video_agent_invocation_signal","provider":"provider_signal","specification":"specification_signal"},"out":{"textArtifact":"generated_text_signal","subtitleManifest":"subtitle_manifest_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "agenticVideoText"}
+      label: {key: label, type: string, value: "Text · shot plan, prompts, narration, subtitles"}
+      position: {key: position, type: object, value: {"x":400,"y":-300}}
+      handles: {key: handles, type: object, value: {"target":["prompt_in"],"source":["text_out","outputSrcDoc"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"output","previewMaxChars":180}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"prompt_in":"video_agent_invocation_signal"},"out":{"text_out":"generated_text_signal","outputSrcDoc":"generated_text_surface_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoScript"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      prompt: {key: prompt, type: textarea, value: "Use @video-generation-demo-script and its workspace source to produce the eight-shot 45-second Hong Kong live-action plan, generation prompts, Chinese/Cantonese/English narration, and synchronized Chinese/English subtitles. Preserve the supplied continuity and timing; return no fabricated media URLs."}
+      output: {key: output, type: markdown, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
+      outputPath: {key: outputPath, type: string, value: ""}
       run_status: {key: run_status, type: string, value: "awaiting-approval"}
-      textArtifact: {key: textArtifact, type: markdown, value: ""}
-      subtitleManifest: {key: subtitleManifest, type: json, value: ""}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "A provider-returned text package contains the shot plan, prompts, narration, and synchronized Chinese/English subtitle manifest."}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
     - id: {key: id, type: string, value: "video_image_generation"}
       type: {key: type, type: string, value: "ImageGeneration"}
-      label: {key: label, type: string, value: "Image widget · source-consistent keyframes"}
-      position: {key: position, type: object, value: {"x":420,"y":-120}}
-      handles: {key: handles, type: object, value: {"target":["video_generation_demo_script","invocation","provider","specification"],"source":["imageUrl","imageManifest"]}}
-      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"awaiting-approval":"amber","complete":"green","error":"red"},"previewField":"imageUrl","previewMaxChars":100}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"video_generation_demo_script":"source_reference_signal","invocation":"video_agent_invocation_signal","provider":"provider_signal","specification":"specification_signal"},"out":{"imageUrl":"generated_image_signal","imageManifest":"artifact_manifest_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "agenticVideoImage"}
+      label: {key: label, type: string, value: "Image · source-consistent keyframes"}
+      position: {key: position, type: object, value: {"x":400,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["prompt_in"],"source":["imageUrl"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"imageUrl","previewMaxChars":120}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"prompt_in":"generated_text_signal"},"out":{"imageUrl":"generated_image_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "imageGeneration"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      prompt: {key: prompt, type: textarea, value: "Generate source-consistent Hong Kong live-action keyframes for the approved shot plan. Keep character, location, lens, lighting, and red/blue-eye mutation continuity across all eight shots."}
+      imageUrl: {key: imageUrl, type: string, value: ""}
+      outputPath: {key: outputPath, type: string, value: ""}
+      outputManifestPath: {key: outputManifestPath, type: string, value: ""}
       run_status: {key: run_status, type: string, value: "awaiting-approval"}
-      imageUrl: {key: imageUrl, type: text, value: ""}
-      imageManifest: {key: imageManifest, type: json, value: ""}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Real provider-returned keyframes remain blank until completion; the same stored image artifact renders in the Card, Widget, and Rich Media Panel."}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
-    - id: {key: id, type: string, value: "video_audio_generation"}
-      type: {key: type, type: string, value: "AudioGeneration"}
-      label: {key: label, type: string, value: "Audio widget · Chinese, Cantonese, English"}
-      position: {key: position, type: object, value: {"x":420,"y":120}}
-      handles: {key: handles, type: object, value: {"target":["video_generation_demo_script","invocation","provider","specification","subtitleManifest"],"source":["audioUrl","audioManifest"]}}
-      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"awaiting-approval":"amber","complete":"green","error":"red"},"previewField":"audioUrl","previewMaxChars":100}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"video_generation_demo_script":"source_reference_signal","invocation":"video_agent_invocation_signal","provider":"provider_signal","specification":"specification_signal","subtitleManifest":"subtitle_manifest_signal"},"out":{"audioUrl":"generated_audio_signal","audioManifest":"artifact_manifest_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "agenticVideoAudio"}
-      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      run_status: {key: run_status, type: string, value: "awaiting-approval"}
-      audioUrl: {key: audioUrl, type: text, value: ""}
-      audioManifest: {key: audioManifest, type: json, value: ""}
-      audio_languages: {key: audio_languages, type: array, value: ["zh-CN", "yue-HK", "en-US"]}
-      subtitle_languages: {key: subtitle_languages, type: array, value: ["zh-CN", "en-US"]}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Store three narration variants with one synchronized Chinese/English bilingual subtitle manifest; do not fabricate playable audio before return."}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
     - id: {key: id, type: string, value: "video_clip_generation"}
       type: {key: type, type: string, value: "VideoGeneration"}
-      label: {key: label, type: string, value: "Video widget · 45-second master"}
-      position: {key: position, type: object, value: {"x":420,"y":360}}
-      handles: {key: handles, type: object, value: {"target":["video_generation_demo_script","invocation","provider","specification","imageUrl","audioUrl","subtitleManifest"],"source":["videoUrl","timelineManifest"]}}
-      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","statusValues":{"awaiting-approval":"amber","complete":"green","error":"red"},"previewField":"videoUrl","previewMaxChars":100}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"video_generation_demo_script":"source_reference_signal","invocation":"video_agent_invocation_signal","provider":"provider_signal","specification":"specification_signal","imageUrl":"generated_image_signal","audioUrl":"generated_audio_signal","subtitleManifest":"subtitle_manifest_signal"},"out":{"videoUrl":"generated_video_signal","timelineManifest":"timeline_manifest_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "agenticVideoMaster"}
+      label: {key: label, type: string, value: "Video + audio · 45-second master"}
+      position: {key: position, type: object, value: {"x":400,"y":300}}
+      handles: {key: handles, type: object, value: {"target":["prompt_in","reference_image"],"source":["videoUrl","audioUrl"]}}
+      "canvas:widgetCard": {key: "canvas:widgetCard", type: object, value: {"statusField":"run_status","previewField":"videoUrl","previewMaxChars":120}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"prompt_in":"generated_text_signal","reference_image":"generated_image_signal"},"out":{"videoUrl":"generated_video_signal","audioUrl":"generated_audio_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "videoGeneration"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      prompt: {key: prompt, type: textarea, value: "Render approved segments from the source-backed plan and reference keyframes, preserve motion and character continuity, generate the master audio track, synchronize bilingual subtitles, and compose the verified 45-second 16:9 master through the native video-agent runtime."}
+      reference_image: {key: reference_image, type: string, value: ""}
+      ratio: {key: ratio, type: string, value: "16:9"}
+      resolution: {key: resolution, type: string, value: "480p"}
+      duration: {key: duration, type: number, value: 15}
+      segment_count: {key: segment_count, type: number, value: 3}
+      master_duration_seconds: {key: master_duration_seconds, type: number, value: 45}
+      generate_audio: {key: generate_audio, type: boolean, value: true}
+      videoUrl: {key: videoUrl, type: string, value: ""}
+      audioUrl: {key: audioUrl, type: string, value: ""}
+      outputPath: {key: outputPath, type: string, value: ""}
+      outputManifestPath: {key: outputManifestPath, type: string, value: ""}
       run_status: {key: run_status, type: string, value: "awaiting-approval"}
-      videoUrl: {key: videoUrl, type: text, value: ""}
-      timelineManifest: {key: timelineManifest, type: json, value: ""}
-      duration_seconds: {key: duration_seconds, type: number, value: 45}
-      aspect_ratio: {key: aspect_ratio, type: string, value: "16:9"}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Use returned image, audio, subtitle, and video artifacts to materialize the playable master and video/FBF/audio BottomPanel Timeline lanes."}
-      "visual:importance": {key: "visual:importance", type: number, value: 24}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 1}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
     - id: {key: id, type: string, value: "panel_text_artifact"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel · Text"}
-      position: {key: position, type: object, value: {"x":820,"y":-360}}
-      handles: {key: handles, type: object, value: {"target":["textArtifact","subtitleManifest"],"source":["textArtifact","subtitleManifest"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"textArtifact":"generated_text_signal","subtitleManifest":"subtitle_manifest_signal"},"out":{"textArtifact":"generated_text_signal","subtitleManifest":"subtitle_manifest_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaTextArtifact"}
+      label: {key: label, type: string, value: "Rich Media · Text + subtitles"}
+      position: {key: position, type: object, value: {"x":820,"y":-300}}
+      handles: {key: handles, type: object, value: {"target":["output","outputSrcDoc"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"output":"generated_text_signal","outputSrcDoc":"generated_text_surface_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      textArtifact: {key: textArtifact, type: textarea, value: ""}
-      subtitleManifest: {key: subtitleManifest, type: textarea, value: ""}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Projects the provider-returned text and bilingual subtitle manifest without duplicating it."}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -2}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "text"}
+      output: {key: output, type: textarea, value: ""}
+      outputSrcDoc: {key: outputSrcDoc, type: textarea, value: ""}
     - id: {key: id, type: string, value: "panel_image_artifact"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel · Image"}
-      position: {key: position, type: object, value: {"x":820,"y":-120}}
-      handles: {key: handles, type: object, value: {"target":["imageUrl","imageManifest"],"source":["imageUrl"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageUrl":"generated_image_signal","imageManifest":"artifact_manifest_signal"},"out":{"imageUrl":"generated_image_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaImageArtifact"}
+      label: {key: label, type: string, value: "Rich Media · Image keyframes"}
+      position: {key: position, type: object, value: {"x":820,"y":0}}
+      handles: {key: handles, type: object, value: {"target":["imageUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"imageUrl":"generated_image_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      imageUrl: {key: imageUrl, type: text, value: ""}
-      imageManifest: {key: imageManifest, type: textarea, value: ""}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Projects the one persisted provider image artifact into the shared Rich Media frame."}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: -1}
-    - id: {key: id, type: string, value: "panel_audio_artifact"}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "image"}
+      imageUrl: {key: imageUrl, type: string, value: ""}
+    - id: {key: id, type: string, value: "video_audio_generation"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel · Audio"}
-      position: {key: position, type: object, value: {"x":820,"y":120}}
-      handles: {key: handles, type: object, value: {"target":["audioUrl","audioManifest"],"source":["audioUrl"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"audioUrl":"generated_audio_signal","audioManifest":"artifact_manifest_signal"},"out":{"audioUrl":"generated_audio_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaAudioArtifact"}
+      label: {key: label, type: string, value: "Rich Media · Master audio track"}
+      position: {key: position, type: object, value: {"x":820,"y":240}}
+      handles: {key: handles, type: object, value: {"target":["audioUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"audioUrl":"generated_audio_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      audioUrl: {key: audioUrl, type: text, value: ""}
-      audioManifest: {key: audioManifest, type: textarea, value: ""}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Projects the returned Chinese, Cantonese, and English audio variants while the subtitle manifest stays in the text panel."}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 0}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "audio"}
+      audioUrl: {key: audioUrl, type: string, value: ""}
     - id: {key: id, type: string, value: "panel_video_artifact"}
       type: {key: type, type: string, value: "RichMediaPanel"}
-      label: {key: label, type: string, value: "Rich Media Panel · Video + Timeline"}
-      position: {key: position, type: object, value: {"x":820,"y":360}}
-      handles: {key: handles, type: object, value: {"target":["videoUrl","timelineManifest"],"source":["videoUrl","timelineManifest"]}}
-      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"videoUrl":"generated_video_signal","timelineManifest":"timeline_manifest_signal"},"out":{"videoUrl":"generated_video_signal","timelineManifest":"timeline_manifest_signal"}}}
-      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaVideoArtifact"}
+      label: {key: label, type: string, value: "Rich Media · Playable master"}
+      position: {key: position, type: object, value: {"x":820,"y":480}}
+      handles: {key: handles, type: object, value: {"target":["videoUrl"]}}
+      "flow:portTypes": {key: "flow:portTypes", type: object, value: {"in":{"videoUrl":"generated_video_signal"}}}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "richMediaPanel"}
       "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
-      videoUrl: {key: videoUrl, type: text, value: ""}
-      timelineManifest: {key: timelineManifest, type: textarea, value: ""}
-      "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Projects the returned playable video and its compact video/FBF/audio timeline manifest; no static media URL is authored."}
-      "visual:importance": {key: "visual:importance", type: number, value: 16}
-      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
-      "visual:yIndex": {key: "visual:yIndex", type: number, value: 1}
+      richMediaActiveTab: {key: richMediaActiveTab, type: string, value: "video"}
+      videoUrl: {key: videoUrl, type: string, value: ""}
   edges:
-    - {id: "edge:source:text-script", source: "video_script_source", sourceHandle: "video_generation_demo_script", target: "video_text_generation", targetHandle: "video_generation_demo_script", type: "source_reference_signal"}
-    - {id: "edge:source:text-invocation", source: "video_script_source", sourceHandle: "invocation", target: "video_text_generation", targetHandle: "invocation", type: "video_agent_invocation_signal"}
-    - {id: "edge:source:image-script", source: "video_script_source", sourceHandle: "video_generation_demo_script", target: "video_image_generation", targetHandle: "video_generation_demo_script", type: "source_reference_signal"}
-    - {id: "edge:source:audio-script", source: "video_script_source", sourceHandle: "video_generation_demo_script", target: "video_audio_generation", targetHandle: "video_generation_demo_script", type: "source_reference_signal"}
-    - {id: "edge:source:video-script", source: "video_script_source", sourceHandle: "video_generation_demo_script", target: "video_clip_generation", targetHandle: "video_generation_demo_script", type: "source_reference_signal"}
-    - {id: "edge:text:panel", source: "video_text_generation", sourceHandle: "textArtifact", target: "panel_text_artifact", targetHandle: "textArtifact", type: "generated_text_signal"}
-    - {id: "edge:subtitle:panel", source: "video_text_generation", sourceHandle: "subtitleManifest", target: "panel_text_artifact", targetHandle: "subtitleManifest", type: "subtitle_manifest_signal"}
-    - {id: "edge:text:audio-subtitles", source: "video_text_generation", sourceHandle: "subtitleManifest", target: "video_audio_generation", targetHandle: "subtitleManifest", type: "subtitle_manifest_signal"}
-    - {id: "edge:text:video-subtitles", source: "video_text_generation", sourceHandle: "subtitleManifest", target: "video_clip_generation", targetHandle: "subtitleManifest", type: "subtitle_manifest_signal"}
+    - {id: "edge:source:text", source: "video_script_source", sourceHandle: "invocation", target: "video_text_generation", targetHandle: "prompt_in", type: "video_agent_invocation_signal"}
+    - {id: "edge:text:image", source: "video_text_generation", sourceHandle: "text_out", target: "video_image_generation", targetHandle: "prompt_in", type: "generated_text_signal"}
+    - {id: "edge:text:video", source: "video_text_generation", sourceHandle: "text_out", target: "video_clip_generation", targetHandle: "prompt_in", type: "generated_text_signal"}
+    - {id: "edge:image:video", source: "video_image_generation", sourceHandle: "imageUrl", target: "video_clip_generation", targetHandle: "reference_image", type: "generated_image_signal"}
+    - {id: "edge:text:panel", source: "video_text_generation", sourceHandle: "text_out", target: "panel_text_artifact", targetHandle: "output", type: "generated_text_signal"}
+    - {id: "edge:text-srcdoc:panel", source: "video_text_generation", sourceHandle: "outputSrcDoc", target: "panel_text_artifact", targetHandle: "outputSrcDoc", type: "generated_text_surface_signal"}
     - {id: "edge:image:panel", source: "video_image_generation", sourceHandle: "imageUrl", target: "panel_image_artifact", targetHandle: "imageUrl", type: "generated_image_signal"}
-    - {id: "edge:image:video", source: "video_image_generation", sourceHandle: "imageUrl", target: "video_clip_generation", targetHandle: "imageUrl", type: "generated_image_signal"}
-    - {id: "edge:audio:panel", source: "video_audio_generation", sourceHandle: "audioUrl", target: "panel_audio_artifact", targetHandle: "audioUrl", type: "generated_audio_signal"}
-    - {id: "edge:audio:video", source: "video_audio_generation", sourceHandle: "audioUrl", target: "video_clip_generation", targetHandle: "audioUrl", type: "generated_audio_signal"}
+    - {id: "edge:audio:panel", source: "video_clip_generation", sourceHandle: "audioUrl", target: "video_audio_generation", targetHandle: "audioUrl", type: "generated_audio_signal"}
     - {id: "edge:video:panel", source: "video_clip_generation", sourceHandle: "videoUrl", target: "panel_video_artifact", targetHandle: "videoUrl", type: "generated_video_signal"}
-    - {id: "edge:timeline:panel", source: "video_clip_generation", sourceHandle: "timelineManifest", target: "panel_video_artifact", targetHandle: "timelineManifest", type: "timeline_manifest_signal"}
-runtime_artifact_contract:
-  text: {status: "blank-until-return", persisted_by: "existing Cloudflare artifact utilities", targets: ["Canvas Card", "Text Widget", "Rich Media Panel"]}
-  image: {status: "blank-until-return", persisted_by: "existing Cloudflare artifact utilities", targets: ["Canvas Card", "Image Widget", "Rich Media Panel"]}
-  audio: {status: "blank-until-return", persisted_by: "existing Cloudflare artifact utilities", targets: ["Canvas Card", "Audio Widget", "Rich Media Panel", "BottomPanel Timeline audio lane"]}
-  video: {status: "blank-until-return", persisted_by: "existing Cloudflare artifact utilities", targets: ["Canvas Card", "Video Widget", "Rich Media Panel", "BottomPanel Timeline video and FBF lanes"]}
 ---
 
 # E2E Agentic Video Canvas Demo
 
-This is Knowgrph's default video-agent loading document. It opens a source-backed Canvas that starts with one editable invocation, one imported Markdown script reference, four typed generation widgets, and four empty Rich Media Panels. It never claims an artifact exists before the configured provider returns one.
+This is Knowgrph's default source-backed video-agent loading document. It starts with one editable `/ # @` invocation, one canonical Markdown script reference, three registered generation widgets, and four empty Rich Media Panels. Outputs stay blank until an approved runtime returns, persists, and reads back typed artifacts.
 
-## 1. Insert the source script with `@`
-
-Import the supplied Markdown script through **Import local files** or **Import URL**, then insert it from FloatingPanel Chat with `@`. The shared composer keeps the raw source reference while rendering the existing inline media chip:
-
-[@video-generation-demo-script · AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)
-
-The link is a workspace reference, not a copied script body. Source Files remains the provenance owner.
-
-## 2. Run the editable `/`, `@`, `#` invocation
+## 1. Source-bound invocation
 
 ```text
-/video-agent @provider.byteplus @text @image @audio @video #spec.low [AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)
+/video-agent @video-generation-demo-script @provider.byteplus @text @image @audio @video #spec.low [AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md](workspace:/docs/AI视频-港岛实景写实风-异城算计与女主绝境求生-终极统一执行总表.md)
 
-Build a 45-second, 16:9 Hong Kong live-action drama sequence from the referenced script. Generate a structured text package, source-consistent image keyframes, Chinese/Cantonese/English narration variants, synchronized Chinese/English bilingual subtitles, and a playable master video. Persist provider-returned artifacts and project the same typed records into Canvas Cards, Widgets, Rich Media Panels, and BottomPanel Timeline video/FBF/audio lanes. Stop when approval, credentials, or a required provider capability is unavailable.
+Build a 45-second, 16:9 Hong Kong live-action drama sequence from the referenced eight-shot script. Generate a structured text package, source-consistent image keyframes, Chinese/Cantonese/English narration, synchronized Chinese/English subtitles, and a playable master video. Persist returned artifacts, read them back, and project the same typed identities into Canvas Cards, Widgets, Rich Media Panels, and BottomPanel Timeline video/FBF/audio lanes. Stop when approval, credentials, entitlement, budget, persistence, read-back, or a required capability is unavailable.
 ```
 
-- Provider: `@provider.byteplus` is the default; replace it with `@provider.openai` when selected in the shared provider control.
-- Specification: `#spec.low` is the default cost-bounded route; `#spec.medium` and `#spec.high` stay visible, editable alternatives.
-- Outputs: remove or add `@text`, `@image`, `@audio`, and `@video` in the same raw query; no hidden selection state owns the request.
+The `@video-generation-demo-script` binding and `workspace:` link are both authored source. The shared composer displays the Markdown source reference as one `@filename.md` source-binding chip, keeps the underlying Markdown reference verbatim, and never classifies it as generated media.
 
-## 3. Artifact handoff and projection
+FloatingPanel Chat projects the same authored `/`, `@`, and `#` grammar as inline chips in both its textbox and chronological thread without changing the raw prompt. The visual chips yield pointer ownership to the textarea and snap interior clicks to the chip end, so subsequent typing appends after the token and range edits continue to mutate the mapped raw prompt rather than flattening projected tokens. While a run is active, Chat shows one real-time assistant tail and Editor Workspace follows the same streamed workspace draft to its current tail; projected UI markup is never written back into this source document.
 
-| Stage | Typed artifact | Required projection | Guard |
+## 2. Shared execution path
+
+| Stage | Shared owner | Observable result | Fail-closed guard |
 | --- | --- | --- | --- |
-| Text | shot plan, generation prompts, narration, subtitle manifest | Text Card, Widget, Rich Media Panel | Preserve the Chinese/English subtitle timing from the returned manifest. |
-| Image | keyframes and image manifest | Image Card, Widget, Rich Media Panel | Use only provider-returned image records. |
-| Audio | Chinese, Cantonese, English variants and audio manifest | Audio Card, Widget, Rich Media Panel, Timeline audio lane | Keep language identity and subtitle synchronization. |
-| Video | playable master and timeline manifest | Video Card, Widget, Rich Media Panel, Timeline video/FBF/audio lanes | Never invent a URL, job id, frame, or stream state. |
+| Activate | FloatingPanel preset interceptor + workspace seed owner | This document and its referenced script become the active Canvas source | No generic chat request for a recognized preset invocation |
+| Text | `TextGeneration` / `videoScript` | Shot plan, prompts, narration, subtitle manifest | Stop on malformed or empty output |
+| Image | `ImageGeneration` / `imageGeneration` | Persisted keyframes and manifest | Stop on provider, upload, or read-back failure |
+| Video + audio | `VideoGeneration` / `videoGeneration` with `generate_audio: true` | Persisted playable master whose identity also feeds the audio-track surface | Stop on entitlement, polling, composition, verification, or read-back failure |
+| Project | Shared Card, Widget, Rich Media, Timeline, Media registry, and Source Files owners | The same durable identities remain visible, downloadable, and `@`-invocable after graph refresh and reload | No surface-local URL copy, panel-local registry, or historical backfill |
 
-## Runtime boundary
+Dev proof includes a deterministic zero-spend provider harness that returns non-empty Markdown, PNG, and MP4 payloads through the production generation helpers, fake D1/R2 storage worker, shared Media registry, Source Files merge, and Card/Widget/Rich Media projection. Sequential stages retain the input, text output, both media binaries, and both editable manifests; zero-byte historical Markdown is deliberately not materialized or backfilled.
 
-This document demonstrates the complete data path, but provider execution remains approval- and credential-gated. When a call succeeds, existing Cloudflare artifact utilities persist the returned typed records for replay. When it cannot run, each output remains blank and the Canvas reports the blocking condition rather than rendering a fixture.
+Loading the preset itself performs zero model calls. After entering an available BYOK credential, **Send** is the explicit approval boundary: it activates this source, applies the invocation provider to the shared generation runtime, and requests the same registered **Run all** owner used by the Canvas. A Chat-triggered run replaces its initiating assistant bubble with structured Run-all progress and terminal status instead of emitting the global Run-all progress toast. The visible exchange adopts bounded activation/parsing/settled graph-history keys by message identity, so a canvas revision cannot clear the bubble or disconnect later progress. Provider calls remain credential-, entitlement-, capability-, and budget-gated.
+
+## 3. Artifact and replay proof
+
+| Kind | Durable identity | Canvas projections |
+| --- | --- | --- |
+| Text | Workspace Markdown artifact | Text Card, Text Widget, Text Rich Media Panel |
+| Image | Media R2/D1 object + binary Source File + workspace manifest | Image Card, Image Widget, Image Rich Media Panel, hover download, Media `@` candidate |
+| Audio | Media-probed audio track in the persisted master MP4 | Audio Card, Audio Rich Media Panel, Timeline audio lane |
+| Video | Media R2/D1 master MP4 + binary Source File + workspace manifest | Video Card, Video Widget, Video Rich Media Panel, Timeline video/FBF lanes, hover download, Media `@` candidate |
+
+`live_provider_run_proven` remains `false` until one explicitly approved run returns real provider artifacts and proves persisted-byte read-back, matching manifest identity, playable media, subtitle/audio synchronization, Canvas projection, bounded cost, and final review. This document never backfills the failed `chat-log/20260713T023017Z` evidence.
+
+## 4. Verifiable completion conditions
+
+| VCC | Given / When / Then | Proof |
+| --- | --- | --- |
+| Route | Given the authored invocation and an available credential, when Send runs, then the preset interceptor activates before generic chat transport, applies `@provider.*` to the shared generation runtime, and hands the committed graph to Run all. | No generic-chat trace is created; the Run all stage ledger starts from the active source graph. |
+| Execute | Given Send approval and available provider capabilities, when the shared Run all owner accepts the committed graph, then registered text, image, and video+audio stages run in dependency order. | Stage ledger ends terminally with at most two attempts per stage. |
+| Persist | Given a returned artifact, when persistence completes, then the manifest and bytes read back with one matching identity. | R2/D1/workspace read-back fields match the run manifest. |
+| Render | Given read-back artifacts, when Canvas refreshes or reloads, then Cards, Widgets, Rich Media Panels, Timeline lanes, Media, and Source Files show the same records. | Image, audio, and video surfaces remain visible, playable, downloadable, and `@`-invocable after reload; binary and manifest rows remain source-accessible. |
+| Bound | Given missing approval, activation, credentials, budget, or capability, when execution reaches preflight, then it stops without fabricated output. | Typed blocker, blank output fields, zero backfill, bounded retry count. |
+---

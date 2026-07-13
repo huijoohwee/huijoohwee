@@ -654,6 +654,15 @@ strybldr_storyboard:
       imageUrl: https://example.com/storyboard-live-route-image.jpg
       mediaKind: image
       mediaUrl: https://example.com/storyboard-live-route-image.jpg
+    - nodeId: strybldr:source:3725310941
+      mediaKind: image
+      mediaUrl: http://localhost:5173/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzOTE3NDg0NTU0fQ
+      summary: |-
+        Imported
+  
+        ![buddydrone.jpg](http://localhost:5173/api/storage/media/airvio/runs/upload-730fe6850f0fc26f/image/buddydrone-730fe6850f0fc26f.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC03MzBmZTY4NTBmMGZjMjZmIiwiZXhwaXJlc0F0IjoxNzgzOTE3NDg0NTU0fQ)
+  
+        document source unit: Strybldr starter source.
   edges:
     - id: e1
       source: n2
