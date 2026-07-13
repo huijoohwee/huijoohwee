@@ -1,6 +1,21 @@
 .DS_Store
 node_modules/
 dist/
+!grph-shared/dist/
+grph-shared/dist/*
+!grph-shared/dist/hash/
+grph-shared/dist/hash/*
+!grph-shared/dist/hash/signature.js
+!grph-shared/dist/hash/stringHash.js
+!grph-shared/dist/payments/
+grph-shared/dist/payments/*
+!grph-shared/dist/payments/agenticCommerceSemanticKey.js
+!grph-shared/dist/payments/agenticCommerceSolanaPaySsot.js
+!grph-shared/dist/payments/agenticCommerceSsot.js
+!grph-shared/dist/payments/stripePaymentSsot.js
+!grph-shared/dist/rich-media/
+grph-shared/dist/rich-media/*
+!grph-shared/dist/rich-media/providers.js
 .vite/
 
 # Keep repo lean: ignore local/dev artifacts
