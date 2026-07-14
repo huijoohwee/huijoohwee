@@ -40,7 +40,7 @@
       "sha256": "b23b4aaa7ae96cbcbdc5a159e05842a1822e454b73a76d8a611d048dd1333cb6"
     },
     {
-      "path": "knowgrph-hackamap.json",
+      "path": "hackamap-graph.json",
       "sha256": "fa3ad38d34cc83d7bcaaa137d1569362cbf0dc4b536625ca619a295c871bd235"
     },
     {
@@ -61,11 +61,11 @@
     },
     {
       "path": "hackamap_query.chinese-content.json",
-      "sha256": "92eebbcc96adb99fd44b423a6a93c9682e9bd0798432e161dd93da2e3fee8977"
+      "sha256": "b5d83844ff6619160852decb9d2a26791660ad12b0de34e70e9d879fd327aa39"
     },
     {
       "path": "hackamap_query.github-star-history.json",
-      "sha256": "07e3715707e1568522e13eb8b1643d5cba0635e9053652d42eeea87da4a6b45d"
+      "sha256": "cd44ba370aed9287289a3ad346185f30fb6fb9d069a40b051ff0d7a1fc552ad4"
     },
     {
       "path": "hackamap_query.json",
@@ -73,7 +73,7 @@
     },
     {
       "path": "hackamap_query.md",
-      "sha256": "68e8ce73b94122169dff457b08823f4999008e4424249a3da996eda6b941c882"
+      "sha256": "2f00d8cfa461a30ab5aacc1791f986c90fc886bfda7605e8e969c799a852fff9"
     },
     {
       "path": "hackamap_query.sg-agents-postgres-devtools.json",
@@ -81,11 +81,11 @@
     },
     {
       "path": "hackamap_query.social-platforms.json",
-      "sha256": "8bafe71bde0e998d50fb493db5c646da1ab7d1a87896527a3e7ca6662ecf7481"
+      "sha256": "9fa7e15e4677340d950b8b1e997523ca492babfd530b0bfab284e0d7fdd84b06"
     },
     {
       "path": "hackamap_query.year-2026.json",
-      "sha256": "e882d0a7fec941a5f809385c6f06445411e0fd3f32c7ff65e8c7c64f60d4e08a"
+      "sha256": "7b365d2cba0e0333bd95c07263e314dadfc6e84206564df2e880b7f1cddedb54"
     },
     {
       "path": "hackamap_query.year-series.json",
@@ -94,6 +94,10 @@
     {
       "path": "hackamap_query_presets.json",
       "sha256": "46ad51db8b41186b56baadbcb28b2b22acd13f11d05ad022643885eb032af618"
+    },
+    {
+      "path": "knowgrph-hackamap.json",
+      "sha256": "fa3ad38d34cc83d7bcaaa137d1569362cbf0dc4b536625ca619a295c871bd235"
     },
     {
       "path": "query-outputs/demos.chinese-content.query.json",
@@ -437,7 +441,7 @@
     },
     {
       "path": "query-outputs/query-runs.manifest.json",
-      "sha256": "5acb327ec29791a1a3934c182a51b1f946cce148b94110ab25dcefd17128656f"
+      "sha256": "ffeae77251dc471ac4ea45fc1e19f3ad0793176908d82cd01c36d384450df834"
     },
     {
       "path": "query-outputs/sources.chinese-content.query.json",
