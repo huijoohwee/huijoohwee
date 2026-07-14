@@ -6,7 +6,7 @@ Use this skill when: Expose Knowgrph-owned local Source Files, Agentic Canvas OS
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_d89abe40`
+- Semantic key: `kgvx_a96a008f`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -99,6 +99,11 @@ Local MCP tools:
 - knowgrph.showrunner.run_status
 - knowgrph.showrunner.start_run
 - knowgrph.showrunner.submit_critique
+- knowgrph.sme.broker.draft_nudge
+- knowgrph.sme.marketplace.match
+- knowgrph.sme.multilingual.adapt
+- knowgrph.sme.source.normalize
+- knowgrph.sme.trigger.evaluate
 - knowgrph.superagent.run
 - knowgrph.ui.launch
 - knowgrph.ui.stop
@@ -108,6 +113,7 @@ Local MCP tools:
 - sealion.safety_check
 - sealion.translate_localize
 - search
+- sme_care_agent_status
 
 ## Workflow
 

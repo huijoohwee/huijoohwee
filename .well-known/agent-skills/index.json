@@ -167,13 +167,13 @@
       "type": "markdown",
       "description": "Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
-      "sha256": "edbe4e9209be2f57c46c5303e5d417aa0a85719667635a38320d9140334ebcd6",
+      "sha256": "08dade7741d1abfdd382e8e283fe451d14541e18b3f1bd87c5bf122ef879723e",
       "vdeoxpln": {
         "id": "knowgrph-mcp-local",
         "title": "Knowgrph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_d89abe40",
+        "semanticKey": "kgvx_a96a008f",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -203,6 +203,11 @@
             "knowgrph.showrunner.run_status",
             "knowgrph.showrunner.start_run",
             "knowgrph.showrunner.submit_critique",
+            "knowgrph.sme.broker.draft_nudge",
+            "knowgrph.sme.marketplace.match",
+            "knowgrph.sme.multilingual.adapt",
+            "knowgrph.sme.source.normalize",
+            "knowgrph.sme.trigger.evaluate",
             "knowgrph.superagent.run",
             "knowgrph.ui.launch",
             "knowgrph.ui.stop",
@@ -211,7 +216,8 @@
             "sealion.detect_language_variant",
             "sealion.safety_check",
             "sealion.translate_localize",
-            "search"
+            "search",
+            "sme_care_agent_status"
           ]
         },
         "publish": [
