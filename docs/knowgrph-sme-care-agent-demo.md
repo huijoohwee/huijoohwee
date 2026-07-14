@@ -58,6 +58,7 @@ runtime_defaults:
   runtime_proof_path: ""
   provider_job_id: ""
   live_result_url: ""
+related_runtime_proof: "./knowgrph-sme-care-agent-runtime-proof.md"
 run_ready_demo:
   id: "risk-copilot"
   env_selector: "VITE_KNOWGRPH_RUN_READY_DEMO=risk-copilot"
@@ -276,6 +277,10 @@ runtime_proof:
 This is a `/prd-tad.create` minimum viable risk-copilot seed for SME growth-stage risk exposure and coverage-gap coaching. It uses `/source.normalize`, `/memory.seed`, `/harness.define`, `/cost.audit`, `/canvas.project`, `/runtime-ready.check`, `/validation.run`, and `/deploy.guard` with existing `#` semantic filters and `@` bindings. `/memory.seed #frontmatter #ttv #vcc @source.frontmatter @source.body`
 
 The demo is intentionally neutral and local-first. It builds a Risk Exposure Graph (REG) from a redacted SME profile, fires growth-stage coverage triggers, proactively nudges the owner on graph deltas, and (only with operator approval) surfaces marketplace matches for a licensed broker to action. It does not underwrite, bind, quote, or claim live insurer/broker output. Runtime IDs, provider evidence, Prod mirror status, and Cloudflare deployment fields remain blank until real proof exists and the operator approves the relevant gate.
+
+## Related Runtime Proof
+
+The earlier deterministic `/sme-care-agent` runtime-proof document is preserved as [./knowgrph-sme-care-agent-runtime-proof.md](./knowgrph-sme-care-agent-runtime-proof.md). Keep this file as the risk-copilot demo contract and use the companion proof doc for the stricter three-domain SME care runtime evidence.
 
 ## Risk Copilot Flow
 
