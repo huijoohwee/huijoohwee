@@ -981,10 +981,10 @@ gates the live deploy — see the
 [deploy runbook](../../knowgrph/docs/knowgrph-acos-deploy-runbook.md)).
 
 ```text
-Dev (source of truth)   /Users/huijoohwee/Documents/GitHub/knowgrph
+Dev (source of truth)   $GITHUB_ROOT/knowgrph
         │  npm run pages:build-sync  →  pages:check-sync
         ▼
-Prod (artifact mirror)  /Users/huijoohwee/Documents/GitHub/huijoohwee/content/knowgrph
+Prod (artifact mirror)  $GITHUB_ROOT/huijoohwee/content/knowgrph
         │  npm run pages:deploy-cloudflare   (operator-gated)
         ▼
 Cloudflare (live)       airvio.co · airvio.co/knowgrph · airvio.co/knowgrph/mcp

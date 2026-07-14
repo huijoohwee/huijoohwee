@@ -3,7 +3,7 @@
 Generated from `hackamap/site/` SSOT.
 
 ## Files
-- `knowgrph-hackamap.json` (full graph: nodes + links; enriched `meta.search_text` + `meta.search_terms`)
+- `hackamap-graph.json` (full graph: nodes + links; enriched `meta.search_text` + `meta.search_terms`)
 - `hackamap_api_graph.json` (deterministic bipartite API payload used by Knowgrph `/api/graph` in dev + Pages)
 - `hackamap_pipeline.json` (portable runtime pipeline config; browser-friendly)
 - `hackamap_query.json` (JSON DSL preset: enhanced; supports `and/or/not` + ops `eq/contains/in/any/exists/regex`)
@@ -23,5 +23,5 @@ python3 site/hackamap_query.py --base site --preset sg-agents-postgres-devtools 
 ```
 
 ## Import recommendation
-1) Import `knowgrph-hackamap.json`
+1) Import `hackamap-graph.json`
 2) Optionally import `query-outputs/hackamap-enhanced-query-results.md` as a curated entry doc
