@@ -64,8 +64,8 @@ run_ready_demo:
   env_selector: "VITE_KNOWGRPH_RUN_READY_DEMO=risk-copilot"
   command: "npm run demo:risk-copilot -- --port <free-port>"
   source_root: "huijoohwee/docs"
-  source_path: "../huijoohwee/docs/knowgrph-risk-copilot-demo.md"
-  validation_seed_path: "/knowgrph-risk-copilot-demo.md"
+  source_path: "../huijoohwee/docs/knowgrph-sme-care-agent-demo.md"
+  validation_seed_path: "/knowgrph-sme-care-agent-demo.md"
   clean_canvas_recommended: true
   source_backed: true
 probe_tree_runtime:
@@ -246,14 +246,12 @@ runtime_proof:
     - "docs.riskCopilotDemo.runtimeReady"
     - "docs.riskCopilotDemo.runReadyMode"
     - "mcp.probeTree.runtime"
+    - "mcp.smeRiskCopilot.runtime"
+    - "mcp.smeRiskCopilot.stdioE2e"
     - "probeTree.select.frontmatterFlowCanvasSync"
-    - "markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
+    - "smeCareAgent.canvasEvidence.runtimeReady"
   validation_commands:
-    - "npm --prefix canvas run test:ci:unit -- docs.riskCopilotDemo.runtimeReady"
-    - "npm --prefix canvas run test:ci:unit -- docs.riskCopilotDemo.runReadyMode"
-    - "node --test mcp/__tests__/probe-tree-runtime.test.mjs"
-    - "npm --prefix canvas run test:ci:unit -- probeTree.select.frontmatterFlowCanvasSync"
-    - "FLOW_DIAGRAM_SAMPLE_PATHS=../../huijoohwee/docs/knowgrph-risk-copilot-demo.md npm --prefix canvas run test:ci:unit -- markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
+    - "npm run sme-risk-copilot:check"
   parsed_frontmatter_flow: true
   computed_frontmatter_flow: true
   probe_tree_canvas_sync_verified: true

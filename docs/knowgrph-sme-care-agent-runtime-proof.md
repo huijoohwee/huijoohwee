@@ -202,13 +202,10 @@ sme-agent/runs/<runId>/canvas-evidence.md
 Run from `$KNOWGRPH_ROOT` after installing and building workspace dependencies:
 
 ```bash
-node --test mcp/__tests__/sme-risk-coverage-runtime.test.mjs
-node --test mcp/__pbt__/sme-risk-coverage.pbt.test.mjs
-npm run sme-care-agent:canvas-demo:check
-npm -C canvas run test:ci:unit -- smeCareAgent.canvasEvidence.runtimeReady
+npm run sme-risk-copilot:check
 ```
 
-`npm run runtime:check` now builds `grph-shared` and `gympgrph` itself before runtime and Canvas proof. In the current combined change it intentionally stops at the separate uncommitted healthcare authority row; after that row is reviewed, committed, and pinned, the same command is the clean-source repository promotion gate.
+`npm run runtime:check` builds `grph-shared` and `gympgrph` before the repository runtime and Canvas proof. `npm run sme-risk-copilot:check` is the bounded Dev-local SME readiness gate; production, Cloudflare, and regulated actions remain separately unauthorized.
 
 ## Readiness Decision
 
