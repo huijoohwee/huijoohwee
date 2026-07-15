@@ -1,1 +1,0 @@
-const s=e=>String(e).padStart(2,"0"),m=e=>new Date(Number.isFinite(e)?e:Date.now()),p=e=>{const t=m(e),o=String(t.getUTCFullYear()),n=s(t.getUTCMonth()+1),c=s(t.getUTCDate()),a=s(t.getUTCHours()),r=s(t.getUTCMinutes()),i=s(t.getUTCSeconds());return`${o}${n}${c}${a}${r}${i}`},T=e=>{const t=p(e);return`${t.slice(0,8)}T${t.slice(8,14)}Z`};export{p as a,T as f};
