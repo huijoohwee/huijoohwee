@@ -1,1 +1,0 @@
-import{j as i}from"./react-BQOKVxhn.js";const t="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2";function a({children:o,className:s}){const r=[t,s||""].filter(Boolean).join(" ");return i.jsx("section",{className:r,children:o})}export{a as T};

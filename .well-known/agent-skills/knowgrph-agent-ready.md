@@ -6,7 +6,7 @@ Use this skill when: Inspect Knowgrph health, MCP, WebMCP, A2A, OpenAPI, commerc
 
 - Vdeoxpln id: `knowgrph-agent-ready`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_91081c1b`
+- Semantic key: `kgvx_e27e1e13`
 - Scope: `read-only-published-and-browser-local`
 - Mutation boundary: `read-only`
 
@@ -41,15 +41,20 @@ Browser-local tools:
 - inspect_local_2d_zoom_viewport
 - inspect_local_3d_camera_pose
 - inspect_local_3d_layout_positions
+- inspect_local_animation
+- inspect_local_camera
 - inspect_local_canvas_snapshot
 - inspect_local_canvas_topology
 - inspect_local_chat_pipeline_state
 - inspect_local_editor_workspace_state
 - inspect_local_mainpanel_chat_canvas_pipeline
 - inspect_local_mainpanel_state
+- inspect_local_motion_control
 - inspect_local_settings_chat_readiness
 - inspect_local_source_files_snapshot
 - inspect_local_workspace_document
+- inspect_local_xr_scene_assets
+- read_local_runtime_identity
 
 Local MCP tools:
 - knowgrph.vdeoxpln.list

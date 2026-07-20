@@ -7,13 +7,13 @@
       "type": "markdown",
       "description": "Inspect Knowgrph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-agent-ready.md",
-      "sha256": "6bdb185fc1a337bc605f5b4ac568f6b5c6fbada28cc8d2d19b278588da6e29b1",
+      "sha256": "2392d4d475b9eee868bdcc5bc27fc4c26bf73f089e88009a4f9a8aee1410a2b5",
       "vdeoxpln": {
         "id": "knowgrph-agent-ready",
         "title": "Knowgrph Agent Ready",
         "scope": "read-only-published-and-browser-local",
         "mutation": "read-only",
-        "semanticKey": "kgvx_91081c1b",
+        "semanticKey": "kgvx_e27e1e13",
         "tools": {
           "published": [
             "inspect_agent_surface"
@@ -22,15 +22,20 @@
             "inspect_local_2d_zoom_viewport",
             "inspect_local_3d_camera_pose",
             "inspect_local_3d_layout_positions",
+            "inspect_local_animation",
+            "inspect_local_camera",
             "inspect_local_canvas_snapshot",
             "inspect_local_canvas_topology",
             "inspect_local_chat_pipeline_state",
             "inspect_local_editor_workspace_state",
             "inspect_local_mainpanel_chat_canvas_pipeline",
             "inspect_local_mainpanel_state",
+            "inspect_local_motion_control",
             "inspect_local_settings_chat_readiness",
             "inspect_local_source_files_snapshot",
-            "inspect_local_workspace_document"
+            "inspect_local_workspace_document",
+            "inspect_local_xr_scene_assets",
+            "read_local_runtime_identity"
           ],
           "local": [
             "knowgrph.vdeoxpln.list"
@@ -167,22 +172,26 @@
       "type": "markdown",
       "description": "Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
-      "sha256": "08dade7741d1abfdd382e8e283fe451d14541e18b3f1bd87c5bf122ef879723e",
+      "sha256": "50ed8cc14df4c0715113daa366c06e801612808e5962401abaa89c1cf54cb1ba",
       "vdeoxpln": {
         "id": "knowgrph-mcp-local",
         "title": "Knowgrph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_a96a008f",
+        "semanticKey": "kgvx_6d694c0b",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
+            "export.publish",
             "fetch",
             "knowgrph.agentic_canvas_os.docs.invoke",
             "knowgrph.annotate.image",
             "knowgrph.annotate.video_frame",
             "knowgrph.browser_api.run",
+            "knowgrph.ecs.decision_persist",
+            "knowgrph.ecs.session_start",
+            "knowgrph.ecs.world_tick",
             "knowgrph.graphrag_pipeline",
             "knowgrph.html_video.render",
             "knowgrph.memory.add",
@@ -209,6 +218,10 @@
             "knowgrph.sme.source.normalize",
             "knowgrph.sme.trigger.evaluate",
             "knowgrph.superagent.run",
+            "knowgrph.tool.call",
+            "knowgrph.tool.catalog",
+            "knowgrph.tool.describe",
+            "knowgrph.tool.search",
             "knowgrph.ui.launch",
             "knowgrph.ui.stop",
             "knowgrph.vdeoxpln.list",
