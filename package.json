@@ -7,10 +7,13 @@
     "dev:lan": "vite --host 0.0.0.0 --port 5173",
     "dev:pages": "npx wrangler pages dev . --port 5175",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0 --port 4173"
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
+    "lifecycle:check": "node ./scripts/check-runtime-readiness.mjs --canonical",
+    "check": "npm run runtime:check && npm run build"
   },
   "devDependencies": {
-    "vite": "^8.0.14"
+    "vite": "^8.1.5"
   },
   "dependencies": {
     "@tweenjs/tween.js": "^25.0.0",
