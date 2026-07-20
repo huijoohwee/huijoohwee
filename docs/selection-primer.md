@@ -1,3 +1,0 @@
-# Primer
-
-Primer content.
