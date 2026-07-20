@@ -1,0 +1,1 @@
+import{r as a}from"./react-gVJCSEhj.js";import{_ as s,$ as n,a0 as u}from"./settings-mcp-docs-Co8IBF9D.js";function m(t,e){const[r,c]=a.useState(()=>{try{const o=s();return n(o,t,e)}catch{return e}});return a.useEffect(()=>{try{const o=s();u(o,t,r)}catch{}},[t,r]),[r,c]}export{m as u};
