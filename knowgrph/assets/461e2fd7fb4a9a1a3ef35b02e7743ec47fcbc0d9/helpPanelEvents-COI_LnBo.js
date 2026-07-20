@@ -1,0 +1,1 @@
+const e="kg:helpScrollToAnchor";function i(o){const n=String(o).trim();if(!n||typeof window>"u")return;const t=typeof window.CustomEvent=="function"?window.CustomEvent:CustomEvent;window.dispatchEvent(new t(e,{detail:{anchor:n}}))}export{e as H,i as e};
