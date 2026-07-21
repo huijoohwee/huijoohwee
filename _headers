@@ -196,6 +196,15 @@
 # END knowgrph generated homepage discovery headers
 
 # BEGIN knowgrph generated app-shell cache headers
+/.well-known/runtime-readiness.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/content/knowgrph/.well-known/runtime-readiness.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/knowgrph/.well-known/runtime-readiness.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
 /content/knowgrph/index.html
   Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
 /content/knowgrph/manifest.webmanifest
