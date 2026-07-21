@@ -1,1 +1,0 @@
-const e="absolute inset-0 z-0 overflow-hidden overscroll-none",o="absolute inset-0 z-0 block h-full w-full touch-none select-none",l="absolute inset-0 z-0 block h-full w-full pointer-events-none";export{e as C,o as a,l as b};

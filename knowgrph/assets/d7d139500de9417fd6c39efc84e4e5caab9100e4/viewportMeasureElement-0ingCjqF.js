@@ -1,1 +1,0 @@
-const r='[data-kg-canvas-viewport-root="1"]',s='[data-kg-workspace-left-pane="1"]';function E(t){var n,a;if(!t)return null;const e=t.closest(r),o=(a=(n=t.ownerDocument)==null?void 0:n.defaultView)==null?void 0:a.HTMLElement;return o&&e instanceof o?e:t}export{s as W,E as r};

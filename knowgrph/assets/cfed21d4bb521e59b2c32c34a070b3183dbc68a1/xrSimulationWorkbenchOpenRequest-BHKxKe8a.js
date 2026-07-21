@@ -1,1 +1,0 @@
-const n="knowgrph:xr-simulation-workbench-open";let i=0;function o(){i+=1,typeof window<"u"&&window.dispatchEvent(new Event(n))}function r(){return i}function t(e){return typeof window>"u"?()=>{}:(window.addEventListener(n,e),()=>window.removeEventListener(n,e))}export{r as a,o as r,t as s};

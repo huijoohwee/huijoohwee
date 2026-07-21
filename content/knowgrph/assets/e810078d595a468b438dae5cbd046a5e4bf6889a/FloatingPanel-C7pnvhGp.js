@@ -1,1 +1,0 @@
-import{R as a}from"./react-gVJCSEhj.js";const F=a.memo(a.forwardRef(function({as:e="section",ariaLabel:n,ariaHidden:r,ariaExpanded:t,role:o,className:i,id:l,style:c,children:m,...s},d){return a.createElement(e,{...s,ref:d,id:l,style:c,role:o,"aria-hidden":r,"aria-expanded":t,"aria-label":n,className:i||""},m)}));export{F};
