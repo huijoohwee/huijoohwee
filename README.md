@@ -155,7 +155,7 @@ activate only when their keys are wired and the matching gate is approved.
 
 ## Repository Role
 
-This repository is the Dev source of truth:
+This repository is the generated production mirror:
 
 ```text
 Dev:  /Users/huijoohwee/Documents/GitHub/knowgrph
@@ -163,9 +163,10 @@ Prod: /Users/huijoohwee/Documents/GitHub/huijoohwee/content/knowgrph
 Live: https://airvio.co/knowgrph
 ```
 
-Prod sync and Cloudflare deployment are explicit operator actions. Normal
-implementation, testing, and documentation work should stay in Dev until publish
-or deploy is requested.
+Do not edit generated application, function, asset, or runtime-attestation files
+here. Protected green Knowgrph `main` is the sole release owner: it rebuilds this
+tree, deploys Cloudflare, verifies the apex and `/knowgrph` browser surfaces, and
+only then pushes the exact verified mirror bytes.
 
 ## Workspace Surfaces
 
