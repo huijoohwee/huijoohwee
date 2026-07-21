@@ -1,6 +1,29 @@
 {
-  "schema": "knowgrph-production-runtime-readiness/v1",
+  "schema": "knowgrph-production-runtime-readiness/v2",
   "status": "verified-build",
-  "sourceRevision": "461e2fd7fb4a9a1a3ef35b02e7743ec47fcbc0d9",
-  "mirror": "huijoohwee/huijoohwee"
+  "source": {
+    "repository": "huijoohwee/knowgrph",
+    "revision": "78ac23000bc0a6a2b011ff5030f1892a92388d69",
+    "tree": "75ebb98ab6e58f9ade30d6a5fd7276da789cd596"
+  },
+  "agenticCanvasOs": {
+    "repository": "huijoohwee/agentic-canvas-os",
+    "revision": "751075ae638ae9602790b950f24263a29af0b055"
+  },
+  "catalogRevision": "751075ae638ae9602790b950f24263a29af0b055",
+  "artifact": {
+    "algorithm": "sha256",
+    "digest": "b403b75b6e92c49967391080adfec8ef0abcffda63d04235a5500484d9a1067c"
+  },
+  "immutableManifest": {
+    "algorithm": "sha256",
+    "digest": "bac7aabcd3a8702861cdc9cd9e290c42572f384e65b2d29f049eeb3e1f25aa0b"
+  },
+  "mirror": {
+    "repository": "huijoohwee/huijoohwee"
+  },
+  "surfaces": [
+    "/",
+    "/knowgrph"
+  ]
 }
