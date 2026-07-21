@@ -1,1 +1,0 @@
-const o=(e,l)=>{const t=String(e||"").trim().replace(/\\/g,"/").split("/").filter(Boolean),r=t.length>=2,n=r&&String(t[0]||"").trim()||null,i=r?t.slice(1).join("/"):String(t[0]||"").trim()||String(l||"").trim();return{folderName:n,rawRelativePath:i}};export{o as p};
