@@ -12,7 +12,6 @@ const failures = []
 const markerPaths = [
   '.well-known/runtime-readiness.json',
   'content/knowgrph/.well-known/runtime-readiness.json',
-  'knowgrph/.well-known/runtime-readiness.json',
 ]
 const requiredFiles = [
   'package.json',
@@ -40,6 +39,9 @@ const markerSources = markerPaths.map(relativePath => {
   }
 })
 if (new Set(markerSources).size !== 1) failures.push('runtime marker copies must be byte-identical')
+if (fs.existsSync(path.resolve(root, 'knowgrph/.well-known/runtime-readiness.json'))) {
+  failures.push('public app readiness must be served dynamically from the apex marker')
+}
 
 let marker = null
 try {
