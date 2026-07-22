@@ -1,1 +1,0 @@
-import{R as n}from"./react-gVJCSEhj.js";import{i}from"./svgSnapshot-C_HF3y3A.js";function f(o,e=!0,r){n.useEffect(()=>{if(!e)return;const a=o.current;if(a)return i(a,{stopPropagationOnForward:!1,stopPropagationOnPreventZoom:(r==null?void 0:r.stopPropagation)!==!1,forwardedFlagKey:"__kgForwarded"})},[e,r==null?void 0:r.stopPropagation,o])}export{f as u};
