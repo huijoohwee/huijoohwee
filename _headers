@@ -153,6 +153,9 @@
 /.well-known/agent-skills/knowgrph-ai-showrunner.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
+/.well-known/agent-skills/knowgrph-application-composition.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
 /.well-known/agent-skills/knowgrph-chat-to-canvas.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
