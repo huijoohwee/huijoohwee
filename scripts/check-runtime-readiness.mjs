@@ -78,7 +78,7 @@ if (marker) {
   if (namespaces.length !== 1 || namespaces[0] !== marker.source.revision) {
     failures.push(`asset namespace must contain only ${marker.source.revision}; found ${namespaces.join(', ') || 'none'}`)
   }
-  const artifactDigest = calculateArtifactDigest(path.resolve(root, 'knowgrph'))
+  const artifactDigest = calculateArtifactDigest(path.resolve(root, 'content', 'knowgrph'))
   if (artifactDigest !== marker.artifact.digest) {
     failures.push(`runtime artifact digest mismatch: expected ${marker.artifact.digest}, received ${artifactDigest}`)
   }
@@ -159,7 +159,9 @@ function calculateArtifactDigest(publicRoot) {
   const rootFiles = new Set([
     'favicon.svg',
     'index.html',
+    'knowgrph-chat-stream-sw.js',
     'knowgrph-live-canvas-hero.md',
+    'knowgrph-service-worker-revision.js',
     'llms.txt',
     'manifest.webmanifest',
     'settings-flow.json',
@@ -172,7 +174,11 @@ function calculateArtifactDigest(publicRoot) {
       const relativePath = path.relative(publicRoot, absolutePath).split(path.sep).join('/')
       if (entry.isDirectory()) {
         if (relativePath === 'assets' || relativePath.startsWith('assets/')) walk(absolutePath)
-      } else if (entry.isFile() && (relativePath.startsWith('assets/') || rootFiles.has(relativePath))) {
+      } else if (entry.isFile() && (
+        relativePath.startsWith('assets/') ||
+        rootFiles.has(relativePath) ||
+        /^workbox-[A-Za-z0-9_-]+\.js$/.test(relativePath)
+      )) {
         entries.push({ relativePath, absolutePath })
       }
     }
