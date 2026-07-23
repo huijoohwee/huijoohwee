@@ -1,0 +1,1 @@
+import{R as o}from"./react-gVJCSEhj.js";import{y as r,t as d}from"./settings-mcp-docs-Cp-2eWnQ.js";function m(t,l){const[a,c]=o.useState(()=>r(t,l)),e=o.useCallback(n=>{c(u=>{const s=typeof n=="function"?n(u):n;return d(t,s),s})},[t]),i=o.useCallback(()=>{e(n=>!n)},[e]);return{pinned:a,setPinned:e,togglePinned:i}}export{m as u};
