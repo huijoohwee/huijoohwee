@@ -3,21 +3,21 @@
   "status": "verified-build",
   "source": {
     "repository": "huijoohwee/knowgrph",
-    "revision": "b04b6d863e41c9fa0426a04c1b7b9fb0c2da7f51",
-    "tree": "07cc73d38eb6b1eb09b421c798894878d9c734b4"
+    "revision": "9fac84f22d78adc78e58eb1782a9ecd56abc6d1e",
+    "tree": "9a7123ae7acb85c8fae60fa61bd280f014e1c7de"
   },
   "agenticCanvasOs": {
     "repository": "huijoohwee/agentic-canvas-os",
-    "revision": "658512dfd65ffb91ce5bed9edc9fb2b8ae9c6e9d"
+    "revision": "11b6e701b2b9ed19356b7756d09ee4e608f6777b"
   },
-  "catalogRevision": "658512dfd65ffb91ce5bed9edc9fb2b8ae9c6e9d",
+  "catalogRevision": "11b6e701b2b9ed19356b7756d09ee4e608f6777b",
   "artifact": {
     "algorithm": "sha256",
-    "digest": "e07fc6f3515f781b0d21e6341c1f663d043bd0f1b73ad2e71dc3f3a70bf5b157"
+    "digest": "b4a6682f809a48690877e6a64807236080a269ea76668fb5d4429fb7ee217c7b"
   },
   "immutableManifest": {
     "algorithm": "sha256",
-    "digest": "3d2f36533a9de4f56b06627fd6c3074798199bc7f17c52d9b198b038f9123500"
+    "digest": "db27c256d5d56ff1e1aa05c737c3b9905882e5b64a5d28d08d3e1726245c6785"
   },
   "mirror": {
     "repository": "huijoohwee/huijoohwee"
