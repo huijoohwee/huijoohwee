@@ -1,8 +1,5 @@
 /singapoly /singabldr 301
 /singapoly/ /singabldr 301
-/hackamap /hackamap/ 301
-/hackamap/ /content/hackamap/index.html 200
-/hackamap/* /content/hackamap/:splat 200
 /knowgrph /content/knowgrph/index.html 200
 /knowgrph/assets/* /content/knowgrph/assets/:splat 200
 /knowgrph/vendor/* /content/knowgrph/vendor/:splat 200
@@ -34,8 +31,6 @@
 /content/knowgrph /knowgrph 301
 /content/knowgrph/ /knowgrph/ 301
 /content/knowgrph/* /knowgrph/:splat 301
-/ /content/knowgrph/index.html 200
-/index.html /content/knowgrph/index.html 200
 /singabldr /content/singabldr/index.html 200
 /singabldr/ /content/singabldr/index.html 200
 /singabldr/index.html /content/singabldr/index.html 200
@@ -43,8 +38,6 @@
 /singabldr/manifest.webmanifest /content/singabldr/manifest.webmanifest 200
 /singabldr/favicon.ico /content/singabldr/favicon.ico 200
 /singabldr.html /content/singabldr/index.html 200
-/user-secrets*.json /404 404
-/content/singabldr/user-secrets*.json /404 404
 /singabldr/assets/* /content/singabldr/assets/:splat 200
 /singabldr/flowinfish.prompts.json /content/singabldr/flowinfish.prompts.json 200
 /singabldr/flowinfish.domains.json /content/singabldr/flowinfish.domains.json 200
