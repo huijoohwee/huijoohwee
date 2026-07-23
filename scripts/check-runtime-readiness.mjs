@@ -16,7 +16,7 @@ const markerPaths = [
 const requiredFiles = [
   'package.json',
   'package-lock.json',
-  'index.html',
+  '404.html',
   '_worker.js',
   '_routes.json',
   'content/knowgrph/index.html',
