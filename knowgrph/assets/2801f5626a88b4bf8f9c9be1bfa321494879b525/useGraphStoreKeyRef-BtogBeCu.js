@@ -1,1 +1,0 @@
-import{r as s}from"./react-D-VqXPR-.js";import{u}from"./settings-mcp-docs-DFH2EfDS.js";function a(r){const t=s.useRef(u.getState()[r]);return s.useEffect(()=>u.subscribe(e=>e[r],e=>{t.current=e}),[r]),t}export{a as u};
