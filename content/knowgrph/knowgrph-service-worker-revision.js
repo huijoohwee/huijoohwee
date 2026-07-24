@@ -1,5 +1,5 @@
 ;(() => {
-  const sourceRevision = "d209384115d525fe1cf53aae616b48227f94f4bd"
+  const sourceRevision = "1b431a397b5dedba44eb28814b6740dc0cf216ce"
   self.addEventListener('message', event => {
     if (event.data?.type !== "KG_SERVICE_WORKER_SOURCE_REVISION_REQUEST") return
     const port = event.ports?.[0]
