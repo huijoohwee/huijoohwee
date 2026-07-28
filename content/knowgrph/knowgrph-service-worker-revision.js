@@ -1,5 +1,5 @@
 ;(() => {
-  const sourceRevision = "8133e93202f42f64a9855d04274c87fb536531c5"
+  const sourceRevision = "8893f4c3c122b5d92daa849eeea3fc2b7a300011"
   const runtimeCacheNames = new Set(["kg-assets","kg-static","kg-data"])
   const isHtmlContentType = contentType =>
     /^(?:text\/html|application\/xhtml\+xml)(?:;|$)/i.test(String(contentType || '').trim())
