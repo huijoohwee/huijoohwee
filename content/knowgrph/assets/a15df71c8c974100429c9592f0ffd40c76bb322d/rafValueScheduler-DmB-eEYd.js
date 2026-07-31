@@ -1,0 +1,1 @@
+import{r as t}from"./rafRuntime-XReZYNDQ.js";function f(c){let l=null,e=null;const u=()=>{if(l=null,e==null)return;const n=e;e=null,c(n)};return{schedule:n=>{e=n,l==null&&(l=t().request(u))},flush:u,cancel:()=>{if(l!=null){try{t().cancel(l)}catch{}l=null,e=null}}}}export{f as c};

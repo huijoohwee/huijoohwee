@@ -1,0 +1,1 @@
+const E="bg-black/85",_="relative h-[min(94dvh,58rem)] w-[min(94vw,76rem)] overflow-hidden rounded-none border-0 bg-transparent shadow-none",A="flex h-full w-full items-center justify-center p-6",e="grid h-full w-full max-w-5xl place-items-center gap-4",l="h-full w-full max-h-[70dvh]",n="h-full w-full overflow-hidden rounded-md";export{E as M,n as a,_ as b,A as c,e as d,l as e};
