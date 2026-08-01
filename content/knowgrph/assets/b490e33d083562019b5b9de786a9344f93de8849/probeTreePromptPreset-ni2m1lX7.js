@@ -1,0 +1,3 @@
+import{K as e}from"./agenticOsDocInvocations-DB0REp_k.js";const a="knowgrph-probe-tree",o="knowgrph.probe.generate",E="knowgrph.probe.select",i=8,_=[e.slashCommand,e.atToken,e.hashToken];function h(t=""){const n=String(t||"").trim();return[e.slashCommand,n||"Generate 2-4 bounded, editable next-question cards from this Widget Card. Keep the source card unchanged, connect each candidate branch, and publish the branch summary to a separate Rich Media Panel."].join(`
+
+`)}function c(t){const n=String(t||"").trim();if(!n)return!1;const r=new Set(String(n.split(/\r?\n/,1)[0]||"").trim().split(/\s+/).filter(Boolean));return r.size===1&&r.has(e.slashCommand)&&n.length>e.slashCommand.length}export{E as K,o as a,_ as b,h as c,i as d,a as e,c as i};

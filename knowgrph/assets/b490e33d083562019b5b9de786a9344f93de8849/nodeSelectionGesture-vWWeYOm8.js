@@ -1,0 +1,1 @@
+const o=e=>e==="multi"||e==="lasso",r=e=>e.shiftKey===!0||o(e.mode)&&(e.metaKey===!0||e.ctrlKey===!0)?"toggle":"replace",i=e=>{const t=e.mode||"single";return e.shiftKey===!0&&!o(t)?(e.setSelectMode("multi"),"multi"):t};export{i as a,o as i,r};
