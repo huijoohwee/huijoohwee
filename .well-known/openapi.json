@@ -382,6 +382,26 @@
         }
       }
     },
+    "/knowgrph/.well-known/agent-skills/knowgrph-ai-voice-studio.md": {
+      "get": {
+        "summary": "Read the knowgrph-ai-voice-studio agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-ai-voice-studio"
+          }
+        }
+      }
+    },
+    "/knowgrph/.well-known/agent-skills/knowgrph-application-composition.md": {
+      "get": {
+        "summary": "Read the knowgrph-application-composition agent skill markdown",
+        "responses": {
+          "200": {
+            "description": "Agent skill markdown for knowgrph-application-composition"
+          }
+        }
+      }
+    },
     "/knowgrph/.well-known/agent-skills/knowgrph-chat-to-canvas.md": {
       "get": {
         "summary": "Read the knowgrph-chat-to-canvas agent skill markdown",

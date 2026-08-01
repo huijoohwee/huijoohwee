@@ -1,12 +1,12 @@
 # Knowgrph Memory Layer Skill
 
-Use this skill when: Persist, retrieve, inject, extract, and materialize explicitly scoped agent memories through a provider-neutral local harness with source-owned Markdown outputs.
+Use this skill when: Persist, retrieve, safely compact, hard-redact, and revision-freeze host-authorized exact-scope agent memory through a durable local runtime while preserving the legacy provider-neutral prompt harness.
 
 ## Contract
 
 - Vdeoxpln id: `knowgrph-memory-layer`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_46485834`
+- Semantic key: `kgvx_0399f9a9`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-scoped-memory`
 
@@ -15,8 +15,8 @@ Use this skill when: Persist, retrieve, inject, extract, and materialize explici
 - cross-session context
 - harness replay
 - long-term memory
-- mem0
 - memory layer
+- persistent memory
 - personalization
 - procedural memory
 - profile markdown
@@ -25,19 +25,23 @@ Use this skill when: Persist, retrieve, inject, extract, and materialize explici
 
 ## Inputs
 
+- Agentic Canvas OS invocation tuple
+- exact runtime scope
 - harness output dir
+- host authorization token
 - memory query
-- runtime scope
+- source evidence
 - user or agent message
 
 ## Outputs
 
 - bounded prompt context
-- memory cost log
-- memory write result
+- durable authorization-bound memory receipt
+- frozen or explicitly redacted revision snapshot
 - procedural KGC markdown
-- ranked memory results
+- ranked cited memory results
 - USER_MODEL markdown
+- zero-model cost evidence
 
 ## Tools
 
@@ -50,18 +54,25 @@ Browser-local tools:
 Local MCP tools:
 - knowgrph.memory.add
 - knowgrph.memory.assemble_prompt
+- knowgrph.memory.compact
 - knowgrph.memory.extract_procedural
+- knowgrph.memory.invoke
 - knowgrph.memory.materialize_user_model
 - knowgrph.memory.search
+- knowgrph.memory.write
+- knowgrph.session.search
+- knowgrph.user.profile
 - knowgrph.vdeoxpln.list
 
 ## Workflow
 
-- Require explicit runtime scope.
-- Add/search through the configured harness.
-- Inject only top-ranked memories within token budget.
+- Resolve one exact revision-fenced Agentic Canvas OS memory tuple when grammar invocation is used.
+- Require exact tenant, workspace, agent, and subject scope plus explicit source evidence and a host-minted exact-request authorization.
+- Scan and capacity-check before acquiring a fenced atomic mutation.
+- Preserve compaction kind, tags, and provenance; hard-redact entry content and history only through an authorized exact-prior mutation.
+- Retrieve only exact-scope cited results at the current or a frozen scope-local revision.
+- Use the legacy prompt assembler only with bounded ranked results.
 - Extract completed harness runs into reusable KGC procedural-memory documents.
-- Materialize scoped memories into deterministic USER_MODEL markdown when a source-owned profile is needed.
 
 ## Source Owners
 
@@ -69,29 +80,37 @@ Local MCP tools:
 - docs/documents/knowgrph-ai-agents-memory-layer-prd-tad.md
 - mcp/local-tool-contract.js
 - mcp/memory-layer-runtime.js
+- mcp/persistent-memory-authorization.js
+- mcp/persistent-memory-contract.mjs
+- mcp/persistent-memory-invocation-runtime.js
+- mcp/persistent-memory-policy.js
+- mcp/persistent-memory-runtime.js
+- mcp/persistent-memory-search.js
+- mcp/persistent-memory-store.js
 - mcp/server.js
 
 ## Artifact Policy
 
-- Persistence: `operator-configured-local-memory-store`
+- Persistence: `exact-scope-sharded-host-state-outside-git`
 - Graph materialization: `none`
 - Semantic-key inputs:
-- memoryScope
+- exactScopeDigest
 - operation
-- topK
-- providerMode
+- storeRevision
+- sourceRevision
 
 ## AI Policy
 
 - Mode: `optional-via-local-tools`
 - Max attempts: `1`
 - Token budget: `memory-harness-owned`
-- Fallback: Return empty memory results or skip write while preserving the agent turn.
+- Fallback: Return a typed empty, rejected, or stale result while preserving the agent turn.
 
 ## Validation
 
 - aiAgentsMemoryLayer
 - mcpLocalToolContract
+- persistent-memory:check
 - vdeoxpln:check
 
 ## Guardrails

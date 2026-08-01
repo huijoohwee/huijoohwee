@@ -7,13 +7,13 @@
       "type": "markdown",
       "description": "Inspect Knowgrph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-agent-ready.md",
-      "sha256": "2392d4d475b9eee868bdcc5bc27fc4c26bf73f089e88009a4f9a8aee1410a2b5",
+      "sha256": "a59a48e6192bb9387f675ecf7cb9fa09664a379e0e07190bfd1cba782909679b",
       "vdeoxpln": {
         "id": "knowgrph-agent-ready",
         "title": "Knowgrph Agent Ready",
         "scope": "read-only-published-and-browser-local",
         "mutation": "read-only",
-        "semanticKey": "kgvx_e27e1e13",
+        "semanticKey": "kgvx_1f172c3d",
         "tools": {
           "published": [
             "inspect_agent_surface"
@@ -27,7 +27,13 @@
             "inspect_local_canvas_snapshot",
             "inspect_local_canvas_topology",
             "inspect_local_chat_pipeline_state",
+            "inspect_local_city_sim",
             "inspect_local_editor_workspace_state",
+            "inspect_local_file_sync",
+            "inspect_local_flight_sim",
+            "inspect_local_game_mode",
+            "inspect_local_git_repository",
+            "inspect_local_immersive_media",
             "inspect_local_mainpanel_chat_canvas_pipeline",
             "inspect_local_mainpanel_state",
             "inspect_local_motion_control",
@@ -76,6 +82,59 @@
         "publish": [
           "local-mcp-docs",
           "mainpanel-mcp"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph-ai-voice-studio",
+      "type": "markdown",
+      "description": "Capture consented voice-profile manifests, dictate speech, and create disclosed speech through one provider-neutral browser and local-stdio contract.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-ai-voice-studio.md",
+      "sha256": "31bfd213125249a3dd04a72922a291695b7178d816cb287325640f0b8532e88d",
+      "vdeoxpln": {
+        "id": "knowgrph-ai-voice-studio",
+        "title": "Knowgrph AI Voice Studio",
+        "scope": "browser-local-and-local-stdio",
+        "mutation": "local-consent-and-approval-gated",
+        "semanticKey": "kgvx_5e8cecc9",
+        "tools": {
+          "published": [],
+          "browserLocal": [],
+          "local": [
+            "knowgrph.vdeoxpln.list",
+            "knowgrph.voice.studio"
+          ]
+        },
+        "publish": [
+          "local-mcp-docs",
+          "mainpanel-mcp"
+        ]
+      }
+    },
+    {
+      "name": "knowgrph-application-composition",
+      "type": "markdown",
+      "description": "Compose exact-version agents, prompts, typed values, and opaque third-party integration capabilities into immutable provider-neutral plans, then run them through existing bounded runtime owners.",
+      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-application-composition.md",
+      "sha256": "954c6d1c49ed2fe22227d5e5036a91b0b89caeaadd05ed3f11ad6e0cb9debfb6",
+      "vdeoxpln": {
+        "id": "knowgrph-application-composition",
+        "title": "Knowgrph Application Composition",
+        "scope": "local-stdio-owner-composed",
+        "mutation": "local-and-external-approval-gated",
+        "semanticKey": "kgvx_da3f5875",
+        "tools": {
+          "published": [],
+          "browserLocal": [],
+          "local": [
+            "knowgrph.application.catalog",
+            "knowgrph.application.execute",
+            "knowgrph.application.plan",
+            "knowgrph.vdeoxpln.list"
+          ]
+        },
+        "publish": [
+          "local-mcp-docs"
         ]
       }
     },
@@ -170,48 +229,81 @@
     {
       "name": "knowgrph-mcp-local",
       "type": "markdown",
-      "description": "Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
+      "description": "Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, deterministic repository packing, managed implementation runs, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
-      "sha256": "50ed8cc14df4c0715113daa366c06e801612808e5962401abaa89c1cf54cb1ba",
+      "sha256": "c7b582bd57b1e8591a7148bf9f4e9dc02af396a55f1f733994c55e784303e28f",
       "vdeoxpln": {
         "id": "knowgrph-mcp-local",
         "title": "Knowgrph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_6d694c0b",
+        "semanticKey": "kgvx_4a87606f",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
             "export.publish",
             "fetch",
+            "knowgrph.agent_team.control",
+            "knowgrph.agent_team.list",
+            "knowgrph.agent_team.plan",
+            "knowgrph.agent_team.start",
             "knowgrph.agentic_canvas_os.docs.invoke",
+            "knowgrph.agentic_sdlc.observe",
             "knowgrph.annotate.image",
             "knowgrph.annotate.video_frame",
+            "knowgrph.application.catalog",
+            "knowgrph.application.execute",
+            "knowgrph.application.plan",
             "knowgrph.browser_api.run",
             "knowgrph.ecs.decision_persist",
             "knowgrph.ecs.session_start",
             "knowgrph.ecs.world_tick",
+            "knowgrph.file.sync",
+            "knowgrph.geospatial.command",
+            "knowgrph.git.run",
             "knowgrph.graphrag_pipeline",
             "knowgrph.html_video.render",
+            "knowgrph.implementation_run.control",
+            "knowgrph.implementation_run.list",
+            "knowgrph.implementation_run.plan",
+            "knowgrph.implementation_run.start",
+            "knowgrph.knowledge_graph.explain_edge",
+            "knowgrph.knowledge_graph.ingest",
+            "knowgrph.knowledge_graph.parser_generate",
+            "knowgrph.knowledge_graph.query",
             "knowgrph.memory.add",
             "knowgrph.memory.assemble_prompt",
+            "knowgrph.memory.compact",
             "knowgrph.memory.extract_procedural",
+            "knowgrph.memory.invoke",
             "knowgrph.memory.materialize_user_model",
             "knowgrph.memory.search",
+            "knowgrph.memory.write",
             "knowgrph.os.status",
+            "knowgrph.payment.event.settle",
+            "knowgrph.payment.intent.create",
+            "knowgrph.payment.rail.select",
+            "knowgrph.payment.readiness",
+            "knowgrph.payment.receipt.project",
+            "knowgrph.payment.reconcile",
+            "knowgrph.payment.refund",
+            "knowgrph.payment.status",
             "knowgrph.pipeline",
             "knowgrph.probe.evolve",
             "knowgrph.probe.generate",
             "knowgrph.probe.select",
+            "knowgrph.repository.pack",
             "knowgrph.sandbox.policy.authorize",
             "knowgrph.sandbox.policy.validate",
+            "knowgrph.session.search",
             "knowgrph.showrunner.approve_stage",
             "knowgrph.showrunner.get_artifact",
             "knowgrph.showrunner.post_choice",
             "knowgrph.showrunner.run_status",
             "knowgrph.showrunner.start_run",
             "knowgrph.showrunner.submit_critique",
+            "knowgrph.skill.evolve",
             "knowgrph.sme.broker.draft_nudge",
             "knowgrph.sme.marketplace.match",
             "knowgrph.sme.multilingual.adapt",
@@ -224,8 +316,10 @@
             "knowgrph.tool.search",
             "knowgrph.ui.launch",
             "knowgrph.ui.stop",
+            "knowgrph.user.profile",
             "knowgrph.vdeoxpln.list",
             "knowgrph.video_remix.run",
+            "knowgrph.voice.studio",
             "sealion.detect_language_variant",
             "sealion.safety_check",
             "sealion.translate_localize",
@@ -241,24 +335,29 @@
     {
       "name": "knowgrph-memory-layer",
       "type": "markdown",
-      "description": "Persist, retrieve, inject, extract, and materialize explicitly scoped agent memories through a provider-neutral local harness with source-owned Markdown outputs.",
+      "description": "Persist, retrieve, safely compact, hard-redact, and revision-freeze host-authorized exact-scope agent memory through a durable local runtime while preserving the legacy provider-neutral prompt harness.",
       "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-memory-layer.md",
-      "sha256": "d50a754f36de29bacea157f993a894e2c06c1bdb362a35a42ee1291fef3a3421",
+      "sha256": "4673686c9477487a0c2563499287bf888d7fc2a4714b9fbdcbb4cdb9a278ab0b",
       "vdeoxpln": {
         "id": "knowgrph-memory-layer",
         "title": "Knowgrph Memory Layer",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-scoped-memory",
-        "semanticKey": "kgvx_46485834",
+        "semanticKey": "kgvx_0399f9a9",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
             "knowgrph.memory.add",
             "knowgrph.memory.assemble_prompt",
+            "knowgrph.memory.compact",
             "knowgrph.memory.extract_procedural",
+            "knowgrph.memory.invoke",
             "knowgrph.memory.materialize_user_model",
             "knowgrph.memory.search",
+            "knowgrph.memory.write",
+            "knowgrph.session.search",
+            "knowgrph.user.profile",
             "knowgrph.vdeoxpln.list"
           ]
         },
