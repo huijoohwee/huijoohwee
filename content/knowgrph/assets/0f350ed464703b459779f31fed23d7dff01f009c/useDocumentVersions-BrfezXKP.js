@@ -1,1 +1,0 @@
-import{R as s}from"./react-D-VqXPR-.js";import{ah as o,ai as r,aj as a}from"./settings-mcp-docs-Dn90LDZj.js";const t=()=>{const e=r();return{revision:Date.now(),entries:e,countsByPath:a()}};function i(){const[e,n]=s.useState(()=>t());return s.useEffect(()=>o(()=>n(t())),[]),e}export{i as u};
