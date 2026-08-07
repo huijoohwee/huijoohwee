@@ -1,1 +1,0 @@
-import{a as e}from"./wheelGuards-Y7BvUVjT.js";function r(t){if(t.type==="wheel"&&e(t.nativeEvent))return;const a=t.target instanceof Element?t.target:null;if(!(t.type==="contextmenu"&&(a!=null&&a.closest('[data-kg-rich-media-interaction-owner="1"]'))))try{t.stopPropagation()}catch{}}export{r as c};
