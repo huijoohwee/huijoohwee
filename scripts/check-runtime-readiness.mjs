@@ -5,6 +5,18 @@ import { execFileSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  CLOUDFLARE_HEADERS_MAX_LINE_CHARACTERS,
+  CLOUDFLARE_HEADERS_MAX_RULES,
+  GAME_XR_GLOBAL_PERMISSIONS_POLICY,
+  GAME_XR_HEADER_CONTRACT,
+  GAME_XR_REDIRECT_CONTRACT,
+  GAME_XR_REDIRECT_RULES,
+  globPatternsIntersect,
+  normalizeRedirectSourcePattern,
+  validateGameXrFunctionRoutes,
+  validateGameXrLocalProjection,
+} from './gamexr-public-contract.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const canonical = process.argv.includes('--canonical')
@@ -17,6 +29,8 @@ const requiredFiles = [
   'package.json',
   'package-lock.json',
   '404.html',
+  '_headers',
+  '_redirects',
   '_worker.js',
   '_routes.json',
   'content/knowgrph/index.html',
@@ -47,6 +61,7 @@ if (fs.existsSync(path.resolve(root, 'knowgrph/.well-known/runtime-readiness.jso
 }
 
 let marker = null
+let gameXrProjection = null
 try {
   marker = JSON.parse(markerSources[0])
   validateMarker(marker)
@@ -55,7 +70,8 @@ try {
 }
 
 try {
-  JSON.parse(fs.readFileSync(path.resolve(root, '_routes.json'), 'utf8'))
+  const routes = JSON.parse(fs.readFileSync(path.resolve(root, '_routes.json'), 'utf8'))
+  failures.push(...validateGameXrFunctionRoutes(routes))
 } catch (error) {
   failures.push(`_routes.json is invalid: ${error.message}`)
 }
@@ -120,54 +136,112 @@ if (failures.length > 0) {
     sourceRevision: marker.source.revision,
     agenticCanvasOsRevision: marker.agenticCanvasOs.revision,
     artifactDigest: marker.artifact.digest,
-    gameXrSourceRevision: readGameXrReleaseManifest()?.sourceRevision ?? null,
+    gameXrSourceRevision: gameXrProjection?.manifest?.sourceRevision ?? null,
     canonicalChecked: canonical,
   }))
 }
 
-function readGameXrReleaseManifest() {
-  try {
-    return JSON.parse(fs.readFileSync(path.resolve(root, 'content/gamexr/release-manifest.json'), 'utf8'))
-  } catch {
-    return null
+function validateGameXrProjection() {
+  validateGameXrRouting()
+  validateGameXrHeaders()
+  gameXrProjection = validateGameXrLocalProjection(root)
+  failures.push(...gameXrProjection.failures)
+}
+
+function validateGameXrRouting() {
+  const redirectsPath = path.resolve(root, '_redirects')
+  if (!fs.existsSync(redirectsPath)) return
+  const allRules = fs.readFileSync(redirectsPath, 'utf8')
+    .split(/\r?\n/)
+    .map((line, index) => ({ raw: line.trim(), lineNumber: index + 1 }))
+    .filter(rule => rule.raw && !rule.raw.startsWith('#'))
+    .map(rule => ({ ...rule, source: rule.raw.split(/\s+/)[0] }))
+  const explicitRules = allRules
+    .filter(line => {
+      const source = line.source
+      return source === '/gamexr' || source.startsWith('/gamexr/')
+        || source === '/content/gamexr' || source.startsWith('/content/gamexr/')
+    })
+    .map(rule => rule.raw)
+  if (JSON.stringify(explicitRules) !== JSON.stringify(GAME_XR_REDIRECT_CONTRACT)) {
+    failures.push(`GameXR redirect contract is duplicated, conflicting, or incomplete: ${explicitRules.join(' | ') || 'none'}`)
+  }
+  for (const expectedRule of GAME_XR_REDIRECT_RULES) {
+    const expectedRaw = `${expectedRule.source} ${expectedRule.destination} ${expectedRule.status}`
+    const expectedIndex = allRules.findIndex(rule => rule.raw === expectedRaw)
+    if (expectedIndex < 0) continue
+    const expectedPattern = normalizeRedirectSourcePattern(expectedRule.source)
+    const conflict = allRules.slice(0, expectedIndex).find(rule => (
+      !GAME_XR_REDIRECT_CONTRACT.includes(rule.raw)
+      && globPatternsIntersect(normalizeRedirectSourcePattern(rule.source), expectedPattern)
+    ))
+    if (conflict) {
+      failures.push(`GameXR redirect ${expectedRule.source} is shadowed by line ${conflict.lineNumber}: ${conflict.raw}`)
+    }
   }
 }
 
-function validateGameXrProjection() {
-  const publicRoot = path.resolve(root, 'content/gamexr')
-  const manifest = readGameXrReleaseManifest()
-  if (!manifest) {
-    failures.push('GameXR release manifest is invalid')
+function validateGameXrHeaders() {
+  const headersPath = path.resolve(root, '_headers')
+  if (!fs.existsSync(headersPath)) return
+  const source = fs.readFileSync(headersPath, 'utf8')
+  for (const [index, line] of source.split(/\r?\n/).entries()) {
+    if (line.length > CLOUDFLARE_HEADERS_MAX_LINE_CHARACTERS) {
+      failures.push(`_headers line ${index + 1} exceeds ${CLOUDFLARE_HEADERS_MAX_LINE_CHARACTERS} characters`)
+    }
+  }
+  const blocks = parseHeaderBlocks(source)
+  if (blocks.length > CLOUDFLARE_HEADERS_MAX_RULES) {
+    failures.push(`_headers exceeds ${CLOUDFLARE_HEADERS_MAX_RULES} Cloudflare Pages rules`)
+  }
+  const globalBlocks = blocks.filter(block => block.selector === '/*')
+  const expectedGlobalEntry = `permissions-policy: ${GAME_XR_GLOBAL_PERMISSIONS_POLICY}`
+  if (globalBlocks.length !== 1 || globalBlocks[0].entries.filter(entry => entry.startsWith('permissions-policy:')).length !== 1
+    || !globalBlocks[0].entries.includes(expectedGlobalEntry)) {
+    failures.push('global Permissions-Policy must deny motion, camera, and XR capabilities exactly once')
+  }
+
+  const explicitGameXrBlocks = blocks.filter(block => block.selector.includes('/gamexr'))
+  const actualSelectors = explicitGameXrBlocks.map(block => block.selector)
+  const expectedSelectors = GAME_XR_HEADER_CONTRACT.map(contract => contract.selector)
+  if (JSON.stringify(actualSelectors) !== JSON.stringify(expectedSelectors)) {
+    failures.push(`GameXR header blocks are duplicated, conflicting, or incomplete: ${actualSelectors.join(', ') || 'none'}`)
     return
   }
-  if (manifest.schema !== 'gamexr-release-artifact/v1' || manifest.basePath !== '/gamexr/' || manifest.candidateStatus !== 'source-bound-clean') {
-    failures.push('GameXR release manifest does not describe a source-bound /gamexr/ candidate')
+  for (const { selector, entries: expectedEntries } of GAME_XR_HEADER_CONTRACT) {
+    const block = explicitGameXrBlocks.find(candidate => candidate.selector === selector)
+    if (!block || JSON.stringify(block.entries) !== JSON.stringify(expectedEntries)) {
+      failures.push(`GameXR header contract changed for ${selector}`)
+    }
   }
-  if (!/^[0-9a-f]{40}$/.test(String(manifest.sourceRevision || ''))) failures.push('GameXR source revision must be an exact SHA')
-  if (!Array.isArray(manifest.artifacts)) {
-    failures.push('GameXR artifact inventory is missing')
-    return
-  }
-  const artifacts = [...manifest.artifacts].sort((left, right) => left.path.localeCompare(right.path))
-  for (const artifact of artifacts) {
-    const absolutePath = path.resolve(publicRoot, artifact.path)
-    if (!absolutePath.startsWith(`${publicRoot}${path.sep}`) || !fs.existsSync(absolutePath)) {
-      failures.push(`GameXR artifact is missing: ${artifact.path}`)
+}
+
+function parseHeaderBlocks(source) {
+  const blocks = []
+  let currentBlock = null
+  for (const line of source.split(/\r?\n/)) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) continue
+    if (!/^\s/.test(line)) {
+      currentBlock = { selector: trimmed, entries: [] }
+      blocks.push(currentBlock)
       continue
     }
-    const bytes = fs.statSync(absolutePath).size
-    const digest = createHash('sha256').update(fs.readFileSync(absolutePath)).digest('hex')
-    if (bytes !== artifact.bytes || digest !== artifact.sha256) failures.push(`GameXR artifact changed: ${artifact.path}`)
+    if (!currentBlock) continue
+    if (trimmed.startsWith('! ')) {
+      currentBlock.entries.push(`! ${trimmed.slice(2).trim().toLowerCase()}`)
+      continue
+    }
+    const separator = trimmed.indexOf(':')
+    if (separator <= 0) {
+      currentBlock.entries.push(trimmed)
+      continue
+    }
+    const name = trimmed.slice(0, separator).trim().toLowerCase()
+    const value = trimmed.slice(separator + 1).trim()
+    currentBlock.entries.push(`${name}: ${value}`)
   }
-  const digestInput = artifacts.map(artifact => `${artifact.path}\0${artifact.bytes}\0${artifact.sha256}`).join('\n')
-  const digest = createHash('sha256').update(digestInput).digest('hex')
-  if (digest !== manifest.artifactDigest) failures.push('GameXR aggregate artifact digest changed')
-  if (fs.existsSync(path.resolve(root, 'gamexr'))) failures.push('GameXR must have one generated mirror under content/gamexr')
-
-  const redirects = fs.readFileSync(path.resolve(root, '_redirects'), 'utf8')
-  for (const rule of ['/gamexr /gamexr/ 301', '/gamexr/* /content/gamexr/:splat 200']) {
-    if (!redirects.split(/\r?\n/).includes(rule)) failures.push(`GameXR public projection rule is missing: ${rule}`)
-  }
+  return blocks
 }
 
 function validateMarker(value) {
