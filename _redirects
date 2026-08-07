@@ -1,5 +1,10 @@
 /singapoly /singabldr 301
 /singapoly/ /singabldr 301
+/gamexr /gamexr/ 301
+/gamexr/* /content/gamexr/:splat 200
+/content/gamexr /gamexr 301
+/content/gamexr/ /gamexr/ 301
+/content/gamexr/* /gamexr/:splat 301
 /knowgrph /content/knowgrph/index.html 200
 /knowgrph/assets/* /content/knowgrph/assets/:splat 200
 /knowgrph/vendor/* /content/knowgrph/vendor/:splat 200
