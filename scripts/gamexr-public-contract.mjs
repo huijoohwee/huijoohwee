@@ -6,7 +6,7 @@ export const EMPTY_SHA256 = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca49
 export const GAME_XR_GLOBAL_PERMISSIONS_POLICY = 'accelerometer=(), autoplay=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), xr-spatial-tracking=()'
 export const GAME_XR_PERMISSIONS_POLICY = 'accelerometer=(self), autoplay=(self), camera=(self), clipboard-read=(), clipboard-write=(), display-capture=(), geolocation=(), gyroscope=(self), magnetometer=(self), microphone=(), payment=(), usb=(), xr-spatial-tracking=(self)'
 export const GAME_XR_CONTENT_SECURITY_POLICY = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self'; manifest-src 'self'"
-export const GAME_XR_MUTABLE_CACHE_CONTROL = 'no-store, no-cache, no-transform, must-revalidate, max-age=0'
+export const GAME_XR_MUTABLE_CACHE_CONTROL = 'public, no-store, no-cache, no-transform, must-revalidate, max-age=0'
 export const GAME_XR_IMMUTABLE_CACHE_CONTROL = 'public, max-age=31536000, immutable, no-transform'
 export const CLOUDFLARE_HEADERS_MAX_RULES = 100
 export const CLOUDFLARE_HEADERS_MAX_LINE_CHARACTERS = 2_000
@@ -41,7 +41,9 @@ export const GAME_XR_HEADER_CONTRACT = Object.freeze([
       '! permissions-policy',
       `permissions-policy: ${GAME_XR_PERMISSIONS_POLICY}`,
       `content-security-policy: ${GAME_XR_CONTENT_SECURITY_POLICY}`,
+      '! referrer-policy',
       'referrer-policy: no-referrer',
+      '! x-content-type-options',
       'x-content-type-options: nosniff',
     ]),
   }),
