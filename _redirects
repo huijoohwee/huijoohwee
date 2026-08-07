@@ -1,7 +1,6 @@
 /singapoly /singabldr 301
 /singapoly/ /singabldr 301
-/gamexr /content/gamexr/index.html 200
-/gamexr/ /content/gamexr/index.html 200
+/gamexr /gamexr/ 301
 /gamexr/* /content/gamexr/:splat 200
 /content/gamexr /gamexr 301
 /content/gamexr/ /gamexr/ 301

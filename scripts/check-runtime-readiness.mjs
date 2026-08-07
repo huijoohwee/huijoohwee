@@ -165,7 +165,7 @@ function validateGameXrProjection() {
   if (fs.existsSync(path.resolve(root, 'gamexr'))) failures.push('GameXR must have one generated mirror under content/gamexr')
 
   const redirects = fs.readFileSync(path.resolve(root, '_redirects'), 'utf8')
-  for (const rule of ['/gamexr /content/gamexr/index.html 200', '/gamexr/ /content/gamexr/index.html 200', '/gamexr/* /content/gamexr/:splat 200']) {
+  for (const rule of ['/gamexr /gamexr/ 301', '/gamexr/* /content/gamexr/:splat 200']) {
     if (!redirects.split(/\r?\n/).includes(rule)) failures.push(`GameXR public projection rule is missing: ${rule}`)
   }
 }
