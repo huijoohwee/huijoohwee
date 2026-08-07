@@ -21,6 +21,9 @@ const requiredFiles = [
   '_routes.json',
   'content/knowgrph/index.html',
   'functions/knowgrph/[[path]].js',
+  'content/gamexr/index.html',
+  'content/gamexr/release-manifest.json',
+  'content/gamexr/.well-known/runtime-readiness.json',
   ...markerPaths,
 ]
 
@@ -84,6 +87,8 @@ if (marker) {
   }
 }
 
+validateGameXrProjection()
+
 const docsDir = path.resolve(root, 'docs')
 if (fs.existsSync(docsDir)) {
   for (const name of fs.readdirSync(docsDir)) {
@@ -115,8 +120,54 @@ if (failures.length > 0) {
     sourceRevision: marker.source.revision,
     agenticCanvasOsRevision: marker.agenticCanvasOs.revision,
     artifactDigest: marker.artifact.digest,
+    gameXrSourceRevision: readGameXrReleaseManifest()?.sourceRevision ?? null,
     canonicalChecked: canonical,
   }))
+}
+
+function readGameXrReleaseManifest() {
+  try {
+    return JSON.parse(fs.readFileSync(path.resolve(root, 'content/gamexr/release-manifest.json'), 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+function validateGameXrProjection() {
+  const publicRoot = path.resolve(root, 'content/gamexr')
+  const manifest = readGameXrReleaseManifest()
+  if (!manifest) {
+    failures.push('GameXR release manifest is invalid')
+    return
+  }
+  if (manifest.schema !== 'gamexr-release-artifact/v1' || manifest.basePath !== '/gamexr/' || manifest.candidateStatus !== 'source-bound-clean') {
+    failures.push('GameXR release manifest does not describe a source-bound /gamexr/ candidate')
+  }
+  if (!/^[0-9a-f]{40}$/.test(String(manifest.sourceRevision || ''))) failures.push('GameXR source revision must be an exact SHA')
+  if (!Array.isArray(manifest.artifacts)) {
+    failures.push('GameXR artifact inventory is missing')
+    return
+  }
+  const artifacts = [...manifest.artifacts].sort((left, right) => left.path.localeCompare(right.path))
+  for (const artifact of artifacts) {
+    const absolutePath = path.resolve(publicRoot, artifact.path)
+    if (!absolutePath.startsWith(`${publicRoot}${path.sep}`) || !fs.existsSync(absolutePath)) {
+      failures.push(`GameXR artifact is missing: ${artifact.path}`)
+      continue
+    }
+    const bytes = fs.statSync(absolutePath).size
+    const digest = createHash('sha256').update(fs.readFileSync(absolutePath)).digest('hex')
+    if (bytes !== artifact.bytes || digest !== artifact.sha256) failures.push(`GameXR artifact changed: ${artifact.path}`)
+  }
+  const digestInput = artifacts.map(artifact => `${artifact.path}\0${artifact.bytes}\0${artifact.sha256}`).join('\n')
+  const digest = createHash('sha256').update(digestInput).digest('hex')
+  if (digest !== manifest.artifactDigest) failures.push('GameXR aggregate artifact digest changed')
+  if (fs.existsSync(path.resolve(root, 'gamexr'))) failures.push('GameXR must have one generated mirror under content/gamexr')
+
+  const redirects = fs.readFileSync(path.resolve(root, '_redirects'), 'utf8')
+  for (const rule of ['/gamexr /content/gamexr/index.html 200', '/gamexr/ /content/gamexr/index.html 200', '/gamexr/* /content/gamexr/:splat 200']) {
+    if (!redirects.split(/\r?\n/).includes(rule)) failures.push(`GameXR public projection rule is missing: ${rule}`)
+  }
 }
 
 function validateMarker(value) {
