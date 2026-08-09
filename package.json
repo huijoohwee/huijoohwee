@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev:pages": "npx wrangler pages dev . --port 5175",
+    "gamexr:public:check": "node ./scripts/check-gamexr-public.mjs",
     "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
     "lifecycle:check": "node ./scripts/check-runtime-readiness.mjs --canonical",
     "check": "npm run runtime:check"

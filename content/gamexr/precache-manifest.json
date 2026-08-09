@@ -2,12 +2,12 @@
   "schema": "gamexr-precache/v1",
   "basePath": "/gamexr/",
   "serviceWorkerRegistrationEnabled": true,
-  "buildDigest": "67032359512168f301dbb1af43a11b5f692cf21d4954d01c293fc54007d72849",
+  "buildDigest": "98336a15ae9ffe1776626a6737ba431f7ac3b1828eed54c0167c9aa6fb45327b",
   "entries": [
     {
       "path": ".well-known/runtime-readiness.json",
-      "bytes": 1004,
-      "sha256": "16a9f566ac8cb4ded1bac3c568e0629789ef62c2f02c189462ee33d1002fd58e",
+      "bytes": 2104,
+      "sha256": "62460d492656514cc92c92455cbdf09b0eb7337c71e39ccdeb683e04e7ba2651",
       "kind": "readiness"
     },
     {
@@ -17,9 +17,9 @@
       "kind": "dynamic-script"
     },
     {
-      "path": "assets/index-BJDPoaRd.js",
-      "bytes": 108941,
-      "sha256": "09a7424448427044995bbb8636e2774b2bc6d0fef47e3bc4a879c88e53f01f79",
+      "path": "assets/index-Dqmru6Et.js",
+      "bytes": 110015,
+      "sha256": "dbcd83765eaa3307d175432d95db4ba40c5e8b4b764a6a766abddb77ff303114",
       "kind": "script"
     },
     {
@@ -61,13 +61,13 @@
     {
       "path": "index.html",
       "bytes": 1446,
-      "sha256": "aef5f99bfbd208dbed3d8546850ce3cc9d5d625ad5ef2b6a091d48d39305f616",
+      "sha256": "2cc55b1179b80baba447ec2fa15abf39a3460fc59f12206e65d272ae2e8f9f37",
       "kind": "document"
     },
     {
       "path": "llms.txt",
-      "bytes": 1006,
-      "sha256": "f494c129f528db846b60bb81ffcccd37bc87f6e503e5ca7a2c5054dfc69aced0",
+      "bytes": 1343,
+      "sha256": "32ece200ab0c2f025fbb34b6fae0b6cfbc2ef0f1286ee8cc5d13d8c701543b33",
       "kind": "agent-discovery"
     },
     {
@@ -93,12 +93,6 @@
       "bytes": 8941,
       "sha256": "ad76cd659d635f1d4640ece7309c61c5e4ebf38b47c976ea58e7ea354840aa75",
       "kind": "contract"
-    },
-    {
-      "path": "sw.js",
-      "bytes": 3574,
-      "sha256": "02e67c2562699cf9c270fd41ddbd5bde3bc54826931a940fe1da344fdf4a9c2c",
-      "kind": "service-worker"
     }
   ]
 }
