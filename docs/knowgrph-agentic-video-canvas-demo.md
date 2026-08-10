@@ -5,6 +5,7 @@ doc_type: "Agentic Video Generation Demo"
 date: "2026-07-13"
 lang: "zh-Hans"
 schema: "kgc-computing-flow/v1"
+demo_schema: "kgc-agentic-video-canvas/v1"
 runtime_status: "runtime-ready-in-dev"
 publish_scope: "local-only"
 live_provider_run_proven: false
