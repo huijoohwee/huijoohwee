@@ -7,6 +7,8 @@
     "gamexr:public:check": "node ./scripts/check-gamexr-public.mjs",
     "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
     "lifecycle:check": "node ./scripts/check-runtime-readiness.mjs --canonical",
+    "worktree:lifecycle:check": "node ../agentic-canvas-os/scripts/worktree-lifecycle.mjs check --repository=.",
+    "worktree:lifecycle:cleanup": "node ../agentic-canvas-os/scripts/worktree-lifecycle.mjs cleanup --repository=.",
     "check": "npm run runtime:check"
   },
   "dependencies": {

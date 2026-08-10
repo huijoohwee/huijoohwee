@@ -168,6 +168,17 @@ here. Protected green Knowgrph `main` is the sole release owner: it rebuilds thi
 tree, deploys Cloudflare, verifies the apex and `/knowgrph` browser surfaces, and
 only then pushes the exact verified mirror bytes.
 
+### Session-end worktree lifecycle
+
+Run `npm run worktree:lifecycle:check` from the canonical `main` checkout at the
+end of a chat, session, or thread. Complete or park the current task first.
+`npm run worktree:lifecycle:cleanup -- --worktree=<path>` accepts only a clean,
+detached, exact-`origin/main` worktree whose writer lease records protected
+completion. Canonical, active, delivery, parked, dirty, divergent, or ambiguous
+lanes are retained or rejected. Cleanup never uses force and never deletes the
+preserved task branch or commits. This local repository operation does not
+authorize a production sync or Cloudflare deployment.
+
 ## Workspace Surfaces
 
 | Surface | Purpose |
