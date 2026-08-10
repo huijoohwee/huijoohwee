@@ -1,0 +1,1 @@
+import{R as t}from"./react-D-VqXPR-.js";import{s as S,r as i,a as c,b as o,c as n,d as r}from"./index-CUSlVEOF.js";function h(){const a=t.useSyncExternalStore(S,i,i),e=t.useSyncExternalStore(c,o,o),s=t.useSyncExternalStore(n,r,r);return{gameMode:a,flightSim:e,citySim:s,gameFpsActive:a.active,flightSimActive:e.active,citySimActive:s.active}}export{h as u};
