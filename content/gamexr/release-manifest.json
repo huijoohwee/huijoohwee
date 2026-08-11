@@ -4,14 +4,14 @@
   "version": "0.1.0",
   "basePath": "/gamexr/",
   "candidateStatus": "source-bound-clean",
-  "sourceRevision": "803e3a2a20dfcd1401673690a3b5d82500322f67",
+  "sourceRevision": "9f5ee603e5aae5a2fd31fd5fccc73595144805b2",
   "source": {
     "versionControl": "git",
     "head": "resolved",
     "worktree": "clean",
     "statusDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "artifactDigest": "d8b1bace3ad4a530d55534f674e8479786856a42d49f53ec111eb461fa0f9eea",
+  "artifactDigest": "c973c6631cc38bbcfa8fda0d46925c62314e00f7abedd9ac2baa42f059c6670b",
   "defaultScene": "schemas/default-scene.json",
   "sceneSchema": "schemas/gamexr.scene.schema.json",
   "spatialInputSchema": "schemas/apple-spatial-input.schema.json",
@@ -33,14 +33,14 @@
       "sha256": "53102f080cd263d4fe2222069869f9794bc2c1e7a4ba33e6419d32e1e944f19c"
     },
     {
-      "path": "assets/index-Dqmru6Et.js",
-      "bytes": 110015,
-      "sha256": "dbcd83765eaa3307d175432d95db4ba40c5e8b4b764a6a766abddb77ff303114"
+      "path": "assets/index-BnUHHnsn.js",
+      "bytes": 205844,
+      "sha256": "e12d8dde4b0c77ecfa1908b21a806b8075d8e09fbba68e3e84c376c998333ada"
     },
     {
-      "path": "assets/index-m2LccQZe.css",
-      "bytes": 11885,
-      "sha256": "b5a1463b544e10c37f2c269a97cc05052385e597b46ab32311a28f93eac584a9"
+      "path": "assets/index-BXHGyDmD.css",
+      "bytes": 14893,
+      "sha256": "73d46138cfeb837f140b581880d6dd9c310f7c649b557bf3d7a2a89410d6452a"
     },
     {
       "path": "assets/three-animation-B5LeBG1o.js",
@@ -70,7 +70,7 @@
     {
       "path": "index.html",
       "bytes": 1446,
-      "sha256": "2cc55b1179b80baba447ec2fa15abf39a3460fc59f12206e65d272ae2e8f9f37"
+      "sha256": "462e6b168dc0f6ba9118589e334c0576651569c6397b385068171242b5e66b7e"
     },
     {
       "path": "llms.txt",
@@ -85,7 +85,7 @@
     {
       "path": "precache-manifest.json",
       "bytes": 3021,
-      "sha256": "b5f07981501c231475dc2322a83b7239401d7517a53921413082ad06286f25bf"
+      "sha256": "eaa91458b39c6a7ccfccb64f17b5b192af0d11184eb551c3ffd91097b3ba3348"
     },
     {
       "path": "schemas/apple-spatial-input.schema.json",
@@ -100,12 +100,12 @@
     {
       "path": "schemas/gamexr.scene.schema.json",
       "bytes": 8941,
-      "sha256": "ad76cd659d635f1d4640ece7309c61c5e4ebf38b47c976ea58e7ea354840aa75"
+      "sha256": "6a52682e0134996c202ca8bad88d570d9817261770e4cd6e3f8dc75e780d37b1"
     },
     {
       "path": "sw.js",
       "bytes": 13782,
-      "sha256": "0112d60abeca183164dd1d43483f2f0d40cac28c44954518384f6b00d872ad0b"
+      "sha256": "ecaaeb2c40d05ef71e476b632861b6705cfeb7e9162c20c95538808e1ff6a74b"
     }
   ]
 }

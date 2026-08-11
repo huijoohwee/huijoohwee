@@ -2,7 +2,7 @@
   "schema": "gamexr-precache/v1",
   "basePath": "/gamexr/",
   "serviceWorkerRegistrationEnabled": true,
-  "buildDigest": "98336a15ae9ffe1776626a6737ba431f7ac3b1828eed54c0167c9aa6fb45327b",
+  "buildDigest": "83357aa784fa4bb9990dd13d5256e5130940eef3aa1fd0dd9855429e60060c8c",
   "entries": [
     {
       "path": ".well-known/runtime-readiness.json",
@@ -17,15 +17,15 @@
       "kind": "dynamic-script"
     },
     {
-      "path": "assets/index-Dqmru6Et.js",
-      "bytes": 110015,
-      "sha256": "dbcd83765eaa3307d175432d95db4ba40c5e8b4b764a6a766abddb77ff303114",
+      "path": "assets/index-BnUHHnsn.js",
+      "bytes": 205844,
+      "sha256": "e12d8dde4b0c77ecfa1908b21a806b8075d8e09fbba68e3e84c376c998333ada",
       "kind": "script"
     },
     {
-      "path": "assets/index-m2LccQZe.css",
-      "bytes": 11885,
-      "sha256": "b5a1463b544e10c37f2c269a97cc05052385e597b46ab32311a28f93eac584a9",
+      "path": "assets/index-BXHGyDmD.css",
+      "bytes": 14893,
+      "sha256": "73d46138cfeb837f140b581880d6dd9c310f7c649b557bf3d7a2a89410d6452a",
       "kind": "style"
     },
     {
@@ -61,7 +61,7 @@
     {
       "path": "index.html",
       "bytes": 1446,
-      "sha256": "2cc55b1179b80baba447ec2fa15abf39a3460fc59f12206e65d272ae2e8f9f37",
+      "sha256": "462e6b168dc0f6ba9118589e334c0576651569c6397b385068171242b5e66b7e",
       "kind": "document"
     },
     {
@@ -91,7 +91,7 @@
     {
       "path": "schemas/gamexr.scene.schema.json",
       "bytes": 8941,
-      "sha256": "ad76cd659d635f1d4640ece7309c61c5e4ebf38b47c976ea58e7ea354840aa75",
+      "sha256": "6a52682e0134996c202ca8bad88d570d9817261770e4cd6e3f8dc75e780d37b1",
       "kind": "contract"
     }
   ]
