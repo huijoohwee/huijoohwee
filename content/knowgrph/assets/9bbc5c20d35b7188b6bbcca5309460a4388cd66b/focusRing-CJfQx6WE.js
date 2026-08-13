@@ -1,1 +1,0 @@
-import{an as o}from"./settings-mcp-core-C2TiwWAb.js";const s=["focus-visible:outline-none",o.focus.primaryStrongRing,"focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--kg-focus-ring-offset)]"].join(" ");export{s as U};
