@@ -1,0 +1,1 @@
+import"./settings-mcp-core-DT6rNCmI.js";function i(n,r=""){if(typeof window>"u"||typeof window.prompt!="function")return null;try{return(window.prompt(n,r)||"").trim()||null}catch{return null}}function m(n){const r=String(n||"").trim();return r?`${r.replace(/\.pdf$/i,"")||"document"}.md`:"document.md"}export{m as d,i as p};
