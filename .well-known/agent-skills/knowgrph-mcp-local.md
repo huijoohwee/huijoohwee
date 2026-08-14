@@ -6,7 +6,7 @@ Use this skill when: Expose Knowgrph-owned local Source Files, Agentic Canvas OS
 
 - Vdeoxpln id: `knowgrph-mcp-local`
 - Contract version: `knowgrph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_4a87606f`
+- Semantic key: `kgvx_adbdb68c`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -166,6 +166,8 @@ Local MCP tools:
 - knowgrph.vdeoxpln.list
 - knowgrph.video_remix.run
 - knowgrph.voice.studio
+- knowgrph.workspace_artifact.apply
+- knowgrph.workspace_artifact.plan
 - sealion.detect_language_variant
 - sealion.safety_check
 - sealion.translate_localize
