@@ -168,6 +168,17 @@ here. Protected green Knowgrph `main` is the sole release owner: it rebuilds thi
 tree, deploys Cloudflare, verifies the apex and `/knowgrph` browser surfaces, and
 only then pushes the exact verified mirror bytes.
 
+### Recent Mirror Release
+
+On 2026-08-14 the protected mirror lane promoted the sealed GameXR artifact from
+Knowgrph source revision `9f5ee603e5aae5a2fd31fd5fccc73595144805b2` into
+`huijoohwee` canonical `main` commit `1932542fffd61a0b50ee39b64f8c59d3f524981a`.
+The release published immutable Pages deployment
+`https://f67967e8.joohwee.pages.dev` and re-proved the public route
+`https://airvio.co/gamexr/` against artifact digest
+`c973c6631cc38bbcfa8fda0d46925c62314e00f7abedd9ac2baa42f059c6670b` with
+`npm run gamexr:public:check`.
+
 ### Session-end worktree lifecycle
 
 Run `npm run worktree:lifecycle:check` from the canonical `main` checkout at the
