@@ -1,0 +1,28 @@
+# AgenticGraph
+
+## Source Files
+
+- Editor Workspace Source Files for LLMs: /api/storage/llms.txt
+- Editor Workspace Source Files index: /api/storage/source-files
+- Live Canvas Hero discovery markdown: /agenticgraph-live-canvas-hero.md
+- Default published Source File markdown documents: /api/storage/doc-default/{canonicalPath}
+- Source File markdown documents: /api/storage/doc/{workspaceId}/{canonicalPath}
+- Canonical shared default document URLs: /agenticgraph/share/{opaque-default-doc-token}
+- Canonical shared document URLs: /agenticgraph/share/{opaque-doc-token}
+- Query-param aliases: /agenticgraph/?kgShare={opaque-doc-token}, /agenticgraph/?kgCanonicalPath={canonicalPath}, /agenticgraph/?kgWorkspaceId={workspaceId}&kgCanonicalPath={canonicalPath}
+- Shared document path aliases: /agenticgraph/doc-default/{canonicalPath}, /agenticgraph/doc/{workspaceId}/{canonicalPath}
+
+## Access Policy
+
+- Cloudflare AI Crawl Control Pay Per Crawl can apply at the zone boundary.
+- If enabled, unpaid AI crawler requests can receive HTTP 402 with crawler-price.
+- Successful paid crawler access can receive HTTP 200 with crawler-charged.
+- The storage routes remain read-only and do not emulate payment headers or prices.
+
+## App
+
+- AgenticGraph workspace: /agenticgraph/
+- Agent-ready health: /agenticgraph/health
+- Agent-ready MCP transport: /agenticgraph/mcp
+- Agent-ready OpenAPI: /agenticgraph/.well-known/openapi.json
+- A2A Agent Card: /.well-known/agent-card.json
