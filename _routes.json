@@ -6,7 +6,7 @@
     "/health",
     "/__youtube_transcript",
     "/__video_frame",
-    "/knowgrph/*",
+    "/agenticgraph/*",
     "/__chat_proxy/*",
     "/api/oembed",
     "/api/link-proxy",

@@ -1,6 +1,6 @@
 ---
-title: "Knowgrph Agentic Video Canvas Demo"
-graphId: "md:knowgrph-agentic-video-canvas-demo"
+title: "AgenticGraph Agentic Video Canvas Demo"
+graphId: "md:agenticgraph-agentic-video-canvas-demo"
 doc_type: "Agentic Video Generation Demo"
 date: "2026-07-13"
 lang: "zh-Hans"
@@ -9,7 +9,7 @@ demo_schema: "kgc-agentic-video-canvas/v1"
 runtime_status: "runtime-ready-in-dev"
 publish_scope: "local-only"
 live_provider_run_proven: false
-implementation_contract: "../../knowgrph/docs/documents/knowgrph-agentic-os-video-agent-prd-tad.companion.md"
+implementation_contract: "../../agenticgraph/docs/documents/agenticgraph-agentic-os-video-agent-prd-tad.companion.md"
 template_policy: "Default source-backed video-agent launcher. The referenced Markdown owns creative context; runtime providers own generated text and media; no generated URL, job id, transcript, credential, or fixture is authored here."
 validation_input_forbid_hardcode_in_repo: true
 kgCanvasSurfaceMode: "2d"
@@ -39,7 +39,7 @@ kgSharedRendererContract:
   timelineSurface: "BottomPanel Timeline video/FBF/audio transport"
   rendererPolicy: "Typed source and runtime records own data; shared renderers only project that state."
 agentic_video_contract:
-  version: "knowgrph-agentic-video/v1"
+  version: "agenticgraph-agentic-video/v1"
   prompt_preset_source: "workspace:/agentic-canvas-os/docs/PROMPT-PRESETS.md#video-agent"
   route: "/video-agent"
   source_binding_token: "@video-generation-demo-script"
@@ -232,7 +232,7 @@ flow:
 
 # E2E Agentic Video Canvas Demo
 
-This is Knowgrph's default source-backed video-agent loading document. It starts with one editable `/ # @` invocation, one canonical Markdown script reference, three registered generation widgets, and four empty Rich Media Panels. Outputs stay blank until an approved runtime returns, persists, and reads back typed artifacts.
+This is AgenticGraph's default source-backed video-agent loading document. It starts with one editable `/ # @` invocation, one canonical Markdown script reference, three registered generation widgets, and four empty Rich Media Panels. Outputs stay blank until an approved runtime returns, persists, and reads back typed artifacts.
 
 ## 1. Source-bound invocation
 
@@ -240,7 +240,7 @@ The executable prompt is owned by `workspace:/agentic-canvas-os/docs/PROMPT-PRES
 
 When **Video Agent** is selected and **Load preset** is pressed, the centralized catalog supplies the `/video-agent`, `#thinking.type.enabled`, `#token-cap.medium`, output, provider, and canonical script-reference grammar. The `@video-generation-demo-script` binding and `workspace:` link remain authored source. The shared composer displays the Markdown source reference as one `@filename.md` source-binding chip, keeps the underlying Markdown reference verbatim, and never classifies it as generated media.
 
-Before graph parsing, **Load preset** rematerializes this canonical document over a drifted runtime `/docs/knowgrph-agentic-video-canvas-demo.md` mirror. Generated runtime projections persist only as typed sibling artifacts and cannot replace the authored text, image, and video stage graph across local ports.
+Before graph parsing, **Load preset** rematerializes this canonical document over a drifted runtime `/docs/agenticgraph-agentic-video-canvas-demo.md` mirror. Generated runtime projections persist only as typed sibling artifacts and cannot replace the authored text, image, and video stage graph across local ports.
 
 FloatingPanel Chat projects the same authored `/`, `@`, and `#` grammar as inline chips in both its textbox and chronological thread without changing the raw prompt. The visual chips yield pointer ownership to the textarea and snap interior clicks to the chip end, so subsequent typing appends after the token and range edits continue to mutate the mapped raw prompt rather than flattening projected tokens. While a run is active, Chat shows one real-time assistant tail and Editor Workspace follows the same streamed workspace draft to its current tail; projected UI markup is never written back into this source document.
 

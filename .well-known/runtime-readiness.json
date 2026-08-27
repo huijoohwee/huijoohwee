@@ -1,5 +1,5 @@
 {
-  "schema": "knowgrph-production-runtime-readiness/v2",
+  "schema": "agenticgraph-production-runtime-readiness/v2",
   "status": "verified-build",
   "source": {
     "repository": "huijoohwee/knowgrph",
@@ -24,6 +24,6 @@
   },
   "surfaces": [
     "/",
-    "/knowgrph"
+    "/agenticgraph"
   ]
 }

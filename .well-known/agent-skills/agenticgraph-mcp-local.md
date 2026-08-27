@@ -1,11 +1,11 @@
-# Knowgrph Local MCP Skill
+# AgenticGraph Local MCP Skill
 
-Use this skill when: Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, deterministic repository packing, managed implementation runs, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.
+Use this skill when: Expose AgenticGraph-owned local Source Files, Agentic Canvas OS docs invocation, deterministic repository packing, managed implementation runs, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-mcp-local`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-mcp-local`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_adbdb68c`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
@@ -90,84 +90,84 @@ Browser-local tools:
 Local MCP tools:
 - export.publish
 - fetch
-- knowgrph.agent_team.control
-- knowgrph.agent_team.list
-- knowgrph.agent_team.plan
-- knowgrph.agent_team.start
-- knowgrph.agentic_canvas_os.docs.invoke
-- knowgrph.agentic_sdlc.observe
-- knowgrph.annotate.image
-- knowgrph.annotate.video_frame
-- knowgrph.application.catalog
-- knowgrph.application.execute
-- knowgrph.application.plan
-- knowgrph.browser_api.run
-- knowgrph.ecs.decision_persist
-- knowgrph.ecs.session_start
-- knowgrph.ecs.world_tick
-- knowgrph.file.sync
-- knowgrph.geospatial.command
-- knowgrph.git.run
-- knowgrph.graphrag_pipeline
-- knowgrph.html_video.render
-- knowgrph.implementation_run.control
-- knowgrph.implementation_run.list
-- knowgrph.implementation_run.plan
-- knowgrph.implementation_run.start
-- knowgrph.knowledge_graph.explain_edge
-- knowgrph.knowledge_graph.ingest
-- knowgrph.knowledge_graph.parser_generate
-- knowgrph.knowledge_graph.query
-- knowgrph.memory.add
-- knowgrph.memory.assemble_prompt
-- knowgrph.memory.compact
-- knowgrph.memory.extract_procedural
-- knowgrph.memory.invoke
-- knowgrph.memory.materialize_user_model
-- knowgrph.memory.search
-- knowgrph.memory.write
-- knowgrph.os.status
-- knowgrph.payment.event.settle
-- knowgrph.payment.intent.create
-- knowgrph.payment.rail.select
-- knowgrph.payment.readiness
-- knowgrph.payment.receipt.project
-- knowgrph.payment.reconcile
-- knowgrph.payment.refund
-- knowgrph.payment.status
-- knowgrph.pipeline
-- knowgrph.probe.evolve
-- knowgrph.probe.generate
-- knowgrph.probe.select
-- knowgrph.repository.pack
-- knowgrph.sandbox.policy.authorize
-- knowgrph.sandbox.policy.validate
-- knowgrph.session.search
-- knowgrph.showrunner.approve_stage
-- knowgrph.showrunner.get_artifact
-- knowgrph.showrunner.post_choice
-- knowgrph.showrunner.run_status
-- knowgrph.showrunner.start_run
-- knowgrph.showrunner.submit_critique
-- knowgrph.skill.evolve
-- knowgrph.sme.broker.draft_nudge
-- knowgrph.sme.marketplace.match
-- knowgrph.sme.multilingual.adapt
-- knowgrph.sme.source.normalize
-- knowgrph.sme.trigger.evaluate
-- knowgrph.superagent.run
-- knowgrph.tool.call
-- knowgrph.tool.catalog
-- knowgrph.tool.describe
-- knowgrph.tool.search
-- knowgrph.ui.launch
-- knowgrph.ui.stop
-- knowgrph.user.profile
-- knowgrph.vdeoxpln.list
-- knowgrph.video_remix.run
-- knowgrph.voice.studio
-- knowgrph.workspace_artifact.apply
-- knowgrph.workspace_artifact.plan
+- agenticgraph.agent_team.control
+- agenticgraph.agent_team.list
+- agenticgraph.agent_team.plan
+- agenticgraph.agent_team.start
+- agenticgraph.agentic_canvas_os.docs.invoke
+- agenticgraph.agentic_sdlc.observe
+- agenticgraph.annotate.image
+- agenticgraph.annotate.video_frame
+- agenticgraph.application.catalog
+- agenticgraph.application.execute
+- agenticgraph.application.plan
+- agenticgraph.browser_api.run
+- agenticgraph.ecs.decision_persist
+- agenticgraph.ecs.session_start
+- agenticgraph.ecs.world_tick
+- agenticgraph.file.sync
+- agenticgraph.geospatial.command
+- agenticgraph.git.run
+- agenticgraph.graphrag_pipeline
+- agenticgraph.html_video.render
+- agenticgraph.implementation_run.control
+- agenticgraph.implementation_run.list
+- agenticgraph.implementation_run.plan
+- agenticgraph.implementation_run.start
+- agenticgraph.knowledge_graph.explain_edge
+- agenticgraph.knowledge_graph.ingest
+- agenticgraph.knowledge_graph.parser_generate
+- agenticgraph.knowledge_graph.query
+- agenticgraph.memory.add
+- agenticgraph.memory.assemble_prompt
+- agenticgraph.memory.compact
+- agenticgraph.memory.extract_procedural
+- agenticgraph.memory.invoke
+- agenticgraph.memory.materialize_user_model
+- agenticgraph.memory.search
+- agenticgraph.memory.write
+- agenticgraph.os.status
+- agenticgraph.payment.event.settle
+- agenticgraph.payment.intent.create
+- agenticgraph.payment.rail.select
+- agenticgraph.payment.readiness
+- agenticgraph.payment.receipt.project
+- agenticgraph.payment.reconcile
+- agenticgraph.payment.refund
+- agenticgraph.payment.status
+- agenticgraph.pipeline
+- agenticgraph.probe.evolve
+- agenticgraph.probe.generate
+- agenticgraph.probe.select
+- agenticgraph.repository.pack
+- agenticgraph.sandbox.policy.authorize
+- agenticgraph.sandbox.policy.validate
+- agenticgraph.session.search
+- agenticgraph.showrunner.approve_stage
+- agenticgraph.showrunner.get_artifact
+- agenticgraph.showrunner.post_choice
+- agenticgraph.showrunner.run_status
+- agenticgraph.showrunner.start_run
+- agenticgraph.showrunner.submit_critique
+- agenticgraph.skill.evolve
+- agenticgraph.sme.broker.draft_nudge
+- agenticgraph.sme.marketplace.match
+- agenticgraph.sme.multilingual.adapt
+- agenticgraph.sme.source.normalize
+- agenticgraph.sme.trigger.evaluate
+- agenticgraph.superagent.run
+- agenticgraph.tool.call
+- agenticgraph.tool.catalog
+- agenticgraph.tool.describe
+- agenticgraph.tool.search
+- agenticgraph.ui.launch
+- agenticgraph.ui.stop
+- agenticgraph.user.profile
+- agenticgraph.vdeoxpln.list
+- agenticgraph.video_remix.run
+- agenticgraph.voice.studio
+- agenticgraph.workspace_artifact.apply
+- agenticgraph.workspace_artifact.plan
 - sealion.detect_language_variant
 - sealion.safety_check
 - sealion.translate_localize
@@ -186,8 +186,8 @@ Local MCP tools:
 
 ## Source Owners
 
-- canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
-- knowgrph_parser/superagent_harness.py
+- canvas/src/features/agent-ready/agenticgraphVdeoxplnContract.mjs
+- agenticgraph_parser/superagent_harness.py
 - mcp/agentic-canvas-os-docs-runtime.js
 - mcp/director-lanes.js
 - mcp/director-workflow.js
@@ -220,7 +220,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

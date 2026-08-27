@@ -1,15 +1,15 @@
 {
-  "resource": "https://airvio.co/knowgrph/",
-  "resource_name": "Knowgrph",
+  "resource": "https://airvio.co/agenticgraph/",
+  "resource_name": "AgenticGraph",
   "authorization_servers": [
     "https://airvio.co"
   ],
   "scopes_supported": [
-    "knowgrph:read",
-    "knowgrph:source-files:read"
+    "agenticgraph:read",
+    "agenticgraph:source-files:read"
   ],
   "bearer_methods_supported": [
     "header"
   ],
-  "resource_documentation": "https://airvio.co/knowgrph/llms.txt"
+  "resource_documentation": "https://airvio.co/agenticgraph/llms.txt"
 }

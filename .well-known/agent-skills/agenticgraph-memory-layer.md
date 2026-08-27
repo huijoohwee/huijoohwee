@@ -1,11 +1,11 @@
-# Knowgrph Memory Layer Skill
+# AgenticGraph Memory Layer Skill
 
 Use this skill when: Persist, retrieve, safely compact, hard-redact, and revision-freeze host-authorized exact-scope agent memory through a durable local runtime while preserving the legacy provider-neutral prompt harness.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-memory-layer`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-memory-layer`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_0399f9a9`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-scoped-memory`
@@ -52,17 +52,17 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- knowgrph.memory.add
-- knowgrph.memory.assemble_prompt
-- knowgrph.memory.compact
-- knowgrph.memory.extract_procedural
-- knowgrph.memory.invoke
-- knowgrph.memory.materialize_user_model
-- knowgrph.memory.search
-- knowgrph.memory.write
-- knowgrph.session.search
-- knowgrph.user.profile
-- knowgrph.vdeoxpln.list
+- agenticgraph.memory.add
+- agenticgraph.memory.assemble_prompt
+- agenticgraph.memory.compact
+- agenticgraph.memory.extract_procedural
+- agenticgraph.memory.invoke
+- agenticgraph.memory.materialize_user_model
+- agenticgraph.memory.search
+- agenticgraph.memory.write
+- agenticgraph.session.search
+- agenticgraph.user.profile
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -77,7 +77,7 @@ Local MCP tools:
 ## Source Owners
 
 - canvas/src/features/memory/aiAgentsMemoryLayerContract.mjs
-- docs/documents/knowgrph-ai-agents-memory-layer-prd-tad.md
+- docs/documents/agenticgraph-ai-agents-memory-layer-prd-tad.md
 - mcp/local-tool-contract.js
 - mcp/memory-layer-runtime.js
 - mcp/persistent-memory-authorization.js
@@ -115,7 +115,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

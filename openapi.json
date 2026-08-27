@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Knowgrph Machine Payment Protocol",
+    "title": "AgenticGraph Machine Payment Protocol",
     "version": "2026-01-30",
-    "description": "Machine-readable payable-operation discovery for Knowgrph commerce routes."
+    "description": "Machine-readable payable-operation discovery for AgenticGraph commerce routes."
   },
   "servers": [
     {
@@ -13,7 +13,7 @@
   "paths": {
     "/api/payments/commerce/x402": {
       "get": {
-        "operationId": "getKnowgrphX402PaymentRequirement",
+        "operationId": "getAgenticGraphX402PaymentRequirement",
         "summary": "Return x402 payment requirements for an agent-readable paid resource.",
         "x-payment-info": {
           "intent": "charge",
@@ -30,7 +30,7 @@
     },
     "/checkout/sessions": {
       "post": {
-        "operationId": "createKnowgrphCommerceCheckoutSession",
+        "operationId": "createAgenticGraphCommerceCheckoutSession",
         "summary": "Create an agentic commerce checkout session.",
         "x-payment-info": {
           "intent": "session",
@@ -47,7 +47,7 @@
     },
     "/api/payments/commerce/solana-pay/settle": {
       "post": {
-        "operationId": "settleKnowgrphSolanaPayCheckoutSession",
+        "operationId": "settleAgenticGraphSolanaPayCheckoutSession",
         "summary": "Settle an agentic commerce checkout session from a verified Solana Pay transaction signature.",
         "x-payment-info": {
           "intent": "settlement",

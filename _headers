@@ -76,21 +76,21 @@
 /gamexr/assets/*
   Cache-Control: public, max-age=31536000, immutable, no-transform
 
-/knowgrph/*.json
+/agenticgraph/*.json
   Cache-Control: public, max-age=0, must-revalidate
 
-/knowgrph/assets/*
+/agenticgraph/assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-/knowgrph/vendor/*
+/agenticgraph/vendor/*
   Cache-Control: public, max-age=31536000, immutable
 
-/knowgrph/*
+/agenticgraph/*
   # Keep report-only directives to observable enforcement checks only. Browser-only upgrade directives
   # are ignored in report-only mode and create live console noise without adding signal.
   Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; script-src-attr 'none'; connect-src 'self' https: wss:; frame-src 'self' https: data: blob:; worker-src 'self' blob:; manifest-src 'self'
 
-/content/knowgrph/*.json
+/content/agenticgraph/*.json
   Cache-Control: public, max-age=0, must-revalidate
 
 /content/singabldr/index.html
@@ -147,7 +147,7 @@
 /content/singabldr/*.json
   Cache-Control: public, max-age=0, must-revalidate
 
-# BEGIN knowgrph generated agent-ready headers
+# BEGIN agenticgraph generated agent-ready headers
 /.well-known/acp.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
@@ -196,102 +196,102 @@
 /.well-known/agent-skills/index.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/mcp/apps/knowgrph-agent-ready.html
+/.well-known/mcp/apps/agenticgraph-agent-ready.html
   Content-Type: text/html;profile=mcp-app; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-agent-ready.md
+/.well-known/agent-skills/agenticgraph-agent-ready.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-ai-showrunner.md
+/.well-known/agent-skills/agenticgraph-ai-showrunner.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-ai-voice-studio.md
+/.well-known/agent-skills/agenticgraph-ai-voice-studio.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-application-composition.md
+/.well-known/agent-skills/agenticgraph-application-composition.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-chat-to-canvas.md
+/.well-known/agent-skills/agenticgraph-chat-to-canvas.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-commerce-readiness.md
+/.well-known/agent-skills/agenticgraph-commerce-readiness.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-html-video-renderer.md
+/.well-known/agent-skills/agenticgraph-html-video-renderer.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-mcp-local.md
+/.well-known/agent-skills/agenticgraph-mcp-local.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-memory-layer.md
+/.well-known/agent-skills/agenticgraph-memory-layer.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-research-visual.md
+/.well-known/agent-skills/agenticgraph-research-visual.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-source-files.md
+/.well-known/agent-skills/agenticgraph-source-files.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-strybldr.md
+/.well-known/agent-skills/agenticgraph-strybldr.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-video-agent.md
+/.well-known/agent-skills/agenticgraph-video-agent.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/knowgrph-visual-annotation-engine.md
+/.well-known/agent-skills/agenticgraph-visual-annotation-engine.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
 /.well-known/http-message-signatures-directory
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
-# END knowgrph generated agent-ready headers
+# END agenticgraph generated agent-ready headers
 
-# BEGIN knowgrph generated homepage discovery headers
+# BEGIN agenticgraph generated homepage discovery headers
 /
-  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </knowgrph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </knowgrph/llms.txt>; rel="service-doc"; type="text/plain", </auth.md>; rel="service-doc"; type="text/markdown", </knowgrph/health>; rel="status"; type="application/health+json", </knowgrph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
-# END knowgrph generated homepage discovery headers
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </agenticgraph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </agenticgraph/llms.txt>; rel="service-doc"; type="text/plain", </auth.md>; rel="service-doc"; type="text/markdown", </agenticgraph/health>; rel="status"; type="application/health+json", </agenticgraph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
+# END agenticgraph generated homepage discovery headers
 
-# BEGIN knowgrph generated app-shell cache headers
+# BEGIN agenticgraph generated app-shell cache headers
 /.well-known/runtime-readiness.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/content/knowgrph/.well-known/runtime-readiness.json
+/content/agenticgraph/.well-known/runtime-readiness.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/knowgrph/.well-known/runtime-readiness.json
+/agenticgraph/.well-known/runtime-readiness.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/content/knowgrph/index.html
+/content/agenticgraph/index.html
   Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
-/content/knowgrph/manifest.webmanifest
+/content/agenticgraph/manifest.webmanifest
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/content/knowgrph/sw.js
+/content/agenticgraph/sw.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/content/knowgrph/knowgrph-chat-stream-sw.js
+/content/agenticgraph/agenticgraph-chat-stream-sw.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/knowgrph/knowgrph-chat-stream-sw.js
+/agenticgraph/agenticgraph-chat-stream-sw.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/content/knowgrph/knowgrph-service-worker-revision.js
+/content/agenticgraph/agenticgraph-service-worker-revision.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/knowgrph/knowgrph-service-worker-revision.js
+/agenticgraph/agenticgraph-service-worker-revision.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/knowgrph
+/agenticgraph
   Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
-/knowgrph/
+/agenticgraph/
   Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
-/knowgrph/index.html
+/agenticgraph/index.html
   Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
-/knowgrph/manifest.webmanifest
+/agenticgraph/manifest.webmanifest
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-/knowgrph/sw.js
+/agenticgraph/sw.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
-# END knowgrph generated app-shell cache headers
+# END agenticgraph generated app-shell cache headers
 
-# BEGIN knowgrph generated XR runtime permissions headers
-/knowgrph/*
+# BEGIN agenticgraph generated XR runtime permissions headers
+/agenticgraph/*
   ! Permissions-Policy
   Permissions-Policy: accelerometer=(self), autoplay=(self), camera=(self), clipboard-read=(), clipboard-write=(), display-capture=(self), geolocation=(), gyroscope=(self), magnetometer=(self), microphone=(self), payment=(), usb=(), xr-spatial-tracking=(self)
-/content/knowgrph/*
+/content/agenticgraph/*
   ! Permissions-Policy
   Permissions-Policy: accelerometer=(self), autoplay=(self), camera=(self), clipboard-read=(), clipboard-write=(), display-capture=(self), geolocation=(), gyroscope=(self), magnetometer=(self), microphone=(self), payment=(), usb=(), xr-spatial-tracking=(self)
-# END knowgrph generated XR runtime permissions headers
+# END agenticgraph generated XR runtime permissions headers

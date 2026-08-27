@@ -2,8 +2,8 @@
 
 **Tagline:** The canvas that recreates any video — and runs the document like a program
 
-Knowgrph is an **AI/LLM-agent-native, markdown-based, self-runnable agentic
-widget canvas**. Drop in a YouTube URL, pick a favorite video, and Knowgrph
+AgenticGraph is an **AI/LLM-agent-native, markdown-based, self-runnable agentic
+widget canvas**. Drop in a YouTube URL, pick a favorite video, and AgenticGraph
 builds a storyboard, runs SenseNova text/image/video generation, hands the
 output to VideoDB, and produces a local playable animatic — all without leaving
 a single Markdown document.
@@ -16,18 +16,18 @@ The same file is three things at once:
 - a **runnable agent program** (compute nodes, approval gates, budget meters,
   and media outputs that an LLM/MCP agent can execute end to end).
 
-Knowgrph is provider-neutral and project-agnostic: it operates on any brief,
+AgenticGraph is provider-neutral and project-agnostic: it operates on any brief,
 canvas graph, tool schema, or media provider without assuming a particular
 vendor, document, or domain.
 
 ## Strybldr Demo — Recreate a Favorite Video
 
 The canonical demo proves the full E2E pipeline by importing one YouTube URL and
-recreating it as a knowgrph Strybldr canvas workflow.
+recreating it as a agenticgraph Strybldr canvas workflow.
 
 **Source:** [`Seedance 2.0 is on Artlist`](https://www.youtube.com/watch?v=77FAnT935IE) — a 60-second Artlist creator demo.
 
-**Validation input:** `docs/knowgrph-strybldr-demo.md`
+**Validation input:** `docs/agenticgraph-strybldr-demo.md`
 
 ### What the demo proves
 
@@ -48,7 +48,7 @@ recreating it as a knowgrph Strybldr canvas workflow.
 
 ### Run it (no credentials required)
 
-1. Open Knowgrph locally.
+1. Open AgenticGraph locally.
 2. `Toolbar → Launch → Import URL`.
 3. Select **Strybldr** as the renderer.
 4. Paste `https://www.youtube.com/watch?v=77FAnT935IE`.
@@ -79,7 +79,7 @@ Import URL (77FAnT935IE)
             └─ Same sequence via MCP tools → Local publish packet
 ```
 
-Without live credentials every branch falls back to a generated local knowgrph
+Without live credentials every branch falls back to a generated local agenticgraph
 animatic from approved cards, with no external publish claim.
 
 ---
@@ -97,7 +97,7 @@ animatic from approved cards, with no external publish claim.
   inspectable functions) so a node can run from a button, a chat instruction, an
   MCP tool call, or a CLI/Codex entrypoint and write its outputs back into the
   same document.
-- **Agent-native.** Agents reach the canvas over **MCP** (`airvio.co/knowgrph/mcp`),
+- **Agent-native.** Agents reach the canvas over **MCP** (`airvio.co/agenticgraph/mcp`),
   through the Floating Panel chat, or via the parser CLI/Codex. Every model call
   routes through **Cloudflare AI Gateway**; every spend boundary is gated by a
   single-use Approval_Token.
@@ -108,7 +108,7 @@ animatic from approved cards, with no external publish claim.
 
 ## The runnable document model
 
-A Knowgrph document's frontmatter flow is the program. Minimal shape:
+A AgenticGraph document's frontmatter flow is the program. Minimal shape:
 
 ```yaml
 ---
@@ -144,9 +144,9 @@ flow:
 
 | Surface | How an agent uses it |
 | --- | --- |
-| MCP (`airvio.co/knowgrph/mcp`) | Streamable-HTTP tool surface; list/call canvas tools, run flows, read back manifests. |
+| MCP (`airvio.co/agenticgraph/mcp`) | Streamable-HTTP tool surface; list/call canvas tools, run flows, read back manifests. |
 | Floating Panel Chat | In-canvas assistant with workspace, selection, and source-aware context. |
-| Parser CLI / Codex | Run documents headlessly from the `knowgrph_parser` CLI or a Codex entrypoint. |
+| Parser CLI / Codex | Run documents headlessly from the `agenticgraph_parser` CLI or a Codex entrypoint. |
 | Cloudflare AI Gateway | All model/media calls (chat, image, video) route here for cache, token count, fallback, and unified billing. |
 
 Baseline runs are provable **offline with deterministic mock providers**; real
@@ -158,20 +158,20 @@ activate only when their keys are wired and the matching gate is approved.
 This repository is the generated production mirror:
 
 ```text
-Dev:  /Users/huijoohwee/Documents/GitHub/knowgrph
-Prod: /Users/huijoohwee/Documents/GitHub/huijoohwee/content/knowgrph
-Live: https://airvio.co/knowgrph
+Dev:  /Users/huijoohwee/Documents/GitHub/agenticgraph
+Prod: /Users/huijoohwee/Documents/GitHub/huijoohwee/content/agenticgraph
+Live: https://airvio.co/agenticgraph
 ```
 
 Do not edit generated application, function, asset, or runtime-attestation files
-here. Protected green Knowgrph `main` is the sole release owner: it rebuilds this
-tree, deploys Cloudflare, verifies the apex and `/knowgrph` browser surfaces, and
+here. Protected green AgenticGraph `main` is the sole release owner: it rebuilds this
+tree, deploys Cloudflare, verifies the apex and `/agenticgraph` browser surfaces, and
 only then pushes the exact verified mirror bytes.
 
 ### Recent Mirror Release
 
 On 2026-08-14 the protected mirror lane promoted the sealed GameXR artifact from
-Knowgrph source revision `9f5ee603e5aae5a2fd31fd5fccc73595144805b2` into
+AgenticGraph source revision `9f5ee603e5aae5a2fd31fd5fccc73595144805b2` into
 `huijoohwee` canonical `main` commit `1932542fffd61a0b50ee39b64f8c59d3f524981a`.
 The release published immutable Pages deployment
 `https://f67967e8.joohwee.pages.dev` and re-proved the public route
@@ -206,10 +206,10 @@ authorize a production sync or Cloudflare deployment.
 | Path | Purpose |
 | --- | --- |
 | `canvas/` | Vite/React app, editor workspace, Source Files, graph canvas, Flow Editor, MainPanel, chat UI, and focused tests. |
-| `knowgrph_parser/` | Python parser and command-line tooling for markdown, GraphRAG, webpage, video, and workflow artifacts. |
+| `agenticgraph_parser/` | Python parser and command-line tooling for markdown, GraphRAG, webpage, video, and workflow artifacts. |
 | `grph-shared/` | Runtime-neutral TypeScript contracts for storage, rich media, markdown, payments, browser helpers, cache, and geometry. |
 | `gympgrph/` | Geospatial package consumed by the canvas app. |
-| `cloudflare/` | Pages handlers, Workers (incl. the `knowgrph-mcp` `McpAgent`), storage routes, D1 migrations, and R2-backed binary storage. |
+| `cloudflare/` | Pages handlers, Workers (incl. the `agenticgraph-mcp` `McpAgent`), storage routes, D1 migrations, and R2-backed binary storage. |
 | `mcp/` | MCP contracts, the video-remix agent runtime, and service documentation. |
 | `data/config/` | Canonical config inputs for GraphRAG, schema, orchestrator, and LLM chat boundaries. |
 | `docs/documents/` | Authored product, API, architecture, and feature documents. |
@@ -242,7 +242,7 @@ npm --prefix canvas run typecheck
 npm --prefix canvas run check
 npm --prefix canvas run doc:sanity
 npm run api-index:check
-python3 -m knowgrph_parser.webpage_cmd_test
+python3 -m agenticgraph_parser.webpage_cmd_test
 ```
 
 Avoid broad test, publish, deploy, or remote mutation commands unless the current
@@ -303,7 +303,7 @@ data/config/schema/
 Generated and local runtime outputs should stay ignored:
 
 ```text
-.knowgrph-workspace/
+.agenticgraph-workspace/
 data/outputs/
 .wrangler/
 *.tsbuildinfo
@@ -324,17 +324,17 @@ Feature-specific planning belongs in canonical docs instead of the root README:
 
 | Feature | Docs |
 | --- | --- |
-| Strybldr demo (recreate favorite video) | `docs/knowgrph-strybldr-demo.md` |
-| Strybldr | `docs/documents/knowgrph-strybldr-prd-tad.md` |
-| Strytree | `docs/documents/knowgrph-strytree-prd-tad.md` |
-| SenseNova AI API | `docs/documents/knowgrph-mcp/knowgrph-sensenova-api-prd-tad.md` |
-| VideoDB MCP | `docs/documents/knowgrph-mcp/knowgrph-videodb-mcp-prd-tad.md` |
-| MCP | `docs/documents/knowgrph-mcp/` and `mcp/README.md` |
-| Agentic Canvas OS demo | `docs/documents/knowgrph-mcp-agentic-canvas-os-prd-tad.md` |
-| AI provider layer (MiroMindAI) | `docs/documents/knowgrph-api-reference/knowgrph-miromind-api-prd-tad.md` |
-| Storage sync | `docs/documents/knowgrph-storage-sync-document.companion.md` |
-| Repo hygiene | `docs/documents/knowgrph-repo-hygiene-document.md` |
-| Payment readiness | `docs/documents/knowgrph-mainpanel-commerce-prd-tad.md` |
+| Strybldr demo (recreate favorite video) | `docs/agenticgraph-strybldr-demo.md` |
+| Strybldr | `docs/documents/agenticgraph-strybldr-prd-tad.md` |
+| Strytree | `docs/documents/agenticgraph-strytree-prd-tad.md` |
+| SenseNova AI API | `docs/documents/agenticgraph-mcp/agenticgraph-sensenova-api-prd-tad.md` |
+| VideoDB MCP | `docs/documents/agenticgraph-mcp/agenticgraph-videodb-mcp-prd-tad.md` |
+| MCP | `docs/documents/agenticgraph-mcp/` and `mcp/README.md` |
+| Agentic Canvas OS demo | `docs/documents/agenticgraph-mcp-agentic-canvas-os-prd-tad.md` |
+| AI provider layer (MiroMindAI) | `docs/documents/agenticgraph-api-reference/agenticgraph-miromind-api-prd-tad.md` |
+| Storage sync | `docs/documents/agenticgraph-storage-sync-document.companion.md` |
+| Repo hygiene | `docs/documents/agenticgraph-repo-hygiene-document.md` |
+| Payment readiness | `docs/documents/agenticgraph-mainpanel-commerce-prd-tad.md` |
 
 ## Hygiene Rules
 

@@ -1,6 +1,6 @@
 ---
-title: "Knowgrph Care Agent Demo - Multilingual Care Plan Coach"
-graphId: "md:knowgrph-care-agent-demo"
+title: "AgenticGraph Care Agent Demo - Multilingual Care Plan Coach"
+graphId: "md:agenticgraph-care-agent-demo"
 doc_type: "Care Agent Demo"
 date: "2026-07-07"
 lang: "en-US"
@@ -48,7 +48,7 @@ safety_policy:
   source_policy: "Use operator-owned care-plan notes, discharge instructions, appointment tasks, lab explanations, and approved paraphrases only."
   data_minimization: "Prefer synthetic examples, local redaction, and source hashes over raw PHI."
 runtime_defaults:
-  provider: "knowgrph-local-care-dry-run"
+  provider: "agenticgraph-local-care-dry-run"
   model: "care-agent-local-dry-run-v1"
   status: "runtime-ready"
   paid_call_count: 0
@@ -61,30 +61,30 @@ runtime_defaults:
   live_result_url: ""
 run_ready_demo:
   id: "care-agent"
-  env_selector: "VITE_KNOWGRPH_RUN_READY_DEMO=care-agent"
+  env_selector: "VITE_AGENTICGRAPH_RUN_READY_DEMO=care-agent"
   command: "npm run demo:care-agent -- --port <free-port>"
   source_root: "huijoohwee/docs"
-  source_path: "../huijoohwee/docs/knowgrph-care-agent-demo.md"
-  validation_seed_path: "/knowgrph-care-agent-demo.md"
+  source_path: "../huijoohwee/docs/agenticgraph-care-agent-demo.md"
+  validation_seed_path: "/agenticgraph-care-agent-demo.md"
   clean_canvas_recommended: true
   source_backed: true
 probe_tree_runtime:
-  version: "knowgrph-probe-tree/v0.1"
+  version: "agenticgraph-probe-tree/v0.1"
   status: "runtime-ready"
-  owner: "knowgrph/mcp/probe-tree-runtime.js"
-  contract_owner: "knowgrph/canvas/src/features/agent-ready/probeTreeContract.mjs"
+  owner: "agenticgraph/mcp/probe-tree-runtime.js"
+  contract_owner: "agenticgraph/canvas/src/features/agent-ready/probeTreeContract.mjs"
   graph_store_dir: "data/probe-tree"
-  memory_scope: "knowgrph-probe-tree"
+  memory_scope: "agenticgraph-probe-tree"
   tools:
-    generate: "knowgrph.probe.generate"
-    select: "knowgrph.probe.select"
-    evolve: "knowgrph.probe.evolve"
+    generate: "agenticgraph.probe.generate"
+    select: "agenticgraph.probe.select"
+    evolve: "agenticgraph.probe.evolve"
   local_model_adapter:
     provider: "ollama"
-    model_env: "KNOWGRPH_PROBE_TREE_MODEL"
-    url_env: "KNOWGRPH_PROBE_TREE_MODEL_URL"
-    allow_remote_env: "KNOWGRPH_PROBE_TREE_MODEL_ALLOW_REMOTE"
-    timeout_env: "KNOWGRPH_PROBE_TREE_MODEL_TIMEOUT_MS"
+    model_env: "AGENTICGRAPH_PROBE_TREE_MODEL"
+    url_env: "AGENTICGRAPH_PROBE_TREE_MODEL_URL"
+    allow_remote_env: "AGENTICGRAPH_PROBE_TREE_MODEL_ALLOW_REMOTE"
+    timeout_env: "AGENTICGRAPH_PROBE_TREE_MODEL_TIMEOUT_MS"
     stream: false
     structured_output: true
     default_state: "disabled until host-owned model env is configured; heuristic fallback stays local-zero-cost"
@@ -221,8 +221,8 @@ runtime_proof:
   status: "runtime-ready"
   proven_at: "2026-07-07"
   proof_scope: "Dev-local Markdown/frontmatter/runtime contract only"
-  proof_owner: "knowgrph/canvas focused post-parser test registry"
-  validation_cwd: "knowgrph repo root"
+  proof_owner: "agenticgraph/canvas focused post-parser test registry"
+  validation_cwd: "agenticgraph repo root"
   focused_checks:
     - "docs.careAgentDemo.runtimeReady"
     - "docs.careAgentDemo.runReadyMode"
@@ -234,7 +234,7 @@ runtime_proof:
     - "npm --prefix canvas run test:ci:unit -- docs.careAgentDemo.runReadyMode"
     - "node --test mcp/__tests__/probe-tree-runtime.test.mjs"
     - "npm --prefix canvas run test:ci:unit -- probeTree.select.frontmatterFlowCanvasSync"
-    - "FLOW_DIAGRAM_SAMPLE_PATHS=../../huijoohwee/docs/knowgrph-care-agent-demo.md npm --prefix canvas run test:ci:unit -- markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
+    - "FLOW_DIAGRAM_SAMPLE_PATHS=../../huijoohwee/docs/agenticgraph-care-agent-demo.md npm --prefix canvas run test:ci:unit -- markdown.frontmatterFlowGraph.fidelity.publishedFlowDiagramDocs.dynamicPanels"
   parsed_frontmatter_flow: true
   computed_frontmatter_flow: true
   probe_tree_canvas_sync_verified: true
@@ -474,7 +474,7 @@ flow:
       "kgc:readingSummary": {key: "kgc:readingSummary", type: string, value: "Probe-tree branching asks the next best care-plan clarification, persists the selected path as type: probe markdown, and writes resolved exemplars to local memory."}
       lane: {key: lane, type: string, value: "Probe"}
       probeOptions: {key: probeOptions, type: array, value: []}
-      probeTools: {key: probeTools, type: array, value: ["knowgrph.probe.generate","knowgrph.probe.select","knowgrph.probe.evolve"]}
+      probeTools: {key: probeTools, type: array, value: ["agenticgraph.probe.generate","agenticgraph.probe.select","agenticgraph.probe.evolve"]}
       "visual:importance": {key: "visual:importance", type: number, value: 20}
       "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 15.65685424949238}
       "visual:xIndex": {key: "visual:xIndex", type: number, value: 3}
@@ -658,8 +658,8 @@ strybldr_storyboard:
       policy: Write local packet fields only; do not claim Prod, Cloudflare, provider IDs, patient outcomes, or live evidence without explicit operator approval and returned proof.
   sources:
     - sourceUnitId: care-agent-demo-source
-      workspacePath: docs/knowgrph-care-agent-demo.md
-      relativePath: knowgrph-care-agent-demo.md
+      workspacePath: docs/agenticgraph-care-agent-demo.md
+      relativePath: agenticgraph-care-agent-demo.md
       originalName: Care agent demo source
       mediaKind: doc
       mimeHint: text/markdown
@@ -673,7 +673,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: source-metadata
-      provider: knowgrph
+      provider: agenticgraph
       lane: Source
       order: 1
       prompt: 'Run /source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body.'
@@ -685,7 +685,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: agentic-os-invocation
-      provider: knowgrph
+      provider: agenticgraph
       lane: Ideation
       order: 2
       prompt: 'Run /memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator.'
@@ -697,7 +697,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-plan
-      provider: knowgrph-local-care-dry-run
+      provider: agenticgraph-local-care-dry-run
       lane: Harness
       order: 3
       prompt: 'Run /harness.define /mcp.capabilities /cost.audit #harness #token-economics @local-harness @cost-log @mcp-gateway.'
@@ -709,10 +709,10 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: probe-tree-runtime
-      provider: knowgrph-local-probe-tree
+      provider: agenticgraph-local-probe-tree
       lane: Probe
       order: 4
-      prompt: Run knowgrph.probe.generate, select one option, then evolve after resolution.
+      prompt: Run agenticgraph.probe.generate, select one option, then evolve after resolution.
       action: 'Persist user-selected clarification paths as type: probe markdown nodes with branches-to edges.'
       summary: Probe-tree runtime turns vague care-plan intake into a bounded branch path and local memory exemplar.
     - id: care-canvas-card
@@ -721,7 +721,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: canvas-proof-plan
-      provider: knowgrph
+      provider: agenticgraph
       lane: Canvas
       order: 5
       prompt: 'Run /canvas.project #canvas #runtime-ready @canvas @runtime-proof.'
@@ -733,7 +733,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: safety-boundary
-      provider: knowgrph
+      provider: agenticgraph
       lane: Safety
       order: 6
       prompt: Check clinical decision, emergency, medication-dose, conflicting-instruction, and PHI upload gates.
@@ -745,7 +745,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: cost-ledger
-      provider: knowgrph-local-care-dry-run
+      provider: agenticgraph-local-care-dry-run
       lane: Cost
       order: 7
       prompt: 'Run /cost.audit #token-economics #tco #foss @cost-log @operator.'
@@ -757,7 +757,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-review
-      provider: knowgrph
+      provider: agenticgraph
       lane: Validation
       order: 8
       prompt: 'Run /validation.run #vcc #no-hardcode @runtime-proof @dev-only.'
@@ -769,7 +769,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-publish
-      provider: knowgrph
+      provider: agenticgraph
       lane: Publish
       order: 9
       prompt: 'Run /deploy.guard #dev-only #approval-gate @operator @dev-only.'
@@ -781,7 +781,7 @@ strybldr_storyboard:
       mediaUrl: http://localhost:5185/api/storage/media/airvio/runs/upload-088c7665f3bdba06/image/image-088c7665f3bdba06.jpg?kg_media_token=eyJydW5JZCI6InVwbG9hZC0wODhjNzY2NWYzYmRiYTA2IiwiZXhwaXJlc0F0IjoxNzgzNTE2ODA0MTA2fQ
 ---
 
-# Knowgrph Care Agent Demo
+# AgenticGraph Care Agent Demo
 
 This is a `/prd-tad.create` minimum viable care-agent seed for multilingual patient engagement. It uses `/source.normalize`, `/memory.seed`, `/harness.define`, `/cost.audit`, `/canvas.project`, `/runtime-ready.check`, `/validation.run`, and `/deploy.guard` with existing `#` semantic filters and `@` bindings. /memory.seed #frontmatter #ttv #vcc @source.frontmatter @source.body
 
@@ -793,7 +793,7 @@ The demo is intentionally neutral and local-first. It explains a redacted care p
 |---|---|---|---|
 | Source | `/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body` | Redacted source summary and missing-field list | Reject PHI, credentials, and stale hardcodes |
 | Ideation | `/memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator` | Minimum viable patient-engagement journey | Keep scope small and ROI-positive |
-| Probe tree | `knowgrph.probe.generate` → `knowgrph.probe.select` → `knowgrph.probe.evolve` | Candidate clarification questions, selected branch node, and memory exemplar | Markdown graph store stays SSOT; local model adapter is host-owned |
+| Probe tree | `agenticgraph.probe.generate` → `agenticgraph.probe.select` → `agenticgraph.probe.evolve` | Candidate clarification questions, selected branch node, and memory exemplar | Markdown graph store stays SSOT; local model adapter is host-owned |
 | Harness | `/harness.define /mcp.capabilities #harness @local-harness @mcp-gateway` | Typed input, output, fallback, bounds, and capability list | Fail before spend when schema or approval is missing |
 | Cost | `/cost.audit #token-economics #tco @cost-log @operator` | Token, cache, TCO, and budget ledger | Local dry-run reports exact zero |
 | Canvas | `/canvas.project #canvas @canvas @runtime-proof` | Storyboard cards and semantic Rich Media panel | Existing shared Canvas owners only |
@@ -815,9 +815,9 @@ care_agent_local_harness:
   source: "@source.frontmatter + @source.body"
   normalize: "/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body"
   ideation: "/memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator"
-  probe_generate: "knowgrph.probe.generate thread_root_id=care-agent-demo current_node_id=care_source k=3 recall_top_k=0 token_budget=1200"
-  probe_select: "knowgrph.probe.select writes a fresh type: probe markdown node, branches-to edge, checkpoint metadata, and local-zero cost_log"
-  probe_evolve: "knowgrph.probe.evolve scores the resolved path, reports incomplete parents, writes a scoped memory exemplar, and returns local-zero cost_log"
+  probe_generate: "agenticgraph.probe.generate thread_root_id=care-agent-demo current_node_id=care_source k=3 recall_top_k=0 token_budget=1200"
+  probe_select: "agenticgraph.probe.select writes a fresh type: probe markdown node, branches-to edge, checkpoint metadata, and local-zero cost_log"
+  probe_evolve: "agenticgraph.probe.evolve scores the resolved path, reports incomplete parents, writes a scoped memory exemplar, and returns local-zero cost_log"
   probe_mutation_semantics: "probe.select and probe.evolve are non-idempotent process tools; host retry behavior must not duplicate branches or silently rewrite scores"
   harness: "/harness.define /mcp.capabilities #harness @local-harness @mcp-gateway"
   cost: "/cost.audit #token-economics #tco @cost-log @operator"
@@ -844,8 +844,8 @@ care_agent_local_harness:
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
 3. Replace the synthetic care-plan note with operator-redacted source content only.
 4. Run `/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body`.
-5. Run `knowgrph.probe.generate` with `thread_root_id=care-agent-demo`, `current_node_id=care_source`, `recall_top_k=0`, `token_budget=1200`, and the redacted context; optionally configure `KNOWGRPH_PROBE_TREE_MODEL` for Ollama-backed local generation.
-6. Run `knowgrph.probe.select` for the user-selected option, then run `knowgrph.probe.evolve` after the branch resolves; keep the parent checkpoint materialized in `data/probe-tree`, require local-zero `cost_log` in both responses, and treat any returned incomplete-path status as a validation blocker.
+5. Run `agenticgraph.probe.generate` with `thread_root_id=care-agent-demo`, `current_node_id=care_source`, `recall_top_k=0`, `token_budget=1200`, and the redacted context; optionally configure `AGENTICGRAPH_PROBE_TREE_MODEL` for Ollama-backed local generation.
+6. Run `agenticgraph.probe.select` for the user-selected option, then run `agenticgraph.probe.evolve` after the branch resolves; keep the parent checkpoint materialized in `data/probe-tree`, require local-zero `cost_log` in both responses, and treat any returned incomplete-path status as a validation blocker.
 7. Run `/harness.define /cost.audit #harness #token-economics @local-harness @cost-log`.
 8. Run `/canvas.project #canvas @canvas @runtime-proof` and review the Storyboard plus Rich Media panel.
 9. Run `/validation.run #vcc @runtime-proof @dev-only`.
@@ -854,7 +854,7 @@ care_agent_local_harness:
 ## Acceptance Checklist
 
 - [x] Frontmatter parses from byte zero without repair fallback.
-- [x] Clean-canvas demo mode loads this sibling docs source through `VITE_KNOWGRPH_RUN_READY_DEMO=care-agent`.
+- [x] Clean-canvas demo mode loads this sibling docs source through `VITE_AGENTICGRAPH_RUN_READY_DEMO=care-agent`.
 - [x] Source content is synthetic or operator-redacted.
 - [x] `/`, `#`, and `@` tokens match the Agentic OS dictionaries.
 - [x] Probe-tree tools are registered in local MCP and `probe.generate` does not mutate graph state.

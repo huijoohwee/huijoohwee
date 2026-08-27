@@ -1,11 +1,11 @@
-# Knowgrph Strybldr Skill
+# AgenticGraph Strybldr Skill
 
 Use this skill when: Turn image or media source units into editable Storyboard cards and bounded media handoff artifacts through Strybldr and shared renderer owners.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-strybldr`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-strybldr`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_0d4e3f41`
 - Scope: `browser-local-source-backed`
 - Mutation boundary: `browser-local-user-mediated`
@@ -43,7 +43,7 @@ Browser-local tools:
 - inspect_local_source_files_snapshot
 
 Local MCP tools:
-- knowgrph.vdeoxpln.list
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -62,7 +62,7 @@ Local MCP tools:
 - canvas/src/features/workspace-fs/workspaceFs.ts
 - canvas/src/lib/config.render.ts
 - canvas/src/lib/graph/semanticKey.ts
-- docs/documents/knowgrph-strybldr-prd-tad.md
+- docs/documents/agenticgraph-strybldr-prd-tad.md
 
 ## Artifact Policy
 
@@ -89,7 +89,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

@@ -1,11 +1,11 @@
-# Knowgrph Application Composition Skill
+# AgenticGraph Application Composition Skill
 
 Use this skill when: Compose exact-version agents, prompts, typed values, and opaque third-party integration capabilities into immutable provider-neutral plans, then run them through existing bounded runtime owners.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-application-composition`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-application-composition`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_da3f5875`
 - Scope: `local-stdio-owner-composed`
 - Mutation boundary: `local-and-external-approval-gated`
@@ -46,10 +46,10 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- knowgrph.application.catalog
-- knowgrph.application.execute
-- knowgrph.application.plan
-- knowgrph.vdeoxpln.list
+- agenticgraph.application.catalog
+- agenticgraph.application.execute
+- agenticgraph.application.plan
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -96,7 +96,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

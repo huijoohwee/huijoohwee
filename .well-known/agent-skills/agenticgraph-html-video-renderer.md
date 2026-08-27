@@ -1,11 +1,11 @@
-# Knowgrph HTML Video Renderer Skill
+# AgenticGraph HTML Video Renderer Skill
 
 Use this skill when: Render HTML, CSS, and data documents to MP4 video artifacts through a runtime-selected pluggable engine and the existing rich media output owner.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-html-video-renderer`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-html-video-renderer`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_8dde8e02`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-approval-gated`
@@ -42,20 +42,20 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- knowgrph.html_video.render
-- knowgrph.vdeoxpln.list
+- agenticgraph.html_video.render
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
 - Validate the Render_Spec before any engine call.
-- Resolve active engine from KNOWGRPH_HTML_VIDEO_ENGINE or engineHint at invocation time.
+- Resolve active engine from AGENTICGRAPH_HTML_VIDEO_ENGINE or engineHint at invocation time.
 - Execute the render engine and capture the video/mp4 blob.
 - Route the blob through writeRichMediaWidgetRunOutputArtifact exactly once.
 - Return renderJobId, outputPath, outputManifestPath, and outputStorageUrl.
 
 ## Source Owners
 
-- canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
+- canvas/src/features/agent-ready/agenticgraphVdeoxplnContract.mjs
 - canvas/src/features/chat/richMediaRun.ts
 - canvas/src/features/html-video-renderer/htmlVideoEngineRegistry.ts
 - canvas/src/features/html-video-renderer/htmlVideoFlowNode.ts
@@ -94,7 +94,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

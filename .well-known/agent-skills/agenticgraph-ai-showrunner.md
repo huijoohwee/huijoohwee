@@ -1,11 +1,11 @@
-# Knowgrph AI Showrunner Skill
+# AgenticGraph AI Showrunner Skill
 
 Use this skill when: Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Storyboard Widget owners.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-ai-showrunner`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-ai-showrunner`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_7e480fd7`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-approval-gated`
@@ -45,13 +45,13 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- knowgrph.showrunner.approve_stage
-- knowgrph.showrunner.get_artifact
-- knowgrph.showrunner.post_choice
-- knowgrph.showrunner.run_status
-- knowgrph.showrunner.start_run
-- knowgrph.showrunner.submit_critique
-- knowgrph.vdeoxpln.list
+- agenticgraph.showrunner.approve_stage
+- agenticgraph.showrunner.get_artifact
+- agenticgraph.showrunner.post_choice
+- agenticgraph.showrunner.run_status
+- agenticgraph.showrunner.start_run
+- agenticgraph.showrunner.submit_critique
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -93,7 +93,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

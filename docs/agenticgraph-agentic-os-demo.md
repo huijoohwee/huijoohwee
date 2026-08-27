@@ -1,12 +1,12 @@
 ---
-title: "Knowgrph Agentic OS Demo - Video Agent Analysis"
+title: "AgenticGraph Agentic OS Demo - Video Agent Analysis"
 schema: "kgc-computing-flow/v1"
-graphId: "md:knowgrph-agentic-os-video-agent-analysis-demo"
+graphId: "md:agenticgraph-agentic-os-video-agent-analysis-demo"
 doc_type: "Agentic OS Demo"
 date: "2026-07-02"
 lang: "en-US"
-implementation_contract: "../../knowgrph/docs/documents/knowgrph-agentic-os-prd-tad.md"
-kiro_spec: ".kiro/specs/knowgrph-agentic-os"
+implementation_contract: "../../agenticgraph/docs/documents/agenticgraph-agentic-os-prd-tad.md"
+kiro_spec: ".kiro/specs/agenticgraph-agentic-os"
 validation_input_forbid_hardcode_in_repo: "true"
 deployed_api_claim: "false"
 kgCanvasSurfaceMode: "2d"
@@ -22,7 +22,7 @@ kgFloatingPanelOpen: "true"
 kgFloatingPanelView: "mcp"
 agentic_os_demo_schema: "agentic-os-video-agent-demo/v1"
 agentic_os_demo_run_id: "kg_aos_video_agent_analysis_77FAnT935IE"
-agentic_os_tool: "knowgrph.os.status"
+agentic_os_tool: "agenticgraph.os.status"
 source_url: "https://www.youtube.com/watch?v=77FAnT935IE"
 source_video_id: "77FAnT935IE"
 source_provider: "YouTube"
@@ -36,7 +36,7 @@ kgWorkspaceOutputRootPattern: "/docs_/<run-timestamp>"
 kgVideoAgentArtifactPattern: "/docs_/<run-timestamp>/youtube-<source-video-id-lower>.video-agent.md"
 kgVideoSequenceTimeline: "true"
 videoAgentRuntimeContract:
-  schema: "knowgrph-video-agent/v1"
+  schema: "agenticgraph-video-agent/v1"
   sourceUrlField: "source_url"
   sourceVideoIdField: "source_video_id"
   outputStore:
@@ -48,7 +48,7 @@ videoAgentRuntimeContract:
     - "no copied external code"
   referenceBoundary:
     kind: "inspiration-only"
-    implementation: "native-knowgrph"
+    implementation: "native-agenticgraph"
     copyPolicy: "no-external-code-copy"
     dependencyPolicy: "no-external-video-agent-runtime"
     runtimeDependency: false
@@ -115,8 +115,8 @@ flow:
       label: "Self Runnable Demo"
       lane: "Run"
       summary: "Runs Agentic OS status checks directly from the local repo without UI launch steps."
-      action: "Execute the Node self-run command from the Knowgrph Dev repo."
-      prompt: "Call knowgrph.os.status for process_list, capabilities, cost_summary, gate_catalog, and circuit_breakers."
+      action: "Execute the Node self-run command from the AgenticGraph Dev repo."
+      prompt: "Call agenticgraph.os.status for process_list, capabilities, cost_summary, gate_catalog, and circuit_breakers."
       strybldrSourceUnitId: "agentic-os-demo-source"
       strybldrElementId: "agentic-os-demo-self-run"
     - id: "source_doc"
@@ -162,7 +162,7 @@ flow:
       strybldrElementId: "agentic-os-demo-video-agent-routes"
     - id: "os_status"
       type: "StoryboardFrame"
-      label: "knowgrph.os.status"
+      label: "agenticgraph.os.status"
       lane: "Agentic OS"
       summary: "Reads process, capability, cost, gate, and circuit-breaker state without model calls."
       action: "Return all five Agentic OS read views as JSON evidence."
@@ -205,7 +205,7 @@ flow:
       label: "observe"
 ---
 
-# Knowgrph Agentic OS Demo - Video Agent Analysis
+# AgenticGraph Agentic OS Demo - Video Agent Analysis
 
 This document is a self-runnable external validation input for demonstrating Agentic OS visibility around a video-agent analysis workflow.
 
@@ -223,9 +223,9 @@ stream URLs, generated media URLs, and publish paths must not hardcode this URL 
 
 ## Demo Objective
 
-Show that Knowgrph can use an operator-supplied video URL from this validation document, prepare source-backed video-agent analysis context, and expose Agentic OS state through one zero-token, read-only tool:
+Show that AgenticGraph can use an operator-supplied video URL from this validation document, prepare source-backed video-agent analysis context, and expose Agentic OS state through one zero-token, read-only tool:
 
-`knowgrph.os.status`
+`agenticgraph.os.status`
 
 The demo proves five Agentic OS read views around the workflow:
 
@@ -239,10 +239,10 @@ The demo proves five Agentic OS read views around the workflow:
 
 ## Self-Run
 
-Run from `/Users/huijoohwee/Documents/GitHub/knowgrph`:
+Run from `/Users/huijoohwee/Documents/GitHub/agenticgraph`:
 
 ```bash
-KNOWGRPH_AGENTIC_OS_DEMO_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-agentic-os-demo.md" \
+AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/agenticgraph-agentic-os-demo.md" \
 node --input-type=module <<'NODE'
 import { runOsStatusTool } from "./mcp/os-status-runtime.js";
 
@@ -262,7 +262,7 @@ This command runs the Agentic OS read views directly from the local repo. It doe
 
 ### Generate Video-Agent Artifact
 
-Run this from `/Users/huijoohwee/Documents/GitHub/knowgrph/canvas` to generate a timestamped artifact shaped like:
+Run this from `/Users/huijoohwee/Documents/GitHub/agenticgraph/canvas` to generate a timestamped artifact shaped like:
 
 `/docs_/<run-timestamp>/youtube-<source-video-id-lower>.video-agent.md`
 
@@ -270,14 +270,14 @@ The command reads `source_url` and `source_video_id` from this validation docume
 provider ids, stream URLs, generated media URLs, frame boxes, or a fixed timestamp back into this source file.
 
 ```bash
-KNOWGRPH_AGENTIC_OS_DEMO_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-agentic-os-demo.md" \
+AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/agenticgraph-agentic-os-demo.md" \
 npm exec tsx -- <<'TS'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { getWorkspaceFs } from '@/features/workspace-fs/workspaceFs';
 import { materializeVideoAgentUrlImportDocument } from '@/features/markdown-workspace/workspaceImport/videoAgentUrlImport';
 
-const inputPath = process.env.KNOWGRPH_AGENTIC_OS_DEMO_INPUT || '';
+const inputPath = process.env.AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT || '';
 const inputText = readFileSync(inputPath, 'utf8');
 const readQuoted = (key: string) => {
   const match = inputText.match(new RegExp(`^${key}:\\s*"([^"]+)"`, 'm'));
@@ -326,10 +326,10 @@ and timeline tracks.
 Optional MCP-host check:
 
 ```bash
-KNOWGRPH_ROOT="/Users/huijoohwee/Documents/GitHub/knowgrph" npm --prefix mcp start
+AGENTICGRAPH_ROOT="/Users/huijoohwee/Documents/GitHub/agenticgraph" npm --prefix mcp start
 ```
 
-Use an MCP client to call `knowgrph.os.status` with the same five views if you want to verify stdio transport separately. The self-run command above is the canonical demo path.
+Use an MCP client to call `agenticgraph.os.status` with the same five views if you want to verify stdio transport separately. The self-run command above is the canonical demo path.
 
 ## Agentic OS Checkpoints
 
@@ -337,7 +337,7 @@ Use an MCP client to call `knowgrph.os.status` with the same five views if you w
 
 ```json
 {
-  "tool": "knowgrph.os.status",
+  "tool": "agenticgraph.os.status",
   "arguments": {
     "view": "process_list"
   }
@@ -350,20 +350,20 @@ Expected: readable harness process entries are returned with named unavailable s
 
 ```json
 {
-  "tool": "knowgrph.os.status",
+  "tool": "agenticgraph.os.status",
   "arguments": {
     "view": "capabilities"
   }
 }
 ```
 
-Expected: `knowgrph.os.status` is present through the shared local MCP contract, video-agent capabilities appear when readable, optional Cloudflare MCP is reported only when reachable, and duplicate tool ids are deduped.
+Expected: `agenticgraph.os.status` is present through the shared local MCP contract, video-agent capabilities appear when readable, optional Cloudflare MCP is reported only when reachable, and duplicate tool ids are deduped.
 
 ### Cost Summary
 
 ```json
 {
-  "tool": "knowgrph.os.status",
+  "tool": "agenticgraph.os.status",
   "arguments": {
     "view": "cost_summary"
   }
@@ -376,7 +376,7 @@ Expected: Agentic OS status reads report zero prompt tokens, zero completion tok
 
 ```json
 {
-  "tool": "knowgrph.os.status",
+  "tool": "agenticgraph.os.status",
   "arguments": {
     "view": "gate_catalog"
   }
@@ -389,7 +389,7 @@ Expected: paid or credentialed video analysis remains operator-gated; transcript
 
 ```json
 {
-  "tool": "knowgrph.os.status",
+  "tool": "agenticgraph.os.status",
   "arguments": {
     "view": "circuit_breakers"
   }
@@ -416,7 +416,7 @@ and parsed output counts belong in the generated artifact, not as backfilled sou
 | `generatorOwner` | `canvas/src/features/markdown-workspace/workspaceImport/videoAgentUrlImport.ts` |
 | `pipelineOwner` | `canvas/src/features/video-agent/videoAgentPipeline.ts` |
 | `approvalState` | `required-before-paid-provider-action` |
-| `agenticOsTool` | `knowgrph.os.status` |
+| `agenticOsTool` | `agenticgraph.os.status` |
 | `providerJobId` | Blank until a live provider returns it. |
 | `streamUrl` | Blank until a live provider returns it. |
 | `transcriptText` | Not authored in this document. |
@@ -442,7 +442,7 @@ This source file intentionally does not contain generated `frameBoundingBoxes`, 
 - [x] The demo is self-runnable from the local repo.
 - [x] The only authored validation URL is `https://www.youtube.com/watch?v=77FAnT935IE`.
 - [x] The validation label is `test-validation-forbid-hardcode-in-repo`.
-- [x] Agentic OS is represented as read-only status aggregation through `knowgrph.os.status`.
+- [x] Agentic OS is represented as read-only status aggregation through `agenticgraph.os.status`.
 - [x] The video-agent artifact path is runtime-derived as `/docs_/<run-timestamp>/youtube-<source-video-id-lower>.video-agent.md`.
 - [x] The source document declares video-agent routes without backfilling generated frame, transcript, dataset, zone-count, or srcdoc payloads.
 - [x] The demo covers `process_list`, `capabilities`, `cost_summary`, `gate_catalog`, and `circuit_breakers`.
@@ -451,13 +451,13 @@ This source file intentionally does not contain generated `frameBoundingBoxes`, 
 
 ## Validation Commands
 
-Run these from `/Users/huijoohwee/Documents/GitHub/knowgrph` when validating the implementation surface:
+Run these from `/Users/huijoohwee/Documents/GitHub/agenticgraph` when validating the implementation surface:
 
 ```bash
 npm run hygiene:check
 node --test mcp/__tests__/os-status-runtime.test.mjs mcp/__pbt__/os-status.pbt.test.mjs
-node --test cloudflare/workers/knowgrph-mcp/__tests__/tool-registry.test.mjs
-KNOWGRPH_FORBID_HARDCODE_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/knowgrph-agentic-os-demo.md" npm --prefix canvas run test:ci:unit -- policy.forbidHardcodedYouTubeUrlLiteral
+node --test cloudflare/workers/agenticgraph-mcp/__tests__/tool-registry.test.mjs
+AGENTICGRAPH_FORBID_HARDCODE_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/agenticgraph-agentic-os-demo.md" npm --prefix canvas run test:ci:unit -- policy.forbidHardcodedYouTubeUrlLiteral
 ```
 
 ## Guardrails

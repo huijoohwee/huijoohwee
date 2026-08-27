@@ -1,11 +1,11 @@
-# Knowgrph Video Agent Skill
+# AgenticGraph Video Agent Skill
 
-Use this skill when: Reason over operator-supplied video sources through native knowgrph ingestion, parsing, annotation, dataset operations, zone counting, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.
+Use this skill when: Reason over operator-supplied video sources through native agenticgraph ingestion, parsing, annotation, dataset operations, zone counting, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-video-agent`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-video-agent`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_098382a2`
 - Scope: `browser-local-and-local-stdio`
 - Mutation boundary: `local-approval-gated`
@@ -53,10 +53,10 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- knowgrph.annotate.image
-- knowgrph.annotate.video_frame
-- knowgrph.html_video.render
-- knowgrph.vdeoxpln.list
+- agenticgraph.annotate.image
+- agenticgraph.annotate.video_frame
+- agenticgraph.html_video.render
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -69,7 +69,7 @@ Local MCP tools:
 
 ## Source Owners
 
-- canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
+- canvas/src/features/agent-ready/agenticgraphVdeoxplnContract.mjs
 - canvas/src/features/chat/richMediaRun.ts
 - canvas/src/features/html-video-renderer/htmlVideoFlowNode.ts
 - canvas/src/features/html-video-renderer/htmlVideoRendererSsot.ts
@@ -112,7 +112,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

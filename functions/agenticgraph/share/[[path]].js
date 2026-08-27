@@ -1,5 +1,5 @@
-import { onRequest as onKnowgrphAgentReadyRequest } from "../[[path]].js";
+import { onRequest as onAgenticGraphAgentReadyRequest } from "../[[path]].js";
 
 export async function onRequest(context) {
-  return onKnowgrphAgentReadyRequest(context);
+  return onAgenticGraphAgentReadyRequest(context);
 }

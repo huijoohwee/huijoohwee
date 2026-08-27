@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Knowgrph Agent Ready</title>
+  <title>AgenticGraph Agent Ready</title>
   <style>
     :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     * { box-sizing: border-box; }
@@ -34,17 +34,17 @@
   <main>
     <header>
       <section>
-        <h1>Knowgrph Agent Ready</h1>
+        <h1>AgenticGraph Agent Ready</h1>
         <p>Interactive MCP Apps view backed by the existing read-only agent surface.</p>
       </section>
       <nav class="actions" aria-label="Agent Ready actions">
         <button id="refresh" type="button">Refresh</button>
-        <a href="https://airvio.co/knowgrph/" target="_blank" rel="noreferrer">Open</a>
+        <a href="https://airvio.co/agenticgraph/" target="_blank" rel="noreferrer">Open</a>
       </nav>
     </header>
     <section aria-label="MCP app state">
       <dl>
-        <dt>Resource</dt><dd>ui://knowgrph/agent-ready</dd>
+        <dt>Resource</dt><dd>ui://agenticgraph/agent-ready</dd>
         <dt>Tool</dt><dd>inspect_agent_surface</dd>
         <dt>Host</dt><dd id="host">Not connected.</dd>
         <dt>Updated</dt><dd>2026-06-05</dd>
@@ -58,12 +58,12 @@
     <p>A source-backed canvas where / routes work, # sets meaning, and @ binds context.</p>
     <p>One canonical operator contract: install and discovery stay on the public endpoint, while live /, #, @ grammar stays on the approval-gated control plane or an app-owned forwarder until the host proves MCP session support.</p>
     <p>Canonicalize the contract first, not the transport. Keep the runtime split underneath until hosted proof supports a single runtime.</p>
-    <p>Live grammar executes through knowgrph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.</p>
+    <p>Live grammar executes through agenticgraph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.</p>
     <p>Hosted app builders such as Lovable and Vercel should keep /mcp for discovery and use an app-owned forwarder for live /, #, @ unless the host proves MCP session support.</p>
     <ol>
-      <li>Map intent: install https://airvio.co/knowgrph/mcp first for public discovery, retrieval, and inspection.</li>
-      <li>Orchestrate agents: add https://airvio.co/knowgrph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke.</li>
-      <li>Prove outcomes: for zero-spend evaluation, use the source-side <code>README.md</code> quick start or <code>docs/documents/knowgrph-superagent-harness.md</code> first.</li>
+      <li>Map intent: install https://airvio.co/agenticgraph/mcp first for public discovery, retrieval, and inspection.</li>
+      <li>Orchestrate agents: add https://airvio.co/agenticgraph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke.</li>
+      <li>Prove outcomes: for zero-spend evaluation, use the source-side <code>README.md</code> quick start or <code>docs/documents/agenticgraph-superagent-harness.md</code> first.</li>
     </ol>
   </section>
 </section>
@@ -90,7 +90,7 @@
   </main>
   <script>
   (() => {
-    const boot = {"appUrl":"https://airvio.co/knowgrph/","updatedAt":"2026-06-05","resourceUri":"ui://knowgrph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26","onboarding":{"promise":"Map intent. Orchestrate agents. Prove outcomes.","grammarSummary":"A source-backed canvas where / routes work, # sets meaning, and @ binds context.","canonicalOperatorContract":"One canonical operator contract: install and discovery stay on the public endpoint, while live /, #, @ grammar stays on the approval-gated control plane or an app-owned forwarder until the host proves MCP session support.","canonicalTransportRule":"Canonicalize the contract first, not the transport. Keep the runtime split underneath until hosted proof supports a single runtime.","publicReadMcpUrl":"https://airvio.co/knowgrph/mcp","controlPlaneMcpUrl":"https://airvio.co/knowgrph/control-plane/mcp","controlPlaneCondition":"Add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.","grammarToolName":"knowgrph.agentic_canvas_os.docs.invoke","grammarExamples":["/mcp.capabilities","#mcp","@mcp-gateway"],"grammarExecutionBoundary":"Keep install on the public discovery endpoint and execute live grammar on the approval-gated control plane.","hostedBuilderExamples":["Lovable","Vercel"],"hostedGrammarDefaultPath":"Hosted app builders such as Lovable and Vercel should keep /mcp for discovery and use an app-owned forwarder for live /, #, @ unless the host proves MCP session support.","hostedGrammarFallback":"app-owned-forwarder","cheapestProofPath":"Use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md in the knowgrph repo before hosted setup.","steps":[{"order":1,"label":"Map intent","action":"Map intent: install https://airvio.co/knowgrph/mcp first for public discovery, retrieval, and inspection."},{"order":2,"label":"Orchestrate agents","action":"Orchestrate agents: add https://airvio.co/knowgrph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke."},{"order":3,"label":"Prove outcomes","action":"Prove outcomes: for zero-spend evaluation, run the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md first."}]},"promotionRecovery":{"availability":"template-only-published-contract","scope":"mirror-saved-local-artifacts-only","commandTemplate":"#promotion.retry \u003cpath...>","exactCommandSource":"browser-local finalize inspection after a real mirroring failure","reusesSavedLocalArtifacts":true,"rerunsValidation":false,"reappliesCanvas":false,"githubBeforeStorage":true,"insertionMode":"append","surfaces":["published-operator-card","final-assistant-ledger","browser-local-finalize-inspection","warning-toast","toast-insert-action"],"note":"This published card shows the command template only. The exact runnable path-bearing command appears after a real mirroring failure in the browser-local finalize inspection, finalize ledger, and warning toast."}};
+    const boot = {"appUrl":"https://airvio.co/agenticgraph/","updatedAt":"2026-06-05","resourceUri":"ui://agenticgraph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26","onboarding":{"promise":"Map intent. Orchestrate agents. Prove outcomes.","grammarSummary":"A source-backed canvas where / routes work, # sets meaning, and @ binds context.","canonicalOperatorContract":"One canonical operator contract: install and discovery stay on the public endpoint, while live /, #, @ grammar stays on the approval-gated control plane or an app-owned forwarder until the host proves MCP session support.","canonicalTransportRule":"Canonicalize the contract first, not the transport. Keep the runtime split underneath until hosted proof supports a single runtime.","publicReadMcpUrl":"https://airvio.co/agenticgraph/mcp","controlPlaneMcpUrl":"https://airvio.co/agenticgraph/control-plane/mcp","controlPlaneCondition":"Add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.","grammarToolName":"agenticgraph.agentic_canvas_os.docs.invoke","grammarExamples":["/mcp.capabilities","#mcp","@mcp-gateway"],"grammarExecutionBoundary":"Keep install on the public discovery endpoint and execute live grammar on the approval-gated control plane.","hostedBuilderExamples":["Lovable","Vercel"],"hostedGrammarDefaultPath":"Hosted app builders such as Lovable and Vercel should keep /mcp for discovery and use an app-owned forwarder for live /, #, @ unless the host proves MCP session support.","hostedGrammarFallback":"app-owned-forwarder","cheapestProofPath":"Use the source-side README.md quick start or docs/documents/agenticgraph-superagent-harness.md in the agenticgraph repo before hosted setup.","steps":[{"order":1,"label":"Map intent","action":"Map intent: install https://airvio.co/agenticgraph/mcp first for public discovery, retrieval, and inspection."},{"order":2,"label":"Orchestrate agents","action":"Orchestrate agents: add https://airvio.co/agenticgraph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke."},{"order":3,"label":"Prove outcomes","action":"Prove outcomes: for zero-spend evaluation, run the source-side README.md quick start or docs/documents/agenticgraph-superagent-harness.md first."}]},"promotionRecovery":{"availability":"template-only-published-contract","scope":"mirror-saved-local-artifacts-only","commandTemplate":"#promotion.retry \u003cpath...>","exactCommandSource":"browser-local finalize inspection after a real mirroring failure","reusesSavedLocalArtifacts":true,"rerunsValidation":false,"reappliesCanvas":false,"githubBeforeStorage":true,"insertionMode":"append","surfaces":["published-operator-card","final-assistant-ledger","browser-local-finalize-inspection","warning-toast","toast-insert-action"],"note":"This published card shows the command template only. The exact runnable path-bearing command appears after a real mirroring failure in the browser-local finalize inspection, finalize ledger, and warning toast."}};
     const statusEl = document.getElementById('status');
     const hostEl = document.getElementById('host');
     const onboardingEl = document.getElementById('onboarding');
@@ -194,7 +194,7 @@
     'p',
     onboarding && onboarding.grammarToolName
       ? 'Live grammar executes through ' + String(onboarding.grammarToolName) + ' on the control plane. Try ' + (Array.isArray(onboarding.grammarExamples) && onboarding.grammarExamples.length ? onboarding.grammarExamples.join(', ') : '/mcp.capabilities, #mcp, @mcp-gateway') + '.'
-      : 'Live grammar executes through knowgrph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.',
+      : 'Live grammar executes through agenticgraph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.',
   );
   appendText(
     onboardingEl,
@@ -206,8 +206,8 @@
   const list = document.createElement('ol');
   const steps = Array.isArray(onboarding && onboarding.steps) && onboarding.steps.length ? onboarding.steps : [
     { action: onboarding && onboarding.publicReadMcpUrl ? 'Map intent: install ' + onboarding.publicReadMcpUrl + ' first for public discovery, retrieval, and inspection.' : 'Map intent: install the public MCP endpoint first for discovery, retrieval, and inspection.' },
-    { action: onboarding && onboarding.controlPlaneMcpUrl ? 'Orchestrate agents: add ' + onboarding.controlPlaneMcpUrl + ' only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke.' : 'Orchestrate agents: add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through knowgrph.agentic_canvas_os.docs.invoke.' },
-    { action: 'Prove outcomes: for zero-spend evaluation, use the source-side README.md quick start or docs/documents/knowgrph-superagent-harness.md first.' },
+    { action: onboarding && onboarding.controlPlaneMcpUrl ? 'Orchestrate agents: add ' + onboarding.controlPlaneMcpUrl + ' only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke.' : 'Orchestrate agents: add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke.' },
+    { action: 'Prove outcomes: for zero-spend evaluation, use the source-side README.md quick start or docs/documents/agenticgraph-superagent-harness.md first.' },
   ];
   for (const step of steps) appendText(list, 'li', step && step.action ? String(step.action) : 'Follow the fastest onboarding path.');
   onboardingEl.appendChild(list);
@@ -284,10 +284,10 @@
         const result = await request('ui/initialize', {
           protocolVersion: boot.protocolVersion,
           appInfo: {
-            name: 'knowgrph-mcp-app',
-            title: 'Knowgrph Agent Ready',
+            name: 'agenticgraph-mcp-app',
+            title: 'AgenticGraph Agent Ready',
             version: '0.1.0',
-            description: 'Interactive view for the Knowgrph agent-ready MCP surface.',
+            description: 'Interactive view for the AgenticGraph agent-ready MCP surface.',
             websiteUrl: boot.appUrl || undefined,
           },
           appCapabilities: {

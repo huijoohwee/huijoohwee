@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://airvio.co/knowgrph/</loc>
+    <loc>https://airvio.co/agenticgraph/</loc>
     <lastmod>2026-06-05</lastmod>
   </url>
   <url>
-    <loc>https://airvio.co/knowgrph/llms.txt</loc>
+    <loc>https://airvio.co/agenticgraph/llms.txt</loc>
     <lastmod>2026-06-05</lastmod>
   </url>
   <url>
@@ -25,7 +25,7 @@
     <lastmod>2026-06-05</lastmod>
   </url>
   <url>
-    <loc>https://airvio.co/knowgrph/.well-known/openapi.json</loc>
+    <loc>https://airvio.co/agenticgraph/.well-known/openapi.json</loc>
     <lastmod>2026-06-05</lastmod>
   </url>
   <url>
@@ -33,7 +33,7 @@
     <lastmod>2026-06-05</lastmod>
   </url>
   <url>
-    <loc>https://airvio.co/knowgrph/.well-known/mcp/server-card.json</loc>
+    <loc>https://airvio.co/agenticgraph/.well-known/mcp/server-card.json</loc>
     <lastmod>2026-06-05</lastmod>
   </url>
 </urlset>

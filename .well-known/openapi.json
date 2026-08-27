@@ -1,20 +1,20 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Knowgrph API",
+    "title": "AgenticGraph API",
     "version": "0.1.0",
-    "description": "Agent discovery surface for the Knowgrph Cloudflare deployment."
+    "description": "Agent discovery surface for the AgenticGraph Cloudflare deployment."
   },
   "servers": [
     {
       "url": "https://airvio.co",
-      "description": "Knowgrph Cloudflare deployment"
+      "description": "AgenticGraph Cloudflare deployment"
     }
   ],
   "paths": {
-    "/knowgrph/health": {
+    "/agenticgraph/health": {
       "get": {
-        "summary": "Read the Knowgrph agent-ready health status",
+        "summary": "Read the AgenticGraph agent-ready health status",
         "responses": {
           "200": {
             "description": "Health status in application/health+json format"
@@ -22,7 +22,7 @@
         }
       }
     },
-    "/knowgrph/mcp": {
+    "/agenticgraph/mcp": {
       "get": {
         "summary": "Read MCP transport metadata",
         "responses": {
@@ -51,9 +51,9 @@
         }
       }
     },
-    "/knowgrph/.well-known/agent-card.json": {
+    "/agenticgraph/.well-known/agent-card.json": {
       "get": {
-        "summary": "Read the Knowgrph A2A Agent Card",
+        "summary": "Read the AgenticGraph A2A Agent Card",
         "responses": {
           "200": {
             "description": "A2A Agent Card JSON"
@@ -285,7 +285,7 @@
         }
       }
     },
-    "/knowgrph/doc-default/{canonicalPath}": {
+    "/agenticgraph/doc-default/{canonicalPath}": {
       "get": {
         "summary": "Read a default-workspace shared document",
         "parameters": [
@@ -308,7 +308,7 @@
         }
       }
     },
-    "/knowgrph/doc/{workspaceId}/{canonicalPath}": {
+    "/agenticgraph/doc/{workspaceId}/{canonicalPath}": {
       "get": {
         "summary": "Read a shared document",
         "parameters": [
@@ -339,7 +339,7 @@
         }
       }
     },
-    "/knowgrph/share/{shareToken}": {
+    "/agenticgraph/share/{shareToken}": {
       "get": {
         "summary": "Read a shared document through the canonical opaque share token route",
         "parameters": [
@@ -362,142 +362,142 @@
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-agent-ready.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-agent-ready.md": {
       "get": {
-        "summary": "Read the knowgrph-agent-ready agent skill markdown",
+        "summary": "Read the agenticgraph-agent-ready agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-agent-ready"
+            "description": "Agent skill markdown for agenticgraph-agent-ready"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-ai-showrunner.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-ai-showrunner.md": {
       "get": {
-        "summary": "Read the knowgrph-ai-showrunner agent skill markdown",
+        "summary": "Read the agenticgraph-ai-showrunner agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-ai-showrunner"
+            "description": "Agent skill markdown for agenticgraph-ai-showrunner"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-ai-voice-studio.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-ai-voice-studio.md": {
       "get": {
-        "summary": "Read the knowgrph-ai-voice-studio agent skill markdown",
+        "summary": "Read the agenticgraph-ai-voice-studio agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-ai-voice-studio"
+            "description": "Agent skill markdown for agenticgraph-ai-voice-studio"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-application-composition.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-application-composition.md": {
       "get": {
-        "summary": "Read the knowgrph-application-composition agent skill markdown",
+        "summary": "Read the agenticgraph-application-composition agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-application-composition"
+            "description": "Agent skill markdown for agenticgraph-application-composition"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-chat-to-canvas.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-chat-to-canvas.md": {
       "get": {
-        "summary": "Read the knowgrph-chat-to-canvas agent skill markdown",
+        "summary": "Read the agenticgraph-chat-to-canvas agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-chat-to-canvas"
+            "description": "Agent skill markdown for agenticgraph-chat-to-canvas"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-commerce-readiness.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-commerce-readiness.md": {
       "get": {
-        "summary": "Read the knowgrph-commerce-readiness agent skill markdown",
+        "summary": "Read the agenticgraph-commerce-readiness agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-commerce-readiness"
+            "description": "Agent skill markdown for agenticgraph-commerce-readiness"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-html-video-renderer.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-html-video-renderer.md": {
       "get": {
-        "summary": "Read the knowgrph-html-video-renderer agent skill markdown",
+        "summary": "Read the agenticgraph-html-video-renderer agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-html-video-renderer"
+            "description": "Agent skill markdown for agenticgraph-html-video-renderer"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-mcp-local.md": {
       "get": {
-        "summary": "Read the knowgrph-mcp-local agent skill markdown",
+        "summary": "Read the agenticgraph-mcp-local agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-mcp-local"
+            "description": "Agent skill markdown for agenticgraph-mcp-local"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-memory-layer.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-memory-layer.md": {
       "get": {
-        "summary": "Read the knowgrph-memory-layer agent skill markdown",
+        "summary": "Read the agenticgraph-memory-layer agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-memory-layer"
+            "description": "Agent skill markdown for agenticgraph-memory-layer"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-research-visual.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-research-visual.md": {
       "get": {
-        "summary": "Read the knowgrph-research-visual agent skill markdown",
+        "summary": "Read the agenticgraph-research-visual agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-research-visual"
+            "description": "Agent skill markdown for agenticgraph-research-visual"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-source-files.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-source-files.md": {
       "get": {
-        "summary": "Read the knowgrph-source-files agent skill markdown",
+        "summary": "Read the agenticgraph-source-files agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-source-files"
+            "description": "Agent skill markdown for agenticgraph-source-files"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-strybldr.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-strybldr.md": {
       "get": {
-        "summary": "Read the knowgrph-strybldr agent skill markdown",
+        "summary": "Read the agenticgraph-strybldr agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-strybldr"
+            "description": "Agent skill markdown for agenticgraph-strybldr"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-video-agent.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-video-agent.md": {
       "get": {
-        "summary": "Read the knowgrph-video-agent agent skill markdown",
+        "summary": "Read the agenticgraph-video-agent agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-video-agent"
+            "description": "Agent skill markdown for agenticgraph-video-agent"
           }
         }
       }
     },
-    "/knowgrph/.well-known/agent-skills/knowgrph-visual-annotation-engine.md": {
+    "/agenticgraph/.well-known/agent-skills/agenticgraph-visual-annotation-engine.md": {
       "get": {
-        "summary": "Read the knowgrph-visual-annotation-engine agent skill markdown",
+        "summary": "Read the agenticgraph-visual-annotation-engine agent skill markdown",
         "responses": {
           "200": {
-            "description": "Agent skill markdown for knowgrph-visual-annotation-engine"
+            "description": "Agent skill markdown for agenticgraph-visual-annotation-engine"
           }
         }
       }

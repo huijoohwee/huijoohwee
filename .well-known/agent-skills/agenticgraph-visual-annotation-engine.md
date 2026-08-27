@@ -1,11 +1,11 @@
-# Knowgrph Visual Annotation Engine Skill
+# AgenticGraph Visual Annotation Engine Skill
 
 Use this skill when: Run browser-local image and video-frame annotation into LLM-ready structured JSON plus native visual datasets materialised through existing artifact owners.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-visual-annotation-engine`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-visual-annotation-engine`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_f3255bd1`
 - Scope: `browser-local`
 - Mutation boundary: `local-approval-gated`
@@ -49,14 +49,14 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- knowgrph.annotate.image
-- knowgrph.annotate.video_frame
-- knowgrph.vdeoxpln.list
+- agenticgraph.annotate.image
+- agenticgraph.annotate.video_frame
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
 - Validate the Annotation_Spec before model resolution or inference.
-- Resolve model identifier from modelHint, KNOWGRPH_ANNOTATION_MODEL, or the registered default.
+- Resolve model identifier from modelHint, AGENTICGRAPH_ANNOTATION_MODEL, or the registered default.
 - Dispatch through the Annotation_Worker boundary; Dev emits dependency-free heuristic annotations while model adapters remain runtime-owned.
 - Build annotationId with buildScopedGraphSemanticKey using assetUrl, modelId, and sorted tasks.
 - Load Annotation_Result or frame-box arrays into the native dataset owner for split, merge, save, and frame-ordered zone counting.
@@ -65,7 +65,7 @@ Local MCP tools:
 
 ## Source Owners
 
-- canvas/src/features/agent-ready/knowgrphVdeoxplnContract.mjs
+- canvas/src/features/agent-ready/agenticgraphVdeoxplnContract.mjs
 - canvas/src/features/chat/richMediaRun.ts
 - canvas/src/features/source-files
 - canvas/src/features/visual-annotation-engine/annotationDataset.ts
@@ -108,7 +108,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

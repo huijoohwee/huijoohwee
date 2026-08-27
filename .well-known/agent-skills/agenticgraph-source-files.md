@@ -1,11 +1,11 @@
-# Knowgrph Source Files Skill
+# AgenticGraph Source Files Skill
 
 Use this skill when: Discover, read, inspect, and route published Source Files and shared documents through the canonical storage and document-structure owners.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-source-files`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-source-files`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_79a9fb63`
 - Scope: `read-only-published`
 - Mutation boundary: `read-only`
@@ -45,7 +45,7 @@ Browser-local tools:
 
 Local MCP tools:
 - fetch
-- knowgrph.vdeoxpln.list
+- agenticgraph.vdeoxpln.list
 - search
 
 ## Workflow
@@ -61,7 +61,7 @@ Local MCP tools:
 - canvas/src/features/agent-ready/sharedDocumentStructureInspection.mjs
 - canvas/src/features/source-files/sourceFilesSignatures.ts
 - canvas/src/features/workspace-fs/workspaceFs.ts
-- cloudflare/pages/knowgrph-agent-ready.mjs
+- cloudflare/pages/agenticgraph-agent-ready.mjs
 
 ## Artifact Policy
 
@@ -88,7 +88,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

@@ -83,15 +83,15 @@ const pickUpstreamBase = ({ provider, requestedUpstream, env }) => {
   // - MiroMind (https://api.miromind.ai) when provider=miromind
   // - Agnes AI (https://apihub.agnes-ai.com) when provider=agnes-ai
   // - BytePlus ModelArk (https://ark.ap-southeast.bytepluses.com) when provider=byteplus-modelark
-  // - a configured HTTPS upstream (env.KNOWGRPH_CHAT_PROXY_UPSTREAM or request override)
+  // - a configured HTTPS upstream (env.AGENTICGRAPH_CHAT_PROXY_UPSTREAM or request override)
   if (provider === 'openai') return requestedUpstream || 'https://api.openai.com';
   if (provider === MIROMIND_PROVIDER_ID) return requestedUpstream || `https://${MIROMIND_HOST}`;
   if (provider === AGNES_PROVIDER_ID) return requestedUpstream || `https://${AGNES_HOST}`;
   if (provider === BYTEPLUS_PROVIDER_ID) {
-    return requestedUpstream || String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim() || `https://${BYTEPLUS_AP_SOUTHEAST_HOST}`;
+    return requestedUpstream || String(env.AGENTICGRAPH_CHAT_PROXY_UPSTREAM || '').trim() || `https://${BYTEPLUS_AP_SOUTHEAST_HOST}`;
   }
   if (requestedUpstream) return requestedUpstream;
-  return String(env.KNOWGRPH_CHAT_PROXY_UPSTREAM || '').trim();
+  return String(env.AGENTICGRAPH_CHAT_PROXY_UPSTREAM || '').trim();
 };
 
 export async function onRequest(context) {
@@ -118,8 +118,8 @@ export async function onRequest(context) {
   const aiGatewayRoute = sanitizeAiGatewayRoute(readHeader(request.headers, AI_GATEWAY_ROUTE_HEADER));
   const aiGatewayMetadata = sanitizeAiGatewayMetadata(readHeader(request.headers, AI_GATEWAY_METADATA_HEADER));
   const aiGatewayCacheTtl = sanitizeAiGatewayCacheTtl(readHeader(request.headers, AI_GATEWAY_CACHE_TTL_HEADER));
-  const aiGatewayBaseUrl = String(env.KNOWGRPH_CHAT_PROXY_AI_GATEWAY_BASE_URL || '').trim();
-  const aiGatewayGatewayId = String(env.KNOWGRPH_CHAT_PROXY_AI_GATEWAY_GATEWAY_ID || '').trim();
+  const aiGatewayBaseUrl = String(env.AGENTICGRAPH_CHAT_PROXY_AI_GATEWAY_BASE_URL || '').trim();
+  const aiGatewayGatewayId = String(env.AGENTICGRAPH_CHAT_PROXY_AI_GATEWAY_GATEWAY_ID || '').trim();
   const aiGatewayRequested = provider === 'openai' && !!aiGatewayBaseUrl && !!aiGatewayRoute;
   const upstreamBaseRaw = pickUpstreamBase({
     provider,
@@ -157,11 +157,11 @@ export async function onRequest(context) {
   const requiresAgnesKey = provider === AGNES_PROVIDER_ID || isAgnesHost(upstreamHostname);
   const requiresBytePlusKey = provider === BYTEPLUS_PROVIDER_ID || isBytePlusHost(upstreamHostname);
   const headerApiKey = readHeader(request.headers, 'x-kg-chat-api-key');
-  const envAiGatewayApiKey = String(env.KNOWGRPH_CHAT_PROXY_AI_GATEWAY_TOKEN || env.AI_GATEWAY_TOKEN || env.CLOUDFLARE_API_TOKEN || '').trim();
-  const envOpenAiApiKey = String(env.KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY || env.OPENAI_API_KEY || '').trim();
-  const envMiroMindApiKey = String(env.KNOWGRPH_CHAT_PROXY_MIROMIND_API_KEY || env.MIROMIND_API_KEY || '').trim();
-  const envAgnesApiKey = String(env.KNOWGRPH_CHAT_PROXY_AGNES_API_KEY || env.AGNES_API_KEY || '').trim();
-  const envBytePlusApiKey = String(env.KNOWGRPH_CHAT_PROXY_BYTEPLUS_API_KEY || env.BYTEPLUS_API_KEY || '').trim();
+  const envAiGatewayApiKey = String(env.AGENTICGRAPH_CHAT_PROXY_AI_GATEWAY_TOKEN || env.AI_GATEWAY_TOKEN || env.CLOUDFLARE_API_TOKEN || '').trim();
+  const envOpenAiApiKey = String(env.AGENTICGRAPH_CHAT_PROXY_OPENAI_API_KEY || env.OPENAI_API_KEY || '').trim();
+  const envMiroMindApiKey = String(env.AGENTICGRAPH_CHAT_PROXY_MIROMIND_API_KEY || env.MIROMIND_API_KEY || '').trim();
+  const envAgnesApiKey = String(env.AGENTICGRAPH_CHAT_PROXY_AGNES_API_KEY || env.AGNES_API_KEY || '').trim();
+  const envBytePlusApiKey = String(env.AGENTICGRAPH_CHAT_PROXY_BYTEPLUS_API_KEY || env.BYTEPLUS_API_KEY || '').trim();
   const aiGatewayApiKey = (headerApiKey || envAiGatewayApiKey).slice(0, 512);
   const openAiApiKey = (headerApiKey || envOpenAiApiKey).slice(0, 512);
   const miromindApiKey = (headerApiKey || envMiroMindApiKey).slice(0, 512);
@@ -179,35 +179,35 @@ export async function onRequest(context) {
   if (requiresAiGatewayKey && !providerApiKey) {
     return jsonResponse(
       request,
-      { ok: false, error: 'Missing Cloudflare AI Gateway token for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_AI_GATEWAY_TOKEN or AI_GATEWAY_TOKEN)' },
+      { ok: false, error: 'Missing Cloudflare AI Gateway token for chat proxy upstream (set AGENTICGRAPH_CHAT_PROXY_AI_GATEWAY_TOKEN or AI_GATEWAY_TOKEN)' },
       401,
     );
   }
   if (requiresOpenAiKey && !openAiApiKey) {
     return jsonResponse(
       request,
-      { ok: false, error: 'Missing OpenAI API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_OPENAI_API_KEY or OPENAI_API_KEY)' },
+      { ok: false, error: 'Missing OpenAI API key for chat proxy upstream (set AGENTICGRAPH_CHAT_PROXY_OPENAI_API_KEY or OPENAI_API_KEY)' },
       401,
     );
   }
   if (requiresMiroMindKey && !providerApiKey) {
     return jsonResponse(
       request,
-      { ok: false, error: 'Missing MiroMind API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_MIROMIND_API_KEY or MIROMIND_API_KEY)' },
+      { ok: false, error: 'Missing MiroMind API key for chat proxy upstream (set AGENTICGRAPH_CHAT_PROXY_MIROMIND_API_KEY or MIROMIND_API_KEY)' },
       401,
     );
   }
   if (requiresAgnesKey && !providerApiKey) {
     return jsonResponse(
       request,
-      { ok: false, error: 'Missing Agnes API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_AGNES_API_KEY or AGNES_API_KEY)' },
+      { ok: false, error: 'Missing Agnes API key for chat proxy upstream (set AGENTICGRAPH_CHAT_PROXY_AGNES_API_KEY or AGNES_API_KEY)' },
       401,
     );
   }
   if (requiresBytePlusKey && !providerApiKey) {
     return jsonResponse(
       request,
-      { ok: false, error: 'Missing BytePlus API key for chat proxy upstream (set KNOWGRPH_CHAT_PROXY_BYTEPLUS_API_KEY or BYTEPLUS_API_KEY)' },
+      { ok: false, error: 'Missing BytePlus API key for chat proxy upstream (set AGENTICGRAPH_CHAT_PROXY_BYTEPLUS_API_KEY or BYTEPLUS_API_KEY)' },
       401,
     );
   }
@@ -241,7 +241,7 @@ export async function onRequest(context) {
   if (aiGatewayCacheTtl) headers.set('cf-aig-cache-ttl', aiGatewayCacheTtl);
 
   const abortController = new AbortController();
-  const timeoutMsRaw = Number(env.KNOWGRPH_CHAT_PROXY_TIMEOUT_MS);
+  const timeoutMsRaw = Number(env.AGENTICGRAPH_CHAT_PROXY_TIMEOUT_MS);
   const timeoutMs = Number.isFinite(timeoutMsRaw) ? Math.max(5_000, Math.min(180_000, Math.floor(timeoutMsRaw))) : 90_000;
   const timeoutId = setTimeout(() => abortController.abort(), timeoutMs);
   try {

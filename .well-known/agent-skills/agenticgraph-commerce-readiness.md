@@ -1,11 +1,11 @@
-# Knowgrph Commerce Readiness Skill
+# AgenticGraph Commerce Readiness Skill
 
 Use this skill when: Inspect Commerce, payment worker, x402, ACP, UCP, MPP, and readiness metadata without bypassing the shared payment SSOT.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-commerce-readiness`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-commerce-readiness`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_73c86f80`
 - Scope: `read-only-published-and-browser-local`
 - Mutation boundary: `read-only`
@@ -43,7 +43,7 @@ Browser-local tools:
 - inspect_local_settings_chat_readiness
 
 Local MCP tools:
-- knowgrph.vdeoxpln.list
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -55,8 +55,8 @@ Local MCP tools:
 
 - canvas/src/features/agent-ready/browserLocalSurfaceSnapshots.ts
 - canvas/src/features/panels/views/CommerceHubView.tsx
-- cloudflare/pages/knowgrph-agent-ready-commerce.mjs
-- cloudflare/workers/knowgrph-payment/agenticCommerce.ts
+- cloudflare/pages/agenticgraph-agent-ready-commerce.mjs
+- cloudflare/workers/agenticgraph-payment/agenticCommerce.ts
 - grph-shared/src/payments/agenticCommerceSsot.ts
 
 ## Artifact Policy
@@ -83,7 +83,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

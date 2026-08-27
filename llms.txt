@@ -4,14 +4,14 @@
 
 ## Products
 
-- [Knowgrph](https://airvio.co/knowgrph/llms.txt): Agent-actionable chat-to-canvas knowledge graph workspace.
+- [AgenticGraph](https://airvio.co/agenticgraph/llms.txt): Agent-actionable chat-to-canvas knowledge graph workspace.
 
 ## Agent Interfaces
 
-- [Knowgrph Source Files](https://airvio.co/api/storage/llms.txt)
+- [AgenticGraph Source Files](https://airvio.co/api/storage/llms.txt)
 - [Markdown Content Manifest](https://airvio.co/api/storage/content-manifest.json)
-- [Knowgrph OpenAPI](https://airvio.co/knowgrph/.well-known/openapi.json)
+- [AgenticGraph OpenAPI](https://airvio.co/agenticgraph/.well-known/openapi.json)
 - [A2A Agent Card](https://airvio.co/.well-known/agent-card.json)
-- [MCP Server Card](https://airvio.co/knowgrph/.well-known/mcp/server-card.json)
+- [MCP Server Card](https://airvio.co/agenticgraph/.well-known/mcp/server-card.json)
 - [Crawl policy](https://airvio.co/robots.txt)
 - [Sitemap](https://airvio.co/sitemap.xml)

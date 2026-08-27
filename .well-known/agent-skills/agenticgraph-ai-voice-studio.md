@@ -1,11 +1,11 @@
-# Knowgrph AI Voice Studio Skill
+# AgenticGraph AI Voice Studio Skill
 
 Use this skill when: Capture consented voice-profile manifests, dictate speech, and create disclosed speech through one provider-neutral browser and local-stdio contract.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-ai-voice-studio`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-ai-voice-studio`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_5e8cecc9`
 - Scope: `browser-local-and-local-stdio`
 - Mutation boundary: `local-consent-and-approval-gated`
@@ -53,8 +53,8 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- knowgrph.vdeoxpln.list
-- knowgrph.voice.studio
+- agenticgraph.vdeoxpln.list
+- agenticgraph.voice.studio
 
 ## Workflow
 
@@ -68,7 +68,7 @@ Local MCP tools:
 
 - canvas/src/features/voice-studio
 - contracts/voice-studio.schema.js
-- docs/documents/knowgrph-ai-voice-studio-prd-tad.md
+- docs/documents/agenticgraph-ai-voice-studio-prd-tad.md
 - mcp/voice-studio-runtime.js
 - mcp/voice-studio-tool-contract.js
 
@@ -98,7 +98,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

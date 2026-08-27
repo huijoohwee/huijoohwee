@@ -1,11 +1,11 @@
-# Knowgrph Agent Ready Skill
+# AgenticGraph Agent Ready Skill
 
-Use this skill when: Inspect Knowgrph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.
+Use this skill when: Inspect AgenticGraph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-agent-ready`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-agent-ready`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_1f172c3d`
 - Scope: `read-only-published-and-browser-local`
 - Mutation boundary: `read-only`
@@ -63,7 +63,7 @@ Browser-local tools:
 - read_local_runtime_identity
 
 Local MCP tools:
-- knowgrph.vdeoxpln.list
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -74,9 +74,9 @@ Local MCP tools:
 ## Source Owners
 
 - canvas/src/features/agent-ready/agentSurfaceInspection.mjs
-- canvas/src/features/agent-ready/knowgrphAgentReadyToolContract.mjs
+- canvas/src/features/agent-ready/agenticgraphAgentReadyToolContract.mjs
 - canvas/src/features/agent-ready/webMcpRuntime.ts
-- cloudflare/pages/knowgrph-agent-ready.mjs
+- cloudflare/pages/agenticgraph-agent-ready.mjs
 - scripts/check-agent-ready.mjs
 
 ## Artifact Policy
@@ -102,7 +102,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

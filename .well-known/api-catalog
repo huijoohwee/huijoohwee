@@ -1,28 +1,28 @@
 {
   "linkset": [
     {
-      "anchor": "https://airvio.co/knowgrph/",
+      "anchor": "https://airvio.co/agenticgraph/",
       "service-desc": [
         {
-          "href": "https://airvio.co/knowgrph/.well-known/openapi.json",
+          "href": "https://airvio.co/agenticgraph/.well-known/openapi.json",
           "type": "application/vnd.oai.openapi+json;version=3.1"
         }
       ],
       "service-doc": [
         {
-          "href": "https://airvio.co/knowgrph/llms.txt",
+          "href": "https://airvio.co/agenticgraph/llms.txt",
           "type": "text/plain"
         }
       ],
       "status": [
         {
-          "href": "https://airvio.co/knowgrph/health",
+          "href": "https://airvio.co/agenticgraph/health",
           "type": "application/health+json"
         }
       ],
       "service-meta": [
         {
-          "href": "https://airvio.co/knowgrph/.well-known/mcp/server-card.json",
+          "href": "https://airvio.co/agenticgraph/.well-known/mcp/server-card.json",
           "type": "application/json"
         },
         {

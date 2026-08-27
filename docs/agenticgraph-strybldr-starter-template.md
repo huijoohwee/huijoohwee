@@ -1,6 +1,6 @@
 ---
-title: "Knowgrph Strybldr Starter Template"
-graphId: "md:knowgrph-strybldr-starter-template"
+title: "AgenticGraph Strybldr Starter Template"
+graphId: "md:agenticgraph-strybldr-starter-template"
 doc_type: "Strybldr Starter Template"
 date: "2026-07-12"
 lang: "en-US"
@@ -32,7 +32,7 @@ kgSharedRendererContract:
   edgeModel: "active graph edges derive from this frontmatter-owned starter graph"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 version_control:
-  version: "knowgrph-version-history/v1"
+  version: "agenticgraph-version-history/v1"
   mode: "linear"
   source: "runtime-history"
   snapshot_policy: "semantic-change-only"
@@ -51,7 +51,7 @@ credential_policy:
   sensenova: "Server managed SENSENOVA_API_KEY only; signing and proxy auth stay server-side."
   live_generation: "Human approval required before paid or mutating provider calls."
 runtime_defaults:
-  provider: "knowgrph-local-animatic"
+  provider: "agenticgraph-local-animatic"
   model: "strybldr-local-animatic-v1"
   status: "draft"
   paid_call_count: 0
@@ -75,7 +75,7 @@ starter_inputs:
   publish_scope: "local-only"
   publish_policy: "No Prod, Cloudflare, external publication, fabricated provider IDs, stream URLs, or transcript text."
 local_animatic_inputs:
-  provider: "knowgrph-local-animatic"
+  provider: "agenticgraph-local-animatic"
   model: "strybldr-local-animatic-v1"
   status: "ready"
   paid_call_count: 0
@@ -396,7 +396,7 @@ flow:
     - {"id":"edge_compute_to_image_panel","source":"compute_summary","sourceHandle":"imageUrl","target":"panel_image_output","targetHandle":"imageUrl","label":"image output","type":"template_image_signal"}
     - {"id":"edge_compute_to_chart_panel","source":"compute_summary","sourceHandle":"outputSrcDoc","target":"panel_chart_output","targetHandle":"outputSrcDoc","label":"chart output","type":"template_chart_html"}
 kgParserRoutingContract:
-  version: "knowgrph-parser-routing/v1"
+  version: "agenticgraph-parser-routing/v1"
   parserLogic: "Opening frontmatter and authored source payloads are SSOT; parsers materialize graphData without renderer-local aliases."
   routingKeys:
     surface: "kgCanvasSurfaceMode"
@@ -470,8 +470,8 @@ strybldr_storyboard:
       policy: Write local packet fields only; do not claim Prod, Cloudflare, provider IDs, or stream URLs without explicit operator approval and returned live evidence.
   sources:
     - sourceUnitId: strybldr-starter-source
-      workspacePath: docs/knowgrph-strybldr-starter-template.md
-      relativePath: knowgrph-strybldr-starter-template.md
+      workspacePath: docs/agenticgraph-strybldr-starter-template.md
+      relativePath: agenticgraph-strybldr-starter-template.md
       originalName: Strybldr starter source
       mediaKind: doc
       mimeHint: text/markdown
@@ -485,7 +485,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: source-metadata
-      provider: knowgrph
+      provider: agenticgraph
       order: 1
       lane: Source
       prompt: Summarize the short-drama source promise without copying transcript text or provider-generated output.
@@ -497,7 +497,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: agentic-os-invocation
-      provider: knowgrph
+      provider: agenticgraph
       order: 2
       lane: Scriptwriting
       prompt: 'Run /memory.seed #frontmatter #vcc @source.frontmatter @source.body to derive a source-backed short-drama premise, logline, scene outline, and script beats.'
@@ -509,7 +509,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: user-edit
-      provider: knowgrph
+      provider: agenticgraph
       order: 3
       lane: Storyboard
       prompt: Create four concise short-drama storyboard beats from the approved script and operator notes.
@@ -521,7 +521,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: agentic-os-invocation
-      provider: knowgrph
+      provider: agenticgraph
       order: 4
       lane: Invocation
       prompt: 'Run /superagent.run /harness.define /mcp.capabilities /cost.audit #harness #token-economics #long-horizon-harness @local-harness @cost-log @mcp-gateway @orchestration-graph @message-gateway.'
@@ -533,7 +533,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-plan
-      provider: knowgrph-local-animatic
+      provider: agenticgraph-local-animatic
       order: 5
       lane: Generation
       prompt: 'Prepare /tool.route /canvas.project /runtime-ready.check #tool-routing #canvas #runtime-ready @tool-policy @canvas @runtime-proof @approval-gate.'
@@ -545,7 +545,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: user-edit
-      provider: knowgrph
+      provider: agenticgraph
       order: 6
       lane: Elements
       prompt: Convert approved beats into reusable elements and style constraints.
@@ -557,7 +557,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-plan
-      provider: knowgrph
+      provider: agenticgraph
       order: 7
       lane: Editing
       prompt: Turn approved generated or local clips into a concise edit decision list with pacing, scene order, transitions, and audio notes.
@@ -569,7 +569,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-plan
-      provider: knowgrph-local-animatic
+      provider: agenticgraph-local-animatic
       order: 8
       lane: Runtime
       prompt: Render the local animatic or editing handoff and keep live IDs empty until returned by an approved run.
@@ -581,7 +581,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-review
-      provider: knowgrph
+      provider: agenticgraph
       order: 9
       lane: Review
       prompt: Prepare a review packet that separates local evidence from live provider evidence.
@@ -593,7 +593,7 @@ strybldr_storyboard:
       confidence: 1
       sourceBox: null
       evidenceKind: runtime-publish
-      provider: knowgrph
+      provider: agenticgraph
       order: 10
       lane: Publish
       prompt: Close the workflow with a local-only packet and a visible publish gate.
@@ -687,7 +687,7 @@ strybldr_storyboard:
       label: linksTo
 ---
 
-# Knowgrph Strybldr Starter Template
+# AgenticGraph Strybldr Starter Template
 
 This is the /prd-tad.create minimum viable runnable Strybldr seed for a short-drama video-agent E2E demo. It opens on the shared storyboard renderer, shows Source, Scriptwriting, Storyboard, Invocation, Generation, Editing, Elements, Runtime, Review, and Publish cards, and can produce a local zero-paid-call animatic or edit packet from approved cards. /memory.seed #canvas @canvas
 
@@ -743,7 +743,7 @@ video_agent_e2e:
 
 ## Use
 
-1. Open this Markdown file in Knowgrph.
+1. Open this Markdown file in AgenticGraph.
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
 3. Edit `Source brief`, `Short-drama scriptwriting`, `Storyboard beats`, `Video-agent invocation`, `Video-agent generation`, and `Editing plan`.
 4. Approve `Reusable elements` before any paid or mutating provider call.

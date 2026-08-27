@@ -1,6 +1,6 @@
 ---
-title: "Knowgrph Risk Copilot Demo - SME Growth-Stage Risk & Coverage Coach"
-graphId: "md:knowgrph-risk-copilot-demo"
+title: "AgenticGraph Risk Copilot Demo - SME Growth-Stage Risk & Coverage Coach"
+graphId: "md:agenticgraph-risk-copilot-demo"
 doc_type: "Risk Copilot Demo"
 date: "2026-07-14"
 lang: "en-SG"
@@ -48,7 +48,7 @@ safety_policy:
   source_policy: "Use operator-owned business profile notes, public company-stage signals, and approved paraphrases only."
   data_minimization: "Prefer synthetic SME archetypes, local redaction, and business-tier fields (headcount band, revenue band, sector) over exact financials or registry identifiers."
 runtime_defaults:
-  provider: "knowgrph-local-risk-dry-run"
+  provider: "agenticgraph-local-risk-dry-run"
   model: "risk-copilot-local-dry-run-v1"
   status: "runtime-ready"
   paid_call_count: 0
@@ -59,33 +59,33 @@ runtime_defaults:
   runtime_proof_path: ""
   provider_job_id: ""
   live_result_url: ""
-related_runtime_proof: "./knowgrph-sme-care-agent-runtime-proof.md"
+related_runtime_proof: "./agenticgraph-sme-care-agent-runtime-proof.md"
 run_ready_demo:
   id: "risk-copilot"
-  env_selector: "VITE_KNOWGRPH_RUN_READY_DEMO=risk-copilot"
+  env_selector: "VITE_AGENTICGRAPH_RUN_READY_DEMO=risk-copilot"
   command: "npm run demo:risk-copilot -- --port <free-port>"
   source_root: "huijoohwee/docs"
-  source_path: "../huijoohwee/docs/knowgrph-sme-care-agent-demo.md"
-  validation_seed_path: "/knowgrph-sme-care-agent-demo.md"
+  source_path: "../huijoohwee/docs/agenticgraph-sme-care-agent-demo.md"
+  validation_seed_path: "/agenticgraph-sme-care-agent-demo.md"
   clean_canvas_recommended: true
   source_backed: true
 probe_tree_runtime:
-  version: "knowgrph-probe-tree/v0.1"
+  version: "agenticgraph-probe-tree/v0.1"
   status: "runtime-ready"
-  owner: "knowgrph/mcp/probe-tree-runtime.js"
-  contract_owner: "knowgrph/canvas/src/features/agent-ready/probeTreeContract.mjs"
+  owner: "agenticgraph/mcp/probe-tree-runtime.js"
+  contract_owner: "agenticgraph/canvas/src/features/agent-ready/probeTreeContract.mjs"
   graph_store_dir: "data/probe-tree"
-  memory_scope: "knowgrph-probe-tree"
+  memory_scope: "agenticgraph-probe-tree"
   tools:
-    generate: "knowgrph.probe.generate"
-    select: "knowgrph.probe.select"
-    evolve: "knowgrph.probe.evolve"
+    generate: "agenticgraph.probe.generate"
+    select: "agenticgraph.probe.select"
+    evolve: "agenticgraph.probe.evolve"
   local_model_adapter:
     provider: "ollama"
-    model_env: "KNOWGRPH_PROBE_TREE_MODEL"
-    url_env: "KNOWGRPH_PROBE_TREE_MODEL_URL"
-    allow_remote_env: "KNOWGRPH_PROBE_TREE_MODEL_ALLOW_REMOTE"
-    timeout_env: "KNOWGRPH_PROBE_TREE_MODEL_TIMEOUT_MS"
+    model_env: "AGENTICGRAPH_PROBE_TREE_MODEL"
+    url_env: "AGENTICGRAPH_PROBE_TREE_MODEL_URL"
+    allow_remote_env: "AGENTICGRAPH_PROBE_TREE_MODEL_ALLOW_REMOTE"
+    timeout_env: "AGENTICGRAPH_PROBE_TREE_MODEL_TIMEOUT_MS"
     stream: false
     structured_output: true
     default_state: "disabled until host-owned model env is configured; heuristic fallback stays local-zero-cost"
@@ -241,8 +241,8 @@ runtime_proof:
   status: "runtime-ready"
   proven_at: "2026-07-14"
   proof_scope: "Dev-local Markdown/frontmatter/runtime contract only"
-  proof_owner: "knowgrph/canvas focused post-parser test registry"
-  validation_cwd: "knowgrph repo root"
+  proof_owner: "agenticgraph/canvas focused post-parser test registry"
+  validation_cwd: "agenticgraph repo root"
   focused_checks:
     - "docs.riskCopilotDemo.runtimeReady"
     - "docs.riskCopilotDemo.runReadyMode"
@@ -271,7 +271,7 @@ runtime_proof:
   live_provider_fields_blank: true
 ---
 
-# Knowgrph Risk Copilot Demo
+# AgenticGraph Risk Copilot Demo
 
 This is a `/prd-tad.create` minimum viable risk-copilot seed for SME growth-stage risk exposure and coverage-gap coaching. It uses `/source.normalize`, `/memory.seed`, `/harness.define`, `/cost.audit`, `/canvas.project`, `/runtime-ready.check`, `/validation.run`, and `/deploy.guard` with existing `#` semantic filters and `@` bindings. `/memory.seed #frontmatter #ttv #vcc @source.frontmatter @source.body`
 
@@ -279,7 +279,7 @@ The demo is intentionally neutral and local-first. It builds a Risk Exposure Gra
 
 ## Related Runtime Proof
 
-The earlier deterministic `/sme-care-agent` runtime-proof document is preserved as [./knowgrph-sme-care-agent-runtime-proof.md](./knowgrph-sme-care-agent-runtime-proof.md). Keep this file as the risk-copilot demo contract and use the companion proof doc for the stricter three-domain SME care runtime evidence.
+The earlier deterministic `/sme-care-agent` runtime-proof document is preserved as [./agenticgraph-sme-care-agent-runtime-proof.md](./agenticgraph-sme-care-agent-runtime-proof.md). Keep this file as the risk-copilot demo contract and use the companion proof doc for the stricter three-domain SME care runtime evidence.
 
 ## Risk Copilot Flow
 
@@ -287,7 +287,7 @@ The earlier deterministic `/sme-care-agent` runtime-proof document is preserved 
 |---|---|---|---|
 | Source | `/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body` | Redacted SME profile summary and missing-field list | Reject registry IDs, financials, and stale hardcodes |
 | Ideation | `/memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator` | Minimum viable Risk Exposure Graph (REG) | Keep scope small and ROI-positive |
-| Probe tree | `knowgrph.probe.generate` → `knowgrph.probe.select` → `knowgrph.probe.evolve` | Candidate growth-stage clarification questions, selected branch node, and gap-path memory exemplar | Markdown graph store stays SSOT; local model adapter is host-owned |
+| Probe tree | `agenticgraph.probe.generate` → `agenticgraph.probe.select` → `agenticgraph.probe.evolve` | Candidate growth-stage clarification questions, selected branch node, and gap-path memory exemplar | Markdown graph store stays SSOT; local model adapter is host-owned |
 | Trigger engine | `/harness.define #harness @local-harness @mcp-gateway` | Growth-stage state machine firing coverage-review triggers | Fail before spend when schema or approval is missing |
 | Broker copilot | `/harness.define #ttv @local-harness @operator` | Proactive plain-language nudge on new graph deltas | Nudge only; no autonomous purchase or bind action |
 | Marketplace matcher | `/mcp.capabilities #approval-gate @mcp-gateway @operator` | Candidate coverage matches per gap, routed to licensed-broker handoff | Blocked until `@operator` approves `@approval-gate` |
@@ -325,9 +325,9 @@ risk_copilot_local_harness:
   source: "@source.frontmatter + @source.body"
   normalize: "/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body"
   ideation: "/memory.seed /prd-tad.create #ttv #vcc #foss @source.body @operator"
-  probe_generate: "knowgrph.probe.generate thread_root_id=risk-copilot-demo current_node_id=risk_source k=3 recall_top_k=0 token_budget=1200"
-  probe_select: "knowgrph.probe.select writes a fresh type: probe markdown node, branches-to edge, checkpoint metadata, and local-zero cost_log"
-  probe_evolve: "knowgrph.probe.evolve scores the resolved growth-stage path, reports incomplete parents, writes a scoped memory exemplar, and returns local-zero cost_log"
+  probe_generate: "agenticgraph.probe.generate thread_root_id=risk-copilot-demo current_node_id=risk_source k=3 recall_top_k=0 token_budget=1200"
+  probe_select: "agenticgraph.probe.select writes a fresh type: probe markdown node, branches-to edge, checkpoint metadata, and local-zero cost_log"
+  probe_evolve: "agenticgraph.probe.evolve scores the resolved growth-stage path, reports incomplete parents, writes a scoped memory exemplar, and returns local-zero cost_log"
   probe_mutation_semantics: "probe.select and probe.evolve are non-idempotent process tools; host retry behavior must not duplicate branches or silently rewrite scores"
   trigger_engine: "/harness.define #harness #token-economics @local-harness @mcp-gateway fires on REG @node/@edge deltas against the Growth-Stage Trigger Map"
   broker_copilot: "/harness.define #ttv @local-harness @operator watches trigger_engine output and drafts a plain-language nudge; never auto-sends without @operator approval"
@@ -357,8 +357,8 @@ risk_copilot_local_harness:
 2. Confirm Canvas View reports `2D Renderer: Storyboard`.
 3. Replace the synthetic SME profile with operator-redacted business content only (headcount band, sector, lease status, vendor list, data tools, target markets — no registry IDs or financials).
 4. Run `/source.normalize #frontmatter #no-hardcode @source.frontmatter @source.body`.
-5. Run `knowgrph.probe.generate` with `thread_root_id=risk-copilot-demo`, `current_node_id=risk_source`, `recall_top_k=0`, `token_budget=1200`, and the redacted profile; optionally configure `KNOWGRPH_PROBE_TREE_MODEL` for Ollama-backed local generation, or the `sea-lion` multilingual adapter for MS/ID/ZH intake.
-6. Run `knowgrph.probe.select` for the user-selected growth-stage option, then run `knowgrph.probe.evolve` after the branch resolves; keep the parent checkpoint materialized in `data/probe-tree`, require local-zero `cost_log` in both responses, and treat any returned incomplete-path status as a validation blocker.
+5. Run `agenticgraph.probe.generate` with `thread_root_id=risk-copilot-demo`, `current_node_id=risk_source`, `recall_top_k=0`, `token_budget=1200`, and the redacted profile; optionally configure `AGENTICGRAPH_PROBE_TREE_MODEL` for Ollama-backed local generation, or the `sea-lion` multilingual adapter for MS/ID/ZH intake.
+6. Run `agenticgraph.probe.select` for the user-selected growth-stage option, then run `agenticgraph.probe.evolve` after the branch resolves; keep the parent checkpoint materialized in `data/probe-tree`, require local-zero `cost_log` in both responses, and treat any returned incomplete-path status as a validation blocker.
 7. Run `/harness.define /cost.audit #harness #token-economics @local-harness @cost-log` to activate the trigger engine and broker copilot.
 8. With explicit `@operator` approval, run the marketplace matcher against the flagged gaps to produce a broker-handoff packet (no live insurer call without further approval).
 9. Run `/canvas.project #canvas @canvas @runtime-proof` and review the Storyboard plus Rich Media panel.
@@ -368,7 +368,7 @@ risk_copilot_local_harness:
 ## Acceptance Checklist
 
 - [x] Frontmatter parses from byte zero without repair fallback.
-- [x] Clean-canvas demo mode loads this sibling docs source through `VITE_KNOWGRPH_RUN_READY_DEMO=risk-copilot`.
+- [x] Clean-canvas demo mode loads this sibling docs source through `VITE_AGENTICGRAPH_RUN_READY_DEMO=risk-copilot`.
 - [x] Source content is synthetic or operator-redacted; no registry IDs or financials.
 - [x] `/`, `#`, and `@` tokens match the Agentic OS dictionaries.
 - [x] Probe-tree tools are registered in local MCP and `probe.generate` does not mutate graph state.

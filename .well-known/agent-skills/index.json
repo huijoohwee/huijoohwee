@@ -3,14 +3,14 @@
   "updated_at": "2026-06-05",
   "skills": [
     {
-      "name": "knowgrph-agent-ready",
+      "name": "agenticgraph-agent-ready",
       "type": "markdown",
-      "description": "Inspect Knowgrph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-agent-ready.md",
+      "description": "Inspect AgenticGraph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-agent-ready.md",
       "sha256": "a59a48e6192bb9387f675ecf7cb9fa09664a379e0e07190bfd1cba782909679b",
       "vdeoxpln": {
-        "id": "knowgrph-agent-ready",
-        "title": "Knowgrph Agent Ready",
+        "id": "agenticgraph-agent-ready",
+        "title": "AgenticGraph Agent Ready",
         "scope": "read-only-published-and-browser-local",
         "mutation": "read-only",
         "semanticKey": "kgvx_1f172c3d",
@@ -44,7 +44,7 @@
             "read_local_runtime_identity"
           ],
           "local": [
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -55,14 +55,14 @@
       }
     },
     {
-      "name": "knowgrph-ai-showrunner",
+      "name": "agenticgraph-ai-showrunner",
       "type": "markdown",
       "description": "Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Storyboard Widget owners.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-ai-showrunner.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-ai-showrunner.md",
       "sha256": "d93d25f274d85f63a84333e80f96587e21a8eaf7c4278fe3d6143904f6f2ce8c",
       "vdeoxpln": {
-        "id": "knowgrph-ai-showrunner",
-        "title": "Knowgrph AI Showrunner",
+        "id": "agenticgraph-ai-showrunner",
+        "title": "AgenticGraph AI Showrunner",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-approval-gated",
         "semanticKey": "kgvx_7e480fd7",
@@ -70,13 +70,13 @@
           "published": [],
           "browserLocal": [],
           "local": [
-            "knowgrph.showrunner.approve_stage",
-            "knowgrph.showrunner.get_artifact",
-            "knowgrph.showrunner.post_choice",
-            "knowgrph.showrunner.run_status",
-            "knowgrph.showrunner.start_run",
-            "knowgrph.showrunner.submit_critique",
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.showrunner.approve_stage",
+            "agenticgraph.showrunner.get_artifact",
+            "agenticgraph.showrunner.post_choice",
+            "agenticgraph.showrunner.run_status",
+            "agenticgraph.showrunner.start_run",
+            "agenticgraph.showrunner.submit_critique",
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -86,14 +86,14 @@
       }
     },
     {
-      "name": "knowgrph-ai-voice-studio",
+      "name": "agenticgraph-ai-voice-studio",
       "type": "markdown",
       "description": "Capture consented voice-profile manifests, dictate speech, and create disclosed speech through one provider-neutral browser and local-stdio contract.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-ai-voice-studio.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-ai-voice-studio.md",
       "sha256": "31bfd213125249a3dd04a72922a291695b7178d816cb287325640f0b8532e88d",
       "vdeoxpln": {
-        "id": "knowgrph-ai-voice-studio",
-        "title": "Knowgrph AI Voice Studio",
+        "id": "agenticgraph-ai-voice-studio",
+        "title": "AgenticGraph AI Voice Studio",
         "scope": "browser-local-and-local-stdio",
         "mutation": "local-consent-and-approval-gated",
         "semanticKey": "kgvx_5e8cecc9",
@@ -101,8 +101,8 @@
           "published": [],
           "browserLocal": [],
           "local": [
-            "knowgrph.vdeoxpln.list",
-            "knowgrph.voice.studio"
+            "agenticgraph.vdeoxpln.list",
+            "agenticgraph.voice.studio"
           ]
         },
         "publish": [
@@ -112,14 +112,14 @@
       }
     },
     {
-      "name": "knowgrph-application-composition",
+      "name": "agenticgraph-application-composition",
       "type": "markdown",
       "description": "Compose exact-version agents, prompts, typed values, and opaque third-party integration capabilities into immutable provider-neutral plans, then run them through existing bounded runtime owners.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-application-composition.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-application-composition.md",
       "sha256": "954c6d1c49ed2fe22227d5e5036a91b0b89caeaadd05ed3f11ad6e0cb9debfb6",
       "vdeoxpln": {
-        "id": "knowgrph-application-composition",
-        "title": "Knowgrph Application Composition",
+        "id": "agenticgraph-application-composition",
+        "title": "AgenticGraph Application Composition",
         "scope": "local-stdio-owner-composed",
         "mutation": "local-and-external-approval-gated",
         "semanticKey": "kgvx_da3f5875",
@@ -127,10 +127,10 @@
           "published": [],
           "browserLocal": [],
           "local": [
-            "knowgrph.application.catalog",
-            "knowgrph.application.execute",
-            "knowgrph.application.plan",
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.application.catalog",
+            "agenticgraph.application.execute",
+            "agenticgraph.application.plan",
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -139,14 +139,14 @@
       }
     },
     {
-      "name": "knowgrph-chat-to-canvas",
+      "name": "agenticgraph-chat-to-canvas",
       "type": "markdown",
       "description": "Route AI-assisted graph generation through FloatingPanel Chat, KGC validation, Workspace FS, Source Files, and Canvas apply owners.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-chat-to-canvas.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-chat-to-canvas.md",
       "sha256": "bb1bc2679ac714335aac21d3c987b946bad9f994c8fa88b0de75a18b3e41ac33",
       "vdeoxpln": {
-        "id": "knowgrph-chat-to-canvas",
-        "title": "Knowgrph Chat To Canvas",
+        "id": "agenticgraph-chat-to-canvas",
+        "title": "AgenticGraph Chat To Canvas",
         "scope": "browser-local-ai-assisted",
         "mutation": "browser-local-user-mediated",
         "semanticKey": "kgvx_7ef5b0f5",
@@ -160,7 +160,7 @@
             "inspect_local_workspace_document"
           ],
           "local": [
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -170,14 +170,14 @@
       }
     },
     {
-      "name": "knowgrph-commerce-readiness",
+      "name": "agenticgraph-commerce-readiness",
       "type": "markdown",
       "description": "Inspect Commerce, payment worker, x402, ACP, UCP, MPP, and readiness metadata without bypassing the shared payment SSOT.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-commerce-readiness.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-commerce-readiness.md",
       "sha256": "f314c4eb5bb52c61865ab29aa64b443461844a662912b9f548e78bec24d009d6",
       "vdeoxpln": {
-        "id": "knowgrph-commerce-readiness",
-        "title": "Knowgrph Commerce Readiness",
+        "id": "agenticgraph-commerce-readiness",
+        "title": "AgenticGraph Commerce Readiness",
         "scope": "read-only-published-and-browser-local",
         "mutation": "read-only",
         "semanticKey": "kgvx_73c86f80",
@@ -190,7 +190,7 @@
             "inspect_local_settings_chat_readiness"
           ],
           "local": [
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -201,14 +201,14 @@
       }
     },
     {
-      "name": "knowgrph-html-video-renderer",
+      "name": "agenticgraph-html-video-renderer",
       "type": "markdown",
       "description": "Render HTML, CSS, and data documents to MP4 video artifacts through a runtime-selected pluggable engine and the existing rich media output owner.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-html-video-renderer.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-html-video-renderer.md",
       "sha256": "da7c40d1c3f7ae2e88ead8bdf521b8a3eb2680f05a4ab7643d06f94499e7f7d1",
       "vdeoxpln": {
-        "id": "knowgrph-html-video-renderer",
-        "title": "Knowgrph HTML Video Renderer",
+        "id": "agenticgraph-html-video-renderer",
+        "title": "AgenticGraph HTML Video Renderer",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-approval-gated",
         "semanticKey": "kgvx_8dde8e02",
@@ -216,8 +216,8 @@
           "published": [],
           "browserLocal": [],
           "local": [
-            "knowgrph.html_video.render",
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.html_video.render",
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -227,14 +227,14 @@
       }
     },
     {
-      "name": "knowgrph-mcp-local",
+      "name": "agenticgraph-mcp-local",
       "type": "markdown",
-      "description": "Expose Knowgrph-owned local Source Files, Agentic Canvas OS docs invocation, deterministic repository packing, managed implementation runs, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-mcp-local.md",
+      "description": "Expose AgenticGraph-owned local Source Files, Agentic Canvas OS docs invocation, deterministic repository packing, managed implementation runs, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-mcp-local.md",
       "sha256": "4e3886f2521f28f187b6d931750c7ecad3a02be495b695fcdc3d8f7f3eb18ec3",
       "vdeoxpln": {
-        "id": "knowgrph-mcp-local",
-        "title": "Knowgrph Local MCP",
+        "id": "agenticgraph-mcp-local",
+        "title": "AgenticGraph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
         "semanticKey": "kgvx_adbdb68c",
@@ -244,84 +244,84 @@
           "local": [
             "export.publish",
             "fetch",
-            "knowgrph.agent_team.control",
-            "knowgrph.agent_team.list",
-            "knowgrph.agent_team.plan",
-            "knowgrph.agent_team.start",
-            "knowgrph.agentic_canvas_os.docs.invoke",
-            "knowgrph.agentic_sdlc.observe",
-            "knowgrph.annotate.image",
-            "knowgrph.annotate.video_frame",
-            "knowgrph.application.catalog",
-            "knowgrph.application.execute",
-            "knowgrph.application.plan",
-            "knowgrph.browser_api.run",
-            "knowgrph.ecs.decision_persist",
-            "knowgrph.ecs.session_start",
-            "knowgrph.ecs.world_tick",
-            "knowgrph.file.sync",
-            "knowgrph.geospatial.command",
-            "knowgrph.git.run",
-            "knowgrph.graphrag_pipeline",
-            "knowgrph.html_video.render",
-            "knowgrph.implementation_run.control",
-            "knowgrph.implementation_run.list",
-            "knowgrph.implementation_run.plan",
-            "knowgrph.implementation_run.start",
-            "knowgrph.knowledge_graph.explain_edge",
-            "knowgrph.knowledge_graph.ingest",
-            "knowgrph.knowledge_graph.parser_generate",
-            "knowgrph.knowledge_graph.query",
-            "knowgrph.memory.add",
-            "knowgrph.memory.assemble_prompt",
-            "knowgrph.memory.compact",
-            "knowgrph.memory.extract_procedural",
-            "knowgrph.memory.invoke",
-            "knowgrph.memory.materialize_user_model",
-            "knowgrph.memory.search",
-            "knowgrph.memory.write",
-            "knowgrph.os.status",
-            "knowgrph.payment.event.settle",
-            "knowgrph.payment.intent.create",
-            "knowgrph.payment.rail.select",
-            "knowgrph.payment.readiness",
-            "knowgrph.payment.receipt.project",
-            "knowgrph.payment.reconcile",
-            "knowgrph.payment.refund",
-            "knowgrph.payment.status",
-            "knowgrph.pipeline",
-            "knowgrph.probe.evolve",
-            "knowgrph.probe.generate",
-            "knowgrph.probe.select",
-            "knowgrph.repository.pack",
-            "knowgrph.sandbox.policy.authorize",
-            "knowgrph.sandbox.policy.validate",
-            "knowgrph.session.search",
-            "knowgrph.showrunner.approve_stage",
-            "knowgrph.showrunner.get_artifact",
-            "knowgrph.showrunner.post_choice",
-            "knowgrph.showrunner.run_status",
-            "knowgrph.showrunner.start_run",
-            "knowgrph.showrunner.submit_critique",
-            "knowgrph.skill.evolve",
-            "knowgrph.sme.broker.draft_nudge",
-            "knowgrph.sme.marketplace.match",
-            "knowgrph.sme.multilingual.adapt",
-            "knowgrph.sme.source.normalize",
-            "knowgrph.sme.trigger.evaluate",
-            "knowgrph.superagent.run",
-            "knowgrph.tool.call",
-            "knowgrph.tool.catalog",
-            "knowgrph.tool.describe",
-            "knowgrph.tool.search",
-            "knowgrph.ui.launch",
-            "knowgrph.ui.stop",
-            "knowgrph.user.profile",
-            "knowgrph.vdeoxpln.list",
-            "knowgrph.video_remix.run",
-            "knowgrph.voice.studio",
-            "knowgrph.workspace_artifact.apply",
-            "knowgrph.workspace_artifact.plan",
+            "agenticgraph.agent_team.control",
+            "agenticgraph.agent_team.list",
+            "agenticgraph.agent_team.plan",
+            "agenticgraph.agent_team.start",
+            "agenticgraph.agentic_canvas_os.docs.invoke",
+            "agenticgraph.agentic_sdlc.observe",
+            "agenticgraph.annotate.image",
+            "agenticgraph.annotate.video_frame",
+            "agenticgraph.application.catalog",
+            "agenticgraph.application.execute",
+            "agenticgraph.application.plan",
+            "agenticgraph.browser_api.run",
+            "agenticgraph.ecs.decision_persist",
+            "agenticgraph.ecs.session_start",
+            "agenticgraph.ecs.world_tick",
+            "agenticgraph.file.sync",
+            "agenticgraph.geospatial.command",
+            "agenticgraph.git.run",
+            "agenticgraph.graphrag_pipeline",
+            "agenticgraph.html_video.render",
+            "agenticgraph.implementation_run.control",
+            "agenticgraph.implementation_run.list",
+            "agenticgraph.implementation_run.plan",
+            "agenticgraph.implementation_run.start",
+            "agenticgraph.knowledge_graph.explain_edge",
+            "agenticgraph.knowledge_graph.ingest",
+            "agenticgraph.knowledge_graph.parser_generate",
+            "agenticgraph.knowledge_graph.query",
+            "agenticgraph.memory.add",
+            "agenticgraph.memory.assemble_prompt",
+            "agenticgraph.memory.compact",
+            "agenticgraph.memory.extract_procedural",
+            "agenticgraph.memory.invoke",
+            "agenticgraph.memory.materialize_user_model",
+            "agenticgraph.memory.search",
+            "agenticgraph.memory.write",
+            "agenticgraph.os.status",
+            "agenticgraph.payment.event.settle",
+            "agenticgraph.payment.intent.create",
+            "agenticgraph.payment.rail.select",
+            "agenticgraph.payment.readiness",
+            "agenticgraph.payment.receipt.project",
+            "agenticgraph.payment.reconcile",
+            "agenticgraph.payment.refund",
+            "agenticgraph.payment.status",
+            "agenticgraph.pipeline",
+            "agenticgraph.probe.evolve",
+            "agenticgraph.probe.generate",
+            "agenticgraph.probe.select",
+            "agenticgraph.repository.pack",
+            "agenticgraph.sandbox.policy.authorize",
+            "agenticgraph.sandbox.policy.validate",
+            "agenticgraph.session.search",
+            "agenticgraph.showrunner.approve_stage",
+            "agenticgraph.showrunner.get_artifact",
+            "agenticgraph.showrunner.post_choice",
+            "agenticgraph.showrunner.run_status",
+            "agenticgraph.showrunner.start_run",
+            "agenticgraph.showrunner.submit_critique",
+            "agenticgraph.skill.evolve",
+            "agenticgraph.sme.broker.draft_nudge",
+            "agenticgraph.sme.marketplace.match",
+            "agenticgraph.sme.multilingual.adapt",
+            "agenticgraph.sme.source.normalize",
+            "agenticgraph.sme.trigger.evaluate",
+            "agenticgraph.superagent.run",
+            "agenticgraph.tool.call",
+            "agenticgraph.tool.catalog",
+            "agenticgraph.tool.describe",
+            "agenticgraph.tool.search",
+            "agenticgraph.ui.launch",
+            "agenticgraph.ui.stop",
+            "agenticgraph.user.profile",
+            "agenticgraph.vdeoxpln.list",
+            "agenticgraph.video_remix.run",
+            "agenticgraph.voice.studio",
+            "agenticgraph.workspace_artifact.apply",
+            "agenticgraph.workspace_artifact.plan",
             "sealion.detect_language_variant",
             "sealion.safety_check",
             "sealion.translate_localize",
@@ -335,14 +335,14 @@
       }
     },
     {
-      "name": "knowgrph-memory-layer",
+      "name": "agenticgraph-memory-layer",
       "type": "markdown",
       "description": "Persist, retrieve, safely compact, hard-redact, and revision-freeze host-authorized exact-scope agent memory through a durable local runtime while preserving the legacy provider-neutral prompt harness.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-memory-layer.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-memory-layer.md",
       "sha256": "4673686c9477487a0c2563499287bf888d7fc2a4714b9fbdcbb4cdb9a278ab0b",
       "vdeoxpln": {
-        "id": "knowgrph-memory-layer",
-        "title": "Knowgrph Memory Layer",
+        "id": "agenticgraph-memory-layer",
+        "title": "AgenticGraph Memory Layer",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-scoped-memory",
         "semanticKey": "kgvx_0399f9a9",
@@ -350,17 +350,17 @@
           "published": [],
           "browserLocal": [],
           "local": [
-            "knowgrph.memory.add",
-            "knowgrph.memory.assemble_prompt",
-            "knowgrph.memory.compact",
-            "knowgrph.memory.extract_procedural",
-            "knowgrph.memory.invoke",
-            "knowgrph.memory.materialize_user_model",
-            "knowgrph.memory.search",
-            "knowgrph.memory.write",
-            "knowgrph.session.search",
-            "knowgrph.user.profile",
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.memory.add",
+            "agenticgraph.memory.assemble_prompt",
+            "agenticgraph.memory.compact",
+            "agenticgraph.memory.extract_procedural",
+            "agenticgraph.memory.invoke",
+            "agenticgraph.memory.materialize_user_model",
+            "agenticgraph.memory.search",
+            "agenticgraph.memory.write",
+            "agenticgraph.session.search",
+            "agenticgraph.user.profile",
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -370,14 +370,14 @@
       }
     },
     {
-      "name": "knowgrph-research-visual",
+      "name": "agenticgraph-research-visual",
       "type": "markdown",
-      "description": "Create file-backed research visual workflows from source material using Knowgrph parsing, Source Files, Storyboard, renderer, and chat owners.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-research-visual.md",
+      "description": "Create file-backed research visual workflows from source material using AgenticGraph parsing, Source Files, Storyboard, renderer, and chat owners.",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-research-visual.md",
       "sha256": "17cfaf8f1afc41b9a59b3e650054415db8f990a212c4447c3bfc57d54bb22147",
       "vdeoxpln": {
-        "id": "knowgrph-research-visual",
-        "title": "Knowgrph Research Visual",
+        "id": "agenticgraph-research-visual",
+        "title": "AgenticGraph Research Visual",
         "scope": "browser-local-ai-assisted",
         "mutation": "browser-local-user-mediated",
         "semanticKey": "kgvx_e0d43017",
@@ -389,7 +389,7 @@
             "inspect_local_source_files_snapshot"
           ],
           "local": [
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -399,14 +399,14 @@
       }
     },
     {
-      "name": "knowgrph-source-files",
+      "name": "agenticgraph-source-files",
       "type": "markdown",
       "description": "Discover, read, inspect, and route published Source Files and shared documents through the canonical storage and document-structure owners.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-source-files.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-source-files.md",
       "sha256": "a78bb3da32a17c2934dfa623ce8d785fec16c44ad0ec8366444c61a85b43ebdb",
       "vdeoxpln": {
-        "id": "knowgrph-source-files",
-        "title": "Knowgrph Source Files",
+        "id": "agenticgraph-source-files",
+        "title": "AgenticGraph Source Files",
         "scope": "read-only-published",
         "mutation": "read-only",
         "semanticKey": "kgvx_79a9fb63",
@@ -422,7 +422,7 @@
           ],
           "local": [
             "fetch",
-            "knowgrph.vdeoxpln.list",
+            "agenticgraph.vdeoxpln.list",
             "search"
           ]
         },
@@ -434,14 +434,14 @@
       }
     },
     {
-      "name": "knowgrph-strybldr",
+      "name": "agenticgraph-strybldr",
       "type": "markdown",
       "description": "Turn image or media source units into editable Storyboard cards and bounded media handoff artifacts through Strybldr and shared renderer owners.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-strybldr.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-strybldr.md",
       "sha256": "1fdd0c118ae8ab786b8df01abb933c972b0b4a699cadec2e9fac2af147329de8",
       "vdeoxpln": {
-        "id": "knowgrph-strybldr",
-        "title": "Knowgrph Strybldr",
+        "id": "agenticgraph-strybldr",
+        "title": "AgenticGraph Strybldr",
         "scope": "browser-local-source-backed",
         "mutation": "browser-local-user-mediated",
         "semanticKey": "kgvx_0d4e3f41",
@@ -453,7 +453,7 @@
             "inspect_local_source_files_snapshot"
           ],
           "local": [
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -463,14 +463,14 @@
       }
     },
     {
-      "name": "knowgrph-video-agent",
+      "name": "agenticgraph-video-agent",
       "type": "markdown",
-      "description": "Reason over operator-supplied video sources through native knowgrph ingestion, parsing, annotation, dataset operations, zone counting, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-video-agent.md",
+      "description": "Reason over operator-supplied video sources through native agenticgraph ingestion, parsing, annotation, dataset operations, zone counting, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-video-agent.md",
       "sha256": "acdea45ff8936e8b35c0bde592e4f0af4edb383852e554fc36ab2fbfe1b044d5",
       "vdeoxpln": {
-        "id": "knowgrph-video-agent",
-        "title": "Knowgrph Video Agent",
+        "id": "agenticgraph-video-agent",
+        "title": "AgenticGraph Video Agent",
         "scope": "browser-local-and-local-stdio",
         "mutation": "local-approval-gated",
         "semanticKey": "kgvx_098382a2",
@@ -478,10 +478,10 @@
           "published": [],
           "browserLocal": [],
           "local": [
-            "knowgrph.annotate.image",
-            "knowgrph.annotate.video_frame",
-            "knowgrph.html_video.render",
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.annotate.image",
+            "agenticgraph.annotate.video_frame",
+            "agenticgraph.html_video.render",
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [
@@ -491,14 +491,14 @@
       }
     },
     {
-      "name": "knowgrph-visual-annotation-engine",
+      "name": "agenticgraph-visual-annotation-engine",
       "type": "markdown",
       "description": "Run browser-local image and video-frame annotation into LLM-ready structured JSON plus native visual datasets materialised through existing artifact owners.",
-      "url": "https://airvio.co/knowgrph/.well-known/agent-skills/knowgrph-visual-annotation-engine.md",
+      "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-visual-annotation-engine.md",
       "sha256": "e5b7a3e0052235828c6ae31ec999014aeffadb9ef92b8915911aa7c5db80ebc0",
       "vdeoxpln": {
-        "id": "knowgrph-visual-annotation-engine",
-        "title": "Knowgrph Visual Annotation Engine",
+        "id": "agenticgraph-visual-annotation-engine",
+        "title": "AgenticGraph Visual Annotation Engine",
         "scope": "browser-local",
         "mutation": "local-approval-gated",
         "semanticKey": "kgvx_f3255bd1",
@@ -506,9 +506,9 @@
           "published": [],
           "browserLocal": [],
           "local": [
-            "knowgrph.annotate.image",
-            "knowgrph.annotate.video_frame",
-            "knowgrph.vdeoxpln.list"
+            "agenticgraph.annotate.image",
+            "agenticgraph.annotate.video_frame",
+            "agenticgraph.vdeoxpln.list"
           ]
         },
         "publish": [

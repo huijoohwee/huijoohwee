@@ -1,6 +1,6 @@
-# Knowgrph WebMCP Readiness Skill
+# AgenticGraph WebMCP Readiness Skill
 
-Use this skill when an agent or browser needs to inspect the deployed Knowgrph agent-ready surface and WebMCP lifecycle.
+Use this skill when an agent or browser needs to inspect the deployed AgenticGraph agent-ready surface and WebMCP lifecycle.
 
 ## Shared deployed tools
 
@@ -11,5 +11,5 @@ Use this skill when an agent or browser needs to inspect the deployed Knowgrph a
 - Browser app runtime installs WebMCP on page load via navigator.modelContext in canvas/src/main.tsx.
 - Runtime prefers provideContext({ tools }) when available and also registers each tool with registerTool(tool, { signal }) when supported.
 - AbortController-backed registration is used so tools can be unregistered cleanly with the platform lifecycle.
-- Deployed HTML fallback injects the shared five-tool WebMCP surface on /knowgrph HTML routes.
+- Deployed HTML fallback injects the shared five-tool WebMCP surface on /agenticgraph HTML routes.
 - Full app runtime additionally exposes browser-local inspect tools for Settings chat readiness, MainPanel state, Editor Workspace state, chat pipeline validation/finalize/apply state, the combined MainPanel -> Chat -> Markdown/frontmatter -> Canvas readiness path, the active workspace document, canvas topology, canvas snapshot, 3d camera pose, 3d layout positions, 2d zoom viewport, and Source Files snapshot.

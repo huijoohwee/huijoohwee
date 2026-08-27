@@ -1,14 +1,14 @@
 {
   "issuer": "https://airvio.co",
-  "resource": "https://airvio.co/knowgrph/",
-  "resource_name": "Knowgrph",
+  "resource": "https://airvio.co/agenticgraph/",
+  "resource_name": "AgenticGraph",
   "authorization_servers": [
     "https://airvio.co"
   ],
   "cloudflare_access_issuer": "https://airvio.co/cdn-cgi/access",
   "authorization_endpoint": "https://airvio.co/cdn-cgi/access/login",
   "token_endpoint": "https://airvio.co/cdn-cgi/access/token",
-  "jwks_uri": "https://airvio.co/knowgrph/.well-known/http-message-signatures-directory",
+  "jwks_uri": "https://airvio.co/agenticgraph/.well-known/http-message-signatures-directory",
   "response_types_supported": [
     "code"
   ],
@@ -21,14 +21,14 @@
     "private_key_jwt"
   ],
   "scopes_supported": [
-    "knowgrph:read",
-    "knowgrph:source-files:read"
+    "agenticgraph:read",
+    "agenticgraph:source-files:read"
   ],
   "agent_auth": {
     "skill": "https://airvio.co/auth.md",
-    "register_uri": "https://airvio.co/knowgrph/agent/auth",
-    "claim_uri": "https://airvio.co/knowgrph/agent/auth/claim",
-    "revocation_uri": "https://airvio.co/knowgrph/agent/auth/revoke",
+    "register_uri": "https://airvio.co/agenticgraph/agent/auth",
+    "claim_uri": "https://airvio.co/agenticgraph/agent/auth/claim",
+    "revocation_uri": "https://airvio.co/agenticgraph/agent/auth/revoke",
     "identity_types_supported": [
       "anonymous",
       "identity_assertion"

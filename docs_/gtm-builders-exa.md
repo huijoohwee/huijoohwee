@@ -9,7 +9,7 @@ author: airvio/joohwee
 # ── tier-a instance fields ──────────────────────────────────────────────────
 title: AcceleratorROI Scorer + EcosystemPulse Dashboard
 tagline: TOPSIS-ranked accelerator intelligence with cohort-level ecosystem monitoring
-product: Knowgrph / airvio
+product: AgenticGraph / airvio
 track: Startup Ecosystem
 theme: Track what happens to startups after accelerator graduation
 stack:

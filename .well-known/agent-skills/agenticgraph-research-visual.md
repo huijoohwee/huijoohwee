@@ -1,11 +1,11 @@
-# Knowgrph Research Visual Skill
+# AgenticGraph Research Visual Skill
 
-Use this skill when: Create file-backed research visual workflows from source material using Knowgrph parsing, Source Files, Storyboard, renderer, and chat owners.
+Use this skill when: Create file-backed research visual workflows from source material using AgenticGraph parsing, Source Files, Storyboard, renderer, and chat owners.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-research-visual`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-research-visual`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_e0d43017`
 - Scope: `browser-local-ai-assisted`
 - Mutation boundary: `browser-local-user-mediated`
@@ -47,7 +47,7 @@ Browser-local tools:
 - inspect_local_source_files_snapshot
 
 Local MCP tools:
-- knowgrph.vdeoxpln.list
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -64,7 +64,7 @@ Local MCP tools:
 - canvas/src/features/source-files/applyComposedGraphFromSourceFiles.ts
 - canvas/src/lib/config.render.ts
 - canvas/src/lib/graph/semanticKey.ts
-- docs/documents/knowgrph-vdeoxpln-prd-tad.md
+- docs/documents/agenticgraph-vdeoxpln-prd-tad.md
 
 ## Artifact Policy
 
@@ -90,7 +90,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

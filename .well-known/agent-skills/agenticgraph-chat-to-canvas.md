@@ -1,11 +1,11 @@
-# Knowgrph Chat To Canvas Skill
+# AgenticGraph Chat To Canvas Skill
 
 Use this skill when: Route AI-assisted graph generation through FloatingPanel Chat, KGC validation, Workspace FS, Source Files, and Canvas apply owners.
 
 ## Contract
 
-- Vdeoxpln id: `knowgrph-chat-to-canvas`
-- Contract version: `knowgrph-vdeoxpln/v0.1`
+- Vdeoxpln id: `agenticgraph-chat-to-canvas`
+- Contract version: `agenticgraph-vdeoxpln/v0.1`
 - Semantic key: `kgvx_7ef5b0f5`
 - Scope: `browser-local-ai-assisted`
 - Mutation boundary: `browser-local-user-mediated`
@@ -46,7 +46,7 @@ Browser-local tools:
 - inspect_local_workspace_document
 
 Local MCP tools:
-- knowgrph.vdeoxpln.list
+- agenticgraph.vdeoxpln.list
 
 ## Workflow
 
@@ -90,7 +90,7 @@ Local MCP tools:
 
 ## Guardrails
 
-- Keep behavior source-owned in the listed Knowgrph owners.
+- Keep behavior source-owned in the listed AgenticGraph owners.
 - Do not add compatibility aliases for stale vdeoxpln ids.
 - Do not route by absolute paths, demo filenames, provider keys, or public route labels.
 - Do not copy external vdeoxpln source, prompts, schemas, examples, assets, or prose.

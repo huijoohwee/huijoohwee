@@ -3,10 +3,10 @@ export const STRYBORD_API_VERSION = '2026-06-08.strybord.v1'
 export const STRYBORD_ROUTE_PREFIX = '/api/payments/strybord'
 
 export const STRYBORD_MCP_WRITE_SCOPES = Object.freeze({
-  runWrite: 'knowgrph:run.write',
-  renderWrite: 'knowgrph:render.write',
-  publishWrite: 'knowgrph:publish.write',
-  payoutWrite: 'knowgrph:payout.write',
+  runWrite: 'agenticgraph:run.write',
+  renderWrite: 'agenticgraph:render.write',
+  publishWrite: 'agenticgraph:publish.write',
+  payoutWrite: 'agenticgraph:payout.write',
 })
 
 export const STRYBORD_MCP_ACTION_TOOL_IDS = Object.freeze({
@@ -166,7 +166,7 @@ export const STRYBORD_MCP_ACTION_TOOL_META = Object.freeze({
   },
   [STRYBORD_MCP_ACTION_TOOL_IDS.getGateDecision]: {
     title: 'Get Human Gate Decision',
-    scope: 'knowgrph:read',
+    scope: 'agenticgraph:read',
     mutating: false,
     description: 'Read the current decision for a human-in-the-loop gate.',
   },
@@ -190,7 +190,7 @@ export const STRYBORD_MCP_ACTION_TOOL_META = Object.freeze({
   },
   [STRYBORD_MCP_ACTION_TOOL_IDS.getRunState]: {
     title: 'Get Storyboard Run State',
-    scope: 'knowgrph:read',
+    scope: 'agenticgraph:read',
     mutating: false,
     description: 'Read the D1-authoritative StoryboardRun state and gate/payout summary.',
   },

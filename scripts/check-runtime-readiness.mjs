@@ -23,7 +23,7 @@ const canonical = process.argv.includes('--canonical')
 const failures = []
 const markerPaths = [
   '.well-known/runtime-readiness.json',
-  'content/knowgrph/.well-known/runtime-readiness.json',
+  'content/agenticgraph/.well-known/runtime-readiness.json',
 ]
 const requiredFiles = [
   'package.json',
@@ -33,8 +33,8 @@ const requiredFiles = [
   '_redirects',
   '_worker.js',
   '_routes.json',
-  'content/knowgrph/index.html',
-  'functions/knowgrph/[[path]].js',
+  'content/agenticgraph/index.html',
+  'functions/agenticgraph/[[path]].js',
   'content/gamexr/index.html',
   'content/gamexr/release-manifest.json',
   'content/gamexr/.well-known/runtime-readiness.json',
@@ -56,7 +56,7 @@ const markerSources = markerPaths.map(relativePath => {
   }
 })
 if (new Set(markerSources).size !== 1) failures.push('runtime marker copies must be byte-identical')
-if (fs.existsSync(path.resolve(root, 'knowgrph/.well-known/runtime-readiness.json'))) {
+if (fs.existsSync(path.resolve(root, 'agenticgraph/.well-known/runtime-readiness.json'))) {
   failures.push('public app readiness must be served dynamically from the apex marker')
 }
 
@@ -76,28 +76,28 @@ try {
   failures.push(`_routes.json is invalid: ${error.message}`)
 }
 
-const appHtmlPath = path.resolve(root, 'content/knowgrph/index.html')
+const appHtmlPath = path.resolve(root, 'content/agenticgraph/index.html')
 if (fs.existsSync(appHtmlPath)) {
   const appHtml = fs.readFileSync(appHtmlPath, 'utf8')
-  const references = [...appHtml.matchAll(/(?:src|href)=["'](\/knowgrph\/[^"'#?]+)["']/g)].map(match => match[1])
+  const references = [...appHtml.matchAll(/(?:src|href)=["'](\/agenticgraph\/[^"'#?]+)["']/g)].map(match => match[1])
   for (const reference of new Set(references)) {
-    const relativePath = reference.replace(/^\/knowgrph\//, 'content/knowgrph/')
+    const relativePath = reference.replace(/^\/agenticgraph\//, 'content/agenticgraph/')
     if (!fs.existsSync(path.resolve(root, relativePath))) failures.push(`application shell references a missing artifact: ${reference}`)
-    if (marker && reference.startsWith('/knowgrph/assets/') && !reference.startsWith(`/knowgrph/assets/${marker.source.revision}/`)) {
+    if (marker && reference.startsWith('/agenticgraph/assets/') && !reference.startsWith(`/agenticgraph/assets/${marker.source.revision}/`)) {
       failures.push(`application shell references a stale asset namespace: ${reference}`)
     }
   }
 }
 
 if (marker) {
-  const assetsRoot = path.resolve(root, 'knowgrph', 'assets')
+  const assetsRoot = path.resolve(root, 'agenticgraph', 'assets')
   const namespaces = fs.existsSync(assetsRoot)
     ? fs.readdirSync(assetsRoot, { withFileTypes: true }).filter(entry => entry.isDirectory()).map(entry => entry.name).sort()
     : []
   if (namespaces.length !== 1 || namespaces[0] !== marker.source.revision) {
     failures.push(`asset namespace must contain only ${marker.source.revision}; found ${namespaces.join(', ') || 'none'}`)
   }
-  const artifactDigest = calculateArtifactDigest(path.resolve(root, 'content', 'knowgrph'))
+  const artifactDigest = calculateArtifactDigest(path.resolve(root, 'content', 'agenticgraph'))
   if (artifactDigest !== marker.artifact.digest) {
     failures.push(`runtime artifact digest mismatch: expected ${marker.artifact.digest}, received ${artifactDigest}`)
   }
@@ -246,7 +246,7 @@ function parseHeaderBlocks(source) {
 
 function validateMarker(value) {
   requireExactKeys(value, ['schema', 'status', 'source', 'agenticCanvasOs', 'catalogRevision', 'artifact', 'immutableManifest', 'mirror', 'surfaces'], 'marker')
-  if (value.schema !== 'knowgrph-production-runtime-readiness/v2') throw new Error('schema is invalid')
+  if (value.schema !== 'agenticgraph-production-runtime-readiness/v2') throw new Error('schema is invalid')
   if (value.status !== 'verified-build') throw new Error('status must be verified-build')
   requireExactKeys(value.source, ['repository', 'revision', 'tree'], 'source')
   requireExactKeys(value.agenticCanvasOs, ['repository', 'revision'], 'agenticCanvasOs')
@@ -268,8 +268,8 @@ function validateMarker(value) {
       throw new Error(`${label} digest is invalid`)
     }
   }
-  if (!Array.isArray(value.surfaces) || value.surfaces.length !== 2 || !value.surfaces.includes('/') || !value.surfaces.includes('/knowgrph')) {
-    throw new Error('surfaces must bind / and /knowgrph exactly')
+  if (!Array.isArray(value.surfaces) || value.surfaces.length !== 2 || !value.surfaces.includes('/') || !value.surfaces.includes('/agenticgraph')) {
+    throw new Error('surfaces must bind / and /agenticgraph exactly')
   }
 }
 
@@ -284,9 +284,9 @@ function calculateArtifactDigest(publicRoot) {
   const rootFiles = new Set([
     'favicon.svg',
     'index.html',
-    'knowgrph-chat-stream-sw.js',
-    'knowgrph-live-canvas-hero.md',
-    'knowgrph-service-worker-revision.js',
+    'agenticgraph-chat-stream-sw.js',
+    'agenticgraph-live-canvas-hero.md',
+    'agenticgraph-service-worker-revision.js',
     'llms.txt',
     'manifest.webmanifest',
     'settings-flow.json',
