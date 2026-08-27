@@ -1,21 +1,21 @@
 User-agent: *
-Allow: /knowgrph/
+Allow: /agenticgraph/
 Disallow: /api/payments/
 
 User-agent: GPTBot
-Allow: /knowgrph/
+Allow: /agenticgraph/
 Disallow: /api/payments/
 
 User-agent: Claude-Web
-Allow: /knowgrph/
+Allow: /agenticgraph/
 Disallow: /api/payments/
 
 User-agent: Google-Extended
-Allow: /knowgrph/
+Allow: /agenticgraph/
 Disallow: /api/payments/
 
 User-agent: OAI-SearchBot
-Allow: /knowgrph/
+Allow: /agenticgraph/
 Disallow: /api/payments/
 
 Content-Signal: ai-train=no, search=yes, ai-input=yes

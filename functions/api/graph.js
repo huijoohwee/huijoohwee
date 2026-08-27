@@ -2,8 +2,8 @@
  * Cloudflare Pages Function: /api/graph
  *
  * Purpose:
- * - Provide same-origin API data source for Knowgrph ("Toolbar → Launch → Fetch API Data Source")
- * - Backed by the HackaMap SSOT import bundle under `/knowgrph/imports/hackamap/`
+ * - Provide same-origin API data source for AgenticGraph ("Toolbar → Launch → Fetch API Data Source")
+ * - Backed by the HackaMap SSOT import bundle under `/agenticgraph/imports/hackamap/`
  *
  * Notes:
  * - This is intentionally NOT a generic proxy.
@@ -24,8 +24,8 @@ function jsonResponse(request, body, status = 200) {
 }
 
 async function fetchHackamapGraphJson(request) {
-  // Static asset served by the Pages site (Knowgrph is deployed under /knowgrph/).
-  const url = new URL("/knowgrph/imports/hackamap/hackamap-graph.json", request.url);
+  // Static asset served by the Pages site (AgenticGraph is deployed under /agenticgraph/).
+  const url = new URL("/agenticgraph/imports/hackamap/hackamap-graph.json", request.url);
   const res = await fetch(url.toString(), { redirect: "follow" });
   if (!res.ok) return null;
   return await res.json();
@@ -39,22 +39,22 @@ async function fetchHackamapJson(request, pathname) {
 }
 
 async function fetchHackamapApiGraphJson(request) {
-  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/hackamap_api_graph.json");
+  const payload = await fetchHackamapJson(request, "/agenticgraph/imports/hackamap/hackamap_api_graph.json");
   return isApiGraphPayload(payload) ? payload : null;
 }
 
 async function fetchHackamapPipelineJson(request) {
-  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/hackamap_pipeline.json");
+  const payload = await fetchHackamapJson(request, "/agenticgraph/imports/hackamap/hackamap_pipeline.json");
   return payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
 }
 
 async function fetchHackamapQueryPresetsJson(request) {
-  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/hackamap_query_presets.json");
+  const payload = await fetchHackamapJson(request, "/agenticgraph/imports/hackamap/hackamap_query_presets.json");
   return Array.isArray(payload) ? payload.filter(Boolean) : [];
 }
 
 async function fetchHackamapQueryRunsManifestJson(request) {
-  const payload = await fetchHackamapJson(request, "/knowgrph/imports/hackamap/query-outputs/query-runs.manifest.json");
+  const payload = await fetchHackamapJson(request, "/agenticgraph/imports/hackamap/query-outputs/query-runs.manifest.json");
   return payload && typeof payload === "object" && !Array.isArray(payload) ? payload : {};
 }
 
@@ -92,7 +92,7 @@ async function readHackamapRunTableCounts(request, presetEntry, runEntry) {
   const counts = await Promise.all(
     tableFiles.map(async (tableFile) => [
       tableFile,
-      await countHackamapQueryRows(request, `/knowgrph/imports/hackamap/query-outputs/${tableFile}.${tablePrefix}.query.json`),
+      await countHackamapQueryRows(request, `/agenticgraph/imports/hackamap/query-outputs/${tableFile}.${tablePrefix}.query.json`),
     ]),
   );
   return Object.fromEntries(counts.filter(([, count]) => count > 0));
@@ -220,8 +220,8 @@ async function readHackamapQueryRunSelection(request, runId) {
   const tablePrefix = buildHackamapTablePrefix(presetEntry, runEntry);
   if (!tablePrefix) return null;
   const [eventsJson, demosJson] = await Promise.all([
-    fetchHackamapJson(request, `/knowgrph/imports/hackamap/query-outputs/events.${tablePrefix}.query.json`),
-    fetchHackamapJson(request, `/knowgrph/imports/hackamap/query-outputs/demos.${tablePrefix}.query.json`),
+    fetchHackamapJson(request, `/agenticgraph/imports/hackamap/query-outputs/events.${tablePrefix}.query.json`),
+    fetchHackamapJson(request, `/agenticgraph/imports/hackamap/query-outputs/demos.${tablePrefix}.query.json`),
   ]);
   const eventIds = new Set(collectRowIds(eventsJson, "id"));
   const demoIds = new Set(collectRowIds(demosJson, "id"));
@@ -353,7 +353,7 @@ export async function onRequest(context) {
       {
         ok: false,
         error: "missing_hackamap_graph",
-        hint: "/knowgrph/imports/hackamap/{hackamap_api_graph.json,hackamap-graph.json} not found",
+        hint: "/agenticgraph/imports/hackamap/{hackamap_api_graph.json,hackamap-graph.json} not found",
       },
       404,
     );

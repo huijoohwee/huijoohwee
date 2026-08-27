@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AgenticGraph Agent Ready</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: Canvas; color: CanvasText; }
+    main { display: grid; gap: 12px; min-height: 100vh; padding: 16px; }
+    header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; border-bottom: 1px solid color-mix(in srgb, CanvasText 18%, transparent); padding-bottom: 10px; }
+    h1 { margin: 0; font-size: 16px; line-height: 1.25; letter-spacing: 0; }
+    p { margin: 4px 0 0; color: color-mix(in srgb, CanvasText 72%, transparent); font-size: 13px; line-height: 1.45; }
+    button, a { border: 1px solid color-mix(in srgb, CanvasText 24%, transparent); border-radius: 6px; background: color-mix(in srgb, Canvas 88%, CanvasText 12%); color: CanvasText; font: inherit; padding: 7px 10px; text-decoration: none; }
+    button { cursor: pointer; }
+    section { display: grid; gap: 8px; }
+    dl { display: grid; grid-template-columns: minmax(110px, max-content) 1fr; gap: 6px 10px; margin: 0; font-size: 12px; }
+    dt { color: color-mix(in srgb, CanvasText 62%, transparent); }
+    dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+    pre { margin: 0; max-height: 48vh; overflow: auto; border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 6px; padding: 10px; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; background: color-mix(in srgb, Canvas 94%, CanvasText 6%); }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .status { font-size: 12px; color: color-mix(in srgb, CanvasText 66%, transparent); }
+    .readiness { border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 6px; padding: 10px; background: color-mix(in srgb, Canvas 96%, CanvasText 4%); font-size: 12px; }
+    .readiness strong { display: block; font-size: 13px; margin-bottom: 3px; }
+    .readiness ol { display: grid; gap: 6px; margin: 8px 0 0; padding-left: 18px; }
+    .readiness ul { display: grid; gap: 4px; margin: 8px 0 0; padding: 0; list-style: none; }
+    .check { min-width: 0; overflow-wrap: anywhere; }
+    .check.ok { color: color-mix(in srgb, CanvasText 74%, #0f766e 26%); }
+    .check.fail { color: color-mix(in srgb, CanvasText 68%, #b91c1c 32%); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <section>
+        <h1>AgenticGraph Agent Ready</h1>
+        <p>Interactive MCP Apps view backed by the existing read-only agent surface.</p>
+      </section>
+      <nav class="actions" aria-label="Agent Ready actions">
+        <button id="refresh" type="button">Refresh</button>
+        <a href="https://airvio.co/agenticgraph/" target="_blank" rel="noreferrer">Open</a>
+      </nav>
+    </header>
+    <section aria-label="MCP app state">
+      <dl>
+        <dt>Resource</dt><dd>ui://agenticgraph/agent-ready</dd>
+        <dt>Tool</dt><dd>inspect_agent_surface</dd>
+        <dt>Host</dt><dd id="host">Not connected.</dd>
+        <dt>Updated</dt><dd>2026-06-05</dd>
+        <dt>Status</dt><dd id="status" class="status">Initializing MCP Apps host bridge.</dd>
+      </dl>
+    </section>
+    <section aria-label="Fastest path">
+  <section id="onboarding" class="readiness">
+    <strong>Fastest Path</strong>
+    <p>Map intent. Orchestrate agents. Prove outcomes.</p>
+    <p>A source-backed canvas where / routes work, # sets meaning, and @ binds context.</p>
+    <p>One canonical operator contract: install and discovery stay on the public endpoint, while live /, #, @ grammar stays on the approval-gated control plane or an app-owned forwarder until the host proves MCP session support.</p>
+    <p>Canonicalize the contract first, not the transport. Keep the runtime split underneath until hosted proof supports a single runtime.</p>
+    <p>Live grammar executes through agenticgraph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.</p>
+    <p>Hosted app builders such as Lovable and Vercel should keep /mcp for discovery and use an app-owned forwarder for live /, #, @ unless the host proves MCP session support.</p>
+    <ol>
+      <li>Map intent: install https://airvio.co/agenticgraph/mcp first for public discovery, retrieval, and inspection.</li>
+      <li>Orchestrate agents: add https://airvio.co/agenticgraph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke.</li>
+      <li>Prove outcomes: for zero-spend evaluation, use the source-side <code>README.md</code> quick start or <code>docs/documents/agenticgraph-superagent-harness.md</code> first.</li>
+    </ol>
+  </section>
+</section>
+    <section aria-label="Promotion recovery">
+  <section id="promotion-recovery" class="readiness">
+    <strong>Promotion Recovery</strong>
+    <p>Retry mirroring only for already-saved local artifacts. Do not regenerate, revalidate, or reapply Canvas.</p>
+    <p>Command template: #promotion.retry &lt;path...&gt;</p>
+    <ul>
+      <li>Scope: mirror-saved-local-artifacts-only</li>
+      <li>Exact command source: browser-local finalize inspection after a real mirroring failure</li>
+      <li>Insert mode: append</li>
+      <li>GitHub before storage: true</li>
+    </ul>
+    <p>This published card shows the command template only. The exact runnable path-bearing command appears after a real mirroring failure in the browser-local finalize inspection, finalize ledger, and warning toast.</p>
+  </section>
+</section>
+    <section aria-label="MCP Apps server readiness">
+      <section id="readiness" class="readiness">Waiting for structured server-readiness data.</section>
+    </section>
+    <section aria-label="Tool result">
+      <pre id="structured">No tool result received yet.</pre>
+    </section>
+  </main>
+  <script>
+  (() => {
+    const boot = {"appUrl":"https://airvio.co/agenticgraph/","updatedAt":"2026-06-05","resourceUri":"ui://agenticgraph/agent-ready","toolName":"inspect_agent_surface","toolNames":["search","fetch","list_source_files","read_source_file","read_shared_document","inspect_shared_document_structure","inspect_agent_surface"],"protocolVersion":"2026-01-26","onboarding":{"promise":"Map intent. Orchestrate agents. Prove outcomes.","grammarSummary":"A source-backed canvas where / routes work, # sets meaning, and @ binds context.","canonicalOperatorContract":"One canonical operator contract: install and discovery stay on the public endpoint, while live /, #, @ grammar stays on the approval-gated control plane or an app-owned forwarder until the host proves MCP session support.","canonicalTransportRule":"Canonicalize the contract first, not the transport. Keep the runtime split underneath until hosted proof supports a single runtime.","publicReadMcpUrl":"https://airvio.co/agenticgraph/mcp","controlPlaneMcpUrl":"https://airvio.co/agenticgraph/control-plane/mcp","controlPlaneCondition":"Add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup.","grammarToolName":"agenticgraph.agentic_canvas_os.docs.invoke","grammarExamples":["/mcp.capabilities","#mcp","@mcp-gateway"],"grammarExecutionBoundary":"Keep install on the public discovery endpoint and execute live grammar on the approval-gated control plane.","hostedBuilderExamples":["Lovable","Vercel"],"hostedGrammarDefaultPath":"Hosted app builders such as Lovable and Vercel should keep /mcp for discovery and use an app-owned forwarder for live /, #, @ unless the host proves MCP session support.","hostedGrammarFallback":"app-owned-forwarder","cheapestProofPath":"Use the source-side README.md quick start or docs/documents/agenticgraph-superagent-harness.md in the agenticgraph repo before hosted setup.","steps":[{"order":1,"label":"Map intent","action":"Map intent: install https://airvio.co/agenticgraph/mcp first for public discovery, retrieval, and inspection."},{"order":2,"label":"Orchestrate agents","action":"Orchestrate agents: add https://airvio.co/agenticgraph/control-plane/mcp only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke."},{"order":3,"label":"Prove outcomes","action":"Prove outcomes: for zero-spend evaluation, run the source-side README.md quick start or docs/documents/agenticgraph-superagent-harness.md first."}]},"promotionRecovery":{"availability":"template-only-published-contract","scope":"mirror-saved-local-artifacts-only","commandTemplate":"#promotion.retry \u003cpath...>","exactCommandSource":"browser-local finalize inspection after a real mirroring failure","reusesSavedLocalArtifacts":true,"rerunsValidation":false,"reappliesCanvas":false,"githubBeforeStorage":true,"insertionMode":"append","surfaces":["published-operator-card","final-assistant-ledger","browser-local-finalize-inspection","warning-toast","toast-insert-action"],"note":"This published card shows the command template only. The exact runnable path-bearing command appears after a real mirroring failure in the browser-local finalize inspection, finalize ledger, and warning toast."}};
+    const statusEl = document.getElementById('status');
+    const hostEl = document.getElementById('host');
+    const onboardingEl = document.getElementById('onboarding');
+    const readinessEl = document.getElementById('readiness');
+    const structuredEl = document.getElementById('structured');
+    let nextId = 1;
+    const pending = new Map();
+    const state = { hostCapabilities: null, hostContext: null, input: null, result: null };
+    const hasParent = () => window.parent && window.parent !== window;
+    const readOpenAiBridge = () => {
+      const bridge = window.openai;
+      return bridge && typeof bridge === 'object' ? bridge : null;
+    };
+    const post = (message) => {
+      if (!hasParent()) return;
+      window.parent.postMessage({ jsonrpc: '2.0', ...message }, '*');
+    };
+    const notify = (method, params = {}) => post({ method, params });
+    const request = (method, params = {}) => {
+      const id = nextId++;
+      post({ id, method, params });
+      return new Promise((resolve, reject) => {
+        pending.set(id, { method, resolve, reject });
+        window.setTimeout(() => {
+          if (!pending.has(id)) return;
+          pending.delete(id);
+          reject(new Error(method + ' timed out'));
+        }, 8000);
+      });
+    };
+    const requestTool = async () => {
+      statusEl.textContent = 'Requesting ' + boot.toolName + ' through the host.';
+      try {
+        const openAiBridge = readOpenAiBridge();
+        const result = openAiBridge && typeof openAiBridge.callTool === 'function'
+          ? await openAiBridge.callTool(boot.toolName, {})
+          : await request('tools/call', { name: boot.toolName, arguments: {} });
+        state.result = result || null;
+        render();
+      } catch (error) {
+        statusEl.textContent = error && error.message ? error.message : 'Tool request failed.';
+      }
+    };
+    const updateHost = (context = {}) => {
+      state.hostContext = { ...(state.hostContext || {}), ...context };
+      const host = state.hostContext || {};
+      const label = [
+        host.displayMode,
+        host.theme,
+        host.platform,
+      ].filter(Boolean).join(' / ');
+      hostEl.textContent = label || (state.hostCapabilities ? 'Connected.' : 'Not connected.');
+      if (host.theme === 'dark' || host.theme === 'light') {
+        document.documentElement.dataset.theme = host.theme;
+      }
+    };
+    const syncOpenAiGlobals = (globals = readOpenAiBridge()) => {
+      const source = globals && typeof globals === 'object' ? globals : {};
+      if (Object.prototype.hasOwnProperty.call(source, 'toolInput')) {
+        state.input = source.toolInput || null;
+      }
+      if (Object.prototype.hasOwnProperty.call(source, 'toolOutput')) {
+        state.result = source.toolOutput || null;
+      }
+      updateHost({
+        platform: 'OpenAI Apps',
+        displayMode: source.displayMode || source.hostDisplayMode,
+        theme: source.theme,
+      });
+      state.hostCapabilities = { ...(state.hostCapabilities || {}), openaiAppsBridge: true };
+    };
+    const appendText = (parent, tagName, text, className = '') => {
+      const element = document.createElement(tagName);
+      if (className) element.className = className;
+      element.textContent = text;
+      parent.appendChild(element);
+      return element;
+    };
+    const renderOnboarding = (payload) => {
+  onboardingEl.replaceChildren();
+  const onboarding = payload && payload.onboarding && typeof payload.onboarding === 'object' ? payload.onboarding : boot.onboarding;
+  appendText(onboardingEl, 'strong', 'Fastest Path');
+  appendText(onboardingEl, 'p', onboarding && onboarding.promise ? String(onboarding.promise) : 'Map intent. Orchestrate agents. Prove outcomes.');
+  appendText(onboardingEl, 'p', onboarding && onboarding.grammarSummary ? String(onboarding.grammarSummary) : 'A source-backed canvas where / routes work, # sets meaning, and @ binds context.');
+  appendText(
+    onboardingEl,
+    'p',
+    onboarding && onboarding.canonicalOperatorContract
+      ? String(onboarding.canonicalOperatorContract)
+      : 'One canonical operator contract: install and discovery stay on the public endpoint, while live /, #, @ grammar stays on the approval-gated control plane or an app-owned forwarder until the host proves MCP session support.',
+  );
+  appendText(
+    onboardingEl,
+    'p',
+    onboarding && onboarding.canonicalTransportRule
+      ? String(onboarding.canonicalTransportRule)
+      : 'Canonicalize the contract first, not the transport. Keep the runtime split underneath until hosted proof supports a single runtime.',
+  );
+  appendText(
+    onboardingEl,
+    'p',
+    onboarding && onboarding.grammarToolName
+      ? 'Live grammar executes through ' + String(onboarding.grammarToolName) + ' on the control plane. Try ' + (Array.isArray(onboarding.grammarExamples) && onboarding.grammarExamples.length ? onboarding.grammarExamples.join(', ') : '/mcp.capabilities, #mcp, @mcp-gateway') + '.'
+      : 'Live grammar executes through agenticgraph.agentic_canvas_os.docs.invoke on the control plane. Try /mcp.capabilities, #mcp, @mcp-gateway.',
+  );
+  appendText(
+    onboardingEl,
+    'p',
+    onboarding && onboarding.hostedGrammarDefaultPath
+      ? String(onboarding.hostedGrammarDefaultPath)
+      : 'Hosted app builders such as Lovable and Vercel should keep /mcp for discovery and use an app-owned forwarder for live /, #, @ unless the host proves MCP session support.',
+  );
+  const list = document.createElement('ol');
+  const steps = Array.isArray(onboarding && onboarding.steps) && onboarding.steps.length ? onboarding.steps : [
+    { action: onboarding && onboarding.publicReadMcpUrl ? 'Map intent: install ' + onboarding.publicReadMcpUrl + ' first for public discovery, retrieval, and inspection.' : 'Map intent: install the public MCP endpoint first for discovery, retrieval, and inspection.' },
+    { action: onboarding && onboarding.controlPlaneMcpUrl ? 'Orchestrate agents: add ' + onboarding.controlPlaneMcpUrl + ' only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke.' : 'Orchestrate agents: add the control plane only when the host can preserve MCP session state and needs live /, #, @ grammar lookup through agenticgraph.agentic_canvas_os.docs.invoke.' },
+    { action: 'Prove outcomes: for zero-spend evaluation, use the source-side README.md quick start or docs/documents/agenticgraph-superagent-harness.md first.' },
+  ];
+  for (const step of steps) appendText(list, 'li', step && step.action ? String(step.action) : 'Follow the fastest onboarding path.');
+  onboardingEl.appendChild(list);
+};
+    const renderReadiness = (payload) => {
+      readinessEl.replaceChildren();
+      const readiness = payload && payload.mcpAppsServerReadiness;
+      if (!readiness || typeof readiness !== 'object') {
+        readinessEl.textContent = 'Waiting for structured server-readiness data.';
+        return;
+      }
+      readinessEl.className = 'readiness ' + (readiness.ready ? 'ready' : 'not-ready');
+      appendText(
+        readinessEl,
+        'strong',
+        readiness.ready ? 'MCP Apps server-ready' : 'MCP Apps server-readiness incomplete',
+      );
+      const meta = appendText(
+        readinessEl,
+        'p',
+        [readiness.app && readiness.app.protocolVersion, readiness.resource && readiness.resource.mimeType]
+          .filter(Boolean)
+          .join(' / '),
+        'status',
+      );
+      if (!meta.textContent) meta.remove();
+      const list = document.createElement('ul');
+      for (const check of Array.isArray(readiness.checklist) ? readiness.checklist : []) {
+        const item = document.createElement('li');
+        item.className = check && check.ok ? 'check ok' : 'check fail';
+        item.textContent = (check && check.ok ? 'OK ' : 'Missing ') + (check && check.label ? check.label : 'readiness check');
+        list.appendChild(item);
+      }
+      readinessEl.appendChild(list);
+    };
+    const render = () => {
+      const payload = state.result && typeof state.result === 'object'
+        ? (state.result.structuredContent || state.result)
+        : state.result;
+      renderOnboarding(payload);
+      renderReadiness(payload);
+      structuredEl.textContent = payload
+        ? JSON.stringify(payload, null, 2)
+        : 'No tool result received yet.';
+      statusEl.textContent = payload
+        ? 'Rendered structured tool result.'
+        : (state.hostCapabilities ? 'Connected. Waiting for tool result.' : 'Initializing MCP Apps host bridge.');
+    };
+    const sendSizeChanged = (() => {
+      let last = '';
+      return () => {
+        const body = document.body;
+        const root = document.documentElement;
+        const width = Math.ceil(Math.max(body.scrollWidth, root.scrollWidth, root.clientWidth));
+        const height = Math.ceil(Math.max(body.scrollHeight, root.scrollHeight, root.clientHeight));
+        const key = width + 'x' + height;
+        if (key === last || width <= 0 || height <= 0) return;
+        last = key;
+        notify('ui/notifications/size-changed', { width, height });
+      };
+    })();
+    const connect = async () => {
+      if (readOpenAiBridge()) {
+        syncOpenAiGlobals();
+        render();
+        sendSizeChanged();
+        return;
+      }
+      if (!hasParent()) {
+        statusEl.textContent = 'Standalone preview. Waiting for embedded MCP Apps host.';
+        return;
+      }
+      try {
+        const result = await request('ui/initialize', {
+          protocolVersion: boot.protocolVersion,
+          appInfo: {
+            name: 'agenticgraph-mcp-app',
+            title: 'AgenticGraph Agent Ready',
+            version: '0.1.0',
+            description: 'Interactive view for the AgenticGraph agent-ready MCP surface.',
+            websiteUrl: boot.appUrl || undefined,
+          },
+          appCapabilities: {
+            availableDisplayModes: ['inline', 'fullscreen'],
+          },
+        });
+        state.hostCapabilities = result && result.hostCapabilities ? result.hostCapabilities : {};
+        updateHost(result && result.hostContext ? result.hostContext : {});
+        notify('ui/notifications/initialized', {});
+        sendSizeChanged();
+        statusEl.textContent = 'Connected. Waiting for tool result.';
+      } catch (error) {
+        statusEl.textContent = error && error.message ? error.message : 'Host initialization failed.';
+      }
+    };
+    window.addEventListener('message', (event) => {
+      const message = event.data;
+      if (!message || message.jsonrpc !== '2.0') return;
+      if (Object.prototype.hasOwnProperty.call(message, 'id') && (Object.prototype.hasOwnProperty.call(message, 'result') || Object.prototype.hasOwnProperty.call(message, 'error'))) {
+        const pendingRequest = pending.get(message.id);
+        if (!pendingRequest) return;
+        pending.delete(message.id);
+        if (message.error) pendingRequest.reject(new Error(message.error.message || 'MCP Apps request failed'));
+        else pendingRequest.resolve(message.result);
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-input') {
+        state.input = message.params && (message.params.arguments || message.params);
+        statusEl.textContent = 'Received tool input.';
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-input-partial') {
+        state.input = { ...(state.input || {}), ...(message.params && (message.params.arguments || message.params) || {}) };
+        statusEl.textContent = 'Received partial tool input.';
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-result') {
+        state.result = message.params || null;
+        render();
+        return;
+      }
+      if (message.method === 'ui/notifications/tool-cancelled') {
+        statusEl.textContent = message.params && message.params.reason
+          ? 'Tool cancelled: ' + message.params.reason
+          : 'Tool cancelled.';
+        return;
+      }
+      if (message.method === 'ui/notifications/host-context-changed') {
+        updateHost(message.params || {});
+        return;
+      }
+      if (message.method === 'ui/resource-teardown') {
+        if (message.id !== undefined && message.id !== null) post({ id: message.id, result: {} });
+      }
+    });
+    window.addEventListener('openai:set_globals', (event) => {
+      syncOpenAiGlobals(event && event.detail && (event.detail.globals || event.detail));
+      render();
+      sendSizeChanged();
+    });
+    document.getElementById('refresh')?.addEventListener('click', requestTool);
+    render();
+    connect();
+    if (typeof ResizeObserver === 'function') {
+      new ResizeObserver(sendSizeChanged).observe(document.body);
+    } else {
+      window.addEventListener('resize', sendSizeChanged);
+    }
+  })();
+  </script>
+</body>
+</html>

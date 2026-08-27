@@ -11,7 +11,7 @@
     "worktree": "clean",
     "statusDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "artifactDigest": "c973c6631cc38bbcfa8fda0d46925c62314e00f7abedd9ac2baa42f059c6670b",
+  "artifactDigest": "822c845b10b36a35bf8a715a90fa764623f4b8b3d0615cfaf0a20944c0e9c61d",
   "defaultScene": "schemas/default-scene.json",
   "sceneSchema": "schemas/gamexr.scene.schema.json",
   "spatialInputSchema": "schemas/apple-spatial-input.schema.json",
@@ -24,8 +24,8 @@
   "artifacts": [
     {
       "path": ".well-known/runtime-readiness.json",
-      "bytes": 2104,
-      "sha256": "62460d492656514cc92c92455cbdf09b0eb7337c71e39ccdeb683e04e7ba2651"
+      "bytes": 2108,
+      "sha256": "4098430ee81c52043a198668e17b29f4ef83da312a80f1cb92be10efc39cdc6c"
     },
     {
       "path": "assets/GLTFLoader-DgvSWouF.js",
@@ -34,8 +34,8 @@
     },
     {
       "path": "assets/index-BnUHHnsn.js",
-      "bytes": 205844,
-      "sha256": "e12d8dde4b0c77ecfa1908b21a806b8075d8e09fbba68e3e84c376c998333ada"
+      "bytes": 206000,
+      "sha256": "36ba476fbef1e13809d39bba79612d0c7356244d657a8f1c25d81ed16b12eda9"
     },
     {
       "path": "assets/index-BXHGyDmD.css",
@@ -74,8 +74,8 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 1343,
-      "sha256": "32ece200ab0c2f025fbb34b6fae0b6cfbc2ef0f1286ee8cc5d13d8c701543b33"
+      "bytes": 1347,
+      "sha256": "73d123371c97fce814636a7c3a534fda25d577ae7bfc1502b553ab30594a1aac"
     },
     {
       "path": "manifest.webmanifest",
@@ -89,8 +89,8 @@
     },
     {
       "path": "schemas/apple-spatial-input.schema.json",
-      "bytes": 1044,
-      "sha256": "2c2017b96afe29aa303a19f7f784b6d040f589b5c65599cfa4a86487326e1201"
+      "bytes": 1048,
+      "sha256": "d2699d598bac7846ed6483b4ab30b6ec1539efb8bafe6e5966ce94052363eb94"
     },
     {
       "path": "schemas/default-scene.json",

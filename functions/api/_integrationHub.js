@@ -35,8 +35,8 @@ const parseAllowedHosts = (
     includeBytePlus = false,
   } = {},
 ) => {
-  const primary = parseCsvSet(env.KNOWGRPH_INTEGRATION_ALLOWED_HOSTS);
-  const fallback = parseCsvSet(env.KNOWGRPH_CHAT_PROXY_ALLOWED_HOSTS);
+  const primary = parseCsvSet(env.AGENTICGRAPH_INTEGRATION_ALLOWED_HOSTS);
+  const fallback = parseCsvSet(env.AGENTICGRAPH_CHAT_PROXY_ALLOWED_HOSTS);
   const out = primary.size ? primary : fallback;
   const base = out.size ? out : new Set([...LOCAL_HOSTS]);
   if (includeOpenAi) base.add(OPENAI_HOST);
@@ -122,7 +122,7 @@ const proxyUpstream = async ({
   upstreamPrefix,
   allowedMethods = ['GET', 'HEAD', 'POST'],
   allowedHosts,
-  timeoutEnvKey = 'KNOWGRPH_INTEGRATION_TIMEOUT_MS',
+  timeoutEnvKey = 'AGENTICGRAPH_INTEGRATION_TIMEOUT_MS',
 }) => {
   const method = String(request.method || 'GET').toUpperCase();
   if (method === 'OPTIONS') return handleOptions(request);

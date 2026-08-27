@@ -1,16 +1,16 @@
 {
-  "name": "Knowgrph Agent",
-  "description": "Agent-readable discovery, published-document retrieval, and WebMCP-ready metadata surface for Knowgrph.",
+  "name": "AgenticGraph Agent",
+  "description": "Agent-readable discovery, published-document retrieval, and WebMCP-ready metadata surface for AgenticGraph.",
   "version": "0.1.0",
   "provider": {
     "organization": "airvio / joohwee",
-    "url": "https://airvio.co/knowgrph/"
+    "url": "https://airvio.co/agenticgraph/"
   },
-  "url": "https://airvio.co/knowgrph/mcp",
+  "url": "https://airvio.co/agenticgraph/mcp",
   "preferredTransport": "JSONRPC",
   "supportedInterfaces": [
     {
-      "url": "https://airvio.co/knowgrph/mcp",
+      "url": "https://airvio.co/agenticgraph/mcp",
       "protocolBinding": "JSONRPC",
       "transportProtocol": "JSONRPC",
       "description": "Primary machine interface for read-only discovery and source-file document access."
@@ -41,8 +41,8 @@
   "skills": [
     {
       "id": "search",
-      "name": "Search Knowgrph Source Files",
-      "description": "Use this when an MCP host needs to search published Knowgrph Source Files and return stable document IDs for the `fetch` tool. Call this first for OpenAI Deep Research-style retrieval, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
+      "name": "Search AgenticGraph Source Files",
+      "description": "Use this when an MCP host needs to search published AgenticGraph Source Files and return stable document IDs for the `fetch` tool. Call this first for OpenAI Deep Research-style retrieval, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
       "tags": [
         "mcp",
         "search",
@@ -50,7 +50,7 @@
         "read-only"
       ],
       "examples": [
-        "Search Knowgrph Source Files for renderer architecture."
+        "Search AgenticGraph Source Files for renderer architecture."
       ],
       "inputModes": [
         "application/json",
@@ -62,8 +62,8 @@
     },
     {
       "id": "fetch",
-      "name": "Fetch Knowgrph Source File",
-      "description": "Use this when an MCP host needs the complete published Knowgrph Source File for an ID returned by `search`. Returns markdown as both `content` and `text` for OpenAI, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
+      "name": "Fetch AgenticGraph Source File",
+      "description": "Use this when an MCP host needs the complete published AgenticGraph Source File for an ID returned by `search`. Returns markdown as both `content` and `text` for OpenAI, Claude, Qwen Code, Kimi CLI, BytePlus ModelArk, and generic MCP clients.",
       "tags": [
         "mcp",
         "fetch",
@@ -72,7 +72,7 @@
         "read-only"
       ],
       "examples": [
-        "Fetch the Knowgrph Source File id returned by search."
+        "Fetch the AgenticGraph Source File id returned by search."
       ],
       "inputModes": [
         "application/json",
@@ -86,7 +86,7 @@
     {
       "id": "list-source-files",
       "name": "List Source Files",
-      "description": "Use this when an MCP host needs the published Knowgrph Source Files index as markdown.",
+      "description": "Use this when an MCP host needs the published AgenticGraph Source Files index as markdown.",
       "tags": [
         "mcp",
         "discovery",
@@ -94,7 +94,7 @@
         "read-only"
       ],
       "examples": [
-        "List the published Knowgrph Source Files."
+        "List the published AgenticGraph Source Files."
       ],
       "inputModes": [
         "application/json",
@@ -108,7 +108,7 @@
     {
       "id": "read-source-file",
       "name": "Read Source File",
-      "description": "Use this when an MCP host knows a published Knowgrph canonical path and needs that Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
+      "description": "Use this when an MCP host knows a published AgenticGraph canonical path and needs that Editor Workspace markdown content. Defaults to the canonical docs workspace when workspaceId is omitted.",
       "tags": [
         "mcp",
         "read",
@@ -130,7 +130,7 @@
     {
       "id": "read-shared-document",
       "name": "Read Shared Document",
-      "description": "Use this when an MCP host has a Knowgrph share token or public Knowgrph share/document URL and needs the published markdown content.",
+      "description": "Use this when an MCP host has a AgenticGraph share token or public AgenticGraph share/document URL and needs the published markdown content.",
       "tags": [
         "mcp",
         "read",
@@ -138,7 +138,7 @@
         "markdown"
       ],
       "examples": [
-        "Read the Knowgrph shared document behind this share URL."
+        "Read the AgenticGraph shared document behind this share URL."
       ],
       "inputModes": [
         "application/json",
@@ -152,7 +152,7 @@
     {
       "id": "inspect-shared-document-structure",
       "name": "Inspect Shared Document Structure",
-      "description": "Use this when an MCP host has a Knowgrph share token or public Knowgrph share/document URL and needs frontmatter/body structure without mutating the document.",
+      "description": "Use this when an MCP host has a AgenticGraph share token or public AgenticGraph share/document URL and needs frontmatter/body structure without mutating the document.",
       "tags": [
         "mcp",
         "inspect",
@@ -160,7 +160,7 @@
         "structure"
       ],
       "examples": [
-        "Inspect the structure of this Knowgrph shared document."
+        "Inspect the structure of this AgenticGraph shared document."
       ],
       "inputModes": [
         "application/json",
@@ -174,7 +174,7 @@
     {
       "id": "inspect-agent-surface",
       "name": "Inspect Agent Surface",
-      "description": "Use this when an MCP Apps-capable host or generic MCP client needs to inspect Knowgrph agent-ready discovery, MCP Apps readiness, OpenAPI, and skill metadata.",
+      "description": "Use this when an MCP Apps-capable host or generic MCP client needs to inspect AgenticGraph agent-ready discovery, MCP Apps readiness, OpenAPI, and skill metadata.",
       "tags": [
         "mcp",
         "agent-ready",
@@ -182,7 +182,7 @@
         "metadata"
       ],
       "examples": [
-        "Show the Knowgrph agent discovery metadata."
+        "Show the AgenticGraph agent discovery metadata."
       ],
       "inputModes": [
         "application/json",

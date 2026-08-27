@@ -1,20 +1,20 @@
 ---
-title: "Knowgrph Workspace README"
+title: "AgenticGraph Workspace README"
 graphId: "md:workspace-readme"
 doc_type: "Workspace README"
 date: "2026-07-09"
 lang: "en-US"
 schema: "kgc-workspace-readme/v1"
-source_reference: "docs/knowgrph-strybldr-starter-template.md"
-implementation_contract: "../../knowgrph/docs/documents/knowgrph-strybldr-prd-tad.md"
+source_reference: "docs/agenticgraph-strybldr-starter-template.md"
+implementation_contract: "../../agenticgraph/docs/documents/agenticgraph-strybldr-prd-tad.md"
 validation_input_forbid_hardcode_in_repo: "true"
 deployed_api_claim: "false"
 publish_scope: "local-only"
 publish_policy: "No Prod mirror, Cloudflare deploy, public release, fabricated provider IDs, generated asset URLs, transcript text, or credential material from this README."
 workspace_topology:
-  dev: "/Users/huijoohwee/Documents/GitHub/knowgrph"
-  prod_mirror: "/Users/huijoohwee/Documents/GitHub/huijoohwee/content/knowgrph"
-  cloudflare_routes: ["https://airvio.co", "https://airvio.co/knowgrph"]
+  dev: "/Users/huijoohwee/Documents/GitHub/agenticgraph"
+  prod_mirror: "/Users/huijoohwee/Documents/GitHub/huijoohwee/content/agenticgraph"
+  cloudflare_routes: ["https://airvio.co", "https://airvio.co/agenticgraph"]
   release_order: "Dev -> Prod -> Cloudflare"
   release_gate: "Prod and Cloudflare are blocked until the operator explicitly instructs that release lane."
 docs_control_surface:
@@ -40,7 +40,7 @@ kgSharedRendererContract:
   edgeModel: "active graph edges derive from frontmatter-owned flow.edges"
   rendererPolicy: "frontmatter and source payloads own data; renderers project view state only"
 runtime_defaults:
-  provider: "knowgrph-local-dry-run"
+  provider: "agenticgraph-local-dry-run"
   status: "spec-complete"
   paid_call_count: 0
   runtime_proof_path: ""
@@ -95,11 +95,11 @@ runtime_pipeline:
   version: "workspace-runtime-pipeline/v1"
   status: "spec-complete"
   source_docs:
-    - "docs/knowgrph-strybldr-starter-template.md"
-    - "../../knowgrph/README.md"
-    - "../../knowgrph/canvas/src/features/chat/chatStoryboardTemplateContract.ts"
-    - "../../knowgrph/canvas/src/features/chat/chatStoryboardTemplateProjection.ts"
-    - "../../knowgrph/docs/documents/knowgrph-strybldr-prd-tad.md"
+    - "docs/agenticgraph-strybldr-starter-template.md"
+    - "../../agenticgraph/README.md"
+    - "../../agenticgraph/canvas/src/features/chat/chatStoryboardTemplateContract.ts"
+    - "../../agenticgraph/canvas/src/features/chat/chatStoryboardTemplateProjection.ts"
+    - "../../agenticgraph/docs/documents/agenticgraph-strybldr-prd-tad.md"
   gates:
     hardcode: "Reject repo-stored generated outputs, provider IDs, credentials, stream URLs, and source-specific fixtures."
     cost: "Run /cost.audit before live provider or repeated generation work."
@@ -265,22 +265,22 @@ flow:
     - {"id":"edge_workspace_runtime_to_publish","source":"workspace-runtime","sourceHandle":"workspace_signal_out","target":"workspace-publish","targetHandle":"workspace_signal_in","type":"workspace_signal"}
 ---
 
-# Knowgrph Workspace README
+# AgenticGraph Workspace README
 
-This #aggregator-agentREADME is the local workspace contract for the current Knowgrph lane. It replaces the previous generated Vite HTML capture with source-owned Markdown and YAML frontmatter that can be parsed, diffed, and audited.
+This #aggregator-agentREADME is the local workspace contract for the current AgenticGraph lane. It replaces the previous generated Vite HTML capture with source-owned Markdown and YAML frontmatter that can be parsed, diffed, and audited.
 
 The current work stays Dev-only:
 
-- Dev source: `/Users/huijoohwee/Documents/GitHub/knowgrph`
+- Dev source: `/Users/huijoohwee/Documents/GitHub/agenticgraph`
 - Docs target: `/Users/huijoohwee/Documents/GitHub/huijoohwee/docs`
-- Prod mirror: `/Users/huijoohwee/Documents/GitHub/huijoohwee/content/knowgrph`
-- Cloudflare: `airvio.co` and `airvio.co/knowgrph`
+- Prod mirror: `/Users/huijoohwee/Documents/GitHub/huijoohwee/content/agenticgraph`
+- Cloudflare: `airvio.co` and `airvio.co/agenticgraph`
 
 Do not deploy to Prod or Cloudflare from this document. Open that lane only after an explicit operator instruction that preserves `Dev -> Prod -> Cloudflare`.
 
 ## Source Contract
 
-The source reference is `docs/knowgrph-strybldr-starter-template.md`. That template is a minimum viable, maximum-value Strybldr seed for short-drama video-agent work: scriptwriting, storyboarding, generation, editing, validation, and local proof before any live provider call.
+The source reference is `docs/agenticgraph-strybldr-starter-template.md`. That template is a minimum viable, maximum-value Strybldr seed for short-drama video-agent work: scriptwriting, storyboarding, generation, editing, validation, and local proof before any live provider call.
 
 The active runtime shape is frontmatter-first:
 
@@ -310,7 +310,7 @@ Do not collapse these into hidden chips, stale aliases, or downstream remaps. In
 Before claiming runtime-ready, verify:
 
 - parser/frontmatter reads this file from byte-zero YAML through the closing fence;
-- source routes resolve from the named template and `knowgrph` owners;
+- source routes resolve from the named template and `agenticgraph` owners;
 - no generated provider IDs, stream URLs, transcripts, data URIs, credentials, or output artifacts are committed;
 - live provider calls are blocked until `@operator` approval;
 - repeated generation is blocked when timeline edits, cached summaries, or existing manifests are enough;

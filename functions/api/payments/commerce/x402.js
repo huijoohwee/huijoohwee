@@ -1,5 +1,5 @@
-import { buildKnowgrphX402PaymentRequiredResponse } from "../../../knowgrph/knowgrph-agent-ready-commerce.mjs";
+import { buildAgenticGraphX402PaymentRequiredResponse } from "../../../agenticgraph/agenticgraph-agent-ready-commerce.mjs";
 
 export async function onRequest(context) {
-  return buildKnowgrphX402PaymentRequiredResponse(context.request, context.env || {});
+  return buildAgenticGraphX402PaymentRequiredResponse(context.request, context.env || {});
 }

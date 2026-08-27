@@ -1,7 +1,7 @@
 import {
   CLOUDFLARE_PAY_PER_CRAWL_DOC_URL,
-  KNOWGRPH_STORAGE_CRAWLER_ACCESS_HEADERS,
-} from '../../../canvas/src/lib/storage/knowgrphStorageSyncContract.ts'
+  AGENTICGRAPH_STORAGE_CRAWLER_ACCESS_HEADERS,
+} from '../../../canvas/src/lib/storage/agenticgraphStorageSyncContract.ts'
 import {
   normalizeString,
   type D1DatabaseLike,
@@ -9,7 +9,7 @@ import {
 import {
   readPublishedChunkRows,
   readPublishedDocumentRow,
-} from '../knowgrph-storage/db.ts'
+} from '../agenticgraph-storage/db.ts'
 
 type PublishedDocRow = {
   id: string
@@ -22,13 +22,13 @@ type PublishedDocChunkRow = {
   markdown: string
 }
 
-export const KNOWGRPH_STORAGE_DOC_VIEW_HEADERS = {
+export const AGENTICGRAPH_STORAGE_DOC_VIEW_HEADERS = {
   'content-type': 'text/markdown; charset=utf-8',
   'cache-control': 'public, max-age=60, must-revalidate',
   'link': `<${CLOUDFLARE_PAY_PER_CRAWL_DOC_URL}>; rel="help"; title="Cloudflare AI Crawl Control Pay Per Crawl"`,
   'x-robots-tag': 'all',
-  [KNOWGRPH_STORAGE_CRAWLER_ACCESS_HEADERS.source]: 'd1-documents-doc-view',
-  [KNOWGRPH_STORAGE_CRAWLER_ACCESS_HEADERS.payPerCrawlPolicy]: 'cloudflare-zone-policy',
+  [AGENTICGRAPH_STORAGE_CRAWLER_ACCESS_HEADERS.source]: 'd1-documents-doc-view',
+  [AGENTICGRAPH_STORAGE_CRAWLER_ACCESS_HEADERS.payPerCrawlPolicy]: 'cloudflare-zone-policy',
 }
 
 export const readPublishedMarkdown = async (

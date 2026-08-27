@@ -15,7 +15,7 @@ async function run() {
 
   const reqInvalid = new Request('https://example.com/__chat_proxy/v1/chat/completions', { method: 'GET' });
   const envInvalid = {
-    KNOWGRPH_CHAT_PROXY_UPSTREAM: 'not-a-url',
+    AGENTICGRAPH_CHAT_PROXY_UPSTREAM: 'not-a-url',
   };
   const resInvalid = await chatProxyOnRequest(makeContext(reqInvalid, envInvalid));
   assert.equal(resInvalid.status, 500);
@@ -73,7 +73,7 @@ async function run() {
     }),
   });
   const resAiGatewayMissingKey = await chatProxyOnRequest(makeContext(reqAiGatewayMissingKey, {
-    KNOWGRPH_CHAT_PROXY_AI_GATEWAY_BASE_URL: 'https://api.cloudflare.com/client/v4/accounts/test-account/ai',
+    AGENTICGRAPH_CHAT_PROXY_AI_GATEWAY_BASE_URL: 'https://api.cloudflare.com/client/v4/accounts/test-account/ai',
   }));
   assert.equal(resAiGatewayMissingKey.status, 401);
   const aiGatewayPayload = JSON.parse(await resAiGatewayMissingKey.text());

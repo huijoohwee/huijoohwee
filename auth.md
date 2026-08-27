@@ -1,12 +1,12 @@
-# Knowgrph auth.md
+# AgenticGraph auth.md
 
-Knowgrph publishes agent registration metadata for the read-only agent surface at https://airvio.co/knowgrph/. Agents should first fetch https://airvio.co/.well-known/oauth-protected-resource, follow its authorization_servers entry to https://airvio.co/.well-known/oauth-authorization-server, and read the agent_auth block.
+AgenticGraph publishes agent registration metadata for the read-only agent surface at https://airvio.co/agenticgraph/. Agents should first fetch https://airvio.co/.well-known/oauth-protected-resource, follow its authorization_servers entry to https://airvio.co/.well-known/oauth-authorization-server, and read the agent_auth block.
 
 ## Registration
 
-- Register: https://airvio.co/knowgrph/agent/auth
-- Claim: https://airvio.co/knowgrph/agent/auth/claim
-- Revoke: https://airvio.co/knowgrph/agent/auth/revoke
+- Register: https://airvio.co/agenticgraph/agent/auth
+- Claim: https://airvio.co/agenticgraph/agent/auth/claim
+- Revoke: https://airvio.co/agenticgraph/agent/auth/revoke
 - Supported identity types: anonymous, identity_assertion
 - Anonymous credentials: api_key
 - Identity assertion types: urn:ietf:params:oauth:token-type:id-jag, verified_email
