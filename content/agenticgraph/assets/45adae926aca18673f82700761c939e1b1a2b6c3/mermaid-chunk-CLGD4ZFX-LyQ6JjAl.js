@@ -1,0 +1,1 @@
+import{g as m}from"./mermaid-chunk-DU6HZSFF-DwiUMcPg.js";import{_ as r}from"./mermaid-chunk-Y2CYZVJY-DM6BcmAw.js";import{s as e}from"./d3-DuXkZ2Jo.js";var v=r(t=>{var s;const{securityLevel:n}=m();let o=e("body");if(n==="sandbox"){const c=((s=e(`#i${t}`).node())==null?void 0:s.contentDocument)??document;o=e(c.body)}return o.select(`#${t}`)},"selectSvgElement");export{v as s};
