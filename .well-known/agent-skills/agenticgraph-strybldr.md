@@ -6,7 +6,7 @@ Use this skill when: Turn image or media source units into editable Storyboard c
 
 - Vdeoxpln id: `agenticgraph-strybldr`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_0d4e3f41`
+- Semantic key: `kgvx_80706efa`
 - Scope: `browser-local-source-backed`
 - Mutation boundary: `browser-local-user-mediated`
 

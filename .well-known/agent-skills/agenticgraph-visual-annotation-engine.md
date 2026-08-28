@@ -6,7 +6,7 @@ Use this skill when: Run browser-local image and video-frame annotation into LLM
 
 - Vdeoxpln id: `agenticgraph-visual-annotation-engine`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_f3255bd1`
+- Semantic key: `kgvx_b009b839`
 - Scope: `browser-local`
 - Mutation boundary: `local-approval-gated`
 

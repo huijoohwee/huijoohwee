@@ -1,0 +1,1 @@
+const n="agenticgraph:xr-simulation-workbench-open";let i=0;function o(){i+=1,typeof window<"u"&&window.dispatchEvent(new Event(n))}function t(){return i}function r(e){return typeof window>"u"?()=>{}:(window.addEventListener(n,e),()=>window.removeEventListener(n,e))}export{t as a,o as r,r as s};

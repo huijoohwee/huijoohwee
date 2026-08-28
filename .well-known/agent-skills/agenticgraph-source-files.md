@@ -6,7 +6,7 @@ Use this skill when: Discover, read, inspect, and route published Source Files a
 
 - Vdeoxpln id: `agenticgraph-source-files`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_79a9fb63`
+- Semantic key: `kgvx_1ef3cbc8`
 - Scope: `read-only-published`
 - Mutation boundary: `read-only`
 
@@ -44,8 +44,8 @@ Browser-local tools:
 - inspect_local_source_files_snapshot
 
 Local MCP tools:
-- fetch
 - agenticgraph.vdeoxpln.list
+- fetch
 - search
 
 ## Workflow

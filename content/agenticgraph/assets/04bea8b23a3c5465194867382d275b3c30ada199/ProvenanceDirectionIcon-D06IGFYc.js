@@ -1,0 +1,1 @@
+import{j as e}from"./react-BhUDf-ol.js";const c={source:"←",target:"→"};function o(n){return e.jsx("span",{className:n.className,"data-kg-provenance-direction-icon":n.direction,children:c[n.direction]})}export{o as P};

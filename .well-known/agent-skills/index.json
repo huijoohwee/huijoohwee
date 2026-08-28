@@ -7,13 +7,13 @@
       "type": "markdown",
       "description": "Inspect AgenticGraph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-agent-ready.md",
-      "sha256": "a59a48e6192bb9387f675ecf7cb9fa09664a379e0e07190bfd1cba782909679b",
+      "sha256": "697ead6bcc31cfe52d29bdf94b74c155205b09a06f2d7d8825aea3d5f2c196b2",
       "vdeoxpln": {
         "id": "agenticgraph-agent-ready",
         "title": "AgenticGraph Agent Ready",
         "scope": "read-only-published-and-browser-local",
         "mutation": "read-only",
-        "semanticKey": "kgvx_1f172c3d",
+        "semanticKey": "kgvx_9f8c45e5",
         "tools": {
           "published": [
             "inspect_agent_surface"
@@ -59,13 +59,13 @@
       "type": "markdown",
       "description": "Run provider-neutral multi-agent creative pipelines for podcasts, narrative games, and writers rooms through existing Source Files, memory, MCP, KGC, and Storyboard Widget owners.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-ai-showrunner.md",
-      "sha256": "d93d25f274d85f63a84333e80f96587e21a8eaf7c4278fe3d6143904f6f2ce8c",
+      "sha256": "36490250a59e27b714a02e1a668c80c035fe673c7eaf0a1c886c4ab261ed70c1",
       "vdeoxpln": {
         "id": "agenticgraph-ai-showrunner",
         "title": "AgenticGraph AI Showrunner",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_7e480fd7",
+        "semanticKey": "kgvx_28cb2c8f",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -90,13 +90,13 @@
       "type": "markdown",
       "description": "Capture consented voice-profile manifests, dictate speech, and create disclosed speech through one provider-neutral browser and local-stdio contract.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-ai-voice-studio.md",
-      "sha256": "31bfd213125249a3dd04a72922a291695b7178d816cb287325640f0b8532e88d",
+      "sha256": "b195e3f682adc0fa5f9dd8d3a8ea586e4c9aa7437ffacfe241234dc0702eeb3c",
       "vdeoxpln": {
         "id": "agenticgraph-ai-voice-studio",
         "title": "AgenticGraph AI Voice Studio",
         "scope": "browser-local-and-local-stdio",
         "mutation": "local-consent-and-approval-gated",
-        "semanticKey": "kgvx_5e8cecc9",
+        "semanticKey": "kgvx_721fdb75",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -116,13 +116,13 @@
       "type": "markdown",
       "description": "Compose exact-version agents, prompts, typed values, and opaque third-party integration capabilities into immutable provider-neutral plans, then run them through existing bounded runtime owners.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-application-composition.md",
-      "sha256": "954c6d1c49ed2fe22227d5e5036a91b0b89caeaadd05ed3f11ad6e0cb9debfb6",
+      "sha256": "07c74f68fef60a39496444666fea27ef2d1d206f5001762a8403abe1b0006e9c",
       "vdeoxpln": {
         "id": "agenticgraph-application-composition",
         "title": "AgenticGraph Application Composition",
         "scope": "local-stdio-owner-composed",
         "mutation": "local-and-external-approval-gated",
-        "semanticKey": "kgvx_da3f5875",
+        "semanticKey": "kgvx_c84471e8",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -143,13 +143,13 @@
       "type": "markdown",
       "description": "Route AI-assisted graph generation through FloatingPanel Chat, KGC validation, Workspace FS, Source Files, and Canvas apply owners.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-chat-to-canvas.md",
-      "sha256": "bb1bc2679ac714335aac21d3c987b946bad9f994c8fa88b0de75a18b3e41ac33",
+      "sha256": "86f434014c2e58e3ff2909577cf712a3c44e5cee7e6b4160f5bd10dac7630f5d",
       "vdeoxpln": {
         "id": "agenticgraph-chat-to-canvas",
         "title": "AgenticGraph Chat To Canvas",
         "scope": "browser-local-ai-assisted",
         "mutation": "browser-local-user-mediated",
-        "semanticKey": "kgvx_7ef5b0f5",
+        "semanticKey": "kgvx_a849f575",
         "tools": {
           "published": [],
           "browserLocal": [
@@ -174,13 +174,13 @@
       "type": "markdown",
       "description": "Inspect Commerce, payment worker, x402, ACP, UCP, MPP, and readiness metadata without bypassing the shared payment SSOT.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-commerce-readiness.md",
-      "sha256": "f314c4eb5bb52c61865ab29aa64b443461844a662912b9f548e78bec24d009d6",
+      "sha256": "0de74c6a3f2ac73e35ceb0b7168316b80a51d33bf360b6b98fdd01f2524a3ffd",
       "vdeoxpln": {
         "id": "agenticgraph-commerce-readiness",
         "title": "AgenticGraph Commerce Readiness",
         "scope": "read-only-published-and-browser-local",
         "mutation": "read-only",
-        "semanticKey": "kgvx_73c86f80",
+        "semanticKey": "kgvx_6995db6e",
         "tools": {
           "published": [
             "inspect_agent_surface"
@@ -205,13 +205,13 @@
       "type": "markdown",
       "description": "Render HTML, CSS, and data documents to MP4 video artifacts through a runtime-selected pluggable engine and the existing rich media output owner.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-html-video-renderer.md",
-      "sha256": "da7c40d1c3f7ae2e88ead8bdf521b8a3eb2680f05a4ab7643d06f94499e7f7d1",
+      "sha256": "1dfc3b50165895fc5b14b81d8451dd7f4c015205f9458d077ee3c07971941759",
       "vdeoxpln": {
         "id": "agenticgraph-html-video-renderer",
         "title": "AgenticGraph HTML Video Renderer",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_8dde8e02",
+        "semanticKey": "kgvx_704cfd93",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -231,19 +231,17 @@
       "type": "markdown",
       "description": "Expose AgenticGraph-owned local Source Files, Agentic Canvas OS docs invocation, deterministic repository packing, managed implementation runs, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-mcp-local.md",
-      "sha256": "4e3886f2521f28f187b6d931750c7ecad3a02be495b695fcdc3d8f7f3eb18ec3",
+      "sha256": "8a6708ebbbcaf0f2f62cd9ce9686bbab00d29f9c0c23640e87826df159186a25",
       "vdeoxpln": {
         "id": "agenticgraph-mcp-local",
         "title": "AgenticGraph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_adbdb68c",
+        "semanticKey": "kgvx_10eb36e1",
         "tools": {
           "published": [],
           "browserLocal": [],
           "local": [
-            "export.publish",
-            "fetch",
             "agenticgraph.agent_team.control",
             "agenticgraph.agent_team.list",
             "agenticgraph.agent_team.plan",
@@ -322,6 +320,8 @@
             "agenticgraph.voice.studio",
             "agenticgraph.workspace_artifact.apply",
             "agenticgraph.workspace_artifact.plan",
+            "export.publish",
+            "fetch",
             "sealion.detect_language_variant",
             "sealion.safety_check",
             "sealion.translate_localize",
@@ -339,13 +339,13 @@
       "type": "markdown",
       "description": "Persist, retrieve, safely compact, hard-redact, and revision-freeze host-authorized exact-scope agent memory through a durable local runtime while preserving the legacy provider-neutral prompt harness.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-memory-layer.md",
-      "sha256": "4673686c9477487a0c2563499287bf888d7fc2a4714b9fbdcbb4cdb9a278ab0b",
+      "sha256": "9b2c754972e76edff0d8e2770d02339fe741df64c29464bff300e4624f7522eb",
       "vdeoxpln": {
         "id": "agenticgraph-memory-layer",
         "title": "AgenticGraph Memory Layer",
         "scope": "local-stdio-and-browser-local",
         "mutation": "local-scoped-memory",
-        "semanticKey": "kgvx_0399f9a9",
+        "semanticKey": "kgvx_6992e574",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -374,13 +374,13 @@
       "type": "markdown",
       "description": "Create file-backed research visual workflows from source material using AgenticGraph parsing, Source Files, Storyboard, renderer, and chat owners.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-research-visual.md",
-      "sha256": "17cfaf8f1afc41b9a59b3e650054415db8f990a212c4447c3bfc57d54bb22147",
+      "sha256": "b1db84968de21b9213dc275dd6a8d76b0bf17cde4959efd961562fcfb83bda57",
       "vdeoxpln": {
         "id": "agenticgraph-research-visual",
         "title": "AgenticGraph Research Visual",
         "scope": "browser-local-ai-assisted",
         "mutation": "browser-local-user-mediated",
-        "semanticKey": "kgvx_e0d43017",
+        "semanticKey": "kgvx_13d83282",
         "tools": {
           "published": [],
           "browserLocal": [
@@ -403,13 +403,13 @@
       "type": "markdown",
       "description": "Discover, read, inspect, and route published Source Files and shared documents through the canonical storage and document-structure owners.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-source-files.md",
-      "sha256": "a78bb3da32a17c2934dfa623ce8d785fec16c44ad0ec8366444c61a85b43ebdb",
+      "sha256": "a4a3321d4b5f542a20490fc85363f37d3d33768501ad30a40ad937dda99b7256",
       "vdeoxpln": {
         "id": "agenticgraph-source-files",
         "title": "AgenticGraph Source Files",
         "scope": "read-only-published",
         "mutation": "read-only",
-        "semanticKey": "kgvx_79a9fb63",
+        "semanticKey": "kgvx_1ef3cbc8",
         "tools": {
           "published": [
             "inspect_shared_document_structure",
@@ -421,8 +421,8 @@
             "inspect_local_source_files_snapshot"
           ],
           "local": [
-            "fetch",
             "agenticgraph.vdeoxpln.list",
+            "fetch",
             "search"
           ]
         },
@@ -438,13 +438,13 @@
       "type": "markdown",
       "description": "Turn image or media source units into editable Storyboard cards and bounded media handoff artifacts through Strybldr and shared renderer owners.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-strybldr.md",
-      "sha256": "1fdd0c118ae8ab786b8df01abb933c972b0b4a699cadec2e9fac2af147329de8",
+      "sha256": "be28d1142d29e3d24609eece5c5884aac8ad321f1400825314440be812a31143",
       "vdeoxpln": {
         "id": "agenticgraph-strybldr",
         "title": "AgenticGraph Strybldr",
         "scope": "browser-local-source-backed",
         "mutation": "browser-local-user-mediated",
-        "semanticKey": "kgvx_0d4e3f41",
+        "semanticKey": "kgvx_80706efa",
         "tools": {
           "published": [],
           "browserLocal": [
@@ -467,13 +467,13 @@
       "type": "markdown",
       "description": "Reason over operator-supplied video sources through native agenticgraph ingestion, parsing, annotation, dataset operations, zone counting, search planning, edit planning, timeline compilation, generation placeholders, and streamable rich-media output.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-video-agent.md",
-      "sha256": "acdea45ff8936e8b35c0bde592e4f0af4edb383852e554fc36ab2fbfe1b044d5",
+      "sha256": "e1fe13aac3f3bf15a80191cccfa0c9e39075e33fe97710202084e4951e2764f3",
       "vdeoxpln": {
         "id": "agenticgraph-video-agent",
         "title": "AgenticGraph Video Agent",
         "scope": "browser-local-and-local-stdio",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_098382a2",
+        "semanticKey": "kgvx_609c36d0",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -495,13 +495,13 @@
       "type": "markdown",
       "description": "Run browser-local image and video-frame annotation into LLM-ready structured JSON plus native visual datasets materialised through existing artifact owners.",
       "url": "https://airvio.co/agenticgraph/.well-known/agent-skills/agenticgraph-visual-annotation-engine.md",
-      "sha256": "e5b7a3e0052235828c6ae31ec999014aeffadb9ef92b8915911aa7c5db80ebc0",
+      "sha256": "07b8ca8a1ce46e37c360db547b8efad87de06a2c383b82dc4a4cb8018bffaa22",
       "vdeoxpln": {
         "id": "agenticgraph-visual-annotation-engine",
         "title": "AgenticGraph Visual Annotation Engine",
         "scope": "browser-local",
         "mutation": "local-approval-gated",
-        "semanticKey": "kgvx_f3255bd1",
+        "semanticKey": "kgvx_b009b839",
         "tools": {
           "published": [],
           "browserLocal": [],

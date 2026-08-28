@@ -6,7 +6,7 @@ Use this skill when: Persist, retrieve, safely compact, hard-redact, and revisio
 
 - Vdeoxpln id: `agenticgraph-memory-layer`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_0399f9a9`
+- Semantic key: `kgvx_6992e574`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-scoped-memory`
 

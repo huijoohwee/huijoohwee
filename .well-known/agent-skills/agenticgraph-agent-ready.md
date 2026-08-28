@@ -6,7 +6,7 @@ Use this skill when: Inspect AgenticGraph health, MCP, WebMCP, A2A, OpenAPI, com
 
 - Vdeoxpln id: `agenticgraph-agent-ready`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_1f172c3d`
+- Semantic key: `kgvx_9f8c45e5`
 - Scope: `read-only-published-and-browser-local`
 - Mutation boundary: `read-only`
 
@@ -73,8 +73,8 @@ Local MCP tools:
 
 ## Source Owners
 
-- canvas/src/features/agent-ready/agentSurfaceInspection.mjs
 - canvas/src/features/agent-ready/agenticgraphAgentReadyToolContract.mjs
+- canvas/src/features/agent-ready/agentSurfaceInspection.mjs
 - canvas/src/features/agent-ready/webMcpRuntime.ts
 - cloudflare/pages/agenticgraph-agent-ready.mjs
 - scripts/check-agent-ready.mjs
