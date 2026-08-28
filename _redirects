@@ -26,15 +26,17 @@
 /agenticgraph/robots.txt /agenticgraph/robots.txt 200
 /agenticgraph/sitemap.xml /agenticgraph/sitemap.xml 200
 /agenticgraph/.well-known/* /agenticgraph/.well-known/:splat 200
-/agenticgraph/apple-touch-icon.png /content/agenticgraph/apple-touch-icon.png 200
-/agenticgraph/favicon.svg /content/agenticgraph/favicon.svg 200
 /agenticgraph/agenticgraph-chat-stream-sw.js /content/agenticgraph/agenticgraph-chat-stream-sw.js 200
 /agenticgraph/agenticgraph-live-canvas-hero.md /content/agenticgraph/agenticgraph-live-canvas-hero.md 200
 /agenticgraph/agenticgraph-service-worker-revision.js /content/agenticgraph/agenticgraph-service-worker-revision.js 200
+/agenticgraph/apple-touch-icon.png /content/agenticgraph/apple-touch-icon.png 200
+/agenticgraph/favicon.svg /content/agenticgraph/favicon.svg 200
 /agenticgraph/llms.txt /content/agenticgraph/llms.txt 200
 /agenticgraph/manifest.webmanifest /content/agenticgraph/manifest.webmanifest 200
 /agenticgraph/settings-flow.json /content/agenticgraph/settings-flow.json 200
 /agenticgraph/sw.js /content/agenticgraph/sw.js 200
+/agenticgraph/travel-commerce-demo-offline.html /content/agenticgraph/travel-commerce-demo-offline.html 200
+/agenticgraph/travel-commerce-demo-sw.js /content/agenticgraph/travel-commerce-demo-sw.js 200
 /agenticgraph/unicorn-investors-top-3-3d.json /content/agenticgraph/unicorn-investors-top-3-3d.json 200
 /agenticgraph/workbox-4d44960a.js /content/agenticgraph/workbox-4d44960a.js 200
 # END agenticgraph generated top-level file routes

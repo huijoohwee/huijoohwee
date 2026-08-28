@@ -6,7 +6,7 @@ Use this skill when: Expose AgenticGraph-owned local Source Files, Agentic Canva
 
 - Vdeoxpln id: `agenticgraph-mcp-local`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_adbdb68c`
+- Semantic key: `kgvx_10eb36e1`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -88,8 +88,6 @@ Browser-local tools:
 - none
 
 Local MCP tools:
-- export.publish
-- fetch
 - agenticgraph.agent_team.control
 - agenticgraph.agent_team.list
 - agenticgraph.agent_team.plan
@@ -168,6 +166,8 @@ Local MCP tools:
 - agenticgraph.voice.studio
 - agenticgraph.workspace_artifact.apply
 - agenticgraph.workspace_artifact.plan
+- export.publish
+- fetch
 - sealion.detect_language_variant
 - sealion.safety_check
 - sealion.translate_localize
@@ -186,8 +186,8 @@ Local MCP tools:
 
 ## Source Owners
 
-- canvas/src/features/agent-ready/agenticgraphVdeoxplnContract.mjs
 - agenticgraph_parser/superagent_harness.py
+- canvas/src/features/agent-ready/agenticgraphVdeoxplnContract.mjs
 - mcp/agentic-canvas-os-docs-runtime.js
 - mcp/director-lanes.js
 - mcp/director-workflow.js

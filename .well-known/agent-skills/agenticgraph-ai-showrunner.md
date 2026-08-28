@@ -6,7 +6,7 @@ Use this skill when: Run provider-neutral multi-agent creative pipelines for pod
 
 - Vdeoxpln id: `agenticgraph-ai-showrunner`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_7e480fd7`
+- Semantic key: `kgvx_28cb2c8f`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-approval-gated`
 

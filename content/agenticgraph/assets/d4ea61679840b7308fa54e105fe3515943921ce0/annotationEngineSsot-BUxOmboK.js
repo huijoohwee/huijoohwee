@@ -1,1 +1,0 @@
-const e="AGENTICGRAPH_ANNOTATION_MODEL",o=Object.freeze({caption:"caption",detailedCaption:"detailed_caption",moreDetailedCaption:"more_detailed_caption",objectDetection:"object_detection",denseRegionCaption:"dense_region_caption",ocr:"ocr"}),t=Object.freeze({florence2Base:"microsoft/Florence-2-base"}),n="agenticgraph-annotation/v1";export{n as A,e as K,o as a,t as b};

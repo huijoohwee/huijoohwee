@@ -6,7 +6,7 @@ Use this skill when: Inspect Commerce, payment worker, x402, ACP, UCP, MPP, and 
 
 - Vdeoxpln id: `agenticgraph-commerce-readiness`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_73c86f80`
+- Semantic key: `kgvx_6995db6e`
 - Scope: `read-only-published-and-browser-local`
 - Mutation boundary: `read-only`
 

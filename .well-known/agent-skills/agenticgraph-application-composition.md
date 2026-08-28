@@ -6,7 +6,7 @@ Use this skill when: Compose exact-version agents, prompts, typed values, and op
 
 - Vdeoxpln id: `agenticgraph-application-composition`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_da3f5875`
+- Semantic key: `kgvx_c84471e8`
 - Scope: `local-stdio-owner-composed`
 - Mutation boundary: `local-and-external-approval-gated`
 

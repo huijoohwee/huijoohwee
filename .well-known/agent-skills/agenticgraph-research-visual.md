@@ -6,7 +6,7 @@ Use this skill when: Create file-backed research visual workflows from source ma
 
 - Vdeoxpln id: `agenticgraph-research-visual`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_e0d43017`
+- Semantic key: `kgvx_13d83282`
 - Scope: `browser-local-ai-assisted`
 - Mutation boundary: `browser-local-user-mediated`
 

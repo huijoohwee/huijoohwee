@@ -6,7 +6,7 @@ Use this skill when: Reason over operator-supplied video sources through native 
 
 - Vdeoxpln id: `agenticgraph-video-agent`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_098382a2`
+- Semantic key: `kgvx_609c36d0`
 - Scope: `browser-local-and-local-stdio`
 - Mutation boundary: `local-approval-gated`
 

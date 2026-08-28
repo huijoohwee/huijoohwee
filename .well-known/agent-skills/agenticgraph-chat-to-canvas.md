@@ -6,7 +6,7 @@ Use this skill when: Route AI-assisted graph generation through FloatingPanel Ch
 
 - Vdeoxpln id: `agenticgraph-chat-to-canvas`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_7ef5b0f5`
+- Semantic key: `kgvx_a849f575`
 - Scope: `browser-local-ai-assisted`
 - Mutation boundary: `browser-local-user-mediated`
 

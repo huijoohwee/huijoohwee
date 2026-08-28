@@ -6,7 +6,7 @@ Use this skill when: Render HTML, CSS, and data documents to MP4 video artifacts
 
 - Vdeoxpln id: `agenticgraph-html-video-renderer`
 - Contract version: `agenticgraph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_8dde8e02`
+- Semantic key: `kgvx_704cfd93`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-approval-gated`
 
