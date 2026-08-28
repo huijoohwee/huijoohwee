@@ -1,1 +1,0 @@
-import{R as s}from"./react-BhUDf-ol.js";import{aQ as o,aR as r,aS as a}from"./settings-mcp-core-DdnA_tgp.js";const t=()=>{const e=r();return{revision:Date.now(),entries:e,countsByPath:a()}};function i(){const[e,n]=s.useState(()=>t());return s.useEffect(()=>o(()=>n(t())),[]),e}export{i as u};
