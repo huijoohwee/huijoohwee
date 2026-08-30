@@ -2,12 +2,12 @@
   "schema": "gamexr-precache/v1",
   "basePath": "/gamexr/",
   "serviceWorkerRegistrationEnabled": true,
-  "buildDigest": "83357aa784fa4bb9990dd13d5256e5130940eef3aa1fd0dd9855429e60060c8c",
+  "buildDigest": "83280908fb1e2150756bffe3a54e097a31d58b33f2548271470e58f0b17f4ef5",
   "entries": [
     {
       "path": ".well-known/runtime-readiness.json",
-      "bytes": 2104,
-      "sha256": "62460d492656514cc92c92455cbdf09b0eb7337c71e39ccdeb683e04e7ba2651",
+      "bytes": 2108,
+      "sha256": "4098430ee81c52043a198668e17b29f4ef83da312a80f1cb92be10efc39cdc6c",
       "kind": "readiness"
     },
     {
@@ -17,16 +17,16 @@
       "kind": "dynamic-script"
     },
     {
-      "path": "assets/index-BnUHHnsn.js",
-      "bytes": 205844,
-      "sha256": "e12d8dde4b0c77ecfa1908b21a806b8075d8e09fbba68e3e84c376c998333ada",
-      "kind": "script"
-    },
-    {
       "path": "assets/index-BXHGyDmD.css",
       "bytes": 14893,
       "sha256": "73d46138cfeb837f140b581880d6dd9c310f7c649b557bf3d7a2a89410d6452a",
       "kind": "style"
+    },
+    {
+      "path": "assets/index-l8aq5JYa.js",
+      "bytes": 206000,
+      "sha256": "36ba476fbef1e13809d39bba79612d0c7356244d657a8f1c25d81ed16b12eda9",
+      "kind": "script"
     },
     {
       "path": "assets/three-animation-B5LeBG1o.js",
@@ -61,13 +61,13 @@
     {
       "path": "index.html",
       "bytes": 1446,
-      "sha256": "462e6b168dc0f6ba9118589e334c0576651569c6397b385068171242b5e66b7e",
+      "sha256": "165f05b320ce05dfb3f123a6fe7c77def782d77442d1c971b3a065373c0f5297",
       "kind": "document"
     },
     {
       "path": "llms.txt",
-      "bytes": 1343,
-      "sha256": "32ece200ab0c2f025fbb34b6fae0b6cfbc2ef0f1286ee8cc5d13d8c701543b33",
+      "bytes": 1347,
+      "sha256": "73d123371c97fce814636a7c3a534fda25d577ae7bfc1502b553ab30594a1aac",
       "kind": "agent-discovery"
     },
     {
@@ -78,8 +78,8 @@
     },
     {
       "path": "schemas/apple-spatial-input.schema.json",
-      "bytes": 1044,
-      "sha256": "2c2017b96afe29aa303a19f7f784b6d040f589b5c65599cfa4a86487326e1201",
+      "bytes": 1048,
+      "sha256": "d2699d598bac7846ed6483b4ab30b6ec1539efb8bafe6e5966ce94052363eb94",
       "kind": "contract"
     },
     {
