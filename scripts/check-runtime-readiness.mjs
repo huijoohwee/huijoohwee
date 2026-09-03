@@ -17,14 +17,35 @@ import {
   validateGameXrFunctionRoutes,
   validateGameXrLocalProjection,
 } from './gamexr-public-contract.mjs'
+import { selectRuntimeReadinessProjection } from './runtime-readiness-projection.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const canonical = process.argv.includes('--canonical')
 const failures = []
-const markerPaths = [
+const hasAgentSkillPrefix = prefix => {
+  const directory = path.resolve(root, '.well-known', 'agent-skills')
+  try {
+    return fs.readdirSync(directory, { withFileTypes: true })
+      .some(entry => entry.isFile() && entry.name.startsWith(prefix))
+  } catch {
+    return false
+  }
+}
+
+let projection = null
+try {
+  projection = selectRuntimeReadinessProjection({
+    exists: relativePath => fs.existsSync(path.resolve(root, relativePath)),
+    hasAgentSkillPrefix,
+  })
+} catch (error) {
+  failures.push(`runtime projection is invalid: ${error.message}`)
+}
+
+const markerPaths = projection ? [
   '.well-known/runtime-readiness.json',
-  'content/agenticgraph/.well-known/runtime-readiness.json',
-]
+  projection.contentMarker,
+] : ['.well-known/runtime-readiness.json']
 const requiredFiles = [
   'package.json',
   'package-lock.json',
@@ -33,8 +54,10 @@ const requiredFiles = [
   '_redirects',
   '_worker.js',
   '_routes.json',
-  'content/agenticgraph/index.html',
-  'functions/agenticgraph/[[path]].js',
+  ...(projection ? [
+    `${projection.contentRoot}/index.html`,
+    projection.functionEntry,
+  ] : []),
   'content/gamexr/index.html',
   'content/gamexr/release-manifest.json',
   'content/gamexr/.well-known/runtime-readiness.json',
@@ -48,27 +71,28 @@ for (const relativePath of requiredFiles) {
   }
 }
 
-const markerSources = markerPaths.map(relativePath => {
-  try {
-    return fs.readFileSync(path.resolve(root, relativePath), 'utf8')
-  } catch {
-    return ''
-  }
-})
-if (new Set(markerSources).size !== 1) failures.push('runtime marker copies must be byte-identical')
-if (fs.existsSync(path.resolve(root, 'agenticgraph/.well-known/runtime-readiness.json'))) {
-  failures.push('public app readiness must be served dynamically from the apex marker')
-}
-
 let marker = null
-let gameXrProjection = null
-try {
-  marker = JSON.parse(markerSources[0])
-  validateMarker(marker)
-} catch (error) {
-  failures.push(`runtime marker is invalid: ${error.message}`)
+if (projection) {
+  const markerSources = markerPaths.map(relativePath => {
+    try {
+      return fs.readFileSync(path.resolve(root, relativePath), 'utf8')
+    } catch {
+      return ''
+    }
+  })
+  if (new Set(markerSources).size !== 1) failures.push('runtime marker copies must be byte-identical')
+  if (fs.existsSync(path.resolve(root, projection.dynamicMarker))) {
+    failures.push('public app readiness must be served dynamically from the apex marker')
+  }
+  try {
+    marker = JSON.parse(markerSources[0])
+    validateMarker(marker, projection)
+  } catch (error) {
+    failures.push(`runtime marker is invalid: ${error.message}`)
+  }
 }
 
+let gameXrProjection = null
 try {
   const routes = JSON.parse(fs.readFileSync(path.resolve(root, '_routes.json'), 'utf8'))
   failures.push(...validateGameXrFunctionRoutes(routes))
@@ -76,28 +100,30 @@ try {
   failures.push(`_routes.json is invalid: ${error.message}`)
 }
 
-const appHtmlPath = path.resolve(root, 'content/agenticgraph/index.html')
-if (fs.existsSync(appHtmlPath)) {
+const appHtmlPath = projection ? path.resolve(root, projection.contentRoot, 'index.html') : null
+if (projection && appHtmlPath && fs.existsSync(appHtmlPath)) {
   const appHtml = fs.readFileSync(appHtmlPath, 'utf8')
-  const references = [...appHtml.matchAll(/(?:src|href)=["'](\/agenticgraph\/[^"'#?]+)["']/g)].map(match => match[1])
+  const escapedSegment = projection.publicSegment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const references = [...appHtml.matchAll(new RegExp(`(?:src|href)=["'](/${escapedSegment}/[^"'#?]+)["']`, 'g'))]
+    .map(match => match[1])
   for (const reference of new Set(references)) {
-    const relativePath = reference.replace(/^\/agenticgraph\//, 'content/agenticgraph/')
+    const relativePath = reference.replace(`/${projection.publicSegment}/`, `${projection.contentRoot}/`)
     if (!fs.existsSync(path.resolve(root, relativePath))) failures.push(`application shell references a missing artifact: ${reference}`)
-    if (marker && reference.startsWith('/agenticgraph/assets/') && !reference.startsWith(`/agenticgraph/assets/${marker.source.revision}/`)) {
+    if (marker && reference.startsWith(`/${projection.publicSegment}/assets/`) && !reference.startsWith(`/${projection.publicSegment}/assets/${marker.source.revision}/`)) {
       failures.push(`application shell references a stale asset namespace: ${reference}`)
     }
   }
 }
 
-if (marker) {
-  const assetsRoot = path.resolve(root, 'agenticgraph', 'assets')
+if (marker && projection) {
+  const assetsRoot = path.resolve(root, projection.publicRoot, 'assets')
   const namespaces = fs.existsSync(assetsRoot)
     ? fs.readdirSync(assetsRoot, { withFileTypes: true }).filter(entry => entry.isDirectory()).map(entry => entry.name).sort()
     : []
   if (namespaces.length !== 1 || namespaces[0] !== marker.source.revision) {
     failures.push(`asset namespace must contain only ${marker.source.revision}; found ${namespaces.join(', ') || 'none'}`)
   }
-  const artifactDigest = calculateArtifactDigest(path.resolve(root, 'content', 'agenticgraph'))
+  const artifactDigest = calculateArtifactDigest(path.resolve(root, projection.contentRoot), projection.rootFiles)
   if (artifactDigest !== marker.artifact.digest) {
     failures.push(`runtime artifact digest mismatch: expected ${marker.artifact.digest}, received ${artifactDigest}`)
   }
@@ -244,16 +270,16 @@ function parseHeaderBlocks(source) {
   return blocks
 }
 
-function validateMarker(value) {
+function validateMarker(value, activeProjection) {
   requireExactKeys(value, ['schema', 'status', 'source', 'agenticCanvasOs', 'catalogRevision', 'artifact', 'immutableManifest', 'mirror', 'surfaces'], 'marker')
-  if (value.schema !== 'agenticgraph-production-runtime-readiness/v2') throw new Error('schema is invalid')
+  if (value.schema !== activeProjection.markerSchema) throw new Error('schema is invalid')
   if (value.status !== 'verified-build') throw new Error('status must be verified-build')
   requireExactKeys(value.source, ['repository', 'revision', 'tree'], 'source')
   requireExactKeys(value.agenticCanvasOs, ['repository', 'revision'], 'agenticCanvasOs')
   requireExactKeys(value.artifact, ['algorithm', 'digest'], 'artifact')
   requireExactKeys(value.immutableManifest, ['algorithm', 'digest'], 'immutableManifest')
   requireExactKeys(value.mirror, ['repository'], 'mirror')
-  if (value.source.repository !== 'huijoohwee/knowgrph') throw new Error('source repository is invalid')
+  if (value.source.repository !== activeProjection.sourceRepository) throw new Error('source repository is invalid')
   if (value.agenticCanvasOs.repository !== 'huijoohwee/agentic-canvas-os') throw new Error('Agentic Canvas OS repository is invalid')
   if (value.mirror.repository !== 'huijoohwee/huijoohwee') throw new Error('mirror repository is invalid')
   for (const [label, revision] of [
@@ -268,8 +294,8 @@ function validateMarker(value) {
       throw new Error(`${label} digest is invalid`)
     }
   }
-  if (!Array.isArray(value.surfaces) || value.surfaces.length !== 2 || !value.surfaces.includes('/') || !value.surfaces.includes('/agenticgraph')) {
-    throw new Error('surfaces must bind / and /agenticgraph exactly')
+  if (!Array.isArray(value.surfaces) || value.surfaces.length !== 2 || !value.surfaces.includes('/') || !value.surfaces.includes(`/${activeProjection.publicSegment}`)) {
+    throw new Error(`surfaces must bind / and /${activeProjection.publicSegment} exactly`)
   }
 }
 
@@ -280,18 +306,8 @@ function requireExactKeys(value, expected, label) {
   if (actual.join('\0') !== required.join('\0')) throw new Error(`${label} fields are invalid`)
 }
 
-function calculateArtifactDigest(publicRoot) {
-  const rootFiles = new Set([
-    'favicon.svg',
-    'index.html',
-    'agenticgraph-chat-stream-sw.js',
-    'agenticgraph-live-canvas-hero.md',
-    'agenticgraph-service-worker-revision.js',
-    'llms.txt',
-    'manifest.webmanifest',
-    'settings-flow.json',
-    'sw.js',
-  ])
+function calculateArtifactDigest(publicRoot, rootFileNames) {
+  const rootFiles = new Set(rootFileNames)
   const entries = []
   const walk = directory => {
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

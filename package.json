@@ -6,10 +6,11 @@
     "dev:pages": "npx wrangler pages dev . --port 5175",
     "gamexr:public:check": "node ./scripts/check-gamexr-public.mjs",
     "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
+    "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs",
     "lifecycle:check": "node ./scripts/check-runtime-readiness.mjs --canonical",
     "worktree:lifecycle:check": "node ../agentic-canvas-os/scripts/worktree-lifecycle.mjs check --repository=.",
     "worktree:lifecycle:cleanup": "node ../agentic-canvas-os/scripts/worktree-lifecycle.mjs cleanup --repository=.",
-    "check": "npm run runtime:check"
+    "check": "npm run runtime:test && npm run runtime:check"
   },
   "dependencies": {
     "@tweenjs/tween.js": "^25.0.0",
