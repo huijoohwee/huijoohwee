@@ -6,16 +6,25 @@
     "dev:pages": "npx wrangler pages dev . --port 5175",
     "gamexr:public:check": "node ./scripts/check-gamexr-public.mjs",
     "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
-    "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs",
-    "lifecycle:check": "node ./scripts/check-runtime-readiness.mjs --canonical",
-    "worktree:lifecycle:check": "node ../agentic-canvas-os/scripts/worktree-lifecycle.mjs check --repository=.",
-    "worktree:lifecycle:cleanup": "node ../agentic-canvas-os/scripts/worktree-lifecycle.mjs cleanup --repository=.",
-    "check": "npm run runtime:test && npm run runtime:check"
+    "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs ./scripts/worktree-lifecycle-contract.test.mjs",
+    "check": "npm run check:adlc && npm run runtime:test && npm run runtime:check",
+    "check:adlc": "npm --prefix node_modules/agentic-os run evals",
+    "setup": "agentic-os setup",
+    "doctor": "agentic-os doctor",
+    "lane": "agentic-os start",
+    "land": "agentic-os land",
+    "status": "agentic-os status",
+    "reap": "agentic-os reap",
+    "finish": "agentic-os finish",
+    "sync:canonical": "agentic-os canonical-sync"
   },
   "dependencies": {
     "@tweenjs/tween.js": "^25.0.0",
     "three": "^0.128.0",
     "y-websocket": "^3.0.0",
     "yjs": "^13.6.30"
+  },
+  "devDependencies": {
+    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/8c2650cefac8ba37435832adfa2314846725f21a"
   }
 }

@@ -1,5 +1,11 @@
 # Huijoohwee Runtime Mirror Routing
 
+- Continuously obey the pinned `node_modules/agentic-os/templates/SYSTEM-PROMPT-RUNTIME.md`,
+  `node_modules/agentic-os/docs/adlc-guidelines.md`, and its `docs/START-WORKFLOW.md`
+  and `docs/RELEASE-WORKFLOW.md`. Install with `npm ci --ignore-scripts` if missing.
+- Use the committed `.agentic-os.json` and shared ADLC commands for repository lifecycle;
+  never recreate the retired ACOS controller or copy the upstream policy. Source integration
+  does not authorize generated mirror publication or deployment.
 - Treat this repository as the generated production mirror for `agentic-graph`, not an authoring source for `content/agentic-graph`, `agentic-graph`, `image/agentic-graph`, `functions`, `canvas`, `contracts`, or `grph-shared`.
 - Use `agentic-graph` for public product paths and generated artifact names. `agenticgraph` and `knowgrph` are retired mirror namespaces; retain them only as finite, source-owned compatibility redirects emitted by the protected release workflow.
 - Use `agentic-*` for Cloudflare deployable service identities. Reserve `AGENTIC_OS_*` and `/agentic-os/...` for internal runtime protocol boundaries; do not broad-rename schemas, D1 migration history, or Durable Object identities.
