@@ -25,6 +25,6 @@
     "yjs": "^13.6.30"
   },
   "devDependencies": {
-    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/8c2650cefac8ba37435832adfa2314846725f21a"
+    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/8e50a7fd3e84e13403855715447e4daf2b6261da"
   }
 }
