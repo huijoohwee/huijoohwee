@@ -239,10 +239,9 @@ The demo proves five Agentic OS read views around the workflow:
 
 ## Self-Run
 
-Run from `/Users/huijoohwee/Documents/GitHub/agenticgraph`:
+Run from the `agentic-graph` development repository root (including an admitted worktree):
 
 ```bash
-AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/agenticgraph-agentic-os-demo.md" \
 node --input-type=module <<'NODE'
 import { runOsStatusTool } from "./mcp/os-status-runtime.js";
 
@@ -262,22 +261,23 @@ This command runs the Agentic OS read views directly from the local repo. It doe
 
 ### Generate Video-Agent Artifact
 
-Run this from `/Users/huijoohwee/Documents/GitHub/agenticgraph/canvas` to generate a timestamped artifact shaped like:
+Run this from the development repository's `canvas/` directory to generate a timestamped artifact shaped like:
 
 `/docs_/<run-timestamp>/youtube-<source-video-id-lower>.video-agent.md`
 
-The command reads `source_url` and `source_video_id` from this validation document. It does not paste transcript text,
+The existing workspace resolver locates this document in the sibling `huijoohwee/docs/` directory, including from a Git worktree. Set `AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT` to select another local input. The command reads `source_url` and `source_video_id` from that document. It does not paste transcript text,
 provider ids, stream URLs, generated media URLs, frame boxes, or a fixed timestamp back into this source file.
 
 ```bash
-AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/agenticgraph-agentic-os-demo.md" \
 npm exec tsx -- <<'TS'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { resolveSurfacePaths } from '../scripts/surface/workspace-paths.mjs';
 import { getWorkspaceFs } from '@/features/workspace-fs/workspaceFs';
 import { materializeVideoAgentUrlImportDocument } from '@/features/markdown-workspace/workspaceImport/videoAgentUrlImport';
 
-const inputPath = process.env.AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT || '';
+const inputPath = process.env.AGENTICGRAPH_AGENTIC_OS_DEMO_INPUT
+  || join(resolveSurfacePaths().publicOriginRoot, 'docs', 'agenticgraph-agentic-os-demo.md');
 const inputText = readFileSync(inputPath, 'utf8');
 const readQuoted = (key: string) => {
   const match = inputText.match(new RegExp(`^${key}:\\s*"([^"]+)"`, 'm'));
@@ -323,10 +323,10 @@ The generated artifact owns the heavy analysis payload: `kgVideoAgentImport`, `k
 parsed output counts, frame analysis, source transcript placeholders, visual dataset operations, zone counting,
 and timeline tracks.
 
-Optional MCP-host check:
+Optional MCP-host check, from the development repository root:
 
 ```bash
-AGENTICGRAPH_ROOT="/Users/huijoohwee/Documents/GitHub/agenticgraph" npm --prefix mcp start
+AGENTIC_OS_ROOT="$PWD" npm --prefix mcp start
 ```
 
 Use an MCP client to call `agenticgraph.os.status` with the same five views if you want to verify stdio transport separately. The self-run command above is the canonical demo path.
@@ -451,13 +451,13 @@ This source file intentionally does not contain generated `frameBoundingBoxes`, 
 
 ## Validation Commands
 
-Run these from `/Users/huijoohwee/Documents/GitHub/agenticgraph` when validating the implementation surface:
+Run these from the `agentic-graph` development repository root when validating the implementation surface:
 
 ```bash
 npm run hygiene:check
 node --test mcp/__tests__/os-status-runtime.test.mjs mcp/__pbt__/os-status.pbt.test.mjs
-node --test cloudflare/workers/agenticgraph-mcp/__tests__/tool-registry.test.mjs
-AGENTICGRAPH_FORBID_HARDCODE_INPUT="/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/agenticgraph-agentic-os-demo.md" npm --prefix canvas run test:ci:unit -- policy.forbidHardcodedYouTubeUrlLiteral
+node --test cloudflare/workers/agentic-graph-mcp/__tests__/tool-registry.test.mjs
+AGENTIC_OS_FORBID_HARDCODE_INPUT="$(node --input-type=module -e 'import { join } from "node:path"; import { resolveSurfacePaths } from "./scripts/surface/workspace-paths.mjs"; console.log(join(resolveSurfacePaths().publicOriginRoot, "docs", "agenticgraph-agentic-os-demo.md"))')" npm --prefix canvas run test:ci:unit -- policy.forbidHardcodedYouTubeUrlLiteral
 ```
 
 ## Guardrails
