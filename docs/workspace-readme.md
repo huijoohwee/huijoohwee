@@ -12,15 +12,15 @@ deployed_api_claim: "false"
 publish_scope: "local-only"
 publish_policy: "No Prod mirror, Cloudflare deploy, public release, fabricated provider IDs, generated asset URLs, transcript text, or credential material from this README."
 workspace_topology:
-  dev: "/Users/huijoohwee/Documents/GitHub/agenticgraph"
-  prod_mirror: "/Users/huijoohwee/Documents/GitHub/huijoohwee/content/agenticgraph"
+  dev: "agentic-graph"
+  prod_mirror: "huijoohwee/content/agenticgraph"
   cloudflare_routes: ["https://airvio.co", "https://airvio.co/agenticgraph"]
   release_order: "Dev -> Prod -> Cloudflare"
   release_gate: "Prod and Cloudflare are blocked until the operator explicitly instructs that release lane."
 docs_control_surface:
-  operator_declared_path: "/Users/huijoohwee/Documents/GitHub/huijoohwee/agentic-os-docs"
+  operator_declared_path: "huijoohwee/agentic-os-docs"
   verified_path_status: "missing in this workspace on 2026-07-09"
-  verified_fallback_path: "/Users/huijoohwee/Documents/GitHub/agentic-canvas-os"
+  verified_fallback_path: "agentic-canvas-os"
   policy: "Use the verified docs-control surface only after local path verification; do not remap a missing path silently."
 kgCanvasSurfaceMode: "2d"
 kgCanvasRenderMode: "2d"
@@ -269,11 +269,11 @@ flow:
 
 This #aggregator-agentREADME is the local workspace contract for the current AgenticGraph lane. It replaces the previous generated Vite HTML capture with source-owned Markdown and YAML frontmatter that can be parsed, diffed, and audited.
 
-The current work stays Dev-only:
+Repository paths in this document are relative to the workspace root containing the sibling repositories. The current work stays Dev-only:
 
-- Dev source: `/Users/huijoohwee/Documents/GitHub/agenticgraph`
-- Docs target: `/Users/huijoohwee/Documents/GitHub/huijoohwee/docs`
-- Prod mirror: `/Users/huijoohwee/Documents/GitHub/huijoohwee/content/agenticgraph`
+- Dev source: `agentic-graph`
+- Docs target: `huijoohwee/docs`
+- Prod mirror: `huijoohwee/content/agenticgraph`
 - Cloudflare: `airvio.co` and `airvio.co/agenticgraph`
 
 Do not deploy to Prod or Cloudflare from this document. Open that lane only after an explicit operator instruction that preserves `Dev -> Prod -> Cloudflare`.
@@ -319,16 +319,16 @@ Before claiming runtime-ready, verify:
 
 ## Validation
 
-Focused local checks for this README:
+Run these focused local checks from the `huijoohwee` repository root:
 
 ```bash
-DOC=/Users/huijoohwee/Documents/GitHub/huijoohwee/docs/workspace-readme.md
+export DOC="docs/workspace-readme.md"
 ruby -e 'require "yaml"; text = File.read(ENV.fetch("DOC")); abort("missing byte-zero fence") unless text.start_with?("---\n"); YAML.safe_load(text.split(/^---\s*$/)[1], permitted_classes: [], aliases: true); puts "workspace-readme frontmatter ok"'
 ruby -e 'text = File.read(ENV.fetch("DOC")); deny = ["data:" + "image", "<" + "script", "/@" + "vite", "VIDEODB" + "_API_KEY", "SENSENOVA" + "_API_KEY", "http://" + "localhost"]; deny += %w[provider_job_id stream_url generated_asset_url].map { |key| /#{key}: "[^"]+"/ }; hits = deny.flat_map { |item| item.is_a?(Regexp) ? text.scan(item).map(&:to_s) : (text.include?(item) ? [item] : []) }; abort(hits.uniq.join("\n")) unless hits.empty?; puts "workspace-readme hardcode scan ok"'
-git -C /Users/huijoohwee/Documents/GitHub/huijoohwee diff --check -- docs/workspace-readme.md
+git diff --check -- docs/workspace-readme.md
 ```
 
-The operator-declared docs-control path `/Users/huijoohwee/Documents/GitHub/huijoohwee/agentic-os-docs` was not present in this workspace on 2026-07-09. Verify the correct control-surface path before treating docs dictionaries as current runtime evidence.
+The operator-declared docs-control path `huijoohwee/agentic-os-docs` was not present in this workspace on 2026-07-09. Verify the correct control-surface path before treating docs dictionaries as current runtime evidence.
 
 ## Cleanup Rules
 
