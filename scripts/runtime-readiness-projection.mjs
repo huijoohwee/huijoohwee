@@ -2,6 +2,8 @@ const freezeProjection = projection => Object.freeze({
   ...projection,
   rootFiles: Object.freeze([...projection.rootFiles]),
   footprintPaths: Object.freeze([...projection.footprintPaths]),
+  additionalContentFiles: Object.freeze([...(projection.additionalContentFiles || [])]),
+  mirrorArtifactRoots: Object.freeze([...(projection.mirrorArtifactRoots || [])]),
 })
 
 // This is a structural cutover discriminator, not a routing alias. The legacy
@@ -56,6 +58,18 @@ export const runtimeReadinessProjections = Object.freeze([
     ],
     markerSchema: 'agentic-os-production-runtime-readiness/v2',
     sourceRepository: 'huijoohwee/agentic-graph',
+    // Consumer contract for the source-owned pages-mirror-sync.mjs artifact seal:
+    // scripts/xr-v2/production-publish-contract.mjs selects these runtime bytes;
+    // pages-mirror-legacy-cleanup.mjs includes every canonical migrated image.
+    // Model documentation is published but is not part of the runtime seal.
+    additionalContentFiles: [
+      'xr-v2/models/depth-anything-v2-small/config.json',
+      'xr-v2/models/depth-anything-v2-small/preprocessor_config.json',
+      'xr-v2/models/depth-anything-v2-small/onnx/model_q4f16.onnx',
+      'xr-v2/wasm/ort-wasm-simd-threaded.mjs',
+      'xr-v2/wasm/ort-wasm-simd-threaded.wasm',
+    ],
+    mirrorArtifactRoots: ['image/agentic-graph'],
     rootFiles: [
       'favicon.svg',
       'index.html',

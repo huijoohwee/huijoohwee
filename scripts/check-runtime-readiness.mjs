@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -18,6 +17,7 @@ import {
   validateGameXrLocalProjection,
 } from './gamexr-public-contract.mjs'
 import { selectRuntimeReadinessProjection } from './runtime-readiness-projection.mjs'
+import { calculateArtifactDigest } from './runtime-artifact-digest.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const canonical = process.argv.includes('--canonical')
@@ -123,7 +123,7 @@ if (marker && projection) {
   if (namespaces.length !== 1 || namespaces[0] !== marker.source.revision) {
     failures.push(`asset namespace must contain only ${marker.source.revision}; found ${namespaces.join(', ') || 'none'}`)
   }
-  const artifactDigest = calculateArtifactDigest(path.resolve(root, projection.contentRoot), projection.rootFiles)
+  const artifactDigest = calculateArtifactDigest(root, projection)
   if (artifactDigest !== marker.artifact.digest) {
     failures.push(`runtime artifact digest mismatch: expected ${marker.artifact.digest}, received ${artifactDigest}`)
   }
@@ -304,34 +304,6 @@ function requireExactKeys(value, expected, label) {
   const actual = Object.keys(value).sort()
   const required = [...expected].sort()
   if (actual.join('\0') !== required.join('\0')) throw new Error(`${label} fields are invalid`)
-}
-
-function calculateArtifactDigest(publicRoot, rootFileNames) {
-  const rootFiles = new Set(rootFileNames)
-  const entries = []
-  const walk = directory => {
-    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
-      const absolutePath = path.resolve(directory, entry.name)
-      const relativePath = path.relative(publicRoot, absolutePath).split(path.sep).join('/')
-      if (entry.isDirectory()) {
-        if (relativePath === 'assets' || relativePath.startsWith('assets/')) walk(absolutePath)
-      } else if (entry.isFile() && (
-        relativePath.startsWith('assets/') ||
-        rootFiles.has(relativePath) ||
-        /^workbox-[A-Za-z0-9_-]+\.js$/.test(relativePath)
-      )) {
-        entries.push({ relativePath, absolutePath })
-      }
-    }
-  }
-  walk(publicRoot)
-  entries.sort((left, right) => left.relativePath.localeCompare(right.relativePath))
-  const artifactHash = createHash('sha256')
-  for (const entry of entries) {
-    const fileDigest = createHash('sha256').update(fs.readFileSync(entry.absolutePath)).digest('hex')
-    artifactHash.update(entry.relativePath).update('\0').update(fileDigest).update('\0')
-  }
-  return artifactHash.digest('hex')
 }
 
 function git(args) {

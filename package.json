@@ -6,7 +6,7 @@
     "dev:pages": "npx wrangler pages dev . --port 5175",
     "gamexr:public:check": "node ./scripts/check-gamexr-public.mjs",
     "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
-    "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs ./scripts/worktree-lifecycle-contract.test.mjs",
+    "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs ./scripts/__tests__/runtime-artifact-digest.test.mjs ./scripts/worktree-lifecycle-contract.test.mjs",
     "check": "npm run check:adlc && npm run runtime:test && npm run runtime:check",
     "check:adlc": "npm --prefix node_modules/agentic-os run evals",
     "setup": "agentic-os setup",
