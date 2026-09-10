@@ -8,7 +8,6 @@ export const AGENTIC_COMMERCE_DEFAULT_X402_ASSET = 'USDC';
 export const AGENTIC_COMMERCE_DEFAULT_X402_FACILITATOR_URL = 'https://x402.org/facilitator';
 export const AGENTIC_COMMERCE_DEFAULT_X402_NETWORK = 'eip155:84532';
 export const AGENTIC_COMMERCE_DEFAULT_X402_PRICE = '$0.001';
-export const AGENTIC_COMMERCE_X402_PAY_TO_FALLBACK_RESOURCE_ID = 'x402-payment-required';
 export const AGENTIC_COMMERCE_X402_PLACEHOLDER_PAY_TO_ADDRESS = '0x0000000000000000000000000000000000000000';
 export const AGENTIC_COMMERCE_UCP_VERSION = '2026-04-08';
 export const AGENTIC_COMMERCE_UCP_SPEC_URL = 'https://ucp.dev/2026-04-08/specification/overview/';
@@ -99,7 +98,7 @@ export const readAgenticCommerceSellerId = (env, requestUrl) => {
         return new URL(requestUrl).host;
     }
     catch {
-        return 'agenticgraph-seller';
+        return 'agentic-graph-seller';
     }
 };
 export const readAgenticCommerceCheckoutBaseUrl = (env, requestUrl) => {
@@ -237,14 +236,17 @@ export const buildAgenticCommerceAcpConfig = (args) => {
         extensions: args.web3Enabled ? ['x-web3'] : [],
     };
 };
-export const readAgenticCommerceX402PayToAddress = (env, resourceId = AGENTIC_COMMERCE_X402_PAY_TO_FALLBACK_RESOURCE_ID) => {
+// Historical denylist value only; no runtime path derives or advertises this non-operator payee.
+export const AGENTIC_COMMERCE_X402_FALLBACK_PAY_TO_ADDRESS = '0xbb70b0dcbc70b26fbd70b402be70b595b770aa90';
+export const readAgenticCommerceX402PayToAddress = (env) => {
     const configured = readEnvString(env, AGENTIC_COMMERCE_ENV_KEYS.x402PayToAddress);
+    const normalized = configured.toLowerCase();
     if (/^0x[0-9a-fA-F]{40}$/.test(configured)
-        && configured.toLowerCase() !== AGENTIC_COMMERCE_X402_PLACEHOLDER_PAY_TO_ADDRESS)
+        && normalized !== AGENTIC_COMMERCE_X402_PLACEHOLDER_PAY_TO_ADDRESS
+        && normalized !== AGENTIC_COMMERCE_X402_FALLBACK_PAY_TO_ADDRESS.toLowerCase())
         return configured;
-    return buildAgenticCommerceDepositAddress(env, resourceId);
+    return null;
 };
-export const AGENTIC_COMMERCE_X402_FALLBACK_PAY_TO_ADDRESS = buildAgenticCommerceDepositAddress({}, AGENTIC_COMMERCE_X402_PAY_TO_FALLBACK_RESOURCE_ID);
 const AGENTIC_COMMERCE_X402_NETWORK_PATTERN = /^[a-z0-9]{3,8}:[-_a-zA-Z0-9]{1,64}$/;
 export const readAgenticCommerceX402Network = (env) => {
     const configured = readEnvString(env, AGENTIC_COMMERCE_ENV_KEYS.x402Network);
@@ -338,7 +340,7 @@ export const buildAgenticCommerceUcpProfile = (args) => {
         },
         services: [
             {
-                id: 'agenticgraph-content-payments',
+                id: 'agentic-graph-content-payments',
                 type: 'content-payments',
                 endpoints: {
                     x402: endpoints.x402_payment_required,
@@ -363,9 +365,9 @@ export const buildAgenticCommerceMppOpenApi = (args) => {
     return {
         openapi: '3.1.0',
         info: {
-            title: 'AgenticGraph Machine Payment Protocol',
+            title: 'agentic-graph Machine Payment Protocol',
             version: AGENTIC_COMMERCE_API_VERSION,
-            description: 'Machine-readable payable-operation discovery for AgenticGraph commerce routes.',
+            description: 'Machine-readable payable-operation discovery for agentic-graph commerce routes.',
         },
         servers: [{ url: base }],
         paths: {
@@ -428,7 +430,7 @@ export const buildAgenticCommerceX402PaymentRequired = (args) => {
         error: 'Payment required',
         resource: {
             url: resourceUrl,
-            description: 'AgenticGraph agentic commerce paid-resource readiness probe',
+            description: 'agentic-graph agentic commerce paid-resource readiness probe',
             mimeType: 'application/json',
         },
         accepts: [

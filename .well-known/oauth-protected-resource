@@ -1,15 +1,15 @@
 {
-  "resource": "https://airvio.co/agenticgraph/",
-  "resource_name": "AgenticGraph",
+  "resource": "https://airvio.co/agentic-graph/",
+  "resource_name": "agentic-graph",
   "authorization_servers": [
     "https://airvio.co"
   ],
   "scopes_supported": [
-    "agenticgraph:read",
-    "agenticgraph:source-files:read"
+    "agentic-graph:read",
+    "agentic-graph:source-files:read"
   ],
   "bearer_methods_supported": [
     "header"
   ],
-  "resource_documentation": "https://airvio.co/agenticgraph/llms.txt"
+  "resource_documentation": "https://airvio.co/agentic-graph/llms.txt"
 }

@@ -1,0 +1,1 @@
+import{R as e}from"./react-BhUDf-ol.js";import{aV as a,aq as t,ap as i,aC as s}from"./index-CSAjDgFJ.js";function d(o,r,n){return n&&o.id===r?n:null}function c(){const o=e.useSyncExternalStore(a,t,t);return{boundingBoxEnabled:o.boundingBoxEnabled,motionActorId:s(),livePose:i(o.pose)}}export{d as r,c as u};
