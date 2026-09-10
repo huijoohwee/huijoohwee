@@ -6,45 +6,8 @@
 /content/gamexr/ /gamexr/ 301
 /content/gamexr/* /gamexr/:splat 301
 # Legacy knowgrph -> agenticgraph rebrand redirects
-/knowgrph /agenticgraph 301
-/knowgrph/ /agenticgraph/ 301
-/knowgrph/* /agenticgraph/:splat 301
-/content/knowgrph /agenticgraph 301
-/content/knowgrph/ /agenticgraph/ 301
-/content/knowgrph/* /agenticgraph/:splat 301
-/agenticgraph /content/agenticgraph/index.html 200
-/agenticgraph/assets/* /content/agenticgraph/assets/:splat 200
-/agenticgraph/vendor/* /content/agenticgraph/vendor/:splat 200
-/agenticgraph/imports/* /content/agenticgraph/imports/:splat 200
 # BEGIN agenticgraph generated top-level file routes
-/agenticgraph /agenticgraph 200
-/agenticgraph/ /agenticgraph/ 200
-/agenticgraph/share/* /agenticgraph/share/:splat 200
-/agenticgraph/doc/* /agenticgraph/doc/:splat 200
-/agenticgraph/doc-default/* /agenticgraph/doc-default/:splat 200
-/agenticgraph/mcp /agenticgraph/mcp 200
-/agenticgraph/robots.txt /agenticgraph/robots.txt 200
-/agenticgraph/sitemap.xml /agenticgraph/sitemap.xml 200
-/agenticgraph/.well-known/* /agenticgraph/.well-known/:splat 200
-/agenticgraph/agenticgraph-chat-stream-sw.js /content/agenticgraph/agenticgraph-chat-stream-sw.js 200
-/agenticgraph/agenticgraph-live-canvas-hero.md /content/agenticgraph/agenticgraph-live-canvas-hero.md 200
-/agenticgraph/agenticgraph-service-worker-revision.js /content/agenticgraph/agenticgraph-service-worker-revision.js 200
-/agenticgraph/apple-touch-icon.png /content/agenticgraph/apple-touch-icon.png 200
-/agenticgraph/favicon.svg /content/agenticgraph/favicon.svg 200
-/agenticgraph/llms.txt /content/agenticgraph/llms.txt 200
-/agenticgraph/manifest.webmanifest /content/agenticgraph/manifest.webmanifest 200
-/agenticgraph/settings-flow.json /content/agenticgraph/settings-flow.json 200
-/agenticgraph/sw.js /content/agenticgraph/sw.js 200
-/agenticgraph/travel-commerce-demo-offline.html /content/agenticgraph/travel-commerce-demo-offline.html 200
-/agenticgraph/travel-commerce-demo-sw.js /content/agenticgraph/travel-commerce-demo-sw.js 200
-/agenticgraph/unicorn-investors-top-3-3d.json /content/agenticgraph/unicorn-investors-top-3-3d.json 200
-/agenticgraph/workbox-4d44960a.js /content/agenticgraph/workbox-4d44960a.js 200
 # END agenticgraph generated top-level file routes
-/agenticgraph/ /content/agenticgraph/index.html 200
-/agenticgraph/* /content/agenticgraph/index.html 200
-/content/agenticgraph /agenticgraph 301
-/content/agenticgraph/ /agenticgraph/ 301
-/content/agenticgraph/* /agenticgraph/:splat 301
 /singabldr /content/singabldr/index.html 200
 /singabldr/ /content/singabldr/index.html 200
 /singabldr/index.html /content/singabldr/index.html 200
@@ -68,3 +31,49 @@
 /singabldr/boards/singabldr.json /content/singabldr/boards/singabldr.board.v2.json 200
 /boards/* /content/singabldr/boards/:splat 200
 /singabldr/boards/* /content/singabldr/boards/:splat 200
+
+# BEGIN agentic-graph generated namespace routes
+/agenticgraph /agentic-graph 301
+/agenticgraph/ /agentic-graph/ 301
+/agenticgraph/* /agentic-graph/:splat 301
+/content/agenticgraph /agentic-graph 301
+/content/agenticgraph/* /agentic-graph/:splat 301
+/knowgrph /agentic-graph 301
+/knowgrph/ /agentic-graph/ 301
+/knowgrph/* /agentic-graph/:splat 301
+/content/knowgrph /agentic-graph 301
+/content/knowgrph/* /agentic-graph/:splat 301
+/agentic-graph /content/agentic-graph/index.html 200
+/agentic-graph/assets/* /content/agentic-graph/assets/:splat 200
+/agentic-graph/vendor/* /content/agentic-graph/vendor/:splat 200
+/agentic-graph/imports/* /content/agentic-graph/imports/:splat 200
+/content/agentic-graph /agentic-graph 301
+/content/agentic-graph/ /agentic-graph/ 301
+# END agentic-graph generated namespace routes
+# BEGIN agentic-graph generated top-level file routes
+/xr-v2/* /content/agentic-graph/xr-v2/:splat 200
+/agentic-graph/xr-v2/* /content/agentic-graph/xr-v2/:splat 200
+/agentic-graph/share/* /agentic-graph/share/:splat 200
+/agentic-graph/doc/* /agentic-graph/doc/:splat 200
+/agentic-graph/doc-default/* /agentic-graph/doc-default/:splat 200
+/agentic-graph/mcp /agentic-graph/mcp 200
+/agentic-graph/health /agentic-graph/health 200
+/agentic-graph/robots.txt /agentic-graph/robots.txt 200
+/agentic-graph/sitemap.xml /agentic-graph/sitemap.xml 200
+/agentic-graph/.well-known/* /agentic-graph/.well-known/:splat 200
+/agentic-graph/agentic-graph-chat-stream-sw.js /content/agentic-graph/agentic-graph-chat-stream-sw.js 200
+/agentic-graph/agentic-graph-live-canvas-hero.md /content/agentic-graph/agentic-graph-live-canvas-hero.md 200
+/agentic-graph/agentic-graph-service-worker-revision.js /content/agentic-graph/agentic-graph-service-worker-revision.js 200
+/agentic-graph/apple-touch-icon.png /content/agentic-graph/apple-touch-icon.png 200
+/agentic-graph/favicon.svg /content/agentic-graph/favicon.svg 200
+/agentic-graph/llms.txt /content/agentic-graph/llms.txt 200
+/agentic-graph/manifest.webmanifest /content/agentic-graph/manifest.webmanifest 200
+/agentic-graph/settings-flow.json /content/agentic-graph/settings-flow.json 200
+/agentic-graph/sw.js /content/agentic-graph/sw.js 200
+/agentic-graph/travel-commerce-demo-offline.html /content/agentic-graph/travel-commerce-demo-offline.html 200
+/agentic-graph/travel-commerce-demo-sw.js /content/agentic-graph/travel-commerce-demo-sw.js 200
+/agentic-graph/unicorn-investors-top-3-3d.json /content/agentic-graph/unicorn-investors-top-3-3d.json 200
+/agentic-graph/workbox-4d44960a.js /content/agentic-graph/workbox-4d44960a.js 200
+/agentic-graph/ /content/agentic-graph/index.html 200
+/agentic-graph/* /content/agentic-graph/index.html 200
+# END agentic-graph generated top-level file routes

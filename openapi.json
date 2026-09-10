@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "AgenticGraph Machine Payment Protocol",
+    "title": "agentic-graph Machine Payment Protocol",
     "version": "2026-01-30",
-    "description": "Machine-readable payable-operation discovery for AgenticGraph commerce routes."
+    "description": "Machine-readable payable-operation discovery for agentic-graph commerce routes."
   },
   "servers": [
     {

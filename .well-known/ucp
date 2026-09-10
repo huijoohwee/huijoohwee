@@ -44,7 +44,7 @@
   },
   "services": [
     {
-      "id": "agenticgraph-content-payments",
+      "id": "agentic-graph-content-payments",
       "type": "content-payments",
       "endpoints": {
         "x402": "https://airvio.co/api/payments/commerce/x402",
