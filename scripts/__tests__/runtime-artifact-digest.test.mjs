@@ -50,6 +50,14 @@ test('legacy seal retains its original file set', t => {
   ]))
 })
 
+test('artifact growth is bounded before reading oversized contents into memory', t => {
+  const { root, write } = fixture(t)
+  const projection = runtimeReadinessProjections.find(value => value.id === 'legacy-agenticgraph')
+  write(`${projection.contentRoot}/index.html`, 'legacy')
+  fs.truncateSync(path.join(root, projection.contentRoot, 'index.html'), 256 * 1024 * 1024 + 1)
+  assert.throws(() => calculateArtifactDigest(root, projection), /byte-budget/)
+})
+
 test('missing or symbolic XR runtime bytes cannot satisfy the canonical seal', t => {
   const { root, write } = fixture(t)
   const projection = runtimeReadinessProjections.find(value => value.id === 'canonical-agentic-graph')
