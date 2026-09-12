@@ -6,7 +6,7 @@ Use this skill when: Persist, retrieve, safely compact, hard-redact, and revisio
 
 - Vdeoxpln id: `agentic-graph-memory-layer`
 - Contract version: `agentic-graph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_dc5f59ed`
+- Semantic key: `kgvx_a6e1fca6`
 - Scope: `local-stdio-and-browser-local`
 - Mutation boundary: `local-scoped-memory`
 
@@ -77,7 +77,7 @@ Local MCP tools:
 ## Source Owners
 
 - canvas/src/features/memory/aiAgentsMemoryLayerContract.mjs
-- docs/documents/agentic-graph-ai-agents-memory-layer-prd-tad.md
+- docs/documents/agentic-graph-ai-agents-memory-layer-prd-tad-adr-mvp-gtm.md
 - mcp/local-tool-contract.js
 - mcp/memory-layer-runtime.js
 - mcp/persistent-memory-authorization.js

@@ -6,7 +6,7 @@ Use this skill when: Turn image or media source units into editable Storyboard c
 
 - Vdeoxpln id: `agentic-graph-strybldr`
 - Contract version: `agentic-graph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_c0d13731`
+- Semantic key: `kgvx_c3183040`
 - Scope: `browser-local-source-backed`
 - Mutation boundary: `browser-local-user-mediated`
 
@@ -62,7 +62,7 @@ Local MCP tools:
 - canvas/src/features/workspace-fs/workspaceFs.ts
 - canvas/src/lib/config.render.ts
 - canvas/src/lib/graph/semanticKey.ts
-- docs/documents/agentic-graph-strybldr-prd-tad.md
+- docs/documents/agentic-graph-strybldr-prd-tad-adr-mvp-gtm.md
 
 ## Artifact Policy
 

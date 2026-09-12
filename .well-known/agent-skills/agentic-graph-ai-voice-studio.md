@@ -6,7 +6,7 @@ Use this skill when: Capture consented voice-profile manifests, dictate speech, 
 
 - Vdeoxpln id: `agentic-graph-ai-voice-studio`
 - Contract version: `agentic-graph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_5f108cd1`
+- Semantic key: `kgvx_5e2a13ac`
 - Scope: `browser-local-and-local-stdio`
 - Mutation boundary: `local-consent-and-approval-gated`
 
@@ -68,7 +68,7 @@ Local MCP tools:
 
 - canvas/src/features/voice-studio
 - contracts/voice-studio.schema.js
-- docs/documents/agentic-graph-ai-voice-studio-prd-tad.md
+- docs/documents/agentic-graph-ai-voice-studio-prd-tad-adr-mvp-gtm.md
 - mcp/voice-studio-runtime.js
 - mcp/voice-studio-tool-contract.js
 

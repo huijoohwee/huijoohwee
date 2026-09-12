@@ -33,6 +33,7 @@
 /singabldr/boards/* /content/singabldr/boards/:splat 200
 
 # BEGIN agentic-graph generated namespace routes
+/81rv10 /81rv10/ 308
 /agenticgraph /agentic-graph 301
 /agenticgraph/ /agentic-graph/ 301
 /agenticgraph/* /agentic-graph/:splat 301
