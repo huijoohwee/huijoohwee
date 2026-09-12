@@ -6,7 +6,7 @@ Use this skill when: Create file-backed research visual workflows from source ma
 
 - Vdeoxpln id: `agentic-graph-research-visual`
 - Contract version: `agentic-graph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_744709f9`
+- Semantic key: `kgvx_f61c7d00`
 - Scope: `browser-local-ai-assisted`
 - Mutation boundary: `browser-local-user-mediated`
 
@@ -64,7 +64,7 @@ Local MCP tools:
 - canvas/src/features/source-files/applyComposedGraphFromSourceFiles.ts
 - canvas/src/lib/config.render.ts
 - canvas/src/lib/graph/semanticKey.ts
-- docs/documents/agentic-graph-vdeoxpln-prd-tad.md
+- docs/documents/agentic-graph-vdeoxpln-prd-tad-adr-mvp-gtm.md
 
 ## Artifact Policy
 

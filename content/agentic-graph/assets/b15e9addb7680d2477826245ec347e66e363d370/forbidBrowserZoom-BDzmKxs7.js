@@ -1,1 +1,0 @@
-import{R as n}from"./react-BhUDf-ol.js";import{i}from"./wheelGuards-DfcOx7-x.js";function f(o,e=!0,r){n.useEffect(()=>{if(!e)return;const a=o.current;if(a)return i(a,{stopPropagationOnForward:!1,stopPropagationOnPreventZoom:(r==null?void 0:r.stopPropagation)!==!1,forwardedFlagKey:"__kgForwarded"})},[e,r==null?void 0:r.stopPropagation,o])}export{f as u};
