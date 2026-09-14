@@ -1,1 +1,0 @@
-import{R as o}from"./react-BhUDf-ol.js";import{r as u,m as d}from"./settings-mcp-core-CzvHyRl9.js";function p(t,l){const[a,c]=o.useState(()=>u(t,l)),e=o.useCallback(n=>{c(r=>{const s=typeof n=="function"?n(r):n;return d(t,s),s})},[t]),i=o.useCallback(()=>{e(n=>!n)},[e]);return{pinned:a,setPinned:e,togglePinned:i}}export{p as u};
