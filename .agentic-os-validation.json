@@ -1,0 +1,92 @@
+{
+  "schema": "agentic-os/repository-validation-policy/v1",
+  "repository": "github.com/huijoohwee/huijoohwee",
+  "broadInputs": [
+    "AGENTS.md",
+    "docs/RUNTIME-READINESS.md",
+    "scripts/check-runtime-readiness.mjs"
+  ],
+  "always": [
+    "evaluators",
+    "runtime-readiness"
+  ],
+  "fallback": [
+    "evaluators",
+    "projection-tests",
+    "digest-tests",
+    "lifecycle-contract",
+    "runtime-readiness"
+  ],
+  "checks": [
+    {
+      "id": "evaluators",
+      "command": [
+        "npm",
+        "run",
+        "check:adlc"
+      ],
+      "inputs": [],
+      "requires": [],
+      "reuse": "never",
+      "timeoutMs": 240000
+    },
+    {
+      "id": "projection-tests",
+      "command": [
+        "node",
+        "--test",
+        "scripts/__tests__/runtime-readiness-projection.test.mjs"
+      ],
+      "inputs": [
+        "scripts/runtime-readiness-projection.mjs",
+        "scripts/__tests__/runtime-readiness-projection.test.mjs"
+      ],
+      "requires": [],
+      "reuse": "local",
+      "timeoutMs": 240000
+    },
+    {
+      "id": "digest-tests",
+      "command": [
+        "node",
+        "--test",
+        "scripts/__tests__/runtime-artifact-digest.test.mjs"
+      ],
+      "inputs": [
+        "scripts/runtime-artifact-digest.mjs",
+        "scripts/runtime-readiness-projection.mjs",
+        "scripts/__tests__/runtime-artifact-digest.test.mjs"
+      ],
+      "requires": [],
+      "reuse": "never",
+      "timeoutMs": 240000
+    },
+    {
+      "id": "lifecycle-contract",
+      "command": [
+        "node",
+        "--test",
+        "scripts/worktree-lifecycle-contract.test.mjs"
+      ],
+      "inputs": [
+        "scripts/worktree-lifecycle-contract.test.mjs",
+        "AGENTS.md"
+      ],
+      "requires": [],
+      "reuse": "never",
+      "timeoutMs": 240000
+    },
+    {
+      "id": "runtime-readiness",
+      "command": [
+        "npm",
+        "run",
+        "runtime:check"
+      ],
+      "inputs": [],
+      "requires": [],
+      "reuse": "never",
+      "timeoutMs": 240000
+    }
+  ]
+}

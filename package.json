@@ -7,7 +7,7 @@
     "gamexr:public:check": "node ./scripts/check-gamexr-public.mjs",
     "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
     "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs ./scripts/__tests__/runtime-artifact-digest.test.mjs ./scripts/worktree-lifecycle-contract.test.mjs",
-    "check": "npm run check:adlc && npm run runtime:test && npm run runtime:check",
+    "check": "node node_modules/agentic-os/bin/agentic-os-validation.mjs run",
     "check:adlc": "npm --prefix node_modules/agentic-os run evals",
     "setup": "agentic-os setup",
     "doctor": "agentic-os doctor",
@@ -16,7 +16,11 @@
     "status": "agentic-os status",
     "reap": "agentic-os reap",
     "finish": "agentic-os finish",
-    "sync:canonical": "agentic-os canonical-sync"
+    "sync:canonical": "agentic-os canonical-sync",
+    "check:source": "npm run check:adlc && npm run runtime:test && npm run runtime:check",
+    "check:plan": "node node_modules/agentic-os/bin/agentic-os-validation.mjs plan",
+    "check:ci": "node node_modules/agentic-os/bin/agentic-os-validation.mjs ci",
+    "check:all": "node node_modules/agentic-os/bin/agentic-os-validation.mjs run --all --fresh"
   },
   "dependencies": {
     "@tweenjs/tween.js": "^25.0.0",
@@ -25,6 +29,6 @@
     "yjs": "^13.6.30"
   },
   "devDependencies": {
-    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/13c3839aba7fc64bf94f93aa29b1239ab929840d"
+    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/9f5973dbd85d861c8346a885254efdf1a69669bc"
   }
 }

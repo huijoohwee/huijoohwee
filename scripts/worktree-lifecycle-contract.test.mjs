@@ -43,7 +43,15 @@ test('mirror profile preserves protected source checks and separate deployment o
 
 test('protected CI reaches shared evaluation and the previously omitted lifecycle regression', () => {
   assert.equal(pkg.scripts['check:adlc'], 'npm --prefix node_modules/agentic-os run evals');
-  assert.equal(pkg.scripts.check, 'npm run check:adlc && npm run runtime:test && npm run runtime:check');
+  assert.equal(pkg.scripts.check, 'node node_modules/agentic-os/bin/agentic-os-validation.mjs run');
+  assert.equal(pkg.scripts['check:source'], 'npm run check:adlc && npm run runtime:test && npm run runtime:check');
+  const policy = JSON.parse(read('.agentic-os-validation.json'));
+  assert.ok(policy.always.includes('runtime-readiness'));
+  assert.equal(policy.checks.find(check => check.id === 'runtime-readiness').reuse, 'never');
+  assert.deepEqual(policy.checks.find(check => check.id === 'runtime-readiness').inputs, []);
+  assert.equal(policy.checks.find(check => check.id === 'digest-tests').reuse, 'never');
+  assert.ok(policy.fallback.includes('lifecycle-contract'));
+  assert.ok(policy.checks.find(check => check.id === 'lifecycle-contract').command.includes('scripts/worktree-lifecycle-contract.test.mjs'));
   assert.match(pkg.scripts['runtime:test'], /scripts\/worktree-lifecycle-contract\.test\.mjs/u);
   const workflow = read('.github/workflows/runtime-readiness.yml');
   assert.match(workflow, /name: Runtime Readiness Gate/u);
