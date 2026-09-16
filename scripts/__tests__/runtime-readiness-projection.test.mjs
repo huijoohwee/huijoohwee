@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import fs from 'node:fs'
+import { validateMarker } from '../runtime-readiness-marker.mjs'
 import {
   runtimeReadinessProjections,
   selectRuntimeReadinessProjection,
@@ -71,4 +73,37 @@ test('rejects a mirror with no recognized product runtime projection', () => {
     () => select(),
     /no runtime projection is present/,
   )
+})
+
+// Exercise the same marker validator used by the complete mirror check.
+const baseline = JSON.parse(fs.readFileSync(new URL('../../.well-known/runtime-readiness.json', import.meta.url), 'utf8'))
+const markerFor = (repository, revision = '3'.repeat(40)) => ({
+  ...structuredClone(baseline),
+  agenticCanvasOs: { repository, revision },
+  catalogRevision: revision,
+})
+
+test('accepts native OS identity and preserves exact legacy rollback identity', () => {
+  assert.doesNotThrow(() => validateMarker(markerFor('huijoohwee/agentic-os'), projection('canonical-agentic-graph')))
+  assert.doesNotThrow(() => validateMarker(markerFor('huijoohwee/agentic-canvas-os', 'c6c9b84a67f1b1aadc09adca4c1b2322274a538f'), projection('canonical-agentic-graph')))
+})
+
+test('rejects foreign and unbound retired catalog identities', () => {
+  for (const repository of ['other/agentic-os', 'huijoohwee/agentic-canvas-os']) {
+    assert.throws(() => validateMarker(markerFor(repository), projection('canonical-agentic-graph')), /repository is invalid/)
+  }
+})
+
+test('native identity retains revision, digest, shape and surface guards', () => {
+  const changes = [
+    m => { m.catalogRevision = '4'.repeat(40) },
+    m => { m.source.revision = 'main' },
+    m => { m.artifact.digest = 'invalid' },
+    m => { m.agenticCanvasOs.extra = true },
+    m => { m.surfaces = ['/'] },
+  ]
+  for (const change of changes) {
+    const marker = markerFor('huijoohwee/agentic-os'); change(marker)
+    assert.throws(() => validateMarker(marker, projection('canonical-agentic-graph')))
+  }
 })
