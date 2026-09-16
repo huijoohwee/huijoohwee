@@ -39,7 +39,8 @@
       ],
       "inputs": [
         "scripts/runtime-readiness-projection.mjs",
-        "scripts/__tests__/runtime-readiness-projection.test.mjs"
+        "scripts/__tests__/runtime-readiness-projection.test.mjs",
+        "scripts/runtime-readiness-marker.mjs"
       ],
       "requires": [],
       "reuse": "local",
