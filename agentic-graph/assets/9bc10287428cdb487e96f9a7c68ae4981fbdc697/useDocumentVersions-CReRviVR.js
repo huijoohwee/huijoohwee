@@ -1,1 +1,0 @@
-import{R as s}from"./react-BhUDf-ol.js";import{aE as o,aF as r,aG as a}from"./settings-mcp-core-C7MNwvo3.js";const t=()=>{const e=r();return{revision:Date.now(),entries:e,countsByPath:a()}};function i(){const[e,n]=s.useState(()=>t());return s.useEffect(()=>o(()=>n(t())),[]),e}export{i as u};
