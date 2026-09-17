@@ -6,7 +6,7 @@ Use this skill when: Inspect agentic-graph health, MCP, WebMCP, A2A, OpenAPI, co
 
 - Vdeoxpln id: `agentic-graph-agent-ready`
 - Contract version: `agentic-graph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_3f57c94f`
+- Semantic key: `kgvx_b82b9b91`
 - Scope: `read-only-published-and-browser-local`
 - Mutation boundary: `read-only`
 
@@ -61,6 +61,10 @@ Browser-local tools:
 - inspect_local_workspace_document
 - inspect_local_xr_scene_assets
 - read_local_runtime_identity
+- run.compare
+- run.query
+- run.status
+- run.trace
 
 Local MCP tools:
 - agentic-graph.vdeoxpln.list
