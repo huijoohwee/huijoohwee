@@ -1,0 +1,1 @@
+import{R as o}from"./react-BhUDf-ol.js";import{aX as r,aV as d}from"./settings-mcp-core-DHrbViBU.js";function m(t,a){const[l,c]=o.useState(()=>r(t,a)),e=o.useCallback(n=>{c(u=>{const s=typeof n=="function"?n(u):n;return d(t,s),s})},[t]),i=o.useCallback(()=>{e(n=>!n)},[e]);return{pinned:l,setPinned:e,togglePinned:i}}export{m as u};

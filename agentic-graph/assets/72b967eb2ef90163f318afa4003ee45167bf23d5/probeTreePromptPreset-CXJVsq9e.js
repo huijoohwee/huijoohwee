@@ -1,3 +1,0 @@
-import{A as e}from"./agenticOsDocInvocations-DA6UYuHd.js";const s="agentic-graph-probe-tree",o="agentic-graph.probe.generate",E="agentic-graph.probe.select",i=8,_=[e.slashCommand,e.atToken,e.hashToken];function c(n=""){const t=String(n||"").trim();return[e.slashCommand,t||"Generate 2-4 bounded, editable next-question cards from this Widget Card. Keep the source card unchanged, connect each candidate branch, and publish the branch summary to a separate Rich Media Panel."].join(`
-
-`)}function T(n){const t=String(n||"").trim();if(!t)return!1;const a=new Set(String(t.split(/\r?\n/,1)[0]||"").trim().split(/\s+/).filter(Boolean));return a.size===1&&a.has(e.slashCommand)&&t.length>e.slashCommand.length}export{s as A,i as a,E as b,o as c,_ as d,c as e,T as i};

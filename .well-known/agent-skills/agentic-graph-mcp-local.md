@@ -6,7 +6,7 @@ Use this skill when: Expose agentic-graph-owned local Source Files, Agentic Canv
 
 - Vdeoxpln id: `agentic-graph-mcp-local`
 - Contract version: `agentic-graph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_a221bd5a`
+- Semantic key: `kgvx_b4beeb26`
 - Scope: `local-stdio`
 - Mutation boundary: `local-confirmed`
 
@@ -104,6 +104,7 @@ Local MCP tools:
 - agentic-graph.application.execute
 - agentic-graph.application.plan
 - agentic-graph.browser_api.run
+- agentic-graph.control_local_widget
 - agentic-graph.ecs.decision_persist
 - agentic-graph.ecs.session_start
 - agentic-graph.ecs.world_tick
