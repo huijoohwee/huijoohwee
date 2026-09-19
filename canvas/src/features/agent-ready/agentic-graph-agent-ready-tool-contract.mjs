@@ -1,3 +1,4 @@
+import { buildDashboardWidgetToolContract } from '../../components/DashboardCanvas/dashboardWidgetToolContract.mjs'
 import {
   AGENTIC_OS_AGENT_SURFACE_OUTPUT_SCHEMA,
   buildAgenticGraphMcpNoauthSecuritySchemes,
@@ -77,6 +78,7 @@ const XR_PHYSICS_CONTROL_INPUT_SCHEMA = Object.freeze({
     buildXrPhysicsOperationSchema({ scope: 'controller', operation: 'develop-run', fields: ['controllerMode'] }),
     ...['pause', 'resume', 'reset', 'exit'].map(operation => buildXrPhysicsOperationSchema({ scope: 'controller', operation })),
     buildXrPhysicsOperationSchema({ scope: 'controller', operation: 'select', fields: ['controllerMode'], required: ['controllerMode'] }),
+    buildXrPhysicsOperationSchema({ scope: 'controller', operation: 'step', fields: ['ticks'] }),
   ],
 })
 
@@ -501,7 +503,7 @@ export const buildAgenticGraphAgentReadyToolContracts = (args = {}) => {
           inputSchema: XR_ANIMATION_CONTROL_INPUT_SCHEMA,
           outputSchema: { type: 'object', additionalProperties: true, required: ['ok', 'message'] },
           annotations: LOCAL_MUTATION_TOOL_ANNOTATIONS,
-        }, ...buildMotionControlAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildGameModeAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildFlightSimAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildImmersiveMediaAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildCitySimAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildStorageSyncAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName }), ...buildGroupPanelAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), {
+        }, ...buildMotionControlAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildGameModeAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildFlightSimAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildImmersiveMediaAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildCitySimAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, readOnlyAnnotations: READ_ONLY_TOOL_ANNOTATIONS, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), ...buildStorageSyncAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName }), buildDashboardWidgetToolContract(), ...buildGroupPanelAgentReadyToolContracts({ buildWebName: buildAgenticGraphWebMcpToolName, mutationAnnotations: LOCAL_MUTATION_TOOL_ANNOTATIONS }), {
           name: AGENTIC_OS_AGENT_READY_TOOL_IDS.inspectLocal3dLayoutPositions,
           webName: buildAgenticGraphWebMcpToolName(AGENTIC_OS_AGENT_READY_TOOL_IDS.inspectLocal3dLayoutPositions),
           title: 'Inspect Local 3D Layout Positions',

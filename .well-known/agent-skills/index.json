@@ -235,13 +235,13 @@
       "type": "markdown",
       "description": "Expose agentic-graph-owned local Source Files, Agentic Canvas OS docs invocation, deterministic repository packing, managed implementation runs, UI, pipeline, SuperAgent, video-remix, browser bridge, SEA-LION, HTML video, visual annotation, memory, probe-tree, showrunner, OS status, and vdeoxpln tools through the stdio MCP server.",
       "url": "https://airvio.co/agentic-graph/.well-known/agent-skills/agentic-graph-mcp-local.md",
-      "sha256": "a5242587090a3649cfe04fd3a663cf45c6d797fd9ed02b323a62d864047402b5",
+      "sha256": "4910a9da722c82a620ddf9ca0e07926895d98033f489d5781e7ed6ec9cf7c04b",
       "vdeoxpln": {
         "id": "agentic-graph-mcp-local",
         "title": "agentic-graph Local MCP",
         "scope": "local-stdio",
         "mutation": "local-confirmed",
-        "semanticKey": "kgvx_a221bd5a",
+        "semanticKey": "kgvx_b4beeb26",
         "tools": {
           "published": [],
           "browserLocal": [],
@@ -262,6 +262,7 @@
             "agentic-graph.application.execute",
             "agentic-graph.application.plan",
             "agentic-graph.browser_api.run",
+            "agentic-graph.control_local_widget",
             "agentic-graph.ecs.decision_persist",
             "agentic-graph.ecs.session_start",
             "agentic-graph.ecs.world_tick",
