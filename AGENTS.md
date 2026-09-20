@@ -1,6 +1,6 @@
 # Huijoohwee Runtime Mirror Routing
 
-- Continuously obey the pinned `node_modules/agentic-os/templates/SYSTEM-PROMPT-RUNTIME.md`,
+- Continuously obey the pinned `node_modules/agentic-os/guides/SYSTEM-PROMPT-RUNTIME.md`,
   `node_modules/agentic-os/docs/adlc-guidelines.md`, and its `docs/START-WORKFLOW.md`
   and `docs/RELEASE-WORKFLOW.md`. Install with `npm ci --ignore-scripts` if missing.
 - Use the committed `.agentic-os.json` and shared ADLC commands for repository lifecycle;

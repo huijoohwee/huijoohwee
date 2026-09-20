@@ -21,7 +21,7 @@ test('mirror lifecycle uses one exact installed ADLC source and no sibling contr
     assert.equal(pkg.scripts[retired], undefined);
   }
   assert.ok(!Object.values(pkg.scripts).some(command => command.includes('../agentic-canvas-os')));
-  for (const file of ['templates/SYSTEM-PROMPT-RUNTIME.md', 'docs/adlc-guidelines.md',
+  for (const file of ['guides/SYSTEM-PROMPT-RUNTIME.md', 'docs/adlc-guidelines.md',
     'docs/START-WORKFLOW.md', 'docs/RELEASE-WORKFLOW.md']) {
     assert.ok(existsSync(new URL(`../node_modules/agentic-os/${file}`, import.meta.url)), file);
   }
