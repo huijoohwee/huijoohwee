@@ -69,6 +69,7 @@
 /agentic-graph/agentic-graph-service-worker-revision.js /content/agentic-graph/agentic-graph-service-worker-revision.js 200
 /agentic-graph/apple-touch-icon.png /content/agentic-graph/apple-touch-icon.png 200
 /agentic-graph/favicon.svg /content/agentic-graph/favicon.svg 200
+/agentic-graph/learning-offline-manifest-8059fa0a846a724b4b558bf1902c3f8488225c45.json /content/agentic-graph/learning-offline-manifest-8059fa0a846a724b4b558bf1902c3f8488225c45.json 200
 /agentic-graph/llms.txt /content/agentic-graph/llms.txt 200
 /agentic-graph/manifest.webmanifest /content/agentic-graph/manifest.webmanifest 200
 /agentic-graph/settings-flow.json /content/agentic-graph/settings-flow.json 200
@@ -76,7 +77,7 @@
 /agentic-graph/travel-commerce-demo-offline.html /content/agentic-graph/travel-commerce-demo-offline.html 200
 /agentic-graph/travel-commerce-demo-sw.js /content/agentic-graph/travel-commerce-demo-sw.js 200
 /agentic-graph/unicorn-investors-top-3-3d.json /content/agentic-graph/unicorn-investors-top-3-3d.json 200
-/agentic-graph/workbox-4d44960a.js /content/agentic-graph/workbox-4d44960a.js 200
+/agentic-graph/workbox-3e6db5b2.js /content/agentic-graph/workbox-3e6db5b2.js 200
 /agentic-graph/ /content/agentic-graph/index.html 200
 /agentic-graph/* /content/agentic-graph/index.html 200
 # END agentic-graph generated top-level file routes
