@@ -1,0 +1,453 @@
+const e=`---
+title: agentic-graph AR/VR/XR Runtime-readiness Demo
+rehearsal_title: The Three Little Pigs and the Long Sea Journey
+doc_type: Workspace Demo
+status: runtime-ready
+runtime_status: browser-local-runtime-ready
+runtime_claim: local-browser-demo-runtime-ready
+runtime_claim_scope: AC-1 through AC-12 exact-candidate browser proof only; AC-14 remains source-only
+pinned_contract_status: partial
+browser_local_mount_status: mounted-after-explorer-selection
+publish_scope: local-first-explicit-existing-storage
+saved_asset_persistence: device-local-indexeddb-with-explicit-existing-storage-publish
+cross_device_reopen_status: client-adapter-ready-external-promotion-blocked
+cross_device_reopen_blocker: shared-storage-auth-and-server-digest-not-enforced
+deploy_boundary: Dev-only
+kgCanvasSurfaceMode: 3d
+kgCanvasRenderMode: 3d
+kgCanvas3dMode: 3d
+kgFloatingPanelOpen: true
+kgFloatingPanelView: motionControl
+kgBottomPanelOpen: true
+kgBottomPanelTab: timeline
+kgDocumentSemanticMode: document
+kgFrontmatterModeEnabled: true
+kgMultiDimTableModeEnabled: false
+kgDocumentStructureBaselineLock: false
+run_ready_demo:
+  id: xr-v2
+  activation: applied-source-document
+  identity_authority: source-authored run_ready_demo.id
+  imported_path_alias_required: false
+  identity_conflict: fail closed when path and source identity disagree
+  canonical_consumers: [home-apex,workspace,game-mode-overlay]
+  dev_command: npm run dev
+  canonical_source_file: /docs/workspace-seeds/agentic-graph-ar-vr-xr-runtime-readiness-demo.md
+  validation_seed_path: /docs/workspace-seeds/agentic-graph-ar-vr-xr-runtime-readiness-demo.md
+  source_root: agentic-graph/docs
+  source_backed: true
+  clean_canvas_recommended: true
+  native_runtime: true
+  browser_activation_evidence: actual Explorer Source Files row selection; no environment selector
+  mount_status: mounted-after-applied-source-document
+  canonical_xr_world_owner: docs/workspace-seeds/agentic-graph-ar-vr-xr-runtime-readiness-demo.md
+  presentation: full-frame-playground
+  document_presentation: workspace-playground
+  auto_start: true
+  external_dependencies: []
+shared_xr_scene:
+  source_authority: /docs/workspace-seeds/agentic-graph-ar-vr-xr-runtime-readiness-demo.md
+  world_ownership: source-authored
+  surface_owner: canonical XR Physics shared Three surface
+  renderer_owner: canvas/src/lib/three/ThreeGraph.impl.tsx
+  second_r3f_canvas_forbidden: true
+pinned_source:
+  repository: huijoohwee/agentic-graph
+  path: docs/documents/agentic-graph-ar-vr-xr-prd-tad-adr-mvp-gtm.md
+  version: 3.0.0
+  commit: 1272bae345edf0d132e6fc750d5c5c7eade00b29
+  git_blob_sha1: ff41649ac8562b62c7c539baed2d226402fdfe51
+  content_sha256: 5067f019a099a94ec02d3f7581963cf2c514ab46bf5a853020df8dfe85d5ef45
+  immutable_url: https://github.com/huijoohwee/agentic-graph/blob/1272bae345edf0d132e6fc750d5c5c7eade00b29/docs/documents/agentic-graph-ar-vr-xr-prd-tad-adr-mvp-gtm.md
+runtime_readiness:
+  schema: agentic-graph-xr-v2-pinned-contract-conformance/v1
+  scope: pinned-ac1-ac12-conformance
+  focused_gate: npm run xr-v2:review-ready
+  browser_demo_status: runtime-ready
+  browser_demo_evidence: clean exact-candidate source, unit, and Chromium smoke gates for AC-1 through AC-12; actual Explorer seed selection mounts the shared 3D/XR surface and independent permission controls; AC-14 remains source-only
+  browser_local_mount_status: mounted
+  capture_frame_budget_ms: 100
+  capture_consecutive_budget_breaches: 2
+  capture_max_frames: 24
+  capture_max_duration_ms: 12000
+  pinned_contract_status: partial
+  physical_device_certification: external-required
+  production_availability: not-claimed
+  deployment_authority: false
+  external_promotion_evidence_required: [named reference-device frame budget,named camera and sensor lifecycle matrix,physical-headset behavior,target-browser captured-track mux,physical connected viewer transport,shared-storage workspace authentication and server-side digest enforcement,physical cross-device reopen]
+permission_control:
+  owner: user
+  default_state: disabled
+  camera: user-enable-disable
+  sensors: user-enable-disable
+  immersive_session: user-enable-disable-after-pinned-tier
+  enable_boundary: explicit user action and browser permission grant
+  disable_boundary: user stop action tears down tracks, sessions, and sensor listeners
+  production_host_policy: allow camera and required sensors for the application origin so the user can opt in; never auto-start capture or sensors
+  denial_behavior: fail closed to the non-capture viewer without blocking the workspace
+acceptance_criteria:
+  - {"id":AC-1, "evidence":source-backed, "promotion_boundary":named physical capability matrix}
+  - {"id":AC-2, "evidence":browser-backed, "promotion_boundary":named reference-device frame budget}
+  - {"id":AC-3, "evidence":browser-backed, "promotion_boundary":'named-device quota, interruption, and resume run'}
+  - id: AC-4
+    evidence: browser-observable-after-selected-saved-asset render
+    promotion_boundary: physical four-tier viewer matrix, hardened shared storage, and two-device reopen
+  - {"id":AC-5, "evidence":source-backed, "promotion_boundary":named iOS device/browser pass}
+  - {"id":AC-6, "evidence":browser-backed, "promotion_boundary":complete mounted scene rendering proof}
+  - {"id":AC-7, "evidence":browser-backed, "promotion_boundary":texture and shader graph on the canonical target mesh}
+  - {"id":AC-8, "evidence":source-backed, "promotion_boundary":none for deterministic exact-once behavior}
+  - {"id":AC-9, "evidence":source-backed, "promotion_boundary":mounted GPU authoring surface}
+  - {"id":AC-10, "evidence":source-backed, "promotion_boundary":rigged mounted playback}
+  - id: AC-11
+    evidence: browser-observable-after-explicit-package-and-play action
+    promotion_boundary: target-browser user-capture track and codec preservation
+  - id: AC-12
+    evidence: browser-observable-after-explicit-local-connected-preview action
+    promotion_boundary: physical two-device transport and measured latency
+behavior_graph_interface: agentic-os-behavior-graph/v1
+behavior_graph_contract:
+  graph_id: xr-v2:hero
+  nodes: [{"id":hero-select, "type":trigger, "config":{"trigger":select, "source_entity":'0'}},{"id":hero-burst, "type":action, "config":{"action":emit-particle-burst, "target_entity":'0', "parameters":{"count":8}}}]
+  edges: [{"from":hero-select, "to":hero-burst}]
+  bound_entity: '0'
+behavior_runtime_dispatch_schema: agentic-graph-xr-v2-behavior-dispatch-graph/v1
+game_mode_xr_fidelity_status: single-source authority contract
+home_apex:
+  source_authority: /docs/workspace-seeds/agentic-graph-ar-vr-xr-runtime-readiness-demo.md
+  scene_authority: the authored XR Physics Playground world in this document
+  game_mode_projection: actor, camera, and controls overlay only
+  forbidden_variants: [fallback arena,standalone game scene,duplicate world,legacy environment]
+native_controller_demo:
+  runtime_owner: XR Simulation workbench
+  default_controller: ball
+  controller_switching: preserve active body pose and velocity
+  deterministic_step: true
+  camera_mode: fixed-follow
+  camera: {"default":fixed-follow, "selector":FloatingPanel Camera / SHOOT / Camera source, "available":[fixed-follow,free-orbit], "invocation":'/camera.select @camera #camera camera=fixed-follow|free-orbit', "timeline_override":camera-mark playback temporarily owns framing}
+  scene: procedural Singapore waterfront terrain
+  terrain: {"default":singapore, "selector":XR Terrain / Environment catalog, "future_provisioning":catalog-driven stable terrain IDs, "available":[singapore,tropical-playground]}
+  asset_library: {"default":vehicle-helicopter, "featured":[vehicle-helicopter,vehicle-sedan,prop-ball]}
+  objective: collect key then unlock treasure
+  interactive_props: [barrels,bowling pins,cannonballs]
+  controllers: [{"id":ball, "presentation":procedural sphere, "behaviors":[rolling movement,grounded jump,air control,modifier torque]},{"id":rocket, "presentation":procedural rocket, "behaviors":[directional thrust,vertical thrust,bounded tilt,modifier stabilization]}]
+  input: {"keyboard":{"movement":[W,A,S,D,ArrowUp,ArrowLeft,ArrowDown,ArrowRight], "primary":Space, "modifier":Shift}, "gamepad":{"movement":standard left stick, "primary":standard primary action, "modifier":standard shoulder action}}
+  lifecycle: [develop-and-run,pause,resume,reset,exit]
+motion_control:
+  runtime: browser-local LiteRT.js
+  model: Google BlazePose GHUM Full
+  permission: explicit Start action
+  frame_upload: false
+  frame_persistence: false
+  xr_drivers: [native physics controller,selected humanoid pose]
+  invocation: '/motion.control @canvas #pose operation=start backend=auto'
+  inspect_tool: agentic-graph.inspect_local_motion_control
+  control_tool: agentic-graph.control_local_motion_control
+  game_mode_role: optional normalized player input only; never the NPC decision policy
+game_mode:
+  companion_view: gameMode
+  invocation: '/game.mode @canvas #gameplay operation=open'
+  invocation_prefix: '/game.mode @canvas #gameplay'
+  invocation_policy: 'exactly one /game.mode command, one @canvas binding, and one #gameplay semantic'
+  operations: [open,start,stop,restart,fire,reload,save,exit]
+  operation_invocations: {"open":'/game.mode @canvas #gameplay operation=open', "start":'/game.mode @canvas #gameplay operation=start', "stop":'/game.mode @canvas #gameplay operation=stop', "restart":'/game.mode @canvas #gameplay operation=restart', "fire":'/game.mode @canvas #gameplay operation=fire', "reload":'/game.mode @canvas #gameplay operation=reload', "save":'/game.mode @canvas #gameplay operation=save', "exit":'/game.mode @canvas #gameplay operation=exit'}
+  web_mcp_schema: agentic-graph-game-mode-mcp/v1
+  inspect_tool: agentic-graph.inspect_local_game_mode
+  control_tool: agentic-graph.control_local_game_mode
+  source_authority: /docs/workspace-seeds/agentic-graph-ar-vr-xr-runtime-readiness-demo.md
+  activation_scope: optional overlay on the active authored XR world; never a standalone Home source
+  lifecycle: retain the authored XR scene while suspending its controller input and simulation; restore both on exit
+  controller_handoff: temporarily suspend the native XR controller stage and restore it on exit
+  renderer_owner: the existing React Three Fiber Canvas in shared XR Mode; never a second Canvas
+  scene_composition: one canonical authored XR atmosphere, terrain, props, and paused frame plus the Game Mode first-person actor overlay
+  scene_variant_policy: fallback, renamed, conditional, duplicate, stale, and legacy arena or environment producers are forbidden
+  spatial_profile: reuse the canonical active XR stage placement, playable bounds, and projection-aware static colliders; admit deterministic clear spawns and replace stale surface/terrain profiles
+  simulation_clock: ready at tick zero until normalized desktop, pointer, touch, Motion Control, or MCP input
+  webgl_gate: synchronous probe; fail closed with the local unsupported state without mounting another scene or renderer
+  stop_start: resume the exact in-memory mission tick and state
+  decision_persistence: browser-local WorkspaceFs; terminal Decisions remain pending until explicit Save and are never auto-saved
+  malformed_hydration: preserve bytes and block Start and Restart until explicit Reset
+  validation_input_forbid_hardcode_in_repo: true
+kgXrMotionReference:
+  schema: agentic-graph-xr-motion-reference/v1
+  castSource: subjects-only
+  stageId: tropical-playground
+  appearance: {"skyColor":"#8ed5f3","fogColor":"#c5e8ed","groundColor":"#e7dec1","waterColor":"#229fad","lightColor":"#fff1d0","lightIntensity":1.8,"sunAzimuthDegrees":35,"fogDistanceMeters":92,"detail":"standard","shadows":true}
+  durationSeconds: 28
+  fps: 12
+  subjects:
+    - {"id":"xr-subject:wolf:1","assetId":"character-wolf","label":"The Wolf","color":"#6b21a8","position":[-7.4,0,2.6],"rotationYDegrees":24,"scale":1.16}
+    - {"id":"xr-subject:first-pig:1","assetId":"character-pig","label":"First Pig","color":"#f97316","position":[-3.5,0,1.8],"rotationYDegrees":-18,"scale":1}
+    - {"id":"xr-subject:second-pig:1","assetId":"character-pig","label":"Second Pig","color":"#fb7185","position":[0.8,0,-0.9],"rotationYDegrees":-30,"scale":1.04}
+    - {"id":"xr-subject:third-pig:1","assetId":"character-pig","label":"Third Pig","color":"#38bdf8","position":[4.8,0,-4.4],"rotationYDegrees":-150,"scale":1}
+    - {"id":"xr-subject:straw-house:1","assetId":"prop-house-straw","label":"Straw House","color":"#fde68a","position":[-3.9,0,1.6],"rotationYDegrees":8,"scale":1.55}
+    - {"id":"xr-subject:stick-house:1","assetId":"prop-house-stick","label":"Stick House","color":"#c08457","position":[0.8,0,-0.8],"rotationYDegrees":-12,"scale":1.78}
+    - {"id":"xr-subject:brick-house:1","assetId":"prop-house-brick","label":"Brick House","color":"#b45309","position":[4.8,0,-4.2],"rotationYDegrees":0,"scale":1.85}
+    - {"id":"xr-subject:oak:1","assetId":"prop-tree","label":"Oak","color":"#84cc16","position":[-8.4,0,1.4],"rotationYDegrees":0,"scale":1.22}
+    - {"id":"xr-subject:soup-pot:1","assetId":"prop-soup-pot","label":"Soup Pot","color":"#475569","position":[6.7,0,-2.3],"rotationYDegrees":0,"scale":1}
+    - {"id":"xr-subject:sailboat:1","assetId":"vehicle-sailboat","label":"The Long Sea Journey","color":"#a66743","position":[-2,0,18],"rotationYDegrees":0,"scale":1}
+  cast:
+    - {"actorId":"xr-subject:wolf:1","label":"The Wolf","animation":null,"marks":[{"timeSeconds":0,"position":[-9,0,4.8],"transition":"hold","gait":"hold","cue":"hidden"},{"timeSeconds":3.2,"position":[-9,0,4.8],"transition":"linear","gait":"walk","cue":"idle"},{"timeSeconds":4.2,"position":[-4.9,0,4.8],"transition":"hold","gait":"hold","cue":"huff"},{"timeSeconds":5.8,"position":[-4.9,0,4.8],"transition":"linear","gait":"walk","cue":"idle"},{"timeSeconds":8.4,"position":[0.15,0,2.8],"transition":"hold","gait":"hold","cue":"huff"},{"timeSeconds":10.2,"position":[0.15,0,2.8],"transition":"linear","gait":"walk","cue":"huff"},{"timeSeconds":12.4,"position":[4.8,0,-0.4],"transition":"hold","gait":"hold","cue":"huff"},{"timeSeconds":16,"position":[4.8,0,-0.4],"transition":"linear","gait":"walk","cue":"huff"},{"timeSeconds":18.8,"position":[5.7,4.5,-4.2],"transition":"hold","gait":"hold"},{"timeSeconds":20.2,"position":[5.7,4.5,-4.2],"transition":"linear","gait":"hold","cue":"idle"},{"timeSeconds":21.3,"position":[6.7,0.5,-2.3],"transition":"linear","gait":"hold"},{"timeSeconds":22,"position":[6.7,2,-2.3],"transition":"linear","gait":"run"},{"timeSeconds":23,"position":[8,0,0],"transition":"linear","gait":"run"},{"timeSeconds":25.6,"position":[18,0,1],"transition":"hold","gait":"hold","cue":"hidden"}]}
+    - {"actorId":"xr-subject:first-pig:1","label":"First Pig","animation":{"kind":"character-motion","presetId":"jump","startTimeSeconds":4,"loop":false},"marks":[{"timeSeconds":0,"position":[-2.8,0.85,18],"transition":"linear","gait":"hold"},{"timeSeconds":2.5,"position":[-2.8,0.85,12.4],"transition":"linear","gait":"walk"},{"timeSeconds":3.8,"position":[-3.5,0,3.5],"transition":"hold","gait":"hold"},{"timeSeconds":4.2,"position":[-3.5,0,3.5],"transition":"linear","gait":"run"},{"timeSeconds":7.8,"position":[1.4,0,2.5],"transition":"hold","gait":"hold"},{"timeSeconds":10.2,"position":[1.4,0,2.5],"transition":"linear","gait":"run"},{"timeSeconds":12.4,"position":[3.5,0,-0.8],"transition":"hold","gait":"hold"},{"timeSeconds":25.6,"position":[3.5,0,-0.8],"transition":"hold","gait":"hold"}]}
+    - {"actorId":"xr-subject:second-pig:1","label":"Second Pig","animation":{"kind":"character-motion","presetId":"jump","startTimeSeconds":8.2,"loop":false},"marks":[{"timeSeconds":0,"position":[-1.3,0.85,18],"transition":"linear","gait":"hold"},{"timeSeconds":2.5,"position":[-1.3,0.85,12.4],"transition":"linear","gait":"walk"},{"timeSeconds":7.8,"position":[0.8,0,1.6],"transition":"hold","gait":"hold"},{"timeSeconds":8.4,"position":[0.8,0,1.6],"transition":"hold","gait":"hold"},{"timeSeconds":10.2,"position":[0.8,0,1.6],"transition":"linear","gait":"run"},{"timeSeconds":12.4,"position":[4.7,0,-0.8],"transition":"hold","gait":"hold"},{"timeSeconds":25.6,"position":[4.7,0,-0.8],"transition":"hold","gait":"hold"}]}
+    - {"actorId":"xr-subject:third-pig:1","label":"Third Pig","animation":{"kind":"character-motion","presetId":"dance","startTimeSeconds":25.6,"loop":true},"marks":[{"timeSeconds":0,"position":[-2,0.85,19],"transition":"linear","gait":"hold"},{"timeSeconds":2.5,"position":[-2,0.85,13.4],"transition":"linear","gait":"walk"},{"timeSeconds":12.4,"position":[5.8,0,-0.8],"transition":"hold","gait":"hold"},{"timeSeconds":20.2,"position":[5.8,0,-0.8],"transition":"hold","gait":"hold"},{"timeSeconds":25.6,"position":[5.8,0,-0.8],"transition":"hold","gait":"hold"}]}
+    - {"actorId":"xr-subject:straw-house:1","label":"Straw House","marks":[{"timeSeconds":0,"position":[-3.9,0,1.6],"transition":"hold","gait":"hold","cue":"hidden"},{"timeSeconds":2.8,"position":[-3.9,0,1.6],"transition":"hold","gait":"hold","cue":"build"},{"timeSeconds":4.2,"position":[-3.9,0,1.6],"transition":"hold","gait":"hold"},{"timeSeconds":4.8,"position":[-3.9,0,1.6],"transition":"hold","gait":"hold","cue":"collapse"}]}
+    - {"actorId":"xr-subject:stick-house:1","label":"Stick House","marks":[{"timeSeconds":0,"position":[0.8,0,-0.8],"transition":"hold","gait":"hold","cue":"hidden"},{"timeSeconds":7.2,"position":[0.8,0,-0.8],"transition":"hold","gait":"hold","cue":"build"},{"timeSeconds":8.4,"position":[0.8,0,-0.8],"transition":"hold","gait":"hold"},{"timeSeconds":10.2,"position":[0.8,0,-0.8],"transition":"hold","gait":"hold"},{"timeSeconds":10.8,"position":[0.8,0,-0.8],"transition":"hold","gait":"hold","cue":"collapse"}]}
+    - {"actorId":"xr-subject:brick-house:1","label":"Brick House","marks":[{"timeSeconds":0,"position":[4.8,0,-4.2],"transition":"hold","gait":"hold","cue":"hidden"},{"timeSeconds":11.4,"position":[4.8,0,-4.2],"transition":"hold","gait":"hold","cue":"build"},{"timeSeconds":12.4,"position":[4.8,0,-4.2],"transition":"hold","gait":"hold"}]}
+    - {"actorId":"xr-subject:soup-pot:1","label":"Soup Pot","marks":[{"timeSeconds":0,"position":[6.7,0,-2.3],"transition":"hold","gait":"hold","cue":"hidden"},{"timeSeconds":20.2,"position":[6.7,0,-2.3],"transition":"hold","gait":"hold","cue":"build"},{"timeSeconds":21.3,"position":[6.7,0,-2.3],"transition":"hold","gait":"hold","cue":"splash"}]}
+    - {"actorId":"xr-subject:sailboat:1","label":"Sailboat","marks":[{"timeSeconds":0,"position":[-2,0,18],"transition":"linear","gait":"hold"},{"timeSeconds":2.5,"position":[-2,0,12.4],"transition":"hold","gait":"hold"}]}
+  camera:
+    - {"timeSeconds":0,"anchorId":"xr-subject:first-pig:1","moveId":"drone-follow","rig":"dolly","easing":"hold","settings":{"shot":"wide","orbitX":-0.18,"orbitY":-0.18,"focalLengthMm":38,"focusDistanceMeters":11},"label":"Waterfront landing","caption":"Once upon a time, three little pigs sailed far across the sea to find new homes."}
+    - {"timeSeconds":4.2,"anchorId":"xr-subject:wolf:1","moveId":"orbit-clockwise","rig":"handheld","easing":"linear","settings":{"shot":"medium","orbitX":0.28,"orbitY":-0.16,"focalLengthMm":46,"focusDistanceMeters":6},"label":"Straw threshold","caption":"The first {{kgXrMotionReference.subjects.1.assetId}} built a house of {{kgXrMotionReference.subjects.4.assetId}}. A big, hungry {{kgXrMotionReference.subjects.0.assetId}} came and went “HUFF and PUFF!” — and blew it down! The pig ran away, fast, fast, fast."}
+    - {"timeSeconds":8.4,"anchorId":"xr-subject:second-pig:1","moveId":"drone-follow","rig":"steadicam","easing":"linear","settings":{"shot":"medium","orbitX":-0.18,"orbitY":-0.2,"focalLengthMm":42,"focusDistanceMeters":6.4},"label":"Stick house","caption":"The second {{kgXrMotionReference.subjects.2.assetId}} built a house of {{kgXrMotionReference.subjects.5.assetId}}."}
+    - {"timeSeconds":10.2,"anchorId":"xr-subject:second-pig:1","moveId":"orbit-clockwise","rig":"handheld","easing":"linear","settings":{"shot":"close-up","orbitX":0.16,"orbitY":-0.24,"focalLengthMm":52,"focusDistanceMeters":5.2},"label":"Stick house midpoint","caption":"The {{kgXrMotionReference.subjects.0.assetId}} came again — “HUFF and PUFF!” — and blew it down too!"}
+    - {"timeSeconds":12.4,"anchorId":"xr-subject:third-pig:1","moveId":"crane-rise","rig":"crane","easing":"linear","settings":{"shot":"wide","orbitX":-0.04,"orbitY":-0.42,"focalLengthMm":35,"focusDistanceMeters":8.5},"label":"Brick house","caption":"The third {{kgXrMotionReference.subjects.3.assetId}} was the cleverest sailor of them all. He built a house of {{kgXrMotionReference.subjects.6.assetId}}, strong and solid, right by the sea. The {{kgXrMotionReference.subjects.0.assetId}} huffed. The {{kgXrMotionReference.subjects.0.assetId}} puffed. But the house did not move — not even a little bit!"}
+    - {"timeSeconds":20.2,"anchorId":"xr-subject:wolf:1","moveId":"crane-descend","rig":"handheld","easing":"linear","settings":{"shot":"close-up","orbitX":0.1,"orbitY":-0.12,"focalLengthMm":58,"focusDistanceMeters":5},"label":"Chimney soup pot","caption":"So the {{kgXrMotionReference.subjects.0.assetId}} tried to sneak down the chimney. But the clever pig called out, “My name is Nobody!” — and dropped him straight into a big {{kgXrMotionReference.subjects.8.assetId}}! Splash! The {{kgXrMotionReference.subjects.0.assetId}} jumped up and ran away, and never, ever came back."}
+    - {"timeSeconds":25.6,"anchorId":"xr-subject:third-pig:1","moveId":"drone-follow","rig":"dolly","easing":"hold","settings":{"shot":"wide","orbitX":-0.16,"orbitY":-0.22,"focalLengthMm":32,"focusDistanceMeters":9},"label":"Journey end","caption":"The three pigs lived happily together in the {{kgXrMotionReference.subjects.6.assetId}} house by the sea. The End. 🐷⛵🌊"}
+runtime_validation:
+  baseline_local_candidate_commit: "067ed16d0a8c77d1c612d6f63aa791ae02fba19c"
+  baseline_local_verified_at: "2026-07-21T07:01:46Z"
+  follow_up_pull_request: 273
+  follow_up_protected_merge_commit: "0b0e70787edb80e71d368d56c1478ffd9655ce0d"
+  exact_main_runtime_commit: "0b0e70787edb80e71d368d56c1478ffd9655ce0d"
+  follow_up_verified_at: "2026-07-21T10:08:11Z"
+  mode_activation: ["xr surface", "3d renderer", "xr stage"]
+  required_states: ["ready", "running", "paused"]
+  controller_parity: ["ball", "rocket"]
+  replayable: true
+  local_assets_only: true
+  required_external_calls: false
+  editor_chrome: true
+  dedicated_editor_chrome: false
+  validation_input_locator_persisted: false
+  external_proof: "operator-supplied public document bytes were read into the local exact-main runtime; no deploy or public mutation occurred"
+  xr_authoring_edited_media_delivery:
+    scope: "xr-authoring-edited-media-delivery"
+    projection_role: "downstream scoped evidence; not a second XR readiness authority"
+    prd: "/docs/documents/agentic-graph-ar-vr-xr-prd-tad-adr-mvp-gtm.md"
+    runtime_owner: "canvas/src/components/timeline; canvas/src/features/gitgraph"
+    source_snapshot_schema: "agentic-graph-xr-v2-readiness/v1"
+    source_snapshot_status: "source-ready"
+    canonical_delivery_status: "runtime-ready"
+    canonical_delivery_limit: "XR authoring and native edited-media delivery only"
+    reviewed_feature_commit: "fcd69c6b2d42a00779f55be8c1d57a0ab468339b"
+    pull_request: 674
+    protected_refresh_chain:
+      - "48c58307481c96e5c73c9f4d2f53eb2c2f1c8549"
+      - "fea5e37b9bf0d648284330cfbc3dcca03890def0"
+      - "a6de5722e550e633d0d73f59f187a09ec7388879"
+    canonical_main_commit: "a3ddfef7cc55c38385520173273abd66010e9747"
+    canonical_main_tree: "76c8e22da9c9284f01c2627c8ace9c9d3abcd682"
+    canonical_main_proof:
+      workflow: "Integration"
+      run_id: 30895597328
+      check: "Integration Gate"
+      conclusion: "success"
+      completed_at: "2026-08-04T09:26:58Z"
+      affected_scope: "xr_v2_video_editor"
+      focused_gate: "npm run xr-v2:review-ready"
+      browser_observation_schema: "agentic-graph-xr-v2-browser-smoke/v1"
+      browser_observation: "pass"
+    canonical_runtime_reconciliation:
+      integration_result_schema: "agentic-device-integration-result/v1"
+      integration_status: "runtime_ready"
+      readiness_schema: "agentic-local-runtime-readiness/v1"
+      feature_runtime_source_revision: "a3ddfef7cc55c38385520173273abd66010e9747"
+      feature_runtime_agentic_canvas_os_revision: "217a8a42d6497e059839a6a1f809c2459530ca54"
+      feature_runtime_evidence_digest: "fc13db3e3184f69e42985dbec441bab163f52ba2d7e75b959e17194304f8fb23"
+      feature_runtime_verified_at: "2026-08-04T09:29:02.924Z"
+    proven:
+      - "canonical ECS projection including entity zero"
+      - "real standalone Three.js material application"
+      - "mounted canonical Timeline command routing"
+      - "same-origin browser-native edited-media export"
+      - "non-empty Blob, decoded metadata, and bounded playback"
+      - "media teardown and object-URL revocation without observed page or media errors"
+      - "clean-room dependency and source enforcement"
+    external_dependencies: []
+    no_deployment: true
+    deploy_boundary: "Dev-only"
+    broader_xr_status: "blocked"
+    blocked_claims:
+      - "mounted-renderer material wiring"
+      - "live depth model and quality"
+      - "reference-device frame budget"
+      - "camera permission and lifecycle on named physical devices"
+      - "physical-headset XR behavior"
+      - "Production availability"
+      - "deployment authority"
+mcp_control:
+  inspect_tool: agentic-graph.inspect_local_xr_scene_assets
+  control_tool: agentic-graph.control_local_xr_scene
+  launch: '/xr.physics @canvas #controller operation=develop-run mode=ball'
+  switch: '/xr.physics @canvas #controller operation=select mode=rocket'
+  reset: '/xr.physics @canvas #controller operation=reset'
+animation_rehearsal:
+  control_tool: agentic-graph.control_local_animation
+  playable: true
+  default_floating_panel_view: animation
+  default_bottom_panel_tab: timeline
+  synchronized_asides: true
+  playable_script_id: three-little-pigs-long-sea-journey
+  quarter_speed: /animation.control @canvas operation=play rate=0.25
+  next_frame: /animation.control @canvas operation=scrub frame=next
+  previous_frame: /animation.control @canvas operation=scrub frame=previous
+  scope: authored animation and camera tracks; interactive physics and Game Mode are not rewound
+  load_policy: open Animation and BottomPanel Timeline on demand
+flow:
+  direction: {key: direction, type: string, value: "LR"}
+  edgeType: {key: edgeType, type: string, value: "smoothstep"}
+  balancedViewportPreset: {key: balancedViewportPreset, type: string, value: "widgetFrontmatter"}
+  nodes:
+    - {"id":{"key":"id","type":"string","value":"xr_demo_entry"},"type":{"key":"type","type":"string","value":"XrDemoControl"},"label":{"key":"label","type":"string","value":"Develop and Run"},"position":{"key":"position","type":"object","value":{"x":0,"y":0}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_demo_entry"},"frontmatter:autoSeededPos":{"key":"frontmatter:autoSeededPos","type":"boolean","value":true},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":3},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":3},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Apply this Source Files document to launch the native demo, then switch controllers without resetting motion."},"properties":{"key":"properties","type":"object","value":{"role":"lifecycle","state":"runtime-ready","output":"Apply this Source Files document to launch the native demo, then switch controllers without resetting motion."}},"role":{"key":"role","type":"string","value":"lifecycle"},"state":{"key":"state","type":"string","value":"runtime-ready"},"visual:importance":{"key":"visual:importance","type":"number","value":24},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":16.928203230275507},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":0}}
+    - {"id":{"key":"id","type":"string","value":"xr_ball_controller"},"type":{"key":"type","type":"string","value":"XrDemoController"},"label":{"key":"label","type":"string","value":"Ball Controller"},"position":{"key":"position","type":"object","value":{"x":360,"y":260}},"controllerId":{"key":"controllerId","type":"string","value":"ball"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_ball_controller"},"frontmatter:autoSeededPos":{"key":"frontmatter:autoSeededPos","type":"boolean","value":true},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Roll, jump, steer in air, and apply modifier torque."},"properties":{"key":"properties","type":"object","value":{"role":"controller","controllerId":"ball","output":"Roll, jump, steer in air, and apply modifier torque."}},"role":{"key":"role","type":"string","value":"controller"},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":1},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":1}}
+    - {"id":{"key":"id","type":"string","value":"xr_rocket_controller"},"type":{"key":"type","type":"string","value":"XrDemoController"},"label":{"key":"label","type":"string","value":"Rocket Controller"},"position":{"key":"position","type":"object","value":{"x":360,"y":0}},"controllerId":{"key":"controllerId","type":"string","value":"rocket"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_rocket_controller"},"frontmatter:autoSeededPos":{"key":"frontmatter:autoSeededPos","type":"boolean","value":true},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Thrust, tilt, steer laterally, and stabilize with the modifier."},"properties":{"key":"properties","type":"object","value":{"role":"controller","controllerId":"rocket","output":"Thrust, tilt, steer laterally, and stabilize with the modifier."}},"role":{"key":"role","type":"string","value":"controller"},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":1},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":0}}
+    - {"id":{"key":"id","type":"string","value":"xr_runtime_gate"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"Native Runtime Gate"},"position":{"key":"position","type":"object","value":{"x":720,"y":260}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_runtime_gate"},"frontmatter:autoSeededPos":{"key":"frontmatter:autoSeededPos","type":"boolean","value":true},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":2},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Verify deterministic stepping, controller switching, camera follow, keyboard input, and gamepad input."},"properties":{"key":"properties","type":"object","value":{"role":"validation","state":"runtime-ready","output":"Verify deterministic stepping, controller switching, camera follow, keyboard input, and gamepad input."}},"role":{"key":"role","type":"string","value":"validation"},"state":{"key":"state","type":"string","value":"runtime-ready"},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":2},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":1}}
+    - id: {key: id, type: string, value: "xr_edited_media_proof"}
+      type: {key: type, type: string, value: "XrDemoValidation"}
+      label: {key: label, type: string, value: "Scoped Edited-media Proof"}
+      position: {key: position, type: object, value: {"x":720,"y":520}}
+      broaderXrState: {key: broaderXrState, type: string, value: "blocked"}
+      canonicalDeliveryState: {key: canonicalDeliveryState, type: string, value: "runtime-ready"}
+      "flow:widgetFormId": {key: "flow:widgetFormId", type: string, value: "fm:xr_edited_media_proof"}
+      "frontmatter:autoSeededPos": {key: "frontmatter:autoSeededPos", type: boolean, value: true}
+      "frontmatter:primitive": {key: "frontmatter:primitive", type: string, value: "node"}
+      "graph:degree": {key: "graph:degree", type: number, value: 1}
+      "graph:inDegree": {key: "graph:inDegree", type: number, value: 1}
+      "graph:outDegree": {key: "graph:outDegree", type: number, value: 0}
+      "graph:structuralDegree": {key: "graph:structuralDegree", type: number, value: 0}
+      output: {key: output, type: string, value: "Inspect the protected-main XR v2 review gate and canonical runtime receipt; applying this seed does not rerun the browser smoke."}
+      properties: {key: properties, type: object, value: {"role":"downstream canonical-main evidence projection","scope":"xr-authoring-edited-media-delivery","sourceSnapshotState":"source-ready","canonicalDeliveryState":"runtime-ready","broaderXrState":"blocked","output":"Inspect the protected-main XR v2 review gate and canonical runtime receipt; applying this seed does not rerun the browser smoke."}}
+      role: {key: role, type: string, value: "downstream canonical-main evidence projection"}
+      scope: {key: scope, type: string, value: "xr-authoring-edited-media-delivery"}
+      sourceSnapshotState: {key: sourceSnapshotState, type: string, value: "source-ready"}
+      "visual:importance": {key: "visual:importance", type: number, value: 16}
+      "visual:nodeSize": {key: "visual:nodeSize", type: number, value: 14}
+      "visual:xIndex": {key: "visual:xIndex", type: number, value: 2}
+      "visual:yIndex": {key: "visual:yIndex", type: number, value: 2}
+    - {"id":{"key":"id","type":"string","value":"schema:XrParticleEmitter"},"type":{"key":"type","type":"string","value":"EcsComponentSchema"},"label":{"key":"label","type":"string","value":"XrParticleEmitter"},"position":{"key":"position","type":"object","value":{"x":0,"y":-2760}},"ecsComponent":{"key":"ecsComponent","type":"object","value":{"name":"XrParticleEmitter","fields":{"rate":"f32","lifetime":"f32","ceiling":"u16","size":"f32","color":"u32"}}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:schema:XrParticleEmitter"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"ecsComponent":{"name":"XrParticleEmitter","fields":{"rate":"f32","lifetime":"f32","ceiling":"u16","size":"f32","color":"u32"}}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-13}}
+    - {"id":{"key":"id","type":"string","value":"schema:XrRenderable"},"type":{"key":"type","type":"string","value":"EcsComponentSchema"},"label":{"key":"label","type":"string","value":"XrRenderable"},"position":{"key":"position","type":"object","value":{"x":0,"y":-2520}},"ecsComponent":{"key":"ecsComponent","type":"object","value":{"name":"XrRenderable","fields":{"geometryKind":"u8","visible":"u8"}}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:schema:XrRenderable"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"ecsComponent":{"name":"XrRenderable","fields":{"geometryKind":"u8","visible":"u8"}}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-12}}
+    - {"id":{"key":"id","type":"string","value":"schema:XrRig"},"type":{"key":"type","type":"string","value":"EcsComponentSchema"},"label":{"key":"label","type":"string","value":"XrRig"},"position":{"key":"position","type":"object","value":{"x":0,"y":-2280}},"ecsComponent":{"key":"ecsComponent","type":"object","value":{"name":"XrRig","fields":{"enabled":"u8"}}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:schema:XrRig"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"ecsComponent":{"name":"XrRig","fields":{"enabled":"u8"}}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-11}}
+    - {"id":{"key":"id","type":"string","value":"schema:XrTransform"},"type":{"key":"type","type":"string","value":"EcsComponentSchema"},"label":{"key":"label","type":"string","value":"XrTransform"},"position":{"key":"position","type":"object","value":{"x":0,"y":-2040}},"ecsComponent":{"key":"ecsComponent","type":"object","value":{"name":"XrTransform","fields":{"px":"f32","py":"f32","pz":"f32","qx":"f32","qy":"f32","qz":"f32","qw":"f32","sx":"f32","sy":"f32","sz":"f32"}}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:schema:XrTransform"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"ecsComponent":{"name":"XrTransform","fields":{"px":"f32","py":"f32","pz":"f32","qx":"f32","qy":"f32","qz":"f32","qw":"f32","sx":"f32","sy":"f32","sz":"f32"}}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-10}}
+    - {"id":{"key":"id","type":"string","value":"entity:scene.hero"},"type":{"key":"type","type":"string","value":"EcsEntity"},"label":{"key":"label","type":"string","value":"Hero"},"position":{"key":"position","type":"object","value":{"x":0,"y":-1800}},"ecsEntity":{"key":"ecsEntity","type":"object","value":{"entityRef":"scene.hero","components":{"XrTransform":{"px":0,"py":0,"pz":0,"qx":0,"qy":0,"qz":0,"qw":1,"sx":1,"sy":1,"sz":1},"XrRenderable":{"geometryKind":0,"visible":1},"XrParticleEmitter":{"rate":12,"lifetime":0.75,"ceiling":64,"size":0.06,"color":6737151},"XrRig":{"enabled":1}}}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:entity:scene.hero"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"ecsEntity":{"entityRef":"scene.hero","components":{"XrTransform":{"px":0,"py":0,"pz":0,"qx":0,"qy":0,"qz":0,"qw":1,"sx":1,"sy":1,"sz":1},"XrRenderable":{"geometryKind":0,"visible":1},"XrParticleEmitter":{"rate":12,"lifetime":0.75,"ceiling":64,"size":0.06,"color":6737151},"XrRig":{"enabled":1}}}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-9}}
+    - {"id":{"key":"id","type":"string","value":"entity:scene.marker"},"type":{"key":"type","type":"string","value":"EcsEntity"},"label":{"key":"label","type":"string","value":"Marker"},"position":{"key":"position","type":"object","value":{"x":0,"y":-1560}},"ecsEntity":{"key":"ecsEntity","type":"object","value":{"entityRef":"scene.marker","components":{"XrTransform":{"px":-1.5,"py":-0.5,"pz":0,"qx":0,"qy":0,"qz":0,"qw":1,"sx":1,"sy":1,"sz":1}}}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:entity:scene.marker"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"ecsEntity":{"entityRef":"scene.marker","components":{"XrTransform":{"px":-1.5,"py":-0.5,"pz":0,"qx":0,"qy":0,"qz":0,"qw":1,"sx":1,"sy":1,"sz":1}}}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-8}}
+    - {"id":{"key":"id","type":"string","value":"action:hero:burst"},"type":{"key":"type","type":"string","value":"XrBehaviorAction"},"label":{"key":"label","type":"string","value":"Burst particles"},"position":{"key":"position","type":"object","value":{"x":0,"y":-1320}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:action:hero:burst"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":1},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"xrBehaviorAction":{"actionId":"hero-burst","kind":"emit-particle-burst","targetEntityRef":"scene.hero","parameters":{"count":8}}}},"visual:importance":{"key":"visual:importance","type":"number","value":16},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":14},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-6},"xrBehaviorAction":{"key":"xrBehaviorAction","type":"object","value":{"actionId":"hero-burst","kind":"emit-particle-burst","targetEntityRef":"scene.hero","parameters":{"count":8}}}}
+    - {"id":{"key":"id","type":"string","value":"behavior:hero:select"},"type":{"key":"type","type":"string","value":"XrBehaviorTrigger"},"label":{"key":"label","type":"string","value":"Select hero"},"position":{"key":"position","type":"object","value":{"x":0,"y":-1080}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:behavior:hero:select"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":1},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"xrBehaviorTrigger":{"behaviorId":"hero-select","trigger":"select","sourceEntityRef":"scene.hero"}}},"visual:importance":{"key":"visual:importance","type":"number","value":16},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":14},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-5},"xrBehaviorTrigger":{"key":"xrBehaviorTrigger","type":"object","value":{"behaviorId":"hero-select","trigger":"select","sourceEntityRef":"scene.hero"}}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_demo_entry"},"type":{"key":"type","type":"string","value":"XrDemoControl"},"label":{"key":"label","type":"string","value":"Run XR v2 Browser Demo"},"position":{"key":"position","type":"object","value":{"x":0,"y":-840}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_demo_entry"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":1},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Apply this source document, then run npm run xr-v2:review-ready for the clean browser evidence gate."},"properties":{"key":"properties","type":"object","value":{"role":"lifecycle","state":"browser-demo-ready","output":"Apply this source document, then run npm run xr-v2:review-ready for the clean browser evidence gate."}},"role":{"key":"role","type":"string","value":"lifecycle"},"state":{"key":"state","type":"string","value":"browser-demo-ready"},"visual:importance":{"key":"visual:importance","type":"number","value":16},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":14},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-4}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_01"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-1 Capability detection"},"position":{"key":"position","type":"object","value":{"x":0,"y":-600}},"criterion":{"key":"criterion","type":"string","value":"AC-1"},"evidenceState":{"key":"evidenceState","type":"string","value":"source-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_01"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Resolve exactly one pinned capability tier; physical matrix remains external certification."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-1","evidenceState":"source-backed","output":"Resolve exactly one pinned capability tier; physical matrix remains external certification."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-3}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_02"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-2 Live capture default"},"position":{"key":"position","type":"object","value":{"x":0,"y":-360}},"criterion":{"key":"criterion","type":"string","value":"AC-2"},"evidenceState":{"key":"evidenceState","type":"string","value":"browser-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_02"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"After explicit camera Start, sample the canonical stream through local depth inference and render live DIBR stereo previews; named-device frame budget remains external proof."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-2","evidenceState":"browser-backed","output":"After explicit camera Start, sample the canonical stream through local depth inference and render live DIBR stereo previews; named-device frame budget remains external proof."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-2}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_03"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-3 Post-process fallback"},"position":{"key":"position","type":"object","value":{"x":0,"y":-120}},"criterion":{"key":"criterion","type":"string","value":"AC-3"},"evidenceState":{"key":"evidenceState","type":"string","value":"browser-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_03"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"On consecutive frame-budget breaches, continue raw capture and atomically persist the flat asset plus one typed post-process job on save."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-3","evidenceState":"browser-backed","output":"On consecutive frame-budget breaches, continue raw capture and atomically persist the flat asset plus one typed post-process job on save."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":-1}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_04"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-4 Progressive viewer"},"position":{"key":"position","type":"object","value":{"x":0,"y":120}},"criterion":{"key":"criterion","type":"string","value":"AC-4"},"evidenceState":{"key":"evidenceState","type":"string","value":"browser-observable-after-saved-asset-render"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_04"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Keep evidence not-observed until a persisted capture survives reload and explicit open, then two distinct timestamped frames render on an attached depth/Three surface or raw-video playback time advances; listing, selection, canplay, or session entry alone is never evidence."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-4","evidenceState":"browser-observable-after-saved-asset-render","output":"Keep evidence not-observed until a persisted capture survives reload and explicit open, then two distinct timestamped frames render on an attached depth/Three surface or raw-video playback time advances; listing, selection, canplay, or session entry alone is never evidence."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":0}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_05"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-5 iOS constraint"},"position":{"key":"position","type":"object","value":{"x":0,"y":360}},"criterion":{"key":"criterion","type":"string","value":"AC-5"},"evidenceState":{"key":"evidenceState","type":"string","value":"source-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_05"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Fail closed from WebXR tiers when platform facts disallow WebXR; named iOS proof remains external."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-5","evidenceState":"source-backed","output":"Fail closed from WebXR tiers when platform facts disallow WebXR; named iOS proof remains external."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":1}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_06"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-6 ECS composition"},"position":{"key":"position","type":"object","value":{"x":0,"y":600}},"criterion":{"key":"criterion","type":"string","value":"AC-6"},"evidenceState":{"key":"evidenceState","type":"string","value":"browser-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_06"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Project the mounted fixture entities and component schemas without duplicate query results."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-6","evidenceState":"browser-backed","output":"Project the mounted fixture entities and component schemas without duplicate query results."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":2}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_07"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-7 Material graph"},"position":{"key":"position","type":"object","value":{"x":0,"y":840}},"criterion":{"key":"criterion","type":"string","value":"AC-7"},"evidenceState":{"key":"evidenceState","type":"string","value":"browser-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_07"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Compile and apply the checker material graph to the Hero target."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-7","evidenceState":"browser-backed","output":"Compile and apply the checker material graph to the Hero target."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":3}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_08"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-8 Behavior graph"},"position":{"key":"position","type":"object","value":{"x":0,"y":1080}},"criterion":{"key":"criterion","type":"string","value":"AC-8"},"evidenceState":{"key":"evidenceState","type":"string","value":"source-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_08"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Dispatch the wired Hero select action exactly once and keep unwired triggers inert."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-8","evidenceState":"source-backed","output":"Dispatch the wired Hero select action exactly once and keep unwired triggers inert."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":4}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_09"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-9 Particles"},"position":{"key":"position","type":"object","value":{"x":0,"y":1320}},"criterion":{"key":"criterion","type":"string","value":"AC-9"},"evidenceState":{"key":"evidenceState","type":"string","value":"source-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_09"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Keep the Hero emitter within rate, lifetime, and ceiling bounds."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-9","evidenceState":"source-backed","output":"Keep the Hero emitter within rate, lifetime, and ceiling bounds."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":6}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_10"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-10 Timeline"},"position":{"key":"position","type":"object","value":{"x":0,"y":1560}},"criterion":{"key":"criterion","type":"string","value":"AC-10"},"evidenceState":{"key":"evidenceState","type":"string","value":"source-backed"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_10"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Interpolate the Hero Arm bone-pose track at the mounted playhead."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-10","evidenceState":"source-backed","output":"Interpolate the Hero Arm bone-pose track at the mounted playhead."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":7}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_11"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-11 Packaging"},"position":{"key":"position","type":"object","value":{"x":0,"y":1800}},"criterion":{"key":"criterion","type":"string","value":"AC-11"},"evidenceState":{"key":"evidenceState","type":"string","value":"browser-observable-after-explicit-action"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_11"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Use Verify packaging on the explicitly opened identity-bound capture; evidence appears only after every pre-mux encoded source sample decodes, the mux preserves exact codec/count/payload bytes, and the mounted WebM advances."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-11","evidenceState":"browser-observable-after-explicit-action","output":"Use Verify packaging on the explicitly opened identity-bound capture; evidence appears only after every pre-mux encoded source sample decodes, the mux preserves exact codec/count/payload bytes, and the mounted WebM advances."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":8}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_ac_12"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"AC-12 Connected preview"},"position":{"key":"position","type":"object","value":{"x":0,"y":2040}},"criterion":{"key":"criterion","type":"string","value":"AC-12"},"evidenceState":{"key":"evidenceState","type":"string","value":"browser-observable-after-explicit-action"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_ac_12"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":2},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":1},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Use Run local preview; evidence appears only after an exact mounted-scene edit crosses real WebRTC peers, paints the attached viewer canvas in a later frame, and is then acknowledged within the bound without reload."},"properties":{"key":"properties","type":"object","value":{"criterion":"AC-12","evidenceState":"browser-observable-after-explicit-action","output":"Use Run local preview; evidence appears only after an exact mounted-scene edit crosses real WebRTC peers, paints the attached viewer canvas in a later frame, and is then acknowledged within the bound without reload."}},"visual:importance":{"key":"visual:importance","type":"number","value":20},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":15.65685424949238},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":9}}
+    - {"id":{"key":"id","type":"string","value":"xr_v2_certification_boundary"},"type":{"key":"type","type":"string","value":"XrDemoValidation"},"label":{"key":"label","type":"string","value":"External Physical-device Certification"},"position":{"key":"position","type":"object","value":{"x":0,"y":2280}},"browserDemoState":{"key":"browserDemoState","type":"string","value":"runtime-ready"},"browserLocalMountState":{"key":"browserLocalMountState","type":"string","value":"mounted"},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:xr_v2_certification_boundary"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":1},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":1},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"output":{"key":"output","type":"string","value":"Browser demo proof never substitutes for named camera, sensor, headset, device, or Production certification."},"physicalDeviceState":{"key":"physicalDeviceState","type":"string","value":"external-required"},"pinnedContractState":{"key":"pinnedContractState","type":"string","value":"partial"},"productionState":{"key":"productionState","type":"string","value":"not-claimed"},"properties":{"key":"properties","type":"object","value":{"role":"promotion-boundary","browserDemoState":"runtime-ready","browserLocalMountState":"mounted","pinnedContractState":"partial","physicalDeviceState":"external-required","productionState":"not-claimed","output":"Browser demo proof never substitutes for named camera, sensor, headset, device, or Production certification."}},"role":{"key":"role","type":"string","value":"promotion-boundary"},"visual:importance":{"key":"visual:importance","type":"number","value":16},"visual:nodeSize":{"key":"visual:nodeSize","type":"number","value":14},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":10}}
+    - {"id":{"key":"id","type":"string","value":"material:hero"},"type":{"key":"type","type":"string","value":"XrMaterialGraph"},"label":{"key":"label","type":"string","value":"Hero checker material"},"position":{"key":"position","type":"object","value":{"x":0,"y":2520}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:material:hero"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"xrMaterialGraph":{"schema":"agentic-graph-xr-material-graph/v1","nodes":[{"id":"albedo","type":"color","value":"#336699"},{"id":"surface","type":"texture-2d","assetId":"builtin:checker-v1"},{"id":"roughness","type":"number","value":0.35},{"id":"output","type":"mesh-standard-output","bindings":{"color":"albedo","map":"surface","roughness":"roughness"}}]}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":11},"xrMaterialGraph":{"key":"xrMaterialGraph","type":"object","value":{"schema":"agentic-graph-xr-material-graph/v1","nodes":[{"id":"albedo","type":"color","value":"#336699"},{"id":"surface","type":"texture-2d","assetId":"builtin:checker-v1"},{"id":"roughness","type":"number","value":0.35},{"id":"output","type":"mesh-standard-output","bindings":{"color":"albedo","map":"surface","roughness":"roughness"}}]}}}
+    - {"id":{"key":"id","type":"string","value":"timeline:hero"},"type":{"key":"type","type":"string","value":"XrTimelineSequence"},"label":{"key":"label","type":"string","value":"Hero arm animation"},"position":{"key":"position","type":"object","value":{"x":0,"y":2760}},"flow:widgetFormId":{"key":"flow:widgetFormId","type":"string","value":"fm:timeline:hero"},"frontmatter:primitive":{"key":"frontmatter:primitive","type":"string","value":"node"},"graph:degree":{"key":"graph:degree","type":"number","value":0},"graph:inDegree":{"key":"graph:inDegree","type":"number","value":0},"graph:outDegree":{"key":"graph:outDegree","type":"number","value":0},"graph:structuralDegree":{"key":"graph:structuralDegree","type":"number","value":0},"properties":{"key":"properties","type":"object","value":{"xrTimelineSequence":{"schema":"agentic-graph-xr-timeline-sequence/v1","durationSeconds":2,"loop":false,"tracks":[{"id":"arm-pose","kind":"bone-pose","targetName":"Arm","keyframes":[{"timeSeconds":0,"value":{"translation":[0,0,0],"rotation":[0,0,0,1],"scale":[1,1,1]}},{"timeSeconds":2,"value":{"translation":[0,1,0],"rotation":[0,1,0,0],"scale":[1,1,1]}}]}]}}},"visual:xIndex":{"key":"visual:xIndex","type":"number","value":0},"visual:yIndex":{"key":"visual:yIndex","type":"number","value":12},"xrTimelineSequence":{"key":"xrTimelineSequence","type":"object","value":{"schema":"agentic-graph-xr-timeline-sequence/v1","durationSeconds":2,"loop":false,"tracks":[{"id":"arm-pose","kind":"bone-pose","targetName":"Arm","keyframes":[{"timeSeconds":0,"value":{"translation":[0,0,0],"rotation":[0,0,0,1],"scale":[1,1,1]}},{"timeSeconds":2,"value":{"translation":[0,1,0],"rotation":[0,1,0,0],"scale":[1,1,1]}}]}]}}}
+  edges:
+    - id: {key: id, type: string, value: "flow-e01"}
+      source: {key: source, type: string, value: "xr_demo_entry"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "xr_ball_controller"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "select ball"}
+    - {"id":{"key":"id","type":"string","value":"flow-e02"},"source":{"key":"source","type":"string","value":"xr_demo_entry"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_rocket_controller"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"select rocket"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e03"},"source":{"key":"source","type":"string","value":"xr_ball_controller"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_runtime_gate"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e04"},"source":{"key":"source","type":"string","value":"xr_rocket_controller"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_runtime_gate"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate"}}
+    - id: {key: id, type: string, value: "flow-e05"}
+      source: {key: source, type: string, value: "xr_demo_entry"}
+      sourceHandle: {key: sourceHandle, type: string, value: "output"}
+      target: {key: target, type: string, value: "xr_edited_media_proof"}
+      targetHandle: {key: targetHandle, type: string, value: "input"}
+      label: {key: label, type: string, value: "inspect scoped proof"}
+    - {"id":{"key":"id","type":"string","value":"flow-e06"},"source":{"key":"source","type":"string","value":"material:hero"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"entity:scene.hero"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"xr-material-target"},"properties":{"key":"properties","type":"object","value":{"graph:endpointState":"unresolved"}}}
+    - {"id":{"key":"id","type":"string","value":"flow-e07"},"source":{"key":"source","type":"string","value":"behavior:hero:select"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"action:hero:burst"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"xr-behavior-wire"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e08"},"source":{"key":"source","type":"string","value":"timeline:hero"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"entity:scene.hero"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"xr-timeline-target"},"properties":{"key":"properties","type":"object","value":{"graph:endpointState":"unresolved"}}}
+    - {"id":{"key":"id","type":"string","value":"flow-e09"},"source":{"key":"source","type":"string","value":"xr_v2_demo_entry"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_01"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-1"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e10"},"source":{"key":"source","type":"string","value":"xr_v2_ac_01"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_02"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-2"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e11"},"source":{"key":"source","type":"string","value":"xr_v2_ac_02"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_03"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-3"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e12"},"source":{"key":"source","type":"string","value":"xr_v2_ac_03"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_04"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-4"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e13"},"source":{"key":"source","type":"string","value":"xr_v2_ac_04"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_05"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-5"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e14"},"source":{"key":"source","type":"string","value":"xr_v2_ac_05"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_06"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-6"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e15"},"source":{"key":"source","type":"string","value":"xr_v2_ac_06"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_07"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-7"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e16"},"source":{"key":"source","type":"string","value":"xr_v2_ac_07"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_08"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-8"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e17"},"source":{"key":"source","type":"string","value":"xr_v2_ac_08"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_09"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-9"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e18"},"source":{"key":"source","type":"string","value":"xr_v2_ac_09"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_10"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-10"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e19"},"source":{"key":"source","type":"string","value":"xr_v2_ac_10"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_11"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-11"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e20"},"source":{"key":"source","type":"string","value":"xr_v2_ac_11"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_ac_12"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"validate AC-12"}}
+    - {"id":{"key":"id","type":"string","value":"flow-e21"},"source":{"key":"source","type":"string","value":"xr_v2_ac_12"},"sourceHandle":{"key":"sourceHandle","type":"string","value":"output"},"target":{"key":"target","type":"string","value":"xr_v2_certification_boundary"},"targetHandle":{"key":"targetHandle","type":"string","value":"input"},"label":{"key":"label","type":"string","value":"stop at external certification"}}
+---
+
+# AR/VR/XR Runtime-readiness Demo
+
+This Source Files document is the dedicated workspace demo for the immutable v3.0.0 AR/VR/XR authority. It stays source-backed, local-first, and bounded to AC-1 through AC-12 browser proof while AC-14 remains source-only.
+
+The pinned authority's source identity is commit
+\`1272bae345edf0d132e6fc750d5c5c7eade00b29\`; its path and content digests are recorded in \`pinned_source\` above.
+
+## Run the browser demo
+
+Run \`npm run dev\`, then apply **Explorer → Source Files → docs → workspace-seeds → agentic-graph-ar-vr-xr-runtime-readiness-demo.md**. The applied document mounts the shared world as a \`full-frame-playground\` and keeps the same canonical XR owner through the existing runtime adapters. Use \`npm run xr-v2:review-ready\` for the exact local proof gate.
+
+## Camera and sensor control
+
+Camera and sensor access stay user-owned and disabled by default. The user can enable or stop capture at any time; denial fails closed to the non-capture viewer. Camera source selection remains \`fixed-follow\` or \`free-orbit\` through \`/camera.select @camera #camera\` and \`agentic-graph.control_local_camera\`.
+
+## Solopreneur MVP loop
+
+This seed is the lean rehearsal loop for Dev and Home Apex: author once, rehearse locally, and keep release, publish, storage, and commerce as explicit later steps. The same source owns Timeline, Animation, Motion Control, Camera, and Game Mode overlay boundaries.
+
+## Physics Playground
+
+This story uses the native Tropical Playground island, ocean, palms and dock with source-authored selectable subjects. The catalog-driven stable terrain IDs also retain the procedural Singapore waterfront terrain and Marina Bay towers as selectable alternatives. The asset defaults remain \`vehicle-helicopter\`, \`vehicle-sedan\`, and \`prop-ball\`. Placed subjects remain visible while the controller demo runs.
+
+The objective loop is simple: \`collect key then unlock treasure\`. The ball keeps \`rolling movement\`, \`grounded jump\`, air steering, and modifier torque. The rocket keeps \`directional thrust\`, bounded tilt, and \`modifier stabilization\`, plus the bounded aerial composition. Standard gamepad movement remains \`standard left stick\`.
+
+MCP control stays source-backed through \`/xr.physics @canvas #controller operation=develop-run mode=ball\` and \`agentic-graph.control_local_xr_scene\`. Motion Control remains optional and local through \`/motion.control @canvas #pose operation=start backend=auto\`, \`agentic-graph.inspect_local_motion_control\`, and \`agentic-graph.control_local_motion_control\`.
+
+Game Mode remains an overlay, not a second world. It opens with \`/game.mode @canvas #gameplay operation=open\`, is inspectable through \`agentic-graph.inspect_local_game_mode\`, controllable through \`agentic-graph.control_local_game_mode\`, and must temporarily suspend the native XR controller stage and restore it on exit.
+
+## Timeline and choreography asides
+
+BottomPanel Timeline owns mark timing, easing, gait, position and selection. FloatingPanel Animation owns path and character-motion presets and shows the shared mark summary. The playable rehearsal slice stays under one minute and is stepped through the existing transport, cue selection, and mark inspection owners.
+
+### Playable script
+
+**{{rehearsal_title}}**
+
+Scene: {{kgXrMotionReference.stageId}} · Duration: {{kgXrMotionReference.durationSeconds}} seconds · {{kgXrMotionReference.fps}} fps.
+
+{{kgXrMotionReference.camera.0.caption}}
+
+{{kgXrMotionReference.camera.1.caption}}
+
+{{kgXrMotionReference.camera.2.caption}} {{kgXrMotionReference.camera.3.caption}}
+
+{{kgXrMotionReference.camera.4.caption}}
+
+{{kgXrMotionReference.camera.5.caption}}
+
+{{kgXrMotionReference.camera.6.caption}}
+
+Open an inline asset chip to use the existing searchable Variable commands menu. Scene choices invoke \`/xr.stage @stage\`; subject and prop choices invoke \`/xr.transform @subject #transform asset=asset\`. The native catalog and the same \`control_local_xr_scene\` controller used by MCP and WebMCP own validation and frontmatter persistence. Authored role labels and stable subject IDs stay intact; asset words resolve from the catalog. Nested caption references keep this body unchanged. Animation owns path and character-motion presets. Timeline owns static transforms, mark easing, gait, position, timing, playback, speed, seek and frame-step. Motion Control uses the same selected target and mark; Camera keeps the same anchors; Game Mode suspends and restores the shared world.
+
+Media → Subjects & Props now switches between **In scene** and **Add from library** under one category/search filter. Story performers, houses, sailboat, soup pot and Tropical Playground use native visual illustrations. No camera/microphone, network asset or paid service is required.
+
+## Source Files storage and refresh
+
+This Git-backed file is the canonical seed. Restart the dev server after source changes, reload, and use **Source Files → Refresh**. Local save, workspace sync, and Git commit remain distinct outcomes.
+
+## Scoped XR edited-media evidence
+
+This document projects downstream evidence for \`xr-authoring-edited-media-delivery\`; applying it starts the native Playground and readiness controls. It does not load a video sequence, run the dedicated smoke route, or claim that opening the XR choreography Timeline reproduces the edited-media proof.
+
+The checked-in snapshot remains \`source-ready\`, while the protected delivery chain for this scope is \`runtime-ready\`. The evidence covers canonical Timeline routing, same-origin browser-native edited-media export, non-empty output, decoded metadata, bounded playback, and teardown. It does not claim mounted-renderer material wiring, live depth quality, physical-device lifecycle proof, Production availability, or deployment authority.
+
+## Validation
+
+Run \`npm run xr-v2:review-ready\` on the clean candidate for source, runtime, and browser evidence. Physical-device and Production boundaries remain explicit.
+`;export{e as default};
