@@ -1,0 +1,1 @@
+import{r as e}from"./react-BhUDf-ol.js";import{af as s,ag as n,ah as u}from"./settings-mcp-core-DpLmidET.js";function i(t,a){const[r,c]=e.useState(()=>{try{const o=s();return n(o,t,a)}catch{return a}});return e.useEffect(()=>{try{const o=s();u(o,t,r)}catch{}},[t,r]),[r,c]}export{i as u};
