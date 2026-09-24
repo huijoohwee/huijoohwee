@@ -1,1 +1,0 @@
-import{r as o}from"./react-BhUDf-ol.js";import{aN as s}from"./settings-mcp-core-CUovYWhp.js";function i(){const[n,a]=o.useState(()=>s());return o.useEffect(()=>{const m=()=>{const t=s();a(r=>r!==t?t:r)},e=new MutationObserver(m);return e.observe(document.documentElement,{attributes:!0,attributeFilter:["class","data-theme"]}),()=>e.disconnect()},[]),n}export{i as u};
