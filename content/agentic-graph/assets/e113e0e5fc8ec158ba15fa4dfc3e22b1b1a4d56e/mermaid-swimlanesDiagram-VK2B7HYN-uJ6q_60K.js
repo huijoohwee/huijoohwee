@@ -1,0 +1,8 @@
+import{c as r,s as o}from"./mermaid-chunk-RHFEMEQ7-CiBCRuBc.js";import{_ as m}from"./mermaid-chunk-Y2CYZVJY-DM6BcmAw.js";import"./d3-DgRUfpEQ.js";import"./mermaid-chunk-DU6HZSFF-lkzVcDpv.js";import"./mermaid-chunk-X3CZISLH-BCYoWsLM.js";import"./mermaid-chunk-LNGE3PJU-B5ENyc61.js";import"./mermaid-chunk-CKBBP62Z-DRZXDoKX.js";import"./mermaid-chunk-75Z2AOVW-BCTPKHnQ.js";import"./mermaid-chunk-OBVCFTLP-BSF2lX9i.js";import"./mermaid-chunk-TEH6E4GO-DRUDe7Pf.js";import"./mermaid-chunk-GMAD6QVW-BhcUBeNZ.js";import"./mermaid-chunk-R7TYR2AO-DmYioWjI.js";import"./mermaid-chunk-5VM5RSS4-DhwXbkrc.js";import"./mermaid-chunk-XXDRQBXY-CfUuNtVn.js";import"./mermaid-chunk-POPQ4Y6H-Bnc-d9Rd.js";import"./mermaid-chunk-F27PBJKO-WnAZe8RJ.js";import"./monaco-D0afn6cW.js";import"./react-BhUDf-ol.js";import"./mermaid-chunk-JQ64N6SF-VCeAt3do.js";import"./mermaid-chunk-P2QGCYS3-CVu9O6Uk.js";import"./mermaid-chunk-PWAF6VOD--cjxmcAP.js";var e=m(t=>`${o(t)}
+  .swimlane.cluster rect {
+    stroke: ${t.clusterBorder} !important;
+  }
+  [data-look="neo"].cluster rect {
+    filter: none;
+  }
+`,"getStyles"),i=e,L=r({defaultLayout:"swimlane",styles:i});export{L as diagram};
