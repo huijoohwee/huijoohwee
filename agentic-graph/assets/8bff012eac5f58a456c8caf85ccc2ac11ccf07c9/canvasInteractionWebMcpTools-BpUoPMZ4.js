@@ -1,0 +1,1 @@
+import{e as c}from"./canvasInteractionControlRuntime-CCGMsz3q.js";import{u as o}from"./settings-vdeoxplnMcpApiDocs-Dd7qG7hc.js";function s(t,a=c){const n=t(o.controlLocalCanvasInteraction);return{[o.controlLocalCanvasInteraction]:()=>({...n,name:n.webName,execute:async e=>a(e||{})})}}export{s as buildCanvasInteractionWebMcpToolBuilders};
