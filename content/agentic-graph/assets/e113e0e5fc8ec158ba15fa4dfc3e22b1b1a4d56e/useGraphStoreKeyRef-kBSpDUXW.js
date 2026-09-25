@@ -1,0 +1,1 @@
+import{r as s}from"./react-BhUDf-ol.js";import{u}from"./settings-mcp-core-C-1_RCBY.js";function a(r){const t=s.useRef(u.getState()[r]);return s.useEffect(()=>u.subscribe(e=>e[r],e=>{t.current=e}),[r]),t}export{a as u};
