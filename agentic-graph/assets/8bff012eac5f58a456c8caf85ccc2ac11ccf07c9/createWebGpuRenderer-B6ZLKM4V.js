@@ -1,0 +1,1 @@
+import{W as t}from"./three-webgpu-renderer-WHe0HMoV.js";import{g as n}from"./threeRendererBackend-Dsvk0zux.js";import"./three-math-Bxp2v-cH.js";import"./three-core-CpwJcB1a.js";function m(e,r){const o=new t({canvas:e,antialias:!0,alpha:!0,powerPreference:"low-power"});return n(o,r)}export{m as createWebGpuRenderer};

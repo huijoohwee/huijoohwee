@@ -7,13 +7,13 @@
       "type": "markdown",
       "description": "Inspect agentic-graph health, MCP, WebMCP, A2A, OpenAPI, commerce, and browser-local readiness without claiming deployed mutation.",
       "url": "https://airvio.co/agentic-graph/.well-known/agent-skills/agentic-graph-agent-ready.md",
-      "sha256": "aecc66a654dbfc13a2096c1514ae27f841f3aa0e0c236e8d14feefbbeb94ed3d",
+      "sha256": "881ed9d7642e906065485b55967a06645e428f7d1bae7d118ed2e33e0397b440",
       "vdeoxpln": {
         "id": "agentic-graph-agent-ready",
         "title": "agentic-graph Agent Ready",
         "scope": "read-only-published-and-browser-local",
         "mutation": "read-only",
-        "semanticKey": "kgvx_b0e6821b",
+        "semanticKey": "kgvx_efb5095f",
         "tools": {
           "published": [
             "inspect_agent_surface"
@@ -38,6 +38,7 @@
             "inspect_local_mainpanel_state",
             "inspect_local_motion_control",
             "inspect_local_python_learning",
+            "inspect_local_semantic_space",
             "inspect_local_settings_chat_readiness",
             "inspect_local_source_files_snapshot",
             "inspect_local_workspace_document",
