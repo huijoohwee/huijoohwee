@@ -2,7 +2,7 @@
   "schema": "gamexr-precache/v1",
   "basePath": "/gamexr/",
   "serviceWorkerRegistrationEnabled": true,
-  "buildDigest": "83280908fb1e2150756bffe3a54e097a31d58b33f2548271470e58f0b17f4ef5",
+  "buildDigest": "761e4f9d2d444543a2535f6c13255f1077f688cf4cfeb338070f9e18ac39d4a2",
   "entries": [
     {
       "path": ".well-known/runtime-readiness.json",
@@ -11,22 +11,64 @@
       "kind": "readiness"
     },
     {
+      "path": "assets/DiagnosticsPanel-B7qOf6k-.css",
+      "bytes": 2891,
+      "sha256": "a36a165669abb16e4a49fb69f707c3cc55fa347106110a58fcb4aafa1868c74c",
+      "kind": "style"
+    },
+    {
+      "path": "assets/DiagnosticsPanel-D2gOK-sk.js",
+      "bytes": 14524,
+      "sha256": "8a1e055732f8e9c9971a5a10ad71e4970c75e92c68ab3efb28abbaac7d501200",
+      "kind": "dynamic-script"
+    },
+    {
+      "path": "assets/DronePanel-BVyMY_SI.js",
+      "bytes": 24658,
+      "sha256": "ab21ec69cf4b13363bde51ac5a0804ce45be229b2b4fc930e32785e0077f99d0",
+      "kind": "dynamic-script"
+    },
+    {
+      "path": "assets/DronePanel-CbqjGQyz.css",
+      "bytes": 1659,
+      "sha256": "26075095345f579baf53bdab567f7653f9182c87d89e6c17777e050073a7751c",
+      "kind": "style"
+    },
+    {
       "path": "assets/GLTFLoader-DgvSWouF.js",
       "bytes": 44297,
       "sha256": "53102f080cd263d4fe2222069869f9794bc2c1e7a4ba33e6419d32e1e944f19c",
       "kind": "dynamic-script"
     },
     {
-      "path": "assets/index-BXHGyDmD.css",
-      "bytes": 14893,
-      "sha256": "73d46138cfeb837f140b581880d6dd9c310f7c649b557bf3d7a2a89410d6452a",
+      "path": "assets/index-CEZKYpfx.js",
+      "bytes": 224286,
+      "sha256": "f29f8099715ba1753523f90fd76a09eaa601d5f1f8e1c059b568cec04ff6a9c0",
+      "kind": "script"
+    },
+    {
+      "path": "assets/index-DbUBMIck.css",
+      "bytes": 15084,
+      "sha256": "d66506916e64d118d7759649e4d5508ca7bc994e34a221dbc1dfbb1d29963f7f",
       "kind": "style"
     },
     {
-      "path": "assets/index-l8aq5JYa.js",
-      "bytes": 206000,
-      "sha256": "36ba476fbef1e13809d39bba79612d0c7356244d657a8f1c25d81ed16b12eda9",
+      "path": "assets/PhoneGateway-DuN5tIV3.js",
+      "bytes": 5530,
+      "sha256": "46b4ef1310295aab2f960c67655f8813703bfc546ee96b1ffb55ced874d1c4cd",
       "kind": "script"
+    },
+    {
+      "path": "assets/PhoneGateway-rxppVjrI.css",
+      "bytes": 967,
+      "sha256": "49042ae80dc5146b1125fb9b452275dbf08f60ccc96b32fee3db5c318e73bd80",
+      "kind": "style"
+    },
+    {
+      "path": "assets/SpatialReviewPanel-wUJGlpxh.js",
+      "bytes": 7512,
+      "sha256": "4200a8ade2135dba2756dd394a0ba3286a8312cb687b8aef7898b2dc727981d6",
+      "kind": "dynamic-script"
     },
     {
       "path": "assets/three-animation-B5LeBG1o.js",
@@ -61,7 +103,7 @@
     {
       "path": "index.html",
       "bytes": 1446,
-      "sha256": "165f05b320ce05dfb3f123a6fe7c77def782d77442d1c971b3a065373c0f5297",
+      "sha256": "f239369701023342cc4fdee48e9a1ba7acffafb7d75efbc0324a47ee00217165",
       "kind": "document"
     },
     {

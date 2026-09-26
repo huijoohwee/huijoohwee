@@ -4,14 +4,14 @@
   "version": "0.1.0",
   "basePath": "/gamexr/",
   "candidateStatus": "source-bound-clean",
-  "sourceRevision": "718298dec9928f30bd24e349a7527aba2c85bfb1",
+  "sourceRevision": "74bd6c6d28b5aeaa275edd2f149ec4618bcc86f3",
   "source": {
     "versionControl": "git",
     "head": "resolved",
     "worktree": "clean",
     "statusDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "artifactDigest": "aa11a21680b1b16951912cc6b2e544127fc7d4a1e4738228686357657bd1e62e",
+  "artifactDigest": "87b6df08eec652398145a2759042faab415106bc4e109b5e980865dccab2f4fa",
   "defaultScene": "schemas/default-scene.json",
   "sceneSchema": "schemas/gamexr.scene.schema.json",
   "spatialInputSchema": "schemas/apple-spatial-input.schema.json",
@@ -28,19 +28,54 @@
       "sha256": "4098430ee81c52043a198668e17b29f4ef83da312a80f1cb92be10efc39cdc6c"
     },
     {
+      "path": "assets/DiagnosticsPanel-B7qOf6k-.css",
+      "bytes": 2891,
+      "sha256": "a36a165669abb16e4a49fb69f707c3cc55fa347106110a58fcb4aafa1868c74c"
+    },
+    {
+      "path": "assets/DiagnosticsPanel-D2gOK-sk.js",
+      "bytes": 14524,
+      "sha256": "8a1e055732f8e9c9971a5a10ad71e4970c75e92c68ab3efb28abbaac7d501200"
+    },
+    {
+      "path": "assets/DronePanel-BVyMY_SI.js",
+      "bytes": 24658,
+      "sha256": "ab21ec69cf4b13363bde51ac5a0804ce45be229b2b4fc930e32785e0077f99d0"
+    },
+    {
+      "path": "assets/DronePanel-CbqjGQyz.css",
+      "bytes": 1659,
+      "sha256": "26075095345f579baf53bdab567f7653f9182c87d89e6c17777e050073a7751c"
+    },
+    {
       "path": "assets/GLTFLoader-DgvSWouF.js",
       "bytes": 44297,
       "sha256": "53102f080cd263d4fe2222069869f9794bc2c1e7a4ba33e6419d32e1e944f19c"
     },
     {
-      "path": "assets/index-BXHGyDmD.css",
-      "bytes": 14893,
-      "sha256": "73d46138cfeb837f140b581880d6dd9c310f7c649b557bf3d7a2a89410d6452a"
+      "path": "assets/index-CEZKYpfx.js",
+      "bytes": 224286,
+      "sha256": "f29f8099715ba1753523f90fd76a09eaa601d5f1f8e1c059b568cec04ff6a9c0"
     },
     {
-      "path": "assets/index-l8aq5JYa.js",
-      "bytes": 206000,
-      "sha256": "36ba476fbef1e13809d39bba79612d0c7356244d657a8f1c25d81ed16b12eda9"
+      "path": "assets/index-DbUBMIck.css",
+      "bytes": 15084,
+      "sha256": "d66506916e64d118d7759649e4d5508ca7bc994e34a221dbc1dfbb1d29963f7f"
+    },
+    {
+      "path": "assets/PhoneGateway-DuN5tIV3.js",
+      "bytes": 5530,
+      "sha256": "46b4ef1310295aab2f960c67655f8813703bfc546ee96b1ffb55ced874d1c4cd"
+    },
+    {
+      "path": "assets/PhoneGateway-rxppVjrI.css",
+      "bytes": 967,
+      "sha256": "49042ae80dc5146b1125fb9b452275dbf08f60ccc96b32fee3db5c318e73bd80"
+    },
+    {
+      "path": "assets/SpatialReviewPanel-wUJGlpxh.js",
+      "bytes": 7512,
+      "sha256": "4200a8ade2135dba2756dd394a0ba3286a8312cb687b8aef7898b2dc727981d6"
     },
     {
       "path": "assets/three-animation-B5LeBG1o.js",
@@ -70,7 +105,7 @@
     {
       "path": "index.html",
       "bytes": 1446,
-      "sha256": "165f05b320ce05dfb3f123a6fe7c77def782d77442d1c971b3a065373c0f5297"
+      "sha256": "f239369701023342cc4fdee48e9a1ba7acffafb7d75efbc0324a47ee00217165"
     },
     {
       "path": "llms.txt",
@@ -84,8 +119,8 @@
     },
     {
       "path": "precache-manifest.json",
-      "bytes": 3021,
-      "sha256": "397292d7b5121285dd9ce6b4280935a0e8fa0a084dd841d989915bc65448dcff"
+      "bytes": 4386,
+      "sha256": "e99d9a779c12f59d4e17f443e774aa367016b885760ebd991e6c3b974980502d"
     },
     {
       "path": "schemas/apple-spatial-input.schema.json",
@@ -105,7 +140,7 @@
     {
       "path": "sw.js",
       "bytes": 13782,
-      "sha256": "7677d12b0514bae568d235371f02218bfb634ef3d73648fa78906a038ba8479b"
+      "sha256": "af7c1f0742b811377aad5ca86be1b539ae1fb7539c074361033fd8f4d05a45cc"
     }
   ]
 }
