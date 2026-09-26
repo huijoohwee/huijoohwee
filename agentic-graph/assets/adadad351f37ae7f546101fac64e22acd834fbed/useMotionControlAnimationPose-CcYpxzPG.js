@@ -1,0 +1,1 @@
+import{R as e}from"./react-BhUDf-ol.js";import{s as i,r as t,m as s}from"./motionControlRuntime-97iR3m0_.js";import{aa as a}from"./index-D-lrcxD1.js";function d(o,r,n){return n&&o.id===r?n:null}function c(){const o=e.useSyncExternalStore(i,t,t);return{boundingBoxEnabled:o.boundingBoxEnabled,motionActorId:a(),livePose:s(o.pose)}}export{d as r,c as u};

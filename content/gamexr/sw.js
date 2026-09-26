@@ -2,7 +2,7 @@ const CACHE_PREFIX = 'gamexr-shell-'
 const PRECACHE_MANIFEST_PATH = './precache-manifest.json'
 const CACHE_READY_MARKER_PATH = './.gamexr-cache-ready'
 const CACHE_ACTIVE_MARKER_PATH = './.gamexr-cache-active'
-const PRECACHE_BUILD_DIGEST = '83280908fb1e2150756bffe3a54e097a31d58b33f2548271470e58f0b17f4ef5'
+const PRECACHE_BUILD_DIGEST = '761e4f9d2d444543a2535f6c13255f1077f688cf4cfeb338070f9e18ac39d4a2'
 
 let precacheManifestPromise
 let activeCacheNamePromise

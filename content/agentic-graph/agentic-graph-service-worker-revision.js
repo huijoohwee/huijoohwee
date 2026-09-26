@@ -1,5 +1,5 @@
 ;(() => {
-  const sourceRevision = "8bff012eac5f58a456c8caf85ccc2ac11ccf07c9"
+  const sourceRevision = "adadad351f37ae7f546101fac64e22acd834fbed"
   ;(function installLearningOfflineOwner(owner, sourceRevision) {
   const scope = new URL(owner.registration.scope), prefix = 'kg-python-learning-v1-' + encodeURIComponent(scope.pathname) + '-', meta = prefix + 'state';
   const pointerUrl = new URL('__learning_state__', scope).href, manifestKey = new URL('__learning_manifest__', scope).href;
