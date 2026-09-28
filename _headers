@@ -242,6 +242,9 @@
 /agentic-graph/.well-known/runtime-readiness.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/pitch/agentic-drone-as-a-service/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
 /81rv10
   Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
   X-Agentic-Graph-Product-Entry: 81rv10

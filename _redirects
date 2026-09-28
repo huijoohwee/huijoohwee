@@ -34,6 +34,7 @@
 
 # BEGIN agentic-graph generated namespace routes
 /81rv10 /81rv10/ 308
+/pitch/agentic-drone-as-a-service /pitch/agentic-drone-as-a-service/ 308
 /GameXR /gamexr/ 301
 /GameXR/* /gamexr/:splat 301
 /agenticgraph /agentic-graph 301
@@ -69,7 +70,7 @@
 /agentic-graph/agentic-graph-service-worker-revision.js /content/agentic-graph/agentic-graph-service-worker-revision.js 200
 /agentic-graph/apple-touch-icon.png /content/agentic-graph/apple-touch-icon.png 200
 /agentic-graph/favicon.svg /content/agentic-graph/favicon.svg 200
-/agentic-graph/learning-offline-manifest-09e6250c39657812b224b57eddb714d949f5753e.json /content/agentic-graph/learning-offline-manifest-09e6250c39657812b224b57eddb714d949f5753e.json 200
+/agentic-graph/learning-offline-manifest-c097f1282ded268b52fc53a3a4932b4c8c7e4c6f.json /content/agentic-graph/learning-offline-manifest-c097f1282ded268b52fc53a3a4932b4c8c7e4c6f.json 200
 /agentic-graph/llms.txt /content/agentic-graph/llms.txt 200
 /agentic-graph/manifest.webmanifest /content/agentic-graph/manifest.webmanifest 200
 /agentic-graph/settings-flow.json /content/agentic-graph/settings-flow.json 200
