@@ -1,0 +1,1 @@
+import{j as e}from"./react-BhUDf-ol.js";function s({label:r,orientation:a="horizontal",className:o=""}){return e.jsx("hr",{role:"separator","aria-label":r,"aria-orientation":a,className:`kg-surface-separator ${o}`})}export{s as S};
