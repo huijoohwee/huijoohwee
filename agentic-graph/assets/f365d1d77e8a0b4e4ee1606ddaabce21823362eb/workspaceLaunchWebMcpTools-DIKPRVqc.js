@@ -1,1 +1,0 @@
-import{e as n}from"./workspaceLaunchControlRuntime-DIRv8fQP.js";import{W as c}from"./settings-vdeoxplnMcpApiDocs-6pBtkvcN.js";function s(e,a=n){const o=e(c.controlLocalWorkspaceLaunch);return{[c.controlLocalWorkspaceLaunch]:()=>({...o,name:o.webName,execute:async r=>a(r||{})})}}export{s as buildWorkspaceLaunchWebMcpToolBuilders};
