@@ -1,0 +1,1 @@
+import{o as a}from"./settings-mcp-core-C6MMw17V.js";const s=new WeakMap;async function i(e){if(!e){const o=await a();return s.set(o,Promise.resolve()),o}let t=s.get(e);if(!t){t=Promise.resolve().then(()=>e.ensureSeed()).then(()=>{}),s.set(e,t);const o=t;t.catch(()=>{s.get(e)===o&&s.delete(e)})}return await t,e}export{i as r};
