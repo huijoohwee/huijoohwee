@@ -1,0 +1,28 @@
+const e=`# agentic-graph MainPanel Tabs
+
+Editable MainPanel tab descriptions used by Help KTV rows.
+
+Keep \`Key\` aligned to \`MainPanelTabKey\`. Keep \`Type\` aligned to the shared MainPanel Help Icon Library. Keep \`Value\` concise for the MainPanel Help KTV row. Put longer explanatory copy in \`Details\`.
+
+| Key | Type | Value | Details |
+| --- | --- | --- | --- |
+| collaboration | mainPanel.collaboration | Peer sessions | Manage peer sessions, invites, answers, roster state, and follow mode. |
+| integrations | mainPanel.integrations | Provider readiness | Configure model, media, provider, and API readiness rows. |
+| mcp | mainPanel.mcp | MCP readiness | Review MCP readiness, local setup notes, and tool-provider routing. |
+| maps | mainPanel.maps | Geospatial setup | Configure geospatial providers, map APIs, directions, and discovery defaults. |
+| commerce | mainPanel.commerce | Commerce readiness | Review commerce readiness, checkout diagnostics, proofs, and payment traces. |
+| research | mainPanel.research | Thesis compiler | Compile selected Source Files into reviewable thesis candidates. |
+| workflowManager | mainPanel.workflowManager | Workflow registry | Manage workflow registry, graph fields, shared \`/\` and \`@\` command inventory, mappings, and pipeline controls. |
+| websiteImport | mainPanel.websiteImport | Page selection | Discover pages and select folders or files before importing, converting and parsing. |
+| dashboard | mainPanel.dashboard | Runtime summary | Review runtime status, graph stats, and quick operational summaries. |
+| settings | mainPanel.settings | Shared settings | Configure shared UI, workspace, storage, parser, renderer, and chat settings. |
+| history | mainPanel.history | Activity review | Review panel history, activity, and recent runtime events. |
+| help | mainPanel.help | Help reference | Browse shortcuts, behavior references, workflow links, and icon semantics. |
+
+Skills & Commands now lives in the FloatingPanel header as the button immediately beside Props Panel, so slash-invokable skills stay close to widget and node authoring actions without occupying a MainPanel tab or coupling to Props Panel layout.
+
+Design editing likewise lives in FloatingPanel Design. The former MainPanel Design entry is
+retired; MainPanel Settings remains the shared appearance control surface.
+
+Preview Panel lives in FloatingPanel. It reuses the Media catalog layout and selection controls, with selected media/diagram preview and collapsible Document insights. Existing \`kg:mainPanelOpen\` requests for \`preview\` redirect to FloatingPanel. Signal badges open source-linked insights there.
+`;export{e as default};
