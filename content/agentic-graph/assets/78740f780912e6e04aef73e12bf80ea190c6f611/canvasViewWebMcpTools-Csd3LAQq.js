@@ -1,1 +1,0 @@
-import{e as c}from"./canvasViewControlRuntime-CmR9eZ1H.js";import{C as o}from"./settings-vdeoxplnMcpApiDocs-DwfChi7G.js";function s(a,n=c){const e=a(o.controlLocalCanvasView);return{[o.controlLocalCanvasView]:()=>({...e,name:e.webName,execute:async t=>n(t||{})})}}export{s as buildCanvasViewWebMcpToolBuilders};
