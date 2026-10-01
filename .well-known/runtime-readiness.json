@@ -3,8 +3,8 @@
   "status": "verified-build",
   "source": {
     "repository": "huijoohwee/agentic-graph",
-    "revision": "e8d8e9ab02b95697ed8e8682a04f3ba2b507a8fb",
-    "tree": "8893490e6d7f2140a0ed596941a3ca0d7826de73"
+    "revision": "d3a6a3bbc17e626fa37b33029ebb9fb1a655b1ac",
+    "tree": "cece0767ff67b0a1a85d63fa43c304468cfe48d8"
   },
   "agenticCanvasOs": {
     "repository": "huijoohwee/agentic-os",
@@ -13,11 +13,11 @@
   "catalogRevision": "e0ef770860905830157e64c455f0a342084b6d25",
   "artifact": {
     "algorithm": "sha256",
-    "digest": "a616822a8f0045f06091d950a2c7d617d9ab4c26af0100f0d225bd8a0b6bed03"
+    "digest": "685f1338216f3736223bdbca58e2de33d9f6d4527f6118c6a304ee56abac193b"
   },
   "immutableManifest": {
     "algorithm": "sha256",
-    "digest": "2861e65d098812a481de6752583130328825249e4088e47dcd910ce81977089c"
+    "digest": "3e420d21c420b521cc1a3e666a96a15863b03541f784ab3b95a65ef6f44e7242"
   },
   "mirror": {
     "repository": "huijoohwee/huijoohwee"
