@@ -1,0 +1,1 @@
+import{j as e}from"./react-BhUDf-ol.js";import{I as o}from"./settings-mcp-core-DTCM8tay.js";import{U as r}from"./focusRing-KMJu4-Tg.js";function s(t){return e.jsx("button",{type:"button",...t,className:["min-h-11 sm:min-h-8 rounded border px-2 py-1 text-xs disabled:opacity-50",o.panel.border,o.button.hoverBg,r,t.className].filter(Boolean).join(" ")})}export{s as D};

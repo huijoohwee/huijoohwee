@@ -1,0 +1,1 @@
+import{r as e}from"./react-BhUDf-ol.js";import{as as s,at as n,au as u}from"./settings-mcp-core-DTCM8tay.js";function m(t,a){const[r,c]=e.useState(()=>{try{const o=s();return n(o,t,a)}catch{return a}});return e.useEffect(()=>{try{const o=s();u(o,t,r)}catch{}},[t,r]),[r,c]}export{m as u};
