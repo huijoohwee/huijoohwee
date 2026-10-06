@@ -1,9 +1,11 @@
 ;(() => {
-  const sourceRevision = "ebd4bc5e92cd283c04196ab77d024366a4f45ac3"
+  const sourceRevision = "f164650ab92abf7a591d1188b62dd529f8ec2967"
   ;(function installLearningOfflineOwner(owner, sourceRevision) {
   const scope = new URL(owner.registration.scope), prefix = 'kg-python-learning-v1-' + encodeURIComponent(scope.pathname) + '-', meta = prefix + 'state';
   const pointerUrl = new URL('__learning_state__', scope).href, manifestKey = new URL('__learning_manifest__', scope).href;
   const sha = /^[0-9a-f]{64}$/, revisionPattern = /^[0-9a-f]{40}$/;
+  const publicPath = value => typeof value === 'string' && /^[A-Za-z][A-Za-z0-9_-]*(?:\/[A-Za-z0-9._-]+)+\.(?:json|txt)$/.test(value)
+    && !value.split('/').some(part => part === '.' || part === '..') && !/^(?:assets|api)\//.test(value);
   const failure = message => { throw new Error(message) };
   const digest = async bytes => Array.from(new Uint8Array(await owner.crypto.subtle.digest('SHA-256', bytes)), byte => byte.toString(16).padStart(2, '0')).join('');
   const limited = async (response, limit) => {
@@ -29,14 +31,17 @@
   const validateManifest = value => {
     if (!value || value.schema !== 'python-learning-offline/v1' || !revisionPattern.test(value.revision) || !Array.isArray(value.files)
       || value.files.length < 2 || value.files.length > 4096) failure('Invalid offline manifest.');
-    const seen = new Set(); let total = 0;
+    const publicAssets = value.publicAssets ?? [];
+    if (!Array.isArray(publicAssets) || publicAssets.length > 40 || publicAssets.some(path => !publicPath(path)) || new Set(publicAssets).size !== publicAssets.length) failure('Invalid offline public membership.');
+    const seen = new Set(); let total = 0, publicBytes = 0;
     for (const file of value.files) {
-      if (!file || typeof file.path !== 'string' || !(file.path === 'index.html' || file.path.startsWith('assets/' + value.revision + '/'))
+      if (!file || typeof file.path !== 'string' || !(file.path === 'index.html' || file.path.startsWith('assets/' + value.revision + '/') || publicAssets.includes(file.path))
         || /[?#%\\\s]/.test(file.path) || file.path.split('/').some(part => part === '..' || !part)
         || !Number.isSafeInteger(file.bytes) || file.bytes < 1 || file.bytes > 16 * 1024 * 1024 || !sha.test(file.sha256) || seen.has(file.path)) failure('Invalid offline member.');
-      total += file.bytes; seen.add(file.path)
+      total += file.bytes; seen.add(file.path);
+      if (publicAssets.includes(file.path)) { publicBytes += file.bytes; if (file.bytes > 499999 || publicBytes > 2000000) failure('Offline public assets exceed their byte budget.') }
     };
-    if (!seen.has('index.html') || total !== value.bytes || total > 96 * 1024 * 1024) failure('Invalid offline closure or byte budget.');
+    if (!seen.has('index.html') || publicAssets.some(path => !seen.has(path)) || total !== value.bytes || total > 96 * 1024 * 1024) failure('Invalid offline closure or byte budget.');
     return value
   };
   const readManifest = async version => {
@@ -109,18 +114,36 @@
     if (url.origin !== scope.origin || !url.pathname.startsWith(scope.pathname)) return null;
     const learningRoute = url.searchParams.has('python-learning-offline'), studioRoute = url.searchParams.has('studio-offline');
     const navigation = request.mode === 'navigate' && (learningRoute || studioRoute);
-    if (!navigation && !url.pathname.startsWith(scope.pathname + 'assets/')) return null;
+    const relativePath = url.pathname.slice(scope.pathname.length), publicRequest = publicPath(relativePath);
+    if (!navigation && !url.pathname.startsWith(scope.pathname + 'assets/') && !publicRequest) return null;
     let state;
     try { state = await readState() } catch (error) { if (!navigation) return null; return new Response(String(error.message), { status: 503 }) };
     try {
+      const installedManifests = new Map();
+      if (publicRequest) {
+        let declared = false;
+        for (const candidate of [state.active, state.previous]) {
+          if (!candidate) continue;
+          try {
+            const installed = await readManifest(candidate); installedManifests.set(candidate.cache, installed);
+            if ((installed.manifest.publicAssets || []).includes(relativePath)) declared = true
+          } catch { /* An unverified manifest cannot claim ownership of a public request. */ }
+        };
+        if (!declared) return null
+      };
       if (navigation && learningRoute && studioRoute) failure('Choose one offline workspace route.');
       const routeKey = studioRoute ? 'studio-offline' : 'python-learning-offline';
-      const requested = navigation ? url.searchParams.get(routeKey) : url.pathname.slice(scope.pathname.length).split('/')[1];
+      const referrer = request.referrer ? new URL(request.referrer) : null;
+      const referenceRevision = referrer?.origin === scope.origin && referrer.pathname.startsWith(scope.pathname)
+        ? referrer.searchParams.get('studio-offline') || referrer.searchParams.get('python-learning-offline') : null;
+      const requested = navigation ? url.searchParams.get(routeKey) : publicRequest
+        ? url.searchParams.get('revision') || referenceRevision || sourceRevision : relativePath.split('/')[1];
       const version = [state.active, state.previous].find(item => item?.revision === requested);
-      if (!version) { if (navigation) failure('This offline version is not installed. Reconnect and install it from the relevant workspace pane.'); return null };
+      if (!version) { if (navigation || publicRequest && url.searchParams.has('revision') && state.active) failure('This offline version is not installed. Reconnect and install it from the relevant workspace pane.'); return null };
       if (navigation) await verify(version);
-      const { cache, manifest } = await readManifest(version);
-      const file = manifest.files.find(item => item.path === (navigation ? 'index.html' : url.pathname.slice(scope.pathname.length)));
+      const { cache, manifest } = installedManifests.get(version.cache) || await readManifest(version);
+      const file = manifest.files.find(item => item.path === (navigation ? 'index.html' : relativePath));
+      if (publicRequest && !(manifest.publicAssets || []).includes(relativePath)) return null;
       if (!file) { if (navigation) failure('Offline shell is missing.'); return null };
       return await checkedMember(cache, file)
     } catch (error) {

@@ -6,7 +6,7 @@ Use this skill when: Inspect agentic-graph health, MCP, WebMCP, A2A, OpenAPI, co
 
 - Vdeoxpln id: `agentic-graph-agent-ready`
 - Contract version: `agentic-graph-vdeoxpln/v0.1`
-- Semantic key: `kgvx_efb5095f`
+- Semantic key: `kgvx_e71daec8`
 - Scope: `read-only-published-and-browser-local`
 - Mutation boundary: `read-only`
 
@@ -38,6 +38,14 @@ Published tools:
 - inspect_agent_surface
 
 Browser-local tools:
+- evidence_arrival_evaluate
+- evidence_export
+- evidence_inspect
+- evidence_notice_triage
+- evidence_replay
+- evidence_route_benchmark
+- evidence_source
+- evidence_volume_project
 - inspect_local_2d_zoom_viewport
 - inspect_local_3d_camera_pose
 - inspect_local_3d_layout_positions

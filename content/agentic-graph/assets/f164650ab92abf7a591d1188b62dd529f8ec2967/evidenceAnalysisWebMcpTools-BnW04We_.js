@@ -1,0 +1,1 @@
+import{H as n}from"./settings-vdeoxplnMcpApiDocs-CDvz55WR.js";import{executeEvidence as c}from"./executeEvidence-mKt393OP.js";import"./monaco-Dbk8U5RX.js";function a(){return Object.fromEntries(n.map(({operation:e,name:i,webName:o,invocation:m,...r})=>[i,()=>({...r,name:o,execute:t=>c(e,t)})]))}export{a as buildEvidenceAnalysisWebMcpToolBuilders};
