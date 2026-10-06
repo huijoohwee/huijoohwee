@@ -1,0 +1,1 @@
+import{n}from"./settings-mcp-core-CQz0mEUJ.js";const r=new Map;function a(s){const e=n(s);r.set(e,(r.get(e)||0)+1);let t=!1;return()=>{if(t)return;t=!0;const o=(r.get(e)||1)-1;o>0?r.set(e,o):r.delete(e)}}function f(s){if(!s)return!1;const e=n(s);for(const t of r.keys())if(e===t||e.startsWith(`${t}/`)||t.startsWith(`${e}/`))return!0;return!1}export{a as b,f as i};
