@@ -1,0 +1,2 @@
+import{eu as o}from"./settings-mcp-core-dcXg75Iw.js";const c=(r,t)=>{const e=o(t);return r.flatMap((n,s)=>{const a=o(n.markdownDocumentName);return!e||a===e?[{entry:n,index:s}]:[]})},i=r=>String(r||"").replace(/["\r\n]+/g," ").replace(/\s+/g," ").trim(),u=r=>r.length?["gitGraph",...r.map((t,e)=>{const n=i(t.label)||`Version ${e+1}`;return`  commit id:"version_${e+1}" tag:"${n}"`})].join(`
+`):"",l=r=>{const t=/^version_(\d+)$/.exec(String(r||"").trim());if(!t)return-1;const e=Number(t[1]);return Number.isSafeInteger(e)&&e>0?e-1:-1};export{u as b,l as r,c as s};
