@@ -8,6 +8,9 @@ export function calculateArtifactDigest(mirrorRoot, projection) {
   mirrorRoot = fs.realpathSync(mirrorRoot)
   const contentRoot = path.resolve(mirrorRoot, projection.contentRoot)
   const rootFiles = new Set(projection.rootFiles)
+  const contentRuntimeDirectories = [...new Set(projection.contentRuntimeDirectories || ['assets'])]
+  const isRuntimeContentPath = relativePath => contentRuntimeDirectories.some(directory =>
+    relativePath === directory || relativePath.startsWith(`${directory}/`))
   const entries = []
   const deadline = performance.now() + 30000
   let visited = 0
@@ -27,9 +30,10 @@ export function calculateArtifactDigest(mirrorRoot, projection) {
     } } finally { opened.closeSync() }
   }
   walk(contentRoot, contentRoot,
-    relativePath => relativePath.startsWith('assets/') || rootFiles.has(relativePath)
+    relativePath => isRuntimeContentPath(relativePath) || rootFiles.has(relativePath)
       || /^workbox-[A-Za-z0-9_-]+\.js$/.test(relativePath),
-    relativePath => relativePath === 'assets' || relativePath.startsWith('assets/'))
+    relativePath => contentRuntimeDirectories.some(directory =>
+      relativePath === directory || relativePath.startsWith(`${directory}/`)))
   for (const relativePath of projection.additionalContentFiles || []) {
     const absolutePath = path.resolve(contentRoot, relativePath)
     if (!fs.lstatSync(absolutePath).isFile()) {

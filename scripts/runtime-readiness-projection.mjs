@@ -1,6 +1,7 @@
 const freezeProjection = projection => Object.freeze({
   ...projection,
   rootFiles: Object.freeze([...projection.rootFiles]),
+  contentRuntimeDirectories: Object.freeze([...(projection.contentRuntimeDirectories || ['assets'])]),
   footprintPaths: Object.freeze([...projection.footprintPaths]),
   additionalContentFiles: Object.freeze([...(projection.additionalContentFiles || [])]),
   mirrorArtifactRoots: Object.freeze([...(projection.mirrorArtifactRoots || [])]),
@@ -28,6 +29,7 @@ export const runtimeReadinessProjections = Object.freeze([
     ],
     markerSchema: 'agenticgraph-production-runtime-readiness/v2',
     sourceRepository: 'huijoohwee/knowgrph',
+    contentRuntimeDirectories: ['assets'],
     rootFiles: [
       'favicon.svg',
       'index.html',
@@ -58,6 +60,7 @@ export const runtimeReadinessProjections = Object.freeze([
     ],
     markerSchema: 'agentic-os-production-runtime-readiness/v2',
     sourceRepository: 'huijoohwee/agentic-graph',
+    contentRuntimeDirectories: ['assets', 'observability'],
     // Consumer contract for the source-owned pages-mirror-sync.mjs artifact seal:
     // scripts/xr-v2/production-publish-contract.mjs selects these runtime bytes;
     // pages-mirror-legacy-cleanup.mjs includes every canonical migrated image.
