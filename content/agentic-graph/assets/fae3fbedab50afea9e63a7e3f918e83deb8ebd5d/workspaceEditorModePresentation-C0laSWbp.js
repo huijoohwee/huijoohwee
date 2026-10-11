@@ -1,0 +1,1 @@
+import{aI as a}from"./settings-mcp-core-4sZC7Zkr.js";const t={table:a.tableViewLabel,multiDimTable:a.titleDefault,kanban:a.kanbanViewLabel,calendar:"Calendar View"};function n(e){return t[e]}export{n as g};
