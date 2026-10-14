@@ -1,0 +1,1 @@
+const t=new Set;let e="agent";function a(){return e}function i(n){return t.add(n),()=>t.delete(n)}function s(n){const o=n==="human"?"human":"agent";if(o===e)return e;e=o;for(const r of[...t])r();return e}export{s as a,a as r,i as s};

@@ -1,0 +1,1 @@
+import{e as n}from"./toolbarActionControlRuntime-CTO3sUoa.js";import{T as t}from"./settings-vdeoxplnMcpApiDocs-CeIW4Bz9.js";function T(c,r=n){const o=c(t.controlLocalToolbarAction);return{[t.controlLocalToolbarAction]:()=>({...o,name:o.webName,execute:async e=>r(e||{})})}}export{T as buildToolbarActionWebMcpToolBuilders};
