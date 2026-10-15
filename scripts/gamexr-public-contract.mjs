@@ -59,10 +59,17 @@ export const GAME_XR_HEADER_CONTRACT = Object.freeze([
     '/gamexr/.well-known/*',
     '/gamexr/schemas/*',
     '/gamexr/icons/*',
+    '/gamexr/huhou',
+    '/gamexr/huhou/',
+    '/gamexr/huhou/index.html',
   ].map(selector => Object.freeze({
     selector,
     entries: Object.freeze([`cache-control: ${GAME_XR_MUTABLE_CACHE_CONTROL}`]),
   })),
+  Object.freeze({
+    selector: '/gamexr/huhou/assets/*',
+    entries: Object.freeze([`cache-control: ${GAME_XR_IMMUTABLE_CACHE_CONTROL}`]),
+  }),
   Object.freeze({
     selector: '/gamexr/assets/*',
     entries: Object.freeze([`cache-control: ${GAME_XR_IMMUTABLE_CACHE_CONTROL}`]),

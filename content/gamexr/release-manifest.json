@@ -4,14 +4,14 @@
   "version": "0.1.0",
   "basePath": "/gamexr/",
   "candidateStatus": "source-bound-clean",
-  "sourceRevision": "74bd6c6d28b5aeaa275edd2f149ec4618bcc86f3",
+  "sourceRevision": "1cd734cc72738e69e2f4a44dcc9541946d91aa39",
   "source": {
     "versionControl": "git",
     "head": "resolved",
     "worktree": "clean",
     "statusDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "artifactDigest": "87b6df08eec652398145a2759042faab415106bc4e109b5e980865dccab2f4fa",
+  "artifactDigest": "34ed07bbf1a597717c6d1651638cc6cc0bbde6970546135b33b760a99d112bad",
   "defaultScene": "schemas/default-scene.json",
   "sceneSchema": "schemas/gamexr.scene.schema.json",
   "spatialInputSchema": "schemas/apple-spatial-input.schema.json",
@@ -22,6 +22,11 @@
   },
   "deploymentAuthorized": false,
   "artifacts": [
+    {
+      "path": ".DS_Store",
+      "bytes": 6148,
+      "sha256": "06850be46fa9a2e3f9f513333283fd7c29af02a145af9f2f0fb57827ae91a704"
+    },
     {
       "path": ".well-known/runtime-readiness.json",
       "bytes": 2108,
@@ -98,6 +103,36 @@
       "sha256": "a155256cbbe87519412dd641b9b4fc2fe9518676fba477b42c376b0be72ad3d7"
     },
     {
+      "path": "huhou/assets/character-sheet.jpg",
+      "bytes": 195928,
+      "sha256": "1b31dd95dd3b31fcaa97bfc59427834c76adb2b4a66a6495adcaa83159fb9894"
+    },
+    {
+      "path": "huhou/assets/hero.jpg",
+      "bytes": 178038,
+      "sha256": "4d8730267f44b7409f4f16672ba42c0c16df3ad9cc3b0c109f58f24380273903"
+    },
+    {
+      "path": "huhou/assets/huhou.css",
+      "bytes": 12402,
+      "sha256": "40141a94f82047ffff717616ba8c89886992ebf582efd32ca0af01503df95fed"
+    },
+    {
+      "path": "huhou/assets/huhou.js",
+      "bytes": 874,
+      "sha256": "72deb921469d2571257c53d58425f57ea5813c7d4ba94dc565d301aa593b0b8a"
+    },
+    {
+      "path": "huhou/assets/logo.jpg",
+      "bytes": 159728,
+      "sha256": "fe22ed925c149aeaa773608effcfee295f92fbe64d35531ce7ac617c32faa4a2"
+    },
+    {
+      "path": "huhou/index.html",
+      "bytes": 5548,
+      "sha256": "73c5e0c5f67536c72b246bc6049a1cb4413d45fc5d98d4e747286de2761213c8"
+    },
+    {
       "path": "icons/gamexr.svg",
       "bytes": 886,
       "sha256": "23eeceaad838265f9098dd471c767ef1b7f4ff7761c5c6d32079bd1649f3a632"
@@ -119,8 +154,8 @@
     },
     {
       "path": "precache-manifest.json",
-      "bytes": 4386,
-      "sha256": "e99d9a779c12f59d4e17f443e774aa367016b885760ebd991e6c3b974980502d"
+      "bytes": 5477,
+      "sha256": "9530a62917b558fd0a3d96e3b3f549282d900a64f217ed03ab38776833ec0da5"
     },
     {
       "path": "schemas/apple-spatial-input.schema.json",
@@ -139,8 +174,8 @@
     },
     {
       "path": "sw.js",
-      "bytes": 13782,
-      "sha256": "af7c1f0742b811377aad5ca86be1b539ae1fb7539c074361033fd8f4d05a45cc"
+      "bytes": 13935,
+      "sha256": "dd48672be651902676ae760543d50f88361d993864447cde363bcb0ccc7cb3a2"
     }
   ]
 }
