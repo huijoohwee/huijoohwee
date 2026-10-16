@@ -15,7 +15,11 @@ export const CLOUDFLARE_ROUTES_MAX_RULE_CHARACTERS = 100
 
 export const GAME_XR_REDIRECT_RULES = Object.freeze([
   Object.freeze({ source: '/gamexr', destination: '/gamexr/', status: 301 }),
+  Object.freeze({ source: '/gamexr/huhou', destination: '/gamexr/games/huhou/', status: 301 }),
+  Object.freeze({ source: '/gamexr/huhou/', destination: '/gamexr/games/huhou/', status: 301 }),
   Object.freeze({ source: '/gamexr/*', destination: '/content/gamexr/:splat', status: 200 }),
+  Object.freeze({ source: '/content/gamexr/huhou', destination: '/gamexr/games/huhou/', status: 301 }),
+  Object.freeze({ source: '/content/gamexr/huhou/', destination: '/gamexr/games/huhou/', status: 301 }),
   Object.freeze({ source: '/content/gamexr', destination: '/gamexr', status: 301 }),
   Object.freeze({ source: '/content/gamexr/', destination: '/gamexr/', status: 301 }),
   Object.freeze({ source: '/content/gamexr/*', destination: '/gamexr/:splat', status: 301 }),
@@ -59,10 +63,17 @@ export const GAME_XR_HEADER_CONTRACT = Object.freeze([
     '/gamexr/.well-known/*',
     '/gamexr/schemas/*',
     '/gamexr/icons/*',
+    '/gamexr/games/huhou',
+    '/gamexr/games/huhou/',
+    '/gamexr/games/huhou/index.html',
   ].map(selector => Object.freeze({
     selector,
     entries: Object.freeze([`cache-control: ${GAME_XR_MUTABLE_CACHE_CONTROL}`]),
   })),
+  Object.freeze({
+    selector: '/gamexr/games/huhou/assets/*',
+    entries: Object.freeze([`cache-control: ${GAME_XR_IMMUTABLE_CACHE_CONTROL}`]),
+  }),
   Object.freeze({
     selector: '/gamexr/assets/*',
     entries: Object.freeze([`cache-control: ${GAME_XR_IMMUTABLE_CACHE_CONTROL}`]),

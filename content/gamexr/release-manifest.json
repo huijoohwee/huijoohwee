@@ -4,14 +4,14 @@
   "version": "0.1.0",
   "basePath": "/gamexr/",
   "candidateStatus": "source-bound-clean",
-  "sourceRevision": "74bd6c6d28b5aeaa275edd2f149ec4618bcc86f3",
+  "sourceRevision": "e0e668779cb12d412c7004386d6b1dc3a33b39af",
   "source": {
     "versionControl": "git",
     "head": "resolved",
     "worktree": "clean",
     "statusDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "artifactDigest": "87b6df08eec652398145a2759042faab415106bc4e109b5e980865dccab2f4fa",
+  "artifactDigest": "682a8614e285c26d4fa365b81f159a9ecf5eefa3670d9e051c84f505f4b60538",
   "defaultScene": "schemas/default-scene.json",
   "sceneSchema": "schemas/gamexr.scene.schema.json",
   "spatialInputSchema": "schemas/apple-spatial-input.schema.json",
@@ -98,6 +98,36 @@
       "sha256": "a155256cbbe87519412dd641b9b4fc2fe9518676fba477b42c376b0be72ad3d7"
     },
     {
+      "path": "games/huhou/assets/character-sheet.jpg",
+      "bytes": 195928,
+      "sha256": "1b31dd95dd3b31fcaa97bfc59427834c76adb2b4a66a6495adcaa83159fb9894"
+    },
+    {
+      "path": "games/huhou/assets/hero.jpg",
+      "bytes": 178038,
+      "sha256": "4d8730267f44b7409f4f16672ba42c0c16df3ad9cc3b0c109f58f24380273903"
+    },
+    {
+      "path": "games/huhou/assets/huhou.css",
+      "bytes": 12402,
+      "sha256": "40141a94f82047ffff717616ba8c89886992ebf582efd32ca0af01503df95fed"
+    },
+    {
+      "path": "games/huhou/assets/huhou.js",
+      "bytes": 874,
+      "sha256": "72deb921469d2571257c53d58425f57ea5813c7d4ba94dc565d301aa593b0b8a"
+    },
+    {
+      "path": "games/huhou/assets/logo.jpg",
+      "bytes": 159728,
+      "sha256": "fe22ed925c149aeaa773608effcfee295f92fbe64d35531ce7ac617c32faa4a2"
+    },
+    {
+      "path": "games/huhou/index.html",
+      "bytes": 5548,
+      "sha256": "73c5e0c5f67536c72b246bc6049a1cb4413d45fc5d98d4e747286de2761213c8"
+    },
+    {
       "path": "icons/gamexr.svg",
       "bytes": 886,
       "sha256": "23eeceaad838265f9098dd471c767ef1b7f4ff7761c5c6d32079bd1649f3a632"
@@ -119,8 +149,8 @@
     },
     {
       "path": "precache-manifest.json",
-      "bytes": 4386,
-      "sha256": "e99d9a779c12f59d4e17f443e774aa367016b885760ebd991e6c3b974980502d"
+      "bytes": 5513,
+      "sha256": "83eb6eb3a50ae30d032851229d67fa414dbdd66ba2c4123bcf529e7123b99069"
     },
     {
       "path": "schemas/apple-spatial-input.schema.json",
@@ -139,8 +169,8 @@
     },
     {
       "path": "sw.js",
-      "bytes": 13782,
-      "sha256": "af7c1f0742b811377aad5ca86be1b539ae1fb7539c074361033fd8f4d05a45cc"
+      "bytes": 14016,
+      "sha256": "70381507975571f53cc3b571a36b8f513583388ec8dfc0fa7e79afad3d1b647c"
     }
   ]
 }

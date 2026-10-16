@@ -2,7 +2,7 @@ const CACHE_PREFIX = 'gamexr-shell-'
 const PRECACHE_MANIFEST_PATH = './precache-manifest.json'
 const CACHE_READY_MARKER_PATH = './.gamexr-cache-ready'
 const CACHE_ACTIVE_MARKER_PATH = './.gamexr-cache-active'
-const PRECACHE_BUILD_DIGEST = '761e4f9d2d444543a2535f6c13255f1077f688cf4cfeb338070f9e18ac39d4a2'
+const PRECACHE_BUILD_DIGEST = 'a2e234281b3cacccd1c9c75135096b8b84b129eb67ee4b77f2bcf51b18b721cd'
 
 let precacheManifestPromise
 let activeCacheNamePromise
@@ -352,6 +352,14 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
+  const scopePath = new URL(self.registration.scope).pathname
+  if (
+    request.mode === 'navigate'
+    && (
+      url.pathname.startsWith(`${scopePath}games/`)
+      || url.pathname.startsWith(`${scopePath}huhou/`)
+    )
+  ) return
 
   event.respondWith(request.mode === 'navigate'
     ? networkFirstNavigation(request)

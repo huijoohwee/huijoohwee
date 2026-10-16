@@ -2,7 +2,7 @@
   "schema": "gamexr-precache/v1",
   "basePath": "/gamexr/",
   "serviceWorkerRegistrationEnabled": true,
-  "buildDigest": "761e4f9d2d444543a2535f6c13255f1077f688cf4cfeb338070f9e18ac39d4a2",
+  "buildDigest": "a2e234281b3cacccd1c9c75135096b8b84b129eb67ee4b77f2bcf51b18b721cd",
   "entries": [
     {
       "path": ".well-known/runtime-readiness.json",
@@ -93,6 +93,42 @@
       "bytes": 354511,
       "sha256": "a155256cbbe87519412dd641b9b4fc2fe9518676fba477b42c376b0be72ad3d7",
       "kind": "script"
+    },
+    {
+      "path": "games/huhou/assets/character-sheet.jpg",
+      "bytes": 195928,
+      "sha256": "1b31dd95dd3b31fcaa97bfc59427834c76adb2b4a66a6495adcaa83159fb9894",
+      "kind": "image"
+    },
+    {
+      "path": "games/huhou/assets/hero.jpg",
+      "bytes": 178038,
+      "sha256": "4d8730267f44b7409f4f16672ba42c0c16df3ad9cc3b0c109f58f24380273903",
+      "kind": "image"
+    },
+    {
+      "path": "games/huhou/assets/huhou.css",
+      "bytes": 12402,
+      "sha256": "40141a94f82047ffff717616ba8c89886992ebf582efd32ca0af01503df95fed",
+      "kind": "style"
+    },
+    {
+      "path": "games/huhou/assets/huhou.js",
+      "bytes": 874,
+      "sha256": "72deb921469d2571257c53d58425f57ea5813c7d4ba94dc565d301aa593b0b8a",
+      "kind": "script"
+    },
+    {
+      "path": "games/huhou/assets/logo.jpg",
+      "bytes": 159728,
+      "sha256": "fe22ed925c149aeaa773608effcfee295f92fbe64d35531ce7ac617c32faa4a2",
+      "kind": "image"
+    },
+    {
+      "path": "games/huhou/index.html",
+      "bytes": 5548,
+      "sha256": "73c5e0c5f67536c72b246bc6049a1cb4413d45fc5d98d4e747286de2761213c8",
+      "kind": "document"
     },
     {
       "path": "icons/gamexr.svg",
