@@ -1,0 +1,66 @@
+{
+  "schema": "agentic-graph/base-demo-artifact/v1",
+  "route": "/agentic-base/",
+  "sourceRepository": "https://github.com/huijoohwee/agentic-base",
+  "sourceRevision": "ce6d913453bf3f3d8d8db32e611ae38e5bc183b2",
+  "artifactDigest": "9e68264e0780ad692d9718b44374fe0c35817b36241fb4e0fa462cba54732418",
+  "totalBytes": 62842,
+  "files": [
+    {
+      "path": "app.mjs",
+      "sha256": "9d2a52fa921d04a4211965e3b8a3137ab8a1487f2469043c4b989a9a9f39c940"
+    },
+    {
+      "path": "index.html",
+      "sha256": "52aff17a5079ac315be75be72c12ab85adb23c35af0dea0fc54446840fca8a42"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "939721e4008a40f28594af8bdd7c122e388d9b22534ef1e6799dc771023691a1"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "sha256": "2a4bbdfeb8eed306e4917d62f177674528646125a9d072166e92688bf15ef7fe"
+    },
+    {
+      "path": "src/adapters/indexeddb.mjs",
+      "sha256": "d84f86a3d55f55d04b9c6152ba634f555d06bc90f31442923933d55117dadbd8"
+    },
+    {
+      "path": "src/adapters/memory.mjs",
+      "sha256": "efe8c3a58f27658d012abacaa7a5d1947de473f2171a128e600a912e0fe52d1e"
+    },
+    {
+      "path": "src/engine.mjs",
+      "sha256": "3ce1aa698f4f548d6fe7547143e3ae2c5bcbb5b38b38c249bdff915dc2248a31"
+    },
+    {
+      "path": "src/errors.mjs",
+      "sha256": "2d12b2ea93767082635699234d522b7d4a9a90f111e65b771ada4fe4525fbd67"
+    },
+    {
+      "path": "src/index.mjs",
+      "sha256": "18cf43a20d6e79303931bc4931a39c43d04496a2358a0f99ff4c2b340c0b68fe"
+    },
+    {
+      "path": "src/projectors.mjs",
+      "sha256": "f406668c2b3499f75e40acf09e854c79b437937dc8aef77f82d5d41ca3272a92"
+    },
+    {
+      "path": "src/query.mjs",
+      "sha256": "faa5a3d4c975d02731263424d68ac3f608dd87fd81b40bc6988bf25f7203bda8"
+    },
+    {
+      "path": "src/schema.mjs",
+      "sha256": "3d18258fc9e8ab80e633179520c509af3f6c5b6407d1fd6e46665dfe9ab0844e"
+    },
+    {
+      "path": "styles.css",
+      "sha256": "c00f7eab67cf3b9d62c21a56a82f633bafe991e959453cbe3ab583581c047dc1"
+    },
+    {
+      "path": "sw.js",
+      "sha256": "c7ed6f9edcf4e886b70cc3da2c4d06dc3cf4ba93e2fbb6c2f2460e86243146a0"
+    }
+  ]
+}

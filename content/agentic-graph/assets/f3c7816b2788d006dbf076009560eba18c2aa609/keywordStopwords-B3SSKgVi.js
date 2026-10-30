@@ -1,0 +1,1 @@
+const t=new Set([..."a an the this that these those".split(" "),..."i me my we us our you your he him his she her it its they them their".split(" "),..."is are am was were be been being".split(" "),..."and or but if then as of for from to in on at by with about into".split(" ")]);export{t as K};

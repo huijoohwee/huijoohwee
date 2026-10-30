@@ -143,7 +143,6 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 /agentic-graph/*
-  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; script-src-attr 'none'; connect-src 'self' https: wss:; frame-src 'self' https: data: blob:; worker-src 'self' blob:; manifest-src 'self'
 
 # BEGIN agentic-graph generated agent-ready headers
 /.well-known/acp.json
@@ -272,6 +271,15 @@
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
 /content/agentic-graph/sw.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/content/agentic-base/index.html
+  Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
+  X-Content-Type-Options: nosniff
+/content/agentic-base/manifest.webmanifest
+  Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
+  X-Content-Type-Options: nosniff
+/content/agentic-base/sw.js
+  Cache-Control: no-store, no-cache, no-transform, must-revalidate, max-age=0
+  X-Content-Type-Options: nosniff
 /content/agentic-graph/agentic-graph-chat-stream-sw.js
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
 /agentic-graph/agentic-graph-chat-stream-sw.js
@@ -308,3 +316,8 @@
 /
   Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </agentic-graph/.well-known/openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json;version=3.1", </agentic-graph/llms.txt>; rel="service-doc"; type="text/plain", </auth.md>; rel="service-doc"; type="text/markdown", </agentic-graph/health>; rel="status"; type="application/health+json", </agentic-graph/.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json", </.well-known/agent-card.json>; rel="describedby"; type="application/json"
 # END agentic-graph generated homepage discovery headers
+
+# BEGIN agentic-graph generated production CSP headers
+/agentic-graph/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self' https://*.vercel.app https://*.joohwee.pages.dev; form-action 'none'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; script-src-attr 'none'; connect-src 'self' https: wss:; frame-src 'self' https: data: blob:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests; block-all-mixed-content
+# END agentic-graph generated production CSP headers
