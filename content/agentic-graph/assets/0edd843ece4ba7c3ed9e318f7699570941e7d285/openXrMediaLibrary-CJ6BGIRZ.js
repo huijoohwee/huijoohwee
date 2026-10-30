@@ -1,1 +1,0 @@
-import{u as t,e4 as a}from"./settings-mcp-core-CXiH05iN.js";import{e as o}from"./utils-C9st5zxc.js";function r(){const e=t.getState();e.setFloatingPanelView("media"),e.setFloatingPanelOpen(!0),o({tab:"media",open:!0}),a("xr-3d")}export{r as o};

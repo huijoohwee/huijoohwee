@@ -1,1 +1,0 @@
-import{aK as a}from"./settings-mcp-core-CXiH05iN.js";const t={table:a.tableViewLabel,multiDimTable:a.titleDefault,kanban:a.kanbanViewLabel,calendar:"Calendar View"};a.geospatialViewLabel;function i(e){return t[e]}export{i as g};
