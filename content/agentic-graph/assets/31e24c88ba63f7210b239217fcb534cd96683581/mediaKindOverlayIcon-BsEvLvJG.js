@@ -1,0 +1,1 @@
+import{l as i,i as a,m as o,V as n}from"./ui-C0zBhpBs.js";function s(r){const e=String(r||"").trim().toLowerCase();return e==="audio"?i:e==="image"||e==="svg"?a:e==="iframe"||e==="webpage"||e==="tweet"?o:n}export{s as r};

@@ -1,0 +1,1 @@
+function a(t){return{type:"button",className:"agentic-toolbar-item","data-icon-only":"","aria-label":t}}function n(t="default"){return t==="compact"?"agentic-icon agentic-icon-compact":"agentic-icon"}export{n as a,a as g};

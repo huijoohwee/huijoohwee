@@ -1,1 +1,0 @@
-import{r as e}from"./react-BhUDf-ol.js";import{ar as s,ap as n,as as u}from"./settings-mcp-core-BIMqMiJf.js";function m(t,a){const[r,c]=e.useState(()=>{try{const o=s();return n(o,t,a)}catch{return a}});return e.useEffect(()=>{try{const o=s();u(o,t,r)}catch{}},[t,r]),[r,c]}export{m as u};
