@@ -23,9 +23,9 @@
     "host-qualified-repository-pin",
     "integration-method:squash",
     "protected-integration:pull-request",
-    "quarantine-worktree-cleanup-opt-in",
     "read-only-repository-observation",
     "read-only-review-observation",
+    "remove-clean-worktree-cleanup-opt-in",
     "required-check-policy:strict",
     "shallow-observation-default"
   ],
@@ -38,8 +38,8 @@
     "remoteBranch": "retain",
     "remoteTrackingRef": "retain",
     "unreachableObjects": "retain",
-    "worktreeProjection": "quarantine",
-    "worktreeRegistration": "quarantine"
+    "worktreeProjection": "remove-clean",
+    "worktreeRegistration": "remove-clean"
   },
-  "profileDigest": "17340bf57918371c04c425d687e990b9052077f56b332b2e9eef337f3ea0018e"
+  "profileDigest": "e506ecf255d1e9dd58ca1185a8618c12eb0dd17b7711272b8597f94d84ad9ee2"
 }
