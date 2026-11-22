@@ -1,0 +1,109 @@
+{
+  "schema": "agentic-graph/sheets-route/v1",
+  "sourceRepository": "https://github.com/huijoohwee/agentic-sheets",
+  "sourceRevision": "825811a563cea22fc0898fe842f596bf156af850",
+  "artifactDigest": "f83a48bc73adbb7b8eb1580f08fcc557afcb8536d4c37b0e411e5f1fce423235",
+  "sourceDigest": "1f0489c65dfa0db98ec9874a58659762d16df55da8784764b4d98d2e163dda3c",
+  "files": [
+    {
+      "path": "app.mjs",
+      "bytes": 20218,
+      "sha256": "bd3b3943b69b2d7f7cc236082d3f8617a7a2ff90e41ba3a457ba0161038bdde9"
+    },
+    {
+      "path": "collection-layout.js",
+      "bytes": 1642,
+      "sha256": "c86df211a3415cdc386f9340741c70cf460413f27388ba5c1a064119daa30abb"
+    },
+    {
+      "path": "core.mjs",
+      "bytes": 6749,
+      "sha256": "f0a799f5ba82577db48bacd04812d61cf0a0da2a765a8b85dc1df9b073802221"
+    },
+    {
+      "path": "floating-panel.js",
+      "bytes": 6880,
+      "sha256": "831f4ba466f40645fc58927798cba5ff579974945cdddee7e57c47382b0fefad"
+    },
+    {
+      "path": "floating-panel.mjs",
+      "bytes": 5914,
+      "sha256": "8e0f4ac3aab082620b37b3837142aed863e64dde5438f250c49219e77768753d"
+    },
+    {
+      "path": "formula.mjs",
+      "bytes": 8391,
+      "sha256": "7af9d237c3495198e1e985761914286d1667e8a03defea51fa9262ecda959c85"
+    },
+    {
+      "path": "icons.json",
+      "bytes": 14205,
+      "sha256": "c01cbadd47648837bb8514f6f88f20ad72ee36e1e53aaabff950be2e6214a0b6"
+    },
+    {
+      "path": "index.html",
+      "bytes": 5605,
+      "sha256": "34c5c28f29c4372ab44bc389d0723d0521bed1609077280baaf46eba785ea232"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1067,
+      "sha256": "939721e4008a40f28594af8bdd7c122e388d9b22534ef1e6799dc771023691a1"
+    },
+    {
+      "path": "LICENSE.design-system",
+      "bytes": 7876,
+      "sha256": "9767f2bdb1c376fa5651e1623d885863b7d561253fe1662ddd5924aa51bb4fe6"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 166,
+      "sha256": "4da241b529f773f98a3105ec1f9cf445eaae4ab0a28648d2c6e5f1d1148299e4"
+    },
+    {
+      "path": "panel-section.js",
+      "bytes": 5239,
+      "sha256": "f7264ad1497fa41e38da6eee3d9ffe520e6ef44c83df3f1782877baf40d44cf7"
+    },
+    {
+      "path": "schema.mjs",
+      "bytes": 7932,
+      "sha256": "8e2605a7e175480f60533ee1d6d00f5d2d287d91e67913b67e5305a16cd6c3f7"
+    },
+    {
+      "path": "shared-ui-profile.css",
+      "bytes": 25314,
+      "sha256": "ba95bb2de809f84c35aec409c89f305442b536741cbd0987d43ff8ecc6bf9e17"
+    },
+    {
+      "path": "skills-commands.js",
+      "bytes": 8275,
+      "sha256": "fc8e1ff5fb689fe338c6bd8ae999b911591a178115be0fadf98fc9d0938f9ef0"
+    },
+    {
+      "path": "storage.mjs",
+      "bytes": 3767,
+      "sha256": "a009c0053ffd034e9678a106fa5d6541ea12a6b20f9d3f0021a6ff81ee39df11"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 31640,
+      "sha256": "f4f5f1f4cb5ca68aebf9e9472c30fc544ffbf412c9ebeeb2b14ffd1a930d3319"
+    },
+    {
+      "path": "sw.js",
+      "bytes": 1436,
+      "sha256": "f1c77990dd8e48a5fc5a86bd86dbd69557afd1e959ef0088497599c036321069"
+    },
+    {
+      "path": "toolbar-icons.js",
+      "bytes": 11636,
+      "sha256": "f304f25cdef7e054bdd9c62ca7e9f79959363c4e210c9cede0640609183a4471"
+    },
+    {
+      "path": "artifact-manifest.json",
+      "bytes": 8469,
+      "sha256": "601a2dcd6be3e0dc3a55e92b50bc6e5ba128d9f39e0a1e06c2d3630c937796fe"
+    }
+  ]
+}
