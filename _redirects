@@ -57,6 +57,13 @@
 /agentic-graph/imports/* /content/agentic-graph/imports/:splat 200
 /content/agentic-graph /agentic-graph 301
 /content/agentic-graph/ /agentic-graph/ 301
+/agentic-sheets /agentic-sheets/ 308
+/agentic-sheets/ /content/agentic-sheets/ 200
+/agentic-sheets/index.html /content/agentic-sheets/ 200
+/content/agentic-sheets /agentic-sheets/ 308
+/content/agentic-sheets/ /agentic-sheets/ 308
+/agentic-sheets/* /content/agentic-sheets/:splat 200
+/content/agentic-sheets/* /agentic-sheets/:splat 308
 /agentic-base /agentic-base/ 301
 /agentic-base/ /content/agentic-base/index.html 200
 /agentic-base/* /content/agentic-base/:splat 200
@@ -80,7 +87,7 @@
 /agentic-graph/agentic-graph-service-worker-revision.js /content/agentic-graph/agentic-graph-service-worker-revision.js 200
 /agentic-graph/apple-touch-icon.png /content/agentic-graph/apple-touch-icon.png 200
 /agentic-graph/favicon.svg /content/agentic-graph/favicon.svg 200
-/agentic-graph/learning-offline-manifest-31e24c88ba63f7210b239217fcb534cd96683581.json /content/agentic-graph/learning-offline-manifest-31e24c88ba63f7210b239217fcb534cd96683581.json 200
+/agentic-graph/learning-offline-manifest-284dc39bf5aa2571c6f30c33d6a321c59fb91ee7.json /content/agentic-graph/learning-offline-manifest-284dc39bf5aa2571c6f30c33d6a321c59fb91ee7.json 200
 /agentic-graph/llms.txt /content/agentic-graph/llms.txt 200
 /agentic-graph/manifest.webmanifest /content/agentic-graph/manifest.webmanifest 200
 /agentic-graph/observability-workspace.json /content/agentic-graph/observability-workspace.json 200
@@ -88,6 +95,7 @@
 /agentic-graph/sw.js /content/agentic-graph/sw.js 200
 /agentic-graph/travel-commerce-demo-offline.html /content/agentic-graph/travel-commerce-demo-offline.html 200
 /agentic-graph/travel-commerce-demo-sw.js /content/agentic-graph/travel-commerce-demo-sw.js 200
+/agentic-graph/typography.css /content/agentic-graph/typography.css 200
 /agentic-graph/unicorn-investors-top-3-3d.json /content/agentic-graph/unicorn-investors-top-3-3d.json 200
 /agentic-graph/ /content/agentic-graph/index.html 200
 /agentic-graph/* /content/agentic-graph/index.html 200

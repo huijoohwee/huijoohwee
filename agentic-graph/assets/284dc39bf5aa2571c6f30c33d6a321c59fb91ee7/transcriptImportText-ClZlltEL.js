@@ -1,0 +1,2 @@
+const n=r=>String(r||"").replace(/\s+/g," ").trim(),o="Transcript status";function a(r){return`${o}: ${n(r)||"Transcript unavailable"}`}function u(r){const s=String(r||"").replace(/\r/g,"");for(const t of s.split(`
+`)){const i=n(t),e=/^Transcript status\s*:\s*(.+)$/i.exec(i);if(e!=null&&e[1])return n(e[1])}return""}function c(r){const t=n(r).replace(/^#+\s*/,"");return!t||t==="---"||/^kg[A-Z]/.test(t)||/^https?:\/\//i.test(t)||/^YouTube Video Source$/i.test(t)||/^(Video ID|Source)\s*:/i.test(t)?!0:!!u(t)}export{a as f,c as i,u as r};

@@ -196,50 +196,11 @@
 /.well-known/mcp/apps/agentic-graph-agent-ready.html
   Content-Type: text/html;profile=mcp-app; charset=utf-8
   Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-agent-ready.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-ai-showrunner.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-ai-voice-studio.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-application-composition.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-chat-to-canvas.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-commerce-readiness.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-html-video-renderer.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-mcp-local.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-memory-layer.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-research-visual.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-source-files.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-strybldr.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-video-agent.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
-/.well-known/agent-skills/agentic-graph-visual-annotation-engine.md
-  Content-Type: text/markdown; charset=utf-8
-  Cache-Control: public, max-age=3600
 /.well-known/http-message-signatures-directory
   Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+/.well-known/agent-skills/*.md
+  Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=3600
 # END agentic-graph generated agent-ready headers
 
@@ -253,6 +214,26 @@
 /agentic-graph/.well-known/runtime-readiness.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+/content/agentic-sheets/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'
+  Cache-Control: no-cache, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+/content/agentic-sheets/sw.js
+  Service-Worker-Allowed: /agentic-sheets/
+/content/agentic-sheets/LICENSE
+  Content-Type: text/plain; charset=utf-8
+/content/agentic-sheets/LICENSE.design-system
+  Content-Type: text/plain; charset=utf-8
+/agentic-sheets/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'
+  Cache-Control: no-cache, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+/agentic-sheets/sw.js
+  Service-Worker-Allowed: /agentic-sheets/
+/agentic-sheets/LICENSE
+  Content-Type: text/plain; charset=utf-8
+/agentic-sheets/LICENSE.design-system
+  Content-Type: text/plain; charset=utf-8
 /pitch/agentic-drone-as-a-service/*
   Cache-Control: public, max-age=0, must-revalidate
   X-Content-Type-Options: nosniff

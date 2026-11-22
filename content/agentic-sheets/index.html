@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
+  <title>Agentic Sheets — local workbook</title>
+  <link rel="stylesheet" href="./shared-ui-profile.css">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body data-agentic-typography class="agentic-form-controls">
+  <main id="workbook" class="agentic-dashboard-layout" aria-labelledby="workbook-title">
+    <header id="workbook-header" class="agentic-dashboard-header" aria-labelledby="workbook-title">
+      <h1 id="workbook-title" data-dashboard-primitive="heading">Agentic Sheets</h1>
+      <output id="connection" class="agentic-dashboard-observation" aria-live="polite">Preparing offline access…</output>
+    </header>
+    <nav id="workbook-actions" class="agentic-toolbar" data-scroll aria-label="Workbook actions">
+      <button id="sample" class="agentic-toolbar-item" type="button">Create sample</button>
+      <button id="blank" class="agentic-toolbar-item" type="button">Create blank</button>
+      <button id="mark-worksheet" class="agentic-toolbar-item" type="button" aria-controls="grid-section" aria-pressed="false">Mark worksheet</button>
+      <button id="download" class="agentic-toolbar-item" type="button" disabled>Download snapshot</button>
+      <button id="reload" class="agentic-toolbar-item" type="button">Discard draft &amp; reload</button>
+    </nav>
+    <output id="status" data-dashboard-primitive="text" role="status" aria-live="polite">Loading accepted workbook…</output>
+    <strong id="error" role="alert" hidden></strong>
+    <form id="editor-form" aria-labelledby="editor-title">
+      <fieldset id="editor-fieldset" class="agentic-dashboard-card" disabled>
+        <legend id="editor-title" class="agentic-panel-section-title">Cell editor</legend>
+        <label class="agentic-fact-label" for="cell-input"><output id="address">A1</output> · <span id="cell-kind">Empty cell</span></label>
+        <input id="cell-input" class="agentic-form-control" name="cell" aria-label="Cell value or formula" aria-describedby="syntax draft" autocomplete="off" spellcheck="false">
+        <button id="open-functions" class="agentic-form-control" type="button" aria-haspopup="dialog" aria-controls="workbook-panel" aria-expanded="false">Functions</button>
+        <section id="cell-actions" class="agentic-dashboard-actions" aria-label="Cell actions">
+          <button id="commit" class="agentic-form-control" type="submit">Commit cell</button>
+          <button id="cancel" class="agentic-form-control" type="button">Cancel edit</button>
+        </section>
+        <div id="formula-references" class="agentic-reference-list" hidden><span>References</span></div>
+        <div id="function-help" data-dashboard-primitive="text" hidden></div>
+        <output id="draft" class="agentic-dashboard-observation">Accepted value</output>
+        <p id="syntax" data-dashboard-primitive="text">Numbers, text, TRUE/FALSE, or formulas with + − × ÷ and cell references. Start literal text with an apostrophe. Double-click a cell, tap the selected cell, or press F2 to edit in place. Enter saves. Escape cancels.</p>
+      </fieldset>
+    </form>
+    <section id="grid-section" class="agentic-table-frame" tabindex="0" aria-label="Scrollable workbook grid">
+      <table role="grid" data-agentic-table-fit="container" aria-label="Worksheet 1">
+        <thead id="column-head"></thead><tbody id="grid-body"></tbody>
+      </table>
+    </section>
+    <section id="snapshots" class="agentic-dashboard-card" aria-labelledby="snapshot-title">
+      <h2 id="snapshot-title" class="agentic-panel-section-header">Restore a snapshot</h2>
+      <p data-dashboard-primitive="text">Download the accepted workbook before replacing it. Restore keeps its identity. An imported clone replaces the active workbook with a new identity.</p>
+      <label for="snapshot-file">Local JSON snapshot</label>
+      <input id="snapshot-file" class="agentic-form-control" type="file" accept="application/json,.json">
+      <section id="snapshot-actions" class="agentic-dashboard-actions" aria-label="Snapshot actions">
+        <button id="restore" class="agentic-form-control" type="button" disabled>Restore current workbook</button>
+        <button id="clone" class="agentic-form-control" type="button" disabled>Replace with imported clone</button>
+      </section>
+      <output id="import-summary" class="agentic-dashboard-observation">No snapshot selected</output>
+    </section>
+    <footer id="workbook-details" aria-label="Workbook limits and identity">
+      <output id="dimensions"></output>
+      <p data-dashboard-primitive="text">Enter a value in the next row or column to grow the worksheet. Up to 512 populated cells.</p>
+      <output id="identity" class="agentic-dashboard-observation"></output>
+    </footer>
+  </main>
+  <section id="workbook-panel" hidden>
+    <section id="available-functions" data-panel-tab="functions" data-panel-label="Functions" data-panel-icon="Braces">
+      <div class="agentic-panel-tab-layout">
+        <header class="agentic-panel-tab-header"><h2 class="agentic-panel-section-title">Functions</h2></header>
+        <div class="agentic-panel-tab-body"><ul id="function-list" class="agentic-collection" data-layout="list"></ul></div>
+      </div>
+    </section>
+    <section id="invocation-catalog"></section>
+  </section>
+</body>
+</html>

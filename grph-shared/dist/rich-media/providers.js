@@ -15,6 +15,11 @@ export function buildRichMediaPreviewSemanticKey(parts) {
 }
 export const DEFAULT_REMOTE_VIDEO_FRAME_ROUTE_PATH = '/__video_frame';
 export const DEFAULT_REMOTE_VIDEO_FRAME_FORMAT = 'png';
+export const REMOTE_VIDEO_FRAME_FORMAT_LABELS = { png: 'PNG', jpg: 'JPEG', webp: 'WebP' };
+export const VIDEO_FRAME_FILE_RE = /^frame-([a-f0-9]+)-t(\d+(?:_\d+)?)\.(png|jpg|webp)$/i;
+export function remoteVideoFrameMimeType(format) {
+    return format === 'jpg' ? 'image/jpeg' : 'image/' + format;
+}
 export function normalizeRemoteVideoFrameSeconds(value) {
     const raw = typeof value === 'number' ? value : Number(String(value ?? '').trim());
     if (!Number.isFinite(raw))
@@ -27,7 +32,9 @@ function formatRemoteVideoFrameSecondsForFileName(value) {
 }
 export function normalizeRemoteVideoFrameFormat(value) {
     const raw = String(value || '').trim().toLowerCase();
-    return raw === 'jpg' || raw === 'jpeg' ? 'jpg' : 'png';
+    if (raw === 'jpeg' || raw === 'jpg')
+        return 'jpg';
+    return raw === 'webp' ? 'webp' : DEFAULT_REMOTE_VIDEO_FRAME_FORMAT;
 }
 export function buildRemoteVideoFrameSemanticKey(args) {
     const sourceUrl = String(args.sourceUrl || '').trim();
