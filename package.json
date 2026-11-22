@@ -13,9 +13,11 @@
     "doctor": "agentic-os doctor",
     "lane": "agentic-os start",
     "land": "agentic-os land",
+    "successor": "agentic-os successor",
     "status": "agentic-os status",
     "reap": "agentic-os reap",
     "finish": "agentic-os finish",
+    "release:common": "agentic-os release-common",
     "sync:canonical": "agentic-os canonical-sync",
     "check:source": "npm run check:adlc && npm run runtime:test && npm run runtime:check",
     "check:plan": "node node_modules/agentic-os/bin/agentic-os-validation.mjs plan",
@@ -29,6 +31,6 @@
     "yjs": "^13.6.30"
   },
   "devDependencies": {
-    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/c99988c7bcd7ef3c8c6a68428af4750e5b7a09cd"
+    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/7af085977dd7db90a32ea3bf8aa87f20f6092d31"
   }
 }
