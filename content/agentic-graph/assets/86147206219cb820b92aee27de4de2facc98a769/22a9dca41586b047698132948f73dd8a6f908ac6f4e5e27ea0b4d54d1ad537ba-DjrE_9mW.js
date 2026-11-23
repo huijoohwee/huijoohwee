@@ -1,0 +1,3 @@
+const e=`/crawler-agent @url:https://example.com @reference-policy #canvas
+
+Crawl the referenced website with the native headless browser automation runtime. Reuse the Import URL pipeline, download supported website files, persist the crawl report and Markdown pipe-table artifacts, and project the result into Canvas. Keep the input prompt unchanged; create separate connected Rich Media Panel outputs for the report and multi-dimensional table. Report processed pages, successful pages, errors, and stored files. Stop before paid-provider, authenticated, or external mutation actions unless each required approval and capability is available.`;export{e as default};
