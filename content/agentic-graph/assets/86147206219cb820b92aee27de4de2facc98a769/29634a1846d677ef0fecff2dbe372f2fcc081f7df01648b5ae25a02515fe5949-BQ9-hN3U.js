@@ -1,0 +1,3 @@
+const e=`/sme-care-agent @source.frontmatter @source.body @local-harness @cost-log @runtime-proof #frontmatter #harness #token-economics #runtime-ready #approval-gate
+
+Assess the SME's material exposures using only the active request and workspace sources. If sector, operating footprint, assets, current coverage, or decision horizon is missing and would change the assessment, ask one focused clarification before concluding. Separate observed exposure, inferred exposure, existing protection, gaps, unknowns, evidence confidence, and urgency. Return prioritized review questions and provider-neutral risk actions; do not invent quotes, policies, providers, limits, or user facts.`;export{e as default};

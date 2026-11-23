@@ -1,0 +1,3 @@
+const e=`/investment-research-agent @source.frontmatter @source.body @cost-log @runtime-proof #frontmatter #token-economics #runtime-ready #approval-gate
+
+Analyze the investment question using the active workspace sources. Separate claims, evidence, assumptions, contradictions, open questions, freshness, and verification steps; mark unsupported material claims as unknown. Produce a concise research brief, evidence ledger, contradiction ledger, risk/catalyst view, and review-first graph candidates. This is research support, not financial advice. Stop before paid-provider, graph mutation, persistence, transaction, Prod, or Cloudflare actions unless each required approval and capability is available.`;export{e as default};
