@@ -22,6 +22,26 @@ function regularFile(filename) {
   return fs.readFileSync(filename);
 }
 
+export function ensureOwnerProjectionDirectory(directory) {
+  const absolute = path.resolve(directory);
+  let stat = fs.lstatSync(absolute, { throwIfNoEntry: false });
+  let created = false;
+  if (!stat) {
+    try {
+      fs.mkdirSync(absolute, { mode: 0o755 });
+      created = true;
+    } catch (error) {
+      if (error.code !== 'EEXIST') throw error;
+    }
+    stat = fs.lstatSync(absolute, { throwIfNoEntry: false });
+  }
+  if (!stat?.isDirectory() || stat.isSymbolicLink()) {
+    if (created) fs.rmdirSync(absolute);
+    throw Error('Owner projection directory must be a regular directory');
+  }
+  return { created, identity: { dev: stat.dev, ino: stat.ino } };
+}
+
 function listFiles(directory, prefix = '') {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
     const relative = path.posix.join(prefix, entry.name);
@@ -113,6 +133,8 @@ export async function publishCommerceMirror({ sourceRoot, sourceSha, outputRoot 
     throw Error('Commerce source must be the clean exact protected main revision');
 
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'commerce-content-publisher-'));
+  let projectionParentState = null;
+  let projectionPublished = false;
   const generated = path.join(temporary, 'generated');
   try {
     execFileSync(process.execPath, ['scripts/local-first-release/mirror.mjs', 'create', generated], {
@@ -135,9 +157,13 @@ export async function publishCommerceMirror({ sourceRoot, sourceSha, outputRoot 
     if (fs.lstatSync(parent).isSymbolicLink()) throw Error('Publisher content parent may not be a symlink');
     const projectionPath = path.join(ROOT, OWNER_PROJECTIONS);
     const projectionParent = path.dirname(projectionPath);
-    const projectionParentStat = fs.lstatSync(projectionParent);
-    if (!projectionParentStat.isDirectory() || projectionParentStat.isSymbolicLink())
-      throw Error('Owner projection directory must be a regular directory');
+    projectionParentState = ensureOwnerProjectionDirectory(projectionParent);
+    const assertProjectionParent = () => {
+      const current = fs.lstatSync(projectionParent);
+      if (!current.isDirectory() || current.isSymbolicLink()
+        || current.dev !== projectionParentState.identity.dev || current.ino !== projectionParentState.identity.ino)
+        throw Error('Owner projection directory changed during publication');
+    };
     if (fs.existsSync(projectionPath)) regularFile(projectionPath);
     const stage = fs.mkdtempSync(path.join(parent, '.commerce-content-stage-'));
     const backup = path.join(parent, `.agentic-commerce-os-backup-${process.pid}`);
@@ -150,12 +176,16 @@ export async function publishCommerceMirror({ sourceRoot, sourceSha, outputRoot 
       if (fs.existsSync(target)) verifyCommerceMirror(target);
       if (fs.existsSync(backup) || fs.existsSync(projectionBackup) || fs.existsSync(projectionStage))
         throw Error('Publisher recovery path already exists');
+      assertProjectionParent();
       fs.writeFileSync(projectionStage, projectionBytes, { flag: 'wx', mode: 0o644 });
       if (fs.existsSync(target)) fs.renameSync(target, backup);
+      assertProjectionParent();
       if (fs.existsSync(projectionPath)) fs.renameSync(projectionPath, projectionBackup);
       try {
         fs.renameSync(stage, target);
+        assertProjectionParent();
         fs.renameSync(projectionStage, projectionPath);
+        assertProjectionParent();
         verifyCommerceMirror(target);
         const actualProjections = JSON.parse(regularFile(projectionPath).toString('utf8'));
         if (JSON.stringify(actualProjections) !== JSON.stringify(projections))
@@ -169,12 +199,25 @@ export async function publishCommerceMirror({ sourceRoot, sourceSha, outputRoot 
       }
       fs.rmSync(backup, { recursive: true, force: true });
       fs.rmSync(projectionBackup, { force: true });
+      projectionPublished = true;
     } finally {
       fs.rmSync(stage, { recursive: true, force: true });
       fs.rmSync(projectionStage, { force: true });
     }
     return { ...generatedManifest, ownerProjections: Object.keys(projections).length,
       ownerProjectionDigest: hash(projectionBytes) };
+  } catch (error) {
+    if (projectionParentState?.created && !projectionPublished) {
+      try {
+        const current = fs.lstatSync(path.join(ROOT, '.agentic-os'), { throwIfNoEntry: false });
+        if (current?.isDirectory() && !current.isSymbolicLink()
+          && current.dev === projectionParentState.identity.dev && current.ino === projectionParentState.identity.ino
+          && fs.readdirSync(path.join(ROOT, '.agentic-os')).length === 0) {
+          fs.rmdirSync(path.join(ROOT, '.agentic-os'));
+        }
+      } catch {}
+    }
+    throw error;
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
