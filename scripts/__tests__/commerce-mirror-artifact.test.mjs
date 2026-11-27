@@ -91,6 +91,10 @@ test('mirror publisher is isolated from Cloudflare deployment and names only the
   assert.doesNotMatch(workflow, /gh run view .*--jq --arg/u);
   assert.ok(workflow.includes('gh pr checks "$pr_url" --required'));
   assert.match(workflow, /statuses\/\$head_sha/u);
+  assert.match(workflow, /commits\/\$head_sha\/statuses/u);
+  assert.match(workflow, /status_id=\$\(SOURCE_SHA="\$head_sha" gh api --method POST/u);
+  assert.match(workflow, /env\.STATUS_ID/u);
+  assert.doesNotMatch(workflow, /\.sha != env\.SOURCE_SHA/u);
   assert.match(workflow, /context="Runtime Readiness Gate"/u);
   assert.match(workflow, /test "\$pr_head" = "\$head_sha"/u);
   assert.doesNotMatch(workflow, /wrangler deploy|CLOUDFLARE_API_TOKEN|cloudflare\/pages-action/u);

@@ -140,9 +140,12 @@ jobs:
           pr_head=$(gh pr view "$pr_url" --json headRefOid --jq .headRefOid)
           test "$pr_head" = "$head_sha"
           gate_url=$(gh run view "$run_id" --json url --jq .url)
-          SOURCE_SHA="$head_sha" gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$head_sha" \
+          status_id=$(SOURCE_SHA="$head_sha" gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$head_sha" \
             -f state=success -f context="Runtime Readiness Gate" \
             -f description="Exact Runtime Readiness Gate $run_id passed" -f target_url="$gate_url" \
-            --jq 'if .sha != env.SOURCE_SHA or .state != "success" or .context != "Runtime Readiness Gate" then error("Exact Runtime Readiness Gate status missing") else . end'
+            --jq 'if .state != "success" or .context != "Runtime Readiness Gate" then error("Exact Runtime Readiness Gate status missing") else .id end')
+          test -n "$status_id"
+          STATUS_ID="$status_id" RUN_ID="$run_id" gh api "repos/$GITHUB_REPOSITORY/commits/$head_sha/statuses" \
+            --jq 'if any(.[]; (.id | tostring) == env.STATUS_ID and .state == "success" and .context == "Runtime Readiness Gate" and .description == ("Exact Runtime Readiness Gate " + env.RUN_ID)) then "Exact Runtime Readiness Gate status verified" else error("Exact Runtime Readiness Gate status missing from requested commit") end'
           gh pr checks "$pr_url" --required
           echo "Commerce mirror PR: $pr_url" >> "$GITHUB_STEP_SUMMARY"
