@@ -92,8 +92,13 @@ jobs:
           test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA"
           branch="commerce-mirror-$SOURCE_SHA-${GITHUB_SHA:0:12}"
           git add -- content/agentic-commerce-os .agentic-os/owner-projections.json
-          git diff --cached --name-only | grep -qx content/agentic-commerce-os/commerce-content-mirror.json
-          test -z "$(git diff --cached --name-only | grep -v -E '^(content/agentic-commerce-os/|\.agentic-os/owner-projections\.json$)')"
+          changed_paths=$(git diff --cached --name-only)
+          if test -z "$changed_paths"; then
+            echo "Exact Commerce content mirror is already present on current main; no PR is needed." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          printf '%s\n' "$changed_paths" | grep -qx content/agentic-commerce-os/commerce-content-mirror.json
+          test -z "$(printf '%s\n' "$changed_paths" | grep -v -E '^(content/agentic-commerce-os/|\.agentic-os/owner-projections\.json$)')"
           expected_tree=$(git write-tree)
           remote_oid=$(git ls-remote origin "refs/heads/$branch" | cut -f1)
           if test -n "$remote_oid"; then
