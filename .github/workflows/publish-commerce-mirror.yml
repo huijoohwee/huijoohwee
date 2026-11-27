@@ -83,26 +83,39 @@ jobs:
         run: |
           set -euo pipefail
           branch="commerce-mirror-$SOURCE_SHA"
-          if git ls-remote --exit-code origin "refs/heads/$branch" >/dev/null 2>&1; then
-            echo "Publisher branch already exists: $branch" >&2
-            exit 1
-          fi
           git add -- content/agentic-commerce-os
           git diff --cached --name-only | grep -qx content/agentic-commerce-os/commerce-content-mirror.json
           test -z "$(git diff --cached --name-only | grep -v '^content/agentic-commerce-os/')"
-          git switch -c "$branch"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Publish Commerce content mirror for ${SOURCE_SHA:0:12}"
-          git push origin "HEAD:refs/heads/$branch"
-          cat > "$RUNNER_TEMP/commerce-mirror-pr.md" <<EOF
-          ## Commerce content mirror
-
-          Generated from protected Commerce main at `$SOURCE_SHA`.
-
-          The manifest binds the source tree and every mirrored file hash. This PR only updates `content/agentic-commerce-os`; it does not deploy or change a Cloudflare route. Commerce's existing Local-first Production Release remains the Worker release and rollback owner.
-          EOF
-          pr_url=$(gh pr create --base main --head "$branch" --title "Publish Commerce content mirror ${SOURCE_SHA:0:12}" --body-file "$RUNNER_TEMP/commerce-mirror-pr.md")
+          expected_tree=$(git write-tree)
+          remote_oid=$(git ls-remote origin "refs/heads/$branch" | cut -f1)
+          if test -n "$remote_oid"; then
+            git fetch --no-tags origin "refs/heads/$branch"
+            test "$(git rev-parse FETCH_HEAD)" = "$remote_oid"
+            parent_line=$(git rev-list --parents -n 1 "$remote_oid")
+            test "$(wc -w <<< "$parent_line" | tr -d ' ')" = 2
+            base_oid=$(git rev-parse "$remote_oid^1")
+            git merge-base --is-ancestor "$base_oid" origin/main
+            git diff --quiet "$base_oid" "$remote_oid" -- . ':(exclude)content/agentic-commerce-os'
+            git diff --quiet "$remote_oid" "$expected_tree" -- content/agentic-commerce-os
+            git switch --detach "$remote_oid"
+          else
+            git switch -c "$branch"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Publish Commerce content mirror for ${SOURCE_SHA:0:12}"
+            git push origin "HEAD:refs/heads/$branch"
+          fi
+          pr_url=$(gh pr list --base main --head "$branch" --state open --json url,headRefOid --jq 'if length > 1 then error("Multiple mirror PRs for one publisher branch") elif length == 1 then .[0].url else empty end')
+          if test -z "$pr_url"; then
+            {
+              printf '## Commerce content mirror\n\nGenerated from protected Commerce main at `%s`.\n\n' "$SOURCE_SHA"
+              printf 'The manifest binds the source tree and every mirrored file hash. This PR only updates `content/agentic-commerce-os`; it does not deploy or change a Cloudflare route. Commerce’s existing Local-first Production Release remains the Worker release and rollback owner.\n'
+            } > "$RUNNER_TEMP/commerce-mirror-pr.md"
+            pr_url=$(gh pr create --base main --head "$branch" --title "Publish Commerce content mirror ${SOURCE_SHA:0:12}" --body-file "$RUNNER_TEMP/commerce-mirror-pr.md")
+          else
+            pr_head=$(gh pr view "$pr_url" --json headRefOid --jq .headRefOid)
+            test "$pr_head" = "$(git rev-parse HEAD)"
+          fi
           gh workflow run runtime-readiness.yml --ref "$branch"
           run_id=""
           for attempt in $(seq 1 30); do
