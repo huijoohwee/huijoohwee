@@ -87,9 +87,10 @@
 /agentic-graph/agentic-graph-service-worker-revision.js /content/agentic-graph/agentic-graph-service-worker-revision.js 200
 /agentic-graph/apple-touch-icon.png /content/agentic-graph/apple-touch-icon.png 200
 /agentic-graph/favicon.svg /content/agentic-graph/favicon.svg 200
-/agentic-graph/learning-offline-manifest-86147206219cb820b92aee27de4de2facc98a769.json /content/agentic-graph/learning-offline-manifest-86147206219cb820b92aee27de4de2facc98a769.json 200
+/agentic-graph/learning-offline-manifest-e4c760e49576da78a5ced0f7f332f4efc7231e60.json /content/agentic-graph/learning-offline-manifest-e4c760e49576da78a5ced0f7f332f4efc7231e60.json 200
 /agentic-graph/llms.txt /content/agentic-graph/llms.txt 200
 /agentic-graph/manifest.webmanifest /content/agentic-graph/manifest.webmanifest 200
+/agentic-graph/nezha-panorama.png /content/agentic-graph/nezha-panorama.png 200
 /agentic-graph/observability-workspace.json /content/agentic-graph/observability-workspace.json 200
 /agentic-graph/settings-flow.json /content/agentic-graph/settings-flow.json 200
 /agentic-graph/sw.js /content/agentic-graph/sw.js 200
@@ -99,4 +100,12 @@
 /agentic-graph/unicorn-investors-top-3-3d.json /content/agentic-graph/unicorn-investors-top-3-3d.json 200
 /agentic-graph/ /content/agentic-graph/index.html 200
 /agentic-graph/* /content/agentic-graph/index.html 200
+# BEGIN MiaoXYZ generated storefront routes
+/MiaoXYZ /content/MiaoXYZ/index.html 200
+/MiaoXYZ/ /content/MiaoXYZ/index.html 200
+/MiaoXYZ/* /content/MiaoXYZ/:splat 200
+/content/MiaoXYZ /MiaoXYZ 301
+/content/MiaoXYZ/ /MiaoXYZ/ 301
+/content/MiaoXYZ/* /MiaoXYZ/:splat 301
+# END MiaoXYZ generated storefront routes
 # END agentic-graph generated top-level file routes
