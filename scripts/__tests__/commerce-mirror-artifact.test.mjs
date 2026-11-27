@@ -75,6 +75,8 @@ test('mirror owner projections enroll only exact current owner blobs with their 
 test('mirror publisher is isolated from Cloudflare deployment and names only the Commerce asset path', () => {
   const workflow = fs.readFileSync('.github/workflows/publish-commerce-mirror.yml', 'utf8');
   assert.match(workflow, /workflow_dispatch:[\s\S]*source_sha:[\s\S]*required: true/u);
+  assert.ok(workflow.includes('statuses: write'));
+  assert.ok(workflow.includes('branch="commerce-mirror-$SOURCE_SHA-${GITHUB_SHA:0:12}"'));
   assert.match(workflow, /node scripts\/commerce-mirror-artifact\.mjs publish/u);
   assert.match(workflow, /git add -- content\/agentic-commerce-os \.agentic-os\/owner-projections\.json/u);
   assert.match(workflow, /git diff --cached --name-only \| grep -qx content\/agentic-commerce-os\/commerce-content-mirror\.json/u);
@@ -88,6 +90,9 @@ test('mirror publisher is isolated from Cloudflare deployment and names only the
   assert.match(workflow, /--jq '\s*if \.headSha != env\.SOURCE_SHA/u);
   assert.doesNotMatch(workflow, /gh run view .*--jq --arg/u);
   assert.ok(workflow.includes('gh pr checks "$pr_url" --required'));
+  assert.match(workflow, /statuses\/\$head_sha/u);
+  assert.match(workflow, /context="Runtime Readiness Gate"/u);
+  assert.match(workflow, /test "\$pr_head" = "\$head_sha"/u);
   assert.doesNotMatch(workflow, /wrangler deploy|CLOUDFLARE_API_TOKEN|cloudflare\/pages-action/u);
   assert.match(fs.readFileSync('.github/workflows/runtime-readiness.yml', 'utf8'), /workflow_dispatch:/u);
 });

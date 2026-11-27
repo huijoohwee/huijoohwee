@@ -12,6 +12,7 @@ permissions:
   contents: write
   pull-requests: write
   actions: write
+  statuses: write
 
 concurrency:
   group: commerce-content-mirror-publisher
@@ -87,7 +88,9 @@ jobs:
           SOURCE_SHA: ${{ inputs.source_sha }}
         run: |
           set -euo pipefail
-          branch="commerce-mirror-$SOURCE_SHA"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA"
+          branch="commerce-mirror-$SOURCE_SHA-${GITHUB_SHA:0:12}"
           git add -- content/agentic-commerce-os .agentic-os/owner-projections.json
           git diff --cached --name-only | grep -qx content/agentic-commerce-os/commerce-content-mirror.json
           test -z "$(git diff --cached --name-only | grep -v -E '^(content/agentic-commerce-os/|\.agentic-os/owner-projections\.json$)')"
@@ -134,5 +137,12 @@ jobs:
           head_sha=$(git rev-parse HEAD)
           SOURCE_SHA="$head_sha" gh run view "$run_id" --json headSha,conclusion,jobs --jq '
             if .headSha != env.SOURCE_SHA or .conclusion != "success" or ([.jobs[] | select(.name == "Runtime Readiness Gate" and .conclusion == "success")] | length) != 1 then error("Exact Runtime Readiness Gate evidence missing") else . end'
+          pr_head=$(gh pr view "$pr_url" --json headRefOid --jq .headRefOid)
+          test "$pr_head" = "$head_sha"
+          gate_url=$(gh run view "$run_id" --json url --jq .url)
+          SOURCE_SHA="$head_sha" gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$head_sha" \
+            -f state=success -f context="Runtime Readiness Gate" \
+            -f description="Exact Runtime Readiness Gate $run_id passed" -f target_url="$gate_url" \
+            --jq 'if .sha != env.SOURCE_SHA or .state != "success" or .context != "Runtime Readiness Gate" then error("Exact Runtime Readiness Gate status missing") else . end'
           gh pr checks "$pr_url" --required
           echo "Commerce mirror PR: $pr_url" >> "$GITHUB_STEP_SUMMARY"
