@@ -1,0 +1,73 @@
+const CACHE_PREFIX = 'agentic-commerce-local-first-';
+const RELEASE = '__RELEASE__';
+const CACHE = CACHE_PREFIX + RELEASE;
+const SCOPE = new URL(self.registration.scope);
+const FILES = ['', 'favicon.svg', 'workspace.js', 'workspace-navigation.js', 'workspace-pack.route.js', 'workspace-view-styles.js', 'commerce-toolbar.js', 'commerce-shell.css', 'floating-panel.css', 'floating-panel.js', 'skills-commands.css', 'workspace-layout.js', 'commerce-dashboard.js', 'dashboard.js', 'dashboard-columns.js', 'toolbar-icons.js', 'icons.json', 'workspace-singleton.js', 'shopper-demo-detail.js', 'workspace-tour.js', 'workspace-capabilities.js', 'workspace-tools.js', 'workspace-graph.js', 'agentic-base-data-view.js', 'dropdown-menus.js', 'agentic-base-data-view.css', 'graph-data-view.js', 'graph-data-view.css', 'graph-ui-tokens.css', 'commerce-theme.css', 'workspace-shell.css', 'toolbar.css', 'shared-ui-profile.css', 'collection-layout.css', 'services/workspace/service.json', 'services/sme-business-pack/service.json', 'sme-business-pack.js', 'sme-business-pack.css', 'sme-business-pack-core.js', 'sme-decision-contract.js', 'sme-pack-business-plan.js', 'sme-pack-dictionary.js', 'sme-workflow-editor.js', 'key-type-value.js', 'markdown.js', 'markdown-parser.js', 'color.js', 'rich-text.css', 'viewer-surface.js', 'viewer-surface.css', 'panel-section.js', 'panel-section.css', 'hover.js', 'hover-text.js', 'hover.css', 'sme-review-workflow.js', 'app.js', 'offer-simulator.js', 'offer-simulator-view.js', 'planning-workspace.js', 'planning-catalog.js', 'planning-grid.js', 'planning-scenarios.js', 'planning-model.js', 'planning-sources.js', 'source-explorer.js', 'planning-explorer.css', 'formula.mjs', 'schema.mjs', 'drafts.js', 'record-links.js', 'launch.js', 'checkout.js', 'workflow.js', 'style.css'];
+const packPath = 'services/workspace-pack/'
+const PACK_FILES = ['', 'workspace-pack.js', 'workspace-pack.console.js', 'workspace-pack.simulation.js', 'workspace-pack.css',
+  'workspace-layout.js', 'commerce-dashboard.js', 'dashboard.js', 'dashboard-columns.js', 'toolbar-icons.js', 'icons.json', 'commerce-toolbar.js', 'dropdown-menus.js', 'graph-ui-tokens.css', 'shared-ui-profile.css',
+  'markdown.js', 'markdown-parser.js', 'color.js', 'rich-text.css', 'viewer-surface.js', 'viewer-surface.css', 'panel-section.js', 'panel-section.css', 'commerce-theme.css', 'commerce-shell.css', 'floating-panel.css', 'floating-panel.js', 'skills-commands.css', 'collection-layout.css', 'toolbar.css'];
+const LAZY_FILES = ['listing-geo.js', 'agentic-geo-core.mjs', 'graph-gantt-timeline.js', 'graph-gantt-timeline.css', 'housing-comparison.js', 'housing-engine.js', 'housing-sample.js', 'housing-comparison.css', 'sme-workflow-editor.js', 'sme-pack-dictionary.js'];
+const assetUrl = file => new URL(file.startsWith('services/') || file === 'favicon.svg' ? file : file ? `assets/${RELEASE}/${file}` : '', SCOPE);
+const PATHS = new Set(FILES.map(file => assetUrl(file).pathname));
+const LAZY_PATHS = new Set([...LAZY_FILES.map(file => assetUrl(file).pathname),
+  ...PACK_FILES.map(file => new URL(`assets/${RELEASE}/${packPath}${file}`, SCOPE).pathname)]);
+self.addEventListener('install', event => event.waitUntil((async () => {
+  const cache = await caches.open(CACHE);
+  // A failed asset refuses this installation and keeps the previous offline shell.
+  for (const file of FILES) {
+    const url = assetUrl(file);
+    const response = await fetch(new Request(url, { cache: 'reload', credentials: 'omit', signal: AbortSignal.timeout(15000) }));
+    if (!response.ok) throw Error('offline_asset_unavailable');
+    if (file === 'services/sme-business-pack/service.json') {
+      const value = await response.clone().json();
+      if (value.schema !== 'sme-business-pack-service/v1' || value.sourceRevision !== RELEASE || value.persistence !== 'none') {
+        throw Error('offline_service_source_mismatch');
+      }
+    } else if (file.endsWith('service.json')) {
+      const value = await response.clone().json();
+      if (value.schema !== 'commerce.workspace-service/v1' || value.sourceRevision !== RELEASE) throw Error('offline_service_source_mismatch');
+    }
+    await cache.put(url.href, response);
+  }
+  await self.skipWaiting();
+})()));
+self.addEventListener('activate', event => event.waitUntil((async () => {
+  for (const key of await caches.keys()) if (key.startsWith(CACHE_PREFIX) && key !== CACHE) await caches.delete(key);
+  await self.clients.claim();
+})()));
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  if (event.request.mode === 'navigate' && url.pathname === new URL(packPath, SCOPE).pathname) {
+    const app = new URL(SCOPE); app.search = url.search; app.searchParams.set('workspace-pack', '')
+    event.respondWith(Response.redirect(app, 302)); return
+  }
+  if (event.request.method !== 'GET' || url.origin !== SCOPE.origin || !PATHS.has(url.pathname) && !LAZY_PATHS.has(url.pathname)) return;
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE), key = new URL(url.pathname, SCOPE.origin).href;
+    if (event.request.mode === 'navigate') {
+      try {
+        const response = await fetch(event.request);
+        if (response.ok) {
+          if (RELEASE === 'local-unreleased') await cache.put(key, response.clone());
+          return response;
+        }
+        if (response.status < 500 && !(response.status === 403 && self.navigator.onLine === false)) return response;
+      } catch { /* use the verified shell */ }
+    }
+    if (LAZY_PATHS.has(url.pathname)) {
+      try {
+        const response = await fetch(event.request);
+        if (response.ok) { await cache.put(key, response.clone()); return response; }
+        if (response.status < 500 && !(response.status === 403 && self.navigator.onLine === false)) return response;
+      } catch { /* use the lazy module warmed during an earlier visit */ }
+    } else if (RELEASE === 'local-unreleased' && event.request.mode !== 'navigate') {
+      try {
+        const response = await fetch(event.request);
+        if (response.ok) { await cache.put(key, response.clone()); return response; }
+        if (response.status < 500 && !(response.status === 403 && self.navigator.onLine === false)) return response;
+      } catch { /* fall back to the last verified local asset */ }
+    }
+    return await cache.match(key) || fetch(event.request);
+  })());
+});

@@ -1,0 +1,126 @@
+// One browser/agent contract. No model, provider, account or network dependency.
+import { isArchived, validDraft, validLaunchTerms, launchFieldIssues, invalidLaunchFields, LAUNCH_ID_FIELDS,
+  LAUNCH_DESCRIPTION_FIELDS, LAUNCH_VARIABLE_COST_FIELDS, LAUNCH_MONEY_FIELDS as MONEY_FIELDS, LIMITS, MAXIMUM_AMOUNT_MINOR } from './drafts.js';
+export const LAUNCH_CONTINUITY = 'edge-commerce-agent-mvp@0.2.0';
+const TEXT_FIELDS = ['merchantId', 'agentId', 'audience', 'outcome', 'currency'];
+
+/** One normalization path for editor guidance and saving; failed amounts stay incomplete. */
+export function inspectLaunchInput(raw) {
+  const keys = [...TEXT_FIELDS, ...MONEY_FIELDS];
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw))
+    return { terms: null, issues: [{ field: 'launch', message: 'Use the supported launch fields.' }], hasInput: false };
+  const issues = [], terms = Object.fromEntries(keys.map(key => [key, raw[key] === undefined ? ''
+    : typeof raw[key] === 'string' ? raw[key].trim() : raw[key]]));
+  if (Object.keys(raw).some(key => !keys.includes(key))) issues.push({ field: 'launch', message: 'Use only the supported launch fields.' });
+  const hasInput = keys.some(key => typeof terms[key] !== 'string' || terms[key].length > 0);
+  if (!hasInput) return { terms: null, issues, hasInput };
+  if (typeof terms.currency === 'string') terms.currency = terms.currency.toUpperCase();
+  issues.push(...launchFieldIssues(terms).filter(issue => !MONEY_FIELDS.includes(issue.field)));
+  for (const key of MONEY_FIELDS) {
+    try { terms[key] = parseMoney(terms[key], terms.currency); }
+    catch (error) { issues.push({ field: key, message: error.message }); }
+  }
+  for (const issue of launchFieldIssues(terms)) if (!issues.some(existing => existing.field === issue.field)) issues.push(issue);
+  return { terms, issues, hasInput };
+}
+
+export function parseLaunchInput(raw) {
+  const result = inspectLaunchInput(raw);
+  if (result.issues.length) throw Error(result.issues[0].message);
+  return result.terms;
+}
+
+/** Setup is a read-only assessment of values, never evidence of saving or human approval. */
+export function evaluateOfferSetup({ title, launch } = {}) {
+  const fields = invalidLaunchFields(launch), missing = keys => keys.filter(field => fields.includes(field));
+  const describe = missing(LAUNCH_DESCRIPTION_FIELDS);
+  if (typeof title !== 'string' || !title.trim() || title.length > LIMITS.title) describe.unshift('title');
+  if (fields.length === 1 && fields[0] === 'launch') describe.push('launch');
+  const identity = missing(LAUNCH_ID_FIELDS), money = missing(['currency', ...MONEY_FIELDS]);
+  const economics = money.length ? null : calculateLaunchEconomics(launch);
+  if (economics?.constraints.length) money.push('priceMinor');
+  const steps = [['describe', describe], ['identity', identity], ['economics', money]]
+    .map(([id, fields]) => ({ id, complete: !fields.length, fields }));
+  return { status: fields.length || describe.length ? 'draft' : economics.selection,
+    economics, steps, humanReview: 'still-required' };
+}
+
+export function evaluateLaunch(terms) {
+  if (!validLaunchTerms(terms)) throw Error('Complete the merchant, registered agent, buyer, outcome and bounded cost fields.');
+  return calculateLaunchEconomics(terms);
+}
+
+function calculateLaunchEconomics(terms) {
+  const variableCostMinor = LAUNCH_VARIABLE_COST_FIELDS.reduce((total, field) => total + terms[field], 0);
+  const contributionMinor = terms.priceMinor - variableCostMinor;
+  return Object.freeze({ currency: terms.currency, priceMinor: terms.priceMinor, variableCostMinor, contributionMinor,
+    firstSaleNetMinor: contributionMinor - terms.fixedCostMinor,
+    tenSalesNetMinor: contributionMinor * 10 - terms.fixedCostMinor,
+    breakEvenSales: contributionMinor > 0 ? Math.ceil(terms.fixedCostMinor / contributionMinor) : null,
+    estimate: true, demandStatus: 'unvalidated',
+    constraints: Object.freeze(contributionMinor > 0 ? [] : ['non_positive_contribution']),
+    argument: 'Reuse the registered discovery agent, merchant theme and human-confirmed checkout. Provider quotes own live prices.',
+    selection: contributionMinor > 0 ? 'reviewable' : 'revise_costs_or_price' });
+}
+
+function canonical(value) {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) return '[' + value.map(canonical).join(',') + ']';
+  return '{' + Object.keys(value).sort().map(key => JSON.stringify(key) + ':' + canonical(value[key])).join(',') + '}';
+}
+
+async function digest(value) {
+  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(canonical(value)));
+  return [...new Uint8Array(bytes)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+export async function reviewLaunch(draft) {
+  if (isArchived(draft)) throw Error('Restore this listing before reviewing its launch.');
+  if (!validDraft(draft)) {
+    throw Error('Save this offer before reviewing its launch.');
+  }
+  // Snapshot before async hashing: callers cannot mutate the reviewed terms mid-flight.
+  const snapshot = structuredClone(draft), economics = evaluateLaunch(snapshot.launch);
+  if (economics.constraints.length) throw Error('Estimated revenue must exceed per-sale costs before launch review.');
+  return Object.freeze({ draftId: snapshot.id, revision: snapshot.revision, contentDigest: await digest(snapshot),
+    terms: Object.freeze(snapshot.launch), economics,
+    themeManifest: Object.freeze({ merchantId: snapshot.launch.merchantId,
+      catalogScope: Object.freeze([snapshot.launch.agentId]),
+      copy: Object.freeze({ brand: snapshot.title, headline: snapshot.launch.outcome, subhead: snapshot.launch.audience }) }) });
+}
+
+export async function exportLaunchPack(draft, reviewed) {
+  // A review is an exact-content local acknowledgement, never provider or release authority.
+  const current = await reviewLaunch(draft);
+  if (!reviewed || current.draftId !== reviewed.draftId || current.revision !== reviewed.revision
+    || current.contentDigest !== reviewed.contentDigest) throw Error('This offer changed. Review the saved version again.');
+  return Object.freeze({ schema: 'commerce.merchant-launch/v1', continuityId: LAUNCH_CONTINUITY,
+    source: { draftId: current.draftId, revision: current.revision, contentDigest: current.contentDigest },
+    review: { disposition: 'reviewed-local', grantsPublishAuthority: false, grantsPaymentAuthority: false },
+    themeManifest: current.themeManifest, economics: current.economics,
+    checkout: { owner: 'agentic-commerce-os', path: '/s/' + current.terms.merchantId,
+      priceAuthority: 'registered-discovery-provider', settlementAuthority: 'human-confirmation-and-payment-provider' },
+    nextAction: { tool: 'commerce.theme.deploy', arguments: { merchantId: current.terms.merchantId, manifest: current.themeManifest },
+      requires: ['operator-authorization', 'current-authoring-claim', 'active-registered-agent', 'provider-readiness'] },
+    fulfillment: 'Use the authoritative settlement receipt before delivering the agreed outcome.',
+    demandStatus: 'unvalidated' });
+}
+
+export function moneyDigits(currency) {
+  if (typeof currency !== 'string' || !/^[A-Z]{3}$/.test(currency)) throw Error('Use a three-letter currency code.');
+  return new Intl.NumberFormat('en', { style: 'currency', currency }).resolvedOptions().maximumFractionDigits;
+}
+
+export function parseMoney(text, currency) {
+  const digits = moneyDigits(currency);
+  if (typeof text !== 'string' || !/^\d+(?:\.\d+)?$/.test(text)) throw Error('Enter costs as non-negative amounts, without symbols or separators.');
+  const [whole, fraction = ''] = text.split('.');
+  if (fraction.length > digits || whole.length > 10) throw Error('Amount precision or size exceeds the currency limit.');
+  const value = Number(whole) * 10 ** digits + Number(fraction.padEnd(digits, '0'));
+  if (!Number.isSafeInteger(value) || value > MAXIMUM_AMOUNT_MINOR) throw Error('Amount exceeds the supported limit.');
+  return value;
+}
+
+export function formatMoney(value, currency) {
+  return new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(value / 10 ** moneyDigits(currency));
+}
