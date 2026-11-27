@@ -80,6 +80,8 @@ test('mirror publisher is isolated from Cloudflare deployment and names only the
   assert.match(workflow, /owner-projections\.json/u);
   assert.match(workflow, /gh pr create/u);
   assert.match(workflow, /gh workflow run runtime-readiness\.yml/u);
+  assert.match(workflow, /playwright install chromium/u);
+  assert.doesNotMatch(workflow, /playwright install --with-deps/u);
   assert.ok(workflow.includes('SOURCE_SHA="$head_sha" gh run view'));
   assert.match(workflow, /--jq '\s*if \.headSha != env\.SOURCE_SHA/u);
   assert.doesNotMatch(workflow, /gh run view .*--jq --arg/u);
