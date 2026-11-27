@@ -80,6 +80,10 @@ test('mirror publisher is isolated from Cloudflare deployment and names only the
   assert.match(workflow, /owner-projections\.json/u);
   assert.match(workflow, /gh pr create/u);
   assert.match(workflow, /gh workflow run runtime-readiness\.yml/u);
+  assert.ok(workflow.includes('SOURCE_SHA="$head_sha" gh run view'));
+  assert.match(workflow, /--jq '\s*if \.headSha != env\.SOURCE_SHA/u);
+  assert.doesNotMatch(workflow, /gh run view .*--jq --arg/u);
+  assert.ok(workflow.includes('gh pr checks "$pr_url" --required'));
   assert.doesNotMatch(workflow, /wrangler deploy|CLOUDFLARE_API_TOKEN|cloudflare\/pages-action/u);
   assert.match(fs.readFileSync('.github/workflows/runtime-readiness.yml', 'utf8'), /workflow_dispatch:/u);
 });

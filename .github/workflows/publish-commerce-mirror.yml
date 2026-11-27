@@ -133,7 +133,7 @@ jobs:
           test -n "$run_id"
           gh run watch "$run_id" --exit-status
           head_sha=$(git rev-parse HEAD)
-          gh run view "$run_id" --json headSha,conclusion,jobs --jq --arg sha "$head_sha" '
-            if .headSha != $sha or .conclusion != "success" or ([.jobs[] | select(.name == "Runtime Readiness Gate" and .conclusion == "success")] | length) != 1 then error("Exact Runtime Readiness Gate evidence missing") else . end'
+          SOURCE_SHA="$head_sha" gh run view "$run_id" --json headSha,conclusion,jobs --jq '
+            if .headSha != env.SOURCE_SHA or .conclusion != "success" or ([.jobs[] | select(.name == "Runtime Readiness Gate" and .conclusion == "success")] | length) != 1 then error("Exact Runtime Readiness Gate evidence missing") else . end'
           gh pr checks "$pr_url" --required
           echo "Commerce mirror PR: $pr_url" >> "$GITHUB_STEP_SUMMARY"
