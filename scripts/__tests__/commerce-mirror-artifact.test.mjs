@@ -4,11 +4,27 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { ownerProjectionsForMirror, verifyCommerceMirror } from '../commerce-mirror-artifact.mjs';
+import { ensureOwnerProjectionDirectory, ownerProjectionsForMirror, verifyCommerceMirror } from '../commerce-mirror-artifact.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
 const gitBlob = bytes => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 const manifestName = 'commerce-content-mirror.json';
+
+test('owner projection parent is created only when absent and rejects aliases', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'commerce-owner-parent-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const parent = path.join(root, '.agentic-os');
+
+  assert.equal(ensureOwnerProjectionDirectory(parent).created, true);
+  assert.equal(ensureOwnerProjectionDirectory(parent).created, false);
+  fs.rmdirSync(parent);
+  fs.writeFileSync(parent, 'occupied');
+  assert.throws(() => ensureOwnerProjectionDirectory(parent), /regular directory/u);
+  fs.rmSync(parent);
+  fs.mkdirSync(path.join(root, 'real-owner-data'));
+  fs.symlinkSync(path.join(root, 'real-owner-data'), parent);
+  assert.throws(() => ensureOwnerProjectionDirectory(parent), /regular directory/u);
+});
 
 function writeMirror(root) {
   const files = ['index.html', 'workspace.js'].sort().map((name, index) => {
