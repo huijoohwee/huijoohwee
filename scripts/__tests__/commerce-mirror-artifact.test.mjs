@@ -79,7 +79,7 @@ test('mirror publisher is isolated from Cloudflare deployment and names only the
   assert.ok(workflow.includes('branch="commerce-mirror-$SOURCE_SHA-${GITHUB_SHA:0:12}"'));
   assert.match(workflow, /node scripts\/commerce-mirror-artifact\.mjs publish/u);
   assert.match(workflow, /git add -- content\/agentic-commerce-os \.agentic-os\/owner-projections\.json/u);
-  assert.match(workflow, /git diff --cached --name-only \| grep -qx content\/agentic-commerce-os\/commerce-content-mirror\.json/u);
+  assert.match(workflow, /changed_paths=\$\(git diff --cached --name-only\)[\s\S]*if test -z "\$changed_paths"; then[\s\S]*no PR is needed[\s\S]*exit 0[\s\S]*printf '%s\\n' "\$changed_paths" \| grep -qx content\/agentic-commerce-os\/commerce-content-mirror\.json/u);
   assert.doesNotMatch(workflow, /git diff --cached --name-only \| grep -qx \.agentic-os\/owner-projections\.json/u);
   assert.match(workflow, /owner-projections\.json/u);
   assert.match(workflow, /gh pr create/u);
