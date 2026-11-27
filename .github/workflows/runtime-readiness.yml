@@ -1,6 +1,7 @@
 name: Runtime Readiness
 
 on:
+  workflow_dispatch:
   pull_request:
   merge_group:
   push:
@@ -27,7 +28,7 @@ jobs:
           node-version: 22
           cache: npm
       - name: Enforce shared owner reuse
-        uses: huijoohwee/agentic-os/.github/actions/owner-reuse@2a394c589064105387f1c58e6db54da135059c28
+        uses: huijoohwee/agentic-os/.github/actions/owner-reuse@9e171b490b158ecbc5e8e024e9bccc409fd756b0
         with:
           baseline: 22e25d34499cb1a8a9cc3a59ad1a60236edd3859
       - run: npm ci
