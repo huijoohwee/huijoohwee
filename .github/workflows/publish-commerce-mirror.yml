@@ -48,7 +48,8 @@ jobs:
           [[ "$COMMERCE_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
           test "$GITHUB_REF" = refs/heads/main
           test "$(git branch --show-current)" = main
-          test -z "$(git status --porcelain --untracked-files=all)"
+          root_status=$(git status --porcelain --untracked-files=all | sed '/^?? commerce-source\//d')
+          test -z "$root_status"
           test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
           test "$(git -C commerce-source rev-parse HEAD)" = "$COMMERCE_SOURCE_SHA"
           test -z "$(git -C commerce-source status --porcelain --untracked-files=all)"
