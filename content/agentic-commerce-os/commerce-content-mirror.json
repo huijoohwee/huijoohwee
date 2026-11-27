@@ -1,8 +1,8 @@
 {
   "schema": "commerce.local-first-content-mirror/v1",
   "repository": "github.com/huijoohwee/agentic-commerce-os",
-  "sourceRevision": "3843251915cfad8e42f49484377559ddc22a1ba7",
-  "sourceTree": "f71b4bd5dbecc8ac890d080b80a5fee7aa411a97",
+  "sourceRevision": "bbc1535eb70f63c967ffe39ea203918861b46ad2",
+  "sourceTree": "7533bc01a80c91562d87de1995f9c40f921d2798",
   "files": [
     {
       "path": "_headers",
@@ -456,5 +456,5 @@
     }
   ],
   "totalBytes": 2328874,
-  "manifestDigest": "ee131acc577e58ca41ad99e1d5bd9bbcd4d4c1b05fed835b8cb83d26d33a4fc9"
+  "manifestDigest": "79b2700026041cb1c8e1a68929a1efb8d6091c702eb1987747980d850d1fafe9"
 }
