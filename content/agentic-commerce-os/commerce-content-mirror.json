@@ -1,0 +1,460 @@
+{
+  "schema": "commerce.local-first-content-mirror/v1",
+  "repository": "github.com/huijoohwee/agentic-commerce-os",
+  "sourceRevision": "caf6e074c15e59388bc3b382b16ebd0065f9636e",
+  "sourceTree": "d365366484676692599d8a2f81b21e15bd29371b",
+  "files": [
+    {
+      "path": "_headers",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "_redirects",
+      "bytes": 28,
+      "sha256": "01b0de3f21cec71a2d39de0e3023c929c9b3001149be94a2e122e7231824a6f3"
+    },
+    {
+      "path": "agentic-base-data-view.css",
+      "bytes": 55320,
+      "sha256": "ee65a362ac87245a061fb6b8812866f3351b905e54c97b44e81b60fc90a8d54e"
+    },
+    {
+      "path": "agentic-base-data-view.js",
+      "bytes": 392778,
+      "sha256": "ca82f6798827a667c297efdea1e1e5d088d831b81c272f0b9f3b2c25d421f7ea"
+    },
+    {
+      "path": "agentic-geo-core.mjs",
+      "bytes": 2037,
+      "sha256": "845caf87d5e6e01a5be9747969fe29104be2d3a693e35ec7e82d41cd5cf13123"
+    },
+    {
+      "path": "app.js",
+      "bytes": 28864,
+      "sha256": "7dcd176b9e8519e982aedb1fa79a87c110aa94c7d8c9315c823b56e09818c090"
+    },
+    {
+      "path": "checkout.js",
+      "bytes": 16235,
+      "sha256": "4d9526ac446d904d9ee5516b0acc1e2908ea97fd532441a7e7154ffc01858570"
+    },
+    {
+      "path": "collection-layout.css",
+      "bytes": 4842,
+      "sha256": "425c67ffb1b0b09286512d5998ee791f75b3e355f00cdd7a8c77dd7d1633a36a"
+    },
+    {
+      "path": "color.js",
+      "bytes": 8196,
+      "sha256": "b5e848ff4e755009b97660fbdd1ffb3eb0cfd0bb6e99464416305e03a4cbb0b0"
+    },
+    {
+      "path": "commerce-dashboard.js",
+      "bytes": 1799,
+      "sha256": "29afe2516312a72517dd41914a4e1768cc3659672da54da77b068dbb7defa006"
+    },
+    {
+      "path": "commerce-shell.css",
+      "bytes": 1520,
+      "sha256": "4e3a13729ef166a0869cf20db9fa34b483f9561c7ec4e01ff3d44f6b28e27420"
+    },
+    {
+      "path": "commerce-theme.css",
+      "bytes": 1680,
+      "sha256": "90077db641256cc4c43d618707f64ae0a3d16cf0afc61e573e6cbe9a0dcb54cb"
+    },
+    {
+      "path": "commerce-toolbar.js",
+      "bytes": 12534,
+      "sha256": "d02beb13f5afd965cb90c3cc257badb874b1b17275d87121672accf7ba13cef3"
+    },
+    {
+      "path": "dashboard-columns.js",
+      "bytes": 3634,
+      "sha256": "cc82636c768ce5dc6244483e96ff1492aacf11e8eb129ded5b969e1d37500efc"
+    },
+    {
+      "path": "dashboard.js",
+      "bytes": 5363,
+      "sha256": "51540004790d7c6c06d08c5c94ef81e91b713806c01459c9a83c19cba0d81503"
+    },
+    {
+      "path": "drafts.js",
+      "bytes": 18275,
+      "sha256": "dfaddf0b861b53d780de8f109bd0de06c47b01184b097acd1e6b4b2b4839c699"
+    },
+    {
+      "path": "dropdown-menus.js",
+      "bytes": 22277,
+      "sha256": "c6aabf38c8d0b0b7479ec9bf9bf9a0557a0df8a16382dd7cf847c74b9a97cf0d"
+    },
+    {
+      "path": "education-materials.md",
+      "bytes": 8842,
+      "sha256": "174f3f3253c4c87cd665d8f8ad5c75510038d825bca372e8bbeb61a03cbb033e"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 257,
+      "sha256": "d62678c165c6a6cedd4ac541e24c0219c3c29c0a2e346f76bb1cd19ae549707d"
+    },
+    {
+      "path": "floating-panel.css",
+      "bytes": 16518,
+      "sha256": "6f7c56b6b07a460c1b812460bcb8f3d8c18aa7bc3c783de402991cef4925fe8e"
+    },
+    {
+      "path": "floating-panel.js",
+      "bytes": 6880,
+      "sha256": "831f4ba466f40645fc58927798cba5ff579974945cdddee7e57c47382b0fefad"
+    },
+    {
+      "path": "formula.mjs",
+      "bytes": 9903,
+      "sha256": "726b053ecfbd24b347a2542a0363499145472711168bf103adc5c41806c57d1f"
+    },
+    {
+      "path": "graph-data-view.css",
+      "bytes": 92076,
+      "sha256": "60c8fc3b41d3976f2b1066573b43d59dae07575e36a26c720ac3729811c6db38"
+    },
+    {
+      "path": "graph-data-view.js",
+      "bytes": 322240,
+      "sha256": "f4f57e142b085b987bfd299850dc8980881c5d33b456a3599769b0162db7e7c6"
+    },
+    {
+      "path": "graph-gantt-timeline.css",
+      "bytes": 78007,
+      "sha256": "aa1139b68c2a75313edc7f9252e77e7cab3129670f146a119d2014b893a65624"
+    },
+    {
+      "path": "graph-gantt-timeline.js",
+      "bytes": 288279,
+      "sha256": "59712076845bb116a88cb75d986c0399182e24f5857cc6779a166e0debc04d99"
+    },
+    {
+      "path": "graph-ui-tokens.css",
+      "bytes": 8849,
+      "sha256": "8a3d598568fd4d6c31dd9f531a2bcbbb6e94b05842779c3c68e6d78570947c62"
+    },
+    {
+      "path": "housing-comparison.css",
+      "bytes": 2565,
+      "sha256": "aec682fa9f4322a42f2b3d02476c221d10d94d675ada4a481732951fc8c4fd72"
+    },
+    {
+      "path": "housing-comparison.js",
+      "bytes": 53475,
+      "sha256": "b78391dfb06fd1df0155e31d9d9edafd65288e1a0245fce80c51813987e68819"
+    },
+    {
+      "path": "housing-engine.js",
+      "bytes": 9002,
+      "sha256": "f31db6d23567c25eb1bd9b280a10281ed3cef205fa51eabc3c37523567657d07"
+    },
+    {
+      "path": "housing-sample.js",
+      "bytes": 1265,
+      "sha256": "99cffbe6f2757dfa4b7dd4b94ea53f0ea0602616074c72cbdbf487a33d839442"
+    },
+    {
+      "path": "hover-text.js",
+      "bytes": 9870,
+      "sha256": "fc697c3002f51e63484608ba0939990d721c702df07cddf366ccce2e758089c4"
+    },
+    {
+      "path": "hover.css",
+      "bytes": 1958,
+      "sha256": "7293388a1834d819bedca41a3b21d477efc404c2e7fb252ce00a9cb32e52b45a"
+    },
+    {
+      "path": "hover.js",
+      "bytes": 17683,
+      "sha256": "b0e59ee3e181ba573264c4d28dc3024a0aad7b6985f1db5a8b55a5aa7b181d62"
+    },
+    {
+      "path": "icons.json",
+      "bytes": 14205,
+      "sha256": "c01cbadd47648837bb8514f6f88f20ad72ee36e1e53aaabff950be2e6214a0b6"
+    },
+    {
+      "path": "index.html",
+      "bytes": 64309,
+      "sha256": "0d284ed1ebc3e1f9bb2592ee2d837b39fbb88346bb64eb9301c07f7823c05eb8"
+    },
+    {
+      "path": "key-type-value.js",
+      "bytes": 4068,
+      "sha256": "bad726f895362084ff8079d1275974994d1007be581e93ff784704234b0fa06d"
+    },
+    {
+      "path": "launch.js",
+      "bytes": 8197,
+      "sha256": "1cecd5da81c5e6d809a3b06bd9fa36d3e4b2561286e3bddfb32decdc3aa8a201"
+    },
+    {
+      "path": "listing-geo.js",
+      "bytes": 1207,
+      "sha256": "0f47efa46a91f7c0265a0337efa9620a5c3b3fbd898d2f825b3c37c5ef72ec44"
+    },
+    {
+      "path": "markdown-parser.js",
+      "bytes": 2020,
+      "sha256": "f53c3cb794e3da5d56c68ab6550050d02ef7003f86eed97bfc362e635e328f4f"
+    },
+    {
+      "path": "markdown.js",
+      "bytes": 13919,
+      "sha256": "313f97423e66834234d54b74ed5b2a67d610da14c8d3200b4693af7fc3ab387c"
+    },
+    {
+      "path": "offer-simulator-view.js",
+      "bytes": 8362,
+      "sha256": "b31b86bf531694611b502557b353eda81cdd1b791d1aa82db3e93932ce37f75d"
+    },
+    {
+      "path": "offer-simulator.js",
+      "bytes": 3189,
+      "sha256": "5aec79ed9911a7285194d33ee40816c0d60c997bddedbb9acaebd1167391c122"
+    },
+    {
+      "path": "panel-section.css",
+      "bytes": 3758,
+      "sha256": "2fc5b5b950537320f7f46ae8a5a6e8fd8e80ebcf19d76dc4121d0898e0a86d52"
+    },
+    {
+      "path": "panel-section.js",
+      "bytes": 5239,
+      "sha256": "f7264ad1497fa41e38da6eee3d9ffe520e6ef44c83df3f1782877baf40d44cf7"
+    },
+    {
+      "path": "planning-catalog.js",
+      "bytes": 5742,
+      "sha256": "54ef11f1e9fe3a46f7b3fa6523f6e2f2bd235c2578e6711da8511daeff4ead05"
+    },
+    {
+      "path": "planning-explorer.css",
+      "bytes": 2410,
+      "sha256": "37177a2620050f92f7c317985723d8d1b00c2fa7809d4622645a08d68867ffc6"
+    },
+    {
+      "path": "planning-grid.js",
+      "bytes": 3228,
+      "sha256": "2769368ccde5d7a845adac931c4e9a6f3638766b837b9b233c5166b1d71b3647"
+    },
+    {
+      "path": "planning-model.js",
+      "bytes": 9440,
+      "sha256": "0ce6471e81421fa808577422ee6405dc5529a20752de32d0857264a7cb571c4c"
+    },
+    {
+      "path": "planning-scenarios.js",
+      "bytes": 3036,
+      "sha256": "ec237aea3d49da9f7378f5bf1553f61aa411fd0c58b92c3892fbe5101c4712c0"
+    },
+    {
+      "path": "planning-sources.js",
+      "bytes": 10259,
+      "sha256": "fb9159fed0ed78cae8c92bfbf0f9fe55ac511e636dfb3ca2403c99a1909bfa79"
+    },
+    {
+      "path": "planning-workspace.js",
+      "bytes": 14687,
+      "sha256": "168ba5f844f232026264cb45c42166225cfce8d33f05c0f62735cbee35bd7a52"
+    },
+    {
+      "path": "record-links.js",
+      "bytes": 4081,
+      "sha256": "6937780170163adee7e2c356a9c7769fb0ddfe206c90497fcaa36e8b97f9f046"
+    },
+    {
+      "path": "rich-text.css",
+      "bytes": 2974,
+      "sha256": "ee3da59b4122f517a9da0f2c8a2924ff47eb74ddbefb48c9af591ca27a1a108a"
+    },
+    {
+      "path": "schema.mjs",
+      "bytes": 7932,
+      "sha256": "8e2605a7e175480f60533ee1d6d00f5d2d287d91e67913b67e5305a16cd6c3f7"
+    },
+    {
+      "path": "shared-ui-profile.css",
+      "bytes": 25314,
+      "sha256": "ba95bb2de809f84c35aec409c89f305442b536741cbd0987d43ff8ecc6bf9e17"
+    },
+    {
+      "path": "shopper-demo-detail.js",
+      "bytes": 5234,
+      "sha256": "fcb192110cad37071e6336460e8b08aaeaad2c19dc005768e9f70cbbdabaa2f2"
+    },
+    {
+      "path": "skills-commands.css",
+      "bytes": 2077,
+      "sha256": "19e0910390930260905338a5b185d1be2326b71b0ec5329bdd2701f1a74015ae"
+    },
+    {
+      "path": "sme-business-pack-core.js",
+      "bytes": 40007,
+      "sha256": "8f0311eb07a2103450094425480be6b6d65d31018303750c3af7d1aaa0e2e8c8"
+    },
+    {
+      "path": "sme-business-pack.css",
+      "bytes": 7504,
+      "sha256": "5f2e1ae251bcf95b3cce78649f4921c00e272dd90bee1b3164ae69252e7d679f"
+    },
+    {
+      "path": "sme-business-pack.js",
+      "bytes": 44461,
+      "sha256": "d8cefb9592b4c844f328cf568739ccc682417556d94cb5170ee87c4300eb60d6"
+    },
+    {
+      "path": "sme-decision-contract.js",
+      "bytes": 11683,
+      "sha256": "18cec36aaf885e90917971040a71abc9a20e991fa4974de1602ada7b04576b81"
+    },
+    {
+      "path": "sme-pack-business-plan.js",
+      "bytes": 46980,
+      "sha256": "86d6e74158e51ff8d13b77bd6c9fe419a0762cb4e6b1c262e6576bbc4e27c8f4"
+    },
+    {
+      "path": "sme-pack-dictionary.js",
+      "bytes": 21402,
+      "sha256": "f403730663b75bb414af7e2134d4073f3a4dd86af7a44de9a30d3bc557472e2d"
+    },
+    {
+      "path": "sme-review-workflow.js",
+      "bytes": 14248,
+      "sha256": "1da4b6037e757dd3b297b500775e0d94bc8658047bfc6ecac897d1375d4e41bb"
+    },
+    {
+      "path": "sme-workflow-editor.js",
+      "bytes": 32674,
+      "sha256": "1613db6d6c369066a3921b11afbc823c06b5168afb273e40927dcc812b79c6d4"
+    },
+    {
+      "path": "source-explorer.js",
+      "bytes": 7991,
+      "sha256": "3c6a414984f69e8eeb6b7394771cefba778580f1712397f0a9224f10237f8605"
+    },
+    {
+      "path": "style.css",
+      "bytes": 80219,
+      "sha256": "2302a141520d9b1f4ebab5e42ea5e193554f4b50c77eb6b8d76308830580b6d3"
+    },
+    {
+      "path": "sw.js",
+      "bytes": 6390,
+      "sha256": "acc57d92794a7294948c40f0a0326b075aecaba85d80fbf7877540b0908f49f3"
+    },
+    {
+      "path": "toolbar-icons.js",
+      "bytes": 11636,
+      "sha256": "f304f25cdef7e054bdd9c62ca7e9f79959363c4e210c9cede0640609183a4471"
+    },
+    {
+      "path": "toolbar.css",
+      "bytes": 3974,
+      "sha256": "87c119df303bb671b48686939df107a96e29c4036b9d2e1ca27126445d9bc810"
+    },
+    {
+      "path": "viewer-surface.css",
+      "bytes": 1428,
+      "sha256": "266d45c1e95e15a49258f8b0e9c06bacb2f20b6f5b880ca102bf6eea3cee216f"
+    },
+    {
+      "path": "viewer-surface.js",
+      "bytes": 4454,
+      "sha256": "b58cd27e84b2ca582fdb6199faf9785a7f7e97f24eeac41525eb44c6a7f12683"
+    },
+    {
+      "path": "workflow.js",
+      "bytes": 9486,
+      "sha256": "20fad08326177d795827f944021fad8d8e53b95074dae5945027639fa4b12e8a"
+    },
+    {
+      "path": "workspace-capabilities.js",
+      "bytes": 9874,
+      "sha256": "c6219cc1340b030aad5bd16f13e8cd38646c862b9cdc31837b55d023566ca5b8"
+    },
+    {
+      "path": "workspace-graph.js",
+      "bytes": 18875,
+      "sha256": "39c68d0c18d59538aa8bb726946db61a224e63956dd914c11cb571433f738f5b"
+    },
+    {
+      "path": "workspace-layout.js",
+      "bytes": 5481,
+      "sha256": "f9e4246c1b1f1f256257f35077138cb548827193d47a1af211b6c355b0a9edf0"
+    },
+    {
+      "path": "workspace-navigation.js",
+      "bytes": 13259,
+      "sha256": "3954a8fed5fa44847bd7d7a6c511ee2bfae6458960a3a550485338816b641e15"
+    },
+    {
+      "path": "workspace-pack.console.js",
+      "bytes": 19053,
+      "sha256": "e231fadd6d27c6bf0d77f2a45ed648a6e1fd205359d654901648bab987da1411"
+    },
+    {
+      "path": "workspace-pack.css",
+      "bytes": 20948,
+      "sha256": "c6b677150000ef00aa43fc496f4656e8732b33cc89c39493a91fd38bb545c518"
+    },
+    {
+      "path": "workspace-pack.html",
+      "bytes": 18871,
+      "sha256": "c54c6c6a441a4d78ae9ad11db6db2984bb9a5c8110304dbce94feba95677edeb"
+    },
+    {
+      "path": "workspace-pack.js",
+      "bytes": 26924,
+      "sha256": "0e09eb99e26c77f222ba0dff143de9870925773f90d2e7bfd84aad431f9d0d4b"
+    },
+    {
+      "path": "workspace-pack.route.js",
+      "bytes": 4347,
+      "sha256": "232e15d0ad129ef78dbc5c70a8afc8823d3488a3f34de13d6bb9f6bcf3d18a43"
+    },
+    {
+      "path": "workspace-pack.simulation.js",
+      "bytes": 9293,
+      "sha256": "da8bdc66c610bf93d05aee5ecc3c3cf4f60986fe2d8e9df8da9d582237510808"
+    },
+    {
+      "path": "workspace-shell.css",
+      "bytes": 16238,
+      "sha256": "2feec71830483a338c2a4f4ba018bd08abd9560f64d5d533f6a53d2dd3ac8513"
+    },
+    {
+      "path": "workspace-singleton.js",
+      "bytes": 2211,
+      "sha256": "0acf7a29a81a47303668e43efcf40a089da35c9e31b7fe6dadd3e5ec771ad08d"
+    },
+    {
+      "path": "workspace-tools.js",
+      "bytes": 19114,
+      "sha256": "832b3aab339ef091d5d90c9dbee0a8f04bd24161fa1dc63ac6384f87632cdd93"
+    },
+    {
+      "path": "workspace-tour.js",
+      "bytes": 6342,
+      "sha256": "79ff51fae39730e6620ab99db018e39023fc109266a8413c242fdc703bd28953"
+    },
+    {
+      "path": "workspace-view-styles.js",
+      "bytes": 704,
+      "sha256": "d1449eb9b38c67f0edfbcf0e942fcf37722b32171e24780925b329135a08af35"
+    },
+    {
+      "path": "workspace.js",
+      "bytes": 62745,
+      "sha256": "cf3aa01a9c3931a37d3e13f6a7e38924dbbe3a43e715367b9af8de31378dabe9"
+    }
+  ],
+  "totalBytes": 2326754,
+  "manifestDigest": "d802f708e287d6f9d96bf4745416d145750e3f31399ab8eda0692ddf90444e9b"
+}
