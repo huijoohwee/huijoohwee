@@ -1,0 +1,299 @@
+import { createRecordRelation } from './record-links.js';
+
+export const LIMITS = Object.freeze({ count: 100, title: 120, description: 10000, price: 120, transferBytes: 8000000 });
+export const MAXIMUM_AMOUNT_MINOR = 1_000_000_000;
+export const LAUNCH_ID_FIELDS = Object.freeze(['merchantId', 'agentId']);
+export const LAUNCH_DESCRIPTION_FIELDS = Object.freeze(['audience', 'outcome']);
+export const LAUNCH_VARIABLE_COST_FIELDS = Object.freeze(['deliveryCostMinor', 'providerFeeMinor', 'agentCostMinor', 'acquisitionCostMinor']);
+export const LAUNCH_MONEY_FIELDS = Object.freeze(['priceMinor', ...LAUNCH_VARIABLE_COST_FIELDS, 'fixedCostMinor']);
+const TERMS_KEYS = [...LAUNCH_ID_FIELDS, ...LAUNCH_DESCRIPTION_FIELDS, 'currency', ...LAUNCH_MONEY_FIELDS].sort();
+const DATABASE = 'agentic-commerce-local-drafts';
+const SCHEMA = 'commerce.local-drafts/v3';
+const LEGACY_KEYS = ['createdAt', 'description', 'id', 'price', 'revision', 'title', 'updatedAt'];
+const V2_KEYS = /* @__PURE__ */ [...LEGACY_KEYS, 'launch'].sort();
+const KEYS = /* @__PURE__ */ [...V2_KEYS, 'workflow'].sort();
+const V4_KEYS = /* @__PURE__ */ [...KEYS, 'listing'].sort();
+const LISTING_SCHEMA = 'commerce.local-drafts/v4';
+const WORKFLOW_KEYS = 'description,inputRevision,outputDigest,reviewedDigest,runId,status,text,title';
+export function validWorkflow(value) {
+  const hash = v => typeof v === 'string' && /^[a-f0-9]{64}$/u.test(v);
+  return value && typeof value === 'object' && !Array.isArray(value)
+    && Object.keys(value).sort().join() === WORKFLOW_KEYS
+    && typeof value.title === 'string' && value.title.trim() && value.title.length <= 120
+    && typeof value.description === 'string' && value.description.length <= 10000
+    && Number.isSafeInteger(value.inputRevision) && value.inputRevision > 0
+    && (value.runId === null ? value.status === 'queued' : typeof value.runId === 'string' && /^listing-[a-f0-9]{64}$/u.test(value.runId))
+    && ['queued', 'planning', 'running', 'completed', 'blocked', 'canceled', 'pending', 'idle', 'reconciling', 'synthesizing'].includes(value.status)
+    && (value.status === 'completed' ? typeof value.text === 'string' && value.text.trim()
+      && new TextEncoder().encode(value.text).byteLength <= 16000 && hash(value.outputDigest)
+      : value.text === null && value.outputDigest === null)
+    && (value.reviewedDigest === null || value.status === 'completed' && value.reviewedDigest === value.outputDigest);
+}
+
+export function invalidLaunchFields(value) {
+  const fields = [];
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    fields.push('launch'); value = {};
+  } else if (Object.keys(value).sort().join() !== TERMS_KEYS.join()) fields.push('launch');
+  for (const key of LAUNCH_ID_FIELDS) {
+    const text = value[key];
+    if (typeof text !== 'string' || !/^[a-z0-9][a-z0-9._-]{0,127}$/.test(text))
+      fields.push(key);
+  }
+  for (const key of LAUNCH_DESCRIPTION_FIELDS) {
+    const text = value[key];
+    if (typeof text !== 'string' || !text || text.trim() !== text || text.length > 280)
+      fields.push(key);
+  }
+  if (typeof value.currency !== 'string' || !/^[A-Z]{3}$/.test(value.currency)) fields.push('currency');
+  for (const key of LAUNCH_MONEY_FIELDS) {
+    const amount = value[key];
+    if (!Number.isSafeInteger(amount) || amount < (key === 'priceMinor' ? 1 : 0) || amount > MAXIMUM_AMOUNT_MINOR)
+      fields.push(key);
+  }
+  return fields;
+}
+export function launchFieldIssues(value) {
+  return invalidLaunchFields(value).map(field => ({ field, message:
+    field === 'launch' ? !value || typeof value !== 'object' || Array.isArray(value)
+      ? 'Use the supported launch fields.' : 'Use all supported launch fields without extra properties.'
+    : LAUNCH_ID_FIELDS.includes(field) ? 'Use 1–128 lowercase letters, numbers, dots, underscores or hyphens, starting with a letter or number.'
+    : LAUNCH_DESCRIPTION_FIELDS.includes(field) ? 'Add 1–280 characters without leading or trailing spaces.'
+    : field === 'currency' ? 'Use a three-letter currency code.'
+    : field === 'priceMinor' && value?.priceMinor === 0 ? 'Planned price must be greater than zero.'
+    : 'Use a non-negative whole minor-unit amount within the supported limit.' }));
+}
+export function validLaunchTerms(value) { return invalidLaunchFields(value).length === 0; }
+
+// One optional listing contract shared by the existing editor, store and backup reader.
+export const LISTING_FIELDS = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ [
+  ['category', 'text', 120], ['country', 'text', 2], ['region', 'text', 120], ['currency', 'text', 3],
+  ['askingPriceMinor', 'money'], ['monthlyRevenueMinor', 'money'], ['monthlyProfitMinor', 'money'], ['monthlyRentMinor', 'money'],
+  ['establishedYear', 'integer'], ['leaseEndsOn', 'date'], ['areaSqFt', 'number'], ['employees', 'integer'],
+  ['sourceUrl', 'url', 2048], ['asOf', 'date'],
+].map(([key, type, maxLength]) => Object.freeze({ key, type, maxLength })));
+// Presentation metadata is excluded from headless validation bundles.
+export const LISTING_LABELS = /* @__PURE__ */ Object.freeze({ category: 'Category', country: 'Country code', region: 'Region / district',
+  currency: 'Listing currency', askingPriceMinor: 'Asking price', monthlyRevenueMinor: 'Monthly revenue', monthlyProfitMinor: 'Monthly profit / loss',
+  monthlyRentMinor: 'Monthly rent', establishedYear: 'Established year', leaseEndsOn: 'Lease end', areaSqFt: 'Premises area (sq ft)',
+  employees: 'Staff count', sourceUrl: 'Source URL', asOf: 'Facts as of' });
+const listingKeys = () => ['schemaVersion', 'status', ...LISTING_FIELDS.map(field => field.key)].sort().join();
+export function isArchived(draft) { return draft?.listing?.status === 'archived'; }
+export function validCalendarDate(value) {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/u.test(value)
+    && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
+}
+function invalidListingFields(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)
+    || Object.keys(value).sort().join() !== listingKeys() || value.schemaVersion !== 1
+    || !['draft', 'archived'].includes(value.status)) return ['listing'];
+  const issues = [];
+  for (const { key, type, maxLength } of LISTING_FIELDS) {
+    const item = value[key]; let valid;
+    if (type === 'money') valid = item === null || Number.isSafeInteger(item)
+      && item >= (key === 'monthlyProfitMinor' ? -MAXIMUM_AMOUNT_MINOR : key === 'askingPriceMinor' ? 1 : 0) && item <= MAXIMUM_AMOUNT_MINOR;
+    else if (type === 'integer') valid = item === null || Number.isSafeInteger(item) && item >= (key === 'establishedYear' ? 1600 : 0)
+      && item <= (key === 'establishedYear' ? new Date().getUTCFullYear() : 1000000);
+    else if (type === 'number') valid = item === null || typeof item === 'number' && Number.isFinite(item) && item > 0 && item <= 100000000;
+    else if (type === 'date') valid = item === '' || validCalendarDate(item);
+    else valid = typeof item === 'string' && item === item.trim() && item.length <= maxLength;
+    if (key === 'country') valid &&= item === '' || /^[A-Z]{2}$/u.test(item);
+    if (key === 'currency') valid &&= /^[A-Z]{3}$/u.test(item);
+    if (key === 'sourceUrl' && valid && item) {
+      try { const url = new URL(item); valid = ['https:', 'http:'].includes(url.protocol) && !url.username && !url.password; }
+      catch { valid = false; }
+    }
+    if (!valid) issues.push(key);
+  }
+  return issues;
+}
+export function validListing(value) { return invalidListingFields(value).length === 0; }
+export function listingFieldIssues(value) {
+  return invalidListingFields(value).map(field => ({ field, message: field === 'listing' ? 'Use the supported listing fields and version.'
+    : field === 'sourceUrl' ? 'Source URL: use HTTP or HTTPS without credentials.'
+      : ['asOf', 'leaseEndsOn'].includes(field) ? `${LISTING_LABELS[field]}: use a real calendar date.`
+        : field === 'currency' ? 'Listing currency: use a three-letter currency code.'
+          : `${LISTING_LABELS[field]}: use a valid value within the supported limits.` }));
+}
+export function listingSourceKey(draft) {
+  if (!draft.listing?.sourceUrl) return null;
+  const url = new URL(draft.listing.sourceUrl); url.hash = ''; return url.href;
+}
+export function assertUniqueListingSources(drafts) {
+  const seen = new Set();
+  for (const draft of drafts) {
+    const key = listingSourceKey(draft); if (!key) continue;
+    if (seen.has(key)) throw Error('A listing with this source URL already exists. Open or restore that entry.');
+    seen.add(key);
+  }
+}
+
+export function validDraft(value, legacy = false) {
+  return value && typeof value === 'object' && !Array.isArray(value)
+    && (legacy ? Object.keys(value).sort().join() === LEGACY_KEYS.join()
+      : [V2_KEYS.join(), KEYS.join(), V4_KEYS.join()].includes(Object.keys(value).sort().join()))
+    && (legacy || value.launch === null || validLaunchTerms(value.launch))
+    && (!Object.hasOwn(value, 'listing') || value.listing === null || validListing(value.listing))
+    && (!Object.hasOwn(value, 'workflow') || value.workflow === null || validWorkflow(value.workflow)
+      && value.workflow.inputRevision <= value.revision)
+    && typeof value.id === 'string' && /^[0-9a-f-]{36}$/.test(value.id)
+    && ['title', 'description', 'price'].every(key => typeof value[key] === 'string' && value[key].length <= LIMITS[key])
+    && value.title.trim().length > 0
+    && Number.isSafeInteger(value.revision) && value.revision > 0
+    && Number.isSafeInteger(value.createdAt) && value.createdAt > 0
+    && Number.isSafeInteger(value.updatedAt) && value.updatedAt >= value.createdAt;
+}
+
+export function parseImport(text) {
+  if (new TextEncoder().encode(text).length > LIMITS.transferBytes) throw Error('Import exceeds 8 MB.');
+  let value;
+  try { value = JSON.parse(text); } catch { throw Error('Choose a valid draft JSON export.'); }
+  const legacy = value?.schema === 'commerce.local-drafts/v1', v2 = value?.schema === 'commerce.local-drafts/v2', v4 = value?.schema === LISTING_SCHEMA;
+  if (!value || Object.keys(value).sort().join() !== 'drafts,schema' || (!legacy && !v2 && !v4 && value.schema !== SCHEMA)
+    || !Array.isArray(value.drafts) || value.drafts.length > LIMITS.count
+    || !value.drafts.every(draft => validDraft(draft, legacy)
+      && Object.keys(draft).sort().join() === (legacy ? LEGACY_KEYS : v2 ? V2_KEYS : v4 ? V4_KEYS : KEYS).join())
+    || new Set(value.drafts.map(draft => draft.id)).size !== value.drafts.length) {
+    throw Error('This file is not a supported draft export. Existing drafts were kept.');
+  }
+  assertUniqueListingSources(value.drafts);
+  return value.drafts.map(normalizeStored).map(draft => draft.workflow
+    ? { ...draft, workflow: { ...draft.workflow, reviewedDigest: null } } : draft);
+}
+
+function database() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DATABASE, 1);
+    request.onupgradeneeded = () => request.result.createObjectStore('drafts', { keyPath: 'id' });
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(Error('Browser storage is unavailable. Export or copy your text before leaving.'));
+    request.onblocked = () => reject(Error('Close older Commerce tabs before opening storage.'));
+  });
+}
+
+async function transaction(mode, operation) {
+  const db = await database();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('drafts', mode), store = tx.objectStore('drafts');
+    let result, failure;
+    const fail = error => { failure = error; tx.abort(); };
+    tx.oncomplete = () => { db.close(); resolve(result); };
+    tx.onabort = tx.onerror = () => { db.close(); reject(failure || Error('Draft storage failed. Your current text is still in the editor.')); };
+    try { operation(store, value => { result = value; }, fail); } catch (error) { fail(error); }
+  });
+}
+
+export function listDrafts() {
+  return transaction('readonly', (store, done, fail) => {
+    const request = store.getAll();
+    request.onsuccess = () => {
+      try { done(request.result.map(normalizeStored).sort((a, b) => b.updatedAt - a.updatedAt || a.id.localeCompare(b.id))); }
+      catch (error) { fail(error); }
+    };
+  });
+}
+
+export function saveDraft(input, expectedRevision = null, { allowNewWorkflow = false } = {}) {
+  if (!input || !['title', 'description', 'price'].every(key => typeof input[key] === 'string')) {
+    throw Error('Add a title and keep each field within its limit.');
+  }
+  input = structuredClone(input);
+  return transaction('readwrite', (store, done, fail) => {
+    const id = input.id || crypto.randomUUID(), read = store.get(id);
+    read.onsuccess = () => {
+      let previous;
+      try { previous = read.result ? normalizeStored(read.result) : null; } catch (error) { fail(error); return; }
+      if ((previous?.revision ?? null) !== expectedRevision) {
+        fail(Object.assign(Error('This draft changed in another tab. Export or copy your edits, then reopen the saved draft.'),
+          { code: 'draft_revision_conflict' })); return;
+      }
+      if (input.workflow && !previous?.workflow && allowNewWorkflow !== true) {
+        fail(Error('Reconnect to the execution host before preparing a new listing. Your draft was kept.')); return;
+      }
+      const records = store.getAll();
+      records.onsuccess = () => {
+        if (!previous && records.result.length >= LIMITS.count) { fail(Error('This workspace holds up to 100 drafts. Export a backup to keep your work.')); return; }
+        const now = Date.now();
+        const draft = { id, title: input.title.trim(), description: input.description, price: input.price,
+          launch: input.launch === undefined ? previous?.launch ?? null : input.launch,
+          workflow: input.workflow === undefined ? previous?.workflow ?? null : input.workflow,
+          revision: (previous?.revision ?? 0) + 1, createdAt: previous?.createdAt ?? now,
+          updatedAt: Math.max(now, previous?.updatedAt ?? 0) };
+        const listing = input.listing === undefined ? previous?.listing : input.listing;
+        if (listing !== undefined) draft.listing = structuredClone(listing);
+        if (previous?.listing && listing === null) { fail(Error('Keep listing facts; archive the entry to retire it.')); return; }
+        if (draft.workflow && (draft.title !== draft.workflow.title || draft.description !== draft.workflow.description))
+          draft.workflow = { ...draft.workflow, reviewedDigest: null };
+        // Keep ordinary drafts readable by retained v2 clients until a job is explicitly prepared.
+        if (draft.workflow === null && !Object.hasOwn(draft, 'listing')) delete draft.workflow;
+        if (!validDraft(draft)) { fail(Error('Add a title and keep each field within its limit.')); return; }
+        try { assertUniqueListingSources([...records.result.filter(item => item.id !== id), draft]); }
+        catch (error) { fail(error); return; }
+        store.put(draft); done(draft);
+      };
+    };
+  });
+}
+
+export async function importDrafts(text, authorizeWorkflow = null) {
+  const incoming = parseImport(text);
+  if (incoming.some(draft => draft.workflow) &&
+    !(typeof authorizeWorkflow === 'function' && await authorizeWorkflow() === true)) {
+    throw Error('The execution host must be available before importing listing jobs. Existing drafts were kept.');
+  }
+  return transaction('readwrite', (store, done, fail) => {
+    const request = store.getAll();
+    request.onsuccess = () => {
+      let existing;
+      try { existing = new Map(request.result.map(normalizeStored).map(draft => [draft.id, draft])); }
+      catch (error) { fail(error); return; }
+      const additions = [];
+      for (const draft of incoming) {
+        const previous = existing.get(draft.id);
+        if (previous && V4_KEYS.some(key => JSON.stringify(previous[key]) !== JSON.stringify(draft[key]))) {
+          fail(Error('An imported draft conflicts with a saved draft. Nothing was replaced.')); return;
+        }
+        if (!previous) additions.push(draft);
+      }
+      if (existing.size + additions.length > LIMITS.count) { fail(Error('Import would exceed the 100-draft limit. Nothing was changed.')); return; }
+      try { assertUniqueListingSources([...existing.values(), ...additions]); }
+      catch (error) { fail(error); return; }
+      additions.forEach(draft => store.add(draft)); done(additions.length);
+    };
+  });
+}
+
+function normalizeStored(draft) {
+  if (validDraft(draft, true)) return { ...draft, launch: null, workflow: null };
+  if (!validDraft(draft)) throw Error('Saved draft is malformed. Preserve your backup before continuing.');
+  return { ...draft, workflow: draft.workflow ?? null,
+    launch: draft.launch === null ? null : Object.fromEntries(TERMS_KEYS.map(key => [key, draft.launch[key]])) };
+}
+
+export async function exportDrafts() {
+  const drafts = await listDrafts(), workflows = drafts.some(draft => draft.workflow !== null);
+  if (drafts.some(draft => Object.hasOwn(draft, 'listing'))) return JSON.stringify({ schema: LISTING_SCHEMA,
+    drafts: drafts.map(draft => ({ ...draft, workflow: draft.workflow ?? null, listing: draft.listing ?? null })) }, null, 2);
+  return JSON.stringify({ schema: workflows ? SCHEMA : 'commerce.local-drafts/v2',
+    drafts: workflows ? drafts : drafts.map(({ workflow: _workflow, ...draft }) => draft) }, null, 2);
+}
+
+export function offerProjectId(draft) {
+  return draft.launch ? 'store:' + draft.launch.merchantId : 'local:unassigned';
+}
+
+export function groupProjects(drafts) {
+  const offers = new Map(), names = new Map(), links = [];
+  for (const draft of drafts) {
+    if (isArchived(draft)) continue;
+    const project = offerProjectId(draft);
+    names.set(project, draft.launch?.merchantId || 'Personal workspace');
+    offers.set(draft.id, draft);
+    links.push({ source: draft.id, target: project });
+  }
+  if (!names.size) names.set('local:unassigned', 'Personal workspace');
+  const relation = createRecordRelation({ sources: offers.keys(), targets: names.keys(), links });
+  return [...names].map(([id, name]) => ({
+    id, name, offers: relation.to(id).map(link => offers.get(link.source)),
+  })).sort((a, b) => a.name.localeCompare(b.name));
+}

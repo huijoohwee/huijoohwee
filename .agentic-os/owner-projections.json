@@ -1,0 +1,147 @@
+{
+  "content/agentic-commerce-os/agentic-geo-core.mjs": {
+    "owner": "agentic-geo",
+    "source": "src/core.mjs",
+    "pin": "7ca1be03b12c80d556fd0dd9eb8ced3c13cddef6"
+  },
+  "content/agentic-commerce-os/collection-layout.css": {
+    "owner": "agentic-design-system",
+    "source": "site/collection-layout.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/color.js": {
+    "owner": "agentic-design-system",
+    "source": "site/color.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/commerce-theme.css": {
+    "owner": "agentic-design-system",
+    "source": "site/vendor/commerce-theme.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/dashboard-columns.js": {
+    "owner": "agentic-design-system",
+    "source": "site/dashboard-columns.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/dashboard.js": {
+    "owner": "agentic-design-system",
+    "source": "site/dashboard.mjs",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/floating-panel.css": {
+    "owner": "agentic-design-system",
+    "source": "site/floating-panel.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/floating-panel.js": {
+    "owner": "agentic-design-system",
+    "source": "site/floating-panel.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/formula.mjs": {
+    "owner": "agentic-sheets",
+    "source": "sheets/formula.mjs",
+    "pin": "87a0f0f95f1fc08a5db4871e49005da351b96e61"
+  },
+  "content/agentic-commerce-os/hover-text.js": {
+    "owner": "agentic-design-system",
+    "source": "site/hover-text.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/hover.css": {
+    "owner": "agentic-design-system",
+    "source": "site/hover.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/hover.js": {
+    "owner": "agentic-design-system",
+    "source": "site/hover.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/icons.json": {
+    "owner": "agentic-design-system",
+    "source": "site/icons.json",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/key-type-value.js": {
+    "owner": "agentic-design-system",
+    "source": "site/key-type-value.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/markdown-parser.js": {
+    "owner": "agentic-design-system",
+    "source": "site/markdown-parser.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/markdown.js": {
+    "owner": "agentic-design-system",
+    "source": "site/markdown.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/panel-section.css": {
+    "owner": "agentic-design-system",
+    "source": "site/panel-section.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/panel-section.js": {
+    "owner": "agentic-design-system",
+    "source": "site/panel-section.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/planning-explorer.css": {
+    "owner": "agentic-design-system",
+    "source": "site/source-explorer.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/record-links.js": {
+    "owner": "agentic-base",
+    "source": "src/record-links.mjs",
+    "pin": "0157d4c1f34be78096a1588778f23903538dfbe3"
+  },
+  "content/agentic-commerce-os/rich-text.css": {
+    "owner": "agentic-design-system",
+    "source": "site/rich-text.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/schema.mjs": {
+    "owner": "agentic-sheets",
+    "source": "sheets/schema.mjs",
+    "pin": "87a0f0f95f1fc08a5db4871e49005da351b96e61"
+  },
+  "content/agentic-commerce-os/shared-ui-profile.css": {
+    "owner": "agentic-design-system",
+    "source": "site/vendor/shared-ui-profile.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/skills-commands.css": {
+    "owner": "agentic-design-system",
+    "source": "site/skills-commands.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/source-explorer.js": {
+    "owner": "agentic-design-system",
+    "source": "site/source-explorer.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/toolbar-icons.js": {
+    "owner": "agentic-design-system",
+    "source": "site/toolbar-icons.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/toolbar.css": {
+    "owner": "agentic-design-system",
+    "source": "site/toolbar.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/viewer-surface.css": {
+    "owner": "agentic-design-system",
+    "source": "site/viewer-surface.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/agentic-commerce-os/viewer-surface.js": {
+    "owner": "agentic-design-system",
+    "source": "site/viewer-surface.js",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  }
+}

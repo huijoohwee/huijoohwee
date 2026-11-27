@@ -1,0 +1,528 @@
+import { DECISION_SCHEMA, applyDecisionPatch, validateDecisionPolicy, validateDecisionRows, projectWorking, projectDeltas, monthlyDependencies, sameDecisionPolicy } from './sme-decision-contract.js'
+export { baselineProposal, confirmBaseline, validateDecisionPolicy, sameDecisionPolicy } from './sme-decision-contract.js'
+export const PACK_PATH = '/agentic-commerce-os/services/sme-business-pack'
+const PACK_REGISTRY = Object.freeze([
+  Object.freeze({ metadata: Object.freeze({ id: 'sme.business-plan', label: 'General business plan',
+    version: '2.3.0', as_of: '2026-11-04', review_status: 'provisional' }),
+  load: () => import('./sme-pack-business-plan.js?v=business-plan-pack-v2-3-0-sme-1-2') }),
+  Object.freeze({ metadata: Object.freeze({ id: 'sme.takeover-checker', label: 'SME takeover checker',
+    version: '1.2.0', as_of: '2026-11-06', review_status: 'provisional' }),
+  load: async () => ({ PACK: (await import('./sme-pack-business-plan.js?v=business-plan-pack-v2-3-0-sme-1-2')).TAKEOVER_PACK }) }),
+])
+export const PACK_INDEX = Object.freeze(PACK_REGISTRY.map(entry => entry.metadata))
+export const TOOL_NAMES = Object.freeze(['pack.list', 'pack.protocol', 'business.plan.build', 'business.plan.compare'])
+const provenanceTypes = Object.freeze(['assumption', 'self_reported', 'directly_observed', 'counted', 'document_reviewed', 'independently_reported'])
+const observerRoles = Object.freeze(['author', 'observer', 'reviewer'])
+const TEXT_PATTERN = /(?:https?:\/\/|www\.|[\w.+-]+@[\w.-]+\.[A-Z]{2,}|(?:\+?\d[\d ().-]{7,}\d))/iu
+const MAX_MONEY = 1000000000
+const MAX_TEXT = 280
+
+function isRecord(value) { return value !== null && typeof value === 'object' && !Array.isArray(value) }
+function fail(code) { throw new Error(code) }
+function clone(value) { return JSON.parse(JSON.stringify(value)) }
+function assertExactKeys(value, expected) {
+  if (!isRecord(value) || Object.keys(value).sort().join(',') !== [...expected].sort().join(',')) fail('sme_pack_arguments_invalid')
+}
+function summary(pack) {
+  return { id: pack.id, label: pack.label, version: pack.version, as_of: pack.as_of,
+    review_status: pack.review_status, reviewer: pack.reviewer }
+}
+function definitions(pack) { return Object.assign(Object.create(null), Object.fromEntries(pack.input_fields.map(field => [field.name, field]))) }
+function packEntry(packId) { return PACK_REGISTRY.find(entry => entry.metadata.id === packId) }
+
+export async function loadPack(packId) {
+  const entry = packEntry(packId), module = entry ? await entry.load() : null
+  if (!module?.PACK) fail('sme_pack_not_found')
+  const pack = module.PACK, indexed = entry.metadata
+  if (['id', 'label', 'version', 'as_of', 'review_status'].some(key => pack[key] !== indexed[key])) fail('sme_pack_identity_mismatch')
+  return pack
+}
+
+const amountSchema = { oneOf: [
+  { type: 'number', minimum: 0, maximum: MAX_MONEY, multipleOf: 0.0001 },
+  { type: 'object', required: ['low', 'high'], properties: {
+    low: { type: 'number', minimum: 0, maximum: MAX_MONEY, multipleOf: 0.0001 },
+    high: { type: 'number', minimum: 0, maximum: MAX_MONEY, multipleOf: 0.0001 },
+  }, additionalProperties: false },
+] }
+const keyPattern = '^[a-z][a-z0-9_]{0,63}$'
+const packIdSchema = { type: 'string', minLength: 1, maxLength: 64, pattern: '^[a-z0-9][a-z0-9._-]{0,63}$' }
+const inputValueSchema = { oneOf: [amountSchema, { type: 'integer', minimum: 0, maximum: 100000000 },
+  { type: 'string', maxLength: MAX_TEXT }] }
+const inputsSchema = { type: 'object', maxProperties: 38, patternProperties: { [keyPattern]: inputValueSchema }, additionalProperties: false }
+const evidenceSchema = { type: 'array', maxItems: 40, items: { type: 'object', required: ['field_key', 'provenance', 'observer_role', 'date', 'value'],
+  properties: { field_key: { type: 'string', maxLength: 64, pattern: keyPattern }, provenance: { type: 'string', enum: provenanceTypes },
+    observer_role: { type: 'string', enum: observerRoles }, date: { type: 'string', format: 'date' }, value: inputValueSchema }, additionalProperties: false } }
+const modeSchema = { type: 'string', enum: ['buy_build', 'scenario'], default: 'buy_build' }
+const revisionSchema = { type: 'integer', minimum: 1, maximum: 100000000 }
+const buildSchema = { type: 'object', required: ['pack_id', 'inputs'], properties: { pack_id: packIdSchema, mode: modeSchema, inputs: inputsSchema, evidence: evidenceSchema, decision: DECISION_SCHEMA, revision: revisionSchema }, additionalProperties: false }
+const compareSchema = { type: 'object', required: ['plan_sets'], properties: { mode: modeSchema, decision: DECISION_SCHEMA, plan_sets: { type: 'array', minItems: 2, maxItems: 3,
+  items: { type: 'object', required: ['pack_id', 'pack_version', 'inputs'], properties: {
+    pack_id: packIdSchema, pack_version: { type: 'string', minLength: 1, maxLength: 32 }, inputs: inputsSchema, evidence: evidenceSchema, revision: revisionSchema,
+  }, additionalProperties: false } } }, additionalProperties: false }
+const inputs = Object.freeze({
+  'pack.list': { type: 'object', properties: {}, additionalProperties: false },
+  'pack.protocol': { type: 'object', required: ['pack_id'], properties: { pack_id: packIdSchema }, additionalProperties: false },
+  'business.plan.build': buildSchema,
+  'business.plan.compare': compareSchema,
+})
+export const TOOL_SCHEMAS = Object.freeze(TOOL_NAMES.map(name => Object.freeze({ name, inputSchema: inputs[name],
+  annotations: Object.freeze({ readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false }) })))
+
+export async function invokeSmePackTool(name, args = {}, now = Date.now()) {
+  if (!TOOL_NAMES.includes(name)) fail('sme_pack_tool_not_found')
+  if (name === 'pack.list') {
+    assertExactKeys(args, [])
+    return { packs: clone(PACK_INDEX), inference_tokens: 0 }
+  }
+  if (name === 'pack.protocol') {
+    assertExactKeys(args, ['pack_id'])
+    const pack = await loadPack(args.pack_id)
+    return { schema: 'sme-business-plan/protocol/v3', pack: clone(summary(pack)), plan_modes: clone(pack.plan_modes), input_fields: clone(pack.input_fields),
+      model_outputs: clone(pack.model_outputs), coverage_outputs: clone(pack.coverage_outputs ?? []),
+      workflow_columns: clone(pack.workflow_columns ?? []), ...(pack.review_workflow ? { review_workflow: clone(pack.review_workflow) } : {}),
+      calculation_model: pack.calculation_model ?? 'monthly-plan/v1', illustrative_inputs: clone(pack.illustrative_inputs ?? {}),
+      artifacts: clone(pack.artifacts ?? []), parameters: clone(pack.parameters), ratios: clone(pack.ratios),
+      protocols: clone(pack.protocols), tolerances: clone(pack.tolerances), guideline_sources: clone(pack.guideline_sources),
+      guideline_alignment: clone(pack.guideline_alignment), review_note: pack.review_note, inference_tokens: 0 }
+  }
+  if (name === 'business.plan.build') return boundedResponse(await buildPlan(args, now))
+  return comparePlans(args, now)
+}
+
+function boundedResponse(value) {
+  if (new TextEncoder().encode(JSON.stringify(value)).byteLength > 65536) fail('sme_pack_response_too_large')
+  return value
+}
+function validMoney(value) {
+  const valid = amount => typeof amount === 'number' && Number.isFinite(amount) && amount >= 0 && amount <= MAX_MONEY
+    && Math.abs(amount * 10000 - Math.round(amount * 10000)) < 1e-7
+  if (valid(value)) return true
+  return isRecord(value) && Object.keys(value).sort().join(',') === 'high,low'
+    && valid(value.low) && valid(value.high) && value.low <= value.high
+}
+function validFieldValue(field, value) {
+  if (field.type === 'money') return validMoney(value)
+  if (field.type === 'integer') return Number.isSafeInteger(value) && value >= field.min && value <= field.max
+  if (field.type === 'currency') return typeof value === 'string' && /^[A-Z]{3}$/u.test(value)
+  if (field.type === 'enum') return typeof value === 'string' && field.values.includes(value)
+  if (field.type === 'text') return typeof value === 'string' && value.length <= Math.min(field.max_length ?? MAX_TEXT, MAX_TEXT) && !value.includes('\u0000') && !TEXT_PATTERN.test(value)
+  return false
+}
+function modeFor(pack, id) {
+  const defaultMode = pack.plan_modes.find(item => item.default)
+  const requested = id === undefined ? defaultMode?.id : id
+  const mode = pack.plan_modes.find(item => item.id === requested)
+  if (!mode) fail('sme_pack_mode_invalid')
+  return mode
+}
+function requiredForMode(field, mode, inputs) {
+  return Boolean(field.required || field.required_modes?.includes(mode.id)
+    || field.required_when && inputs[field.required_when.field] === field.required_when.equals)
+}
+function validEvidence(pack, evidence) {
+  if (evidence === undefined) return []
+  if (!Array.isArray(evidence) || evidence.length > 40) fail('sme_pack_evidence_invalid')
+  const fields = definitions(pack)
+  return evidence.map(row => {
+    assertExactKeys(row, ['field_key', 'provenance', 'observer_role', 'date', 'value'])
+    const field = fields[row.field_key]
+    if (!field || !provenanceTypes.includes(row.provenance) || !observerRoles.includes(row.observer_role)
+      || typeof row.date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/u.test(row.date)
+      || !Number.isFinite(Date.parse(row.date)) || new Date(row.date).toISOString().slice(0, 10) !== row.date
+      || !validFieldValue(field, row.value) || field.type === 'text' && !row.value.trim()) fail('sme_pack_evidence_invalid')
+    return { field_key: row.field_key, provenance: row.provenance, observer_role: row.observer_role, date: row.date, value: clone(row.value) }
+  })
+}
+async function validateInput(args) {
+  if (!isRecord(args)) fail('sme_pack_arguments_invalid')
+  const keys = ['pack_id', 'inputs', ...(Object.hasOwn(args, 'mode') ? ['mode'] : []), ...(Object.hasOwn(args, 'evidence') ? ['evidence'] : []), ...['decision', 'revision'].filter(key => Object.hasOwn(args, key))]
+  assertExactKeys(args, keys)
+  if (typeof args.pack_id !== 'string' || !packEntry(args.pack_id) || !isRecord(args.inputs)
+    || new TextEncoder().encode(JSON.stringify(args)).byteLength > 32768) fail('sme_pack_arguments_invalid')
+  if (args.revision !== undefined && (!Number.isSafeInteger(args.revision) || args.revision < 1 || args.revision > 100000000)) fail('sme_pack_arguments_invalid')
+  const pack = await loadPack(args.pack_id), mode = modeFor(pack, args.mode), fields = definitions(pack), inputs = Object.create(null), invalid = []
+  if (Object.keys(args.inputs).length > pack.input_fields.length) fail('sme_pack_unknown_field')
+  for (const [key, value] of Object.entries(args.inputs)) {
+    const field = fields[key]
+    if (!field) fail('sme_pack_unknown_field')
+    if (!validFieldValue(field, value)) { invalid.push(key); continue }
+    if (field.type === 'text' && !value.trim()) continue
+    inputs[key] = clone(value)
+  }
+  const missing = pack.input_fields.filter(field => requiredForMode(field, mode, inputs) && !Object.hasOwn(inputs, field.name)).map(field => field.name)
+  return { pack, mode, inputs, evidence: validEvidence(pack, args.evidence), missing, invalid }
+}
+function projectionCoverage(pack, inputs) {
+  return Object.fromEntries(pack.guideline_alignment.projections.map(projection => {
+    const requirements = projection.requirements ?? []
+    const mapped = requirements.filter(row => ['applied', 'partial', 'workspace_only'].includes(row.status))
+    const inputKeys = [...new Set(mapped.flatMap(row => row.input_fields ?? []))].sort()
+    return [projection.id, { support_status: projection.support_status,
+      requirements_total: requirements.length, requirements_mapped: mapped.length,
+      inputs_mapped: inputKeys.length, inputs_supplied: inputKeys.filter(key => Object.hasOwn(inputs, key)).length,
+      missing_inputs: inputKeys.filter(key => !Object.hasOwn(inputs, key)) }]
+  }))
+}
+function evidenceCoverage(pack, evidence) {
+  const guidedFields = [...new Set(pack.protocols.map(row => row.field_key))]
+  const evidenced = new Set(evidence.map(row => row.field_key))
+  return { guided_fields: guidedFields.length, evidenced_fields: guidedFields.filter(key => evidenced.has(key)).length,
+    missing_fields: guidedFields.filter(key => !evidenced.has(key)), evidence_count: evidence.length,
+    status: 'user-recorded; not authenticated' }
+}
+function range(value) {
+  if (typeof value === 'number') return { low: value, high: value }
+  return isRecord(value) && Number.isFinite(value.low) && Number.isFinite(value.high) ? value : null
+}
+function finiteRange(low, high = low) {
+  if (![low, high].every(Number.isFinite) || Math.max(Math.abs(low), Math.abs(high)) > Number.MAX_SAFE_INTEGER) return null
+  return { low: rounded(Math.min(low, high)), high: rounded(Math.max(low, high)) }
+}
+function rounded(value) { return Math.round((value + Number.EPSILON) * 10000) / 10000 }
+function add(left, right) { return left && right ? finiteRange(left.low + right.low, left.high + right.high) : null }
+function subtract(left, right) { return left && right ? finiteRange(left.low - right.high, left.high - right.low) : null }
+function multiply(left, right) {
+  if (!left || !right) return null
+  const values = [left.low * right.low, left.low * right.high, left.high * right.low, left.high * right.high]
+  return finiteRange(Math.min(...values), Math.max(...values))
+}
+function positivePart(value) { return value ? finiteRange(Math.max(0, value.low), Math.max(0, value.high)) : null }
+function takeoverCashModel(inputs) {
+  const currency = /^[A-Z]{3}$/u.test(inputs.currency_code ?? '') ? inputs.currency_code : null
+  const obligation = inputs.location_obligation
+  const applies = obligation === 'applies', notApplicable = obligation === 'not_applicable'
+  const fixedKeys = ['purchase_price', 'transition_costs', 'asset_setup_costs', 'transaction_professional_costs',
+    'immediate_reinvestment_costs', 'monthly_operating_costs', 'working_capital_months']
+  const closeKeys = [...fixedKeys, 'currency_code', 'location_obligation',
+    ...(applies ? ['location_deposit', 'location_monthly_cost'] : [])]
+  const missing = keys => [...new Set(keys.filter(key => inputs[key] === undefined || key === 'currency_code' && !currency
+    || key === 'location_obligation' && !applies && !notApplicable))]
+  const number = key => range(inputs[key])
+  const required = missing(closeKeys)
+  const upfrontKeys = ['purchase_price', 'transition_costs', 'asset_setup_costs', 'transaction_professional_costs', 'immediate_reinvestment_costs']
+  let cashToClose = required.length ? null : upfrontKeys.map(number).reduce(add, range(0))
+  if (cashToClose && applies) cashToClose = add(cashToClose, number('location_deposit'))
+  const monthly = cashToClose && add(number('monthly_operating_costs'), applies ? number('location_monthly_cost') : range(0))
+  if (cashToClose && monthly) cashToClose = add(cashToClose, multiply(monthly, number('working_capital_months')))
+  else cashToClose = null
+
+  let locationExposure = null
+  let locationMissing = []
+  if (notApplicable) locationExposure = 'not_applicable'
+  else if (!applies) locationMissing = ['location_obligation']
+  else {
+    locationMissing = missing(['location_monthly_cost', 'location_term_months', 'currency_code'])
+    if (!locationMissing.length) locationExposure = multiply(number('location_monthly_cost'), number('location_term_months'))
+  }
+  const availableMissing = missing(['available_cash', 'currency_code'])
+  const shortfallMissing = [...new Set([...required, ...availableMissing])]
+  const shortfall = !shortfallMissing.length && cashToClose ? positivePart(subtract(cashToClose, number('available_cash'))) : null
+  const operatingDifferenceMissing = missing(['monthly_revenue', 'monthly_operating_costs', 'location_obligation', 'currency_code',
+    ...(applies ? ['location_monthly_cost'] : [])])
+  const totalMonthlyCosts = !operatingDifferenceMissing.length
+    ? add(number('monthly_operating_costs'), applies ? number('location_monthly_cost') : range(0)) : null
+  const operatingDifference = totalMonthlyCosts ? subtract(number('monthly_revenue'), totalMonthlyCosts) : null
+  const displayMoney = value => value ? textRange(value, currency) : 'Unknown · required inputs not supplied'
+  return {
+    currency_code: currency,
+    cash_to_close: cashToClose,
+    location_exposure: locationExposure === 'not_applicable' ? null : locationExposure,
+    cash_shortfall: shortfall,
+    operating_difference_per_month: operatingDifference,
+    operating_context: { basis: inputs.financial_basis ?? 'unknown', period_months: inputs.financial_period_months ?? null },
+    missing_inputs: { cash_to_close: required,
+      location_exposure: locationMissing, cash_shortfall: shortfallMissing,
+      operating_difference_per_month: operatingDifferenceMissing },
+    formula_status: { cash_to_close: cashToClose ? 'calculated' : 'unknown',
+      location_exposure: notApplicable ? 'not_applicable' : locationExposure ? 'calculated' : 'unknown',
+      cash_shortfall: shortfall ? 'calculated' : shortfallMissing.length ? 'unknown' : 'no_shortfall',
+      operating_difference_per_month: operatingDifference ? 'calculated' : 'unknown' },
+    display: { cash_to_close: displayMoney(cashToClose),
+      location_exposure: notApplicable ? 'Not applicable' : displayMoney(locationExposure),
+      cash_shortfall: displayMoney(shortfall),
+      operating_difference_per_month: `${displayMoney(operatingDifference)} · Basis: ${(inputs.financial_basis ?? 'unknown').replaceAll('_', ' ')} · Period: ${inputs.financial_period_months === undefined ? 'unknown' : inputs.financial_period_months + ' months'}` },
+  }
+}
+function monthlyModel(inputs, mode) {
+  const price = range(inputs.price_per_unit), units = range(inputs.units_per_month)
+  const variableCost = range(inputs.variable_cost_per_unit), fixed = range(inputs.fixed_costs_per_month)
+  const payroll = range(inputs.payroll_per_month), setup = range(inputs.setup_costs), cash = range(inputs.cash_available)
+  const acquisition = range(inputs.acquisition_price), transition = range(inputs.transition_costs)
+  const months = range(inputs.runway_target_months), requested = range(inputs.funding_requested)
+  const revenue = multiply(price, units), variable = multiply(variableCost, units)
+  const contribution = subtract(revenue, variable), operatingCosts = add(fixed, payroll)
+  const operatingResult = subtract(contribution, operatingCosts), unitContribution = subtract(price, variableCost)
+  let breakEven = { status: 'unknown', units: null }
+  if (operatingCosts && unitContribution) {
+    if (unitContribution.high <= 0) breakEven = { status: 'no_positive_unit_contribution', units: null }
+    else if (unitContribution.low <= 0) breakEven = { status: 'range_includes_nonpositive_contribution', units: null }
+    else breakEven = { status: 'calculated', units: finiteRange(
+      Math.ceil(operatingCosts.low / unitContribution.high), Math.ceil(operatingCosts.high / unitContribution.low)) }
+  }
+  const burn = positivePart(operatingResult ? { low: -operatingResult.high, high: -operatingResult.low } : null)
+  let runway = { status: 'unknown', months: null }
+  if (operatingResult && burn && burn.high === 0) runway = { status: 'no_monthly_burn_indicated', months: null }
+  else if (cash && burn && burn.low > 0) runway = { status: 'calculated', months: finiteRange(cash.low / burn.high, cash.high / burn.low) }
+  else if (cash && burn && burn.high > 0) runway = { status: 'range_crosses_zero', months: null }
+  const path = inputs.buy_build_path
+  const outlayInputs = path === 'buy_existing' ? ['acquisition_price', 'transition_costs']
+    : path === 'build_new' ? ['setup_costs'] : path === 'undecided' ? ['buy_build_path']
+      : mode.id === 'buy_build' ? ['buy_build_path'] : ['setup_costs']
+  const initialOutlay = path === 'buy_existing' ? add(acquisition, transition)
+    : path === 'build_new' ? setup : path === 'undecided' ? null
+      : mode.id === 'buy_build' ? null : setup
+  const fundingInputs = [...outlayInputs, 'cash_available', 'runway_target_months', 'price_per_unit', 'units_per_month',
+    'variable_cost_per_unit', 'fixed_costs_per_month', 'payroll_per_month']
+  let fundingGap = null
+  if (initialOutlay && cash && months && burn && burn.high === 0) fundingGap = positivePart(finiteRange(initialOutlay.low - cash.high, initialOutlay.high - cash.low))
+  else if (initialOutlay && cash && months && burn) fundingGap = positivePart(subtract(add(initialOutlay, multiply(burn, months)), cash))
+  const requestedAgainstGap = requested && fundingGap ? subtract(requested, fundingGap) : null
+  const gaps = monthlyDependencies(inputs, mode)
+  return { currency_code: inputs.currency_code ?? null, buy_build_path: path ?? null, revenue_per_month: revenue, variable_cost_per_month: variable,
+    contribution_per_month: contribution, operating_costs_per_month: operatingCosts, operating_result_per_month: operatingResult,
+    break_even_units: breakEven, runway, funding_gap: fundingGap, funding_requested_difference: requestedAgainstGap,
+    missing_inputs: Object.fromEntries(Object.entries(gaps).map(([key, names]) => [key, names.filter(name => inputs[name] === undefined)])),
+    formula_status: { break_even_units: breakEven.status, runway: runway.status,
+      funding_gap: fundingGap ? 'calculated' : 'unknown' } }
+}
+function textRange(value, currency) {
+  const money = value => `${currency ?? 'currency not supplied'} ${new Intl.NumberFormat('en', { maximumFractionDigits: 4 }).format(value)}`
+  if (!value) return 'Unknown · required inputs not supplied'
+  return money(value.low) + (value.low === value.high ? '' : '–' + money(value.high))
+}
+function modelText(model) {
+  if (model.display) return model.display
+  const money = value => textRange(value, model.currency_code)
+  const breakEven = model.break_even_units.status === 'calculated'
+    ? `${new Intl.NumberFormat('en').format(model.break_even_units.units.low)}–${new Intl.NumberFormat('en').format(model.break_even_units.units.high)} units/month`
+    : `Unknown · ${model.break_even_units.status.replaceAll('_', ' ')}`
+  const runway = model.runway.months ? `${model.runway.months.low}–${model.runway.months.high} months` : `Unknown · ${model.runway.status.replaceAll('_', ' ')}`
+  return { monthly_revenue: money(model.revenue_per_month), monthly_variable_cost: money(model.variable_cost_per_month),
+    monthly_contribution: money(model.contribution_per_month), monthly_operating_costs: money(model.operating_costs_per_month),
+    monthly_operating_result: money(model.operating_result_per_month), break_even_units: breakEven, runway,
+    funding_gap: money(model.funding_gap), funding_requested_difference: money(model.funding_requested_difference) }
+}
+function pitchDeckOutline(pack, inputs, model) {
+  const roles = (pack.artifacts ?? []).find(artifact => artifact.id === 'pitch_deck_outline')?.roles ?? []
+  if (!roles.length) return []
+  const modelRows = modelText(model)
+  return roles.map(role => {
+    const values = role.input_fields.map(key => inputs[key]).filter(value => value !== undefined && value !== '')
+    let content = values.join(' · ') || 'Not supplied'
+    if (role.content_kind === 'venture_stage') content = inputs.venture_name || inputs.venture_stage
+      ? `${inputs.venture_name || 'Not supplied'} · ${inputs.venture_stage || 'Stage not supplied'}` : 'Not supplied'
+    if (role.content_kind === 'financial_model') content = role.model_output_keys
+      .map(key => `${key.replaceAll('_', ' ')}: ${modelRows[key]}`).join('; ')
+    if (role.content_kind === 'funding') {
+      const fieldLabels = Object.fromEntries(pack.input_fields.map(field => [field.name, field.label]))
+      const fundingInputs = ['buy_build_path', 'acquisition_price', 'transition_costs', 'setup_costs', 'funding_requested', 'use_of_funds']
+        .filter(key => inputs[key] !== undefined)
+        .map(key => `${fieldLabels[key]}: ${key === 'buy_build_path' ? inputs[key].replaceAll('_', ' ')
+          : ['acquisition_price', 'transition_costs', 'setup_costs', 'funding_requested'].includes(key)
+            ? textRange(range(inputs[key]), inputs.currency_code) : inputs[key]}`)
+      const fundingOutputs = role.model_output_keys.map(key => `${key.replaceAll('_', ' ')}: ${modelRows[key]}`)
+      content = [...fundingInputs, ...fundingOutputs].join(' · ') || 'Not supplied'
+    }
+    return { id: role.id, slide: role.slide, section: role.label, content,
+      field_keys: [...role.input_fields], model_output_keys: [...(role.model_output_keys ?? [])] }
+  })
+}
+function nextChecks(pack, inputs, missing, model, operatingComparable) {
+  const fields = definitions(pack), checks = missing.map(name => ({ field: name, label: fields[name].label,
+    action: `Enter ${fields[name].label.toLowerCase()} or leave it explicitly unknown.` }))
+  for (const [output, missingInputs] of Object.entries(model.missing_inputs)) {
+    if (!missingInputs.length) continue
+    if (missingInputs.includes('buy_build_path') && inputs.buy_build_path === 'undecided') {
+      checks.push({ field: 'buy_build_path', label: fields.buy_build_path.label,
+        action: 'Choose an acquisition or build path to calculate a path-specific funding need, or keep it unknown.' })
+      continue
+    }
+    const field = fields[missingInputs[0]]
+    if (!checks.some(row => row.field === missingInputs[0])) checks.push({ field: missingInputs[0], label: field.label,
+      action: `Enter ${missingInputs.map(name => fields[name].label.toLowerCase()).join(' and ')} to calculate ${output.replaceAll('_', ' ')}.` })
+  }
+  for (const name of pack.next_check_fields ?? []) {
+    const pending = inputs[name] === undefined || ['unknown', 'not_requested', 'requested', 'reported_available', 'reported_unavailable', 'reported_not_available', 'not_checked', 'conditional', 'not_discussed', 'reported_changing', 'reported_new_application'].includes(inputs[name])
+    if (fields[name] && pending && !checks.some(row => row.field === name)) checks.push({ field: name, label: fields[name].label,
+      action: pack.protocols.find(row => row.field_key === name)?.task ?? `Add ${fields[name].label.toLowerCase()} if available; no value is inferred.` })
+  }
+  if (operatingComparable === false) checks.unshift({ field: 'financial_basis', label: 'Operating figure comparison',
+    action: 'Operating figures are not comparable on the supplied basis. Clarify each basis and period; individual cash arithmetic remains available.' })
+  return checks.map((row, index) => ({ order: index + 1, ...row }))
+}
+function csvCell(value) { return '"' + String(value ?? '').replaceAll('"', '""') + '"' }
+const worksheetMeta = ['schema', 'pack_id', 'pack_version', 'mode', 'currency_code']
+const decisionMeta = ['decision', 'row_revision']
+const worksheetCsvHeader = ['plan', 'kind', 'key', 'value', 'provenance', 'observer_role', 'date']
+export function serializeSmeWorksheets(worksheets, format) {
+  if (!Array.isArray(worksheets) || !worksheets.length || worksheets.length > 3) fail('sme_pack_worksheet_invalid')
+  const json = JSON.stringify(worksheets.length === 1 ? worksheets[0] : worksheets, null, 2)
+  let content = json
+  if (format === 'csv') {
+    const rows = [worksheetCsvHeader]
+    worksheets.forEach((sheet, index) => {
+      for (const key of [...worksheetMeta, ...decisionMeta.filter(key => Object.hasOwn(sheet, key))]) rows.push([index, 'meta', key, JSON.stringify(sheet[key]), '', '', ''])
+      for (const [key, value] of Object.entries(sheet.inputs)) rows.push([index, 'input', key, JSON.stringify(value), '', '', ''])
+      for (const row of sheet.evidence) rows.push([index, 'evidence', row.field_key, JSON.stringify(row.value), row.provenance, row.observer_role, row.date])
+    })
+    content = rows.map(row => row.map(csvCell).join(',')).join('\n')
+  } else if (format !== 'json') fail('sme_pack_worksheet_format')
+  if (new TextEncoder().encode(content).byteLength > 65536) fail('sme_pack_response_too_large')
+  return content
+}
+function parseWorksheetCsv(text) {
+  const rows = []; let row = [], cell = '', quoted = false, closed = false
+  for (let index = 0; index < text.length; index++) {
+    const char = text[index]
+    if (quoted && char === '"' && text[index + 1] === '"') { cell += '"'; index++; continue }
+    if (char === '"') {
+      if (quoted) { quoted = false; closed = true }
+      else { if (cell || closed) fail('sme_pack_worksheet_invalid'); quoted = true }
+      continue
+    }
+    if (!quoted && char === ',') { row.push(cell); cell = ''; closed = false; continue }
+    if (!quoted && (char === '\n' || char === '\r')) {
+      if (char === '\r' && text[index + 1] === '\n') index++
+      row.push(cell); if (row.some(value => value !== '')) rows.push(row)
+      row = []; cell = ''; closed = false; continue
+    }
+    if (closed) fail('sme_pack_worksheet_invalid')
+    cell += char
+  }
+  if (quoted) fail('sme_pack_worksheet_invalid')
+  if (cell || row.length) { row.push(cell); rows.push(row) }
+  if (rows.shift()?.join(',') !== worksheetCsvHeader.join(',')) fail('sme_pack_worksheet_identity')
+  const sheets = []
+  for (const row of rows) {
+    const [index, kind, key, value, provenance, observer_role, date] = row
+    if (row.length !== 7 || !/^[0-2]$/u.test(index) || Number(index) > sheets.length) fail('sme_pack_worksheet_invalid')
+    const sheet = sheets[index] ??= { inputs: Object.create(null), evidence: [] }
+    if (kind === 'evidence') sheet.evidence.push({ field_key: key, value: JSON.parse(value), provenance, observer_role, date })
+    else if ((kind === 'meta' && [...worksheetMeta, ...decisionMeta].includes(key) || kind === 'input' && new RegExp(keyPattern).test(key)) && !provenance && !observer_role && !date) {
+      const target = kind === 'meta' ? sheet : sheet.inputs
+      if (Object.hasOwn(target, key)) fail('sme_pack_worksheet_invalid')
+      Object.defineProperty(target, key, { value: JSON.parse(value), enumerable: true })
+    } else fail('sme_pack_worksheet_invalid')
+  }
+  return sheets
+}
+export async function readSmeWorksheets(text, format, identity) {
+  if (typeof text !== 'string' || new TextEncoder().encode(text).byteLength > 65536) fail('sme_pack_worksheet_limit')
+  if (format === 'md' || format === 'markdown') {
+    const end = text.trimEnd().lastIndexOf('\n~~~'), start = text.lastIndexOf('\n~~~json\n', end)
+    if (start < 0 || end < 0) fail('sme_pack_worksheet_invalid')
+    text = text.slice(start + 9, end).trim()
+  }
+  const parsed = format === 'csv' ? parseWorksheetCsv(text) : JSON.parse(text)
+  const sheets = Array.isArray(parsed) ? parsed : [parsed]
+  if (!sheets.length || sheets.length > 3) fail('sme_pack_worksheet_invalid')
+  const pack = await loadPack(identity.id)
+  for (const sheet of sheets) {
+    assertExactKeys(sheet, [...worksheetMeta, 'inputs', 'evidence', ...(sheet.schema === 'sme-business-plan/worksheet/v3' ? decisionMeta : [])])
+    if (!['sme-business-plan/worksheet/v2', 'sme-business-plan/worksheet/v3'].includes(sheet.schema) || sheet.pack_id !== pack.id || sheet.pack_version !== pack.version
+      || identity.version !== pack.version || sheet.mode !== sheets[0].mode || !isRecord(sheet.inputs)
+      || !Array.isArray(sheet.evidence) || sheet.currency_code !== (sheet.inputs.currency_code ?? null)) fail('sme_pack_worksheet_identity')
+    const checked = await validateInput({ pack_id: sheet.pack_id, mode: sheet.mode, inputs: sheet.inputs, evidence: sheet.evidence })
+    if (checked.invalid.length) fail('sme_pack_worksheet_invalid')
+    sheet.inputs = clone(checked.inputs)
+  }
+  const decision = sheets[0].decision
+  if (sheets.some(sheet => !sameDecisionPolicy(sheet.decision, decision) || sheet.schema !== sheets[0].schema
+    || decision && (!Number.isSafeInteger(sheet.row_revision) || sheet.row_revision < 1 || sheet.row_revision > 100000000))) fail('sme_pack_worksheet_identity')
+  if (decision) validateDecisionRows(decision, sheets, pack.input_fields)
+  const sets = sheets.map(sheet => ({ pack_id: sheet.pack_id, pack_version: sheet.pack_version, inputs: sheet.inputs, evidence: sheet.evidence }))
+  if (sets.length > 1) await invokeSmePackTool('business.plan.compare', { mode: sheets[0].mode, plan_sets: sets, ...(decision ? { decision } : {}) })
+  else await invokeSmePackTool('business.plan.build', { pack_id: pack.id, mode: sheets[0].mode, inputs: sheets[0].inputs, evidence: sheets[0].evidence })
+  return sheets
+}
+function makeWorksheet(pack, mode, inputs, evidence, model, outline, checks, decision, revision) {
+  const worksheet = { schema: 'sme-business-plan/worksheet/v2', pack_id: pack.id, pack_version: pack.version,
+    mode: mode.id, currency_code: inputs.currency_code ?? null, inputs: clone(inputs), evidence: clone(evidence),
+    ...(decision ? { schema: 'sme-business-plan/worksheet/v3', decision: clone(decision), row_revision: revision } : {}) }
+  const modelRows = modelText(model)
+  const json = JSON.stringify(worksheet, null, 2), csv = serializeSmeWorksheets([worksheet], 'csv')
+  const context = [`Mode: ${mode.label}`, inputs.venture_stage ? `Stage: ${inputs.venture_stage}` : null,
+    `Currency: ${inputs.currency_code || 'Not supplied'}`, 'Draft · Not verified'].filter(Boolean).join(' · ')
+  const markdown = [
+    `# ${inputs.opportunity_label || inputs.venture_name || `${pack.label} draft`}`, '',
+    context, '',
+    '## Pitch deck draft outline', ...outline.map(row => `### Slide ${row.slide}: ${row.section}\n\n${row.content}`), '',
+    '## Model outputs', ...Object.entries(modelRows).map(([key, value]) => `- ${key.replaceAll('_', ' ')}: ${value}`), '',
+    '## Next checks', ...checks.map(row => `${row.order}. ${row.action}`), '',
+    'Assumptions are user supplied. Missing values remain unknown. Calculations use the entered currency code without conversion and are not a forecast, valuation, accounting statement, investment or financing advice.', '',
+    '~~~json', json, '~~~', '',
+  ].join('\n')
+  return { json, csv, markdown }
+}
+export function smeToolResult(value) {
+  const result = { content: [{ type: 'text', text: JSON.stringify(value) }], structuredContent: value }
+  const oversized = item => new TextEncoder().encode(JSON.stringify(item)).byteLength > 65000
+  if (oversized(result)) delete result.structuredContent
+  if (oversized(result)) { result.structuredContent = value; result.content[0].text = 'The complete local result is in structuredContent.' }
+  if (oversized(result)) fail('sme_pack_response_too_large')
+  return result
+}
+export function smePackFailure(error) {
+  const code = error instanceof Error && /^sme_pack_[a-z_]+$/u.test(error.message) ? error.message : 'sme_pack_request_refused'
+  return { ok: false, code, ...(code === 'sme_pack_decision_refused' && Array.isArray(error.reasons)
+    ? { reasons: error.reasons.slice(0, 228).map(({ field, reason, slot }) => ({ field: String(field).slice(0, 64), reason: String(reason).slice(0, 64), ...(slot ? { slot } : {}) })) } : {}) }
+}
+export function applySmePatch(item, patch, policy, expected, fields) {
+  if (policy) validateDecisionPolicy(policy, fields, ['A', 'B', 'C'])
+  return applyDecisionPatch(item, patch, policy, expected, fields, validFieldValue)
+}
+async function buildPlan(args, now, operatingComparable, context) {
+  const input = await validateInput(args), pack = input.pack
+  const model = pack.calculation_model === 'takeover-cash/v1'
+    ? takeoverCashModel(input.inputs) : monthlyModel(input.inputs, input.mode)
+  const pitch = pitchDeckOutline(pack, input.inputs, model), checks = nextChecks(pack, input.inputs, input.missing, model, operatingComparable)
+  const coverage = projectionCoverage(pack, input.inputs), evidence = evidenceCoverage(pack, input.evidence)
+  const decision = context?.policy ?? (args.decision ? validateDecisionRows(args.decision, [{ inputs: input.inputs }], pack.input_fields) : null)
+  const worksheet = makeWorksheet(pack, input.mode, input.inputs, input.evidence, model, pitch, checks, decision, context?.revision ?? args.revision ?? 1)
+  const required = pack.input_fields.filter(field => requiredForMode(field, input.mode, input.inputs))
+  return { schema: 'sme-business-plan/report/v2', pack: clone(summary(pack)), mode: clone(input.mode), label: 'Planning draft · not verified',
+    disclaimer: 'User-supplied facts and assumptions only. Missing values stay unknown. This deterministic planning aid is not a forecast, valuation, accounting statement, legal, tax, investment, or financing advice.',
+    check: { completeness: { required: required.length,
+      supplied: required.filter(field => Object.hasOwn(input.inputs, field.name)).length,
+      missing_fields: input.missing, invalid_fields: input.invalid }, evidence_count: input.evidence.length,
+      evidence_status: 'user-recorded; not authenticated' },
+    working: projectWorking(pack, input.mode, input.inputs, input.evidence, model),
+    model, model_display: modelText(model), projection_coverage: coverage, evidence_coverage: evidence,
+    pitch_deck_outline: pitch, next_checks: checks, worksheet,
+    as_of: new Date(now).toISOString(), inference_tokens: 0, persisted: false }
+}
+async function comparePlans(args, now) {
+  assertExactKeys(args, ['plan_sets', ...['mode', 'decision'].filter(key => Object.hasOwn(args ?? {}, key))])
+  if (!Array.isArray(args.plan_sets) || args.plan_sets.length < 2 || args.plan_sets.length > 3
+    || new TextEncoder().encode(JSON.stringify(args)).byteLength > 32768) fail('sme_pack_arguments_invalid')
+  const sets = args.plan_sets
+  for (const set of sets) {
+    const keys = ['pack_id', 'pack_version', 'inputs', ...['evidence', 'revision'].filter(key => Object.hasOwn(set ?? {}, key))]
+    assertExactKeys(set, keys)
+    if (set.revision !== undefined && (!Number.isSafeInteger(set.revision) || set.revision < 1 || set.revision > 100000000)) fail('sme_pack_arguments_invalid')
+    if (typeof set.pack_id !== 'string' || typeof set.pack_version !== 'string' || !isRecord(set.inputs)) fail('sme_pack_arguments_invalid')
+  }
+  const identity = sets[0]
+  if (sets.some(set => set.pack_id !== identity.pack_id || set.pack_version !== identity.pack_version
+    || set.inputs.currency_code !== identity.inputs.currency_code)) fail('sme_pack_comparison_identity_mismatch')
+  if (typeof identity.inputs.currency_code !== 'string' || !/^[A-Z]{3}$/u.test(identity.inputs.currency_code)) fail('sme_pack_comparison_currency_required')
+  const pack = await loadPack(identity.pack_id)
+  const mode = modeFor(pack, args.mode)
+  if (identity.pack_version !== pack.version) fail('sme_pack_comparison_identity_mismatch')
+  const basis = pack.input_fields.find(field => field.name === 'financial_basis'), period = pack.input_fields.find(field => field.name === 'financial_period_months')
+  const operatingComparable = pack.calculation_model !== 'takeover-cash/v1' ? undefined : sets.every(set =>
+    validFieldValue(basis, set.inputs.financial_basis) && set.inputs.financial_basis !== 'unknown'
+    && validFieldValue(period, set.inputs.financial_period_months)
+    && set.inputs.financial_basis === identity.inputs.financial_basis && set.inputs.financial_period_months === identity.inputs.financial_period_months)
+  const decision = args.decision ? validateDecisionRows(args.decision, sets, pack.input_fields) : null
+  const slots = []
+  for (const [index, set] of sets.entries()) {
+    const report = await buildPlan({ pack_id: set.pack_id, mode: mode.id, inputs: set.inputs, ...(set.evidence ? { evidence: set.evidence } : {}) }, now, operatingComparable, { policy: decision, revision: set.revision ?? 1 })
+    slots.push({ slot: ['A', 'B', 'C'][index], status: 'included', report })
+  }
+  if (slots.length === 2) slots.push({ slot: 'C', status: 'not_supplied', report: null })
+  const result = { schema: 'sme-business-plan/comparison/v2', pack: clone(summary(pack)), mode: clone(mode), currency_code: identity.inputs.currency_code,
+    slots, ...(decision ? { decision: projectDeltas(decision, slots, subtract, operatingComparable) } : {}), ranking: null, winner: null, conversion_applied: false, inference_tokens: 0, persisted: false }
+  return boundedResponse(result)
+}

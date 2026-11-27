@@ -1,0 +1,293 @@
+import { createRecordLinkCodec } from './record-links.js';
+import { LISTING_FIELDS, LISTING_LABELS, offerProjectId, isArchived } from './drafts.js';
+import { formatMoney } from './launch.js';
+// Commerce projects offer records. Base renders the selected record view.
+import { openCommercePanel, closeCommercePanel } from './commerce-toolbar.js';
+const projectLinks = createRecordLinkCodec({ fragment: 'admin-project', views: [{ view: 'project' }] });
+const mounts = new WeakMap();
+const listLayouts = new WeakMap();
+const baseCssUrl = new URL('./agentic-base-data-view.css', import.meta.url).href;
+const graphCssUrl = new URL('./graph-data-view.css', import.meta.url).href;
+const displayLocale = globalThis.document?.documentElement?.lang || 'en';
+let baseAdapter;
+let graphAdapter;
+const el = (tag, text, className) => {
+  const item = document.createElement(tag);
+  if (text !== undefined) item.textContent = text;
+  if (className) item.className = className;
+  return item;
+};
+export const OFFER_COLUMNS = Object.freeze(['Offer', 'Merchant', 'Review status', 'Planned price', 'Updated'].map((name, i) => ({ id: 'offer-' + i, name, ...(i === 2 ? { kind: 'select' } : {}) })));
+/** Private management summary; never used by shopper or agent projections. */
+export function listingSummary(offer) {
+  if (!offer.listing) return '';
+  const facts = offer.listing, asking = facts.askingPriceMinor === null ? 'Not provided' : formatMoney(facts.askingPriceMinor, facts.currency);
+  return [`${LISTING_LABELS.askingPriceMinor} · supplied: ${asking}`, ...[facts.category, facts.country, facts.region].filter(Boolean)].join(' · ');
+}
+function managementTitle(offer) { const summary = listingSummary(offer); return offer.title + (summary ? '\n' + summary : ''); }
+/** Explicit management fields only. No draft notes, source URL or workflow output. */
+export function projectOfferRows(offers, presentation) {
+  return offers.map(offer => ({ id: offer.id, cells: [managementTitle(offer), offer.launch?.merchantId || 'Store not set',
+    presentation.status(offer), presentation.price(offer), new Date(offer.updatedAt).toLocaleDateString(displayLocale)] }));
+}
+function responsiveOfferView(offers, presentation, width) {
+  if (width >= 920) return { columns: OFFER_COLUMNS, rows: projectOfferRows(offers, presentation) };
+  const count = width >= 740 ? 4 : width >= 560 ? 3 : width >= 400 ? 2 : 1;
+  const columns = count === 1 ? [{ id: 'offer-summary', name: 'Offer' }]
+    : count === 2 ? [OFFER_COLUMNS[0], { id: 'offer-launch', name: 'Launch' }]
+      : count === 3 ? [OFFER_COLUMNS[0], OFFER_COLUMNS[1], { id: 'offer-review', name: 'Review' }]
+        : OFFER_COLUMNS.slice(0, 4);
+  const rows = offers.map(offer => {
+    const merchant = offer.launch?.merchantId || 'Store not set', status = presentation.status(offer), price = presentation.price(offer), title = managementTitle(offer);
+    const cells = count === 1 ? [`${title}\n${merchant} · ${status} · ${price}`]
+      : count === 2 ? [title, `${merchant}\n${status}\n${price}`]
+        : count === 3 ? [title, merchant, `${status}\n${price}`] : [title, merchant, status, price];
+    return { id: offer.id, cells };
+  });
+  return { columns, rows };
+}
+export function projectOfferDetail(offer, presentation) {
+  const labels = ['Offer', 'Merchant', 'Review status', 'Planned price', 'Buyer', 'Outcome', 'Review guidance', 'Saved revision'];
+  const cells = [offer.title, offer.launch?.merchantId || 'Store not set', presentation.status(offer), presentation.price(offer),
+    offer.launch?.audience || 'Not set', offer.launch?.outcome || 'Not set', presentation.reason(offer), String(offer.revision)];
+  if (offer.listing) for (const { key, type } of LISTING_FIELDS) {
+    const value = offer.listing[key]; labels.push(LISTING_LABELS[key] + (type === 'money' ? ' · supplied' : ''));
+    cells.push(value === null || value === '' ? 'Not provided' : type === 'money' ? formatMoney(value, offer.listing.currency) : String(value));
+  }
+  return { columns: labels.map((name, i) => ({ id: 'detail-' + i, name })), rows: [{ id: offer.id, cells }] };
+}
+function mountOfferDetail(target, native, offer, presentation) {
+  const data = projectOfferDetail(offer, presentation);
+  if (target.clientWidth >= 360) return native.mountDataView(target, { ...data, orientation: 'columns', ariaLabel: 'Offer fields' });
+  target.classList.add('offer-detail-list');
+  const list = el('dl'), values = data.rows[0].cells;
+  data.columns.forEach((column, index) => {
+    const pair = el('div', undefined, 'offer-detail-pair');
+    pair.append(el('dt', column.name), el('dd', values[index])); list.append(pair);
+  });
+  target.append(list);
+  return { destroy: () => list.remove() };
+}
+function applyBaseTheme(host) {
+  const slots = {
+    '--agentic-base-text': 'var(--kg-text-primary, #172033)',
+    '--agentic-base-surface': 'var(--kg-panel-bg, #fff)',
+    '--agentic-base-border': 'var(--kg-border, #d9dee8)',
+    '--agentic-base-muted': 'var(--kg-text-secondary, #64748b)',
+    '--agentic-base-header': 'var(--kg-panel-bg, #f7f8fa)',
+    '--agentic-base-selected': 'color-mix(in srgb, var(--kg-accent, #2563eb) 12%, var(--kg-panel-bg, #fff))',
+    '--agentic-base-hover': 'color-mix(in srgb, var(--kg-accent, #2563eb) 7%, var(--kg-panel-bg, #fff))',
+    '--agentic-base-focus': 'var(--kg-accent, #2563eb)',
+  };
+  for (const [name, value] of Object.entries(slots)) host.style.setProperty(name, value);
+}
+function mountOfferCards(target, offers, presentation, selectedId, activate) {
+  const list = el('ul', undefined, 'agentic-collection vendor-offer-card-grid');
+  list.dataset.layout = 'grid';
+  for (const offer of offers) {
+    const item = el('li', undefined, 'vendor-offer-card-item'), button = el('button', undefined, 'agentic-collection-item vendor-offer-card-open');
+    button.dataset.layout = 'grid';
+    if (selectedId === offer.id) button.setAttribute('aria-current', 'true');
+    button.type = 'button'; button.setAttribute('aria-label', 'Open details for ' + offer.title);
+    button.setAttribute('aria-pressed', String(selectedId === offer.id)); button.addEventListener('click', () => activate(offer.id));
+    const cover = el('span', presentation.monogram(offer.title), 'product-monogram vendor-offer-cover'); cover.setAttribute('aria-hidden', 'true'); button.dataset.offerId = offer.id;
+    const meta = el('span', undefined, 'vendor-offer-card-meta'), merchant = el('span', presentation.merchantName?.(offer.launch?.merchantId) || offer.launch?.merchantId || 'Store not set', 'vendor-offer-merchant');
+    const state = el('span', presentation.status(offer), 'vendor-offer-state'); state.dataset.state = offer.launch ? presentation.state(offer) : 'draft'; meta.append(merchant, state);
+    const title = el('span', offer.title, 'vendor-offer-title');
+    const outcome = el('span', listingSummary(offer) || offer.launch?.outcome || 'Add a buyer and outcome to complete setup.', 'vendor-offer-outcome');
+    if (offer.listing) { outcome.dataset.listing = ''; button.dataset.listing = ''; }
+    const updatedAt = new Date(offer.updatedAt), updated = Number.isNaN(updatedAt.valueOf()) ? 'Recently saved' : 'Updated ' + updatedAt.toLocaleDateString(displayLocale, { month: 'short', day: 'numeric' });
+    const footer = el('span', undefined, 'vendor-offer-card-footer'); footer.append(el('span', (offer.listing ? 'Planned price: ' : '') + presentation.price(offer), 'vendor-offer-price'), el('span', updated, 'vendor-offer-updated'));
+    button.append(cover, meta, title, outcome, footer); item.append(button); list.append(item);
+  }
+  target.replaceChildren(list);
+}
+function loadBaseAdapter() {
+  baseAdapter ??= import('./agentic-base-data-view.js').catch(error => { baseAdapter = null; throw error; });
+  return baseAdapter;
+}
+function loadGraphAdapter() {
+  graphAdapter ??= import('./graph-data-view.js').catch(error => { graphAdapter = null; throw error; });
+  return graphAdapter;
+}
+async function mountSequenceGuideContent(target, state) {
+  const native = await loadGraphAdapter();
+  return native.mountSequenceGuideContent(target, state);
+}
+export async function mountCommerceSequenceGuide(host, state, signal) {
+  const target = await surface(host, signal, graphCssUrl);
+  return mountSequenceGuideContent(target, state);
+}
+export function disposeTable(container) {
+  const state = mounts.get(container);
+  if (!state) return;
+  state.disposed = true; state.observer?.disconnect();
+  if (state.resizeListener) window.removeEventListener('resize', state.resizeListener);
+  state.grid?.destroy(); state.toolbar?.destroy(); state.detail?.destroy(); mounts.delete(container);
+}
+async function surface(host, signal, stylesheetUrl) {
+  const shadow = host.shadowRoot ?? host.attachShadow({ mode: 'open' }), stylesheet = el('link'), target = el('div');
+  const loading = el('p', 'Loading shared workspace content…', 'muted');
+  loading.setAttribute('role', 'status');
+  target.append(loading);
+  stylesheet.rel = 'stylesheet'; stylesheet.href = stylesheetUrl;
+  const loaded = new Promise((resolve, reject) => {
+    const finish = error => {
+      clearTimeout(timer); stylesheet.onload = null; stylesheet.onerror = null;
+      signal?.removeEventListener('abort', abort);
+      if (error) reject(error); else resolve();
+    };
+    const abort = () => finish(new DOMException('Shared surface closed.', 'AbortError'));
+    const timer = setTimeout(() => finish(Error('Shared view styles could not load.')), 8000);
+    stylesheet.onload = () => finish();
+    stylesheet.onerror = () => finish(Error('Shared view styles could not load.'));
+    signal?.addEventListener('abort', abort, { once: true });
+    if (signal?.aborted) abort();
+  });
+  shadow.replaceChildren(stylesheet, target);
+  target.setAttribute('data-agentic-typography', '');
+  await loaded;
+  return target;
+}
+export async function mountCommerceTable(container, offers, presentation, actions) {
+  disposeTable(container);
+  const state = { disposed: false, grid: null, detail: null, observer: null, resizeListener: null }; mounts.set(container, state);
+  const layout = el('div', undefined, 'graph-record-layout'), gridHost = el('div', undefined, 'graph-record-grid');
+  const cards = actions.display === 'cards';
+  if (cards) { gridHost.classList.add('vendor-offer-card-host'); gridHost.style.overflow = 'visible'; }
+  else applyBaseTheme(gridHost);
+  const details = el('section', undefined, 'graph-record-detail'); details.hidden = true;
+  details.setAttribute('aria-label', 'Selected offer');
+  layout.append(gridHost, details); container.replaceChildren(layout);
+  try {
+    const native = cards ? null : await loadBaseAdapter();
+    if (state.disposed || mounts.get(container) !== state) return;
+    let selection = 0, selectedId = null;
+    const listHost = container.parentElement ?? container;
+    const preference = listLayouts.get(listHost) ?? { layout: 'table', orientation: 'rows' };
+    listLayouts.set(listHost, preference);
+    let mode = preference.layout, orientation = preference.orientation, returnFocus;
+    const project = () => mode === 'table' ? responsiveOfferView(offers, presentation, gridHost.clientWidth)
+      : { columns: OFFER_COLUMNS, rows: projectOfferRows(offers, presentation) };
+    let view = project(), viewKey = view.columns.map(column => column.id).join(':');
+    function gridOptions() {
+      return { ...view, layout: mode, ariaLabel: actions.label, selectedRowId: selectedId, onActivateRow: select,
+        ...(mode === 'kanban' ? { groupByColumnId: 'offer-2' } : {}),
+        ...(mode === 'multiDimensional' ? { orientation, onOrientationChange(value) { orientation = preference.orientation = value; updateGrid(); } } : {}) };
+    }
+    const updateGrid = () => {
+      if (cards) mountOfferCards(gridHost, offers, presentation, selectedId, select);
+      else state.grid?.update(gridOptions());
+    };
+    const select = async id => {
+      const offer = offers.find(value => value.id === id);
+      if (!offer || state.disposed) return;
+      const revision = ++selection; selectedId = id;
+      if (!cards) returnFocus = gridHost.shadowRoot.activeElement;
+      updateGrid();
+      state.detail?.destroy(); state.detail = null;
+      const heading = el('h3', offer.title), note = el('p', 'Saved on this device · revision ' + offer.revision, 'footnote');
+      heading.tabIndex = -1;
+      const header = el('div', undefined, 'records-heading'), close = el('button', 'Close details', 'secondary'); close.type = 'button';
+      close.addEventListener('click', () => {
+        selection++; selectedId = null; state.detail?.destroy(); state.detail = null;
+        details.hidden = true; layout.classList.remove('has-selection'); updateGrid();
+        if (cards) [...gridHost.querySelectorAll('button')].find(button => button.dataset.offerId === id)?.focus();
+        else if (returnFocus?.isConnected) returnFocus.focus();
+        else gridHost.shadowRoot.querySelector('select[aria-label="View layout"]')?.focus();
+      });
+      header.append(heading, close);
+      const detailHost = el('div', undefined, 'graph-record-fields'), controls = el('div', undefined, 'record-actions');
+      applyBaseTheme(detailHost);
+      const edit = el('a', isArchived(offer) ? 'Edit or restore listing ↗' : actions.editLabel, 'button secondary'); edit.href = '#vendor-editor';
+      edit.addEventListener('click', event => { event.preventDefault(); actions.open(offer); }); controls.append(edit);
+      if (!isArchived(offer)) {
+        const project = offerProjectId(offer);
+        const link = el('a', 'View offers for ' + (offer.launch?.merchantId || 'Personal workspace'), 'button secondary');
+        link.href = projectLinks.href({ view: 'project', record: project }); controls.append(link);
+      }
+      if (actions.inspect) { const inspect = el('button', 'Inspect with tools', 'secondary'); inspect.type = 'button'; inspect.setAttribute('aria-label', 'Inspect ' + offer.title + ' with agent tools'); inspect.addEventListener('click', () => actions.inspect(offer, inspect)); controls.append(inspect); }
+      details.replaceChildren(header, note, detailHost, controls); details.hidden = false; layout.classList.add('has-selection');
+      try {
+        const adapter = native || await loadBaseAdapter();
+        if (state.disposed || selection !== revision) return;
+        const detailTarget = await surface(detailHost, undefined, baseCssUrl);
+        if (state.disposed || selection !== revision) return;
+        state.detail = mountOfferDetail(detailTarget, adapter, offer, presentation);
+        if (matchMedia('(max-width:680px)').matches) details.scrollIntoView({ block: 'start',
+          behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        heading.focus({ preventScroll: true });
+      } catch (error) { if (!state.disposed && selection === revision) detailHost.replaceChildren(el('p', error.message, 'muted')); }
+    };
+    const refresh = () => {
+      if (cards || mode !== 'table') return;
+      const next = project(), key = next.columns.map(column => column.id).join(':');
+      if (key === viewKey) return;
+      view = next; viewKey = key;
+      updateGrid();
+    };
+    if (cards) {
+      state.grid = { update: next => { selectedId = next.selectedRowId || null; mountOfferCards(gridHost, offers, presentation, selectedId, select); }, destroy: () => gridHost.replaceChildren() };
+      mountOfferCards(gridHost, offers, presentation, selectedId, select);
+    } else {
+      const target = await surface(gridHost, undefined, baseCssUrl);
+      if (state.disposed || mounts.get(container) !== state) return;
+      const controls = el('div'), body = el('div'); target.replaceChildren(controls, body);
+      function toolbarOptions() {
+        return { label: 'Offer views', layout: mode, status: offers.length + (offers.length === 1 ? ' offer' : ' offers'), actions: [],
+          onLayoutChange(value) { mode = preference.layout = value; view = project(); viewKey = view.columns.map(column => column.id).join(':');
+            state.toolbar.update(toolbarOptions()); updateGrid(); } };
+      }
+      state.toolbar = native.mountRecordViewToolbar(controls, toolbarOptions());
+      state.grid = native.mountDataView(body, gridOptions());
+      if (typeof ResizeObserver === 'function') { state.observer = new ResizeObserver(refresh); state.observer.observe(gridHost); }
+      else { state.resizeListener = refresh; window.addEventListener('resize', refresh); }
+    }
+  } catch (error) { if (!state.disposed && mounts.get(container) === state) { disposeTable(container); throw error; } }
+}
+
+/** Commerce owns the shell; Graph owns the embedded sequence guide view and its state contract. */
+export function createCommerceSetupGuide({ launcher }) {
+  let generation = 0, handle, latest, targetPromise, setupTarget, requested = false, mountQueue = Promise.resolve();
+  const host = document.getElementById('commerce-panel-setup-guide');
+  if (!host) throw new Error('Commerce Setup Guide panel slot is missing.');
+  const loadTarget = () => targetPromise ??= surface(host, undefined, graphCssUrl).then(target => { setupTarget = target; return target; })
+    .catch(error => { targetPromise = null; throw error; });
+  const panelState = event => launcher.setAttribute('aria-expanded', String(event.detail?.open === true && event.detail?.view === 'setup-guide'));
+  document.addEventListener('commerce:panel-state', panelState);
+  const close = (restoreFocus = true) => {
+    generation++; requested = false; handle?.destroy(); handle = null;
+    setupTarget?.replaceChildren();
+    launcher.setAttribute('aria-expanded', 'false');
+    closeCommercePanel(false);
+    if (restoreFocus && launcher.isConnected && !launcher.disabled) launcher.focus();
+  };
+  return {
+    close,
+    update(state) { latest = state; handle?.update(state); },
+    async open(state) {
+      latest = state;
+      openCommercePanel('setup-guide', { trigger: launcher, focus: false });
+      launcher.setAttribute('aria-expanded', 'true');
+      if (requested) { handle?.update(state); return; }
+      requested = true;
+      const ticket = ++generation;
+      try {
+        const target = await loadTarget();
+        if (!requested || generation !== ticket) return;
+        const pending = mountQueue.catch(() => {}).then(async () => {
+          if (!requested || generation !== ticket) return null;
+          const mounted = await mountSequenceGuideContent(target, latest);
+          if (!requested || generation !== ticket) { mounted.destroy(); return null; }
+          return mounted;
+        });
+        mountQueue = pending.then(() => undefined, () => undefined);
+        const mounted = await pending;
+        if (mounted) handle = mounted;
+      } catch (error) {
+        if (!requested || generation !== ticket) return;
+        close(); throw error;
+      }
+    },
+  };
+}
