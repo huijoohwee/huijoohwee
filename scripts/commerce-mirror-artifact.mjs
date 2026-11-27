@@ -11,7 +11,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MANIFEST = 'commerce-content-mirror.json';
 const SCHEMA = 'commerce.local-first-content-mirror/v1';
 const REPOSITORY = 'github.com/huijoohwee/agentic-commerce-os';
+const OWNER_PROJECTIONS = '.agentic-os/owner-projections.json';
 const hash = value => createHash('sha256').update(value).digest('hex');
+const gitBlobHash = bytes => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 const git = (...args) => execFileSync('git', args, { cwd: ROOT, encoding: 'utf8' }).trim();
 
 function regularFile(filename) {
@@ -63,6 +65,35 @@ export function verifyCommerceMirror(mirrorRoot = path.join(ROOT, 'content/agent
   return { ...body, manifestDigest, totalBytes };
 }
 
+export function ownerProjectionsForMirror(mirrorRoot, policy) {
+  const root = path.resolve(mirrorRoot);
+  const verified = verifyCommerceMirror(root);
+  if (!policy || !policy.pins || !Array.isArray(policy.assets)) throw Error('Pinned owner reuse policy is invalid');
+  const byBlob = new Map();
+  for (const row of policy.assets) {
+    if (!Array.isArray(row) || row.length < 3 || typeof row[0] !== 'string' || typeof row[1] !== 'string'
+      || !/^[0-9a-f]{40}$/.test(row[2])) throw Error('Pinned owner asset row is invalid');
+    const [owner, source, blob] = row, pin = policy.pins[owner];
+    if (typeof pin !== 'string' || !/^[0-9a-f]{40}$/.test(pin)) continue;
+    const candidates = byBlob.get(blob) ?? [];
+    candidates.push({ owner, source, pin });
+    byBlob.set(blob, candidates);
+  }
+  const projections = {};
+  for (const file of verified.files) {
+    const bytes = regularFile(path.join(root, file.path));
+    const candidate = byBlob.get(gitBlobHash(bytes))?.sort((a, b) =>
+      `${a.owner}/${a.source}`.localeCompare(`${b.owner}/${b.source}`))[0];
+    if (candidate) projections[`content/agentic-commerce-os/${file.path}`] = candidate;
+  }
+  return Object.fromEntries(Object.entries(projections).sort(([a], [b]) => a.localeCompare(b)));
+}
+
+function readOwnerReusePolicy(sourceRoot) {
+  const filename = path.join(sourceRoot, 'node_modules/agentic-os/catalog/owner-reuse.json');
+  return JSON.parse(regularFile(filename).toString('utf8'));
+}
+
 const exactRemoteMain = (directory, revision) => execFileSync('git', ['-C', directory, 'ls-remote', 'origin', 'refs/heads/main'],
   { encoding: 'utf8' }).trim() === `${revision}\trefs/heads/main`;
 
@@ -97,30 +128,53 @@ export async function publishCommerceMirror({ sourceRoot, sourceSha, outputRoot 
       process.chdir(previous);
     }
     const generatedManifest = verifyCommerceMirror(generated);
+    const ownerPolicy = readOwnerReusePolicy(source);
+    const projections = ownerProjectionsForMirror(generated, ownerPolicy);
+    const projectionBytes = Buffer.from(JSON.stringify(projections, null, 2) + '\n');
     const parent = path.dirname(target);
     if (fs.lstatSync(parent).isSymbolicLink()) throw Error('Publisher content parent may not be a symlink');
+    const projectionPath = path.join(ROOT, OWNER_PROJECTIONS);
+    const projectionParent = path.dirname(projectionPath);
+    const projectionParentStat = fs.lstatSync(projectionParent);
+    if (!projectionParentStat.isDirectory() || projectionParentStat.isSymbolicLink())
+      throw Error('Owner projection directory must be a regular directory');
+    if (fs.existsSync(projectionPath)) regularFile(projectionPath);
     const stage = fs.mkdtempSync(path.join(parent, '.commerce-content-stage-'));
     const backup = path.join(parent, `.agentic-commerce-os-backup-${process.pid}`);
+    const projectionStage = path.join(projectionParent, `.owner-projections-stage-${process.pid}`);
+    const projectionBackup = path.join(projectionParent, `.owner-projections-backup-${process.pid}`);
     try {
       fs.rmSync(stage, { recursive: true });
       fs.cpSync(generated, stage, { recursive: true, errorOnExist: true, force: false });
       verifyCommerceMirror(stage);
       if (fs.existsSync(target)) verifyCommerceMirror(target);
-      if (fs.existsSync(backup)) throw Error('Publisher recovery path already exists');
+      if (fs.existsSync(backup) || fs.existsSync(projectionBackup) || fs.existsSync(projectionStage))
+        throw Error('Publisher recovery path already exists');
+      fs.writeFileSync(projectionStage, projectionBytes, { flag: 'wx', mode: 0o644 });
       if (fs.existsSync(target)) fs.renameSync(target, backup);
+      if (fs.existsSync(projectionPath)) fs.renameSync(projectionPath, projectionBackup);
       try {
         fs.renameSync(stage, target);
+        fs.renameSync(projectionStage, projectionPath);
         verifyCommerceMirror(target);
+        const actualProjections = JSON.parse(regularFile(projectionPath).toString('utf8'));
+        if (JSON.stringify(actualProjections) !== JSON.stringify(projections))
+          throw Error('Owner projection manifest differs from its exact source policy');
       } catch (error) {
         fs.rmSync(target, { recursive: true, force: true });
         if (fs.existsSync(backup)) fs.renameSync(backup, target);
+        fs.rmSync(projectionPath, { force: true });
+        if (fs.existsSync(projectionBackup)) fs.renameSync(projectionBackup, projectionPath);
         throw error;
       }
       fs.rmSync(backup, { recursive: true, force: true });
+      fs.rmSync(projectionBackup, { force: true });
     } finally {
       fs.rmSync(stage, { recursive: true, force: true });
+      fs.rmSync(projectionStage, { force: true });
     }
-    return generatedManifest;
+    return { ...generatedManifest, ownerProjections: Object.keys(projections).length,
+      ownerProjectionDigest: hash(projectionBytes) };
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }

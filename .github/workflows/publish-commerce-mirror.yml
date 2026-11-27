@@ -49,7 +49,10 @@ jobs:
           [[ "$COMMERCE_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
           test "$GITHUB_REF" = refs/heads/main
           test "$(git branch --show-current)" = main
-          root_status=$(git status --porcelain --untracked-files=all | sed '/^?? commerce-source\//d')
+          root_status=$(git status --porcelain --untracked-files=all \
+            | sed -e '/^?? commerce-source\//d' \
+              -e '/^.. content\/agentic-commerce-os\//d' \
+              -e '/^.. \.agentic-os\/owner-projections\.json$/d')
           test -z "$root_status"
           test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
           test "$(git -C commerce-source rev-parse HEAD)" = "$COMMERCE_SOURCE_SHA"
@@ -76,16 +79,19 @@ jobs:
           node scripts/commerce-mirror-artifact.mjs publish
           npm run commerce:mirror:check
           npm run runtime:check
-          test -z "$(git status --porcelain --untracked-files=all | sed '/^.. content\/agentic-commerce-os\//d')"
+          test -z "$(git status --porcelain --untracked-files=all \
+            | sed -e '/^.. content\/agentic-commerce-os\//d' \
+              -e '/^.. \.agentic-os\/owner-projections\.json$/d')"
       - name: Open a protected mirror pull request and require its gate
         env:
           SOURCE_SHA: ${{ inputs.source_sha }}
         run: |
           set -euo pipefail
           branch="commerce-mirror-$SOURCE_SHA"
-          git add -- content/agentic-commerce-os
+          git add -- content/agentic-commerce-os .agentic-os/owner-projections.json
           git diff --cached --name-only | grep -qx content/agentic-commerce-os/commerce-content-mirror.json
-          test -z "$(git diff --cached --name-only | grep -v '^content/agentic-commerce-os/')"
+          git diff --cached --name-only | grep -qx .agentic-os/owner-projections.json
+          test -z "$(git diff --cached --name-only | grep -v -E '^(content/agentic-commerce-os/|\.agentic-os/owner-projections\.json$)')"
           expected_tree=$(git write-tree)
           remote_oid=$(git ls-remote origin "refs/heads/$branch" | cut -f1)
           if test -n "$remote_oid"; then
@@ -95,8 +101,9 @@ jobs:
             test "$(wc -w <<< "$parent_line" | tr -d ' ')" = 2
             base_oid=$(git rev-parse "$remote_oid^1")
             git merge-base --is-ancestor "$base_oid" origin/main
-            git diff --quiet "$base_oid" "$remote_oid" -- . ':(exclude)content/agentic-commerce-os'
-            git diff --quiet "$remote_oid" "$expected_tree" -- content/agentic-commerce-os
+            git diff --quiet "$base_oid" "$remote_oid" -- . \
+              ':(exclude)content/agentic-commerce-os' ':(exclude).agentic-os/owner-projections.json'
+            git diff --quiet "$remote_oid" "$expected_tree" -- content/agentic-commerce-os .agentic-os/owner-projections.json
             git switch --detach "$remote_oid"
           else
             git switch -c "$branch"
@@ -109,7 +116,7 @@ jobs:
           if test -z "$pr_url"; then
             {
               printf '## Commerce content mirror\n\nGenerated from protected Commerce main at `%s`.\n\n' "$SOURCE_SHA"
-              printf 'The manifest binds the source tree and every mirrored file hash. This PR only updates `content/agentic-commerce-os`; it does not deploy or change a Cloudflare route. Commerce’s existing Local-first Production Release remains the Worker release and rollback owner.\n'
+              printf 'The mirror manifest binds the source tree and every mirrored file hash. `.agentic-os/owner-projections.json` records exact owner bytes for offline reuse checks. This PR updates only those two generated paths; it does not deploy or change a Cloudflare route. Commerce’s existing Local-first Production Release remains the Worker release and rollback owner.\n'
             } > "$RUNNER_TEMP/commerce-mirror-pr.md"
             pr_url=$(gh pr create --base main --head "$branch" --title "Publish Commerce content mirror ${SOURCE_SHA:0:12}" --body-file "$RUNNER_TEMP/commerce-mirror-pr.md")
           else
