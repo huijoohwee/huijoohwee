@@ -90,7 +90,6 @@ jobs:
           branch="commerce-mirror-$SOURCE_SHA"
           git add -- content/agentic-commerce-os .agentic-os/owner-projections.json
           git diff --cached --name-only | grep -qx content/agentic-commerce-os/commerce-content-mirror.json
-          git diff --cached --name-only | grep -qx .agentic-os/owner-projections.json
           test -z "$(git diff --cached --name-only | grep -v -E '^(content/agentic-commerce-os/|\.agentic-os/owner-projections\.json$)')"
           expected_tree=$(git write-tree)
           remote_oid=$(git ls-remote origin "refs/heads/$branch" | cut -f1)
