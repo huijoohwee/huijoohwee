@@ -44,6 +44,7 @@ jobs:
       - name: Validate owner, source and mirror main revisions
         run: |
           set -euo pipefail
+          printf '\n/commerce-source/\n' >> .git/info/exclude
           test "$GITHUB_ACTOR" = huijoohwee
           [[ "$COMMERCE_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
           test "$GITHUB_REF" = refs/heads/main
