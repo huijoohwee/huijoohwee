@@ -6,7 +6,8 @@
     "dev:pages": "npx wrangler pages dev . --port 5175",
     "gamexr:public:check": "node ./scripts/check-gamexr-public.mjs",
     "runtime:check": "node ./scripts/check-runtime-readiness.mjs",
-    "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs ./scripts/__tests__/runtime-artifact-digest.test.mjs ./scripts/worktree-lifecycle-contract.test.mjs",
+    "runtime:test": "node --test ./scripts/__tests__/runtime-readiness-projection.test.mjs ./scripts/__tests__/runtime-artifact-digest.test.mjs ./scripts/__tests__/commerce-mirror-artifact.test.mjs ./scripts/worktree-lifecycle-contract.test.mjs",
+    "commerce:mirror:check": "node scripts/commerce-mirror-artifact.mjs verify",
     "check": "node node_modules/agentic-os/bin/agentic-os-validation.mjs run",
     "check:adlc": "npm --prefix node_modules/agentic-os run evals",
     "setup": "agentic-os setup",
@@ -31,6 +32,6 @@
     "yjs": "^13.6.30"
   },
   "devDependencies": {
-    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/7af085977dd7db90a32ea3bf8aa87f20f6092d31"
+    "agentic-os": "https://codeload.github.com/huijoohwee/agentic-os/tar.gz/9e171b490b158ecbc5e8e024e9bccc409fd756b0"
   }
 }

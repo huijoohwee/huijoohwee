@@ -1,0 +1,116 @@
+name: Publish Commerce Content Mirror
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact current protected agentic-commerce-os main revision
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: commerce-content-mirror-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish Commerce content PR
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COMMERCE_SOURCE_SHA: ${{ inputs.source_sha }}
+      COMMERCE_SOURCE_ROOT: ${{ github.workspace }}/commerce-source
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: huijoohwee/agentic-commerce-os
+          ref: ${{ inputs.source_sha }}
+          path: commerce-source
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 22
+          cache: npm
+      - name: Validate owner, source and mirror main revisions
+        run: |
+          set -euo pipefail
+          test "$GITHUB_ACTOR" = huijoohwee
+          [[ "$COMMERCE_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          test "$GITHUB_REF" = refs/heads/main
+          test "$(git branch --show-current)" = main
+          test -z "$(git status --porcelain --untracked-files=all)"
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
+          test "$(git -C commerce-source rev-parse HEAD)" = "$COMMERCE_SOURCE_SHA"
+          test -z "$(git -C commerce-source status --porcelain --untracked-files=all)"
+          test "$(git -C commerce-source ls-remote origin refs/heads/main | cut -f1)" = "$COMMERCE_SOURCE_SHA"
+      - name: Run root lifecycle and mirror checks
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts
+          npm run check
+          npm run check:source
+      - name: Run exact Commerce source checks
+        working-directory: commerce-source
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run check:integration
+          npm run check:local-first
+      - name: Generate and verify the Commerce content mirror
+        run: |
+          set -euo pipefail
+          node scripts/commerce-mirror-artifact.mjs publish
+          npm run commerce:mirror:check
+          npm run runtime:check
+          npm run check
+          test -z "$(git status --porcelain --untracked-files=all | sed '/^.. content\/agentic-commerce-os\//d')"
+      - name: Open a protected mirror pull request and require its gate
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          set -euo pipefail
+          branch="commerce-mirror-$SOURCE_SHA"
+          if git ls-remote --exit-code origin "refs/heads/$branch" >/dev/null 2>&1; then
+            echo "Publisher branch already exists: $branch" >&2
+            exit 1
+          fi
+          git add -- content/agentic-commerce-os
+          git diff --cached --name-only | grep -qx content/agentic-commerce-os/commerce-content-mirror.json
+          test -z "$(git diff --cached --name-only | grep -v '^content/agentic-commerce-os/')"
+          git switch -c "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish Commerce content mirror for ${SOURCE_SHA:0:12}"
+          git push origin "HEAD:refs/heads/$branch"
+          cat > "$RUNNER_TEMP/commerce-mirror-pr.md" <<EOF
+          ## Commerce content mirror
+
+          Generated from protected Commerce main at `$SOURCE_SHA`.
+
+          The manifest binds the source tree and every mirrored file hash. This PR only updates `content/agentic-commerce-os`; it does not deploy or change a Cloudflare route. Commerce's existing Local-first Production Release remains the Worker release and rollback owner.
+          EOF
+          pr_url=$(gh pr create --base main --head "$branch" --title "Publish Commerce content mirror ${SOURCE_SHA:0:12}" --body-file "$RUNNER_TEMP/commerce-mirror-pr.md")
+          gh workflow run runtime-readiness.yml --ref "$branch"
+          run_id=""
+          for attempt in $(seq 1 30); do
+            run_id=$(gh run list --workflow runtime-readiness.yml --branch "$branch" --event workflow_dispatch --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+            test -n "$run_id" && break
+            sleep 10
+          done
+          test -n "$run_id"
+          gh run watch "$run_id" --exit-status
+          head_sha=$(git rev-parse HEAD)
+          gh run view "$run_id" --json headSha,conclusion,jobs --jq --arg sha "$head_sha" '
+            if .headSha != $sha or .conclusion != "success" or ([.jobs[] | select(.name == "Runtime Readiness Gate" and .conclusion == "success")] | length) != 1 then error("Exact Runtime Readiness Gate evidence missing") else . end'
+          gh pr checks "$pr_url" --required
+          echo "Commerce mirror PR: $pr_url" >> "$GITHUB_STEP_SUMMARY"
