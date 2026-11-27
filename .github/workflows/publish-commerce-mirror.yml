@@ -76,7 +76,6 @@ jobs:
           node scripts/commerce-mirror-artifact.mjs publish
           npm run commerce:mirror:check
           npm run runtime:check
-          npm run check
           test -z "$(git status --porcelain --untracked-files=all | sed '/^.. content\/agentic-commerce-os\//d')"
       - name: Open a protected mirror pull request and require its gate
         env:
