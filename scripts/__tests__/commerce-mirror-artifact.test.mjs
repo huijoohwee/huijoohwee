@@ -94,6 +94,7 @@ test('mirror publisher is isolated from Cloudflare deployment and names only the
   assert.match(workflow, /commits\/\$head_sha\/statuses/u);
   assert.match(workflow, /status_id=\$\(SOURCE_SHA="\$head_sha" gh api --method POST/u);
   assert.match(workflow, /env\.STATUS_ID/u);
+  assert.match(workflow, /env\.RUN_ID \+ " passed"/u);
   assert.doesNotMatch(workflow, /\.sha != env\.SOURCE_SHA/u);
   assert.match(workflow, /context="Runtime Readiness Gate"/u);
   assert.match(workflow, /test "\$pr_head" = "\$head_sha"/u);
