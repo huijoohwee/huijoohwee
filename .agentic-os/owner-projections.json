@@ -143,5 +143,10 @@
     "owner": "agentic-design-system",
     "source": "site/viewer-surface.js",
     "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
+  },
+  "content/MiaoXYZ/typography.css": {
+    "owner": "agentic-design-system",
+    "source": "site/vendor/typography.css",
+    "pin": "efb6c8e3b19898ccfe48b060a9ecc99c24a4000e"
   }
 }
